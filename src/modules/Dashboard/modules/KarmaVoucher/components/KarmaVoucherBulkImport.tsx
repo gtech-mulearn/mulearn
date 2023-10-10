@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import BulkImport from "@/MuLearnComponents/BulkImport/BulkImport";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
@@ -50,7 +50,7 @@ const KarmaVoucherBulkImport = () => {
                     variant="secondary"
                     onClick={() =>
                         window.open(
-                            "https://docs.google.com/spreadsheets/d/1Mn4IcK1kV5JnlUXu74eWEVxG2fD3QvAc/export?format=xlsx&id=1Mn4IcK1kV5JnlUXu74eWEVxG2fD3QvAc"
+                            "https://docs.google.com/spreadsheets/d/1eldAqkpzfzCsNeK40bviPtaZfppttstb/export?format=xlsx&id=1eldAqkpzfzCsNeK40bviPtaZfppttstb"
                         )
                     }
                 >
@@ -92,11 +92,13 @@ const KarmaVoucherBulkImport = () => {
                         >
                             <CountCard
                                 title="Success"
-                                count={uploadResponse.response.Success.length}
+                                count={
+                                    uploadResponse?.response?.Success?.length
+                                }
                             />
                             <CountCard
                                 title="Failed"
-                                count={uploadResponse.response.Failed.length}
+                                count={uploadResponse?.response?.Failed?.length}
                             />
                         </div>
                         <div

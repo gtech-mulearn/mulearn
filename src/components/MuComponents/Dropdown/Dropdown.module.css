@@ -17,7 +17,7 @@
 .select {
     border: none;
     width: 100%;
-    color: black;
+    color: var(--black);
     border-radius: 8px;
     background-color: #ebeaea9b;
     outline: none;
@@ -30,7 +30,7 @@
 
 dropdownSelect DropdownSelect dropdown_select .dropdown span {
     font-weight: bold;
-    color: black;
+    color: var(--black);
     margin-bottom: 10px;
 }
 
@@ -43,7 +43,7 @@ dropdownSelect DropdownSelect dropdown_select .dropdown span {
 .contents {
     width: 100%;
     background-color: white;
-    color: black;
+    color: var(--black);
     border: 2px solid #82828281;
     border-radius: 10px;
     padding: 10px;

@@ -1,16 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap");
 
-.wrapper{
+.wrapper {
     padding: 2rem;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.wrapper form{
+.wrapper form {
     width: 20rem;
 }
-.inputBox{
+.inputBox {
     width: 100%;
     height: 2.5rem;
     margin-top: 2rem;
@@ -21,20 +21,18 @@
         font-size: small;
         margin-left: 15px;
     }
-
 }
-.inputBox input{
+.inputBox input {
     width: 100%;
     height: 100%;
-    background: #F3F3F4;
+    background: #f3f3f4;
     border-radius: 8px;
     border: none;
     padding: 1rem;
-    
 }
 
-.forgot{
-    margin-top: 1rem;
+.forgot {
+    margin-top: 2rem;
     font-size: small;
     display: flex;
     flex-direction: row;
@@ -42,13 +40,14 @@
     height: 3rem;
     align-items: center;
 }
-.forgot p{
+.forgot p {
     color: #808192;
+    cursor: pointer;
 }
-.forgot span{
-    color: black;
+.forgot span {
+    color: var(--black);
 }
-.submit{
+.submit {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,18 +56,17 @@
     margin-top: 1rem;
     font-size: small;
 }
-.submit button{
+.submit button {
     width: 100%;
     height: 2.5rem;
     border-radius: 8px;
 }
-.submitB{
-    background: #456FF6;
+.submitB {
+    background: #456ff6;
     color: white;
     border: none;
-
 }
-.google{
+.google {
     color: #000;
     border: 2px #d9d9db solid;
     padding: 1.2rem;
@@ -79,13 +77,12 @@
     margin-top: 2rem;
     display: flex;
     justify-content: center;
-    
+
     button {
         font-size: smaller;
         color: #000;
     }
 }
-.googleIcon{
+.googleIcon {
     width: 1.5rem;
 }
-

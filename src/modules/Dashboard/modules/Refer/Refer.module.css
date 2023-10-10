@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color:var(--White);
+    background-color: var(--White);
     gap: 1rem;
     border-radius: var(--borderRadius);
     box-shadow: var(--boxShadow);
@@ -34,29 +34,25 @@
     margin-bottom: 1rem;
 }
 .createBtn {
-	background: #456FF6;
-	color: #fff;
-	width: 10%;
-	min-width: 100px;
-	padding: 5px 15px;
-	display: flex;
-	border-radius: 10px;
-	border: 1px solid #456FF6;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
-	font-size: 15px;
-	cursor: pointer;
-	transition: .3s ease-in-out;
-   
+    background: #456ff6;
+    color: #fff;
+    width: 10%;
+    min-width: 100px;
+    padding: 5px 15px;
+    display: flex;
+    border-radius: 10px;
+    border: 1px solid #456ff6;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
 }
 
 .createBtn:hover {
     background: #fff;
-	color: #456FF6;
-}
-.createBtn .icon{
-    
+    color: #456ff6;
 }
 
 .learningCircleLandingPage,
@@ -67,7 +63,7 @@
     flex-direction: column;
     gap: 2rem;
 }
-@media (width<1060px){
+@media (width<1060px) {
     .learningCircleLandingPageDesc h1 {
         font-size: 1.5rem;
     }

@@ -31,7 +31,6 @@ export const getZoneData = async (
                 }
             )
         ).data.response;
-        console.log(data.data);
         if (setTotalPages) setTotalPages(data.pagination.totalPages);
         if (setData) setData(data.data);
         else return data.data;
@@ -50,7 +49,7 @@ export const postZoneData = async (state: string, stateName: string) => {
         await privateGateway
             .post(ManageLocationsRoutes.patchZoneData.replace("${zone}/", ""), {
                 state: state,
-                name: stateName
+                label: stateName
             })
             .then(({ data }) => data.response);
     } catch (err: unknown) {
@@ -70,14 +69,11 @@ export const patchZoneData = async (
 ) => {
     try {
         await privateGateway
-            .patch(
-                ManageLocationsRoutes.patchZoneData.replace("${zone}", zoneID),
-                {
-                    state: state,
-                    id: zoneID,
-                    name: newName
-                }
-            )
+            .patch(ManageLocationsRoutes.patchZoneData + `${zoneID}/`, {
+                // state: state,
+                id: zoneID,
+                label: newName
+            })
             .then(({ data }) => data.response);
     } catch (err: unknown) {
         const error = err as AxiosError;
@@ -91,7 +87,7 @@ export const patchZoneData = async (
 export const deleteZoneData = async (zoneName: string) => {
     try {
         await privateGateway.delete(
-            ManageLocationsRoutes.patchZoneData.replace("${zone}", zoneName)
+            ManageLocationsRoutes.patchZoneData + `${zoneName}`
         );
     } catch (err: unknown) {
         const error = err as AxiosError;

@@ -1,25 +1,26 @@
 import axios from "axios";
+import { dashboardRoutes } from "@/MuLearnServices/urls";
+import { privateGateway } from "@/MuLearnServices/apiGateways";
+import { Dispatch, SetStateAction } from "react";
 
-export const getCSV = async () => {
+export const getLog = async (
+  logName: string,
+  setErrorData: Dispatch<SetStateAction<string>>
+) => {
   try {
-    const response = await axios.get(
-      'https://api.covidtracking.com/v1/us/daily.csv',//dummy api
-      
-      { responseType: 'blob' } // Specify responseType as 'blob' to get binary data
+    const response = await privateGateway.get(
+      dashboardRoutes.getErrorLog + logName
     );
-
-    // Create a Blob object from the API response data
-    const blob = new Blob([response.data], { type: 'text/csv' });
-
-    // Create a download link
-    const downloadLink = document.createElement('a');
-    downloadLink.href = window.URL.createObjectURL(blob);
-    downloadLink.setAttribute('download', 'covid_data.csv');
-
-    // Trigger a click event to start the download
-    downloadLink.click();
-
-    console.log("File downloaded successfully");
+    setErrorData(response.data);
+    
+    // Download the response data
+    const url = window.URL.createObjectURL(new Blob([response.data]));
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', `${logName}`);
+    document.body.appendChild(link);
+    link.click();
+    
   } catch (err) {
     console.error("Error getting CSV:", err);
   }

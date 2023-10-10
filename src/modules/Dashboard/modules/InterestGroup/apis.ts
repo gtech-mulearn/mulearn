@@ -113,7 +113,7 @@ export const editInterestGroups = async (
         );
 
         const message: any = response?.data;
-        setHasError(message?.hasError);
+        if (message.hasError) setHasError(message?.hasError);
         toast({
             title: " Edited Successfully..",
             description: "",

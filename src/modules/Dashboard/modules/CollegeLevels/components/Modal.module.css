@@ -14,10 +14,11 @@
     backdrop-filter: blur(0.1rem);
     overscroll-behavior: contain;
 
-    color: black;
+    color: var(--black);
 }
+
 .modal .container {
-    width: min(80%, 800px);
+    /* width: min(80%, 800px); */
     background-color: white;
 
     border-radius: 1rem;
@@ -26,7 +27,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 2rem 0rem;
+    padding: 2rem;
 }
 
 .modal :is(.crossIcon, .tickIcon) {
@@ -42,6 +43,7 @@
     border: 8px solid #e8fcef;
     background: var(--success-100, #d1fadf);
 }
+
 .modal .crossIcon {
     border: 8px solid #f1cdcd;
     background: var(--success-100, #f6afaf);
@@ -50,6 +52,12 @@
 .modal :is(h2, p) {
     all: revert;
     margin: 0px;
+    font-size: 1.5rem;
+}
+
+.modal p {
+    font-size: .9rem;
+    margin-top: 0.5rem;
 }
 
 .modal .form {
@@ -108,11 +116,22 @@
         height: 300px;
         overflow-y: auto;
     }
+
+    .modal .container {
+        padding: 2rem;
+    }
 }
 
-.smallSize {
-    .container {
-        max-width: 500px;
-        padding: 2rem;
+@media (max-width: 600px) {
+    .modal .container {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .modal :is(h2) {
+        all: revert;
+        margin: 0px;
+        font-size: 1.3rem;
     }
 }

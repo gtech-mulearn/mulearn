@@ -211,7 +211,7 @@ function Organizations() {
                     <TableTop
                         onSearchText={handleSearch}
                         onPerPageNumber={handlePerPageNumber}
-                        CSV={`${organizationRoutes.getOrgCsv}/${activeTabName}/`}
+                        CSV={organizationRoutes.getOrgCsv('activeTabName')}
                     />
                     <Table
                         rows={data}

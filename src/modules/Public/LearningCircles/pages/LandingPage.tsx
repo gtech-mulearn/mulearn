@@ -7,12 +7,12 @@ import {
     fetchCountryOptions,
     fetchDistrictOptions,
     fetchLC,
-    fetchLCFull,
     fetchStateOptions,
     getCount,
     getInterestGroups
 } from "../services/LandingPageApi";
 import Select from "react-select";
+import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
 interface Option {
     value: string;
@@ -41,11 +41,13 @@ const LandingPage = () => {
     const [selectedCampus, setSelectedCampus] = useState<Option | null>(null);
     const [selectedIg, setSelectedIg] = useState<Option | null>(null);
     const [msg, setMsg] = useState<string>("Select a district");
+    const [loading, setLoading] = useState<boolean>(false);
 
     useEffect(() => {
         fetchCountryOptions(setCountryOptions);
         fetchStateOptions(country, setStateOptions);
         fetchDistrictOptions(state, setDistrictOptions);
+        fetchLC(setLoading, setData);
         getCount(setCount);
     }, []);
 
@@ -78,11 +80,12 @@ const LandingPage = () => {
             setSelectedDistrict(selectedDistrict);
             fetchCampusOptions(selectedDistrict.value, setCampusOptions);
             // Reset other options
+            fetchLC(setLoading, setData, selectedDistrict.value);
             setIgOptions(undefined);
             setData([]);
             setSelectedCampus(null);
             setSelectedIg(null);
-			setMsg("Select a campus");
+            setMsg("Select a campus");
         }
     };
 
@@ -92,11 +95,11 @@ const LandingPage = () => {
             setCampus(selectedCampus.value);
             setIgOptions(await getInterestGroups());
             setSelectedIg(null);
-            setTimeout(() => {
-                fetchLCFull(setData, selectedCampus.value, district);
-            }, 1000);
+
+            fetchLC(setLoading, setData, district, selectedCampus.value);
+
             setData([]);
-			setMsg("");
+            setMsg("");
         }
     };
 
@@ -104,10 +107,7 @@ const LandingPage = () => {
         if (selectedIg) {
             setIg(selectedIg.value);
             setSelectedIg(selectedIg);
-            fetchLC(setData, selectedIg.value, campus, district);
-            setTimeout(() => {
-                console.log(data);
-            }, 2000);
+            fetchLC(setLoading, setData, district, campus, selectedIg.value);
         }
     };
 
@@ -139,7 +139,7 @@ const LandingPage = () => {
 
     const targetRef = useRef<HTMLDivElement>(null); // Create a ref
 
-	const isElementInViewport = (el: HTMLElement | null) => {
+    const isElementInViewport = (el: HTMLElement | null) => {
         if (!el) {
             return false;
         }
@@ -148,19 +148,19 @@ const LandingPage = () => {
             rect.top >= 0 &&
             rect.left >= 0 &&
             rect.bottom <=
-                (window.innerHeight || document.documentElement.clientHeight) &&
+            (window.innerHeight || document.documentElement.clientHeight) &&
             rect.right <=
-                (window.innerWidth || document.documentElement.clientWidth)
+            (window.innerWidth || document.documentElement.clientWidth)
         );
     };
 
-	useEffect(() => {
+    useEffect(() => {
         const finalValues: number[] = [
-            count?.state ?? 0,
-            count?.district ?? 0,
+
             count?.interest_group ?? 0,
             count?.college ?? 0,
-            count?.learning_circle ?? 0
+            count?.learning_circle ?? 0,
+            count?.total_no_of_users ?? 0
         ];
 
         const startCounterAnimation = () => {
@@ -169,9 +169,9 @@ const LandingPage = () => {
                     prevCounters.map((counter, index) =>
                         counter < finalValues[index]
                             ? counter +
-								Math.ceil(
-									finalValues[index] / (durationInSeconds * 20)
-								) // Increment smoothly
+                            Math.ceil(
+                                finalValues[index] / (durationInSeconds * 20)
+                            ) // Increment smoothly
                             : finalValues[index]
                     )
                 );
@@ -271,14 +271,14 @@ const LandingPage = () => {
                                 </b>
                                 <p>
                                     {index === 0
-                                        ? "State"
+                                        ? "Interest Groups"
                                         : index === 1
-                                            ? "Districts"
+                                            ? "Colleges"
                                             : index === 2
-                                                ? "Interest Groups"
+                                                ? "Learning Circles"
                                                 : index === 3
-                                                    ? "Campuses"
-                                                    : "Learning Circles"}
+                                                    ? "Number of Users"
+                                                    : ""}
                                 </p>
                             </div>
                         ))}
@@ -343,32 +343,38 @@ const LandingPage = () => {
                         />
                     </div>
                 </form>
-                <div className={styles.container}>
-                    {data.length > 0 ? (
-                        data.map((lc: LcRandom) => (
-                            <div className={styles.exploreCards}>
+
+                {loading ?
+                    <div className={styles.loader}>
+                        <MuLoader />
+                    </div>
+                    : <div className={styles.container}>
+                        {data.length > 0 ? (
+                            data.map((lc: LcRandom) => (
+                                <div className={styles.exploreCards}>
+                                    <img
+                                        src="https://i.ibb.co/zJkPfqB/Iot-Vector.png"
+                                        alt="png"
+                                    />
+                                    <h1>{lc.name}</h1>
+                                    <span>
+                                        <b>{lc.ig_name}</b> &nbsp;{" "}
+                                        <b>Members count: {lc.member_count}</b>
+                                    </span>
+                                </div>
+                            ))
+                        ) : (
+                            <div className={styles.LClandingPagenone}>
                                 <img
-                                    src="https://i.ibb.co/zJkPfqB/Iot-Vector.png"
-                                    alt="png"
+                                    src={imageBottom}
+                                    alt="You haven't joined any circles yet"
+                                    loading="eager"
                                 />
-                                <h1>{lc.name}</h1>
-                                <span>
-                                    <b>{lc.ig_name}</b> &nbsp;{" "}
-                                    <b>Members count: {lc.member_count}</b>
-                                </span>
+                                <b>{msg}</b>
                             </div>
-                        ))
-                    ) : (
-                        <div className={styles.LClandingPagenone}>
-                            <img
-                                src={imageBottom}
-                                alt="You haven't joined any circles yet"
-                                loading="eager"
-                            />
-							<b>{msg}</b>
-                        </div>
-                    )}
-                </div>
+                        )}
+                    </div>
+                }
             </div>
         </div>
     );

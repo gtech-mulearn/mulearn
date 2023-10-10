@@ -3,16 +3,18 @@ import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
-import {
-    deleteInterestGroups,
-    getInterestGroups
-} from "./apis";
+import { deleteInterestGroups, getInterestGroups } from "./apis";
 import { useNavigate } from "react-router-dom";
-import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import {
+    MuButton,
+    PowerfulButton
+} from "@/MuLearnComponents/MuButtons/MuButton";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import styles from "./InterestGroup.module.css";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { useToast } from "@chakra-ui/react";
+import { Blank } from "@/MuLearnComponents/Table/Blank";
+import CreateOrUpdateModal from "./CreateOrUpdateModal";
 
 interface IgDetails {
     igName: string;
@@ -20,7 +22,7 @@ interface IgDetails {
     igIcon: string;
 }
 
-export type modalStatesType = "edit" | "create" | null;
+export type modalTypes = "edit" | "create" | null;
 
 function InterestGroup() {
     const [data, setData] = useState<any[]>([]);
@@ -41,8 +43,7 @@ function InterestGroup() {
         { column: "created_at", Label: "Created On", isSortable: true }
     ];
 
-    const [openModal, setOpenModal] = useState<modalStatesType>(null);
-    const [openMuModal, setOpenMuModal] = useState(false);
+    const [currModal, setCurrModal] = useState<modalTypes>(null);
     const [currID, setCurrID] = useState<string>("");
 
     const handleNextClick = () => {
@@ -89,7 +90,7 @@ function InterestGroup() {
     }, []);
 
     useEffect(() => {
-        if (openModal === null) {
+        if (currModal === null) {
             getInterestGroups(
                 setData,
                 1,
@@ -100,7 +101,7 @@ function InterestGroup() {
                 ""
             );
         }
-    }, [openModal]);
+    }, [currModal]);
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
@@ -116,7 +117,9 @@ function InterestGroup() {
     };
 
     const handleEdit = async (id: string | number | boolean) => {
-        navigate("/dashboard/interest-groups/edit/" + id);
+        setCurrID(id.toString());
+        setCurrModal("edit");
+        // navigate("/dashboard/interest-groups/edit/" + id);
     };
 
     const handleDelete = (id: string | undefined) => {
@@ -176,15 +179,35 @@ function InterestGroup() {
 
     return (
         <>
+            {currModal &&
+                (() => {
+                    if (currModal === "create")
+                        return (
+                            <CreateOrUpdateModal
+                                setCurrModal={setCurrModal}
+                                toast={toast}
+                            />
+                        );
+
+                    if (currModal === "edit")
+                        return currID ? (
+                            <CreateOrUpdateModal
+                                id={currID}
+                                setCurrModal={setCurrModal}
+                                toast={toast}
+                            />
+                        ) : null;
+                })()}
             <div className={styles.createBtnContainer}>
-                <MuButton
+                <PowerfulButton
                     className={styles.createBtn}
-                    text={"Create"}
-                    icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}
                     onClick={() => {
-                        navigate("/dashboard/interest-groups/create");
+                        setCurrModal("create");
                     }}
-                />
+                >
+                    <AiOutlinePlusCircle />
+                    Create
+                </PowerfulButton>
             </div>
 
             {data && (
@@ -227,7 +250,7 @@ function InterestGroup() {
                                 />
                             )}
                         </div>
-                        {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                        <Blank />
                     </Table>
                 </>
             )}

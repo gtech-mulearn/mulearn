@@ -21,7 +21,10 @@ import {
     getDWMSDetails
 } from "../services/onboardingApis";
 import { useNavigate, useParams } from "react-router-dom";
-import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import {
+    MuButton,
+    PowerfulButton
+} from "@/MuLearnComponents/MuButtons/MuButton";
 
 const animatedComponents = makeAnimated();
 
@@ -33,6 +36,7 @@ const Onboarding = (props: Props) => {
     const urlParams = new URLSearchParams(window.location.search);
     const param = urlParams.get("param");
     const referralId = urlParams.get("referral_id");
+    const inviteCode = urlParams.get("invite_code");
     const queryParameters = new URLSearchParams(window.location.search);
     const navigate = useNavigate();
     // for hide and question container
@@ -112,7 +116,9 @@ const Onboarding = (props: Props) => {
     const [aoiAPI, setAoiAPI] = useState([{ id: "", name: "" }]);
     const [showOrHidePassword, setShowOrHidePassword] = useState("password");
     const [showOrHideCPassword, setShowOrHideCPassword] = useState("password");
-    const [defaultCommunity, setDefaultCommunity] = useState([{ value: "", label: "" }]);
+    const [defaultCommunity, setDefaultCommunity] = useState([
+        { value: "", label: "" }
+    ]);
 
     const customStyles = {
         control: (provided: any) => ({
@@ -160,9 +166,9 @@ const Onboarding = (props: Props) => {
     useEffect(() => {
         localStorage.setItem("token", queryParameters.get("id") as string);
         getCountries(errorHandler, setCountryOption);
-        getCommunities(errorHandler, setCommunityAPI);
+        getCommunities({ errorHandler, setCommunityAPI });
         getCompanies(errorHandler, setCompanyAPI);
-        getInterests(errorHandler, setAoiAPI);
+        // getInterests(errorHandler, setAoiAPI);
         getRoles(errorHandler, setRoleAPI);
         if (param) {
             getDWMSDetails(errorHandler, param, (data: any) => {
@@ -186,23 +192,11 @@ const Onboarding = (props: Props) => {
                     mentorRole: "",
                     areaOfInterest: [],
                     general: "",
-                    referral_id: ""
+                    mu_id: ""
                 });
             });
         }
     }, []);
-
-    const [backendError, setBackendError] = useState<BackendErrors>({});
-
-    const handleBackendErrors = (errors: BackendErrors) => {
-
-        const formattedErrors: BackendErrors = {};
-        Object.entries(errors).forEach(([fieldName, errorMessages]) => {
-            formattedErrors[fieldName] = errorMessages;
-        });
-
-        setBackendError(formattedErrors);
-    };
 
     // formik
     const initialValues = {
@@ -225,34 +219,111 @@ const Onboarding = (props: Props) => {
         mentorRole: "",
         areaOfInterest: [],
         general: "",
-        referral_id: referralId ? referralId : ""
+        mu_id: referralId ? referralId : ""
     };
 
     const onSubmit = async (values: any, { setErrors, resetForm }: any) => {
         if (values.organization != "") {
-            values.community.push(values.organization);
+            //if values.organization doesn't exist in values.community then push it
+            if (!values.community.includes(values.organization))
+                values.community.push(values.organization);
         }
-        console.log(values.community);
 
-        const userData = {
-            first_name: values.firstName, //required
-            last_name: values.lastName === "" ? null : values.lastName,
-            email: values.email, //required
-            mobile: values.mobile, //required
-            gender: values.gender === "" ? null : values.gender,
-            dob: values.dob === "" ? null : values.dob,
-            role: role[0]["id"] == "" ? null : role[0]["id"], //required
-            organizations:
-                values.organization === "" && values.community.length === 0
-                    ? null
-                    : values.community, //required except for individual
-            dept: values.dept === "" ? null : values.dept, //required for student and enabler
-            year_of_graduation: values.yog === "" ? null : values.yog, //required for student
-            area_of_interests: values.areaOfInterest, //required,
-            password: values.password, //required
-            referral_id: values.referral_id === "" ? null : values.referral_id,
-            param: param ? param : null
+        // const userData = {
+        //     first_name: values.firstName, //required
+        //     last_name: values.lastName === "" ? null : values.lastName,
+        //     email: values.email, //required
+        //     mobile: values.mobile, //required
+        //     gender: values.gender === "" ? null : values.gender,
+        //     dob: values.dob === "" ? null : values.dob,
+        //     role: role[0]["id"] == "" ? null : role[0]["id"], //required
+        //     organizations:
+        //         values.organization === "" && values.community.length === 0
+        //             ? null
+        //             : values.community, //required except for individual
+        //     dept: values.dept === "" ? null : values.dept, //required for student and enabler
+        //     year_of_graduation: values.yog === "" ? null : values.yog, //required for student
+        //     area_of_interests: values.areaOfInterest, //required,
+        //     password: values.password, //required
+        //     mu_id: values.mu_id === "" ? null : values.mu_id,
+        //     param: param ? param : null,
+        //     invite_code: inviteCode ? inviteCode : null,
+        // };
+
+        const userData: {
+            user: {
+                first_name: any;
+                last_name: any | null;
+                email: any;
+                mobile: any;
+                password: any;
+                role?: string | null;
+            };
+            organization: {
+                organizations: any;
+                verified: boolean;
+                department?: any | null;
+                graduation_year?: any | null;
+            };
+            integration?: {
+                param: any | null;
+                title: string | null;
+            };
+            referral?: {
+                mu_id?: any;
+                invite_code?: any;
+            };
+        } = {
+            user: {
+                first_name: values.firstName, //required
+                last_name: values.lastName === "" ? null : values.lastName,
+                email: values.email, //required
+                mobile: values.mobile, //required
+                password: values.password
+            },
+            organization: {
+                organizations:
+                    values.organization === "" && values.community.length === 0
+                        ? null
+                        : values.community, //required except for individual
+                verified: roleVerified,
+            }, //required for student
+            //required
         };
+
+        if (param) {
+            userData["integration"] = {
+                param: param ? param : null,
+                title: param ? "DWMS" : null
+            };
+        }
+
+        if(role && role[0] && role[0]["id"]){
+            userData.user.role = role[0]["id"] == "" ? null : role[0]["id"];
+        }
+
+        if(role[0]["title"] == "Student"  )
+        {
+            userData.organization.graduation_year = values.yog === "" ? null : values.yog;
+        }
+        
+        if(role[0]["title"] == "Student" || role[0]["title"] == "Enabler" )
+        {
+            userData.organization.department= values.dept === "" ? null : values.dept //required for student and enabler
+        }
+
+        if (values.mu_id) {
+            userData["referral"] = {
+                mu_id: values.mu_id
+            };
+        }
+
+        if (inviteCode) {
+            userData["referral"] = {
+                invite_code: inviteCode ? inviteCode : null
+            };
+        }
+
         registerUser(
             setFormSuccess,
             setRoleVerified,
@@ -274,16 +345,18 @@ const Onboarding = (props: Props) => {
         } else if (!/\S+@\S+\.\S+/.test(values.email)) {
             errors.email = "Invalid email address";
         }
-        if (values.password.length < 8)
-            errors.password = "Password length should be greater than 8";
+        if (values.password.length > 8)
+            if (!values.confirmPassword) {
+                errors.confirmPassword = "Please confirm your password";
+            } else if (
+                values.confirmPassword == "" ||
+                values.password != values.confirmPassword
+            ) {
+                errors.confirmPassword = "Password does not match";
+            }
 
-        if (!values.confirmPassword) {
-            errors.confirmPassword = "Please confirm your password";
-        } else if (
-            values.confirmPassword == "" ||
-            values.password != values.confirmPassword
-        ) {
-            errors.confirmPassword = "Password does not match";
+        if (values.password.length < 8) {
+            errors.password = "Password should be atleast 8 characters long";
         }
         if (!values.phone) {
             errors.phone = "Phone number is required";
@@ -311,9 +384,9 @@ const Onboarding = (props: Props) => {
         if (!values.mentorRole) {
             errors.mentorRole = "Type is required";
         }
-        if (!values.areaOfInterest) {
-            errors.areaOfInterest = "Area of interest is required";
-        }
+        // if (!values.areaOfInterest) {
+        //     errors.areaOfInterest = "Area of interest is required";
+        // }
         return errors;
     };
     const formik = useFormik({
@@ -329,8 +402,10 @@ const Onboarding = (props: Props) => {
                 (community: any) => community.title === "KKEM"
             );
             if (foundCommunity && foundCommunity.id) {
-                setDefaultCommunity([{ value: foundCommunity.id, label: foundCommunity.title }])
-                console.log(defaultCommunity)
+                setDefaultCommunity([
+                    { value: foundCommunity.id, label: foundCommunity.title }
+                ]);
+                console.log(defaultCommunity);
             }
         }
     }, [communityAPI]);
@@ -381,11 +456,11 @@ const Onboarding = (props: Props) => {
                                             <h3
                                                 style={
                                                     emailVerificationResultBtn ===
-                                                        "Login"
+                                                    "Login"
                                                         ? {
-                                                            backgroundColor:
-                                                                "#9719CD"
-                                                        }
+                                                              backgroundColor:
+                                                                  "#9719CD"
+                                                          }
                                                         : {}
                                                 }
                                             >
@@ -413,7 +488,7 @@ const Onboarding = (props: Props) => {
                                                         placeholder="Enter your email"
                                                     />
                                                     {formik.touched.email &&
-                                                        formik.errors.email ? (
+                                                    formik.errors.email ? (
                                                         <div
                                                             className={
                                                                 styles.error_message
@@ -425,13 +500,11 @@ const Onboarding = (props: Props) => {
                                                             }
                                                         </div>
                                                     ) : null}
-                                                    <MuButton
+
+                                                    <PowerfulButton
                                                         type="submit"
                                                         className={
                                                             styles.verify_button
-                                                        }
-                                                        text={
-                                                            emailVerificationResultBtn
                                                         }
                                                         onClick={e => {
                                                             e.preventDefault();
@@ -456,7 +529,7 @@ const Onboarding = (props: Props) => {
                                                                     formik
                                                                         .values
                                                                         .email !=
-                                                                    ""
+                                                                        ""
                                                                 ) {
                                                                     emailVerification(
                                                                         formik
@@ -478,15 +551,19 @@ const Onboarding = (props: Props) => {
                                                         }}
                                                         style={
                                                             emailVerificationResultBtn ===
-                                                                "Login"
+                                                            "Login"
                                                                 ? {
-                                                                    backgroundColor:
-                                                                        "#9719CD"
-                                                                }
+                                                                      backgroundColor:
+                                                                          "#9719CD"
+                                                                  }
                                                                 : {}
                                                         }
                                                         isLoading={showLoader}
-                                                    />
+                                                    >
+                                                        {
+                                                            emailVerificationResultBtn
+                                                        }
+                                                    </PowerfulButton>
                                                 </form>
                                                 <a href="/login">
                                                     Do you have an account ?
@@ -713,7 +790,7 @@ const Onboarding = (props: Props) => {
                                                 disabled={param ? true : false}
                                             />
                                             {formik.touched.firstName &&
-                                                formik.errors.firstName ? (
+                                            formik.errors.firstName ? (
                                                 <div
                                                     className={
                                                         styles.error_message
@@ -758,7 +835,7 @@ const Onboarding = (props: Props) => {
                                                 disabled={param ? true : false}
                                             />
                                             {formik.touched.email &&
-                                                formik.errors.email ? (
+                                            formik.errors.email ? (
                                                 <div
                                                     className={
                                                         styles.error_message
@@ -788,7 +865,9 @@ const Onboarding = (props: Props) => {
                                                         textAlign: "center"
                                                     }}
                                                     name=""
-                                                    disabled={param ? true : false}
+                                                    disabled={
+                                                        param ? true : false
+                                                    }
                                                 >
                                                     <option value="+91">
                                                         +91
@@ -805,11 +884,13 @@ const Onboarding = (props: Props) => {
                                                         formik.handleChange
                                                     }
                                                     value={formik.values.mobile}
-                                                    disabled={param ? true : false}
-                                                // required
+                                                    disabled={
+                                                        param ? true : false
+                                                    }
+                                                    // required
                                                 />
                                                 {formik.touched.mobile &&
-                                                    formik.errors.mobile ? (
+                                                formik.errors.mobile ? (
                                                     <div
                                                         className={
                                                             styles.error_message
@@ -847,24 +928,24 @@ const Onboarding = (props: Props) => {
                                                 onClick={e => {
                                                     e.preventDefault();
                                                     showOrHidePassword ==
-                                                        "password"
+                                                    "password"
                                                         ? setShowOrHidePassword(
-                                                            "text"
-                                                        )
+                                                              "text"
+                                                          )
                                                         : setShowOrHidePassword(
-                                                            "password"
-                                                        );
+                                                              "password"
+                                                          );
                                                 }}
                                             >
                                                 {showOrHidePassword ===
-                                                    "text" ? (
+                                                "text" ? (
                                                     <i className="fi fi-sr-eye"></i>
                                                 ) : (
                                                     <i className="fi fi-sr-eye-crossed"></i>
                                                 )}
                                             </button>
                                             {formik.touched.password &&
-                                                formik.errors.password ? (
+                                            formik.errors.password ? (
                                                 <div
                                                     className={
                                                         styles.error_message
@@ -901,24 +982,24 @@ const Onboarding = (props: Props) => {
                                                 onClick={e => {
                                                     e.preventDefault();
                                                     showOrHideCPassword ==
-                                                        "password"
+                                                    "password"
                                                         ? setShowOrHideCPassword(
-                                                            "text"
-                                                        )
+                                                              "text"
+                                                          )
                                                         : setShowOrHideCPassword(
-                                                            "password"
-                                                        );
+                                                              "password"
+                                                          );
                                                 }}
                                             >
                                                 {showOrHideCPassword ===
-                                                    "text" ? (
+                                                "text" ? (
                                                     <i className="fi fi-sr-eye"></i>
                                                 ) : (
                                                     <i className="fi fi-sr-eye-crossed"></i>
                                                 )}
                                             </button>
                                             {formik.touched.confirmPassword &&
-                                                formik.errors.confirmPassword ? (
+                                            formik.errors.confirmPassword ? (
                                                 <div
                                                     className={
                                                         styles.error_message
@@ -933,7 +1014,7 @@ const Onboarding = (props: Props) => {
                                         </div>
                                     </div>
                                     <div className={styles.inputs}>
-                                        <div className={styles.input_container}>
+                                        {/* <div className={styles.input_container}>
                                             <div
                                                 className={
                                                     styles.grouped_inputs
@@ -959,7 +1040,9 @@ const Onboarding = (props: Props) => {
                                                         value={
                                                             formik.values.gender
                                                         }
-                                                        disabled={param ? true : false}
+                                                        disabled={
+                                                            param ? true : false
+                                                        }
                                                     >
                                                         <option value="">
                                                             Select gender
@@ -1016,11 +1099,13 @@ const Onboarding = (props: Props) => {
                                                         value={
                                                             formik.values.dob
                                                         }
-                                                        disabled={param ? true : false}
+                                                        disabled={
+                                                            param ? true : false
+                                                        }
                                                     />
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> */}
                                         <div className={styles.input_container}>
                                             <div
                                                 style={{ width: "100%" }}
@@ -1034,10 +1119,19 @@ const Onboarding = (props: Props) => {
                                                 <Select
                                                     name="community.id"
                                                     ref={community_select_ref}
-                                                    key={defaultCommunity[0].value}
-                                                    defaultValue={param ? defaultCommunity : null}
+                                                    key={
+                                                        defaultCommunity[0]
+                                                            .value
+                                                    }
+                                                    defaultValue={
+                                                        param
+                                                            ? defaultCommunity
+                                                            : null
+                                                    }
                                                     onChange={OnChangeValue => {
-                                                        console.log(OnChangeValue)
+                                                        console.log(
+                                                            OnChangeValue
+                                                        );
                                                         formik.setFieldValue(
                                                             "community",
                                                             OnChangeValue.map(
@@ -1072,7 +1166,7 @@ const Onboarding = (props: Props) => {
 
                                     <div className={styles.inputs}>
                                         {role[0].title == "Student" ||
-                                            role[0].title == "Enabler" ? (
+                                        role[0].title == "Enabler" ? (
                                             <>
                                                 <div
                                                     className={
@@ -1097,11 +1191,11 @@ const Onboarding = (props: Props) => {
                                                         value={countryOption.find(
                                                             option =>
                                                                 option?.value !==
-                                                                "" &&
+                                                                    "" &&
                                                                 option?.value ===
-                                                                formik
-                                                                    .values
-                                                                    .country
+                                                                    formik
+                                                                        .values
+                                                                        .country
                                                         )}
                                                         name="country"
                                                         onChange={option => {
@@ -1147,10 +1241,10 @@ const Onboarding = (props: Props) => {
                                                         onBlur={
                                                             formik.handleBlur
                                                         }
-                                                    // required
+                                                        // required
                                                     />
                                                     {formik.touched.country &&
-                                                        formik.errors.country ? (
+                                                    formik.errors.country ? (
                                                         <div
                                                             className={
                                                                 styles.error_message
@@ -1178,15 +1272,15 @@ const Onboarding = (props: Props) => {
                                                             style={
                                                                 role[0]
                                                                     .title ===
-                                                                    "Student"
+                                                                "Student"
                                                                     ? window.innerWidth >
-                                                                        500
+                                                                      500
                                                                         ? {
-                                                                            width: "48%"
-                                                                        }
+                                                                              width: "48%"
+                                                                          }
                                                                         : {
-                                                                            width: "100%"
-                                                                        }
+                                                                              width: "100%"
+                                                                          }
                                                                     : {}
                                                             }
                                                             className={
@@ -1212,11 +1306,11 @@ const Onboarding = (props: Props) => {
                                                                 value={stateOption.find(
                                                                     option =>
                                                                         option?.value !==
-                                                                        "" &&
+                                                                            "" &&
                                                                         option?.value ===
-                                                                        formik
-                                                                            .values
-                                                                            .state
+                                                                            formik
+                                                                                .values
+                                                                                .state
                                                                 )}
                                                                 name="state"
                                                                 onChange={option => {
@@ -1265,19 +1359,19 @@ const Onboarding = (props: Props) => {
                                                                     formik
                                                                         .values
                                                                         .country ===
-                                                                        ""
+                                                                    ""
                                                                         ? true
                                                                         : false
                                                                 }
                                                                 onBlur={
                                                                     formik.handleBlur
                                                                 }
-                                                            // required
+                                                                // required
                                                             />
                                                             {formik.touched
                                                                 .state &&
-                                                                formik.errors
-                                                                    .state ? (
+                                                            formik.errors
+                                                                .state ? (
                                                                 <div
                                                                     className={
                                                                         styles.error_message
@@ -1293,15 +1387,15 @@ const Onboarding = (props: Props) => {
                                                         </div>
                                                         {role[0].title ==
                                                             "Student" ||
-                                                            role[0].title ==
+                                                        role[0].title ==
                                                             "Enabler" ? (
                                                             <div
                                                                 style={
                                                                     window.innerWidth >
-                                                                        500
+                                                                    500
                                                                         ? {
-                                                                            width: "50%"
-                                                                        }
+                                                                              width: "50%"
+                                                                          }
                                                                         : {}
                                                                 }
                                                                 className={
@@ -1328,11 +1422,11 @@ const Onboarding = (props: Props) => {
                                                                     value={districtOption.find(
                                                                         option =>
                                                                             option?.value !==
-                                                                            "" &&
+                                                                                "" &&
                                                                             option?.value ===
-                                                                            formik
-                                                                                .values
-                                                                                .district
+                                                                                formik
+                                                                                    .values
+                                                                                    .district
                                                                     )}
                                                                     onChange={option => {
                                                                         formik.setFieldValue(
@@ -1380,19 +1474,19 @@ const Onboarding = (props: Props) => {
                                                                         formik
                                                                             .values
                                                                             .state ===
-                                                                            ""
+                                                                        ""
                                                                             ? true
                                                                             : false
                                                                     }
                                                                     onBlur={
                                                                         formik.handleBlur
                                                                     }
-                                                                // required
+                                                                    // required
                                                                 />
                                                                 {formik.touched
                                                                     .district &&
-                                                                    formik.errors
-                                                                        .district ? (
+                                                                formik.errors
+                                                                    .district ? (
                                                                     <div
                                                                         className={
                                                                             styles.error_message
@@ -1415,7 +1509,7 @@ const Onboarding = (props: Props) => {
 
                                     <div className={styles.inputs}>
                                         {role[0].title == "Student" ||
-                                            role[0].title == "Enabler" ? (
+                                        role[0].title == "Enabler" ? (
                                             <>
                                                 <div
                                                     className={
@@ -1442,11 +1536,11 @@ const Onboarding = (props: Props) => {
                                                         value={collegeOptions.find(
                                                             option =>
                                                                 option?.value !==
-                                                                "" &&
+                                                                    "" &&
                                                                 option?.value ===
-                                                                formik
-                                                                    .values
-                                                                    .organization
+                                                                    formik
+                                                                        .values
+                                                                        .organization
                                                         )}
                                                         onChange={option => {
                                                             const indexToRemove =
@@ -1518,12 +1612,12 @@ const Onboarding = (props: Props) => {
                                                         onBlur={
                                                             formik.handleBlur
                                                         }
-                                                    // required
+                                                        // required
                                                     />
                                                     {formik.touched
                                                         .organization &&
-                                                        formik.errors
-                                                            .organization ? (
+                                                    formik.errors
+                                                        .organization ? (
                                                         <div
                                                             className={
                                                                 styles.error_message
@@ -1551,15 +1645,15 @@ const Onboarding = (props: Props) => {
                                                             style={
                                                                 role[0]
                                                                     .title ===
-                                                                    "Student"
+                                                                "Student"
                                                                     ? window.innerWidth >
-                                                                        500
+                                                                      500
                                                                         ? {
-                                                                            width: "48%"
-                                                                        }
+                                                                              width: "48%"
+                                                                          }
                                                                         : {
-                                                                            width: "100%"
-                                                                        }
+                                                                              width: "100%"
+                                                                          }
                                                                     : {}
                                                             }
                                                             className={
@@ -1608,7 +1702,7 @@ const Onboarding = (props: Props) => {
                                                                     formik
                                                                         .values
                                                                         .organization ===
-                                                                        ""
+                                                                    ""
                                                                         ? true
                                                                         : false
                                                                 }
@@ -1618,8 +1712,8 @@ const Onboarding = (props: Props) => {
                                                             />
                                                             {formik.touched
                                                                 .dept &&
-                                                                formik.errors
-                                                                    .dept ? (
+                                                            formik.errors
+                                                                .dept ? (
                                                                 <div
                                                                     className={
                                                                         styles.error_message
@@ -1634,14 +1728,14 @@ const Onboarding = (props: Props) => {
                                                             ) : null}
                                                         </div>
                                                         {role[0].title ==
-                                                            "Student" ? (
+                                                        "Student" ? (
                                                             <div
                                                                 style={
                                                                     window.innerWidth >
-                                                                        500
+                                                                    500
                                                                         ? {
-                                                                            width: "50%"
-                                                                        }
+                                                                              width: "50%"
+                                                                          }
                                                                         : {}
                                                                 }
                                                                 className={
@@ -1682,19 +1776,19 @@ const Onboarding = (props: Props) => {
                                                                         formik
                                                                             .values
                                                                             .dept ===
-                                                                            ""
+                                                                        ""
                                                                             ? true
                                                                             : false
                                                                     }
                                                                     onBlur={
                                                                         formik.handleBlur
                                                                     }
-                                                                // required
+                                                                    // required
                                                                 />
                                                                 {formik.touched
                                                                     .yog &&
-                                                                    formik.errors
-                                                                        .yog ? (
+                                                                formik.errors
+                                                                    .yog ? (
                                                                     <div
                                                                         className={
                                                                             styles.error_message
@@ -1780,7 +1874,7 @@ const Onboarding = (props: Props) => {
                                             <input
                                                 id="referralId"
                                                 type="text"
-                                                name="referral_id"
+                                                name="mu_id"
                                                 placeholder="Referral id , if any"
                                                 className={styles.input}
                                                 onBlur={formik.handleBlur}
@@ -1788,24 +1882,22 @@ const Onboarding = (props: Props) => {
                                                     referralId ? true : false
                                                 }
                                                 onChange={formik.handleChange}
-                                                value={
-                                                    formik.values.referral_id
-                                                }
+                                                value={formik.values.mu_id}
                                             />
-                                            {formik.touched.referral_id &&
-                                                formik.errors.referral_id ? (
+                                            {formik.touched.mu_id &&
+                                            formik.errors.mu_id ? (
                                                 <div
                                                     className={
                                                         styles.error_message
                                                     }
                                                 >
-                                                    {formik.errors.referral_id}
+                                                    {formik.errors.mu_id}
                                                 </div>
                                             ) : null}
                                         </div>
                                     </div>
 
-                                    <div className={styles.inputs}>
+                                    {/* <div className={styles.inputs}>
                                         <div className={styles.label_container}>
                                             <label htmlFor="">
                                                 Areas of Interest / Stack{" "}
@@ -1887,7 +1979,7 @@ const Onboarding = (props: Props) => {
                                                 </div>
                                             ) : null}
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
                                 <div className={styles.error_message}>
                                     {formik.errors.general || ""}
@@ -1950,47 +2042,47 @@ const Onboarding = (props: Props) => {
                                         >
                                             Cancel
                                         </button>
-                                        <MuButton
+                                        <PowerfulButton
                                             className={styles.submit_button}
-                                            text={"Submit"}
                                             type="submit"
                                             onClick={e => {
                                                 // e.preventDefault();
                                                 validate(formik.values);
                                                 if (
                                                     formik.values.firstName ==
-                                                    "" ||
+                                                        "" ||
                                                     formik.errors.firstName ||
                                                     formik.errors.email ||
                                                     formik.errors.mobile ||
                                                     formik.errors.password ||
                                                     formik.errors
                                                         .confirmPassword ||
-                                                    formik.errors
-                                                        .areaOfInterest ||
+                                                    // formik.errors
+                                                    //     .areaOfInterest ||
                                                     (role[0]["title"] ==
                                                         "Student" ||
-                                                        role[0]["title"] ==
+                                                    role[0]["title"] ==
                                                         "Enabler"
                                                         ? formik.errors
-                                                            .organization ||
-                                                        formik.errors.dept
+                                                              .organization ||
+                                                          formik.errors.dept
                                                         : null) ||
                                                     (role[0]["title"] ==
-                                                        "Student"
+                                                    "Student"
                                                         ? formik.errors.yog
-                                                        : null) ||
+                                                        : null)
+                                                    // ||
                                                     // (role[0]["title"] == "Mentor"
                                                     //   ? formik.errors.mentorRole
                                                     //   : null) ||
                                                     // (formik.values.mentorRole == "Company"
                                                     //   ? formik.errors.organization
                                                     //   : null) ||
-                                                    (formik.values
-                                                        .areaOfInterest
-                                                        .length == 0
-                                                        ? true
-                                                        : null)
+                                                    // (formik.values
+                                                    //     .areaOfInterest
+                                                    //     .length == 0
+                                                    //     ? true
+                                                    //     : null)
                                                 ) {
                                                     //console.log(formik.errors);
                                                 } else {
@@ -2003,17 +2095,19 @@ const Onboarding = (props: Props) => {
                                             style={
                                                 tcChecked
                                                     ? {
-                                                        backgroundColor:
-                                                            "#5570f1"
-                                                    }
+                                                          backgroundColor:
+                                                              "#5570f1"
+                                                      }
                                                     : {
-                                                        backgroundColor:
-                                                            "#5570f1",
-                                                        opacity: "0.5"
-                                                    }
+                                                          backgroundColor:
+                                                              "#5570f1",
+                                                          opacity: "0.5"
+                                                      }
                                             }
                                             disabled={!tcChecked}
-                                        />
+                                        >
+                                            Submit
+                                        </PowerfulButton>
                                     </div>
                                 </div>
                             </form>

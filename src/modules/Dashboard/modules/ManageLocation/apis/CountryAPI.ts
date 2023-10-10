@@ -53,7 +53,7 @@ export const postCountryData = async (
     try {
         await privateGateway
             .post(ManageLocationsRoutes.getCountryData, {
-                name: countryName
+                label: countryName
             })
             .then(({ data }) => data.response)
             .then(({ data }) => {
@@ -82,16 +82,10 @@ export const patchCountryData = async (
     try {
         console.log(countryID);
         await privateGateway
-            .patch(
-                ManageLocationsRoutes.patchCountryData.replace(
-                    "${country}",
-                    countryID
-                ),
-                {
-                    id: countryID,
-                    name: newName
-                }
-            )
+            .patch(ManageLocationsRoutes.patchCountryData + `${countryID}/`, {
+                id: countryID,
+                label: newName
+            })
             .then(({ data }) => data.response)
             .then(({ data }) => {
                 console.log(data);
@@ -112,7 +106,7 @@ export const deleteCountryData = async (
     try {
         await privateGateway
             .delete(
-                ManageLocationsRoutes.patchCountryData.replace("${country}", id)
+                ManageLocationsRoutes.patchCountryData + `${id}`
                 // {
                 //     name: countryName
                 // }

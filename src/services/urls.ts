@@ -10,7 +10,12 @@ export const onboardingRoutes = {
     register: "/api/v1/register/",
     emailVerification: "/api/v1/register/email-verification/",
     // New Onboarding Routes
-    createAccount: "/api/v1/register/new/"
+    createAccount: "/api/v1/register/new/",
+    roles: "/api/v1/register/role/list/",
+    colleges: "/api/v1/register/colleges/",
+    departments: "/api/v1/register/department/list/",
+    companies: "/api/v1/register/company/list/",
+    validate: "/api/v1/register/validate/"
 } as const;
 
 export const authRoutes = {
@@ -75,7 +80,9 @@ export const dashboardRoutes = {
     zonalCampusData: "/api/v1/dashboard/zonal/campus-details/csv/",
 
     departments: "/api/v1/dashboard/organisation/departments/",
-
+    createDepartment: "/api/v1/dashboard/organisation/departments/create/",
+    editDepartment: "/api/v1/dashboard/organisation/departments/edit/",
+    deleteDepartment: "/api/v1/dashboard/organisation/departments/delete/",
     districtStudentDetails: "/api/v1/dashboard/district/student-details/",
     districtStudentData: "/api/v1/dashboard/district/student-details/csv/",
     districtCampusDetails: "/api/v1/dashboard/district/college-details/",
@@ -96,6 +103,7 @@ export const dashboardRoutes = {
 
     searchLearningCircleWithCircleCode: "/api/v1/dashboard/lc/list-all/",
     getCampusLearningCircles: "/api/v1/dashboard/lc/",
+    getLearningCirclesLead: "/api/v1/dashboard/lc/lead/",
     createLearningCircle: "/api/v1/dashboard/lc/create/",
     listLearningCircle: "/api/v1/dashboard/lc/list-all/",
     joinLearningCircle: "/api/v1/dashboard/lc/join/",
@@ -126,33 +134,43 @@ export const dashboardRoutes = {
     dtGetRoles: "api/v1/dashboard/dynamic-management/roles/",
     dtGetTypes: "api/v1/dashboard/dynamic-management/types/",
     getDynamicRoles: "api/v1/dashboard/dynamic-management/dynamic-role/",
-    getDynamicUser: "api/v1/dashboard/dynamic-management/dynamic-user/"
+    getDynamicUser: "api/v1/dashboard/dynamic-management/dynamic-user/",
+
+    getErrorLog: "api/v1/dashboard/error-log/"
 } as const;
 
 export const organizationRoutes = {
-    getOrganizationsAll: "/api/v1/dashboard/organisation/institutes/info/all/",
+    getOrganizationsAll: "/api/v1/dashboard/organisation/institutes/",
     getCompany: "/api/v1/dashboard/organisation/institutes/show/Company/",
     getCollege: "/api/v1/dashboard/organisation/institutes/show/College/",
     getCommunity: "/api/v1/dashboard/organisation/institutes/show/Community/",
     getAffiliation:
         "/api/v1/dashboard/organisation/institutes/org/affiliation/",
+    createAffiliation:
+        "/api/v1/dashboard/organisation/institutes/affiliation/create/",
+    editAffiliation:
+        "/api/v1/dashboard/organisation/institutes/affiliation/edit/",
+    deleteAffiliation:
+        "/api/v1/dashboard/organisation/institutes/affiliation/delete/",
+
     getLocation: "/api/v1/dashboard/location",
-    postAddOrganization: "/api/v1/dashboard/organisation/institutes/add/",
-    putUpdateOrganization: "/api/v1/dashboard/organisation/institutes",
-    deleteOrgnaization: "/api/v1/dashboard/organisation/institutes/",
+    postAddOrganization: "/api/v1/dashboard/organisation/institutes/create/",
+    putUpdateOrganization: "/api/v1/dashboard/organisation/institutes/edit/",
+    deleteOrgnaization: "/api/v1/dashboard/organisation/institutes/delete/",
     postGetInfo: "/api/v1/dashboard/organisation/institutes/info/",
-    getOrgCsv: "/api/v1/dashboard/organisation/institutes/csv"
+    getOrgCsv: (org_type: string) =>
+        `/api/v1/dashboard/organisation/institutes/${org_type}/csv/`
 } as const;
 
 export const ManageLocationsRoutes = {
     getCountryData: "/api/v1/dashboard/location/countries/",
-    patchCountryData: "/api/v1/dashboard/location/countries/<str:country_id>/",
+    patchCountryData: "/api/v1/dashboard/location/countries/",
     getStateData: "/api/v1/dashboard/location/states/",
-    patchStateData: "/api/v1/dashboard/location/states/<str:state_id>/",
+    patchStateData: "/api/v1/dashboard/location/states/",
     getZoneData: "/api/v1/dashboard/location/zones/",
-    patchZoneData: "/api/v1/dashboard/location/zones/<str:zone_id>/",
+    patchZoneData: "/api/v1/dashboard/location/zones/",
     getDistrictData: "/api/v1/dashboard/location/districts/",
-    patchDistrictData: "/api/v1/dashboard/location/districts/<str:district_id>/"
+    patchDistrictData: "/api/v1/dashboard/location/districts/"
 } as const;
 
 export const KKEMRoutes = {
@@ -163,5 +181,7 @@ export const KKEMRoutes = {
 };
 
 export const PublicRoutes = {
-    getRandomLc: "/api/v1/dashboard/lc/list/"
+    getRandomLc: "/api/v1/dashboard/lc/list/",
+    getLcDashboard: "/api/v1/get-log/lc-dashboard/",
+    getLcReport: "/api/v1/get-log/lc-report/",
 } as const;

@@ -40,7 +40,7 @@ export const getOrganizations = async (
                         pageIndex: page,
                         search: search,
                         sortBy: sortID,
-                        orgType: activeTab
+                        org_type: activeTab
                     }
                 }
             )
@@ -71,8 +71,7 @@ export const getAffiliation = async (setAffiliationData: any) => {
                 return response.data;
             })
             .then(data => {
-                const affiliation: CountryProps[] =
-                    data.response.data.affiliation;
+                const affiliation: CountryProps[] = data.response.data;
                 setAffiliationData(affiliation);
             });
     } catch (err: unknown) {
@@ -108,6 +107,7 @@ export const getStates = async (
             })
             .then(data => {
                 const states: CountryProps[] = data.response.data;
+                console.log(states);
                 setStatesData(states);
             });
     } catch (err: unknown) {
@@ -139,6 +139,7 @@ export const getZones = async (
             })
             .then(data => {
                 const states: CountryProps[] = data.response.data;
+                console.log(getZones);
                 setZonesData(states);
             });
     } catch (err: unknown) {
@@ -195,14 +196,14 @@ export const createOrganization = async (
     state: string,
     zone: string,
     district: string,
-    orgType: string,
+    org_type: string,
     toast: (options?: UseToastOptions | undefined) => ToastId,
     affiliation?: string,
     setIsSuccess?: any,
     setIsLoading?: any
 ) => {
     const addDataProps = () => {
-        if (orgType === "College") {
+        if (org_type === "College") {
             return {
                 title: title,
                 code: code,
@@ -211,7 +212,7 @@ export const createOrganization = async (
                 district: district,
                 country: country,
                 affiliation: affiliation,
-                orgType: orgType
+                org_type: org_type
             };
         } else {
             return {
@@ -221,7 +222,7 @@ export const createOrganization = async (
                 zone: zone,
                 district: district,
                 country: country,
-                orgType: orgType
+                org_type: org_type
             };
         }
     };
@@ -278,14 +279,14 @@ export const updateOrganization = async (
     state: string,
     zone: string,
     district: string,
-    orgType: string,
+    org_type: string,
     toast: (options?: UseToastOptions | undefined) => ToastId,
     affiliation?: string,
     setIsSuccess?: any,
     setIsLoading?: any
 ) => {
     const addDataProps = () => {
-        if (orgType === "College") {
+        if (org_type === "College") {
             return {
                 title: title,
                 code: code,
@@ -294,7 +295,7 @@ export const updateOrganization = async (
                 district: district,
                 country: country,
                 affiliation: affiliation,
-                orgType: orgType
+                org_type: org_type
             };
         } else {
             return {
@@ -304,7 +305,7 @@ export const updateOrganization = async (
                 zone: zone,
                 district: district,
                 country: country,
-                orgType: orgType
+                org_type: org_type
             };
         }
     };
@@ -378,7 +379,7 @@ export const getInfo = async (code: string) => {
         const response = await privateGateway.get(
             `${organizationRoutes.postGetInfo}${code}/`
         );
-        return response.data.response.institution;
+        return response.data.response;
     } catch (err: unknown) {
         const error = err as AxiosError;
     }

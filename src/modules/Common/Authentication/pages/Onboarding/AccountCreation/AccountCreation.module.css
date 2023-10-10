@@ -1,4 +1,4 @@
-.accountCreationContainer{
+.accountCreationContainer {
     margin: 1rem;
     z-index: 10;
     width: 576px;
@@ -7,40 +7,40 @@
         border-radius: 8px;
     }
 }
-.accountCreationInputs{
-   display: flex;
-   flex-direction: column;
-   gap: .5rem;
+.accountCreationInputs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-.accountCreationInputs input{
-    background: #F3F3F4;
+.accountCreationInputs input {
+    background: #f3f3f4;
     border-radius: 8px;
     padding-left: 1rem;
 
     & + span {
         color: red;
         font-size: smaller;
-        padding-left: .5rem;
+        padding-left: 0.5rem;
     }
 }
 
-.accountCreationPassword{
+.accountCreationPassword {
     width: 100%;
     position: relative;
     div {
         width: 100%;
     }
-    button{
+    button {
         all: unset;
         position: absolute;
         right: 10px;
         top: 20px;
         width: 24px;
         z-index: 10;
-        color: #D9D9D9;
-        &:active{
-            color: #456FF6;
+        color: #d9d9d9;
+        &:active {
+            color: #456ff6;
         }
     }
 }
@@ -52,7 +52,7 @@
     div {
         display: flex;
         flex-direction: column;
-        flex:1;
+        flex: 1;
 
         input {
             width: 100%;
@@ -60,25 +60,34 @@
     }
 }
 
+.col_2 {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+}
+
+.col_2 div {
+    flex: 1;
+}
+
 @media (max-width: 600px) {
-    .accountCreationContainer{
+    .accountCreationContainer {
         width: 90vw;
     }
     .accountCreationName {
         flex-direction: column;
-        gap: .5rem;
+        gap: 0.5rem;
     }
 }
 
-
-.accountCreationAlternative{
+.accountCreationAlternative {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin-top: 1rem;
 }
-.accountCreationAlternative button{
+.accountCreationAlternative button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -89,27 +98,53 @@
     height: 49px;
     flex-shrink: 0;
     border-radius: 8px;
-    border: 1px solid #D9D9D9;
+    border: 1px solid #d9d9d9;
     margin: 1rem 0;
 }
-.accountCreationAlternative div{
-    display:flex;
+.accountCreationAlternative div {
+    display: flex;
     align-items: center;
     justify-content: center;
     gap: 1rem;
     width: 100%;
 }
-.accountCreationAlternative div hr{
+.accountCreationAlternative div hr {
     width: 300px;
     height: 0.3px;
     background: #858585;
 }
 
-.accountCreationAlternative div:nth-child(2) p{
+.accountCreationAlternative div:nth-child(2) p {
     margin-bottom: 3rem;
 }
 
 .accountCreationAlternative div:last-child p a {
-    color:#456FF6;
+    color: #456ff6;
     margin-bottom: 2rem;
+}
+
+.tnc {
+    display: flex;
+    align-items: start;
+    vertical-align: top;
+    margin-top: 1rem;
+    align-items: center;
+}
+
+.tnc input {
+    margin-right: 0.5rem;
+    margin-top: 0.2rem;
+    display: inline-block;
+    width: min-content;
+    vertical-align: top;
+}
+
+.tnc p {
+    display: inline-block;
+}
+
+.tnc a {
+    color: #5570f1;
+    text-decoration: none;
+    font-weight: 600;
 }

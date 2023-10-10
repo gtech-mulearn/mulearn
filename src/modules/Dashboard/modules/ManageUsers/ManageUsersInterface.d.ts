@@ -3,19 +3,15 @@ interface UserData {
     last_name: string;
     email: string;
     mobile: string;
-    gender:string;
-    // discord_id: string;
-    // mu_id: string;
-    // college?: string;
+    gender: string;
     roles: string[];
-    // company?: string;
     department?: string;
     graduation_year?: string;
-    organizations?:string[];
-    interest_groups:string[];
-    country:string;
-    state:string;
-    district:string;
+    organizations?: string[];
+    interest_groups: string[];
+    country: string;
+    state: string;
+    district: string;
 }
 
 interface OrgData {

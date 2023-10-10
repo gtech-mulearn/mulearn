@@ -58,9 +58,6 @@ const UserRoleVerificationEdit = (props: Props) => {
                         verified: data.verified
                     }}
                     validationSchema={Yup.object({
-                        // igName: Yup.string()
-                        //     .max(30, "Must be 30 characters or less")
-                        //     .required("Required"),
                         verified: Yup.string()
                             .max(30, "Must be 30 characters or less")
                             .required("Required")
@@ -117,13 +114,12 @@ const UserRoleVerificationEdit = (props: Props) => {
                             </div>
 
                             <div className={styles.btn_container}>
-                                <MuButton
-                                    text={"Decline"}
+                                <button
                                     className={styles.btn_cancel}
                                     onClick={() => {
                                         navigate("/user-role-verification");
                                     }}
-                                />
+                                >Decline</button>
                                 <button
                                     type="submit"
                                     className={styles.btn_submit}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./UrlShortener.module.css";
 import {
     getShortenUrls,
@@ -11,12 +11,12 @@ import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import { useFormik } from "formik";
-import { background, useToast } from "@chakra-ui/react";
+import { useToast } from "@chakra-ui/react";
 import {
     MuButton,
-    MuButtonLight,
     PowerfulButton
 } from "@/MuLearnComponents/MuButtons/MuButton";
+import { Blank } from "@/MuLearnComponents/Table/Blank";
 type urlData = {
     id: string | number | boolean;
     long_url: string;
@@ -36,8 +36,9 @@ const UrlShortener = () => {
     const [createBtn, setCreateBtn] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
+    const [loading, setLoading] = useState(false);
     const [perPage, setPerPage] = useState(20);
-    const [sort, setSort] = useState("created_at");
+    const [sort, setSort] = useState("-created_at");
     const [shortUrlData, setShortUrlData] = useState<urlData[]>([]);
 
     const formik = useFormik({
@@ -76,7 +77,6 @@ const UrlShortener = () => {
                                 perPage,
                                 setTotalPages
                             );
-                            // formik.handleReset(formik.values);
                         }, 500);
                         setEditBtn(false);
                         setCreateBtn(false);
@@ -160,7 +160,9 @@ const UrlShortener = () => {
                 perPage,
                 setTotalPages,
                 "",
-                `-${column}`
+                `-${column}`,
+                setLoading
+
             );
         } else {
             setSort(column);
@@ -170,7 +172,8 @@ const UrlShortener = () => {
                 perPage,
                 setTotalPages,
                 "",
-                column
+                column,
+                setLoading
             );
         }
     };
@@ -212,22 +215,23 @@ const UrlShortener = () => {
     };
 
     useEffect(() => {
-        getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
+        getShortenUrls(setShortUrlData, 1, perPage, setTotalPages, "", sort, setLoading);
         getShortenUrls(
             setShortUrlData,
             currentPage,
             perPage,
             setTotalPages,
             "",
-            `${sort}`
+            `${sort}`,
+            setLoading
         );
     }, []);
 
     return (
         <>
-            <MuButton
-                text="Create"
-                onClick={() => setCreateBtn(true)}
+
+            <PowerfulButton onClick={() => setCreateBtn(true)}
+
                 style={{
                     width: "fit-content",
                     minWidth: "auto",
@@ -235,8 +239,7 @@ const UrlShortener = () => {
                     color: "#fff",
                     margin: "auto",
                     marginRight: "3%"
-                }}
-            />
+                }}>Create</PowerfulButton>
             {(editBtn || createBtn) && (
                 <div className={styles.url_shortener_container}>
                     <div className={styles.create_new_url}>
@@ -344,10 +347,10 @@ const UrlShortener = () => {
                     onEditClick={handleEdit}
                     onDeleteClick={handleDelete}
                     onCopyClick={handleCopy}
+                    isloading={loading}
                 >
                     <THead
                         columnOrder={columnOrder}
-                        // editableColumnNames={editableColumnNames}
                         onIconClick={handleIconClick}
                     />
                     <Pagination
@@ -360,7 +363,7 @@ const UrlShortener = () => {
                         perPage={perPage}
                         setPerPage={setPerPage}
                     />
-                    {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                    <Blank />
                 </Table>
             </>
         </>

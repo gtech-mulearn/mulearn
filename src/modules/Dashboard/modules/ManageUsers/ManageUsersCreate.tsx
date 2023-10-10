@@ -3,7 +3,7 @@ import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { Form, Formik } from "formik";
 import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
-import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import * as Yup from "yup";
 import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 
@@ -30,9 +30,6 @@ const ManageUsersCreate = (props: Props) => {
                         // jobType: "" // added for our select
                     }}
                     validationSchema={Yup.object({
-                        // userName: Yup.string()
-                        //     .max(30, "Must be 30 characters or less")
-                        //     .required("Required"),
                         firstName: Yup.string()
                             .max(15, "Must be 15 characters or less")
                             .required("Required"),
@@ -51,18 +48,6 @@ const ManageUsersCreate = (props: Props) => {
                         gender: Yup.string()
                             .email("Invalid gender")
                             .required("Required")
-                        // acceptedTerms: Yup.boolean()
-                        //     .required("Required")
-                        //     .oneOf(
-                        //         [true],
-                        //         "You must accept the terms and conditions."
-                        //     ),
-                        // jobType: Yup.string()
-                        //     .oneOf(
-                        //         ["designer", "development", "product", "other"],
-                        //         "Invalid Job Type"
-                        //     )
-                        //     .required("Required")
                     })}
                     onSubmit={values => {
                         console.log(values.firstName);
@@ -120,26 +105,14 @@ const ManageUsersCreate = (props: Props) => {
                             type="text"
                             placeholder="Enter a gender"
                         />
-
-                        {/* <MySelect label="Job Type" name="jobType">
-                            <option value="">Select a job type</option>
-                            <option value="designer">Designer</option>
-                            <option value="development">Developer</option>
-                            <option value="product">Product Manager</option>
-                            <option value="other">Other</option>
-                        </MySelect>
-
-                        <MyCheckbox name="acceptedTerms">
-                            I accept the terms and conditions
-                        </MyCheckbox> */}
                         <div className={styles.btn_container}>
-                            <MuButton
-                                text={"Decline"}
+                            <PowerfulButton
+                                
                                 className={styles.btn_cancel}
                                 onClick={() => {
                                     navigate("/dashboard/manage-users");
                                 }}
-                            />
+                            >Decline</PowerfulButton>
                             <button type="submit" className={styles.btn_submit}>
                                 Confirm
                             </button>

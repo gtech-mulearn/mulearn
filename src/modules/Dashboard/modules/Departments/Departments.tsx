@@ -5,13 +5,14 @@ import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
-import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 
 import { deleteDepartment, getDepartments } from "./apis";
 import styles from "./Departments.module.css";
 import { modalTypes } from "../../utils/enums";
 import CreateOrUpdateDepartmentModal from "./CreateOrUpdateDepartmentModal";
+import { Blank } from "@/MuLearnComponents/Table/Blank";
 
 const Departments = () => {
     const toast = useToast();
@@ -22,6 +23,7 @@ const Departments = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [perPage, setPerPage] = useState(10);
     const [sort, setSort] = useState("");
+    const [title, setTitle] = useState("");
 
     const [choosenDeptId, setChoosenDeptId] = useState<string | null>(null);
 
@@ -63,6 +65,10 @@ const Departments = () => {
 
     const handleEdit = async (id: string | number | boolean) => {
         setChoosenDeptId(id as string);
+        const department = departments.find(dept => dept.id === id);
+        if (department) {
+            setTitle(department.title);
+        }
         setCurrModal(modalTypes.edit);
     };
 
@@ -123,29 +129,31 @@ const Departments = () => {
                     if (currModal === modalTypes.edit)
                         return choosenDeptId
                             ? CreateOrUpdateDepartmentModal({
-                                  id: choosenDeptId!,
-                                  setCurrModal: setCurrModal,
-                                  setDepartments: setDepartments,
-                                  loading: isLoading,
-                                  setIsLoading: setIsLoading,
-                                  toast: toast
-                              })
+                                id: choosenDeptId!,
+                                setCurrModal: setCurrModal,
+                                setDepartments: setDepartments,
+                                loading: isLoading,
+                                setIsLoading: setIsLoading,
+                                toast: toast,
+                                title: title
+                            })
                             : null;
                 })()}
             <div className={styles.createBtnContainer}>
-                <MuButton
+                <PowerfulButton
                     className={styles.createBtn}
-                    text={"Create"}
-                    icon={<AiOutlinePlusCircle />}
                     onClick={() => setCurrModal(modalTypes.create)}
-                />
+                >
+                    <AiOutlinePlusCircle />
+                    Create
+                </PowerfulButton>
             </div>
             {departments && (
                 <>
                     <TableTop
                         onSearchText={handleSearch}
                         onPerPageNumber={handlePerPageNumber}
-                        // CSV={}
+                    // CSV={}
                     />
                     <Table
                         rows={departments}
@@ -180,7 +188,7 @@ const Departments = () => {
                                 />
                             )}
                         </div>
-                        {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                        <Blank />
                     </Table>
                 </>
             )}

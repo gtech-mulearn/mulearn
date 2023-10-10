@@ -17,7 +17,7 @@ import { getStateData, deleteStateData } from "./apis/StateAPI";
 import { getZoneData, deleteZoneData } from "./apis/ZoneAPI";
 import { getDistrictData, deleteDistrictData } from "./apis/DistrictAPI";
 import LocationPopup from "./LocationPopup";
-import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useToast } from "@chakra-ui/react";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
@@ -49,7 +49,6 @@ const ManageLocation = () => {
     const toast = useToast();
 
     useEffect(() => {
-        console.log(location);
         if (location.state) {
             setActiveTab(location.state.activeItem);
             setPopupStatus(false);
@@ -64,8 +63,17 @@ const ManageLocation = () => {
         }
     }, [popupStatus]);
 
+    useEffect(() => {
+        console.log(activeTab);
+        loadTableData();
+        // setCurrentPage(1);
+        // setPerPage(5);
+        // setSearch("");
+        // setSort("");
+        // return setData([]), setTotalPages(1);
+    }, [activeTab, sort, currentPage, perPage, search]);
+
     function loadTableData() {
-        console.log("enter load");
         setLoading(true);
         if (activeTab === "Country") {
             setPopupStatus(false);
@@ -80,9 +88,9 @@ const ManageLocation = () => {
                     sort
                 );
                 setData(
-                    res.map((country: any) => ({
-                        name: country.label,
-                        id: country.value
+                    res.map((data: any) => ({
+                        label: data.label,
+                        id: data.value
                     }))
                 );
                 setLoading(false);
@@ -100,7 +108,6 @@ const ManageLocation = () => {
             //     stateShow: false,
             //     zoneShow: false
             // }));
-            getLocationData();
             setColumns(columnsState);
         } else if (activeTab === "Zone") {
             // setPopupStatus(true);
@@ -109,7 +116,6 @@ const ManageLocation = () => {
             //     stateShow: true,
             //     zoneShow: false
             // }));
-            getLocationData();
             setColumns(columnsZone);
         } else if (activeTab === "District") {
             // setPopupStatus(true);
@@ -118,13 +124,13 @@ const ManageLocation = () => {
             //     stateShow: true,
             //     zoneShow: true
             // }));
-            getLocationData();
             setColumns(columnsDistrict);
         }
+        getLocationData();
     }
 
     function getLocationData() {
-        console.log("enter getld");
+        console.log("asd", activeTab);
         if (activeTab === "Country") {
             (async () => {
                 const res = await getCountryData(
@@ -137,9 +143,9 @@ const ManageLocation = () => {
                     sort
                 );
                 setData(
-                    res.map((country: any) => ({
-                        name: country.label,
-                        id: country.value
+                    res.map((data: any) => ({
+                        label: data.label,
+                        id: data.value
                     }))
                 );
             })();
@@ -156,10 +162,11 @@ const ManageLocation = () => {
             ).then(res => {
                 setData(
                     res.map((data: any) => ({
-                        name: data.label,
+                        label: data.label,
                         id: data.value
                     }))
                 );
+                console.log(res);
                 setLoading(false);
             });
         } else if (activeTab === "Zone") {
@@ -172,10 +179,9 @@ const ManageLocation = () => {
                 search,
                 sort
             ).then(res => {
-                console.log("asd", res);
                 setData(
                     res.map((data: any) => ({
-                        name: data.label,
+                        label: data.label,
                         id: data.value
                     }))
                 );
@@ -193,7 +199,7 @@ const ManageLocation = () => {
             ).then(res => {
                 setData(
                     res.map((data: any) => ({
-                        name: data.label,
+                        label: data.label,
                         id: data.value
                     }))
                 );
@@ -201,15 +207,6 @@ const ManageLocation = () => {
             });
         }
     }
-
-    useEffect(() => {
-        loadTableData();
-        setCurrentPage(1);
-        setPerPage(5);
-        setSearch("");
-        setSort("");
-        return setData([]), setTotalPages(1);
-    }, [activeTab]);
 
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
@@ -247,7 +244,7 @@ const ManageLocation = () => {
                 state: selectedState,
                 zone: selectedZone,
                 value: id,
-                name: data.find(item => item.id === id)?.name
+                label: data.find(item => item.id === id)?.label
             }
         });
     }
@@ -270,10 +267,6 @@ const ManageLocation = () => {
         setActiveTab(tab);
         setCurrentPage(1);
     }
-
-    useEffect(() => {
-        getLocationData();
-    }, [sort, currentPage, perPage, search]);
 
     return (
         <>
@@ -403,7 +396,6 @@ const TableTopToggle: FC<TableTopToggleType> = ({
             } else if (item === "Zone") {
                 handleZone("");
             } else if (item === "District") {
-                console.log("no changes");
             } else {
                 handleCountry("");
                 handleState("");
@@ -416,9 +408,8 @@ const TableTopToggle: FC<TableTopToggleType> = ({
         <div className="ml_top_container">
             <div className="ml_toggle_container">
                 {tabItems?.map((item: string): any => (
-                    <MuButton
-                        key={item}
-                        text={item}
+                    <PowerfulButton
+                        variant="plain"
                         className={
                             active === item
                                 ? "table_tab_btn active"
@@ -427,16 +418,14 @@ const TableTopToggle: FC<TableTopToggleType> = ({
                         onClick={() => {
                             handleTabClick(item);
                         }}
-                    />
+                    >{item}</PowerfulButton>
                 ))}
             </div>
             <div className="createBtnContainer">
-                <MuButton
+                <PowerfulButton
                     className="createBtn"
-                    text={`Add ${active}`}
-                    icon={<AiOutlinePlusCircle></AiOutlinePlusCircle>}
                     onClick={handleAddLocation}
-                />
+                ><AiOutlinePlusCircle/>{`Add ${active}`}</PowerfulButton>
             </div>
         </div>
     );
@@ -454,8 +443,9 @@ const LocationPath = ({
     zone?: string;
 }) => {
     function locationTextGenerate() {
-        return `${country?.toUpperCase()}${state ? ` /  ${state?.toUpperCase()}` : ""
-            }${zone ? ` / ${zone?.toUpperCase()}` : ""}`;
+        return `${country?.toUpperCase()}${
+            state ? ` /  ${state?.toUpperCase()}` : ""
+        }${zone ? ` / ${zone?.toUpperCase()}` : ""}`;
     }
 
     return (

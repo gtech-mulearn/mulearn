@@ -20,31 +20,18 @@ type Place = {
 }[];
 
 const schema = Yup.object({
-    // igName: Yup.string()
-    //     .max(30, "Must be 30 characters or less")
-    //     .required("Required"),
     first_name: Yup.string()
         .max(20, "Must be 20 characters or less")
         .required("Required"),
-    last_name: Yup.string()
-        .max(20, "Must be 20 characters or less")
-        .required("Required"),
+    last_name: Yup.string().max(20, "Must be 20 characters or less"),
     email: Yup.string().email("Invalid email address").required("Required"),
     mobile: Yup.string()
         .length(10, "Invalid mobile number")
         .required("Required"),
-    college: Yup.string().required("Required"),
-    community: Yup.array().required("Required"),
-    company: Yup.string().required("Required"),
-    department: Yup.string()
-        .min(3, "Invalid mobile number")
-        .required("Required"),
+    community: Yup.array(),
     graduation_year: Yup.string()
-        .length(4, "Invalid graduation_year")
-        .required("Required"),
-    country: Yup.string().optional(),
-    state: Yup.string().optional(),
-    district: Yup.string().optional(),
+        .nullable()
+        .length(4, "Invalid graduation_year"),
     interest: Yup.array().required("Required"),
     role: Yup.array().required("Required")
 });
@@ -55,7 +42,7 @@ const roleStr = (role: Community, roleName: string) => {
     return role.filter(item => item.title == roleName)[0]?.id || "";
 };
 const arrayIntersection = (userList: string[], mainList: string[]) => {
-    return userList.filter(item => mainList.includes(item));
+    return userList.filter(item => mainList?.includes(item));
 };
 const inputs = (
     community: Community,
@@ -138,7 +125,7 @@ const inputs = (
                 isSearchable: true
             }
         ],
-        dropDowns: user?.roles.includes(roleStr(role, roles.ASSOCIATE))
+        dropDowns: user?.roles?.includes(roleStr(role, roles.ASSOCIATE))
             ? [
                   {
                       name: "company",
@@ -227,7 +214,7 @@ const inputs = (
         enabler: {
             label: "User Graduation Year",
             name: "graduation_year",
-            type: "text",
+            type: "number",
             placeholder: "Enter a graduation year"
         }
     };
@@ -241,22 +228,22 @@ const inputs = (
             ? arrayIntersection(
                   user.organizations,
                   college.map(item => item.value)
-              )[0] || "null"
-            : "null",
+              )[0] || null
+            : null,
         community: user?.organizations
             ? arrayIntersection(
                   user.organizations,
                   community.map(item => item.id)
               )
-            : ["null"],
+            : [],
         company: user?.organizations
             ? arrayIntersection(
                   user.organizations,
                   company.map(item => item.id)
-              )[0] || "null"
-            : "null",
-        department: user?.department || "null",
-        graduation_year: user?.graduation_year || "null",
+              )[0] || null
+            : null,
+        department: user?.department || null,
+        graduation_year: user?.graduation_year || null,
         country: user?.country || "",
         state: user?.state || "",
         district: user?.district || "",

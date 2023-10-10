@@ -12,6 +12,7 @@ type Props = {
         name: string;
         tasks: {
             task_name: string;
+            discord_link: string;
             completed: boolean;
             hashtag: string;
             karma: number;
@@ -211,6 +212,7 @@ const MuVoyage = (props: Props) => {
                                                         (taskData, j) => {
                                                             return (
                                                                 <li key={j}>
+
                                                                     <input
                                                                         type="checkbox"
                                                                         name="accordion"
@@ -232,16 +234,19 @@ const MuVoyage = (props: Props) => {
                                                                         {
                                                                             taskData.task_name
                                                                         }
-                                                                        <span>
-                                                                            {
-                                                                                taskData.hashtag
-                                                                            }
-                                                                        </span>
+                                                                        <a href={taskData.discord_link} target="_blank" rel="noopener noreferrer">
+                                                                            <span>
+                                                                                {
+                                                                                    taskData.hashtag
+                                                                                }
+                                                                            </span>
+                                                                        </a>
                                                                         <p>
                                                                             {taskData.karma +
                                                                                 " ϰ"}
                                                                         </p>
                                                                     </label>
+
                                                                 </li>
                                                             );
                                                         }
@@ -253,7 +258,7 @@ const MuVoyage = (props: Props) => {
                             })}
                     </ul>
                 </div>
-            </div>
+            </div >
         </>
     );
 };

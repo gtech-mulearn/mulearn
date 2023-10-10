@@ -153,7 +153,7 @@
 }
 
 .IGCreate {
-	color: black;
+	color: var(--black);
 	font-size: 18px;
 	font-weight: 700;
 }
