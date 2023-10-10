@@ -1,5 +1,5 @@
 import React from "react";
-import styles from './menubar.module.css';
+import styles from './Menubar.module.css';
 import img4 from "../../assets/logo.webp";
 import pre from '../../assets/pre.png';
 

@@ -1,5 +1,5 @@
 import React from "react"
-import styles from "./mainpage.module.css"
+import styles from "./Mainpage.module.css"
 import img2 from "../../assets/img2.webp";
 import pre from "../../assets/pre.png";
 
