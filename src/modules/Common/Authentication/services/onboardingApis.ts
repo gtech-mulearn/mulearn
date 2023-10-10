@@ -28,7 +28,7 @@ type InitialValues = {
     mentorRole: string;
     areaOfInterest: never[];
     general: string;
-    mu_id: string;
+    muid: string;
 };
 type FormikType = ReturnType<typeof useFormik<InitialValues>>;
 

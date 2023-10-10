@@ -5,9 +5,8 @@ interface LcRandom {
 }
 
 interface LcCount {
-    state: number;
-    district: number;
     interest_group: number;
     college: number;
     learning_circle: number;
+    total_no_of_users: number;
 }
