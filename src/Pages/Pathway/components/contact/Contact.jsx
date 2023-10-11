@@ -19,7 +19,7 @@ export default function Contact() {
     <>
       <div className={styles.ContactUs}>
         <div className={styles.Contact}>
-          <img src={img4} />
+          <img src={img4} alt="logo" />
         </div>
         <div className={styles.ContactList}>
           {links.map((link) => {

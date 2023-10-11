@@ -8,10 +8,12 @@ module.exports = {
     theme: {
       colors: {
         orange: "#f78c40",
+        blue: "#5C9AE5"
       },
     },
     colors: {
       'muorange': "#f78c40",
+      'mublue': "#5C9AE5"
     },
     extend: {
       fontFamily: {

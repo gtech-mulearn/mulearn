@@ -35,18 +35,18 @@ const Home = () => {
               >
                 <button className={styles.primary}>Join Us</button>
               </a>
-              {/* <a
+              <a
                 target="_blank"
                 rel="noopener noreferrer"
-                href="https://mulearn.org/journey"
+                href="https://themaze.mulearn.org"
               >
-                <button className={styles.secondary}>Your Journey</button>
-              </a> */}
+                <button className={styles.secondary}>Join The Maze</button>
+              </a>
             </div>
           </div>
           <img
             className={styles.fv_image}
-            src="/assets/home/illustration.webp"
+            src="/assets/home/hero.png"
             alt="illustration"
           />
         </div>

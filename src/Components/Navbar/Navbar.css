@@ -1,10 +1,12 @@
-.dashes{
+.dashes {
   border-bottom: 3px solid rgba(0, 0, 0, 0);
-  
+
 }
-.dashes:hover{
+
+.dashes:hover {
   border-bottom: 3px solid black;
 }
+
 .special {
   font-family: Montserrat, Arial;
   line-height: 1.3em;
@@ -52,28 +54,31 @@
   background-color: white;
   justify-content: space-between;
 }
+
 @media screen and (max-width: 1024px) {
   .mobile-nav-bar {
     z-index: 100;
   }
 }
-  
+
 @media screen and (max-width: 1200px) {
-  .change-text{
+  .change-text {
     font-size: 14px;
   }
 }
+
 @media screen and (max-width: 1100px) {
-  .change-text{
+  .change-text {
     font-size: 12px;
   }
 }
 
-.setIndex{
+.setIndex {
   z-index: 90;
 
 }
-.searchBar{
+
+.searchBar {
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.056);
   margin: 25px;
