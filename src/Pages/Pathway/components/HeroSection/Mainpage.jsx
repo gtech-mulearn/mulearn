@@ -1,5 +1,5 @@
 import React from "react"
-import styles from "./mainpage.module.css"
+import styles from "./Mainpage.module.css"
 import img2 from "../../assets/img2.webp";
 import pre from "../../assets/pre.png";
 
@@ -9,7 +9,7 @@ export default function mainpage() {
             <section className={styles.First}>
                 <div className={styles.Container}>
                     <div className={styles.Container_image_one}>
-                        <img src={img2} />
+                        <img alt="hero" src={img2} />
                     </div>
                     <div className={styles.Container_desc}>
                         <div className={styles.Container_head}>

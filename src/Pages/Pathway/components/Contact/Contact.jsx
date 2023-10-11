@@ -19,7 +19,7 @@ export default function Contact() {
     <>
       <div className={styles.ContactUs}>
         <div className={styles.Contact}>
-          <img src={img4} alt="logo" />
+          <img alt="contact" src={img4} />
         </div>
         <div className={styles.ContactList}>
           {links.map((link) => {
@@ -29,27 +29,27 @@ export default function Contact() {
                 <ul>
                   {link.l1 ? (
                     <li>
-                      <a href="#">{link.l1}</a>
+                      <a href="/">{link.l1}</a>
                     </li>
                   ) : null}
                   {link.l2 ? (
                     <li>
-                      <a href="#">{link.l2}</a>
+                      <a href="/">{link.l2}</a>
                     </li>
                   ) : null}
                   {link.l3 ? (
                     <li>
-                      <a href="#">{link.l3}</a>
+                      <a href="/">{link.l3}</a>
                     </li>
                   ) : null}
                   {link.l4 ? (
                     <li>
-                      <a href="#">{link.l4}</a>
+                      <a href="/">{link.l4}</a>
                     </li>
                   ) : null}
                   {link.l5 ? (
                     <li>
-                      <a href="#">{link.l5}</a>
+                      <a href="/">{link.l5}</a>
                     </li>
                   ) : null}
                   {link.l6 ? (
@@ -57,7 +57,7 @@ export default function Contact() {
                       style={{ textDecoration: "underline", color: "#1C1CF0" }}
                     >
                       {" "}
-                      <a href="#">{link.l6}</a>{" "}
+                      <a href="/">{link.l6}</a>{" "}
                     </li>
                   ) : null}
                 </ul>
