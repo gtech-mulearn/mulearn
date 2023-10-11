@@ -46,7 +46,7 @@ const Home = () => {
           </div>
           <img
             className={styles.fv_image}
-            src="/assets/home/hero.png"
+            src="/assets/home/hero.webp"
             alt="illustration"
           />
         </div>
