@@ -182,6 +182,18 @@ const MarketAddItem = lazy(
             "./modules/Dashboard/modules/Marketplace/MarketAddItem/MarketAddItem"
         )
 );
+const AdminMarketPlace = lazy(
+    () =>
+        import(
+            "./modules/Dashboard/modules/Marketplace/AdminMarketplace/AdminMarketplace"
+        )
+);
+const PurchaseInventory = lazy(
+    () =>
+        import(
+            "./modules/Dashboard/modules/Marketplace/PurchaseInventory/PurchaseInventory"
+        )
+);
 
 import { roles } from "./services/types";
 import SecureAuthRoutes from "./services/authCheck";
@@ -583,6 +595,14 @@ function App() {
                         {
                             path: "marketplace-additem",
                             element: <MarketAddItem />
+                        },
+                        {
+                            path: "marketplace-admin",
+                            element: <AdminMarketPlace />
+                        },
+                        {
+                            path: "marketplace-purchaseinv",
+                            element: <PurchaseInventory />
                         }
                         // {
                         //     path: "settings",
