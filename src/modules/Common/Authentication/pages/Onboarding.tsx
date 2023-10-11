@@ -237,8 +237,8 @@ const Onboarding = (props: Props) => {
                 password: any;
                 role?: string | null;
             };
-            organization?: {
-                organizations: any;
+            organization: {
+                organizations?: any;
                 verified: boolean;
                 department?: any | null;
                 graduation_year?: any | null;
@@ -253,14 +253,20 @@ const Onboarding = (props: Props) => {
             };
         } = {
             user: {
-                first_name: values.firstName, //required
+                first_name: values.firstName,
                 last_name: values.lastName === "" ? null : values.lastName,
-                email: values.email, //required
-                mobile: values.mobile, //required
+                email: values.email,
+                mobile: values.mobile,
                 password: values.password
             }
-
             //required
+            ,
+            organization: {
+                organizations: undefined,
+                verified: false,
+                department: undefined,
+                graduation_year: undefined
+            }
         };
 
         if (param) {
@@ -274,14 +280,13 @@ const Onboarding = (props: Props) => {
             userData.user.role = role[0]["id"] == "" ? null : role[0]["id"];
         }
 
-        if (role[0]["title"] == "Student" && userData.organization) {
+        if (role[0]["title"] == "Student") {
             userData.organization.graduation_year =
                 values.yog === "" ? null : values.yog;
         }
 
         if (
-            (role[0]["title"] == "Student" || role[0]["title"] == "Enabler") &&
-            userData.organization
+            (role[0]["title"] == "Student" || role[0]["title"] == "Enabler") 
         ) {
             userData.organization.department =
                 values.dept === "" ? null : values.dept; //required for student and enabler
@@ -301,8 +306,7 @@ const Onboarding = (props: Props) => {
 
         if (
             values.organization !== "" &&
-            values.community.length !== 0 &&
-            userData.organization
+            values.community.length !== 0 
         ) {
             userData.organization.organizations = values.community;
             userData.organization.verified = roleVerified;
