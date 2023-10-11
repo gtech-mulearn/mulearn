@@ -20,11 +20,9 @@ a {
   padding-top: 3rem;
   background-color: #f2f3f9;
   opacity: 1;
-  background-image: repeating-radial-gradient(
-      circle at 0 0,
+  background-image: repeating-radial-gradient(circle at 0 0,
       transparent 0,
-      #f2f3f9 15px
-    ),
+      #f2f3f9 15px),
     repeating-linear-gradient(#fdf1e755, #fdf1e7);
 }
 
@@ -55,7 +53,8 @@ a {
 
 .fv_heading span {
   font-weight: 600;
-  color: #f78c40;
+  /* color: #f78c40; */
+  color: #5C9AE5;
 }
 
 .fv_tagline {
@@ -63,7 +62,7 @@ a {
   font-family: "Poppins", sans-serif;
 }
 
-.buttons{
+.buttons {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -74,7 +73,8 @@ a {
 
 .primary,
 .secondary {
-  background-color: #f78c40;
+  /* background-color: #f78c40; */
+  background-color: #5C9AE5;
   padding: 0.7rem 2.75rem;
   border: none;
   margin-top: 1rem;
@@ -86,9 +86,11 @@ a {
 
 .secondary {
   background-color: #ffffff;
-  color: #f78c40;
-  padding: 0.6rem 2.75rem;
-  border: 2px solid #f59d5e;
+  /* color: #f78c40; */
+  color: #5C9AE5;
+  padding: 0.6rem 2rem;
+  /* border: 2px solid #f59d5e; */
+  border: 2px solid #5C9AE5;
 }
 
 @media only screen and (min-width: 1000px) {
@@ -754,6 +756,7 @@ a {
   .karma_img {
     max-width: 25rem;
   }
+
   .karma_img {
     display: block;
     margin: auto;
