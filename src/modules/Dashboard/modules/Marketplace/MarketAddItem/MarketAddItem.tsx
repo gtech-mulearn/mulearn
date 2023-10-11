@@ -1,10 +1,16 @@
-import React, { useRef } from "react";
+import React, { useRef, DragEvent, useState, ChangeEvent } from "react";
 import * as Yup from "yup";
 import { Formik, Form, FormikProps } from "formik";
 
 import styles from "./MarketAddItem.module.css";
+
 import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
-import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
+import {
+    AiOutlineFile,
+    AiOutlineFileAdd,
+    AiOutlineMinusCircle,
+    AiOutlinePlusCircle
+} from "react-icons/ai";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 
 export default function MarketAddItem() {
@@ -13,7 +19,9 @@ export default function MarketAddItem() {
         description: string;
         price: number;
         quantity: number;
+        image: File | null;
     }> | null>(null);
+    const [file, setFile] = useState<File | null>(null);
 
     const handleQuanityChange = (change: number) => {
         //as any is temp fix quantity should be number but if the users
@@ -25,6 +33,15 @@ export default function MarketAddItem() {
             "quantity",
             parseInt(formikRef.current.values["quantity"] as any) + change
         );
+    };
+    const handleFileChange = (file: File) => {
+        setFile(file);
+        formikRef.current?.setFieldValue("image", file);
+    };
+    const handleDragOver = (e: DragEvent<HTMLDivElement>) => e.preventDefault();
+    const handleDrop = (e: DragEvent<HTMLDivElement>) => {
+        e.preventDefault();
+        handleFileChange(e.dataTransfer.files[0]);
     };
 
     return (
@@ -38,7 +55,8 @@ export default function MarketAddItem() {
                     name: "",
                     description: "",
                     price: 1,
-                    quantity: 1
+                    quantity: 1,
+                    image: null
                 }}
                 validationSchema={Yup.object({
                     name: Yup.string().required(),
@@ -61,6 +79,31 @@ export default function MarketAddItem() {
                         name="description"
                         styleClasses={styles.input}
                     />
+
+                    <div
+                        className={styles.uploadBox}
+                        onDrop={handleDrop}
+                        onDragOver={handleDragOver}
+                    >
+                        <label htmlFor="imageInput" className={styles.flex}>
+                            {file ? (
+                                <img src={URL.createObjectURL(file)} />
+                            ) : (
+                                <>
+                                    <AiOutlineFileAdd size={32} />
+                                    Upload the product Image here
+                                </>
+                            )}
+                        </label>
+                        <input
+                            type="file"
+                            name="image"
+                            id="imageInput"
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                                handleFileChange(e.currentTarget.files![0]);
+                            }}
+                        />
+                    </div>
 
                     <div className={styles.flex + " " + styles.input}>
                         <FormikTextInput
