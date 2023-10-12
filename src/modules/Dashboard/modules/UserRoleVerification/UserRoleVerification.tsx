@@ -19,14 +19,14 @@ function UsersRoleVerification() {
     const [loading, setLoading] = useState(false);
     type TData = {
         full_name: string;
-        mu_id: string;
+        muid: string;
         discord_id: string;
         role_title: string;
         verified: boolean;
     };
     const columnOrder: ColOrder[] = [
         { column: "full_name", Label: "Full Name", isSortable: true },
-        { column: "mu_id", Label: "Mu ID", isSortable: true },
+        { column: "muid", Label: "Mu ID", isSortable: true },
         { column: "mobile", Label: "Mobile Number", isSortable: true },
         { column: "discord_id", Label: "Discord ID", isSortable: false },
         { column: "email", Label: "Email", isSortable: true },
@@ -95,7 +95,7 @@ function UsersRoleVerification() {
 
     const handleIconClick = (column: string) => {
         if (column === "full_name") column = "first_name";
-        if (column === "mu_id") column = "muid";
+        if (column === "muid") column = "muid";
         if (sort === column) {
             setSort(`-${column}`);
             getUserRoleVerification(

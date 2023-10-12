@@ -1,4 +1,5 @@
 interface TaskEditInterface {
+    discord_link: string;
     hashtag?: string;
     title?: string;
     karma?: string;

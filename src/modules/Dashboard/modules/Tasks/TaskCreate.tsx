@@ -62,7 +62,8 @@ const TaskCreate = () => {
         type_id: Yup.string().required("Select a Type"),
         level_id: Yup.string().nullable(),
         ig_id: Yup.string().nullable(),
-        organization_id: Yup.string().nullable()
+        organization_id: Yup.string().nullable(),
+        discord_link: Yup.string().nullable()
     });
 
     if (!uuidData) return <MuLoader />;
@@ -70,7 +71,7 @@ const TaskCreate = () => {
     return (
         <div className={styles.external_container}>
             <div className={styles.container}>
-                <h1 className={styles.text}>IG Edit Page</h1>
+                <h1 className={styles.text}>Task Edit Page</h1>
                 <Formik
                     enableReinitialize={true}
                     initialValues={{
@@ -85,7 +86,8 @@ const TaskCreate = () => {
                         type_id: "",
                         level_id: "",
                         ig_id: "",
-                        organization_id: ""
+                        organization_id: "",
+                        discord_link: ""
                     }}
                     validationSchema={taskEditSchema}
                     onSubmit={values => {
@@ -102,6 +104,7 @@ const TaskCreate = () => {
                             values.level_id,
                             values.ig_id,
                             values.organization_id,
+                            values.discord_link,
                             toast
                         );
 
@@ -138,7 +141,12 @@ const TaskCreate = () => {
                             placeholder="No. of times to be used"
                             required
                         />
-
+                        <FormikTextInput
+                            label="Discord Link"
+                            name="discord_link"
+                            type="link"
+                            placeholder="Enter the discord link"
+                        />
                         <div
                             style={{
                                 display: "flex",

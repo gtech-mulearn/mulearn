@@ -41,7 +41,22 @@ const useFormikData = () => {
     const { id } = useParams();
     const toast = useToast();
     const navigate = useNavigate();
-    const [data, setData] = useState<TaskEditInterface>({});
+    const [data, setData] = useState<TaskEditInterface>({
+        hashtag: "",
+        title: "",
+        karma: "",
+        active: "false",
+        variable_karma: "false",
+        usage_count: "",
+        channel: "",
+        type: "",
+        level: "",
+        ig: "",
+        org: "",
+        discord_link: "",
+        description: ""
+    });
+
     const [uuidData, setuuidData] = useState<{ [index: string]: any[] } | null>(
         null
     );
@@ -78,6 +93,7 @@ const useFormikData = () => {
             values.level_id,
             values.ig_id,
             values.organization_id,
+            values.discord_link,
             values.desc,
             id,
             toast
@@ -99,6 +115,7 @@ const useFormikData = () => {
         level_id: data.level || "",
         ig_id: data.ig || "",
         organization_id: data.org || "",
+        discord_link: data.discord_link || "",
         desc: data.description || ""
     };
 
@@ -126,6 +143,13 @@ const useFormikData = () => {
             type: "text",
             placeholder: "Enter the title",
             required: true
+        },
+        {
+            element: "input",
+            name: "discord_link",
+            label: "Discord Link",
+            type: "text",
+            placeholder: "https://discord.gg/..."
         },
         {
             element: "input",
