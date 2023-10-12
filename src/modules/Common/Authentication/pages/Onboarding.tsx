@@ -237,7 +237,7 @@ const Onboarding = (props: Props) => {
                 password: any;
                 role?: string | null;
             };
-            organization: {
+            organization?: {
                 organizations?: any;
                 verified: boolean;
                 department?: any | null;
@@ -281,15 +281,19 @@ const Onboarding = (props: Props) => {
         }
 
         if (role[0]["title"] == "Student") {
-            userData.organization.graduation_year =
-                values.yog === "" ? null : values.yog;
+            if (userData.organization) {
+                userData.organization.graduation_year =
+                    values.yog === "" ? null : values.yog;
+            }
         }
 
         if (
             (role[0]["title"] == "Student" || role[0]["title"] == "Enabler") 
         ) {
-            userData.organization.department =
-                values.dept === "" ? null : values.dept; //required for student and enabler
+            if (userData.organization) {
+                userData.organization.department =
+                    values.dept === "" ? null : values.dept; //required for student and enabler
+            }
         }
 
         if (values.muid) {
@@ -308,8 +312,19 @@ const Onboarding = (props: Props) => {
             values.organization !== "" &&
             values.community.length !== 0 
         ) {
-            userData.organization.organizations = values.community;
-            userData.organization.verified = roleVerified;
+            if (userData.organization) {
+                userData.organization.organizations = values.community;
+                userData.organization.verified = roleVerified;
+            } else {
+                userData.organization = {
+                    organizations: values.community,
+                    verified: roleVerified
+                };
+            }
+        }
+
+        if (values.organization === "" && values.community.length === 0) {
+            delete userData.organization;
         }
 
         registerUser(
