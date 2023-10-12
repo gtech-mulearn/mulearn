@@ -88,6 +88,12 @@ const inputs = (
                 label: "Mobile",
                 type: "text",
                 placeholder: "Enter a mobile number"
+            },
+            {
+                name: "discord_id",
+                label: "Discord ID",
+                type: "text",
+                placeholder: "Enter your discord id"
             }
         ],
         selects: [
