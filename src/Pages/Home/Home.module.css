@@ -53,8 +53,8 @@ a {
 
 .fv_heading span {
   font-weight: 600;
-  /* color: #f78c40; */
-  color: #5C9AE5;
+  color: #f78c40;
+  /* color: #5C9AE5; */
 }
 
 .fv_tagline {
@@ -73,8 +73,8 @@ a {
 
 .primary,
 .secondary {
-  /* background-color: #f78c40; */
-  background-color: #5C9AE5;
+  background-color: #f78c40;
+  /* background-color: #5C9AE5; */
   padding: 0.7rem 2.75rem;
   border: none;
   margin-top: 1rem;
@@ -86,11 +86,11 @@ a {
 
 .secondary {
   background-color: #ffffff;
-  /* color: #f78c40; */
-  color: #5C9AE5;
+  color: #f78c40;
+  /* color: #5C9AE5; */
   padding: 0.6rem 2rem;
-  /* border: 2px solid #f59d5e; */
-  border: 2px solid #5C9AE5;
+  border: 2px solid #f59d5e;
+  /* border: 2px solid #5C9AE5; */
 }
 
 @media only screen and (min-width: 1000px) {

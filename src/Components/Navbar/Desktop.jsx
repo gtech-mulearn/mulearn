@@ -37,7 +37,7 @@ export const Resources = ({ notificationOpen }) => {
         rel="noopener noreferrer"
         className="py-7 px-3 inline-block"
       >
-        <button className="bg-mublue text-white  px-6 py-2 rounded-md">
+        <button className="bg-muorange text-white  px-6 py-2 rounded-md">
           Join µLearn
         </button>
       </a>
@@ -47,7 +47,7 @@ export const Resources = ({ notificationOpen }) => {
         rel="noopener noreferrer"
         className="py-7 px-3 inline-block"
       >
-        <button className="border-2 border-mublue text-mublue px-6 py-2 rounded-md">
+        <button className="border-2 border-muorange text-muorange px-6 py-2 rounded-md">
           Magazine
         </button>
       </a>
