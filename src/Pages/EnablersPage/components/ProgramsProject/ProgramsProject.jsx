@@ -6,7 +6,7 @@ import Blink from '../../assests/Blink.png'
 
 export default function ProgramsProject() {
   return (
-    <div className={styles.ProgramsProject}>
+    <div id='Program' className={styles.ProgramsProject}>
         <h1>Enabler <span>Programs</span>  & Projects</h1>
 
          <div className={styles.ProgramsProjectGrid}>

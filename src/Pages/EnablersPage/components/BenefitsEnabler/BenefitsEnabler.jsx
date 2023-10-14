@@ -10,7 +10,7 @@ import BenefitsIcon3 from '../../assests/BenefitsIcon3.svg'
 
 export default function BenefitsEnabler() {
   return (
-    <div className={styles.BenefitsEnabler}>
+    <div id='Benefits' className={styles.BenefitsEnabler}>
         <h1 className={styles.BenefitsEnablerHeading}><span>Benefits</span> to the Enabler</h1>
         
             <div className={styles.BenefitsEnablerBenefits}>

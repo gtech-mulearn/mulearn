@@ -29,7 +29,7 @@ export default function Navbar() {
         <a href=""><img src={EnablerLogo} alt="Logo" /></a>
     </div>
     <div className={styles.menu}>
-        <a href="#Home">Home</a>
+        <a href="">Home</a>
         <a href="#WhoIs">Who is?</a>
         <a href="#Benefits">Benefits</a>
         <a href="#Program">Programs</a>

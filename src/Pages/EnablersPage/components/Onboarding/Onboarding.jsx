@@ -5,7 +5,7 @@ import Discord from '../../assests/Discord.png'
 import Bulb from '../../assests/Bulb.png'
 export default function Onboarding() {
   return (
-    <div className={styles.Onboarding}>
+    <div id="Onboarding" className={styles.Onboarding}>
        <h1><span className={styles.OnboardingHeading}>Onboarding </span>Process</h1>
         <div className={styles.OnboardingList}>
             <h1><span>1</span><img src={Mu} alt="" />Create µLearn Profile</h1>
