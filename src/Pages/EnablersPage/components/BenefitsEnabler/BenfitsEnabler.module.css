@@ -1,0 +1,57 @@
+
+.BenefitsEnabler{
+    width: 100%;
+    display: grid;
+    place-items: center;
+    gap: 1.5rem;
+}
+
+
+.BenefitsEnabler h1{
+    color: #9765FF;
+    font-family: Inter;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 62.4px;
+    letter-spacing: -2.88px;
+}
+
+.BenefitsEnabler .BenefitsEnablerHeading{
+    background-image: url('../../assests/Underline.png');
+    background-repeat: no-repeat;
+    background-position: -10px 52px;
+    background-size: 200px;
+}
+
+.BenefitsEnabler h1 span{
+    color: #FF7D40;
+    text-align: center;
+}
+
+.BenefitsEnablerBenefits{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+.BenefitsEnablerBenefits h1{
+    margin-bottom: 1rem;
+    color: #383838;
+}
+.BenefitsEnablerBenefits div div{
+    display: flex; 
+    align-items:center; 
+    gap: 32px;
+}
+
+.BenefitsEnablerBenefits div div p{
+    width: 435px;
+    color: #696984;
+    font-family: Raleway;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 180%;
+    letter-spacing: 0.36px;
+    margin-bottom: 1rem;
+}
