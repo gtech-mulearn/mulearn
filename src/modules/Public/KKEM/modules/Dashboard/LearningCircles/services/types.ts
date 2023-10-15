@@ -2,6 +2,7 @@ export type ResponseType = {
     lc_count: number;
     total_enrollment: number;
     circle_count_by_ig: InterestGroup[];
+    unique_users: number;
 };
 
 export type InterestGroup = {

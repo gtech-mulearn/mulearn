@@ -24,7 +24,7 @@ const LearningCircles = () => {
         }
     }, [key]);
 
-    const [LcCounts, setLcCounts] = useState<ResponseType>({ lc_count: 0, total_enrollment: 0, circle_count_by_ig: [] })
+    const [LcCounts, setLcCounts] = useState<ResponseType>({ lc_count: 0, total_enrollment: 0, circle_count_by_ig: [], unique_users: 0 })
     const [LcReport, setLcReport] = useState<UserDetail[]>([])
     const [sort, setSort] = useState("");
 
@@ -180,6 +180,10 @@ const LearningCircles = () => {
                             <p className={styles.label}>Total Enrollment</p>
                             {LcCounts.total_enrollment && <p className={styles.count}>{LcCounts.total_enrollment}</p>}
                         </div>
+                        <div className={styles.studentsInvoled}>
+                            <p className={styles.label}>Unique Users</p>
+                            {LcCounts.total_enrollment && <p className={styles.count}>{LcCounts.unique_users}</p>}
+                        </div>
                         {
                             LcCounts.circle_count_by_ig.map((item, index) => {
                                 return (
@@ -230,7 +234,7 @@ const LearningCircles = () => {
                     <div className={styles.tableContainer}>
 
                         <TableTop
-                            // onSearchText={handleSearch}
+                            onSearchText={handleSearch}
                             onPerPageNumber={handlePerPageNumber}
                         />
                         <br />
