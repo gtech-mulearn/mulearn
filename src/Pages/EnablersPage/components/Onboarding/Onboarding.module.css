@@ -1,0 +1,52 @@
+.Onboarding,
+.OnboardingList{
+    margin: 2rem 0;
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+.Onboarding{
+    margin: 2rem;
+}
+
+.Onboarding h1{
+    color: #9765FF;
+    font-family: Inter;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 62.4px;
+    letter-spacing: -2.88px;
+}
+
+.Onboarding h1 .OnboardingHeading{
+    color: #FF7D40;
+    background-image: url('../../assests/Underline.png');
+    background-repeat: no-repeat;
+    background-position:0px 48px;
+}
+.Onboarding .OnboardingList h1{
+    display: flex;
+    gap:1rem;
+    font-size: 30px;
+    letter-spacing: normal;
+    align-items: center;
+}
+.Onboarding .OnboardingList h1 span{
+    color: rgba(0, 0, 0, 0.10);
+    font-family: Raleway;
+    text-align: center;
+    font-size: 120px;
+    font-weight: 800;
+    line-height: normal;
+}
+.Onboarding .OnboardingList p{
+    width: 1022px;
+    color: var(--gray, #696984);
+    text-align: center;
+    font-family: Raleway;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 29px; /* 161.111% */
+}

@@ -1,0 +1,146 @@
+.ProgramsProject{
+    margin: 2rem 0;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    gap: 1.5rem;
+}
+
+.ProgramsProject h1{
+    color: #9765FF;
+    font-family: Inter;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 62.4px;
+    letter-spacing: -2.88px;
+    background-image: url('../../assests/Underline.png');
+    background-repeat: no-repeat;
+    background-position: 155px 52px;
+}
+
+.ProgramsProject h1 span{
+    color: #FF7D40;
+    text-align: center;
+}
+
+.ProgramsProjectGrid{
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2,1fr);
+  margin: 1rem;
+}
+
+.ProgramsProjectGridCard{
+    width: 400px;
+    height: 428px;
+    border-radius: 2rem;
+    background: #fff;
+    box-shadow: 0px 10px 60px 0px rgba(38, 45, 118, 0.08);
+}
+.ProgramsProjectGridCard .ProgramsProjectGridCardImg{
+    border-radius: 2rem 2rem 0 0;
+    width: 400px;
+}
+
+.ProgramsProjectEnablers,
+.ProgramsProjectEnablers div,
+.ProgramsProjectGridContent div{
+    display: flex;
+}
+.ProgramsProjectEnablers{
+    width: fit-content;
+    padding: 5px 10px;
+    gap: 5px;
+    border-radius: 40px;
+    background: #FAFAFA;
+    position: relative;
+    top: -20px;
+    left: 20px;
+    align-items: center;
+}
+.ProgramsProjectEnablers div img{
+    position: relative;
+    z-index: 5;
+}
+.ProgramsProjectEnablers div img:nth-child(2){
+    left: -10px;
+    z-index: 4;
+}
+.ProgramsProjectEnablers div img:nth-child(3){
+    left: -20px;
+    z-index: 3;
+}
+.ProgramsProjectEnablers div img:nth-child(4){
+    left: -30px;
+    z-index: 2;
+}
+.ProgramsProjectGridCard p{
+    color: #263238;
+    line-height: 18px;
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    padding-right: 10px;
+}
+.ProgramsProjectGridCard .ProgramsProjectGridContent p{
+    color: var(--grey-grey-2, #4D4D4D);
+    font-family: Raleway;
+    font-size: 15px;
+    font-weight: 400;
+    text-align: left;
+    margin: 0 1rem;
+}
+
+.ProgramsProjectGridCard .ProgramsProjectGridContent p:nth-child(1) {
+    color: var(--primary-primary-3, #777795);
+    font-family: Raleway;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    justify-content: start;
+    margin: 0 1rem;
+    text-align: left;
+}
+
+.ProgramsProjectGridCard .ProgramsProjectGridContent h2{
+    color: #9765FF;
+    font-family: Raleway;
+    font-size: 16px;
+    font-weight: 800;
+    text-align: left;
+    margin:.8rem;
+}
+
+.ProgramsProjectGridContent div {
+    justify-content: space-around;
+    width: 100%;
+    margin: 1rem 0 0 0;
+}
+
+.ProgramsProjectGridContent div h3{
+    color: #FF7D40;
+    font-family: Inter;
+    font-size: 16.681px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.ProgramsProjectGridContent div h3 span{
+    color: var(--Black, #978787);
+    font-family: Inter;
+    font-size: 14.828px;
+    font-style: normal;
+    font-weight: 400;
+    text-decoration: line-through;
+}
+
+.ProgramsProjectGridContent div button{
+    background: #9765FF;
+    border-radius: 5px;
+    color: #FFF;
+    font-size: 12px;
+    font-family: Raleway;
+    padding: 10px 20px;
+}

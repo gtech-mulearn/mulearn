@@ -1,0 +1,38 @@
+.menu_bar{
+    position: fixed;
+    top: 0;
+    display: flex;
+    width: 100%;
+    padding: 2rem;
+    border-radius: 0 0 50px 50px;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+}
+
+.menu_bar .menu{
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.menu_bar .menu a{
+    color: #252641;
+    font-family: Raleway;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.36px;
+}
+
+.menu_bar .menu a:hover{
+    color: #FF7D40;
+}
+
+.menu_bar button{
+   padding: 15px 40px;
+   background: #9765FF;
+   border-radius: 10px;
+   color: #FFFFFF;
+}
