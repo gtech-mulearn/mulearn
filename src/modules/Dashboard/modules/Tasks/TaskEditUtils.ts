@@ -18,19 +18,21 @@ const taskEditSchema = Yup.object().shape({
         .positive("Karma should be a positive value")
         .min(10, "Needs to be at least 2 digits.")
         .max(9999, "Should not exceed 4 digits")
-        .truncate()
-        .required("Karma is required"),
+        .truncate(),
     usage_count: Yup.number().truncate().required("Mention the number of uses"),
+
     active: Yup.boolean().required("Select an option"),
     variable_karma: Yup.boolean().required("Select an option"),
-    channel_id: Yup.string().required("Select a channel"),
-    type_id: Yup.string().required("Select a type"),
+
+    description: Yup.string()
+        .max(100, "Too Long!")
+        .required("A description is required"),
+    channel_id: Yup.string().required("Select a Channel"),
+    type_id: Yup.string().required("Select a Type"),
     level_id: Yup.string().nullable(),
     ig_id: Yup.string().nullable(),
     organization_id: Yup.string().nullable(),
-    desc: Yup.string()
-        .max(100, "Too Long!")
-        .required("A description is required")
+    discord_link: Yup.string().nullable()
 });
 
 type IVType = {
