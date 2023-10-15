@@ -1,5 +1,5 @@
 
-.BenefitsEnabler{
+.benefitsEnabler{
     width: 100%;
     display: grid;
     place-items: center;
@@ -7,7 +7,7 @@
 }
 
 
-.BenefitsEnabler h1{
+.benefitsEnabler h1{
     color: #9765FF;
     font-family: Inter;
     font-size: 48px;
@@ -17,34 +17,34 @@
     letter-spacing: -2.88px;
 }
 
-.BenefitsEnabler .BenefitsEnablerHeading{
-    background-image: url('../../assests/Underline.png');
+.benefitsEnabler .benefitsEnablerHeading{
+    background-image: url('../../assests/Underline.webp');
     background-repeat: no-repeat;
     background-position: -10px 52px;
     background-size: 200px;
 }
 
-.BenefitsEnabler h1 span{
+.benefitsEnabler h1 span{
     color: #FF7D40;
     text-align: center;
 }
 
-.BenefitsEnablerBenefits{
+.benefitsEnablerBenefits{
     display: flex;
     align-items: center;
     gap: 2rem;
 }
-.BenefitsEnablerBenefits h1{
+.benefitsEnablerBenefits h1{
     margin-bottom: 1rem;
     color: #383838;
 }
-.BenefitsEnablerBenefits div div{
+.benefitsEnablerBenefits div div{
     display: flex; 
     align-items:center; 
     gap: 32px;
 }
 
-.BenefitsEnablerBenefits div div p{
+.benefitsEnablerBenefits div div p{
     width: 435px;
     color: #696984;
     font-family: Raleway;

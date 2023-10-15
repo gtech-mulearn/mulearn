@@ -1,4 +1,4 @@
-.WhoIsEnabler{
+.whoIsEnabler{
     width: 100%;
     display: grid;
     place-items: center;
@@ -6,7 +6,7 @@
     margin: 1.5rem 0;
 }
 
-.WhoIsEnabler h1{
+.whoIsEnabler h1{
     color: #9765FF;
     text-align: center;
     font-family: Inter;
@@ -15,16 +15,16 @@
     font-weight: 700;
     line-height: 62.4px;
     letter-spacing: -2.88px;
-    background-image: url('../../assests/Underline.png');
+    background-image: url('../../assests/Underline.webp');
     background-repeat: no-repeat;
     background-position: 200px 52px;
     background-size:200px ;
 }
-.WhoIsEnabler h1 span{
+.whoIsEnabler h1 span{
     color: #FF7D40;
 }
 
-.WhoIsEnabler p{
+.whoIsEnabler p{
     width: 78%;
     color: var(--gray, #696984);
     font-family: Raleway;

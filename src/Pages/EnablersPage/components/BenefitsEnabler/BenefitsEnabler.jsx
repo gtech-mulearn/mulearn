@@ -1,8 +1,8 @@
 import React from 'react'
 import styles from './BenfitsEnabler.module.css'
-import Benefits1 from '../../assests/Benefits1.png'
-import Benefits2 from '../../assests/Benefits2.png'
-import Benefits3 from '../../assests/Benefits3.png'
+import Benefits1 from '../../assests/Benefits1.webp'
+import Benefits2 from '../../assests/Benefits2.webp'
+import Benefits3 from '../../assests/Benefits3.webp'
 import BenefitsIcon1 from '../../assests/BenefitsIcon1.svg'
 import BenefitsIcon2 from '../../assests/BenefitsIcon2.svg'
 import BenefitsIcon3 from '../../assests/BenefitsIcon3.svg'
@@ -10,11 +10,11 @@ import BenefitsIcon3 from '../../assests/BenefitsIcon3.svg'
 
 export default function BenefitsEnabler() {
   return (
-    <div id='Benefits' className={styles.BenefitsEnabler}>
-        <h1 className={styles.BenefitsEnablerHeading}><span>Benefits</span> to the Enabler</h1>
+    <div id='Benefits' className={styles.benefitsEnabler}>
+        <h1 className={styles.benefitsEnablerHeading}><span>Benefits</span> to the Enabler</h1>
         
-            <div className={styles.BenefitsEnablerBenefits}>
-                <img className={styles.BenefitsEnablerBenefitsImage} src={Benefits1} alt="" />
+            <div className={styles.benefitsEnablerBenefits}>
+                <img className={styles.benefitsEnablerBenefitsImage} src={Benefits1} alt="" />
                  <div>
                     <h1>Industry Immersion Programs</h1>
                     <div>
@@ -28,7 +28,7 @@ export default function BenefitsEnabler() {
                  </div>
             </div>
 
-            <div className={styles.BenefitsEnablerBenefits}>
+            <div className={styles.benefitsEnablerBenefits}>
                  <div>
                     <h1>Up-Skill Programs</h1>
                     <div>
@@ -44,11 +44,11 @@ export default function BenefitsEnabler() {
                     <p>Workshops focused on technology, no-code solutions, Git, GitHub, and participation in open-source programs to enhance enablers' knowledge.</p>
                     </div>
                  </div>
-                 <img className={styles.BenefitsEnablerBenefitsImage} src={Benefits2} alt="" />
+                 <img className={styles.benefitsEnablerBenefitsImage} src={Benefits2} alt="" />
             </div>
 
-            <div className={styles.BenefitsEnablerBenefits}>
-                <img className={styles.BenefitsEnablerBenefitsImage} src={Benefits3} alt="" />
+            <div className={styles.benefitsEnablerBenefits}>
+                <img className={styles.benefitsEnablerBenefitsImage} src={Benefits3} alt="" />
                  <div>
                     <h1>Meet-ups</h1>
                     <div>

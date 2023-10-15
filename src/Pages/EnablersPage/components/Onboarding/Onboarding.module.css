@@ -1,15 +1,15 @@
-.Onboarding,
-.OnboardingList{
+.onboarding,
+.onboardingList{
     margin: 2rem 0;
     width: 100%;
     display: grid;
     place-items: center;
 }
-.Onboarding{
+.onboarding{
     margin: 2rem;
 }
 
-.Onboarding h1{
+.onboarding h1{
     color: #9765FF;
     font-family: Inter;
     font-size: 48px;
@@ -19,20 +19,20 @@
     letter-spacing: -2.88px;
 }
 
-.Onboarding h1 .OnboardingHeading{
+.onboarding h1 .onboardingHeading{
     color: #FF7D40;
-    background-image: url('../../assests/Underline.png');
+    background-image: url('../../assests/Underline.webp');
     background-repeat: no-repeat;
     background-position:0px 48px;
 }
-.Onboarding .OnboardingList h1{
+.onboarding .onboardingList h1{
     display: flex;
     gap:1rem;
     font-size: 30px;
     letter-spacing: normal;
     align-items: center;
 }
-.Onboarding .OnboardingList h1 span{
+.onboarding .onboardingList h1 span{
     color: rgba(0, 0, 0, 0.10);
     font-family: Raleway;
     text-align: center;
@@ -40,7 +40,7 @@
     font-weight: 800;
     line-height: normal;
 }
-.Onboarding .OnboardingList p{
+.onboarding .onboardingList p{
     width: 1022px;
     color: var(--gray, #696984);
     text-align: center;
