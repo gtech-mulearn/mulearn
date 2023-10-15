@@ -50,9 +50,9 @@ const Logo = () => {
   return (
     <Link to="/">
       <img
-        src="/assets/navbar/onepiece.png"
+        src="/assets/navbar/µLearn.webp"
         alt="logo"
-        className="lg:cursor-pointer h-16 z-0 mt-[-.5rem]"
+        className="lg:cursor-pointer h-8 z-0 mt-[-.5rem]"
       />
     </Link>
   )
