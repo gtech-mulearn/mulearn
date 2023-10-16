@@ -51,7 +51,7 @@ const LearningCircles = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [loading, setLoading] = useState(false);
-    const [perPage, setPerPage] = useState(5);
+    const [perPage, setPerPage] = useState(20);
     const [orgCirclesArray, setOrgCirclesArray] = useState<OrgCircle[]>([]);
 
     const handleNextClick = () => {
@@ -189,10 +189,6 @@ const LearningCircles = () => {
                     </div>
                     <p className={styles.heading}>Learning Circles & Interest Group Counts</p>
                     <div className={styles.countsContainer}>
-                        <div className={styles.lcCount}>
-                            <p className={styles.label}>Learning Circles</p>
-                            {LcCounts.lc_count && <p className={styles.count}>{LcCounts.lc_count}</p>}
-                        </div>
                         <div className={styles.studentsInvoled}>
                             <p className={styles.label}>Total Enrollment</p>
                             {LcCounts.total_enrollment && <p className={styles.count}>{LcCounts.total_enrollment}</p>}
@@ -201,17 +197,23 @@ const LearningCircles = () => {
                             <p className={styles.label}>Unique Users</p>
                             {LcCounts.total_enrollment && <p className={styles.count}>{LcCounts.unique_users}</p>}
                         </div>
+                        <div className={styles.lcCount}>
+                            <p className={styles.label}>Learning Circles</p>
+                            {LcCounts.lc_count && <p className={styles.count}>{LcCounts.lc_count}</p>}
+                        </div>
+
                         {
-                            LcCounts.circle_count_by_ig.map((item, index) => {
-                                return (
-                                    <div className={styles.studentsInvoled} key={index}>
-                                        <p className={styles.label}>{item.ig_name}</p>
-                                        <p className={styles.count}>{item.total_circles}</p>
-                                        <span>Learning Circles</span>
-                                    </div>
-                                )
-                            }
-                            )
+                            LcCounts.circle_count_by_ig
+                                .sort((a, b) => b.total_circles - a.total_circles) // sort by total_circles in descending order
+                                .map((item, index) => {
+                                    return (
+                                        <div className={styles.studentsInvoled} key={index}>
+                                            <p className={styles.label}>{item.ig_name}</p>
+                                            <p className={styles.count}>{item.total_circles}</p>
+                                            <span>Learning Circles</span>
+                                        </div>
+                                    )
+                                })
                         }
                     </div>
                     <br />
