@@ -515,3 +515,21 @@ form .form_buttons button[type="reset"] {
     justify-content: space-between;
   }
 }
+
+.supportWa{
+  margin-left: 0.25rem;
+}
+
+.supportWa span{
+  color: #6a80f0;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.supportContainer{
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 8px;
+}
