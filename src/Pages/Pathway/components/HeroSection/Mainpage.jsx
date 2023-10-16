@@ -28,7 +28,7 @@ export default function mainpage() {
                     </div>
                 </div>
                 <p className={styles.desc}>
-                    Join us on an exciting adventure into the world of <b>Artificial Intelligence (AI)</b> through our collaborative <br />
+                    Join us on an exciting adventure into the world of <b>Artificial Intelligence (AI)</b> through our collaborative
                     initiative with Pathway. In this comprehensive course.
                 </p>
             </section>

@@ -3,7 +3,7 @@
     top: 0;
     display: flex;
     width: 100%;
-    padding: 2rem;
+    padding: 1.5rem;
     justify-content: space-between;
     align-items: center;
     background-color: #fff;
@@ -34,6 +34,7 @@
 
 .pre_rg a {
     display: flex;
+    align-items: center;
     gap: .5rem;
     border-radius: .8rem;
     padding: .8rem 1.5rem;
@@ -45,6 +46,17 @@
 .pre_rg a img {
     background-color: #DC280B;
 }
+
+@media(width<=1280px) {
+    .menu_bar {
+        padding: 1rem 1.5rem;
+    }
+
+    .logo img {
+        height: 1.5rem;
+    }
+}
+
 
 @media(width<=820px) {
     .menu_bar {
@@ -62,5 +74,20 @@
     .pre_rg a {
         border-radius: .4rem;
         padding: .5rem 1rem;
+    }
+}
+
+@media(width<=300px){
+    .menu_bar {
+        padding: .5rem;
+    }
+
+    .logo img {
+        height: .8rem;
+    }
+
+    .pre_rg a {
+        padding: .5rem .8rem;
+        font-size: .5rem;
     }
 }
