@@ -251,7 +251,7 @@ export default function AccountCreation() {
                                                 onChange={formik.handleChange}
 
                                                 type={
-                                                    isVisible
+                                                    isVisibleC
                                                         ? "text"
                                                         : "password"
                                                 }

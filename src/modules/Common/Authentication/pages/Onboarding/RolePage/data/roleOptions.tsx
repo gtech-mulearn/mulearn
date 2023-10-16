@@ -5,8 +5,8 @@ const roleOptions = [
         icon: (
             <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="31"
-                height="31"
+                width="25"
+                height="25"
                 viewBox="0 0 31 31"
                 fill="none"
             >
@@ -19,12 +19,12 @@ const roleOptions = [
         nextPage: "/college"
     },
     {
-        title: "I'm currently a working professional",
+        title: "I'm a working professional",
         value: "Mentor",
         icon: (
             <svg
-                width="31"
-                height="29"
+                width="25"
+                height="25"
                 viewBox="0 0 31 29"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -42,8 +42,8 @@ const roleOptions = [
         value: "Enabler",
         icon: (
             <svg
-                width="39"
-                height="38"
+                width="25"
+                height="25"
                 viewBox="0 0 39 38"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -61,8 +61,8 @@ const roleOptions = [
         value: "graduate",
         icon: (
             <svg
-                width="32"
-                height="28"
+                width="25"
+                height="25"
                 viewBox="0 0 32 28"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"

@@ -15,6 +15,7 @@ export default function OnboardingHeader({
             <img src={mu} alt="" />
             <h1>{title}</h1>
             <p dangerouslySetInnerHTML={{ __html: desc }} />
+            <br />
         </div>
     );
 }
