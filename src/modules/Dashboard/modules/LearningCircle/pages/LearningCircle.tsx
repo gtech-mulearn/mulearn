@@ -273,8 +273,9 @@ const LearningCircle = (props: Props) => {
                                 <Modal
                                     setIsOpen={setIsOpen}
                                     id={"Leave"}
-                                    heading={"Leave Learning Circle"}
-                                    content={`Are you sure you want to leave ${lc?.name} ?`}
+                                    heading={lc?.members.length === 1 ? "Delete Learning Circle" : "Leave Learning Circle"}
+                                    content={lc?.members.length === 1 ? "Since you are the last member, the circle will be deleted, Once you leave." : `Are you sure you want to leave ${lc?.name} ?`}
+
                                     click={handleLeave}
                                     type="Leave"
                                 />
