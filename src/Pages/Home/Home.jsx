@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../Home/Home.module.css";
 
 import Footer from "../../Components/Footer/Footer";
@@ -9,6 +9,19 @@ import CountUp from "react-countup";
 import "./Home.scss";
 
 const Home = () => {
+  const [counts, setCounts] = useState();
+
+  useEffect(() => {
+    fetch("https://mulearn.org/api/v1/get-log/global-count/")
+      .then((response) => response.json())
+      .then((data) => {
+        setCounts(data.response);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }, []);
+
   return (
     <>
       <Navbar />
@@ -348,63 +361,65 @@ const Home = () => {
               </p>
             </div>
             <div className={styles.rightside}>
-              <div className={styles.countcontainer}>
-                <div className={styles.count}>
-                  <p className={styles.cvc_heading}>
-                    <CountUp end={18000} duration={10} />+
-                  </p>
-                  <p className={styles.cvc_text}>Members</p>
-                </div>
-                <div className={styles.count}>
-                  <p className={styles.cvc_heading}>
-                    <CountUp end={550} duration={10} />+
-                  </p>
-                  <p className={styles.cvc_text}>Institutions</p>
-                </div>
-                <div className={styles.count}>
-                  <p className={styles.cvc_heading}>
-                    <CountUp end={1000} duration={10} />+
-                  </p>
-                  <p className={styles.cvc_text}>Learning Circles</p>
-                </div>
-                <div className={styles.count}>
-                  <p className={styles.cvc_heading}>
-                    <CountUp end={200} duration={10} />+
-                  </p>
-                  <p className={styles.cvc_text}>Events</p>
-                </div>
-                <div className={styles.count}>
-                  <p className={styles.cvc_heading}>
-                    <CountUp end={200} duration={10} />+
-                  </p>
-                  <p className={styles.cvc_text}>Companies</p>
-                </div>
-                <div className={styles.count}>
-                  <p className={styles.cvc_heading}>
-                    <CountUp end={100} duration={10} />+
-                  </p>
-                  <p className={styles.cvc_text}>Enablers</p>
-                </div>
-                <div className={styles.count}>
-                  <p className={styles.cvc_heading}>
-                    <CountUp end={100} duration={10} />+
-                  </p>
-                  <p className={styles.cvc_text}>Mentors</p>
-                </div>
+              {counts && (
+                <div className={styles.countcontainer}>
+                  <div className={styles.count}>
+                    <p className={styles.cvc_heading}>
+                      <CountUp end={counts.members} duration={5} />+
+                    </p>
+                    <p className={styles.cvc_text}>Members</p>
+                  </div>
+                  <div className={styles.count}>
+                    <p className={styles.cvc_heading}>
+                      <CountUp
+                        end={counts.learning_circle_count}
+                        duration={5}
+                      />
+                      +
+                    </p>
+                    <p className={styles.cvc_text}>Learning Circles</p>
+                  </div>
+                  {counts.org_type_counts
+                    .sort((a, b) => b.org_count - a.org_count)
+                    .map((orgTypeCount) => (
+                      <div className={styles.count}>
+                        <p className={styles.cvc_heading}>
+                          <CountUp end={orgTypeCount.org_count} duration={5} />+
+                        </p>
+                        <p className={styles.cvc_text}>
+                          {orgTypeCount.org_type.endsWith("y")
+                            ? orgTypeCount.org_type.slice(0, -1) + "ies"
+                            : orgTypeCount.org_type + "s"}
+                        </p>
+                      </div>
+                    ))}
 
-                <div className={styles.count}>
-                  <p className={styles.cvc_heading}>
-                    <CountUp end={20} duration={10} />+
-                  </p>
-                  <p className={styles.cvc_text}>Communities</p>
+                  <div className={styles.count}>
+                    <p className={styles.cvc_heading}>
+                      <CountUp end={200} duration={5} />+
+                    </p>
+                    <p className={styles.cvc_text}>Events</p>
+                  </div>
+                  <div className={styles.count}>
+                    <p className={styles.cvc_heading}>
+                      <CountUp end={counts.ig_count} duration={5} />+
+                    </p>
+                    <p className={styles.cvc_text}>Interest Groups</p>
+                  </div>
+                  {counts.enablers_mentors_count
+                    .sort((a, b) => b.role_count - a.role_count)
+                    .map((roleCount) => (
+                      <div className={styles.count}>
+                        <p className={styles.cvc_heading}>
+                          <CountUp end={roleCount.role_count} duration={5} />+
+                        </p>
+                        <p className={styles.cvc_text}>
+                          {roleCount.role__title}s
+                        </p>
+                      </div>
+                    ))}
                 </div>
-                <div className={styles.count}>
-                  <p className={styles.cvc_heading}>
-                    <CountUp end={15} duration={10} />+
-                  </p>
-                  <p className={styles.cvc_text}>Interest Groups</p>
-                </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
