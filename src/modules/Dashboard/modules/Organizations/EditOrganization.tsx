@@ -27,11 +27,11 @@ function EditOrganization() {
             .then(data => {
                 setInputName(data.title);
                 setInputCode(data.code);
-                setSelectedCountry(data.country);
-                setSelectedState(data.state);
-                setSelectedZone(data.zone);
-                setSelectedDistrict(data.district);
-                setSelectedAffiliation(data.affiliation_name);
+                setSelectedCountry(data.country_uuid);
+                setSelectedState(data.state_uuid);
+                setSelectedZone(data.zone_uuid);
+                setSelectedDistrict(data.district_uuid);
+                setSelectedAffiliation(data.affiliation_name_uuid);
                 setLoading(false);
             })
             .catch(error => {

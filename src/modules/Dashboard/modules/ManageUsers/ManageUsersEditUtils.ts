@@ -42,7 +42,7 @@ const roleStr = (role: Community, roleName: string) => {
     return role.filter(item => item.title == roleName)[0]?.id || "";
 };
 const arrayIntersection = (userList: string[], mainList: string[]) => {
-    return userList.filter(item => mainList.includes(item));
+    return userList.filter(item => mainList?.includes(item));
 };
 const inputs = (
     community: Community,
@@ -125,7 +125,7 @@ const inputs = (
                 isSearchable: true
             }
         ],
-        dropDowns: user?.roles.includes(roleStr(role, roles.ASSOCIATE))
+        dropDowns: user?.roles?.includes(roleStr(role, roles.ASSOCIATE))
             ? [
                   {
                       name: "company",

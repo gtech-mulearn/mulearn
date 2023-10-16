@@ -87,6 +87,7 @@
     text-align: center;
     font-weight: 400;
     max-width: 30rem;
+    line-height: normal;
 }
 
 .modalActions {

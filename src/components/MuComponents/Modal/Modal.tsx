@@ -11,6 +11,7 @@ interface ModalProps {
     content: string | undefined;
     click: any;
     type?: string;
+    buttonText?: string;
 }
 
 const Modal: FC<ModalProps> = ({
@@ -20,6 +21,7 @@ const Modal: FC<ModalProps> = ({
     content,
     click,
     type,
+    buttonText,
     value
 }) => {
     return (
@@ -36,7 +38,7 @@ const Modal: FC<ModalProps> = ({
                             <RiCloseLine style={{ marginBottom: "-3px" }} />
                         </PowerfulButton>
 
-                        {type == "error" ? (
+                        {type == "error"  || type == "Leave" ?(
                             <div className={styles.checkbtndelete}>
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -111,7 +113,9 @@ const Modal: FC<ModalProps> = ({
                                 setIsOpen(false);
                             }}
                         >
-                            {type == "error" ? "Delete" : "Confirm"}
+                            
+                            {type == "error" ? "Delete" : type == "Leave" ? "Leave" : "Confirm" }
+                    
                         </PowerfulButton>
                     </div>
                 </div>

@@ -180,7 +180,7 @@ const ManageUsersEdit = (props: Props) => {
                                         key={index}
                                     />
                                 ))}
-                                {data?.roles.includes(
+                                {data?.roles?.includes(
                                     roleStr(roles.ENABLER)
                                 ) && (
                                     <FormikTextInput {...formikProps.enabler} />

@@ -2,7 +2,7 @@ import { publicGateway } from "@/MuLearnServices/apiGateways";
 import { KKEMRoutes } from "@/MuLearnServices/urls";
 
 export const userAuth = async (
-    mu_id: string,
+    muid: string,
     param: string,
     controller?: AbortController
 ) => {
@@ -10,7 +10,7 @@ export const userAuth = async (
         .post(
             KKEMRoutes.userAuth,
             {
-                emailOrMuid: mu_id,
+                emailOrMuid: muid,
                 param: param,
                 integration: "DWMS"
             },

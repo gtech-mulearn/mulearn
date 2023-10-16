@@ -116,10 +116,9 @@ const FormData = ({ ...props }: CollegeFormProps) => {
     };
 
     const org_type = props.activeItem;
-    // console.log(country);
+    
     const handleSubmit = (Name: string, Code: string) => {
-        // e.preventDefault();
-        // resetStates()
+      
         interface SelectBodyProps {
             Name: string;
             Code: string;
@@ -136,7 +135,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
             isCreate: boolean,
             affiliation?: string
         ) => {
-            // const { country, state, zone, district, org_type, toast } = params;
+           
             const { org_type, toast } = params;
 
             if (isCreate) {
@@ -148,10 +147,6 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         state.value,
                         zone.value,
                         district.value,
-                        // camelCase(country),
-                        // camelCase(state),
-                        // camelCase(zone),
-                        // camelCase(district),
                         org_type,
                         toast,
                         affiliation,
@@ -166,10 +161,6 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         state.value,
                         zone.value,
                         district.value,
-                        // camelCase(country),
-                        // camelCase(state),
-                        // camelCase(zone),
-                        // camelCase(district),
                         org_type,
                         toast,
                         "",
@@ -187,10 +178,6 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         state.value,
                         zone.value,
                         district.value,
-                        // camelCase(country),
-                        // camelCase(state),
-                        // camelCase(zone),
-                        // camelCase(district),
                         org_type,
                         toast,
                         affiliation,
@@ -206,10 +193,6 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         state.value,
                         zone.value,
                         district.value,
-                        // camelCase(country),
-                        // camelCase(state),
-                        // camelCase(zone),
-                        // camelCase(district),
                         org_type,
                         toast,
                         "",
@@ -427,8 +410,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                     State: state.value || "",
                     Zone: zone.value || "",
                     District: district.value || ""
-                    // acceptedTerms: false, // added for our checkbox
-                    // jobType: "" // added for our select
+                   
                 }}
                 validationSchema={Yup.object({
                     Name: Yup.string()
@@ -445,6 +427,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                 })}
                 onSubmit={values => {
                     setIsLoading(true);
+                    
                     handleSubmit(values.Name, values.Code);
                 }}
             >
@@ -506,7 +489,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                             onChange={handleStateChange}
                             options={statesData}
                             required
-                            // isDisabled={props.isCreate && selectedCountry ? false : true }
+                           
                         />
                     </div>
                     <div className={orgStyles.inputFieldContainer}>
@@ -546,9 +529,6 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                     <div
                         className={`${orgStyles.inputFieldContainer} grid-container`}
                     >
-                        {/* <div className="btn light-btn" onClick={resetStates}>
-                            Decline
-                        </div> */}
                         <PowerfulButton
                             type="button"
                             className="btn light-btn"

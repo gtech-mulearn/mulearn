@@ -42,11 +42,13 @@ const EditProfilePopUp = (props: Props) => {
         },
         onSubmit: values => {
             2;
-            patchEditUserProfile(toast, values);
+            patchEditUserProfile(
+                toast,
+                values,
+                props.setEditPopUP,
+                formik.setFieldError
+            );
             props.triggerUpdateProfile();
-            setTimeout(() => {
-                props.setEditPopUP(false);
-            }, 1000);
         },
         validate: (values: any) => {
             let errors: any = {};
@@ -64,7 +66,8 @@ const EditProfilePopUp = (props: Props) => {
         return getCommunities(setCommunityAPI, setLoadStatus);
     }, []);
     useEffect(() => {
-        getEditUserProfile(data => formik.setValues(data));
+        if(props.editPopUp)
+            getEditUserProfile(data => formik.setValues(data));
     }, [props.editPopUp]);
     const buttonStyle = {
         background: "#456FF6",

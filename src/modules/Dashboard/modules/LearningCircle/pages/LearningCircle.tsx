@@ -9,6 +9,7 @@ import {
     removeMember,
     setLCMeetTime,
     toast,
+    transferLead,
     updateLcNote
 } from "../services/LearningCircleAPIs";
 import { useNavigate, useParams } from "react-router-dom";
@@ -25,6 +26,7 @@ import { Tooltip } from "react-tooltip";
 import Modal from "@/MuLearnComponents/Modal/Modal";
 import data from "../data/data.json";
 import { BsFillBookmarksFill } from "react-icons/bs";
+import { TbArrowsTransferUp } from "react-icons/tb";
 import Select from 'react-select';
 
 type Props = {};
@@ -62,7 +64,9 @@ const LearningCircle = (props: Props) => {
     const [openRemoveConfrim, setOpenRemoveConfirm] = useState(false);
     const [resourceLink, setResourceLink] = useState("");
     const [username, setUsername] = useState("");
-    const [deleteUserId, setDeleteUserId] = useState<string>("");
+    const [userId, setUserId] = useState<string>("");
+
+    const [transferConfirm, setTransferConfirm] = useState(false);
 
     const { id } = useParams();
     const navigate = useNavigate();
@@ -187,6 +191,14 @@ const LearningCircle = (props: Props) => {
         removeMember(circle, id, navigate);
     }
 
+    function handleTransfer(circle: string): void {
+        console.log("New Lead", userId)
+        transferLead(circle, userId, navigate);
+        setTimeout(() => {
+            navigate(`/dashboard/learning-circle/details/${id}`);
+        }, 4000);
+    }
+
     function avatarValidate(member: LcMembers) {
         const isInvalid = validAvatar.find(id => member.id === id);
         return isInvalid ? pic : member?.profile_pic || pic;
@@ -261,10 +273,11 @@ const LearningCircle = (props: Props) => {
                                 <Modal
                                     setIsOpen={setIsOpen}
                                     id={"Leave"}
-                                    heading={"Leave Learning Circle"}
-                                    content={`Are you sure you want to leave ${lc?.name} ?`}
+                                    heading={lc?.members.length === 1 ? "Delete Learning Circle" : "Leave Learning Circle"}
+                                    content={lc?.members.length === 1 ? "Since you are the last member, the circle will be deleted, Once you leave." : `Are you sure you want to leave ${lc?.name} ?`}
+
                                     click={handleLeave}
-                                    type="error"
+                                    type="Leave"
                                 />
                             )}
                         </div>
@@ -583,7 +596,7 @@ const LearningCircle = (props: Props) => {
                             </div>
 
                             {lc?.pending_members &&
-                            lc.pending_members.length > 0 ? (
+                                lc.pending_members.length > 0 ? (
                                 <div className={styles.PendingApp}>
                                     <b className={styles.PendingTitle}>
                                         Pending approvals
@@ -736,6 +749,44 @@ const LearningCircle = (props: Props) => {
                                                 {lc.is_lead &&
                                                     !member.is_lead && (
                                                         <div>
+
+                                                            <TbArrowsTransferUp
+                                                                size={24}
+                                                                onClick={() => {
+                                                                    setTransferConfirm(
+                                                                        true
+                                                                    );
+                                                                    setUsername(member?.username)
+                                                                    setUserId(member?.id)
+                                                                }}
+                                                            />
+                                                            {transferConfirm && (
+                                                                <Modal
+                                                                    click={() => {
+                                                                        console.log(member)
+                                                                        id && handleTransfer(
+                                                                            id
+                                                                        );
+                                                                    }}
+
+                                                                    content={`Are you want to transfer lead to ${username} of ${lc.name} ?`}
+                                                                    heading={
+                                                                        "Transfer Lead Position"
+                                                                    }
+                                                                    id={
+                                                                        "Transfer"
+                                                                    }
+                                                                    setIsOpen={
+                                                                        setTransferConfirm
+                                                                    }
+                                                                    type="Confirm"
+                                                                />
+                                                            )}
+                                                        </div>
+                                                    )}
+                                                {lc.is_lead &&
+                                                    !member.is_lead && (
+                                                        <div>
                                                             <RxCrossCircled
                                                                 size={24}
                                                                 onClick={() => {
@@ -743,7 +794,7 @@ const LearningCircle = (props: Props) => {
                                                                         true
                                                                     );
                                                                     setUsername(member?.username)
-                                                                    setDeleteUserId(member?.id)
+                                                                    setUserId(member?.id)
                                                                 }}
                                                             />
                                                             {openRemoveConfrim && (
@@ -751,7 +802,7 @@ const LearningCircle = (props: Props) => {
                                                                     click={() => {
                                                                         handleRemove(
                                                                             id,
-                                                                            deleteUserId
+                                                                            userId
                                                                         );
                                                                     }}
 

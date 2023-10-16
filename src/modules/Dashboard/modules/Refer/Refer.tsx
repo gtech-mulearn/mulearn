@@ -18,7 +18,7 @@ import { setIn } from "formik";
 
 type Dataflow = {
     full_name: string;
-    mu_id: string;
+    muid: string;
     level: number;
     karma: number;
 };
@@ -31,7 +31,7 @@ const Refer = () => {
     const [data, setData] = useState<Dataflow[] | null>(null);
     const columnOrder = [
         { column: "full_name", Label: "Name", isSortable: false },
-        { column: "mu_id", Label: "Mu ID", isSortable: false },
+        { column: "muid", Label: "Mu ID", isSortable: false },
         { column: "level", Label: "Levels", isSortable: false },
         { column: "karma", Label: "Karma", isSortable: false }
     ];

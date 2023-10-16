@@ -167,6 +167,33 @@ const LearningCircleLandingPage = lazy(
             "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleLandingPage"
         )
 );
+const MarketPlaceHistory = lazy(
+    () => import("./modules/Dashboard/modules/Marketplace/MarketPlaceHistory")
+);
+const Marketplace = lazy(
+    () =>
+        import(
+            "./modules/Dashboard/modules/Marketplace/UserMarketplace/UserMarketplce"
+        )
+);
+const MarketAddItem = lazy(
+    () =>
+        import(
+            "./modules/Dashboard/modules/Marketplace/MarketAddItem/MarketAddItem"
+        )
+);
+const AdminMarketPlace = lazy(
+    () =>
+        import(
+            "./modules/Dashboard/modules/Marketplace/AdminMarketplace/AdminMarketplace"
+        )
+);
+const PurchaseInventory = lazy(
+    () =>
+        import(
+            "./modules/Dashboard/modules/Marketplace/PurchaseInventory/PurchaseInventory"
+        )
+);
 
 import { roles } from "./services/types";
 import SecureAuthRoutes from "./services/authCheck";
@@ -183,7 +210,7 @@ import SignIn from "./modules/Common/Authentication/pages/Onboarding/SignIn/Sign
 
 import ErrorLog from "./modules/Dashboard/modules/ErrorLog/ErrorLog";
 import KKEMEventBeyondUs from "./modules/Public/KKEM/modules/KKEMEventTemplate/KKEMEventBeyondUs";
-import { Marketplace } from "./modules/Dashboard/modules/Marketplace/Marketplace";
+
 import LearningCircles from "./modules/Public/KKEM/modules/Dashboard/LearningCircles/LearningCircles";
 
 const ConnectedDevices = lazy(
@@ -560,6 +587,22 @@ function App() {
                         {
                             path: "marketplace",
                             element: <Marketplace />
+                        },
+                        {
+                            path: "marketplace-history",
+                            element: <MarketPlaceHistory />
+                        },
+                        {
+                            path: "marketplace-additem",
+                            element: <MarketAddItem />
+                        },
+                        {
+                            path: "marketplace-admin",
+                            element: <AdminMarketPlace />
+                        },
+                        {
+                            path: "marketplace-purchaseinv",
+                            element: <PurchaseInventory />
                         }
                         // {
                         //     path: "settings",

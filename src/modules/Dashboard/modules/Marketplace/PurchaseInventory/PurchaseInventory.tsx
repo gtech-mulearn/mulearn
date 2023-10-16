@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import styles from "./AdminMarketplace.module.css";
+import styles from "./PurchaseInventory.module.css";
 import coin from "../assets/muCoin.svg";
 
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";
@@ -9,17 +9,16 @@ import Table from "@/MuLearnComponents/Table/Table";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import { Blank } from "@/MuLearnComponents/Table/Blank";
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
+import { BsCardImage } from "react-icons/bs";
 
 type Props = {};
 
-const AdminMarketplace = (props: Props) => {
+const PurchaseInventory = (props: Props) => {
     const [data, setData] = useState([
         {
-            name: "njan",
-            muid: "enda id",
-            email: "endamail@gmail.com",
-            mobile: "1234567890",
-            reward: "ChatMasalaPro",
+            reward: "oruaward",
+            desc: "oru award ",
+            images: "image.png",
             price: "20",
             status: "Claimed"
         }
@@ -37,11 +36,19 @@ const AdminMarketplace = (props: Props) => {
     };
 
     const columnOrder: ColOrderType[] = [
-        { column: "name", Label: "Name", isSortable: true },
-        { column: "muid", Label: "Mu ID", isSortable: true },
-        { column: "email", Label: "Email", isSortable: true },
-        { column: "mobile", Label: "Mobile", isSortable: true },
         { column: "reward", Label: "Reward", isSortable: true },
+        { column: "desc", Label: "Description", isSortable: true },
+        {
+            column: "images",
+            Label: "Images",
+            isSortable: true,
+            wrap: data => (
+                <div className={styles.imgBox}>
+                    <BsCardImage />
+                    {data}
+                </div>
+            )
+        },
         {
             column: "price",
             Label: "Price",
@@ -120,4 +127,4 @@ const AdminMarketplace = (props: Props) => {
     );
 };
 
-export default AdminMarketplace;
+export default PurchaseInventory;
