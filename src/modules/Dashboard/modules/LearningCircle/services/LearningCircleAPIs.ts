@@ -373,7 +373,8 @@ export const transferLead = async (
             duration: 2000,
             isClosable: true
         });
-        navigate(`/dashboard/learning-circle/details/${circleId}`);
+        window.location.reload();
+       
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {

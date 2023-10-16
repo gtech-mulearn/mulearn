@@ -20,17 +20,16 @@ TODO: Transition the old inputs to the new one("eg.FormikTextAreaWhite")
 type InputFormik = TextareaHTMLAttributes<HTMLInputElement> &
     ClassAttributes<HTMLInputElement> &
     FieldConfig<HTMLInputElement>;
-export const FormikTextInput: FC<InputFormik & { label?: string }> = ({
-    label,
-    ...props
-}) => {
+export const FormikTextInput: FC<
+    InputFormik & { label?: string; styleClasses?: string }
+> = ({ label, styleClasses, ...props }) => {
     // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
     // which we can spread on <input>. We can use field meta to show an error
     // message if the field is invalid and it has been touched (i.e. visited)
     const [field, meta] = useField(props);
 
     return (
-        <div className={styles.inputBox}>
+        <div className={styles.inputBox + " " + styleClasses}>
             <span>
                 {label} <sup>{props.required ? " *" : ""}</sup>{" "}
             </span>
@@ -125,7 +124,7 @@ const FormikReactSelect: React.FC<FormikSelectProps> = ({
     name,
     label,
     options,
-    addOnChange = () => { },
+    addOnChange = () => {},
     addStyles,
     ...rest
 }) => {

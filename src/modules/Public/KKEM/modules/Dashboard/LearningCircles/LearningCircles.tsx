@@ -24,9 +24,10 @@ const LearningCircles = () => {
         }
     }, [key]);
 
-    const [LcCounts, setLcCounts] = useState<ResponseType>({ lc_count: 0, total_enrollment: 0, circle_count_by_ig: [] })
+    const [LcCounts, setLcCounts] = useState<ResponseType>({ lc_count: 0, total_enrollment: 0, circle_count_by_ig: [], unique_users: 0 })
     const [LcReport, setLcReport] = useState<UserDetail[]>([])
     const [sort, setSort] = useState("");
+    const [date, setDate] = useState("");
 
     useEffect(() => {
         if (authorized) {
@@ -170,6 +171,22 @@ const LearningCircles = () => {
         <>
             {authorized ? <div className={styles.dashboardContainer}>
                 <div className={styles.dashboardContent}>
+                    <div className={styles.dateContainer}>
+                        <p className={styles.heading}>Filter By Date</p>
+                        <p className={styles.tagline}>If a date is selected, only the values that were recorded after that date will be displayed.</p>
+                        <div>
+                            <input type="date" className={styles.date} onChange={(e) => setDate(e.target.value)} />
+                            <button className={styles.dateButton} onClick={() => {
+                                getLCReport(setLcReport, currentPage, perPage, setTotalPages, "", "", setLoading, date);
+                                getLCDashboard(setLcCounts, date);
+                            }}>Filter</button>
+                            <button className={styles.dateButton} onClick={() => {
+                                getLCReport(setLcReport, currentPage, perPage, setTotalPages, "", "", setLoading);
+                                getLCDashboard(setLcCounts);
+                            }
+                            }>Clear</button>
+                        </div>
+                    </div>
                     <p className={styles.heading}>Learning Circles & Interest Group Counts</p>
                     <div className={styles.countsContainer}>
                         <div className={styles.lcCount}>
@@ -179,6 +196,10 @@ const LearningCircles = () => {
                         <div className={styles.studentsInvoled}>
                             <p className={styles.label}>Total Enrollment</p>
                             {LcCounts.total_enrollment && <p className={styles.count}>{LcCounts.total_enrollment}</p>}
+                        </div>
+                        <div className={styles.studentsInvoled}>
+                            <p className={styles.label}>Unique Users</p>
+                            {LcCounts.total_enrollment && <p className={styles.count}>{LcCounts.unique_users}</p>}
                         </div>
                         {
                             LcCounts.circle_count_by_ig.map((item, index) => {
@@ -230,7 +251,7 @@ const LearningCircles = () => {
                     <div className={styles.tableContainer}>
 
                         <TableTop
-                            // onSearchText={handleSearch}
+                            onSearchText={handleSearch}
                             onPerPageNumber={handlePerPageNumber}
                         />
                         <br />

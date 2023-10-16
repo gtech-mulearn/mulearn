@@ -39,7 +39,7 @@
     --White: #ffffff;
     --Black: #1d1d1d;
     --Blue800: #00204c;
-    --InputDefaultBackground: #eff1f9;
+    --InputDefaultBackground: rgba(184, 196, 234, 0.29);
     --Error: red;
     --btn-secondary-bg: #9fb5ef;
 
