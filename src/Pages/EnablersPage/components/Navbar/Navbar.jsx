@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './Navbar.module.css'
-import EnablerLogo from '../../assests/EnablerLogo.png'
+import EnablerLogo from '../../assests/EnablerLogo.webp'
 
 export default function Navbar() {
     const navbar = React.useRef(null)
@@ -24,7 +24,7 @@ export default function Navbar() {
 
     }, [])
   return (
-    <div ref={navbar} className={styles.menu_bar}>
+    <div ref={navbar} className={styles.menuBar}>
     <div className={styles.logo}>
         <a href=""><img src={EnablerLogo} alt="Logo" /></a>
     </div>

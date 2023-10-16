@@ -1,4 +1,4 @@
-.ProgramsProject{
+.programProject{
     margin: 2rem 0;
     width: 100%;
     display: grid;
@@ -6,7 +6,7 @@
     gap: 1.5rem;
 }
 
-.ProgramsProject h1{
+.programProject h1{
     color: #9765FF;
     font-family: Inter;
     font-size: 48px;
@@ -14,41 +14,41 @@
     font-weight: 700;
     line-height: 62.4px;
     letter-spacing: -2.88px;
-    background-image: url('../../assests/Underline.png');
+    background-image: url('../../assests/Underline.webp');
     background-repeat: no-repeat;
     background-position: 155px 52px;
 }
 
-.ProgramsProject h1 span{
+.programProject h1 span{
     color: #FF7D40;
     text-align: center;
 }
 
-.ProgramsProjectGrid{
+.programProjectGrid{
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(2,1fr);
   margin: 1rem;
 }
 
-.ProgramsProjectGridCard{
+.programProjectGridCard{
     width: 400px;
     height: 428px;
     border-radius: 2rem;
     background: #fff;
     box-shadow: 0px 10px 60px 0px rgba(38, 45, 118, 0.08);
 }
-.ProgramsProjectGridCard .ProgramsProjectGridCardImg{
+.programProjectGridCard .programProjectGridCardImg{
     border-radius: 2rem 2rem 0 0;
     width: 400px;
 }
 
-.ProgramsProjectEnablers,
-.ProgramsProjectEnablers div,
-.ProgramsProjectGridContent div{
+.programProjectEnablers,
+.programProjectEnablers div,
+.programProjectGridContent div{
     display: flex;
 }
-.ProgramsProjectEnablers{
+.programProjectEnablers{
     width: fit-content;
     padding: 5px 10px;
     gap: 5px;
@@ -59,23 +59,23 @@
     left: 20px;
     align-items: center;
 }
-.ProgramsProjectEnablers div img{
+.programProjectEnablers div img{
     position: relative;
     z-index: 5;
 }
-.ProgramsProjectEnablers div img:nth-child(2){
+.programProjectEnablers div img:nth-child(2){
     left: -10px;
     z-index: 4;
 }
-.ProgramsProjectEnablers div img:nth-child(3){
+.programProjectEnablers div img:nth-child(3){
     left: -20px;
     z-index: 3;
 }
-.ProgramsProjectEnablers div img:nth-child(4){
+.programProjectEnablers div img:nth-child(4){
     left: -30px;
     z-index: 2;
 }
-.ProgramsProjectGridCard p{
+.programProjectGridCard p{
     color: #263238;
     line-height: 18px;
     font-family: Raleway;
@@ -84,7 +84,7 @@
     font-weight: 500;
     padding-right: 10px;
 }
-.ProgramsProjectGridCard .ProgramsProjectGridContent p{
+.programProjectGridCard .programProjectGridContent p{
     color: var(--grey-grey-2, #4D4D4D);
     font-family: Raleway;
     font-size: 15px;
@@ -93,7 +93,7 @@
     margin: 0 1rem;
 }
 
-.ProgramsProjectGridCard .ProgramsProjectGridContent p:nth-child(1) {
+.programProjectGridCard .programProjectGridContent p:nth-child(1) {
     color: var(--primary-primary-3, #777795);
     font-family: Raleway;
     font-size: 13px;
@@ -104,7 +104,7 @@
     text-align: left;
 }
 
-.ProgramsProjectGridCard .ProgramsProjectGridContent h2{
+.programProjectGridCard .programProjectGridContent h2{
     color: #9765FF;
     font-family: Raleway;
     font-size: 16px;
@@ -113,13 +113,13 @@
     margin:.8rem;
 }
 
-.ProgramsProjectGridContent div {
+.programProjectGridContent div {
     justify-content: space-around;
     width: 100%;
     margin: 1rem 0 0 0;
 }
 
-.ProgramsProjectGridContent div h3{
+.programProjectGridContent div h3{
     color: #FF7D40;
     font-family: Inter;
     font-size: 16.681px;
@@ -127,7 +127,7 @@
     font-weight: 700;
 }
 
-.ProgramsProjectGridContent div h3 span{
+.programProjectGridContent div h3 span{
     color: var(--Black, #978787);
     font-family: Inter;
     font-size: 14.828px;
@@ -136,7 +136,7 @@
     text-decoration: line-through;
 }
 
-.ProgramsProjectGridContent div button{
+.programProjectGridContent div button{
     background: #9765FF;
     border-radius: 5px;
     color: #FFF;
