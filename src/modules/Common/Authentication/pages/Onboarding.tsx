@@ -240,7 +240,7 @@ const Onboarding = (props: Props) => {
             };
             organization?: {
                 organizations?: any;
-                verified: boolean;
+                verified?: boolean;
                 department?: any | null;
                 graduation_year?: any | null;
             };
@@ -259,12 +259,10 @@ const Onboarding = (props: Props) => {
                 email: values.email,
                 mobile: values.mobile,
                 password: values.password
-            }
-            //required
-            ,
+            },
             organization: {
                 organizations: undefined,
-                verified: false,
+                verified: undefined,
                 department: undefined,
                 graduation_year: undefined
             }
