@@ -180,6 +180,11 @@ const LearningCircles = () => {
                                 getLCReport(setLcReport, currentPage, perPage, setTotalPages, "", "", setLoading, date);
                                 getLCDashboard(setLcCounts, date);
                             }}>Filter</button>
+                            <button className={styles.dateButton} onClick={() => {
+                                getLCReport(setLcReport, currentPage, perPage, setTotalPages, "", "", setLoading);
+                                getLCDashboard(setLcCounts);
+                            }
+                            }>Clear</button>
                         </div>
                     </div>
                     <p className={styles.heading}>Learning Circles & Interest Group Counts</p>
