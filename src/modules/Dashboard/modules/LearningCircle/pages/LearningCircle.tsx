@@ -64,9 +64,9 @@ const LearningCircle = (props: Props) => {
     const [openRemoveConfrim, setOpenRemoveConfirm] = useState(false);
     const [resourceLink, setResourceLink] = useState("");
     const [username, setUsername] = useState("");
-    const [deleteUserId, setDeleteUserId] = useState<string>("");
+    const [userId, setUserId] = useState<string>("");
 
-    const [transferConfirm,setTransferConfirm] = useState(false); 
+    const [transferConfirm, setTransferConfirm] = useState(false);
 
     const { id } = useParams();
     const navigate = useNavigate();
@@ -191,8 +191,9 @@ const LearningCircle = (props: Props) => {
         removeMember(circle, id, navigate);
     }
 
-    function handleTransfer(circle: string | undefined, id: string): void {
-        transferLead(circle, id, navigate);
+    function handleTransfer(circle: string): void {
+        console.log("New Lead", userId)
+        transferLead(circle, userId, navigate);
         setTimeout(() => {
             navigate(`/dashboard/learning-circle/details/${id}`);
         }, 4000);
@@ -594,7 +595,7 @@ const LearningCircle = (props: Props) => {
                             </div>
 
                             {lc?.pending_members &&
-                            lc.pending_members.length > 0 ? (
+                                lc.pending_members.length > 0 ? (
                                 <div className={styles.PendingApp}>
                                     <b className={styles.PendingTitle}>
                                         Pending approvals
@@ -747,7 +748,7 @@ const LearningCircle = (props: Props) => {
                                                 {lc.is_lead &&
                                                     !member.is_lead && (
                                                         <div>
-                                                           
+
                                                             <TbArrowsTransferUp
                                                                 size={24}
                                                                 onClick={() => {
@@ -755,14 +756,15 @@ const LearningCircle = (props: Props) => {
                                                                         true
                                                                     );
                                                                     setUsername(member?.username)
+                                                                    setUserId(member?.id)
                                                                 }}
                                                             />
                                                             {transferConfirm && (
                                                                 <Modal
                                                                     click={() => {
-                                                                        handleTransfer(
-                                                                            id,
-                                                                            member.id
+                                                                        console.log(member)
+                                                                        id && handleTransfer(
+                                                                            id
                                                                         );
                                                                     }}
 
@@ -791,7 +793,7 @@ const LearningCircle = (props: Props) => {
                                                                         true
                                                                     );
                                                                     setUsername(member?.username)
-                                                                    setDeleteUserId(member?.id)
+                                                                    setUserId(member?.id)
                                                                 }}
                                                             />
                                                             {openRemoveConfrim && (
@@ -799,7 +801,7 @@ const LearningCircle = (props: Props) => {
                                                                     click={() => {
                                                                         handleRemove(
                                                                             id,
-                                                                            deleteUserId
+                                                                            userId
                                                                         );
                                                                     }}
 
