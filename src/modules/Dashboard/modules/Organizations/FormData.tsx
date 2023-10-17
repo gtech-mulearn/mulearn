@@ -1,5 +1,10 @@
-import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
-import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import FormikReactSelect, {
+    FormikTextInput
+} from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import {
+    MuButton,
+    PowerfulButton
+} from "@/MuLearnComponents/MuButtons/MuButton";
 import { hasRole } from "@/MuLearnServices/common_functions";
 import { roles } from "@/MuLearnServices/types";
 import { useToast } from "@chakra-ui/react";
@@ -40,6 +45,7 @@ interface CollegeFormProps {
 }
 
 const FormData = ({ ...props }: CollegeFormProps) => {
+    console.log(props);
     const [inputName, setInputName] = useState("");
     const [inputCode, setInputCode] = useState("");
     const [oldCode, setOldCode] = useState("");
@@ -116,9 +122,8 @@ const FormData = ({ ...props }: CollegeFormProps) => {
     };
 
     const org_type = props.activeItem;
-    
+
     const handleSubmit = (Name: string, Code: string) => {
-      
         interface SelectBodyProps {
             Name: string;
             Code: string;
@@ -135,7 +140,6 @@ const FormData = ({ ...props }: CollegeFormProps) => {
             isCreate: boolean,
             affiliation?: string
         ) => {
-           
             const { org_type, toast } = params;
 
             if (isCreate) {
@@ -368,7 +372,6 @@ const FormData = ({ ...props }: CollegeFormProps) => {
 
     const handleAffiliationChange = (option: any) => {
         if (option) {
-            console.log(option);
             setAffiliation(option);
             setSelectedAffiliation(option.value as string);
         }
@@ -398,7 +401,6 @@ const FormData = ({ ...props }: CollegeFormProps) => {
             setSelectedDistrict(option.value as string);
         }
     };
-
     return (
         <>
             <Formik
@@ -410,7 +412,6 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                     State: state.value || "",
                     Zone: zone.value || "",
                     District: district.value || ""
-                   
                 }}
                 validationSchema={Yup.object({
                     Name: Yup.string()
@@ -427,7 +428,6 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                 })}
                 onSubmit={values => {
                     setIsLoading(true);
-                    
                     handleSubmit(values.Name, values.Code);
                 }}
             >
@@ -451,77 +451,86 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                     {props.activeItem === "College" ? (
                         <div className={orgStyles.inputFieldContainer}>
                             <p>Affiliated University</p>
-                            <Select
+                            <FormikReactSelect
+                                name="Affiliation"
+                                label="Affiliation"
+                                addOnChange={handleAffiliationChange}
+                                options={affiliationData}
+                                required
+                            />
+                            {/* <Select
                                 value={affiliationData?.find(
                                     affiliation =>
                                         affiliation.value ===
                                         selectedAffiliation
                                 )}
-                                name="Affiliation"
-                                onChange={handleAffiliationChange}
-                                options={affiliationData}
-                                required
-                            />
+                            /> */}
                         </div>
                     ) : null}
                     <div className={orgStyles.inputFieldContainer}>
                         <p>Country</p>
-                        <Select
+                        <FormikReactSelect
+                            name="Country"
+                            label="Country"
+                            addOnChange={handleCountryChange}
+                            options={countryData}
+                            required
+                        />
+                        {/* <Select
                             value={countryData?.find(
                                 country =>
                                     country.value ===
                                     selectedCountry.toLowerCase()
                             )}
-                            name="Country"
-                            onChange={handleCountryChange}
-                            options={countryData}
-                            required
-                        />
+                            
+                        /> */}
                     </div>
                     <div className={orgStyles.inputFieldContainer}>
                         <p>State</p>
-                        <Select
-                            value={statesData?.find(
-                                state =>
-                                    state.value === selectedState.toLowerCase()
-                            )}
+                        <FormikReactSelect
+                            // value={statesData?.find(
+                            //     state =>
+                            //         state.value === selectedState.toLowerCase()
+                            // )}
                             name="State"
-                            onChange={handleStateChange}
+                            label="State"
+                            addOnChange={handleStateChange}
                             options={statesData}
                             required
-                           
                         />
                     </div>
                     <div className={orgStyles.inputFieldContainer}>
                         <p>Zone</p>
-                        <Select
-                            value={
-                                selectedZone.length > 0 &&
-                                zonesData?.find(
-                                    zone =>
-                                        zone.value ===
-                                        selectedZone.toLowerCase()
-                                )
-                            }
+                        <FormikReactSelect
+                            // value={
+                            //     selectedZone.length > 0 &&
+                            //     zonesData?.find(
+                            //         zone =>
+                            //             zone.value ===
+                            //             selectedZone.toLowerCase()
+                            //     )
+                            // }
                             name="Zone"
-                            onChange={handleZoneChange}
+                            label="Zone"
+                            addOnChange={handleZoneChange}
                             options={zonesData}
                             required
                         />
                     </div>
                     <div className={orgStyles.inputFieldContainer}>
                         <p>District</p>
-                        <Select
-                            value={
-                                selectedDistrict.length > 0 &&
-                                districtsData?.find(
-                                    district =>
-                                        district.value ===
-                                        selectedDistrict.toLowerCase()
-                                )
-                            }
+                        <FormikReactSelect
+                            // value={
+                            //     selectedDistrict.length > 0 &&
+                            //     districtsData?.find(
+                            //         district =>
+                            //             district.value ===
+                            //             selectedDistrict.toLowerCase()
+                            //     )
+                            // }
                             name="District"
-                            onChange={handleDistrictChange}
+                            label="District"
+                            addOnChange={handleDistrictChange}
                             options={districtsData}
                             required
                         />
@@ -535,7 +544,9 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                             onClick={() => {
                                 navigate("/dashboard/organizations");
                             }}
-                        >Decline</PowerfulButton>
+                        >
+                            Decline
+                        </PowerfulButton>
                         <button
                             type="submit"
                             className="btn blue-btn"

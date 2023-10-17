@@ -71,6 +71,7 @@
     text-align: start;
     margin-top: 8px;
     box-sizing: border-box;
+    align-self: end;
 }
 
 .gridContainer {
@@ -162,9 +163,8 @@
         width: 100%;
     }
 }
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 600px) {
     .popupDropdownContainer {
         grid-template-columns: repeat(1, 1fr);
     }
 } /*# sourceMappingURL=Organizations.css.map */
-
