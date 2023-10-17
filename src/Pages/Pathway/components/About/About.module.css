@@ -1,4 +1,4 @@
-.About{
+.About {
     padding: 1rem 0;
 }
 
@@ -31,26 +31,63 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-left: 3rem;
-    padding-right: 8rem;
-    margin: 3rem;
+    width: fit-content;
+    gap: 1rem;
 }
 
 .WhatIsPathway_img img {
-    width: 60%;
-}
-
-.WhatIsPathway_img {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 20rem;
 }
 
 .WhatIsPathway_desc {
-    width: 80%;
+    width: 50%;
     font-size: 1.2rem;
 }
 
 .WhatIsPathway_desc span {
     font-weight: 800;
+}
+
+@media(width<=820px) {
+    .WhatIsPathway_main {
+        flex-direction: column;
+    }
+
+    .WhatIsPathway_img img {
+        height: 15rem;
+    }
+
+    .WhatIsPathway_desc {
+        width: 80%;
+    }
+}
+
+@media(width<=500px) {
+    .Overview_container_head p {
+        font-size: 2.5rem;
+    }
+
+    .WhatIsPathway_desc {
+        width: 100%;
+        font-size: 1rem;
+    }
+}
+
+@media(width<=300px) {
+    .Overview_container_head {
+        padding: 2rem;
+    }
+
+    .WhatIsPathway_img img {
+        height: 10rem;
+    }
+
+    .WhatIsPathway_desc {
+        font-size: .8rem;
+    }
+
+    .Overview_container_head p {
+        font-size: 1.5rem;
+        padding: 0;
+    }
 }

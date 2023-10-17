@@ -37,3 +37,15 @@
     color: #3F3F46;
     line-height: 1.1rem;
 }
+
+@media(width<=500px) {
+    .ContactUs {
+        flex-direction: column;
+        padding: 1.5rem;
+        padding-top: 3rem;
+    }
+
+    .ContactList {
+        width: 100%;
+    }
+}
