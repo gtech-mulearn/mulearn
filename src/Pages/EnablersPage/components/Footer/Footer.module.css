@@ -9,7 +9,7 @@
 }
 
 .footer div{
-    width: 1060px;
+    width: 50%;
     height: 88px;
     background: #FF7D40;
     display: grid;
@@ -24,7 +24,6 @@
     font-size: 22.392px;
     font-style: normal;
     font-weight: 500;
-    line-height: 36.077px;
 }
 
 .footer p{
@@ -35,4 +34,36 @@
     font-style: normal;
     font-weight: 400;
     line-height: 16.519px;
+}
+
+@media (width<850px) {
+    .footer div p{
+        font-size: 12px;
+    }
+
+    .footer div{
+        height: 70px;
+    }
+
+    .footer p{
+        font-size: 10px;
+    }
+}
+
+@media (width<500px) {
+    .footer{
+        height: 80px;
+    }
+    .footer div p{
+        font-size: 8px;
+    }
+
+    .footer div{
+        height: 60px;
+        width: 60%;
+    }
+
+    .footer p{
+        font-size: 8px;
+    }
 }

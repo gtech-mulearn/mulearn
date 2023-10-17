@@ -36,3 +36,55 @@
    border-radius: 10px;
    color: #FFFFFF;
 }
+
+@media (width<1200px){
+    .menuBar{
+        padding:2rem 10px;
+        gap: 1rem;
+    }
+    .menuBar .menu{
+       gap: 2rem;
+    }
+
+    .menuBar .logo a img{
+        width: 120px;
+    }
+    .menuBar .menu a{
+        font-size: 10px;
+    }
+
+    .menuBar button{
+        padding: 10px 25px;
+        font-size: 10px;
+    }
+}
+
+@media (width<710px){
+    .menuBar{
+        padding:2rem 10px;
+        gap: .5rem;
+    }
+    .menuBar .logo a img{
+        width: 100px;
+    }
+    .menuBar .menu{
+       gap: 1.5rem;
+    }
+    .menuBar .menu a{
+        font-size: 8px;
+    }
+
+    .menuBar button{
+        padding: 8px 20px;
+        font-size: 8px;
+    }
+}
+
+@media (width<600px){
+    .menuBar{
+        width: 100%;
+    }
+    .menuBar .menu{
+        display: none;
+    }
+}

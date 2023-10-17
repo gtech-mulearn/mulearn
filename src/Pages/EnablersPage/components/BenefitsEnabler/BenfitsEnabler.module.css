@@ -42,6 +42,7 @@
     display: flex; 
     align-items:center; 
     gap: 32px;
+    padding-bottom: 10px;
 }
 
 .benefitsEnablerBenefits div div p{
@@ -51,7 +52,53 @@
     font-size: 18px;
     font-style: normal;
     font-weight: 500;
-    line-height: 180%;
-    letter-spacing: 0.36px;
-    margin-bottom: 1rem;
+}
+
+@media (width<1300px){
+
+    .benefitsEnabler h1{
+        font-size: 40px;
+    } 
+
+    .benefitsEnablerBenefits{
+        flex-direction: column;
+        padding: 1rem;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        /* border-radius: 1rem;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, .25); */
+    }
+
+    .benefitsEnablerBenefits h1{
+        text-align: center;
+    }
+
+    .benefitsEnablerBenefits:nth-child(odd){
+        flex-direction: column-reverse;
+    }   
+}
+
+@media (width<650px){
+    .benefitsEnabler h1{
+        font-size: 35px;
+    }
+    .benefitsEnablerBenefits{
+        padding: 1rem 0;
+    }
+    .benefitsEnablerBenefitsImage{
+        width: 50%;
+    }
+    .benefitsEnablerBenefits div h1{
+        font-size: 20px;
+        letter-spacing: .05px;
+        margin-bottom: 0;
+    }
+    .benefitsEnablerBenefits div div p{
+        width: 250px;
+        font-size: 12px;
+    }
+    .benefitsEnablerBenefits div div img{
+        width: 60px;
+    }
 }

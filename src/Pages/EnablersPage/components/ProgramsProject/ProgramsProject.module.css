@@ -33,7 +33,8 @@
 
 .programProjectGridCard{
     width: 400px;
-    height: 428px;
+    height: fit-content;
+    padding-bottom: 40px;
     border-radius: 2rem;
     background: #fff;
     box-shadow: 0px 10px 60px 0px rgba(38, 45, 118, 0.08);
@@ -143,4 +144,31 @@
     font-size: 12px;
     font-family: Raleway;
     padding: 10px 20px;
+}
+
+@media (width<950px) {
+    .programProjectGrid{
+        gap: 2rem;
+        grid-template-columns: repeat(1,1fr);
+    }
+}
+
+@media (width<650px){
+    .programProject h1{
+        font-size: 30px;
+        letter-spacing: -2.88px;
+        background-image: url('../../assests/Underline.webp');
+        background-repeat: no-repeat;
+        background-position: 80px 45px;
+        background-size: 150px;
+    }
+}
+
+@media (width<650px){
+    .programProjectGridCard{
+        width: 300px;
+    }
+    .programProjectGridCard .programProjectGridCardImg{
+        width: 300px;
+    }
 }
