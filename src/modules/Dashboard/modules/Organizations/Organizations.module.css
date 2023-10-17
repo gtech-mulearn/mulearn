@@ -32,7 +32,7 @@
 }
 
 .popupContainer {
-    width: 60%;
+    width: min(90%, 600px);
     height: -moz-max-content;
     height: max-content;
     padding: 20px;

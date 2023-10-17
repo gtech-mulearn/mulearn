@@ -45,7 +45,6 @@ interface CollegeFormProps {
 }
 
 const FormData = ({ ...props }: CollegeFormProps) => {
-    console.log(props);
     const [inputName, setInputName] = useState("");
     const [inputCode, setInputCode] = useState("");
     const [oldCode, setOldCode] = useState("");
