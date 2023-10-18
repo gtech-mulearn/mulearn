@@ -326,10 +326,10 @@ const Onboarding = (props: Props) => {
             delete userData.organization;
         }
         if (values.dept === "" ) {
-            delete userData.organization;
+            delete userData.organization?.department;
         }
         if (values.yog === "") {
-            delete userData.organization;
+            delete userData.organization?.graduation_year;
         }
 
         registerUser(
