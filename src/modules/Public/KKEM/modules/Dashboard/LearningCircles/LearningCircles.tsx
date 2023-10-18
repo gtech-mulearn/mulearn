@@ -206,8 +206,16 @@ const LearningCircles = () => {
                                 return (
                                     <div className={styles.studentsInvoled} key={index}>
                                         <p className={styles.label}>{item.ig_name}</p>
-                                        <p className={styles.count}>{item.total_circles}</p>
-                                        <span>Learning Circles</span>
+                                        <div className={styles.counts}>
+                                            <div>
+                                                <p className={styles.count}>{item.total_circles}</p>
+                                                <span>Circles</span>
+                                            </div>
+                                            <div>
+                                                <p className={styles.count}>{item.total_users}</p>
+                                                <span>Users</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 )
                             }

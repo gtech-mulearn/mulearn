@@ -6,6 +6,7 @@ export type ResponseType = {
 };
 
 export type InterestGroup = {
+    total_users: ReactNode;
     ig_name: string;
     total_circles: number;
 };
