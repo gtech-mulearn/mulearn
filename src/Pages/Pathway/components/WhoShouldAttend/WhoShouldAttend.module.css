@@ -70,6 +70,12 @@
     height: 8rem;
 }
 
+@media(width<=1024px) {
+    .container .box_top {
+        font-size: .8rem;
+    }
+}
+
 @media (width<=820px) {
     .section {
         display: grid;

@@ -38,6 +38,7 @@
     width: 50%;
     height: 16rem;
     font-weight: 500;
+    font-size: .9rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -70,7 +71,6 @@
     .Overview_desc .course {
         width: 100%;
         height: 18rem;
-        font-size: .9rem;
     }
 }
 
