@@ -1,22 +1,15 @@
-.onboarding,
-.onboardingList{
+.onboarding{
     margin: 2rem 0;
     width: 100%;
     display: grid;
     place-items: center;
 }
-.onboarding{
-    margin: 2rem;
-}
-
 .onboarding h1{
     color: #9765FF;
     font-family: Inter;
     font-size: 48px;
     font-style: normal;
     font-weight: 700;
-    line-height: 62.4px;
-    letter-spacing: -2.88px;
 }
 
 .onboarding h1 .onboardingHeading{
@@ -24,6 +17,13 @@
     background-image: url('../../assests/Underline.webp');
     background-repeat: no-repeat;
     background-position:0px 48px;
+}
+.onboardingList{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 2rem 0;
 }
 .onboarding .onboardingList h1{
     display: flex;
@@ -41,12 +41,53 @@
     line-height: normal;
 }
 .onboarding .onboardingList p{
-    width: 1022px;
+    width:68%;
     color: var(--gray, #696984);
     text-align: center;
     font-family: Raleway;
     font-size: 18px;
     font-style: normal;
     font-weight: 500;
-    line-height: 29px; /* 161.111% */
+}
+
+@media (width<750px) {
+    .onboarding h1{
+        font-size: 32px;
+    }
+    .onboarding h1 .onboardingHeading{
+        background-position: 0 30px;
+    }
+    .onboarding .onboardingList h1{
+        font-size: 25px;
+    }
+    .onboarding .onboardingList h1 span{
+        font-size: 90px;
+    }
+    .onboarding .onboardingList p{
+        font-size: 15px;
+    }
+    .onboarding .onboardingList h1  img{
+        height: 50px;
+    }
+}
+
+@media (width<500px){
+    .onboarding h1{
+        font-size: 25px;
+    }
+    .onboarding h1 .onboardingHeading{
+        background-position: 0 22px;
+    }
+    .onboarding .onboardingList h1{
+        font-size: 18px;
+    }
+    .onboarding .onboardingList h1 span{
+        font-size: 50px;
+    }
+    .onboarding .onboardingList p{
+        font-size: 10px;
+    }
+    .onboarding .onboardingList h1  img{
+        height: 30px;
+    }
 }

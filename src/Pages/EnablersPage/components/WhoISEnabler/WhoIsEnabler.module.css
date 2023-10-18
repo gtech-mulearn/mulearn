@@ -34,3 +34,23 @@
     line-height: 127.5%; 
     text-align: center;
 }
+
+@media (width<600px) {
+    .whoIsEnabler h1{
+        font-size: 38px;
+        background-position: 150px 52px;
+    }
+    .whoIsEnabler p{
+        font-size: 18px;
+        text-align: left;
+    }
+}
+@media (width<350px) {
+    .whoIsEnabler h1{
+        font-size: 30px;
+        background-position: 120px 45px;
+    }
+    .whoIsEnabler p{
+        font-size: 12px;
+    }
+}
