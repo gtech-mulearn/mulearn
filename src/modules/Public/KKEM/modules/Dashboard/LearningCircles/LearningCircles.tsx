@@ -51,7 +51,7 @@ const LearningCircles = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [loading, setLoading] = useState(false);
-    const [perPage, setPerPage] = useState(5);
+    const [perPage, setPerPage] = useState(20);
     const [orgCirclesArray, setOrgCirclesArray] = useState<OrgCircle[]>([]);
 
     const handleNextClick = () => {
@@ -128,7 +128,7 @@ const LearningCircles = () => {
     LcCounts.circle_count_by_ig
         .sort((a, b) => a.total_circles - b.total_circles) // sort by total_circles in ascending order
         .forEach((item) => {
-            data.push([item.ig_name, item.total_circles.toString()]);
+            data.push([item.name, item.total_circles.toString()]);
         });
 
 
@@ -202,17 +202,29 @@ const LearningCircles = () => {
                             {LcCounts.total_enrollment && <p className={styles.count}>{LcCounts.unique_users}</p>}
                         </div>
                         {
-                            LcCounts.circle_count_by_ig.map((item, index) => {
-                                return (
-                                    <div className={styles.studentsInvoled} key={index}>
-                                        <p className={styles.label}>{item.ig_name}</p>
-                                        <p className={styles.count}>{item.total_circles}</p>
-                                        <span>Learning Circles</span>
-                                    </div>
-                                )
-                            }
-                            )
+
+                            LcCounts.circle_count_by_ig
+                                .sort((a, b) => ((b.total_users ?? 0) as number) - ((a.total_users ?? 0) as number)) // sort by total_users in descending order
+                                .map((item, index) => {
+                                    return (
+                                        <div className={styles.studentsInvoled} key={index}>
+                                            <p className={styles.label}>{item.name}</p>
+                                            <div className={styles.counts}>
+                                                <div>
+                                                    <p className={styles.count}>{item.total_circles}</p>
+                                                    <span>Circles</span>
+                                                </div>
+                                                <div>
+                                                    <p className={styles.count}>{item.total_users}</p>
+                                                    <span>Users</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    );
+                                })
                         }
+
+
                     </div>
                     <br />
 
