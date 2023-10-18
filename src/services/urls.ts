@@ -129,6 +129,7 @@ export const dashboardRoutes = {
     getZonalStudentLevels: "api/v1/dashboard/zonal/student-level/",
 
     collegeLevels: "api/v1/dashboard/college/",
+    collegeLevlesDelete: "api/v1/dashboard/college/delete/",
 
     //Dyanmic Type
     dtGetRoles: "api/v1/dashboard/dynamic-management/roles/",
@@ -183,5 +184,5 @@ export const KKEMRoutes = {
 export const PublicRoutes = {
     getRandomLc: "/api/v1/dashboard/lc/list/",
     getLcDashboard: "/api/v1/get-log/lc-dashboard/",
-    getLcReport: "/api/v1/get-log/lc-report/",
+    getLcReport: "/api/v1/get-log/lc-report/"
 } as const;
