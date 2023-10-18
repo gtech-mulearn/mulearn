@@ -1433,7 +1433,7 @@ const Onboarding = (props: Props) => {
                                                     }
                                                 >
                                                     <label htmlFor="">
-                                                        College{" "}
+                                                        College/School{" "}
                                                         <span
                                                             className={
                                                                 styles.required
@@ -1652,7 +1652,8 @@ const Onboarding = (props: Props) => {
                                                                 }
                                                             >
                                                                 <label htmlFor="">
-                                                                    Graduation Year
+                                                                    Graduation
+                                                                    Year
                                                                 </label>
 
                                                                 <Select
