@@ -32,7 +32,7 @@ function EditOrganization() {
                 setSelectedState(data.state_uuid);
                 setSelectedZone(data.zone_uuid);
                 setSelectedDistrict(data.district_uuid);
-                setSelectedAffiliation(data.affiliation_name_uuid);
+                setSelectedAffiliation(data.affiliation_uuid);
                 setLoading(false);
             })
             .catch(error => {
