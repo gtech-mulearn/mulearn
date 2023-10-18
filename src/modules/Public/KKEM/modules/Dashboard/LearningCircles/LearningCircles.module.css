@@ -19,7 +19,7 @@
     padding: 1rem;
     margin: 0.5rem;
     width: 300px;
-    height: 118px;
+    height: 135px;
     justify-content: center;
     border-radius: 13px;
     background: #fff;
@@ -118,4 +118,19 @@
 
 .dateButton:hover {
     background-color: #0069d9;
+}
+
+.counts {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    row-gap: 0.5rem;
+    margin-top: 1rem;
+    column-gap: 0.5rem;
+}
+
+.counts div {
+    max-width: 5rem;
 }
