@@ -230,6 +230,7 @@ const inputs = (
         last_name: user?.last_name || "",
         email: user?.email || "",
         mobile: user?.mobile || "",
+        discord_id: user?.discord_id || null,
         college: user?.organizations
             ? arrayIntersection(
                   user.organizations,
