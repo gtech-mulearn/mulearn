@@ -25,10 +25,9 @@
 }
 
 .main_task .tasks .topSection .title span {
-    background-image: url(../assets/images/levelup.webp);
     height: 4rem;
     width: 4rem;
-    border-radius: .5rem;
+    border-radius: 0.5rem;
     background-position: center;
     background-size: contain;
 }
@@ -39,15 +38,15 @@
 
 .main_task .tasks .topSection .title .title_desc p:nth-child(2) {
     font-weight: 600;
-    padding-top: .5rem;
-    font-size: .9rem;
+    padding-top: 0.5rem;
+    font-size: 0.9rem;
 }
 
 .main_task .tasks .topSection .progressbar {
     display: flex;
     flex-direction: column;
-    gap: .5rem;
-    font-size: .8rem;
+    gap: 0.5rem;
+    font-size: 0.8rem;
 }
 
 .main_task .tasks .topSection .progressbar .progress_title {
@@ -57,7 +56,7 @@
 
 .main_task .tasks .topSection .progressbar .progress {
     width: 100%;
-    height: .3rem;
+    height: 0.3rem;
     background-color: #e0e0e0;
     border-radius: 8px;
     position: relative;
@@ -67,7 +66,7 @@
     display: flex;
     gap: 1rem;
     justify-content: flex-end;
-    font-size: .8rem;
+    font-size: 0.8rem;
 }
 
 .main_task .tasks .accordion {
@@ -81,8 +80,8 @@
     flex-direction: column;
     gap: 1rem;
     list-style: none;
-    border-radius: .5rem;
-    border: 2px solid rgb(128, 128, 128, .3);
+    border-radius: 0.5rem;
+    border: 2px solid rgb(128, 128, 128, 0.3);
 }
 
 .main_task .tasks .accordion .main_list .level {
@@ -105,7 +104,7 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    font-size: .9rem;
+    font-size: 0.9rem;
 }
 
 .main_task .tasks .accordion .main_list .level div i {
@@ -137,7 +136,6 @@
     align-items: center;
     justify-content: space-between;
     padding: 0px 1.5rem;
-
 }
 
 .main_task .tasks .accordion .main_list .content .goal_container p {
@@ -153,24 +151,29 @@
     height: 10px;
 }
 
-.main_task .tasks .accordion .main_list .expandBtn:checked~.content {
+.main_task .tasks .accordion .main_list .expandBtn:checked ~ .content {
     max-height: 400px;
     overflow-y: scroll;
 }
 
-.main_task .tasks .accordion .main_list .expandBtn:checked+.level .icon_down_arrow {
+.main_task
+    .tasks
+    .accordion
+    .main_list
+    .expandBtn:checked
+    + .level
+    .icon_down_arrow {
     transform: rotate(180deg);
 }
 
 .main_task .tasks .accordion .main_list .content .list_list li {
     display: flex;
     align-items: center;
-    gap: .5rem;
-    padding: .8rem;
+    gap: 0.5rem;
+    padding: 0.8rem;
     padding-left: 1.5rem;
-    font-size: .8rem;
+    font-size: 0.8rem;
 }
-
 
 @media (width <300px) {
     .main_task {
@@ -187,8 +190,8 @@
 }
 
 .main_task .tasks .accordion .main_list .content .list_list li label span {
-    background: #DBEAFF;
-    color: #2E85FE;
+    background: #dbeaff;
+    color: #2e85fe;
     padding: 0px 5px;
     border-radius: 3px;
     font-size: 12px;
