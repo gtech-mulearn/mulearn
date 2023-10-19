@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import styles from './LearningCircles.module.css'
-import { getLCDashboard, getLCReport } from './services/LearningCircles';
-import { OrgCircle, ResponseType, UserDetail } from './services/types';
+import { getLCDashboard, getLCReport, getOrgWiseReport } from './services/LearningCircles';
+import { OrgCircle, OrgData, ResponseType, UserDetail } from './services/types';
 import TableTop from '@/MuLearnComponents/TableTop/TableTop';
 import Table from "@/MuLearnComponents/Table/Table";
 import THead from '@/MuLearnComponents/Table/THead';
 import Pagination from '@/MuLearnComponents/Pagination/Pagination';
 import Chart from 'react-google-charts';
-import { useParams, useSearchParams } from 'react-router-dom';
-import MuLoader from '@/MuLearnComponents/MuLoader/MuLoader';
-
+import { useSearchParams } from 'react-router-dom';
 const LearningCircles = () => {
     const [authorized, setAuthorized] = useState(true);
     const [searchParams] = useSearchParams();
@@ -26,13 +24,18 @@ const LearningCircles = () => {
 
     const [LcCounts, setLcCounts] = useState<ResponseType>({ lc_count: 0, total_enrollment: 0, circle_count_by_ig: [], unique_users: 0 })
     const [LcReport, setLcReport] = useState<UserDetail[]>([])
+    const [OrgWiseReport, setOrgWiseReport] = useState<OrgData[]>([])
+
     const [sort, setSort] = useState("");
+    const [sortOrg, setSortOrg] = useState("");
+
     const [date, setDate] = useState("");
 
     useEffect(() => {
         if (authorized) {
             getLCDashboard(setLcCounts);
             getLCReport(setLcReport, currentPage, perPage, setTotalPages, "", sort, setLoading);
+            getOrgWiseReport(setOrgWiseReport, orgCurrentPage, orgPerPage, setOrgTotalPages, "", sortOrg, setOrgLoading);
         }
     }, [authorized])
 
@@ -48,11 +51,25 @@ const LearningCircles = () => {
         { column: "karma_earned", Label: "Karma Earned", isSortable: false },
     ];
 
+    const orgColumnOrder: ColOrder[] = [
+        { column: "org_title", Label: "Organisation", isSortable: false },
+        { column: "learning_circle_count", Label: "Circle Count", isSortable: false },
+        { column: "user_count", Label: "User Count", isSortable: false },
+    ];
+
     const [currentPage, setCurrentPage] = useState(1);
+    const [orgCurrentPage, setOrgCurrentPage] = useState(1);
+
     const [totalPages, setTotalPages] = useState(0);
+    const [orgTotalPages, setOrgTotalPages] = useState(0);
+
     const [loading, setLoading] = useState(false);
-    const [perPage, setPerPage] = useState(5);
-    const [orgCirclesArray, setOrgCirclesArray] = useState<OrgCircle[]>([]);
+    const [orgLoading, setOrgLoading] = useState(false);
+
+    const [perPage, setPerPage] = useState(20);
+    const [orgPerPage, setOrgPerPage] = useState(20);
+
+
 
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
@@ -60,16 +77,33 @@ const LearningCircles = () => {
         getLCReport(setLcReport, nextPage, perPage, setTotalPages);
     };
 
+    const handleOrgNextClick = () => {
+        const nextPage = orgCurrentPage + 1;
+        setOrgCurrentPage(nextPage);
+        getOrgWiseReport(setOrgWiseReport, nextPage, orgPerPage, setOrgTotalPages);
+    }
+
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
         getLCReport(setLcReport, 1, perPage, setTotalPages);
     };
 
+    const handleOrgPreviousClick = () => {
+        const prevPage = orgCurrentPage - 1;
+        setOrgCurrentPage(prevPage);
+        getOrgWiseReport(setOrgWiseReport, 1, orgPerPage, setOrgTotalPages);
+    }
+
     const handleSearch = (search: string) => {
         setCurrentPage(1);
         getLCReport(setLcReport, 1, perPage, setTotalPages, search, "");
     };
+
+    const handleOrgSearch = (search: string) => {
+        setOrgCurrentPage(1);
+        getOrgWiseReport(setOrgWiseReport, 1, orgPerPage, setOrgTotalPages, search, "");
+    }
 
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
@@ -84,18 +118,18 @@ const LearningCircles = () => {
         );
     };
 
-    // const handleCopy = (id: any) => {
-    //     navigator.clipboard.writeText(
-    //         shortUrlData.filter(item => item?.id === id)[0].short_url
-    //     );
-    //     console.log(shortUrlData.filter(item => item?.id === id)[0].short_url);
-    //     toast({
-    //         title: "Copied",
-    //         status: "success",
-    //         duration: 2000,
-    //         isClosable: true
-    //     });
-    // };
+    const handleOrgPerPageNumber = (selectedValue: number) => {
+        setOrgCurrentPage(1);
+        setOrgPerPage(selectedValue);
+        getOrgWiseReport(
+            setOrgWiseReport,
+            1,
+            selectedValue,
+            setOrgTotalPages,
+            "",
+            ""
+        );
+    }
 
     const handleIconClick = (column: string) => {
         if (sort === column) {
@@ -124,20 +158,38 @@ const LearningCircles = () => {
         }
     };
 
+    const handleOrgIconClick = (column: string) => {
+        if (sortOrg === column) {
+            setSortOrg(`-${column}`);
+            getOrgWiseReport(
+                setOrgWiseReport,
+                orgCurrentPage,
+                orgPerPage,
+                setOrgTotalPages,
+                "",
+                `-${column}`,
+                setOrgLoading
+            );
+        } else {
+            setSortOrg(column);
+            getOrgWiseReport(
+                setOrgWiseReport,
+                orgCurrentPage,
+                orgPerPage,
+                setOrgTotalPages,
+                "",
+                column,
+                setOrgLoading
+            );
+        }
+    };
+
     const data = [["Interest Group", "Total Circles"]];
     LcCounts.circle_count_by_ig
         .sort((a, b) => a.total_circles - b.total_circles) // sort by total_circles in ascending order
         .forEach((item) => {
-            data.push([item.ig_name, item.total_circles.toString()]);
+            data.push([item.name, item.total_circles.toString()]);
         });
-
-
-
-    // const data2 = [["Organisation", "Total Circles"]];
-    // orgCirclesArray.slice(0, 10).forEach((item) => {
-    //     data2.push([item.orgName, item.circleCount.toString()]);
-    // });
-
 
 
     useEffect(() => {
@@ -159,7 +211,7 @@ const LearningCircles = () => {
             circleCount: circles.size
         }));
 
-        setOrgCirclesArray(resultArray);
+        // setOrgCirclesArray(resultArray);
 
         resultArray.sort((a, b) => {
             return a.circleCount - b.circleCount;
@@ -202,17 +254,29 @@ const LearningCircles = () => {
                             {LcCounts.total_enrollment && <p className={styles.count}>{LcCounts.unique_users}</p>}
                         </div>
                         {
-                            LcCounts.circle_count_by_ig.map((item, index) => {
-                                return (
-                                    <div className={styles.studentsInvoled} key={index}>
-                                        <p className={styles.label}>{item.ig_name}</p>
-                                        <p className={styles.count}>{item.total_circles}</p>
-                                        <span>Learning Circles</span>
-                                    </div>
-                                )
-                            }
-                            )
+
+                            LcCounts.circle_count_by_ig
+                                .sort((a, b) => ((b.total_users ?? 0) as number) - ((a.total_users ?? 0) as number)) // sort by total_users in descending order
+                                .map((item, index) => {
+                                    return (
+                                        <div className={styles.studentsInvoled} key={index}>
+                                            <p className={styles.label}>{item.name}</p>
+                                            <div className={styles.counts}>
+                                                <div>
+                                                    <p className={styles.count}>{item.total_circles}</p>
+                                                    <span>Circles</span>
+                                                </div>
+                                                <div>
+                                                    <p className={styles.count}>{item.total_users}</p>
+                                                    <span>Users</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    );
+                                })
                         }
+
+
                     </div>
                     <br />
 
@@ -232,22 +296,8 @@ const LearningCircles = () => {
 
                     </div>
 
-                    {/* <div className={styles.chartContainer}>
-                        <Chart
-                            width={"100%"}
-                            height={"400px"}
-                            chartType="Bar"
-                            loader={<div>Loading Chart</div>}
-                            data={data2}
-                            options={{
-                                chart: {
-                                    title: "Organisation Learning Circle Counts",
-                                },
-                            }}
-                        />
-                    </div> */}
 
-
+                    <p className={styles.heading}>User Wise Counts</p>
                     <div className={styles.tableContainer}>
 
                         <TableTop
@@ -276,6 +326,41 @@ const LearningCircles = () => {
                                 onPerPageNumber={handlePerPageNumber}
                                 perPage={perPage}
                                 setPerPage={setPerPage}
+                            />
+                            {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                        </Table>
+
+                    </div>
+                    <br />
+                    <p className={styles.heading}>Organization Wise Counts</p>
+                    <div className={styles.tableContainer}>
+
+                        {/* <TableTop
+                            onSearchText={handleOrgSearch}
+                            onPerPageNumber={handleOrgPerPageNumber}
+                        /> */}
+                        <br />
+                        <Table
+                            rows={OrgWiseReport}
+                            page={orgCurrentPage}
+                            perPage={orgPerPage}
+                            columnOrder={orgColumnOrder}
+                            isloading={orgLoading}
+                        >
+                            <THead
+                                columnOrder={orgColumnOrder}
+                                // editableColumnNames={editableColumnNames}
+                                onIconClick={handleOrgIconClick}
+                            />
+                            <Pagination
+                                currentPage={orgCurrentPage}
+                                totalPages={orgTotalPages}
+                                margin="10px 0"
+                                handleNextClick={handleOrgNextClick}
+                                handlePreviousClick={handleOrgPreviousClick}
+                                onPerPageNumber={handleOrgPerPageNumber}
+                                perPage={orgPerPage}
+                                setPerPage={setOrgPerPage}
                             />
                             {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
                         </Table>
