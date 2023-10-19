@@ -130,6 +130,7 @@ export const dashboardRoutes = {
     getZonalStudentLevels: "api/v1/dashboard/zonal/student-level/",
 
     collegeLevels: "api/v1/dashboard/college/",
+    collegeLevlesDelete: "api/v1/dashboard/college/delete/",
 
     //Dyanmic Type
     dtGetRoles: "api/v1/dashboard/dynamic-management/roles/",

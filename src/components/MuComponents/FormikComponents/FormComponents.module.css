@@ -187,11 +187,11 @@
 .reactSelect {
     padding-top: 0.7rem;
     border-radius: var(--borderRadius);
-    width: 100%;
+    width: 200px;
+
     font-weight: 500;
     color: var(--grey);
     background-color: var(--White) !important;
-    /* min-width: 22rem; */
 }
 
 .InputSet textarea {
