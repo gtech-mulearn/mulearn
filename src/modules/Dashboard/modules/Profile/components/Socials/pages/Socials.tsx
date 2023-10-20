@@ -126,6 +126,13 @@ const Socials = (props: Props) => {
                     </p>
                 )}
             </div>
+            {
+                Object.values(formik.values).filter(value => value === "" || value === null).length>=8 && !editSocials && (
+                    <p className={styles.display_message}>
+                        You have not connected any socials medias to your profile yet.
+                    </p>
+                )    
+            }
             <p className={styles.socials_icons}>
                 {Object.values(formik.values).filter(value => value === "")
                     .length != 0 ||
