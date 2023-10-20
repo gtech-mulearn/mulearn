@@ -146,7 +146,7 @@ function App() {
             <Route path="/yipredirect" element={<YipForm />} />
             <Route path="/journey" element={<Journey />} />
             <Route path="/pathway" element={<Pathway />} />
-            <Route path="/EnablersPage" element={<EnablersPage />} />
+            <Route path="/enablers" element={<EnablersPage />} />
           </Route>
 
           <Route path="/level1" element={<Level1 />} />

@@ -7,7 +7,7 @@ export default function EnablersHero() {
     <div className={styles.enablersHero}>      
           <div>
             <p>Polish your <span>skills</span> through <br /> <span>‘µLearn’</span> to make <br /> students <span>industry ready</span> !</p>
-            <button>EXPLORE MULEARN FOR ENABLERS</button>
+            {/* <button>EXPLORE MULEARN FOR ENABLERS</button> */}
           </div> 
           <img src={hero} alt="" />          
     </div>

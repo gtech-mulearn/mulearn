@@ -1,98 +1,96 @@
-.enablersHero{
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.enablersHero {
+  padding-top: 2rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.enablersHero  div{
-    margin-left: 4rem;
+.enablersHero div {
+  margin-left: 4rem;
 }
-.enablersHero  div p{
-    color: #9765FF;
-    font-family: inherit;
-    font-size: 64px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 75px;
-    padding-bottom: 2rem;
+.enablersHero div p {
+  color: #9765ff;
+  font-family: inherit;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 75px;
+  padding-bottom: 2rem;
 }
-.enablersHero  div p span{
-    background: url("../../assests/Dash.webp") no-repeat;
-    background-position: 0 50px;
+.enablersHero div p span {
+  background: url("../../assests/Dash.webp") no-repeat;
+  background-position: 0 50px;
 }
-.enablersHero  div button{
-    border-radius: 10px;
-    background: #FF7D40;
-    padding: 20px 30px;
-    color: #fff;
+.enablersHero div button {
+  border-radius: 10px;
+  background: #ff7d40;
+  padding: 20px 30px;
+  color: #fff;
 }
 
 @media (width<1250px) {
-    .enablersHero  div p{
-        font-size: 40px;
-    }
-    .enablersHero  div p span{
-        background-position: 0 35px;
-    }
-    .enablersHero img{
-        width: 50%;
-        /* height: 70%; */ 
-        aspect-ratio: 16/9;
-    }
-    .enablersHero  div button{
-        padding: 15px 20px;
-        font-size: 15px;
-    }
-
+  .enablersHero div p {
+    font-size: 40px;
+  }
+  .enablersHero div p span {
+    background-position: 0 35px;
+  }
+  .enablersHero img {
+    width: 50%;
+    /* height: 70%; */
+    /* aspect-ratio: 16/9; */
+  }
+  .enablersHero div button {
+    padding: 15px 20px;
+    font-size: 15px;
+  }
 }
 
-@media (width<990px){
-    .enablersHero  div p{
-        font-size: 30px;
-        line-height: 50px;
-        margin-top: 1rem;
-    }
-    .enablersHero  div p span{
-        background-position: 0 30px;
-    }
-    .enablersHero img{
-      width: 50%;
-      aspect-ratio: 16/9;
-    }
-    .enablersHero  div button{
-        font-size: 10px;
-    }
-
+@media (width<990px) {
+  .enablersHero div p {
+    font-size: 30px;
+    line-height: 50px;
+    margin-top: 1rem;
+  }
+  .enablersHero div p span {
+    background-position: 0 30px;
+  }
+  .enablersHero img {
+    width: 50%;
+    /* aspect-ratio: 16/9; */
+  }
+  .enablersHero div button {
+    font-size: 10px;
+  }
 }
 
-@media (width<800px){
-    .enablersHero  div p{
-        font-size: 20px;
-        padding-top: 2rem;
-        line-height: 50px;
-    }
-    .enablersHero  div p span{
-        background-position: 0 20px;
-    }
-    .enablersHero  div button{
-        font-size: 8px;
-    }
+@media (width<800px) {
+  .enablersHero div p {
+    font-size: 20px;
+    padding-top: 2rem;
+    line-height: 50px;
+  }
+  .enablersHero div p span {
+    background-position: 0 20px;
+  }
+  .enablersHero div button {
+    font-size: 8px;
+  }
 }
 
-@media (width<540px){
-    .enablersHero  div{
-        margin-left: 2rem;
-    }
-    .enablersHero  div p{
-        font-size: 18px;
-        line-height: 30px;
-    }
-    .enablersHero  div p span{
-        background-position: 0 20px;
-    }
-    .enablersHero  div button{
-        padding: 10px 10px;
-        font-size: 8px; 
-    }
+@media (width<540px) {
+  .enablersHero div {
+    margin-left: 2rem;
+  }
+  .enablersHero div p {
+    font-size: 18px;
+    line-height: 30px;
+  }
+  .enablersHero div p span {
+    background-position: 0 20px;
+  }
+  .enablersHero div button {
+    padding: 10px 10px;
+    font-size: 8px;
+  }
 }

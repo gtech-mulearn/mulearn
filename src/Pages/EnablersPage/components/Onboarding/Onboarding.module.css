@@ -48,6 +48,7 @@
     font-size: 18px;
     font-style: normal;
     font-weight: 500;
+    max-width: 50rem;
 }
 
 @media (width<750px) {
@@ -85,7 +86,7 @@
         font-size: 50px;
     }
     .onboarding .onboardingList p{
-        font-size: 10px;
+        font-size: 14px;
     }
     .onboarding .onboardingList h1  img{
         height: 30px;
