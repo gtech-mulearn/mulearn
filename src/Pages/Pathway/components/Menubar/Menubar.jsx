@@ -33,7 +33,7 @@ export default function Menubar() {
             <div className={styles.pre_rg}>
                 <a href="https://mulearn.org/r/ai-bootcamp">
                     <img src={pre} alt="Pre-register" />
-                    Pre-register
+                    Apply Now
                 </a>
             </div>
         </div>

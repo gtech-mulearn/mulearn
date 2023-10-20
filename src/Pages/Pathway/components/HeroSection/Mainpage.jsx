@@ -36,7 +36,7 @@ export default function mainpage() {
                 rel="noopener noreferrer"
               >
                 <button className={styles.Container_button_one}>
-                  <img src={pre} alt="" /> Pre apply
+                  <img src={pre} alt="" /> Apply
                 </button>
               </a>
             </div>

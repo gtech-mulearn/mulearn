@@ -6,11 +6,10 @@ const links = [
   {
     id: 1,
     title: "About MuLearn",
-    l1: "Features",
-    l2: "Success Stories",
-    l3: "Our Story",
+    l1: "Learning Circles",
+    l2: "Interest Groups",
     l4: "Careers",
-    l5: "Events",
+    l5: "Join Us",
   },
 ];
 
@@ -29,27 +28,57 @@ export default function Contact() {
                 <ul>
                   {link.l1 ? (
                     <li>
-                      <a href="/">{link.l1}</a>
+                      <a
+                        href="https://mulearn.org/"
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        {link.l1}
+                      </a>
                     </li>
                   ) : null}
                   {link.l2 ? (
                     <li>
-                      <a href="/">{link.l2}</a>
+                      <a
+                        href="https://app.mulearn.org/learning-circles"
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        {link.l2}
+                      </a>
                     </li>
                   ) : null}
                   {link.l3 ? (
                     <li>
-                      <a href="/">{link.l3}</a>
+                      <a
+                        href="https://learn.mulearn.org/"
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        {link.l3}
+                      </a>
                     </li>
                   ) : null}
                   {link.l4 ? (
                     <li>
-                      <a href="/">{link.l4}</a>
+                      <a
+                        href="https://mulearn.org/careers"
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        {link.l4}
+                      </a>
                     </li>
                   ) : null}
                   {link.l5 ? (
                     <li>
-                      <a href="/">{link.l5}</a>
+                      <a
+                        href="https://app.mulearn.org"
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        {link.l5}
+                      </a>
                     </li>
                   ) : null}
                   {link.l6 ? (
