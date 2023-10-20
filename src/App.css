@@ -11,6 +11,9 @@
     /* IE and Edge */
     scroll-behavior: smooth;
     scrollbar-width: none;
+    /* icon highlighting fix */
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
 }
 
 .css-13cymwt-control,
@@ -39,7 +42,7 @@
     --White: #ffffff;
     --Black: #1d1d1d;
     --Blue800: #00204c;
-    --InputDefaultBackground: #eff1f9;
+    --InputDefaultBackground: rgba(184, 196, 234, 0.29);
     --Error: red;
     --btn-secondary-bg: #9fb5ef;
 

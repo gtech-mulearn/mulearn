@@ -1,5 +1,10 @@
-import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
-import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import FormikReactSelect, {
+    FormikTextInput
+} from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import {
+    MuButton,
+    PowerfulButton
+} from "@/MuLearnComponents/MuButtons/MuButton";
 import { hasRole } from "@/MuLearnServices/common_functions";
 import { roles } from "@/MuLearnServices/types";
 import { useToast } from "@chakra-ui/react";
@@ -116,132 +121,113 @@ const FormData = ({ ...props }: CollegeFormProps) => {
     };
 
     const org_type = props.activeItem;
-    // console.log(country);
-    const handleSubmit = (Name: string, Code: string) => {
-        // e.preventDefault();
-        // resetStates()
-        interface SelectBodyProps {
-            Name: string;
-            Code: string;
-            country: string;
-            state: string;
-            zone: string;
-            district: string;
-            org_type: string;
-            toast: any;
-        }
 
-        const createOrUpdateOrganization = (
-            params: SelectBodyProps,
-            isCreate: boolean,
-            affiliation?: string
-        ) => {
-            // const { country, state, zone, district, org_type, toast } = params;
-            const { org_type, toast } = params;
+    // const handleSubmit = (Name: string, Code: string) => {
+    //     interface SelectBodyProps {
+    //         Name: string;
+    //         Code: string;
+    //         country: string;
+    //         state: string;
+    //         zone: string;
+    //         district: string;
+    //         org_type: string;
+    //         toast: any;
+    //     }
 
-            if (isCreate) {
-                if (org_type === "College") {
-                    createOrganization(
-                        Name,
-                        Code,
-                        country.value,
-                        state.value,
-                        zone.value,
-                        district.value,
-                        // camelCase(country),
-                        // camelCase(state),
-                        // camelCase(zone),
-                        // camelCase(district),
-                        org_type,
-                        toast,
-                        affiliation,
-                        setIsSuccess,
-                        setIsLoading
-                    );
-                } else {
-                    createOrganization(
-                        Name,
-                        Code,
-                        country.value,
-                        state.value,
-                        zone.value,
-                        district.value,
-                        // camelCase(country),
-                        // camelCase(state),
-                        // camelCase(zone),
-                        // camelCase(district),
-                        org_type,
-                        toast,
-                        "",
-                        setIsSuccess,
-                        setIsLoading
-                    );
-                }
-            } else {
-                if (org_type === "College") {
-                    updateOrganization(
-                        Name,
-                        Code,
-                        oldCode,
-                        country.value,
-                        state.value,
-                        zone.value,
-                        district.value,
-                        // camelCase(country),
-                        // camelCase(state),
-                        // camelCase(zone),
-                        // camelCase(district),
-                        org_type,
-                        toast,
-                        affiliation,
-                        setIsSuccess,
-                        setIsLoading
-                    );
-                } else {
-                    updateOrganization(
-                        Name,
-                        Code,
-                        oldCode,
-                        country.value,
-                        state.value,
-                        zone.value,
-                        district.value,
-                        // camelCase(country),
-                        // camelCase(state),
-                        // camelCase(zone),
-                        // camelCase(district),
-                        org_type,
-                        toast,
-                        "",
-                        setIsSuccess,
-                        setIsLoading
-                    );
-                }
-            }
-            setIsLoading(false);
-        };
+    //     const createOrUpdateOrganization = (
+    //         params: SelectBodyProps,
+    //         isCreate: boolean,
+    //         affiliation?: string
+    //     ) => {
+    //         const { org_type, toast } = params;
 
-        const SelectBody = (item: string) => {
-            const params: SelectBodyProps = {
-                Name,
-                Code,
-                country: country.value || props.selectedCountry,
-                state: state.value || props.selectedState,
-                zone: zone.value || props.selectedZone,
-                district: district.value || props.selectedDistrict,
-                org_type,
-                toast
-            };
+    //         if (isCreate) {
+    //             if (org_type === "College") {
+    //                 createOrganization(
+    //                     Name,
+    //                     Code,
+    //                     country.value,
+    //                     state.value,
+    //                     zone.value,
+    //                     district.value,
+    //                     org_type,
+    //                     toast,
+    //                     affiliation,
+    //                     setIsSuccess,
+    //                     setIsLoading
+    //                 );
+    //             } else {
+    //                 createOrganization(
+    //                     Name,
+    //                     Code,
+    //                     country.value,
+    //                     state.value,
+    //                     zone.value,
+    //                     district.value,
+    //                     org_type,
+    //                     toast,
+    //                     "",
+    //                     setIsSuccess,
+    //                     setIsLoading
+    //                 );
+    //             }
+    //         } else {
+    //             if (org_type === "College") {
+    //                 updateOrganization(
+    //                     Name,
+    //                     Code,
+    //                     oldCode,
+    //                     country.value,
+    //                     state.value,
+    //                     zone.value,
+    //                     district.value,
+    //                     org_type,
+    //                     toast,
+    //                     affiliation,
+    //                     setIsSuccess,
+    //                     setIsLoading
+    //                 );
+    //             } else {
+    //                 updateOrganization(
+    //                     Name,
+    //                     Code,
+    //                     oldCode,
+    //                     country.value,
+    //                     state.value,
+    //                     zone.value,
+    //                     district.value,
+    //                     org_type,
+    //                     toast,
+    //                     "",
+    //                     setIsSuccess,
+    //                     setIsLoading
+    //                 );
+    //             }
+    //         }
+    //         setIsLoading(false);
+    //     };
 
-            createOrUpdateOrganization(
-                params,
-                props.isCreate,
-                affiliation.value
-            );
-        };
+    //     const SelectBody = (item: string) => {
+    //         const params: SelectBodyProps = {
+    //             Name,
+    //             Code,
+    //             country: country.value || props.selectedCountry,
+    //             state: state.value || props.selectedState,
+    //             zone: zone.value || props.selectedZone,
+    //             district: district.value || props.selectedDistrict,
+    //             org_type,
+    //             toast
+    //         };
 
-        SelectBody(org_type);
-    };
+    //         createOrUpdateOrganization(
+    //             params,
+    //             props.isCreate,
+    //             affiliation.value
+    //         );
+    //     };
+
+    //     SelectBody(org_type);
+    // };
 
     useEffect(() => {
         if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
@@ -385,7 +371,6 @@ const FormData = ({ ...props }: CollegeFormProps) => {
 
     const handleAffiliationChange = (option: any) => {
         if (option) {
-            console.log(option);
             setAffiliation(option);
             setSelectedAffiliation(option.value as string);
         }
@@ -415,20 +400,17 @@ const FormData = ({ ...props }: CollegeFormProps) => {
             setSelectedDistrict(option.value as string);
         }
     };
-
     return (
         <>
             <Formik
                 initialValues={{
                     Name: props.inputName || "",
                     Code: props.inputCode || "",
-                    Country: country.value || "",
+                    Country: props.selectedCountry || "",
                     Affiliation: props.selectedAffiliation || "",
-                    State: state.value || "",
-                    Zone: zone.value || "",
-                    District: district.value || ""
-                    // acceptedTerms: false, // added for our checkbox
-                    // jobType: "" // added for our select
+                    State: props.selectedState || "",
+                    Zone: props.selectedZone || "",
+                    District: props.selectedDistrict || ""
                 }}
                 validationSchema={Yup.object({
                     Name: Yup.string()
@@ -445,7 +427,17 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                 })}
                 onSubmit={values => {
                     setIsLoading(true);
-                    handleSubmit(values.Name, values.Code);
+                    updateOrganization(
+                        values.Name,
+                        values.Code,
+                        oldCode,
+                        values.District,
+                        props.activeItem,
+                        toast as any,
+                        values.Affiliation,
+                        setIsSuccess,
+                        setIsLoading
+                    );
                 }}
             >
                 <Form className={orgStyles.popupDropdownContainer}>
@@ -468,77 +460,86 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                     {props.activeItem === "College" ? (
                         <div className={orgStyles.inputFieldContainer}>
                             <p>Affiliated University</p>
-                            <Select
+                            <FormikReactSelect
+                                name="Affiliation"
+                                label="Affiliation"
+                                addOnChange={handleAffiliationChange}
+                                options={affiliationData}
+                                required
+                            />
+                            {/* <Select
                                 value={affiliationData?.find(
                                     affiliation =>
                                         affiliation.value ===
                                         selectedAffiliation
                                 )}
-                                name="Affiliation"
-                                onChange={handleAffiliationChange}
-                                options={affiliationData}
-                                required
-                            />
+                            /> */}
                         </div>
                     ) : null}
                     <div className={orgStyles.inputFieldContainer}>
                         <p>Country</p>
-                        <Select
+                        <FormikReactSelect
+                            name="Country"
+                            label="Country"
+                            addOnChange={handleCountryChange}
+                            options={countryData}
+                            required
+                        />
+                        {/* <Select
                             value={countryData?.find(
                                 country =>
                                     country.value ===
                                     selectedCountry.toLowerCase()
                             )}
-                            name="Country"
-                            onChange={handleCountryChange}
-                            options={countryData}
-                            required
-                        />
+                            
+                        /> */}
                     </div>
                     <div className={orgStyles.inputFieldContainer}>
                         <p>State</p>
-                        <Select
-                            value={statesData?.find(
-                                state =>
-                                    state.value === selectedState.toLowerCase()
-                            )}
+                        <FormikReactSelect
+                            // value={statesData?.find(
+                            //     state =>
+                            //         state.value === selectedState.toLowerCase()
+                            // )}
                             name="State"
-                            onChange={handleStateChange}
+                            label="State"
+                            addOnChange={handleStateChange}
                             options={statesData}
                             required
-                            // isDisabled={props.isCreate && selectedCountry ? false : true }
                         />
                     </div>
                     <div className={orgStyles.inputFieldContainer}>
                         <p>Zone</p>
-                        <Select
-                            value={
-                                selectedZone.length > 0 &&
-                                zonesData?.find(
-                                    zone =>
-                                        zone.value ===
-                                        selectedZone.toLowerCase()
-                                )
-                            }
+                        <FormikReactSelect
+                            // value={
+                            //     selectedZone.length > 0 &&
+                            //     zonesData?.find(
+                            //         zone =>
+                            //             zone.value ===
+                            //             selectedZone.toLowerCase()
+                            //     )
+                            // }
                             name="Zone"
-                            onChange={handleZoneChange}
+                            label="Zone"
+                            addOnChange={handleZoneChange}
                             options={zonesData}
                             required
                         />
                     </div>
                     <div className={orgStyles.inputFieldContainer}>
                         <p>District</p>
-                        <Select
-                            value={
-                                selectedDistrict.length > 0 &&
-                                districtsData?.find(
-                                    district =>
-                                        district.value ===
-                                        selectedDistrict.toLowerCase()
-                                )
-                            }
+                        <FormikReactSelect
+                            // value={
+                            //     selectedDistrict.length > 0 &&
+                            //     districtsData?.find(
+                            //         district =>
+                            //             district.value ===
+                            //             selectedDistrict.toLowerCase()
+                            //     )
+                            // }
                             name="District"
-                            onChange={handleDistrictChange}
+                            label="District"
+                            addOnChange={handleDistrictChange}
                             options={districtsData}
                             required
                         />
@@ -546,16 +547,15 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                     <div
                         className={`${orgStyles.inputFieldContainer} grid-container`}
                     >
-                        {/* <div className="btn light-btn" onClick={resetStates}>
-                            Decline
-                        </div> */}
                         <PowerfulButton
                             type="button"
                             className="btn light-btn"
                             onClick={() => {
                                 navigate("/dashboard/organizations");
                             }}
-                        >Decline</PowerfulButton>
+                        >
+                            Decline
+                        </PowerfulButton>
                         <button
                             type="submit"
                             className="btn blue-btn"

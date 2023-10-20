@@ -1,5 +1,11 @@
 import { useState } from "react";
 import styles from "./MuVoyage.module.css";
+import level1 from "../assets/images/Level1.webp";
+import level2 from "../assets/images/Level2.webp";
+import level3 from "../assets/images/Level3.webp";
+import level4 from "../assets/images/Level4.webp";
+import level5 from "../assets/images/Level5.webp";
+import level6 from "../assets/images/Level6.webp";
 import {
     Progress,
     CircularProgress,
@@ -21,6 +27,8 @@ type Props = {
     userLevel: number;
 };
 
+const levelImages = [level1, level2, level3, level4, level5, level6];
+
 const MuVoyage = (props: Props) => {
     const [userLevelData, setUserLevelData] = useState(props.userLevelData);
     const [userLevelTrack, setUserLevelTrack] = useState(
@@ -30,10 +38,10 @@ const MuVoyage = (props: Props) => {
         e => e.completed
     )
         ? `${(
-            (userLevelTrack?.tasks.filter(e => e.completed).length /
-                userLevelTrack?.tasks.length) *
-            100
-        ).toFixed(0)}`
+              (userLevelTrack?.tasks.filter(e => e.completed).length /
+                  userLevelTrack?.tasks.length) *
+              100
+          ).toFixed(0)}`
         : "100";
     // console.log(userLevelTrack);
     return (
@@ -42,7 +50,13 @@ const MuVoyage = (props: Props) => {
                 <div className={styles.tasks}>
                     <div className={styles.topSection}>
                         <div className={styles.title}>
-                            <span></span>
+                            <span>
+                                <img
+                                    src={levelImages[props.userLevel - 1]}
+                                    alt={`Level ${props.userLevel}`}
+                                />
+                                {/* <img src={level1} alt="" /> */}
+                            </span>
                             <div className={styles.title_desc}>
                                 <p>{userLevelTrack?.name}</p>
                                 {/* <p>Level2 - Task 1</p> */}
@@ -141,20 +155,20 @@ const MuVoyage = (props: Props) => {
                                                             e => e.completed
                                                         )
                                                             ? (levelData?.tasks.filter(
-                                                                e =>
-                                                                    e.completed
-                                                            ).length /
-                                                                levelData
-                                                                    ?.tasks
-                                                                    .length) *
-                                                            100
+                                                                  e =>
+                                                                      e.completed
+                                                              ).length /
+                                                                  levelData
+                                                                      ?.tasks
+                                                                      .length) *
+                                                              100
                                                             : 100
                                                     }
                                                     color="green.400"
                                                     thickness="12px"
                                                     size="15px"
                                                     capIsRound={true}
-                                                // trackColor="red.100"
+                                                    // trackColor="red.100"
                                                 >
                                                     {levelData?.tasks.every(
                                                         e => e.completed
@@ -185,17 +199,17 @@ const MuVoyage = (props: Props) => {
                                                     Mine Left:{" "}
                                                     {Math.max(
                                                         levelData.karma -
-                                                        levelData?.tasks
-                                                            .filter(
-                                                                e =>
-                                                                    e.completed
-                                                            )
-                                                            .reduce(
-                                                                (a, b) =>
-                                                                    a +
-                                                                    b.karma,
-                                                                0
-                                                            ),
+                                                            levelData?.tasks
+                                                                .filter(
+                                                                    e =>
+                                                                        e.completed
+                                                                )
+                                                                .reduce(
+                                                                    (a, b) =>
+                                                                        a +
+                                                                        b.karma,
+                                                                    0
+                                                                ),
                                                         0
                                                     )}{" "}
                                                     Karma
@@ -212,7 +226,6 @@ const MuVoyage = (props: Props) => {
                                                         (taskData, j) => {
                                                             return (
                                                                 <li key={j}>
-
                                                                     <input
                                                                         type="checkbox"
                                                                         name="accordion"
@@ -234,7 +247,13 @@ const MuVoyage = (props: Props) => {
                                                                         {
                                                                             taskData.task_name
                                                                         }
-                                                                        <a href={taskData.discord_link} target="_blank" rel="noopener noreferrer">
+                                                                        <a
+                                                                            href={
+                                                                                taskData.discord_link
+                                                                            }
+                                                                            target="_blank"
+                                                                            rel="noopener noreferrer"
+                                                                        >
                                                                             <span>
                                                                                 {
                                                                                     taskData.hashtag
@@ -246,7 +265,6 @@ const MuVoyage = (props: Props) => {
                                                                                 " ϰ"}
                                                                         </p>
                                                                     </label>
-
                                                                 </li>
                                                             );
                                                         }
@@ -258,7 +276,7 @@ const MuVoyage = (props: Props) => {
                             })}
                     </ul>
                 </div>
-            </div >
+            </div>
         </>
     );
 };

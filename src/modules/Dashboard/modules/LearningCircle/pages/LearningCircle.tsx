@@ -27,7 +27,7 @@ import Modal from "@/MuLearnComponents/Modal/Modal";
 import data from "../data/data.json";
 import { BsFillBookmarksFill } from "react-icons/bs";
 import { TbArrowsTransferUp } from "react-icons/tb";
-import Select from 'react-select';
+import Select from "react-select";
 
 type Props = {};
 
@@ -37,7 +37,7 @@ const generateTimeOptions = () => {
 
     for (let i = 1; i <= 12; i++) {
         for (let interval of intervals) {
-            const time = `${i.toString().padStart(2, '0')}:${interval}`;
+            const time = `${i.toString().padStart(2, "0")}:${interval}`;
             options.push({ value: time + " AM", label: time + " AM" });
             options.push({ value: time + " PM", label: time + " PM" });
         }
@@ -64,9 +64,9 @@ const LearningCircle = (props: Props) => {
     const [openRemoveConfrim, setOpenRemoveConfirm] = useState(false);
     const [resourceLink, setResourceLink] = useState("");
     const [username, setUsername] = useState("");
-    const [deleteUserId, setDeleteUserId] = useState<string>("");
+    const [userId, setUserId] = useState<string>("");
 
-    const [transferConfirm,setTransferConfirm] = useState(false); 
+    const [transferConfirm, setTransferConfirm] = useState(false);
 
     const { id } = useParams();
     const navigate = useNavigate();
@@ -112,7 +112,6 @@ const LearningCircle = (props: Props) => {
             }));
         }
     }, []);
-
 
     useEffect(() => {
         if (lc && !lc.is_member && lc?.circle_code?.length > 0) {
@@ -191,8 +190,9 @@ const LearningCircle = (props: Props) => {
         removeMember(circle, id, navigate);
     }
 
-    function handleTransfer(circle: string | undefined, id: string): void {
-        transferLead(circle, id, navigate);
+    function handleTransfer(circle: string): void {
+        console.log("New Lead", userId);
+        transferLead(circle, userId, navigate);
         setTimeout(() => {
             navigate(`/dashboard/learning-circle/details/${id}`);
         }, 4000);
@@ -202,7 +202,7 @@ const LearningCircle = (props: Props) => {
         const isInvalid = validAvatar.find(id => member.id === id);
         return isInvalid ? pic : member?.profile_pic || pic;
     }
-
+    console.log(lc);
     return (
         <>
             {temp ? (
@@ -272,8 +272,16 @@ const LearningCircle = (props: Props) => {
                                 <Modal
                                     setIsOpen={setIsOpen}
                                     id={"Leave"}
-                                    heading={"Leave Learning Circle"}
-                                    content={`Are you sure you want to leave ${lc?.name} ?`}
+                                    heading={
+                                        lc?.members.length === 1
+                                            ? "Delete Learning Circle"
+                                            : "Leave Learning Circle"
+                                    }
+                                    content={
+                                        lc?.members.length === 1
+                                            ? "Since you are the last member, the circle will be deleted, Once you leave."
+                                            : `Are you sure you want to leave ${lc?.name} ?`
+                                    }
                                     click={handleLeave}
                                     type="Leave"
                                 />
@@ -372,9 +380,7 @@ const LearningCircle = (props: Props) => {
                                             </p>
                                         </div>
 
-
                                         <div className={styles.dateandtime}>
-
                                             <Select
                                                 options={generateTimeOptions()}
                                                 value={generateTimeOptions().find(
@@ -384,23 +390,38 @@ const LearningCircle = (props: Props) => {
                                                 )}
                                                 isSearchable={false}
                                                 onChange={e => {
-                                                    function convertTo24Hr(time: string) {
-                                                        const [timeStr, modifier] = time.split(' ');
-                                                        let [hours, minutes] = timeStr.split(':');
-                                                        if (hours === '12') {
-                                                            hours = '00';
+                                                    function convertTo24Hr(
+                                                        time: string
+                                                    ) {
+                                                        const [
+                                                            timeStr,
+                                                            modifier
+                                                        ] = time.split(" ");
+                                                        let [hours, minutes] =
+                                                            timeStr.split(":");
+                                                        if (hours === "12") {
+                                                            hours = "00";
                                                         }
-                                                        if (modifier === 'PM') {
-                                                            hours = String(parseInt(hours, 10) + 12);
+                                                        if (modifier === "PM") {
+                                                            hours = String(
+                                                                parseInt(
+                                                                    hours,
+                                                                    10
+                                                                ) + 12
+                                                            );
                                                         }
                                                         return `${hours}:${minutes}`;
                                                     }
                                                     // console.log(e.value);
-                                                    e && setMeetTime(convertTo24Hr(e.value.toString()));
+                                                    e &&
+                                                        setMeetTime(
+                                                            convertTo24Hr(
+                                                                e.value.toString()
+                                                            )
+                                                        );
                                                 }}
                                                 className={styles.inputTime}
                                             />
-
 
                                             <input
                                                 required
@@ -731,9 +752,18 @@ const LearningCircle = (props: Props) => {
                                                         alt="Profile Picture"
                                                     />
                                                     <div>
-
-                                                        <div className={styles.username}>
-                                                            <p>{member.username} {member.is_lead && "(Lead)"}</p>
+                                                        <div
+                                                            className={
+                                                                styles.username
+                                                            }
+                                                        >
+                                                            <p>
+                                                                {
+                                                                    member.username
+                                                                }{" "}
+                                                                {member.is_lead &&
+                                                                    "(Lead)"}
+                                                            </p>
                                                         </div>
                                                         <span>
                                                             <img
@@ -747,25 +777,31 @@ const LearningCircle = (props: Props) => {
                                                 {lc.is_lead &&
                                                     !member.is_lead && (
                                                         <div>
-                                                           
                                                             <TbArrowsTransferUp
                                                                 size={24}
                                                                 onClick={() => {
                                                                     setTransferConfirm(
                                                                         true
                                                                     );
-                                                                    setUsername(member?.username)
+                                                                    setUsername(
+                                                                        member?.username
+                                                                    );
+                                                                    setUserId(
+                                                                        member?.id
+                                                                    );
                                                                 }}
                                                             />
                                                             {transferConfirm && (
                                                                 <Modal
                                                                     click={() => {
-                                                                        handleTransfer(
-                                                                            id,
-                                                                            member.id
+                                                                        console.log(
+                                                                            member
                                                                         );
+                                                                        id &&
+                                                                            handleTransfer(
+                                                                                id
+                                                                            );
                                                                     }}
-
                                                                     content={`Are you want to transfer lead to ${username} of ${lc.name} ?`}
                                                                     heading={
                                                                         "Transfer Lead Position"
@@ -790,8 +826,12 @@ const LearningCircle = (props: Props) => {
                                                                     setOpenRemoveConfirm(
                                                                         true
                                                                     );
-                                                                    setUsername(member?.username)
-                                                                    setDeleteUserId(member?.id)
+                                                                    setUsername(
+                                                                        member?.username
+                                                                    );
+                                                                    setUserId(
+                                                                        member?.id
+                                                                    );
                                                                 }}
                                                             />
                                                             {openRemoveConfrim && (
@@ -799,10 +839,9 @@ const LearningCircle = (props: Props) => {
                                                                     click={() => {
                                                                         handleRemove(
                                                                             id,
-                                                                            deleteUserId
+                                                                            userId
                                                                         );
                                                                     }}
-
                                                                     content={`Are you want to remove ${username} from ${lc.name}?`}
                                                                     heading={
                                                                         "Remove user from Learning Cicle"

@@ -41,6 +41,7 @@ export const dashboardRoutes = {
     getUsersEditData: "/api/v1/dashboard/user/edit/",
     getUsersList: "/api/v1/dashboard/user/csv/",
     getUsersRoleVerificationData: "/api/v1/dashboard/user/verification/",
+    getUserRoleVerificationCSV: "/api/v1/dashboard/user/verification/csv/",
     getTasksData: "/api/v1/dashboard/task/",
     getRolesData: "/api/v1/dashboard/roles/",
     getRolesList: "api/v1/dashboard/roles/csv/",
@@ -129,6 +130,7 @@ export const dashboardRoutes = {
     getZonalStudentLevels: "api/v1/dashboard/zonal/student-level/",
 
     collegeLevels: "api/v1/dashboard/college/",
+    collegeLevlesDelete: "api/v1/dashboard/college/delete/",
 
     //Dyanmic Type
     dtGetRoles: "api/v1/dashboard/dynamic-management/roles/",
@@ -184,4 +186,5 @@ export const PublicRoutes = {
     getRandomLc: "/api/v1/dashboard/lc/list/",
     getLcDashboard: "/api/v1/get-log/lc-dashboard/",
     getLcReport: "/api/v1/get-log/lc-report/",
+    getOrgWiseReport: "/api/v1/get-log/college-wise-lc-report/"
 } as const;

@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, ReactElement, useEffect, useState } from "react";
 import styles from "./Table.module.css";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
@@ -6,6 +6,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { HiOutlinePencil } from "react-icons/hi";
 import Modal from "../Modal/Modal";
 import MuLoader from "../MuLoader/MuLoader";
+import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 
 enum ModalType {
     Verify,
@@ -41,6 +42,7 @@ type TableProps = {
         column: string;
         Label: string;
         isSortable: boolean;
+        wrap?: (data: string) => ReactJSXElement;
     }[];
     id?: string[];
     onEditClick?: (column: string | number | boolean) => void;
@@ -85,7 +87,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
         }
     };
 
-    function convertToNormalDate(dateString: any): string | null {
+    function convertToNormalDate(dateString: any): string {
         const numberRegex = /^[0-9]+$/;
         if (String(dateString) == "true") {
             return "true";
@@ -159,9 +161,16 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                             }`}
                                             key={column.column}
                                         >
-                                            {convertToNormalDate(
-                                                rowData[column.column]
-                                            )}
+                                            {column.wrap
+                                                ? column.wrap(
+                                                      convertToNormalDate(
+                                                          rowData[column.column]
+                                                      )
+                                                  )
+                                                : convertToNormalDate(
+                                                      rowData[column.column]
+                                                  )}
+                                            {}
                                         </td>
                                     ))}
                                     {props.id &&
