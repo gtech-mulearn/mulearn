@@ -32,7 +32,14 @@ const ForgetPassword = () => {
     });
 
     const onSubmit = (values: any) => {
-        console.log(values);
+        if (values.emailOrMuId.length > 0) {
+            forgetPassword(
+                values.emailOrMuId,
+                toast,
+                navigate,
+                setShowLoader
+            );
+        }
     }
 
     return (
@@ -70,14 +77,6 @@ const ForgetPassword = () => {
                                             type="submit"
                                             onClick={e => {
                                                 e.preventDefault();
-                                                if (formik.values.emailOrMuId.length > 0) {
-                                                    forgetPassword(
-                                                        formik.values.emailOrMuId,
-                                                        toast,
-                                                        navigate,
-                                                        setShowLoader
-                                                    );
-                                                }
                                             }}
                                             isLoading={showLoader}
                                         >
