@@ -214,6 +214,8 @@ import KKEMEventBeyondUs from "./modules/Public/KKEM/modules/KKEMEventTemplate/K
 import LearningCircles from "./modules/Public/KKEM/modules/Dashboard/LearningCircles/LearningCircles";
 import ForgetPassword from "./modules/Common/Authentication/pages/Onboarding/ForgetPassword/ForgetPassword";
 import ResetPassword from "./modules/Common/Authentication/pages/Onboarding/ResetPassword/ResetPassword";
+import LcDashboard from "./modules/Dashboard/modules/LearningCircle/pages/LcDashboard";
+import { Toaster } from "react-hot-toast";
 
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
@@ -579,6 +581,10 @@ function App() {
                             element: <LearningCircle />
                         },
                         {
+                            path: "learning-circle/dashboard",
+                            element: <LcDashboard />
+                        },
+                        {
                             path: "learning-circle/find-circle",
                             element: <FindCircle />
                         },
@@ -642,7 +648,13 @@ function App() {
         }
     ]);
 
-    return <RouterProvider router={router} />;
+    return (
+        <>
+            <RouterProvider router={router} />
+            <Toaster position="bottom-center" reverseOrder={true} />
+        </>
+    );
+	
 }
 
 export default App;

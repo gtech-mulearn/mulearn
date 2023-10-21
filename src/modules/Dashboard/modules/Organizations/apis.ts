@@ -389,3 +389,28 @@ export const getInfo = async (code: string) => {
         const error = err as AxiosError;
     }
 };
+
+
+// !New API for Org
+
+export const addNewOrganization = async (data: {
+    country: string;
+    state: string;
+    district: string;
+    affiliation: string;
+    code: string;
+    org_type: string;
+    title: string;
+}) => {
+    if (data.org_type !== "College") {
+        delete (data as any).affiliation;
+    }
+	console.log(data);
+    try {
+        const response = await privateGateway.post(organizationRoutes.createOrganisation, data);
+        return response?.data;
+
+    } catch (err: any) {
+        throw err.response.data;
+    }
+};
