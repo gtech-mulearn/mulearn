@@ -122,112 +122,62 @@ const FormData = ({ ...props }: CollegeFormProps) => {
 
     const org_type = props.activeItem;
 
-    // const handleSubmit = (Name: string, Code: string) => {
-    //     interface SelectBodyProps {
-    //         Name: string;
-    //         Code: string;
-    //         country: string;
-    //         state: string;
-    //         zone: string;
-    //         district: string;
-    //         org_type: string;
-    //         toast: any;
-    //     }
+    const handleSubmit = (
+        Name: string,
+        Code: string,
+        district: string,
+        country?: string,
+        state?: string,
+        zone?: string,
+        affiliation?: string
+    ) => {
+        setIsLoading(true);
+        console.log(affiliation);
+        if (props.isCreate) {
+            createOrganization(
+                Name,
+                Code,
+                country!,
+                state!,
+                zone!,
+                district,
+                org_type,
+                toast,
+                affiliation ? affiliation : "",
+                setIsSuccess,
+                setIsLoading
+            );
+        } else {
+            updateOrganization(
+                Name,
+                Code,
+                oldCode,
+                district,
+                props.activeItem,
+                toast as any,
+                affiliation ? affiliation : "",
+                setIsSuccess,
+                setIsLoading
+            );
+        }
+        setIsLoading(false);
 
-    //     const createOrUpdateOrganization = (
-    //         params: SelectBodyProps,
-    //         isCreate: boolean,
-    //         affiliation?: string
-    //     ) => {
-    //         const { org_type, toast } = params;
+        // const SelectBody = (item: string) => {
+        //     const params: SelectBodyProps = {
+        //         Name,
+        //         Code,
+        //         country: country.value || props.selectedCountry,
+        //         state: state.value || props.selectedState,
+        //         zone: zone.value || props.selectedZone,
+        //         district: district.value || props.selectedDistrict,
+        //         org_type,
+        //         toast
+        //     };
 
-    //         if (isCreate) {
-    //             if (org_type === "College") {
-    //                 createOrganization(
-    //                     Name,
-    //                     Code,
-    //                     country.value,
-    //                     state.value,
-    //                     zone.value,
-    //                     district.value,
-    //                     org_type,
-    //                     toast,
-    //                     affiliation,
-    //                     setIsSuccess,
-    //                     setIsLoading
-    //                 );
-    //             } else {
-    //                 createOrganization(
-    //                     Name,
-    //                     Code,
-    //                     country.value,
-    //                     state.value,
-    //                     zone.value,
-    //                     district.value,
-    //                     org_type,
-    //                     toast,
-    //                     "",
-    //                     setIsSuccess,
-    //                     setIsLoading
-    //                 );
-    //             }
-    //         } else {
-    //             if (org_type === "College") {
-    //                 updateOrganization(
-    //                     Name,
-    //                     Code,
-    //                     oldCode,
-    //                     country.value,
-    //                     state.value,
-    //                     zone.value,
-    //                     district.value,
-    //                     org_type,
-    //                     toast,
-    //                     affiliation,
-    //                     setIsSuccess,
-    //                     setIsLoading
-    //                 );
-    //             } else {
-    //                 updateOrganization(
-    //                     Name,
-    //                     Code,
-    //                     oldCode,
-    //                     country.value,
-    //                     state.value,
-    //                     zone.value,
-    //                     district.value,
-    //                     org_type,
-    //                     toast,
-    //                     "",
-    //                     setIsSuccess,
-    //                     setIsLoading
-    //                 );
-    //             }
-    //         }
-    //         setIsLoading(false);
-    //     };
+        // };
 
-    //     const SelectBody = (item: string) => {
-    //         const params: SelectBodyProps = {
-    //             Name,
-    //             Code,
-    //             country: country.value || props.selectedCountry,
-    //             state: state.value || props.selectedState,
-    //             zone: zone.value || props.selectedZone,
-    //             district: district.value || props.selectedDistrict,
-    //             org_type,
-    //             toast
-    //         };
-
-    //         createOrUpdateOrganization(
-    //             params,
-    //             props.isCreate,
-    //             affiliation.value
-    //         );
-    //     };
-
-    //     SelectBody(org_type);
-    // };
+        // SelectBody(org_type);
+    };
 
     useEffect(() => {
         if (!hasRole([roles.ADMIN, roles.FELLOW])) navigate("/404");
@@ -423,20 +373,20 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                     State: Yup.string().required("Required"),
                     Zone: Yup.string().required("Required"),
                     District: Yup.string().required("Required"),
-                    Affiliation: Yup.string().required("Required")
+                    ...(org_type === "College" && {
+                        Affiliation: Yup.string().required("Required")
+                    })
                 })}
                 onSubmit={values => {
                     setIsLoading(true);
-                    updateOrganization(
+                    handleSubmit(
                         values.Name,
                         values.Code,
-                        oldCode,
                         values.District,
-                        props.activeItem,
-                        toast as any,
-                        values.Affiliation,
-                        setIsSuccess,
-                        setIsLoading
+                        values.Country,
+                        values.State,
+                        values.Zone,
+                        values.Affiliation
                     );
                 }}
             >
