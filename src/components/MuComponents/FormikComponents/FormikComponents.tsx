@@ -100,14 +100,15 @@ export type Option = {
     value: string | boolean | number;
 };
 
-const customStyles: any = {
+const customStyles = {
     control: (provided: any) => ({
         ...provided,
         backgroundColor: "white",
         border: ".1px solid #CFD3D4",
         borderRadius: "10px",
-        // width: "100%",
+        width: "100%",
         padding: ".3rem .4rem"
+
         // minWidth: "200px"
     })
 };
@@ -152,7 +153,7 @@ const FormikReactSelect: React.FC<FormikSelectProps> = ({
         }
         return options.find(option => option.value === field.value) || null;
     };
-    console.log(addStyles);
+    console.log({ ...customStyles, ...addStyles });
     return (
         <div className={styles.InputSet}>
             <label className={styles.formLabel} htmlFor={name}>
@@ -170,7 +171,12 @@ const FormikReactSelect: React.FC<FormikSelectProps> = ({
                 options={options}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                styles={{ ...customStyles, ...addStyles }}
+                styles={{
+                    control: provided => ({
+                        ...customStyles.control(provided),
+                        ...addStyles
+                    })
+                }}
             />
             {meta.touched && meta.error && (
                 <div className={styles.error}>{meta.error}</div>
