@@ -213,6 +213,7 @@ import KKEMEventBeyondUs from "./modules/Public/KKEM/modules/KKEMEventTemplate/K
 
 import LearningCircles from "./modules/Public/KKEM/modules/Dashboard/LearningCircles/LearningCircles";
 import LcDashboard from "./modules/Dashboard/modules/LearningCircle/pages/LcDashboard";
+import { Toaster } from "react-hot-toast";
 
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
@@ -645,7 +646,13 @@ function App() {
         }
     ]);
 
-    return <RouterProvider router={router} />;
+    return (
+        <>
+            <RouterProvider router={router} />
+            <Toaster position="bottom-center" reverseOrder={true} />
+        </>
+    );
+	
 }
 
 export default App;
