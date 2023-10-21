@@ -273,7 +273,7 @@ function App() {
         },
         {
             path: "/",
-            element: <PrivateRoutes />,
+          element: <PrivateRoutes />,
             children: [
                 {
                     path: "/dashboard",

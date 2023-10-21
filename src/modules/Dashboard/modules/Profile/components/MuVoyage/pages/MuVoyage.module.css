@@ -165,6 +165,21 @@
     .icon_down_arrow {
     transform: rotate(180deg);
 }
+.discord{
+    height: 24px;
+    width: 24px;
+    transition: transform 0.2s;
+}
+.discordContainer {
+    display: inline-block;
+    vertical-align:-40%;
+    margin-left: 5px; 
+}
+.discord:hover{
+    transform: scale(1.15);
+}
+
+
 
 .main_task .tasks .accordion .main_list .content .list_list li {
     display: flex;
@@ -196,7 +211,10 @@
     border-radius: 3px;
     font-size: 12px;
     width: fit-content;
+    
 }
+
+
 
 .main_task .tasks .accordion .main_list .content .list_list li label p {
     position: absolute;
@@ -206,6 +224,7 @@
     display: flex;
     align-items: flex-end;
 }
+
 
 @media (max-width: 700px) {
     .main_task {
