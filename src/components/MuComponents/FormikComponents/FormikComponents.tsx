@@ -106,9 +106,9 @@ const customStyles: any = {
         backgroundColor: "white",
         border: ".1px solid #CFD3D4",
         borderRadius: "10px",
-        width: "100%",
-        padding: ".3rem .4rem",
-        minWidth: "200px"
+        // width: "100%",
+        padding: ".3rem .4rem"
+        // minWidth: "200px"
     })
 };
 
@@ -152,6 +152,7 @@ const FormikReactSelect: React.FC<FormikSelectProps> = ({
         }
         return options.find(option => option.value === field.value) || null;
     };
+    console.log(addStyles);
     return (
         <div className={styles.InputSet}>
             <label className={styles.formLabel} htmlFor={name}>

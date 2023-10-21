@@ -11,7 +11,7 @@ function EditOrganization() {
     const navigate = useNavigate();
     const location = useLocation();
     const [loading, setLoading] = useState(true);
-    console.log(location);
+    // console.log(location);
     const { activeItem, rowId } = location.state;
 
     const [inputName, setInputName] = useState("");
@@ -25,13 +25,14 @@ function EditOrganization() {
     useEffect(() => {
         getInfo(rowId)
             .then(data => {
+                // console.log(data);
                 setInputName(data.title);
                 setInputCode(data.code);
                 setSelectedCountry(data.country_uuid);
                 setSelectedState(data.state_uuid);
                 setSelectedZone(data.zone_uuid);
                 setSelectedDistrict(data.district_uuid);
-                setSelectedAffiliation(data.affiliation_name_uuid);
+                setSelectedAffiliation(data.affiliation_uuid);
                 setLoading(false);
             })
             .catch(error => {
@@ -39,7 +40,15 @@ function EditOrganization() {
                 setLoading(false);
             });
     }, []);
-
+    console.log(
+        inputName,
+        inputCode,
+        selectedCountry,
+        selectedState,
+        selectedZone,
+        selectedDistrict,
+        selectedAffiliation
+    );
     const RenderFormData = ({ activeItem }: any) => {
         switch (activeItem) {
             case "College":
