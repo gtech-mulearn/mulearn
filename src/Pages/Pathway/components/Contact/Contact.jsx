@@ -29,7 +29,7 @@ export default function Contact() {
                   {link.l1 ? (
                     <li>
                       <a
-                        href="https://mulearn.org/"
+                        href="https://app.mulearn.org/learning-circle"
                         rel="noreferrer"
                         target="_blank"
                       >
@@ -40,7 +40,7 @@ export default function Contact() {
                   {link.l2 ? (
                     <li>
                       <a
-                        href="https://app.mulearn.org/learning-circles"
+                        href="https://learn.mulearn.org/"
                         rel="noreferrer"
                         target="_blank"
                       >
