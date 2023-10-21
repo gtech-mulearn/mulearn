@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import {
     getColleges,
     getDepartments,
+    getRoles,
     submitUserData
 } from "../../../services/newOnboardingApis";
 import ReactSelect from "react-select";
@@ -48,9 +49,13 @@ export default function CollegePage() {
     const location = useLocation();
     let userData: any = location.state as Object;
 
+
+
     const [isloading, setIsLoading] = useState(true);
     const [colleges, setColleges] = useState([{ id: "", title: "" }]);
     const [departments, setDepartments] = useState([{ id: "", title: "" }]);
+    const [roles, setRoles] = useState([{ id: "", title: "" }]);
+    const [selectedRole, setSelectedRole] = useState<string>("");
 
     const [selectedCollege, setSelectedCollege] = useState({
         id: "",
@@ -73,8 +78,18 @@ export default function CollegePage() {
                 setIsLoading: setIsLoading,
                 setDepartments: setDepartments
             });
+            getRoles({
+                setIsLoading: setIsLoading,
+                setRoles: setRoles
+            });
+
+
         }
     }, []);
+
+    useEffect(() => {
+        setSelectedRole(roles.find((role: any) => role.id === userData.role)?.title || '');
+    }, [userData, roles]);
 
     const onSubmit = async (values: any) => {
         const newUserData: any = {
@@ -95,11 +110,14 @@ export default function CollegePage() {
         };
 
         if (userData.role) newUserData.user["role"] = userData.role;
-        
+
         if (userData.param) {
             newUserData["integration"]["param"] = userData.param;
             newUserData["integration"]["title"] = "DWMS";
         }
+
+        if (userData.role === "Enabler")
+            delete newUserData.organization.year_of_graduation;
 
         submitUserData({
             setIsLoading: setIsLoading,
@@ -174,7 +192,7 @@ export default function CollegePage() {
                                         }}
                                     />
                                 </div>
-                                <div className={styles.inputBox}>
+                                {selectedRole === "Student" && <div className={styles.inputBox}>
                                     <SimpleInput
                                         value={formik.values.graduationYear}
                                         name="graduationYear"
@@ -182,7 +200,7 @@ export default function CollegePage() {
                                         placeholder="Graduation Year"
                                         disabled={isloading}
                                     />
-                                </div>
+                                </div>}
 
                                 <div className={styles.submit}>
                                     <PowerfulButton
