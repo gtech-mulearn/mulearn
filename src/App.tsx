@@ -212,6 +212,7 @@ import ErrorLog from "./modules/Dashboard/modules/ErrorLog/ErrorLog";
 import KKEMEventBeyondUs from "./modules/Public/KKEM/modules/KKEMEventTemplate/KKEMEventBeyondUs";
 
 import LearningCircles from "./modules/Public/KKEM/modules/Dashboard/LearningCircles/LearningCircles";
+import LcDashboard from "./modules/Dashboard/modules/LearningCircle/pages/LcDashboard";
 
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
@@ -575,6 +576,10 @@ function App() {
                         {
                             path: "learning-circle/details/:id",
                             element: <LearningCircle />
+                        },
+                        {
+                            path: "learning-circle/dashboard",
+                            element: <LcDashboard />
                         },
                         {
                             path: "learning-circle/find-circle",
