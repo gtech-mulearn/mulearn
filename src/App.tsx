@@ -212,6 +212,7 @@ import ErrorLog from "./modules/Dashboard/modules/ErrorLog/ErrorLog";
 import KKEMEventBeyondUs from "./modules/Public/KKEM/modules/KKEMEventTemplate/KKEMEventBeyondUs";
 
 import LearningCircles from "./modules/Public/KKEM/modules/Dashboard/LearningCircles/LearningCircles";
+import ForgetPassword from "./modules/Common/Authentication/pages/Onboarding/ForgetPassword/ForgetPassword";
 
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
@@ -247,7 +248,7 @@ function App() {
             children: [
                 { path: "register", element: <AccountCreation /> },
                 { path: "login", element: <SignIn /> },
-                { path: "forgot-password", element: <ForgotPassword /> },
+                { path: "forgot-password", element: <ForgetPassword /> },
                 { path: "reset-password", element: <ResetPassword /> }
             ]
         },

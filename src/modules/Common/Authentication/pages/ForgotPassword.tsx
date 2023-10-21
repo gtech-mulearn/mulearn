@@ -9,8 +9,6 @@ type Props = {};
 
 const ForgotPassword = (props: Props) => {
     const [muid, setMuid] = useState("");
-    const [success, setSuccess] = useState(false);
-    const [error, setError] = useState("");
     const [showLoader, setShowLoader] = useState(false)
     const navigate = useNavigate();
     const toast = useToast();

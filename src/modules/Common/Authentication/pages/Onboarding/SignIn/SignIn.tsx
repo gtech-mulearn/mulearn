@@ -7,7 +7,6 @@ import { Form, Formik } from "formik";
 import * as z from "yup";
 import { FormikTextInputWithoutLabel as SimpleInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
-import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
 import {
     login,
@@ -42,19 +41,6 @@ export default function SignIn() {
                 100,
                 `${inputObject.emailOrMuId} must be at most 100 characters`
             )
-        // ...(!otpForm && {
-        //     password: z
-        //         .string()
-        //         .required(`${inputObject.password} is Required`)
-        //         .min(6, `${inputObject.password} must be at least 6 characters`)
-        // }),
-        // ...(otpForm && {
-        //     otp: z
-        //         .string()
-        //         .required(`${inputObject.otp} is Required`)
-        //         .min(5, `${inputObject.otp} must be at least 5 characters`)
-        //         .max(5, `${inputObject.otp} must be at most 5 characters`)
-        // })
     });
 
     const onSubmit = (values: any) => {
@@ -111,27 +97,6 @@ export default function SignIn() {
                     <div>
                         <div className={styles.wrapper}>
                             <Form>
-                                {/* {Object.entries(inputObject).map(
-                                    ([key, value]) => (
-                                        <div
-                                            className={styles.inputBox}
-                                            key={key}
-                                        >
-                                            <SimpleInput
-                                                onChange={formik.handleChange}
-                                                value={
-                                                    formik.values[
-                                                        key as keyof typeof inputObject
-                                                    ]
-                                                }
-                                                name={key}
-                                                placeholder={value}
-                                                type={value.toLowerCase()}
-                                                disabled={isLoading}
-                                            />
-                                        </div>
-                                    )
-                                )} */}
                                 <div className={styles.inputBox}>
                                     <SimpleInput
                                         value={formik.values.emailOrMuId}
@@ -188,15 +153,6 @@ export default function SignIn() {
                                                 : "Request OTP"
                                             : "Sign in"}
                                     </PowerfulButton>
-                                    {/* <p>OR</p>
-                                    <PowerfulButton
-                                        variant="ghost"
-                                        className={styles.google}
-                                        type="button"
-                                    >
-                                        <FcGoogle size={30} />
-                                        <p>Sign in with google</p>
-                                    </PowerfulButton> */}
                                 </div>
                                 <div className={styles.noAccount}>
                                     <a href="/register">
