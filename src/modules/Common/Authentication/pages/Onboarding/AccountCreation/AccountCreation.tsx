@@ -4,19 +4,19 @@ import { HiEye, HiEyeSlash } from "react-icons/hi2";
 
 import OnboardingTemplate from "../../../components/OnboardingTeamplate/OnboardingTemplate";
 import OnboardingHeader from "../../../components/OnboardingHeader/OnboardingHeader";
-
+import { validate } from "../../../services/newOnboardingApis";
 import { Form, Formik } from "formik";
 import * as z from "yup";
 import { FormikTextInputWithoutLabel as SimpleInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useEffect, useRef, useState } from "react";
 
-import { validate } from "../../../services/newOnboardingApis";
 import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import { getCommunities } from "../../../services/onboardingApis";
+
 
 const animatedComponents = makeAnimated();
 
@@ -28,7 +28,7 @@ const initialValues = {
     phoneNumber: "",
     password: "",
     confirmPassword: "",
-    refferalId: "",
+    muid: "",
     communities: []
 };
 
@@ -43,11 +43,6 @@ const scheme = z.object({
         .required(`Firstname is Required`)
         .min(3, `Firstname must be at least 3 characters`)
         .max(100, `Firstname must be at most 100 characters`),
-    lastName: z
-        .string()
-        .required(`Lastname is Required`)
-        .min(1, `Lastname must be at least 3 characters`)
-        .max(100, `Lastname must be at most 100 characters`),
     phoneNumber: z
         .string()
         .required(`Phone number is Required`)
@@ -86,10 +81,6 @@ export default function AccountCreation() {
         { id: "", title: "" }
     ]);
 
-    const [defaultCommunity, setDefaultCommunity] = useState([
-        { value: "", label: "" }
-    ]);
-
     useEffect(() => {
         getCommunities({
             setCommunityAPI: setCommunitiesList,
@@ -108,16 +99,33 @@ export default function AccountCreation() {
             return;
         }
 
-        const userData = {
+        console.log(values)
+
+        const userData: {
+            first_name: any;
+            last_name: any;
+            email: any;
+            mobile: any;
+            password: any;
+            param: string | null;
+            communities: any;
+            referral?: { muid: string };
+        } = {
             first_name: values.firstName,
             last_name: values.lastName,
             email: values.email,
             mobile: values.phoneNumber,
             password: values.password,
-            referral_id: values.refferalId ?? referralId,
             param: param,
-            communities: values.communities
+            communities: values.communities,
         };
+
+        if (values.muid) {
+            userData.referral = { muid: values.muid };
+        } else if (referralId) {
+            userData.referral = { muid: referralId };
+        }
+
         const isSuccess = await validate({
             userData: userData,
             setIsSubmitting: setIsLoading,
@@ -173,7 +181,6 @@ export default function AccountCreation() {
                                             type="text"
                                             value={formik.values.lastName}
                                             placeholder="Last Name"
-                                            required
                                             disabled={isLoading}
                                         />
                                     </div>
@@ -307,8 +314,8 @@ export default function AccountCreation() {
                                 </div>
                                 <div className={styles.inputBox}>
                                     <SimpleInput
-                                        name={"refferalId"}
-                                        value={formik.values.refferalId}
+                                        name={"muid"}
+                                        value={formik.values.muid}
                                         type="text"
                                         placeholder="Refferal Id"
                                         disabled={isLoading}
@@ -349,8 +356,8 @@ export default function AccountCreation() {
                                     isLoading={isLoading}
                                 >
                                     {isLoading
-                                        ? "Please Wait..."
-                                        : "Create Account"}
+                                        ? "Validating..."
+                                        : "Next Step"}
                                 </PowerfulButton>
                             </div>
 
