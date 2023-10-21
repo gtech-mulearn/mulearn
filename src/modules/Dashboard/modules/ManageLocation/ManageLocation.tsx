@@ -448,12 +448,14 @@ const LocationPath = ({
         }${zone ? ` / ${zone?.toUpperCase()}` : ""}`;
     }
 
-    return (
-        <div className="path_container">
-            <p>{locationTextGenerate()}</p>
-            <h3 onClick={() => handlePopup(true)}>change</h3>
-        </div>
-    );
+    // uuid displaying and change button removed
+
+    // return (
+    //     <div className="path_container">
+    //         <p>{locationTextGenerate()}</p>
+    //         <h3 onClick={() => handlePopup(true)}>change</h3>
+    //     </div>
+    // );
 };
 
 export default ManageLocation;
