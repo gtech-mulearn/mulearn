@@ -47,7 +47,7 @@ export default function CompanyPage() {
             userData === null ||
             userData.email === undefined
         ) {
-            navigate("/signup", { replace: true });
+            navigate("/register", { replace: true });
         } else {
             getCompanies({
                 setIsLoading: setIsLoading,

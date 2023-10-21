@@ -45,7 +45,7 @@ export const FormikTextInputWithoutLabel = ({ ...props }: InputFormik) => {
     const [field, meta] = useField(props);
     return (
         <>
-            <input className="text-input" {...field} {...props} />
+            <input  className="text-input" {...field} {...props} />
             {meta.touched && meta.error ? (
                 <span className="formikErrorSpan">{meta.error}</span>
             ) : null}

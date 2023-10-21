@@ -9,7 +9,7 @@ import AuthRoutes from "./components/AuthRoutes";
 import Onboarding from "./modules/Common/Authentication/pages/Onboarding";
 import Login from "./modules/Common/Authentication/pages/Login";
 import ForgotPassword from "./modules/Common/Authentication/pages/ForgotPassword";
-import ResetPassword from "./modules/Common/Authentication/pages/ResetPassword";
+
 import PrivateRoutes from "./components/PrivateRoutes";
 import DashboardRootLayout from "./modules/Dashboard/layouts/DashboardRootLayout";
 import NotFound from "./components/NotFound";
@@ -212,6 +212,8 @@ import ErrorLog from "./modules/Dashboard/modules/ErrorLog/ErrorLog";
 import KKEMEventBeyondUs from "./modules/Public/KKEM/modules/KKEMEventTemplate/KKEMEventBeyondUs";
 
 import LearningCircles from "./modules/Public/KKEM/modules/Dashboard/LearningCircles/LearningCircles";
+import ForgetPassword from "./modules/Common/Authentication/pages/Onboarding/ForgetPassword/ForgetPassword";
+import ResetPassword from "./modules/Common/Authentication/pages/Onboarding/ResetPassword/ResetPassword";
 import LcDashboard from "./modules/Dashboard/modules/LearningCircle/pages/LcDashboard";
 import { Toaster } from "react-hot-toast";
 
@@ -247,9 +249,9 @@ function App() {
             path: "/",
             element: <AuthRoutes />,
             children: [
-                { path: "register", element: <Onboarding /> },
-                { path: "login", element: <Login /> },
-                { path: "forgot-password", element: <ForgotPassword /> },
+                { path: "register", element: <AccountCreation /> },
+                { path: "login", element: <SignIn /> },
+                { path: "forgot-password", element: <ForgetPassword /> },
                 { path: "reset-password", element: <ResetPassword /> }
             ]
         },

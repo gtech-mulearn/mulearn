@@ -25,6 +25,7 @@ export const validate = async ({
     } catch (err: any) {
         setIsSubmitting(false);
         const messages = err.response.data.message.general[0];
+        console.log("validate - messages", messages)
         showToasts({
             toast: toast,
             messages: messages,
