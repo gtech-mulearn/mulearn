@@ -72,3 +72,8 @@
 .selectRadio label {
     margin-left: -7rem;
 }
+.selectRadio label span {
+    margin-left: 1rem;
+    font-weight: 500;
+    
+}

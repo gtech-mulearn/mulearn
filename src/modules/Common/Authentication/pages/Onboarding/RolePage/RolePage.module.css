@@ -32,6 +32,7 @@
     text-align: center;
     justify-content: center;
     gap: 1rem;
+    padding: 10px;
 }
 .rolePageCards .rolePageCard:hover {
     border: 1.177px solid #456ff6;
