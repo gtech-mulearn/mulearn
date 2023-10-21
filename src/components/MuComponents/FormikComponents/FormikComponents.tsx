@@ -2,6 +2,7 @@ import { FieldConfig, useField } from "formik";
 import styles from "./FormComponents.module.css";
 import React, {
     CSSProperties,
+    ChangeEvent,
     ClassAttributes,
     HTMLAttributes,
     TextareaHTMLAttributes,
@@ -153,7 +154,6 @@ const FormikReactSelect: React.FC<FormikSelectProps> = ({
         }
         return options.find(option => option.value === field.value) || null;
     };
-    console.log({ ...customStyles, ...addStyles });
     return (
         <div className={styles.InputSet}>
             <label className={styles.formLabel} htmlFor={name}>
@@ -289,6 +289,10 @@ export const FormikCheckBox = ({ label, ...props }: any) => {
 
     //Work around :)
     const [checked, setChecked] = useState(meta.initialValue);
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setChecked(e.target.checked);
+        helper.setValue(e.target.checked);
+    };
     return (
         <div className={styles.checkBox}>
             <label className={styles.formLabel}>{label}</label>
@@ -297,7 +301,7 @@ export const FormikCheckBox = ({ label, ...props }: any) => {
                 {...field}
                 {...props}
                 checked={checked}
-                onChange={() => setChecked(!checked)}
+                onChange={handleChange}
             />
             {meta.touched && meta.error ? (
                 <div className={styles.error}>{meta.error}</div>

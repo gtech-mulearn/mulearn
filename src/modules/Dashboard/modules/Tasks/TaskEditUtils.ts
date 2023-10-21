@@ -6,21 +6,21 @@ import { editTask, getTaskDetails, getUUID } from "./TaskApis";
 import { useToast } from "@chakra-ui/react";
 
 const taskEditSchema = Yup.object().shape({
-    hashtag: Yup.string()
+    hashtag: Yup.string() //
         .required("Required")
         .min(2, "Too Short!")
         .max(30, "Too Long!"),
-    title: Yup.string()
+    title: Yup.string() //
         .min(2, "Too Short!")
         .max(50, "Too Long!")
         .required("Required"),
-    karma: Yup.number()
+    karma: Yup.number() //
         .positive("Karma should be a positive value")
         .min(10, "Needs to be at least 2 digits.")
         .max(9999, "Should not exceed 4 digits")
         .truncate(),
     usage_count: Yup.number().truncate().required("Mention the number of uses"),
-
+    //
     active: Yup.boolean().required("Select an option"),
     variable_karma: Yup.boolean().required("Select an option"),
 
@@ -103,7 +103,7 @@ const useFormikData = () => {
 
         setTimeout(() => {
             navigate("/dashboard/tasks");
-        }, 4000);
+        }, 2000);
     };
     const initialValues = {
         hashtag: data.hashtag || "",
@@ -118,7 +118,7 @@ const useFormikData = () => {
         ig_id: data.ig || "",
         organization_id: data.org || "",
         discord_link: data.discord_link || "",
-        desc: data.description || ""
+        description: data.description || ""
     };
 
     const formStructure = [
@@ -133,7 +133,7 @@ const useFormikData = () => {
         {
             element: "input",
             label: "Description",
-            name: "desc",
+            name: "description",
             type: "text",
             placeholder: "...",
             required: true
