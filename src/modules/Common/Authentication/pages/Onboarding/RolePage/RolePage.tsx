@@ -59,8 +59,6 @@ export default function Rolepage() {
             toast: toast,
             navigate: navigate
         });
-
-
     }
 
     return (

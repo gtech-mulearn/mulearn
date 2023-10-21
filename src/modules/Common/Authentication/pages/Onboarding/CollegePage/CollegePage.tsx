@@ -38,18 +38,22 @@ const scheme = z.object({
         .number()
         .integer()
         .positive()
-        .required(`${inputObject.graduationYear} is Required`)
-        .min(2000, `${inputObject.graduationYear} > 2000`)
-        .max(2030, `${inputObject.graduationYear} < 2030`)
+        .when('role', {
+            is: 'student',
+            then: (s) => s
+                .required(`${inputObject.graduationYear} is Required`)
+                .min(2000, `${inputObject.graduationYear} > 2000`)
+                .max(2030, `${inputObject.graduationYear} < 2030`)
+        })
 });
+
+
 
 export default function CollegePage() {
     const navigate = useNavigate();
     const toast = useToast();
     const location = useLocation();
     let userData: any = location.state as Object;
-
-
 
     const [isloading, setIsLoading] = useState(true);
     const [colleges, setColleges] = useState([{ id: "", title: "" }]);
@@ -92,6 +96,7 @@ export default function CollegePage() {
     }, [userData, roles]);
 
     const onSubmit = async (values: any) => {
+        console.log("values", values)
         const newUserData: any = {
             user: {
                 first_name: userData.first_name,
@@ -206,6 +211,10 @@ export default function CollegePage() {
                                     <PowerfulButton
                                         type="submit"
                                         isLoading={isloading}
+                                        onClick={() => {
+                                            console.log(formik.values);
+                                            console.log(userData)
+                                        }}
                                     >
                                         {isloading
                                             ? "Please wait..."
