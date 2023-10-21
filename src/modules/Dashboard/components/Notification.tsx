@@ -81,7 +81,7 @@ const NotificationTab = ({ notificationList, setNotificationList }: Notification
                 <div className='clearAll' onClick={clearAll}>✖ Clear all</div>
                 <div className='clearAll' onClick={() => getNotifications(setNotificationList, props)}><MdRefresh size={20} /></div>
             </div>
-            <div className="notiTabs">
+            {/* <div className="notiTabs">
                 <ul>
                     {links.map((item, index) => (
                         <li key={index} className={active === index ? 'active' : 'inactive'} onClick={() => setActive(index)}>
@@ -91,7 +91,7 @@ const NotificationTab = ({ notificationList, setNotificationList }: Notification
                     ))}
                     <span className='glider' style={{ transform: `translateX(${active * 100}%)`, margin: `${active === 0 ? 0 : active === links.length - 1 ? 15 : 15}px` }}></span>
                 </ul>
-            </div>
+            </div> */}
             <div className="notiMessageContainer">
                 {filteredNotification.length > 0 ? (
                     <div className="notiMessage">
