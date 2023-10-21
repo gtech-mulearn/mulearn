@@ -65,8 +65,25 @@
 }
 
 @media (width<800px) {
+  .enablersHero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .enablersHero div {
+    margin-left: 0rem;
+  }
+
+  .enablersHero img {
+    width: 50%;
+    /* aspect-ratio: 16/9; */
+  }
+
   .enablersHero div p {
-    font-size: 20px;
+    font-size: 40px;
     padding-top: 2rem;
     line-height: 50px;
   }
@@ -79,13 +96,19 @@
 }
 
 @media (width<540px) {
-  .enablersHero div {
+  /* .enablersHero div {
     margin-left: 2rem;
   }
   .enablersHero div p {
     font-size: 18px;
     line-height: 30px;
+  } */
+
+  .enablersHero img {
+    width: 75%;
+    /* aspect-ratio: 16/9; */
   }
+
   .enablersHero div p span {
     background-position: 0 20px;
   }

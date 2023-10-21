@@ -73,11 +73,6 @@
     .menuBar .menu a{
         font-size: 8px;
     }
-
-    .menuBar button{
-        padding: 8px 20px;
-        font-size: 8px;
-    }
 }
 
 @media (width<600px){

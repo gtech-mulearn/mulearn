@@ -13,6 +13,7 @@
     height: 88px;
     background: #FF7D40;
     display: grid;
+    
     place-content: center;
     position: relative;
     top: -40px;
@@ -21,7 +22,7 @@
 .footer div p{
     color: #FFF;
     font-family: Raleway;
-    font-size: 22.392px;
+    font-size: 1rem;
     font-style: normal;
     font-weight: 500;
 }
