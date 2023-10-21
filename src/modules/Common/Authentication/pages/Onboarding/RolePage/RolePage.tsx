@@ -52,6 +52,8 @@ export default function Rolepage() {
             newUserData["integration"]["param"] = userData.param;
             newUserData["integration"]["title"] = "DWMS";
         }
+        if (userData.referral)
+            newUserData["referral"] = { muid: userData.referral.muid };
 
         submitUserData({
             setIsLoading: setIsLoading,

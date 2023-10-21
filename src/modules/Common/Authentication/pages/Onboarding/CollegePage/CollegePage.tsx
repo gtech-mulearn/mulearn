@@ -96,7 +96,6 @@ export default function CollegePage() {
     }, [userData, roles]);
 
     const onSubmit = async (values: any) => {
-        console.log("values", values)
         const newUserData: any = {
             user: {
                 first_name: userData.first_name,
@@ -115,6 +114,10 @@ export default function CollegePage() {
         };
 
         if (userData.role) newUserData.user["role"] = userData.role;
+
+
+        if (userData.referral)
+            newUserData["referral"] = { muid: userData.referral.muid };
 
         if (userData.param) {
             newUserData["integration"]["param"] = userData.param;
@@ -175,6 +178,10 @@ export default function CollegePage() {
                                         }}
                                     />
                                 </div>
+                                {formik.touched.college &&
+                                    formik.errors.college&& (
+                                        <span className={styles.errorsSpan}>{formik.errors.college}</span>
+                                    )}
                                 <div className={styles.inputBox}>
                                     <ReactSelect
                                         options={
@@ -197,6 +204,10 @@ export default function CollegePage() {
                                         }}
                                     />
                                 </div>
+                                {formik.touched.department &&
+                                    formik.errors.department&& (
+                                        <span className={styles.errorsSpan}>{formik.errors.department}</span>
+                                    )}
                                 {selectedRole === "Student" && <div className={styles.inputBox}>
                                     <SimpleInput
                                         value={formik.values.graduationYear}
@@ -205,6 +216,10 @@ export default function CollegePage() {
                                         placeholder="Graduation Year"
                                         disabled={isloading}
                                     />
+                                     {formik.touched.graduationYear&&
+                                    formik.errors.graduationYear&& (
+                                        <span className={styles.errorsSpan}>{formik.errors.graduationYear}</span>
+                                    )}
                                 </div>}
 
                                 <div className={styles.submit}>
