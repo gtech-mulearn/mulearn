@@ -11,23 +11,18 @@ import { forgetPassword } from '../../../services/apis';
 import styles from "./ForgetPassword.module.css"
 
 const ForgetPassword = () => {
-    const [muid, setMuid] = useState("");
     const [showLoader, setShowLoader] = useState(false)
     const navigate = useNavigate();
     const toast = useToast();
 
-    const inputObject = {
-        emailOrMuId: "Email or MuId"
-    }
-
     const scheme = z.object({
         emailOrMuId: z
             .string()
-            .required(`${inputObject.emailOrMuId} is Required`)
-            .min(5, `${inputObject.emailOrMuId} must be at least 3 characters`)
+            .required(`Email or MuId is Required`)
+            .min(5, `Email or MuId must be at least 3 characters`)
             .max(
                 100,
-                `${inputObject.emailOrMuId} must be at most 100 characters`
+                `Email or MuId must be at most 100 characters`
             )
     });
 
@@ -39,6 +34,14 @@ const ForgetPassword = () => {
                 navigate,
                 setShowLoader
             );
+        } else {
+            toast({
+                title: "Error",
+                description: "Please enter your email or muid",
+                status: "error",
+                duration: 3000,
+                isClosable: true,
+            });
         }
     }
 
@@ -69,15 +72,14 @@ const ForgetPassword = () => {
                                             placeholder="Email or MuId"
                                             type="text"
                                             disabled={showLoader}
+                                            required
                                         />
                                     </div>
                                     <br />
                                     <div className={styles.submit}>
                                         <PowerfulButton
                                             type="submit"
-                                            onClick={e => {
-                                                e.preventDefault();
-                                            }}
+
                                             isLoading={showLoader}
                                         >
                                             Reset password

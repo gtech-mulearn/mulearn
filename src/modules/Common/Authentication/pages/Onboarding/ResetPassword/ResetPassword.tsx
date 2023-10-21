@@ -23,7 +23,6 @@ const ResetPassword = () => {
     useEffect(() => {
         const paramToken = searchParams.get("token");
         setToken(paramToken as string);
-        console.log(token);
         if (token.length > 0 && muid.length === 0) {
             getMuid(token, toast, navigate, setMuID);
         }
@@ -40,6 +39,7 @@ const ResetPassword = () => {
     });
 
     const onSubmit = async (values: any) => {
+        console.log(values);
         resetPassword(token, values.password, toast, navigate);
     };
 
@@ -71,7 +71,7 @@ const ResetPassword = () => {
                                             value={muid}
                                             aria-disabled={true}
                                             name="muid"
-                                            style={{ marginBottom: "10px" }}
+                                            style={{ marginTop: "10px" }}
                                             disabled={true}
                                         />
                                         <SimpleInput
@@ -80,7 +80,7 @@ const ResetPassword = () => {
                                             placeholder="Password"
                                             type={showOrHidePassword}
                                             onChange={formik.handleChange}
-                                            style={{ marginBottom: "10px" }}
+                                            style={{ marginTop: "10px" }}
 
                                         />
                                         <span
@@ -110,7 +110,7 @@ const ResetPassword = () => {
                                             placeholder="Confirm Password"
                                             type={showOrHideConfirmPassword}
                                             onChange={formik.handleChange}
-                                            style={{ marginBottom: "10px" }}
+                                            style={{ marginTop: "10px" }}
                                         />
                                         <span
                                             className={styles.eye}
@@ -134,11 +134,6 @@ const ResetPassword = () => {
                                         <div className={styles.submit}>
                                             <PowerfulButton
                                                 type="submit"
-                                                onClick={e => {
-                                                    e.preventDefault();
-
-                                                }}
-
                                             >
                                                 Reset password
                                             </PowerfulButton>

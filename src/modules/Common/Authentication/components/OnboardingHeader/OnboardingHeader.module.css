@@ -20,6 +20,10 @@
     font-weight: 600;
 }
 
+.tagline {
+    max-width: 25rem;
+}
+
 @media (width<=820px) {
     .onboardingHeader {
         margin-top: 5rem;

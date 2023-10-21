@@ -1,5 +1,5 @@
 import mu from '/src/modules/Common/Authentication/assets/µLearn.png'
-import Styles from './OnboardingHeader.module.css'
+import styles from './OnboardingHeader.module.css'
 
 type OnboardingHeaderProps = {
     title: string;
@@ -11,10 +11,10 @@ export default function OnboardingHeader({
     desc
 }: OnboardingHeaderProps) {
     return (
-        <div className={Styles.onboardingHeader}>
+        <div className={styles.onboardingHeader}>
             <img src={mu} alt="" />
             <h1>{title}</h1>
-            <p dangerouslySetInnerHTML={{ __html: desc }} />
+            <p className={styles.tagline} dangerouslySetInnerHTML={{ __html: desc }} />
             <br />
         </div>
     );
