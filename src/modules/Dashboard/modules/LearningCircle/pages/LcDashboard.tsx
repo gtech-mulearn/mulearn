@@ -1,4 +1,4 @@
-import { RightArrow, ThreeDotssvg } from "../assets/svg";
+import { EditLogo, RightArrow, ThreeDotssvg } from "../assets/svg";
 import styles from "./LcDashboard.module.css";
 
 type Props = {};
@@ -23,22 +23,59 @@ const LcDashboard = (props: Props) => {
                     </button>
                 </div>
             </div>
-            <div>
-                <button>Dashboard</button>
+            <div className={styles.NavLink}>
+                <button className={styles.active}>Dashboard</button>
                 <button>IG Progress</button>
                 <button>BeWeb.dev</button>
             </div>
-            <div>
-                <div>
-                    <button>Meet</button>
-                    <button>Team</button>
-                    <button>+</button>
+            <div className={styles.ContainerWrapper}>
+                <div className={styles.SwitchNav}>
+                    <button className={styles.items + " " + styles.active}>
+                        Meet
+                    </button>
+                    <button className={styles.items}>Team</button>
+                    <button className={styles.plusItem}>+</button>
                 </div>
-                <div>
-                    <div></div>
-                    <div>
+                <div className={styles.ContentWrapper}>
+                    <div className={styles.TopContainer}>
+                        <div className={styles.sectionOne}>
+                            <div className={styles.divOne}>
+                                <div>
+                                    <p>Next meeting on</p>
+                                    <h1
+                                        style={{
+                                            color: "rgba(69, 111, 246, 1)"
+                                        }}
+                                    >
+                                        22 June 2023
+                                    </h1>
+                                    <p>Sunday</p>
+                                </div>
+                                <button>
+                                    <EditLogo />
+                                </button>
+                            </div>
+                            <div className={styles.secondDiv}>
+                                <div>
+                                    <p>Venue: Multipurpose Hall</p>
+                                    <p>Time: 12:45 PM</p>
+                                </div>
+                                <button>Report</button>
+                            </div>
+                        </div>
+                        <div className={styles.sectionTwo}>
+                            <div>
+                                <CheckBoxContainer />
+                            </div>
+                            <button>+</button>
+                        </div>
+                    </div>
+                    <div className={styles.BottomContainer}>
                         <p>Your past meetings</p>
                         <div>
+                            <HistoryDiv />
+                            <HistoryDiv />
+                            <HistoryDiv />
                             <HistoryDiv />
                         </div>
                     </div>
@@ -52,17 +89,38 @@ export default LcDashboard;
 
 export const HistoryDiv = () => {
     return (
-        <div>
+        <div className={styles.HistoryDivWrapper}>
             <div>
                 <p>1.</p>
                 <p>22 Sunday 2023</p>
             </div>
             <div>
-                <p>12.03pm</p>
+                <p
+                    style={{
+                        color: "rgba(69, 111, 246, 1)",
+                        fontWeight: 400,
+                        fontSize: "14px"
+                    }}
+                >
+                    12.03pm
+                </p>
                 <button>
                     <RightArrow />
                 </button>
             </div>
+        </div>
+    );
+};
+
+export const CheckBoxContainer = () => {
+    return (
+        <div>
+            <input
+                type="checkbox"
+                id="textInput"
+                value="Text that gets selected"
+            />
+            <label htmlFor="textInput">1. Study IA</label>
         </div>
     );
 };
