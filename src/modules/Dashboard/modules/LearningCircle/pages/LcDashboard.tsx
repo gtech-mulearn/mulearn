@@ -1,16 +1,18 @@
 import { RightArrow, ThreeDotssvg } from "../assets/svg";
+import styles from "./LcDashboard.module.css";
 
 type Props = {};
 
 const LcDashboard = (props: Props) => {
     return (
-        <div>
-            <div>
-                <div>
+        <div className={styles.LCDashboardWrapper}>
+            <div className={styles.TitleContainerWrapper}>
+                <div className={styles.Title}>
                     <h1>UX world</h1>
-                    <h3>LBS Institute of Technology for Women Code: LBT</h3>
+                    <h3>LBS Institute of Technology for Women</h3>{" "}
+                    <h3>Code: LBT</h3>
                 </div>
-                <div>
+                <div className={styles.RankSession}>
                     <div>
                         <h3>RANK</h3>
                         <h1>3</h1>
@@ -56,8 +58,10 @@ export const HistoryDiv = () => {
                 <p>22 Sunday 2023</p>
             </div>
             <div>
-              <p>12.03pm</p>
-              <button><RightArrow /></button>
+                <p>12.03pm</p>
+                <button>
+                    <RightArrow />
+                </button>
             </div>
         </div>
     );
