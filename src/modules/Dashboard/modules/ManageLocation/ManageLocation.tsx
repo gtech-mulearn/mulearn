@@ -281,14 +281,14 @@ const ManageLocation = () => {
                 handleState={state => setSelectedState(state)}
                 handleZone={zone => setSelectedZone(zone)}
             />
-            {activeTab !== "Country" && (
+            {/* {activeTab !== "Country" && (
                 <LocationPath
                     handlePopup={setPopupStatus}
                     country={selectedCountry}
                     state={selectedState}
                     zone={selectedZone}
                 />
-            )}
+            )} */}
 
             {data && (
                 <>
