@@ -12,22 +12,27 @@ import OrgForm from "./OrgForm";
 interface TableTopTabProps {
     active: string;
     onTabClick: (tab: string) => void;
+    handleCreate: () => void;
 }
 
-const TableTopTab = ({ active, onTabClick }: TableTopTabProps) => {
+const TableTopTab = ({
+    active,
+    onTabClick,
+    handleCreate
+}: TableTopTabProps) => {
     const tabletopTab = ["College", "Company", "Community"];
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    // const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
-    const handleCreate = () => {
-        navigate("/dashboard/organizations/create", {
-            state: {
-                activeItem: active,
-                isCreate: true
-            }
-        });
-    };
+    // const handleCreate = () => {
+    //     navigate("/dashboard/organizations/create", {
+    //         state: {
+    //             activeItem: active,
+    //             isCreate: true
+    //         }
+    //     });
+    // };
 
     return (
         <div className="table_tab_container">
@@ -55,18 +60,18 @@ const TableTopTab = ({ active, onTabClick }: TableTopTabProps) => {
                     backgroundColor: "#456FF6",
                     color: "#fff"
                 }}
-                onClick={() => setIsModalOpen(true)}
+                onClick={handleCreate}
             >
                 <AiOutlinePlusCircle />
                 Create
             </PowerfulButton>
-            <MuModal
+            {/* <MuModal
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
                 title={`Add new ${active}`}
             >
                 <OrgForm type={active} isEditMode={false} itemId={""}/>
-            </MuModal>
+            </MuModal> */}
         </div>
     );
 };
