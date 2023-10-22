@@ -1,7 +1,7 @@
 import OnboardingHeader from "../../../components/OnboardingHeader/OnboardingHeader";
 import OnboardingTemplate from "../../../components/OnboardingTeamplate/OnboardingTemplate";
 import styles from "./CompanyPage.module.css";
-import { submitUserData } from "../../../services/newOnboardingApis";
+import { getRoles, submitUserData } from "../../../services/newOnboardingApis";
 
 import { Form, Formik } from "formik";
 import * as z from "yup";
@@ -40,6 +40,8 @@ export default function CompanyPage() {
 
     const [isloading, setIsLoading] = useState(true);
     const [companies, setCompanies] = useState([{ id: "", title: "" }]);
+    const [roles, setRoles] = useState([{ id: "", title: "" }]);
+    const [selectedRole, setSelectedRole] = useState<string>("");
 
     useEffect(() => {
         if (
@@ -53,6 +55,7 @@ export default function CompanyPage() {
                 setIsLoading: setIsLoading,
                 setCompanies: setCompanies
             });
+
         }
     }, []);
 
@@ -93,13 +96,21 @@ export default function CompanyPage() {
 
         console.log("newUserData", newUserData);
         /// If user doesn't want to be a mentor set role to null
-        if (values.radio === "yes") newUserData.user["role"] = userData.role;
+        if (values.radio === "yes") {
+            if (userData.role === "") {
+                const mentorRole = roles.find(role => role.title === "Mentor");
+                newUserData.user["role"] = mentorRole?.id;
+            } else {
+                newUserData.user["role"] = userData.role;
+            }
+        }
 
         submitUserData({
             setIsLoading: setIsLoading,
             userData: newUserData,
             toast: toast,
             navigate: navigate
+
         });
     };
 
@@ -151,8 +162,8 @@ export default function CompanyPage() {
                                     required
                                 />
                                 {formik.touched['company' as keyof typeof formik.touched] &&
-                                    formik.errors['company' as keyof typeof formik.touched]  && (
-                                        <span className={styles.errorsSpan}>{formik.errors['company' as keyof typeof formik.touched] }</span>
+                                    formik.errors['company' as keyof typeof formik.touched] && (
+                                        <span className={styles.errorsSpan}>{formik.errors['company' as keyof typeof formik.touched]}</span>
                                     )}
                                 <div className={styles.content}>
                                     <h5 className={styles.text}>
@@ -166,9 +177,9 @@ export default function CompanyPage() {
                                         <button className={styles.selectRadio}>
                                             <label>
                                                 <input
-                                                    onChange={
-                                                        formik.handleChange
-                                                    }
+                                                    onChange={(e) => {
+                                                        formik.setFieldValue("radio", e.target.value);
+                                                    }}
                                                     type="radio"
                                                     value="yes"
                                                     name="radio"
@@ -181,9 +192,9 @@ export default function CompanyPage() {
                                         <button className={styles.selectRadio}>
                                             <label>
                                                 <input
-                                                    onChange={
-                                                        formik.handleChange
-                                                    }
+                                                    onChange={(e) => {
+                                                        formik.setFieldValue("radio", e.target.value);
+                                                    }}
                                                     type="radio"
                                                     value="no"
                                                     name="radio"

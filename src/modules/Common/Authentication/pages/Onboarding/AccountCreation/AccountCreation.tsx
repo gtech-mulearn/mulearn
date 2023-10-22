@@ -51,11 +51,11 @@ const scheme = z.object({
     password: z
         .string()
         .required(`Password is Required`)
-        .min(6, `Password must be at least 6 characters`),
+        .min(8, `Password must be at least 8 characters`),
     confirmPassword: z
         .string()
         .required(`Password is Required`)
-        .min(6, `Password must be at least 6 characters`)
+        .min(8, `Password must be at least 8 characters`)
         .max(100, `Password must be at most 100 characters`)
         .test('passwords-match', 'Passwords are not matching', function (value) {
             return this.parent.password === value;
@@ -192,7 +192,8 @@ export default function AccountCreation() {
                                             width: "15%",
                                             height: "40px",
                                             borderRadius: "5px",
-                                            textAlign: "center"
+                                            textAlign: "center",
+                                            backgroundColor: "#F5F7FB",
                                         }}
                                         name="countryCode"
                                     >
