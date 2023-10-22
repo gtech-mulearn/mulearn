@@ -95,3 +95,41 @@ export const getMonthName = (month: String) => {
             return "Jan";
     }
 };
+
+
+//! React Select Custom Style for Modal
+export const customReactSelectStyles = {
+    control: (provided: any) => ({
+        ...provided,
+        margin: 0,
+        padding: 4,
+        borderRadius: 8,
+        backgroundColor: "#F3F3F4",
+        border: "none",
+        color: "black",
+        width: "300px"
+    }),
+    menu: (provided: any) => ({
+        ...provided,
+        margin: 0,
+        padding: 0
+    }),
+    // placeholder: (provided: any) => ({
+    //     ...provided,
+    //     color: "black"
+    // }),
+    option: (provided: any, state: { isSelected: any; isFocused: any }) => ({
+        ...provided,
+        color: state.isSelected ? "black" : state.isFocused ? "black" : "gray", // Color of the text
+        backgroundColor: state.isSelected
+            ? "rgba(184, 196, 234, 0.29)"
+            : state.isFocused
+            ? "lightgray"
+            : null
+    }),
+    loadingIndicator: (base: any, state: any) => ({
+        ...base,
+        color: "#456ff6" // This sets the color of the loading indicator
+    })
+    // Add more components as needed
+};

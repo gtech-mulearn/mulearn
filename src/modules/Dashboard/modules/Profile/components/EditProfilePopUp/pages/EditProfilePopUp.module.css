@@ -8,7 +8,7 @@
     width: 100%;
     z-index: 50;
     display: flex;
-    transition: .3s ease;
+    transition: 0.3s ease;
     transform: scale(0);
     flex-direction: column;
     align-items: center;
@@ -49,7 +49,7 @@
             & button {
                 width: 100%;
                 padding: 16px;
-                background: #F3F3F4;
+                background: #f3f3f4;
                 border-radius: 10px;
             }
 
@@ -64,6 +64,23 @@
     }
 }
 
+.inputBox input,
+.inputBox select {
+    border: none;
+    background: rgba(239, 241, 249, 0.6);
+    border-radius: 6px;
+    padding: 10px;
+    outline: none;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.label {
+    font-weight: 600;
+    margin-top: 5px;
+    color: var(--black);
+    text-align: left;
+}
 
 @media (max-width: 1500px) {
     .edit_profile_container {

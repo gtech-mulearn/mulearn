@@ -88,6 +88,12 @@ const inputs = (
                 label: "Mobile",
                 type: "text",
                 placeholder: "Enter a mobile number"
+            },
+            {
+                name: "discord_id",
+                label: "Discord ID",
+                type: "text",
+                placeholder: "Enter your discord id"
             }
         ],
         selects: [
@@ -224,6 +230,7 @@ const inputs = (
         last_name: user?.last_name || "",
         email: user?.email || "",
         mobile: user?.mobile || "",
+        discord_id: user?.discord_id || null,
         college: user?.organizations
             ? arrayIntersection(
                   user.organizations,

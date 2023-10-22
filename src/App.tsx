@@ -9,7 +9,7 @@ import AuthRoutes from "./components/AuthRoutes";
 import Onboarding from "./modules/Common/Authentication/pages/Onboarding";
 import Login from "./modules/Common/Authentication/pages/Login";
 import ForgotPassword from "./modules/Common/Authentication/pages/ForgotPassword";
-import ResetPassword from "./modules/Common/Authentication/pages/ResetPassword";
+
 import PrivateRoutes from "./components/PrivateRoutes";
 import DashboardRootLayout from "./modules/Dashboard/layouts/DashboardRootLayout";
 import NotFound from "./components/NotFound";
@@ -167,6 +167,33 @@ const LearningCircleLandingPage = lazy(
             "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleLandingPage"
         )
 );
+const MarketPlaceHistory = lazy(
+    () => import("./modules/Dashboard/modules/Marketplace/MarketPlaceHistory")
+);
+const Marketplace = lazy(
+    () =>
+        import(
+            "./modules/Dashboard/modules/Marketplace/UserMarketplace/UserMarketplce"
+        )
+);
+const MarketAddItem = lazy(
+    () =>
+        import(
+            "./modules/Dashboard/modules/Marketplace/MarketAddItem/MarketAddItem"
+        )
+);
+const AdminMarketPlace = lazy(
+    () =>
+        import(
+            "./modules/Dashboard/modules/Marketplace/AdminMarketplace/AdminMarketplace"
+        )
+);
+const PurchaseInventory = lazy(
+    () =>
+        import(
+            "./modules/Dashboard/modules/Marketplace/PurchaseInventory/PurchaseInventory"
+        )
+);
 
 import { roles } from "./services/types";
 import SecureAuthRoutes from "./services/authCheck";
@@ -183,8 +210,12 @@ import SignIn from "./modules/Common/Authentication/pages/Onboarding/SignIn/Sign
 
 import ErrorLog from "./modules/Dashboard/modules/ErrorLog/ErrorLog";
 import KKEMEventBeyondUs from "./modules/Public/KKEM/modules/KKEMEventTemplate/KKEMEventBeyondUs";
-import { Marketplace } from "./modules/Dashboard/modules/Marketplace/Marketplace";
+
 import LearningCircles from "./modules/Public/KKEM/modules/Dashboard/LearningCircles/LearningCircles";
+import ForgetPassword from "./modules/Common/Authentication/pages/Onboarding/ForgetPassword/ForgetPassword";
+import ResetPassword from "./modules/Common/Authentication/pages/Onboarding/ResetPassword/ResetPassword";
+import LcDashboard from "./modules/Dashboard/modules/LearningCircle/pages/LcDashboard";
+import { Toaster } from "react-hot-toast";
 
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
@@ -218,9 +249,9 @@ function App() {
             path: "/",
             element: <AuthRoutes />,
             children: [
-                { path: "register", element: <Onboarding /> },
-                { path: "login", element: <Login /> },
-                { path: "forgot-password", element: <ForgotPassword /> },
+                { path: "register", element: <AccountCreation /> },
+                { path: "login", element: <SignIn /> },
+                { path: "forgot-password", element: <ForgetPassword /> },
                 { path: "reset-password", element: <ResetPassword /> }
             ]
         },
@@ -246,7 +277,7 @@ function App() {
         },
         {
             path: "/",
-            element: <PrivateRoutes />,
+          element: <PrivateRoutes />,
             children: [
                 {
                     path: "/dashboard",
@@ -260,12 +291,7 @@ function App() {
                         },
                         {
                             path: "refer",
-                            element: (
-                                <RoleChecker
-                                    roles={[roles.STUDENT, roles.ADMIN]}
-                                    children={<Refer />}
-                                />
-                            )
+                            element: <Refer />
                         },
                         {
                             path: "interest-groups",
@@ -277,10 +303,6 @@ function App() {
                             )
                         },
 
-                        {
-                            path: "organizations/create",
-                            element: <CreateOrganization />
-                        },
                         {
                             path: "organizations/edit",
                             element: (
@@ -550,6 +572,10 @@ function App() {
                             element: <LearningCircle />
                         },
                         {
+                            path: "learning-circle/dashboard/:id",
+                            element: <LcDashboard />
+                        },
+                        {
                             path: "learning-circle/find-circle",
                             element: <FindCircle />
                         },
@@ -560,6 +586,22 @@ function App() {
                         {
                             path: "marketplace",
                             element: <Marketplace />
+                        },
+                        {
+                            path: "marketplace-history",
+                            element: <MarketPlaceHistory />
+                        },
+                        {
+                            path: "marketplace-additem",
+                            element: <MarketAddItem />
+                        },
+                        {
+                            path: "marketplace-admin",
+                            element: <AdminMarketPlace />
+                        },
+                        {
+                            path: "marketplace-purchaseinv",
+                            element: <PurchaseInventory />
                         }
                         // {
                         //     path: "settings",
@@ -597,7 +639,13 @@ function App() {
         }
     ]);
 
-    return <RouterProvider router={router} />;
+    return (
+        <>
+            <RouterProvider router={router} />
+            <Toaster position="bottom-center" reverseOrder={true} />
+        </>
+    );
+	
 }
 
 export default App;

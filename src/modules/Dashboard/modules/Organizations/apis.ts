@@ -107,7 +107,7 @@ export const getStates = async (
             })
             .then(data => {
                 const states: CountryProps[] = data.response.data;
-                console.log(states);
+
                 setStatesData(states);
             });
     } catch (err: unknown) {
@@ -139,7 +139,7 @@ export const getZones = async (
             })
             .then(data => {
                 const states: CountryProps[] = data.response.data;
-                console.log(getZones);
+
                 setZonesData(states);
             });
     } catch (err: unknown) {
@@ -275,9 +275,6 @@ export const updateOrganization = async (
     title: string,
     code: string,
     oldCode: string,
-    country: string,
-    state: string,
-    zone: string,
     district: string,
     org_type: string,
     toast: (options?: UseToastOptions | undefined) => ToastId,
@@ -285,35 +282,42 @@ export const updateOrganization = async (
     setIsSuccess?: any,
     setIsLoading?: any
 ) => {
-    const addDataProps = () => {
-        if (org_type === "College") {
-            return {
-                title: title,
-                code: code,
-                state: state,
-                zone: zone,
-                district: district,
-                country: country,
-                affiliation: affiliation,
-                org_type: org_type
-            };
-        } else {
-            return {
-                title: title,
-                code: code,
-                state: state,
-                zone: zone,
-                district: district,
-                country: country,
-                org_type: org_type
-            };
-        }
-    };
+    // const addDataProps = () => {
+    //     if (org_type === "College") {
+    //         return {
+    //             title: title,
+    //             code: code,
+    //             state: state,
+    //             zone: zone,
+    //             district: district,
+    //             country: country,
+    //             affiliation: affiliation,
+    //             org_type: org_type
+    //         };
+    //     } else {
+    //         return {
+    //             title: title,
+    //             code: code,
+    //             state: state,
+    //             zone: zone,
+    //             district: district,
+    //             country: country,
+    //             org_type: org_type
+    //         };
+    //     }
+    // };
+
     try {
         setIsLoading(true);
         const response = await privateGateway.put(
-            `${organizationRoutes.putUpdateOrganization}/${oldCode}/`,
-            addDataProps()
+            `${organizationRoutes.putUpdateOrganization}${oldCode}/`,
+            {
+                title: title,
+                code: code,
+                district: district,
+                affiliation: affiliation,
+                org_type: org_type
+            }
         );
 
         if (response.status === 200) {
@@ -379,8 +383,34 @@ export const getInfo = async (code: string) => {
         const response = await privateGateway.get(
             `${organizationRoutes.postGetInfo}${code}/`
         );
-        return response.data.response;
+        // console.log("api", response.data.response[0]);
+        return response.data.response[0];
     } catch (err: unknown) {
         const error = err as AxiosError;
+    }
+};
+
+
+// !New API for Org
+
+export const addNewOrganization = async (data: {
+    country: string;
+    state: string;
+    district: string;
+    affiliation: string;
+    code: string;
+    org_type: string;
+    title: string;
+}) => {
+    if (data.org_type !== "College") {
+        delete (data as any).affiliation;
+    }
+	console.log(data);
+    try {
+        const response = await privateGateway.post(organizationRoutes.createOrganisation, data);
+        return response?.data;
+
+    } catch (err: any) {
+        throw err.response.data;
     }
 };

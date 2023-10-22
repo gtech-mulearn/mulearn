@@ -59,7 +59,10 @@ export const editCollegeLevels = async (
     errHandler?: Function
 ) => {
     try {
-        await privateGateway.patch(dashboardRoutes.collegeLevels + id, data);
+        await privateGateway.patch(
+            dashboardRoutes.collegeLevlesDelete + `${id}/`,
+            data
+        );
     } catch (err) {
         if (errHandler) errHandler(err);
         else console.log(err);
