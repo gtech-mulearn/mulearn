@@ -12,6 +12,7 @@
         display: flex;
         gap: 15px;
         align-items: center;
+        min-width: 300px;
 
         .profile_pic {
             background-image: url(../assets/images/dpm.webp);
@@ -47,16 +48,25 @@
 
     .basic_details_detail {
         display: flex;
-        gap: 20px;
+        gap: 10px;
+        width: calc(100% - 310px);
 
-        .status {
-            background: #fff;
-            padding: 10px 60px;
-            border-radius: 10px;
+        .status_container {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
+            gap: 10px;
+            width: 50%;
+            /* flex-direction: column;             */
+
+            .status {
+                background: #fff;
+                padding: 10px 40px;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 15px;
+                width: 50%;
+            }
         }
     }
 }
@@ -188,4 +198,121 @@
             color: #000;
         }
     }
+}
+
+@media screen and (max-width: 1400px) {
+    .basic_details {
+        .basic_details_detail {
+            flex-direction: column;
+            gap: 20px;
+
+            .status_container {
+                width: unset;
+            }
+
+        }
+    }
+}
+
+@media screen and (max-width: 1060px) {
+    .basic_details {
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+
+        .basic_details_detail {
+            flex-direction: row;
+            gap: 20px;
+            width: 100%;
+
+            .status_container {
+                flex-direction: column;
+                width: 50%;
+
+                .status {
+                    width: 100%;
+                }
+            }
+
+        }
+    }
+
+    /* .roles_karma_dist_container {
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        margin-top: 20px;
+
+        .role_distribution_container {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+            border-radius: 12px;
+
+            & h1 {
+                position: absolute;
+                text-align: left;
+                color: #000;
+                font-weight: 800;
+                left: 40px;
+                top: 10px;
+            }
+
+            .ellipse {
+                border: 2px solid #D5D8E6;
+                border-radius: 50%;
+                width: 770px;
+                height: 750px;
+                position: absolute;
+                left: -320px;
+            }
+
+            .ellipse1 {
+                border: 2px solid #D5D8E6;
+                border-radius: 50%;
+                width: 700px;
+                height: 760px;
+                position: absolute;
+                left: -320px;
+                top: 50px;
+            }
+
+            .ellipse2 {
+                border: 2px solid #D5D8E6;
+                border-radius: 50%;
+                width: 620px;
+                height: 640px;
+                position: absolute;
+                left: -320px;
+                top: 111px;
+            }
+
+            .ellipse3 {
+                border: 2px solid #D5D8E6;
+                border-radius: 50%;
+                width: 540px;
+                height: 540px;
+                position: absolute;
+                left: -320px;
+                top: 151px;
+            }
+
+            .planet {
+                width: 90px;
+                height: 90px;
+                position: absolute;
+                left: -30px;
+                bottom: -30px;
+                background-image: url(../assets/images/planet.png);
+                background-size: contain;
+            }
+        }
+
+        .karma_distribution_container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+    } */
 }
