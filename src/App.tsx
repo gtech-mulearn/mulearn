@@ -576,7 +576,7 @@ function App() {
                             element: <LearningCircle />
                         },
                         {
-                            path: "learning-circle/dashboard",
+                            path: "learning-circle/dashboard/:id",
                             element: <LcDashboard />
                         },
                         {
