@@ -16,9 +16,10 @@
 
         .profile_pic {
             background-image: url(../assets/images/dpm.webp);
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
+            border: 8px solid #fff;
             background-size: cover;
             background-position: center;
         }
@@ -315,4 +316,24 @@
             position: relative;
         }
     } */
+}
+
+@media screen and (max-width: 800px) {
+    .basic_details {
+        margin-top: 20px;
+
+        .profile_details_container {
+            justify-content: center;
+            flex-direction: column;
+
+            .profile_pic {
+                margin-top: -50px;
+            }
+
+            .profile_details {
+                align-items: center;
+                text-align: center;
+            }
+        }
+    }
 }
