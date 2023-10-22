@@ -391,25 +391,27 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                 }}
             >
                 <Form className={orgStyles.popupDropdownContainer}>
-                    <div className={orgStyles.inputFieldContainer}>
-                        <FormikTextInput
-                            label={`${props.activeItem} Name`}
-                            name="Name"
-                            type="text"
-                            placeholder="Enter a name"
-                        />
+                    <div className={orgStyles.threeSpan}>
+                        <div className={orgStyles.inputFieldContainer}>
+                            <FormikTextInput
+                                label={`${props.activeItem} Name`}
+                                name="Name"
+                                type="text"
+                                placeholder="Enter a name"
+                            />
+                        </div>
+                        <div className={orgStyles.inputFieldContainer}>
+                            <FormikTextInput
+                                label="Code"
+                                name="Code"
+                                type="text"
+                                placeholder="Enter Code"
+                            />
+                        </div>
                     </div>
-                    <div className={orgStyles.inputFieldContainer}>
-                        <FormikTextInput
-                            label="Code"
-                            name="Code"
-                            type="text"
-                            placeholder="Enter Code"
-                        />
-                    </div>
+
                     {props.activeItem === "College" ? (
                         <div className={orgStyles.inputFieldContainer}>
-                            <p>Affiliated University</p>
                             <FormikReactSelect
                                 name="Affiliation"
                                 label="Affiliation"
@@ -427,7 +429,6 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         </div>
                     ) : null}
                     <div className={orgStyles.inputFieldContainer}>
-                        <p>Country</p>
                         <FormikReactSelect
                             name="Country"
                             label="Country"
@@ -445,7 +446,6 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         /> */}
                     </div>
                     <div className={orgStyles.inputFieldContainer}>
-                        <p>State</p>
                         <FormikReactSelect
                             // value={statesData?.find(
                             //     state =>
@@ -459,7 +459,6 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         />
                     </div>
                     <div className={orgStyles.inputFieldContainer}>
-                        <p>Zone</p>
                         <FormikReactSelect
                             // value={
                             //     selectedZone.length > 0 &&
@@ -477,7 +476,6 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         />
                     </div>
                     <div className={orgStyles.inputFieldContainer}>
-                        <p>District</p>
                         <FormikReactSelect
                             // value={
                             //     selectedDistrict.length > 0 &&
@@ -495,7 +493,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                         />
                     </div>
                     <div
-                        className={`${orgStyles.inputFieldContainer} grid-container`}
+                        className={`${orgStyles.inputFieldContainer} ${orgStyles.colspan} grid-container`}
                     >
                         <PowerfulButton
                             type="button"
