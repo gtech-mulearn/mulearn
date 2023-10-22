@@ -78,7 +78,9 @@
     background-color: white;
     box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.15);
 }
+/* ReportWrapper */
 
+/* Default Container */
 .ContainerWrapper {
     width: 100%;
 
@@ -187,7 +189,7 @@
 .ContainerWrapper .ContentWrapper .TopContainer .sectionTwo {
     width: 30%;
     min-width: 300px;
-align-items: center;
+    align-items: center;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -237,13 +239,33 @@ align-items: center;
 
 /* CheckBoxContainer */
 
-.CheckBoxContainerWrapper{
+.CheckBoxContainerWrapper {
     display: flex;
     gap: 10px;
     font-size: 17px;
     font-weight: 500;
 }
 
-.CheckBoxContainerWrapper input{
+.CheckBoxContainerWrapper input {
     padding: 5px;
+}
+
+/* Attendees */
+.AttendeesWrapperIndividual {
+    padding: 10px;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border-radius: 8px;
+    background-color: #eef2ff;
+    font-size: 17px;
+    color: rgba(69, 111, 246, 1);
+}
+
+.AttendeesWrapperIndividual img {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
 }
