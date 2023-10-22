@@ -2,6 +2,7 @@ import { FieldConfig, useField } from "formik";
 import styles from "./FormComponents.module.css";
 import React, {
     CSSProperties,
+    ChangeEvent,
     ClassAttributes,
     HTMLAttributes,
     TextareaHTMLAttributes,
@@ -100,14 +101,15 @@ export type Option = {
     value: string | boolean | number;
 };
 
-const customStyles: any = {
+const customStyles = {
     control: (provided: any) => ({
         ...provided,
         backgroundColor: "white",
         border: ".1px solid #CFD3D4",
         borderRadius: "10px",
-        // width: "100%",
+        width: "100%",
         padding: ".3rem .4rem"
+
         // minWidth: "200px"
     })
 };
@@ -152,7 +154,6 @@ const FormikReactSelect: React.FC<FormikSelectProps> = ({
         }
         return options.find(option => option.value === field.value) || null;
     };
-    console.log(addStyles);
     return (
         <div className={styles.InputSet}>
             <label className={styles.formLabel} htmlFor={name}>
@@ -170,7 +171,12 @@ const FormikReactSelect: React.FC<FormikSelectProps> = ({
                 options={options}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                styles={{ ...customStyles, ...addStyles }}
+                styles={{
+                    control: provided => ({
+                        ...customStyles.control(provided),
+                        ...addStyles
+                    })
+                }}
             />
             {meta.touched && meta.error && (
                 <div className={styles.error}>{meta.error}</div>
@@ -283,6 +289,10 @@ export const FormikCheckBox = ({ label, ...props }: any) => {
 
     //Work around :)
     const [checked, setChecked] = useState(meta.initialValue);
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setChecked(e.target.checked);
+        helper.setValue(e.target.checked);
+    };
     return (
         <div className={styles.checkBox}>
             <label className={styles.formLabel}>{label}</label>
@@ -291,7 +301,7 @@ export const FormikCheckBox = ({ label, ...props }: any) => {
                 {...field}
                 {...props}
                 checked={checked}
-                onChange={() => setChecked(!checked)}
+                onChange={handleChange}
             />
             {meta.touched && meta.error ? (
                 <div className={styles.error}>{meta.error}</div>

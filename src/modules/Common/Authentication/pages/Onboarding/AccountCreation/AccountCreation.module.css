@@ -35,7 +35,7 @@
         all: unset;
         position: absolute;
         right: 10px;
-        top: 20px;
+        top: 10px;
         width: 24px;
         z-index: 10;
         color: #d9d9d9;
@@ -147,4 +147,12 @@
     color: #5570f1;
     text-decoration: none;
     font-weight: 600;
+}
+
+.inputBox input {
+    width: 100%;
+    background: #F5F7FB;
+    border-radius: 8px;
+    border: none;
+    padding: 0.6rem;
 }

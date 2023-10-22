@@ -12,8 +12,10 @@ import {
     columnsCompanies
 } from "./THeaders";
 import TableTopTab from "./TableTopTab";
-// import "./Organizations.scss"
 import { organizationRoutes } from "@/MuLearnServices/urls";
+
+import Modal from "../CollegeLevels/components/Modal";
+import CreateOrganization from "./CreateOrganization";
 
 function Organizations() {
     const ccc = ["College", "Company", "Community"] as const;
@@ -33,11 +35,11 @@ function Organizations() {
     const [isEdit, setIsEdit] = useState(false);
     const firstFetch = useRef(true);
     const navigate = useNavigate();
-
+    const [currModal, setCurrModal] = useState<null | "create" | "edit">(null);
     const toast = useToast();
 
     useEffect(() => {
-        if (firstFetch.current || true) {
+        if (firstFetch.current || currModal === null) {
             getOrganizations(
                 activeTab,
                 setData,
@@ -57,7 +59,7 @@ function Organizations() {
             setActiveTab(storedActiveTab as CCC);
             handleTabClick(storedActiveTab as CCC);
         }
-    }, [currentPage]);
+    }, [currentPage, currModal]);
 
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
@@ -205,13 +207,27 @@ function Organizations() {
                 active={activeTab}
                 onTabClick={handleTabClick as (tab: string) => void}
             />
-
+            {currModal && (
+                <Modal
+                    onClose={setCurrModal}
+                    style={{
+                        padding: 0,
+                        background: "transparent",
+                        boxShadow: "none"
+                    }}
+                >
+                    <CreateOrganization
+                        activeItem={activeTab}
+                        handleClose={() => setCurrModal(null)}
+                    />
+                </Modal>
+            )}
             {data && (
                 <>
                     <TableTop
                         onSearchText={handleSearch}
                         onPerPageNumber={handlePerPageNumber}
-                        CSV={organizationRoutes.getOrgCsv('activeTabName')}
+                        CSV={organizationRoutes.getOrgCsv("activeTabName")}
                     />
                     <Table
                         rows={data}

@@ -1,0 +1,191 @@
+.basic_details {
+    display: flex;
+    color: #000;
+    gap: 20px;
+    width: 95%;
+    max-width: 95%;
+
+    .profile_details_container {
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        display: flex;
+        gap: 15px;
+        align-items: center;
+
+        .profile_pic {
+            background-image: url(../assets/images/dpm.webp);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .profile_details {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 5px;
+
+            & h1 {
+                font-weight: 700;
+                line-height: 12px;
+            }
+
+            & p {
+                font-size: 12px;
+                color: #7D9BC6;
+            }
+
+            .socials {
+                display: flex;
+                gap: 5px;
+            }
+        }
+    }
+
+    .basic_details_detail {
+        display: flex;
+        gap: 20px;
+
+        .status {
+            background: #fff;
+            padding: 10px 60px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+    }
+}
+
+.roles_karma_dist_container {
+    height: 300px;
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    border-radius: 16px;
+    border-left: 6px solid #7E48D2;
+    box-shadow: 0px 3px 12px 0px rgba(0, 24, 99, 0.10);
+    background-color: #fff;
+    margin-top: 20px;
+
+    .role_distribution_container {
+        width: 50%;
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+        border-radius: 12px;
+
+        & h1 {
+            position: absolute;
+            text-align: left;
+            color: #000;
+            font-weight: 800;
+            left: 40px;
+            top: 10px;
+        }
+
+        .ellipse {
+            border: 2px solid #D5D8E6;
+            border-radius: 50%;
+            width: 770px;
+            height: 750px;
+            position: absolute;
+            left: -320px;
+        }
+
+        .ellipse1 {
+            border: 2px solid #D5D8E6;
+            border-radius: 50%;
+            width: 700px;
+            height: 760px;
+            position: absolute;
+            left: -320px;
+            top: 50px;
+        }
+
+        .ellipse2 {
+            border: 2px solid #D5D8E6;
+            border-radius: 50%;
+            width: 620px;
+            height: 640px;
+            position: absolute;
+            left: -320px;
+            top: 111px;
+        }
+
+        .ellipse3 {
+            border: 2px solid #D5D8E6;
+            border-radius: 50%;
+            width: 540px;
+            height: 540px;
+            position: absolute;
+            left: -320px;
+            top: 151px;
+        }
+
+        .planet {
+            width: 90px;
+            height: 90px;
+            position: absolute;
+            left: -30px;
+            bottom: -30px;
+            background-image: url(../assets/images/planet.png);
+            background-size: contain;
+        }
+    }
+
+    .karma_distribution_container {
+        width: 50%;
+        height: 100%;
+        position: relative;
+
+        .container {
+            top: 60px;
+            left: 10px;
+            position: absolute;
+
+        }
+
+    }
+}
+
+.profileList {
+    position: relative;
+    display: flex;
+    /*flex-wrap: wrap;*/
+    gap: 55px;
+    list-style: none;
+    height: 30px;
+    justify-content: flex-start;
+    margin-top: -1rem;
+    overflow: scroll;
+    width: 95%;
+    margin-top: 20px;
+
+    .underline {
+        content: "";
+        position: absolute;
+        bottom: 0px;
+        width: 2rem;
+        height: 3.5px;
+        background-color: #456FF6;
+        transition: all .5s ease-in-out;
+    }
+
+    & li {
+        color: #7D9BC6;
+        font-weight: 600;
+        cursor: pointer;
+        min-width: 110px;
+        transition: all .5s ease-in-out;
+
+        &:hover {
+            font-weight: 600;
+            color: #000;
+        }
+    }
+}

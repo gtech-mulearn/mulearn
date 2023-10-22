@@ -11,7 +11,7 @@
 }
 
 .wrapper {
-    padding: 2rem;
+    padding: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -71,4 +71,14 @@
 }
 .selectRadio label {
     margin-left: -7rem;
+}
+.selectRadio label span {
+    margin-left: 1rem;
+    font-weight: 500;
+    
+}
+
+.errorsSpan{
+    color: red;
+    font-size: small;
 }

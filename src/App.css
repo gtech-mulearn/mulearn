@@ -24,7 +24,7 @@
     padding: 5px;
     outline: none;
     width: 100%;
-    margin-top: 10px;
+    /* margin-top: 10px; */
 }
 
 ::-webkit-scrollbar {

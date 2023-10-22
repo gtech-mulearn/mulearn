@@ -35,81 +35,81 @@ export const fetchLC = async (
     }
 };
 
-export const fetchCountryOptions = async (
-    setCountry: UseStateFunc<Option[]>
-) => {
-    try {
-        const response = await privateGateway.get(onboardingRoutes.countryList);
-        setCountry(
-            response.data.response.countries
-                .sort((a: any, b: any) => a.name.localeCompare(b.name))
-                .map((country: any) => ({
-                    value: country.id,
-                    label: country.name
-                }))
-        );
-    } catch (err: unknown) {
-        const error = err as AxiosError;
-        if (error?.response) {
-            throw error;
-        }
-    }
-};
+	export const fetchCountryOptions = async (
+		setCountry: UseStateFunc<Option[]>
+	) => {
+		try {
+			const response = await privateGateway.get(onboardingRoutes.countryList);
+			setCountry(
+				response.data.response.countries
+					.sort((a: any, b: any) => a.name.localeCompare(b.name))
+					.map((country: any) => ({
+						value: country.id,
+						label: country.name
+					}))
+			);
+		} catch (err: unknown) {
+			const error = err as AxiosError;
+			if (error?.response) {
+				throw error;
+			}
+		}
+	};
 
-export const fetchStateOptions = async (
-    country: string,
-    setState: UseStateFunc<Option[]>
-) => {
-    try {
-        const response = (await privateGateway.post(
-            onboardingRoutes.stateList,
-            {
-                country: country
-            }
-        )) as APIResponse<{ states: { id: string; name: string }[] }>;
-        const message = response?.data;
-        setState(
-            response.data.response.states
-                .sort((a, b) => a.name.localeCompare(b.name))
-                .map(sate => ({
-                    value: sate.id,
-                    label: sate.name
-                }))
-        );
-    } catch (err: unknown) {
-        const error = err as AxiosError;
-        if (error?.response) {
-            throw error;
-        }
-    }
-};
+	export const fetchStateOptions = async (
+		country: string,
+		setState: UseStateFunc<Option[]>
+	) => {
+		try {
+			const response = (await privateGateway.post(
+				onboardingRoutes.stateList,
+				{
+					country: country
+				}
+			)) as APIResponse<{ states: { id: string; name: string }[] }>;
+			const message = response?.data;
+			setState(
+				response.data.response.states
+					.sort((a, b) => a.name.localeCompare(b.name))
+					.map(sate => ({
+						value: sate.id,
+						label: sate.name
+					}))
+			);
+		} catch (err: unknown) {
+			const error = err as AxiosError;
+			if (error?.response) {
+				throw error;
+			}
+		}
+	};
 
-export const fetchDistrictOptions = async (
-    state: string,
-    setDistrict: UseStateFunc<Option[]>
-) => {
-    try {
-        const response = (await privateGateway.post(
-            onboardingRoutes.districtList,
-            {
-                state: state
-            }
-        )) as APIResponse<{ districts: { id: string; name: string }[] }>;
-        setDistrict(
-            response.data.response.districts
-                .sort((a, b) => a.name.localeCompare(b.name))
-                .map(sate => ({
-                    value: sate.id,
-                    label: sate.name
-                }))
-        );
-    } catch (err: unknown) {
-        const error = err as AxiosError;
-        if (error?.response) {
-            throw error;
-        }
-    }
-};
+	export const fetchDistrictOptions = async (
+		state: string,
+		setDistrict: UseStateFunc<Option[]>
+	) => {
+		try {
+			const response = (await privateGateway.post(
+				onboardingRoutes.districtList,
+				{
+					state: state
+				}
+			)) as APIResponse<{ districts: { id: string; name: string }[] }>;
+			setDistrict(
+				response.data.response.districts
+					.sort((a, b) => a.name.localeCompare(b.name))
+					.map(sate => ({
+						value: sate.id,
+						label: sate.name
+					}))
+			);
+		} catch (err: unknown) {
+			const error = err as AxiosError;
+			if (error?.response) {
+				throw error;
+			}
+		}
+	};
 
 type getAPI = UseStateFunc<{ id: string; title: string }[]>;
 
