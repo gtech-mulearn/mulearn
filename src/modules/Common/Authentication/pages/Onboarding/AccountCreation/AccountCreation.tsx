@@ -283,10 +283,6 @@ export default function AccountCreation() {
                                     <Select
                                         name="community.id"
                                         ref={community_select_ref}
-                                        // key={defaultCommunity[0].value}
-                                        // defaultValue={
-                                        //     param ? defaultCommunity : undefined
-                                        // }
                                         placeholder="Select Communities you're part of"
                                         onChange={OnChangeValue => {
                                             console.log(OnChangeValue);
@@ -362,14 +358,6 @@ export default function AccountCreation() {
                             </div>
 
                             <div className={styles.accountCreationAlternative}>
-                                {/* <div>
-                                    <hr />
-                                    <p>OR</p>
-                                    <hr />
-                                </div>
-                                <PowerfulButton type="button" variant="ghost">
-                                    <FcGoogle size={35} /> Sign in with google
-                                </PowerfulButton> */}
                                 <div>
                                     <p>
                                         Already have an account?{" "}
