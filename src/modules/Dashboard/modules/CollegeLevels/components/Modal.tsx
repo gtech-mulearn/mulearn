@@ -1,4 +1,4 @@
-import React, { CSSProperties, useEffect, useRef } from "react";
+import React, { CSSProperties } from "react";
 import styles from "./Modal.module.css";
 
 type props = {

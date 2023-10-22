@@ -39,7 +39,7 @@ function Organizations() {
     const toast = useToast();
 
     useEffect(() => {
-        if (firstFetch.current || true) {
+        if (firstFetch.current || currModal === null) {
             getOrganizations(
                 activeTab,
                 setData,
@@ -59,7 +59,7 @@ function Organizations() {
             setActiveTab(storedActiveTab as CCC);
             handleTabClick(storedActiveTab as CCC);
         }
-    }, [currentPage]);
+    }, [currentPage, currModal]);
 
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
@@ -211,7 +211,11 @@ function Organizations() {
             {currModal && (
                 <Modal
                     onClose={setCurrModal}
-                    style={{ padding: 0, background: "transparent" }}
+                    style={{
+                        padding: 0,
+                        background: "transparent",
+                        boxShadow: "none"
+                    }}
                 >
                     <CreateOrganization
                         activeItem={activeTab}

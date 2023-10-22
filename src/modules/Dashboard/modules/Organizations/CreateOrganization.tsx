@@ -1,5 +1,5 @@
 import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import FormData from "./FormData";
 import orgStyles from "./Organizations.module.css";
 
@@ -10,16 +10,32 @@ function CreateOrganization({
     activeItem: "College" | "Company" | "Community";
     handleClose: () => void;
 }) {
-    const navigate = useNavigate();
-
     const RenderFormData = ({ activeItem }: any) => {
         switch (activeItem) {
             case "College":
-                return <FormData isCreate={true} activeItem="College" />;
+                return (
+                    <FormData
+                        isCreate={true}
+                        activeItem="College"
+                        handleClose={handleClose}
+                    />
+                );
             case "Company":
-                return <FormData isCreate={true} activeItem="Company" />;
+                return (
+                    <FormData
+                        isCreate={true}
+                        activeItem="Company"
+                        handleClose={handleClose}
+                    />
+                );
             case "Community":
-                return <FormData isCreate={true} activeItem="Community" />;
+                return (
+                    <FormData
+                        isCreate={true}
+                        activeItem="Community"
+                        handleClose={handleClose}
+                    />
+                );
             default:
                 return null;
         }

@@ -19,7 +19,7 @@
 }
 
 .modal .container {
-    /* width: min(80%, 800px); */
+    width: min(80%, 800px);
     background-color: white;
 
     border-radius: 1rem;

@@ -42,6 +42,7 @@ interface CollegeFormProps {
     selectedZone?: string;
     selectedDistrict?: string;
     selectedAffiliation?: string;
+    handleClose?: () => void;
 }
 
 const FormData = ({ ...props }: CollegeFormProps) => {
@@ -379,6 +380,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                 })}
                 onSubmit={values => {
                     setIsLoading(true);
+                    props.handleClose();
                     handleSubmit(
                         values.Name,
                         values.Code,
@@ -413,6 +415,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                     {props.activeItem === "College" ? (
                         <div className={orgStyles.inputFieldContainer}>
                             <FormikReactSelect
+                                maxMenuHeight={200}
                                 name="Affiliation"
                                 label="Affiliation"
                                 addOnChange={handleAffiliationChange}
@@ -435,6 +438,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                             addOnChange={handleCountryChange}
                             options={countryData}
                             required
+                            maxMenuHeight={200}
                         />
                         {/* <Select
                             value={countryData?.find(
@@ -456,6 +460,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                             addOnChange={handleStateChange}
                             options={statesData}
                             required
+                            maxMenuHeight={200}
                         />
                     </div>
                     <div className={orgStyles.inputFieldContainer}>
@@ -473,6 +478,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                             addOnChange={handleZoneChange}
                             options={zonesData}
                             required
+                            maxMenuHeight={200}
                         />
                     </div>
                     <div className={orgStyles.inputFieldContainer}>
@@ -490,6 +496,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                             addOnChange={handleDistrictChange}
                             options={districtsData}
                             required
+                            maxMenuHeight={200}
                         />
                     </div>
                     <div
