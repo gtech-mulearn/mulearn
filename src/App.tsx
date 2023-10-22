@@ -304,10 +304,6 @@ function App() {
                         },
 
                         {
-                            path: "organizations/create",
-                            element: <CreateOrganization />
-                        },
-                        {
                             path: "organizations/edit",
                             element: (
                                 <RoleChecker
