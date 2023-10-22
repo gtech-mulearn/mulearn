@@ -19,7 +19,7 @@ const TableTopTab = ({ active, onTabClick }: TableTopTabProps) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const navigate = useNavigate();
-	const orgFormRef = useRef<any>(null);
+	const orgFormRef = useRef<any>(null); //! Use for modal and form button connectivity
 
     const handleCreate = () => {
         navigate("/dashboard/organizations/create", {
@@ -74,6 +74,7 @@ const TableTopTab = ({ active, onTabClick }: TableTopTabProps) => {
                     type={active}
                     isEditMode={false}
                     itemId={""}
+                    closeModal={() => setIsModalOpen(false)}
                 />
             </MuModal>
         </div>
