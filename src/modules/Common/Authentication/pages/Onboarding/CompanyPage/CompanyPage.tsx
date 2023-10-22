@@ -55,7 +55,10 @@ export default function CompanyPage() {
                 setIsLoading: setIsLoading,
                 setCompanies: setCompanies
             });
-
+            getRoles({
+                setIsLoading: setIsLoading,
+                setRoles: setRoles
+            });
         }
     }, []);
 
@@ -65,9 +68,6 @@ export default function CompanyPage() {
     });
 
     const onSubmit = async (values: any) => {
-        console.log("values", values);
-        console.log("userData", userData);
-
         const newUserData: any = {
             user: {
                 first_name: userData.first_name,
@@ -94,7 +94,6 @@ export default function CompanyPage() {
         if (userData.referral)
             newUserData["referral"] = { muid: userData.referral.muid };
 
-        console.log("newUserData", newUserData);
         /// If user doesn't want to be a mentor set role to null
         if (values.radio === "yes") {
             if (userData.role === "") {
@@ -104,8 +103,6 @@ export default function CompanyPage() {
                 newUserData.user["role"] = userData.role;
             }
         }
-
-        console.log("Triggered");
 
         submitUserData({
             setIsLoading: setIsLoading,
@@ -176,7 +173,7 @@ export default function CompanyPage() {
                                             <span className={styles.errorsSpan}>{formik.errors.radio}</span>
                                         )}
                                     <div className={styles.select}>
-                                        <button className={styles.selectRadio}>
+                                        <button type="button" className={styles.selectRadio}>
                                             <label>
                                                 <input
                                                     onChange={(e) => {
@@ -191,7 +188,7 @@ export default function CompanyPage() {
                                             </label>
                                         </button>
 
-                                        <button className={styles.selectRadio}>
+                                        <button type="button" className={styles.selectRadio}>
                                             <label>
                                                 <input
                                                     onChange={(e) => {
@@ -200,7 +197,7 @@ export default function CompanyPage() {
                                                     type="radio"
                                                     value="no"
                                                     name="radio"
-                                                    disabled={isloading}
+
                                                 />
                                                 <span>No</span>
                                             </label>
