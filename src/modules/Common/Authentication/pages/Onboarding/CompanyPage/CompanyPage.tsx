@@ -87,6 +87,10 @@ export default function CompanyPage() {
             newUserData["integration"]["param"] = userData.param;
             newUserData["integration"]["title"] = "DWMS";
         }
+
+        if (userData.referral)
+            newUserData["referral"] = { muid: userData.referral.muid };
+
         console.log("newUserData", newUserData);
         /// If user doesn't want to be a mentor set role to null
         if (values.radio === "yes") newUserData.user["role"] = userData.role;
@@ -121,7 +125,7 @@ export default function CompanyPage() {
                         <div className={styles.wrapper}>
                             <Form onSubmit={formik.handleSubmit}>
                                 <h5 className={styles.text}>
-                                    Please enter your company details
+                                    Please enter your company details<span className={styles.errorsSpan}> *</span>
                                 </h5>
                                 <ReactSelect
                                     options={
@@ -144,15 +148,19 @@ export default function CompanyPage() {
                                             inputObject.company = e.value;
                                         }
                                     }}
+                                    required
                                 />
-
+                                {formik.touched['company' as keyof typeof formik.touched] &&
+                                    formik.errors['company' as keyof typeof formik.touched]  && (
+                                        <span className={styles.errorsSpan}>{formik.errors['company' as keyof typeof formik.touched] }</span>
+                                    )}
                                 <div className={styles.content}>
                                     <h5 className={styles.text}>
-                                        Do you want to become a mentor?
+                                        Do you want to become a mentor?<span className={styles.errorsSpan}> *</span>
                                     </h5>
                                     {formik.touched.radio &&
                                         formik.errors.radio && (
-                                            <span>{formik.errors.radio}</span>
+                                            <span className={styles.errorsSpan}>{formik.errors.radio}</span>
                                         )}
                                     <div className={styles.select}>
                                         <button className={styles.selectRadio}>
@@ -169,6 +177,7 @@ export default function CompanyPage() {
                                                 <span>Yes</span>
                                             </label>
                                         </button>
+
                                         <button className={styles.selectRadio}>
                                             <label>
                                                 <input

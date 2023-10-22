@@ -155,6 +155,7 @@ export const submitUserData = async ({
     toast: (options?: UseToastOptions | undefined) => ToastId;
     navigate: NavigateFunction;
 }) => {
+    console.log("UserData", userData)
     try {
         setIsLoading(true);
         const res = await privateGateway.post(

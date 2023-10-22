@@ -277,7 +277,7 @@ function App() {
         },
         {
             path: "/",
-            element: <PrivateRoutes />,
+          element: <PrivateRoutes />,
             children: [
                 {
                     path: "/dashboard",
@@ -291,12 +291,7 @@ function App() {
                         },
                         {
                             path: "refer",
-                            element: (
-                                <RoleChecker
-                                    roles={[roles.STUDENT, roles.ADMIN]}
-                                    children={<Refer />}
-                                />
-                            )
+                            element: <Refer />
                         },
                         {
                             path: "interest-groups",

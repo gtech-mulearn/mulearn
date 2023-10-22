@@ -40,3 +40,7 @@
 .text {
     font-weight: 700;
 }
+.errorsSpan{
+    color: red;
+    font-size: small;
+}

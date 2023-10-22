@@ -38,18 +38,22 @@ const scheme = z.object({
         .number()
         .integer()
         .positive()
-        .required(`${inputObject.graduationYear} is Required`)
-        .min(2000, `${inputObject.graduationYear} > 2000`)
-        .max(2030, `${inputObject.graduationYear} < 2030`)
+        .when('role', {
+            is: 'student',
+            then: (s) => s
+                .required(`${inputObject.graduationYear} is Required`)
+                .min(2000, `${inputObject.graduationYear} > 2000`)
+                .max(2030, `${inputObject.graduationYear} < 2030`)
+        })
 });
+
+
 
 export default function CollegePage() {
     const navigate = useNavigate();
     const toast = useToast();
     const location = useLocation();
     let userData: any = location.state as Object;
-
-
 
     const [isloading, setIsLoading] = useState(true);
     const [colleges, setColleges] = useState([{ id: "", title: "" }]);
@@ -111,6 +115,10 @@ export default function CollegePage() {
 
         if (userData.role) newUserData.user["role"] = userData.role;
 
+
+        if (userData.referral)
+            newUserData["referral"] = { muid: userData.referral.muid };
+
         if (userData.param) {
             newUserData["integration"]["param"] = userData.param;
             newUserData["integration"]["title"] = "DWMS";
@@ -170,6 +178,10 @@ export default function CollegePage() {
                                         }}
                                     />
                                 </div>
+                                {formik.touched.college &&
+                                    formik.errors.college&& (
+                                        <span className={styles.errorsSpan}>{formik.errors.college}</span>
+                                    )}
                                 <div className={styles.inputBox}>
                                     <ReactSelect
                                         options={
@@ -192,6 +204,10 @@ export default function CollegePage() {
                                         }}
                                     />
                                 </div>
+                                {formik.touched.department &&
+                                    formik.errors.department&& (
+                                        <span className={styles.errorsSpan}>{formik.errors.department}</span>
+                                    )}
                                 {selectedRole === "Student" && <div className={styles.inputBox}>
                                     <SimpleInput
                                         value={formik.values.graduationYear}
@@ -200,12 +216,20 @@ export default function CollegePage() {
                                         placeholder="Graduation Year"
                                         disabled={isloading}
                                     />
+                                     {formik.touched.graduationYear&&
+                                    formik.errors.graduationYear&& (
+                                        <span className={styles.errorsSpan}>{formik.errors.graduationYear}</span>
+                                    )}
                                 </div>}
 
                                 <div className={styles.submit}>
                                     <PowerfulButton
                                         type="submit"
                                         isLoading={isloading}
+                                        onClick={() => {
+                                            console.log(formik.values);
+                                            console.log(userData)
+                                        }}
                                     >
                                         {isloading
                                             ? "Please wait..."

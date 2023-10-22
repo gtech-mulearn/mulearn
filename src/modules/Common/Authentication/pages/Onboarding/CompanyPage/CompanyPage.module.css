@@ -77,3 +77,8 @@
     font-weight: 500;
     
 }
+
+.errorsSpan{
+    color: red;
+    font-size: small;
+}

@@ -102,7 +102,7 @@ const EditProfilePopUp = (props: Props) => {
         },
         closeMenuOnSelect: false,
         isMulti: true,
-        defaultValue: filteredCommunityOptions,
+        value: filteredCommunityOptions,
         options: toReactOptions(communityAPI)
     };
 

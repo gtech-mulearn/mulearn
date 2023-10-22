@@ -137,7 +137,7 @@ export default function AccountCreation() {
     return (
         <OnboardingTemplate>
             <OnboardingHeader
-                title={"Welcome ! Create Account"}
+                title={"Welcome! Create Account"}
                 desc={"Please enter the user informations"}
             />
             <Formik
