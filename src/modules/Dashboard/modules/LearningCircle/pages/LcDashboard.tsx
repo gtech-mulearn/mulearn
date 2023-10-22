@@ -1,3 +1,4 @@
+import { style } from "d3";
 import { EditLogo, RightArrow, ThreeDotssvg } from "../assets/svg";
 import styles from "./LcDashboard.module.css";
 
@@ -42,13 +43,7 @@ const LcDashboard = (props: Props) => {
                             <div className={styles.divOne}>
                                 <div>
                                     <p>Next meeting on</p>
-                                    <h1
-                                        style={{
-                                            color: "rgba(69, 111, 246, 1)"
-                                        }}
-                                    >
-                                        22 June 2023
-                                    </h1>
+                                    <h1>22 June 2023</h1>
                                     <p>Sunday</p>
                                 </div>
                                 <button>
@@ -114,7 +109,7 @@ export const HistoryDiv = () => {
 
 export const CheckBoxContainer = () => {
     return (
-        <div>
+        <div className={styles.CheckBoxContainerWrapper}>
             <input
                 type="checkbox"
                 id="textInput"

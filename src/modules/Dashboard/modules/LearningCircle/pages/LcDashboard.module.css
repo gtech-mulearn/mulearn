@@ -142,6 +142,10 @@
     flex-direction: column;
     width: 70%;
     gap: 10px;
+    font-weight: 600;
+}
+.ContainerWrapper .ContentWrapper .TopContainer .sectionOne p {
+    font-size: 18px;
 }
 .ContainerWrapper .ContentWrapper .TopContainer .sectionOne .divOne {
     display: flex;
@@ -155,10 +159,17 @@
     align-items: flex-start;
 }
 
+.ContainerWrapper .ContentWrapper .TopContainer .sectionOne .divOne > div h1 {
+    color: rgba(69, 111, 246, 1);
+    font-size: 35px;
+    line-height: 1;
+    margin-top: 8px;
+}
 .ContainerWrapper .ContentWrapper .TopContainer .sectionOne .secondDiv {
     display: flex;
     width: 100%;
     justify-content: space-between;
+    height: 100%;
 }
 
 .ContainerWrapper .ContentWrapper .TopContainer .sectionOne .secondDiv > div {
@@ -176,6 +187,10 @@
 .ContainerWrapper .ContentWrapper .TopContainer .sectionTwo {
     width: 30%;
     min-width: 300px;
+align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .ContainerWrapper .ContentWrapper .TopContainer .sectionTwo button {
     background-color: rgba(69, 111, 246, 1);
@@ -184,6 +199,8 @@
     border-radius: 8px;
     font-size: 40px;
     line-height: 0.9;
+    width: fit-content;
+    align-self: flex-end;
 }
 
 .ContainerWrapper .ContentWrapper .BottomContainer {
@@ -192,7 +209,7 @@
     width: 100%;
     gap: 10px;
 }
-.ContainerWrapper .ContentWrapper .BottomContainer >p{
+.ContainerWrapper .ContentWrapper .BottomContainer > p {
     align-self: flex-start;
     color: black;
     font-size: 18px;
@@ -216,4 +233,17 @@
     font-size: 17px;
     font-weight: 600;
     align-items: center;
+}
+
+/* CheckBoxContainer */
+
+.CheckBoxContainerWrapper{
+    display: flex;
+    gap: 10px;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.CheckBoxContainerWrapper input{
+    padding: 5px;
 }
