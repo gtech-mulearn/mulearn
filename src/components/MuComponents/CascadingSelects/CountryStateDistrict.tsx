@@ -1,6 +1,7 @@
-// CascadingSelects.tsx
+import styles from "../../../modules/Dashboard/utils/modalForm.module.css";
 import React from "react";
 import Select from "react-select";
+import { customReactSelectStyles } from "../../../modules/Dashboard/utils/common";
 
 interface Props {
     countries: Array<{ label: string; value: string }>;
@@ -40,17 +41,19 @@ const CountryStateDistrict: React.FC<Props> = ({
     onStateChange,
     onDistrictChange
 }) => {
-	const [blurStatus, setBlurStatus] = React.useState<BlurStatus>({
+    const [blurStatus, setBlurStatus] = React.useState<BlurStatus>({
         country: false,
         state: false,
         district: false
     });
     return (
         <>
-            <label>
-                Country:
+            <div className={styles.inputContainer}>
                 <Select
+                    placeholder="Country"
                     options={countries}
+                    styles={customReactSelectStyles}
+                    isClearable
                     isLoading={loadingCountries}
                     value={selectedCountry}
                     onChange={value => onCountryChange(value)}
@@ -59,13 +62,15 @@ const CountryStateDistrict: React.FC<Props> = ({
                     }}
                 />
                 {blurStatus.country && !selectedCountry && (
-                    <span style={{ color: "red" }}>Required</span>
+                    <div style={{ color: "red" }}>Country is Required</div>
                 )}
-            </label>
+            </div>
 
-            <label>
-                State:
+            <div className={styles.inputContainer}>
                 <Select
+                    placeholder="State"
+                    styles={customReactSelectStyles}
+                    isClearable
                     options={states}
                     isLoading={loadingStates}
                     value={selectedState}
@@ -75,13 +80,15 @@ const CountryStateDistrict: React.FC<Props> = ({
                     }}
                 />
                 {blurStatus.state && !selectedState && (
-                    <span style={{ color: "red" }}>Required</span>
+                    <div style={{ color: "red" }}>State is Required</div>
                 )}
-            </label>
+            </div>
 
-            <label>
-                District:
+            <div className={styles.inputContainer}>
                 <Select
+                    placeholder="District"
+                    styles={customReactSelectStyles}
+                    isClearable
                     options={districts}
                     isLoading={loadingDistricts}
                     value={selectedDistrict}
@@ -91,9 +98,9 @@ const CountryStateDistrict: React.FC<Props> = ({
                     }}
                 />
                 {blurStatus.district && !selectedDistrict && (
-                    <span style={{ color: "red" }}>Required</span>
+                    <div style={{ color: "red" }}>District is Required</div>
                 )}
-            </label>
+            </div>
         </>
     );
 };

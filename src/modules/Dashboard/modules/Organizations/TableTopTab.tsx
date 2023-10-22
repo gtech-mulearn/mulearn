@@ -1,8 +1,5 @@
-import React, { useState } from "react";
-import {
-    MuButton,
-    PowerfulButton
-} from "@/MuLearnComponents/MuButtons/MuButton";
+import { useRef, useState } from "react";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import "../DistrictDashboard/Organizations.css";
@@ -12,27 +9,14 @@ import OrgForm from "./OrgForm";
 interface TableTopTabProps {
     active: string;
     onTabClick: (tab: string) => void;
-    handleCreate: () => void;
 }
 
-const TableTopTab = ({
-    active,
-    onTabClick,
-    handleCreate
-}: TableTopTabProps) => {
+const TableTopTab = ({ active, onTabClick }: TableTopTabProps) => {
     const tabletopTab = ["College", "Company", "Community"];
-    // const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-    // const navigate = useNavigate();
-
-    // const handleCreate = () => {
-    //     navigate("/dashboard/organizations/create", {
-    //         state: {
-    //             activeItem: active,
-    //             isCreate: true
-    //         }
-    //     });
-    // };
+    const navigate = useNavigate();
+    const orgFormRef = useRef<any>(null); //! Use for modal and form button connectivity
 
     return (
         <div className="table_tab_container">
@@ -60,18 +44,27 @@ const TableTopTab = ({
                     backgroundColor: "#456FF6",
                     color: "#fff"
                 }}
-                onClick={handleCreate}
+                onClick={() => setIsModalOpen(true)}
             >
                 <AiOutlinePlusCircle />
                 Create
             </PowerfulButton>
-            {/* <MuModal
+            <MuModal
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
                 title={`Add new ${active}`}
+                type={"success"}
+                body={`Enter the deatils of the new ${active}`}
+                onDone={() => orgFormRef.current?.handleSubmitExternally()}
             >
-                <OrgForm type={active} isEditMode={false} itemId={""}/>
-            </MuModal> */}
+                <OrgForm
+                    ref={orgFormRef}
+                    type={active}
+                    isEditMode={false}
+                    itemId={""}
+                    closeModal={() => setIsModalOpen(false)}
+                />
+            </MuModal>
         </div>
     );
 };

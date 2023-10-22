@@ -206,7 +206,6 @@ function Organizations() {
             <TableTopTab
                 active={activeTab}
                 onTabClick={handleTabClick as (tab: string) => void}
-                handleCreate={() => setCurrModal("create")}
             />
             {currModal && (
                 <Modal

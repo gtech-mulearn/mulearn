@@ -304,10 +304,6 @@ function App() {
                         },
 
                         {
-                            path: "organizations/create",
-                            element: <CreateOrganization />
-                        },
-                        {
                             path: "organizations/edit",
                             element: (
                                 <RoleChecker
@@ -576,7 +572,7 @@ function App() {
                             element: <LearningCircle />
                         },
                         {
-                            path: "learning-circle/dashboard",
+                            path: "learning-circle/dashboard/:id",
                             element: <LcDashboard />
                         },
                         {
