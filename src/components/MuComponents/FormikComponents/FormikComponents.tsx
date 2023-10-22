@@ -164,7 +164,6 @@ const FormikReactSelect: React.FC<FormikSelectProps> = ({
                 {...rest}
                 name={name}
                 id={name}
-                maxMenuHeight={200}
                 value={getSelectedOption()}
                 isSearchable
                 isClearable
