@@ -4,7 +4,7 @@ import { HiEye, HiEyeSlash } from "react-icons/hi2";
 
 import OnboardingTemplate from "../../../components/OnboardingTeamplate/OnboardingTemplate";
 import OnboardingHeader from "../../../components/OnboardingHeader/OnboardingHeader";
-import { validate } from "../../../services/newOnboardingApis";
+import { getDWMSDetails, validate } from "../../../services/newOnboardingApis";
 import { Form, Formik } from "formik";
 import * as z from "yup";
 import { FormikTextInputWithoutLabel as SimpleInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
@@ -20,17 +20,14 @@ import { getCommunities } from "../../../services/onboardingApis";
 
 const animatedComponents = makeAnimated();
 
-const initialValues = {
-    email: "",
-    firstName: "",
-    lastName: "",
-    countryCode: "+91",
-    phoneNumber: "",
-    password: "",
-    confirmPassword: "",
-    muid: "",
-    communities: []
-};
+
+
+type DWMSData = {
+    email: string,
+    firstName: string,
+    lastName: string,
+    phoneNumber: string,
+}
 
 const scheme = z.object({
     email: z
@@ -75,18 +72,51 @@ export default function AccountCreation() {
     const [isLoading, setIsLoading] = useState(false);
     const [isVisible, setVisible] = useState(false);
     const [isVisibleC, setVisibleC] = useState(false);
+    const [dwmsData, setDWMSData] = useState<DWMSData>();
+
     const [isTncChecked, setTncChecked] = useState(false);
 
     const [communitiesList, setCommunitiesList] = useState([
         { id: "", title: "" }
     ]);
+    const initialValues = {
+        email: "",
+        firstName: "",
+        lastName: "",
+        countryCode: "+91",
+        phoneNumber: "",
+        password: "",
+        confirmPassword: "",
+        muid: "",
+        communities: []
+    };
 
     useEffect(() => {
+        if(isLoading) return;
+        setIsLoading(true);
         getCommunities({
             setCommunityAPI: setCommunitiesList,
             setIsLoading: setIsLoading
         });
+        if (param) {
+            getDWMSDetails(param, (data: any) => {
+                const tempData: DWMSData = {
+                    email: data?.email_id || "",
+                    firstName: data?.job_seeker_fname || "",
+                    lastName: data?.job_seeker_lname || "",
+                    phoneNumber: data?.mobile_no || "",
+
+                };
+
+                setDWMSData(tempData);
+            });
+
+        }
+
+        setIsLoading(false);
     }, []);
+
+
 
     const onsubmit = async (values: any, actions: any) => {
         if (!isTncChecked) {
@@ -153,11 +183,13 @@ export default function AccountCreation() {
                                     <SimpleInput
                                         name={"email"}
                                         type="email"
-                                        value={formik.values.email}
+                                        key={formik.values.email}
+                                        value={formik.values.email || dwmsData?.email}
                                         onChange={formik.handleChange}
                                         placeholder="Email id"
                                         required
-                                        disabled={isLoading}
+                                        disabled={isLoading || dwmsData?.email ? true : false}
+                                        style={dwmsData?.email ? { backgroundColor: "#f7f7f7" } : { backgroundColor: "#F5F7FB" }}
                                     />
                                 </div>
 
@@ -168,9 +200,10 @@ export default function AccountCreation() {
                                             onChange={formik.handleChange}
                                             type="text"
                                             placeholder="First Name"
-                                            value={formik.values.firstName}
+                                            value={formik.values.firstName || dwmsData?.firstName}
                                             required
-                                            disabled={isLoading}
+                                            disabled={isLoading || dwmsData?.firstName ? true : false}
+                                            style={dwmsData?.firstName ? { backgroundColor: "#f7f7f7" } : { backgroundColor: "#F5F7FB" }}
                                         />
                                     </div>
 
@@ -179,9 +212,10 @@ export default function AccountCreation() {
                                             name={"lastName"}
                                             onChange={formik.handleChange}
                                             type="text"
-                                            value={formik.values.lastName}
+                                            value={formik.values.lastName || dwmsData?.lastName}
                                             placeholder="Last Name"
-                                            disabled={isLoading}
+                                            disabled={isLoading || dwmsData?.lastName ? true : false}
+                                            style={dwmsData?.lastName ? { backgroundColor: "#f7f7f7" } : { backgroundColor: "#F5F7FB" }}
                                         />
                                     </div>
                                 </div>
@@ -204,11 +238,12 @@ export default function AccountCreation() {
                                     <div className={styles.inputBox}>
                                         <SimpleInput
                                             name={"phoneNumber"}
-                                            value={formik.values.phoneNumber}
+                                            value={formik.values.phoneNumber || dwmsData?.phoneNumber}
                                             onChange={formik.handleChange}
                                             type="number"
                                             required
-                                            disabled={isLoading}
+                                            disabled={isLoading || dwmsData?.phoneNumber ? true : false}
+                                            style={dwmsData?.phoneNumber ? { backgroundColor: "#f7f7f7" } : { backgroundColor: "#F5F7FB" }}
                                         />
                                     </div>
                                 </div>
@@ -298,6 +333,10 @@ export default function AccountCreation() {
                                         closeMenuOnSelect={false}
                                         components={animatedComponents}
                                         isClearable
+                                        defaultValue={param && dwmsData?.email ? {
+                                            value: "ebb42790-571e-4d9e-b65e-d367faad5746",
+                                            label: "KKEM"
+                                        } : null}
                                         isMulti
                                         options={communitiesList.map(
                                             company => {
@@ -371,5 +410,6 @@ export default function AccountCreation() {
                 )}
             </Formik>
         </OnboardingTemplate>
+
     );
 }

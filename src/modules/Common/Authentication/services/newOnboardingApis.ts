@@ -1,11 +1,13 @@
 import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
 import { showToasts } from "@/MuLearnServices/common_functions";
-import { onboardingRoutes } from "@/MuLearnServices/urls";
+import { KKEMRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import { Dispatch, SetStateAction } from "react";
 import { NavigateFunction } from "react-router-dom";
 import { bool, boolean } from "yup";
 import { getInfo } from "../../../Dashboard/modules/ConnectDiscord/services/apis";
+import { DWMSDetails } from "./onboardingApis";
+import toast from "react-hot-toast";
 
 export const validate = async ({
     userData,
@@ -172,4 +174,49 @@ export const submitUserData = async ({
             status: "error"
         });
     }
+};
+
+export const getDWMSDetails = (
+    param: string | null,
+    setDWMSDetails: (data: DWMSDetails) => void
+) => {
+    publicGateway
+        .get(
+            KKEMRoutes.getDWMSDetails.replace(
+                "${param}",
+                param === null ? "" : param
+            )
+        )
+        .then(response => {
+            const {
+                job_seeker_fname,
+                job_seeker_lname,
+                email_id,
+                mobile_no,
+                gender,
+                dob,
+                key_skills,
+                param,
+                job_seeker_id
+            } = response.data.response.registration;
+            const dwmsDetails: DWMSDetails = {
+                job_seeker_fname,
+                job_seeker_lname,
+                email_id,
+                mobile_no,
+                gender,
+                dob,
+                key_skills,
+                param,
+                job_seeker_id
+                // Initialize other fields here
+            };
+            setDWMSDetails(dwmsDetails);
+        })
+        .catch((error: APIError) => {
+            const errorMessage = (error.response.data as { message?: { general?: string[] } }).message?.general?.[0] || 'An error occurred';
+            //close the toast
+            toast.dismiss();
+            toast.error(errorMessage);
+        });
 };
