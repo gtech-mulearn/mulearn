@@ -380,7 +380,7 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                 })}
                 onSubmit={values => {
                     setIsLoading(true);
-                    props.handleClose();
+                    // props.handleClose();
                     handleSubmit(
                         values.Name,
                         values.Code,
