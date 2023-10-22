@@ -105,6 +105,8 @@ export default function CompanyPage() {
             }
         }
 
+        console.log("Triggered");
+
         submitUserData({
             setIsLoading: setIsLoading,
             userData: newUserData,
@@ -129,7 +131,7 @@ export default function CompanyPage() {
                     radio: ""
                 }}
                 validationSchema={scheme}
-                onSubmit={(value, action) => onSubmit(value)}
+                onSubmit={onSubmit}
             >
                 {formik => (
                     <div>
