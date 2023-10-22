@@ -79,7 +79,7 @@ export default function AccountCreation() {
     const [communitiesList, setCommunitiesList] = useState([
         { id: "", title: "" }
     ]);
-    const initialValues = {
+    const [initialValues, setInitialValues] = useState({
         email: "",
         firstName: "",
         lastName: "",
@@ -89,10 +89,10 @@ export default function AccountCreation() {
         confirmPassword: "",
         muid: "",
         communities: []
-    };
+    });
 
     useEffect(() => {
-        if(isLoading) return;
+        if (isLoading) return;
         setIsLoading(true);
         getCommunities({
             setCommunityAPI: setCommunitiesList,
@@ -100,15 +100,23 @@ export default function AccountCreation() {
         });
         if (param) {
             getDWMSDetails(param, (data: any) => {
-                const tempData: DWMSData = {
+                setDWMSData({
                     email: data?.email_id || "",
                     firstName: data?.job_seeker_fname || "",
                     lastName: data?.job_seeker_lname || "",
                     phoneNumber: data?.mobile_no || "",
 
-                };
+                });
 
-                setDWMSData(tempData);
+                setInitialValues({
+                    ...initialValues,
+                    email: data?.email_id || "",
+                    firstName: data?.job_seeker_fname || "",
+                    lastName: data?.job_seeker_lname || "",
+                    phoneNumber: data?.mobile_no || "",
+                });
+
+               
             });
 
         }
@@ -172,6 +180,7 @@ export default function AccountCreation() {
             />
             <Formik
                 initialValues={initialValues}
+                enableReinitialize={true}
                 validationSchema={scheme}
                 onSubmit={onsubmit}
             >
@@ -333,7 +342,7 @@ export default function AccountCreation() {
                                         closeMenuOnSelect={false}
                                         components={animatedComponents}
                                         isClearable
-                                        defaultValue={param && dwmsData?.email ? {
+                                        defaultValue={param  ? {
                                             value: "ebb42790-571e-4d9e-b65e-d367faad5746",
                                             label: "KKEM"
                                         } : null}

@@ -120,8 +120,9 @@ export default function CollegePage() {
             newUserData["referral"] = { muid: userData.referral.muid };
 
         if (userData.param) {
-            newUserData["integration"]["param"] = userData.param;
-            newUserData["integration"]["title"] = "DWMS";
+            console.log(userData)
+            newUserData["integration"] = {param: userData.param}
+            newUserData.integration.title = "DWMS";
         }
 
         if (userData.role === "Enabler")
