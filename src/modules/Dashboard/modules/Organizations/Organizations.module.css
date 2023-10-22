@@ -32,10 +32,10 @@
 }
 
 .popupContainer {
-    width: min(90%, 600px);
+    width: min(100%, 500px);
     height: -moz-max-content;
     height: max-content;
-    padding: 20px;
+
     border: none;
     border-radius: 8px;
     z-index: 0;
@@ -78,6 +78,9 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 15px;
+}
+.colspan {
+    grid-column: span 3;
 }
 
 .invisible {
@@ -146,6 +149,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.threeSpan {
+    grid-column: span 3;
 }
 
 @keyframes s3 {

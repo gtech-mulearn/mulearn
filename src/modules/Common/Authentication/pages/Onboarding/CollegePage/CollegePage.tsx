@@ -226,10 +226,6 @@ export default function CollegePage() {
                                     <PowerfulButton
                                         type="submit"
                                         isLoading={isloading}
-                                        onClick={() => {
-                                            console.log(formik.values);
-                                            console.log(userData)
-                                        }}
                                     >
                                         {isloading
                                             ? "Please wait..."

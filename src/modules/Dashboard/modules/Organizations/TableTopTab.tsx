@@ -1,8 +1,5 @@
-import React, { useRef, useState } from "react";
-import {
-    MuButton,
-    PowerfulButton
-} from "@/MuLearnComponents/MuButtons/MuButton";
+import { useRef, useState } from "react";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import "../DistrictDashboard/Organizations.css";
@@ -19,16 +16,7 @@ const TableTopTab = ({ active, onTabClick }: TableTopTabProps) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const navigate = useNavigate();
-	const orgFormRef = useRef<any>(null); //! Use for modal and form button connectivity
-
-    const handleCreate = () => {
-        navigate("/dashboard/organizations/create", {
-            state: {
-                activeItem: active,
-                isCreate: true
-            }
-        });
-    };
+    const orgFormRef = useRef<any>(null); //! Use for modal and form button connectivity
 
     return (
         <div className="table_tab_container">
