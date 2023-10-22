@@ -51,11 +51,11 @@ const scheme = z.object({
     password: z
         .string()
         .required(`Password is Required`)
-        .min(6, `Password must be at least 6 characters`),
+        .min(8, `Password must be at least 8 characters`),
     confirmPassword: z
         .string()
         .required(`Password is Required`)
-        .min(6, `Password must be at least 6 characters`)
+        .min(8, `Password must be at least 8 characters`)
         .max(100, `Password must be at most 100 characters`)
         .test('passwords-match', 'Passwords are not matching', function (value) {
             return this.parent.password === value;
@@ -192,7 +192,8 @@ export default function AccountCreation() {
                                             width: "15%",
                                             height: "40px",
                                             borderRadius: "5px",
-                                            textAlign: "center"
+                                            textAlign: "center",
+                                            backgroundColor: "#F5F7FB",
                                         }}
                                         name="countryCode"
                                     >
@@ -283,10 +284,6 @@ export default function AccountCreation() {
                                     <Select
                                         name="community.id"
                                         ref={community_select_ref}
-                                        // key={defaultCommunity[0].value}
-                                        // defaultValue={
-                                        //     param ? defaultCommunity : undefined
-                                        // }
                                         placeholder="Select Communities you're part of"
                                         onChange={OnChangeValue => {
                                             console.log(OnChangeValue);
@@ -362,14 +359,6 @@ export default function AccountCreation() {
                             </div>
 
                             <div className={styles.accountCreationAlternative}>
-                                {/* <div>
-                                    <hr />
-                                    <p>OR</p>
-                                    <hr />
-                                </div>
-                                <PowerfulButton type="button" variant="ghost">
-                                    <FcGoogle size={35} /> Sign in with google
-                                </PowerfulButton> */}
                                 <div>
                                     <p>
                                         Already have an account?{" "}
