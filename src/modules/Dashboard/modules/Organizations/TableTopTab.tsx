@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
     MuButton,
     PowerfulButton
@@ -19,6 +19,7 @@ const TableTopTab = ({ active, onTabClick }: TableTopTabProps) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const navigate = useNavigate();
+	const orgFormRef = useRef<any>(null);
 
     const handleCreate = () => {
         navigate("/dashboard/organizations/create", {
@@ -64,8 +65,16 @@ const TableTopTab = ({ active, onTabClick }: TableTopTabProps) => {
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
                 title={`Add new ${active}`}
+                type={"success"}
+                body={`Enter the deatils of the new ${active}`}
+                onDone={() => orgFormRef.current?.handleSubmitExternally()}
             >
-                <OrgForm type={active} isEditMode={false} itemId={""}/>
+                <OrgForm
+                    ref={orgFormRef}
+                    type={active}
+                    isEditMode={false}
+                    itemId={""}
+                />
             </MuModal>
         </div>
     );

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
 import styles from "../../utils/formStyle.module.css";
 import useLocationData from "@/MuLearnComponents/CascadingSelects/useLocationData";
 import CountryStateDistrict from "@/MuLearnComponents/CascadingSelects/CountryStateDistrict";
@@ -33,8 +33,12 @@ interface AffiliationOption {
     value: string;
 }
 
-const OrgForm = (props: Props) => {
+const OrgForm = forwardRef((props: Props, ref: any) => {
     const [initialData, setInitialData] = useState<InitialLocationData>(null);
+
+	useImperativeHandle(ref, () => ({
+        handleSubmitExternally: handleSubmit
+    }));
 
     // Fetch the initial data if in edit mode
     // useEffect(() => {
@@ -111,18 +115,17 @@ const OrgForm = (props: Props) => {
         getAffiliation(setAffiliations);
     }, []);
 
-    const handleSubmit = (e: { preventDefault: () => void }) => {
-        e.preventDefault();
+    const handleSubmit = (e?: React.FormEvent) => {
+        e?.preventDefault();
 
-		
         const updatedData = {
-			...data,
-			affiliation: String(selectedAffiliation?.value),
+            ...data,
+            affiliation: String(selectedAffiliation?.value),
             country: String(locationData.selectedCountry?.value),
             state: String(locationData.selectedState?.value),
             district: String(locationData.selectedDistrict?.value)
         };
-		
+
         console.log(updatedData);
 
         // Validate form data
@@ -139,7 +142,7 @@ const OrgForm = (props: Props) => {
                         key.charAt(0).toUpperCase() + key.slice(1)
                     } is required`
                 }));
-				toast.error(`Error: ${key} is required`);
+                toast.error(`Error: ${key} is required`);
             }
         }
 
@@ -229,23 +232,9 @@ const OrgForm = (props: Props) => {
                     onDistrictChange={handleDistrictChange}
                 />
 
-                <div className={styles.inputContainerBtn}>
-                    <div className={styles.btn_container}>
-                        <button type="button" className={styles.btn_cancel}>
-                            Cancel
-                        </button>
-                        <button
-                            type="submit"
-                            onClick={handleSubmit}
-                            className={styles.btn_submit}
-                        >
-                            Submit
-                        </button>
-                    </div>
-                </div>
             </form>
         </div>
     );
-};
+});
 
 export default OrgForm;

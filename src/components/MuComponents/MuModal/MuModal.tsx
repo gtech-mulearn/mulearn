@@ -9,8 +9,8 @@ interface ModalProps {
     title: string;
     children: ReactNode;
     type: "error" | "success";
-	
-	body?: string;
+    onDone: any;
+    body?: string;
 }
 
 const MuModal: FC<ModalProps> = ({
@@ -19,6 +19,7 @@ const MuModal: FC<ModalProps> = ({
     title,
     children,
     type,
+	onDone,
 	body
 }) => {
     if (!isOpen) {
@@ -43,7 +44,7 @@ const MuModal: FC<ModalProps> = ({
                     )}
                 </div>
                 {title && <h1 className={styles.modalTitle}>{title}</h1>}
-				{body && <p className={styles.modalText}>{body}</p>}
+                {body && <p className={styles.modalText}>{body}</p>}
                 <div className={styles.modalBody}>{children}</div>
                 <div className={styles.btn_container}>
                     <button
@@ -55,7 +56,7 @@ const MuModal: FC<ModalProps> = ({
                     </button>
                     <button
                         type="submit"
-                        // onClick={handleSubmit}
+                        onClick={onDone} // Use the onDone prop here
                         className={styles.btn_submit}
                     >
                         Done
