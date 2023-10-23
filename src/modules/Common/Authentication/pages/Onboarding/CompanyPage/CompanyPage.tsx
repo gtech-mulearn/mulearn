@@ -47,7 +47,7 @@ export default function CompanyPage() {
         if (
             userData === undefined ||
             userData === null ||
-            userData.email === undefined
+            userData.user.email === undefined
         ) {
             navigate("/register", { replace: true });
         } else {
