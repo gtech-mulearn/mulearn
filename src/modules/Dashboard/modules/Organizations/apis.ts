@@ -360,25 +360,7 @@ export const updateOrganization = async (
     }
 };
 
-export const deleteOrganization = async (
-    code: any,
-    toast: (options?: UseToastOptions | undefined) => ToastId
-) => {
-    try {
-        const response = await privateGateway.delete(
-            `${organizationRoutes.deleteOrgnaization}${code}`
-        );
-        const message: any = response?.data;
-        toast({
-            title: "Organizations Deleted",
-            status: "success",
-            duration: 3000,
-            isClosable: true
-        });
-    } catch (err: unknown) {
-        const error = err as AxiosError;
-    }
-};
+
 
 export const getInfo = async (code: string) => {
     try {
@@ -447,5 +429,17 @@ export const editOrganization = async (data: {
         return response?.data;
     } catch (err: any) {
         throw err.response.data;
+    }
+};
+
+export const deleteOrganization = async (code: string) => {
+    try {
+        const response = await privateGateway.delete(
+            `${organizationRoutes.deleteOrgnaization}${code}/`
+        );
+        const message: any = response?.data;
+        return message;
+    } catch (err: unknown) {
+        throw err;
     }
 };
