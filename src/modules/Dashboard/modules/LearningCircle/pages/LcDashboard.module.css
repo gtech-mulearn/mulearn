@@ -78,7 +78,153 @@
     background-color: white;
     box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.15);
 }
+/* ReportWrapper */
 
+.ReportWrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    background-color: white;
+    padding: 5%;
+    gap: 10px;
+    height: 100%;
+}
+.ReportWrapper .DetailSection {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    width: 65%;
+}
+.ReportWrapper .DetailSection .Sectionone {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.ReportWrapper .DetailSection .Sectionone > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    width: 45%;
+}
+.ReportWrapper .DetailSection .Sectionone > div label {
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+}
+.ReportWrapper .DetailSection .Sectionone > div input {
+    background-color: rgba(238, 242, 255, 1);
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.ReportWrapper .DetailSection .Sectionone > div > div {
+    align-self: flex-end;
+    padding-right: 10px;
+    margin-top: -40px;
+    background-color: rgba(238, 242, 255, 1);
+}
+
+.ReportWrapper .DetailSection .SectionTwo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 10px;
+}
+.ReportWrapper .DetailSection .SectionTwo p {
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+}
+.ReportWrapper .DetailSection .SectionTwo textarea {
+    width: 100%;
+    background-color: rgba(238, 242, 255, 1);
+    min-height: 130px;
+    border-radius: 10px;
+    padding: 10px;
+}
+.ReportWrapper .DetailSection .SectionThree {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    align-items: flex-start;
+}
+.ReportWrapper .DetailSection .SectionThree > p {
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+}
+.ReportWrapper .DetailSection .SectionThree > div {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+}
+.ReportWrapper .DetailSection .SectionThree > div div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.ReportWrapper .DetailSection .SectionThree > div button {
+    font-size: 40px;
+    margin-top: 0;
+    line-height: 0.8;
+}
+.ReportWrapper .UploadSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    width: 30%;
+    height: 100%;
+}
+.ReportWrapper .UploadSection > div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+.ReportWrapper .UploadSection > div > p {
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+  
+}
+.ReportWrapper .UploadSection > div > div{
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(238, 242, 255, 1);
+    border: 1px dashed #456FF6;
+    border-radius: 10px;
+}
+
+.ReportWrapper .UploadSection button{
+background-color: #456FF6;
+color: white;
+padding: 10px;
+border-radius: 8px;
+width: fit-content;
+}
+/* Past data Wrapper */
+.HistoryDataWrapper {
+    width: 100%;
+    background-color: white;
+    height: 100%;
+}
+/* Default Container */
 .ContainerWrapper {
     width: 100%;
 
@@ -142,6 +288,10 @@
     flex-direction: column;
     width: 70%;
     gap: 10px;
+    font-weight: 600;
+}
+.ContainerWrapper .ContentWrapper .TopContainer .sectionOne p {
+    font-size: 18px;
 }
 .ContainerWrapper .ContentWrapper .TopContainer .sectionOne .divOne {
     display: flex;
@@ -155,10 +305,17 @@
     align-items: flex-start;
 }
 
+.ContainerWrapper .ContentWrapper .TopContainer .sectionOne .divOne > div h1 {
+    color: rgba(69, 111, 246, 1);
+    font-size: 35px;
+    line-height: 1;
+    margin-top: 8px;
+}
 .ContainerWrapper .ContentWrapper .TopContainer .sectionOne .secondDiv {
     display: flex;
     width: 100%;
     justify-content: space-between;
+    height: 100%;
 }
 
 .ContainerWrapper .ContentWrapper .TopContainer .sectionOne .secondDiv > div {
@@ -176,6 +333,10 @@
 .ContainerWrapper .ContentWrapper .TopContainer .sectionTwo {
     width: 30%;
     min-width: 300px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .ContainerWrapper .ContentWrapper .TopContainer .sectionTwo button {
     background-color: rgba(69, 111, 246, 1);
@@ -184,6 +345,8 @@
     border-radius: 8px;
     font-size: 40px;
     line-height: 0.9;
+    width: fit-content;
+    align-self: flex-end;
 }
 
 .ContainerWrapper .ContentWrapper .BottomContainer {
@@ -192,7 +355,7 @@
     width: 100%;
     gap: 10px;
 }
-.ContainerWrapper .ContentWrapper .BottomContainer >p{
+.ContainerWrapper .ContentWrapper .BottomContainer > p {
     align-self: flex-start;
     color: black;
     font-size: 18px;
@@ -216,4 +379,37 @@
     font-size: 17px;
     font-weight: 600;
     align-items: center;
+}
+
+/* CheckBoxContainer */
+
+.CheckBoxContainerWrapper {
+    display: flex;
+    gap: 10px;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.CheckBoxContainerWrapper input {
+    padding: 5px;
+}
+
+/* Attendees */
+.AttendeesWrapperIndividual {
+    padding: 10px;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border-radius: 8px;
+    background-color: #eef2ff;
+    font-size: 17px;
+    color: rgba(69, 111, 246, 1);
+}
+
+.AttendeesWrapperIndividual img {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
 }

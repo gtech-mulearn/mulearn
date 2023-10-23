@@ -414,3 +414,36 @@ export const addNewOrganization = async (data: {
         throw err.response.data;
     }
 };
+
+export const getOrganizationDetails = async (id: string) => {
+    try {
+        const response = await privateGateway.get(organizationRoutes.getOrganisationDetails + id + "/");
+        console.log(response?.data.response[0]);
+        return response?.data.response[0];
+    } catch (err: any) {
+        throw err.response.data;
+    }
+};
+
+export const editOrganization = async (data: {
+    country: string;
+    state: string;
+    district: string;
+    affiliation: string;
+    code: string;
+    org_type: string;
+    title: string;
+}) => {
+    if (data.org_type !== "College") {
+        delete (data as any).affiliation;
+    }
+    try {
+        const response = await privateGateway.put(
+            organizationRoutes.editOrganisation + data.code + "/",
+            data
+        );
+        return response?.data;
+    } catch (err: any) {
+        throw err.response.data;
+    }
+};

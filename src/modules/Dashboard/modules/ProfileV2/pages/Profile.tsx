@@ -22,6 +22,7 @@ import moment from "moment";
 import BasicDetails from "../components/BasicDetails/pages/BasicDetails";
 import KarmaHistory from "../components/KarmaHistory/KarmaHistory";
 import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
+import { PieChart } from "../components/Piechart/PieChart";
 
 type Props = {};
 interface CircleSection {
@@ -31,9 +32,13 @@ interface CircleSection {
 }
 const ProfileV2 = (props: Props) => {
     const circleSections: CircleSection[] = [
-        { label: "hod", percentage: 20, color: "#456FF6" },
-        { label: "karma", percentage: 60, color: "#8FBCFA" },
-        { label: "general", percentage: 20, color: "#E0EDFF" }
+        { label: "hod", percentage: 40, color: "#456FF6" },
+        { label: "hod", percentage: 0, color: "#4566F6" },
+        { label: "hod", percentage: 0, color: "#456FF6" },
+        { label: "hod", percentage: 0, color: "#456FF6" },
+        { label: "hod", percentage: 0, color: "#456FF6" }
+        // { label: "karma", percentage: 60, color: "#8FBCFA" },
+        // { label: "general", percentage: 20, color: "#E0EDFF" }
     ];
 
     const { id } = useParams<{ id: string }>();
@@ -122,8 +127,13 @@ const ProfileV2 = (props: Props) => {
                 <div className={styles.profile_details_container}>
                     <p className={styles.profile_pic}></p>
                     <div className={styles.profile_details}>
-                        <h1>Mark Smith (CCE)</h1>
-                        <p>marksmith12@mulearn</p>
+                        <h1>
+                            {userProfile.first_name} {userProfile.last_name}{" "}
+                            {userProfile.college_code
+                                ? "(" + userProfile.college_code + ")"
+                                : null}
+                        </h1>
+                        <p> {userProfile.muid}</p>
                         <div className={styles.socials}>
                             <LinkedIn />
                             <Twitter />
@@ -134,31 +144,67 @@ const ProfileV2 = (props: Props) => {
                 </div>
 
                 <div className={styles.basic_details_detail}>
-                    <div className={styles.status}>
-                        <div>
-                            <p>Level</p>
-                            <p>5</p>
+                    <div className={styles.status_container}>
+                        <div className={styles.status}>
+                            <div>
+                                <p>Level</p>
+                                <p>
+                                    {" "}
+                                    {userProfile.level
+                                        ? userProfile?.level?.slice(3, 4)
+                                        : 1}
+                                </p>
+                            </div>
+                        </div>
+                        <div className={styles.status}>
+                            <Karma />
+                            <div>
+                                <p>Karma</p>
+                                <p>
+                                    {parseInt(userProfile.karma) > 1000
+                                        ? (
+                                              parseInt(userProfile.karma) / 1000
+                                          ).toPrecision(3) + "K"
+                                        : userProfile.karma}
+                                </p>
+                            </div>
                         </div>
                     </div>
-                    <div className={styles.status}>
-                        <Karma />
-                        <div>
-                            <p>Karma</p>
-                            <p>5</p>
+                    <div className={styles.status_container}>
+                        <div className={styles.status}>
+                            <Rank />
+                            <div>
+                                <p>Rank</p>
+                                <p>{userProfile.rank}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div className={styles.status}>
-                        <Rank />
-                        <div>
-                            <p>Rank</p>
-                            <p>5</p>
-                        </div>
-                    </div>
-                    <div className={styles.status}>
-                        <AvgKarma />
-                        <div>
-                            <p>Avg.Karma</p>
-                            <p>5</p>
+                        <div className={styles.status}>
+                            <AvgKarma />
+                            <div>
+                                <p>Avg.Karma</p>
+                                <p>
+                                    {" "}
+                                    {parseInt(userProfile.karma) /
+                                        monthDifference >
+                                        1000 && monthDifference !== 0
+                                        ? (
+                                              parseInt(userProfile.karma) /
+                                              monthDifference /
+                                              1000
+                                          ).toPrecision(4) + "K"
+                                        : isNaN(
+                                              parseInt(userProfile.karma) /
+                                                  monthDifference
+                                          )
+                                        ? "0"
+                                        : monthDifference === 0
+                                        ? "0"
+                                        : (
+                                              parseInt(userProfile.karma) /
+                                              monthDifference
+                                          ).toPrecision(3)}
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -179,7 +225,8 @@ const ProfileV2 = (props: Props) => {
                             <div className={styles.ui_value}>85%</div>
                             <div className={styles.ui_labels}>Java</div>
                         </div> */}
-                        <KarmaDist sections={circleSections} />
+                        {/* <KarmaDist sections={circleSections} /> */}
+                        <PieChart data={data} />
                     </div>
                 </div>
             </div>
