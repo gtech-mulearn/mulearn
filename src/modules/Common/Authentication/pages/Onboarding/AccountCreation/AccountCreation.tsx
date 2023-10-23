@@ -224,7 +224,6 @@ export default function AccountCreation() {
                                     <SimpleInput
                                         name={"email"}
                                         type="email"
-                                        key={formik.values.email}
                                         value={formik.values.email || dwmsData?.email}
                                         onChange={formik.handleChange}
                                         placeholder="Email id"
