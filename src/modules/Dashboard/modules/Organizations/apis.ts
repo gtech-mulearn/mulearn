@@ -47,7 +47,9 @@ export const getOrganizations = async (
         ).data.response;
 
         setIsLoading(false);
-        if (setTotalPages) setTotalPages(data.pagination.totalPages);
+        if (setTotalPages) {
+            setTotalPages(data.pagination.totalPages);
+        }
         setData(data.data);
     } catch (err: unknown) {
         setIsLoading(false);
@@ -433,13 +435,13 @@ export const editOrganization = async (data: {
     code: string;
     org_type: string;
     title: string;
-}) => {
+}, code: string) => {
     if (data.org_type !== "College") {
         delete (data as any).affiliation;
     }
     try {
         const response = await privateGateway.put(
-            organizationRoutes.editOrganisation + data.code + "/",
+            organizationRoutes.editOrganisation + code + "/",
             data
         );
         return response?.data;
