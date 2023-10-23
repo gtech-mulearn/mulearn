@@ -1,4 +1,3 @@
-import { style } from "d3";
 import {
     EditLogo,
     RightArrow,
@@ -8,6 +7,7 @@ import {
 import styles from "./LcDashboard.module.css";
 import { Dispatch, SetStateAction, useState } from "react";
 import image from "../assets/images/profileIcon.svg";
+import UploadImage from '../assets/images/uploadIcon.svg'
 
 type Props = {};
 
@@ -105,11 +105,11 @@ const LcDashboard = (props: Props) => {
                                     </div>
                                 </div>
                             </div>
-                            <div>
+                            <div className={styles.SectionTwo}>
                                 <p>Agenda</p>
-                                <input type="text" />
+                                <textarea placeholder="Type your agenda here..."></textarea>
                             </div>
-                            <div>
+                            <div className={styles.SectionThree}>
                                 <p>Attendees</p>
                                 <div>
                                     <div>
@@ -124,9 +124,14 @@ const LcDashboard = (props: Props) => {
                             </div>
                         </div>
                         <div className={styles.UploadSection}>
-                            <div>
+                            <div id="uploadContainer">
                                 <p>Upload Meeting Images</p>
-                                <input type="text" />
+                                <div>
+                                    <img src={UploadImage} alt="" />
+                                    <p>
+                                        Drag and drop or <br></br>browse to choose a file
+                                    </p>
+                                </div>
                             </div>
                             <button>Submit</button>
                         </div>
