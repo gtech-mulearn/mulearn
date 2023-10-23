@@ -284,7 +284,7 @@ function App() {
                     element: <DashboardRootLayout />,
                     children: [
                         { path: "profile", element: <Profile /> },
-                        { path: "profileV2", element: <ProfileV2 /> },
+                        // { path: "profileV2", element: <ProfileV2 /> },
                         {
                             path: "connect-discord",
                             element: <ConnectDiscord />
@@ -582,27 +582,27 @@ function App() {
                         {
                             path: "learning-circle/create-circle",
                             element: <LearningCircleCreate />
-                        },
-                        {
-                            path: "marketplace",
-                            element: <Marketplace />
-                        },
-                        {
-                            path: "marketplace-history",
-                            element: <MarketPlaceHistory />
-                        },
-                        {
-                            path: "marketplace-additem",
-                            element: <MarketAddItem />
-                        },
-                        {
-                            path: "marketplace-admin",
-                            element: <AdminMarketPlace />
-                        },
-                        {
-                            path: "marketplace-purchaseinv",
-                            element: <PurchaseInventory />
                         }
+                        // {
+                        //     path: "marketplace",
+                        //     element: <Marketplace />
+                        // },
+                        // {
+                        //     path: "marketplace-history",
+                        //     element: <MarketPlaceHistory />
+                        // },
+                        // {
+                        //     path: "marketplace-additem",
+                        //     element: <MarketAddItem />
+                        // },
+                        // {
+                        //     path: "marketplace-admin",
+                        //     element: <AdminMarketPlace />
+                        // },
+                        // {
+                        //     path: "marketplace-purchaseinv",
+                        //     element: <PurchaseInventory />
+                        // }
                         // {
                         //     path: "settings",
                         //     element: <Settings />,
