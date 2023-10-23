@@ -414,3 +414,13 @@ export const addNewOrganization = async (data: {
         throw err.response.data;
     }
 };
+
+export const getOrganizationDetails = async (id: string) => {
+    try {
+        const response = await privateGateway.get(organizationRoutes.editOrganisation + id + "/");
+        console.log(response?.data.response[0]);
+        return response?.data.response[0];
+    } catch (err: any) {
+        throw err.response.data;
+    }
+};

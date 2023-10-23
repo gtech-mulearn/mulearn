@@ -164,7 +164,9 @@ export const organizationRoutes = {
         `/api/v1/dashboard/organisation/institutes/${org_type}/csv/`,
 
     createOrganisation:
-        "/api/v1/dashboard/organisation/institutes/create/"
+        "/api/v1/dashboard/organisation/institutes/create/",
+    editOrganisation:
+        "/api/v1/dashboard/organisation/institutes/info/"
 } as const;
 
 export const ManageLocationsRoutes = {
