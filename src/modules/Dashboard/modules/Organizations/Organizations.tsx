@@ -18,6 +18,7 @@ import Modal from "../CollegeLevels/components/Modal";
 import CreateOrganization from "./CreateOrganization";
 import MuModal from "@/MuLearnComponents/MuModal/MuModal";
 import OrgForm from "./OrgForm";
+import toast from "react-hot-toast";
 
 function Organizations() {
     const ccc = ["College", "Company", "Community"] as const;
@@ -38,7 +39,6 @@ function Organizations() {
     const firstFetch = useRef(true);
     const navigate = useNavigate();
     const [currModal, setCurrModal] = useState<null | "create" | "edit">(null);
-    const toast = useToast();
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const orgFormRef = useRef<any>(null); //! Use for modal and form button connectivity
@@ -197,16 +197,17 @@ function Organizations() {
 		setItemId(String(id))
 		console.log(itemId);
 		setIsModalOpen(true);
-        // navigate("/dashboard/organizations/edit", {
-        //     state: {
-        //         activeItem: activeTab,
-        //         rowId: id
-        //     }
-        // });
     };
 
     const handleDelete = (id: string | undefined) => {
-        deleteOrganization(id, toast);
+        
+		toast.promise(deleteOrganization(id as string), {
+            loading: "Deleting...",
+            success: () => {
+                return <b>Organization deleted.</b>;
+            },
+            error: <b>Failed to delete organization</b>
+        });
         setTimeout(() => {
             handleTabClick(activeTab);
         }, 1000);
