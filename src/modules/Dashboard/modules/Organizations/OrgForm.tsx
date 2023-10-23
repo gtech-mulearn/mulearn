@@ -3,7 +3,7 @@ import styles from "../../utils/modalForm.module.css";
 import useLocationData from "@/MuLearnComponents/CascadingSelects/useLocationData";
 import CountryStateDistrict from "@/MuLearnComponents/CascadingSelects/CountryStateDistrict";
 import toast from "react-hot-toast";
-import { addNewOrganization, getAffiliation, getOrganizationDetails } from "./apis";
+import { addNewOrganization, editOrganization, getAffiliation, getOrganizationDetails } from "./apis";
 import Select from "react-select";
 import { customReactSelectStyles } from "../../utils/common";
 
@@ -153,7 +153,14 @@ const OrgForm = forwardRef(
             if (isValid) {
                 console.log(updatedData);
                 if (props.isEditMode) {
-                    // Update existing data with updatedData
+                    toast.promise(editOrganization(updatedData), {
+                        loading: "Saving...",
+                        success: () => {
+                            props.closeModal();
+                            return <b>Organization edited.</b>;
+                        },
+                        error: <b>Failed to edit organization</b>
+                    });
                 } else {
                     toast.promise(addNewOrganization(updatedData), {
                         loading: "Saving...",
@@ -161,7 +168,7 @@ const OrgForm = forwardRef(
                             props.closeModal();
                             return <b>Organization added</b>;
                         },
-                        error: <b>Failed add new organization</b>
+                        error: <b>Failed to add new organization</b>
                     });
                 }
             }
