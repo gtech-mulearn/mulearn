@@ -16,6 +16,8 @@ import { organizationRoutes } from "@/MuLearnServices/urls";
 
 import Modal from "../CollegeLevels/components/Modal";
 import CreateOrganization from "./CreateOrganization";
+import MuModal from "@/MuLearnComponents/MuModal/MuModal";
+import OrgForm from "./OrgForm";
 
 function Organizations() {
     const ccc = ["College", "Company", "Community"] as const;
@@ -37,6 +39,9 @@ function Organizations() {
     const navigate = useNavigate();
     const [currModal, setCurrModal] = useState<null | "create" | "edit">(null);
     const toast = useToast();
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const orgFormRef = useRef<any>(null); //! Use for modal and form button connectivity
 
     useEffect(() => {
         if (firstFetch.current || currModal === null) {
@@ -184,15 +189,20 @@ function Organizations() {
         }
     };
     console.log(data);
+
+	const [itemId, setItemId] = useState("")
     const handleEdit = (id: string | number | boolean) => {
         setIsEdit(true);
         console.log(id);
-        navigate("/dashboard/organizations/edit", {
-            state: {
-                activeItem: activeTab,
-                rowId: id
-            }
-        });
+		setItemId(String(id))
+		console.log(itemId);
+		setIsModalOpen(true);
+        // navigate("/dashboard/organizations/edit", {
+        //     state: {
+        //         activeItem: activeTab,
+        //         rowId: id
+        //     }
+        // });
     };
 
     const handleDelete = (id: string | undefined) => {
@@ -207,6 +217,22 @@ function Organizations() {
                 active={activeTab}
                 onTabClick={handleTabClick as (tab: string) => void}
             />
+            <MuModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                title={`Edit ${activeTab}`}
+                type={"success"}
+                body={`Enter the deatils of the ${activeTab} to edit.`}
+                onDone={() => orgFormRef.current?.handleSubmitExternally()}
+            >
+                <OrgForm
+                    ref={orgFormRef}
+                    type={activeTab}
+                    isEditMode={true}
+                    itemId={itemId}
+                    closeModal={() => setIsModalOpen(false)}
+                />
+            </MuModal>
             {currModal && (
                 <Modal
                     onClose={setCurrModal}
