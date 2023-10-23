@@ -41,6 +41,7 @@ const OrgForm = forwardRef(
         });
 
         const [errors, setErrors] = useState<OrgFormErrors>({});
+        const [oldCode, setOldCode] = useState("");
 
         //Fetch the initial data if in edit mode
         useEffect(() => {
@@ -76,15 +77,11 @@ const OrgForm = forwardRef(
 							label: data.affiliation_name,
 							value: data.affiliation_uuid
 						})
+						setOldCode(data.code)
                     }
                 );
             }
         }, [props.isEditMode, props.itemId]);
-
-        // //If initialData is null (not fetched yet), we can show a loading state
-        // if (props.isEditMode && !initialData) {
-        //     return <p>Loading...</p>;
-        // }
 
         const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
             const { name, value } = e.target;
@@ -135,6 +132,10 @@ const OrgForm = forwardRef(
             // Validate form data
             let isValid = true;
             for (const key in updatedData) {
+                // Skip affiliation check if type is not "college"
+                if (props.type !== "College" && key === "affiliation") {
+                    continue;
+                }
                 if (
                     updatedData[key as keyof OrgFormData] === "" ||
                     updatedData[key as keyof OrgFormData] === "undefined"
@@ -153,7 +154,7 @@ const OrgForm = forwardRef(
             if (isValid) {
                 console.log(updatedData);
                 if (props.isEditMode) {
-                    toast.promise(editOrganization(updatedData), {
+                    toast.promise(editOrganization(updatedData, oldCode), {
                         loading: "Saving...",
                         success: () => {
                             props.closeModal();
@@ -191,7 +192,7 @@ const OrgForm = forwardRef(
                         )}
                     </div>
 
-                    <div className={styles.inputContainer}>
+                    {props.type === "College" && <div className={styles.inputContainer}>
                         <Select
                             styles={customReactSelectStyles}
                             options={affiliations}
@@ -212,7 +213,7 @@ const OrgForm = forwardRef(
                                 Affiliation is Required
                             </div>
                         )}
-                    </div>
+                    </div>}
 
                     <div className={styles.inputContainer}>
                         <input
