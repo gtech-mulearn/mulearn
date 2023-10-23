@@ -1,9 +1,49 @@
-import { EditLogo, RightArrow, ThreeDotssvg } from "../assets/svg";
+import { style } from "d3";
+import {
+    EditLogo,
+    RightArrow,
+    ThreeDotssvg,
+    CalenderIcon
+} from "../assets/svg";
 import styles from "./LcDashboard.module.css";
+import { Dispatch, SetStateAction, useState } from "react";
+import image from "../assets/images/profileIcon.svg";
 
 type Props = {};
 
+const formatTime = (date: {
+    getHours: () => number;
+    getMinutes: () => any;
+}) => {
+    const hours = date.getHours() % 12 || 12;
+    const minutes = date.getMinutes();
+    const ampm = date.getHours() >= 12 ? "PM" : "AM";
+    return `${hours.toString().padStart(2, "0")}:${minutes
+        .toString()
+        .padStart(2, "0")} ${ampm}`;
+};
+
 const LcDashboard = (props: Props) => {
+    const [showReport, setShowReport] = useState("");
+    const [selectedDate, setSelectedDate] = useState("");
+
+    const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSelectedDate(e.target.value);
+    };
+    const [time, setTime] = useState(formatTime(new Date()));
+
+    const incrementTime = () => {
+        const currentTime = new Date();
+        currentTime.setMinutes(currentTime.getMinutes() + 15);
+        setTime(formatTime(currentTime));
+    };
+
+    const decrementTime = () => {
+        const currentTime = new Date();
+        currentTime.setMinutes(currentTime.getMinutes() - 15);
+        setTime(formatTime(currentTime));
+    };
+
     return (
         <div className={styles.LCDashboardWrapper}>
             <div className={styles.TitleContainerWrapper}>
@@ -36,50 +76,144 @@ const LcDashboard = (props: Props) => {
                     <button className={styles.items}>Team</button>
                     <button className={styles.plusItem}>+</button>
                 </div>
-                <div className={styles.ContentWrapper}>
-                    <div className={styles.TopContainer}>
-                        <div className={styles.sectionOne}>
-                            <div className={styles.divOne}>
+                {showReport === "1" ? (
+                    <div className={styles.ReportWrapper}>
+                        <div className={styles.DetailSection}>
+                            <div className={styles.Sectionone}>
                                 <div>
-                                    <p>Next meeting on</p>
-                                    <h1
-                                        style={{
-                                            color: "rgba(69, 111, 246, 1)"
-                                        }}
-                                    >
-                                        22 June 2023
-                                    </h1>
+                                    <label>Date:</label>
+
+                                    <input
+                                        type="date"
+                                        className={styles.datePicker}
+                                        onChange={handleDateChange}
+                                    />
+                                    <div>
+                                        <CalenderIcon />
+                                    </div>
+                                </div>
+                                <div>
+                                    <label htmlFor="">Time:</label>
+                                    <input type="text" value={time} />
+                                    <div>
+                                        <button onClick={incrementTime}>
+                                            ▲
+                                        </button>
+                                        <button onClick={decrementTime}>
+                                            ▼
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <p>Agenda</p>
+                                <input type="text" />
+                            </div>
+                            <div>
+                                <p>Attendees</p>
+                                <div>
+                                    <div>
+                                        <Attendees />
+                                        <Attendees />
+                                        <Attendees />
+                                        <Attendees />
+                                        <Attendees />
+                                    </div>
+                                    <button>+</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div className={styles.UploadSection}>
+                            <div>
+                                <p>Upload Meeting Images</p>
+                                <input type="text" />
+                            </div>
+                            <button>Submit</button>
+                        </div>
+                    </div>
+                ) : showReport === "2" ? (
+                    <div className={styles.HistoryDataWrapper}>
+                        <div>
+                            <div>
+                                <div>
+                                    <h1>22 June 2023</h1>
                                     <p>Sunday</p>
                                 </div>
-                                <button>
-                                    <EditLogo />
-                                </button>
-                            </div>
-                            <div className={styles.secondDiv}>
                                 <div>
                                     <p>Venue: Multipurpose Hall</p>
                                     <p>Time: 12:45 PM</p>
                                 </div>
-                                <button>Report</button>
                             </div>
-                        </div>
-                        <div className={styles.sectionTwo}>
                             <div>
-                                <CheckBoxContainer />
+                                <h1>Agenda</h1>
+                                <p>
+                                    Lorem Ipsum is simply dummy text of the
+                                    printing and typesetting industry. Lorem
+                                    Ipsum has been the industry's standard dummy
+                                    text ever since the 1500 Lorem Ipsum is
+                                    simply dummy text of the printing and
+                                    typesetting industry. Lorem Ipsum has been
+                                    the industry's standard dummy text ever
+                                    since the 1500
+                                </p>
                             </div>
-                            <button>+</button>
                         </div>
-                    </div>
-                    <div className={styles.BottomContainer}>
-                        <p>Your past meetings</p>
                         <div>
-                            <HistoryDiv />
-                            <HistoryDiv />
-                            <HistoryDiv />
-                            <HistoryDiv />
+                            <div>
+                                <h1>Attendees</h1>
+                                <div>
+                                    <Attendees />
+                                </div>
+                            </div>
+                            <div>
+                                <img src="" alt="" />
+                                <img src="" alt="" />
+                            </div>
                         </div>
                     </div>
-                </div>
+                ) : (
+                    <div className={styles.ContentWrapper}>
+                        <div className={styles.TopContainer}>
+                            <div className={styles.sectionOne}>
+                                <div className={styles.divOne}>
+                                    <div>
+                                        <p>Next meeting on</p>
+                                        <h1>22 June 2023</h1>
+                                        <p>Sunday</p>
+                                    </div>
+                                    <button>
+                                        <EditLogo />
+                                    </button>
+                                </div>
+                                <div className={styles.secondDiv}>
+                                    <div>
+                                        <p>Venue: Multipurpose Hall</p>
+                                        <p>Time: 12:45 PM</p>
+                                    </div>
+                                    <button
+                                        onClick={() => {
+                                            setShowReport("1");
+                                        }}
+                                    >
+                                        Report
+                                    </button>
+                                </div>
+                            </div>
+                            <div className={styles.sectionTwo}>
+                                <div>
+                                    <CheckBoxContainer />
+                                </div>
+                                <button>+</button>
+                            </div>
+                        </div>
+                        <div className={styles.BottomContainer}>
+                            <p>Your past meetings</p>
+                            <div>
+                                <HistoryDiv setdata={setShowReport} />
+                            </div>
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );
@@ -87,7 +221,11 @@ const LcDashboard = (props: Props) => {
 
 export default LcDashboard;
 
-export const HistoryDiv = () => {
+export const HistoryDiv = ({
+    setdata
+}: {
+    setdata: Dispatch<SetStateAction<string>>;
+}) => {
     return (
         <div className={styles.HistoryDivWrapper}>
             <div>
@@ -104,7 +242,11 @@ export const HistoryDiv = () => {
                 >
                     12.03pm
                 </p>
-                <button>
+                <button
+                    onClick={() => {
+                        setdata("2");
+                    }}
+                >
                     <RightArrow />
                 </button>
             </div>
@@ -114,13 +256,22 @@ export const HistoryDiv = () => {
 
 export const CheckBoxContainer = () => {
     return (
-        <div>
+        <div className={styles.CheckBoxContainerWrapper}>
             <input
                 type="checkbox"
                 id="textInput"
                 value="Text that gets selected"
             />
             <label htmlFor="textInput">1. Study IA</label>
+        </div>
+    );
+};
+
+export const Attendees = () => {
+    return (
+        <div className={styles.AttendeesWrapperIndividual}>
+            <img src={image} alt="" />
+            <p>Enric S Neelamkavil</p>
         </div>
     );
 };
