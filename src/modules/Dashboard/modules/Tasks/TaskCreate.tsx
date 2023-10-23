@@ -71,7 +71,7 @@ const TaskCreate = () => {
     return (
         <div className={styles.external_container}>
             <div className={styles.container}>
-                <h1 className={styles.text}>Task Edit Page</h1>
+                <h1 className={styles.text}>Task Create Page</h1>
                 <Formik
                     enableReinitialize={true}
                     initialValues={{
@@ -167,7 +167,11 @@ const TaskCreate = () => {
                             placeholder="..."
                             required
                         />
-                        <FormikSelect label="Channel" name="channel_id">
+                        <FormikSelect
+                            label="Channel"
+                            name="channel_id"
+                            required
+                        >
                             <option value="">Select an option</option>
                             {uuidData?.channel.map(val => {
                                 return (
@@ -175,7 +179,7 @@ const TaskCreate = () => {
                                 );
                             })}
                         </FormikSelect>
-                        <FormikSelect label="Type" name="type_id">
+                        <FormikSelect label="Type" name="type_id" required>
                             <option value="">Select an option</option>
                             {uuidData?.type.map(val => {
                                 return (

@@ -2,6 +2,7 @@ import { FieldConfig, useField } from "formik";
 import styles from "./FormComponents.module.css";
 import React, {
     CSSProperties,
+    ChangeEvent,
     ClassAttributes,
     HTMLAttributes,
     TextareaHTMLAttributes,
@@ -20,17 +21,16 @@ TODO: Transition the old inputs to the new one("eg.FormikTextAreaWhite")
 type InputFormik = TextareaHTMLAttributes<HTMLInputElement> &
     ClassAttributes<HTMLInputElement> &
     FieldConfig<HTMLInputElement>;
-export const FormikTextInput: FC<InputFormik & { label?: string }> = ({
-    label,
-    ...props
-}) => {
+export const FormikTextInput: FC<
+    InputFormik & { label?: string; styleClasses?: string }
+> = ({ label, styleClasses, ...props }) => {
     // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
     // which we can spread on <input>. We can use field meta to show an error
     // message if the field is invalid and it has been touched (i.e. visited)
     const [field, meta] = useField(props);
 
     return (
-        <div className={styles.inputBox}>
+        <div className={styles.inputBox + " " + styleClasses}>
             <span>
                 {label} <sup>{props.required ? " *" : ""}</sup>{" "}
             </span>
@@ -101,15 +101,16 @@ export type Option = {
     value: string | boolean | number;
 };
 
-const customStyles: any = {
+const customStyles = {
     control: (provided: any) => ({
         ...provided,
         backgroundColor: "white",
         border: ".1px solid #CFD3D4",
         borderRadius: "10px",
         width: "100%",
-        padding: ".3rem .4rem",
-        minWidth: "200px"
+        padding: ".3rem .4rem"
+
+        // minWidth: "200px"
     })
 };
 
@@ -125,7 +126,7 @@ const FormikReactSelect: React.FC<FormikSelectProps> = ({
     name,
     label,
     options,
-    addOnChange = () => { },
+    addOnChange = () => {},
     addStyles,
     ...rest
 }) => {
@@ -170,7 +171,12 @@ const FormikReactSelect: React.FC<FormikSelectProps> = ({
                 options={options}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                styles={{ ...customStyles, ...addStyles }}
+                styles={{
+                    control: provided => ({
+                        ...customStyles.control(provided),
+                        ...addStyles
+                    })
+                }}
             />
             {meta.touched && meta.error && (
                 <div className={styles.error}>{meta.error}</div>
@@ -283,6 +289,10 @@ export const FormikCheckBox = ({ label, ...props }: any) => {
 
     //Work around :)
     const [checked, setChecked] = useState(meta.initialValue);
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setChecked(e.target.checked);
+        helper.setValue(e.target.checked);
+    };
     return (
         <div className={styles.checkBox}>
             <label className={styles.formLabel}>{label}</label>
@@ -291,7 +301,7 @@ export const FormikCheckBox = ({ label, ...props }: any) => {
                 {...field}
                 {...props}
                 checked={checked}
-                onChange={() => setChecked(!checked)}
+                onChange={handleChange}
             />
             {meta.touched && meta.error ? (
                 <div className={styles.error}>{meta.error}</div>

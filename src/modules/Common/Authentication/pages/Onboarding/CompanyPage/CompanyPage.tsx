@@ -1,7 +1,7 @@
 import OnboardingHeader from "../../../components/OnboardingHeader/OnboardingHeader";
 import OnboardingTemplate from "../../../components/OnboardingTeamplate/OnboardingTemplate";
 import styles from "./CompanyPage.module.css";
-import { submitUserData } from "../../../services/newOnboardingApis";
+import { getRoles, submitUserData } from "../../../services/newOnboardingApis";
 
 import { Form, Formik } from "formik";
 import * as z from "yup";
@@ -40,6 +40,8 @@ export default function CompanyPage() {
 
     const [isloading, setIsLoading] = useState(true);
     const [companies, setCompanies] = useState([{ id: "", title: "" }]);
+    const [roles, setRoles] = useState([{ id: "", title: "" }]);
+    const [selectedRole, setSelectedRole] = useState<string>("");
 
     useEffect(() => {
         if (
@@ -47,11 +49,15 @@ export default function CompanyPage() {
             userData === null ||
             userData.email === undefined
         ) {
-            navigate("/signup", { replace: true });
+            navigate("/register", { replace: true });
         } else {
             getCompanies({
                 setIsLoading: setIsLoading,
                 setCompanies: setCompanies
+            });
+            getRoles({
+                setIsLoading: setIsLoading,
+                setRoles: setRoles
             });
         }
     }, []);
@@ -62,9 +68,6 @@ export default function CompanyPage() {
     });
 
     const onSubmit = async (values: any) => {
-        console.log("values", values);
-        console.log("userData", userData);
-
         const newUserData: any = {
             user: {
                 first_name: userData.first_name,
@@ -82,20 +85,31 @@ export default function CompanyPage() {
         };
 
         if (userData.referral_id)
-            newUserData["referral"] = { mu_id: userData.referral_id };
+            newUserData["referral"] = { muid: userData.referral_id };
         if (userData.param) {
             newUserData["integration"]["param"] = userData.param;
             newUserData["integration"]["title"] = "DWMS";
         }
-        console.log("newUserData", newUserData);
+
+        if (userData.referral)
+            newUserData["referral"] = { muid: userData.referral.muid };
+
         /// If user doesn't want to be a mentor set role to null
-        if (values.radio === "yes") newUserData.user["role"] = userData.role;
+        if (values.radio === "yes") {
+            if (userData.role === "") {
+                const mentorRole = roles.find(role => role.title === "Mentor");
+                newUserData.user["role"] = mentorRole?.id;
+            } else {
+                newUserData.user["role"] = userData.role;
+            }
+        }
 
         submitUserData({
             setIsLoading: setIsLoading,
             userData: newUserData,
             toast: toast,
             navigate: navigate
+
         });
     };
 
@@ -114,14 +128,14 @@ export default function CompanyPage() {
                     radio: ""
                 }}
                 validationSchema={scheme}
-                onSubmit={(value, action) => onSubmit(value)}
+                onSubmit={onSubmit}
             >
                 {formik => (
                     <div>
                         <div className={styles.wrapper}>
                             <Form onSubmit={formik.handleSubmit}>
                                 <h5 className={styles.text}>
-                                    Please enter your company details
+                                    Please enter your company details<span className={styles.errorsSpan}> *</span>
                                 </h5>
                                 <ReactSelect
                                     options={
@@ -144,23 +158,27 @@ export default function CompanyPage() {
                                             inputObject.company = e.value;
                                         }
                                     }}
+                                    required
                                 />
-
+                                {formik.touched['company' as keyof typeof formik.touched] &&
+                                    formik.errors['company' as keyof typeof formik.touched] && (
+                                        <span className={styles.errorsSpan}>{formik.errors['company' as keyof typeof formik.touched]}</span>
+                                    )}
                                 <div className={styles.content}>
                                     <h5 className={styles.text}>
-                                        Do you want to become a mentor?
+                                        Do you want to become a mentor?<span className={styles.errorsSpan}> *</span>
                                     </h5>
                                     {formik.touched.radio &&
                                         formik.errors.radio && (
-                                            <span>{formik.errors.radio}</span>
+                                            <span className={styles.errorsSpan}>{formik.errors.radio}</span>
                                         )}
                                     <div className={styles.select}>
-                                        <button className={styles.selectRadio}>
+                                        <button type="button" className={styles.selectRadio}>
                                             <label>
                                                 <input
-                                                    onChange={
-                                                        formik.handleChange
-                                                    }
+                                                    onChange={(e) => {
+                                                        formik.setFieldValue("radio", e.target.value);
+                                                    }}
                                                     type="radio"
                                                     value="yes"
                                                     name="radio"
@@ -169,16 +187,17 @@ export default function CompanyPage() {
                                                 <span>Yes</span>
                                             </label>
                                         </button>
-                                        <button className={styles.selectRadio}>
+
+                                        <button type="button" className={styles.selectRadio}>
                                             <label>
                                                 <input
-                                                    onChange={
-                                                        formik.handleChange
-                                                    }
+                                                    onChange={(e) => {
+                                                        formik.setFieldValue("radio", e.target.value);
+                                                    }}
                                                     type="radio"
                                                     value="no"
                                                     name="radio"
-                                                    disabled={isloading}
+
                                                 />
                                                 <span>No</span>
                                             </label>

@@ -1,0 +1,133 @@
+.modalOverlay {
+    position: fixed; /* Make the modal overlay fixed position */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex; /* Use flexbox to center the modal content */
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(
+        0,
+        0,
+        0,
+        0.7
+    ); /* Dark background with some transparency */
+    backdrop-filter: blur(5px); /* Blur the background behind the overlay */
+    z-index: 9999; /* Make sure it's on top of everything else */
+}
+
+.modalContent {
+    width: 80%;
+    max-width: 700px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    max-height: 80vh; /* This will make sure the modal content does not exceed 80% of the viewport height */
+    overflow-y: auto; /* This will enable vertical scrolling when the content exceeds the max height */
+}
+
+.iconContainer {
+    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon {
+    height: 70px;
+    width: 70px;
+    display: flex;
+	font-size: 24px;
+    color: #039855;
+    align-items: center;
+    justify-content: center;
+    background-color: #d1fadf;
+    border-radius: 50%;
+    border: 12px solid #e8fcef;
+}
+
+.iconError {
+	font-size: 24px;
+    color: red;
+    border-radius: 50%;
+    background-color: #fad2d1;
+    border: 12px solid #fce8e8;
+    height: 70px;
+    width: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modalTitle {
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+    padding-top: 10px;
+}
+
+.modalText {
+	color: black;
+}
+
+.modalHeader {
+    padding: 10px; /* Adjust padding as needed */
+    display: flex; /* Use flexbox to place items */
+    justify-content: flex-end; /* Align close button to the right */
+}
+
+.modalClose {
+    cursor: pointer; /* Make the close icon look clickable */
+    font-size: 24px; /* Adjust the size of the close icon */
+}
+
+.modalBody {
+    padding: 20px; /* Adjust padding as needed */
+}
+
+.btn_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px 30px 30px;
+    margin-top: 10px;
+}
+
+.btn_cancel,
+.btn_submit {
+    width: 48%;
+    border-radius: 8px;
+    padding: 10px;
+    margin-top: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn_cancel {
+    background-color: var(--InputDefaultBackground);
+    color: var(--Primary);
+}
+
+.btn_submit {
+    background-color: var(--Primary);
+    color: var(--White);
+}
+
+.btn_submit:hover {
+    background-color: var(--Blue800);
+}
+
+/* Optional: Mobile responsiveness. Adjust as necessary. */
+@media (max-width: 768px) {
+    .modalContent {
+        width: 95%; /* Take up more width on smaller screens */
+    }
+    .btn_cancel,
+    .btn_submit {
+        width: 100%;
+    }
+}

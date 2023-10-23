@@ -229,7 +229,7 @@ export const addOrganizer = async (id: string | undefined, muid: string) => {
         const response = await privateGateway.post(
             dashboardRoutes.addOrganizer + id + "/",
             {
-                mu_id: muid
+                muid: muid
             }
         );
         const message: any = response?.data;
