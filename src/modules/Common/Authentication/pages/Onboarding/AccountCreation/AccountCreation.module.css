@@ -151,8 +151,23 @@
 
 .inputBox input {
     width: 100%;
-    background: #F5F7FB;
+    background: #f5f7fb;
     border-radius: 8px;
     border: none;
     padding: 0.6rem;
+}
+
+.supportContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    align-self: flex-start;
+}
+
+.supportContainer a {
+    margin-left: 0.25rem;
+}
+
+.supportContainer span{
+    color: #456ff6;
+    font-weight: 600;
 }
