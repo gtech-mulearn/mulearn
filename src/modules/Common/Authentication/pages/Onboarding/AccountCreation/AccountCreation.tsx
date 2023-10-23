@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import { getCommunities } from "../../../services/onboardingApis";
+import { BiSupport } from "react-icons/bi";
 
 
 const animatedComponents = makeAnimated();
@@ -424,6 +425,21 @@ export default function AccountCreation() {
                                             Privacy Policy
                                         </a>
                                     </p>
+                                </div>
+                                <div
+                                    className={styles.supportContainer}
+                                >
+                                    <BiSupport size={20} />
+                                    <a
+                                        href="https://chat.whatsapp.com/La3nY4AVQsR0ndrwk4wN7v"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        <p className={styles.supportWa}>
+                                            Facing Issues? Join our{" "}
+                                            <span>Support Group!</span>
+                                        </p>
+                                    </a>
                                 </div>
 
                                 <PowerfulButton
