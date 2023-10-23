@@ -281,14 +281,14 @@ const ManageLocation = () => {
                 handleState={state => setSelectedState(state)}
                 handleZone={zone => setSelectedZone(zone)}
             />
-            {activeTab !== "Country" && (
+            {/* {activeTab !== "Country" && (
                 <LocationPath
                     handlePopup={setPopupStatus}
                     country={selectedCountry}
                     state={selectedState}
                     zone={selectedZone}
                 />
-            )}
+            )} */}
 
             {data && (
                 <>
@@ -448,12 +448,14 @@ const LocationPath = ({
         }${zone ? ` / ${zone?.toUpperCase()}` : ""}`;
     }
 
-    return (
-        <div className="path_container">
-            <p>{locationTextGenerate()}</p>
-            <h3 onClick={() => handlePopup(true)}>change</h3>
-        </div>
-    );
+    // uuid displaying and change button removed
+
+    // return (
+    //     <div className="path_container">
+    //         <p>{locationTextGenerate()}</p>
+    //         <h3 onClick={() => handlePopup(true)}>change</h3>
+    //     </div>
+    // );
 };
 
 export default ManageLocation;

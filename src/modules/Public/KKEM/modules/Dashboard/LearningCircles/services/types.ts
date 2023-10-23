@@ -23,6 +23,12 @@ export type UserDetail = {
     karma: number;
 };
 
+export type OrgData = {
+    org_title: string;
+    learning_circle_count: number;
+    user_count: number;
+};
+
 export type OrgCircle = {
     orgName: string;
     circleCount: number;

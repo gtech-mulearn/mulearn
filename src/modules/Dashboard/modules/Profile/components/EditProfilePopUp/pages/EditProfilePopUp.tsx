@@ -102,7 +102,7 @@ const EditProfilePopUp = (props: Props) => {
         },
         closeMenuOnSelect: false,
         isMulti: true,
-        defaultValue: filteredCommunityOptions,
+        value: filteredCommunityOptions,
         options: toReactOptions(communityAPI)
     };
 
@@ -140,62 +140,73 @@ const EditProfilePopUp = (props: Props) => {
                     <form onSubmit={formik.handleSubmit}>
                         {propsList(formik).map((item, index) => (
                             <div key={index} className={styles.input_field}>
-                                <label htmlFor={item.id}>
+                                <label className={styles.label} htmlFor={item.id}>
                                     {item.placeholder}
                                 </label>
-                                <input {...propsList2} {...item} />
-                                {item.touched && item.error && (
-                                    <div className={styles.error_message}>
-                                        {item.error}
-                                    </div>
-                                )}
+                                <div className={styles.inputBox}>
+                                    <input {...propsList2} {...item} />
+                                    {item.touched && item.error && (
+                                        <div className={styles.error_message}>
+                                            {item.error}
+                                        </div>
+                                    )}
+                                </div>
                             </div>
                         ))}
                         <div className={styles.input_field}>
-                            <label>Mobile</label>
-                            <input
-                                type="number"
-                                name="mobile"
-                                value={formik.values.mobile}
-                                placeholder="Mobile"
-                                onBlur={formik.handleBlur}
-                                onChange={formik.handleChange}
-                            />
-                            {formik.touched.mobile && formik.errors.mobile ? (
-                                <p className={styles.error_message}>
-                                    {formik.errors.mobile}
-                                </p>
-                            ) : null}
+                            <label className={styles.label}>Mobile</label>
+                            <div className={styles.inputBox}>
+                                <input
+                                    type="number"
+                                    name="mobile"
+                                    value={formik.values.mobile}
+                                    placeholder="Mobile"
+                                    onBlur={formik.handleBlur}
+                                    onChange={formik.handleChange}
+                                />
+                                {formik.touched.mobile && formik.errors.mobile ? (
+                                    <p className={styles.error_message}>
+                                        {formik.errors.mobile}
+                                    </p>
+                                ) : null}
+                            </div>
                         </div>
                         <div className={styles.input_field}>
-                            <label htmlFor="">Community</label>
-                            {loadStatus && <Select {...communityProps} />}
+                            <label className={styles.label} htmlFor="">Community</label>
+                            <div className={styles.inputBox}>
+                                {loadStatus && <Select {...communityProps} />}
+                            </div>
                         </div>
                         <div className={styles.input_field}>
-                            <label htmlFor="">Gender</label>
-                            <select
-                                name="gender"
-                                value={formik.values.gender}
-                                {...propsList2}
-                            >
-                                <option value="">Select gender</option>
-                                <option value="male">♂ Male</option>
-                                <option value="female">♀ Female</option>
-                                <option value="other">Other</option>
-                                <option value="not to say">
-                                    Prefer not to say
-                                </option>
-                            </select>
+                            <label className={styles.label} htmlFor="">Gender</label>
+                            <div className={styles.inputBox}>
+                                <select
+                                    name="gender"
+                                    value={formik.values.gender}
+                                    {...propsList2}
+                                >
+                                    <option value="">Select gender</option>
+                                    <option value="male">♂ Male</option>
+                                    <option value="female">♀ Female</option>
+                                    <option value="other">Other</option>
+                                    <option value="not to say">
+                                        Prefer not to say
+                                    </option>
+                                </select>
+                            </div>
                         </div>
                         <div className={styles.input_field}>
-                            <label htmlFor="">DOB</label>
-                            <input
-                                type="date"
-                                name="dob"
-                                value={formik.values.dob}
-                                placeholder="DOB"
-                                {...propsList2}
-                            />
+                            <label className={styles.label} htmlFor="">DOB</label>
+                            <div className={styles.inputBox}>
+                                <input
+                                    type="date"
+                                    name="dob"
+                                    value={formik.values.dob}
+                                    placeholder="DOB"
+                                    {...propsList2}
+                                />
+                            </div>
+
                         </div>
 
                         <MuButton

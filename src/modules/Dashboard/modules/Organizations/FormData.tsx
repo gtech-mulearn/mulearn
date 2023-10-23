@@ -1,5 +1,10 @@
-import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
-import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import FormikReactSelect, {
+    FormikTextInput
+} from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import {
+    MuButton,
+    PowerfulButton
+} from "@/MuLearnComponents/MuButtons/MuButton";
 import { hasRole } from "@/MuLearnServices/common_functions";
 import { roles } from "@/MuLearnServices/types";
 import { useToast } from "@chakra-ui/react";
@@ -37,6 +42,7 @@ interface CollegeFormProps {
     selectedZone?: string;
     selectedDistrict?: string;
     selectedAffiliation?: string;
+    handleClose?: () => void;
 }
 
 const FormData = ({ ...props }: CollegeFormProps) => {
@@ -116,114 +122,62 @@ const FormData = ({ ...props }: CollegeFormProps) => {
     };
 
     const org_type = props.activeItem;
-    
-    const handleSubmit = (Name: string, Code: string) => {
-      
-        interface SelectBodyProps {
-            Name: string;
-            Code: string;
-            country: string;
-            state: string;
-            zone: string;
-            district: string;
-            org_type: string;
-            toast: any;
-        }
 
-        const createOrUpdateOrganization = (
-            params: SelectBodyProps,
-            isCreate: boolean,
-            affiliation?: string
-        ) => {
-           
-            const { org_type, toast } = params;
-
-            if (isCreate) {
-                if (org_type === "College") {
-                    createOrganization(
-                        Name,
-                        Code,
-                        country.value,
-                        state.value,
-                        zone.value,
-                        district.value,
-                        org_type,
-                        toast,
-                        affiliation,
-                        setIsSuccess,
-                        setIsLoading
-                    );
-                } else {
-                    createOrganization(
-                        Name,
-                        Code,
-                        country.value,
-                        state.value,
-                        zone.value,
-                        district.value,
-                        org_type,
-                        toast,
-                        "",
-                        setIsSuccess,
-                        setIsLoading
-                    );
-                }
-            } else {
-                if (org_type === "College") {
-                    updateOrganization(
-                        Name,
-                        Code,
-                        oldCode,
-                        country.value,
-                        state.value,
-                        zone.value,
-                        district.value,
-                        org_type,
-                        toast,
-                        affiliation,
-                        setIsSuccess,
-                        setIsLoading
-                    );
-                } else {
-                    updateOrganization(
-                        Name,
-                        Code,
-                        oldCode,
-                        country.value,
-                        state.value,
-                        zone.value,
-                        district.value,
-                        org_type,
-                        toast,
-                        "",
-                        setIsSuccess,
-                        setIsLoading
-                    );
-                }
-            }
-            setIsLoading(false);
-        };
-
-        const SelectBody = (item: string) => {
-            const params: SelectBodyProps = {
+    const handleSubmit = (
+        Name: string,
+        Code: string,
+        district: string,
+        country?: string,
+        state?: string,
+        zone?: string,
+        affiliation?: string
+    ) => {
+        setIsLoading(true);
+        console.log(affiliation);
+        if (props.isCreate) {
+            createOrganization(
                 Name,
                 Code,
-                country: country.value || props.selectedCountry,
-                state: state.value || props.selectedState,
-                zone: zone.value || props.selectedZone,
-                district: district.value || props.selectedDistrict,
+                country!,
+                state!,
+                zone!,
+                district,
                 org_type,
-                toast
-            };
-
-            createOrUpdateOrganization(
-                params,
-                props.isCreate,
-                affiliation.value
+                toast,
+                affiliation ? affiliation : "",
+                setIsSuccess,
+                setIsLoading
             );
-        };
+        } else {
+            updateOrganization(
+                Name,
+                Code,
+                oldCode,
+                district,
+                props.activeItem,
+                toast as any,
+                affiliation ? affiliation : "",
+                setIsSuccess,
+                setIsLoading
+            );
+        }
+        setIsLoading(false);
 
-        SelectBody(org_type);
+        // const SelectBody = (item: string) => {
+        //     const params: SelectBodyProps = {
+        //         Name,
+        //         Code,
+        //         country: country.value || props.selectedCountry,
+        //         state: state.value || props.selectedState,
+        //         zone: zone.value || props.selectedZone,
+        //         district: district.value || props.selectedDistrict,
+        //         org_type,
+        //         toast
+        //     };
+
+        // };
+
+        // SelectBody(org_type);
     };
 
     useEffect(() => {
@@ -368,7 +322,6 @@ const FormData = ({ ...props }: CollegeFormProps) => {
 
     const handleAffiliationChange = (option: any) => {
         if (option) {
-            console.log(option);
             setAffiliation(option);
             setSelectedAffiliation(option.value as string);
         }
@@ -398,19 +351,17 @@ const FormData = ({ ...props }: CollegeFormProps) => {
             setSelectedDistrict(option.value as string);
         }
     };
-
     return (
         <>
             <Formik
                 initialValues={{
                     Name: props.inputName || "",
                     Code: props.inputCode || "",
-                    Country: country.value || "",
+                    Country: props.selectedCountry || "",
                     Affiliation: props.selectedAffiliation || "",
-                    State: state.value || "",
-                    Zone: zone.value || "",
-                    District: district.value || ""
-                   
+                    State: props.selectedState || "",
+                    Zone: props.selectedZone || "",
+                    District: props.selectedDistrict || ""
                 }}
                 validationSchema={Yup.object({
                     Name: Yup.string()
@@ -423,111 +374,133 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                     State: Yup.string().required("Required"),
                     Zone: Yup.string().required("Required"),
                     District: Yup.string().required("Required"),
-                    Affiliation: Yup.string().required("Required")
+                    ...(org_type === "College" && {
+                        Affiliation: Yup.string().required("Required")
+                    })
                 })}
                 onSubmit={values => {
                     setIsLoading(true);
-                    
-                    handleSubmit(values.Name, values.Code);
+                    // props.handleClose();
+                    handleSubmit(
+                        values.Name,
+                        values.Code,
+                        values.District,
+                        values.Country,
+                        values.State,
+                        values.Zone,
+                        values.Affiliation
+                    );
                 }}
             >
                 <Form className={orgStyles.popupDropdownContainer}>
-                    <div className={orgStyles.inputFieldContainer}>
-                        <FormikTextInput
-                            label={`${props.activeItem} Name`}
-                            name="Name"
-                            type="text"
-                            placeholder="Enter a name"
-                        />
+                    <div className={orgStyles.threeSpan}>
+                        <div className={orgStyles.inputFieldContainer}>
+                            <FormikTextInput
+                                label={`${props.activeItem} Name`}
+                                name="Name"
+                                type="text"
+                                placeholder="Enter a name"
+                            />
+                        </div>
+                        <div className={orgStyles.inputFieldContainer}>
+                            <FormikTextInput
+                                label="Code"
+                                name="Code"
+                                type="text"
+                                placeholder="Enter Code"
+                            />
+                        </div>
                     </div>
-                    <div className={orgStyles.inputFieldContainer}>
-                        <FormikTextInput
-                            label="Code"
-                            name="Code"
-                            type="text"
-                            placeholder="Enter Code"
-                        />
-                    </div>
+
                     {props.activeItem === "College" ? (
                         <div className={orgStyles.inputFieldContainer}>
-                            <p>Affiliated University</p>
-                            <Select
+                            <FormikReactSelect
+                                maxMenuHeight={200}
+                                name="Affiliation"
+                                label="Affiliation"
+                                addOnChange={handleAffiliationChange}
+                                options={affiliationData}
+                                required
+                            />
+                            {/* <Select
                                 value={affiliationData?.find(
                                     affiliation =>
                                         affiliation.value ===
                                         selectedAffiliation
                                 )}
-                                name="Affiliation"
-                                onChange={handleAffiliationChange}
-                                options={affiliationData}
-                                required
-                            />
+                            /> */}
                         </div>
                     ) : null}
                     <div className={orgStyles.inputFieldContainer}>
-                        <p>Country</p>
-                        <Select
+                        <FormikReactSelect
+                            name="Country"
+                            label="Country"
+                            addOnChange={handleCountryChange}
+                            options={countryData}
+                            required
+                            maxMenuHeight={200}
+                        />
+                        {/* <Select
                             value={countryData?.find(
                                 country =>
                                     country.value ===
                                     selectedCountry.toLowerCase()
                             )}
-                            name="Country"
-                            onChange={handleCountryChange}
-                            options={countryData}
-                            required
-                        />
+                            
+                        /> */}
                     </div>
                     <div className={orgStyles.inputFieldContainer}>
-                        <p>State</p>
-                        <Select
-                            value={statesData?.find(
-                                state =>
-                                    state.value === selectedState.toLowerCase()
-                            )}
+                        <FormikReactSelect
+                            // value={statesData?.find(
+                            //     state =>
+                            //         state.value === selectedState.toLowerCase()
+                            // )}
                             name="State"
-                            onChange={handleStateChange}
+                            label="State"
+                            addOnChange={handleStateChange}
                             options={statesData}
                             required
-                           
+                            maxMenuHeight={200}
                         />
                     </div>
                     <div className={orgStyles.inputFieldContainer}>
-                        <p>Zone</p>
-                        <Select
-                            value={
-                                selectedZone.length > 0 &&
-                                zonesData?.find(
-                                    zone =>
-                                        zone.value ===
-                                        selectedZone.toLowerCase()
-                                )
-                            }
+                        <FormikReactSelect
+                            // value={
+                            //     selectedZone.length > 0 &&
+                            //     zonesData?.find(
+                            //         zone =>
+                            //             zone.value ===
+                            //             selectedZone.toLowerCase()
+                            //     )
+                            // }
                             name="Zone"
-                            onChange={handleZoneChange}
+                            label="Zone"
+                            addOnChange={handleZoneChange}
                             options={zonesData}
                             required
+                            maxMenuHeight={200}
                         />
                     </div>
                     <div className={orgStyles.inputFieldContainer}>
-                        <p>District</p>
-                        <Select
-                            value={
-                                selectedDistrict.length > 0 &&
-                                districtsData?.find(
-                                    district =>
-                                        district.value ===
-                                        selectedDistrict.toLowerCase()
-                                )
-                            }
+                        <FormikReactSelect
+                            // value={
+                            //     selectedDistrict.length > 0 &&
+                            //     districtsData?.find(
+                            //         district =>
+                            //             district.value ===
+                            //             selectedDistrict.toLowerCase()
+                            //     )
+                            // }
                             name="District"
-                            onChange={handleDistrictChange}
+                            label="District"
+                            addOnChange={handleDistrictChange}
                             options={districtsData}
                             required
+                            maxMenuHeight={200}
                         />
                     </div>
                     <div
-                        className={`${orgStyles.inputFieldContainer} grid-container`}
+                        className={`${orgStyles.inputFieldContainer} ${orgStyles.colspan} grid-container`}
                     >
                         <PowerfulButton
                             type="button"
@@ -535,7 +508,9 @@ const FormData = ({ ...props }: CollegeFormProps) => {
                             onClick={() => {
                                 navigate("/dashboard/organizations");
                             }}
-                        >Decline</PowerfulButton>
+                        >
+                            Decline
+                        </PowerfulButton>
                         <button
                             type="submit"
                             className="btn blue-btn"

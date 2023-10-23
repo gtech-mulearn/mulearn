@@ -59,7 +59,6 @@ const DashboardRootLayout = (props: { component?: any }) => {
             url: "/dashboard/refer",
             title: "Referrals",
             hasView: true,
-            roles: [roles.STUDENT],
             icon: <i className="fi fi-sr-building"></i>
         },
         {

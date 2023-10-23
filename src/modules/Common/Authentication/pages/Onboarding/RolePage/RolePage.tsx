@@ -6,14 +6,14 @@ import roleOptions from "./data/roleOptions";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
-import { getRoles } from "../../../services/newOnboardingApis";
+import { getRoles, submitUserData } from "../../../services/newOnboardingApis";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
 export default function Rolepage() {
     const navigate = useNavigate();
     const toast = useToast();
     const location = useLocation();
-    let userData = location.state as Object;
+    let userData = location.state;
 
     const [isloading, setIsLoading] = useState(true);
     const [roles, setRoles] = useState([{ id: "", title: "" }]);
@@ -26,7 +26,7 @@ export default function Rolepage() {
         console.log("userData", userData);
 
         if (userData === undefined || userData === null) {
-            navigate("/signup", { replace: true });
+            navigate("/register", { replace: true });
         } else {
             getRoles({
                 setIsLoading: setIsLoading,
@@ -34,6 +34,36 @@ export default function Rolepage() {
             });
         }
     }, []);
+
+    const submitData = () => {
+        const newUserData: any = {
+            user: {
+                first_name: userData.user.first_name,
+                last_name: userData.user.last_name,
+                mobile: userData.user.mobile,
+                email: userData.user.email,
+                password: userData.user.password
+            }
+        };
+
+        if (userData.referral_id)
+            newUserData["referral"] = { muid: userData.referral_id };
+        if (userData.param) {
+            newUserData["integration"]["param"] = userData.param;
+            newUserData["integration"]["title"] = "DWMS";
+        }
+        if (userData.referral)
+            newUserData["referral"] = { muid: userData.referral.muid };
+
+        console.log(newUserData)
+
+        submitUserData({
+            setIsLoading: setIsLoading,
+            userData: newUserData,
+            toast: toast,
+            navigate: navigate
+        });
+    }
 
     return (
         <OnboardingTemplate>
@@ -47,10 +77,9 @@ export default function Rolepage() {
                 <div className={styles.rolePageConatiner}>
                     <div className={styles.rolePageCards}>
                         {roleOptions.map((roleOption: any) => {
-                            let classname = `${styles.rolePageCard} ${
-                                selectedRole === roleOption.value &&
+                            let classname = `${styles.rolePageCard} ${selectedRole === roleOption.value &&
                                 styles.active
-                            }`;
+                                }`;
                             return (
                                 <div
                                     className={classname}
@@ -84,12 +113,15 @@ export default function Rolepage() {
                                 });
                                 return;
                             }
-                            navigate(nextPage, {
-                                state: { ...userData, role: selectedRoleId }
-                            });
+                            if (nextPage)
+                                navigate(nextPage, {
+                                    state: { ...userData, role: selectedRoleId }
+                                });
+                            else
+                                submitData();
                         }}
                     >
-                        Continue
+                        {nextPage ? "Continue" : "Submit"}
                     </button>
                 </div>
             )}

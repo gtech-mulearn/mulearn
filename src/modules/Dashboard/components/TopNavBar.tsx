@@ -15,10 +15,6 @@ const TopNavBar = () => {
     const [profilePic, setProfilePic] = useState<string | null>(null);
     const [notificationList, setNotificationList] = useState<NotificationProps[]>([]);
     const toast = useToast()
-    useEffect(() => {
-        if (notificationList.length === 0)
-            getNotifications(setNotificationList, { toast });
-    }, []);
     const notificationStyle = {
         backgroundColor: '#ffffff00',
         _hover: {

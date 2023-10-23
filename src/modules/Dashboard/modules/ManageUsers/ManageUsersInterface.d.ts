@@ -3,6 +3,7 @@ interface UserData {
     last_name: string;
     email: string;
     mobile: string;
+    discord_id?: string;
     gender: string;
     roles: string[];
     department?: string;

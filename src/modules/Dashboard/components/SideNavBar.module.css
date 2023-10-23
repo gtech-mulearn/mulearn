@@ -41,7 +41,7 @@
     background-color: #fff;
     padding: 60px 20px 20px;
     justify-content: center;
-    z-index: 100;
+    z-index: 90;
 }
 
 .side_nav_bar_container .side_nav_bar {
