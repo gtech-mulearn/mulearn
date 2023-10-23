@@ -98,11 +98,11 @@ export default function CollegePage() {
     const onSubmit = async (values: any) => {
         const newUserData: any = {
             user: {
-                first_name: userData.first_name,
-                last_name: userData.last_name,
-                mobile: userData.mobile,
-                email: userData.email,
-                password: userData.password
+                first_name: userData.user.first_name,
+                last_name: userData.user.last_name,
+                mobile: userData.user.mobile,
+                email: userData.user.email,
+                password: userData.user.password
             },
             organization: {
                 department: values.department,
@@ -110,7 +110,6 @@ export default function CollegePage() {
                 organizations: [values.college, ...userData.communities],
                 verified: true
             },
-            area_of_interests: []
         };
 
         if (userData.role) newUserData.user["role"] = userData.role;
@@ -120,13 +119,19 @@ export default function CollegePage() {
             newUserData["referral"] = { muid: userData.referral.muid };
 
         if (userData.param) {
-            console.log(userData)
-            newUserData["integration"] = {param: userData.param}
-            newUserData.integration.title = "DWMS";
+            newUserData["integration"] = userData.integration
         }
 
         if (userData.role === "Enabler")
             delete newUserData.organization.year_of_graduation;
+
+        if (userData.gender) {
+            newUserData.user["gender"] = userData.gender;
+        }
+
+        if (userData.dob) {
+            newUserData.user["dob"] = userData.dob;
+        }
 
         submitUserData({
             setIsLoading: setIsLoading,
@@ -180,7 +185,7 @@ export default function CollegePage() {
                                     />
                                 </div>
                                 {formik.touched.college &&
-                                    formik.errors.college&& (
+                                    formik.errors.college && (
                                         <span className={styles.errorsSpan}>{formik.errors.college}</span>
                                     )}
                                 <div className={styles.inputBox}>
@@ -206,7 +211,7 @@ export default function CollegePage() {
                                     />
                                 </div>
                                 {formik.touched.department &&
-                                    formik.errors.department&& (
+                                    formik.errors.department && (
                                         <span className={styles.errorsSpan}>{formik.errors.department}</span>
                                     )}
                                 {selectedRole === "Student" && <div className={styles.inputBox}>
@@ -217,10 +222,10 @@ export default function CollegePage() {
                                         placeholder="Graduation Year"
                                         disabled={isloading}
                                     />
-                                     {formik.touched.graduationYear&&
-                                    formik.errors.graduationYear&& (
-                                        <span className={styles.errorsSpan}>{formik.errors.graduationYear}</span>
-                                    )}
+                                    {formik.touched.graduationYear &&
+                                        formik.errors.graduationYear && (
+                                            <span className={styles.errorsSpan}>{formik.errors.graduationYear}</span>
+                                        )}
                                 </div>}
 
                                 <div className={styles.submit}>
