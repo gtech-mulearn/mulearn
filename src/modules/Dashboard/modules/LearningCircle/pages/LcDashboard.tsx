@@ -1,12 +1,48 @@
 import { style } from "d3";
-import { EditLogo, RightArrow, ThreeDotssvg } from "../assets/svg";
+import {
+    EditLogo,
+    RightArrow,
+    ThreeDotssvg,
+    CalenderIcon
+} from "../assets/svg";
 import styles from "./LcDashboard.module.css";
 import { Dispatch, SetStateAction, useState } from "react";
+import image from "../assets/images/profileIcon.svg";
 
 type Props = {};
 
+const formatTime = (date: {
+    getHours: () => number;
+    getMinutes: () => any;
+}) => {
+    const hours = date.getHours() % 12 || 12;
+    const minutes = date.getMinutes();
+    const ampm = date.getHours() >= 12 ? "PM" : "AM";
+    return `${hours.toString().padStart(2, "0")}:${minutes
+        .toString()
+        .padStart(2, "0")} ${ampm}`;
+};
+
 const LcDashboard = (props: Props) => {
     const [showReport, setShowReport] = useState("");
+    const [selectedDate, setSelectedDate] = useState("");
+
+    const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSelectedDate(e.target.value);
+    };
+    const [time, setTime] = useState(formatTime(new Date()));
+
+    const incrementTime = () => {
+        const currentTime = new Date();
+        currentTime.setMinutes(currentTime.getMinutes() + 15);
+        setTime(formatTime(currentTime));
+    };
+
+    const decrementTime = () => {
+        const currentTime = new Date();
+        currentTime.setMinutes(currentTime.getMinutes() - 15);
+        setTime(formatTime(currentTime));
+    };
 
     return (
         <div className={styles.LCDashboardWrapper}>
@@ -42,15 +78,31 @@ const LcDashboard = (props: Props) => {
                 </div>
                 {showReport === "1" ? (
                     <div className={styles.ReportWrapper}>
-                        <div>
-                            <div>
+                        <div className={styles.DetailSection}>
+                            <div className={styles.Sectionone}>
                                 <div>
-                                    <p>Date</p>
-                                    <input type="text" />
+                                    <label>Date:</label>
+
+                                    <input
+                                        type="date"
+                                        className={styles.datePicker}
+                                        onChange={handleDateChange}
+                                    />
+                                    <div>
+                                        <CalenderIcon />
+                                    </div>
                                 </div>
                                 <div>
-                                    <p>Time</p>
-                                    <input type="text" />
+                                    <label htmlFor="">Time:</label>
+                                    <input type="text" value={time} />
+                                    <div>
+                                        <button onClick={incrementTime}>
+                                            ▲
+                                        </button>
+                                        <button onClick={decrementTime}>
+                                            ▼
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                             <div>
@@ -71,7 +123,7 @@ const LcDashboard = (props: Props) => {
                                 </div>
                             </div>
                         </div>
-                        <div>
+                        <div className={styles.UploadSection}>
                             <div>
                                 <p>Upload Meeting Images</p>
                                 <input type="text" />
@@ -80,7 +132,7 @@ const LcDashboard = (props: Props) => {
                         </div>
                     </div>
                 ) : showReport === "2" ? (
-                    <div>
+                    <div className={styles.HistoryDataWrapper}>
                         <div>
                             <div>
                                 <div>
@@ -218,7 +270,7 @@ export const CheckBoxContainer = () => {
 export const Attendees = () => {
     return (
         <div className={styles.AttendeesWrapperIndividual}>
-            <img src="" alt="" />
+            <img src={image} alt="" />
             <p>Enric S Neelamkavil</p>
         </div>
     );
