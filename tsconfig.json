@@ -15,13 +15,18 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
+    // fix 85 bugs, then remove this comments
+    // "noUncheckedIndexedAccess": true, 
+    "incremental": true,
 
     "baseUrl": ".",
     "paths": {
       "@/MuLearnComponents/*": ["src/components/MuComponents/*"],
+      "@/AnimatedComponents/*": ["src/components/animations/*"],
       "@/MuLearnServices/*": ["src/services/*"],
 }
   },
   "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "references": [{ "path": "./tsconfig.node.json" }],
+  // "exclude": ["node_modules"]
 }

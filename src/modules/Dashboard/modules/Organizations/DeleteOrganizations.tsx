@@ -2,16 +2,14 @@ import orgStyles from './Organizations.module.css';
 import Form from '@/MuLearnComponents/Form/Form';
 import { useNavigate,useParams } from 'react-router-dom';
 import { deleteOrganization } from './apis';
-import { useToast } from '@chakra-ui/react'
 
 function DeleteOrganizations() {
 
     const {id} = useParams()
-    const toast = useToast()
     const navigate = useNavigate()
 
     function handleSubmit () {
-        deleteOrganization(id,toast)
+        deleteOrganization(id as string)
         navigate('/dashboard/organizations')
     }
   return (

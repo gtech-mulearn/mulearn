@@ -24,3 +24,6 @@ dist-ssr
 *.sln
 *.sw?
 *.env
+
+#  Annoying tsconfig.tsbuildinfo
+*.tsbuildinfo
