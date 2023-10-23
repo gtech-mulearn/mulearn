@@ -17,6 +17,8 @@ import styles from "./CampusStudentList.module.css";
 import CLIcon from "../assets/images/CampusLeadIcon.svg";
 import { useToast } from "@chakra-ui/react";
 import { convertDateToDayAndMonth } from "../../../utils/common";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { Counter } from "@/AnimatedComponents/Counter";
 
 type Props = {};
 
@@ -175,12 +177,10 @@ const CampusStudentList = (props: Props) => {
                         Kindly, raise a support ticket by typing
                         '/support-ticket' in the discord to add one.
                     </p>
-                    <button
-                        className={styles.no_org_button}
+                    <PowerfulButton
+                        children="Go Back"
                         onClick={() => navigate("/dashboard/college")}
-                    >
-                        Go Back
-                    </button>
+                    />
                 </div>
             ) : (
                 <>
@@ -204,31 +204,23 @@ const CampusStudentList = (props: Props) => {
                                     <div className={styles.details_card}>
                                         <div className={styles.card_one}>
                                             <div className={styles.card}>
-                                                <h1>
-                                                    {parseInt(
-                                                        campusData.total_karma
-                                                    ) > 1000
-                                                        ? (
-                                                              parseInt(
-                                                                  campusData.total_karma
-                                                              ) / 1000
-                                                          ).toPrecision(4) + "K"
-                                                        : campusData.total_karma}
-                                                </h1>
+                                                <Counter type="h1">
+                                                    {campusData.total_karma}
+                                                </Counter>
                                                 <p>Karma</p>
                                             </div>
                                             <div className={styles.card}>
-                                                <h1>
+                                                <Counter type="h1">
                                                     {campusData.total_members}
-                                                </h1>
+                                                </Counter>
                                                 <p>Total Members</p>
                                             </div>
                                         </div>
                                         <div className={styles.card_one}>
                                             <div className={styles.card}>
-                                                <h1>
+                                                <Counter type="h1">
                                                     {campusData.active_members}
-                                                </h1>
+                                                </Counter>
                                                 <p>Active Members</p>
                                             </div>
                                             <div className={styles.card}>
@@ -248,12 +240,12 @@ const CampusStudentList = (props: Props) => {
                                     </div>
                                 </div>
                                 <div className={styles.sec2}>
-                                    <p className={styles.clg_rank}>
-                                        {campusData?.rank?.toString().length ===
-                                        1
-                                            ? "0" + campusData.rank
-                                            : campusData.rank}
-                                    </p>
+                                    <Counter
+                                        type="p"
+                                        className={styles.clg_rank}
+                                    >
+                                        {campusData?.rank}
+                                    </Counter>
                                     <p className={styles.clg_rank_overlay}>
                                         RANK
                                     </p>

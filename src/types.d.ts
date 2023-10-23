@@ -1,7 +1,7 @@
 //Global type file, for most common types (no need to import types)
 
 type UseStateFunc<T> = React.Dispatch<React.SetStateAction<T>>
-type FC<T> = React.FC<T>
+type FC<T> = React.FC<T & {className?:string, children?:React.ReactNode}>
 
 type Role = (typeof import('./services/types').roles)[keyof typeof import('./services/types').roles]
 

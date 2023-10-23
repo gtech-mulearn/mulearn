@@ -20,6 +20,10 @@ export default defineConfig({
                 __dirname,
                 "./src/components/MuComponents"
             )}`,
+            "@/AnimatedComponents": `${path.resolve(
+                __dirname,
+                "./src/components/animations"
+            )}`,
             "@/MuLearnServices": `${path.resolve(__dirname, "./src/services")}`
         }
     },
