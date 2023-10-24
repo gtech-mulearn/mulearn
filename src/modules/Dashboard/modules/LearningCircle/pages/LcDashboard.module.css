@@ -187,19 +187,18 @@
     height: 100%;
 }
 .ReportWrapper .UploadSection > div {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
 }
 .ReportWrapper .UploadSection > div > p {
     color: black;
     font-size: 18px;
     font-weight: 600;
-  
 }
-.ReportWrapper .UploadSection > div > div{
+.ReportWrapper .UploadSection > div > div {
     width: 100%;
     height: 50vh;
     display: flex;
@@ -207,22 +206,77 @@
     align-items: center;
     justify-content: center;
     background-color: rgba(238, 242, 255, 1);
-    border: 1px dashed #456FF6;
+    border: 1px dashed #456ff6;
     border-radius: 10px;
 }
 
-.ReportWrapper .UploadSection button{
-background-color: #456FF6;
-color: white;
-padding: 10px;
-border-radius: 8px;
-width: fit-content;
+.ReportWrapper .UploadSection button {
+    background-color: #456ff6;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    width: fit-content;
 }
 /* Past data Wrapper */
 .HistoryDataWrapper {
     width: 100%;
     background-color: white;
     height: 100%;
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.HistoryDataWrapper > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.HistoryDataWrapper > div > div {
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+.HistoryDataWrapper h1 {
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1;
+}
+.HistoryDataWrapper h2 {
+    color: black;
+    font-size: 22px;
+    font-weight: 600;
+}
+.HistoryDataWrapper > div > div > p {
+    color: black;
+    text-align: left;
+}
+.HistoryDataWrapper > div > div > div > p {
+    color: black;
+    font-size: 18px;
+    font-weight: 500;
+}
+.HistoryDataWrapper .SectionTop div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.HistoryDataWrapper .Headings {
+    width: 40%;
+}
+.HistoryDataWrapper .detailedSection {
+    width: 60%;
+}
+.HistoryDataWrapper .SectionBottom .Headings > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+.HistoryDataWrapper .SectionBottom .detailedSection {
+    display: flex !important;
+    flex-direction: row;
 }
 /* Default Container */
 .ContainerWrapper {
