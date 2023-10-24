@@ -15,6 +15,8 @@ import {
 } from "../../../services/apis";
 import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import { MotionConfig, motion } from "framer-motion";
+import { fadeIn, slideUpFunc } from "@/AnimatedComponents/slider";
 
 const inputObject = {
     emailOrMuId: "Email or MuId",
@@ -94,7 +96,7 @@ export default function SignIn() {
                 onSubmit={onSubmit}
             >
                 {formik => (
-                    <div>
+                    <motion.div {...fadeIn(.8)}>
                         <div className={styles.wrapper}>
                             <Form>
                                 <div className={styles.inputBox}>
@@ -161,7 +163,7 @@ export default function SignIn() {
                                 </div>
                             </Form>
                         </div>
-                    </div>
+                    </motion.div>
                 )}
             </Formik>
         </OnboardingTemplate>
