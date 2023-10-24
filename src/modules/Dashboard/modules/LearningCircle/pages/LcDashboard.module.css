@@ -78,6 +78,41 @@
     background-color: white;
     box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.15);
 }
+.ContainerWrapper {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.ContainerWrapper .SwitchNav {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.ContainerWrapper .SwitchNav .items {
+    padding: 8px 20px;
+    background-color: #f3f3f4;
+    color: black;
+    font-weight: 600;
+    border-radius: 15px;
+}
+.ContainerWrapper .SwitchNav .active {
+    background-color: white;
+    border-radius: 15px 15px 0px 0px;
+}
+
+.ContainerWrapper .SwitchNav .plusItem {
+    border-left: 2px solid #8b8e92;
+    color: black;
+    font-size: 25px;
+    padding: 0px;
+    height: fit-content;
+    padding-left: 10px;
+    line-height: 1;
+}
 /* ReportWrapper */
 
 .ReportWrapper {
@@ -249,10 +284,12 @@
     color: black;
     font-size: 22px;
     font-weight: 600;
+    line-height: 1;
 }
 .HistoryDataWrapper > div > div > p {
     color: black;
     text-align: left;
+    font-size: 16px;
 }
 .HistoryDataWrapper > div > div > div > p {
     color: black;
@@ -301,45 +338,13 @@
     .HistoryDataWrapper .SectionBottom .detailedSection img {
         height: auto;
         width: 100%;
-     max-width: 350px;
+        max-width: 350px;
+    }
+    .HistoryDataWrapper > div > div > p {
+        font-size: 14px;
     }
 }
 /* Default Container */
-.ContainerWrapper {
-    width: 100%;
-
-    display: flex;
-    flex-direction: column;
-    align-items: baseline;
-}
-
-.ContainerWrapper .SwitchNav {
-    display: flex;
-    gap: 5px;
-    align-items: center;
-}
-
-.ContainerWrapper .SwitchNav .items {
-    padding: 8px 20px;
-    background-color: #f3f3f4;
-    color: black;
-    font-weight: 600;
-    border-radius: 15px;
-}
-.ContainerWrapper .SwitchNav .active {
-    background-color: white;
-    border-radius: 15px 15px 0px 0px;
-}
-
-.ContainerWrapper .SwitchNav .plusItem {
-    border-left: 2px solid #8b8e92;
-    color: black;
-    font-size: 25px;
-    padding: 0px;
-    height: fit-content;
-    padding-left: 10px;
-    line-height: 1;
-}
 
 .ContainerWrapper .ContentWrapper {
     width: 100%;
@@ -353,7 +358,8 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
-    gap: 20px;
+    gap: 2%;
+    flex-wrap: wrap;
 }
 
 .ContainerWrapper .ContentWrapper .TopContainer > div {
@@ -366,9 +372,10 @@
 .ContainerWrapper .ContentWrapper .TopContainer .sectionOne {
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 68%;
     gap: 10px;
     font-weight: 600;
+    min-width: none;
 }
 .ContainerWrapper .ContentWrapper .TopContainer .sectionOne p {
     font-size: 18px;
@@ -412,7 +419,7 @@
 }
 .ContainerWrapper .ContentWrapper .TopContainer .sectionTwo {
     width: 30%;
-    min-width: 300px;
+    min-width: 250px;
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -441,6 +448,50 @@
     font-size: 18px;
     font-weight: 600;
 }
+
+@media screen and (max-width: 1350px) {
+    .ContainerWrapper .ContentWrapper .TopContainer .sectionOne {
+        width: 100%;
+    }
+    .ContainerWrapper .ContentWrapper .TopContainer {
+        gap: 15px;
+    }
+    .ContainerWrapper .ContentWrapper .TopContainer .sectionTwo {
+        width: 60%;
+    }
+}
+@media screen and (max-width: 500px) {
+    .ContainerWrapper .ContentWrapper .TopContainer .sectionOne .divOne > div h1 {
+   
+    font-size: 25px;
+    text-align: left;
+  
+}
+    .ContainerWrapper .ContentWrapper .TopContainer .sectionOne .secondDiv {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+
+    .ContainerWrapper .ContentWrapper .TopContainer .sectionOne .secondDiv p {
+        font-size: 15px;
+    }
+
+    .ContainerWrapper
+        .ContentWrapper
+        .TopContainer
+        .sectionOne
+        .secondDiv
+        button {
+        width: 100%;
+        padding: 8px;
+        font-size: 15px;
+    }
+       .ContainerWrapper .ContentWrapper .TopContainer .sectionTwo {
+        width: 100%;
+    }
+}
+
 /* HistoryDiv */
 
 .HistoryDivWrapper {
@@ -450,6 +501,7 @@
     border-radius: 12px;
     border: 1px solid rgba(136, 136, 136, 1);
     padding: 15px 30px;
+    gap: 5px;
 }
 
 .HistoryDivWrapper div {
@@ -460,7 +512,15 @@
     font-weight: 600;
     align-items: center;
 }
-
+@media screen and (max-width: 400px){
+    .HistoryDivWrapper{
+        padding: 15px;
+    }
+.HistoryDivWrapper p{
+    font-size: 15px;
+    text-align: left;
+}
+}
 /* CheckBoxContainer */
 
 .CheckBoxContainerWrapper {
