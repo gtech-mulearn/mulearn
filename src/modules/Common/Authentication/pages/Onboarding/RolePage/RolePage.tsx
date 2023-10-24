@@ -38,11 +38,11 @@ export default function Rolepage() {
     const submitData = () => {
         const newUserData: any = {
             user: {
-                first_name: userData.first_name,
-                last_name: userData.last_name,
-                mobile: userData.mobile,
-                email: userData.email,
-                password: userData.password
+                first_name: userData.user.first_name,
+                last_name: userData.user.last_name,
+                mobile: userData.user.mobile,
+                email: userData.user.email,
+                password: userData.user.password
             }
         };
 
@@ -54,6 +54,8 @@ export default function Rolepage() {
         }
         if (userData.referral)
             newUserData["referral"] = { muid: userData.referral.muid };
+
+        console.log(newUserData)
 
         submitUserData({
             setIsLoading: setIsLoading,

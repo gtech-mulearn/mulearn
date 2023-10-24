@@ -27,6 +27,8 @@ type DWMSData = {
     firstName: string,
     lastName: string,
     phoneNumber: string,
+    gender?: string,
+    dob?: string,
 }
 
 const scheme = z.object({
@@ -79,7 +81,7 @@ export default function AccountCreation() {
     const [communitiesList, setCommunitiesList] = useState([
         { id: "", title: "" }
     ]);
-    const initialValues = {
+    const [initialValues, setInitialValues] = useState({
         email: "",
         firstName: "",
         lastName: "",
@@ -89,10 +91,10 @@ export default function AccountCreation() {
         confirmPassword: "",
         muid: "",
         communities: []
-    };
+    });
 
     useEffect(() => {
-        if(isLoading) return;
+        if (isLoading) return;
         setIsLoading(true);
         getCommunities({
             setCommunityAPI: setCommunitiesList,
@@ -100,15 +102,24 @@ export default function AccountCreation() {
         });
         if (param) {
             getDWMSDetails(param, (data: any) => {
-                const tempData: DWMSData = {
+                setDWMSData({
                     email: data?.email_id || "",
                     firstName: data?.job_seeker_fname || "",
                     lastName: data?.job_seeker_lname || "",
                     phoneNumber: data?.mobile_no || "",
+                    gender: data?.gender || "",
+                    dob: data?.dob || "",
+                });
 
-                };
+                setInitialValues({
+                    ...initialValues,
+                    email: data?.email_id || "",
+                    firstName: data?.job_seeker_fname || "",
+                    lastName: data?.job_seeker_lname || "",
+                    phoneNumber: data?.mobile_no || "",
+                });
 
-                setDWMSData(tempData);
+
             });
 
         }
@@ -131,29 +142,58 @@ export default function AccountCreation() {
 
         console.log(values)
 
+
         const userData: {
-            first_name: any;
-            last_name: any;
-            email: any;
-            mobile: any;
-            password: any;
-            param: string | null;
-            communities: any;
+
+            user: {
+                first_name: any;
+                last_name: any;
+                email: any;
+                mobile: any;
+                password: any;
+            }
             referral?: { muid: string };
+            gender?: string;
+            dob?: string;
+            communities?: string[];
+            integration?: {
+                param: string;
+                title: string;
+            }
         } = {
-            first_name: values.firstName,
-            last_name: values.lastName,
-            email: values.email,
-            mobile: values.phoneNumber,
-            password: values.password,
-            param: param,
-            communities: values.communities,
+            user: {
+                first_name: values.firstName,
+                last_name: values.lastName,
+                email: values.email,
+                mobile: values.phoneNumber,
+                password: values.password,
+            }
         };
+
 
         if (values.muid) {
             userData.referral = { muid: values.muid };
         } else if (referralId) {
             userData.referral = { muid: referralId };
+        }
+
+        if (dwmsData && dwmsData.gender) {
+            userData.gender = dwmsData.gender
+        }
+
+        if (values.communities) {
+            userData.communities = values.communities
+        }
+
+        if (param) {
+            userData.integration = {
+                param: param,
+                title: "DWMS"
+            }
+        }
+
+        if (dwmsData && dwmsData.dob) {
+            userData.dob = dwmsData.dob
         }
 
         const isSuccess = await validate({
@@ -172,6 +212,7 @@ export default function AccountCreation() {
             />
             <Formik
                 initialValues={initialValues}
+                enableReinitialize={true}
                 validationSchema={scheme}
                 onSubmit={onsubmit}
             >
@@ -183,7 +224,6 @@ export default function AccountCreation() {
                                     <SimpleInput
                                         name={"email"}
                                         type="email"
-                                        key={formik.values.email}
                                         value={formik.values.email || dwmsData?.email}
                                         onChange={formik.handleChange}
                                         placeholder="Email id"
@@ -333,7 +373,7 @@ export default function AccountCreation() {
                                         closeMenuOnSelect={false}
                                         components={animatedComponents}
                                         isClearable
-                                        defaultValue={param && dwmsData?.email ? {
+                                        defaultValue={param ? {
                                             value: "ebb42790-571e-4d9e-b65e-d367faad5746",
                                             label: "KKEM"
                                         } : null}

@@ -3,26 +3,16 @@ import styles from "../../utils/modalForm.module.css";
 import useLocationData from "@/MuLearnComponents/CascadingSelects/useLocationData";
 import CountryStateDistrict from "@/MuLearnComponents/CascadingSelects/CountryStateDistrict";
 import toast from "react-hot-toast";
-import { addNewOrganization, getAffiliation } from "./apis";
+import {
+    addNewOrganization,
+    editOrganization,
+    getAffiliation,
+    getOrganizationDetails
+} from "./OrganizationApis";
 import Select from "react-select";
 import { customReactSelectStyles } from "../../utils/common";
-import { useNavigate } from "react-router-dom";
 
 type Props = { type: string; isEditMode: boolean; itemId: string };
-
-interface OrgFormData {
-    affiliation: string;
-    code: string;
-    country: string;
-    district: string;
-    org_type: string;
-    state: string;
-    title: string;
-}
-
-interface OrgFormErrors {
-    [key: string]: string | undefined;
-}
 
 type InitialLocationData = {
     country: { label: string; value: string };
@@ -30,41 +20,10 @@ type InitialLocationData = {
     district: { label: string; value: string };
 } | null;
 
-interface AffiliationOption {
-    label: string;
-    value: string;
-}
-
 const OrgForm = forwardRef(
     (props: Props & { closeModal: () => void }, ref: any) => {
         const [initialData, setInitialData] =
             useState<InitialLocationData>(null);
-        const navigate = useNavigate();
-
-        // Fetch the initial data if in edit mode
-        // useEffect(() => {
-        //     if (props.isEditMode) {
-        //         // Replace this with your actual API call
-        //         fetchYourDataAPI(itemId).then(data => {
-        //             setInitialData({
-        //                 country: {
-        //                     label: data.countryName,
-        //                     value: data.countryValue
-        //                 },
-        //                 state: { label: data.stateName, value: data.stateValue },
-        //                 district: {
-        //                     label: data.districtName,
-        //                     value: data.districtValue
-        //                 }
-        //             });
-        //         });
-        //     }
-        // }, [props.isEditMode, props.itemId]);
-
-        // If initialData is null (not fetched yet), we can show a loading state
-        if (props.isEditMode && !initialData) {
-            return <p>Loading...</p>;
-        }
 
         const {
             locationData,
@@ -87,6 +46,47 @@ const OrgForm = forwardRef(
         });
 
         const [errors, setErrors] = useState<OrgFormErrors>({});
+        const [oldCode, setOldCode] = useState("");
+
+        //Fetch the initial data if in edit mode
+        useEffect(() => {
+            if (props.isEditMode) {
+                // Replace this with your actual API call
+                getOrganizationDetails(props.itemId).then(
+                    (data: OrgInfo) => {
+                        const initialData: InitialLocationData = {
+                            country: {
+                                label: data.country_name,
+                                value: data.country_uuid
+                            },
+                            state: {
+                                label: data.state_name,
+                                value: data.state_uuid
+                            },
+                            district: {
+                                label: data.district_name,
+                                value: data.district_uuid
+                            }
+                        };
+                        setInitialData(initialData);
+						setData({
+                            affiliation: data.affiliation_uuid,
+                            code: data.code,
+                            country: data.country_uuid,
+                            district: data.district_uuid,
+                            org_type: props.type,
+                            state: data.state_uuid,
+                            title: data.title
+                        });
+						setSelectedAffiliation({
+							label: data.affiliation_name,
+							value: data.affiliation_uuid
+						})
+						setOldCode(data.code)
+                    }
+                );
+            }
+        }, [props.isEditMode, props.itemId]);
 
         const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
             const { name, value } = e.target;
@@ -137,6 +137,10 @@ const OrgForm = forwardRef(
             // Validate form data
             let isValid = true;
             for (const key in updatedData) {
+                // Skip affiliation check if type is not "college"
+                if (props.type !== "College" && key === "affiliation") {
+                    continue;
+                }
                 if (
                     updatedData[key as keyof OrgFormData] === "" ||
                     updatedData[key as keyof OrgFormData] === "undefined"
@@ -155,7 +159,14 @@ const OrgForm = forwardRef(
             if (isValid) {
                 console.log(updatedData);
                 if (props.isEditMode) {
-                    // Update existing data with updatedData
+                    toast.promise(editOrganization(updatedData, oldCode), {
+                        loading: "Saving...",
+                        success: () => {
+                            props.closeModal();
+                            return <b>Organization edited.</b>;
+                        },
+                        error: <b>Failed to edit organization</b>
+                    });
                 } else {
                     toast.promise(addNewOrganization(updatedData), {
                         loading: "Saving...",
@@ -163,7 +174,7 @@ const OrgForm = forwardRef(
                             props.closeModal();
                             return <b>Organization added</b>;
                         },
-                        error: <b>Failed add new organization</b>
+                        error: <b>Failed to add new organization</b>
                     });
                 }
             }
@@ -186,7 +197,7 @@ const OrgForm = forwardRef(
                         )}
                     </div>
 
-                    <div className={styles.inputContainer}>
+                    {props.type === "College" && <div className={styles.inputContainer}>
                         <Select
                             styles={customReactSelectStyles}
                             options={affiliations}
@@ -207,7 +218,7 @@ const OrgForm = forwardRef(
                                 Affiliation is Required
                             </div>
                         )}
-                    </div>
+                    </div>}
 
                     <div className={styles.inputContainer}>
                         <input

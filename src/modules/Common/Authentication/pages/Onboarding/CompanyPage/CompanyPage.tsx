@@ -47,7 +47,7 @@ export default function CompanyPage() {
         if (
             userData === undefined ||
             userData === null ||
-            userData.email === undefined
+            userData.user.email === undefined
         ) {
             navigate("/register", { replace: true });
         } else {
@@ -70,25 +70,23 @@ export default function CompanyPage() {
     const onSubmit = async (values: any) => {
         const newUserData: any = {
             user: {
-                first_name: userData.first_name,
-                last_name: userData.last_name,
-                mobile: userData.mobile,
-                email: userData.email,
-                password: userData.password
+                first_name: userData.user.first_name,
+                last_name: userData.user.last_name,
+                mobile: userData.user.mobile,
+                email: userData.user.email,
+                password: userData.user.password
             },
             organization: {
                 year_of_graduation: values.graduationYear,
                 organizations: [values.company, ...userData.communities],
                 verified: true
             },
-            area_of_interests: []
         };
 
         if (userData.referral_id)
             newUserData["referral"] = { muid: userData.referral_id };
         if (userData.param) {
-            newUserData["integration"]["param"] = userData.param;
-            newUserData["integration"]["title"] = "DWMS";
+            newUserData["integration"] = userData.integration
         }
 
         if (userData.referral)
@@ -102,6 +100,14 @@ export default function CompanyPage() {
             } else {
                 newUserData.user["role"] = userData.role;
             }
+        }
+
+        if (userData.gender) {
+            newUserData.user["gender"] = userData.gender;
+        }
+
+        if (userData.dob) {
+            newUserData.user["dob"] = userData.dob;
         }
 
         submitUserData({
