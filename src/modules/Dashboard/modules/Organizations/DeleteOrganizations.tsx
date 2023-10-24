@@ -6,13 +6,13 @@ import { useToast } from '@chakra-ui/react'
 
 function DeleteOrganizations() {
 
-    const {id} = useParams()
+    const {id = ''} = useParams()
     const toast = useToast()
     const navigate = useNavigate()
 
     function handleSubmit () {
-        deleteOrganization(id,toast)
-        navigate('/dashboard/organizations')
+      deleteOrganization(id)
+      navigate('/dashboard/organizations')
     }
   return (
     <div className={orgStyles.deleteContainer}>
