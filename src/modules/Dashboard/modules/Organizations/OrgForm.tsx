@@ -3,7 +3,12 @@ import styles from "../../utils/modalForm.module.css";
 import useLocationData from "@/MuLearnComponents/CascadingSelects/useLocationData";
 import CountryStateDistrict from "@/MuLearnComponents/CascadingSelects/CountryStateDistrict";
 import toast from "react-hot-toast";
-import { addNewOrganization, editOrganization, getAffiliation, getOrganizationDetails } from "./apis";
+import {
+    addNewOrganization,
+    editOrganization,
+    getAffiliation,
+    getOrganizationDetails
+} from "./OrganizationApis";
 import Select from "react-select";
 import { customReactSelectStyles } from "../../utils/common";
 

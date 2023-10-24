@@ -31,13 +31,6 @@ const Tasks = lazy(() =>
         default: module.Tasks
     }))
 );
-const CreateOrganization = lazy(
-    () => import("./modules/Dashboard/modules/Organizations/CreateOrganization")
-);
-const DeleteOrganizations = lazy(
-    () =>
-        import("./modules/Dashboard/modules/Organizations/DeleteOrganizations")
-);
 const ManageUsersCreate = lazy(
     () => import("./modules/Dashboard/modules/ManageUsers/ManageUsersCreate")
 );
@@ -61,9 +54,6 @@ const UserRoleVerificationEdit = lazy(
         import(
             "./modules/Dashboard/modules/UserRoleVerification/UserRoleVerificationEdit"
         )
-);
-const EditOrgnaization = lazy(
-    () => import("./modules/Dashboard/modules/Organizations/EditOrganization")
 );
 const UrlShortener = lazy(
     () => import("./modules/Dashboard/modules/UrlShortener/Pages/UrlShortener")
@@ -301,20 +291,6 @@ function App() {
                                     children={<InterestGroup />}
                                 />
                             )
-                        },
-
-                        {
-                            path: "organizations/edit",
-                            element: (
-                                <RoleChecker
-                                    roles={[roles.ADMIN]}
-                                    children={<EditOrgnaization />}
-                                />
-                            )
-                        },
-                        {
-                            path: "organizations/delete/:id",
-                            element: <DeleteOrganizations />
                         },
                         {
                             path: "campus-details",
