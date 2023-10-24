@@ -23,6 +23,7 @@ import BasicDetails from "../components/BasicDetails/pages/BasicDetails";
 import KarmaHistory from "../components/KarmaHistory/KarmaHistory";
 import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
 import { PieChart } from "../components/Piechart/PieChart";
+import Rocket from "../assets/svg/Rocket";
 
 type Props = {};
 interface CircleSection {
@@ -217,25 +218,28 @@ const ProfileV2 = (props: Props) => {
                 </div>
             </div>
 
-            <div className={styles.roles_karma_dist_container}>
-                <div className={styles.role_distribution_container}>
-                    <h1>Roles and contributions</h1>
-                    <div className={styles.ellipse}></div>
-                    <div className={styles.ellipse1}></div>
-                    <div className={styles.ellipse2}></div>
-                    <div className={styles.ellipse3}></div>
-                    <div className={styles.planet}></div>
-                </div>
-                <div className={styles.karma_distribution_container}>
-                    <div className={styles.container}>
-                        {/* <div className={styles.ui_widgets}>
+            <div className={styles.roles_and_karma_container}>
+                <div className={styles.roles_karma_dist_container}>
+                    <div className={styles.role_distribution_container}>
+                        <h1>Roles and contributions</h1>
+                        <div className={styles.ellipse}></div>
+                        <div className={styles.ellipse1}></div>
+                        <div className={styles.ellipse2}></div>
+                        <div className={styles.ellipse3}></div>
+                        <div className={styles.planet}></div>
+                    </div>
+                    <div className={styles.karma_distribution_container}>
+                        <div className={styles.container}>
+                            {/* <div className={styles.ui_widgets}>
                             <div className={styles.ui_value}>85%</div>
                             <div className={styles.ui_labels}>Java</div>
                         </div> */}
-                        {/* <KarmaDist sections={circleSections} /> */}
-                        <PieChart data={data} />
+                            {/* <KarmaDist sections={circleSections} /> */}
+                            <PieChart data={data} />
+                        </div>
                     </div>
                 </div>
+                {window.innerWidth > 1200 ? <Rocket /> : <></>}
             </div>
 
             <div className={styles.profileList}>
