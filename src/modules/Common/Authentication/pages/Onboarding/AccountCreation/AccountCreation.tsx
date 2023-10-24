@@ -394,7 +394,7 @@ export default function AccountCreation() {
                                         name={"muid"}
                                         value={formik.values.muid}
                                         type="text"
-                                        placeholder="Refferal Id"
+                                        placeholder="Referral MuID (Optional)"
                                         disabled={isLoading}
                                     />
                                 </div>
