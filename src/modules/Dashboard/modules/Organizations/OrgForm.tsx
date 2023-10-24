@@ -141,6 +141,33 @@ const OrgForm = forwardRef(
                 if (props.type !== "College" && key === "affiliation") {
                     continue;
                 }
+                if (props.type !== "College" && key === "country") {
+					if (
+                        updatedData[key as keyof OrgFormData] === "" ||
+                        updatedData[key as keyof OrgFormData] === "undefined"
+                    ){
+						delete updatedData[key as keyof OrgFormData]
+					}
+                    continue;
+                }
+                if (props.type !== "College" && key === "state") {
+					if (
+                        updatedData[key as keyof OrgFormData] === "" ||
+                        updatedData[key as keyof OrgFormData] === "undefined"
+                    ) {
+                        delete updatedData[key as keyof OrgFormData];
+                    }
+                    continue;
+                }
+                if (props.type !== "College" && key === "district") {
+                    if (
+                        updatedData[key as keyof OrgFormData] === "" ||
+                        updatedData[key as keyof OrgFormData] === "undefined"
+                    ) {
+                        delete updatedData[key as keyof OrgFormData];
+                    }
+                    continue;
+                }
                 if (
                     updatedData[key as keyof OrgFormData] === "" ||
                     updatedData[key as keyof OrgFormData] === "undefined"
@@ -247,6 +274,7 @@ const OrgForm = forwardRef(
                         onCountryChange={handleCountryChange}
                         onStateChange={handleStateChange}
                         onDistrictChange={handleDistrictChange}
+						notRequired={props.type !== "College" ? true : false}
                     />
                 </form>
             </div>
