@@ -151,31 +151,28 @@
     height: 10px;
 }
 
-.main_task .tasks .accordion .main_list .expandBtn:checked ~ .content {
+.main_task .tasks .accordion .main_list .expandBtn:checked~.content {
     max-height: 400px;
     overflow-y: scroll;
 }
 
-.main_task
-    .tasks
-    .accordion
-    .main_list
-    .expandBtn:checked
-    + .level
-    .icon_down_arrow {
+.main_task .tasks .accordion .main_list .expandBtn:checked+.level .icon_down_arrow {
     transform: rotate(180deg);
 }
-.discord{
+
+.discord {
     height: 24px;
     width: 24px;
     transition: transform 0.2s;
 }
+
 .discordContainer {
     display: inline-block;
-    vertical-align:-40%;
-    margin-left: 5px; 
+    vertical-align: -40%;
+    margin-left: 5px;
 }
-.discord:hover{
+
+.discord:hover {
     transform: scale(1.15);
 }
 
@@ -199,7 +196,7 @@
 .main_task .tasks .accordion .main_list .content .list_list li label {
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 0px 10px;
     position: relative;
     width: 100%;
 }
@@ -211,7 +208,14 @@
     border-radius: 3px;
     font-size: 12px;
     width: fit-content;
-    
+    position: relative;
+
+    & a {
+        position: absolute;
+        top: -4px;
+        right: -25px;
+        cursor: pointer;
+    }
 }
 
 
