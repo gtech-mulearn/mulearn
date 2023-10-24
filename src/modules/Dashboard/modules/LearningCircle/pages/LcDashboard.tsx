@@ -221,6 +221,9 @@ const LcDashboard = (props: Props) => {
                             <p>Your past meetings</p>
                             <div>
                                 <HistoryDiv setdata={setShowReport} />
+                                <HistoryDiv setdata={setShowReport} />
+                                <HistoryDiv setdata={setShowReport} />
+                                <HistoryDiv setdata={setShowReport} />
                             </div>
                         </div>
                     </div>

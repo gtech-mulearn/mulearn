@@ -18,6 +18,7 @@
     align-items: flex-start;
     padding: 30px;
     border-radius: 12px;
+    gap: 10px;
 }
 
 .TitleContainerWrapper .Title {
@@ -37,6 +38,7 @@
 .TitleContainerWrapper .Title h3 {
     color: black;
     font-weight: 600;
+    font-size: 16px;
 }
 
 .TitleContainerWrapper .RankSession {
@@ -112,6 +114,18 @@
     height: fit-content;
     padding-left: 10px;
     line-height: 1;
+}
+
+@media screen and (max-width: 500px) {
+    .TitleContainerWrapper .Title h1,
+    .TitleContainerWrapper .RankSession h1 {
+        font-size: 35px;
+    }
+
+    .TitleContainerWrapper .Title h3,
+    .TitleContainerWrapper .RankSession h3 {
+        font-size: 15px;
+    }
 }
 /* ReportWrapper */
 
@@ -424,6 +438,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 10px;
 }
 .ContainerWrapper .ContentWrapper .TopContainer .sectionTwo button {
     background-color: rgba(69, 111, 246, 1);
@@ -441,6 +456,12 @@
     flex-direction: column;
     width: 100%;
     gap: 10px;
+}
+.ContainerWrapper .ContentWrapper .BottomContainer > div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
 }
 .ContainerWrapper .ContentWrapper .BottomContainer > p {
     align-self: flex-start;
@@ -461,17 +482,20 @@
     }
 }
 @media screen and (max-width: 500px) {
-    .ContainerWrapper .ContentWrapper .TopContainer .sectionOne .divOne > div h1 {
-   
-    font-size: 25px;
-    text-align: left;
-  
-}
+    .ContainerWrapper
+        .ContentWrapper
+        .TopContainer
+        .sectionOne
+        .divOne
+        > div
+        h1 {
+        font-size: 25px;
+        text-align: left;
+    }
     .ContainerWrapper .ContentWrapper .TopContainer .sectionOne .secondDiv {
         flex-wrap: wrap;
         gap: 10px;
     }
-
 
     .ContainerWrapper .ContentWrapper .TopContainer .sectionOne .secondDiv p {
         font-size: 15px;
@@ -487,7 +511,7 @@
         padding: 8px;
         font-size: 15px;
     }
-       .ContainerWrapper .ContentWrapper .TopContainer .sectionTwo {
+    .ContainerWrapper .ContentWrapper .TopContainer .sectionTwo {
         width: 100%;
     }
 }
@@ -512,14 +536,14 @@
     font-weight: 600;
     align-items: center;
 }
-@media screen and (max-width: 400px){
-    .HistoryDivWrapper{
+@media screen and (max-width: 400px) {
+    .HistoryDivWrapper {
         padding: 15px;
     }
-.HistoryDivWrapper p{
-    font-size: 15px;
-    text-align: left;
-}
+    .HistoryDivWrapper p {
+        font-size: 15px;
+        text-align: left;
+    }
 }
 /* CheckBoxContainer */
 
