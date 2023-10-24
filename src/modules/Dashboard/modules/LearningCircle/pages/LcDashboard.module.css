@@ -230,10 +230,11 @@
 .HistoryDataWrapper > div {
     display: flex;
     justify-content: space-between;
-    gap: 10px;
+    gap: 2%;
+    flex-wrap: wrap;
 }
 .HistoryDataWrapper > div > div {
-    min-width: 300px;
+    min-width: 250px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -264,7 +265,7 @@
     align-items: flex-start;
 }
 .HistoryDataWrapper .Headings {
-    width: 40%;
+    width: 38%;
 }
 .HistoryDataWrapper .detailedSection {
     width: 60%;
@@ -277,6 +278,31 @@
 .HistoryDataWrapper .SectionBottom .detailedSection {
     display: flex !important;
     flex-direction: row;
+    flex-wrap: wrap;
+}
+.HistoryDataWrapper .SectionBottom .detailedSection img {
+    height: 180px;
+    width: 230px;
+    object-fit: cover;
+}
+@media screen and (max-width: 1000px) {
+    .HistoryDataWrapper .Headings,
+    .HistoryDataWrapper .detailedSection {
+        width: 100%;
+    }
+    .HistoryDataWrapper > div {
+        gap: 10px;
+    }
+    .HistoryDataWrapper .SectionBottom .Headings p {
+        font-size: 14px;
+    }
+}
+@media screen and (max-width: 500px) {
+    .HistoryDataWrapper .SectionBottom .detailedSection img {
+        height: auto;
+        width: 100%;
+     max-width: 350px;
+    }
 }
 /* Default Container */
 .ContainerWrapper {
