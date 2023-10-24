@@ -24,17 +24,17 @@ const BasicDetails = (props: Props) => {
         // getIgDetails(toast, setIg);
         getAllIg(setAllIg);
     }, []);
-    useEffect(()=>{
-        setIg(props.userProfile.interest_groups)
-    })
+    useEffect(() => {
+        setIg(props.userProfile.interest_groups);
+    });
     const ig_sorted = ig.sort((a: any, b: any) => {
         return a.name > b.name ? 1 : -1;
     });
-    
+
     return (
         <>
             <div className={styles.card_container}>
-                {props.userProfile.interest_groups.length != 0 ? (
+                {props.userProfile.interest_groups.length !== 0 ? (
                     ig.map((data: any, i: number) => {
                         return (
                             <div key={i} className={styles.card}>
@@ -52,7 +52,13 @@ const BasicDetails = (props: Props) => {
                                         : "0"}
                                 </p>
                                 <div className={styles.planet}>
-                                    <PlanetGreen />
+                                    {i === 0 ? (
+                                        <PlanetGreen />
+                                    ) : i === 1 ? (
+                                        <PlanetOrange />
+                                    ) : (
+                                        <PlanetRed />
+                                    )}
                                 </div>
                             </div>
                         );
