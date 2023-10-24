@@ -19,6 +19,8 @@ interface Props {
     onCountryChange: (value: { label: string; value: string } | null) => void;
     onStateChange: (value: { label: string; value: string } | null) => void;
     onDistrictChange: (value: { label: string; value: string } | null) => void;
+
+	notRequired?: boolean;
 }
 
 interface BlurStatus {
@@ -39,7 +41,8 @@ const CountryStateDistrict: React.FC<Props> = ({
     loadingDistricts,
     onCountryChange,
     onStateChange,
-    onDistrictChange
+    onDistrictChange,
+	notRequired = false
 }) => {
     const [blurStatus, setBlurStatus] = React.useState<BlurStatus>({
         country: false,
@@ -61,7 +64,7 @@ const CountryStateDistrict: React.FC<Props> = ({
                         setBlurStatus(prev => ({ ...prev, country: true }));
                     }}
                 />
-                {blurStatus.country && !selectedCountry && (
+                {!notRequired && blurStatus.country && !selectedCountry && (
                     <div style={{ color: "red" }}>Country is Required</div>
                 )}
             </div>
@@ -79,7 +82,7 @@ const CountryStateDistrict: React.FC<Props> = ({
                         setBlurStatus(prev => ({ ...prev, state: true }));
                     }}
                 />
-                {blurStatus.state && !selectedState && (
+                {!notRequired && blurStatus.state && !selectedState && (
                     <div style={{ color: "red" }}>State is Required</div>
                 )}
             </div>
@@ -97,7 +100,7 @@ const CountryStateDistrict: React.FC<Props> = ({
                         setBlurStatus(prev => ({ ...prev, district: true }));
                     }}
                 />
-                {blurStatus.district && !selectedDistrict && (
+                {!notRequired && blurStatus.district && !selectedDistrict && (
                     <div style={{ color: "red" }}>District is Required</div>
                 )}
             </div>
