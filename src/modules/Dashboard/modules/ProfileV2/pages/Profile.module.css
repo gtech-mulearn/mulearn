@@ -13,6 +13,7 @@
         gap: 15px;
         align-items: center;
         min-width: 300px;
+        box-shadow: 0px 3px 12px 0px rgba(0, 24, 99, 0.10);
 
         .profile_pic {
             background-image: url(../assets/images/dpm.webp);
@@ -67,15 +68,17 @@
                 justify-content: center;
                 gap: 15px;
                 width: 50%;
+                box-shadow: 0px 3px 12px 0px rgba(0, 24, 99, 0.10);
             }
         }
     }
 }
 
 .roles_karma_dist_container {
-    height: 300px;
+    height: auto;
     width: 95%;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     border-radius: 16px;
     border-left: 6px solid #7E48D2;
@@ -85,7 +88,8 @@
 
     .role_distribution_container {
         width: 50%;
-        height: 100%;
+        min-width: 450px;
+        height: 300px;
         overflow: hidden;
         position: relative;
         border-radius: 12px;
@@ -151,11 +155,11 @@
 
     .karma_distribution_container {
         width: 50%;
-        height: 100%;
+        height: 300px;
         position: relative;
 
         .container {
-            top: 60px;
+            top: -60px;
             left: 10px;
             position: absolute;
 
@@ -223,12 +227,12 @@
 
         .basic_details_detail {
             flex-direction: row;
-            gap: 20px;
+            gap: 10px;
             width: 100%;
 
             .status_container {
                 flex-direction: column;
-                width: 50%;
+                width: calc(50% - 5px);
 
                 .status {
                     width: 100%;
@@ -316,6 +320,37 @@
             position: relative;
         }
     } */
+}
+
+@media screen and (max-width:1240px) {
+    .roles_karma_dist_container {
+        gap: 30px;
+        background: transparent;
+        border-radius: unset;
+        border-left: unset;
+        box-shadow: unset;
+
+        .role_distribution_container {
+            min-width: 100%;
+            border-radius: 16px;
+            border-left: 6px solid #7E48D2;
+            box-shadow: 0px 3px 12px 0px rgba(0, 24, 99, 0.10);
+            background: #fff;
+        }
+
+        .karma_distribution_container {
+            width: 100%;
+            border-radius: 16px;
+            border-left: 6px solid #E36DFF;
+            box-shadow: 0px 3px 12px 0px rgba(0, 24, 99, 0.10);
+            background: #fff;
+
+            .container {
+                top: 60px;
+                left: -30px;
+            }
+        }
+    }
 }
 
 @media screen and (max-width: 800px) {

@@ -2,8 +2,9 @@
 .card_container {
     display: flex;
     justify-content: flex-start;
-    gap: 60px;
+    gap: 10px 40px;
     width: 95%;
+    flex-wrap: wrap;
 
     .card {
         display: flex;

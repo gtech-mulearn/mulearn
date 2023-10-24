@@ -125,7 +125,14 @@ const ProfileV2 = (props: Props) => {
         <>
             <div className={styles.basic_details}>
                 <div className={styles.profile_details_container}>
-                    <p className={styles.profile_pic}></p>
+                    <p
+                        className={styles.profile_pic}
+                        style={{
+                            backgroundImage: `url(${userProfile.profile_pic})`
+                        }}
+                    >
+                        {" "}
+                    </p>
                     <div className={styles.profile_details}>
                         <h1>
                             {userProfile.first_name} {userProfile.last_name}{" "}
