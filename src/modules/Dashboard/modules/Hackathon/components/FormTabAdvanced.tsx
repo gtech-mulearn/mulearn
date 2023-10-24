@@ -2,6 +2,8 @@ import { FiUploadCloud } from "react-icons/fi";
 import styles from "../pages/HackathonCreate.module.css";
 import { useState } from "react";
 import { Field } from "formik";
+import {motion} from "framer-motion"
+import { slideLeft } from "@/AnimatedComponents/slider";
 
 type FormTabAdvancedProps = {
     data: any;
@@ -18,7 +20,7 @@ export const FormTabAdvanced = ({
     const [selectedFiles, setSelectedFiles] = useState<File | null>(null);
 
     return (
-        <>
+        <motion.div {...slideLeft}>
             <div className={styles.formGroupLogo}>
                 <div className={styles.InputSet}>
                     <label className={styles.formLabel + " requiredLabel"}>Banner</label>
@@ -134,6 +136,6 @@ export const FormTabAdvanced = ({
                     <Field type="checkbox" name="isOpenToAll" />
                 </div>
             </div>
-        </>
+        </motion.div>
     );
 };

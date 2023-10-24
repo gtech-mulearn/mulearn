@@ -1,5 +1,7 @@
 import { Field } from "formik";
 import styles from "../pages/HackathonCreate.module.css";
+import {motion} from "framer-motion"
+import { slideLeft } from "@/AnimatedComponents/slider";
 
 type FormTabApplicationProps = {
     values: any;
@@ -14,7 +16,7 @@ export const FormTabApplication = ({
     formData
 }: FormTabApplicationProps) => {
     return (
-        <>
+        <motion.div {...slideLeft} className={ styles.formGroupField }>
             <div id="checkbox" className={styles.InputSet}>
                 <label className={styles.formLabel + " requiredLabel"}>
                     Select fields for application form
@@ -49,6 +51,6 @@ export const FormTabApplication = ({
                     </label>
                 ))}
             </div>
-        </>
+        </motion.div>
     );
 };

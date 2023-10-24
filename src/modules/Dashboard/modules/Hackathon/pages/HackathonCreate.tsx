@@ -321,23 +321,15 @@ const HackathonCreate = () => {
                                                 {/* <Tab>FAQs</Tab> */}
                                             </TabList>
                                             <div className={styles.form}>
-                                                <TabPanel
-                                                    className={
-                                                        styles.formGroupStart
-                                                    }
-                                                >
+                                                <TabPanel>
                                                     <FormTabBasics />
                                                 </TabPanel>
 
-                                                <TabPanel
-                                                    className={styles.formGroup}
-                                                >
+                                                <TabPanel>
                                                     <FormTabDates />
                                                 </TabPanel>
 
-                                                <TabPanel
-                                                    className={styles.formGroup}
-                                                >
+                                                <TabPanel>
                                                     <FormTabDetails
                                                         institutions={
                                                             institutions
@@ -356,11 +348,7 @@ const HackathonCreate = () => {
                                                     />
                                                 </TabPanel>
 
-                                                <TabPanel
-                                                    className={
-                                                        styles.formGroupField
-                                                    }
-                                                >
+                                                <TabPanel>
                                                     <FormTabApplication
                                                         values={values}
                                                         handleChange={

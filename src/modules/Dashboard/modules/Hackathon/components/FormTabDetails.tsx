@@ -3,6 +3,9 @@ import FormikReactSelect, {
 } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 
 import { Option } from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import {motion} from "framer-motion"
+import { slideLeft } from "@/AnimatedComponents/slider";
+import styles from "../pages/HackathonCreate.module.css";
 
 type FormTabDetailsProps = {
     institutions: Option[];
@@ -19,7 +22,7 @@ export const FormTabDetails = ({
     district
 }: FormTabDetailsProps) => {
     return (
-        <>
+        <motion.div {...slideLeft} className={styles.formGroup}>
             <FormikReactSelect
                 label={<span className="requiredLabel">Organization</span> as unknown as string}
                 name="orgId"
@@ -51,6 +54,6 @@ export const FormTabDetails = ({
                 name="type"
                 options={options}
             />
-        </>
+        </motion.div>
     );
 };

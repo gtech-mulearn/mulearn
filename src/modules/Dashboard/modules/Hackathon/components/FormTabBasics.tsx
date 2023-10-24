@@ -3,10 +3,12 @@ import {
     FormikTextInputWhite
 } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import styles from "../pages/HackathonCreate.module.css";
+import {motion} from "framer-motion"
+import { slideLeft } from "@/AnimatedComponents/slider";
 
 export const FormTabBasics = () => {
     return (
-        <>
+        <motion.div {...slideLeft}>
             <div className={styles.formGroupInitial}>
                 <FormikTextInputWhite
                     label={<span className="requiredLabel">Name</span>}
@@ -36,6 +38,6 @@ export const FormTabBasics = () => {
                 className={styles.hackTectArea}
                 placeholder="explain something"
             />
-        </>
+        </motion.div>
     );
 };

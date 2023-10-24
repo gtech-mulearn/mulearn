@@ -27,3 +27,15 @@ export const fadeIn = (step: number) => {
         }
     }
 }
+
+export const slideLeft = {
+    initial: { opacity: 0 },
+    // whileInView: { opacitx: 1 }
+    animate: { opacity: 1 },
+    duration: 1,
+    transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 20,
+    },
+}

@@ -1,9 +1,11 @@
 import { FormikTextInputWhite } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import styles from "../pages/HackathonCreate.module.css";
+import {motion} from "framer-motion"
+import { slideLeft } from "@/AnimatedComponents/slider";
 
 export const FormTabDates = () => {
     return (
-        <>
+        <motion.div {...slideLeft} className={styles.formGroup}>
             <FormikTextInputWhite
                 label={<span className="requiredLabel">Registration Start Date</span>}
                 name="applicationStart"
@@ -28,6 +30,6 @@ export const FormTabDates = () => {
                 className={styles.placeholder}
                 type="date"
             />
-        </>
+        </motion.div>
     );
 };
