@@ -336,6 +336,7 @@
             border-left: 6px solid #7E48D2;
             box-shadow: 0px 3px 12px 0px rgba(0, 24, 99, 0.10);
             background: #fff;
+            overflow: hidden;
         }
 
         .karma_distribution_container {
