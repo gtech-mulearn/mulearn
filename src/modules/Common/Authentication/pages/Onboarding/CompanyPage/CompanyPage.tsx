@@ -27,9 +27,7 @@ const scheme = z.object({
         .max(100, `Company Name must be at most 100 characters`),
     radio: z
         .string()
-        .required(`Radio is Required`)
-        .min(2, `Radio must be at least 2 characters`)
-        .max(3, `Radio must be at most 3 characters`)
+        .required(`This field is Required`)
 });
 
 export default function CompanyPage() {
