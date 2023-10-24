@@ -64,23 +64,16 @@ const ManageLocation = () => {
     }, [popupStatus]);
 
     useEffect(() => {
+        console.log(activeTab);
         loadTableData();
-        setCurrentPage(1);
-        setPerPage(5);
-        setSearch("");
-        setSort("");
-        console.log(activeTab);
+        // setCurrentPage(1);
+        // setPerPage(5);
+        // setSearch("");
+        // setSort("");
         // return setData([]), setTotalPages(1);
-    }, [activeTab]);
+    }, [activeTab, sort, currentPage, perPage, search]);
 
-    useEffect(() => {
-        getLocationData();
-    }, [sort, currentPage, perPage, search]);
-    useEffect(() => {
-        console.log(data);
-    }, [data]);
     function loadTableData() {
-        console.log(activeTab);
         setLoading(true);
         if (activeTab === "Country") {
             setPopupStatus(false);
@@ -115,7 +108,6 @@ const ManageLocation = () => {
             //     stateShow: false,
             //     zoneShow: false
             // }));
-            getLocationData();
             setColumns(columnsState);
         } else if (activeTab === "Zone") {
             // setPopupStatus(true);
@@ -124,7 +116,6 @@ const ManageLocation = () => {
             //     stateShow: true,
             //     zoneShow: false
             // }));
-            getLocationData();
             setColumns(columnsZone);
         } else if (activeTab === "District") {
             // setPopupStatus(true);
@@ -133,12 +124,13 @@ const ManageLocation = () => {
             //     stateShow: true,
             //     zoneShow: true
             // }));
-            getLocationData();
             setColumns(columnsDistrict);
         }
+        getLocationData();
     }
 
     function getLocationData() {
+        console.log("asd", activeTab);
         if (activeTab === "Country") {
             (async () => {
                 const res = await getCountryData(
@@ -174,6 +166,7 @@ const ManageLocation = () => {
                         id: data.value
                     }))
                 );
+                console.log(res);
                 setLoading(false);
             });
         } else if (activeTab === "Zone") {
@@ -288,14 +281,14 @@ const ManageLocation = () => {
                 handleState={state => setSelectedState(state)}
                 handleZone={zone => setSelectedZone(zone)}
             />
-            {activeTab !== "Country" && (
+            {/* {activeTab !== "Country" && (
                 <LocationPath
                     handlePopup={setPopupStatus}
                     country={selectedCountry}
                     state={selectedState}
                     zone={selectedZone}
                 />
-            )}
+            )} */}
 
             {data && (
                 <>
@@ -455,12 +448,14 @@ const LocationPath = ({
         }${zone ? ` / ${zone?.toUpperCase()}` : ""}`;
     }
 
-    return (
-        <div className="path_container">
-            <p>{locationTextGenerate()}</p>
-            <h3 onClick={() => handlePopup(true)}>change</h3>
-        </div>
-    );
+    // uuid displaying and change button removed
+
+    // return (
+    //     <div className="path_container">
+    //         <p>{locationTextGenerate()}</p>
+    //         <h3 onClick={() => handlePopup(true)}>change</h3>
+    //     </div>
+    // );
 };
 
 export default ManageLocation;

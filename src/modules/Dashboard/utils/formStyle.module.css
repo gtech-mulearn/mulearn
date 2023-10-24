@@ -1,71 +1,70 @@
 .text {
-	font-size: 1.5rem;
-	font-weight: bold;
-	margin-bottom: 3rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
 }
 
 .external_container {
-	display: flex;
-	align-items: center;
-	min-height: 65vh;
+    display: flex;
+    align-items: center;
+    min-height: 65vh;
 }
 
 .container {
-	box-shadow: var(--boxShadow);
-	padding: 20px;
-	width: 70vw;
-	background-color: var(--White);
-	border-radius: 10px;
+    box-shadow: var(--boxShadow);
+    padding: 20px;
+    width: 70vw;
+    background-color: var(--White);
+    border-radius: 10px;
 }
 
 .formContainer {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .inputContainer {
-	width: 20rem;
+    width: 20rem;
 }
 
 .inputContainerBtn {
-	display: flex;
-	gap: 10px;
-	align-items: end;
-	width: 20rem;
+    display: flex;
+    gap: 10px;
+    align-items: end;
+    width: 20rem;
 }
 
 .btn_container {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	align-items: center;
-	padding: 0 10px;
-	margin-top: 10px;
-	/* width: 50%; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    margin-top: 10px;
 }
 
 .btn_cancel,
 .btn_submit {
-	width: 49%;
-	border-radius: 8px;
-	padding: 10px;
-	margin-top: 14px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+    width: 49%;
+    border-radius: 8px;
+    padding: 10px;
+    margin-top: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .btn_cancel {
-	background-color: var(--InputDefaultBackground);
-	color: var(--Primary);
+    background-color: var(--InputDefaultBackground);
+    color: var(--Primary);
 }
 
 .btn_submit {
-	background-color: var(--Primary);
-	color: var(--White);
+    background-color: var(--Primary);
+    color: var(--White);
 }
 
 .btn_submit:hover {
-	background-color: var(--Blue800);
+    background-color: var(--Blue800);
 }

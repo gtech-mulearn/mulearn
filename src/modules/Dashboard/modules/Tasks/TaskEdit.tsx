@@ -1,6 +1,7 @@
 import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
 import { Form, Formik } from "formik";
-import {
+import FormikReactSelect, {
+    FormikCheckBox,
     FormikSelect,
     FormikTextInput
 } from "@/MuLearnComponents/FormikComponents/FormikComponents";
@@ -8,9 +9,7 @@ import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { taskEditSchema, useFormikData } from "./TaskEditUtils";
 
-type Props = {};
-
-const TaskEdit = (props: Props) => {
+const TaskEdit = () => {
     const { navigate, initialValues, submitHandler, loading, formStructure } =
         useFormikData();
     return (
@@ -30,69 +29,63 @@ const TaskEdit = (props: Props) => {
                             onSubmit={submitHandler}
                         >
                             <Form className={styles.inputContainer}>
-                                {formStructure?.map((val, index) => {
-                                    if (val.element === "input") {
+                                {formStructure
+                                    .filter(val => val.element === "input")
+                                    ?.map((val, index) => {
                                         return (
                                             <FormikTextInput
                                                 label={val.label}
                                                 name={val.name}
                                                 type={val.type}
                                                 placeholder={val.placeholder}
+                                                required={val.required}
+                                                key={val.label}
                                             />
                                         );
-                                    }
-                                    if (val.element === "select") {
-                                        return (
-                                            <FormikSelect
+                                    })}
+
+                                <div
+                                    style={{
+                                        display: "flex",
+                                        justifyContent: "space-evenly"
+                                    }}
+                                >
+                                    {formStructure
+                                        .filter(
+                                            val => val.element === "checkbox"
+                                        )
+                                        .map(val => (
+                                            <FormikCheckBox
                                                 label={val.label}
                                                 name={val.name}
-                                                disabled={val.disabled}
-                                            >
-                                                {val.options?.map(option => (
-                                                    <option
-                                                        value={option.value}
-                                                    >
-                                                        {option.label}
-                                                    </option>
-                                                ))}
-                                            </FormikSelect>
+                                                key={val.label}
+                                            />
+                                        ))}
+                                </div>
+                                {formStructure
+                                    .filter(val => val.element === "select")
+                                    ?.map((val, index) => {
+                                        return (
+                                            <FormikReactSelect
+                                                label={val.label}
+                                                name={val.name}
+                                                isDisabled={val.disabled}
+                                                required={val.required}
+                                                options={val.options!}
+                                                key={val.label}
+                                            />
                                         );
-                                    }
-                                })}
+                                    })}
 
-                                {/* <FormikSelect
-                                    label={"Events"}
-                                    name={"Event"}
-                                    disabled={false}
-                                >
-                                    <option
-                                        value={""}
-                                    >
-                                        {"Shaheen hyder"}
-                                    </option>
-                                    <option
-                                        value={""}
-                                    >
-                                        {"Aswin Ashok"}
-                                    </option>
-                                    <option
-                                        value={""}
-                                    >
-                                        {"Shaheen hyder"}
-                                    </option>
-                                    <option
-                                        value={""}
-                                    >
-                                        {"Aswin Ashok"}
-                                    </option>
-                                </FormikSelect> */}
                                 <div className={styles.btn_container}>
                                     <button
                                         className={styles.btn_cancel}
                                         onClick={() => {
                                             navigate("/dashboard/tasks");
                                         }}
-                                    >Decline</button>
+                                    >
+                                        Decline
+                                    </button>
                                     <button
                                         type="submit"
                                         className={styles.btn_submit}

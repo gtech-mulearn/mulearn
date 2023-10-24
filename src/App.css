@@ -11,6 +11,9 @@
     /* IE and Edge */
     scroll-behavior: smooth;
     scrollbar-width: none;
+    /* icon highlighting fix */
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
 }
 
 .css-13cymwt-control,
@@ -21,7 +24,7 @@
     padding: 5px;
     outline: none;
     width: 100%;
-    margin-top: 10px;
+    /* margin-top: 10px; */
 }
 
 ::-webkit-scrollbar {
@@ -37,9 +40,9 @@
     --Dark: #1a1a1a;
     --Light: #f5f7f9;
     --White: #ffffff;
-    --Black: #000000;
+    --Black: #1d1d1d;
     --Blue800: #00204c;
-    --InputDefaultBackground: #eff1f9;
+    --InputDefaultBackground: rgba(184, 196, 234, 0.29);
     --Error: red;
     --btn-secondary-bg: #9fb5ef;
 

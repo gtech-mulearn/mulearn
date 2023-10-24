@@ -1,6 +1,4 @@
-import {
-    PowerfulButton
-} from "@/MuLearnComponents/MuButtons/MuButton";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import THead from "@/MuLearnComponents/Table/THead";
 import Table from "@/MuLearnComponents/Table/Table";
@@ -12,6 +10,7 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import styles from "../InterestGroup/InterestGroup.module.css";
 import { getKarmaVoucher } from "./service/api";
+import { Blank } from "@/MuLearnComponents/Table/Blank";
 
 type Props = {};
 
@@ -151,8 +150,6 @@ const KarmaVoucher = (props: Props) => {
                 column
             );
         }
-
-        //console.log(`Icon clicked for column: ${column}`);
     };
     return (
         <>
@@ -209,7 +206,7 @@ const KarmaVoucher = (props: Props) => {
                                 />
                             )}
                         </div>
-                        {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                        <Blank />
                     </Table>
                 </>
             )}

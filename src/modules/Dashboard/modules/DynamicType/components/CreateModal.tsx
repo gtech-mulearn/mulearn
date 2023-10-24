@@ -42,8 +42,6 @@ const CreateModal = (props: Props) => {
                 type: "",
                 ...(props.roles && { role: "" }),
                 ...(!props.roles && { user: "" })
-                // acceptedTerms: false, // added for our checkbox
-                // jobType: "" // added for our select
             }}
             validationSchema={Yup.object({
                 type: Yup.string().required("Required"),

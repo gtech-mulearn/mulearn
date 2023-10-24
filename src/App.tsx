@@ -9,7 +9,7 @@ import AuthRoutes from "./components/AuthRoutes";
 import Onboarding from "./modules/Common/Authentication/pages/Onboarding";
 import Login from "./modules/Common/Authentication/pages/Login";
 import ForgotPassword from "./modules/Common/Authentication/pages/ForgotPassword";
-import ResetPassword from "./modules/Common/Authentication/pages/ResetPassword";
+
 import PrivateRoutes from "./components/PrivateRoutes";
 import DashboardRootLayout from "./modules/Dashboard/layouts/DashboardRootLayout";
 import NotFound from "./components/NotFound";
@@ -30,13 +30,6 @@ const Tasks = lazy(() =>
     import("./modules/Dashboard/modules/Tasks/Tasks").then(module => ({
         default: module.Tasks
     }))
-);
-const CreateOrganization = lazy(
-    () => import("./modules/Dashboard/modules/Organizations/CreateOrganization")
-);
-const DeleteOrganizations = lazy(
-    () =>
-        import("./modules/Dashboard/modules/Organizations/DeleteOrganizations")
 );
 const ManageUsersCreate = lazy(
     () => import("./modules/Dashboard/modules/ManageUsers/ManageUsersCreate")
@@ -61,9 +54,6 @@ const UserRoleVerificationEdit = lazy(
         import(
             "./modules/Dashboard/modules/UserRoleVerification/UserRoleVerificationEdit"
         )
-);
-const EditOrgnaization = lazy(
-    () => import("./modules/Dashboard/modules/Organizations/EditOrganization")
 );
 const UrlShortener = lazy(
     () => import("./modules/Dashboard/modules/UrlShortener/Pages/UrlShortener")
@@ -110,10 +100,7 @@ const ManageUsers = lazy(
 const InterestGroup = lazy(
     () => import("./modules/Dashboard/modules/InterestGroup/InterestGroup")
 );
-const InterestGroupCreate = lazy(
-    () =>
-        import("./modules/Dashboard/modules/InterestGroup/InterestGroupCreate")
-);
+
 const HackathonDetails = lazy(
     () => import("./modules/Dashboard/modules/Hackathon/pages/HackathonDetails")
 );
@@ -170,6 +157,33 @@ const LearningCircleLandingPage = lazy(
             "./modules/Dashboard/modules/LearningCircle/pages/LearningCircleLandingPage"
         )
 );
+const MarketPlaceHistory = lazy(
+    () => import("./modules/Dashboard/modules/Marketplace/MarketPlaceHistory")
+);
+const Marketplace = lazy(
+    () =>
+        import(
+            "./modules/Dashboard/modules/Marketplace/UserMarketplace/UserMarketplce"
+        )
+);
+const MarketAddItem = lazy(
+    () =>
+        import(
+            "./modules/Dashboard/modules/Marketplace/MarketAddItem/MarketAddItem"
+        )
+);
+const AdminMarketPlace = lazy(
+    () =>
+        import(
+            "./modules/Dashboard/modules/Marketplace/AdminMarketplace/AdminMarketplace"
+        )
+);
+const PurchaseInventory = lazy(
+    () =>
+        import(
+            "./modules/Dashboard/modules/Marketplace/PurchaseInventory/PurchaseInventory"
+        )
+);
 
 import { roles } from "./services/types";
 import SecureAuthRoutes from "./services/authCheck";
@@ -186,7 +200,12 @@ import SignIn from "./modules/Common/Authentication/pages/Onboarding/SignIn/Sign
 
 import ErrorLog from "./modules/Dashboard/modules/ErrorLog/ErrorLog";
 import KKEMEventBeyondUs from "./modules/Public/KKEM/modules/KKEMEventTemplate/KKEMEventBeyondUs";
-import { Marketplace } from "./modules/Dashboard/modules/Marketplace/Marketplace";
+
+import LearningCircles from "./modules/Public/KKEM/modules/Dashboard/LearningCircles/LearningCircles";
+import ForgetPassword from "./modules/Common/Authentication/pages/Onboarding/ForgetPassword/ForgetPassword";
+import ResetPassword from "./modules/Common/Authentication/pages/Onboarding/ResetPassword/ResetPassword";
+import LcDashboard from "./modules/Dashboard/modules/LearningCircle/pages/LcDashboard";
+import { Toaster } from "react-hot-toast";
 
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
@@ -220,9 +239,9 @@ function App() {
             path: "/",
             element: <AuthRoutes />,
             children: [
-                { path: "register", element: <Onboarding /> },
-                { path: "login", element: <Login /> },
-                { path: "forgot-password", element: <ForgotPassword /> },
+                { path: "register", element: <AccountCreation /> },
+                { path: "login", element: <SignIn /> },
+                { path: "forgot-password", element: <ForgetPassword /> },
                 { path: "reset-password", element: <ResetPassword /> }
             ]
         },
@@ -248,26 +267,21 @@ function App() {
         },
         {
             path: "/",
-            element: <PrivateRoutes />,
+          element: <PrivateRoutes />,
             children: [
                 {
                     path: "/dashboard",
                     element: <DashboardRootLayout />,
                     children: [
                         { path: "profile", element: <Profile /> },
-                        { path: "profileV2", element: <ProfileV2 /> },
+                        // { path: "profileV2", element: <ProfileV2 /> },
                         {
                             path: "connect-discord",
                             element: <ConnectDiscord />
                         },
                         {
                             path: "refer",
-                            element: (
-                                <RoleChecker
-                                    roles={[roles.STUDENT, roles.ADMIN]}
-                                    children={<Refer />}
-                                />
-                            )
+                            element: <Refer />
                         },
                         {
                             path: "interest-groups",
@@ -277,31 +291,6 @@ function App() {
                                     children={<InterestGroup />}
                                 />
                             )
-                        },
-                        {
-                            path: "interest-groups/create",
-                            element: <InterestGroupCreate />
-                        },
-                        {
-                            path: "interest-groups/edit/:id",
-                            element: <InterestGroupCreate />
-                        },
-                        {
-                            path: "organizations/create",
-                            element: <CreateOrganization />
-                        },
-                        {
-                            path: "organizations/edit",
-                            element: (
-                                <RoleChecker
-                                    roles={[roles.ADMIN]}
-                                    children={<EditOrgnaization />}
-                                />
-                            )
-                        },
-                        {
-                            path: "organizations/delete/:id",
-                            element: <DeleteOrganizations />
                         },
                         {
                             path: "campus-details",
@@ -559,17 +548,37 @@ function App() {
                             element: <LearningCircle />
                         },
                         {
+                            path: "learning-circle/dashboard/:id",
+                            element: <LcDashboard />
+                        },
+                        {
                             path: "learning-circle/find-circle",
                             element: <FindCircle />
                         },
                         {
                             path: "learning-circle/create-circle",
                             element: <LearningCircleCreate />
-                        },
-                        {
-                            path: "marketplace",
-                            element: <Marketplace />
                         }
+                        // {
+                        //     path: "marketplace",
+                        //     element: <Marketplace />
+                        // },
+                        // {
+                        //     path: "marketplace-history",
+                        //     element: <MarketPlaceHistory />
+                        // },
+                        // {
+                        //     path: "marketplace-additem",
+                        //     element: <MarketAddItem />
+                        // },
+                        // {
+                        //     path: "marketplace-admin",
+                        //     element: <AdminMarketPlace />
+                        // },
+                        // {
+                        //     path: "marketplace-purchaseinv",
+                        //     element: <PurchaseInventory />
+                        // }
                         // {
                         //     path: "settings",
                         //     element: <Settings />,
@@ -599,10 +608,20 @@ function App() {
         {
             path: "/kkem/events/beyondus",
             element: <KKEMEventBeyondUs />
+        },
+        {
+            path: "/kkem/learningcircles/dashboard",
+            element: <LearningCircles />
         }
     ]);
 
-    return <RouterProvider router={router} />;
+    return (
+        <>
+            <RouterProvider router={router} />
+            <Toaster position="bottom-center" reverseOrder={true} />
+        </>
+    );
+	
 }
 
 export default App;

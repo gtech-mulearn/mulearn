@@ -12,6 +12,7 @@ import "./ZonalDashboard.css";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { BarChart, ColumnChart } from "../CampusStudentList/Components/Graphs";
 import graphStyles from "../CampusStudentList/pages/CampusStudentList.module.css";
+import { Blank } from "@/MuLearnComponents/Table/Blank";
 
 function ZonalDashboard() {
     const [data, setData] = useState<Data[]>([]);
@@ -221,7 +222,7 @@ function ZonalDashboard() {
                             perPage={perPage}
                             setPerPage={handlePerPageNumber as any}
                         />
-                        {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                        <Blank />
                     </Table>
                 </>
             )}

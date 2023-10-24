@@ -44,7 +44,6 @@ export function getHackDetails(id: string): Promise<HackList> {
                 dashboardRoutes.getHackathonInfo + id
             )) as APIResponse<HackList>;
             resolve(response.data.response);
-            // setEditData(data);
         } catch (err: unknown) {
             if (axios.isAxiosError(err)) {
                 reject(err.message);
@@ -114,14 +113,14 @@ export function createHackathon(
 export function editHackathon(
     hackathonData: HackList,
     formFields: any,
-    navigate: NavigateFunction,
+    navigate: NavigateFunction
 ): Promise<string> {
     return new Promise(async (resolve, reject) => {
         if (hackathonData.tagline === "") {
             hackathonData.tagline = null;
         }
         try {
-            const response = (await privateGateway.put(
+            const response = await privateGateway.put(
                 dashboardRoutes.editHackathon + hackathonData.id + "/",
                 {
                     title: hackathonData.title,
@@ -149,7 +148,7 @@ export function editHackathon(
                         "Content-Type": "multipart/form-data"
                     }
                 }
-            ))
+            );
             const message: String = response?.data.message.general[0];
             resolve(hackathonData.id!);
             toast({
@@ -188,7 +187,7 @@ export const getAllDistricts = (setDistrict: UseStateFunc<Option[]>) => {
                     }))
             );
         })
-        .catch(error => { });
+        .catch(error => {});
 };
 
 export const getAllInstitutions = (
@@ -204,7 +203,7 @@ export const getAllInstitutions = (
                 }))
             );
         })
-        .catch(error => { });
+        .catch(error => {});
 };
 
 export const deleteHackathon = async (id: string) => {
@@ -230,7 +229,7 @@ export const addOrganizer = async (id: string | undefined, muid: string) => {
         const response = await privateGateway.post(
             dashboardRoutes.addOrganizer + id + "/",
             {
-                mu_id: muid
+                muid: muid
             }
         );
         const message: any = response?.data;
@@ -255,7 +254,11 @@ export const addOrganizer = async (id: string | undefined, muid: string) => {
     }
 };
 
-export const publishHackathon = async (id: string, status: string, toast: (options?: UseToastOptions | undefined) => any) => {
+export const publishHackathon = async (
+    id: string,
+    status: string,
+    toast: (options?: UseToastOptions | undefined) => any
+) => {
     let a = status === "Draft" ? "Published" : "Draft";
 
     try {
@@ -275,9 +278,9 @@ export const publishHackathon = async (id: string, status: string, toast: (optio
             status: "error",
             duration: 5000,
             isClosable: true
-        })
+        });
     }
-}
+};
 export const getApplicationForm = async (
     setData: UseStateFunc<HackathonApplication[]>,
     id: string | undefined
@@ -306,7 +309,7 @@ export const submitHackApplication = async (
         linkedin: string;
     },
     id: string | undefined,
-    navigate: NavigateFunction,
+    navigate: NavigateFunction
 ) => {
     try {
         if (!id) {
@@ -336,20 +339,23 @@ export const submitHackApplication = async (
         if (error?.response?.status === 400) {
             navigate("/dashboard/hackathon");
         }
-        console.log((
-            error?.response?.data?.message as {
-                code?: string[];
-                general?: string[];
-            }
-        )?.general?.[0])
+        console.log(
+            (
+                error?.response?.data?.message as {
+                    code?: string[];
+                    general?: string[];
+                }
+            )?.general?.[0]
+        );
         if (error?.response) {
             toast({
-                title: (
-                    error?.response?.data?.message as {
-                        code?: string[];
-                        general?: string[];
-                    }
-                )?.general?.[0] || "Something went wrong",
+                title:
+                    (
+                        error?.response?.data?.message as {
+                            code?: string[];
+                            general?: string[];
+                        }
+                    )?.general?.[0] || "Something went wrong",
                 description: "",
                 status: "error",
                 duration: 3000,

@@ -78,9 +78,21 @@ const Socials = (props: Props) => {
 
     const formikRef = useRef(formik);
 
+    console.log(
+        Object.values(formik.values).filter(value => value !== "").length !=
+            0 ||
+            Object.values(formik.values).filter(value => value === null)
+                .length != 0
+    );
+
     useEffect(() => {
-        getSocials(setSocials, formikRef);
-        // console.log(formik.values);
+        if (id) {
+            getSocials(setSocials, formikRef, id);
+        } else {
+            getSocials(setSocials, formikRef);
+        }
+
+        console.log(formik.values);
     }, []);
     return (
         <>
@@ -114,8 +126,15 @@ const Socials = (props: Props) => {
                     </p>
                 )}
             </div>
+            {
+                Object.values(formik.values).filter(value => value === "" || value === null).length>=8 && !editSocials && (
+                    <p className={styles.display_message}>
+                        You have not connected any socials medias to your profile yet.
+                    </p>
+                )    
+            }
             <p className={styles.socials_icons}>
-                {Object.values(formik.values).filter(value => value !== "")
+                {Object.values(formik.values).filter(value => value === "")
                     .length != 0 ||
                 Object.values(formik.values).filter(value => value === null)
                     .length != 0

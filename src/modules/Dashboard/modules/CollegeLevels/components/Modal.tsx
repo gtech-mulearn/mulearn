@@ -1,13 +1,14 @@
-import React, { useEffect, useRef } from "react";
+import React, { CSSProperties } from "react";
 import styles from "./Modal.module.css";
 
 type props = {
     icon?: React.ReactNode;
-    header: string;
+    header?: string;
     paragraph?: string;
     children: React.ReactNode;
     onClose: any;
     size?: "small" | "large";
+    style?: CSSProperties;
 };
 
 const Modal = (props: props) => {
@@ -30,13 +31,13 @@ const Modal = (props: props) => {
             onClick={() => {
                 props.onClose(null);
             }}
-        // ref={modalRef}
+            // ref={modalRef}
         >
             <div
                 className={styles.container}
                 onClick={e => e.stopPropagation()}
+                style={props.style}
             >
-                <img src="https://i.ibb.co/vsZCCw4/Icons.png" alt="" />
                 {props.icon}
                 <h2>{props.header}</h2>
                 {props.paragraph && <p>{props.paragraph}</p>}

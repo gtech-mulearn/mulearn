@@ -1,0 +1,136 @@
+.dashboardContainer {
+    background-color: #eef2ff;
+    padding: 2rem;
+}
+
+.dashboardContent {
+    max-width: 1600px;
+    margin: auto;
+}
+
+.countsContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.lcCount,
+.studentsInvoled {
+    padding: 1rem;
+    margin: 0.5rem;
+    width: 300px;
+    height: 135px;
+    justify-content: center;
+    border-radius: 13px;
+    background: #fff;
+    margin-left: 0;
+    margin-top: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.label {
+    font-family: Plus Jakarta Sans, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-align: center;
+}
+
+.count {
+    color: #000;
+
+    font-family: Plus Jakarta Sans;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.heading {
+    color: #292929;
+    font-family: Plus Jakarta Sans;
+    font-size: 30px;
+    margin-top: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    line-height: normal;
+}
+
+.studentsInvoled span {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #464646;
+}
+
+.chartContainer {
+    margin-top: 2rem;
+    max-width: 1520px;
+    background-color: #fff;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 10px;
+}
+
+.dateContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: self-start;
+    row-gap: 0.5rem;
+}
+
+.dateContainer .heading {
+    font-family: Plus Jakarta Sans;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.tagline {
+    max-width: 30rem;
+}
+
+.date {
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 16px;
+}
+
+.dateButton {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+.dateButton:hover {
+    background-color: #0069d9;
+}
+
+.counts {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    row-gap: 0.5rem;
+    margin-top: 1rem;
+    column-gap: 0.5rem;
+}
+
+.counts div {
+    max-width: 5rem;
+}

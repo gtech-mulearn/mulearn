@@ -26,12 +26,6 @@ export const getTypes = async (errHandler: Function) => {
     }
 };
 
-// try{
-
-// }catch(err){
-//     errHandler(err)
-// }
-
 export const getDynamicRoles = async (
     errHandler: Function,
     setData: UseStateFunc<any>,

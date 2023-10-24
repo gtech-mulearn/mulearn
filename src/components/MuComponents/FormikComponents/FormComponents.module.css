@@ -124,6 +124,11 @@
     /* width: 50%; */
 }
 
+.inputBox sup,
+.InputSet sup {
+    color: red;
+}
+
 .inputBox span {
     font-weight: bold;
     color: var(--Dark);
@@ -153,7 +158,7 @@
 .InputSet {
     display: flex;
     flex-direction: column;
-    /* width: 25rem; */
+    /* width: 100%; */
     height: fit-content;
     /* gap: .5rem; */
     padding-top: 1rem;
@@ -183,10 +188,10 @@
     padding-top: 0.7rem;
     border-radius: var(--borderRadius);
     width: 100%;
+
     font-weight: 500;
     color: var(--grey);
     background-color: var(--White) !important;
-    /* min-width: 22rem; */
 }
 
 .InputSet textarea {
@@ -212,4 +217,18 @@
     align-items: center;
     z-index: 200;
     transition: all 0.5s ease-in;
+}
+
+.checkBox {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.checkBox input {
+    height: 20px;
+    width: 20px;
+
+    margin: 0;
+    margin: 0.25rem;
 }

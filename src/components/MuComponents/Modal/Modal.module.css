@@ -74,7 +74,7 @@
 .heading {
     margin: 0;
     padding: 10px 0px 0px;
-    color: black;
+    color: var(--black);
     font-weight: 700;
     font-size: 20px;
     text-align: center;
@@ -83,10 +83,11 @@
 .modalContent {
     padding: 10px;
     font-size: 16px;
-    color: black;
+    color: var(--black);
     text-align: center;
     font-weight: 400;
     max-width: 30rem;
+    line-height: normal;
 }
 
 .modalActions {

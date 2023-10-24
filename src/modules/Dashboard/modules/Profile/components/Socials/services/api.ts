@@ -3,9 +3,11 @@ import { dashboardRoutes } from "@/MuLearnServices/urls";
 
 type setSocials = UseStateFunc<any>;
 
-export const getSocials = (setSocials: any, formikRef: any) => {
+export const getSocials = (setSocials: any, formikRef: any, id?: string) => {
+    if (!id) id = "";
+    if (id && id.length > 0) id = id + "/";
     privateGateway
-        .get(dashboardRoutes.getSocials)
+        .get(dashboardRoutes.getSocials + id)
         .then(response => {
             const socialsData = response.data.response;
             setSocials(socialsData);
@@ -22,7 +24,7 @@ export const updateSocials = (
     formikRef: any
 ) => {
     privateGateway
-        .put(dashboardRoutes.getSocials, socials)
+        .put(dashboardRoutes.getSocials + "edit/", socials)
         .then(response => {
             console.log(response);
         })

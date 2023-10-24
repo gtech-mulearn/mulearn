@@ -96,7 +96,7 @@ const LandingPage = () => {
             setIgOptions(await getInterestGroups());
             setSelectedIg(null);
 
-            fetchLC(setLoading, setData,district, selectedCampus.value);
+            fetchLC(setLoading, setData, district, selectedCampus.value);
 
             setData([]);
             setMsg("");
@@ -107,7 +107,7 @@ const LandingPage = () => {
         if (selectedIg) {
             setIg(selectedIg.value);
             setSelectedIg(selectedIg);
-            fetchLC(setLoading, setData,district, campus, selectedIg.value);
+            fetchLC(setLoading, setData, district, campus, selectedIg.value);
         }
     };
 
@@ -156,11 +156,11 @@ const LandingPage = () => {
 
     useEffect(() => {
         const finalValues: number[] = [
-            count?.state ?? 0,
-            count?.district ?? 0,
+
             count?.interest_group ?? 0,
             count?.college ?? 0,
-            count?.learning_circle ?? 0
+            count?.learning_circle ?? 0,
+            count?.total_no_of_users ?? 0
         ];
 
         const startCounterAnimation = () => {
@@ -271,14 +271,14 @@ const LandingPage = () => {
                                 </b>
                                 <p>
                                     {index === 0
-                                        ? "State"
+                                        ? "Interest Groups"
                                         : index === 1
-                                            ? "Districts"
+                                            ? "Colleges"
                                             : index === 2
-                                                ? "Interest Groups"
+                                                ? "Learning Circles"
                                                 : index === 3
-                                                    ? "Campuses"
-                                                    : "Learning Circles"}
+                                                    ? "Number of Users"
+                                                    : ""}
                                 </p>
                             </div>
                         ))}

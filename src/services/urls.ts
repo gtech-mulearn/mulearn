@@ -41,6 +41,7 @@ export const dashboardRoutes = {
     getUsersEditData: "/api/v1/dashboard/user/edit/",
     getUsersList: "/api/v1/dashboard/user/csv/",
     getUsersRoleVerificationData: "/api/v1/dashboard/user/verification/",
+    getUserRoleVerificationCSV: "/api/v1/dashboard/user/verification/csv/",
     getTasksData: "/api/v1/dashboard/task/",
     getRolesData: "/api/v1/dashboard/roles/",
     getRolesList: "api/v1/dashboard/roles/csv/",
@@ -103,6 +104,7 @@ export const dashboardRoutes = {
 
     searchLearningCircleWithCircleCode: "/api/v1/dashboard/lc/list-all/",
     getCampusLearningCircles: "/api/v1/dashboard/lc/",
+    getLearningCirclesLead: "/api/v1/dashboard/lc/lead/",
     createLearningCircle: "/api/v1/dashboard/lc/create/",
     listLearningCircle: "/api/v1/dashboard/lc/list-all/",
     joinLearningCircle: "/api/v1/dashboard/lc/join/",
@@ -128,6 +130,7 @@ export const dashboardRoutes = {
     getZonalStudentLevels: "api/v1/dashboard/zonal/student-level/",
 
     collegeLevels: "api/v1/dashboard/college/",
+    collegeLevlesDelete: "api/v1/dashboard/college/delete/",
 
     //Dyanmic Type
     dtGetRoles: "api/v1/dashboard/dynamic-management/roles/",
@@ -145,27 +148,38 @@ export const organizationRoutes = {
     getCommunity: "/api/v1/dashboard/organisation/institutes/show/Community/",
     getAffiliation:
         "/api/v1/dashboard/organisation/institutes/org/affiliation/",
-    createAffiliation: "/api/v1/dashboard/organisation/institutes/affiliation/create/",
-    editAffiliation: "/api/v1/dashboard/organisation/institutes/affiliation/edit/",
-    deleteAffiliation: "/api/v1/dashboard/organisation/institutes/affiliation/delete/",
+    createAffiliation:
+        "/api/v1/dashboard/organisation/institutes/affiliation/create/",
+    editAffiliation:
+        "/api/v1/dashboard/organisation/institutes/affiliation/edit/",
+    deleteAffiliation:
+        "/api/v1/dashboard/organisation/institutes/affiliation/delete/",
 
     getLocation: "/api/v1/dashboard/location",
     postAddOrganization: "/api/v1/dashboard/organisation/institutes/create/",
     putUpdateOrganization: "/api/v1/dashboard/organisation/institutes/edit/",
     deleteOrgnaization: "/api/v1/dashboard/organisation/institutes/delete/",
     postGetInfo: "/api/v1/dashboard/organisation/institutes/info/",
-    getOrgCsv:(org_type:string)=> `/api/v1/dashboard/organisation/institutes/${org_type}/csv/`
+    getOrgCsv: (org_type: string) =>
+        `/api/v1/dashboard/organisation/institutes/${org_type}/csv/`,
+
+    createOrganisation:
+        "/api/v1/dashboard/organisation/institutes/create/",
+    getOrganisationDetails:
+        "/api/v1/dashboard/organisation/institutes/info/",
+    editOrganisation:
+        "/api/v1/dashboard/organisation/institutes/edit/"
 } as const;
 
 export const ManageLocationsRoutes = {
     getCountryData: "/api/v1/dashboard/location/countries/",
-    patchCountryData: "/api/v1/dashboard/location/countries/<str:country_id>/",
+    patchCountryData: "/api/v1/dashboard/location/countries/",
     getStateData: "/api/v1/dashboard/location/states/",
-    patchStateData: "/api/v1/dashboard/location/states/<str:state_id>/",
+    patchStateData: "/api/v1/dashboard/location/states/",
     getZoneData: "/api/v1/dashboard/location/zones/",
-    patchZoneData: "/api/v1/dashboard/location/zones/<str:zone_id>/",
+    patchZoneData: "/api/v1/dashboard/location/zones/",
     getDistrictData: "/api/v1/dashboard/location/districts/",
-    patchDistrictData: "/api/v1/dashboard/location/districts/<str:district_id>/"
+    patchDistrictData: "/api/v1/dashboard/location/districts/"
 } as const;
 
 export const KKEMRoutes = {
@@ -176,5 +190,8 @@ export const KKEMRoutes = {
 };
 
 export const PublicRoutes = {
-    getRandomLc: "/api/v1/dashboard/lc/list/"
+    getRandomLc: "/api/v1/dashboard/lc/list/",
+    getLcDashboard: "/api/v1/get-log/lc-dashboard/",
+    getLcReport: "/api/v1/get-log/lc-report/",
+    getOrgWiseReport: "/api/v1/get-log/college-wise-lc-report/"
 } as const;

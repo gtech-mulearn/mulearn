@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, ReactElement, useEffect, useState } from "react";
 import styles from "./Table.module.css";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
@@ -6,6 +6,8 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { HiOutlinePencil } from "react-icons/hi";
 import Modal from "../Modal/Modal";
 import MuLoader from "../MuLoader/MuLoader";
+import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
+import MuModal from "../MuModal/MuModal";
 
 enum ModalType {
     Verify,
@@ -41,6 +43,7 @@ type TableProps = {
         column: string;
         Label: string;
         isSortable: boolean;
+        wrap?: (data: string) => ReactJSXElement;
     }[];
     id?: string[];
     onEditClick?: (column: string | number | boolean) => void;
@@ -64,6 +67,11 @@ const Table: FC<TableProps> = (props: TableProps) => {
     const [isDeleteOpen, setIsDeleteOpen] = useState<boolean[]>(
         props.rows.map(() => false)
     );
+    const closeAllModals = () => {
+        setIsDeleteOpen(prevState => prevState.map(() => false));
+        setIsVerifyOpen(prevState => prevState.map(() => false));
+    };
+
     const [isVerifyOpen, setIsVerifyOpen] = useState<boolean[]>(
         props.rows.map(() => false)
     );
@@ -85,7 +93,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
         }
     };
 
-    function convertToNormalDate(dateString: any): string | null {
+    function convertToNormalDate(dateString: any): string {
         const numberRegex = /^[0-9]+$/;
         if (String(dateString) == "true") {
             return "true";
@@ -159,9 +167,16 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                             }`}
                                             key={column.column}
                                         >
-                                            {convertToNormalDate(
-                                                rowData[column.column]
-                                            )}
+                                            {column.wrap
+                                                ? column.wrap(
+                                                      convertToNormalDate(
+                                                          rowData[column.column]
+                                                      )
+                                                  )
+                                                : convertToNormalDate(
+                                                      rowData[column.column]
+                                                  )}
+                                            {}
                                         </td>
                                     ))}
                                     {props.id &&
@@ -214,7 +229,49 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                             Verify
                                                         </button>
                                                     )}
-                                                    {isVerifyOpen[index] && (
+                                                    <MuModal
+                                                        isOpen={
+                                                            isVerifyOpen[index]
+                                                        }
+                                                        onClose={closeAllModals}
+                                                        title={String(
+                                                            rowData["full_name"]
+                                                        )}
+                                                        type={"success"}
+                                                        onDone={() => {
+                                                            if (
+                                                                props.onVerifyClick
+                                                            ) {
+                                                                props.onVerifyClick(
+                                                                    String(
+                                                                        rowData[
+                                                                            column
+                                                                        ]
+                                                                    )
+                                                                );
+                                                                closeAllModals();
+                                                            }
+                                                        }}
+                                                    >
+                                                        <div
+                                                            style={{
+                                                                display: "flex",
+                                                                alignItems:
+                                                                    "center",
+                                                                justifyContent:
+                                                                    "center",
+                                                                fontSize: "20px"
+                                                            }}
+                                                            className="modalContent"
+                                                        >
+                                                            <p>
+                                                                {
+                                                                    props.modalVerifyContent
+                                                                }
+                                                            </p>
+                                                        </div>
+                                                    </MuModal>
+                                                    {/* {isVerifyOpen[index] && (
                                                         <Modal
                                                             setIsOpen={() =>
                                                                 toggleModal(
@@ -233,7 +290,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                                 props.onVerifyClick
                                                             }
                                                         />
-                                                    )}
+                                                    )} */}
                                                     {props.onDeleteClick && (
                                                         <button
                                                             onClick={() =>
@@ -246,32 +303,48 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                             <AiOutlineDelete />
                                                         </button>
                                                     )}
-                                                    {isDeleteOpen[index] && (
-                                                        <Modal
-                                                            setIsOpen={() =>
-                                                                toggleModal(
-                                                                    index,
-                                                                    ModalType[1]
-                                                                )
-                                                            }
-                                                            id={rowData[column]}
-                                                            heading={
-                                                                props.modalDeleteHeading
-                                                            }
-                                                            content={
-                                                                props.modalDeleteContent
-                                                            }
-                                                            click={
+                                                    <MuModal
+                                                        isOpen={
+                                                            isDeleteOpen[index]
+                                                        }
+                                                        onClose={closeAllModals}
+                                                        title={String(
+                                                            rowData["title"]
+                                                        )}
+                                                        type={"error"}
+                                                        onDone={() => {
+                                                            if (
                                                                 props.onDeleteClick
+                                                            ) {
+                                                                props.onDeleteClick(
+                                                                    String(
+                                                                        rowData[
+                                                                            column
+                                                                        ]
+                                                                    )
+                                                                );
+                                                                closeAllModals();
                                                             }
-                                                            type={
-                                                                props.modalTypeContent
-                                                            }
-                                                            value={
-                                                                rowData["title"]
-                                                            }
-                                                        />
-                                                    )}
+                                                        }}
+                                                    >
+                                                        <div
+                                                            style={{
+                                                                display: "flex",
+                                                                alignItems:
+                                                                    "center",
+                                                                justifyContent:
+                                                                    "center",
+                                                                fontSize: "20px"
+                                                            }}
+                                                            className="modalContent"
+                                                        >
+                                                            <p>
+                                                                {
+                                                                    props.modalDeleteContent
+                                                                }
+                                                            </p>
+                                                        </div>
+                                                    </MuModal>
                                                 </div>
                                             </td>
                                         ))}

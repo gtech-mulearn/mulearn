@@ -4,7 +4,6 @@
     max-width: 400px;
     height: max-content;
     padding: 20px;
-    /* border: 1px solid #cbcbcb; */
     border: none;
     border-radius: 8px;
     z-index: 0;
@@ -124,9 +123,8 @@
     display: flex;
     gap: 1rem;
     align-items: center;
-    /* background-color: yellow; */
     p {
-        color: black;
+        color: var(--black);
         font-size: 1rem;
     }
     h3 {
@@ -134,12 +132,6 @@
         cursor: pointer;
     }
 }
-
-/* @media only screen and (max-width: 400px) {
-    .popup_container {
-        max-width: 10%;
-    }
-} */
 
 @media only screen and (max-width: 768px) {
     .ml_toggle_container {

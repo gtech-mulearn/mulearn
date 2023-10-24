@@ -87,11 +87,12 @@ export const editManageUsers = async (
     last_name?: string,
     email?: string,
     mobile?: string,
+    discord_id?: string | null,
     organizations?: string[],
     department?: string,
     graduation_year?: string,
     role?: string[],
-    interest_groups?: string[],
+    interest_groups?: string[]
 ) => {
     try {
         const response = await privateGateway.patch(
@@ -101,6 +102,7 @@ export const editManageUsers = async (
                 last_name: last_name,
                 email: email,
                 mobile: mobile,
+                discord_id: discord_id,
                 organizations: organizations,
                 department: department,
                 graduation_year: graduation_year,
@@ -108,10 +110,10 @@ export const editManageUsers = async (
                 interest_groups: interest_groups
             }
         );
-        navigate('/dashboard/manage-users')
+        navigate("/dashboard/manage-users");
         //console.log(first_name, last_name, email);
         const message: any = response?.data;
-        console.log(message)
+        console.log(message);
         //console.log(message);
         toast({
             title: "Updated SuccessFully",
@@ -123,15 +125,15 @@ export const editManageUsers = async (
         const error = err as APIError;
         let errorMessage = "Some Error Occurred..";
         if (error?.response?.data?.message) {
-            
-        console.log(((
-            error?.response?.data?.message as {
-                code?: string[];
-                general?: string[];
-            }
-        ))?.general?.[0]);
+            console.log(
+                (
+                    error?.response?.data?.message as {
+                        code?: string[];
+                        general?: string[];
+                    }
+                )?.general?.[0]
+            );
         }
-
 
         if (error?.response) {
             toast({
@@ -142,8 +144,8 @@ export const editManageUsers = async (
                 isClosable: true
             });
         }
-        }
     }
+};
 export const getManageUsersDetails = async (
     id: string | undefined,
     setData: UseStateFunc<UserData | undefined>

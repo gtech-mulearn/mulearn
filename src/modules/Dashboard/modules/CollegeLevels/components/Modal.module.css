@@ -2,6 +2,7 @@
     margin-top: 50px;
     width: 100%;
     height: 100vh;
+    padding: 1rem;
 
     display: grid;
     place-items: center;
@@ -14,11 +15,11 @@
     backdrop-filter: blur(0.1rem);
     overscroll-behavior: contain;
 
-    color: black;
+    color: var(--black);
 }
 
 .modal .container {
-    /* width: min(80%, 800px); */
+    width: min(80%, 800px);
     background-color: white;
 
     border-radius: 1rem;
@@ -56,7 +57,7 @@
 }
 
 .modal p {
-    font-size: .9rem;
+    font-size: 0.9rem;
     margin-top: 0.5rem;
 }
 

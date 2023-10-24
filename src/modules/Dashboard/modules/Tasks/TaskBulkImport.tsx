@@ -2,12 +2,9 @@ import BulkImport from "@/MuLearnComponents/BulkImport/BulkImport";
 import { convertToXLSX } from "./TaskApis";
 import { SingleButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
-import { useState, useMemo, MouseEventHandler } from "react";
+import { useState, useMemo } from "react";
 import { BiDownload, BiArrowBack } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
-
-type Props = {};
-
 export const CountCard = ({
     title,
     count
@@ -23,7 +20,7 @@ export const CountCard = ({
     );
 };
 
-const TaskBulkImport = (props: Props) => {
+const TaskBulkImport = () => {
     const [uploadResponse, setUploadResponse] = useState<any>(null);
     const navigate = useNavigate();
     const handleClick = () => {
