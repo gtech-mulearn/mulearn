@@ -97,5 +97,6 @@
     .heatmap_container .year_btns {
         position: absolute;
         width: 100%;
+        margin-left: -45px;
     }
 }

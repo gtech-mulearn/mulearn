@@ -2,8 +2,10 @@
 .card_container {
     display: flex;
     justify-content: flex-start;
-    gap: 60px;
+    gap: 10px 40px;
     width: 95%;
+    flex-wrap: wrap;
+    margin: 20px 0px;
 
     .card {
         display: flex;
@@ -17,7 +19,7 @@
         font-weight: 600;
         position: relative;
         overflow: hidden;
-        margin-top: 20px;
+        /* margin-top: 20px; */
 
         &:nth-child(2n+1) {
             border-color: #23A047;
