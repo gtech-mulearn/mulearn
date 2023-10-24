@@ -36,7 +36,7 @@ export const dashboardRoutes = {
         "/api/v1/dashboard/user/reset-password/verify-token/${token}/",
     getInfo: "/api/v1/dashboard/user/info/",
     getIgData: "/api/v1/dashboard/ig/",
-    getIgList: "/api/v1/dashboard/ig/csv",
+    getIgList: "/api/v1/dashboard/ig/csv/",
     getUsersData: "/api/v1/dashboard/user/",
     getUsersEditData: "/api/v1/dashboard/user/edit/",
     getUsersList: "/api/v1/dashboard/user/csv/",
