@@ -195,7 +195,7 @@ export default function AccountCreation() {
             setIsSubmitting: setIsLoading,
             toast: toast
         });
-        if (isSuccess) navigate("/role", { state: userData });
+        if (isSuccess) navigate("/select-role", { state: userData });
     };
 
     return (

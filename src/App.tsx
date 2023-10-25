@@ -254,11 +254,11 @@ function App() {
             element: <AccountCreation />
         },
         {
-            path: "/role",
+            path: "/select-role",
             element: <Rolepage />
         },
         {
-            path: "/college",
+            path: "/select-college",
             element: <CollegePage />
         },
         {
@@ -267,7 +267,7 @@ function App() {
         },
         {
             path: "/",
-          element: <PrivateRoutes />,
+            element: <PrivateRoutes />,
             children: [
                 {
                     path: "/dashboard",
@@ -621,7 +621,6 @@ function App() {
             <Toaster position="bottom-center" reverseOrder={true} />
         </>
     );
-	
 }
 
 export default App;
