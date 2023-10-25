@@ -32,7 +32,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 3rem;
 }
 .submit button {
     width: 100%;
@@ -40,7 +39,7 @@
 .text {
     font-weight: 700;
 }
-.errorsSpan{
+.errorsSpan {
     color: red;
     font-size: small;
 }

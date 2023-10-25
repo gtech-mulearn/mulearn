@@ -16,7 +16,7 @@ const roleOptions = [
                 />
             </svg>
         ),
-        nextPage: "/select-college"
+        nextPage: "select-college"
     },
     {
         title: "I'm a working professional",
@@ -35,7 +35,7 @@ const roleOptions = [
                 />
             </svg>
         ),
-        nextPage: "/company"
+        nextPage: "select-company"
     },
     {
         title: "I'm currently an enabler",
@@ -54,7 +54,7 @@ const roleOptions = [
                 />
             </svg>
         ),
-        nextPage: "/select-college"
+        nextPage: "select-college"
     },
     {
         title: "I'm a graduate",
@@ -73,7 +73,7 @@ const roleOptions = [
                 />
             </svg>
         ),
-        nextPage: "/select-college"
+        nextPage: "select-college"
     },
     {
         title: "I'm a freelancer",
@@ -95,7 +95,7 @@ const roleOptions = [
                 />
             </svg>
         ),
-        nextPage: "/company"
+        nextPage: "select-company"
     },
     {
         title: "Not studying or working",

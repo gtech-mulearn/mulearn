@@ -14,6 +14,27 @@ import PrivateRoutes from "./components/PrivateRoutes";
 import DashboardRootLayout from "./modules/Dashboard/layouts/DashboardRootLayout";
 import NotFound from "./components/NotFound";
 
+import { roles } from "./services/types";
+import SecureAuthRoutes from "./services/authCheck";
+
+import { CampusStudentList, ConnectDiscord } from "./modules/Dashboard/modules";
+
+import LandingPage from "./modules/Public/LearningCircles/pages/LandingPage";
+import ProfileV2 from "./modules/Dashboard/modules/ProfileV2/pages/Profile";
+import AccountCreation from "./modules/Common/Authentication/pages/Onboarding/AccountCreation/AccountCreation";
+import Rolepage from "./modules/Common/Authentication/pages/Onboarding/RolePage/RolePage";
+import CollegePage from "./modules/Common/Authentication/pages/Onboarding/CollegePage/CollegePage";
+import CompanyPage from "./modules/Common/Authentication/pages/Onboarding/CompanyPage/CompanyPage";
+import SignIn from "./modules/Common/Authentication/pages/Onboarding/SignIn/SignIn";
+
+import ErrorLog from "./modules/Dashboard/modules/ErrorLog/ErrorLog";
+import KKEMEventBeyondUs from "./modules/Public/KKEM/modules/KKEMEventTemplate/KKEMEventBeyondUs";
+
+import LearningCircles from "./modules/Public/KKEM/modules/Dashboard/LearningCircles/LearningCircles";
+import ForgetPassword from "./modules/Common/Authentication/pages/Onboarding/ForgetPassword/ForgetPassword";
+import ResetPassword from "./modules/Common/Authentication/pages/Onboarding/ResetPassword/ResetPassword";
+import LcDashboard from "./modules/Dashboard/modules/LearningCircle/pages/LcDashboard";
+import { Toaster } from "react-hot-toast";
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
 );
@@ -185,28 +206,6 @@ const PurchaseInventory = lazy(
         )
 );
 
-import { roles } from "./services/types";
-import SecureAuthRoutes from "./services/authCheck";
-
-import { CampusStudentList, ConnectDiscord } from "./modules/Dashboard/modules";
-
-import LandingPage from "./modules/Public/LearningCircles/pages/LandingPage";
-import ProfileV2 from "./modules/Dashboard/modules/ProfileV2/pages/Profile";
-import AccountCreation from "./modules/Common/Authentication/pages/Onboarding/AccountCreation/AccountCreation";
-import Rolepage from "./modules/Common/Authentication/pages/Onboarding/RolePage/RolePage";
-import CollegePage from "./modules/Common/Authentication/pages/Onboarding/CollegePage/CollegePage";
-import CompanyPage from "./modules/Common/Authentication/pages/Onboarding/CompanyPage/CompanyPage";
-import SignIn from "./modules/Common/Authentication/pages/Onboarding/SignIn/SignIn";
-
-import ErrorLog from "./modules/Dashboard/modules/ErrorLog/ErrorLog";
-import KKEMEventBeyondUs from "./modules/Public/KKEM/modules/KKEMEventTemplate/KKEMEventBeyondUs";
-
-import LearningCircles from "./modules/Public/KKEM/modules/Dashboard/LearningCircles/LearningCircles";
-import ForgetPassword from "./modules/Common/Authentication/pages/Onboarding/ForgetPassword/ForgetPassword";
-import ResetPassword from "./modules/Common/Authentication/pages/Onboarding/ResetPassword/ResetPassword";
-import LcDashboard from "./modules/Dashboard/modules/LearningCircle/pages/LcDashboard";
-import { Toaster } from "react-hot-toast";
-
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
 );
@@ -254,15 +253,15 @@ function App() {
             element: <AccountCreation />
         },
         {
-            path: "/select-role",
+            path: "register/select-role",
             element: <Rolepage />
         },
         {
-            path: "/select-college",
+            path: "register/select-college",
             element: <CollegePage />
         },
         {
-            path: "/company",
+            path: "register/select-company",
             element: <CompanyPage />
         },
         {
