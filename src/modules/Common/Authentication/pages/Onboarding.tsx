@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./Onboarding.module.css";
-type Props = {};
+
 import ReactSelect, { SingleValue } from "react-select";
 import Error from "../components/Error";
 import Select from "react-select";
@@ -28,7 +28,7 @@ import {
 import { BiSupport } from "react-icons/bi";
 
 const animatedComponents = makeAnimated();
-
+type Props = {};
 interface BackendErrors {
     [fieldName: string]: string[];
 }
@@ -223,7 +223,32 @@ const Onboarding = (props: Props) => {
         muid: referralId ? referralId : ""
     };
 
-    const onSubmit = async (values: { firstName: any; lastName: any; email: any; password: any; confirmPassword?: string; mobile: any; gender?: string; dob?: string; role?: string; country?: string; state?: string; district?: string; organization: any; community: any; dept: any; yog: any; mentorRole?: string; areaOfInterest?: never[]; general?: string; muid: any; department?: any; }, { setErrors, resetForm }: any) => {
+    const onSubmit = async (
+        values: {
+            firstName: any;
+            lastName: any;
+            email: any;
+            password: any;
+            confirmPassword?: string;
+            mobile: any;
+            gender?: string;
+            dob?: string;
+            role?: string;
+            country?: string;
+            state?: string;
+            district?: string;
+            organization: any;
+            community: any;
+            dept: any;
+            yog: any;
+            mentorRole?: string;
+            areaOfInterest?: never[];
+            general?: string;
+            muid: any;
+            department?: any;
+        },
+        { setErrors, resetForm }: any
+    ) => {
         if (values.organization != "") {
             if (!values.community.includes(values.organization))
                 values.community.push(values.organization);
@@ -286,9 +311,7 @@ const Onboarding = (props: Props) => {
             }
         }
 
-        if (
-            (role[0]["title"] == "Student" || role[0]["title"] == "Enabler")
-        ) {
+        if (role[0]["title"] == "Student" || role[0]["title"] == "Enabler") {
             if (userData.organization) {
                 userData.organization.department =
                     values.dept === "" ? null : values.dept; //required for student and enabler
@@ -307,10 +330,7 @@ const Onboarding = (props: Props) => {
             };
         }
 
-        if (
-            values.organization !== "" &&
-            values.community.length !== 0
-        ) {
+        if (values.organization !== "" && values.community.length !== 0) {
             if (userData.organization) {
                 userData.organization.organizations = values.community;
                 userData.organization.verified = roleVerified;
@@ -325,7 +345,7 @@ const Onboarding = (props: Props) => {
         if (values.organization === "" && values.community.length === 0) {
             delete userData.organization;
         }
-        if (values.dept === "" ) {
+        if (values.dept === "") {
             delete userData.organization?.department;
         }
         if (values.yog === "") {
