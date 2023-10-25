@@ -220,6 +220,8 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    font-size: 17px;
+   
 }
 .ReportWrapper .DetailSection .SectionThree > div button {
     font-size: 40px;
@@ -265,6 +267,34 @@
     padding: 10px;
     border-radius: 8px;
     width: fit-content;
+}
+
+@media screen and (max-width: 1050px) {
+    .ReportWrapper {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .ReportWrapper .DetailSection,
+    .ReportWrapper .UploadSection {
+        width: 100%;
+    }
+    .ReportWrapper .DetailSection .SectionThree > div div{
+        font-size: 15px;
+    }
+}
+@media screen and (max-width: 420px){
+.ReportWrapper .DetailSection .Sectionone{
+    flex-direction: column;
+    gap: 15px;
+}
+.ReportWrapper .DetailSection .Sectionone > div{
+    width: 80%;
+    min-width: 250px;
+}
+.ReportWrapper .DetailSection .SectionThree > div div{
+    font-size: 14px;
+}
 }
 /* Past data Wrapper */
 .HistoryDataWrapper {
