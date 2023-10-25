@@ -75,7 +75,6 @@ const ForgetPassword = () => {
                                         </PowerfulButton>
                                         <PowerfulButton
                                             type="button"
-                                            isLoading={showLoader}
                                             onClick={() => navigate("/login")}
                                         >
                                             Go Back

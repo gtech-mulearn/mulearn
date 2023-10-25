@@ -1,6 +1,4 @@
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
-import OnboardingHeader from "../../../components/OnboardingHeader/OnboardingHeader";
-import OnboardingTemplate from "../../../components/OnboardingTeamplate/OnboardingTemplate";
 import styles from "./CollegePage.module.css";
 import { Form, Formik } from "formik";
 import * as z from "yup";
@@ -13,7 +11,6 @@ import {
     submitUserData
 } from "../../../services/newOnboardingApis";
 import ReactSelect from "react-select";
-import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 
@@ -61,7 +58,6 @@ export default function CollegePage({
     const [isloading, setIsLoading] = useState(true);
     const [colleges, setColleges] = useState([{ id: "", title: "" }]);
     const [departments, setDepartments] = useState([{ id: "", title: "" }]);
-    const [roles, setRoles] = useState([{ id: "", title: "" }]);
 
     const [selectedCollege, setSelectedCollege] = useState({
         id: "",
@@ -84,10 +80,10 @@ export default function CollegePage({
                 setIsLoading: setIsLoading,
                 setDepartments: setDepartments
             });
-            getRoles({
-                setIsLoading: setIsLoading,
-                setRoles: setRoles
-            });
+            // getRoles({
+            //     setIsLoading: setIsLoading,
+            //     setRoles: setRoles
+            // });
         }
     }, []);
 
@@ -114,7 +110,7 @@ export default function CollegePage({
             }
         };
 
-        if (userData.role) newUserData.user["role"] = userData.role;
+        newUserData.user["role"] = selectedRole;
 
         if (userData.referral)
             newUserData["referral"] = { muid: userData.referral.muid };

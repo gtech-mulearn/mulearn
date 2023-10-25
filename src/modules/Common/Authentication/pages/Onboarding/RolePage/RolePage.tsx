@@ -79,7 +79,9 @@ export default function Rolepage() {
                         className={
                             styles.rolePageCards +
                             " " +
-                            (selectedRole !== "Other" && styles.cardSmall)
+                            (selectedRole !== "Other" &&
+                                selectedRole &&
+                                styles.cardSmall)
                         }
                     >
                         {roleOptions.map((roleOption: any) => {

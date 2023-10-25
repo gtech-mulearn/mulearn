@@ -93,11 +93,11 @@ export default function CompanyPage({
 
         /// If user doesn't want to be a mentor set role to null
         if (values.radio === "yes") {
-            if (userData.role === "") {
+            if (selectedRole === "") {
                 const mentorRole = roles.find(role => role.title === "Mentor");
                 newUserData.user["role"] = mentorRole?.id;
             } else {
-                newUserData.user["role"] = userData.role;
+                newUserData.user["role"] = selectedRole;
             }
         }
 
