@@ -194,7 +194,7 @@ export default function AccountCreation() {
             setIsSubmitting: setIsLoading,
             toast: toast
         });
-        if (isSuccess) navigate("select-role", { state: userData });
+        if (isSuccess) navigate("select-community", { state: userData });
     };
 
     return (
@@ -412,7 +412,7 @@ export default function AccountCreation() {
                                         </button>
                                     </div>
                                 </div>
-                                <div>
+                                {/* <div>
                                     <Select
                                         name="community.id"
                                         ref={community_select_ref}
@@ -457,7 +457,7 @@ export default function AccountCreation() {
                                         placeholder="Referral MuID (Optional)"
                                         disabled={isLoading}
                                     />
-                                </div>
+                                </div> */}
 
                                 <div className={styles.tnc}>
                                     <input

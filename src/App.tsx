@@ -35,6 +35,7 @@ import ForgetPassword from "./modules/Common/Authentication/pages/Onboarding/For
 import ResetPassword from "./modules/Common/Authentication/pages/Onboarding/ResetPassword/ResetPassword";
 import LcDashboard from "./modules/Dashboard/modules/LearningCircle/pages/LcDashboard";
 import { Toaster } from "react-hot-toast";
+import CommunityPage from "./modules/Common/Authentication/pages/Onboarding/CommunityPage/CommunityPage";
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
 );
@@ -256,14 +257,7 @@ function App() {
             path: "register/select-role",
             element: <Rolepage />
         },
-        {
-            path: "register/select-college",
-            element: <CollegePage />
-        },
-        {
-            path: "register/select-company",
-            element: <CompanyPage />
-        },
+        { path: "register/select-community", element: <CommunityPage /> },
         {
             path: "/",
             element: <PrivateRoutes />,
