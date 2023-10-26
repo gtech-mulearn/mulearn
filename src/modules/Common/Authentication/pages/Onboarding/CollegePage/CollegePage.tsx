@@ -147,7 +147,7 @@ export default function CollegePage({
             navigate: navigate
         });
     };
-    console.log(roles);
+    console.log(userData);
     return (
         <Formik
             initialValues={Object.fromEntries(

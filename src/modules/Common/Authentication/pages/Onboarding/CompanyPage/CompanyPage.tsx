@@ -13,7 +13,6 @@ import { getCompanies } from "../../../services/newOnboardingApis";
 import ReactSelect from "react-select";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
-import { log } from "console";
 
 const inputObject = {
     company: "Company Name"

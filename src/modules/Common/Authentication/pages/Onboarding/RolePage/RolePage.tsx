@@ -24,8 +24,6 @@ export default function Rolepage() {
     const [selectedRoleId, setSelectedRoleId] = useState<string>("");
 
     useEffect(() => {
-        console.log("userData", userData);
-
         if (userData === undefined || userData === null) {
             navigate("/register", { replace: true });
         } else {
@@ -56,8 +54,6 @@ export default function Rolepage() {
         if (userData.referral)
             newUserData["referral"] = { muid: userData.referral.muid };
 
-        console.log(newUserData);
-
         submitUserData({
             setIsLoading: setIsLoading,
             userData: newUserData,
@@ -65,6 +61,7 @@ export default function Rolepage() {
             navigate: navigate
         });
     };
+    console.log(roles);
     return (
         <OnboardingTemplate>
             <OnboardingHeader
@@ -119,7 +116,6 @@ export default function Rolepage() {
                         <button
                             className={styles.buttonWidth}
                             onClick={() => {
-                                console.log(selectedRoleId);
                                 submitData();
                             }}
                         >
