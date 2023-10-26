@@ -120,7 +120,7 @@ export default function CollegePage({
             }
         };
 
-        newUserData.user["role"] = selectedRole;
+        if (selectedRole) newUserData.user["role"] = selectedRole;
 
         if (userData.referral)
             newUserData["referral"] = { muid: userData.referral.muid };
