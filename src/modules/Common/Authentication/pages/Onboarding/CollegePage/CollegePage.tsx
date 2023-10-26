@@ -58,6 +58,7 @@ export default function CollegePage({
     const [isloading, setIsLoading] = useState(true);
     const [colleges, setColleges] = useState([{ id: "", title: "" }]);
     const [departments, setDepartments] = useState([{ id: "", title: "" }]);
+    const [roles, setRoles] = useState([{ id: "", title: "" }]);
 
     const [selectedCollege, setSelectedCollege] = useState({
         id: "",
@@ -67,6 +68,11 @@ export default function CollegePage({
         id: "",
         title: ""
     });
+
+    const getRoleTitle = (id: string) => {
+        const slice = roles.filter(val => val.id === id);
+        if (slice[0]) return slice[0].title;
+    };
 
     useEffect(() => {
         if (userData === undefined || userData === null) {
@@ -80,10 +86,10 @@ export default function CollegePage({
                 setIsLoading: setIsLoading,
                 setDepartments: setDepartments
             });
-            // getRoles({
-            //     setIsLoading: setIsLoading,
-            //     setRoles: setRoles
-            // });
+            getRoles({
+                setIsLoading: setIsLoading,
+                setRoles: setRoles
+            });
         }
     }, []);
 
@@ -92,7 +98,6 @@ export default function CollegePage({
     //         roles.find((role: any) => role.id === userData.role)?.title || ""
     //     );
     // }, [userData, roles]);
-
     const onSubmit = async (values: any) => {
         const newUserData: any = {
             user: {
@@ -103,14 +108,19 @@ export default function CollegePage({
                 password: userData.user.password
             },
             organization: {
-                department: values.department,
+                ...(values.department !== "Others" && {
+                    department: values.department
+                }),
                 year_of_graduation: values.graduationYear,
-                organizations: [values.college, ...userData.communities],
+                organizations: [
+                    ...(values.college !== "Others" ? [values.college] : []),
+                    ...userData.communities
+                ],
                 verified: true
             }
         };
 
-        newUserData.user["role"] = selectedRole;
+        if (selectedRole) newUserData.user["role"] = selectedRole;
 
         if (userData.referral)
             newUserData["referral"] = { muid: userData.referral.muid };
@@ -137,7 +147,7 @@ export default function CollegePage({
             navigate: navigate
         });
     };
-
+    console.log(userData);
     return (
         <Formik
             initialValues={Object.fromEntries(
@@ -156,10 +166,16 @@ export default function CollegePage({
                             <div className={styles.inputBox}>
                                 <ReactSelect
                                     options={
-                                        colleges.map(college => ({
-                                            value: college.id,
-                                            label: college.title
-                                        })) as any
+                                        [
+                                            {
+                                                value: "Others",
+                                                label: "Others"
+                                            },
+                                            ...colleges.map(college => ({
+                                                value: college.id,
+                                                label: college.title
+                                            }))
+                                        ] as any
                                     }
                                     name="college"
                                     placeholder="College"
@@ -184,10 +200,16 @@ export default function CollegePage({
                             <div className={styles.inputBox}>
                                 <ReactSelect
                                     options={
-                                        departments.map(department => ({
-                                            value: department.id,
-                                            label: department.title
-                                        })) as any
+                                        [
+                                            {
+                                                value: "Others",
+                                                label: "Others"
+                                            },
+                                            ...departments.map(department => ({
+                                                value: department.id,
+                                                label: department.title
+                                            }))
+                                        ] as any
                                     }
                                     name="department"
                                     placeholder="Department"
@@ -209,7 +231,7 @@ export default function CollegePage({
                                         {formik.errors.department}
                                     </span>
                                 )}
-                            {selectedRole === "Student" && (
+                            {getRoleTitle(selectedRole) === "Student" && (
                                 <div className={styles.inputBox}>
                                     <SimpleInput
                                         value={formik.values.graduationYear}
