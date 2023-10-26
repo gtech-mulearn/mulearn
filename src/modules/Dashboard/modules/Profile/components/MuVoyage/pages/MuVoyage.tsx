@@ -67,7 +67,7 @@ const MuVoyage = (props: Props) => {
                                     {/* <img src={level1} alt="" /> */}
                                 </span>
                                 <div className={styles.title_desc}>
-                                    {/* <p>{userLevelTrack?.name}</p> */}
+                                    <p>{userLevelTrack?.name}</p>
                                     {/* <p>Level2 - Task 1</p> */}
                                 </div>
                             </div>
@@ -286,7 +286,9 @@ const MuVoyage = (props: Props) => {
                                                                                         taskData.hashtag
                                                                                     }
                                                                                     <a
-                                                                                        href="/"
+                                                                                        href={
+                                                                                            taskData.discord_link
+                                                                                        }
                                                                                         className={
                                                                                             styles.discordContainer
                                                                                         }
