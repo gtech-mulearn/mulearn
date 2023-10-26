@@ -78,13 +78,6 @@ const Socials = (props: Props) => {
 
     const formikRef = useRef(formik);
 
-    console.log(
-        Object.values(formik.values).filter(value => value !== "").length !=
-            0 ||
-            Object.values(formik.values).filter(value => value === null)
-                .length != 0
-    );
-
     useEffect(() => {
         if (id) {
             getSocials(setSocials, formikRef, id);
