@@ -165,13 +165,18 @@ export default function CollegePage({
                             </h5>
                             <div className={styles.inputBox}>
                                 <ReactSelect
-                                    options={[
-                                        { value: "Others", label: "Others" },
-                                        ...colleges.map(college => ({
-                                            value: college.id,
-                                            label: college.title
-                                        }))
-                                    ]}
+                                    options={
+                                        [
+                                            {
+                                                value: "Others",
+                                                label: "Others"
+                                            },
+                                            ...colleges.map(college => ({
+                                                value: college.id,
+                                                label: college.title
+                                            }))
+                                        ] as any
+                                    }
                                     name="college"
                                     placeholder="College"
                                     value={selectedCollege.title}
@@ -194,13 +199,18 @@ export default function CollegePage({
                                 )}
                             <div className={styles.inputBox}>
                                 <ReactSelect
-                                    options={[
-                                        { value: "Others", label: "Others" },
-                                        ...departments.map(department => ({
-                                            value: department.id,
-                                            label: department.title
-                                        }))
-                                    ]}
+                                    options={
+                                        [
+                                            {
+                                                value: "Others",
+                                                label: "Others"
+                                            },
+                                            ...departments.map(department => ({
+                                                value: department.id,
+                                                label: department.title
+                                            }))
+                                        ] as any
+                                    }
                                     name="department"
                                     placeholder="Department"
                                     value={selectedDepartment.title}
