@@ -117,7 +117,7 @@ export const getDepartments = async ({
     try {
         const response = await publicGateway.get(onboardingRoutes.departments);
         const departments = response.data.response.departments;
-        
+
         setDepartments(departments);
         setIsLoading(false);
     } catch (err: any) {
@@ -135,7 +135,7 @@ export const getCompanies = async ({
     try {
         const response = await publicGateway.get(onboardingRoutes.companies);
         const companies = response.data.response.companies;
-        
+
         setCompanies(companies);
         setIsLoading(false);
     } catch (err: any) {
@@ -214,7 +214,9 @@ export const getDWMSDetails = (
             setDWMSDetails(dwmsDetails);
         })
         .catch((error: APIError) => {
-            const errorMessage = (error.response.data as { message?: { general?: string[] } }).message?.general?.[0] || 'An error occurred';
+            const errorMessage =
+                (error.response.data as { message?: { general?: string[] } })
+                    .message?.general?.[0] || "An error occurred";
             //close the toast
             toast.dismiss();
             toast.error(errorMessage);

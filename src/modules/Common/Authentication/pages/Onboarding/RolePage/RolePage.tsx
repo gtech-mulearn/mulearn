@@ -1,13 +1,14 @@
 import styles from "./RolePage.module.css";
 import OnboardingTemplate from "../../../components/OnboardingTeamplate/OnboardingTemplate";
 import OnboardingHeader from "../../../components/OnboardingHeader/OnboardingHeader";
-
+import CollegePage from "../CollegePage/CollegePage";
 import roleOptions from "./data/roleOptions";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 import { getRoles, submitUserData } from "../../../services/newOnboardingApis";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
+import CompanyPage from "../CompanyPage/CompanyPage";
 
 export default function Rolepage() {
     const navigate = useNavigate();
@@ -55,7 +56,7 @@ export default function Rolepage() {
         if (userData.referral)
             newUserData["referral"] = { muid: userData.referral.muid };
 
-        console.log(newUserData)
+        console.log(newUserData);
 
         submitUserData({
             setIsLoading: setIsLoading,
@@ -63,8 +64,7 @@ export default function Rolepage() {
             toast: toast,
             navigate: navigate
         });
-    }
-
+    };
     return (
         <OnboardingTemplate>
             <OnboardingHeader
@@ -75,11 +75,20 @@ export default function Rolepage() {
                 <MuLoader />
             ) : (
                 <div className={styles.rolePageConatiner}>
-                    <div className={styles.rolePageCards}>
+                    <div
+                        className={
+                            styles.rolePageCards +
+                            " " +
+                            (selectedRole !== "Other" &&
+                                selectedRole &&
+                                styles.cardSmall)
+                        }
+                    >
                         {roleOptions.map((roleOption: any) => {
-                            let classname = `${styles.rolePageCard} ${selectedRole === roleOption.value &&
+                            let classname = `${styles.rolePageCard} ${
+                                selectedRole === roleOption.value &&
                                 styles.active
-                                }`;
+                            }`;
                             return (
                                 <div
                                     className={classname}
@@ -99,30 +108,24 @@ export default function Rolepage() {
                             );
                         })}
                     </div>
+                    {nextPage &&
+                        (nextPage === "select-college" ? (
+                            <CollegePage selectedRole={selectedRoleId} />
+                        ) : (
+                            <CompanyPage selectedRole={selectedRoleId} />
+                        ))}
 
-                    <button
-                        onClick={() => {
-                            console.log(selectedRoleId);
-
-                            if (selectedRole === "" || nextPage === "") {
-                                toast({
-                                    title: "Please select a role",
-                                    status: "error",
-                                    duration: 3000,
-                                    isClosable: true
-                                });
-                                return;
-                            }
-                            if (nextPage)
-                                navigate(nextPage, {
-                                    state: { ...userData, role: selectedRoleId }
-                                });
-                            else
+                    {selectedRole === "Other" && (
+                        <button
+                            className={styles.buttonWidth}
+                            onClick={() => {
+                                console.log(selectedRoleId);
                                 submitData();
-                        }}
-                    >
-                        {nextPage ? "Continue" : "Submit"}
-                    </button>
+                            }}
+                        >
+                            Submit
+                        </button>
+                    )}
                 </div>
             )}
         </OnboardingTemplate>

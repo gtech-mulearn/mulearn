@@ -39,7 +39,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 3rem;
 }
 .submit button {
     width: 100%;
@@ -57,7 +56,6 @@
     display: flex;
     align-items: center;
     flex-direction: row-reverse;
-    margin-top: 2rem;
     gap: 1rem;
 }
 .selectRadio {
@@ -75,10 +73,9 @@
 .selectRadio label span {
     margin-left: 1rem;
     font-weight: 500;
-    
 }
 
-.errorsSpan{
+.errorsSpan {
     color: red;
     font-size: small;
 }

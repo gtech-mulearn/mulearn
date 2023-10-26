@@ -8,6 +8,7 @@ import styles from "./LcDashboard.module.css";
 import { Dispatch, SetStateAction, useState } from "react";
 import image from "../assets/images/profileIcon.svg";
 import UploadImage from '../assets/images/uploadIcon.svg'
+import meeting from '../assets/images/meedingDemo.png'
 
 type Props = {};
 
@@ -129,7 +130,8 @@ const LcDashboard = (props: Props) => {
                                 <div>
                                     <img src={UploadImage} alt="" />
                                     <p>
-                                        Drag and drop or <br></br>browse to choose a file
+                                        Drag and drop or <br></br>browse to
+                                        choose a file
                                     </p>
                                 </div>
                             </div>
@@ -138,8 +140,8 @@ const LcDashboard = (props: Props) => {
                     </div>
                 ) : showReport === "2" ? (
                     <div className={styles.HistoryDataWrapper}>
-                        <div>
-                            <div>
+                        <div className={styles.SectionTop}>
+                            <div className={styles.Headings}>
                                 <div>
                                     <h1>22 June 2023</h1>
                                     <p>Sunday</p>
@@ -149,8 +151,8 @@ const LcDashboard = (props: Props) => {
                                     <p>Time: 12:45 PM</p>
                                 </div>
                             </div>
-                            <div>
-                                <h1>Agenda</h1>
+                            <div className={styles.detailedSection}>
+                                <h2>Agenda</h2>
                                 <p>
                                     Lorem Ipsum is simply dummy text of the
                                     printing and typesetting industry. Lorem
@@ -163,16 +165,20 @@ const LcDashboard = (props: Props) => {
                                 </p>
                             </div>
                         </div>
-                        <div>
-                            <div>
-                                <h1>Attendees</h1>
+                        <div className={styles.SectionBottom}>
+                            <div className={styles.Headings}>
+                                <h2>Attendees</h2>
                                 <div>
+                                    <Attendees />
+                                    <Attendees />
+                                    <Attendees />
+                                    <Attendees />
                                     <Attendees />
                                 </div>
                             </div>
-                            <div>
-                                <img src="" alt="" />
-                                <img src="" alt="" />
+                            <div className={styles.detailedSection}>
+                                <img src={meeting} alt="" />
+                                <img src={meeting} alt="" />
                             </div>
                         </div>
                     </div>

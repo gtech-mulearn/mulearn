@@ -1,17 +1,17 @@
-import { useToast } from '@chakra-ui/react';
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useToast } from "@chakra-ui/react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import * as z from "yup";
-import OnboardingHeader from '../../../components/OnboardingHeader/OnboardingHeader';
-import OnboardingTemplate from '../../../components/OnboardingTeamplate/OnboardingTemplate';
-import { Form, Formik } from 'formik';
+import OnboardingHeader from "../../../components/OnboardingHeader/OnboardingHeader";
+import OnboardingTemplate from "../../../components/OnboardingTeamplate/OnboardingTemplate";
+import { Form, Formik } from "formik";
 import { FormikTextInputWithoutLabel as SimpleInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
-import { PowerfulButton } from '@/MuLearnComponents/MuButtons/MuButton';
-import { forgetPassword } from '../../../services/apis';
-import styles from "./ForgetPassword.module.css"
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { forgetPassword } from "../../../services/apis";
+import styles from "./ForgetPassword.module.css";
 
 const ForgetPassword = () => {
-    const [showLoader, setShowLoader] = useState(false)
+    const [showLoader, setShowLoader] = useState(false);
     const navigate = useNavigate();
     const toast = useToast();
 
@@ -20,39 +20,29 @@ const ForgetPassword = () => {
             .string()
             .required(`Email or MuId is Required`)
             .min(5, `Email or MuId must be at least 3 characters`)
-            .max(
-                100,
-                `Email or MuId must be at most 100 characters`
-            )
+            .max(100, `Email or MuId must be at most 100 characters`)
     });
 
     const onSubmit = (values: any) => {
         if (values.emailOrMuId.length > 0) {
-            forgetPassword(
-                values.emailOrMuId,
-                toast,
-                navigate,
-                setShowLoader
-            );
+            forgetPassword(values.emailOrMuId, toast, navigate, setShowLoader);
         } else {
             toast({
                 title: "Error",
                 description: "Please enter your email or muid",
                 status: "error",
                 duration: 3000,
-                isClosable: true,
+                isClosable: true
             });
         }
-    }
+    };
 
     return (
         <>
             <OnboardingTemplate>
                 <OnboardingHeader
                     title={"Forgot Password"}
-                    desc={
-                        "Don't worry, enter your muid to reset your password"
-                    }
+                    desc={"Don't worry, enter your muid to reset your password"}
                 />
                 <Formik
                     initialValues={{
@@ -79,10 +69,15 @@ const ForgetPassword = () => {
                                     <div className={styles.submit}>
                                         <PowerfulButton
                                             type="submit"
-
                                             isLoading={showLoader}
                                         >
                                             Reset password
+                                        </PowerfulButton>
+                                        <PowerfulButton
+                                            type="button"
+                                            onClick={() => navigate("/login")}
+                                        >
+                                            Go Back
                                         </PowerfulButton>
                                     </div>
                                 </Form>
@@ -91,9 +86,8 @@ const ForgetPassword = () => {
                     )}
                 </Formik>
             </OnboardingTemplate>
-
         </>
-    )
-}
+    );
+};
 
-export default ForgetPassword
+export default ForgetPassword;
