@@ -74,6 +74,16 @@ export default function CollegePage({
         if (slice[0]) return slice[0].title;
     };
 
+    const CustomFilter = (
+        { label, value }: { label: string; value: string },
+        string: string
+      ): boolean => {
+          if (value === "Others") return true; // Always show "Others" option
+          if (!string) return true;
+          return label.toLowerCase().includes(string.toLowerCase());
+      };
+      
+
     useEffect(() => {
         if (userData === undefined || userData === null) {
             navigate("/register", { replace: true });
@@ -180,6 +190,7 @@ export default function CollegePage({
                                     name="college"
                                     placeholder="College"
                                     value={selectedCollege.title}
+                                    filterOption={CustomFilter}
                                     isDisabled={isloading}
                                     onChange={(e: any) => {
                                         setSelectedCollege(e);
@@ -215,6 +226,7 @@ export default function CollegePage({
                                     placeholder="Department"
                                     value={selectedDepartment.title}
                                     isDisabled={isloading}
+                                    filterOption={CustomFilter}
                                     onChange={(e: any) => {
                                         setSelectedDepartment(e);
                                         formik.setFieldValue(

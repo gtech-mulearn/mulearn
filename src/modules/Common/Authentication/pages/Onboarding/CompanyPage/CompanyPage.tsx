@@ -27,6 +27,16 @@ const scheme = z.object({
     radio: z.string().required(`This field is Required`)
 });
 
+const CustomFilter = (
+    { label, value }: { label: string; value: string },
+    string: string
+  ): boolean => {
+      if (value === "Others") return true; // Always show "Others" option
+      if (!string) return true;
+      return label.toLowerCase().includes(string.toLowerCase());
+  };
+  
+
 export default function CompanyPage({
     selectedRole
 }: {
@@ -157,6 +167,7 @@ export default function CompanyPage({
                                 placeholder="Company Name"
                                 value={selectedCompany.title}
                                 isDisabled={isloading}
+                                filterOption={CustomFilter}
                                 onChange={(e: any) => {
                                     if (e) {
                                         setSelectedCompany(e);
