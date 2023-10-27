@@ -131,92 +131,92 @@ const inputs = (
                 isSearchable: true
             }
         ],
-        dropDowns: user?.roles?.includes(roleStr(role, roles.ASSOCIATE))
+        dropDowns: user?.role?.includes(roleStr(role, roles.ASSOCIATE))
             ? [
-                  {
-                      name: "company",
-                      label: "Company",
-                      options: company.map(obj => {
-                          return {
-                              value: obj.id,
-                              label: obj.title
-                          };
-                      }),
-                      isClearable: true,
-                      isSearchable: true
-                  }
-              ]
+                {
+                    name: "company",
+                    label: "Company",
+                    options: company.map(obj => {
+                        return {
+                            value: obj.id,
+                            label: obj.title
+                        };
+                    }),
+                    isClearable: true,
+                    isSearchable: true
+                }
+            ]
             : [
-                  {
-                      name: "country",
-                      label: "Country",
-                      options: country,
-                      isClearable: true,
-                      isSearchable: true,
-                      addOnChange: (option: any) => {
-                          formikRef.current.setFieldValue("state", "");
-                          if (option)
-                              getState(errorHandler, setState, {
-                                  country: option.value
-                              });
-                          else {
-                              setState([]);
-                              setDistrict([]);
-                          }
-                      }
-                  },
-                  {
-                      name: "state",
-                      label: "State",
-                      options: state,
-                      isClearable: true,
-                      isSearchable: true,
-                      isDisabled: !state.length,
-                      addOnChange: (option: any) => {
-                          formikRef.current.setFieldValue("district", "");
-                          if (option)
-                              getDistrict(errorHandler, setDistrict, {
-                                  state: option.value
-                              });
-                          else {
-                              setDistrict([]);
-                          }
-                      }
-                  },
-                  {
-                      name: "district",
-                      label: "District",
-                      options: district,
-                      isClearable: true,
-                      isSearchable: true,
-                      isDisabled: !district.length,
-                      addOnChange: (option: any) => {
-                          getColleges(
-                              setCollegTemp,
-                              setCollege,
-                              setDepartment,
-                              errorHandler,
-                              { district: option.value }
-                          );
-                      }
-                  },
-                  {
-                      name: "college",
-                      label: "College",
-                      options: college,
-                      isClearable: true,
-                      isSearchable: true,
-                      isDisabled: !college.length
-                  },
-                  {
-                      name: "department",
-                      label: "User Department",
-                      options: department,
-                      isClearable: true,
-                      isSearchable: true,
-                      isDisabled: !department.length
-                  }
-              ],
+                {
+                    name: "country",
+                    label: "Country",
+                    options: country,
+                    isClearable: true,
+                    isSearchable: true,
+                    addOnChange: (option: any) => {
+                        formikRef.current.setFieldValue("state", "");
+                        if (option)
+                            getState(errorHandler, setState, {
+                                country: option.value
+                            });
+                        else {
+                            setState([]);
+                            setDistrict([]);
+                        }
+                    }
+                },
+                {
+                    name: "state",
+                    label: "State",
+                    options: state,
+                    isClearable: true,
+                    isSearchable: true,
+                    isDisabled: !state.length,
+                    addOnChange: (option: any) => {
+                        formikRef.current.setFieldValue("district", "");
+                        if (option)
+                            getDistrict(errorHandler, setDistrict, {
+                                state: option.value
+                            });
+                        else {
+                            setDistrict([]);
+                        }
+                    }
+                },
+                {
+                    name: "district",
+                    label: "District",
+                    options: district,
+                    isClearable: true,
+                    isSearchable: true,
+                    isDisabled: !district.length,
+                    addOnChange: (option: any) => {
+                        getColleges(
+                            setCollegTemp,
+                            setCollege,
+                            setDepartment,
+                            errorHandler,
+                            { district: option.value }
+                        );
+                    }
+                },
+                {
+                    name: "college",
+                    label: "College",
+                    options: college,
+                    isClearable: true,
+                    isSearchable: true,
+                    isDisabled: !college.length
+                },
+                {
+                    name: "department",
+                    label: "User Department",
+                    options: department,
+                    isClearable: true,
+                    isSearchable: true,
+                    isDisabled: !department.length
+                }
+            ],
         enabler: {
             label: "User Graduation Year",
             name: "graduation_year",
@@ -233,21 +233,21 @@ const inputs = (
         discord_id: user?.discord_id || null,
         college: user?.organizations
             ? arrayIntersection(
-                  user.organizations,
-                  college.map(item => item.value)
-              )[0] || null
+                user.organizations,
+                college.map(item => item.value)
+            )[0] || null
             : null,
         community: user?.organizations
             ? arrayIntersection(
-                  user.organizations,
-                  community.map(item => item.id)
-              )
+                user?.organizations,
+                community.map(item => item.id)
+            )
             : [],
         company: user?.organizations
             ? arrayIntersection(
-                  user.organizations,
-                  company.map(item => item.id)
-              )[0] || null
+                user.organizations,
+                company.map(item => item.id)
+            )[0] || null
             : null,
         department: user?.department || null,
         graduation_year: user?.graduation_year || null,
@@ -255,8 +255,9 @@ const inputs = (
         state: user?.state || "",
         district: user?.district || "",
         interest: user?.interest_groups,
-        role: user?.roles
+        role: user?.role
     };
+
     return { formikProps, initialValues };
 };
 

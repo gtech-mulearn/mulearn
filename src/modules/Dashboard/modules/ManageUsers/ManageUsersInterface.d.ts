@@ -5,7 +5,7 @@ interface UserData {
     mobile: string;
     discord_id?: string;
     gender: string;
-    roles: string[];
+    role: string[];
     department?: string;
     graduation_year?: string;
     organizations?: string[];

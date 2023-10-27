@@ -30,10 +30,8 @@ const LearningCircleLandingPage = () => {
     return (
         <>
             {isLoading ? (
-                <div className={styles.spinner_container}>
-                    <div className={styles.spinner}>
-                        <MuLoader />
-                    </div>
+                <div className={styles.loader_container}>
+                    <MuLoader />
                 </div>
             ) : (
                 <div className={styles.learningCircleLandingPage}>
