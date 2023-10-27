@@ -52,8 +52,8 @@ export default function CommunityPage() {
     return (
         <OnboardingTemplate>
             <OnboardingHeader
-                title={"Communities for you!"}
-                desc={"Select the communities you want to join"}
+                title={"Your Communities"}
+                desc={"Select Communities you're part of"}
             />
             <Formik
                 initialValues={{
@@ -70,7 +70,7 @@ export default function CommunityPage() {
                                 <div>
                                     <Select
                                         name="communities"
-                                        placeholder="Select Communities you're part of"
+                                        placeholder="Select Communities"
                                         onChange={OnChangeValue => {
                                             const ids = OnChangeValue.map(
                                                 (e: any) => e.value

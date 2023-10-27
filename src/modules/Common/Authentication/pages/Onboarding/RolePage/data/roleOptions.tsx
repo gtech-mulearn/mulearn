@@ -72,8 +72,8 @@ const roleOptions = [
                     fill="#456FF6"
                 />
             </svg>
-        ),
-        nextPage: "select-college"
+        )
+        // nextPage: "select-college"
     },
     {
         title: "I'm a freelancer",
