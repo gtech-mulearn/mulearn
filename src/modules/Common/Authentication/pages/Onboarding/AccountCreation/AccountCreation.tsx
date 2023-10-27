@@ -198,10 +198,9 @@ export default function AccountCreation() {
     };
 
     return (
-
         <OnboardingTemplate>
             <OnboardingHeader
-                title={"Welcome! Create Account"}
+                title={"Create an Account"}
                 desc={"Please Enter Your Information"}
             />
             <Formik
@@ -258,13 +257,13 @@ export default function AccountCreation() {
                                             style={
                                                 dwmsData?.firstName
                                                     ? {
-                                                        backgroundColor:
-                                                            "#f7f7f7"
-                                                    }
+                                                          backgroundColor:
+                                                              "#f7f7f7"
+                                                      }
                                                     : {
-                                                        backgroundColor:
-                                                            "#F5F7FB"
-                                                    }
+                                                          backgroundColor:
+                                                              "#F5F7FB"
+                                                      }
                                             }
                                         />
                                     </div>
@@ -287,13 +286,13 @@ export default function AccountCreation() {
                                             style={
                                                 dwmsData?.lastName
                                                     ? {
-                                                        backgroundColor:
-                                                            "#f7f7f7"
-                                                    }
+                                                          backgroundColor:
+                                                              "#f7f7f7"
+                                                      }
                                                     : {
-                                                        backgroundColor:
-                                                            "#F5F7FB"
-                                                    }
+                                                          backgroundColor:
+                                                              "#F5F7FB"
+                                                      }
                                             }
                                         />
                                     </div>
@@ -327,20 +326,20 @@ export default function AccountCreation() {
                                             required
                                             disabled={
                                                 isLoading ||
-                                                    dwmsData?.phoneNumber
+                                                dwmsData?.phoneNumber
                                                     ? true
                                                     : false
                                             }
                                             style={
                                                 dwmsData?.phoneNumber
                                                     ? {
-                                                        backgroundColor:
-                                                            "#f7f7f7"
-                                                    }
+                                                          backgroundColor:
+                                                              "#f7f7f7"
+                                                      }
                                                     : {
-                                                        backgroundColor:
-                                                            "#F5F7FB"
-                                                    }
+                                                          backgroundColor:
+                                                              "#F5F7FB"
+                                                      }
                                             }
                                         />
                                     </div>
