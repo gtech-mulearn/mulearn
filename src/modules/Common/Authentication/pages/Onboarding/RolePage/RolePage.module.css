@@ -39,10 +39,10 @@
     padding: 10px;
 }
 
-.cardSmall .rolePageCard {
+/* .cardSmall .rolePageCard {
     height: auto;
     flex-direction: row;
-}
+} */
 .rolePageCards .rolePageCard:hover {
     border: 1.177px solid #456ff6;
     transition: 1s ease;
