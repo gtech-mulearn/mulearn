@@ -69,7 +69,7 @@ const ManageUsersEdit = (props: Props) => {
 
     const { formikProps, initialValues } = inputs(
         community,
-        role,
+        role ,
         interestGroup,
         data,
         company,
@@ -197,7 +197,7 @@ const ManageUsersEdit = (props: Props) => {
                                             />
                                         )
                                     )}
-                                    {data?.roles?.includes(
+                                    {data?.role?.includes(
                                         roleStr(roles.ENABLER)
                                     ) && (
                                         <FormikTextInput
