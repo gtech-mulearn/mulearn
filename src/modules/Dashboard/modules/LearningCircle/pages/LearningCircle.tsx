@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import axios, { AxiosResponse } from "axios";
 import styles from "./LearningCircle.module.css";
 import pic from "../../Profile/assets/images/dpm.webp";
@@ -202,7 +202,14 @@ const LearningCircle = (props: Props) => {
         const isInvalid = validAvatar.find(id => member.id === id);
         return isInvalid ? pic : member?.profile_pic || pic;
     }
-    console.log(lc);
+
+    const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        const inputValue = e.target.value;
+        const sanitizedInput = inputValue.replace(/[<>/]/g, ''); // Remove < and > characters
+
+        setNote(sanitizedInput);
+    };
+
     return (
         <>
             {temp ? (
@@ -590,9 +597,7 @@ const LearningCircle = (props: Props) => {
                                     <div className={styles.LcNotedEvent}>
                                         <textarea
                                             value={note}
-                                            onChange={e => {
-                                                setNote(e.target.value);
-                                            }}
+                                            onChange={handleChange}
                                             placeholder="Notes"
                                         />
                                         <button
@@ -615,7 +620,7 @@ const LearningCircle = (props: Props) => {
                             </div>
 
                             {lc?.pending_members &&
-                            lc.pending_members.length > 0 ? (
+                                lc.pending_members.length > 0 ? (
                                 <div className={styles.PendingApp}>
                                     <b className={styles.PendingTitle}>
                                         Pending approvals

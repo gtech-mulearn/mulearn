@@ -75,7 +75,6 @@
         width: 90vw;
     }
     .accountCreationName {
-        flex-direction: column;
         gap: 0.5rem;
     }
 }
@@ -167,7 +166,7 @@
     margin-left: 0.25rem;
 }
 
-.supportContainer span{
+.supportContainer span {
     color: #456ff6;
     font-weight: 600;
 }

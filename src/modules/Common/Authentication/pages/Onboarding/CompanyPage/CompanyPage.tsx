@@ -13,7 +13,6 @@ import { getCompanies } from "../../../services/newOnboardingApis";
 import ReactSelect from "react-select";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
-import { log } from "console";
 
 const inputObject = {
     company: "Company Name"
@@ -67,6 +66,11 @@ export default function CompanyPage({
     });
 
     const onSubmit = async (values: any) => {
+        // Remove "Others" company from organizations array if it exists
+        const organizations = values.company === "Others"
+            ? userData.communities
+            : [values.company, ...userData.communities];
+
         const newUserData: any = {
             user: {
                 first_name: userData.user.first_name,
@@ -77,7 +81,7 @@ export default function CompanyPage({
             },
             organization: {
                 year_of_graduation: values.graduationYear,
-                organizations: [values.company, ...userData.communities],
+                organizations: organizations,
                 verified: true
             }
         };
@@ -138,10 +142,16 @@ export default function CompanyPage({
                             </h5>
                             <ReactSelect
                                 options={
-                                    companies.map(company => ({
-                                        value: company.id,
-                                        label: company.title
-                                    })) as any
+                                    [
+                                        {
+                                            value: "Others",
+                                            label: "Others"
+                                        },
+                                        ...companies.map(company => ({
+                                            value: company.id,
+                                            label: company.title
+                                        })) as any
+                                    ] as any
                                 }
                                 name="company"
                                 placeholder="Company Name"
@@ -163,12 +173,12 @@ export default function CompanyPage({
                                 "company" as keyof typeof formik.touched
                             ] &&
                                 formik.errors[
-                                    "company" as keyof typeof formik.touched
+                                "company" as keyof typeof formik.touched
                                 ] && (
                                     <span className={styles.errorsSpan}>
                                         {
                                             formik.errors[
-                                                "company" as keyof typeof formik.touched
+                                            "company" as keyof typeof formik.touched
                                             ]
                                         }
                                     </span>
