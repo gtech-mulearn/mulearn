@@ -41,9 +41,13 @@ const roleStr = (role: Community, roleName: string) => {
     if (role.length === 1 || !roleName) return "";
     return role.filter(item => item.title == roleName)[0]?.id || "";
 };
-const arrayIntersection = (userList: string[], mainList: string[]) => {
-    return userList.filter(item => mainList?.includes(item));
+
+const arrayIntersection = (userList: any, mainList: string[]) => {
+    const newUserList = userList.map((item: { org: { toString: () => any; }; }) => item.org.toString());
+   
+    return newUserList.filter((item: string) => mainList?.includes(item));
 };
+
 const inputs = (
     community: Community,
     role: Community,
@@ -63,6 +67,17 @@ const inputs = (
     setCollege: any,
     setDepartment: any
 ) => {
+  
+    const data: any = user?.organizations?.filter((item) => (item as any).org_type !== "Community")[0] || {
+        title: "",
+        org_type: "",
+        department: "",
+        graduation_year: 0,
+        country: "",
+        state: "",
+        district: ""
+    };
+
     const formikProps = {
         inputs: [
             {
@@ -133,90 +148,90 @@ const inputs = (
         ],
         dropDowns: user?.role?.includes(roleStr(role, roles.ASSOCIATE))
             ? [
-                {
-                    name: "company",
-                    label: "Company",
-                    options: company.map(obj => {
-                        return {
-                            value: obj.id,
-                            label: obj.title
-                        };
-                    }),
-                    isClearable: true,
-                    isSearchable: true
-                }
-            ]
+                  {
+                      name: "company",
+                      label: "Company",
+                      options: company.map(obj => {
+                          return {
+                              value: obj.id,
+                              label: obj.title
+                          };
+                      }),
+                      isClearable: true,
+                      isSearchable: true
+                  }
+              ]
             : [
-                {
-                    name: "country",
-                    label: "Country",
-                    options: country,
-                    isClearable: true,
-                    isSearchable: true,
-                    addOnChange: (option: any) => {
-                        formikRef.current.setFieldValue("state", "");
-                        if (option)
-                            getState(errorHandler, setState, {
-                                country: option.value
-                            });
-                        else {
-                            setState([]);
-                            setDistrict([]);
-                        }
-                    }
-                },
-                {
-                    name: "state",
-                    label: "State",
-                    options: state,
-                    isClearable: true,
-                    isSearchable: true,
-                    isDisabled: !state.length,
-                    addOnChange: (option: any) => {
-                        formikRef.current.setFieldValue("district", "");
-                        if (option)
-                            getDistrict(errorHandler, setDistrict, {
-                                state: option.value
-                            });
-                        else {
-                            setDistrict([]);
-                        }
-                    }
-                },
-                {
-                    name: "district",
-                    label: "District",
-                    options: district,
-                    isClearable: true,
-                    isSearchable: true,
-                    isDisabled: !district.length,
-                    addOnChange: (option: any) => {
-                        getColleges(
-                            setCollegTemp,
-                            setCollege,
-                            setDepartment,
-                            errorHandler,
-                            { district: option.value }
-                        );
-                    }
-                },
-                {
-                    name: "college",
-                    label: "College",
-                    options: college,
-                    isClearable: true,
-                    isSearchable: true,
-                    isDisabled: !college.length
-                },
-                {
-                    name: "department",
-                    label: "User Department",
-                    options: department,
-                    isClearable: true,
-                    isSearchable: true,
-                    isDisabled: !department.length
-                }
-            ],
+                  {
+                      name: "country",
+                      label: "Country",
+                      options: country,
+                      isClearable: true,
+                      isSearchable: true,
+                      addOnChange: (option: any) => {
+                          formikRef.current.setFieldValue("state", "");
+                          if (option)
+                              getState(errorHandler, setState, {
+                                  country: option.value
+                              });
+                          else {
+                              setState([]);
+                              setDistrict([]);
+                          }
+                      }
+                  },
+                  {
+                      name: "state",
+                      label: "State",
+                      options: state,
+                      isClearable: true,
+                      isSearchable: true,
+                      isDisabled: !state.length,
+                      addOnChange: (option: any) => {
+                          formikRef.current.setFieldValue("district", "");
+                          if (option)
+                              getDistrict(errorHandler, setDistrict, {
+                                  state: option.value
+                              });
+                          else {
+                              setDistrict([]);
+                          }
+                      }
+                  },
+                  {
+                      name: "district",
+                      label: "District",
+                      options: district,
+                      isClearable: true,
+                      isSearchable: true,
+                      isDisabled: !district.length,
+                      addOnChange: (option: any) => {
+                          getColleges(
+                              setCollegTemp,
+                              setCollege,
+                              setDepartment,
+                              errorHandler,
+                              { district: option.value }
+                          );
+                      }
+                  },
+                  {
+                      name: "college",
+                      label: "College",
+                      options: college,
+                      isClearable: true,
+                      isSearchable: true,
+                      isDisabled: !college.length
+                  },
+                  {
+                      name: "department",
+                      label: "User Department",
+                      options: department,
+                      isClearable: true,
+                      isSearchable: true,
+                      isDisabled: !department.length
+                  }
+              ],
         enabler: {
             label: "User Graduation Year",
             name: "graduation_year",
@@ -233,27 +248,27 @@ const inputs = (
         discord_id: user?.discord_id || null,
         college: user?.organizations
             ? arrayIntersection(
-                user.organizations,
-                college.map(item => item.value)
-            )[0] || null
+                  user.organizations,
+                  college.map(item => item.value)
+              )[0] || null
             : null,
         community: user?.organizations
             ? arrayIntersection(
-                user?.organizations,
-                community.map(item => item.id)
-            )
+                  user?.organizations,
+                  community.map(item => item.id)
+              )
             : [],
         company: user?.organizations
             ? arrayIntersection(
-                user.organizations,
-                company.map(item => item.id)
-            )[0] || null
+                  user.organizations,
+                  company.map(item => item.id)
+              )[0] || null
             : null,
-        department: user?.department || null,
-        graduation_year: user?.graduation_year || null,
-        country: user?.country || "",
-        state: user?.state || "",
-        district: user?.district || "",
+        department: data?.department || null,
+        graduation_year: data?.graduation_year || null,
+        country: data?.country || "",
+        state: data?.state || "",
+        district: data?.district || "",
         interest: user?.interest_groups,
         role: user?.role
     };

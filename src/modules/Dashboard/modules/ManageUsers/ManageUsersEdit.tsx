@@ -104,18 +104,27 @@ const ManageUsersEdit = (props: Props) => {
     }, []);
 
     useEffect(() => {
-        //useEffect to recall lower demographic levels if previous level exist
-        if (data?.country && state[0].value == "")
-            getState(errorHandler, setState, { country: data.country });
-        if (data?.state && district[0].value == "")
-            getDistrict(errorHandler, setDistrict, { state: data.state });
-        if (data?.district)
+        const newData: any = data?.organizations?.filter((item) => (item as any).org_type !== "Community")[0] || {
+            title: "",
+            org_type: "",
+            department: "",
+            graduation_year: 0,
+            country: "",
+            state: "",
+            district: ""
+        };
+
+        if (newData?.country && state[0].value == "")
+            getState(errorHandler, setState, { country: newData.country });
+        if (newData.state && district[0].value == "")
+            getDistrict(errorHandler, setDistrict, { state: newData.state });
+        if (newData?.district)
             getColleges(
                 setCollegTemp,
                 setCollege,
                 setDepartment,
                 errorHandler,
-                { district: data.district }
+                { district: newData.district }
             );
     }, [data]);
     if (
