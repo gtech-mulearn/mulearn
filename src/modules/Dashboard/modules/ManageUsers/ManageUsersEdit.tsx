@@ -69,7 +69,7 @@ const ManageUsersEdit = (props: Props) => {
 
     const { formikProps, initialValues } = inputs(
         community,
-        role ,
+        role,
         interestGroup,
         data,
         company,
@@ -206,13 +206,14 @@ const ManageUsersEdit = (props: Props) => {
                                             />
                                         )
                                     )}
+                                    <br />
                                     {data?.role?.includes(
-                                        roleStr(roles.ENABLER)
+                                        roleStr(roles.STUDENT)
                                     ) && (
-                                        <FormikTextInput
-                                            {...formikProps.enabler}
-                                        />
-                                    )}
+                                            <FormikTextInput
+                                                {...formikProps.student}
+                                            />
+                                        )}
                                 </div>
                             </div>
                             <div className={styles.btn_container}>

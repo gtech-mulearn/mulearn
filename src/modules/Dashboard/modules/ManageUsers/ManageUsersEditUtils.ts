@@ -146,7 +146,7 @@ const inputs = (
                 isSearchable: true
             }
         ],
-        dropDowns: user?.role?.includes(roleStr(role, roles.ASSOCIATE))
+        dropDowns: user?.role?.includes(roleStr(role, roles.MENTOR))
             ? [
                   {
                       name: "company",
@@ -232,7 +232,7 @@ const inputs = (
                       isDisabled: !department.length
                   }
               ],
-        enabler: {
+        student: {
             label: "User Graduation Year",
             name: "graduation_year",
             type: "number",
