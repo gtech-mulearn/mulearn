@@ -1,8 +1,10 @@
 import { AxiosError } from "axios";
-import { privateGateway } from "@/MuLearnServices/apiGateways";
-import { dashboardRoutes } from "@/MuLearnServices/urls";
+import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
+import { dashboardRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
 import { NavigateFunction } from "react-router-dom";
+import { reject } from "lodash";
+import { TT, collegeOptions } from "src/modules/Common/Authentication/services/onboardingApis";
 export const getManageUsers = async ({
     setData,
     page,
@@ -148,7 +150,7 @@ export const editManageUsers = async (
 };
 export const getManageUsersDetails = async (
     id: string | undefined,
-    setData: UseStateFunc<UserData | undefined>
+   
 ) => {
     try {
         const response = await privateGateway.get(
@@ -156,7 +158,7 @@ export const getManageUsersDetails = async (
         );
         const message: any = response?.data;
 
-        setData(message.response);
+        return message.response;
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -229,4 +231,76 @@ export const deleteManageUsers = async (
             throw error;
         }
     }
+};
+
+// These are new apis
+// Modify the getCommunities function to return a promise with community data
+export const getCommunities = () => {
+    return new Promise<any[]>((resolve, reject) => {
+        publicGateway
+            .get(onboardingRoutes.communityList)
+            .then(response => {
+                resolve(response.data.response.communities);
+            })
+            .catch((error: APIError) => {
+                reject(error);
+            });
+    });
+};
+
+export const getRoles = () => {
+    return new Promise<any[]>((resolve, reject) => {
+    publicGateway
+        .get(onboardingRoutes.roleList)
+        .then(response => {
+            resolve(response.data.response.roles);
+        })
+        .catch((error: APIError) => {
+            reject(error);
+        });
+    });
+};
+
+export const getInterests = () => {
+    return new Promise<any[]>((resolve, reject) => {
+    publicGateway
+        .get(onboardingRoutes.areaOfInterestList)
+        .then(response => {
+            resolve(response.data.response.aois);
+        })
+        .catch((error: APIError) => {
+            reject(error);
+        });
+    });
+};
+
+export const getCollegeOptions = (
+    setCollegeOptions: collegeOptions,
+    setDepartmentAPI: collegeOptions,
+    district: string
+) => {
+    publicGateway
+        .post(onboardingRoutes.collegeList, district)
+        .then(
+            (response: APIResponse<{ colleges: TT[]; departments: TT[] }>) => {
+                const colleges = response.data.response.colleges;
+                setCollegeOptions(
+                    colleges
+                        .sort((a, b) => a.title.localeCompare(b.title))
+                        .map(college => ({
+                            value: college.id,
+                            label: college.title
+                        }))
+                );
+                setDepartmentAPI(
+                    response.data.response.departments.map(dept => ({
+                        value: dept.id,
+                        label: dept.title
+                    }))
+                );
+            }
+        )
+        .catch((error: APIError) => {
+            // errorHandler(error.response.status, error.response.data.status);
+        });
 };

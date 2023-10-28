@@ -24,7 +24,7 @@
     border-radius: 8px;
     overflow: hidden;
     position: relative;
-    max-height: 80vh; /* This will make sure the modal content does not exceed 80% of the viewport height */
+    max-height: 100vh; /* This will make sure the modal content does not exceed 80% of the viewport height */
     overflow-y: auto; /* This will enable vertical scrolling when the content exceeds the max height */
 }
 

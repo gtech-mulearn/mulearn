@@ -3,17 +3,27 @@ interface UserData {
     last_name: string;
     email: string;
     mobile: string;
-    discord_id?: string;
-    gender: string;
-    roles: string[];
-    department?: string;
-    graduation_year?: string;
-    organizations?: string[];
+    discord_id: string | null;
+    organizations: string[] | null;
+    department: string | null;
+    roles: string[] | null;
     interest_groups: string[];
-    country: string;
-    state: string;
-    district: string;
 }
+
+interface UserDataFromBackend {
+    user_id: string;
+    first_name: string;
+    last_name: string;
+    email: string;
+    mobile: string;
+    gender: string;
+    discord_id: string | null;
+    dob: string;
+    role: string[] | null;
+    organizations: string[] | null;
+    interest_groups: string[];
+}
+
 
 interface OrgData {
     title: string;

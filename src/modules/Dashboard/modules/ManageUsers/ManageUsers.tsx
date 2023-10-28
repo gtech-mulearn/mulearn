@@ -8,6 +8,8 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { deleteManageUsers, getManageUsers } from "./apis";
 import { Blank } from "@/MuLearnComponents/Table/Blank";
+import MuModal from "@/MuLearnComponents/MuModal/MuModal";
+import UserForm from "./UserForm";
 
 function ManageRoles() {
     const [data, setData] = useState<any[]>([]);
@@ -19,6 +21,10 @@ function ManageRoles() {
     const navigate = useNavigate();
     const firstFetch = useRef(true);
     const toast = useToast();
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [id, setId] = useState("");
+    const UserFormRef = useRef<any>(null); //! Use for modal and form button connectivity
 
     type ColOrderType = { isSortable: boolean; column: string; Label: string };
 
@@ -90,8 +96,11 @@ function ManageRoles() {
         });
     };
 
-    const handleEdit = (id: string | number | boolean) =>
-        navigate(`/dashboard/manage-users/edit/${id}`);
+    const handleEdit = (id: string | number | boolean) => {
+        setId(id as string);
+        setIsModalOpen(true);
+        // navigate(`/dashboard/manage-users/edit/${id}`);
+    };
 
     const handleDelete = (id: string | undefined) => {
         deleteManageUsers(id, toast);
@@ -157,6 +166,22 @@ function ManageRoles() {
                         CSV={dashboardRoutes.getUsersList}
                         // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
                     />
+                    <MuModal
+                        isOpen={isModalOpen}
+                        onClose={() => setIsModalOpen(false)}
+                        title={`Edit User`}
+                        type={"success"}
+                        body={`Enter the details of the user.`}
+                        onDone={() =>
+                            UserFormRef.current?.handleSubmitExternally()
+                        }
+                    >
+                        <UserForm
+                            ref={UserFormRef}
+                            id={id}
+                            closeModal={() => setIsModalOpen(false)}
+                        />
+                    </MuModal>
                     <Table
                         rows={data}
                         isloading={isLoading}
