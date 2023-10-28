@@ -266,7 +266,10 @@ export const getInterests = () => {
     publicGateway
         .get(onboardingRoutes.areaOfInterestList)
         .then(response => {
-            resolve(response.data.response.aois);
+            resolve(response.data.response.aois.map((roles: { name: any; id: any; }) => ({
+                label: roles.name,
+                value: roles.id
+            })));
         })
         .catch((error: APIError) => {
             reject(error);

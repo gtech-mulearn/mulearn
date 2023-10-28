@@ -125,17 +125,14 @@ const UserForm = forwardRef(
                         value: roles.id
                     }))
                 }));
+                console.log(selectData.roles)
                 const interestGroups = await getInterests();
                 console.log(interestGroups);
 
-                setSelectData(prevState => ({
-                    ...prevState,
-                    interest_groups: interestGroups.map(iG => ({
-                        value: iG.id,
-                        label: iG.name,
-                    }))
-                }));
-                console.log(selectData.interestGroups);
+                setIg(
+                    interestGroups
+                );
+                console.log(ig);
             } catch (error) {
                 // Handle error here
             }
@@ -143,13 +140,14 @@ const UserForm = forwardRef(
 
         const [college, setCollege] = useState<AffiliationOption[]>([]);
         const [department, setDepartment] = useState<AffiliationOption[]>([]);
+        const [ig,setIg] = useState<AffiliationOption[]>([]);
 
         const [selectData, setSelectData] = useState({
             community: [] as AffiliationOption[],
             selectedCommunity: [] as AffiliationOption[],
             roles: [] as AffiliationOption[],
             selectedRoles: [] as AffiliationOption[],
-            interestGroups: [] as AffiliationOption[],
+            // interestGroups: [] as AffiliationOption[],
             selectedInterestGroups: [] as AffiliationOption[],
             selectedCollege: [] as AffiliationOption[],
             selectedDepartment: [] as AffiliationOption[],
@@ -174,6 +172,10 @@ const UserForm = forwardRef(
                 locationData.selectedDistrict?.value as string
             );
         }, [locationData]);
+
+        useEffect(() => {
+            console.log(selectData.roles)
+        }, [selectData.roles]);
 
         //! useImperativeHandle for triggering submit from MuModal button
         useImperativeHandle(ref, () => ({
@@ -369,11 +371,11 @@ const UserForm = forwardRef(
                     <div className={styles.inputContainer}>
                         <Select
                             styles={customReactSelectStyles}
-                            options={selectData.interestGroups}
+                            options={ig}
                             isClearable
                             isMulti
                             placeholder="Interest Groups"
-                            isLoading={!selectData.interestGroups.length}
+                            isLoading={ig.length? false : true}
                             value={selectData.selectedInterestGroups}
                             onChange={(selectedOptions: any) => {
                                 setSelectData(prevState => ({
