@@ -20,10 +20,12 @@ const FindCircle = () => {
     const [lc, setLc] = useState<LcType[]>([]);
     const navigate = useNavigate();
     const [searchString, setSearchString] = useState<string | null>(null);
-    const [org, setOrg] = useState<string | null>(null);
+    const [org, setOrg] = useState<string | null>("default");
     useEffect(() => {
         getUserOrg(setOrg);
-        getCampusLearningCircles(setLc, setIsLoading, org);
+        if (org !== "default"){
+            getCampusLearningCircles(setLc, setIsLoading, org);
+        }
     }, [org]);
     const handleData = (search: string) => {
         setSearchString(search);
