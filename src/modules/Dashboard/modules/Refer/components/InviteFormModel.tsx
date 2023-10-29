@@ -19,16 +19,18 @@ type Props = {
 const InviteFormModel = (props: Props) => {
     const toast = useToast();
 
+    const emailValidateSchema = Yup.object().shape({
+        email: Yup.string()
+            .matches(/^[^/<>[\]{}|]*$/, 'Invalid characters detected') // Custom validation for invalid characters
+            .email("Invalid email address")
+            .required("Required")
+    });
     return (
         <Formik
             initialValues={{
                 email: ""
             }}
-            validationSchema={Yup.object({
-                email: Yup.string()
-                    .email("Invalid email address")
-                    .required("Required")
-            })}
+            validationSchema={emailValidateSchema}
             onSubmit={async values => {
                 try {
                     const response = await privateGateway.post(

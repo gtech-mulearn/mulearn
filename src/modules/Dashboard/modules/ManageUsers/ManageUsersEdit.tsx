@@ -128,7 +128,6 @@ const ManageUsersEdit = (props: Props) => {
         return <MuLoader />;
     return (
         <div className={styles.external_container}>
-            <div>
                 <h1 className={styles.text}>User Edit Page</h1>
                 {isFetching ? (
                     <MuLoader />
@@ -197,13 +196,14 @@ const ManageUsersEdit = (props: Props) => {
                                             />
                                         )
                                     )}
-                                    {data?.roles?.includes(
-                                        roleStr(roles.ENABLER)
+                                    <br />
+                                    {/* {data?.role?.includes(
+                                        roleStr(roles.STUDENT)
                                     ) && (
-                                        <FormikTextInput
-                                            {...formikProps.enabler}
-                                        />
-                                    )}
+                                            <FormikTextInput
+                                                {...formikProps.student}
+                                            />
+                                        )} */}
                                 </div>
                             </div>
                             <div className={styles.btn_container}>
@@ -226,7 +226,6 @@ const ManageUsersEdit = (props: Props) => {
                         </Form>
                     </Formik>
                 )}
-            </div>
         </div>
     );
 };

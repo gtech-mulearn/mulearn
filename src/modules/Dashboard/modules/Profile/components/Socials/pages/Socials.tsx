@@ -12,6 +12,7 @@ import Facebook from "../../../assets/svg/Facebook";
 import Dribble from "../../../assets/svg/Dribble";
 import StackOverflow from "../../../assets/svg/StackOverflow";
 import Medium from "../../../assets/svg/Medium";
+import HackerRank from "../../../assets/svg/HackerRank";
 
 type Props = {};
 
@@ -28,7 +29,8 @@ const Socials = (props: Props) => {
         dribble: "https://dribbble.com/",
         behance: "https://www.behance.net/",
         stackoverflow: "https://stackoverflow.com/users/",
-        medium: "https://medium.com/@"
+        medium: "https://medium.com/@",
+        hackerrank: "https://www.hackerrank.com/profile/"
     };
     const socialMediaSvgComponents: { [key: string]: JSX.Element | null } = {
         github: <Github />,
@@ -39,7 +41,8 @@ const Socials = (props: Props) => {
         facebook: <Facebook />,
         dribble: <Dribble />,
         stackoverflow: <StackOverflow />,
-        medium: <Medium />
+        medium: <Medium />,
+        hackerrank: <HackerRank/>
     };
     const formik = useFormik({
         initialValues: {
@@ -50,19 +53,10 @@ const Socials = (props: Props) => {
             dribble: "",
             behance: "",
             stackoverflow: "",
-            medium: ""
+            medium: "",
+            hackerrank: ""
         },
         onSubmit: values => {
-            // const updateValue = Object.entries(values).reduce<{
-            //     [key: string]: string;
-            // }>((acc, [key, value]) => {
-            //     if (value) {
-            //         acc[key] = value;
-            //     }
-            //     return acc;
-            // }, {});
-
-            // console.log(updateValue);
             updateSocials(values, setSocials, formikRef);
         },
         validate: (values: { [key: string]: string }) => {
@@ -77,13 +71,6 @@ const Socials = (props: Props) => {
     });
 
     const formikRef = useRef(formik);
-
-    console.log(
-        Object.values(formik.values).filter(value => value !== "").length !=
-            0 ||
-            Object.values(formik.values).filter(value => value === null)
-                .length != 0
-    );
 
     useEffect(() => {
         if (id) {
@@ -127,7 +114,7 @@ const Socials = (props: Props) => {
                 )}
             </div>
             {
-                Object.values(formik.values).filter(value => value === "" || value === null).length>=8 && !editSocials && (
+                Object.values(formik.values).filter(value => value === "" || value === null).length>=9 && !editSocials && (
                     <p className={styles.display_message}>
                         You have not connected any socials medias to your profile yet.
                     </p>

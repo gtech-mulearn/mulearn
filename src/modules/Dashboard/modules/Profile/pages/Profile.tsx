@@ -121,7 +121,9 @@ const Profile = () => {
         }
         firstFetch.current = false;
         setProfileStatus(userProfile.is_public);
-    }, []);
+    }, [id,userProfile.is_public]);
+    // console.log(userLevelData);
+    
     return (
         <>
             <HelmetMetaTags userProfile={userProfile} dpm={dpm} />

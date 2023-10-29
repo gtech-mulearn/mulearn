@@ -241,10 +241,6 @@ const LearningCircles = () => {
                     </div>
                     <p className={styles.heading}>Learning Circles & Interest Group Counts</p>
                     <div className={styles.countsContainer}>
-                        <div className={styles.lcCount}>
-                            <p className={styles.label}>Learning Circles</p>
-                            {LcCounts.lc_count && <p className={styles.count}>{LcCounts.lc_count}</p>}
-                        </div>
                         <div className={styles.studentsInvoled}>
                             <p className={styles.label}>Total Enrollment</p>
                             {LcCounts.total_enrollment && <p className={styles.count}>{LcCounts.total_enrollment}</p>}
@@ -253,6 +249,11 @@ const LearningCircles = () => {
                             <p className={styles.label}>Unique Users</p>
                             {LcCounts.total_enrollment && <p className={styles.count}>{LcCounts.unique_users}</p>}
                         </div>
+                        <div className={styles.lcCount}>
+                            <p className={styles.label}>Learning Circles</p>
+                            {LcCounts.lc_count && <p className={styles.count}>{LcCounts.lc_count}</p>}
+                        </div>
+
                         {
 
                             LcCounts.circle_count_by_ig

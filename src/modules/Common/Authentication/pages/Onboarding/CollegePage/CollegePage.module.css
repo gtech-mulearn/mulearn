@@ -7,7 +7,7 @@
     align-items: center;
 }
 .wrapper form {
-    width: 25rem;
+    width: 20rem;
 }
 .inputBox {
     width: 100%;
@@ -32,15 +32,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 3rem;
 }
 .submit button {
     width: 100%;
+    color: white;
 }
 .text {
     font-weight: 700;
 }
-.errorsSpan{
+.errorsSpan {
     color: red;
     font-size: small;
 }

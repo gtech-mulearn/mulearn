@@ -1,3 +1,5 @@
+
+
 .accountCreationContainer {
     margin: 1rem;
     z-index: 10;
@@ -38,6 +40,7 @@
         top: 10px;
         width: 24px;
         z-index: 10;
+        background-color: #fff;
         color: #d9d9d9;
         &:active {
             color: #456ff6;
@@ -47,7 +50,7 @@
 
 .accountCreationName {
     display: flex;
-    gap: 1rem;
+    gap: 0.5rem;
     width: 100%;
     div {
         display: flex;
@@ -62,7 +65,7 @@
 
 .col_2 {
     display: flex;
-    gap: 1rem;
+    gap: 0.5rem;
     width: 100%;
 }
 
@@ -75,7 +78,6 @@
         width: 90vw;
     }
     .accountCreationName {
-        flex-direction: column;
         gap: 0.5rem;
     }
 }
@@ -92,7 +94,7 @@
     justify-content: center;
     align-items: center;
     color: #000;
-    gap: 1rem;
+    gap: 0.5rem;
     width: 245px;
     font-weight: 600;
     height: 49px;
@@ -105,7 +107,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
+    gap: 0.5rem;
     width: 100%;
 }
 .accountCreationAlternative div hr {
@@ -151,8 +153,23 @@
 
 .inputBox input {
     width: 100%;
-    background: #F5F7FB;
+    background: #f5f7fb;
     border-radius: 8px;
     border: none;
     padding: 0.6rem;
+}
+
+.supportContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    align-self: flex-start;
+}
+
+.supportContainer a {
+    margin-left: 0.25rem;
+}
+
+.supportContainer span {
+    color: #456ff6;
+    font-weight: 600;
 }

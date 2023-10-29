@@ -41,9 +41,13 @@ const roleStr = (role: Community, roleName: string) => {
     if (role.length === 1 || !roleName) return "";
     return role.filter(item => item.title == roleName)[0]?.id || "";
 };
-const arrayIntersection = (userList: string[], mainList: string[]) => {
-    return userList.filter(item => mainList?.includes(item));
+
+const arrayIntersection = (userList: any, mainList: string[]) => {
+    const newUserList = userList.map((item: { org: { toString: () => any; }; }) => item.org.toString());
+   
+    return newUserList.filter((item: string) => mainList?.includes(item));
 };
+
 const inputs = (
     community: Community,
     role: Community,
@@ -63,6 +67,17 @@ const inputs = (
     setCollege: any,
     setDepartment: any
 ) => {
+  
+    const data: any = user?.organizations?.filter((item) => (item as any).org_type !== "Community")[0] || {
+        title: "",
+        org_type: "",
+        department: "",
+        graduation_year: 0,
+        country: "",
+        state: "",
+        district: ""
+    };
+
     const formikProps = {
         inputs: [
             {
@@ -131,7 +146,7 @@ const inputs = (
                 isSearchable: true
             }
         ],
-        dropDowns: user?.roles?.includes(roleStr(role, roles.ASSOCIATE))
+        dropDowns: user?.role?.includes(roleStr(role, roles.MENTOR))
             ? [
                   {
                       name: "company",
@@ -217,7 +232,7 @@ const inputs = (
                       isDisabled: !department.length
                   }
               ],
-        enabler: {
+        student: {
             label: "User Graduation Year",
             name: "graduation_year",
             type: "number",
@@ -239,7 +254,7 @@ const inputs = (
             : null,
         community: user?.organizations
             ? arrayIntersection(
-                  user.organizations,
+                  user?.organizations,
                   community.map(item => item.id)
               )
             : [],
@@ -249,14 +264,15 @@ const inputs = (
                   company.map(item => item.id)
               )[0] || null
             : null,
-        department: user?.department || null,
-        graduation_year: user?.graduation_year || null,
-        country: user?.country || "",
-        state: user?.state || "",
-        district: user?.district || "",
+        department: data?.department || null,
+        graduation_year: data?.graduation_year || null,
+        country: data?.country || "",
+        state: data?.state || "",
+        district: data?.district || "",
         interest: user?.interest_groups,
-        role: user?.roles
+        role: user?.role
     };
+
     return { formikProps, initialValues };
 };
 
