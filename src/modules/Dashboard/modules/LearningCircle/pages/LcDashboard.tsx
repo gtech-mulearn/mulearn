@@ -7,8 +7,8 @@ import {
 import styles from "./LcDashboard.module.css";
 import { Dispatch, SetStateAction, useState } from "react";
 import image from "../assets/images/profileIcon.svg";
-import UploadImage from '../assets/images/uploadIcon.svg'
-import meeting from '../assets/images/meedingDemo.png'
+import UploadImage from "../assets/images/uploadIcon.svg";
+import meeting from "../assets/images/meedingDemo.png";
 
 type Props = {};
 
@@ -220,6 +220,9 @@ const LcDashboard = (props: Props) => {
                         <div className={styles.BottomContainer}>
                             <p>Your past meetings</p>
                             <div>
+                                <HistoryDiv setdata={setShowReport} />
+                                <HistoryDiv setdata={setShowReport} />
+                                <HistoryDiv setdata={setShowReport} />
                                 <HistoryDiv setdata={setShowReport} />
                             </div>
                         </div>
