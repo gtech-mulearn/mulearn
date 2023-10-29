@@ -36,6 +36,7 @@ import ResetPassword from "./modules/Common/Authentication/pages/Onboarding/Rese
 import LcDashboard from "./modules/Dashboard/modules/LearningCircle/pages/LcDashboard";
 import { Toaster } from "react-hot-toast";
 import CommunityPage from "./modules/Common/Authentication/pages/Onboarding/CommunityPage/CommunityPage";
+import Foundation from "./modules/Public/Foundation/Foundation";
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
 );
@@ -605,6 +606,10 @@ function App() {
         {
             path: "/kkem/learningcircles/dashboard",
             element: <LearningCircles />
+        }, {
+            path: "/foundation",
+            element: <Foundation />
+
         }
     ]);
 
