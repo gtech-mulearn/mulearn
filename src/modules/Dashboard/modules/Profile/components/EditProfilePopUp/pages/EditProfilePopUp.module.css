@@ -82,11 +82,11 @@
     text-align: left;
 }
 
-@media (max-width: 1500px) {
+/* @media (max-width: 1500px) {
     .edit_profile_container {
-        left: 0;
+        left: unset;
     }
-}
+} */
 
 @media (max-width: 768px) {
     .edit_profile_container {
