@@ -41,7 +41,6 @@ const EditProfilePopUp = (props: Props) => {
             communities: []
         },
         onSubmit: values => {
-            2;
             patchEditUserProfile(
                 toast,
                 values,
