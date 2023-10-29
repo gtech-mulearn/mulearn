@@ -84,7 +84,7 @@
 
 @media (max-width: 1500px) {
     .edit_profile_container {
-        left: unset;
+        left: 0;
     }
 }
 
