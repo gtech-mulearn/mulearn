@@ -137,7 +137,6 @@ const ManageUsersEdit = (props: Props) => {
         return <MuLoader />;
     return (
         <div className={styles.external_container}>
-            <div>
                 <h1 className={styles.text}>User Edit Page</h1>
                 {isFetching ? (
                     <MuLoader />
@@ -236,7 +235,6 @@ const ManageUsersEdit = (props: Props) => {
                         </Form>
                     </Formik>
                 )}
-            </div>
         </div>
     );
 };
