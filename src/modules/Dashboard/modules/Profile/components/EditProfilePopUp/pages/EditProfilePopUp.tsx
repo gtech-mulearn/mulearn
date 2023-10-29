@@ -186,9 +186,9 @@ const EditProfilePopUp = (props: Props) => {
                                     {...propsList2}
                                 >
                                     <option value="">Select gender</option>
-                                    <option value="male">♂ Male</option>
-                                    <option value="female">♀ Female</option>
-                                    <option value="other">Other</option>
+                                    <option value="Male">♂ Male</option>
+                                    <option value="Female">♀ Female</option>
+                                    <option value="Other">Other</option>
                                     <option value="not to say">
                                         Prefer not to say
                                     </option>

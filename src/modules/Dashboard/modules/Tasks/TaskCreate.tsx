@@ -58,7 +58,7 @@ const TaskCreate = () => {
         description: Yup.string()
             .max(100, "Too Long!")
             .required("A description is required"),
-        channel_id: Yup.string().required("Select a Channel"),
+        channel_id: Yup.string(),
         type_id: Yup.string().required("Select a Type"),
         level_id: Yup.string().nullable(),
         ig_id: Yup.string().nullable(),

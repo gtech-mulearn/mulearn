@@ -430,7 +430,7 @@ function App() {
                             path: "/dashboard/error-log",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN]}
+                                    roles={[roles.ADMIN, roles.TECH_TEAM]}
                                     children={<ErrorLog />}
                                 />
                             )
