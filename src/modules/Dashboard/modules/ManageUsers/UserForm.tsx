@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import useLocationData from "@/MuLearnComponents/CascadingSelects/useLocationData";
 import {
     editManageUsers,
+    editUsers,
     getCollegeOptions,
     getCommunities,
     getInterests,
@@ -125,13 +126,11 @@ const UserForm = forwardRef(
                         value: roles.id
                     }))
                 }));
-                console.log(selectData.roles)
+                console.log(selectData.roles);
                 const interestGroups = await getInterests();
                 console.log(interestGroups);
 
-                setIg(
-                    interestGroups
-                );
+                setIg(interestGroups);
                 console.log(ig);
             } catch (error) {
                 // Handle error here
@@ -140,7 +139,11 @@ const UserForm = forwardRef(
 
         const [college, setCollege] = useState<AffiliationOption[]>([]);
         const [department, setDepartment] = useState<AffiliationOption[]>([]);
-        const [ig,setIg] = useState<AffiliationOption[]>([]);
+        const [ig, setIg] = useState<AffiliationOption[]>([]);
+        const [selectedIg, setSelectedIg] = useState<AffiliationOption[]>([]);
+        const [selectedRoles, setSelectedRoles] = useState<AffiliationOption[]>([]);
+        
+      
 
         const [selectData, setSelectData] = useState({
             community: [] as AffiliationOption[],
@@ -156,7 +159,7 @@ const UserForm = forwardRef(
                 roles: false,
                 interestGroups: false,
                 college: false,
-                department: false,
+                department: false
             }
         });
         // Add this state for blur status
@@ -174,7 +177,7 @@ const UserForm = forwardRef(
         }, [locationData]);
 
         useEffect(() => {
-            console.log(selectData.roles)
+            console.log(selectData.roles);
         }, [selectData.roles]);
 
         //! useImperativeHandle for triggering submit from MuModal button
@@ -184,16 +187,21 @@ const UserForm = forwardRef(
 
         const handleSubmit = (e?: React.FormEvent) => {
             e?.preventDefault();
-
+            const convertedRoles = selectedRoles.map(option => option.value) 
             const updatedData = {
                 ...data,
                 // affiliation: String(selectedAffiliation?.value),
                 country: String(locationData.selectedCountry?.value),
                 state: String(locationData.selectedState?.value),
-                district: String(locationData.selectedDistrict?.value)
+                district: String(locationData.selectedDistrict?.value),
+                roles: convertedRoles,
+                interest_groups: selectedIg.map(option => option.value),
+                organizations: [selectData.selectedCollege[0]?.value],
+                department: selectData.selectedDepartment[0]?.value,
+                community: selectData.selectedCommunity.map(option => option.value)
             };
 
-            console.log(updatedData);
+            console.log(selectData.selectedRoles);
 
             // Validate form data
             let isValid = true;
@@ -216,14 +224,14 @@ const UserForm = forwardRef(
             if (isValid) {
                 console.log(updatedData);
 
-                // toast.promise(editManageUsers(updatedData), {
-                //     loading: "Saving...",
-                //     success: () => {
-                //         props.closeModal();
-                //         return <b>Organization added</b>;
-                //     },
-                //     error: <b>Failed to add new organization</b>
-                // });
+                toast.promise(editUsers(props.id,updatedData), {
+                    loading: "Saving...",
+                    success: () => {
+                        props.closeModal();
+                        return <b>Organization added</b>;
+                    },
+                    error: <b>Failed to add new organization</b>
+                });
             }
         };
 
@@ -343,12 +351,9 @@ const UserForm = forwardRef(
                             isMulti
                             placeholder="Roles"
                             isLoading={!selectData.roles.length}
-                            value={selectData.selectedRoles}
+                            // value={selectData.selectedRoles}
                             onChange={(selectedOptions: any) => {
-                                setSelectData(prevState => ({
-                                    ...prevState,
-                                    selectedroles: selectedOptions
-                                }));
+                                setSelectedRoles(selectedOptions);
                             }}
                             onBlur={() => {
                                 setSelectData(prev => ({
@@ -375,13 +380,10 @@ const UserForm = forwardRef(
                             isClearable
                             isMulti
                             placeholder="Interest Groups"
-                            isLoading={ig.length? false : true}
-                            value={selectData.selectedInterestGroups}
+                            isLoading={ig.length ? false : true}
+                            // value={selectData.selectedInterestGroups}
                             onChange={(selectedOptions: any) => {
-                                setSelectData(prevState => ({
-                                    ...prevState,
-                                    selectedinterest_groups: selectedOptions
-                                }));
+                                setSelectedIg(selectedOptions);
                             }}
                             onBlur={() => {
                                 setSelectData(prev => ({
@@ -400,6 +402,21 @@ const UserForm = forwardRef(
                                 </div>
                             )}
                     </div>
+
+                    <CountryStateDistrict
+                        countries={locationData.countries}
+                        states={locationData.states}
+                        districts={locationData.districts}
+                        selectedCountry={locationData.selectedCountry}
+                        selectedState={locationData.selectedState}
+                        selectedDistrict={locationData.selectedDistrict}
+                        loadingCountries={loadingCountries}
+                        loadingStates={loadingStates}
+                        loadingDistricts={loadingDistricts}
+                        onCountryChange={handleCountryChange}
+                        onStateChange={handleStateChange}
+                        onDistrictChange={handleDistrictChange}
+                    />
 
                     <div className={styles.inputContainer}>
                         <Select
@@ -464,21 +481,6 @@ const UserForm = forwardRef(
                                 </div>
                             )}
                     </div>
-
-                    <CountryStateDistrict
-                        countries={locationData.countries}
-                        states={locationData.states}
-                        districts={locationData.districts}
-                        selectedCountry={locationData.selectedCountry}
-                        selectedState={locationData.selectedState}
-                        selectedDistrict={locationData.selectedDistrict}
-                        loadingCountries={loadingCountries}
-                        loadingStates={loadingStates}
-                        loadingDistricts={loadingDistricts}
-                        onCountryChange={handleCountryChange}
-                        onStateChange={handleStateChange}
-                        onDistrictChange={handleDistrictChange}
-                    />
                 </form>
             </div>
         );

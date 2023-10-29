@@ -283,7 +283,9 @@ export const getCollegeOptions = (
     district: string
 ) => {
     publicGateway
-        .post(onboardingRoutes.collegeList, district)
+        .post(onboardingRoutes.collegeList, {
+            district: district
+        })
         .then(
             (response: APIResponse<{ colleges: TT[]; departments: TT[] }>) => {
                 const colleges = response.data.response.colleges;
@@ -306,4 +308,23 @@ export const getCollegeOptions = (
         .catch((error: APIError) => {
             // errorHandler(error.response.status, error.response.data.status);
         });
+};
+
+export const editUsers = async (
+    id: string,
+    data: any
+) => {
+    try {
+        const response = await privateGateway.patch(
+            dashboardRoutes.getUsersData + id + "/", data
+        );
+        const message: any = response?.data;
+        return message
+    } catch (err: unknown) {
+        const error = err as APIError;
+        let errorMessage = "Some Error Occurred..";
+        if (error?.response?.data?.message) {
+            throw error
+        }
+    }
 };
