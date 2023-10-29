@@ -153,8 +153,8 @@ const Profile = () => {
                         <>
                             <EditProfilePopUp
                                 editPopUp={editPopUp}
-                                triggerUpdateProfile={triggerUpdateProfile}
                                 setEditPopUP={setEditPopUp}
+                                triggerUpdateProfile={triggerUpdateProfile}
                             />
 
                             <ShareProfilePopUp
