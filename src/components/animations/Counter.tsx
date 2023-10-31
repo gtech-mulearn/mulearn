@@ -5,6 +5,17 @@ type CounterProps = {
     type: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span";
     children: string;
 };
+function getCorrectText(value: number) {
+    if (value >= 1000) {
+        const formattedNumber = new Intl.NumberFormat("en-IN", {
+            maximumSignificantDigits: 3
+        }).format(value / 1000);
+        return formattedNumber + "K";
+    } else
+        return new Intl.NumberFormat("en-IN", {
+            maximumFractionDigits: 0
+        }).format(value);
+}
 
 export const Counter: FC<CounterProps> = ({ type, children, className }) => {
     const nodeRef = useRef<HTMLDivElement>(null);
@@ -16,15 +27,10 @@ export const Counter: FC<CounterProps> = ({ type, children, className }) => {
         const node = nodeRef.current;
 
         const controls = animate(0, to, {
-            duration: 2,
+            duration: to > 1000 ? 4 : 2,
+            ease: "circOut",
             onUpdate(value) {
-                if (node)
-                    node.textContent =
-                        value > 1000
-                            ? value.toFixed(0) + "K"
-                            : value < 10
-                            ? "0" + value.toFixed(0)
-                            : value.toFixed(0);
+                if (node) node.textContent = getCorrectText(value);
             }
         });
 
