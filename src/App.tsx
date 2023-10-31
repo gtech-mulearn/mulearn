@@ -33,7 +33,7 @@ import KKEMEventBeyondUs from "./modules/Public/KKEM/modules/KKEMEventTemplate/K
 import LearningCircles from "./modules/Public/KKEM/modules/Dashboard/LearningCircles/LearningCircles";
 import ForgetPassword from "./modules/Common/Authentication/pages/Onboarding/ForgetPassword/ForgetPassword";
 import ResetPassword from "./modules/Common/Authentication/pages/Onboarding/ResetPassword/ResetPassword";
-import LcDashboard from "./modules/Dashboard/modules/LearningCircle/pages/LcDashboard";
+import LcDashboard from "./modules/Dashboard/modules/LearningCircle/pages/LcDashboard/LcDashboard";
 import { Toaster } from "react-hot-toast";
 import CommunityPage from "./modules/Common/Authentication/pages/Onboarding/CommunityPage/CommunityPage";
 import Foundation from "./modules/Public/Foundation/Foundation";

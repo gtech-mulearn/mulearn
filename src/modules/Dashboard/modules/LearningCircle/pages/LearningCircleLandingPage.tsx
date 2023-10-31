@@ -81,6 +81,11 @@ const LearningCircleLandingPage = () => {
                                                 className={
                                                     styles.learningCircleLandingPageMainList
                                                 }
+                                                onClick={() => {
+                                                    navigate(
+                                                        `/dashboard/learning-circle/details/${circle.id}`
+                                                    );
+                                                }}
                                             >
                                                 <input
                                                     className={
@@ -128,7 +133,7 @@ const LearningCircleLandingPage = () => {
                                                             }}
                                                             onClick={() => {
                                                                 navigate(
-                                                                    `/dashboard/learning-circle/details/${circle.id}`
+                                                                    `/dashboard/learning-circle/dashboard/${circle.id}`
                                                                 );
                                                             }}
                                                         >
