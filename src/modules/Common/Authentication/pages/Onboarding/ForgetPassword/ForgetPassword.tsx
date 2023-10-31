@@ -73,12 +73,8 @@ const ForgetPassword = () => {
                                         >
                                             Reset password
                                         </PowerfulButton>
-                                        <PowerfulButton
-                                            type="button"
-                                            onClick={() => navigate("/login")}
-                                        >
-                                            <a href="/login">Go Back</a>
-                                        </PowerfulButton>
+
+                                        <a href="/login">Go Back</a>
                                     </div>
                                 </Form>
                             </div>
