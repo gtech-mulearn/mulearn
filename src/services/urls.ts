@@ -15,7 +15,8 @@ export const onboardingRoutes = {
     colleges: "/api/v1/register/colleges/",
     departments: "/api/v1/register/department/list/",
     companies: "/api/v1/register/company/list/",
-    validate: "/api/v1/register/validate/"
+    validate: "/api/v1/register/validate/",
+    location:'/api/v1/register/location/?q=${param}'
 } as const;
 
 export const authRoutes = {

@@ -3,10 +3,9 @@ import OnboardingTemplate from "../../../components/OnboardingTeamplate/Onboardi
 import OnboardingHeader from "../../../components/OnboardingHeader/OnboardingHeader";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
-import { getCommunities } from "../../../services/onboardingApis";
+import { getCommunities, getLocations } from "../../../services/onboardingApis";
 import { validate } from "../../../services/newOnboardingApis";
 import { Form, Formik } from "formik";
-
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
@@ -24,24 +23,29 @@ export default function CommunityPage() {
     let userData = location.state;
     const animatedComponents = makeAnimated();
     const urlParams = new URLSearchParams(window.location.search);
+    const [locationParam, setLocationParam] = useState("india");
+    const [locationData, setLocationData] = useState([
+        { id: "", location: "" }
+    ])
+    const [isApiCalled, setIsApiCalled] = useState(false);
     const param = urlParams.get("param");
     const toast = useToast();
     useEffect(() => {
-        if (userData === undefined || userData === null)
+        if (userData === undefined || userData === null) {
             navigate("/register", { replace: true });
-
+        }
         setIsLoading(true);
         getCommunities({
             setCommunityAPI: setCommunitiesList,
             setIsLoading: setIsLoading
         });
+        getLocations(locationParam, setLocationData, setIsApiCalled)
         setIsLoading(false);
     }, []);
-
     const handleSubmit = async (values: any) => {
         if (values.communities) userData.communities = values.communities;
+        if (values.district) userData.district = values.district;
         if (values.referral) userData.referral = { muid: values.referral };
-        console.log(userData, values.referral);
         const isSuccess = await validate({
             userData: userData,
             setIsSubmitting: setIsLoading,
@@ -49,6 +53,15 @@ export default function CommunityPage() {
         });
         if (isSuccess) navigate("/register/select-role", { state: userData });
     };
+
+    const handleGetLocation = async () => {
+        getLocations(locationParam, setLocationData, setIsApiCalled)
+    }
+    useEffect(() => {
+        if (!isApiCalled) {
+            handleGetLocation()
+        }
+    }, [locationParam])
     return (
         <OnboardingTemplate>
             <OnboardingHeader
@@ -69,6 +82,43 @@ export default function CommunityPage() {
                             <div className={styles.accountCreationInputs}>
                                 <div>
                                     <Select
+                                        name="District"
+                                        placeholder="Select District"
+                                        onChange={(data) => {
+                                            if (data) {
+                                                // Use a type assertion to specify the correct type
+                                                const id = (data as any).value;
+                                                console.log(id);
+                                                formik.setFieldValue(
+                                                    "district",
+                                                    id
+                                                );
+                                            }
+                                        }}
+
+                                        closeMenuOnSelect={false}
+                                        components={animatedComponents}
+                                        isClearable
+                                        // isMulti
+                                        filterOption={(option, inputValue) => {
+                                            if (inputValue === "") {
+                                                setLocationParam("india")
+                                            }
+                                            setLocationParam(inputValue)
+                                            return option.label.toLowerCase().includes(inputValue.toLowerCase());
+                                        }}
+                                        options={locationData.map(
+                                            location => {
+                                                return {
+                                                    value: location.id,
+                                                    label: location.location
+                                                };
+                                            }
+                                        )}
+                                    />
+                                </div>
+                                <div>
+                                    <Select
                                         name="communities"
                                         placeholder="Select Communities"
                                         onChange={OnChangeValue => {
@@ -86,9 +136,9 @@ export default function CommunityPage() {
                                         defaultValue={
                                             param
                                                 ? {
-                                                      value: "ebb42790-571e-4d9e-b65e-d367faad5746",
-                                                      label: "KKEM"
-                                                  }
+                                                    value: "ebb42790-571e-4d9e-b65e-d367faad5746",
+                                                    label: "KKEM"
+                                                }
                                                 : null
                                         }
                                         isMulti
