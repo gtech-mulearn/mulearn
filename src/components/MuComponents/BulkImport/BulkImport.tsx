@@ -124,14 +124,6 @@ const BulkImport = ({ path, fileName, onUpload, onError, ...rest }: Props) => {
 
     return (
         <div className={styles.container}>
-            {isLoading ? 
-                 (
-                    // Display loader here
-                    <div className={styles.loader}>
-                        <MuLoader />
-                    </div>
-                ) 
-            : (
             <div
                 className={`file-upload ${isDragging ? "dragging" : ""}`}
                 onDragEnter={handleDragEnter}
@@ -175,8 +167,13 @@ const BulkImport = ({ path, fileName, onUpload, onError, ...rest }: Props) => {
                 )}
             </div>
 
-            )}
-            
+            <div>
+                {isLoading && (
+                        <div>
+                            <MuLoader />
+                        </div>
+                    )}
+            </div>           
         </div>
     );
 };
