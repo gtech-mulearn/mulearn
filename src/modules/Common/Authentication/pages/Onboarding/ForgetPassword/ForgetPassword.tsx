@@ -77,7 +77,7 @@ const ForgetPassword = () => {
                                             type="button"
                                             onClick={() => navigate("/login")}
                                         >
-                                            Go Back
+                                            <a href="/login">Go Back</a>
                                         </PowerfulButton>
                                     </div>
                                 </Form>
