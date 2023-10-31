@@ -100,3 +100,11 @@ export const convert24to12 = (time24: string): string => {
         .padStart(2, "0")} ${period}`;
     return formattedTime;
 };
+
+export function covertNumToK(num: number) {
+    if (num < 1000) {
+        return num;
+    } else {
+        return String((num / 1000).toFixed(2)) + "k";
+    }
+}
