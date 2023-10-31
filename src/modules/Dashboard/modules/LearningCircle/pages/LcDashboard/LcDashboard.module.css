@@ -18,6 +18,7 @@
     align-items: flex-start;
     padding: 30px;
     border-radius: 12px;
+    gap: 10px;
 }
 
 .TitleContainerWrapper .Title {
@@ -37,6 +38,7 @@
 .TitleContainerWrapper .Title h3 {
     color: black;
     font-weight: 600;
+    font-size: 16px;
 }
 
 .TitleContainerWrapper .RankSession {
@@ -77,6 +79,53 @@
     color: rgba(69, 111, 246, 1);
     background-color: white;
     box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.15);
+}
+.ContainerWrapper {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.ContainerWrapper .SwitchNav {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.ContainerWrapper .SwitchNav .items {
+    padding: 8px 20px;
+    background-color: #f3f3f4;
+    color: black;
+    font-weight: 600;
+    border-radius: 15px;
+}
+.ContainerWrapper .SwitchNav .active {
+    background-color: white;
+    border-radius: 15px 15px 0px 0px;
+}
+
+.ContainerWrapper .SwitchNav .plusItem {
+    border-left: 2px solid #8b8e92;
+    color: black;
+    font-size: 25px;
+    padding: 0px;
+    height: fit-content;
+    padding-left: 10px;
+    line-height: 1;
+}
+
+@media screen and (max-width: 500px) {
+    .TitleContainerWrapper .Title h1,
+    .TitleContainerWrapper .RankSession h1 {
+        font-size: 35px;
+    }
+
+    .TitleContainerWrapper .Title h3,
+    .TitleContainerWrapper .RankSession h3 {
+        font-size: 15px;
+    }
 }
 /* ReportWrapper */
 
@@ -171,6 +220,8 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    font-size: 17px;
+   
 }
 .ReportWrapper .DetailSection .SectionThree > div button {
     font-size: 40px;
@@ -217,6 +268,34 @@
     border-radius: 8px;
     width: fit-content;
 }
+
+@media screen and (max-width: 1050px) {
+    .ReportWrapper {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .ReportWrapper .DetailSection,
+    .ReportWrapper .UploadSection {
+        width: 100%;
+    }
+    .ReportWrapper .DetailSection .SectionThree > div div{
+        font-size: 15px;
+    }
+}
+@media screen and (max-width: 420px){
+.ReportWrapper .DetailSection .Sectionone{
+    flex-direction: column;
+    gap: 15px;
+}
+.ReportWrapper .DetailSection .Sectionone > div{
+    width: 80%;
+    min-width: 250px;
+}
+.ReportWrapper .DetailSection .SectionThree > div div{
+    font-size: 14px;
+}
+}
 /* Past data Wrapper */
 .HistoryDataWrapper {
     width: 100%;
@@ -230,10 +309,11 @@
 .HistoryDataWrapper > div {
     display: flex;
     justify-content: space-between;
-    gap: 10px;
+    gap: 2%;
+    flex-wrap: wrap;
 }
 .HistoryDataWrapper > div > div {
-    min-width: 300px;
+    min-width: 250px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -248,10 +328,12 @@
     color: black;
     font-size: 22px;
     font-weight: 600;
+    line-height: 1;
 }
 .HistoryDataWrapper > div > div > p {
     color: black;
     text-align: left;
+    font-size: 16px;
 }
 .HistoryDataWrapper > div > div > div > p {
     color: black;
@@ -264,7 +346,7 @@
     align-items: flex-start;
 }
 .HistoryDataWrapper .Headings {
-    width: 40%;
+    width: 38%;
 }
 .HistoryDataWrapper .detailedSection {
     width: 60%;
@@ -277,43 +359,36 @@
 .HistoryDataWrapper .SectionBottom .detailedSection {
     display: flex !important;
     flex-direction: row;
+    flex-wrap: wrap;
+}
+.HistoryDataWrapper .SectionBottom .detailedSection img {
+    height: 180px;
+    width: 230px;
+    object-fit: cover;
+}
+@media screen and (max-width: 1000px) {
+    .HistoryDataWrapper .Headings,
+    .HistoryDataWrapper .detailedSection {
+        width: 100%;
+    }
+    .HistoryDataWrapper > div {
+        gap: 10px;
+    }
+    .HistoryDataWrapper .SectionBottom .Headings p {
+        font-size: 14px;
+    }
+}
+@media screen and (max-width: 500px) {
+    .HistoryDataWrapper .SectionBottom .detailedSection img {
+        height: auto;
+        width: 100%;
+        max-width: 350px;
+    }
+    .HistoryDataWrapper > div > div > p {
+        font-size: 14px;
+    }
 }
 /* Default Container */
-.ContainerWrapper {
-    width: 100%;
-
-    display: flex;
-    flex-direction: column;
-    align-items: baseline;
-}
-
-.ContainerWrapper .SwitchNav {
-    display: flex;
-    gap: 5px;
-    align-items: center;
-}
-
-.ContainerWrapper .SwitchNav .items {
-    padding: 8px 20px;
-    background-color: #f3f3f4;
-    color: black;
-    font-weight: 600;
-    border-radius: 15px;
-}
-.ContainerWrapper .SwitchNav .active {
-    background-color: white;
-    border-radius: 15px 15px 0px 0px;
-}
-
-.ContainerWrapper .SwitchNav .plusItem {
-    border-left: 2px solid #8b8e92;
-    color: black;
-    font-size: 25px;
-    padding: 0px;
-    height: fit-content;
-    padding-left: 10px;
-    line-height: 1;
-}
 
 .ContainerWrapper .ContentWrapper {
     width: 100%;
@@ -327,7 +402,8 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
-    gap: 20px;
+    gap: 2%;
+    flex-wrap: wrap;
 }
 
 .ContainerWrapper .ContentWrapper .TopContainer > div {
@@ -340,9 +416,10 @@
 .ContainerWrapper .ContentWrapper .TopContainer .sectionOne {
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 68%;
     gap: 10px;
     font-weight: 600;
+    min-width: none;
 }
 .ContainerWrapper .ContentWrapper .TopContainer .sectionOne p {
     font-size: 18px;
@@ -386,11 +463,12 @@
 }
 .ContainerWrapper .ContentWrapper .TopContainer .sectionTwo {
     width: 30%;
-    min-width: 300px;
+    min-width: 250px;
     align-items: center;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 10px;
 }
 .ContainerWrapper .ContentWrapper .TopContainer .sectionTwo button {
     background-color: rgba(69, 111, 246, 1);
@@ -409,12 +487,65 @@
     width: 100%;
     gap: 10px;
 }
+.ContainerWrapper .ContentWrapper .BottomContainer > div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+}
 .ContainerWrapper .ContentWrapper .BottomContainer > p {
     align-self: flex-start;
     color: black;
     font-size: 18px;
     font-weight: 600;
 }
+
+@media screen and (max-width: 1350px) {
+    .ContainerWrapper .ContentWrapper .TopContainer .sectionOne {
+        width: 100%;
+    }
+    .ContainerWrapper .ContentWrapper .TopContainer {
+        gap: 15px;
+    }
+    .ContainerWrapper .ContentWrapper .TopContainer .sectionTwo {
+        width: 60%;
+    }
+}
+@media screen and (max-width: 500px) {
+    .ContainerWrapper
+        .ContentWrapper
+        .TopContainer
+        .sectionOne
+        .divOne
+        > div
+        h1 {
+        font-size: 25px;
+        text-align: left;
+    }
+    .ContainerWrapper .ContentWrapper .TopContainer .sectionOne .secondDiv {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .ContainerWrapper .ContentWrapper .TopContainer .sectionOne .secondDiv p {
+        font-size: 15px;
+    }
+
+    .ContainerWrapper
+        .ContentWrapper
+        .TopContainer
+        .sectionOne
+        .secondDiv
+        button {
+        width: 100%;
+        padding: 8px;
+        font-size: 15px;
+    }
+    .ContainerWrapper .ContentWrapper .TopContainer .sectionTwo {
+        width: 100%;
+    }
+}
+
 /* HistoryDiv */
 
 .HistoryDivWrapper {
@@ -424,6 +555,7 @@
     border-radius: 12px;
     border: 1px solid rgba(136, 136, 136, 1);
     padding: 15px 30px;
+    gap: 5px;
 }
 
 .HistoryDivWrapper div {
@@ -434,7 +566,15 @@
     font-weight: 600;
     align-items: center;
 }
-
+@media screen and (max-width: 400px) {
+    .HistoryDivWrapper {
+        padding: 15px;
+    }
+    .HistoryDivWrapper p {
+        font-size: 15px;
+        text-align: left;
+    }
+}
 /* CheckBoxContainer */
 
 .CheckBoxContainerWrapper {

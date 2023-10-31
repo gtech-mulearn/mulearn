@@ -30,10 +30,8 @@ const LearningCircleLandingPage = () => {
     return (
         <>
             {isLoading ? (
-                <div className={styles.spinner_container}>
-                    <div className={styles.spinner}>
-                        <MuLoader />
-                    </div>
+                <div className={styles.loader_container}>
+                    <MuLoader />
                 </div>
             ) : (
                 <div className={styles.learningCircleLandingPage}>
@@ -83,6 +81,11 @@ const LearningCircleLandingPage = () => {
                                                 className={
                                                     styles.learningCircleLandingPageMainList
                                                 }
+                                                onClick={() => {
+                                                    navigate(
+                                                        `/dashboard/learning-circle/details/${circle.id}`
+                                                    );
+                                                }}
                                             >
                                                 <input
                                                     className={

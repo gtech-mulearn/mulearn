@@ -236,7 +236,7 @@ export const getUUID = async () => {
         ).sort((a, b) =>
             //check for name/title key and then compare
             (a.name !== undefined && a.name < b.name) ||
-            (a.title !== undefined && a.title < b.title)
+                (a.title !== undefined && a.title < b.title)
                 ? -1
                 : 1
         );

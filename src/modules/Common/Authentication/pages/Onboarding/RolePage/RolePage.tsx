@@ -61,11 +61,11 @@ export default function Rolepage() {
             navigate: navigate
         });
     };
-    console.log(roles);
+    console.log(selectedRole);
     return (
         <OnboardingTemplate>
             <OnboardingHeader
-                title={"What describe you the most!"}
+                title={"What describes you the most!"}
                 desc={"Please select your role"}
             />
             {isloading ? (
@@ -76,7 +76,7 @@ export default function Rolepage() {
                         className={
                             styles.rolePageCards +
                             " " +
-                            (selectedRole !== "Other" &&
+                            (!["Other", "Graduate"].includes(selectedRole) &&
                                 selectedRole &&
                                 styles.cardSmall)
                         }
@@ -112,7 +112,7 @@ export default function Rolepage() {
                             <CompanyPage selectedRole={selectedRoleId} />
                         ))}
 
-                    {selectedRole === "Other" && (
+                    {["Other", "Graduate"].includes(selectedRole) && (
                         <button
                             className={styles.buttonWidth}
                             onClick={() => {

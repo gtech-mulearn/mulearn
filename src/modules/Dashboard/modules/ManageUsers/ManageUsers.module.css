@@ -35,7 +35,7 @@
         grid-template-columns: 1fr;
     }
     .container {
-        width: 100%;
+        width: 90vw;
     }
 }
 

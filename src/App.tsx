@@ -36,6 +36,7 @@ import ResetPassword from "./modules/Common/Authentication/pages/Onboarding/Rese
 import LcDashboard from "./modules/Dashboard/modules/LearningCircle/pages/LcDashboard/LcDashboard";
 import { Toaster } from "react-hot-toast";
 import CommunityPage from "./modules/Common/Authentication/pages/Onboarding/CommunityPage/CommunityPage";
+import Foundation from "./modules/Public/Foundation/Foundation";
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
 );
@@ -430,7 +431,7 @@ function App() {
                             path: "/dashboard/error-log",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN]}
+                                    roles={[roles.ADMIN, roles.TECH_TEAM]}
                                     children={<ErrorLog />}
                                 />
                             )
@@ -605,6 +606,10 @@ function App() {
         {
             path: "/kkem/learningcircles/dashboard",
             element: <LearningCircles />
+        }, {
+            path: "/foundation",
+            element: <Foundation />
+
         }
     ]);
 
