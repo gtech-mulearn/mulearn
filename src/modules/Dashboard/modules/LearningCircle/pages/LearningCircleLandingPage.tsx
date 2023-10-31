@@ -130,7 +130,7 @@ const LearningCircleLandingPage = () => {
                                                             }}
                                                             onClick={() => {
                                                                 navigate(
-                                                                    `/dashboard/learning-circle/details/${circle.id}`
+                                                                    `/dashboard/learning-circle/dashboard/${circle.id}`
                                                                 );
                                                             }}
                                                         >
