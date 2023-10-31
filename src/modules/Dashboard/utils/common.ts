@@ -1,4 +1,5 @@
 import { Option } from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import toast from "react-hot-toast";
 
 export const DateConverter = (date: string) => {
     const parsedDate = new Date(date);
@@ -133,3 +134,10 @@ export const customReactSelectStyles = {
     })
     // Add more components as needed
 };
+
+
+export const comingSoon = () => {
+	toast("Feature coming soon!", {
+        icon: "⌛"
+    });
+}
