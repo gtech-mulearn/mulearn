@@ -851,6 +851,7 @@
 
 .LearningCircleCreateForm {
     display: flex;
+    flex-direction: column;
 }
 
 .LearningCircleCreateForm input {
