@@ -607,3 +607,132 @@
     height: 25px;
     border-radius: 50%;
 }
+
+/* Css for Meeting Schedule */
+.BtnBtn {
+    padding: 0.5rem 2.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    color: var(--White);
+    background-color: var(--blue);
+}
+
+.ScheduleOn {
+    text-align: center;
+}
+
+.ScheduleOn b {
+    font-size: 1.5rem;
+}
+
+.ScheduleOn p {
+    color: var(--blue);
+}
+
+.InputSchedule {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-bottom: 1rem;
+}
+
+.InputSchedule div {
+    display: flex;
+    gap: 1rem;
+}
+
+.InputSchedule input {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background-color: #f3f3f3;
+
+    outline: none;
+}
+
+.dateandtime {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.inputVenue{
+    width: 50%;
+    background: #ececec;
+    display: flex;
+    flex-direction: column;
+    height: 45px;
+    margin-top: 10px;
+    border-radius: 6px;
+    padding: 1rem;
+}
+
+.inputTime{
+    width: 40%;
+}
+
+.weeks {
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.InputSchedule .weeks p {
+    font-size: medium;
+    font-weight: 400;
+}
+
+.Lcweek {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    flex: 1;
+}
+
+.Lcweek div {
+    position: relative;
+}
+
+.Lcweek div label {
+    position: absolute;
+    font-size: 0.8rem;
+    font-weight: 400;
+    width: 40px;
+    height: 40px;
+    color: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.Lcweek input[type="checkbox"] {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background-color: #f3f3f3;
+    outline: none;
+    border: none;
+    transition: 0.3s;
+    --webkit-appearance: none;
+    appearance: none;
+}
+
+.Lcweek input[type="checkbox"]:checked {
+    background-color: #456ff6;
+    border: none;
+}
+
+.Lcweek input[type="checkbox"]:after {
+    display: none;
+}
+
+.Lcweek input[type="checkbox"]:checked + label {
+    color: var(--White);
+}
