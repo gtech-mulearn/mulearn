@@ -131,7 +131,11 @@ const LearningCircleLandingPage = () => {
                                                                 width: "fit-content",
                                                                 padding: "10px"
                                                             }}
-                                                          
+                                                            onClick={() => {
+                                                                navigate(
+                                                                    `/dashboard/learning-circle/dashboard/${circle.id}`
+                                                                );
+                                                            }}
                                                         >
                                                             <BsChevronRight />
                                                         </PowerfulButton>

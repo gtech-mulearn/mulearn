@@ -46,22 +46,22 @@ const ErrorLog = () => {
             <div className={styles.ErrorLogButtonContainer}>
                 <button
                     className={styles.errorLogButton}
-                    onClick={() => handleSubmit("route/")}
+                    onClick={() => handleSubmit("root/")}
                 >
                     <div className={styles.errorLogBox}>
                         <BsCloudDownload />
                     </div>
-                    Download Route
+                    Download Root
                 </button>
 
                 <button
                     className={styles.errorLogButton}
-                    onClick={() => handleClearLog("route/")}
+                    onClick={() => handleClearLog("root/")}
                 >
                     <div className={styles.errorLogBox}>
                         <BsCloudDownload />
                     </div>
-                    Clear Route
+                    Clear Root
                 </button>
             </div>
 
@@ -83,7 +83,7 @@ const ErrorLog = () => {
                     <div className={styles.errorLogBox}>
                         <BsCloudDownload />
                     </div>
-                    Clear Route
+                    Clear Root
                 </button>
             </div>
 
