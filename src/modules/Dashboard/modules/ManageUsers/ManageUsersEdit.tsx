@@ -100,33 +100,24 @@ const ManageUsersEdit = (props: Props) => {
         getRoles(errorHandler, setRole);
 
         //user data
-        getManageUsersDetails(id, setData).then(() => setIsFetching(false));
+        // getManageUsersDetails(id, setData).then(() => setIsFetching(false));
     }, []);
 
-    useEffect(() => {
-        const newData: any = data?.organizations?.filter((item) => (item as any).org_type !== "Community")[0] || {
-            title: "",
-            org_type: "",
-            department: "",
-            graduation_year: 0,
-            country: "",
-            state: "",
-            district: ""
-        };
-
-        if (newData?.country && state[0].value == "")
-            getState(errorHandler, setState, { country: newData.country });
-        if (newData.state && district[0].value == "")
-            getDistrict(errorHandler, setDistrict, { state: newData.state });
-        if (newData?.district)
-            getColleges(
-                setCollegTemp,
-                setCollege,
-                setDepartment,
-                errorHandler,
-                { district: newData.district }
-            );
-    }, [data]);
+    // useEffect(() => {
+    //     //useEffect to recall lower demographic levels if previous level exist
+    //     if (data?.country && state[0].value == "")
+    //         getState(errorHandler, setState, { country: data.country });
+    //     if (data?.state && district[0].value == "")
+    //         getDistrict(errorHandler, setDistrict, { state: data.state });
+    //     if (data?.district)
+    //         getColleges(
+    //             setCollegTemp,
+    //             setCollege,
+    //             setDepartment,
+    //             errorHandler,
+    //             { district: data.district }
+    //         );
+    // }, [data]);
     if (
         !community[0].id ||
         !interestGroup[0].id ||
@@ -165,7 +156,7 @@ const ManageUsersEdit = (props: Props) => {
                                 filteredCommunity,
                                 values.department ?? undefined,
                                 values.graduation_year ?? undefined,
-                                values.role,
+                                // values.role,
                                 values.interest ?? undefined // use nullish coalescing operator to provide default value of undefined
                             );
                         }}
@@ -206,13 +197,13 @@ const ManageUsersEdit = (props: Props) => {
                                         )
                                     )}
                                     <br />
-                                    {data?.role?.includes(
+                                    {/* {data?.role?.includes(
                                         roleStr(roles.STUDENT)
                                     ) && (
                                             <FormikTextInput
                                                 {...formikProps.student}
                                             />
-                                        )}
+                                        )} */}
                                 </div>
                             </div>
                             <div className={styles.btn_container}>
