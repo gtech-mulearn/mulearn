@@ -15,7 +15,8 @@ export const onboardingRoutes = {
     colleges: "/api/v1/register/colleges/",
     departments: "/api/v1/register/department/list/",
     companies: "/api/v1/register/company/list/",
-    validate: "/api/v1/register/validate/"
+    validate: "/api/v1/register/validate/",
+    location:'/api/v1/register/location/?q=${param}'
 } as const;
 
 export const authRoutes = {
@@ -138,7 +139,8 @@ export const dashboardRoutes = {
     getDynamicRoles: "api/v1/dashboard/dynamic-management/dynamic-role/",
     getDynamicUser: "api/v1/dashboard/dynamic-management/dynamic-user/",
 
-    getErrorLog: "api/v1/dashboard/error-log/"
+    getErrorLog: "api/v1/dashboard/error-log/",
+    clearErrorLog: "api/v1/dashboard/error-log/clear/"
 } as const;
 
 export const organizationRoutes = {
@@ -155,7 +157,7 @@ export const organizationRoutes = {
     deleteAffiliation:
         "/api/v1/dashboard/organisation/institutes/affiliation/delete/",
 
-    getLocation: "/api/v1/dashboard/location",
+    getLocation: "/api/v1/dashboard/location/",
     postAddOrganization: "/api/v1/dashboard/organisation/institutes/create/",
     putUpdateOrganization: "/api/v1/dashboard/organisation/institutes/edit/",
     deleteOrgnaization: "/api/v1/dashboard/organisation/institutes/delete/",
