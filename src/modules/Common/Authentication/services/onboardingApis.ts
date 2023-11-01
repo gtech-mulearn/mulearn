@@ -7,7 +7,7 @@ import { Dispatch, SetStateAction } from "react";
 
 // Define the type of MyValues
 type NN = { name: string; id: string };
-type TT = { title: string; id: string };
+ export type TT = { title: string; id: string };
 
 type InitialValues = {
     firstName: string;
@@ -36,7 +36,7 @@ type FormikType = ReturnType<typeof useFormik<InitialValues>>;
 type getAPI = UseStateFunc<TT[]>;
 type AoiAPI = UseStateFunc<NN[]>;
 
-type collegeOptions = UseStateFunc<
+export type collegeOptions = UseStateFunc<
     {
         value: string;
         label: string;
