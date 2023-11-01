@@ -42,6 +42,7 @@ export const dashboardRoutes = {
     getUsersEditData: "/api/v1/dashboard/user/edit/",
     getUsersList: "/api/v1/dashboard/user/csv/",
     getUsersRoleVerificationData: "/api/v1/dashboard/user/verification/",
+    getUsersRoleDelete: "/api/v1/dashboard/user/verification/",
     getUserRoleVerificationCSV: "/api/v1/dashboard/user/verification/csv/",
     getTasksData: "/api/v1/dashboard/task/",
     getRolesData: "/api/v1/dashboard/roles/",
