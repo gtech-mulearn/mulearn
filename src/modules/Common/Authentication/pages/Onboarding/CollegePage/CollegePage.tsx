@@ -77,12 +77,11 @@ export default function CollegePage({
     const CustomFilter = (
         { label, value }: { label: string; value: string },
         string: string
-      ): boolean => {
-          if (value === "Others") return true; // Always show "Others" option
-          if (!string) return true;
-          return label.toLowerCase().includes(string.toLowerCase());
-      };
-      
+    ): boolean => {
+        if (value === "Others") return true; // Always show "Others" option
+        if (!string) return true;
+        return label.toLowerCase().startsWith(string.toLowerCase());
+    };
 
     useEffect(() => {
         if (userData === undefined || userData === null) {
