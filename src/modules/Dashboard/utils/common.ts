@@ -136,8 +136,10 @@ export const customReactSelectStyles = {
 };
 
 
+
 export const comingSoon = () => {
 	toast("Feature coming soon!", {
         icon: "⌛"
     });
 }
+
