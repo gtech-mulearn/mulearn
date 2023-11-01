@@ -214,6 +214,13 @@ const TaskCreate = () => {
                                 );
                             })}
                         </FormikSelect>
+                        <FormikTextInput
+                            label="Event"
+                            name="event"
+                            type="text"
+                            placeholder="..."
+                            required
+                        />
                         <div className={styles.btn_container}>
                             <button
                                 className={styles.btn_cancel}
