@@ -166,6 +166,12 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     hasView: true,
                     roles: [roles.ADMIN, roles.FELLOW, roles.ASSOCIATE]
                     // icon: <i className="fi fi-sr-globe"></i>
+                },
+                {
+                    url: "/dashboard/organization-transfer",
+                    title: "Organization Transfer",
+                    hasView: true,
+                    roles: [roles.ADMIN]
                 }
             ]
         },
