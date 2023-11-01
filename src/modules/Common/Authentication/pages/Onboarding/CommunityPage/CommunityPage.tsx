@@ -70,7 +70,7 @@ export default function CommunityPage() {
                                 <div>
                                     <Select
                                         name="communities"
-                                        placeholder="Select Communities"
+                                        placeholder="Select Communities(Optional)"
                                         onChange={OnChangeValue => {
                                             const ids = OnChangeValue.map(
                                                 (e: any) => e.value
