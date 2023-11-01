@@ -1,12 +1,5 @@
 [
-  {
-    "name": "Abhijith E S",
-    "position": "Faculty Enablement",
-    "image": "assets/team/mulearnhq/Abhijith E S.webp",
-    "drive": "https://drive.google.com/file/d/15kuaGIWWMPuvVEGWFhzX13ydhR_Tw6xy/view?usp=share_link",
-    "linkedin": "https://www.linkedin.com/in/abhijithes/",
-    "twitter": "https://twitter.com/Abhijith_e_s_"
-  },
+
   {
     "name": "K Thomas Mathew",
     "position": "Partner Engagement",
@@ -25,15 +18,6 @@
     "github": "https://github.com/Angelrose19"
   },
   {
-    "name": "Vinu Balagopal A P",
-    "position": "Technology Evangelization",
-    "image": "assets/team/mulearnhq/Vinu Balagopal A P.webp",
-    "drive": "https://drive.google.com/file/d/1wSjDIpJ2QBbqXph8tWTvREdfSn5qfNma/view?usp=share_link",
-    "linkedin": "https://www.linkedin.com/in/vinubalagopalap/",
-    "twitter": "https://twitter.com/vinubalagopalap",
-    "github": "https://github.com/VinuBalagopalAP"
-  },
-  {
     "name": "Shaheen Hyder K",
     "position": "Operations and Development",
     "image": "assets/team/mulearnhq/Shaheen Hyder K.webp",
@@ -41,15 +25,6 @@
     "linkedin": "https://www.linkedin.com/in/shaheen-hyder/",
     "twitter": "https://twitter.com/shaheenhyderk",
     "github": "https://github.com/shaheenhyderk"
-  },
-  {
-    "name": "Deepraj R",
-    "position": "Program Management",
-    "image": "assets/team/mulearnhq/Deepraj R.webp",
-    "drive": "https://drive.google.com/file/d/1wvdGSxTa7sz06NrTF1XNq5WFhkxYMbXI/view?usp=share_link",
-    "linkedin": "https://www.linkedin.com/in/deeprajr/",
-    "twitter": "https://twitter.com/Deepraj_R_",
-    "github": "https://github.com/deeprajr"
   },
   {
     "name": "Rahul Nath R",
@@ -81,6 +56,5 @@
     "position": "Program Manager",
     "image": "assets/team/mulearnhq/Nadeem Ahmed.webp",
     "linkedin": "https://www.linkedin.com/in/ndmahmed/"
-  
   }
 ]
