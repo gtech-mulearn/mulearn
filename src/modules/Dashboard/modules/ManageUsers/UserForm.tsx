@@ -141,9 +141,9 @@ const UserForm = forwardRef(
         const [department, setDepartment] = useState<AffiliationOption[]>([]);
         const [ig, setIg] = useState<AffiliationOption[]>([]);
         const [selectedIg, setSelectedIg] = useState<AffiliationOption[]>([]);
-        const [selectedRoles, setSelectedRoles] = useState<AffiliationOption[]>([]);
-        
-      
+        const [selectedRoles, setSelectedRoles] = useState<AffiliationOption[]>(
+            []
+        );
 
         const [selectData, setSelectData] = useState({
             community: [] as AffiliationOption[],
@@ -187,7 +187,7 @@ const UserForm = forwardRef(
 
         const handleSubmit = (e?: React.FormEvent) => {
             e?.preventDefault();
-            const convertedRoles = selectedRoles.map(option => option.value) 
+            const convertedRoles = selectedRoles.map(option => option.value);
             const updatedData = {
                 ...data,
                 // affiliation: String(selectedAffiliation?.value),
@@ -198,10 +198,10 @@ const UserForm = forwardRef(
                 interest_groups: selectedIg.map(option => option.value),
                 organizations: [selectData.selectedCollege[0]?.value],
                 department: selectData.selectedDepartment[0]?.value,
-                community: selectData.selectedCommunity.map(option => option.value)
+                community: selectData.selectedCommunity.map(
+                    option => option.value
+                )
             };
-
-            console.log(selectData.selectedRoles);
 
             // Validate form data
             let isValid = true;
@@ -224,7 +224,7 @@ const UserForm = forwardRef(
             if (isValid) {
                 console.log(updatedData);
 
-                toast.promise(editUsers(props.id,updatedData), {
+                toast.promise(editUsers(props.id, updatedData), {
                     loading: "Saving...",
                     success: () => {
                         props.closeModal();
@@ -234,7 +234,7 @@ const UserForm = forwardRef(
                 });
             }
         };
-
+        console.log(data.roles);
         return (
             <div className={styles.container}>
                 <form className={styles.formContainer} onSubmit={handleSubmit}>
@@ -351,9 +351,15 @@ const UserForm = forwardRef(
                             isMulti
                             placeholder="Roles"
                             isLoading={!selectData.roles.length}
-                            // value={selectData.selectedRoles}
+                            value={selectData.roles.filter(role =>
+                                data.roles?.includes(role.value)
+                            )}
                             onChange={(selectedOptions: any) => {
-                                setSelectedRoles(selectedOptions);
+                                setData(data => ({
+                                    ...data,
+                                    roles: selectedOptions
+                                }));
+                                // setSelectedRoles(selectedOptions);
                             }}
                             onBlur={() => {
                                 setSelectData(prev => ({
