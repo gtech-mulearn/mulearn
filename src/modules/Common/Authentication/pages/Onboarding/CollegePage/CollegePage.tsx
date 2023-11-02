@@ -115,7 +115,8 @@ export default function CollegePage({
                 last_name: userData.user.last_name,
                 mobile: userData.user.mobile,
                 email: userData.user.email,
-                password: userData.user.password
+                password: userData.user.password,
+                district:userData.district
             },
             organization: {
                 ...(values.department !== "Others" && {

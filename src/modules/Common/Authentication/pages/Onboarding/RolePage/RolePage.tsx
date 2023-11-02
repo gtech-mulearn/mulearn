@@ -61,7 +61,7 @@ export default function Rolepage() {
             navigate: navigate
         });
     };
-    console.log(selectedRole);
+
     return (
         <OnboardingTemplate>
             <OnboardingHeader

@@ -15,7 +15,8 @@ export const onboardingRoutes = {
     colleges: "/api/v1/register/colleges/",
     departments: "/api/v1/register/department/list/",
     companies: "/api/v1/register/company/list/",
-    validate: "/api/v1/register/validate/"
+    validate: "/api/v1/register/validate/",
+    location:'/api/v1/register/location/?q=${param}'
 } as const;
 
 export const authRoutes = {
@@ -41,6 +42,7 @@ export const dashboardRoutes = {
     getUsersEditData: "/api/v1/dashboard/user/edit/",
     getUsersList: "/api/v1/dashboard/user/csv/",
     getUsersRoleVerificationData: "/api/v1/dashboard/user/verification/",
+    getUsersRoleDelete: "/api/v1/dashboard/user/verification/",
     getUserRoleVerificationCSV: "/api/v1/dashboard/user/verification/csv/",
     getTasksData: "/api/v1/dashboard/task/",
     getRolesData: "/api/v1/dashboard/roles/",
