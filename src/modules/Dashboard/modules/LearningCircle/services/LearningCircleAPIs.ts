@@ -156,11 +156,10 @@ export const createCircle = async (
                 duration: 2000,
                 isClosable: true
             });
+            setTimeout(() => {
+                navigate(`/dashboard/learning-circle/`);
+            }, 2000);
         }
-
-        setTimeout(() => {
-            navigate(`/dashboard/learning-circle/`);
-        }, 2000);
     }
 };
 
