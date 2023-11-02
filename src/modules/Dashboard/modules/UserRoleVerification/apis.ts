@@ -71,6 +71,32 @@ export const editUserRoleVerification = async (
         }
     }
 };
+
+export const deleteUserRole =  async (
+    id: string | undefined,
+    toast: ToastAsPara,
+) => {
+    
+    try {
+        const response = await privateGateway.delete(
+            dashboardRoutes.getUsersRoleVerificationData + id + "/",
+        );
+        const message: any = response?.data;
+        toast({
+            title: "User deleted",
+            status: "success",
+            duration: 3000,
+            isClosable: true
+        });
+        console.log(message)
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+};
+
 interface IData {
     verified: boolean;
 }

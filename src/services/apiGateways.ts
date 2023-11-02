@@ -1,6 +1,7 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { authRoutes } from "./urls";
 import { createStandaloneToast } from "@chakra-ui/react";
+import { toast as Toast, Toaster } from 'react-hot-toast';
 import { fetchLocalStorage } from "./common_functions";
 
 const { toast } = createStandaloneToast();
@@ -11,6 +12,7 @@ export const publicGateway = axios.create({
         "Content-Type": "application/json"
     }
 });
+
 
 // <--- Comment below code before PR, this is for backend testing
 // export const publicGatewayAuth = axios.create({
@@ -119,6 +121,12 @@ privateGateway.interceptors.response.use(
                 }, 3000);
                 return await Promise.reject(error_2);
             }
+        }
+
+        if (error.response?.data?.statusCode === 500) {
+            // publicGatewayAuth
+            //console.log("inside", error.response, error.response?.data?.statusCode)
+            Toast.error('A server error has occurred. Please try again later.');
         }
 
         // Any status codes that fall outside the range of 2xx cause this function to trigger
