@@ -117,6 +117,9 @@ const HackathonOrganizers = lazy(() =>
 const Organizations = lazy(
     () => import("./modules/Dashboard/modules/Organizations/Organizations")
 );
+const OrganizationTransfer = lazy(
+    () => import("./modules/Dashboard/modules/OrganizationTransfer/components/organizationTransfer")
+);
 const ManageUsers = lazy(
     () => import("./modules/Dashboard/modules/ManageUsers/ManageUsers")
 );
@@ -552,6 +555,15 @@ function App() {
                         {
                             path: "learning-circle/create-circle",
                             element: <LearningCircleCreate />
+                        },
+                        {
+                            path: "organization-transfer",
+                            element: (
+                                <RoleChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<OrganizationTransfer />}
+                                />
+                            )
                         }
                         // {
                         //     path: "marketplace",
