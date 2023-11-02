@@ -1,14 +1,32 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import styles from "../LcDashboard.module.css";
 import toast from "react-hot-toast";
+import { setLCMeetTime } from "../../../services/LearningCircleAPIs";
 
 type Props = {
     setTemp: Dispatch<SetStateAction<LcDashboardTempData>>;
-	lc: LcDetail | undefined;
+    lc: LcDetail | undefined;
+    id: string | undefined;
 };
 
 const LcSchedule = (props: Props) => {
-    const [meetDays, setMeetDays] = useState<number[]>([]);
+	const [meetDays, setMeetDays] = useState<number[]>([]);
+
+	const [meetSchedule, setMeetSchedule] = useState<LcMeetSchedule>({
+        meet_time: "",
+        meet_place: "",
+        day: ""
+    });
+
+	const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = event.target;
+
+        // Use the spread operator to create a new object with the updated property
+        setMeetSchedule(prevMeetSchedule => ({
+            ...prevMeetSchedule,
+            [name]: value
+        }));
+    };
 
 	const handleCheckboxChange = (
         event: React.ChangeEvent<HTMLInputElement>
@@ -21,19 +39,27 @@ const LcSchedule = (props: Props) => {
         );
     };
 
-	// const handleSchedule = async (event: any) => {
-    //     if (meetDays.length === 0 || meetTime === "" || meetVenue === "") {
-    //         toast({
-    //             title: "Please fill all the fields",
-    //             description: "",
-    //             status: "warning",
-    //             duration: 2000,
-    //             isClosable: true
-    //         });
-	// 		toast.success("Meeting scheduled successfully");
-    //         return;
-    //     }
-
+	const handleSchedule = async (event: any) => {
+		meetSchedule.day = meetDays.join(",");
+        if (meetDays.length === 0 || meetSchedule.meet_time === "" || meetSchedule.meet_place === "") {
+            toast.error("Please fill all the fields");
+		}
+		else {
+			console.log(meetSchedule)
+			toast.promise(setLCMeetTime(meetSchedule, props.id), {
+                loading: "Saving...",
+                success: () => {
+					props.setTemp(prev => ({
+						...prev,
+						isSchedule: false
+					}))
+                    return <b>Meeting schedule updated.</b>;
+                },
+                error: <b>Could not save.</b>
+            });
+		}
+	}
+	
     return (
         <>
             <div className={styles.ScheduleOn}>
@@ -42,39 +68,24 @@ const LcSchedule = (props: Props) => {
             </div>
 
             <div className={styles.dateandtime}>
-                {/* <Select
-                    options={generateTimeOptions()}
-                    value={generateTimeOptions().find(
-                        option => option.value === convert24to12(meetTime)
-                    )}
-                    isSearchable={false}
-                    onChange={e => {
-                        function convertTo24Hr(time: string) {
-                            const [timeStr, modifier] = time.split(" ");
-                            let [hours, minutes] = timeStr.split(":");
-                            if (hours === "12") {
-                                hours = "00";
-                            }
-                            if (modifier === "PM") {
-                                hours = String(parseInt(hours, 10) + 12);
-                            }
-                            return `${hours}:${minutes}`;
-                        }
-                        // console.log(e.value);
-                        e && setMeetTime(convertTo24Hr(e.value.toString()));
-                    }}
-                    className={styles.inputTime}
-                /> */}
+                <input
+                    type="time"
+                    id="timePicker"
+					required
+                    placeholder="Meeting time"
+                    name="meet_time"
+                    value={meetSchedule.meet_time}
+                    onChange={handleInputChange}
+                />
 
                 <input
                     required
-                    // value={meetVenue}
                     type="text"
-                    // onChange={e => {
-                    //     setMeetVenue(e.target.value);
-                    // }}
                     placeholder="meeting venue"
                     className={styles.inputVenue}
+                    name="meet_place"
+                    value={meetSchedule.meet_place}
+                    onChange={handleInputChange}
                 />
             </div>
             <div className={styles.InputSchedule}>
@@ -155,10 +166,11 @@ const LcSchedule = (props: Props) => {
                     </div>
                 </div>
             </div>
-
-            <button className={styles.BtnBtn}>
-                Schedule
-            </button>
+            <div className={styles.Bottom}>
+                <button className={styles.BtnBtn} onClick={handleSchedule}>
+                    Schedule
+                </button>
+            </div>
         </>
     );
 };

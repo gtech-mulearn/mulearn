@@ -11,6 +11,7 @@ type Props = {
     setTemp: Dispatch<SetStateAction<LcDashboardTempData>>;
     temp: LcDashboardTempData;
     lc: LcDetail | undefined;
+    id: string | undefined;
 };
 
 const LcHome = (props: Props) => {
@@ -53,7 +54,7 @@ const LcHome = (props: Props) => {
                     <div className={styles.TopContainer}>
                         <div className={styles.sectionOne}>
                             {props.temp.isSchedule ? (
-                                <LcSchedule setTemp={props.setTemp} lc={props.lc} />
+                                <LcSchedule setTemp={props.setTemp} lc={props.lc} id={props.id} />
                             ) : (
                                 <>
                                     <div className={styles.divOne}>
