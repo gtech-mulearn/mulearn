@@ -6,15 +6,17 @@ import LcReport from "./LcReport";
 import LcHistory from "./LcHistory";
 import LcSchedule from "./LcSchedule";
 import { comingSoon } from "../../../../../utils/common";
+import { getNextMeetingDate } from "../utils/LcNextMeet";
 
 type Props = {
     setTemp: Dispatch<SetStateAction<LcDashboardTempData>>;
     temp: LcDashboardTempData;
     lc: LcDetail | undefined;
+    id: string | undefined;
 };
 
 const LcHome = (props: Props) => {
-    const [schedule, setSchedule] = useState();
+	const nextMeet = getNextMeetingDate(props.lc?.day || [], props.lc?.meet_time === null ? "00:00" : String(props.lc?.meet_time));
     return (
         <div className={styles.ContainerWrapper}>
             <div className={styles.SwitchNav}>
@@ -53,14 +55,14 @@ const LcHome = (props: Props) => {
                     <div className={styles.TopContainer}>
                         <div className={styles.sectionOne}>
                             {props.temp.isSchedule ? (
-                                <LcSchedule setTemp={props.setTemp} lc={props.lc} />
+                                <LcSchedule setTemp={props.setTemp} lc={props.lc} id={props.id} />
                             ) : (
                                 <>
                                     <div className={styles.divOne}>
                                         <div>
                                             <p>Next meeting on</p>
-                                            <h1>22 June 2023</h1>
-                                            <p>Sunday</p>
+                                            <h1>{nextMeet?.formattedDate}</h1>
+                                            <p>{nextMeet?.nextMeetingDayName}</p>
                                         </div>
                                         <button
                                             onClick={() => {
@@ -75,9 +77,9 @@ const LcHome = (props: Props) => {
                                     </div>
                                     <div className={styles.secondDiv}>
                                         <div>
-                                            <p>Venue: Multipurpose Hall</p>
+                                            <p>Venue: {props.lc?.meet_place}</p>
                                             <p>
-                                                Time: {props.lc?.meet_time} PM
+                                                Time: {nextMeet?.formattedTime}
                                             </p>
                                         </div>
                                         <button

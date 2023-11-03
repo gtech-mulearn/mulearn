@@ -7,6 +7,8 @@ type Props = {
 };
 
 const LcTeam = (props: Props) => {
+    
+
     return (
         <div className={styles.ContainerWrapper}>
             <div className={styles.SwitchNav}>
@@ -18,7 +20,7 @@ const LcTeam = (props: Props) => {
                             isReport: false,
                             isHistory: false,
                             isTeam: false,
-							isSchedule: false
+                            isSchedule: false
                         })
                     }
                 >
@@ -38,7 +40,9 @@ const LcTeam = (props: Props) => {
             </div>
             <div className={styles.ContentWrapper}>
                 <div className={styles.TopContainer}>
-                    //! ADD TEAM code here...
+                    <div>
+                        test
+                    </div>
                 </div>
             </div>
         </div>

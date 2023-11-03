@@ -164,41 +164,19 @@ export const createCircle = async (
     }
 };
 
-export const setLCMeetTime = async (
-    meetTime: string,
-    meetPlace: string,
-    day: number[],
-    id: string | undefined
-) => {
+export const setLCMeetTime = async (data: LcMeetSchedule, id: string | undefined) => {
     try {
         const response = await privateGateway.patch(
-            dashboardRoutes.setLCMeetTime + id + "/",
-            {
-                meet_time: `${meetTime}`,
-                meet_place: meetPlace,
-                day: `${day}`
-            }
+            dashboardRoutes.setLCMeetTime + id,
+            data
         );
         const message: any = response?.data;
-        toast({
-            title: "Successful",
-            description: "",
-            status: "success",
-            duration: 2000,
-            isClosable: true
-        });
+		return message;
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
             throw error;
         }
-        toast({
-            title: "Try Again..",
-            description: "",
-            status: "error",
-            duration: 2000,
-            isClosable: true
-        });
     }
 };
 
