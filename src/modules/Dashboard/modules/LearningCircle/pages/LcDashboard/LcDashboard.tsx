@@ -44,7 +44,7 @@ const LcDashboard = (props: Props) => {
 
     useEffect(() => {
         handleFetchDetails();
-    }, []);
+    }, [temp.isSchedule]);
 
     return temp.loading ? (
         <MuLoader />
@@ -85,7 +85,7 @@ const LcDashboard = (props: Props) => {
             {temp.isTeam ? (
                 <LcTeam setTemp={setTemp} temp={temp}/>
             ) : (
-                <LcHome setTemp={setTemp} temp={temp} lc={lc}/>
+                <LcHome setTemp={setTemp} temp={temp} lc={lc} id={id}/>
             )}
         </div>
     );
