@@ -309,7 +309,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                         }
                                                         onClose={closeAllModals}
                                                         title={String(
-                                                            rowData["title"]
+                                                            rowData["title"] ? rowData["title"] : rowData["full_name"]
                                                         )}
                                                         type={"error"}
                                                         onDone={() => {

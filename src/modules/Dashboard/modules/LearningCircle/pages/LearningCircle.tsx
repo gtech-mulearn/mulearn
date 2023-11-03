@@ -173,7 +173,7 @@ const LearningCircle = (props: Props) => {
 
         // console.log("Meet days & time", getNextDate(meetDays, meetTime)); // get next date of meeting
 
-        setLCMeetTime(meetTime, meetVenue, meetDays, id);
+        // setLCMeetTime(meetTime, meetVenue, meetDays, id);
         setTimeout(() => {
             getLcDetails(setLc, id);
         }, 2000);

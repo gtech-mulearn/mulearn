@@ -42,3 +42,9 @@ interface LcDashboardTempData {
     isTeam: boolean;
     isSchedule: boolean;
 }
+
+interface LcMeetSchedule {
+    meet_time: string;
+    meet_place: string;
+    day: string;
+}

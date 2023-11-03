@@ -221,7 +221,6 @@
     flex-wrap: wrap;
     gap: 10px;
     font-size: 17px;
-   
 }
 .ReportWrapper .DetailSection .SectionThree > div button {
     font-size: 40px;
@@ -279,22 +278,22 @@
     .ReportWrapper .UploadSection {
         width: 100%;
     }
-    .ReportWrapper .DetailSection .SectionThree > div div{
+    .ReportWrapper .DetailSection .SectionThree > div div {
         font-size: 15px;
     }
 }
-@media screen and (max-width: 420px){
-.ReportWrapper .DetailSection .Sectionone{
-    flex-direction: column;
-    gap: 15px;
-}
-.ReportWrapper .DetailSection .Sectionone > div{
-    width: 80%;
-    min-width: 250px;
-}
-.ReportWrapper .DetailSection .SectionThree > div div{
-    font-size: 14px;
-}
+@media screen and (max-width: 420px) {
+    .ReportWrapper .DetailSection .Sectionone {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .ReportWrapper .DetailSection .Sectionone > div {
+        width: 80%;
+        min-width: 250px;
+    }
+    .ReportWrapper .DetailSection .SectionThree > div div {
+        font-size: 14px;
+    }
 }
 /* Past data Wrapper */
 .HistoryDataWrapper {
@@ -609,10 +608,16 @@
 }
 
 /* Css for Meeting Schedule */
+.Botton {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 .BtnBtn {
-    padding: 0.5rem 2.5rem;
+    padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     border: none;
+	width: 20%;
     color: var(--White);
     background-color: var(--blue);
 }
@@ -654,23 +659,30 @@
 .dateandtime {
     display: flex;
     flex-direction: row;
+	align-items: center;
     justify-content: space-evenly;
     width: 100%;
     flex-wrap: wrap;
 }
 
-.inputVenue{
-    width: 50%;
-    background: #ececec;
-    display: flex;
-    flex-direction: column;
+.dateandtime input[type="time"] {
+    padding: 0px 10px;
+    border-radius: 6px;
+    width: 47%;
     height: 45px;
-    margin-top: 10px;
+    padding: 1rem;
+	height: 80%;
+	
+}
+
+.inputVenue {
+    width: 47%;
+    height: 45px;
     border-radius: 6px;
     padding: 1rem;
 }
 
-.inputTime{
+.inputTime {
     width: 40%;
 }
 
@@ -683,11 +695,11 @@
 .InputSchedule .weeks p {
     font-size: medium;
     font-weight: 400;
+	margin-left: 32px;
 }
 
 .Lcweek {
     display: flex;
-    gap: 1.5rem;
     align-items: center;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -716,7 +728,7 @@
     width: 40px;
     height: 40px;
     border-radius: 100%;
-    background-color: #f3f3f3;
+	background-color: white;
     outline: none;
     border: none;
     transition: 0.3s;
