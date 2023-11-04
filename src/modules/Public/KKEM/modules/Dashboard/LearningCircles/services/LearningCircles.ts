@@ -28,9 +28,10 @@ export const getLCReport = (
     setTotalPages?: UseStateFunc<number>,
     search?: string,
     sortID?: string,
-    setLoading?: UseStateFunc<boolean>,
-    date?: string
+    date?: string,
+    setLoading?: UseStateFunc<boolean>
 ) => {
+    setLoading && setLoading(true);
     publicGateway
         .get(PublicRoutes.getLcReport, {
             params: {
@@ -50,6 +51,9 @@ export const getLCReport = (
         })
         .catch(error => {
             console.error(error);
+        })
+        .finally(() => {
+            setLoading && setLoading(false);
         });
 };
 
@@ -60,9 +64,10 @@ export const getOrgWiseReport = (
     setTotalPages?: UseStateFunc<number>,
     search?: string,
     sortID?: string,
-    setLoading?: UseStateFunc<boolean>,
-    date?: string
+    date?: string,
+    setLoading?: UseStateFunc<boolean>
 ) => {
+    setLoading && setLoading(true);
     publicGateway
         .get(PublicRoutes.getOrgWiseReport, {
             params: {
@@ -82,5 +87,8 @@ export const getOrgWiseReport = (
         })
         .catch(error => {
             console.error(error);
+        })
+        .finally(() => {
+            setLoading && setLoading(false);
         });
 };

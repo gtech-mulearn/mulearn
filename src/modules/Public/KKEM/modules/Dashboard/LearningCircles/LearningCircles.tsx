@@ -34,8 +34,8 @@ const LearningCircles = () => {
     useEffect(() => {
         if (authorized) {
             getLCDashboard(setLcCounts);
-            getLCReport(setLcReport, currentPage, perPage, setTotalPages, "", sort, setLoading);
-            getOrgWiseReport(setOrgWiseReport, orgCurrentPage, orgPerPage, setOrgTotalPages, "", sortOrg, setOrgLoading);
+            getLCReport(setLcReport, currentPage, perPage, setTotalPages, "", sort,"", setLoading);
+            getOrgWiseReport(setOrgWiseReport, orgCurrentPage, orgPerPage, setOrgTotalPages, "", sortOrg,"", setOrgLoading);
         }
     }, [authorized])
 
@@ -144,6 +144,7 @@ const LearningCircles = () => {
                 setTotalPages,
                 "",
                 `-${column}`,
+                "",
                 setLoading
 
             );
@@ -156,6 +157,7 @@ const LearningCircles = () => {
                 setTotalPages,
                 "",
                 column,
+                "",
                 setLoading
             );
         }
@@ -171,6 +173,7 @@ const LearningCircles = () => {
                 setOrgTotalPages,
                 "",
                 `-${column}`,
+                "",
                 setOrgLoading
             );
         } else {
@@ -182,6 +185,7 @@ const LearningCircles = () => {
                 setOrgTotalPages,
                 "",
                 column,
+                "",
                 setOrgLoading
             );
         }
@@ -232,11 +236,11 @@ const LearningCircles = () => {
                         <div>
                             <input type="date" className={styles.date} onChange={(e) => setDate(e.target.value)} />
                             <button className={styles.dateButton} onClick={() => {
-                                getLCReport(setLcReport, currentPage, perPage, setTotalPages, "", "", setLoading, date);
+                                getLCReport(setLcReport, currentPage, perPage, setTotalPages, "", "", date, setLoading);
                                 getLCDashboard(setLcCounts, date);
                             }}>Filter</button>
                             <button className={styles.dateButton} onClick={() => {
-                                getLCReport(setLcReport, currentPage, perPage, setTotalPages, "", "", setLoading);
+                                getLCReport(setLcReport, currentPage, perPage, setTotalPages, "", "","", setLoading);
                                 getLCDashboard(setLcCounts);
                             }
                             }>Clear</button>
