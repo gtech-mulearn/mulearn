@@ -71,7 +71,7 @@ export default function CommunityPage() {
             <Formik
                 initialValues={{
                     communities: [],
-                    referral: userData?.referral?.muid || null
+                    referral: userData?.referral?.muid || ""
                 }}
                 enableReinitialize={true}
                 onSubmit={handleSubmit}
