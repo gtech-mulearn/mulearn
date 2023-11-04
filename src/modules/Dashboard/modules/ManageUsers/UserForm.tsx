@@ -60,7 +60,7 @@ const UserForm = forwardRef(
             getManageUsersDetails(props.id).then(
                 (data: UserDataFromBackend) => {
                     console.log(data);
-                    const college = data.organizations.filter(
+                    const college = data.organizations?.filter(
                         org => org.org_type === "College"
                     )[0];
                     console.log(college);

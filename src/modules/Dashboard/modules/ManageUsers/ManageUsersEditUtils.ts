@@ -146,7 +146,7 @@ const inputs = (
                 isSearchable: true
             }
         ],
-        dropDowns: user?.role?.includes(roleStr(role, roles.MENTOR))
+        dropDowns: user?.roles?.includes(roleStr(role, roles.MENTOR))
             ? [
                   {
                       name: "company",
@@ -270,7 +270,7 @@ const inputs = (
         state: data?.state || "",
         district: data?.district || "",
         interest: user?.interest_groups,
-        role: user?.role
+        role: user?.roles
     };
 
     return { formikProps, initialValues };
