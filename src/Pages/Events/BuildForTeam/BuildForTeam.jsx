@@ -155,18 +155,11 @@ const Build4Team = () => {
                 <p className={styles.winner_name}>Edwin liby</p>
               </div>
               <div className={styles.winner}>
-                <a
-                  href="https://ilyasbabu.github.io/france-football-mulearn-pygrammer/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
                   <img
                     src="/assets/events/build4team/Ilyas.png"
                     alt=""
                     className={styles.winner_image}
                   />
-                </a>
-
                 <p className={styles.winner_team}>France</p>
                 <p className={styles.winner_name}>Ilyas Babu</p>
               </div>
@@ -187,18 +180,11 @@ const Build4Team = () => {
                 <p className={styles.winner_name}>Muhammed Farseen T P</p>
               </div>
               <div className={styles.winner}>
-                <a
-                  href="https://farragoweb.me/BUILD-4-TEAM/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {" "}
                   <img
                     src="/assets/events/build4team/Hashim.png"
                     alt=""
                     className={styles.winner_image}
                   />
-                </a>
                 <p className={styles.winner_team}>Argentina</p>
                 <p className={styles.winner_name}>Muhammed Hashim T</p>
               </div>
