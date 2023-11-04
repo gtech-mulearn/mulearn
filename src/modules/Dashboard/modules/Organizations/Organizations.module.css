@@ -32,10 +32,10 @@
 }
 
 .popupContainer {
-    width: 60%;
+    width: min(100%, 500px);
     height: -moz-max-content;
     height: max-content;
-    padding: 20px;
+
     border: none;
     border-radius: 8px;
     z-index: 0;
@@ -71,12 +71,16 @@
     text-align: start;
     margin-top: 8px;
     box-sizing: border-box;
+    align-self: end;
 }
 
 .gridContainer {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 15px;
+}
+.colspan {
+    grid-column: span 3;
 }
 
 .invisible {
@@ -147,6 +151,10 @@
     justify-content: center;
 }
 
+.threeSpan {
+    grid-column: span 3;
+}
+
 @keyframes s3 {
     100% {
         transform: rotate(1turn);
@@ -162,9 +170,8 @@
         width: 100%;
     }
 }
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 600px) {
     .popupDropdownContainer {
         grid-template-columns: repeat(1, 1fr);
     }
 } /*# sourceMappingURL=Organizations.css.map */
-

@@ -1,19 +1,20 @@
 import styles from "./RolePage.module.css";
 import OnboardingTemplate from "../../../components/OnboardingTeamplate/OnboardingTemplate";
 import OnboardingHeader from "../../../components/OnboardingHeader/OnboardingHeader";
-
+import CollegePage from "../CollegePage/CollegePage";
 import roleOptions from "./data/roleOptions";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
-import { getRoles } from "../../../services/newOnboardingApis";
+import { getRoles, submitUserData } from "../../../services/newOnboardingApis";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
+import CompanyPage from "../CompanyPage/CompanyPage";
 
 export default function Rolepage() {
     const navigate = useNavigate();
     const toast = useToast();
     const location = useLocation();
-    let userData = location.state as Object;
+    let userData = location.state;
 
     const [isloading, setIsLoading] = useState(true);
     const [roles, setRoles] = useState([{ id: "", title: "" }]);
@@ -23,10 +24,8 @@ export default function Rolepage() {
     const [selectedRoleId, setSelectedRoleId] = useState<string>("");
 
     useEffect(() => {
-        console.log("userData", userData);
-
         if (userData === undefined || userData === null) {
-            navigate("/signup", { replace: true });
+            navigate("/register", { replace: true });
         } else {
             getRoles({
                 setIsLoading: setIsLoading,
@@ -35,17 +34,53 @@ export default function Rolepage() {
         }
     }, []);
 
+    const submitData = () => {
+        const newUserData: any = {
+            user: {
+                first_name: userData.user.first_name,
+                last_name: userData.user.last_name,
+                mobile: userData.user.mobile,
+                email: userData.user.email,
+                password: userData.user.password
+            }
+        };
+
+        if (userData.referral_id)
+            newUserData["referral"] = { muid: userData.referral_id };
+        if (userData.param) {
+            newUserData["integration"]["param"] = userData.param;
+            newUserData["integration"]["title"] = "DWMS";
+        }
+        if (userData.referral)
+            newUserData["referral"] = { muid: userData.referral.muid };
+
+        submitUserData({
+            setIsLoading: setIsLoading,
+            userData: newUserData,
+            toast: toast,
+            navigate: navigate
+        });
+    };
+    console.log(selectedRole);
     return (
         <OnboardingTemplate>
             <OnboardingHeader
-                title={"What describe you the most!"}
+                title={"What describes you the most!"}
                 desc={"Please select your role"}
             />
             {isloading ? (
                 <MuLoader />
             ) : (
                 <div className={styles.rolePageConatiner}>
-                    <div className={styles.rolePageCards}>
+                    <div
+                        className={
+                            styles.rolePageCards +
+                            " " +
+                            (!["Other", "Graduate"].includes(selectedRole) &&
+                                selectedRole &&
+                                styles.cardSmall)
+                        }
+                    >
                         {roleOptions.map((roleOption: any) => {
                             let classname = `${styles.rolePageCard} ${
                                 selectedRole === roleOption.value &&
@@ -70,27 +105,23 @@ export default function Rolepage() {
                             );
                         })}
                     </div>
+                    {nextPage &&
+                        (nextPage === "select-college" ? (
+                            <CollegePage selectedRole={selectedRoleId} />
+                        ) : (
+                            <CompanyPage selectedRole={selectedRoleId} />
+                        ))}
 
-                    <button
-                        onClick={() => {
-                            console.log(selectedRoleId);
-
-                            if (selectedRole === "" || nextPage === "") {
-                                toast({
-                                    title: "Please select a role",
-                                    status: "error",
-                                    duration: 3000,
-                                    isClosable: true
-                                });
-                                return;
-                            }
-                            navigate(nextPage, {
-                                state: { ...userData, role: selectedRoleId }
-                            });
-                        }}
-                    >
-                        Continue
-                    </button>
+                    {["Other", "Graduate"].includes(selectedRole) && (
+                        <button
+                            className={styles.buttonWidth}
+                            onClick={() => {
+                                submitData();
+                            }}
+                        >
+                            Submit
+                        </button>
+                    )}
                 </div>
             )}
         </OnboardingTemplate>

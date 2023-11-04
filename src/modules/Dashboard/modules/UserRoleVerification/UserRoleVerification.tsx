@@ -6,6 +6,8 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { editUserRoleVerification, getUserRoleVerification } from "./apis";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
+import { dashboardRoutes } from "@/MuLearnServices/urls";
+
 
 function UsersRoleVerification() {
     const [data, setData] = useState<TData[]>([]);
@@ -134,6 +136,7 @@ function UsersRoleVerification() {
                     <TableTop
                         onSearchText={handleSearch}
                         onPerPageNumber={handlePerPageNumber}
+                        CSV={dashboardRoutes.getUserRoleVerificationCSV}
                     />
                     <Table
                         rows={data}

@@ -15,7 +15,6 @@ export const hackathonSchema = yup.object().shape({
     participantCount: yup
         .number()
         .positive("Number of users should be a positive value")
-        .min(10, "Needs to be at least 2 digits.")
         .max(999999, "Should not exceed 6 digits")
         .truncate(),
     website: yup.string().min(3, "Too Short!").max(200, "Too Long!"),

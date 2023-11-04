@@ -36,11 +36,12 @@ export const dashboardRoutes = {
         "/api/v1/dashboard/user/reset-password/verify-token/${token}/",
     getInfo: "/api/v1/dashboard/user/info/",
     getIgData: "/api/v1/dashboard/ig/",
-    getIgList: "/api/v1/dashboard/ig/csv",
+    getIgList: "/api/v1/dashboard/ig/csv/",
     getUsersData: "/api/v1/dashboard/user/",
     getUsersEditData: "/api/v1/dashboard/user/edit/",
     getUsersList: "/api/v1/dashboard/user/csv/",
     getUsersRoleVerificationData: "/api/v1/dashboard/user/verification/",
+    getUserRoleVerificationCSV: "/api/v1/dashboard/user/verification/csv/",
     getTasksData: "/api/v1/dashboard/task/",
     getRolesData: "/api/v1/dashboard/roles/",
     getRolesList: "api/v1/dashboard/roles/csv/",
@@ -66,7 +67,7 @@ export const dashboardRoutes = {
     getEditUserProfile: "/api/v1/dashboard/profile/",
     getUserLog: "/api/v1/dashboard/profile/user-log/",
     getUserLevels: "/api/v1/dashboard/profile/get-user-levels/",
-    getPublicUserLevels: "/api/v1/dashboard/profile/get-user-levels/${muid}",
+    getPublicUserLevels: "/api/v1/dashboard/profile/get-user-levels/${muid}/",
     putIsPublic: "/api/v1/dashboard/profile/share-user-profile/",
     getPublicUserLog: "/api/v1/dashboard/profile/user-log/${muid}/",
     getUserSuggestion: "/api/v1/dashboard/profile/user-suggestion/",
@@ -129,6 +130,7 @@ export const dashboardRoutes = {
     getZonalStudentLevels: "api/v1/dashboard/zonal/student-level/",
 
     collegeLevels: "api/v1/dashboard/college/",
+    collegeLevlesDelete: "api/v1/dashboard/college/delete/",
 
     //Dyanmic Type
     dtGetRoles: "api/v1/dashboard/dynamic-management/roles/",
@@ -136,7 +138,8 @@ export const dashboardRoutes = {
     getDynamicRoles: "api/v1/dashboard/dynamic-management/dynamic-role/",
     getDynamicUser: "api/v1/dashboard/dynamic-management/dynamic-user/",
 
-    getErrorLog: "api/v1/dashboard/error-log/"
+    getErrorLog: "api/v1/dashboard/error-log/",
+    clearErrorLog: "api/v1/dashboard/error-log/clear/"
 } as const;
 
 export const organizationRoutes = {
@@ -153,13 +156,20 @@ export const organizationRoutes = {
     deleteAffiliation:
         "/api/v1/dashboard/organisation/institutes/affiliation/delete/",
 
-    getLocation: "/api/v1/dashboard/location",
+    getLocation: "/api/v1/dashboard/location/",
     postAddOrganization: "/api/v1/dashboard/organisation/institutes/create/",
     putUpdateOrganization: "/api/v1/dashboard/organisation/institutes/edit/",
     deleteOrgnaization: "/api/v1/dashboard/organisation/institutes/delete/",
     postGetInfo: "/api/v1/dashboard/organisation/institutes/info/",
     getOrgCsv: (org_type: string) =>
-        `/api/v1/dashboard/organisation/institutes/${org_type}/csv/`
+        `/api/v1/dashboard/organisation/institutes/${org_type}/csv/`,
+
+    createOrganisation:
+        "/api/v1/dashboard/organisation/institutes/create/",
+    getOrganisationDetails:
+        "/api/v1/dashboard/organisation/institutes/info/",
+    editOrganisation:
+        "/api/v1/dashboard/organisation/institutes/edit/"
 } as const;
 
 export const ManageLocationsRoutes = {
@@ -184,4 +194,5 @@ export const PublicRoutes = {
     getRandomLc: "/api/v1/dashboard/lc/list/",
     getLcDashboard: "/api/v1/get-log/lc-dashboard/",
     getLcReport: "/api/v1/get-log/lc-report/",
+    getOrgWiseReport: "/api/v1/get-log/college-wise-lc-report/"
 } as const;

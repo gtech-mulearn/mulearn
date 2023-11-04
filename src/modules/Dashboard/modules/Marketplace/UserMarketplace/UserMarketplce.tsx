@@ -6,7 +6,7 @@ import phone from "../assets/phone.svg";
 import { History, RedNoti, LinkLogo, LockLogo } from "../assets/svg";
 type Props = {};
 
-export const UserMarketplace = (props: Props) => {
+const Marketplace = (props: Props) => {
     const data = [
         {
             coins: 20,
@@ -192,3 +192,5 @@ export const UserMarketplace = (props: Props) => {
         </div>
     );
 };
+
+export default Marketplace;

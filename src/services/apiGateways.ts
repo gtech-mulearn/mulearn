@@ -44,6 +44,23 @@ privateGateway.interceptors.request.use(
     }
 );
 
+// Request Interceptor: Ensure that the URL ends with a trailing slash
+// If the URL doesn't terminate with a slash, this interceptor appends one.
+privateGateway.interceptors.request.use(
+    function (config) {
+        if (config.url) {
+            if (!config.url.endsWith('/')) {
+                config.url += '/';
+            }
+        }
+        return config;
+    },
+    function (error) {
+        // Do something with request error
+        return Promise.reject(error);
+    }
+);
+
 // Add a response interceptor
 privateGateway.interceptors.response.use(
     function (response) {

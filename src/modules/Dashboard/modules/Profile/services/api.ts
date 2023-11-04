@@ -86,7 +86,6 @@ export const getUserLevels = (setUserLevelData: userLevelData) => {
     privateGateway
         .get(dashboardRoutes.getUserLevels)
         .then(response => {
-            // console.log(response.data);
             setUserLevelData(response.data.response);
         })
         .catch(error => {
@@ -108,3 +107,4 @@ export const getPublicUserLevels = (
             console.log(error);
         });
 };
+

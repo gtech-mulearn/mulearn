@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react";
 import postcssNesting from "postcss-nesting";
 import path from "path";
 import viteCompression from "vite-plugin-compression";
+// import eslint from 'vite-plugin-eslint'
 
 export default defineConfig({
     css: {
@@ -10,6 +11,8 @@ export default defineConfig({
             plugins: [postcssNesting]
         }
     },
+    // this will throw errors in build, so fix them before uncommenting
+    // plugins: [eslint(), react(), viteCompression()],
     plugins: [react(), viteCompression()],
     resolve: {
         alias: {

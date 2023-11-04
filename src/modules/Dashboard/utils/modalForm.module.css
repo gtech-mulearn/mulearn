@@ -1,0 +1,29 @@
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.formContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.inputContainer input {
+	border-radius: 8px;
+	background-color: #F3F3F4;
+	padding: 10px;
+	width: 300px;
+	color: black;
+}
+
+/* .inputContainer input::placeholder {
+    color: black;
+} */
+
+.inputContainer div {
+	text-align: left;
+}

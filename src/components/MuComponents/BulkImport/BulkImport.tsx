@@ -4,6 +4,7 @@ import { FiUploadCloud } from "react-icons/fi";
 import { bulkImport } from "./BulkImportApi";
 import { SingleButton } from "../MuButtons/MuButton";
 import { useToast } from "@chakra-ui/react";
+import MuLoader from "../MuLoader/MuLoader";
 
 interface Props extends React.HTMLAttributes<HTMLInputElement> {
     path: string;
@@ -17,6 +18,8 @@ const BulkImport = ({ path, fileName, onUpload, onError, ...rest }: Props) => {
     const [isDragging, setIsDragging] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const toast = useToast();
+    const [isLoading, setIsLoading] = useState(false);
+
 
     const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
         if (event.target.files && event.target.files.length > 0) {
@@ -86,10 +89,12 @@ const BulkImport = ({ path, fileName, onUpload, onError, ...rest }: Props) => {
 
     const handleUpload = () => {
         if (selectedFile) {
+            setIsLoading(true);
             const renamedFile = renameFile(selectedFile, "file.xlsx");
             const formData = new FormData();
             formData.append(fileName, renamedFile);
             bulkImport(formData, path).then(response => {
+                setIsLoading(false);
                 if (response.status && response.status !== 200) {
                     if (onError) {
                         onError(response);
@@ -119,6 +124,14 @@ const BulkImport = ({ path, fileName, onUpload, onError, ...rest }: Props) => {
 
     return (
         <div className={styles.container}>
+            {isLoading ? 
+                 (
+                    // Display loader here
+                    <div className={styles.loader}>
+                        <MuLoader />
+                    </div>
+                ) 
+            : (
             <div
                 className={`file-upload ${isDragging ? "dragging" : ""}`}
                 onDragEnter={handleDragEnter}
@@ -161,6 +174,9 @@ const BulkImport = ({ path, fileName, onUpload, onError, ...rest }: Props) => {
                     </div>
                 )}
             </div>
+
+            )}
+            
         </div>
     );
 };

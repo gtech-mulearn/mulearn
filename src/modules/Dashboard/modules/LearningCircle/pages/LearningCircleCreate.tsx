@@ -25,11 +25,12 @@ const LearningCircleCreate = (props: Props) => {
 
     const createLearningCircleSchema = Yup.object().shape({
         circle_name: Yup.string()
-            .required("Required")
-            .min(2, "Too Short!")
-            .max(30, "Too Long!"),
-        interest_group: Yup.string().required("Required")
-    });
+          .required('Required')
+          .min(2, 'Too Short!')
+          .max(30, 'Too Long!')
+          .matches(/^[^/<>[\]{}|]*$/, 'Invalid characters detected'), // Custom validation for invalid characters
+        interest_group: Yup.string().required('Required'),
+      });
 
     useEffect(() => {
         (async () => {

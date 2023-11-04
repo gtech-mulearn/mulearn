@@ -59,7 +59,6 @@ const DashboardRootLayout = (props: { component?: any }) => {
             url: "/dashboard/refer",
             title: "Referrals",
             hasView: true,
-            roles: [roles.STUDENT],
             icon: <i className="fi fi-sr-building"></i>
         },
         {
@@ -109,7 +108,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     url: "/dashboard/error-log",
                     title: "Error Log",
                     hasView: true,
-                    roles: [roles.ADMIN]
+                    roles: [roles.ADMIN, roles.TECH_TEAM]
                     // icon: <i className="fi fi-sr-note"></i>
                 },
                 {

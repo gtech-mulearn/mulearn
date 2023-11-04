@@ -22,7 +22,9 @@
         }
     }
 }
-
+.display_message{
+    margin-bottom: -20px;
+}
 .socials_icons {
     .icon_and_input {
         display: flex;
@@ -41,7 +43,6 @@
             }
         }
     }
-
     .error_message {
         color: red !important;
         font-size: 0.8rem;

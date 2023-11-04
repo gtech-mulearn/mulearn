@@ -15,6 +15,7 @@
     background-color: rgba(12, 87, 173, 0.176);
     cursor: pointer;
     transition: background-color 0.3s ease; /* Smooth transition on hover */
+    margin: 1rem;
 }
 
 .errorLogButton:hover {
@@ -25,3 +26,10 @@
     ); /* Change the background color on hover */
 }
 
+.ErrorLogButtonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-wrap: wrap;
+}

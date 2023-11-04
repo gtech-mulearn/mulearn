@@ -71,7 +71,7 @@ const BasicDetails = (props: Props) => {
                     </div>
                 </div>
                 <div className={styles.igs_container}>
-                    {props.userProfile.interest_groups.length != 0 ? (
+                    {props.userProfile.interest_groups.length !== 0 ? (
                         ig.map((data: any, i: number) => {
                             return (
                                 <div
@@ -135,7 +135,7 @@ const BasicDetails = (props: Props) => {
                         {allIg
                             .filter((data: any) => {
                                 return !ig.some(
-                                    (ig: any) => ig.name == data.name
+                                    (ig: any) => ig.name === data.name
                                 );
                             })
                             .map((data: any, i: number) => {

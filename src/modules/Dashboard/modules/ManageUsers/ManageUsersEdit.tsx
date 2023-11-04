@@ -41,6 +41,8 @@ const errorHandler = (status: number, dataStatus: number) => {
 const ManageUsersEdit = (props: Props) => {
     const formikRef = useRef<any>();
 
+    const [isFetching, setIsFetching] = useState(true);
+
     //DropDownStates
     const [community, setCommunity] = useState([{ id: "", title: "" }]);
     const [interestGroup, setinterestGroup] = useState([{ id: "", name: "" }]);
@@ -98,22 +100,31 @@ const ManageUsersEdit = (props: Props) => {
         getRoles(errorHandler, setRole);
 
         //user data
-        getManageUsersDetails(id, setData);
+        getManageUsersDetails(id, setData).then(() => setIsFetching(false));
     }, []);
 
     useEffect(() => {
-        //useEffect to recall lower demographic levels if previous level exist
-        if (data?.country && state[0].value == "")
-            getState(errorHandler, setState, { country: data.country });
-        if (data?.state && district[0].value == "")
-            getDistrict(errorHandler, setDistrict, { state: data.state });
-        if (data?.district)
+        const newData: any = data?.organizations?.filter((item) => (item as any).org_type !== "Community")[0] || {
+            title: "",
+            org_type: "",
+            department: "",
+            graduation_year: 0,
+            country: "",
+            state: "",
+            district: ""
+        };
+
+        if (newData?.country && state[0].value == "")
+            getState(errorHandler, setState, { country: newData.country });
+        if (newData.state && district[0].value == "")
+            getDistrict(errorHandler, setDistrict, { state: newData.state });
+        if (newData?.district)
             getColleges(
                 setCollegTemp,
                 setCollege,
                 setDepartment,
                 errorHandler,
-                { district: data.district }
+                { district: newData.district }
             );
     }, [data]);
     if (
@@ -126,87 +137,104 @@ const ManageUsersEdit = (props: Props) => {
         return <MuLoader />;
     return (
         <div className={styles.external_container}>
-            <div>
                 <h1 className={styles.text}>User Edit Page</h1>
-                <Formik
-                    enableReinitialize={true}
-                    innerRef={formikRef}
-                    initialValues={initialValues}
-                    validationSchema={schema}
-                    onSubmit={values => {
-                        const filteredCommunity = [
-                            values.college,
-                            values.company,
-                            ...values.community
-                        ].filter(item => item !== null) as string[];
+                {isFetching ? (
+                    <MuLoader />
+                ) : (
+                    <Formik
+                        enableReinitialize={true}
+                        innerRef={formikRef}
+                        initialValues={initialValues}
+                        validationSchema={schema}
+                        onSubmit={values => {
+                            const filteredCommunity = [
+                                values.college,
+                                values.company,
+                                ...values.community
+                            ].filter(item => item !== null) as string[];
 
-                        editManageUsers(
-                            toast,
-                            navigate,
-                            id,
-                            values.first_name,
-                            values.last_name,
-                            values.email,
-                            values.mobile,
-                            filteredCommunity,
-                            values.department ?? undefined,
-                            values.graduation_year ?? undefined,
-                            values.role,
-                            values.interest ?? undefined // use nullish coalescing operator to provide default value of undefined
-                        );
-                    }}
-                >
-                    <Form>
-                        <div className={usrStyles.container}>
-                            <div className={usrStyles.TextInputContainer}>
-                                {formikProps.inputs?.map((input, index) => (
-                                    <FormikTextInput {...input} key={index} />
-                                ))}
+                            editManageUsers(
+                                toast,
+                                navigate,
+                                id,
+                                values.first_name,
+                                values.last_name,
+                                values.email,
+                                values.mobile,
+                                values.discord_id,
+                                filteredCommunity,
+                                values.department ?? undefined,
+                                values.graduation_year ?? undefined,
+                                values.role,
+                                values.interest ?? undefined // use nullish coalescing operator to provide default value of undefined
+                            );
+                        }}
+                    >
+                        <Form>
+                            <div className={usrStyles.container}>
+                                <div className={usrStyles.TextInputContainer}>
+                                    {formikProps.inputs?.map((input, index) => (
+                                        <FormikTextInput
+                                            {...input}
+                                            key={index}
+                                        />
+                                    ))}
+                                </div>
+                                <div
+                                    className={usrStyles.TextDropdownContainer}
+                                >
+                                    {formikProps.selects?.map(
+                                        (select, index) => (
+                                            <FormikReactSelect
+                                                {...select}
+                                                key={index}
+                                            />
+                                        )
+                                    )}
+                                </div>
                             </div>
-                            <div className={usrStyles.TextDropdownContainer}>
-                                {formikProps.selects?.map((select, index) => (
-                                    <FormikReactSelect
-                                        {...select}
-                                        key={index}
-                                    />
-                                ))}
+                            <div className={usrStyles.container}>
+                                <div
+                                    className={usrStyles.TextDropdownContainer}
+                                >
+                                    {formikProps.dropDowns?.map(
+                                        (select, index) => (
+                                            <FormikReactSelect
+                                                {...select}
+                                                key={index}
+                                            />
+                                        )
+                                    )}
+                                    <br />
+                                    {data?.role?.includes(
+                                        roleStr(roles.STUDENT)
+                                    ) && (
+                                            <FormikTextInput
+                                                {...formikProps.student}
+                                            />
+                                        )}
+                                </div>
                             </div>
-                        </div>
-                        <div className={usrStyles.container}>
-                            <div className={usrStyles.TextDropdownContainer}>
-                                {formikProps.dropDowns?.map((select, index) => (
-                                    <FormikReactSelect
-                                        {...select}
-                                        key={index}
-                                    />
-                                ))}
-                                {data?.roles?.includes(
-                                    roleStr(roles.ENABLER)
-                                ) && (
-                                    <FormikTextInput {...formikProps.enabler} />
-                                )}
+                            <div className={styles.btn_container}>
+                                <PowerfulButton
+                                    className={styles.btn_cancel}
+                                    onClick={() => {
+                                        navigate("/dashboard/manage-users");
+                                    }}
+                                >
+                                    Decline
+                                </PowerfulButton>
+                                <button
+                                    type="submit"
+                                    className={styles.btn_submit}
+                                    onClick={() => console.log(formikRef)}
+                                >
+                                    Confirm
+                                </button>
                             </div>
-                        </div>
-                        <div className={styles.btn_container}>
-                            <PowerfulButton
-                                className={styles.btn_cancel}
-                                onClick={() => {
-                                    navigate("/dashboard/manage-users");
-                                }}
-                            >
-                                Decline
-                            </PowerfulButton>
-                            <button
-                                type="submit"
-                                className={styles.btn_submit}
-                                onClick={() => console.log(formikRef)}
-                            >
-                                Confirm
-                            </button>
-                        </div>
-                    </Form>
-                </Formik>
-            </div>
+                        </Form>
+                    </Formik>
+                )}
         </div>
     );
 };

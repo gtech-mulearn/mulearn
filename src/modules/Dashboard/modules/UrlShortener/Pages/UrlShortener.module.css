@@ -26,7 +26,7 @@
     .create_new_url {
         width: 100%;
         padding: 20px;
-        margin: 10dvh auto auto;
+        margin: 25dvh auto auto;
         height: auto;
         max-width: 640px;
         background: white;
@@ -102,12 +102,7 @@
 }
 
 @media screen and (max-width: 500px) {
-    .url_shortener_container
-        .create_new_url
-        form
-        .short_url_input_container
-        .short_url_input
-        .short_url {
+    .url_shortener_container .create_new_url form .short_url_input_container .short_url_input .short_url {
         margin-left: 10px;
     }
 }

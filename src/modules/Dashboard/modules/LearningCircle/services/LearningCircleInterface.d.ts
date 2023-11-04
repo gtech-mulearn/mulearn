@@ -19,18 +19,26 @@ interface LcMembers {
 }
 
 type LcDetail = {
+    name: string;
     circle_code: string;
+    note: string | null;
+    meet_time: string;
+    meet_place: string | null;
+    day: number[];
     college: string;
     members: LcMembers[];
-    is_lead: boolean;
-    name: string;
-    pending_members: LcMembers[];
+    pending_members: LcMembers[]; 
     rank: number;
     total_karma: number;
-    meet_place: string;
-    meet_time: string;
-    day: number[] | null;
-	is_member: boolean;
-    note?: string;
-    ig_code?: string;
+    is_lead: boolean;
+    is_member: boolean;
+    ig_code: string;
 };
+
+interface LcDashboardTempData {
+    loading: boolean;
+    isReport: boolean;
+    isHistory: boolean;
+    isTeam: boolean;
+    isSchedule: boolean;
+}

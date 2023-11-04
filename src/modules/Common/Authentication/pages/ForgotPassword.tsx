@@ -2,16 +2,17 @@ import React, { useState } from "react";
 import { forgetPassword } from "../services/apis";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
-import styles from "./Login.module.css"
-import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import styles from "./Login.module.css";
+import {
+    MuButton,
+    PowerfulButton
+} from "@/MuLearnComponents/MuButtons/MuButton";
 
 type Props = {};
 
 const ForgotPassword = (props: Props) => {
     const [muid, setMuid] = useState("");
-    const [success, setSuccess] = useState(false);
-    const [error, setError] = useState("");
-    const [showLoader, setShowLoader] = useState(false)
+    const [showLoader, setShowLoader] = useState(false);
     const navigate = useNavigate();
     const toast = useToast();
 
@@ -19,7 +20,7 @@ const ForgotPassword = (props: Props) => {
         <div className={styles.login_page}>
             <div className={styles.login_container}>
                 <div className={styles.login_form}>
-                    <h1>Forgot Password</h1>
+                    <h1>Forgot Password?</h1>
                     <p className={styles.p_welcome}>
                         Don't worry, enter your muid to reset your password
                     </p>
@@ -33,7 +34,7 @@ const ForgotPassword = (props: Props) => {
                         />
                         <br />
                         <br />
-                        
+
                         <PowerfulButton
                             type="submit"
                             variant="plain"

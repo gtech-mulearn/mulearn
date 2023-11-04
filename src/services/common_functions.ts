@@ -27,11 +27,21 @@ export const showToasts = ({
     status?: "success" | "error";
 }) => {
     Object.entries(messages).forEach(([fieldName, errorMessage]) => {
+        console.log("showToasts - errorMessage", errorMessage);
         if (Array.isArray(errorMessage)) {
+            console.log(errorMessage);
             toast({
                 title: errorMessage?.join(", ") || "",
                 status: status,
                 isClosable: true
+            });
+        } else if (typeof errorMessage === "object" && errorMessage !== null) {
+            Object.entries(errorMessage).forEach(([key, value]) => {
+                toast({
+                    title: value as string,
+                    status: status,
+                    isClosable: true
+                });
             });
         }
     });

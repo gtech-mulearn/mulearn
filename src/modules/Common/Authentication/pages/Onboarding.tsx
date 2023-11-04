@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./Onboarding.module.css";
-type Props = {};
+
 import ReactSelect, { SingleValue } from "react-select";
 import Error from "../components/Error";
 import Select from "react-select";
@@ -25,9 +25,10 @@ import {
     MuButton,
     PowerfulButton
 } from "@/MuLearnComponents/MuButtons/MuButton";
+import { BiSupport } from "react-icons/bi";
 
 const animatedComponents = makeAnimated();
-
+type Props = {};
 interface BackendErrors {
     [fieldName: string]: string[];
 }
@@ -222,7 +223,32 @@ const Onboarding = (props: Props) => {
         muid: referralId ? referralId : ""
     };
 
-    const onSubmit = async (values: any, { setErrors, resetForm }: any) => {
+    const onSubmit = async (
+        values: {
+            firstName: any;
+            lastName: any;
+            email: any;
+            password: any;
+            confirmPassword?: string;
+            mobile: any;
+            gender?: string;
+            dob?: string;
+            role?: string;
+            country?: string;
+            state?: string;
+            district?: string;
+            organization: any;
+            community: any;
+            dept: any;
+            yog: any;
+            mentorRole?: string;
+            areaOfInterest?: never[];
+            general?: string;
+            muid: any;
+            department?: any;
+        },
+        { setErrors, resetForm }: any
+    ) => {
         if (values.organization != "") {
             if (!values.community.includes(values.organization))
                 values.community.push(values.organization);
@@ -239,7 +265,7 @@ const Onboarding = (props: Props) => {
             };
             organization?: {
                 organizations?: any;
-                verified: boolean;
+                verified?: boolean;
                 department?: any | null;
                 graduation_year?: any | null;
             };
@@ -258,12 +284,10 @@ const Onboarding = (props: Props) => {
                 email: values.email,
                 mobile: values.mobile,
                 password: values.password
-            }
-            //required
-            ,
+            },
             organization: {
                 organizations: undefined,
-                verified: false,
+                verified: undefined,
                 department: undefined,
                 graduation_year: undefined
             }
@@ -287,9 +311,7 @@ const Onboarding = (props: Props) => {
             }
         }
 
-        if (
-            (role[0]["title"] == "Student" || role[0]["title"] == "Enabler") 
-        ) {
+        if (role[0]["title"] == "Student" || role[0]["title"] == "Enabler") {
             if (userData.organization) {
                 userData.organization.department =
                     values.dept === "" ? null : values.dept; //required for student and enabler
@@ -308,10 +330,7 @@ const Onboarding = (props: Props) => {
             };
         }
 
-        if (
-            values.organization !== "" &&
-            values.community.length !== 0 
-        ) {
+        if (values.organization !== "" && values.community.length !== 0) {
             if (userData.organization) {
                 userData.organization.organizations = values.community;
                 userData.organization.verified = roleVerified;
@@ -325,6 +344,12 @@ const Onboarding = (props: Props) => {
 
         if (values.organization === "" && values.community.length === 0) {
             delete userData.organization;
+        }
+        if (values.dept === "") {
+            delete userData.organization?.department;
+        }
+        if (values.yog === "") {
+            delete userData.organization?.graduation_year;
         }
 
         registerUser(
@@ -378,12 +403,12 @@ const Onboarding = (props: Props) => {
         if (!values.district) {
             errors.district = "This field is required";
         }
-        if (!values.dept) {
-            errors.dept = "Department is required";
-        }
-        if (!values.yog) {
-            errors.yog = "Year of graduation is required";
-        }
+        // if (!values.dept) {
+        //     errors.dept = "Department is required";
+        // }
+        // if (!values.yog) {
+        //     errors.yog = "Year of graduation is required";
+        // }
         if (!values.mentorRole) {
             errors.mentorRole = "Type is required";
         }
@@ -1428,7 +1453,7 @@ const Onboarding = (props: Props) => {
                                                     }
                                                 >
                                                     <label htmlFor="">
-                                                        College{" "}
+                                                        College/School{" "}
                                                         <span
                                                             className={
                                                                 styles.required
@@ -1572,14 +1597,7 @@ const Onboarding = (props: Props) => {
                                                             }
                                                         >
                                                             <label htmlFor="">
-                                                                Department{" "}
-                                                                <span
-                                                                    className={
-                                                                        styles.required
-                                                                    }
-                                                                >
-                                                                    *
-                                                                </span>
+                                                                Department
                                                             </label>
                                                             <Select
                                                                 name="dept"
@@ -1621,10 +1639,10 @@ const Onboarding = (props: Props) => {
                                                                     formik.handleBlur
                                                                 }
                                                             />
-                                                            {formik.touched
+                                                            {/* {formik.touched
                                                                 .dept &&
-                                                            formik.errors
-                                                                .dept ? (
+                                                                formik.errors
+                                                                    .dept ? (
                                                                 <div
                                                                     className={
                                                                         styles.error_message
@@ -1636,7 +1654,7 @@ const Onboarding = (props: Props) => {
                                                                             .dept
                                                                     }
                                                                 </div>
-                                                            ) : null}
+                                                            ) : null} */}
                                                         </div>
                                                         {role[0].title ==
                                                         "Student" ? (
@@ -1655,14 +1673,7 @@ const Onboarding = (props: Props) => {
                                                             >
                                                                 <label htmlFor="">
                                                                     Graduation
-                                                                    Year{" "}
-                                                                    <span
-                                                                        className={
-                                                                            styles.required
-                                                                        }
-                                                                    >
-                                                                        *
-                                                                    </span>
+                                                                    Year
                                                                 </label>
 
                                                                 <Select
@@ -1696,7 +1707,7 @@ const Onboarding = (props: Props) => {
                                                                     }
                                                                     // required
                                                                 />
-                                                                {formik.touched
+                                                                {/* {formik.touched
                                                                     .yog &&
                                                                 formik.errors
                                                                     .yog ? (
@@ -1711,7 +1722,7 @@ const Onboarding = (props: Props) => {
                                                                                 .yog
                                                                         }
                                                                     </div>
-                                                                ) : null}
+                                                                ) : null} */}
                                                             </div>
                                                         ) : null}
                                                     </div>
@@ -1807,51 +1818,75 @@ const Onboarding = (props: Props) => {
                                     {formik.errors.general || ""}
                                 </div>
                                 <div className={styles.form_bottom}>
-                                    <div className={styles.checkbox}>
-                                        <input
-                                            className={styles.input_checkbox}
-                                            type="checkbox"
-                                            checked={tcChecked}
-                                            name=""
-                                            id=""
-                                            onChange={e => {
-                                                if (e.target.checked) {
-                                                    setTcChecked(true);
-                                                } else {
-                                                    setTcChecked(false);
+                                    <div>
+                                        <div className={styles.checkbox}>
+                                            <input
+                                                className={
+                                                    styles.input_checkbox
                                                 }
-                                            }}
-                                        />
-                                        <label
-                                            className={styles.tc_text}
-                                            htmlFor=""
+                                                type="checkbox"
+                                                checked={tcChecked}
+                                                name=""
+                                                id=""
+                                                onChange={e => {
+                                                    if (e.target.checked) {
+                                                        setTcChecked(true);
+                                                    } else {
+                                                        setTcChecked(false);
+                                                    }
+                                                }}
+                                            />
+                                            <label
+                                                className={styles.tc_text}
+                                                htmlFor=""
+                                            >
+                                                I Agree, the{" "}
+                                                <a
+                                                    href="http://mulearn.org/termsandconditions"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    <span
+                                                        className={
+                                                            styles.tc_span
+                                                        }
+                                                    >
+                                                        Terms and Conditions
+                                                    </span>
+                                                </a>{" "}
+                                                and the{" "}
+                                                <a
+                                                    href="http://mulearn.org/privacypolicy"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    <span
+                                                        className={
+                                                            styles.tc_span
+                                                        }
+                                                    >
+                                                        Privacy Policy
+                                                    </span>
+                                                </a>
+                                            </label>
+                                        </div>
+                                        <div
+                                            className={styles.supportContainer}
                                         >
-                                            I Agree, the{" "}
+                                            <BiSupport size={20} />
                                             <a
-                                                href="http://mulearn.org/termsandconditions"
+                                                href="https://chat.whatsapp.com/La3nY4AVQsR0ndrwk4wN7v"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
-                                                <span
-                                                    className={styles.tc_span}
-                                                >
-                                                    Terms and Conditions
-                                                </span>
-                                            </a>{" "}
-                                            and the{" "}
-                                            <a
-                                                href="http://mulearn.org/privacypolicy"
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                <span
-                                                    className={styles.tc_span}
-                                                >
-                                                    Privacy Policy
-                                                </span>
+                                                <p className={styles.supportWa}>
+                                                    Facing Issues? Join our{" "}
+                                                    <span>Support Group!</span>
+                                                </p>
                                             </a>
-                                        </label>
+                                        </div>
                                     </div>
+
                                     <div className={styles.form_buttons}>
                                         <button
                                             type="reset"

@@ -80,6 +80,8 @@ export const getCommunities = (
     setCommunityAPI: getAPI,
     setLoadStatus: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
+
+
     publicGateway
         .get(onboardingRoutes.communityList)
         .then(response => {
