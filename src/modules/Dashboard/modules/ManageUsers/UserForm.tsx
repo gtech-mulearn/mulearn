@@ -48,7 +48,7 @@ const UserForm = forwardRef(
             discord_id: "",
             organizations: [],
             department: "",
-            roles: [],
+            role: [],
             interest_groups: []
         });
 
@@ -59,41 +59,58 @@ const UserForm = forwardRef(
             // Replace this with your actual API call
             getManageUsersDetails(props.id).then(
                 (data: UserDataFromBackend) => {
-                    console.log(data);
-                    const college = data.organizations.filter(
-                        org => org.org_type === "College"
-                    )[0];
-                    console.log(college);
-                    if (college) {
-                        setInitialData({
-                            country: {
-                                label: "",
-                                value: college.country
-                            },
-                            state: {
-                                label: "",
-                                value: college.state
-                            },
-                            district: {
-                                label: "",
-                                value: college.district
-                            }
-                        });
+                    console.log(data.organizations);
+                    if (data.organizations) {
+                        const college = data.organizations!.filter(
+                            org => org.org_type === "College"
+                        )[0];
+                        if (college) {
+                            setInitialData({
+                                country: {
+                                    label: "",
+                                    value: college.country
+                                },
+                                state: {
+                                    label: "",
+                                    value: college.state
+                                },
+                                district: {
+                                    label: "",
+                                    value: college.district
+                                }
+                            });
+                        }
+
+                        setSelectData(selectData => ({
+                            ...selectData,
+                            selectedCommunity: data.organizations
+                                ? data.organizations
+                                      .filter(
+                                          org => org.org_type === "Community"
+                                      )
+                                      .map(org => org.org)
+                                : [],
+                            selectedInterestGroups: data.interest_groups
+                                ? data.interest_groups
+                                : [],
+                            selectedRoles: data.role ? data.role : [],
+                            selectedCollege: college ? college.org : "",
+                            selectedDepartment: college
+                                ? college.department
+                                : ""
+                        }));
                     }
-                    setSelectData(data => ({
-                        ...data,
-                        selectedCollege: college.org,
-                        selectedDepartment: college.department
-                    }));
                     setData({
                         first_name: data.first_name,
                         last_name: data.last_name,
                         email: data.email,
                         mobile: data.mobile,
                         discord_id: data.discord_id,
-                        organizations: data.organizations,
+                        organizations: !data.organizations
+                            ? []
+                            : data.organizations!.map(org => org.org),
                         department: "",
-                        roles: data.role,
+                        role: data.role,
                         interest_groups: data.interest_groups
                     });
                 }
@@ -102,6 +119,7 @@ const UserForm = forwardRef(
 
         const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
             const { name, value } = e.target;
+
             setData(prevData => ({ ...prevData, [name]: value }));
         };
 
@@ -155,13 +173,13 @@ const UserForm = forwardRef(
         );
         const [selectData, setSelectData] = useState({
             community: [] as AffiliationOption[],
-            selectedCommunity: [] as AffiliationOption[],
+            selectedCommunity: [] as string[],
             roles: [] as AffiliationOption[],
-            selectedRoles: [] as AffiliationOption[],
+            selectedRoles: [] as string[],
             // interestGroups: [] as AffiliationOption[],
-            selectedInterestGroups: [] as AffiliationOption[],
-            selectedCollege: [] as AffiliationOption[],
-            selectedDepartment: [] as AffiliationOption[],
+            selectedInterestGroups: [] as string[],
+            selectedCollege: "",
+            selectedDepartment: "",
             blurStatus: {
                 community: false,
                 roles: false,
@@ -199,13 +217,11 @@ const UserForm = forwardRef(
                 country: String(locationData.selectedCountry?.value),
                 state: String(locationData.selectedState?.value),
                 district: String(locationData.selectedDistrict?.value),
-                roles: convertedRoles,
+                roles: selectData.selectedRoles,
                 interest_groups: selectedIg.map(option => option.value),
-                organizations: [selectData.selectedCollege[0]?.value],
-                department: selectData.selectedDepartment[0]?.value,
-                community: selectData.selectedCommunity.map(
-                    option => option.value
-                )
+                organizations: [selectData.selectedCollege],
+                department: selectData.selectedDepartment,
+                community: selectData.selectedCommunity
             };
 
             // Validate form data
@@ -237,7 +253,6 @@ const UserForm = forwardRef(
                 });
             }
         };
-        console.log(selectData);
 
         return (
             <div className={styles.container}>
@@ -245,7 +260,7 @@ const UserForm = forwardRef(
                     <div className={styles.inputContainer}>
                         <input
                             type="text"
-                            name="FirstName"
+                            name="first_name"
                             placeholder="First Name"
                             value={data.first_name}
                             onChange={handleChange}
@@ -260,7 +275,7 @@ const UserForm = forwardRef(
                     <div className={styles.inputContainer}>
                         <input
                             type="text"
-                            name="LastName"
+                            name="last_name"
                             placeholder="Last Name"
                             value={data.last_name}
                             onChange={handleChange}
@@ -275,7 +290,7 @@ const UserForm = forwardRef(
                     <div className={styles.inputContainer}>
                         <input
                             type="text"
-                            name="Email"
+                            name="email"
                             placeholder="Email"
                             value={data.email}
                             onChange={handleChange}
@@ -288,7 +303,7 @@ const UserForm = forwardRef(
                     <div className={styles.inputContainer}>
                         <input
                             type="text"
-                            name="Mobile"
+                            name="mobile"
                             placeholder="Mobile"
                             value={data.mobile}
                             onChange={handleChange}
@@ -301,7 +316,7 @@ const UserForm = forwardRef(
                     <div className={styles.inputContainer}>
                         <input
                             type="text"
-                            name="DiscordId"
+                            name="discord_id"
                             placeholder="DiscordId"
                             value={data.discord_id as string}
                             onChange={handleChange}
@@ -322,11 +337,17 @@ const UserForm = forwardRef(
                             isMulti
                             placeholder="Community"
                             isLoading={!selectData.community.length}
-                            value={selectData.selectedCommunity}
+                            value={selectData.community.filter(comm =>
+                                selectData.selectedCommunity.includes(
+                                    comm.value
+                                )
+                            )}
                             onChange={(selectedOptions: any) => {
                                 setSelectData(prevState => ({
                                     ...prevState,
-                                    selectedCommunity: selectedOptions
+                                    selectedCommunity: selectedOptions.map(
+                                        (opt: any) => opt.value
+                                    )
                                 }));
                             }}
                             onBlur={() => {
@@ -355,13 +376,15 @@ const UserForm = forwardRef(
                             isMulti
                             placeholder="Roles"
                             isLoading={!selectData.roles.length}
-                            value={selectData.roles.filter(role =>
-                                data.roles?.includes(role.value)
+                            value={selectData.roles.filter(roles =>
+                                selectData.selectedRoles.includes(roles.value)
                             )}
                             onChange={(selectedOptions: any) => {
-                                setData(data => ({
-                                    ...data,
-                                    roles: selectedOptions
+                                setSelectData(selectData => ({
+                                    ...selectData,
+                                    selectedRoles: selectedOptions.map(
+                                        (opt: any) => opt.value
+                                    )
                                 }));
                                 // setSelectedRoles(selectedOptions);
                             }}
@@ -404,6 +427,11 @@ const UserForm = forwardRef(
                                     }
                                 }));
                             }}
+                            value={ig.filter(val =>
+                                selectData.selectedInterestGroups.includes(
+                                    val.value
+                                )
+                            )}
                         />
                         {selectData.blurStatus.interestGroups &&
                             !selectData.selectedInterestGroups && (
@@ -442,7 +470,7 @@ const UserForm = forwardRef(
                             onChange={(selectedOptions: any) => {
                                 setSelectData(prevState => ({
                                     ...prevState,
-                                    selectedCollege: selectedOptions
+                                    selectedCollege: selectedOptions.value
                                 }));
                             }}
                             onBlur={() => {
@@ -478,7 +506,7 @@ const UserForm = forwardRef(
                             onChange={(selectedOptions: any) => {
                                 setSelectData(prevState => ({
                                     ...prevState,
-                                    selectedDepartment: selectedOptions
+                                    selectedDepartment: selectedOptions.value
                                 }));
                             }}
                             onBlur={() => {

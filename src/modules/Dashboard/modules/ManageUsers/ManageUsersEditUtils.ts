@@ -43,8 +43,10 @@ const roleStr = (role: Community, roleName: string) => {
 };
 
 const arrayIntersection = (userList: any, mainList: string[]) => {
-    const newUserList = userList.map((item: { org: { toString: () => any; }; }) => item.org.toString());
-   
+    const newUserList = userList.map((item: { org: { toString: () => any } }) =>
+        item.org.toString()
+    );
+
     return newUserList.filter((item: string) => mainList?.includes(item));
 };
 
@@ -67,8 +69,9 @@ const inputs = (
     setCollege: any,
     setDepartment: any
 ) => {
-  
-    const data: any = user?.organizations?.filter((item) => (item as any).org_type !== "Community")[0] || {
+    const data: any = user?.organizations?.filter(
+        item => (item as any).org_type !== "Community"
+    )[0] || {
         title: "",
         org_type: "",
         department: "",

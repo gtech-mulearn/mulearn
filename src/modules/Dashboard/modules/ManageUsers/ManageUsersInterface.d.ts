@@ -6,7 +6,7 @@ interface UserData {
     discord_id: string | null;
     organizations: string[] | null;
     department: string | null;
-    roles: string[] | null;
+    role: string[] | null;
     interest_groups: string[];
 }
 
@@ -20,13 +20,13 @@ interface UserDataFromBackend {
     discord_id: string | null;
     dob: string;
     role: string[] | null;
-    organizations: string[] | null;
+    organizations: OrgData[] | null;
     interest_groups: string[];
 }
 
-
 interface OrgData {
-    title: string;
+    // title: string;
+    org: string;
     org_type: string;
     department: string;
     graduation_year: number;
