@@ -5,7 +5,7 @@ import Navbar from "../../../Components/Navbar/Navbar";
 import styles from "./HacktoberFest.module.css";
 
 const HacktoberFest = () => {
-  const [error,setError]= useState()
+  const [error]= useState()
   const [profiles,setProfiles] = useState([])
   const [pyProfiles,setpyProfiles] = useState([])
   axios.get("https://opensheet.elk.sh/1r5Pav8TlUEao_9GuMcFasKUEPSDIJOPB9PXKbt4KlTQ/hacktoberfest").then(
@@ -14,7 +14,7 @@ const HacktoberFest = () => {
   })
   .catch((error) => {
     console.log(error);
-    setError("We are currently facing some difficulties in fetching the data at the moment, will be back soon.")
+   
     
   });
   axios.get("https://opensheet.elk.sh/1r5Pav8TlUEao_9GuMcFasKUEPSDIJOPB9PXKbt4KlTQ/info").then(
@@ -23,7 +23,7 @@ const HacktoberFest = () => {
   })
   .catch((error) => {
     console.log(error);
-    setError("We are currently facing some difficulties in fetching the data at the moment, will be back soon.")
+   
     
   });
 
