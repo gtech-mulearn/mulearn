@@ -395,7 +395,7 @@ function App() {
                             path: "college-levels",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN, roles.FELLOW]}
+                                    roles={[roles.ADMIN, roles.FELLOW, roles.CAMPUS_ACTIVATION_TEAM]}
                                     children={<CollegeLevels />}
                                 />
                             )
