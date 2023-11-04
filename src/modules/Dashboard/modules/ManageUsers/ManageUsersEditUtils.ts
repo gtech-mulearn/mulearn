@@ -273,7 +273,7 @@ const inputs = (
         state: data?.state || "",
         district: data?.district || "",
         interest: user?.interest_groups,
-        role: user?.roles
+        role: user?.role
     };
 
     return { formikProps, initialValues };
