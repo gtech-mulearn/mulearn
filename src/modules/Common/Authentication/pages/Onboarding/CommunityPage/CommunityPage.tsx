@@ -51,7 +51,7 @@ export default function CommunityPage() {
             setIsSubmitting: setIsLoading,
             toast: toast
         });
-        if (isSuccess) navigate("/register/select-role", { state: userData });
+        isSuccess? navigate("/register/select-role", { state: userData }) :  delete userData.referral;
     };
 
     const handleGetLocation = async () => {
@@ -71,7 +71,7 @@ export default function CommunityPage() {
             <Formik
                 initialValues={{
                     communities: [],
-                    referral: userData?.referral?.muid || ""
+                    referral: userData?.referral?.muid || null
                 }}
                 enableReinitialize={true}
                 onSubmit={handleSubmit}
