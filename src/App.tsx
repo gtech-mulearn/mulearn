@@ -395,7 +395,7 @@ function App() {
                             path: "college-levels",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN, roles.FELLOW]}
+                                    roles={[roles.ADMIN, roles.FELLOW, roles.CAMPUS_ACTIVATION_TEAM]}
                                     children={<CollegeLevels />}
                                 />
                             )
@@ -544,10 +544,10 @@ function App() {
                             path: "learning-circle/details/:id",
                             element: <LearningCircle />
                         },
-                        {
-                            path: "learning-circle/dashboard/:id",
-                            element: <LcDashboard />
-                        },
+                        // {
+                        //     path: "learning-circle/dashboard/:id",
+                        //     element: <LcDashboard />
+                        // },
                         {
                             path: "learning-circle/find-circle",
                             element: <FindCircle />
