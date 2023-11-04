@@ -149,7 +149,7 @@ const inputs = (
                 isSearchable: true
             }
         ],
-        dropDowns: user?.roles?.includes(roleStr(role, roles.MENTOR))
+        dropDowns: user?.role?.includes(roleStr(role, roles.MENTOR))
             ? [
                   {
                       name: "company",

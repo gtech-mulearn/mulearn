@@ -74,7 +74,7 @@ export const getOrgWiseReport = (
             }
         })
         .then(response => {
-            setOrgWiseReport(response.data.response);
+            setOrgWiseReport(response.data.response.data);
             if (setTotalPages) {
                 const totalPages = response.data.response.pagination.totalPages;
                 setTotalPages(totalPages);
