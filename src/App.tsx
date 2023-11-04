@@ -541,10 +541,10 @@ function App() {
                             path: "learning-circle/details/:id",
                             element: <LearningCircle />
                         },
-                        {
-                            path: "learning-circle/dashboard/:id",
-                            element: <LcDashboard />
-                        },
+                        // {
+                        //     path: "learning-circle/dashboard/:id",
+                        //     element: <LcDashboard />
+                        // },
                         {
                             path: "learning-circle/find-circle",
                             element: <FindCircle />
