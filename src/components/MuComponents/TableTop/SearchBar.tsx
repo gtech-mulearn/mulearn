@@ -16,12 +16,15 @@ export const SearchBar = (props: Props) => {
         const sanitizedInput = inputValue.replace(/[<>/]/g, ''); // Remove < and > characters
 
         setSearch(sanitizedInput);
+        props.onSearch(sanitizedInput);
     };
 
     const handleSubmit = (e: { preventDefault: () => void }) => {
         e.preventDefault();
         props.onSearch(search.trim());
     };
+
+   
 
     const clearInput = () => {
         setSearch("");
