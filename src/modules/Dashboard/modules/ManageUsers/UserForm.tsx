@@ -59,21 +59,32 @@ const UserForm = forwardRef(
             // Replace this with your actual API call
             getManageUsersDetails(props.id).then(
                 (data: UserDataFromBackend) => {
-                    // const initialData: InitialLocationData = {
-                    //     country: {
-                    //         label: data.country_name,
-                    //         value: data.country_uuid
-                    //     },
-                    //     state: {
-                    //         label: data.state_name,
-                    //         value: data.state_uuid
-                    //     },
-                    //     district: {
-                    //         label: data.district_name,
-                    //         value: data.district_uuid
-                    //     }
-                    // };
-                    // setInitialData(initialData);
+                    console.log(data);
+                    const college = data.organizations.filter(
+                        org => org.org_type === "College"
+                    )[0];
+                    console.log(college);
+                    if (college) {
+                        setInitialData({
+                            country: {
+                                label: "",
+                                value: college.country
+                            },
+                            state: {
+                                label: "",
+                                value: college.state
+                            },
+                            district: {
+                                label: "",
+                                value: college.district
+                            }
+                        });
+                    }
+                    setSelectData(data => ({
+                        ...data,
+                        selectedCollege: college.org,
+                        selectedDepartment: college.department
+                    }));
                     setData({
                         first_name: data.first_name,
                         last_name: data.last_name,
@@ -126,12 +137,10 @@ const UserForm = forwardRef(
                         value: roles.id
                     }))
                 }));
-                console.log(selectData.roles);
+
                 const interestGroups = await getInterests();
-                console.log(interestGroups);
 
                 setIg(interestGroups);
-                console.log(ig);
             } catch (error) {
                 // Handle error here
             }
@@ -141,10 +150,9 @@ const UserForm = forwardRef(
         const [department, setDepartment] = useState<AffiliationOption[]>([]);
         const [ig, setIg] = useState<AffiliationOption[]>([]);
         const [selectedIg, setSelectedIg] = useState<AffiliationOption[]>([]);
-        const [selectedRoles, setSelectedRoles] = useState<AffiliationOption[]>([]);
-        
-      
-
+        const [selectedRoles, setSelectedRoles] = useState<AffiliationOption[]>(
+            []
+        );
         const [selectData, setSelectData] = useState({
             community: [] as AffiliationOption[],
             selectedCommunity: [] as AffiliationOption[],
@@ -176,18 +184,15 @@ const UserForm = forwardRef(
             );
         }, [locationData]);
 
-        useEffect(() => {
-            console.log(selectData.roles);
-        }, [selectData.roles]);
+        useEffect(() => {}, [selectData.roles]);
 
         //! useImperativeHandle for triggering submit from MuModal button
         useImperativeHandle(ref, () => ({
             handleSubmitExternally: handleSubmit
         }));
-
         const handleSubmit = (e?: React.FormEvent) => {
             e?.preventDefault();
-            const convertedRoles = selectedRoles.map(option => option.value) 
+            const convertedRoles = selectedRoles.map(option => option.value);
             const updatedData = {
                 ...data,
                 // affiliation: String(selectedAffiliation?.value),
@@ -198,10 +203,10 @@ const UserForm = forwardRef(
                 interest_groups: selectedIg.map(option => option.value),
                 organizations: [selectData.selectedCollege[0]?.value],
                 department: selectData.selectedDepartment[0]?.value,
-                community: selectData.selectedCommunity.map(option => option.value)
+                community: selectData.selectedCommunity.map(
+                    option => option.value
+                )
             };
-
-            console.log(selectData.selectedRoles);
 
             // Validate form data
             let isValid = true;
@@ -222,9 +227,7 @@ const UserForm = forwardRef(
             }
 
             if (isValid) {
-                console.log(updatedData);
-
-                toast.promise(editUsers(props.id,updatedData), {
+                toast.promise(editUsers(props.id, updatedData), {
                     loading: "Saving...",
                     success: () => {
                         props.closeModal();
@@ -234,6 +237,7 @@ const UserForm = forwardRef(
                 });
             }
         };
+        console.log(selectData);
 
         return (
             <div className={styles.container}>
@@ -351,9 +355,15 @@ const UserForm = forwardRef(
                             isMulti
                             placeholder="Roles"
                             isLoading={!selectData.roles.length}
-                            // value={selectData.selectedRoles}
+                            value={selectData.roles.filter(role =>
+                                data.roles?.includes(role.value)
+                            )}
                             onChange={(selectedOptions: any) => {
-                                setSelectedRoles(selectedOptions);
+                                setData(data => ({
+                                    ...data,
+                                    roles: selectedOptions
+                                }));
+                                // setSelectedRoles(selectedOptions);
                             }}
                             onBlur={() => {
                                 setSelectData(prev => ({
@@ -425,7 +435,10 @@ const UserForm = forwardRef(
                             isClearable
                             placeholder="College"
                             isLoading={!college.length}
-                            value={selectData.selectedCollege}
+                            value={college.filter(
+                                college =>
+                                    college.value === selectData.selectedCollege
+                            )}
                             onChange={(selectedOptions: any) => {
                                 setSelectData(prevState => ({
                                     ...prevState,
@@ -457,7 +470,11 @@ const UserForm = forwardRef(
                             isClearable
                             placeholder="Department"
                             isLoading={!department.length}
-                            value={selectData.selectedDepartment}
+                            value={department.filter(
+                                dep =>
+                                    (dep.value as any) ===
+                                    selectData.selectedDepartment
+                            )}
                             onChange={(selectedOptions: any) => {
                                 setSelectData(prevState => ({
                                     ...prevState,

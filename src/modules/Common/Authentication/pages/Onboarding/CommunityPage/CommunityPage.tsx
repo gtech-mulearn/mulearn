@@ -150,6 +150,11 @@ export default function CommunityPage() {
                                                 };
                                             }
                                         )}
+                                        filterOption={(option, input) =>
+                                            option.label
+                                                .toLowerCase()
+                                                .startsWith(input.toLowerCase())
+                                        }
                                     />
                                 </div>
                                 <div className={styles.inputBox}>
