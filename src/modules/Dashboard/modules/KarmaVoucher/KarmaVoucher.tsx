@@ -166,7 +166,7 @@ const KarmaVoucher = (props: Props) => {
                     }
                 >
                     <AiOutlinePlusCircle />
-                    Bulk Import
+                    Bulk Import Voucher
                 </PowerfulButton>
             </div>
 
