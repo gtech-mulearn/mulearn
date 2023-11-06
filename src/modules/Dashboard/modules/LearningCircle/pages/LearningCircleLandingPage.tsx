@@ -18,7 +18,9 @@ const LearningCircleLandingPage = () => {
         getUserLearningCircles(setUserCircleList).then(() => {
             setIsLoading(false);
         });
-        toast.error('Under Maintenance ⚠️');
+        toast('Under Maintenance !', {
+  icon: '⚠️',
+});
     }, []);
 
     const handleJoin = () => {
