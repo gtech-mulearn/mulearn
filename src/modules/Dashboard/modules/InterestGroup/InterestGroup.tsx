@@ -48,6 +48,8 @@ function InterestGroup() {
     const [currModal, setCurrModal] = useState<modalTypes>(null);
     const [currID, setCurrID] = useState<string>("");
     const InterestRef = useRef<any>(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
 
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
@@ -122,6 +124,7 @@ function InterestGroup() {
     const handleEdit = async (id: string | number | boolean) => {
         setCurrID(id.toString());
         setCurrModal("edit");
+        setIsModalOpen(true);
         // navigate("/dashboard/interest-groups/edit/" + id);
     };
 
@@ -189,18 +192,17 @@ function InterestGroup() {
                             <MuModal
                                 isOpen={isModalOpen}
                                 onClose={() => setIsModalOpen(false)}
-                                title={`Add new ${active}`}
+                                title={`Create new IG`}
                                 type={"success"}
-                                body={`Enter the deatils of the new ${active}`}
+                                body={`Enter the deatils of the IG`}
                                 onDone={() =>
                                     InterestRef.current?.handleSubmitExternally()
                                 }
                             >
                                 <InterestGroupForm
                                     ref={InterestRef}
-                                    type={active}
                                     isEditMode={false}
-                                    itemId={""}
+                                    id={""}
                                     closeModal={() => setIsModalOpen(false)}
                                 />
                             </MuModal>
@@ -208,11 +210,23 @@ function InterestGroup() {
 
                     if (currModal === "edit")
                         return currID ? (
-                            <CreateOrUpdateModal
-                                id={currID}
-                                setCurrModal={setCurrModal}
-                                toast={toast}
+                            <MuModal
+                            isOpen={isModalOpen}
+                            onClose={() => setIsModalOpen(false)}
+                            title={`Edit IG`}
+                            type={"success"}
+                            body={`Enter the deatils of the IG`}
+                            onDone={() =>
+                                InterestRef.current?.handleSubmitExternally()
+                            }
+                        >
+                            <InterestGroupForm
+                                ref={InterestRef}
+                                isEditMode={true}
+                                id={""}
+                                closeModal={() => setIsModalOpen(false)}
                             />
+                        </MuModal>
                         ) : null;
                 })()}
             <div className={styles.createBtnContainer}>
@@ -220,6 +234,7 @@ function InterestGroup() {
                     className={styles.createBtn}
                     onClick={() => {
                         setCurrModal("create");
+                        setIsModalOpen(true);
                     }}
                 >
                     <AiOutlinePlusCircle />

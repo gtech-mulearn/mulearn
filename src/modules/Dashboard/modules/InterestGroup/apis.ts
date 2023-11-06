@@ -68,14 +68,13 @@ export const editInterestGroups = async (
 
 export const getIGDetails = async (
     id: string | undefined,
-    setInput: UseStateFunc<string | any>
 ) => {
     try {
         const response = await privateGateway.get(
             dashboardRoutes.getIgData + "get/" + id + "/"
         );
         const message: any = response?.data;
-        setInput(message.response.interestGroup);
+        return message
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
