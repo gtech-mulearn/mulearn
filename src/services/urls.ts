@@ -59,6 +59,11 @@ export const dashboardRoutes = {
     getKarmaVoucher: "/api/v1/dashboard/karma-voucher/",
     getKarmaVoucherList: "api/v1/dashboard/karma-voucher/import/",
 
+    getAffiliation: "/api/v1/dashboard/affiliation/",
+    createAffiliation: "/api/v1/dashboard/affiliation/",
+    editAffiliation: "/api/v1/dashboard/affiliation/<str:affiliation_id>/",
+    deleteAffiliation: "/api/v1/dashboard/affiliation/<str:affiliation_id>/",
+
     getShortenUrl: "/api/v1/url-shortener/list/",
     createShortenUrl: "/api/v1/url-shortener/create/",
     editShortenUrl: "/api/v1/url-shortener/edit/${urlId}/",
