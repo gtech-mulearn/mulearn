@@ -15,6 +15,8 @@ import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { useToast } from "@chakra-ui/react";
 import { Blank } from "@/MuLearnComponents/Table/Blank";
 import CreateOrUpdateModal from "./CreateOrUpdateModal";
+import MuModal from "@/MuLearnComponents/MuModal/MuModal";
+import InterestGroupForm from "./InterestGroupForm";
 
 interface IgDetails {
     igName: string;
@@ -45,6 +47,7 @@ function InterestGroup() {
 
     const [currModal, setCurrModal] = useState<modalTypes>(null);
     const [currID, setCurrID] = useState<string>("");
+    const InterestRef = useRef<any>(null);
 
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
@@ -183,10 +186,24 @@ function InterestGroup() {
                 (() => {
                     if (currModal === "create")
                         return (
-                            <CreateOrUpdateModal
-                                setCurrModal={setCurrModal}
-                                toast={toast}
-                            />
+                            <MuModal
+                                isOpen={isModalOpen}
+                                onClose={() => setIsModalOpen(false)}
+                                title={`Add new ${active}`}
+                                type={"success"}
+                                body={`Enter the deatils of the new ${active}`}
+                                onDone={() =>
+                                    InterestRef.current?.handleSubmitExternally()
+                                }
+                            >
+                                <InterestGroupForm
+                                    ref={InterestRef}
+                                    type={active}
+                                    isEditMode={false}
+                                    itemId={""}
+                                    closeModal={() => setIsModalOpen(false)}
+                                />
+                            </MuModal>
                         );
 
                     if (currModal === "edit")
