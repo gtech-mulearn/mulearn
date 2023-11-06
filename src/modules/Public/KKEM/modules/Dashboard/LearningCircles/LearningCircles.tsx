@@ -34,27 +34,30 @@ const LearningCircles = () => {
     useEffect(() => {
         if (authorized) {
             getLCDashboard(setLcCounts);
-            getLCReport(setLcReport, currentPage, perPage, setTotalPages, "", sort, setLoading);
-            getOrgWiseReport(setOrgWiseReport, orgCurrentPage, orgPerPage, setOrgTotalPages, "", sortOrg, setOrgLoading);
+            getLCReport(setLcReport, currentPage, perPage, setTotalPages, "", sort,"", setLoading);
+            getOrgWiseReport(setOrgWiseReport, orgCurrentPage, orgPerPage, setOrgTotalPages, "", sortOrg,"", setOrgLoading);
         }
     }, [authorized])
 
+    console.log(OrgWiseReport)
+    console.log(LcReport)
+
 
     const columnOrder: ColOrder[] = [
-        { column: "first_name", Label: "First Name", isSortable: false },
-        { column: "last_name", Label: "Last Name", isSortable: false },
-        { column: "muid", Label: "muid", isSortable: false },
-        { column: "circle_name", Label: "Circle Name", isSortable: false },
-        { column: "circle_ig", Label: "Circle IG", isSortable: false },
-        { column: "organisation", Label: "organisation", isSortable: false },
-        { column: "dwms_id", Label: "DWMS ID", isSortable: false },
-        { column: "karma_earned", Label: "Karma Earned", isSortable: false },
+        { column: "first_name", Label: "First Name", isSortable: true },
+        { column: "last_name", Label: "Last Name", isSortable: true },
+        { column: "muid", Label: "muid", isSortable: true },
+        { column: "circle_name", Label: "Circle Name", isSortable: true },
+        { column: "circle_ig", Label: "Circle IG", isSortable: true },
+        { column: "organisation", Label: "organisation", isSortable: true },
+        { column: "dwms_id", Label: "DWMS ID", isSortable: true },
+        { column: "karma_earned", Label: "Karma Earned", isSortable: true },
     ];
 
     const orgColumnOrder: ColOrder[] = [
-        { column: "org_title", Label: "Organisation", isSortable: false },
-        { column: "learning_circle_count", Label: "Circle Count", isSortable: false },
-        { column: "user_count", Label: "User Count", isSortable: false },
+        { column: "org_title", Label: "Organisation", isSortable: true },
+        { column: "learning_circle_count", Label: "Circle Count", isSortable: true },
+        { column: "user_count", Label: "User Count", isSortable: true },
     ];
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -141,6 +144,7 @@ const LearningCircles = () => {
                 setTotalPages,
                 "",
                 `-${column}`,
+                "",
                 setLoading
 
             );
@@ -153,6 +157,7 @@ const LearningCircles = () => {
                 setTotalPages,
                 "",
                 column,
+                "",
                 setLoading
             );
         }
@@ -168,6 +173,7 @@ const LearningCircles = () => {
                 setOrgTotalPages,
                 "",
                 `-${column}`,
+                "",
                 setOrgLoading
             );
         } else {
@@ -179,6 +185,7 @@ const LearningCircles = () => {
                 setOrgTotalPages,
                 "",
                 column,
+                "",
                 setOrgLoading
             );
         }
@@ -229,11 +236,11 @@ const LearningCircles = () => {
                         <div>
                             <input type="date" className={styles.date} onChange={(e) => setDate(e.target.value)} />
                             <button className={styles.dateButton} onClick={() => {
-                                getLCReport(setLcReport, currentPage, perPage, setTotalPages, "", "", setLoading, date);
+                                getLCReport(setLcReport, currentPage, perPage, setTotalPages, "", "", date, setLoading);
                                 getLCDashboard(setLcCounts, date);
                             }}>Filter</button>
                             <button className={styles.dateButton} onClick={() => {
-                                getLCReport(setLcReport, currentPage, perPage, setTotalPages, "", "", setLoading);
+                                getLCReport(setLcReport, currentPage, perPage, setTotalPages, "", "","", setLoading);
                                 getLCDashboard(setLcCounts);
                             }
                             }>Clear</button>
@@ -336,10 +343,10 @@ const LearningCircles = () => {
                     <p className={styles.heading}>Organization Wise Counts</p>
                     <div className={styles.tableContainer}>
 
-                        {/* <TableTop
+                        <TableTop
                             onSearchText={handleOrgSearch}
                             onPerPageNumber={handleOrgPerPageNumber}
-                        /> */}
+                        />
                         <br />
                         <Table
                             rows={OrgWiseReport}
