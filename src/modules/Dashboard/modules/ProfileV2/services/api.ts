@@ -108,3 +108,19 @@ export const getPublicUserLevels = (
             console.log(error);
         });
 };
+
+type setSocials = UseStateFunc<any>;
+
+export const getSocials = (setSocials: any, id?: string) => {
+    if (!id) id = "";
+    privateGateway
+        .get(dashboardRoutes.getSocials + id)
+        .then(response => {
+            const socialsData = response.data.response;
+            setSocials(socialsData);
+            console.log(socialsData);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+};

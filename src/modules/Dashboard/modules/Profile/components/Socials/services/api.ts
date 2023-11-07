@@ -10,6 +10,8 @@ export const getSocials = (setSocials: any, formikRef: any, id?: string) => {
         .then(response => {
             const socialsData = response.data.response;
             setSocials(socialsData);
+            console.log(socialsData);
+            
             formikRef.current.setValues(socialsData);
         })
         .catch(error => {

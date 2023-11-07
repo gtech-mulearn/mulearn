@@ -2,11 +2,11 @@ import React, { useEffect, useState, useRef } from "react";
 import styles from "./Socials.module.css";
 import { useParams } from "react-router-dom";
 import { useFormik } from "formik";
+import { getSocials, updateSocials } from "../services/api";
 import LinkedIn from "../../../assets/svg/LinkedIn";
 import Twitter from "../../../assets/svg/Twitter";
 import Instagram from "../../../assets/svg/Instagram";
 import Behance from "../../../assets/svg/Behance";
-import { getSocials, updateSocials } from "../services/api";
 import Github from "../../../assets/svg/Github";
 import Facebook from "../../../assets/svg/Facebook";
 import Dribble from "../../../assets/svg/Dribble";
@@ -103,14 +103,12 @@ const Socials = (props: Props) => {
                 {editSocials && !id && (
                     <p
                         onClick={() => {
-                            {
-                                Object.keys(formik.errors).length === 0 && (
-                                    <>
-                                        {setEditSocials(false)}
-                                        {formik.handleSubmit()}
-                                    </>
-                                );
-                            }
+                            Object.keys(formik.errors).length === 0 && (
+                                <>
+                                    {setEditSocials(false)}
+                                    {formik.handleSubmit()}
+                                </>
+                            );
                         }}
                         className={styles.edit_profile_btn}
                         tabIndex={0}
@@ -119,18 +117,20 @@ const Socials = (props: Props) => {
                     </p>
                 )}
             </div>
-            {
-                Object.values(formik.values).filter(value => value === "" || value === null).length>=8 && !editSocials && (
+            {Object.values(formik.values).filter(
+                value => value === "" || value === null
+            ).length >= 8 &&
+                !editSocials && (
                     <p className={styles.display_message}>
-                        You have not connected any socials medias to your profile yet.
+                        You have not connected any socials medias to your
+                        profile yet.
                     </p>
-                )    
-            }
+                )}
             <p className={styles.socials_icons}>
                 {Object.values(formik.values).filter(value => value === "")
-                    .length != 0 ||
+                    .length !== 0 ||
                 Object.values(formik.values).filter(value => value === null)
-                    .length != 0
+                    .length !== 0
                     ? Object.entries(formik.values).map(
                           ([name, username], i) => {
                               if (editSocials ? true : username) {
