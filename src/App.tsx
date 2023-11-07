@@ -78,6 +78,9 @@ const UserRoleVerificationEdit = lazy(
             "./modules/Dashboard/modules/UserRoleVerification/UserRoleVerificationEdit"
         )
 );
+const Affiliation = lazy(
+    () => import("./modules/Dashboard/modules/Affiliation/Pages/Affiliation")
+);
 const UrlShortener = lazy(
     () => import("./modules/Dashboard/modules/UrlShortener/Pages/UrlShortener")
 );
@@ -442,6 +445,19 @@ function App() {
                         {
                             path: "karma-voucher/bulk-import",
                             element: <KarmaVoucherBulkImport />
+                        },
+                        {
+                            path: "affiliation",
+                            element: (
+                                <RoleChecker
+                                    roles={[
+                                        roles.ADMIN,
+                                        roles.FELLOW,
+                                        roles.ASSOCIATE
+                                    ]}
+                                    children={<Affiliation />}
+                                />
+                            )
                         },
                         {
                             path: "url-shortener",
