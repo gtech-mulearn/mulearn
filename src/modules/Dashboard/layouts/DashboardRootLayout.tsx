@@ -161,6 +161,12 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     icon: <i className="fi fi-ss-map-marker"></i>
                 },
                 {
+                    url: "/dashboard/affiliation",
+                    title: "Affiliation",
+                    hasView: true,
+                    roles: [roles.ADMIN, roles.FELLOW, roles.ASSOCIATE]
+                },
+                {
                     url: "/dashboard/url-shortener",
                     title: "URL Shortener",
                     hasView: true,
