@@ -100,24 +100,24 @@ const ManageUsersEdit = (props: Props) => {
         getRoles(errorHandler, setRole);
 
         //user data
-        getManageUsersDetails(id, setData).then(() => setIsFetching(false));
+        // getManageUsersDetails(id, setData).then(() => setIsFetching(false));
     }, []);
 
-    useEffect(() => {
-        //useEffect to recall lower demographic levels if previous level exist
-        if (data?.country && state[0].value == "")
-            getState(errorHandler, setState, { country: data.country });
-        if (data?.state && district[0].value == "")
-            getDistrict(errorHandler, setDistrict, { state: data.state });
-        if (data?.district)
-            getColleges(
-                setCollegTemp,
-                setCollege,
-                setDepartment,
-                errorHandler,
-                { district: data.district }
-            );
-    }, [data]);
+    // useEffect(() => {
+    //     //useEffect to recall lower demographic levels if previous level exist
+    //     if (data?.country && state[0].value == "")
+    //         getState(errorHandler, setState, { country: data.country });
+    //     if (data?.state && district[0].value == "")
+    //         getDistrict(errorHandler, setDistrict, { state: data.state });
+    //     if (data?.district)
+    //         getColleges(
+    //             setCollegTemp,
+    //             setCollege,
+    //             setDepartment,
+    //             errorHandler,
+    //             { district: data.district }
+    //         );
+    // }, [data]);
     if (
         !community[0].id ||
         !interestGroup[0].id ||
@@ -128,7 +128,6 @@ const ManageUsersEdit = (props: Props) => {
         return <MuLoader />;
     return (
         <div className={styles.external_container}>
-            <div>
                 <h1 className={styles.text}>User Edit Page</h1>
                 {isFetching ? (
                     <MuLoader />
@@ -157,7 +156,7 @@ const ManageUsersEdit = (props: Props) => {
                                 filteredCommunity,
                                 values.department ?? undefined,
                                 values.graduation_year ?? undefined,
-                                values.role,
+                                // values.role,
                                 values.interest ?? undefined // use nullish coalescing operator to provide default value of undefined
                             );
                         }}
@@ -197,13 +196,14 @@ const ManageUsersEdit = (props: Props) => {
                                             />
                                         )
                                     )}
-                                    {data?.roles?.includes(
-                                        roleStr(roles.ENABLER)
+                                    <br />
+                                    {/* {data?.role?.includes(
+                                        roleStr(roles.STUDENT)
                                     ) && (
-                                        <FormikTextInput
-                                            {...formikProps.enabler}
-                                        />
-                                    )}
+                                            <FormikTextInput
+                                                {...formikProps.student}
+                                            />
+                                        )} */}
                                 </div>
                             </div>
                             <div className={styles.btn_container}>
@@ -226,7 +226,6 @@ const ManageUsersEdit = (props: Props) => {
                         </Form>
                     </Formik>
                 )}
-            </div>
         </div>
     );
 };

@@ -4,9 +4,10 @@ import Table from "@/MuLearnComponents/Table/Table";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { editUserRoleVerification, getUserRoleVerification } from "./apis";
+import { deleteUserRole, editUserRoleVerification, getUserRoleVerification } from "./apis";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
+import { useToast } from "@chakra-ui/react";
 
 
 function UsersRoleVerification() {
@@ -17,11 +18,13 @@ function UsersRoleVerification() {
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
     const firstFetch = useRef(true);
+    const toast = useToast();
 
     const [loading, setLoading] = useState(false);
     type TData = {
         full_name: string;
         muid: string;
+        id:string;
         discord_id: string;
         role_title: string;
         verified: boolean;
@@ -78,8 +81,10 @@ function UsersRoleVerification() {
         navigate(`/dashboard/user-role-verification/edit/${id}`);
     };
 
-    const handleDelete = (id: string | number | boolean) => {
-        navigate(`/dashboard//user-role-verification/delete/${id}`);
+    const handleDelete = async(id: string | undefined) => {
+        await deleteUserRole(id,toast)
+        const updatedData = data.filter(item => item.id !== id);
+        setData(updatedData);
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
@@ -144,9 +149,13 @@ function UsersRoleVerification() {
                         perPage={perPage}
                         columnOrder={columnOrder}
                         id={["id"]}
+                        onDeleteClick={handleDelete}
                         onVerifyClick={handleVerify}
+                        modalDeleteHeading="Delete"
+                        modalTypeContent="error"
                         modalVerifyHeading="Verify"
                         modalVerifyContent="Are you sure you want to verify this user ?"
+                        modalDeleteContent="Are you sure you want to delete this user ?"
                     >
                         <THead
                             columnOrder={columnOrder}

@@ -2,7 +2,7 @@
     position: relative;
     width: 100%;
     height: 100vh;
-    display:grid;
+    display: grid;
     place-items: center;
     overflow-x: hidden;
 }
@@ -12,6 +12,10 @@
     left: -3rem;
     animation: revolve 20s linear infinite;
     z-index: -1;
+}
+
+.templateContent {
+    margin: 0.5rem;
 }
 
 @keyframes revolve {
@@ -108,7 +112,7 @@
     }
 }
 
-@media(width<=820px) {
+@media (width<=820px) {
     .templateAstro,
     .templateAstroo,
     .templateMuship,
@@ -126,7 +130,6 @@
     .templateAstroo {
         animation-delay: 1s;
     }
-
 
     @keyframes revolve {
         0% {

@@ -108,7 +108,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     url: "/dashboard/error-log",
                     title: "Error Log",
                     hasView: true,
-                    roles: [roles.ADMIN]
+                    roles: [roles.ADMIN, roles.TECH_TEAM]
                     // icon: <i className="fi fi-sr-note"></i>
                 },
                 {
@@ -161,11 +161,23 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     icon: <i className="fi fi-ss-map-marker"></i>
                 },
                 {
+                    url: "/dashboard/affiliation",
+                    title: "Affiliation",
+                    hasView: true,
+                    roles: [roles.ADMIN, roles.FELLOW, roles.ASSOCIATE]
+                },
+                {
                     url: "/dashboard/url-shortener",
                     title: "URL Shortener",
                     hasView: true,
                     roles: [roles.ADMIN, roles.FELLOW, roles.ASSOCIATE]
                     // icon: <i className="fi fi-sr-globe"></i>
+                },
+                {
+                    url: "/dashboard/organization-transfer",
+                    title: "Organization Transfer",
+                    hasView: true,
+                    roles: [roles.ADMIN]
                 }
             ]
         },

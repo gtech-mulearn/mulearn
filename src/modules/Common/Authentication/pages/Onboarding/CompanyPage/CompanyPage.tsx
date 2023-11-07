@@ -13,7 +13,6 @@ import { getCompanies } from "../../../services/newOnboardingApis";
 import ReactSelect from "react-select";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
-import { log } from "console";
 
 const inputObject = {
     company: "Company Name"
@@ -25,14 +24,23 @@ const scheme = z.object({
         .required(`Company Name is Required`)
         .min(3, `Company Name must be at least 3 characters`)
         .max(100, `Company Name must be at most 100 characters`),
-    radio: z
-        .string()
-        .required(`Radio is Required`)
-        .min(2, `Radio must be at least 2 characters`)
-        .max(3, `Radio must be at most 3 characters`)
+    radio: z.string().required(`This field is Required`)
 });
 
-export default function CompanyPage() {
+const CustomFilter = (
+    { label, value }: { label: string; value: string },
+    string: string
+): boolean => {
+    if (value === "Others") return true; // Always show "Others" option
+    if (!string) return true;
+    return label.toLowerCase().startsWith(string.toLowerCase());
+};
+
+export default function CompanyPage({
+    selectedRole
+}: {
+    selectedRole: string;
+}) {
     const navigate = useNavigate();
     const toast = useToast();
     const location = useLocation();
@@ -41,13 +49,12 @@ export default function CompanyPage() {
     const [isloading, setIsLoading] = useState(true);
     const [companies, setCompanies] = useState([{ id: "", title: "" }]);
     const [roles, setRoles] = useState([{ id: "", title: "" }]);
-    const [selectedRole, setSelectedRole] = useState<string>("");
 
     useEffect(() => {
         if (
             userData === undefined ||
             userData === null ||
-            userData.email === undefined
+            userData.user.email === undefined
         ) {
             navigate("/register", { replace: true });
         } else {
@@ -68,27 +75,31 @@ export default function CompanyPage() {
     });
 
     const onSubmit = async (values: any) => {
+        // Remove "Others" company from organizations array if it exists
+        const organizations =
+            values.company === "Others"
+                ? userData.communities
+                : [values.company, ...userData.communities];
+
         const newUserData: any = {
             user: {
-                first_name: userData.first_name,
-                last_name: userData.last_name,
-                mobile: userData.mobile,
-                email: userData.email,
-                password: userData.password
+                first_name: userData.user.first_name,
+                last_name: userData.user.last_name,
+                mobile: userData.user.mobile,
+                email: userData.user.email,
+                password: userData.user.password
             },
             organization: {
                 year_of_graduation: values.graduationYear,
-                organizations: [values.company, ...userData.communities],
+                organizations: organizations,
                 verified: true
-            },
-            area_of_interests: []
+            }
         };
 
         if (userData.referral_id)
             newUserData["referral"] = { muid: userData.referral_id };
         if (userData.param) {
-            newUserData["integration"]["param"] = userData.param;
-            newUserData["integration"]["title"] = "DWMS";
+            newUserData["integration"] = userData.integration;
         }
 
         if (userData.referral)
@@ -96,12 +107,20 @@ export default function CompanyPage() {
 
         /// If user doesn't want to be a mentor set role to null
         if (values.radio === "yes") {
-            if (userData.role === "") {
+            if (selectedRole === "") {
                 const mentorRole = roles.find(role => role.title === "Mentor");
                 newUserData.user["role"] = mentorRole?.id;
             } else {
-                newUserData.user["role"] = userData.role;
+                newUserData.user["role"] = selectedRole;
             }
+        }
+
+        if (userData.gender) {
+            newUserData.user["gender"] = userData.gender;
+        }
+
+        if (userData.dob) {
+            newUserData.user["dob"] = userData.dob;
         }
 
         submitUserData({
@@ -109,117 +128,142 @@ export default function CompanyPage() {
             userData: newUserData,
             toast: toast,
             navigate: navigate
-
         });
     };
 
     return (
-        <OnboardingTemplate>
-            <OnboardingHeader
-                title={"What describe you the most!"}
-                desc={"Please select your company"}
-            />
-
-            <Formik
-                initialValues={{
-                    ...Object.fromEntries(
-                        Object.keys(inputObject).map(key => [key, ""])
-                    ),
-                    radio: ""
-                }}
-                validationSchema={scheme}
-                onSubmit={onSubmit}
-            >
-                {formik => (
-                    <div>
-                        <div className={styles.wrapper}>
-                            <Form onSubmit={formik.handleSubmit}>
-                                <h5 className={styles.text}>
-                                    Please enter your company details<span className={styles.errorsSpan}> *</span>
-                                </h5>
-                                <ReactSelect
-                                    options={
-                                        companies.map(company => ({
+        <Formik
+            initialValues={{
+                ...Object.fromEntries(
+                    Object.keys(inputObject).map(key => [key, ""])
+                ),
+                radio: ""
+            }}
+            validationSchema={scheme}
+            onSubmit={onSubmit}
+        >
+            {formik => (
+                <div>
+                    <div className={styles.wrapper}>
+                        <Form onSubmit={formik.handleSubmit}>
+                            <h5 className={styles.text}>
+                                Please enter your company details
+                                <span className={styles.errorsSpan}> *</span>
+                            </h5>
+                            <ReactSelect
+                                options={
+                                    [
+                                        {
+                                            value: "Others",
+                                            label: "Others"
+                                        },
+                                        ...(companies.map(company => ({
                                             value: company.id,
                                             label: company.title
-                                        })) as any
+                                        })) as any)
+                                    ] as any
+                                }
+                                name="company"
+                                placeholder="Company Name"
+                                value={selectedCompany.title}
+                                isDisabled={isloading}
+                                filterOption={CustomFilter}
+                                onChange={(e: any) => {
+                                    if (e) {
+                                        setSelectedCompany(e);
+                                        formik.setFieldValue(
+                                            "company",
+                                            e.value
+                                        );
+                                        inputObject.company = e.value;
                                     }
-                                    name="company"
-                                    placeholder="Company Name"
-                                    value={selectedCompany.title}
-                                    isDisabled={isloading}
-                                    onChange={(e: any) => {
-                                        if (e) {
-                                            setSelectedCompany(e);
-                                            formik.setFieldValue(
-                                                "company",
-                                                e.value
-                                            );
-                                            inputObject.company = e.value;
+                                }}
+                                required
+                            />
+                            {formik.touched[
+                                "company" as keyof typeof formik.touched
+                            ] &&
+                                formik.errors[
+                                    "company" as keyof typeof formik.touched
+                                ] && (
+                                    <span className={styles.errorsSpan}>
+                                        {
+                                            formik.errors[
+                                                "company" as keyof typeof formik.touched
+                                            ]
                                         }
-                                    }}
-                                    required
-                                />
-                                {formik.touched['company' as keyof typeof formik.touched] &&
-                                    formik.errors['company' as keyof typeof formik.touched] && (
-                                        <span className={styles.errorsSpan}>{formik.errors['company' as keyof typeof formik.touched]}</span>
+                                    </span>
+                                )}
+                            <div className={styles.content}>
+                                <h5 className={styles.text}>
+                                    Do you want to become a mentor?
+                                    <span className={styles.errorsSpan}>
+                                        {" "}
+                                        *
+                                    </span>
+                                </h5>
+                                {formik.touched.radio &&
+                                    formik.errors.radio && (
+                                        <span className={styles.errorsSpan}>
+                                            {formik.errors.radio}
+                                        </span>
                                     )}
-                                <div className={styles.content}>
-                                    <h5 className={styles.text}>
-                                        Do you want to become a mentor?<span className={styles.errorsSpan}> *</span>
-                                    </h5>
-                                    {formik.touched.radio &&
-                                        formik.errors.radio && (
-                                            <span className={styles.errorsSpan}>{formik.errors.radio}</span>
-                                        )}
-                                    <div className={styles.select}>
-                                        <button type="button" className={styles.selectRadio}>
-                                            <label>
-                                                <input
-                                                    onChange={(e) => {
-                                                        formik.setFieldValue("radio", e.target.value);
-                                                    }}
-                                                    type="radio"
-                                                    value="yes"
-                                                    name="radio"
-                                                    disabled={isloading}
-                                                />
-                                                <span>Yes</span>
-                                            </label>
-                                        </button>
-
-                                        <button type="button" className={styles.selectRadio}>
-                                            <label>
-                                                <input
-                                                    onChange={(e) => {
-                                                        formik.setFieldValue("radio", e.target.value);
-                                                    }}
-                                                    type="radio"
-                                                    value="no"
-                                                    name="radio"
-
-                                                />
-                                                <span>No</span>
-                                            </label>
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div className={styles.submit}>
-                                    <PowerfulButton
-                                        type="submit"
-                                        isLoading={isloading}
+                                <div className={styles.select}>
+                                    <button
+                                        type="button"
+                                        className={styles.selectRadio}
                                     >
-                                        {isloading
-                                            ? "Please wait..."
-                                            : "Submit"}
-                                    </PowerfulButton>
+                                        <label>
+                                            <input
+                                                onChange={e => {
+                                                    formik.setFieldValue(
+                                                        "radio",
+                                                        e.target.value
+                                                    );
+                                                }}
+                                                type="radio"
+                                                value="yes"
+                                                name="radio"
+                                                disabled={isloading}
+                                            />
+                                            <span>Yes</span>
+                                        </label>
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        className={styles.selectRadio}
+                                    >
+                                        <label>
+                                            <input
+                                                onChange={e => {
+                                                    formik.setFieldValue(
+                                                        "radio",
+                                                        e.target.value
+                                                    );
+                                                }}
+                                                type="radio"
+                                                value="no"
+                                                name="radio"
+                                            />
+                                            <span>No</span>
+                                        </label>
+                                    </button>
                                 </div>
-                            </Form>
-                        </div>
+                            </div>
+
+                            <div className={styles.submit}>
+                                <PowerfulButton
+                                    type="submit"
+                                    isLoading={isloading}
+                                >
+                                    {isloading ? "Please wait..." : "Submit"}
+                                </PowerfulButton>
+                            </div>
+                        </Form>
                     </div>
-                )}
-            </Formik>
-        </OnboardingTemplate>
+                </div>
+            )}
+        </Formik>
     );
 }

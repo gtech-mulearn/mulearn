@@ -3,10 +3,11 @@ import { KKEMRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
 import { NavigateFunction } from "react-router-dom";
 import { useFormik } from "formik";
 import { getInfo } from "../../../Dashboard/modules/ConnectDiscord/services/apis";
+import { Dispatch, SetStateAction } from "react";
 
 // Define the type of MyValues
 type NN = { name: string; id: string };
-type TT = { title: string; id: string };
+ export type TT = { title: string; id: string };
 
 type InitialValues = {
     firstName: string;
@@ -35,7 +36,7 @@ type FormikType = ReturnType<typeof useFormik<InitialValues>>;
 type getAPI = UseStateFunc<TT[]>;
 type AoiAPI = UseStateFunc<NN[]>;
 
-type collegeOptions = UseStateFunc<
+export type collegeOptions = UseStateFunc<
     {
         value: string;
         label: string;
@@ -376,3 +377,23 @@ export const getDWMSDetails = (
             errorHandler(error.response.status, error.response.data.status);
         });
 };
+
+
+export const getLocations = async (
+    param: string,
+    setLocationData: Dispatch<SetStateAction<any[]>>,
+    setIsApiCalled: UseStateFunc<boolean>
+) => {
+    setIsApiCalled(true);
+    await publicGateway.get(onboardingRoutes.location.replace(
+        "${param}",
+        param === "" ? "india" : param
+    )).then((response) => {
+        setIsApiCalled(false);
+        console.log(response.data.response)
+        setLocationData(response.data.response);
+    }).catch((error: APIError) => {
+        setIsApiCalled(false);
+        console.log(error)
+    });
+}

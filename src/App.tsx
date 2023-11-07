@@ -14,6 +14,29 @@ import PrivateRoutes from "./components/PrivateRoutes";
 import DashboardRootLayout from "./modules/Dashboard/layouts/DashboardRootLayout";
 import NotFound from "./components/NotFound";
 
+import { roles } from "./services/types";
+import SecureAuthRoutes from "./services/authCheck";
+
+import { CampusStudentList, ConnectDiscord } from "./modules/Dashboard/modules";
+
+import LandingPage from "./modules/Public/LearningCircles/pages/LandingPage";
+import ProfileV2 from "./modules/Dashboard/modules/ProfileV2/pages/Profile";
+import AccountCreation from "./modules/Common/Authentication/pages/Onboarding/AccountCreation/AccountCreation";
+import Rolepage from "./modules/Common/Authentication/pages/Onboarding/RolePage/RolePage";
+import CollegePage from "./modules/Common/Authentication/pages/Onboarding/CollegePage/CollegePage";
+import CompanyPage from "./modules/Common/Authentication/pages/Onboarding/CompanyPage/CompanyPage";
+import SignIn from "./modules/Common/Authentication/pages/Onboarding/SignIn/SignIn";
+
+import ErrorLog from "./modules/Dashboard/modules/ErrorLog/ErrorLog";
+import KKEMEventBeyondUs from "./modules/Public/KKEM/modules/KKEMEventTemplate/KKEMEventBeyondUs";
+
+import LearningCircles from "./modules/Public/KKEM/modules/Dashboard/LearningCircles/LearningCircles";
+import ForgetPassword from "./modules/Common/Authentication/pages/Onboarding/ForgetPassword/ForgetPassword";
+import ResetPassword from "./modules/Common/Authentication/pages/Onboarding/ResetPassword/ResetPassword";
+import LcDashboard from "./modules/Dashboard/modules/LearningCircle/pages/LcDashboard/LcDashboard";
+import { Toaster } from "react-hot-toast";
+import CommunityPage from "./modules/Common/Authentication/pages/Onboarding/CommunityPage/CommunityPage";
+import Foundation from "./modules/Public/Foundation/Foundation";
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
 );
@@ -30,13 +53,6 @@ const Tasks = lazy(() =>
     import("./modules/Dashboard/modules/Tasks/Tasks").then(module => ({
         default: module.Tasks
     }))
-);
-const CreateOrganization = lazy(
-    () => import("./modules/Dashboard/modules/Organizations/CreateOrganization")
-);
-const DeleteOrganizations = lazy(
-    () =>
-        import("./modules/Dashboard/modules/Organizations/DeleteOrganizations")
 );
 const ManageUsersCreate = lazy(
     () => import("./modules/Dashboard/modules/ManageUsers/ManageUsersCreate")
@@ -62,8 +78,8 @@ const UserRoleVerificationEdit = lazy(
             "./modules/Dashboard/modules/UserRoleVerification/UserRoleVerificationEdit"
         )
 );
-const EditOrgnaization = lazy(
-    () => import("./modules/Dashboard/modules/Organizations/EditOrganization")
+const Affiliation = lazy(
+    () => import("./modules/Dashboard/modules/Affiliation/Pages/Affiliation")
 );
 const UrlShortener = lazy(
     () => import("./modules/Dashboard/modules/UrlShortener/Pages/UrlShortener")
@@ -103,6 +119,9 @@ const HackathonOrganizers = lazy(() =>
 );
 const Organizations = lazy(
     () => import("./modules/Dashboard/modules/Organizations/Organizations")
+);
+const OrganizationTransfer = lazy(
+    () => import("./modules/Dashboard/modules/OrganizationTransfer/components/organizationTransfer")
 );
 const ManageUsers = lazy(
     () => import("./modules/Dashboard/modules/ManageUsers/ManageUsers")
@@ -195,28 +214,6 @@ const PurchaseInventory = lazy(
         )
 );
 
-import { roles } from "./services/types";
-import SecureAuthRoutes from "./services/authCheck";
-
-import { CampusStudentList, ConnectDiscord } from "./modules/Dashboard/modules";
-
-import LandingPage from "./modules/Public/LearningCircles/pages/LandingPage";
-import ProfileV2 from "./modules/Dashboard/modules/ProfileV2/pages/Profile";
-import AccountCreation from "./modules/Common/Authentication/pages/Onboarding/AccountCreation/AccountCreation";
-import Rolepage from "./modules/Common/Authentication/pages/Onboarding/RolePage/RolePage";
-import CollegePage from "./modules/Common/Authentication/pages/Onboarding/CollegePage/CollegePage";
-import CompanyPage from "./modules/Common/Authentication/pages/Onboarding/CompanyPage/CompanyPage";
-import SignIn from "./modules/Common/Authentication/pages/Onboarding/SignIn/SignIn";
-
-import ErrorLog from "./modules/Dashboard/modules/ErrorLog/ErrorLog";
-import KKEMEventBeyondUs from "./modules/Public/KKEM/modules/KKEMEventTemplate/KKEMEventBeyondUs";
-
-import LearningCircles from "./modules/Public/KKEM/modules/Dashboard/LearningCircles/LearningCircles";
-import ForgetPassword from "./modules/Common/Authentication/pages/Onboarding/ForgetPassword/ForgetPassword";
-import ResetPassword from "./modules/Common/Authentication/pages/Onboarding/ResetPassword/ResetPassword";
-import LcDashboard from "./modules/Dashboard/modules/LearningCircle/pages/LcDashboard";
-import { Toaster } from "react-hot-toast";
-
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
 );
@@ -264,27 +261,20 @@ function App() {
             element: <AccountCreation />
         },
         {
-            path: "/role",
+            path: "register/select-role",
             element: <Rolepage />
         },
-        {
-            path: "/college",
-            element: <CollegePage />
-        },
-        {
-            path: "/company",
-            element: <CompanyPage />
-        },
+        { path: "register/select-community", element: <CommunityPage /> },
         {
             path: "/",
-          element: <PrivateRoutes />,
+            element: <PrivateRoutes />,
             children: [
                 {
                     path: "/dashboard",
                     element: <DashboardRootLayout />,
                     children: [
                         { path: "profile", element: <Profile /> },
-                        { path: "profileV2", element: <ProfileV2 /> },
+                        // { path: "profileV2", element: <ProfileV2 /> },
                         {
                             path: "connect-discord",
                             element: <ConnectDiscord />
@@ -301,20 +291,6 @@ function App() {
                                     children={<InterestGroup />}
                                 />
                             )
-                        },
-
-                        {
-                            path: "organizations/edit",
-                            element: (
-                                <RoleChecker
-                                    roles={[roles.ADMIN]}
-                                    children={<EditOrgnaization />}
-                                />
-                            )
-                        },
-                        {
-                            path: "organizations/delete/:id",
-                            element: <DeleteOrganizations />
                         },
                         {
                             path: "campus-details",
@@ -422,7 +398,7 @@ function App() {
                             path: "college-levels",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN, roles.FELLOW]}
+                                    roles={[roles.ADMIN, roles.FELLOW, roles.CAMPUS_ACTIVATION_TEAM]}
                                     children={<CollegeLevels />}
                                 />
                             )
@@ -461,7 +437,7 @@ function App() {
                             path: "/dashboard/error-log",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN]}
+                                    roles={[roles.ADMIN, roles.TECH_TEAM]}
                                     children={<ErrorLog />}
                                 />
                             )
@@ -469,6 +445,19 @@ function App() {
                         {
                             path: "karma-voucher/bulk-import",
                             element: <KarmaVoucherBulkImport />
+                        },
+                        {
+                            path: "affiliation",
+                            element: (
+                                <RoleChecker
+                                    roles={[
+                                        roles.ADMIN,
+                                        roles.FELLOW,
+                                        roles.ASSOCIATE
+                                    ]}
+                                    children={<Affiliation />}
+                                />
+                            )
                         },
                         {
                             path: "url-shortener",
@@ -571,10 +560,10 @@ function App() {
                             path: "learning-circle/details/:id",
                             element: <LearningCircle />
                         },
-                        {
-                            path: "learning-circle/dashboard/:id",
-                            element: <LcDashboard />
-                        },
+                        // {
+                        //     path: "learning-circle/dashboard/:id",
+                        //     element: <LcDashboard />
+                        // },
                         {
                             path: "learning-circle/find-circle",
                             element: <FindCircle />
@@ -584,25 +573,34 @@ function App() {
                             element: <LearningCircleCreate />
                         },
                         {
-                            path: "marketplace",
-                            element: <Marketplace />
-                        },
-                        {
-                            path: "marketplace-history",
-                            element: <MarketPlaceHistory />
-                        },
-                        {
-                            path: "marketplace-additem",
-                            element: <MarketAddItem />
-                        },
-                        {
-                            path: "marketplace-admin",
-                            element: <AdminMarketPlace />
-                        },
-                        {
-                            path: "marketplace-purchaseinv",
-                            element: <PurchaseInventory />
+                            path: "organization-transfer",
+                            element: (
+                                <RoleChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<OrganizationTransfer />}
+                                />
+                            )
                         }
+                        // {
+                        //     path: "marketplace",
+                        //     element: <Marketplace />
+                        // },
+                        // {
+                        //     path: "marketplace-history",
+                        //     element: <MarketPlaceHistory />
+                        // },
+                        // {
+                        //     path: "marketplace-additem",
+                        //     element: <MarketAddItem />
+                        // },
+                        // {
+                        //     path: "marketplace-admin",
+                        //     element: <AdminMarketPlace />
+                        // },
+                        // {
+                        //     path: "marketplace-purchaseinv",
+                        //     element: <PurchaseInventory />
+                        // }
                         // {
                         //     path: "settings",
                         //     element: <Settings />,
@@ -636,6 +634,10 @@ function App() {
         {
             path: "/kkem/learningcircles/dashboard",
             element: <LearningCircles />
+        }, {
+            path: "/foundation",
+            element: <Foundation />
+
         }
     ]);
 
@@ -645,7 +647,6 @@ function App() {
             <Toaster position="bottom-center" reverseOrder={true} />
         </>
     );
-	
 }
 
 export default App;

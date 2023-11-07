@@ -15,7 +15,8 @@ export const onboardingRoutes = {
     colleges: "/api/v1/register/colleges/",
     departments: "/api/v1/register/department/list/",
     companies: "/api/v1/register/company/list/",
-    validate: "/api/v1/register/validate/"
+    validate: "/api/v1/register/validate/",
+    location:'/api/v1/register/location/?q=${param}'
 } as const;
 
 export const authRoutes = {
@@ -36,11 +37,12 @@ export const dashboardRoutes = {
         "/api/v1/dashboard/user/reset-password/verify-token/${token}/",
     getInfo: "/api/v1/dashboard/user/info/",
     getIgData: "/api/v1/dashboard/ig/",
-    getIgList: "/api/v1/dashboard/ig/csv",
+    getIgList: "/api/v1/dashboard/ig/csv/",
     getUsersData: "/api/v1/dashboard/user/",
     getUsersEditData: "/api/v1/dashboard/user/edit/",
     getUsersList: "/api/v1/dashboard/user/csv/",
     getUsersRoleVerificationData: "/api/v1/dashboard/user/verification/",
+    getUsersRoleDelete: "/api/v1/dashboard/user/verification/",
     getUserRoleVerificationCSV: "/api/v1/dashboard/user/verification/csv/",
     getTasksData: "/api/v1/dashboard/task/",
     getRolesData: "/api/v1/dashboard/roles/",
@@ -67,7 +69,7 @@ export const dashboardRoutes = {
     getEditUserProfile: "/api/v1/dashboard/profile/",
     getUserLog: "/api/v1/dashboard/profile/user-log/",
     getUserLevels: "/api/v1/dashboard/profile/get-user-levels/",
-    getPublicUserLevels: "/api/v1/dashboard/profile/get-user-levels/${muid}",
+    getPublicUserLevels: "/api/v1/dashboard/profile/get-user-levels/${muid}/",
     putIsPublic: "/api/v1/dashboard/profile/share-user-profile/",
     getPublicUserLog: "/api/v1/dashboard/profile/user-log/${muid}/",
     getUserSuggestion: "/api/v1/dashboard/profile/user-suggestion/",
@@ -138,7 +140,8 @@ export const dashboardRoutes = {
     getDynamicRoles: "api/v1/dashboard/dynamic-management/dynamic-role/",
     getDynamicUser: "api/v1/dashboard/dynamic-management/dynamic-user/",
 
-    getErrorLog: "api/v1/dashboard/error-log/"
+    getErrorLog: "api/v1/dashboard/error-log/",
+    clearErrorLog: "api/v1/dashboard/error-log/clear/"
 } as const;
 
 export const organizationRoutes = {
@@ -155,7 +158,7 @@ export const organizationRoutes = {
     deleteAffiliation:
         "/api/v1/dashboard/organisation/institutes/affiliation/delete/",
 
-    getLocation: "/api/v1/dashboard/location",
+    getLocation: "/api/v1/dashboard/location/",
     postAddOrganization: "/api/v1/dashboard/organisation/institutes/create/",
     putUpdateOrganization: "/api/v1/dashboard/organisation/institutes/edit/",
     deleteOrgnaization: "/api/v1/dashboard/organisation/institutes/delete/",
@@ -164,7 +167,11 @@ export const organizationRoutes = {
         `/api/v1/dashboard/organisation/institutes/${org_type}/csv/`,
 
     createOrganisation:
-        "/api/v1/dashboard/organisation/institutes/create/"
+        "/api/v1/dashboard/organisation/institutes/create/",
+    getOrganisationDetails:
+        "/api/v1/dashboard/organisation/institutes/info/",
+    editOrganisation:
+        "/api/v1/dashboard/organisation/institutes/edit/"
 } as const;
 
 export const ManageLocationsRoutes = {

@@ -1,7 +1,6 @@
 import { useRef, useState } from "react";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { AiOutlinePlusCircle } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
 import "../DistrictDashboard/Organizations.css";
 import "../DistrictDashboard/DistricDashboard.scss";
 import MuModal from "@/MuLearnComponents/MuModal/MuModal";
@@ -13,9 +12,8 @@ interface TableTopTabProps {
 
 const TableTopTab = ({ active, onTabClick }: TableTopTabProps) => {
     const tabletopTab = ["College", "Company", "Community"];
+	
     const [isModalOpen, setIsModalOpen] = useState(false);
-
-    const navigate = useNavigate();
     const orgFormRef = useRef<any>(null); //! Use for modal and form button connectivity
 
     return (

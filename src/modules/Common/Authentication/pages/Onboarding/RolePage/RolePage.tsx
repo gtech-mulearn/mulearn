@@ -1,13 +1,14 @@
 import styles from "./RolePage.module.css";
 import OnboardingTemplate from "../../../components/OnboardingTeamplate/OnboardingTemplate";
 import OnboardingHeader from "../../../components/OnboardingHeader/OnboardingHeader";
-
+import CollegePage from "../CollegePage/CollegePage";
 import roleOptions from "./data/roleOptions";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 import { getRoles, submitUserData } from "../../../services/newOnboardingApis";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
+import CompanyPage from "../CompanyPage/CompanyPage";
 
 export default function Rolepage() {
     const navigate = useNavigate();
@@ -23,8 +24,6 @@ export default function Rolepage() {
     const [selectedRoleId, setSelectedRoleId] = useState<string>("");
 
     useEffect(() => {
-        console.log("userData", userData);
-
         if (userData === undefined || userData === null) {
             navigate("/register", { replace: true });
         } else {
@@ -38,11 +37,11 @@ export default function Rolepage() {
     const submitData = () => {
         const newUserData: any = {
             user: {
-                first_name: userData.first_name,
-                last_name: userData.last_name,
-                mobile: userData.mobile,
-                email: userData.email,
-                password: userData.password
+                first_name: userData.user.first_name,
+                last_name: userData.user.last_name,
+                mobile: userData.user.mobile,
+                email: userData.user.email,
+                password: userData.user.password
             }
         };
 
@@ -61,23 +60,32 @@ export default function Rolepage() {
             toast: toast,
             navigate: navigate
         });
-    }
+    };
 
     return (
         <OnboardingTemplate>
             <OnboardingHeader
-                title={"What describe you the most!"}
+                title={"What describes you the most!"}
                 desc={"Please select your role"}
             />
             {isloading ? (
                 <MuLoader />
             ) : (
                 <div className={styles.rolePageConatiner}>
-                    <div className={styles.rolePageCards}>
+                    <div
+                        className={
+                            styles.rolePageCards +
+                            " " +
+                            (!["Other", "Graduate"].includes(selectedRole) &&
+                                selectedRole &&
+                                styles.cardSmall)
+                        }
+                    >
                         {roleOptions.map((roleOption: any) => {
-                            let classname = `${styles.rolePageCard} ${selectedRole === roleOption.value &&
+                            let classname = `${styles.rolePageCard} ${
+                                selectedRole === roleOption.value &&
                                 styles.active
-                                }`;
+                            }`;
                             return (
                                 <div
                                     className={classname}
@@ -97,30 +105,23 @@ export default function Rolepage() {
                             );
                         })}
                     </div>
+                    {nextPage &&
+                        (nextPage === "select-college" ? (
+                            <CollegePage selectedRole={selectedRoleId} />
+                        ) : (
+                            <CompanyPage selectedRole={selectedRoleId} />
+                        ))}
 
-                    <button
-                        onClick={() => {
-                            console.log(selectedRoleId);
-
-                            if (selectedRole === "" || nextPage === "") {
-                                toast({
-                                    title: "Please select a role",
-                                    status: "error",
-                                    duration: 3000,
-                                    isClosable: true
-                                });
-                                return;
-                            }
-                            if (nextPage)
-                                navigate(nextPage, {
-                                    state: { ...userData, role: selectedRoleId }
-                                });
-                            else
+                    {["Other", "Graduate"].includes(selectedRole) && (
+                        <button
+                            className={styles.buttonWidth}
+                            onClick={() => {
                                 submitData();
-                        }}
-                    >
-                        {nextPage ? "Continue" : "Submit"}
-                    </button>
+                            }}
+                        >
+                            Submit
+                        </button>
+                    )}
                 </div>
             )}
         </OnboardingTemplate>

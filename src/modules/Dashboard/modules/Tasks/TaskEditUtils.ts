@@ -182,7 +182,6 @@ const useFormikData = () => {
             element: "select",
             name: "channel_id",
             label: "Channel",
-            required: true,
             options:
                 (uuidData?.channel &&
                     uuidData?.channel

@@ -19,6 +19,8 @@ interface Props {
     onCountryChange: (value: { label: string; value: string } | null) => void;
     onStateChange: (value: { label: string; value: string } | null) => void;
     onDistrictChange: (value: { label: string; value: string } | null) => void;
+
+    notRequired?: boolean;
 }
 
 interface BlurStatus {
@@ -39,7 +41,8 @@ const CountryStateDistrict: React.FC<Props> = ({
     loadingDistricts,
     onCountryChange,
     onStateChange,
-    onDistrictChange
+    onDistrictChange,
+    notRequired = false
 }) => {
     const [blurStatus, setBlurStatus] = React.useState<BlurStatus>({
         country: false,
@@ -55,13 +58,17 @@ const CountryStateDistrict: React.FC<Props> = ({
                     styles={customReactSelectStyles}
                     isClearable
                     isLoading={loadingCountries}
-                    value={selectedCountry}
+                    value={
+                        countries.filter(
+                            country => country.value === selectedCountry?.value
+                        )[0]
+                    }
                     onChange={value => onCountryChange(value)}
                     onBlur={() => {
                         setBlurStatus(prev => ({ ...prev, country: true }));
                     }}
                 />
-                {blurStatus.country && !selectedCountry && (
+                {!notRequired && blurStatus.country && !selectedCountry && (
                     <div style={{ color: "red" }}>Country is Required</div>
                 )}
             </div>
@@ -73,13 +80,17 @@ const CountryStateDistrict: React.FC<Props> = ({
                     isClearable
                     options={states}
                     isLoading={loadingStates}
-                    value={selectedState}
+                    value={
+                        states.filter(
+                            state => state.value === selectedState?.value
+                        )[0]
+                    }
                     onChange={value => onStateChange(value)}
                     onBlur={() => {
                         setBlurStatus(prev => ({ ...prev, state: true }));
                     }}
                 />
-                {blurStatus.state && !selectedState && (
+                {!notRequired && blurStatus.state && !selectedState && (
                     <div style={{ color: "red" }}>State is Required</div>
                 )}
             </div>
@@ -91,13 +102,18 @@ const CountryStateDistrict: React.FC<Props> = ({
                     isClearable
                     options={districts}
                     isLoading={loadingDistricts}
-                    value={selectedDistrict}
+                    value={
+                        districts.filter(
+                            district =>
+                                district.value === selectedDistrict?.value
+                        )[0]
+                    }
                     onChange={value => onDistrictChange(value)}
                     onBlur={() => {
                         setBlurStatus(prev => ({ ...prev, district: true }));
                     }}
                 />
-                {blurStatus.district && !selectedDistrict && (
+                {!notRequired && blurStatus.district && !selectedDistrict && (
                     <div style={{ color: "red" }}>District is Required</div>
                 )}
             </div>

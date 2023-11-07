@@ -44,6 +44,7 @@ export const FormikTextInput: FC<
 
 export const FormikTextInputWithoutLabel = ({ ...props }: InputFormik) => {
     const [field, meta] = useField(props);
+    if (props.required) props.placeholder = `${props.placeholder} *`;
     return (
         <>
             <input className="text-input" {...field} {...props} />

@@ -1,0 +1,750 @@
+.LCDashboardWrapper {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.TitleContainerWrapper {
+    width: 100%;
+    height: fit-content;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 30px;
+    border-radius: 12px;
+    gap: 10px;
+}
+
+.TitleContainerWrapper .Title {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    text-align: left !important;
+}
+
+.TitleContainerWrapper .Title h1 {
+    font-size: 50px;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1;
+}
+
+.TitleContainerWrapper .Title h3 {
+    color: black;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.TitleContainerWrapper .RankSession {
+    display: flex;
+    align-items: baseline;
+    height: 100%;
+    gap: 30px;
+}
+
+.TitleContainerWrapper .RankSession h1 {
+    font-size: 55px;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1;
+}
+.TitleContainerWrapper .RankSession h3 {
+    color: black;
+    font-weight: 600;
+}
+
+.NavLink {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: #fafafa;
+    padding: 10px;
+    border-radius: 12px;
+}
+.NavLink button {
+    color: black;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 5px 10px;
+}
+.NavLink .active {
+    color: rgba(69, 111, 246, 1);
+    background-color: white;
+    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.15);
+}
+.ContainerWrapper {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.ContainerWrapper .SwitchNav {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.ContainerWrapper .SwitchNav .items {
+    padding: 8px 20px;
+    background-color: #f3f3f4;
+    color: black;
+    font-weight: 600;
+    border-radius: 15px;
+}
+.ContainerWrapper .SwitchNav .active {
+    background-color: white;
+    border-radius: 15px 15px 0px 0px;
+}
+
+.ContainerWrapper .SwitchNav .plusItem {
+    border-left: 2px solid #8b8e92;
+    color: black;
+    font-size: 25px;
+    padding: 0px;
+    height: fit-content;
+    padding-left: 10px;
+    line-height: 1;
+}
+
+@media screen and (max-width: 500px) {
+    .TitleContainerWrapper .Title h1,
+    .TitleContainerWrapper .RankSession h1 {
+        font-size: 35px;
+    }
+
+    .TitleContainerWrapper .Title h3,
+    .TitleContainerWrapper .RankSession h3 {
+        font-size: 15px;
+    }
+}
+/* ReportWrapper */
+
+.ReportWrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    background-color: white;
+    padding: 5%;
+    gap: 10px;
+    height: 100%;
+}
+.ReportWrapper .DetailSection {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    width: 65%;
+}
+.ReportWrapper .DetailSection .Sectionone {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.ReportWrapper .DetailSection .Sectionone > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    width: 45%;
+}
+.ReportWrapper .DetailSection .Sectionone > div label {
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+}
+.ReportWrapper .DetailSection .Sectionone > div input {
+    background-color: rgba(238, 242, 255, 1);
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.ReportWrapper .DetailSection .Sectionone > div > div {
+    align-self: flex-end;
+    padding-right: 10px;
+    margin-top: -40px;
+    background-color: rgba(238, 242, 255, 1);
+}
+
+.ReportWrapper .DetailSection .SectionTwo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 10px;
+}
+.ReportWrapper .DetailSection .SectionTwo p {
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+}
+.ReportWrapper .DetailSection .SectionTwo textarea {
+    width: 100%;
+    background-color: rgba(238, 242, 255, 1);
+    min-height: 130px;
+    border-radius: 10px;
+    padding: 10px;
+}
+.ReportWrapper .DetailSection .SectionThree {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    align-items: flex-start;
+}
+.ReportWrapper .DetailSection .SectionThree > p {
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+}
+.ReportWrapper .DetailSection .SectionThree > div {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+}
+.ReportWrapper .DetailSection .SectionThree > div div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 17px;
+}
+.ReportWrapper .DetailSection .SectionThree > div button {
+    font-size: 40px;
+    margin-top: 0;
+    line-height: 0.8;
+}
+.ReportWrapper .UploadSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    width: 30%;
+    height: 100%;
+}
+.ReportWrapper .UploadSection > div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+.ReportWrapper .UploadSection > div > p {
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+}
+.ReportWrapper .UploadSection > div > div {
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(238, 242, 255, 1);
+    border: 1px dashed #456ff6;
+    border-radius: 10px;
+}
+
+.ReportWrapper .UploadSection button {
+    background-color: #456ff6;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    width: fit-content;
+}
+
+@media screen and (max-width: 1050px) {
+    .ReportWrapper {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .ReportWrapper .DetailSection,
+    .ReportWrapper .UploadSection {
+        width: 100%;
+    }
+    .ReportWrapper .DetailSection .SectionThree > div div {
+        font-size: 15px;
+    }
+}
+@media screen and (max-width: 420px) {
+    .ReportWrapper .DetailSection .Sectionone {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .ReportWrapper .DetailSection .Sectionone > div {
+        width: 80%;
+        min-width: 250px;
+    }
+    .ReportWrapper .DetailSection .SectionThree > div div {
+        font-size: 14px;
+    }
+}
+/* Past data Wrapper */
+.HistoryDataWrapper {
+    width: 100%;
+    background-color: white;
+    height: 100%;
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.HistoryDataWrapper > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 2%;
+    flex-wrap: wrap;
+}
+.HistoryDataWrapper > div > div {
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+.HistoryDataWrapper h1 {
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1;
+}
+.HistoryDataWrapper h2 {
+    color: black;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1;
+}
+.HistoryDataWrapper > div > div > p {
+    color: black;
+    text-align: left;
+    font-size: 16px;
+}
+.HistoryDataWrapper > div > div > div > p {
+    color: black;
+    font-size: 18px;
+    font-weight: 500;
+}
+.HistoryDataWrapper .SectionTop div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.HistoryDataWrapper .Headings {
+    width: 38%;
+}
+.HistoryDataWrapper .detailedSection {
+    width: 60%;
+}
+.HistoryDataWrapper .SectionBottom .Headings > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+.HistoryDataWrapper .SectionBottom .detailedSection {
+    display: flex !important;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.HistoryDataWrapper .SectionBottom .detailedSection img {
+    height: 180px;
+    width: 230px;
+    object-fit: cover;
+}
+@media screen and (max-width: 1000px) {
+    .HistoryDataWrapper .Headings,
+    .HistoryDataWrapper .detailedSection {
+        width: 100%;
+    }
+    .HistoryDataWrapper > div {
+        gap: 10px;
+    }
+    .HistoryDataWrapper .SectionBottom .Headings p {
+        font-size: 14px;
+    }
+}
+@media screen and (max-width: 500px) {
+    .HistoryDataWrapper .SectionBottom .detailedSection img {
+        height: auto;
+        width: 100%;
+        max-width: 350px;
+    }
+    .HistoryDataWrapper > div > div > p {
+        font-size: 14px;
+    }
+}
+/* Default Container */
+
+.ContainerWrapper .ContentWrapper {
+    width: 100%;
+    padding: 30px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.ContainerWrapper .ContentWrapper .TopContainer {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 2%;
+    flex-wrap: wrap;
+}
+
+.ContainerWrapper .ContentWrapper .TopContainer > div {
+    background-color: rgba(238, 242, 255, 1);
+    padding: 30px;
+    border-radius: 12px;
+    color: black;
+}
+
+.ContainerWrapper .ContentWrapper .TopContainer .sectionOne {
+    display: flex;
+    flex-direction: column;
+    width: 68%;
+    gap: 10px;
+    font-weight: 600;
+    min-width: none;
+}
+.ContainerWrapper .ContentWrapper .TopContainer .sectionOne p {
+    font-size: 18px;
+}
+.ContainerWrapper .ContentWrapper .TopContainer .sectionOne .divOne {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.ContainerWrapper .ContentWrapper .TopContainer .sectionOne .divOne > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.ContainerWrapper .ContentWrapper .TopContainer .sectionOne .divOne > div h1 {
+    color: rgba(69, 111, 246, 1);
+    font-size: 35px;
+    line-height: 1;
+    margin-top: 8px;
+}
+.ContainerWrapper .ContentWrapper .TopContainer .sectionOne .secondDiv {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.ContainerWrapper .ContentWrapper .TopContainer .sectionOne .secondDiv > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.ContainerWrapper .ContentWrapper .TopContainer .sectionOne .secondDiv button {
+    background-color: rgba(69, 111, 246, 1);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+.ContainerWrapper .ContentWrapper .TopContainer .sectionTwo {
+    width: 30%;
+    min-width: 250px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+}
+.ContainerWrapper .ContentWrapper .TopContainer .sectionTwo button {
+    background-color: rgba(69, 111, 246, 1);
+    color: white;
+    padding: 0px 10px 10px;
+    border-radius: 8px;
+    font-size: 40px;
+    line-height: 0.9;
+    width: fit-content;
+    align-self: flex-end;
+}
+
+.ContainerWrapper .ContentWrapper .BottomContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}
+.ContainerWrapper .ContentWrapper .BottomContainer > div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+}
+.ContainerWrapper .ContentWrapper .BottomContainer > p {
+    align-self: flex-start;
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+@media screen and (max-width: 1350px) {
+    .ContainerWrapper .ContentWrapper .TopContainer .sectionOne {
+        width: 100%;
+    }
+    .ContainerWrapper .ContentWrapper .TopContainer {
+        gap: 15px;
+    }
+    .ContainerWrapper .ContentWrapper .TopContainer .sectionTwo {
+        width: 60%;
+    }
+}
+@media screen and (max-width: 500px) {
+    .ContainerWrapper
+        .ContentWrapper
+        .TopContainer
+        .sectionOne
+        .divOne
+        > div
+        h1 {
+        font-size: 25px;
+        text-align: left;
+    }
+    .ContainerWrapper .ContentWrapper .TopContainer .sectionOne .secondDiv {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .ContainerWrapper .ContentWrapper .TopContainer .sectionOne .secondDiv p {
+        font-size: 15px;
+    }
+
+    .ContainerWrapper
+        .ContentWrapper
+        .TopContainer
+        .sectionOne
+        .secondDiv
+        button {
+        width: 100%;
+        padding: 8px;
+        font-size: 15px;
+    }
+    .ContainerWrapper .ContentWrapper .TopContainer .sectionTwo {
+        width: 100%;
+    }
+}
+
+/* HistoryDiv */
+
+.HistoryDivWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 12px;
+    border: 1px solid rgba(136, 136, 136, 1);
+    padding: 15px 30px;
+    gap: 5px;
+}
+
+.HistoryDivWrapper div {
+    display: flex;
+    gap: 10px;
+    color: black;
+    font-size: 17px;
+    font-weight: 600;
+    align-items: center;
+}
+@media screen and (max-width: 400px) {
+    .HistoryDivWrapper {
+        padding: 15px;
+    }
+    .HistoryDivWrapper p {
+        font-size: 15px;
+        text-align: left;
+    }
+}
+/* CheckBoxContainer */
+
+.CheckBoxContainerWrapper {
+    display: flex;
+    gap: 10px;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.CheckBoxContainerWrapper input {
+    padding: 5px;
+}
+
+/* Attendees */
+.AttendeesWrapperIndividual {
+    padding: 10px;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border-radius: 8px;
+    background-color: #eef2ff;
+    font-size: 17px;
+    color: rgba(69, 111, 246, 1);
+}
+
+.AttendeesWrapperIndividual img {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+/* Css for Meeting Schedule */
+.Botton {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.BtnBtn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+	width: 20%;
+    color: var(--White);
+    background-color: var(--blue);
+}
+
+.ScheduleOn {
+    text-align: center;
+}
+
+.ScheduleOn b {
+    font-size: 1.5rem;
+}
+
+.ScheduleOn p {
+    color: var(--blue);
+}
+
+.InputSchedule {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-bottom: 1rem;
+}
+
+.InputSchedule div {
+    display: flex;
+    gap: 1rem;
+}
+
+.InputSchedule input {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background-color: #f3f3f3;
+
+    outline: none;
+}
+
+.dateandtime {
+    display: flex;
+    flex-direction: row;
+	align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.dateandtime input[type="time"] {
+    padding: 0px 10px;
+    border-radius: 6px;
+    width: 47%;
+    height: 45px;
+    padding: 1rem;
+	height: 80%;
+	
+}
+
+.inputVenue {
+    width: 47%;
+    height: 45px;
+    border-radius: 6px;
+    padding: 1rem;
+}
+
+.inputTime {
+    width: 40%;
+}
+
+.weeks {
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.InputSchedule .weeks p {
+    font-size: medium;
+    font-weight: 400;
+	margin-left: 32px;
+}
+
+.Lcweek {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    flex: 1;
+}
+
+.Lcweek div {
+    position: relative;
+}
+
+.Lcweek div label {
+    position: absolute;
+    font-size: 0.8rem;
+    font-weight: 400;
+    width: 40px;
+    height: 40px;
+    color: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.Lcweek input[type="checkbox"] {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+	background-color: white;
+    outline: none;
+    border: none;
+    transition: 0.3s;
+    --webkit-appearance: none;
+    appearance: none;
+}
+
+.Lcweek input[type="checkbox"]:checked {
+    background-color: #456ff6;
+    border: none;
+}
+
+.Lcweek input[type="checkbox"]:after {
+    display: none;
+}
+
+.Lcweek input[type="checkbox"]:checked + label {
+    color: var(--White);
+}

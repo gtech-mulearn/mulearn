@@ -81,9 +81,11 @@ export default function SignIn() {
     return (
         <OnboardingTemplate>
             <OnboardingHeader
-                title={"Hello ! Welcome back"}
+                title={didOtpSent ? "Enter OTP" : "Hello ! Welcome back"}
                 desc={
-                    "Hey Welcome, please enter your details to<br/>sign in your account"
+                    didOtpSent
+                        ? "Enter the OTP received in your mail to sign in to your account"
+                        : "Enter your muid or email address to request for OTP"
                 }
             />
             <Formik
