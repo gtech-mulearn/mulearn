@@ -1,15 +1,14 @@
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 
-type shortUrlData = UseStateFunc<any>;
-type campusData = UseStateFunc<any>;
+type affiliationData = UseStateFunc<any>;
 type hasValidationError = UseStateFunc<{
     error: boolean;
     message: string;
 }>;
 
-export const getShortenUrls = (
-    setShortUrlData: shortUrlData,
+export const getAffiliation = (
+    setAffiliationData: affiliationData,
     page: number,
     selectedValue: number,
     setTotalPages?: UseStateFunc<number>,
@@ -19,7 +18,7 @@ export const getShortenUrls = (
 ) => {
     setLoading && setLoading(true);
     privateGateway
-        .get(dashboardRoutes. getAffiliation, {
+        .get(dashboardRoutes.getAffiliation, {
             params: {
                 perPage: selectedValue,
                 pageIndex: page,
@@ -27,22 +26,14 @@ export const getShortenUrls = (
                 sortBy: sortID
             }
         })
-        .then(
-            (
+        .then((
                 response: APIResponse<{
                     data: any[];
                     pagination: { totalPages: number };
                 }>
             ) => {
-                const updatedShortUrlData = response.data.response.data.map(
-                    (item: any) => ({
-                        ...item,
-                        short_url: `${import.meta.env.VITE_BACKEND_URL}/r/${
-                            item.short_url
-                        }`
-                    })
-                );
-                setShortUrlData(updatedShortUrlData);
+                const affiliationData = response.data.response.data;
+                setAffiliationData(affiliationData);
                 if (setTotalPages)
                     setTotalPages(response.data.response.pagination.totalPages);
             }
@@ -55,19 +46,18 @@ export const getShortenUrls = (
         });
 };
 
-export const createShortenUrl = (
+export const createAffiliation= (
     toast: ToastAsPara,
-    urlData: any,
+    affiliationData: any,
     formik: any
-    // setHasValidationError: hasValidationError
 ): Promise<boolean> => {
     return new Promise((resolve, reject) => {
         privateGateway
-            .post(dashboardRoutes.createAffiliation, urlData)
+            .post(dashboardRoutes.createAffiliation, affiliationData)
             .then(response => {
                 resolve(true);
                 toast({
-                    title: "Shorten Url Created",
+                    title: "Affiliation Created",
                     description: "its added to your list",
                     status: "success",
                     duration: 3000,
@@ -103,22 +93,22 @@ export const createShortenUrl = (
     });
 };
 
-export const editShortenUrl = (
+export const editAffiliation = (
     id: string,
     toast: ToastAsPara,
-    urlEditedData: any,
+    affiliationEditedData: any,
     formik: any
 ): Promise<boolean> => {
     return new Promise((resolve, reject) => {
         privateGateway
             .put(
-                dashboardRoutes.editAffiliation.replace("${urlId}", id),
-                urlEditedData
+                dashboardRoutes.editAffiliation.replace("${affiliationId}", id),
+                affiliationEditedData
             )
             .then(response => {
                 resolve(true);
                 toast({
-                    title: "Shorten Url Edited",
+                    title: "Affiliation Edited",
                     description: "its added to your list",
                     status: "success",
                     duration: 3000,
@@ -154,13 +144,13 @@ export const editShortenUrl = (
     });
 };
 
-export const deleteShortenUrl = (id: string, toast: ToastAsPara) => {
+export const deleteAffiliation = (id: string, toast: ToastAsPara) => {
     privateGateway
-        .delete(dashboardRoutes.deleteAffiliation.replace("${urlId}", id))
+        .delete(dashboardRoutes.deleteAffiliation.replace("${affiliationId}", id))
         .then(response => {
             //console.log(response.data.response);
             toast({
-                title: "Shorten Url Deleted",
+                title: "Affiliation Deleted",
                 description: "it's deleted from your list",
                 status: "error",
                 duration: 3000,

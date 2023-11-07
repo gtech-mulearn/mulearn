@@ -61,8 +61,8 @@ export const dashboardRoutes = {
 
     getAffiliation: "/api/v1/dashboard/affiliation/",
     createAffiliation: "/api/v1/dashboard/affiliation/",
-    editAffiliation: "/api/v1/dashboard/affiliation/<str:affiliation_id>/",
-    deleteAffiliation: "/api/v1/dashboard/affiliation/<str:affiliation_id>/",
+    editAffiliation: "/api/v1/dashboard/affiliation/${affiliationId}/",
+    deleteAffiliation: "/api/v1/dashboard/affiliation/${affiliationId}/",
 
     getShortenUrl: "/api/v1/url-shortener/list/",
     createShortenUrl: "/api/v1/url-shortener/create/",

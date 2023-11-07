@@ -1,4 +1,4 @@
-.url_shortener_container {
+.affiliation_container {
     padding: 20px 50px;
     display: flex;
     flex-direction: row;
@@ -23,7 +23,7 @@
         height: 65px;
     }
 
-    .create_new_url {
+    .create_affiliation {
         width: 100%;
         padding: 20px;
         margin: 25dvh auto auto;
@@ -52,7 +52,7 @@
                 }
             }
 
-            .short_url_input_container {
+            .affiliation_input_container {
                 display: flex;
                 justify-content: space-between;
                 gap: 10px;
@@ -84,14 +84,14 @@
 }
 
 @media screen and (max-width: 830px) {
-    .url_shortener_container {
+    .affiliation_container {
         padding: 20px 20px;
 
         .form_btns {
             width: 100%;
         }
 
-        .create_new_url form .short_url_input_container {
+        .create_affiliation form .affiliation_input_container {
             flex-direction: column;
 
             .short_url_input_container_div {
@@ -102,7 +102,7 @@
 }
 
 @media screen and (max-width: 500px) {
-    .url_shortener_container .create_new_url form .short_url_input_container .short_url_input .short_url {
+    .affiliation_container .create_affiliation form .affiliation_input_container {
         margin-left: 10px;
     }
 }

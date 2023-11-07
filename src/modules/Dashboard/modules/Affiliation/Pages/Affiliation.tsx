@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import styles from "./Affiliation.module.css";
 import {
-    getShortenUrls,
-    createShortenUrl,
-    editShortenUrl,
-    deleteShortenUrl
+    getAffiliation,
+    createAffiliation,
+    editAffiliation,
+    deleteAffiliation
 } from "../Services/apis";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import Table from "@/MuLearnComponents/Table/Table";
@@ -20,16 +20,15 @@ import { Blank } from "@/MuLearnComponents/Table/Blank";
 
 type urlData = {
     id: string | number | boolean;
-    long_url: string;
-    short_url: string;
     title: string;
 };
 const Affiliation = () => {
     const columnOrder: ColOrder[] = [
         { column: "title", Label: "Title", isSortable: true },
-        { column: "short_url", Label: "Short URL", isSortable: true },
-        { column: "long_url", Label: "Long URL", isSortable: true },
-        { column: "created_at", Label: "Created Date", isSortable: true }
+        { column: "created_by", Label: "Created By", isSortable: true },
+        { column: "created_at", Label: "Created At", isSortable: true },
+        { column: "updated_by", Label: "Updated By", isSortable: true },
+        { column: "updated_at", Label: "Updated At", isSortable: true },
     ];
 
     const toast = useToast();
@@ -40,46 +39,24 @@ const Affiliation = () => {
     const [loading, setLoading] = useState(false);
     const [perPage, setPerPage] = useState(20);
     const [sort, setSort] = useState("-created_at");
-    const [shortUrlData, setShortUrlData] = useState<urlData[]>([]);
-
-
-    console.log(shortUrlData)
-
-
-
+    const [affiliationData, setAffiliationData] = useState<urlData[]>([]);
 
     const formik = useFormik({
         initialValues: {
             id: "",
             title: "",
-            longUrl: "",
-            short_url: ""
         },
         onSubmit: values => {
-            const urlCreateData = {
+            const affiliationCreateData = {
                 id: values.id,
                 title: values.title,
-                long_url: values.longUrl,
-                short_url: values.short_url
             };
             if (!editBtn) {
-                createShortenUrl(toast, urlCreateData, formik).then(result => {
+                createAffiliation(toast, affiliationCreateData, formik).then(result => {
                     if (result) {
-                        setShortUrlData(prevShortUrlData => [
-                            ...prevShortUrlData.filter(
-                                item => item?.id !== values?.id
-                            ),
-                            {
-                                ...urlCreateData,
-                                short_url:
-                                    import.meta.env.VITE_BACKEND_URL +
-                                    "/r/" +
-                                    urlCreateData.short_url
-                            }
-                        ]);
                         setTimeout(() => {
-                            getShortenUrls(
-                                setShortUrlData,
+                            getAffiliation(
+                                setAffiliationData,
                                 1,
                                 perPage,
                                 setTotalPages
@@ -90,22 +67,17 @@ const Affiliation = () => {
                     }
                 });
             } else {
-                editShortenUrl(values.id, toast, urlCreateData, formik).then(
+                editAffiliation(values.id, toast, affiliationCreateData, formik).then(
                     result => {
                         if (result) {
-                            setShortUrlData(prevShortUrlData => [
-                                ...prevShortUrlData.filter(
-                                    item => item?.id !== values?.id
-                                ),
-                                {
-                                    ...urlCreateData,
-                                    short_url:
-                                        import.meta.env.VITE_BACKEND_URL +
-                                        "/r/" +
-                                        urlCreateData.short_url
-                                }
-                            ]);
-
+                            setTimeout(() => {
+                                getAffiliation(
+                                    setAffiliationData,
+                                    1,
+                                    perPage,
+                                    setTotalPages
+                                );
+                            }, 500);
                             formik.handleReset(formik.values);
                             setEditBtn(false);
                         }
@@ -118,12 +90,6 @@ const Affiliation = () => {
             if (!values.title) {
                 errors.title = "Required";
             }
-            if (!values.longUrl) {
-                errors.longUrl = "Required";
-            }
-            if (!values.short_url) {
-                errors.short_url = "Required";
-            }
             return errors;
         }
     });
@@ -131,25 +97,25 @@ const Affiliation = () => {
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        getShortenUrls(setShortUrlData, nextPage, perPage, setTotalPages);
+        getAffiliation(setAffiliationData, nextPage, perPage, setTotalPages);
     };
 
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-        getShortenUrls(setShortUrlData, 1, perPage, setTotalPages);
+        getAffiliation(setAffiliationData, 1, perPage, setTotalPages);
     };
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
-        getShortenUrls(setShortUrlData, 1, perPage, setTotalPages, search, "");
+        getAffiliation(setAffiliationData, 1, perPage, setTotalPages, search, "");
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
         setPerPage(selectedValue);
-        getShortenUrls(
-            setShortUrlData,
+        getAffiliation(
+            setAffiliationData,
             1,
             selectedValue,
             setTotalPages,
@@ -161,8 +127,8 @@ const Affiliation = () => {
     const handleIconClick = (column: string) => {
         if (sort === column) {
             setSort(`-${column}`);
-            getShortenUrls(
-                setShortUrlData,
+            getAffiliation(
+                setAffiliationData,
                 currentPage,
                 perPage,
                 setTotalPages,
@@ -173,8 +139,8 @@ const Affiliation = () => {
             );
         } else {
             setSort(column);
-            getShortenUrls(
-                setShortUrlData,
+            getAffiliation(
+                setAffiliationData,
                 currentPage,
                 perPage,
                 setTotalPages,
@@ -187,32 +153,23 @@ const Affiliation = () => {
 
     const handleEdit = (id: string | number | boolean) => {
         formik.setFieldValue("id", id);
+        console.log(id)
         formik.setFieldValue(
             "title",
-            shortUrlData.filter(item => item?.id === id)[0].title
-        );
-        formik.setFieldValue(
-            "longUrl",
-            shortUrlData.filter(item => item?.id === id)[0].long_url
-        );
-        formik.setFieldValue(
-            "short_url",
-            shortUrlData
-                .filter(item => item?.id === id)[0]
-                .short_url.replace(import.meta.env.VITE_BACKEND_URL + "/r/", "")
+            affiliationData.filter(item => item?.id === id)[0].title
         );
         setEditBtn(true);
     };
 
     const handleDelete = (id: any) => {
-        deleteShortenUrl(id.toString(), toast);
-        setShortUrlData(shortUrlData.filter(item => item?.id !== id));
+        deleteAffiliation(id.toString(), toast);
+        setAffiliationData(affiliationData.filter(item => item?.id !== id));
     };
     const handleCopy = (id: any) => {
         navigator.clipboard.writeText(
-            shortUrlData.filter(item => item?.id === id)[0].short_url
+            affiliationData.filter(item => item?.id === id)[0].title
         );
-        console.log(shortUrlData.filter(item => item?.id === id)[0].short_url);
+        console.log(affiliationData.filter(item => item?.id === id)[0].title);
         toast({
             title: "Copied",
             status: "success",
@@ -222,18 +179,9 @@ const Affiliation = () => {
     };
 
     useEffect(() => {
-        getShortenUrls(setShortUrlData, 1, perPage, setTotalPages, "", sort, setLoading);
-        getShortenUrls(
-            setShortUrlData,
-            currentPage,
-            perPage,
-            setTotalPages,
-            "",
-            `${sort}`,
-            setLoading
-        );
+        getAffiliation(setAffiliationData, 1, perPage, setTotalPages, "", sort, setLoading);
     }, []);
-
+    
     return (
         <>
 
@@ -247,8 +195,8 @@ const Affiliation = () => {
                     marginRight: "3%"
                 }}>Create</PowerfulButton>
             {(editBtn || createBtn) && (
-                <div className={styles.url_shortener_container}>
-                    <div className={styles.create_new_url}>
+                <div className={styles.affiliation_container}>
+                    <div className={styles.create_affiliation}>
                         <form onSubmit={formik.handleSubmit}>
                             <input
                                 className={styles.title}
@@ -265,48 +213,8 @@ const Affiliation = () => {
                                     {formik.errors.title}
                                 </p>
                             )}
-                            <input
-                                className={styles.long_url}
-                                type="url"
-                                name="longUrl"
-                                onChange={formik.handleChange}
-                                value={formik.values.longUrl}
-                                onBlur={formik.handleBlur}
-                                placeholder="Paste long url"
-                                required
-                            />
-                            {formik.touched.longUrl &&
-                                formik.errors.longUrl && (
-                                    <p className={styles.error_message}>
-                                        {formik.errors.longUrl}
-                                    </p>
-                                )}
-                            <div className={styles.short_url_input_container}>
-                                <div
-                                    className={
-                                        styles.short_url_input_container_div
-                                    }
-                                >
-                                    <div className={styles.short_url_input}>
-                                        <label htmlFor="">mulearn.org/r/</label>
-                                        <input
-                                            className={styles.short_url}
-                                            type="text"
-                                            name="short_url"
-                                            onChange={formik.handleChange}
-                                            value={formik.values.short_url}
-                                            onBlur={formik.handleBlur}
-                                            placeholder="Enter short url"
-                                            required
-                                        />
-                                    </div>
-                                    {formik.touched.short_url &&
-                                        formik.errors.short_url && (
-                                            <p className={styles.error_message}>
-                                                {formik.errors.short_url}
-                                            </p>
-                                        )}
-                                </div>
+
+                            <div className={styles.affiliation_input_container}>
                                 <div className={styles.form_btns}>
                                     <PowerfulButton
                                         type="reset"
@@ -345,7 +253,7 @@ const Affiliation = () => {
                     onPerPageNumber={handlePerPageNumber}
                 />
                 <Table
-                    rows={shortUrlData}
+                    rows={affiliationData}
                     page={currentPage}
                     perPage={perPage}
                     columnOrder={columnOrder}

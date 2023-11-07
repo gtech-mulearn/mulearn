@@ -40,7 +40,6 @@ const UrlShortener = () => {
     const [perPage, setPerPage] = useState(20);
     const [sort, setSort] = useState("-created_at");
     const [shortUrlData, setShortUrlData] = useState<urlData[]>([]);
-    console.log(shortUrlData)
 
     const formik = useFormik({
         initialValues: {
