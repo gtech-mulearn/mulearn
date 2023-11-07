@@ -25,10 +25,9 @@ const IntrestGroupForm = forwardRef(
         //Fetch the initial data if in edit mode
         useEffect(() => {
             // Replace this with your actual API call
-            getIGDetails(props.id).then(
+           if (props.isEditMode) getIGDetails(props.id).then(
                 (data: IGData) => {
-                    console.log(data);
-                    
+                 
                    
                     
                     setData({
@@ -100,9 +99,9 @@ const IntrestGroupForm = forwardRef(
                         loading: "Saving...",
                         success: () => {
                             props.closeModal();
-                            return <b>Organization edited.</b>;
+                            return <b>Interest Group edited.</b>;
                         },
-                        error: <b>Failed to edit organization</b>
+                        error: <b>Failed to edit Interest Group</b>
                     });
                 } else {
                     toast.promise(createInterestGroups(updatedData), {

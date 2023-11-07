@@ -190,8 +190,8 @@ function InterestGroup() {
                     if (currModal === "create")
                         return (
                             <MuModal
-                                isOpen={isModalOpen}
-                                onClose={() => setIsModalOpen(false)}
+                                isOpen={currModal === "create"}
+                                onClose={() => setCurrModal(null)}
                                 title={`Create new IG`}
                                 type={"success"}
                                 body={`Enter the deatils of the IG`}
@@ -203,7 +203,7 @@ function InterestGroup() {
                                     ref={InterestRef}
                                     isEditMode={false}
                                     id={""}
-                                    closeModal={() => setIsModalOpen(false)}
+                                    closeModal={() => setCurrModal(null)}
                                 />
                             </MuModal>
                         );
@@ -211,8 +211,8 @@ function InterestGroup() {
                     if (currModal === "edit")
                         return currID ? (
                             <MuModal
-                            isOpen={isModalOpen}
-                            onClose={() => setIsModalOpen(false)}
+                            isOpen={currModal === "edit"}
+                            onClose={() => setCurrModal(null)}
                             title={`Edit IG`}
                             type={"success"}
                             body={`Enter the deatils of the IG`}
@@ -223,8 +223,8 @@ function InterestGroup() {
                             <InterestGroupForm
                                 ref={InterestRef}
                                 isEditMode={true}
-                                id={""}
-                                closeModal={() => setIsModalOpen(false)}
+                                id={currID}
+                                closeModal={() => setCurrModal(null)}
                             />
                         </MuModal>
                         ) : null;
@@ -234,7 +234,7 @@ function InterestGroup() {
                     className={styles.createBtn}
                     onClick={() => {
                         setCurrModal("create");
-                        setIsModalOpen(true);
+                        
                     }}
                 >
                     <AiOutlinePlusCircle />
