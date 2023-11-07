@@ -55,41 +55,19 @@ export const createInterestGroups = async (
             duration: 2000,
             isClosable: true
         });
-    } catch (err: unknown) {
-        const error = err as APIError;
-        let errorMessage = "Some Error Occurred..";
-        if (error?.response?.data?.message) {
-            errorMessage =
-                (
-                    error?.response?.data?.message as {
-                        code?: string[];
-                        general?: string[];
-                    }
-                )?.code?.[0] ||
-                (
-                    error?.response?.data?.message as {
-                        code?: string[];
-                        general?: string[];
-                    }
-                )?.general?.[0] ||
-                errorMessage;
-        }
-
-        if (error?.response) {
+    } catch (error: any) {
+        // console.log(error.response.data.message);
+        const fieldErrors = error.response.data.message;
+        Object.keys(fieldErrors).forEach(field => {
+            const errorMessage = fieldErrors[field][0].name[0]; // Access the error message from the nested object
+            // console.log(`${field}: ${errorMessage}`);
             toast({
-                title: errorMessage,
-                description: "",
+                title: `${field} Error`,
+                description: errorMessage,
                 status: "error",
-                duration: 2000,
+                duration: 3000,
                 isClosable: true
             });
-        }
-        toast({
-            title: "Create Failed",
-            description: "",
-            status: "error",
-            duration: 3000,
-            isClosable: true
         });
     }
 };
@@ -137,6 +115,8 @@ export const getIGDetails = async (
     id: string | undefined,
     setInput: UseStateFunc<string | any>
 ) => {
+    console.log(id);
+
     try {
         const response = await privateGateway.get(
             dashboardRoutes.getIgData + "get/" + id + "/"
