@@ -34,19 +34,12 @@ export const getInterestGroups = async (
 };
 
 export const createInterestGroups = async (
-    name: string,
-    code: string,
-    icon: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId
+    data: IGData
 ) => {
     try {
-        const response = await privateGateway.post(dashboardRoutes.getIgData, {
-            name: name,
-            code: code,
-            icon: icon
-        });
-        if (response.data?.statusCode === 200) {
-        }
+        const response = await privateGateway.post(dashboardRoutes.getIgData, data);
+        // if (response.data?.statusCode === 200) {
+        // }
         const message: any = response?.data;
         toast({
             title: "Created  Successfully..",
@@ -73,56 +66,35 @@ export const createInterestGroups = async (
 };
 
 export const editInterestGroups = async (
-    name: string | undefined,
     id: string | undefined,
-    code: string | undefined,
-    icon: string | undefined,
-    setHasError: (hasError: boolean) => void,
-    toast: (options?: UseToastOptions | undefined) => ToastId
+    data : IGData,
 ) => {
     try {
         const response = await privateGateway.put(
-            dashboardRoutes.getIgData + id + "/",
-            {
-                name: name,
-                code: code,
-                icon: icon
-            }
+            dashboardRoutes.getIgData + id ,
+            data
         );
 
         const message: any = response?.data;
-        if (message.hasError) setHasError(message?.hasError);
-        toast({
-            title: " Edited Successfully..",
-            description: "",
-            status: "success",
-            duration: 2000,
-            isClosable: true
-        });
+        return message
     } catch (err: unknown) {
         const error = err as AxiosError;
-        toast({
-            title: "Some Error Occured..",
-            description: "",
-            status: "error",
-            duration: 2000,
-            isClosable: true
-        });
+        throw error;
     }
 };
 
 export const getIGDetails = async (
     id: string | undefined,
-    setInput: UseStateFunc<string | any>
 ) => {
     console.log(id);
 
     try {
         const response = await privateGateway.get(
-            dashboardRoutes.getIgData + "get/" + id + "/"
-        );
-        const message: any = response?.data;
-        setInput(message.response.interestGroup);
+            dashboardRoutes.getIgData + "get/" +  id 
+            );
+            const message: any = response?.data;
+           
+        return message?.response?.interestGroup
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
