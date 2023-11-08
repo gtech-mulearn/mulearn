@@ -27,13 +27,16 @@ const CreateOrUpdateModal = ({ id, setCurrModal, toast }: Props) => {
 
     useEffect(() => {
         try {
-            getIGDetails(id, val => {
-                setPrefill({
-                    igName: val.name,
-                    igCode: val.code,
-                    igIcon: val.icon
-                });
-            });
+            getIGDetails(
+                id
+                //     , val => {
+                //     setPrefill({
+                //         igName: val.name,
+                //         igCode: val.code,
+                //         igIcon: val.icon
+                //     });
+                // }
+            );
         } catch (err) {
             toast({
                 title: "Something went wrong",

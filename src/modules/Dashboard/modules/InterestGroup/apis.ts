@@ -33,68 +33,67 @@ export const getInterestGroups = async (
     }
 };
 
-export const createInterestGroups = async (
-    data: IGData
-) => {
+export const createInterestGroups = async (data: IGData) => {
     try {
-        const response = await privateGateway.post(dashboardRoutes.getIgData, data);
+        const response = await privateGateway.post(
+            dashboardRoutes.getIgData,
+            data
+        );
         // if (response.data?.statusCode === 200) {
         // }
         const message: any = response?.data;
-        toast({
-            title: "Created  Successfully..",
-            description: "",
-            status: "success",
-            duration: 2000,
-            isClosable: true
-        });
+        // toast({
+        //     title: "Created  Successfully..",
+        //     description: "",
+        //     status: "success",
+        //     duration: 2000,
+        //     isClosable: true
+        // });
     } catch (error: any) {
         // console.log(error.response.data.message);
         const fieldErrors = error.response.data.message;
         Object.keys(fieldErrors).forEach(field => {
             const errorMessage = fieldErrors[field][0].name[0]; // Access the error message from the nested object
             // console.log(`${field}: ${errorMessage}`);
-            toast({
-                title: `${field} Error`,
-                description: errorMessage,
-                status: "error",
-                duration: 3000,
-                isClosable: true
-            });
+            // toast({
+            //     title: `${field} Error`,
+            //     description: errorMessage,
+            //     status: "error",
+            //     duration: 3000,
+            //     isClosable: true
+            // });
         });
     }
 };
 
 export const editInterestGroups = async (
     id: string | undefined,
-    data : IGData,
+    data: IGData
 ) => {
     try {
         const response = await privateGateway.put(
-            dashboardRoutes.getIgData + id ,
+            dashboardRoutes.getIgData + id,
             data
         );
 
         const message: any = response?.data;
-        return message
+        return message;
     } catch (err: unknown) {
         const error = err as AxiosError;
         throw error;
     }
 };
 
-export const getIGDetails = async (
-    id: string | undefined,
-) => {
+export const getIGDetails = async (id: string | undefined) => {
     console.log(id);
 
     try {
         const response = await privateGateway.get(
-            dashboardRoutes.getIgData + "get/" +  id 
-            );
-            const message: any = response?.data;
-           
-        return message?.response?.interestGroup
+            dashboardRoutes.getIgData + "get/" + id
+        );
+        const message: any = response?.data;
+
+        return message?.response?.interestGroup;
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
