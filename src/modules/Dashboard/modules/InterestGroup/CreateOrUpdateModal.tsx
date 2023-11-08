@@ -65,19 +65,23 @@ const CreateOrUpdateModal = ({ id, setCurrModal, toast }: Props) => {
                     if (id)
                         //Checking if its edit or create
                         await editInterestGroups(
-                            values.igName,
                             id,
-                            values.igCode,
-                            values.igIcon,
-                            msg => toast({ status: "error", title: msg }),
-                            toast
+                            {
+                                name: values.igName,
+                                code: values.igCode,
+                                icon: values.igIcon
+                            }
+                            // msg => toast({ status: "error", title: msg }),
+                            // toast
                         );
                     else
                         await createInterestGroups(
-                            values.igName,
-                            values.igCode,
-                            values.igIcon,
-                            toast
+                            {
+                                name: values.igName,
+                                code: values.igCode,
+                                icon: values.igIcon
+                            }
+                            // toast
                         );
 
                     setCurrModal(null);
