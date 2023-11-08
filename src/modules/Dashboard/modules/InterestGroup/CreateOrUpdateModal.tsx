@@ -74,10 +74,11 @@ const CreateOrUpdateModal = ({ id, setCurrModal, toast }: Props) => {
                         );
                     else
                         await createInterestGroups(
-                            values.igName,
-                            values.igCode,
-                            values.igIcon,
-                            toast
+                            {
+                                name: values.igName,
+                                code: values.igCode,
+                                icon: values.igIcon
+                            }
                         );
 
                     setCurrModal(null);
