@@ -41,10 +41,27 @@ export const createInterestGroups = async (
         // if (response.data?.statusCode === 200) {
         // }
         const message: any = response?.data;
-        return message
-    } catch (err: unknown) {
-        const error = err as APIError;
-        throw error
+        toast({
+            title: "Created  Successfully..",
+            description: "",
+            status: "success",
+            duration: 2000,
+            isClosable: true
+        });
+    } catch (error: any) {
+        // console.log(error.response.data.message);
+        const fieldErrors = error.response.data.message;
+        Object.keys(fieldErrors).forEach(field => {
+            const errorMessage = fieldErrors[field][0].name[0]; // Access the error message from the nested object
+            // console.log(`${field}: ${errorMessage}`);
+            toast({
+                title: `${field} Error`,
+                description: errorMessage,
+                status: "error",
+                duration: 3000,
+                isClosable: true
+            });
+        });
     }
 };
 
@@ -69,6 +86,8 @@ export const editInterestGroups = async (
 export const getIGDetails = async (
     id: string | undefined,
 ) => {
+    console.log(id);
+
     try {
         const response = await privateGateway.get(
             dashboardRoutes.getIgData + "get/" +  id 
