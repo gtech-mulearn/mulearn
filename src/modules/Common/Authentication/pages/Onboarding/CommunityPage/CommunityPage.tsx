@@ -65,8 +65,8 @@ export default function CommunityPage() {
     return (
         <OnboardingTemplate>
             <OnboardingHeader
-                title={"Your Communities"}
-                desc={"Select Communities you're part of"}
+                title={"Tell us about yourself"}
+                desc={"Select your community and location"}
             />
             <Formik
                 initialValues={{
@@ -83,7 +83,7 @@ export default function CommunityPage() {
                                 <div>
                                     <Select
                                         name="District"
-                                        placeholder="Select District"
+                                        placeholder="Select your location"
                                         onChange={(data) => {
                                             if (data) {
                                                 // Use a type assertion to specify the correct type
@@ -95,8 +95,6 @@ export default function CommunityPage() {
                                                 );
                                             }
                                         }}
-
-                                        closeMenuOnSelect={false}
                                         components={animatedComponents}
                                         isClearable
                                         // isMulti
@@ -120,7 +118,7 @@ export default function CommunityPage() {
                                 <div>
                                     <Select
                                         name="communities"
-                                        placeholder="Select Communities(Optional)"
+                                        placeholder="Select Communities you are part of"
                                         onChange={OnChangeValue => {
                                             const ids = OnChangeValue.map(
                                                 (e: any) => e.value

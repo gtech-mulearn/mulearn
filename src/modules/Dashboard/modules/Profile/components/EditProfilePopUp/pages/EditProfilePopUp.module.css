@@ -74,6 +74,21 @@
     width: 100%;
     margin-top: 10px;
 }
+.imageBox {
+    position: relative;
+    div {
+        color: #456ff6;
+        position: absolute;
+        top: 0;
+        display: flex;
+        align-items: center;
+        right: 5%;
+        height: 110%;
+        &:active {
+            transform: scale(0.9);
+        }
+    }
+}
 
 .label {
     font-weight: 600;
