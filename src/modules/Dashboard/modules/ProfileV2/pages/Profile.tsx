@@ -206,7 +206,7 @@ const ProfileV2 = (props: Props) => {
                 <div className={styles.basic_details_detail}>
                     <div className={styles.status_container}>
                         <div className={styles.status}>
-                            <div>
+                            <div className={styles.status_box}>
                                 <p>Level</p>
                                 <p>
                                     {" "}
@@ -218,7 +218,7 @@ const ProfileV2 = (props: Props) => {
                         </div>
                         <div className={styles.status}>
                             <Karma />
-                            <div>
+                            <div className={styles.status_box}>
                                 <p>Karma</p>
                                 <p>
                                     {parseInt(userProfile.karma) > 1000
@@ -233,14 +233,14 @@ const ProfileV2 = (props: Props) => {
                     <div className={styles.status_container}>
                         <div className={styles.status}>
                             <Rank />
-                            <div>
+                            <div className={styles.status_box}>
                                 <p>Rank</p>
                                 <p>{userProfile.rank}</p>
                             </div>
                         </div>
                         <div className={styles.status}>
                             <AvgKarma />
-                            <div>
+                            <div className={styles.status_box}>
                                 <p>Avg.Karma</p>
                                 <p>
                                     {" "}

@@ -69,6 +69,14 @@
                 gap: 15px;
                 width: 50%;
                 box-shadow: 0px 3px 12px 0px rgba(0, 24, 99, 0.10);
+
+                .status_box p:nth-child(1) {
+                    font-size: 16px;
+                }
+                .status_box p:nth-child(2) {
+                    font-size: 18px;
+                    font-weight: 700;
+                }
             }
         }
     }
@@ -410,9 +418,12 @@
         .profile_details_container {
             justify-content: center;
             flex-direction: column;
+            padding: 30px 20px;
 
             .profile_pic {
-                margin-top: -50px;
+                margin-top: -70px;
+                width: 120px;
+                height: 120px;
             }
 
             .profile_details {
