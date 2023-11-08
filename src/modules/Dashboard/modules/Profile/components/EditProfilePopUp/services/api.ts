@@ -1,5 +1,5 @@
 import React from "react";
-import { ToastId, UseToastOptions } from "@chakra-ui/react";
+import axios from "axios";
 import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
 
@@ -54,6 +54,45 @@ export const getEditUserProfile = (
         });
 };
 
+export const updateProfileImage = async (
+    profile: File,
+    id: string,
+    succ?: (msg: string) => void,
+    fail?: (msg: string) => void
+) => {
+    try {
+        const access = localStorage.getItem("accessToken");
+        const payload = new FormData();
+        payload.append("profile", profile);
+        payload.append("user_id", id);
+        const res = axios.post(
+            `${import.meta.env.VITE_BACKEND_URL}${
+                dashboardRoutes.postProfileImage
+            }`,
+            payload,
+            {
+                headers: {
+                    Authorization: `Bearer ${access}`,
+                    "Content-Type": "multipart/form-data"
+                }
+            }
+        );
+        if (succ) succ(res.toString());
+    } catch (err) {
+        if (fail) fail(err as any);
+    }
+};
+export const syncDiscordImage = async (
+    succ?: (msg: string) => void,
+    fail?: (msg: string) => void
+) => {
+    try {
+        const res = privateGateway.patch(dashboardRoutes.postProfileImage);
+        if (succ) succ(res.toString());
+    } catch (err) {
+        if (fail) fail(err as any);
+    }
+};
 export const patchEditUserProfile = (
     toast: ToastAsPara,
     editedProfileDetails: profileDetails,
