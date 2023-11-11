@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { BsChevronRight } from "react-icons/bs";
 import { getUserLearningCircles } from "../services/LearningCircleAPIs";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
+import toast, { Toaster } from 'react-hot-toast';
 
 const LearningCircleLandingPage = () => {
     const navigate = useNavigate();
@@ -17,6 +18,9 @@ const LearningCircleLandingPage = () => {
         getUserLearningCircles(setUserCircleList).then(() => {
             setIsLoading(false);
         });
+        toast('Under Maintenance !', {
+  icon: '⚠️',
+});
     }, []);
 
     const handleJoin = () => {

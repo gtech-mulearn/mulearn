@@ -10,7 +10,7 @@ import {
     createCircle
 } from "../services/LearningCircleAPIs";
 import { useNavigate } from "react-router-dom";
-
+import toast, { Toaster } from 'react-hot-toast';
 type Props = {};
 
 type interestGroupType = {
@@ -37,6 +37,9 @@ const LearningCircleCreate = (props: Props) => {
             const data = await getInterestGroups();
             setInterestGroups(data);
         })();
+        toast('Under Maintenance !', {
+  icon: '⚠️',
+});
     }, []);
 
     return (
