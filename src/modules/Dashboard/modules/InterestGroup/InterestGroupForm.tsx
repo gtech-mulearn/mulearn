@@ -22,22 +22,22 @@ const IntrestGroupForm = forwardRef(
         const [errors, setErrors] = useState<OrgFormErrors>({});
 
 
-        //Fetch the initial data if in edit mode
-        useEffect(() => {
-            // Replace this with your actual API call
-           if (props.isEditMode) getIGDetails(props.id).then(
-                (data: IGData) => {
+        // //Fetch the initial data if in edit mode
+        // useEffect(() => {
+        //     // Replace this with your actual API call
+        //    if (props.isEditMode) getIGDetails(props.id).then(
+        //         (data: IGData) => {
                  
                    
                     
-                    setData({
-                        name: data.name,
-                        icon: data.icon,
-                        code: data.code,
-                    });
-                }
-            );
-        }, [props.id]);
+        //             setData({
+        //                 name: data.name,
+        //                 icon: data.icon,
+        //                 code: data.code,
+        //             });
+        //         }
+        //     );
+        // }, [props.id]);
         const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
             const { name, value } = e.target;
             setData(prevData => ({ ...prevData, [name]: value }));
@@ -92,21 +92,21 @@ const IntrestGroupForm = forwardRef(
             //     }
             // }
 
-            if (isValid) {
-                console.log(updatedData);
-                if (props.isEditMode) {
-                    toast.promise(editInterestGroups(props.id, updatedData), {
-                        loading: "Saving...",
-                        success: () => {
-                            props.closeModal();
-                            return <b>Interest Group edited.</b>;
-                        },
-                        error: <b>Failed to edit Interest Group</b>
-                    });
-                } else {
-                    createInterestGroups(updatedData)
-                }
-            }
+            // if (isValid) {
+            //     console.log(updatedData);
+            //     if (props.isEditMode) {
+            //         toast.promise(editInterestGroups(props.id, updatedData), {
+            //             loading: "Saving...",
+            //             success: () => {
+            //                 props.closeModal();
+            //                 return <b>Interest Group edited.</b>;
+            //             },
+            //             error: <b>Failed to edit Interest Group</b>
+            //         });
+            //     } else {
+            //         createInterestGroups(updatedData)
+            //     }
+            // }
         };
 
         return (

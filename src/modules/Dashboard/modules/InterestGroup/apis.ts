@@ -64,10 +64,10 @@ export const createInterestGroups = async (
 export const editInterestGroups = async (
     name: string | undefined,
     id: string | undefined,
-    code: string | undefined,
     icon: string | undefined,
     setHasError: (hasError: boolean) => void,
-    toast: (options?: UseToastOptions | undefined) => ToastId
+    toast: (options?: UseToastOptions | undefined) => ToastId,
+    code?: string | undefined
 ) => {
     try {
         const response = await privateGateway.put(
@@ -102,7 +102,7 @@ export const editInterestGroups = async (
 
 export const getIGDetails = async (
     id: string | undefined,
-    setInput: UseStateFunc<string | any>
+    setInput?: UseStateFunc<string | any>
 ) => {
 
     try {
@@ -110,7 +110,8 @@ export const getIGDetails = async (
             dashboardRoutes.getIgData + "get/" + id + "/"
         );
         const message: any = response?.data;
-        setInput(message.response.interestGroup);
+        if(setInput)
+            setInput(message.response.interestGroup);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
