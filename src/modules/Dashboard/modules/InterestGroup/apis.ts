@@ -2,6 +2,7 @@ import { AxiosError } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
+import toast from "react-hot-toast";
 
 export const getInterestGroups = async (
     setData: UseStateFunc<any>,
@@ -33,67 +34,83 @@ export const getInterestGroups = async (
     }
 };
 
-export const createInterestGroups = async (data: IGData) => {
+
+export const createInterestGroups = async (
+    data: any,
+    // toast: (options?: UseToastOptions | undefined) => ToastId
+) => {
     try {
         const response = await privateGateway.post(
             dashboardRoutes.getIgData,
             data
         );
-        // if (response.data?.statusCode === 200) {
-        // }
-        const message: any = response?.data;
-        // toast({
-        //     title: "Created  Successfully..",
-        //     description: "",
-        //     status: "success",
-        //     duration: 2000,
-        //     isClosable: true
-        // });
+
+        if (response.data?.statusCode === 200) {
+        }
+        // const message: any = response?.data;
+        toast("Interest Group Created Successfully");
     } catch (error: any) {
-        // console.log(error.response.data.message);
+        console.log(error.response.data.message);
         const fieldErrors = error.response.data.message;
         Object.keys(fieldErrors).forEach(field => {
             const errorMessage = fieldErrors[field][0].name[0]; // Access the error message from the nested object
             // console.log(`${field}: ${errorMessage}`);
-            // toast({
-            //     title: `${field} Error`,
-            //     description: errorMessage,
-            //     status: "error",
-            //     duration: 3000,
-            //     isClosable: true
-            // });
+            // toast.error(`${field}: Error ${errorMessage}`);
+            toast.error(`${errorMessage}`);
         });
     }
 };
 
 export const editInterestGroups = async (
+    name: string | undefined,
     id: string | undefined,
-    data: IGData
+    code: string | undefined,
+    icon: string | undefined,
+    setHasError: (hasError: boolean) => void,
+    toast: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     try {
         const response = await privateGateway.put(
-            dashboardRoutes.getIgData + id,
-            data
+            dashboardRoutes.getIgData + id + "/",
+            {
+                name: name,
+                code: code,
+                icon: icon
+            }
         );
 
         const message: any = response?.data;
-        return message;
+        if (message.hasError) setHasError(message?.hasError);
+        toast({
+            title: " Edited Successfully..",
+            description: "",
+            status: "success",
+            duration: 2000,
+            isClosable: true
+        });
     } catch (err: unknown) {
         const error = err as AxiosError;
-        throw error;
+        toast({
+            title: "Some Error Occured..",
+            description: "",
+            status: "error",
+            duration: 2000,
+            isClosable: true
+        });
     }
 };
 
-export const getIGDetails = async (id: string | undefined) => {
-    console.log(id);
+export const getIGDetails = async (
+    id: string | undefined,
+    setInput: UseStateFunc<string | any>
+) => {
 
     try {
         const response = await privateGateway.get(
-            dashboardRoutes.getIgData + "get/" + id
+            dashboardRoutes.getIgData + "get/" + id + "/"
         );
         const message: any = response?.data;
-
-        return message?.response?.interestGroup;
+        setInput(message.response.interestGroup);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {

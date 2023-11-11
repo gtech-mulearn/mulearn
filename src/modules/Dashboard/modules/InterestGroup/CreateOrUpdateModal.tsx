@@ -84,7 +84,6 @@ const CreateOrUpdateModal = ({ id, setCurrModal, toast }: Props) => {
                                 code: values.igCode,
                                 icon: values.igIcon
                             }
-                            // toast
                         );
 
                     setCurrModal(null);
