@@ -104,14 +104,7 @@ const IntrestGroupForm = forwardRef(
                         error: <b>Failed to edit Interest Group</b>
                     });
                 } else {
-                    toast.promise(createInterestGroups(updatedData), {
-                        loading: "Saving...",
-                        success: () => {
-                            props.closeModal();
-                            return <b>Interest Group added</b>;
-                        },
-                        error: <b>Failed to add new Interest Group</b>
-                    });
+                    createInterestGroups(updatedData)
                 }
             }
         };
