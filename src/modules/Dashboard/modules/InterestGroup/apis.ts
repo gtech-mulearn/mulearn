@@ -34,6 +34,7 @@ export const getInterestGroups = async (
     }
 };
 
+
 export const createInterestGroups = async (
     data: any,
     // toast: (options?: UseToastOptions | undefined) => ToastId
@@ -43,6 +44,7 @@ export const createInterestGroups = async (
             dashboardRoutes.getIgData,
             data
         );
+
         if (response.data?.statusCode === 200) {
         }
         // const message: any = response?.data;
@@ -102,7 +104,6 @@ export const getIGDetails = async (
     id: string | undefined,
     setInput: UseStateFunc<string | any>
 ) => {
-    console.log(id);
 
     try {
         const response = await privateGateway.get(

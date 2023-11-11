@@ -27,13 +27,16 @@ const CreateOrUpdateModal = ({ id, setCurrModal, toast }: Props) => {
 
     useEffect(() => {
         try {
-            getIGDetails(id, val => {
-                setPrefill({
-                    igName: val.name,
-                    igCode: val.code,
-                    igIcon: val.icon
-                });
-            });
+            getIGDetails(
+                id
+                //     , val => {
+                //     setPrefill({
+                //         igName: val.name,
+                //         igCode: val.code,
+                //         igIcon: val.icon
+                //     });
+                // }
+            );
         } catch (err) {
             toast({
                 title: "Something went wrong",
@@ -65,12 +68,14 @@ const CreateOrUpdateModal = ({ id, setCurrModal, toast }: Props) => {
                     if (id)
                         //Checking if its edit or create
                         await editInterestGroups(
-                            values.igName,
                             id,
-                            values.igCode,
-                            values.igIcon,
-                            msg => toast({ status: "error", title: msg }),
-                            toast
+                            {
+                                name: values.igName,
+                                code: values.igCode,
+                                icon: values.igIcon
+                            }
+                            // msg => toast({ status: "error", title: msg }),
+                            // toast
                         );
                     else
                         await createInterestGroups(
