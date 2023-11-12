@@ -103,7 +103,7 @@ const Profile = () => {
             getUserProfile(setUserProfile, setAPILoadStatus, setProfileStatus);
         }, 1000);
     };
-    console.log(userProfile.id);
+
     useEffect(() => {
         if (firstFetch.current) {
             if (!id) {
@@ -124,7 +124,7 @@ const Profile = () => {
         setProfileStatus(userProfile.is_public);
     }, [id, userProfile.is_public]);
     // console.log(userLevelData);
-    console.log(userProfile);
+
     return (
         <>
             <HelmetMetaTags userProfile={userProfile} dpm={dpm} />
