@@ -16,7 +16,7 @@ export const onboardingRoutes = {
     departments: "/api/v1/register/department/list/",
     companies: "/api/v1/register/company/list/",
     validate: "/api/v1/register/validate/",
-    location:'/api/v1/register/location/?q=${param}'
+    location: "/api/v1/register/location/?q=${param}"
 } as const;
 
 export const authRoutes = {
@@ -86,6 +86,7 @@ export const dashboardRoutes = {
     getStudentLeaderBoard: "/api/v1/leaderboard/students/",
     getIgDetails: "/api/v1/dashboard/profile/ig-edit/",
     getSocials: "/api/v1/dashboard/profile/socials/",
+    postProfileImage: "/api/v1/dashboard/user/profile/update/",
 
     zonalStudentDetails: "/api/v1/dashboard/zonal/student-details/",
     zonalStudentData: "/api/v1/dashboard/zonal/student-details/csv/",
@@ -176,12 +177,9 @@ export const organizationRoutes = {
     getOrgCsv: (org_type: string) =>
         `/api/v1/dashboard/organisation/institutes/${org_type}/csv/`,
 
-    createOrganisation:
-        "/api/v1/dashboard/organisation/institutes/create/",
-    getOrganisationDetails:
-        "/api/v1/dashboard/organisation/institutes/info/",
-    editOrganisation:
-        "/api/v1/dashboard/organisation/institutes/edit/"
+    createOrganisation: "/api/v1/dashboard/organisation/institutes/create/",
+    getOrganisationDetails: "/api/v1/dashboard/organisation/institutes/info/",
+    editOrganisation: "/api/v1/dashboard/organisation/institutes/edit/"
 } as const;
 
 export const ManageLocationsRoutes = {

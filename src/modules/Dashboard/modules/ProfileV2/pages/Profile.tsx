@@ -1,18 +1,24 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./Profile.module.css";
+import Karma from "../assets/svg/Karma";
+import Rank from "../assets/svg/Rank";
+import AvgKarma from "../assets/svg/AvgKarma";
+// import KarmaDist from "../assets/svg/KarmaDist";
 import LinkedIn from "../assets/svg/LinkedIn";
 import Twitter from "../assets/svg/Twitter";
 import Instagram from "../assets/svg/Instagram";
 import Behance from "../assets/svg/Behance";
-import Karma from "../assets/svg/Karma";
-import Rank from "../assets/svg/Rank";
-import AvgKarma from "../assets/svg/AvgKarma";
-import KarmaDist from "../assets/svg/KarmaDist";
+import Github from "../assets/svg/Github";
+import Facebook from "../assets/svg/Facebook";
+import Dribble from "../assets/svg/Dribble";
+import StackOverflow from "../assets/svg/StackOverflow";
+import Medium from "../assets/svg/Medium";
 
 import {
     getPublicUserLevels,
     getPublicUserLog,
     getPublicUserProfile,
+    getSocials,
     getUserLevels,
     getUserLog,
     getUserProfile
@@ -24,6 +30,9 @@ import KarmaHistory from "../components/KarmaHistory/KarmaHistory";
 import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
 import { PieChart } from "../components/Piechart/PieChart";
 import Rocket from "../assets/svg/Rocket";
+import Planet from "../assets/svg/Planets/Planet";
+import Planet2 from "../assets/svg/Planets/Planet2";
+import Planet3 from "../assets/svg/Planets/Planet3";
 
 type Props = {};
 interface CircleSection {
@@ -44,6 +53,7 @@ const ProfileV2 = (props: Props) => {
 
     const { id } = useParams<{ id: string }>();
     const [APILoadStatus, setAPILoadStatus] = useState(0);
+    const [socials, setSocials] = useState([]);
     const [profileList, setProfileList] = useState("basic-details");
     const [userProfile, setUserProfile] = useState({
         first_name: "",
@@ -74,7 +84,15 @@ const ProfileV2 = (props: Props) => {
         {
             karma: 0,
             name: "",
-            tasks: [{ task_name: "", completed: false, hashtag: "", karma: 0 }]
+            tasks: [
+                {
+                    task_name: "",
+                    discord_link: "",
+                    completed: false,
+                    hashtag: "",
+                    karma: 0
+                }
+            ]
         }
     ]);
     const convertedData1 = userProfile.interest_groups?.map(item => [
@@ -114,14 +132,39 @@ const ProfileV2 = (props: Props) => {
                 );
                 getUserLog(setUserLog);
                 getUserLevels(setUserLevelData);
+                getSocials(setSocials);
             } else {
                 getPublicUserProfile(setUserProfile, setAPILoadStatus, id);
                 getPublicUserLog(setUserLog, id);
                 getPublicUserLevels(setUserLevelData, id);
+                getSocials(setSocials, id);
             }
         }
         firstFetch.current = false;
     }, []);
+    const socialMediaUrlMappings: { [key: string]: string } = {
+        github: "https://github.com/",
+        facebook: "https://www.facebook.com/",
+        instagram: "https://www.instagram.com/",
+        linkedin: "https://www.linkedin.com/in/",
+        dribble: "https://dribbble.com/",
+        behance: "https://www.behance.net/",
+        stackoverflow: "https://stackoverflow.com/users/",
+        medium: "https://medium.com/@"
+    };
+    const socialMediaSvgComponents: { [key: string]: JSX.Element | null } = {
+        github: <Github />,
+        linkedin: <LinkedIn />,
+        twitter: <Twitter />,
+        instagram: <Instagram />,
+        behance: <Behance />,
+        facebook: <Facebook />,
+        dribble: <Dribble />,
+        stackoverflow: <StackOverflow />,
+        medium: <Medium />
+    };
+    // console.log(socials);
+
     return (
         <>
             <div className={styles.basic_details}>
@@ -143,10 +186,19 @@ const ProfileV2 = (props: Props) => {
                         </h1>
                         <p> {userProfile.muid}</p>
                         <div className={styles.socials}>
-                            <LinkedIn />
-                            <Twitter />
-                            <Instagram />
-                            <Behance />
+                            {Object.entries(socials).map(([key, value]) => {
+                                return (
+                                    <a
+                                        href={
+                                            socialMediaUrlMappings[key] + value
+                                        }
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
+                                        {socialMediaSvgComponents[key]}
+                                    </a>
+                                );
+                            })}
                         </div>
                     </div>
                 </div>
@@ -154,7 +206,7 @@ const ProfileV2 = (props: Props) => {
                 <div className={styles.basic_details_detail}>
                     <div className={styles.status_container}>
                         <div className={styles.status}>
-                            <div>
+                            <div className={styles.status_box}>
                                 <p>Level</p>
                                 <p>
                                     {" "}
@@ -166,7 +218,7 @@ const ProfileV2 = (props: Props) => {
                         </div>
                         <div className={styles.status}>
                             <Karma />
-                            <div>
+                            <div className={styles.status_box}>
                                 <p>Karma</p>
                                 <p>
                                     {parseInt(userProfile.karma) > 1000
@@ -181,14 +233,14 @@ const ProfileV2 = (props: Props) => {
                     <div className={styles.status_container}>
                         <div className={styles.status}>
                             <Rank />
-                            <div>
+                            <div className={styles.status_box}>
                                 <p>Rank</p>
                                 <p>{userProfile.rank}</p>
                             </div>
                         </div>
                         <div className={styles.status}>
                             <AvgKarma />
-                            <div>
+                            <div className={styles.status_box}>
                                 <p>Avg.Karma</p>
                                 <p>
                                     {" "}
@@ -222,11 +274,36 @@ const ProfileV2 = (props: Props) => {
                 <div className={styles.roles_karma_dist_container}>
                     <div className={styles.role_distribution_container}>
                         <h1>Roles and contributions</h1>
-                        <div className={styles.ellipse}></div>
+                        {/* <div className={styles.ellipse}></div>
                         <div className={styles.ellipse1}></div>
                         <div className={styles.ellipse2}></div>
                         <div className={styles.ellipse3}></div>
-                        <div className={styles.planet}></div>
+                        <div className={styles.planet}></div> */}
+                        <div className={styles.roles_container}>
+                            <div className={styles.roles_container_inner}>
+                                <p className={styles.line}></p>
+                                {userProfile.roles?.map((item, index) => {
+                                    return (
+                                        <div
+                                            className={styles.role}
+                                            key={index}
+                                        >
+                                            {/* randome planet */}
+                                            {index === 0 ? (
+                                                <Planet />
+                                            ) : index === 1 ? (
+                                                <Planet2 />
+                                            ) : index === 2 ? (
+                                                <Planet3 />
+                                            ) : (
+                                                <Planet />
+                                            )}
+                                            <p> {item}</p>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
                     </div>
                     <div className={styles.karma_distribution_container}>
                         <div className={styles.container}>

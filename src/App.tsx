@@ -122,7 +122,10 @@ const Organizations = lazy(
     () => import("./modules/Dashboard/modules/Organizations/Organizations")
 );
 const OrganizationTransfer = lazy(
-    () => import("./modules/Dashboard/modules/OrganizationTransfer/components/organizationTransfer")
+    () =>
+        import(
+            "./modules/Dashboard/modules/OrganizationTransfer/components/organizationTransfer"
+        )
 );
 const ManageUsers = lazy(
     () => import("./modules/Dashboard/modules/ManageUsers/ManageUsers")
@@ -399,7 +402,11 @@ function App() {
                             path: "college-levels",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN, roles.FELLOW, roles.CAMPUS_ACTIVATION_TEAM]}
+                                    roles={[
+                                        roles.ADMIN,
+                                        roles.FELLOW,
+                                        roles.CAMPUS_ACTIVATION_TEAM
+                                    ]}
                                     children={<CollegeLevels />}
                                 />
                             )
@@ -445,7 +452,12 @@ function App() {
                         },
                         {
                             path: "karma-voucher/bulk-import",
-                            element: <KarmaVoucherBulkImport />
+                            element: (
+                                <RoleChecker
+                                    roles={[roles.ADMIN, roles.FELLOW]}
+                                    children={<KarmaVoucherBulkImport />}
+                                />
+                            )
                         },
                         {
                             path: "channels",
@@ -648,10 +660,10 @@ function App() {
         {
             path: "/kkem/learningcircles/dashboard",
             element: <LearningCircles />
-        }, {
+        },
+        {
             path: "/foundation",
             element: <Foundation />
-
         }
     ]);
 
