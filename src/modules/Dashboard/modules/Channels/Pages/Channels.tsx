@@ -166,7 +166,7 @@ const Channels = () => {
             channelsData.filter(item => item?.id === id)[0].name
         );
         formik.setFieldValue(
-            "discord_id",
+            "discordId",
             channelsData.filter(item => item?.id === id)[0].discord_id
         );
         setEditBtn(true);
