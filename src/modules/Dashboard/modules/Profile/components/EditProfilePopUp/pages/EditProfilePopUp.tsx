@@ -249,6 +249,11 @@ const EditProfilePopUp = (props: Props) => {
                                     name="dob"
                                     value={formik.values.dob}
                                     placeholder="DOB"
+                                    max={
+                                        (
+                                            new Date().getFullYear() - 17
+                                        ).toString() + "-12-31"
+                                    }
                                     {...propsList2}
                                 />
                             </div>
