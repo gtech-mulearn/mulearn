@@ -124,7 +124,7 @@ const Profile = () => {
         setProfileStatus(userProfile.is_public);
     }, [id, userProfile.is_public]);
     // console.log(userLevelData);
-
+    console.log(userProfile);
     return (
         <>
             <HelmetMetaTags userProfile={userProfile} dpm={dpm} />
@@ -200,7 +200,11 @@ const Profile = () => {
                                                     <img
                                                         src={
                                                             userProfile.profile_pic
-                                                                ? userProfile.profile_pic
+                                                                ? userProfile.profile_pic +
+                                                                  `?${
+                                                                      Math.random() *
+                                                                      1000
+                                                                  }`
                                                                 : dpm
                                                         }
                                                         alt={
