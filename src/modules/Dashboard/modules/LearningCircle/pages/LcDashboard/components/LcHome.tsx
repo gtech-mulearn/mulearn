@@ -28,7 +28,7 @@ const LcHome = (props: Props) => {
                             isReport: false,
                             isHistory: false,
                             isTeam: false,
-							isSchedule: false
+                            isSchedule: false
                         })
                     }
                 >
@@ -55,14 +55,20 @@ const LcHome = (props: Props) => {
                     <div className={styles.TopContainer}>
                         <div className={styles.sectionOne}>
                             {props.temp.isSchedule ? (
-                                <LcSchedule setTemp={props.setTemp} lc={props.lc} id={props.id} />
+                                <LcSchedule
+                                    setTemp={props.setTemp}
+                                    lc={props.lc}
+                                    id={props.id}
+                                />
                             ) : (
                                 <>
                                     <div className={styles.divOne}>
                                         <div>
                                             <p>Next meeting on</p>
                                             <h1>{nextMeet?.formattedDate}</h1>
-                                            <p>{nextMeet?.nextMeetingDayName}</p>
+                                            <p>
+                                                {nextMeet?.nextMeetingDayName}
+                                            </p>
                                         </div>
                                         <button
                                             onClick={() => {
@@ -106,7 +112,16 @@ const LcHome = (props: Props) => {
                     <div className={styles.BottomContainer}>
                         <p>Your past meetings</p>
                         <div>
-                            <div className={styles.HistoryDivWrapper}>
+                            <div
+                                className={styles.HistoryDivWrapper}
+                                onClick={() => {
+                                    props.setTemp({
+                                        ...props.temp,
+                                        isReport: false,
+                                        isHistory: true
+                                    });
+                                }}
+                            >
                                 <div>
                                     <p>1.</p>
                                     <p>22 Sunday 2023</p>
@@ -121,15 +136,7 @@ const LcHome = (props: Props) => {
                                     >
                                         12.03pm
                                     </p>
-                                    <button
-                                        onClick={() => {
-                                            props.setTemp({
-                                                ...props.temp,
-                                                isReport: false,
-                                                isHistory: true
-                                            });
-                                        }}
-                                    >
+                                    <button>
                                         <RightArrow />
                                     </button>
                                 </div>

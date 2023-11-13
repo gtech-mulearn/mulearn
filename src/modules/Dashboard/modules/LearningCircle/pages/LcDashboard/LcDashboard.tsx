@@ -78,7 +78,7 @@ const LcDashboard = (props: Props) => {
                     }}
                 >
                     Dashboard
-                </button>
+                </button> 
                 <button onClick={handleComingSoon}>IG Progress</button>
                 <button onClick={handleComingSoon}>BeWeb.dev</button>
             </div>
