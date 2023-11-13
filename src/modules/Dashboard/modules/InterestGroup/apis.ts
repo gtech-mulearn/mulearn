@@ -47,78 +47,52 @@ export const createInterestGroups = async (
 
         if (response.data?.statusCode === 200) {
         }
-        // const message: any = response?.data;
-        toast("Interest Group Created Successfully");
+        const message: any = response?.data;
+        return message;
     } catch (error: any) {
-        console.log(error.response.data.message);
+       
         const fieldErrors = error.response.data.message;
-        Object.keys(fieldErrors).forEach(field => {
-            const errorMessage = fieldErrors[field][0].name[0]; // Access the error message from the nested object
-            // console.log(`${field}: ${errorMessage}`);
-            // toast.error(`${field}: Error ${errorMessage}`);
-            toast.error(`${errorMessage}`);
-        });
+        throw fieldErrors
     }
 };
 
 export const editInterestGroups = async (
-    name: string | undefined,
     id: string | undefined,
-    icon: string | undefined,
-    setHasError: (hasError: boolean) => void,
-    toast: (options?: UseToastOptions | undefined) => ToastId,
-    code?: string | undefined
+    data: IGData
 ) => {
     try {
         const response = await privateGateway.put(
             dashboardRoutes.getIgData + id + "/",
-            {
-                name: name,
-                code: code,
-                icon: icon
-            }
+            data
         );
 
         const message: any = response?.data;
-        if (message.hasError) setHasError(message?.hasError);
-        toast({
-            title: " Edited Successfully..",
-            description: "",
-            status: "success",
-            duration: 2000,
-            isClosable: true
-        });
+        return message.response.interestGroup;
     } catch (err: unknown) {
         const error = err as AxiosError;
-        toast({
-            title: "Some Error Occured..",
-            description: "",
-            status: "error",
-            duration: 2000,
-            isClosable: true
-        });
+        throw error
     }
 };
 
-export const getIGDetails = async (
-    id: string | undefined,
-    setInput?: UseStateFunc<string | any>
-) => {
+// export const getIGDetails = async (
+//     id: string | undefined,
+//     setInput?: UseStateFunc<string | any>
+// ) => {
 
-    try {
-        const response = await privateGateway.get(
-            dashboardRoutes.getIgData + "get/" + id + "/"
-        );
-        const message: any = response?.data;
-        if(setInput)
-            setInput(message.response.interestGroup);
-    } catch (err: unknown) {
-        const error = err as AxiosError;
-        if (error?.response) {
-            throw error;
-        }
-    }
-};
+//     try {
+//         const response = await privateGateway.get(
+//             dashboardRoutes.getIgData + "get/" + id + "/"
+//         );
+//         const message: any = response?.data;
+//         if(setInput)
+//             setInput(message.response.interestGroup);
+//     } catch (err: unknown) {
+//         const error = err as AxiosError;
+//         if (error?.response) {
+//             throw error;
+//         }
+//     }
+// };
 
 export const deleteInterestGroups = async (
     id: string | undefined,
@@ -146,5 +120,26 @@ export const deleteInterestGroups = async (
             duration: 3000,
             isClosable: true
         });
+    }
+};
+
+
+export const getIGDetails = async (
+    id: string | undefined,
+    
+) => {
+
+    try {
+        const response = await privateGateway.get(
+            dashboardRoutes.getIgData + "get/" + id + "/"
+        );
+        const message: any = response?.data;
+        
+        return message.response.interestGroup;
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            throw error;
+        }
     }
 };
