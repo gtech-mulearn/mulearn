@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./EditProfilePopUp.module.css";
 import { useToast } from "@chakra-ui/react";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { FormikImageComponent } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import {
     getCommunities,
     getEditUserProfile,
-    patchEditUserProfile
+    patchEditUserProfile,
+    syncDiscordImage,
+    updateProfileImage
 } from "../services/api";
 import { useFormik } from "formik";
 import Select from "react-select";
@@ -13,17 +16,24 @@ import {
     capitalizeFirstLetter,
     toReactOptions
 } from "../../../../../utils/common";
+import { BsDiscord, BsCheck } from "react-icons/bs";
+import { BeatLoader } from "react-spinners";
 
 type Props = {
     editPopUp: boolean;
     setEditPopUP: (value: boolean) => void;
     triggerUpdateProfile: () => void;
+    id: string;
 };
 
 const EditProfilePopUp = (props: Props) => {
     const toast = useToast();
     const [communityAPI, setCommunityAPI] = useState([{ id: "", title: "" }]);
     const [loadStatus, setLoadStatus] = useState(false);
+    const imageRef = useRef<HTMLInputElement>(null);
+    const [discordState, setDiscordState] = useState<
+        "initial" | "loading" | "finished"
+    >("initial");
     useEffect(() => {
         window.history.pushState(null, "", window.location.href);
         window.addEventListener("popstate", () => {
@@ -38,12 +48,23 @@ const EditProfilePopUp = (props: Props) => {
             mobile: "",
             gender: "",
             dob: "",
-            communities: []
+            communities: [],
+            image: ""
         },
         onSubmit: values => {
+            const { image, ...data } = values;
+
+            if (imageRef.current && imageRef.current.files) {
+                updateProfileImage(
+                    imageRef.current.files[0],
+                    props.id,
+                    msg => console.log(msg),
+                    msg => console.log(msg)
+                );
+            }
             patchEditUserProfile(
                 toast,
-                values,
+                data,
                 props.setEditPopUP,
                 formik.setFieldError
             );
@@ -61,12 +82,28 @@ const EditProfilePopUp = (props: Props) => {
             return errors;
         }
     });
+
+    const discordSync = async () => {
+        setDiscordState("loading");
+        await syncDiscordImage();
+        setDiscordState("finished");
+        toast({
+            title: "Image Synced",
+            description: "Profile picture synced with discord",
+            status: "success",
+            duration: 1500,
+            isClosable: true
+        });
+    };
+
     useEffect(() => {
         return getCommunities(setCommunityAPI, setLoadStatus);
     }, []);
     useEffect(() => {
-        if(props.editPopUp)
-            getEditUserProfile(data => formik.setValues(data));
+        if (props.editPopUp)
+            getEditUserProfile(data =>
+                formik.setValues({ ...data, image: "" })
+            );
     }, [props.editPopUp]);
     const buttonStyle = {
         background: "#456FF6",
@@ -127,19 +164,24 @@ const EditProfilePopUp = (props: Props) => {
                     ? { transform: "scale(1)" }
                     : { transform: "scale(0)" }
             }
+            onClick={() => props.setEditPopUP(false)}
         >
             <div className={styles.edit_profile}>
                 <div
                     className={styles.edit_profile_contents}
                     tabIndex={1}
                     onFocus={() => props.setEditPopUP(true)}
-                    onBlur={() => props.setEditPopUP(false)}
+                    onClick={e => e.stopPropagation()}
+                    // onBlur={() => props.setEditPopUP(false)}
                 >
                     <h2>Edit Profile</h2>
                     <form onSubmit={formik.handleSubmit}>
                         {propsList(formik).map((item, index) => (
                             <div key={index} className={styles.input_field}>
-                                <label className={styles.label} htmlFor={item.id}>
+                                <label
+                                    className={styles.label}
+                                    htmlFor={item.id}
+                                >
                                     {item.placeholder}
                                 </label>
                                 <div className={styles.inputBox}>
@@ -163,7 +205,8 @@ const EditProfilePopUp = (props: Props) => {
                                     onBlur={formik.handleBlur}
                                     onChange={formik.handleChange}
                                 />
-                                {formik.touched.mobile && formik.errors.mobile ? (
+                                {formik.touched.mobile &&
+                                formik.errors.mobile ? (
                                     <p className={styles.error_message}>
                                         {formik.errors.mobile}
                                     </p>
@@ -171,13 +214,17 @@ const EditProfilePopUp = (props: Props) => {
                             </div>
                         </div>
                         <div className={styles.input_field}>
-                            <label className={styles.label} htmlFor="">Community</label>
+                            <label className={styles.label} htmlFor="">
+                                Community
+                            </label>
                             <div className={styles.inputBox}>
                                 {loadStatus && <Select {...communityProps} />}
                             </div>
                         </div>
                         <div className={styles.input_field}>
-                            <label className={styles.label} htmlFor="">Gender</label>
+                            <label className={styles.label} htmlFor="">
+                                Gender
+                            </label>
                             <div className={styles.inputBox}>
                                 <select
                                     name="gender"
@@ -188,24 +235,70 @@ const EditProfilePopUp = (props: Props) => {
                                     <option value="Male">♂ Male</option>
                                     <option value="Female">♀ Female</option>
                                     <option value="">Other</option>
-                                    <option value="">
-                                        Prefer not to say
-                                    </option>
+                                    <option value="">Prefer not to say</option>
                                 </select>
                             </div>
                         </div>
                         <div className={styles.input_field}>
-                            <label className={styles.label} htmlFor="">DOB</label>
+                            <label className={styles.label} htmlFor="">
+                                DOB
+                            </label>
                             <div className={styles.inputBox}>
                                 <input
                                     type="date"
                                     name="dob"
                                     value={formik.values.dob}
                                     placeholder="DOB"
+                                    max={
+                                        (
+                                            new Date().getFullYear() - 17
+                                        ).toString() + "-12-31"
+                                    }
                                     {...propsList2}
                                 />
                             </div>
-
+                        </div>
+                        <div className={styles.input_field}>
+                            <label className={styles.label} htmlFor="">
+                                Image
+                            </label>
+                            <div
+                                className={`${styles.inputBox} ${styles.imageBox}`}
+                            >
+                                <input
+                                    ref={imageRef}
+                                    type="file"
+                                    name="image"
+                                    value={formik.values.image}
+                                    placeholder="DOB"
+                                    {...propsList2}
+                                />{" "}
+                                {formik.values.image === "" && (
+                                    <div
+                                        title={
+                                            discordState === "initial"
+                                                ? "Click to sync discord image"
+                                                : ""
+                                        }
+                                        onClick={discordSync}
+                                    >
+                                        {
+                                            {
+                                                initial: (
+                                                    <BsDiscord size={32} />
+                                                ),
+                                                loading: (
+                                                    <BeatLoader
+                                                        size={8}
+                                                        color="#456ff6"
+                                                    />
+                                                ),
+                                                finished: <BsCheck size={32} />
+                                            }[discordState]
+                                        }
+                                    </div>
+                                )}
+                            </div>
                         </div>
 
                         <MuButton

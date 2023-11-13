@@ -10,7 +10,6 @@ import {
     createCircle
 } from "../services/LearningCircleAPIs";
 import { useNavigate } from "react-router-dom";
-
 type Props = {};
 
 type interestGroupType = {

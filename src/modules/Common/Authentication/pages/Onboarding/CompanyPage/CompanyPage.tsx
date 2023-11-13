@@ -30,12 +30,11 @@ const scheme = z.object({
 const CustomFilter = (
     { label, value }: { label: string; value: string },
     string: string
-  ): boolean => {
-      if (value === "Others") return true; // Always show "Others" option
-      if (!string) return true;
-      return label.toLowerCase().includes(string.toLowerCase());
-  };
-  
+): boolean => {
+    if (value === "Others") return true; // Always show "Others" option
+    if (!string) return true;
+    return label.toLowerCase().startsWith(string.toLowerCase());
+};
 
 export default function CompanyPage({
     selectedRole
@@ -77,9 +76,10 @@ export default function CompanyPage({
 
     const onSubmit = async (values: any) => {
         // Remove "Others" company from organizations array if it exists
-        const organizations = values.company === "Others"
-            ? userData.communities
-            : [values.company, ...userData.communities];
+        const organizations =
+            values.company === "Others"
+                ? userData.communities
+                : [values.company, ...userData.communities];
 
         const newUserData: any = {
             user: {
@@ -157,10 +157,10 @@ export default function CompanyPage({
                                             value: "Others",
                                             label: "Others"
                                         },
-                                        ...companies.map(company => ({
+                                        ...(companies.map(company => ({
                                             value: company.id,
                                             label: company.title
-                                        })) as any
+                                        })) as any)
                                     ] as any
                                 }
                                 name="company"
@@ -184,12 +184,12 @@ export default function CompanyPage({
                                 "company" as keyof typeof formik.touched
                             ] &&
                                 formik.errors[
-                                "company" as keyof typeof formik.touched
+                                    "company" as keyof typeof formik.touched
                                 ] && (
                                     <span className={styles.errorsSpan}>
                                         {
                                             formik.errors[
-                                            "company" as keyof typeof formik.touched
+                                                "company" as keyof typeof formik.touched
                                             ]
                                         }
                                     </span>

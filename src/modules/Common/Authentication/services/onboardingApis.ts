@@ -389,9 +389,16 @@ export const getLocations = async (
         "${param}",
         param === "" ? "india" : param
     )).then((response) => {
-        setIsApiCalled(false);
-        console.log(response.data.response)
-        setLocationData(response.data.response);
+        if(response.data.response.length === 0){
+            setIsApiCalled(false);
+            setLocationData([{ id : '', location : ''}])
+            console.log("success")
+        }
+        else{
+            setIsApiCalled(false);
+            console.log(response.data.response)
+            setLocationData(response.data.response);
+        }
     }).catch((error: APIError) => {
         setIsApiCalled(false);
         console.log(error)

@@ -78,6 +78,9 @@ const UserRoleVerificationEdit = lazy(
             "./modules/Dashboard/modules/UserRoleVerification/UserRoleVerificationEdit"
         )
 );
+const Affiliation = lazy(
+    () => import("./modules/Dashboard/modules/Affiliation/Pages/Affiliation")
+);
 const UrlShortener = lazy(
     () => import("./modules/Dashboard/modules/UrlShortener/Pages/UrlShortener")
 );
@@ -118,7 +121,10 @@ const Organizations = lazy(
     () => import("./modules/Dashboard/modules/Organizations/Organizations")
 );
 const OrganizationTransfer = lazy(
-    () => import("./modules/Dashboard/modules/OrganizationTransfer/components/organizationTransfer")
+    () =>
+        import(
+            "./modules/Dashboard/modules/OrganizationTransfer/components/organizationTransfer"
+        )
 );
 const ManageUsers = lazy(
     () => import("./modules/Dashboard/modules/ManageUsers/ManageUsers")
@@ -395,7 +401,11 @@ function App() {
                             path: "college-levels",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.ADMIN, roles.FELLOW]}
+                                    roles={[
+                                        roles.ADMIN,
+                                        roles.FELLOW,
+                                        roles.CAMPUS_ACTIVATION_TEAM
+                                    ]}
                                     children={<CollegeLevels />}
                                 />
                             )
@@ -441,7 +451,25 @@ function App() {
                         },
                         {
                             path: "karma-voucher/bulk-import",
-                            element: <KarmaVoucherBulkImport />
+                            element: (
+                                <RoleChecker
+                                    roles={[roles.ADMIN, roles.FELLOW]}
+                                    children={<KarmaVoucherBulkImport />}
+                                />
+                            )
+                        },
+                        {
+                            path: "affiliation",
+                            element: (
+                                <RoleChecker
+                                    roles={[
+                                        roles.ADMIN,
+                                        roles.FELLOW,
+                                        roles.ASSOCIATE
+                                    ]}
+                                    children={<Affiliation />}
+                                />
+                            )
                         },
                         {
                             path: "url-shortener",
@@ -544,10 +572,10 @@ function App() {
                             path: "learning-circle/details/:id",
                             element: <LearningCircle />
                         },
-                        {
-                            path: "learning-circle/dashboard/:id",
-                            element: <LcDashboard />
-                        },
+                        // {
+                        //     path: "learning-circle/dashboard/:id",
+                        //     element: <LcDashboard />
+                        // },
                         {
                             path: "learning-circle/find-circle",
                             element: <FindCircle />
@@ -618,10 +646,10 @@ function App() {
         {
             path: "/kkem/learningcircles/dashboard",
             element: <LearningCircles />
-        }, {
+        },
+        {
             path: "/foundation",
             element: <Foundation />
-
         }
     ]);
 

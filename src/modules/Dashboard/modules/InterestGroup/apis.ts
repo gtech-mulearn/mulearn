@@ -2,6 +2,7 @@ import { AxiosError } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
+import toast from "react-hot-toast";
 
 export const getInterestGroups = async (
     setData: UseStateFunc<any>,
@@ -33,63 +34,29 @@ export const getInterestGroups = async (
     }
 };
 
+
 export const createInterestGroups = async (
-    name: string,
-    code: string,
-    icon: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId
+    data: any,
+    // toast: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     try {
-        const response = await privateGateway.post(dashboardRoutes.getIgData, {
-            name: name,
-            code: code,
-            icon: icon
-        });
+        const response = await privateGateway.post(
+            dashboardRoutes.getIgData,
+            data
+        );
+
         if (response.data?.statusCode === 200) {
         }
-        const message: any = response?.data;
-        toast({
-            title: "Created  Successfully..",
-            description: "",
-            status: "success",
-            duration: 2000,
-            isClosable: true
-        });
-    } catch (err: unknown) {
-        const error = err as APIError;
-        let errorMessage = "Some Error Occurred..";
-        if (error?.response?.data?.message) {
-            errorMessage =
-                (
-                    error?.response?.data?.message as {
-                        code?: string[];
-                        general?: string[];
-                    }
-                )?.code?.[0] ||
-                (
-                    error?.response?.data?.message as {
-                        code?: string[];
-                        general?: string[];
-                    }
-                )?.general?.[0] ||
-                errorMessage;
-        }
-
-        if (error?.response) {
-            toast({
-                title: errorMessage,
-                description: "",
-                status: "error",
-                duration: 2000,
-                isClosable: true
-            });
-        }
-        toast({
-            title: "Create Failed",
-            description: "",
-            status: "error",
-            duration: 3000,
-            isClosable: true
+        // const message: any = response?.data;
+        toast("Interest Group Created Successfully");
+    } catch (error: any) {
+        console.log(error.response.data.message);
+        const fieldErrors = error.response.data.message;
+        Object.keys(fieldErrors).forEach(field => {
+            const errorMessage = fieldErrors[field][0].name[0]; // Access the error message from the nested object
+            // console.log(`${field}: ${errorMessage}`);
+            // toast.error(`${field}: Error ${errorMessage}`);
+            toast.error(`${errorMessage}`);
         });
     }
 };
@@ -97,10 +64,10 @@ export const createInterestGroups = async (
 export const editInterestGroups = async (
     name: string | undefined,
     id: string | undefined,
-    code: string | undefined,
     icon: string | undefined,
     setHasError: (hasError: boolean) => void,
-    toast: (options?: UseToastOptions | undefined) => ToastId
+    toast: (options?: UseToastOptions | undefined) => ToastId,
+    code?: string | undefined
 ) => {
     try {
         const response = await privateGateway.put(
@@ -135,14 +102,16 @@ export const editInterestGroups = async (
 
 export const getIGDetails = async (
     id: string | undefined,
-    setInput: UseStateFunc<string | any>
+    setInput?: UseStateFunc<string | any>
 ) => {
+
     try {
         const response = await privateGateway.get(
             dashboardRoutes.getIgData + "get/" + id + "/"
         );
         const message: any = response?.data;
-        setInput(message.response.interestGroup);
+        if(setInput)
+            setInput(message.response.interestGroup);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {

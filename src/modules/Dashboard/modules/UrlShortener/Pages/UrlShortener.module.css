@@ -62,9 +62,9 @@
 
                     .short_url_input {
                         display: flex;
-                        align-items: center;
+                        align-items:baseline;
                         justify-content: space-between;
-
+                        
                         .short_url {
                             width: 100%;
                         }

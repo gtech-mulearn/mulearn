@@ -5,17 +5,18 @@ import { PowerfulButton } from "../MuButtons/MuButton";
 
 type Props = {
     onSearch: (data: string) => void;
-    placeholder?: string,
-    onClear?: () => void
+    placeholder?: string;
+    onClear?: () => void;
 };
 
 export const SearchBar = (props: Props) => {
     const [search, setSearch] = useState("");
     const onChangeSearch = (event: any) => {
         const inputValue = event.target.value;
-        const sanitizedInput = inputValue.replace(/[<>/]/g, ''); // Remove < and > characters
+        const sanitizedInput = inputValue.replace(/[<>/]/g, ""); // Remove < and > characters
 
         setSearch(sanitizedInput);
+        props.onSearch(sanitizedInput);
     };
 
     const handleSubmit = (e: { preventDefault: () => void }) => {
@@ -25,15 +26,21 @@ export const SearchBar = (props: Props) => {
 
     const clearInput = () => {
         setSearch("");
-        props.onClear ? props.onClear() : {}
+        props.onClear ? props.onClear() : props.onSearch("");
     };
 
     return (
         <>
-            <form className={styles.form_container} onSubmit={handleSubmit} style={{ margin: 0 }}>
+            <form
+                className={styles.form_container}
+                onSubmit={handleSubmit}
+                style={{ margin: 0 }}
+            >
                 <input
                     type="text"
-                    placeholder={props?.placeholder ? props?.placeholder : "Search"}
+                    placeholder={
+                        props?.placeholder ? props?.placeholder : "Search"
+                    }
                     className={styles.searchBar}
                     onChange={onChangeSearch}
                     value={search}
@@ -45,7 +52,7 @@ export const SearchBar = (props: Props) => {
                         onClick={clearInput}
                     />
                 )}
-                <PowerfulButton type="submit" >Search</PowerfulButton>
+                <PowerfulButton type="submit">Search</PowerfulButton>
             </form>
         </>
     );
