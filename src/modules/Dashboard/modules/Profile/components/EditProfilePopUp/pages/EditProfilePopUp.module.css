@@ -89,6 +89,13 @@
         }
     }
 }
+.imageBox input::file-selector-button {
+    background-color: rgb(69, 111, 246);
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.25rem;
+}
 
 .label {
     font-weight: 600;
