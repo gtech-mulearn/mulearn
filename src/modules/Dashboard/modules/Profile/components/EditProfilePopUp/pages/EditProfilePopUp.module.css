@@ -96,7 +96,12 @@
     color: var(--black);
     text-align: left;
 }
-
+.powerfulButton:hover {
+    color: hsl(var(--primary-btn-color));
+}
+.powerfulButton {
+    height: 50px;
+}
 /* @media (max-width: 1500px) {
     .edit_profile_container {
         left: unset;

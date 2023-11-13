@@ -3,6 +3,7 @@ import styles from "./EditProfilePopUp.module.css";
 import { useToast } from "@chakra-ui/react";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { FormikImageComponent } from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import {
     getCommunities,
     getEditUserProfile,
@@ -273,33 +274,48 @@ const EditProfilePopUp = (props: Props) => {
                                     placeholder="DOB"
                                     {...propsList2}
                                 />{" "}
-                                {formik.values.image === "" && (
-                                    <div
-                                        title={
-                                            discordState === "initial"
-                                                ? "Click to sync discord image"
-                                                : ""
-                                        }
-                                        onClick={discordSync}
-                                    >
-                                        {
-                                            {
-                                                initial: (
-                                                    <BsDiscord size={32} />
-                                                ),
-                                                loading: (
-                                                    <BeatLoader
-                                                        size={8}
-                                                        color="#456ff6"
-                                                    />
-                                                ),
-                                                finished: <BsCheck size={32} />
-                                            }[discordState]
-                                        }
-                                    </div>
-                                )}
                             </div>
                         </div>
+
+                        <PowerfulButton
+                            type="button"
+                            variant="outline"
+                            // disabled={discordState === "finished"}
+                            onClick={discordSync}
+                            className={styles.powerfulButton}
+                        >
+                            Sync Discord Image
+                            {
+                                {
+                                    initial: <BsDiscord size={32} />,
+                                    loading: (
+                                        <BeatLoader size={8} color="#456ff6" />
+                                    ),
+                                    finished: <BsCheck size={32} />
+                                }[discordState]
+                            }
+                        </PowerfulButton>
+                        {/* <div
+                                    title={
+                                        discordState === "initial"
+                                            ? "Click to sync discord image"
+                                            : ""
+                                    }
+                                    onClick={discordSync}
+                                >
+                                    {
+                                        {
+                                            initial: <BsDiscord size={32} />,
+                                            loading: (
+                                                <BeatLoader
+                                                    size={8}
+                                                    color="#456ff6"
+                                                />
+                                            ),
+                                            finished: <BsCheck size={32} />
+                                        }[discordState]
+                                    }
+                                </div> */}
 
                         <MuButton
                             type="submit"
