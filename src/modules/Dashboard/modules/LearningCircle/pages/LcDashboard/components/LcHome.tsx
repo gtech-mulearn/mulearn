@@ -1,12 +1,12 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import styles from "../LcDashboard.module.css";
 import { EditLogo, RightArrow } from "../../../assets/svg";
-import { CheckBoxContainer } from "../LcDashboard";
 import LcReport from "./LcReport";
 import LcHistory from "./LcHistory";
 import LcSchedule from "./LcSchedule";
 import { comingSoon } from "../../../../../utils/common";
 import { getNextMeetingDate } from "../utils/LcNextMeet";
+import LcCheckList from "./LcCheckList";
 
 type Props = {
     setTemp: Dispatch<SetStateAction<LcDashboardTempData>>;
@@ -16,7 +16,10 @@ type Props = {
 };
 
 const LcHome = (props: Props) => {
-	const nextMeet = getNextMeetingDate(props.lc?.day || [], props.lc?.meet_time === null ? "00:00" : String(props.lc?.meet_time));
+    const nextMeet = getNextMeetingDate(
+        props.lc?.day || [],
+        props.lc?.meet_time === null ? "00:00" : String(props.lc?.meet_time)
+    );
     return (
         <div className={styles.ContainerWrapper}>
             <div className={styles.SwitchNav}>
@@ -104,9 +107,8 @@ const LcHome = (props: Props) => {
                         </div>
                         <div className={styles.sectionTwo}>
                             <div>
-                                <CheckBoxContainer />
+                                <LcCheckList data={props.lc} />
                             </div>
-                            <button onClick={comingSoon}>+</button>
                         </div>
                     </div>
                     <div className={styles.BottomContainer}>
