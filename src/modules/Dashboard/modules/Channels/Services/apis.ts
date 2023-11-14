@@ -1,6 +1,7 @@
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { AxiosError } from "axios";
+import toast from "react-hot-toast";
 
 type channelData = UseStateFunc<any>;
 type hasValidationError = UseStateFunc<{
@@ -54,7 +55,6 @@ export const getChannels = (
 };
 
 export const createChannel= (
-    toast: ToastAsPara,
     channelData: any,
     formik: any
 ): Promise<boolean> => {
@@ -63,24 +63,12 @@ export const createChannel= (
             .post(dashboardRoutes.createChannel, channelData)
             .then(response => {
                 resolve(true);
-                toast({
-                    title: "Channel Created",
-                    description: "its added to your list",
-                    status: "success",
-                    duration: 3000,
-                    isClosable: true
-                });
+                toast.success("Channel Created");
             })
             .catch((error: APIError<{ general: string[] }>) => {
                 reject(false);
                 error?.response?.data?.message?.general?.length != 0 &&
-                    toast({
-                        title: error.response.data.message.general[0],
-                        description: "",
-                        status: "error",
-                        duration: 3000,
-                        isClosable: true
-                    });
+                    toast.error(error.response.data.message.general[0]);
                 if (
                     error.response.data.message &&
                     Object.keys(error.response.data.message).length > 0
@@ -102,7 +90,6 @@ export const createChannel= (
 
 export const editChannel = (
     id: string,
-    toast: ToastAsPara,
     channelEditedData: any,
     formik: any
 ): Promise<boolean> => {
@@ -114,13 +101,7 @@ export const editChannel = (
             )
             .then(response => {
                 resolve(true);
-                toast({
-                    title: "Channel Edited",
-                    description: "its added to your list",
-                    status: "success",
-                    duration: 3000,
-                    isClosable: true
-                });
+                toast.success("Channel Edited");
             })
             .catch(error => {
                 reject(false);
@@ -140,29 +121,17 @@ export const editChannel = (
                     );
                 }
                 error.response.data.message.general.length != 0 &&
-                    toast({
-                        title: error.response.data.message.general[0],
-                        description: "",
-                        status: "error",
-                        duration: 3000,
-                        isClosable: true
-                    });
+                    toast.error(error.response.data.message.general[0]);
             });
     });
 };
 
-export const deleteChannel = (id: string, toast: ToastAsPara) => {
+export const deleteChannel = (id: string) => {
     privateGateway
         .delete(dashboardRoutes.deleteChannel.replace("${channelId}", id))
         .then(response => {
             //console.log(response.data.response);
-            toast({
-                title: "Channel Deleted",
-                description: "it's deleted from your list",
-                status: "error",
-                duration: 3000,
-                isClosable: true
-            });
+            toast.error("Channel Deleted")
         })
         .catch(error => {
             console.log(error);

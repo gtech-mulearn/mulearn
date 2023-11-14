@@ -11,7 +11,7 @@ import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import { useFormik } from "formik";
-import { useToast } from "@chakra-ui/react";
+import toast from "react-hot-toast";
 import {
     MuButton,
     PowerfulButton
@@ -33,7 +33,6 @@ const Channels = () => {
         { column: "updated_at", Label: "Updated At", isSortable: true },
     ];
 
-    const toast = useToast();
     const [editBtn, setEditBtn] = useState(false);
     const [createBtn, setCreateBtn] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
@@ -56,7 +55,7 @@ const Channels = () => {
                 discord_id: values.discordId
             };
             if (!editBtn) {
-                createChannel(toast, channelCreateData, formik).then(result => {
+                createChannel(channelCreateData, formik).then(result => {
                     if (result) {
                         setTimeout(() => {
                             getChannels(
@@ -71,7 +70,7 @@ const Channels = () => {
                     }
                 });
             } else {
-                editChannel(values.id, toast, channelCreateData, formik).then(
+                editChannel(values.id,channelCreateData, formik).then(
                     result => {
                         if (result) {
                             setTimeout(() => {
@@ -173,7 +172,7 @@ const Channels = () => {
     };
 
     const handleDelete = (id: any) => {
-        deleteChannel(id.toString(), toast);
+        deleteChannel(id.toString());
         setChannelsData(channelsData.filter(item => item?.id !== id));
     };
     const handleCopy = (id: any) => {
@@ -181,12 +180,7 @@ const Channels = () => {
             channelsData.filter(item => item?.id === id)[0].name
         );
         console.log(channelsData.filter(item => item?.id === id)[0].name);
-        toast({
-            title: "Copied",
-            status: "success",
-            duration: 2000,
-            isClosable: true
-        });
+        toast.success("Success");
     };
 
     useEffect(() => {
