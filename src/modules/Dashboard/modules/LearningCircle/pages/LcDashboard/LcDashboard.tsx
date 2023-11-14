@@ -78,7 +78,7 @@ const LcDashboard = (props: Props) => {
                     }}
                 >
                     Dashboard
-                </button>
+                </button> 
                 <button onClick={handleComingSoon}>IG Progress</button>
                 <button onClick={handleComingSoon}>BeWeb.dev</button>
             </div>
@@ -92,19 +92,6 @@ const LcDashboard = (props: Props) => {
 };
 
 export default LcDashboard;
-
-export const CheckBoxContainer = () => {
-    return (
-        <div className={styles.CheckBoxContainerWrapper}>
-            <input
-                type="checkbox"
-                id="textInput"
-                value="Text that gets selected"
-            />
-            <label htmlFor="textInput">1. Study IA</label>
-        </div>
-    );
-};
 
 export const Attendees = () => {
     return (
