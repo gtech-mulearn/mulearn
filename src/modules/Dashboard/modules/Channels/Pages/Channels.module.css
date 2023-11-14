@@ -1,4 +1,4 @@
-.channels_container {
+.channelsContainer {
     padding: 20px 50px;
     display: flex;
     flex-direction: row;
@@ -16,14 +16,14 @@
     width: 100%;
     flex-direction: column;
 
-    .form_btns {
+    .formBtns {
         display: flex;
         gap: 10px;
         justify-content: space-between;
         height: 65px;
     }
 
-    .create_channel {
+    .createChannel {
         width: 100%;
         padding: 20px;
         margin: 25dvh auto auto;
@@ -52,7 +52,7 @@
                 }
             }
 
-            .channels_input_container {
+            .channelsInputContainer {
                 display: flex;
                 justify-content: space-between;
                 gap: 10px;
@@ -61,7 +61,7 @@
         }
     }
 
-    .error_message {
+    .errorMessage {
         color: red;
         font-size: 0.8rem;
         font-weight: 500;
@@ -71,25 +71,22 @@
 }
 
 @media screen and (max-width: 830px) {
-    .channels_container {
+    .channelsContainer {
         padding: 20px 20px;
 
-        .form_btns {
+        .formBtns {
             width: 100%;
         }
 
-        .create_channel form .channels_input_container {
+        .createChannel form .channelsInputContainer {
             flex-direction: column;
 
-            .short_url_input_container_div {
-                width: 100%;
-            }
         }
     }
 }
 
 @media screen and (max-width: 500px) {
-    .channels_container .create_channel form .channels_input_container {
+    .channelsContainer .createChannel form .channelsInputContainer {
         margin-left: 10px;
     }
 }

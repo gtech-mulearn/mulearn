@@ -206,8 +206,8 @@ const Channels = () => {
                     marginRight: "3%"
                 }}>Create</PowerfulButton>
             {(editBtn || createBtn) && (
-                <div className={styles.channels_container}>
-                    <div className={styles.create_channel}>
+                <div className={styles.channelsContainer}>
+                    <div className={styles.createChannel}>
                         <form onSubmit={formik.handleSubmit}>
                             <input
                                 className={styles.name}
@@ -220,12 +220,12 @@ const Channels = () => {
                                 required
                             />
                             {formik.touched.name && formik.errors.name && (
-                                <p className={styles.error_message}>
+                                <p className={styles.errorMessage}>
                                     {formik.errors.name}
                                 </p>
                             )}
                             <input
-                                className={styles.discord_id}
+                                className={styles.discordId}
                                 type="text"
                                 name="discordId"
                                 onChange={formik.handleChange}
@@ -235,13 +235,13 @@ const Channels = () => {
                                 required
                             />
                             {formik.touched.discordId && formik.errors.discordId && (
-                                <p className={styles.error_message}>
+                                <p className={styles.errorMessage}>
                                     {formik.errors.discordId}
                                 </p>
                             )}
 
-                            <div className={styles.channels_input_container}>
-                                <div className={styles.form_btns}>
+                            <div className={styles.channelsInputContainer}>
+                                <div className={styles.formBtns}>
                                     <PowerfulButton
                                         type="reset"
                                         children="Cancel"
