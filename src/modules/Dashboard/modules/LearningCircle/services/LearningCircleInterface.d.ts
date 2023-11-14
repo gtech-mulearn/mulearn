@@ -48,3 +48,14 @@ interface LcMeetSchedule {
     meet_place: string;
     day: string;
 }
+
+interface LcNote {
+    note: string;
+	id: string | undefined;
+}
+
+interface ChecklistItem {
+    id: number;
+    text: string;
+    isChecked: boolean;
+}

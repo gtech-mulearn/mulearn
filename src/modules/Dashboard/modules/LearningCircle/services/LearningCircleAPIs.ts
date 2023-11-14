@@ -4,8 +4,6 @@ import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { createStandaloneToast } from "@chakra-ui/react";
 import { SetStateAction } from "react";
 import { NavigateFunction } from "react-router-dom";
-import { getUserProfile } from "../../Profile/services/api";
-
 export const { toast } = createStandaloneToast();
 
 export const getUserLearningCircles = async (
@@ -51,15 +49,15 @@ export const getLcDetails = async (
         }
     }
 };
-export const updateLcNote = async (id: string | undefined, note: string) => {
+
+export const updateLcNote = async (data: LcNote) => {
     try {
         const response = await privateGateway.put(
-            dashboardRoutes.getCampusLearningCircles + id + "/",
-            {
-                note: note
-            }
+            dashboardRoutes.getCampusLearningCircles + data.id,
+            data
         );
         const message: any = response;
+		return message
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {

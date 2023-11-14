@@ -103,7 +103,7 @@ const Profile = () => {
             getUserProfile(setUserProfile, setAPILoadStatus, setProfileStatus);
         }, 1000);
     };
-    console.log(userProfile.id);
+
     useEffect(() => {
         if (firstFetch.current) {
             if (!id) {
@@ -200,7 +200,11 @@ const Profile = () => {
                                                     <img
                                                         src={
                                                             userProfile.profile_pic
-                                                                ? userProfile.profile_pic
+                                                                ? userProfile.profile_pic +
+                                                                  `?${
+                                                                      Math.random() *
+                                                                      1000
+                                                                  }`
                                                                 : dpm
                                                         }
                                                         alt={
