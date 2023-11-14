@@ -1,5 +1,6 @@
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
+import { AxiosError } from "axios";
 
 type channelData = UseStateFunc<any>;
 type hasValidationError = UseStateFunc<{
@@ -14,36 +15,42 @@ export const getChannels = (
     setTotalPages?: UseStateFunc<number>,
     search?: string,
     sortID?: string,
+    errorHandler?: Function,
     setLoading?: UseStateFunc<boolean>
 ) => {
     setLoading && setLoading(true);
-    privateGateway
-        .get(dashboardRoutes.getChannels, {
-            params: {
-                perPage: selectedValue,
-                pageIndex: page,
-                search: search,
-                sortBy: sortID
-            }
-        })
-        .then((
-                response: APIResponse<{
-                    data: any[];
-                    pagination: { totalPages: number };
-                }>
-            ) => {
-                const channelsData = response.data.response.data;
-                setChannelsData(channelsData);
-                if (setTotalPages)
-                    setTotalPages(response.data.response.pagination.totalPages);
-            }
-        )
-        .catch(error => {
-            console.log(error);
-        })
-        .finally(() => {
-            setLoading && setLoading(false);
-        });
+    try {
+        privateGateway
+            .get(dashboardRoutes.getChannels, {
+                params: {
+                    perPage: selectedValue,
+                    pageIndex: page,
+                    search: search,
+                    sortBy: sortID
+                }
+            })
+            .then((
+                    response: APIResponse<{
+                        data: any[];
+                        pagination: { totalPages: number };
+                    }>
+                ) => {
+                    const channelsData = response.data.response.data;
+                    setChannelsData(channelsData);
+                    if (setTotalPages)
+                        setTotalPages(response.data.response.pagination.totalPages);
+                }
+            )
+    } catch (err) {
+        setLoading && setLoading(false);
+        const error = err as AxiosError;
+        console.log(error)
+        if (error?.response) {
+            if (errorHandler) errorHandler();
+            else console.log(error.response);
+        }
+    }
+
 };
 
 export const createChannel= (
