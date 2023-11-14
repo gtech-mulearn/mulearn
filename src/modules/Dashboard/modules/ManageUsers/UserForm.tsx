@@ -24,7 +24,7 @@ type InitialLocationData = {
     state: { label: string; value: string };
     district: { label: string; value: string };
 } | null;
-
+const requiredFields = ["first_name","email","mobile"];
 const UserForm = forwardRef(
     (props: Props & { closeModal: () => void }, ref: any) => {
         const [initialData, setInitialData] =
@@ -226,17 +226,13 @@ const UserForm = forwardRef(
 
             // Validate form data
             let isValid = true;
-            for (const key in updatedData) {
-                if (
-                    updatedData[key as keyof UserData] === "" ||
-                    updatedData[key as keyof UserData] === "undefined"
-                ) {
+            for (const key of requiredFields) {
+                if (!updatedData[key as keyof UserData]) {
+                    console.log(key);
                     isValid = false;
                     setErrors(prevErrors => ({
                         ...prevErrors,
-                        [key]: `${
-                            key.charAt(0).toUpperCase() + key.slice(1)
-                        } is required`
+                        [key]: `${key.charAt(0).toUpperCase() + key.slice(1)} is required`
                     }));
                     toast.error(`Error: ${key} is required`);
                 }
@@ -279,7 +275,7 @@ const UserForm = forwardRef(
                             placeholder="Last Name"
                             value={data.last_name}
                             onChange={handleChange}
-                            onBlur={handleBlur}
+                            // onBlur={handleBlur}
                         />
                         {errors.last_name && (
                             <div style={{ color: "red" }}>
@@ -320,7 +316,7 @@ const UserForm = forwardRef(
                             placeholder="DiscordId"
                             value={data.discord_id as string}
                             onChange={handleChange}
-                            onBlur={handleBlur}
+                            // onBlur={handleBlur}
                         />
                         {errors.discord_id && (
                             <div style={{ color: "red" }}>
@@ -360,12 +356,12 @@ const UserForm = forwardRef(
                                 }));
                             }}
                         />
-                        {selectData.blurStatus.community &&
+                        {/* {selectData.blurStatus.community &&
                             !selectData.selectedCommunity && (
                                 <div style={{ color: "red" }}>
                                     Community is Required
                                 </div>
-                            )}
+                            )} */}
                     </div>
 
                     <div className={styles.inputContainer}>
@@ -398,12 +394,12 @@ const UserForm = forwardRef(
                                 }));
                             }}
                         />
-                        {selectData.blurStatus.roles &&
+                        {/* {selectData.blurStatus.roles &&
                             !selectData.selectedRoles && (
                                 <div style={{ color: "red" }}>
                                     Roles is Required
                                 </div>
-                            )}
+                            )} */}
                     </div>
 
                     <div className={styles.inputContainer}>
@@ -433,12 +429,12 @@ const UserForm = forwardRef(
                                 )
                             )}
                         />
-                        {selectData.blurStatus.interestGroups &&
+                        {/* {selectData.blurStatus.interestGroups &&
                             !selectData.selectedInterestGroups && (
                                 <div style={{ color: "red" }}>
                                     IG is Required
                                 </div>
-                            )}
+                            )} */}
                     </div>
 
                     <CountryStateDistrict
@@ -454,6 +450,7 @@ const UserForm = forwardRef(
                         onCountryChange={handleCountryChange}
                         onStateChange={handleStateChange}
                         onDistrictChange={handleDistrictChange}
+                        notRequired = {true}
                     />
 
                     <div className={styles.inputContainer}>
@@ -483,12 +480,12 @@ const UserForm = forwardRef(
                                 }));
                             }}
                         />
-                        {selectData.blurStatus.college &&
+                        {/* {selectData.blurStatus.college &&
                             !selectData.selectedCollege && (
                                 <div style={{ color: "red" }}>
                                     College is Required
                                 </div>
-                            )}
+                            )} */}
                     </div>
 
                     <div className={styles.inputContainer}>
@@ -519,12 +516,12 @@ const UserForm = forwardRef(
                                 }));
                             }}
                         />
-                        {selectData.blurStatus.department &&
+                        {/* {selectData.blurStatus.department &&
                             !selectData.selectedDepartment && (
                                 <div style={{ color: "red" }}>
                                     Department is Required
                                 </div>
-                            )}
+                            )} */}
                     </div>
                 </form>
             </div>
