@@ -469,16 +469,6 @@
     justify-content: space-between;
     gap: 10px;
 }
-.ContainerWrapper .ContentWrapper .TopContainer .sectionTwo button {
-    background-color: rgba(69, 111, 246, 1);
-    color: white;
-    padding: 0px 10px 10px;
-    border-radius: 8px;
-    font-size: 40px;
-    line-height: 0.9;
-    width: fit-content;
-    align-self: flex-end;
-}
 
 .ContainerWrapper .ContentWrapper .BottomContainer {
     display: flex;
@@ -529,26 +519,13 @@
     .ContainerWrapper .ContentWrapper .TopContainer .sectionOne .secondDiv p {
         font-size: 15px;
     }
-
-    .ContainerWrapper
-        .ContentWrapper
-        .TopContainer
-        .sectionOne
-        .secondDiv
-        button {
-        width: 100%;
-        padding: 8px;
-        font-size: 15px;
-    }
-    .ContainerWrapper .ContentWrapper .TopContainer .sectionTwo {
-        width: 100%;
-    }
 }
 
 /* HistoryDiv */
 
 .HistoryDivWrapper {
     width: 100%;
+	cursor: pointer;
     display: flex;
     justify-content: space-between;
     border-radius: 12px;
@@ -578,13 +555,38 @@
 
 .CheckBoxContainerWrapper {
     display: flex;
+	flex-direction: column;
     gap: 10px;
     font-size: 17px;
+	align-items: center;
     font-weight: 500;
+	width: 100%;
 }
 
 .CheckBoxContainerWrapper input {
     padding: 5px;
+}
+
+.CheckBoxContainerButton {
+	display: flex;
+	align-items: end;
+	margin-top: 10px;
+	width: 100%;
+    justify-content: end;
+}
+
+.CheckBoxContainerButton button {
+	background-color: var(--blue);
+	color: white;	
+	padding: 0.5rem 1rem;
+	border-radius: 8px;
+}
+
+.CheckBoxContainer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	min-width: 20rem;
 }
 
 /* Attendees */
