@@ -19,10 +19,22 @@ import {
 import { Blank } from "@/MuLearnComponents/Table/Blank";
 
 type channelData = {
-    id: string | number | boolean;
-    name: string;
-    discord_id: string;
-};
+    id: string ;
+    name : string ;
+    discord_id : string ;
+    created_at : string ;
+    updated_at : string ;
+    created_by : string ;
+    updated_by : string ;
+}
+
+type channelCreate = {
+    id: string ;
+    name : string ;
+    discord_id : string ;
+}
+
+
 const Channels = () => {
     const columnOrder: ColOrder[] = [
         { column: "name", Label: "Name", isSortable: true },
@@ -46,13 +58,13 @@ const Channels = () => {
         initialValues: {
             id: "",
             name: "",
-            discordId:""
+            discord_id:""
         },
         onSubmit: values => {
             const channelCreateData = {
                 id: values.id,
                 name: values.name,
-                discord_id: values.discordId
+                discord_id: values.discord_id
             };
             if (!editBtn) {
                 createChannel(channelCreateData, formik).then(result => {
@@ -93,8 +105,8 @@ const Channels = () => {
             if (!values.name) {
                 errors.name = "Required";
             }
-            if (!values.discordId) {
-                errors.discordId = "Required";
+            if (!values.discord_id) {
+                errors.discord_id = "Required";
             }
             return errors;
         }
@@ -165,7 +177,7 @@ const Channels = () => {
             channelsData.filter(item => item?.id === id)[0].name
         );
         formik.setFieldValue(
-            "discordId",
+            "discord_id",
             channelsData.filter(item => item?.id === id)[0].discord_id
         );
         setEditBtn(true);
@@ -219,18 +231,18 @@ const Channels = () => {
                                 </p>
                             )}
                             <input
-                                className={styles.discordId}
+                                className={styles.discord_id}
                                 type="text"
-                                name="discordId"
+                                name="discord_id"
                                 onChange={formik.handleChange}
-                                value={formik.values.discordId}
+                                value={formik.values.discord_id}
                                 onBlur={formik.handleBlur}
                                 placeholder="Discord ID"
                                 required
                             />
-                            {formik.touched.discordId && formik.errors.discordId && (
+                            {formik.touched.discord_id && formik.errors.discord_id && (
                                 <p className={styles.errorMessage}>
-                                    {formik.errors.discordId}
+                                    {formik.errors.discord_id}
                                 </p>
                             )}
 

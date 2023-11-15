@@ -2,15 +2,34 @@ import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { AxiosError } from "axios";
 import toast from "react-hot-toast";
+import { useFormik } from "formik";
 
-type channelData = UseStateFunc<any>;
+type channelData = {
+    id: string ;
+    name : string ;
+    discord_id : string ;
+    created_at : string ;
+    updated_at : string ;
+    created_by : string ;
+    updated_by : string ;
+}
+
+type channelCreate = {
+    id: string ;
+    name : string ;
+    discord_id : string ;
+}
+
+type FormikType = ReturnType<typeof useFormik<channelCreate>>;
+
+
 type hasValidationError = UseStateFunc<{
     error: boolean;
     message: string;
 }>;
 
-export const getChannels = (
-    setChannelsData: channelData,
+export const getChannels = async (
+    setChannelsData: UseStateFunc<channelData[]>,
     page: number,
     selectedValue: number,
     setTotalPages?: UseStateFunc<number>,
@@ -55,8 +74,8 @@ export const getChannels = (
 };
 
 export const createChannel= (
-    channelData: any,
-    formik: any
+    channelData: channelCreate,
+    formik: FormikType
 ): Promise<boolean> => {
     return new Promise((resolve, reject) => {
         privateGateway
@@ -90,8 +109,8 @@ export const createChannel= (
 
 export const editChannel = (
     id: string,
-    channelEditedData: any,
-    formik: any
+    channelEditedData: channelCreate,
+    formik: FormikType
 ): Promise<boolean> => {
     return new Promise((resolve, reject) => {
         privateGateway
