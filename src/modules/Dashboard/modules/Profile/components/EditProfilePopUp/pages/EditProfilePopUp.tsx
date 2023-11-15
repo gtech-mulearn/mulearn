@@ -112,7 +112,8 @@ const EditProfilePopUp = (props: Props) => {
         margin: "0px 0px -8px 0px",
         display: "flex",
         justifyContent: "center",
-        padding: "16px"
+        padding: "16px",
+        height: "50px"
     };
     const communityIds: string[] = formik.values.communities || []; // Provide a default empty array
     const filteredCommunityOptions = toReactOptions(
@@ -230,7 +231,7 @@ const EditProfilePopUp = (props: Props) => {
                                 <select
                                     name="gender"
                                     value={formik.values.gender}
-                                    {...propsList2}
+                                    // {...propsList2}
                                 >
                                     <option value="">Select gender</option>
                                     <option value="Male">♂ Male</option>
@@ -276,26 +277,29 @@ const EditProfilePopUp = (props: Props) => {
                                 />{" "}
                             </div>
                         </div>
-
-                        <PowerfulButton
-                            type="button"
-                            variant="outline"
-                            // disabled={discordState === "finished"}
-                            onClick={discordSync}
-                            className={styles.powerfulButton}
-                        >
-                            Sync Discord Image
-                            {
+                        <div className={styles.btn_container}>
+                            <PowerfulButton
+                                type="button"
+                                variant="outline"
+                                // disabled={discordState === "finished"}
+                                onClick={discordSync}
+                                className={styles.powerfulButton}
+                            >
+                                Sync Discord Image
                                 {
-                                    initial: <BsDiscord size={32} />,
-                                    loading: (
-                                        <BeatLoader size={8} color="#456ff6" />
-                                    ),
-                                    finished: <BsCheck size={32} />
-                                }[discordState]
-                            }
-                        </PowerfulButton>
-                        {/* <div
+                                    {
+                                        initial: <BsDiscord size={32} />,
+                                        loading: (
+                                            <BeatLoader
+                                                size={8}
+                                                color="#456ff6"
+                                            />
+                                        ),
+                                        finished: <BsCheck size={32} />
+                                    }[discordState]
+                                }
+                            </PowerfulButton>
+                            {/* <div
                                     title={
                                         discordState === "initial"
                                             ? "Click to sync discord image"
@@ -317,11 +321,12 @@ const EditProfilePopUp = (props: Props) => {
                                     }
                                 </div> */}
 
-                        <MuButton
-                            type="submit"
-                            style={buttonStyle}
-                            text={"Update Profile"}
-                        />
+                            <MuButton
+                                type="submit"
+                                style={buttonStyle}
+                                text={"Update Profile"}
+                            />
+                        </div>
                         <button
                             type="button"
                             className={styles.edit_profile_close}
