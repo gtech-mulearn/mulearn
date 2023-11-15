@@ -4,18 +4,20 @@
     background-color: #fff;
     box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.06);
     width: 95%;
-    display: flex;
-    align-items: center;
-    gap: 50px;
-    height: 380px;
-    overflow: scroll;
-    position: relative;
+    /* display: flex; */
+    /* gap: 50px; */
+    /* height: 380px; */
+    /* overflow: scroll; */
+    /* position: relative; */
+    /* align-items: center; */
+    /* overflow: scroll; */
+    /* position: relative; */
 }
 
-.main_task .rocket {
+/* .main_task .rocket {
     position: absolute;
     bottom: 0px;
-}
+} */
 
 .main_task p,
 .main_task li {
@@ -23,10 +25,10 @@
     font-weight: 500;
 }
 
-.main_task .tasks {
+/* .main_task .tasks {
     margin-top: 12rem;
     margin-left: 300px;
-}
+} */
 
 .main_task .tasks .topSection {
     display: flex;
