@@ -37,6 +37,7 @@ import LcDashboard from "./modules/Dashboard/modules/LearningCircle/pages/LcDash
 import { Toaster } from "react-hot-toast";
 import CommunityPage from "./modules/Common/Authentication/pages/Onboarding/CommunityPage/CommunityPage";
 import Foundation from "./modules/Public/Foundation/Foundation";
+import Channels from "./modules/Dashboard/modules/Channels/Pages/Channels";
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
 );
@@ -455,6 +456,19 @@ function App() {
                                 <RoleChecker
                                     roles={[roles.ADMIN, roles.FELLOW]}
                                     children={<KarmaVoucherBulkImport />}
+                                />
+                            )
+                        },
+                        {
+                            path: "channels",
+                            element: (
+                                <RoleChecker
+                                    roles={[
+                                        roles.ADMIN,
+                                        roles.FELLOW,
+                                        roles.ASSOCIATE
+                                    ]}
+                                    children={<Channels />}
                                 />
                             )
                         },
