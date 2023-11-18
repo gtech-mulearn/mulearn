@@ -231,12 +231,12 @@ const EditProfilePopUp = (props: Props) => {
                                 <select
                                     name="gender"
                                     value={formik.values.gender}
-                                    // {...propsList2}
+                                    {...propsList2}
                                 >
-                                    <option value="">Select gender</option>
+                                    <option>Select gender</option>
                                     <option value="Male">♂ Male</option>
                                     <option value="Female">♀ Female</option>
-                                    <option value="">Other</option>
+                                    <option value="Other">Other</option>
                                     <option value="">Prefer not to say</option>
                                 </select>
                             </div>
