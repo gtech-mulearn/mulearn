@@ -161,6 +161,12 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     icon: <i className="fi fi-ss-map-marker"></i>
                 },
                 {
+                    url: "/dashboard/channels",
+                    title: "Channels",
+                    hasView: true,
+                    roles: [roles.ADMIN, roles.FELLOW, roles.ASSOCIATE]
+                },
+                {
                     url: "/dashboard/affiliation",
                     title: "Affiliation",
                     hasView: true,

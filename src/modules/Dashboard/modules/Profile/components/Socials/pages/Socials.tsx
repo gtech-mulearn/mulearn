@@ -199,9 +199,7 @@ const Socials = (props: Props) => {
                               return ""; // if username is empty
                           }
                       )
-                    : id
-                    ? " No socials added"
-                    : " To enhance your profile, Share your online presence with world!"}
+                    : "No socials connected yet"}
             </p>
         </>
     );
