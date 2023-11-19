@@ -525,7 +525,7 @@
 
 .HistoryDivWrapper {
     width: 100%;
-	cursor: pointer;
+    cursor: pointer;
     display: flex;
     justify-content: space-between;
     border-radius: 12px;
@@ -555,12 +555,12 @@
 
 .CheckBoxContainerWrapper {
     display: flex;
-	flex-direction: column;
+    flex-direction: column;
     gap: 10px;
     font-size: 17px;
-	align-items: center;
+    align-items: center;
     font-weight: 500;
-	width: 100%;
+    width: 100%;
 }
 
 .CheckBoxContainerWrapper input {
@@ -568,25 +568,25 @@
 }
 
 .CheckBoxContainerButton {
-	display: flex;
-	align-items: end;
-	margin-top: 10px;
-	width: 100%;
+    display: flex;
+    align-items: end;
+    margin-top: 10px;
+    width: 100%;
     justify-content: end;
 }
 
 .CheckBoxContainerButton button {
-	background-color: var(--blue);
-	color: white;	
-	padding: 0.5rem 1rem;
-	border-radius: 8px;
+    background-color: var(--blue);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
 }
 
 .CheckBoxContainer {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	min-width: 20rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 20rem;
 }
 
 /* Attendees */
@@ -611,15 +611,15 @@
 
 /* Css for Meeting Schedule */
 .Botton {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .BtnBtn {
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     border: none;
-	width: 20%;
+    width: 20%;
     color: var(--White);
     background-color: var(--blue);
 }
@@ -661,7 +661,7 @@
 .dateandtime {
     display: flex;
     flex-direction: row;
-	align-items: center;
+    align-items: center;
     justify-content: space-evenly;
     width: 100%;
     flex-wrap: wrap;
@@ -673,8 +673,7 @@
     width: 47%;
     height: 45px;
     padding: 1rem;
-	height: 80%;
-	
+    height: 80%;
 }
 
 .inputVenue {
@@ -697,7 +696,7 @@
 .InputSchedule .weeks p {
     font-size: medium;
     font-weight: 400;
-	margin-left: 32px;
+    margin-left: 32px;
 }
 
 .Lcweek {
@@ -730,7 +729,7 @@
     width: 40px;
     height: 40px;
     border-radius: 100%;
-	background-color: white;
+    background-color: white;
     outline: none;
     border: none;
     transition: 0.3s;
@@ -749,4 +748,122 @@
 
 .Lcweek input[type="checkbox"]:checked + label {
     color: var(--White);
+}
+
+.progressContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.progressContainer .heading h1 {
+    font-size: 25px;
+    font-weight: 700;
+    color: black;
+}
+.progressContainer .heading span {
+    font-size: 12px;
+    font-weight: 700;
+    color: black;
+}
+.progressContainer .heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.progressBar {
+    --progress: 50;
+
+    width: 100%;
+    height: 3px;
+    border-radius: 10px;
+    background-color: #ababab;
+    position: relative;
+    overflow: hidden;
+}
+.progressBar::before {
+    transition: transform 0.5s;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 3px;
+    border-radius: 10px;
+    background: #31bc00;
+    opacity: 0.8;
+    transform: translateX(calc(-1% * var(--progress)));
+}
+
+.taskContainer {
+    padding: 1rem;
+
+    border-radius: 8px;
+    border: 2px solid #e9e8fc;
+    color: #000;
+
+    transition: height 0.5s;
+    height: 4.75rem;
+
+    overflow: hidden;
+}
+
+.taskContainer.open {
+    height: fit-content;
+}
+
+.taskContainer .top {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: min(3rem, 10vw);
+}
+
+.taskContainer .top h2 {
+    font-size: 1.75rem;
+
+    font-weight: 600;
+}
+.taskContainer .top span {
+    font-size: 1.25rem;
+
+    font-weight: 400;
+}
+
+.totalKarma {
+    font-size: 1.5rem;
+    margin-left: auto;
+}
+
+.task {
+    display: flex;
+    justify-content: space-between;
+    gap: min(1rem, 10vw);
+    padding: 1rem 0;
+}
+
+.task input {
+    clip-path: circle(57% at 50% 50%);
+
+    align-self: flex-start;
+    --size: 17.5px;
+    width: var(--size);
+    height: var(--size);
+    margin-top: 7px;
+    accent-color: #456ff6;
+    border-radius: 1px;
+}
+
+.task h3 {
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+.task .content {
+    width: 60%;
+    text-align: left;
+    margin-right: auto;
+}
+
+.flexCol {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
