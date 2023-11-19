@@ -103,7 +103,7 @@ const CampusChapters = () => {
                 individual needs, promoting the μLearn culture.
               </p>
               <a
-                href="https://airtable.com/shrmtngt3zopg8eVh"
+                href="https://airtable.com/appraK5skTehbeWyA/shrL3j7CU9xA55hs1"
                 target="_blank"
                 rel="noopener noreferrer"
               >

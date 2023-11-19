@@ -30,30 +30,14 @@ const MuLiveCounter = () => {
     );
 
     socket.addEventListener("open", (event) => console.log("connected"));
-    // socket.send('{"type":"global_count"}')
 
     socket.addEventListener("message", (event) => {
-      console.log("Message from server ", event.data);
       setCounts(JSON.parse(event.data));
     });
 
     socket.addEventListener("error", (event) => {
       console.error("WebSocket error: ", event);
-      // if (!counts) {
-      //   fetch("https://mulearn.org/api/v1/get-log/global-count/")
-      //     .then((response) => response.json())
-      //     .then((data) => {
-      //       setCounts(data.response);
-      //     })
-      //     .catch((error) => {
-      //       console.error("Error:", error);
-      //     });
-      // }
     });
-
-    socket.addEventListener("close", (event) =>
-      console.log("WebSocket is closed now.")
-    );
 
     return () => {
       socket.close();
@@ -146,13 +130,6 @@ const Home = () => {
               >
                 <button className={styles.primary}>Join Us</button>
               </a>
-              {/* <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://themaze.mulearn.org"
-              >
-                <button className={styles.secondary}>Join The Maze</button>
-              </a> */}
             </div>
           </div>
           <img
