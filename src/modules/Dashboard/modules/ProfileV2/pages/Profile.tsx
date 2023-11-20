@@ -194,6 +194,7 @@ const ProfileV2 = (props: Props) => {
                                         }
                                         target="_blank"
                                         rel="noreferrer"
+                                        key={key}
                                     >
                                         {socialMediaSvgComponents[key]}
                                     </a>

@@ -11,11 +11,11 @@ const Dribble = (props: Props) => {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
         >
-            <g clip-path="url(#clip0_1962_1088)">
+            <g clipPath="url(#clip0_1962_1088)">
                 <rect width="30" height="30" rx="6" fill="#BDD9FF" />
                 <mask
                     id="mask0_1962_1088"
-                    style={{"maskType":"luminance"}}
+                    style={{ maskType: "luminance" }}
                     maskUnits="userSpaceOnUse"
                     x="3"
                     y="3"
@@ -28,21 +28,21 @@ const Dribble = (props: Props) => {
                         stroke="white"
                         strokeWidth="2.5"
                         strokeLinecap="round"
-                        stroke-linejoin="round"
+                        strokeLinejoin="round"
                     />
                     <path
                         d="M25.0001 15C23.5411 15 19.5161 14.45 15.9136 16.0315C12.0001 17.75 9.16664 20.4155 7.93164 22.0735"
                         stroke="black"
                         strokeWidth="2.5"
                         strokeLinecap="round"
-                        stroke-linejoin="round"
+                        strokeLinejoin="round"
                     />
                     <path
                         d="M11.25 5.72704C12.815 7.17153 16.23 10.849 17.5 14.5C18.77 18.151 19.24 22.64 19.53 23.9175"
                         stroke="black"
                         strokeWidth="2.5"
                         strokeLinecap="round"
-                        stroke-linejoin="round"
+                        strokeLinejoin="round"
                     />
                     <path
                         d="M5.07642 13.75C6.96541 13.864 11.9659 13.9665 15.1659 12.6C18.3659 11.2335 21.1194 8.72002 22.0639 7.92252"
@@ -56,7 +56,7 @@ const Dribble = (props: Props) => {
                         stroke="white"
                         strokeWidth="2.5"
                         strokeLinecap="round"
-                        stroke-linejoin="round"
+                        strokeLinejoin="round"
                     />
                 </mask>
                 <g mask="url(#mask0_1962_1088)">
