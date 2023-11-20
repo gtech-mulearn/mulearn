@@ -38,6 +38,7 @@ import { Toaster } from "react-hot-toast";
 import CommunityPage from "./modules/Common/Authentication/pages/Onboarding/CommunityPage/CommunityPage";
 import Foundation from "./modules/Public/Foundation/Foundation";
 import Channels from "./modules/Dashboard/modules/Channels/Pages/Channels";
+import Settings from "./modules/Dashboard/modules/Settings/Settings";
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
 );
@@ -606,6 +607,15 @@ function App() {
                                     children={<OrganizationTransfer />}
                                 />
                             )
+                        }, {
+                            path: "settings",
+                            element: <Settings />,
+                            children: [
+                                {
+                                    path: "connected-devices",
+                                    element: <ConnectedDevices />
+                                }
+                            ]
                         }
                         // {
                         //     path: "marketplace",
@@ -627,16 +637,7 @@ function App() {
                         //     path: "marketplace-purchaseinv",
                         //     element: <PurchaseInventory />
                         // }
-                        // {
-                        //     path: "settings",
-                        //     element: <Settings />,
-                        //     children: [
-                        //         {
-                        //             path: "connected-devices",
-                        //             element: <ConnectedDevices />
-                        //         }
-                        //     ]
-                        // }
+
                     ]
                 }
             ]
