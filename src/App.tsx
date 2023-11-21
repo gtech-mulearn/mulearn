@@ -39,6 +39,7 @@ import CommunityPage from "./modules/Common/Authentication/pages/Onboarding/Comm
 import Foundation from "./modules/Public/Foundation/Foundation";
 import Channels from "./modules/Dashboard/modules/Channels/Pages/Channels";
 import Settings from "./modules/Dashboard/modules/Settings/Settings";
+import ProfileSettings from "./modules/Dashboard/modules/Settings/pages/ProfileSettings/ProfileSettings";
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
 );
@@ -611,6 +612,10 @@ function App() {
                             path: "settings",
                             element: <Settings />,
                             children: [
+                                {
+                                    path: "profile",
+                                    element: <ProfileSettings />
+                                },
                                 {
                                     path: "connected-devices",
                                     element: <ConnectedDevices />
