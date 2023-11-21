@@ -71,9 +71,10 @@ function CollegeLevels() {
 
     const columnOrder = [
         // { column: "id", Label: "ID", isSortable: true },
-        { column: "org", Label: "College", isSortable: false },
-        { column: "level", Label: "Level", isSortable: false },
-        { column: "discord_link", Label: "Discord", isSortable: false },
+        { column: "org", Label: "College", isSortable: true },
+        { column: "level", Label: "Level", isSortable: true },
+        { column: "no_of_lc", Label: "Number of LCs", isSortable: true },
+        { column: "total_karma", Label: "Total Karma", isSortable: true },
         { column: "updated_by", Label: "Updated By", isSortable: false },
         { column: "updated_at", Label: "Updated At", isSortable: false },
         { column: "created_by", Label: "Created By", isSortable: false },
@@ -131,7 +132,7 @@ function CollegeLevels() {
                         setIsLoading: setIsLoading,
                         setTotalPages: setTotalPages,
                         search: "",
-                        sortID: ""
+                        sortID: sort
                     },
                     errHandler
                 ),
@@ -141,6 +142,18 @@ function CollegeLevels() {
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
+        getCollegeLevels(
+            {
+                setData: setData,
+                page: 1,
+                selectedValue: perPage,
+                setIsLoading: setIsLoading,
+                setTotalPages: setTotalPages,
+                search: search,
+                sortID: sort
+            },
+            errHandler
+        )
     };
 
     const handleEdit = (id: string | number | boolean) => {
@@ -165,45 +178,47 @@ function CollegeLevels() {
     const handleIconClick = (column: string) => {
         if (sort === column) {
             setSort(`-${column}`);
+            delayedRefetch();
         } else {
             setSort(column);
+            delayedRefetch();
         }
     };
     return (
         <>
             {currModal
                 ? (() => {
-                      if (currModal === "create")
-                          return (
-                              <Modal
-                                  onClose={setCurrModal}
-                                  icon={icons.tick}
-                                  header="Assign College Level"
-                                  paragraph="Select and assign the level"
-                              >
-                                  <CollegeLevelsCreate
-                                      onClose={setCurrModal}
-                                      refetch={delayedRefetch}
-                                  />
-                              </Modal>
-                          );
-                      if (currModal === "edit")
-                          return (
-                              <Modal
-                                  size="small"
-                                  onClose={setCurrModal}
-                                  icon={icons.cross}
-                                  header="Edit College Level"
-                                  paragraph="Select the new level"
-                              >
-                                  <CollegeLevelsEdit
-                                      onClose={setCurrModal}
-                                      org_id={currOrdId!}
-                                      refetch={delayedRefetch}
-                                  />
-                              </Modal>
-                          );
-                  })()
+                    if (currModal === "create")
+                        return (
+                            <Modal
+                                onClose={setCurrModal}
+                                icon={icons.tick}
+                                header="Assign College Level"
+                                paragraph="Select and assign the level"
+                            >
+                                <CollegeLevelsCreate
+                                    onClose={setCurrModal}
+                                    refetch={delayedRefetch}
+                                />
+                            </Modal>
+                        );
+                    if (currModal === "edit")
+                        return (
+                            <Modal
+                                size="small"
+                                onClose={setCurrModal}
+                                icon={icons.cross}
+                                header="Edit College Level"
+                                paragraph="Select the new level"
+                            >
+                                <CollegeLevelsEdit
+                                    onClose={setCurrModal}
+                                    org_id={currOrdId!}
+                                    refetch={delayedRefetch}
+                                />
+                            </Modal>
+                        );
+                })()
                 : ""}
 
             <div className={styles.createBtnContainer}>
@@ -218,7 +233,7 @@ function CollegeLevels() {
                     <TableTop
                         onSearchText={handleSearch}
                         onPerPageNumber={handlePerPageNumber}
-                        // CSV={dashboardRoutes.getRolesList}
+                    // CSV={dashboardRoutes.getRolesList}
                     />
                     <Table
                         isloading={isLoading}
