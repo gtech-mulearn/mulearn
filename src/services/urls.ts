@@ -152,7 +152,10 @@ export const dashboardRoutes = {
     getDynamicUser: "api/v1/dashboard/dynamic-management/dynamic-user/",
 
     getErrorLog: "api/v1/dashboard/error-log/",
-    clearErrorLog: "api/v1/dashboard/error-log/clear/"
+    clearErrorLog: "api/v1/dashboard/error-log/clear/",
+
+    //Settings
+    changePassword: "api/v1/dashboard/profile/change-password/"
 } as const;
 
 export const organizationRoutes = {

@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-import styles from "./ProfileSettings.module.css"
+import styles from "./ChangePassword.module.css"
 import { FormikTextInputWithoutLabel as SimpleInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { PowerfulButton } from '@/MuLearnComponents/MuButtons/MuButton';
+import { privateGateway } from '@/MuLearnServices/apiGateways';
+import { dashboardRoutes } from '@/MuLearnServices/urls';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
-const ProfileSettings = () => {
+const ChangePassword = () => {
   const scheme = Yup.object({
     password: Yup.string()
       .required("Password is required")
@@ -15,8 +19,18 @@ const ProfileSettings = () => {
       .oneOf([Yup.ref("password")], "Password does not match")
   });
 
+  const naviage = useNavigate();
+
   const onSubmit = (values: any) => {
-    console.log(values);
+    privateGateway.post(dashboardRoutes.changePassword, {
+      password: values.password,
+    }).then((response) => {
+      toast.success(response.data.message.general[0])
+      naviage("/dashboard/profile")
+
+    }).catch((error) => {
+      toast.error(error.response.data.message.general[0])
+    })
   }
 
   const [showOrHidePassword, setShowOrHidePassword] = useState("password");
@@ -122,4 +136,4 @@ const ProfileSettings = () => {
   )
 }
 
-export default ProfileSettings
+export default ChangePassword

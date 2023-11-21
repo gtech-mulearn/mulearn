@@ -175,7 +175,7 @@ const SideNavBarBody = ({
                 <MuButton
                     text="Change Password"
                     icon={<MuSettings />}
-                    onClick={() => navigate("/dashboard/settings/profile")}
+                    onClick={() => navigate("/dashboard/settings/change-password")}
                     style={{
                         color: "#9297AA",
                         backgroundColor: "#fff",
