@@ -127,9 +127,9 @@ const IntrestGroupForm = forwardRef(
                             onChange={handleChange}
                             onBlur={handleBlur}
                         />
-                        {errors.first_name && (
+                        {errors.name && (
                             <div style={{ color: "red" }}>
-                                {errors.first_name}
+                                {errors.name}
                             </div>
                         )}
                     </div>
@@ -142,9 +142,9 @@ const IntrestGroupForm = forwardRef(
                             onChange={handleChange}
                             onBlur={handleBlur}
                         />
-                        {errors.last_name && (
+                        {errors.code && (
                             <div style={{ color: "red" }}>
-                                {errors.last_name}
+                                {errors.code}
                             </div>
                         )}
                     </div>
@@ -157,8 +157,8 @@ const IntrestGroupForm = forwardRef(
                             onChange={handleChange}
                             onBlur={handleBlur}
                         />
-                        {errors.email && (
-                            <div style={{ color: "red" }}>{errors.email}</div>
+                        {errors.icon && (
+                            <div style={{ color: "red" }}>{errors.icon}</div>
                         )}
                     </div>
                     
