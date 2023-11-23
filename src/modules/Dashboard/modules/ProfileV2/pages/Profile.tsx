@@ -34,6 +34,7 @@ import Rocket from "../assets/svg/Rocket";
 import Planet from "../assets/svg/Planets/Planet";
 import Planet2 from "../assets/svg/Planets/Planet2";
 import Planet3 from "../assets/svg/Planets/Planet3";
+import KarmaDist from "../assets/svg/KarmaDist";
 
 type Props = {};
 interface CircleSection {
@@ -324,91 +325,52 @@ const ProfileV2 = (props: Props) => {
                             {/* <div className={styles.ui_widgets}>
                             <div className={styles.ui_value}>85%</div>
                             <div className={styles.ui_labels}>Java</div>
-                        </div> */}
-                            {/* <KarmaDist sections={circleSections} /> */}
+                        </div> <KarmaDist sections={circleSections} /> */}
                             <PieChart data={data} />
                         </div>
                     </div>
                 </div>
-             
+
                 {window.innerWidth > 1290 ? <Rocket /> : <></>}
             </div>
 
             <div className={styles.profileList}>
-                <p
-                    style={
-                        profileList === "basic-details"
-                            ? {
-                                  marginLeft: "5px",
-                                  width: "6.1rem"
-                              }
-                            : profileList === "karma-history"
-                            ? {
-                                  marginLeft: "165px",
-                                  width: "6.7rem"
-                              }
-                            : profileList === "mu-voyage"
-                            ? {
-                                  marginLeft: "345px",
-                                  width: "5.3rem"
-                              }
-                            : profileList === "projects"
-                            ? {
-                                  marginLeft: "515px",
-                                  width: "4.5rem"
-                              }
-                            : {}
-                    }
-                    className={styles.underline}
-                ></p>
                 <li
                     onClick={() => setProfileList("basic-details")}
-                    style={
+                    className={
                         profileList === "basic-details"
-                            ? {
-                                  fontSize: "600",
-                                  color: "#000"
-                              }
-                            : {}
+                            ? styles.activeBar
+                            : styles.notActiveBar
                     }
                 >
                     Basic Details
                 </li>
                 <li
                     onClick={() => setProfileList("karma-history")}
-                    style={
+                    className={
                         profileList === "karma-history"
-                            ? {
-                                  fontSize: "600",
-                                  color: "#000"
-                              }
-                            : {}
+                            ? styles.activeBar
+                            : styles.notActiveBar
                     }
                 >
                     Karma History
                 </li>
                 <li
                     onClick={() => setProfileList("mu-voyage")}
-                    style={
+                    className={
                         profileList === "mu-voyage"
-                            ? {
-                                  fontSize: "600",
-                                  color: "#000"
-                              }
-                            : {}
+                            ? styles.activeBar
+                            : styles.notActiveBar
                     }
                 >
                     Mu Voyage
                 </li>{" "}
                 <li
                     onClick={() => setProfileList("projects")}
-                    style={
+                    className={
                         profileList === "projects"
-                            ? {
-                                  fontSize: "600",
-                                  color: "#000"
-                              }
-                            : {}
+                            ? styles.activeBar
+                            : styles.notActiveBar
                     }
                 >
                     Projects

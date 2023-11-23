@@ -252,9 +252,9 @@
     position: relative;
     display: flex;
     /*flex-wrap: wrap;*/
-    gap: 55px;
+    gap: 5vw;
     list-style: none;
-    height: 30px;
+    height: fit-content;
     justify-content: flex-start;
     margin-top: -1rem;
     overflow: scroll;
@@ -271,12 +271,19 @@
         transition: all 0.5s ease-in-out;
     }
 
+    .activeBar {
+        color: black;
+        border-bottom: 3px solid #456ff6;
+    }
+    .notActiveBar {
+        border-bottom: none;
+    }
     & li {
         color: #7d9bc6;
         font-weight: 600;
         cursor: pointer;
-        min-width: 110px;
-        transition: all 0.5s ease-in-out;
+        padding-bottom: 7px;
+        transition: all 0.1s ease-in;
 
         &:hover {
             font-weight: 600;
@@ -383,10 +390,18 @@
 }
 
 @media screen and (max-width: 800px) {
-
-
     .roles_karma_dist_container {
         width: 100%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .profileList {
+        gap: 30px;
+        li {
+            min-width: fit-content;
+            font-size: 15px;
+        }
     }
 }
 
