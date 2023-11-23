@@ -867,3 +867,48 @@
     flex-direction: column;
     justify-content: space-evenly;
 }
+
+.teamList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.memberBar {
+    border-radius: 8px;
+    background: #eef2ff;
+    height: 4rem;
+
+    padding: 1rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    flex-grow: 0;
+    gap: 1rem;
+}
+
+.memberBar img {
+    height: 100%;
+    border-radius: 100px;
+}
+
+.memberBar span {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.memberBar span:not(.name),
+.memberBar p {
+    color: #000;
+}
+.memberBar .name {
+    min-width: 100px;
+    text-align: left;
+    font-weight: 500;
+}
+
+.memberBar .karma {
+    margin-left: auto;
+}
