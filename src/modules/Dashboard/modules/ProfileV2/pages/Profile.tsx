@@ -28,6 +28,7 @@ import moment from "moment";
 import BasicDetails from "../components/BasicDetails/pages/BasicDetails";
 import KarmaHistory from "../components/KarmaHistory/KarmaHistory";
 import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
+import { Projects } from "../components/Projects/Projects";
 import { PieChart } from "../components/Piechart/PieChart";
 import Rocket from "../assets/svg/Rocket";
 import Planet from "../assets/svg/Planets/Planet";
@@ -220,7 +221,7 @@ const ProfileV2 = (props: Props) => {
 
                 <div className={styles.basic_details_detail}>
                     <div className={styles.status_container}>
-                        <div className={styles.status+ " "+styles.Levels}>
+                        <div className={styles.status + " " + styles.Levels}>
                             <div className={styles.status_box}>
                                 <p>Level</p>
                                 <p>
@@ -287,11 +288,11 @@ const ProfileV2 = (props: Props) => {
                 <div className={styles.roles_karma_dist_container}>
                     <div className={styles.role_distribution_container}>
                         <h1>Roles and contributions</h1>
-                        {/* <div className={styles.ellipse}></div>
+                        <div className={styles.ellipse}></div>
                         <div className={styles.ellipse1}></div>
                         <div className={styles.ellipse2}></div>
                         <div className={styles.ellipse3}></div>
-                        <div className={styles.planet}></div> */}
+                        <div className={styles.planet}></div>
                         <div className={styles.roles_container}>
                             <div className={styles.roles_container_inner}>
                                 <p className={styles.line}></p>
@@ -329,7 +330,8 @@ const ProfileV2 = (props: Props) => {
                         </div>
                     </div>
                 </div>
-                {window.innerWidth > 1200 ? <Rocket /> : <></>}
+             
+                {window.innerWidth > 1290 ? <Rocket /> : <></>}
             </div>
 
             <div className={styles.profileList}>
@@ -337,7 +339,7 @@ const ProfileV2 = (props: Props) => {
                     style={
                         profileList === "basic-details"
                             ? {
-                                  marginLeft: "0px",
+                                  marginLeft: "5px",
                                   width: "6.1rem"
                               }
                             : profileList === "karma-history"
@@ -347,8 +349,13 @@ const ProfileV2 = (props: Props) => {
                               }
                             : profileList === "mu-voyage"
                             ? {
-                                  marginLeft: "340px",
+                                  marginLeft: "345px",
                                   width: "5.3rem"
+                              }
+                            : profileList === "projects"
+                            ? {
+                                  marginLeft: "515px",
+                                  width: "4.5rem"
                               }
                             : {}
                     }
@@ -392,6 +399,19 @@ const ProfileV2 = (props: Props) => {
                     }
                 >
                     Mu Voyage
+                </li>{" "}
+                <li
+                    onClick={() => setProfileList("projects")}
+                    style={
+                        profileList === "projects"
+                            ? {
+                                  fontSize: "600",
+                                  color: "#000"
+                              }
+                            : {}
+                    }
+                >
+                    Projects
                 </li>
             </div>
 
@@ -399,6 +419,8 @@ const ProfileV2 = (props: Props) => {
                 <BasicDetails userProfile={userProfile} userLog={userLog} />
             ) : profileList === "karma-history" ? (
                 <KarmaHistory userProfile={userProfile} userLog={userLog} />
+            ) : profileList === "projects" ? (
+                <Projects />
             ) : (
                 profileList === "mu-voyage" && (
                     <MuVoyage
