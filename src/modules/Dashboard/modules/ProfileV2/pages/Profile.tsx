@@ -169,14 +169,19 @@ const ProfileV2 = (props: Props) => {
         <>
             <div className={styles.basic_details}>
                 <div className={styles.profile_details_container}>
-                    <p
+                    {/* <p
                         className={styles.profile_pic}
                         style={{
                             backgroundImage: `url(${userProfile.profile_pic})`
                         }}
                     >
                         {" "}
-                    </p>
+                    </p> */}
+                    <img
+                        className={styles.profile_pic}
+                        src={userProfile.profile_pic}
+                        alt="hello"
+                    />
                     <div className={styles.profile_details}>
                         <h1>
                             {userProfile.first_name} {userProfile.last_name}{" "}
@@ -202,11 +207,20 @@ const ProfileV2 = (props: Props) => {
                             })}
                         </div>
                     </div>
+                    <div className={styles.Levels}>
+                        <p>Level</p>
+                        <p>
+                            {" "}
+                            {userProfile.level
+                                ? userProfile?.level?.slice(3, 4)
+                                : 1}
+                        </p>
+                    </div>
                 </div>
 
                 <div className={styles.basic_details_detail}>
                     <div className={styles.status_container}>
-                        <div className={styles.status}>
+                        <div className={styles.status+ " "+styles.Levels}>
                             <div className={styles.status_box}>
                                 <p>Level</p>
                                 <p>
@@ -230,8 +244,6 @@ const ProfileV2 = (props: Props) => {
                                 </p>
                             </div>
                         </div>
-                    </div>
-                    <div className={styles.status_container}>
                         <div className={styles.status}>
                             <Rank />
                             <div className={styles.status_box}>
