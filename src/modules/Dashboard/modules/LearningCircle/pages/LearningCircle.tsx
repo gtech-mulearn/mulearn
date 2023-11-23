@@ -603,7 +603,7 @@ const LearningCircle = (props: Props) => {
                                         <button
                                             className={styles.BtnBtn}
                                             onClick={() => {
-                                                updateLcNote(id, note);
+                                                // updateLcNote(id, note);
                                                 setTimeout(() => {
                                                     getLcDetails(setLc, id);
                                                     setFlag(true);

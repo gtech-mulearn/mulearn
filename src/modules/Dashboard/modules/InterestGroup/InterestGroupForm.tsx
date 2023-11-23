@@ -23,21 +23,19 @@ const IntrestGroupForm = forwardRef(
 
 
         // //Fetch the initial data if in edit mode
-        // useEffect(() => {
-        //     // Replace this with your actual API call
-        //    if (props.isEditMode) getIGDetails(props.id).then(
-        //         (data: IGData) => {
-                 
-                   
-                    
-        //             setData({
-        //                 name: data.name,
-        //                 icon: data.icon,
-        //                 code: data.code,
-        //             });
-        //         }
-        //     );
-        // }, [props.id]);
+        useEffect(() => {
+            if (props.isEditMode) {
+              getIGDetails(props.id).then((data: IGData) => {
+                setData({
+                  name: data.name,
+                  icon: data.icon,
+                  code: data.code,
+                });
+              });
+            }
+          }, [props.id]);
+          
+
         const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
             const { name, value } = e.target;
             setData(prevData => ({ ...prevData, [name]: value }));
@@ -92,21 +90,29 @@ const IntrestGroupForm = forwardRef(
             //     }
             // }
 
-            // if (isValid) {
-            //     console.log(updatedData);
-            //     if (props.isEditMode) {
-            //         toast.promise(editInterestGroups(props.id, updatedData), {
-            //             loading: "Saving...",
-            //             success: () => {
-            //                 props.closeModal();
-            //                 return <b>Interest Group edited.</b>;
-            //             },
-            //             error: <b>Failed to edit Interest Group</b>
-            //         });
-            //     } else {
-            //         createInterestGroups(updatedData)
-            //     }
-            // }
+            if (isValid) {
+                console.log(updatedData);
+                if (props.isEditMode) {
+                    toast.promise(editInterestGroups(props.id, updatedData), {
+                        loading: "Saving...",
+                        success: () => {
+                            props.closeModal();
+                            return <b>Interest Group edited.</b>;
+                        },
+                        error: <b>Failed to edit Interest Group</b>
+                    });
+                } else {
+                    toast.promise(createInterestGroups(updatedData),{
+                        loading: "Saving...",
+                        success: () => {
+                            props.closeModal();
+                            return <b>Interest Group is created.</b>;
+                        },
+                        error: <b>Failed to create Interest Group</b>
+                    
+                    });
+                }
+            }
         };
 
         return (
@@ -121,9 +127,9 @@ const IntrestGroupForm = forwardRef(
                             onChange={handleChange}
                             onBlur={handleBlur}
                         />
-                        {errors.first_name && (
+                        {errors.name && (
                             <div style={{ color: "red" }}>
-                                {errors.first_name}
+                                {errors.name}
                             </div>
                         )}
                     </div>
@@ -136,9 +142,9 @@ const IntrestGroupForm = forwardRef(
                             onChange={handleChange}
                             onBlur={handleBlur}
                         />
-                        {errors.last_name && (
+                        {errors.code && (
                             <div style={{ color: "red" }}>
-                                {errors.last_name}
+                                {errors.code}
                             </div>
                         )}
                     </div>
@@ -151,8 +157,8 @@ const IntrestGroupForm = forwardRef(
                             onChange={handleChange}
                             onBlur={handleBlur}
                         />
-                        {errors.email && (
-                            <div style={{ color: "red" }}>{errors.email}</div>
+                        {errors.icon && (
+                            <div style={{ color: "red" }}>{errors.icon}</div>
                         )}
                     </div>
                     

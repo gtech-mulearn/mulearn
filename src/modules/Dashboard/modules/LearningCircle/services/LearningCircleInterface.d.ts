@@ -16,6 +16,7 @@ interface LcMembers {
     profile_pic: string;
     karma: number;
     is_lead: boolean;
+    level?: string;
 }
 
 type LcDetail = {
@@ -27,7 +28,7 @@ type LcDetail = {
     day: number[];
     college: string;
     members: LcMembers[];
-    pending_members: LcMembers[]; 
+    pending_members: LcMembers[];
     rank: number;
     total_karma: number;
     is_lead: boolean;
@@ -47,4 +48,15 @@ interface LcMeetSchedule {
     meet_time: string;
     meet_place: string;
     day: string;
+}
+
+interface LcNote {
+    note: string;
+    id: string | undefined;
+}
+
+interface ChecklistItem {
+    id: number;
+    text: string;
+    isChecked: boolean;
 }

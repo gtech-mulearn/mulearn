@@ -3,7 +3,10 @@ import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
-import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import {
+    MuButton,
+    PowerfulButton
+} from "@/MuLearnComponents/MuButtons/MuButton";
 import { AiOutlinePlusCircle, AiOutlineUser } from "react-icons/ai";
 import styles from "./DynamicType.module.css";
 import modalStyles from "./components/Modal.module.css";
@@ -60,7 +63,7 @@ function DynamicType() {
                         stroke="#039855"
                         stroke-width="2"
                         strokeLinecap="round"
-                        stroke-linejoin="round"
+                        strokeLinejoin="round"
                     />
                 </svg>
             </div>

@@ -1,37 +1,50 @@
 import { useEffect, useState } from "react";
-import styles from "./Affiliation.module.css";
+import styles from "./Channels.module.css";
 import {
-    getAffiliation,
-    createAffiliation,
-    editAffiliation,
-    deleteAffiliation
+    getChannels,
+    createChannel,
+    editChannel,
+    deleteChannel
 } from "../Services/apis";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import { useFormik } from "formik";
-import { useToast } from "@chakra-ui/react";
+import toast from "react-hot-toast";
 import {
     MuButton,
     PowerfulButton
 } from "@/MuLearnComponents/MuButtons/MuButton";
 import { Blank } from "@/MuLearnComponents/Table/Blank";
 
-type urlData = {
-    id: string | number | boolean;
-    title: string;
-};
-const Affiliation = () => {
+type channelData = {
+    id: string ;
+    name : string ;
+    discord_id : string ;
+    created_at : string ;
+    updated_at : string ;
+    created_by : string ;
+    updated_by : string ;
+}
+
+type channelCreate = {
+    id: string ;
+    name : string ;
+    discord_id : string ;
+}
+
+
+const Channels = () => {
     const columnOrder: ColOrder[] = [
-        { column: "title", Label: "Title", isSortable: true },
+        { column: "name", Label: "Name", isSortable: true },
+        { column: "discord_id", Label: "Discord ID", isSortable: true },
         { column: "created_by", Label: "Created By", isSortable: true },
         { column: "created_at", Label: "Created At", isSortable: true },
         { column: "updated_by", Label: "Updated By", isSortable: true },
         { column: "updated_at", Label: "Updated At", isSortable: true },
     ];
 
-    const toast = useToast();
     const [editBtn, setEditBtn] = useState(false);
     const [createBtn, setCreateBtn] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
@@ -39,24 +52,26 @@ const Affiliation = () => {
     const [loading, setLoading] = useState(false);
     const [perPage, setPerPage] = useState(20);
     const [sort, setSort] = useState("-created_at");
-    const [affiliationData, setAffiliationData] = useState<urlData[]>([]);
+    const [channelsData, setChannelsData] = useState<channelData[]>([]);
 
     const formik = useFormik({
         initialValues: {
             id: "",
-            title: "",
+            name: "",
+            discord_id:""
         },
         onSubmit: values => {
-            const affiliationCreateData = {
+            const channelCreateData = {
                 id: values.id,
-                title: values.title,
+                name: values.name,
+                discord_id: values.discord_id
             };
             if (!editBtn) {
-                createAffiliation(toast, affiliationCreateData, formik).then(result => {
+                createChannel(channelCreateData, formik).then(result => {
                     if (result) {
                         setTimeout(() => {
-                            getAffiliation(
-                                setAffiliationData,
+                            getChannels(
+                                setChannelsData,
                                 1,
                                 perPage,
                                 setTotalPages
@@ -67,12 +82,12 @@ const Affiliation = () => {
                     }
                 });
             } else {
-                editAffiliation(values.id, toast, affiliationCreateData, formik).then(
+                editChannel(values.id,channelCreateData, formik).then(
                     result => {
                         if (result) {
                             setTimeout(() => {
-                                getAffiliation(
-                                    setAffiliationData,
+                                getChannels(
+                                    setChannelsData,
                                     1,
                                     perPage,
                                     setTotalPages
@@ -87,35 +102,39 @@ const Affiliation = () => {
         },
         validate: (values: any) => {
             let errors: any = {};
-            if (!values.title) {
-                errors.title = "Required";
+            if (!values.name) {
+                errors.name = "Required";
+            }
+            if (!values.discord_id) {
+                errors.discord_id = "Required";
             }
             return errors;
         }
     });
 
+
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        getAffiliation(setAffiliationData, nextPage, perPage, setTotalPages);
+        getChannels(setChannelsData, nextPage, perPage, setTotalPages);
     };
 
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-        getAffiliation(setAffiliationData, 1, perPage, setTotalPages);
+        getChannels(setChannelsData, 1, perPage, setTotalPages);
     };
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
-        getAffiliation(setAffiliationData, 1, perPage, setTotalPages, search, "");
+        getChannels(setChannelsData, 1, perPage, setTotalPages, search, "");
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
         setPerPage(selectedValue);
-        getAffiliation(
-            setAffiliationData,
+        getChannels(
+            setChannelsData,
             1,
             selectedValue,
             setTotalPages,
@@ -127,8 +146,8 @@ const Affiliation = () => {
     const handleIconClick = (column: string) => {
         if (sort === column) {
             setSort(`-${column}`);
-            getAffiliation(
-                setAffiliationData,
+            getChannels(
+                setChannelsData,
                 currentPage,
                 perPage,
                 setTotalPages,
@@ -139,8 +158,8 @@ const Affiliation = () => {
             );
         } else {
             setSort(column);
-            getAffiliation(
-                setAffiliationData,
+            getChannels(
+                setChannelsData,
                 currentPage,
                 perPage,
                 setTotalPages,
@@ -153,35 +172,33 @@ const Affiliation = () => {
 
     const handleEdit = (id: string | number | boolean) => {
         formik.setFieldValue("id", id);
-        console.log(id)
         formik.setFieldValue(
-            "title",
-            affiliationData.filter(item => item?.id === id)[0].title
+            "name",
+            channelsData.filter(item => item?.id === id)[0].name
+        );
+        formik.setFieldValue(
+            "discord_id",
+            channelsData.filter(item => item?.id === id)[0].discord_id
         );
         setEditBtn(true);
     };
 
     const handleDelete = (id: any) => {
-        deleteAffiliation(id.toString(), toast);
-        setAffiliationData(affiliationData.filter(item => item?.id !== id));
+        deleteChannel(id.toString());
+        setChannelsData(channelsData.filter(item => item?.id !== id));
     };
     const handleCopy = (id: any) => {
         navigator.clipboard.writeText(
-            affiliationData.filter(item => item?.id === id)[0].title
+            channelsData.filter(item => item?.id === id)[0].name
         );
-        console.log(affiliationData.filter(item => item?.id === id)[0].title);
-        toast({
-            title: "Copied",
-            status: "success",
-            duration: 2000,
-            isClosable: true
-        });
+        console.log(channelsData.filter(item => item?.id === id)[0].name);
+        toast.success("Success");
     };
 
     useEffect(() => {
-        getAffiliation(setAffiliationData, 1, perPage, setTotalPages, "", sort, setLoading);
+        getChannels(setChannelsData, 1, perPage, setTotalPages, "", sort, setLoading);
     }, []);
-    
+
     return (
         <>
 
@@ -195,27 +212,42 @@ const Affiliation = () => {
                     marginRight: "3%"
                 }}>Create</PowerfulButton>
             {(editBtn || createBtn) && (
-                <div className={styles.affiliation_container}>
-                    <div className={styles.create_affiliation}>
+                <div className={styles.channelsContainer}>
+                    <div className={styles.createChannel}>
                         <form onSubmit={formik.handleSubmit}>
                             <input
-                                className={styles.title}
+                                className={styles.name}
                                 type="text"
-                                name="title"
+                                name="name"
                                 onChange={formik.handleChange}
-                                value={formik.values.title}
+                                value={formik.values.name}
                                 onBlur={formik.handleBlur}
-                                placeholder="Title"
+                                placeholder="Name"
                                 required
                             />
-                            {formik.touched.title && formik.errors.title && (
-                                <p className={styles.error_message}>
-                                    {formik.errors.title}
+                            {formik.touched.name && formik.errors.name && (
+                                <p className={styles.errorMessage}>
+                                    {formik.errors.name}
+                                </p>
+                            )}
+                            <input
+                                className={styles.discord_id}
+                                type="text"
+                                name="discord_id"
+                                onChange={formik.handleChange}
+                                value={formik.values.discord_id}
+                                onBlur={formik.handleBlur}
+                                placeholder="Discord ID"
+                                required
+                            />
+                            {formik.touched.discord_id && formik.errors.discord_id && (
+                                <p className={styles.errorMessage}>
+                                    {formik.errors.discord_id}
                                 </p>
                             )}
 
-                            <div className={styles.affiliation_input_container}>
-                                <div className={styles.form_btns}>
+                            <div className={styles.channelsInputContainer}>
+                                <div className={styles.formBtns}>
                                     <PowerfulButton
                                         type="reset"
                                         children="Cancel"
@@ -253,7 +285,7 @@ const Affiliation = () => {
                     onPerPageNumber={handlePerPageNumber}
                 />
                 <Table
-                    rows={affiliationData}
+                    rows={channelsData}
                     page={currentPage}
                     perPage={perPage}
                     columnOrder={columnOrder}
@@ -283,4 +315,4 @@ const Affiliation = () => {
     );
 };
 
-export default Affiliation;
+export default Channels;

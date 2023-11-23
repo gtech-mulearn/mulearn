@@ -65,7 +65,7 @@ export const updateProfileImage = async (
         const payload = new FormData();
         payload.append("profile", profile);
         payload.append("user_id", id);
-        const res = axios.post(
+        const res = await axios.post(
             `${import.meta.env.VITE_BACKEND_URL}${
                 dashboardRoutes.postProfileImage
             }`,
@@ -77,6 +77,9 @@ export const updateProfileImage = async (
                 }
             }
         );
+        reloadLocalImage(
+            res.data.response.profile_pic + `?${Math.random() * 1000}`
+        );
         if (succ) succ(res.toString());
     } catch (err) {
         if (fail) fail(err as any);
@@ -87,7 +90,10 @@ export const syncDiscordImage = async (
     fail?: (msg: string) => void
 ) => {
     try {
-        const res = privateGateway.patch(dashboardRoutes.postProfileImage);
+        const res = await privateGateway.patch(
+            dashboardRoutes.postProfileImage
+        );
+        console.log(res);
         if (succ) succ(res.toString());
     } catch (err) {
         if (fail) fail(err as any);
@@ -149,4 +155,10 @@ export const getCommunities = (
         .catch(error => {
             // errorHandler(error.response.status, error.response.data.status);
         });
+};
+
+const reloadLocalImage = async (newLink: string) => {
+    const userInfo = JSON.parse(localStorage.getItem("userInfo") || "");
+    userInfo.profile_pic = newLink;
+    localStorage.setItem("userInfo", JSON.stringify(userInfo));
 };

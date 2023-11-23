@@ -57,9 +57,9 @@ const MuVoyage = (props: Props) => {
         <>
             {userLevelTrack && (
                 <div className={styles.main_task}>
-                    <p className={styles.rocket}>
+                    {/* <p className={styles.rocket}>
                         <Roket />
-                    </p>
+                    </p> */}
                     <div className={styles.tasks}>
                         <div className={styles.topSection}>
                             <div className={styles.title}>

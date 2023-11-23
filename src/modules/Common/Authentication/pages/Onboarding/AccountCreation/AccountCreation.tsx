@@ -141,10 +141,10 @@ export default function AccountCreation() {
         const userData: {
             user: {
                 first_name: any;
-                last_name: any;
                 email: any;
                 mobile: any;
                 password: any;
+                last_name?: any;
             };
             referral?: { muid: string };
             gender?: string;
@@ -157,12 +157,15 @@ export default function AccountCreation() {
         } = {
             user: {
                 first_name: values.firstName,
-                last_name: values.lastName,
                 email: values.email,
                 mobile: values.phoneNumber,
                 password: values.password
             }
         };
+
+        if (values.lastName) {
+            userData.user.last_name = values.lastName;
+        }
 
         if (values.muid) {
             userData.referral = { muid: values.muid };

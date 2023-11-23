@@ -34,8 +34,8 @@ export const getCollegeLevels = async (
                 }
             }
         );
-        console.log(response.data.response);
-        setData(response.data.response);
+        console.log(response.data.response.data);
+        setData(response.data.response.data);
     } catch (err) {
         if (errHandler) errHandler(err);
         console.log(err);

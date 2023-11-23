@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 import styles from "./SideNavBar.module.css";
 import MuLogOut from "../assets/svg/MuLogOut";
+import MuSettings from "../assets/svg/MuSettings";
 
 type SideNavBarBodyProps = {
     sidebarButtons: {
@@ -98,7 +99,7 @@ const SideNavBarBody = ({
                                                 }
                                                 display={
                                                     level2dropDownDisplay ===
-                                                    button.title
+                                                        button.title
                                                         ? "max-content"
                                                         : "0"
                                                 }
@@ -129,7 +130,7 @@ const SideNavBarBody = ({
                                                                     button.url
                                                                 );
                                                                 window.innerWidth <=
-                                                                830
+                                                                    830
                                                                     ? toggleSideNavBar()
                                                                     : null;
                                                             }}
@@ -171,16 +172,16 @@ const SideNavBarBody = ({
                     )}
             </div>
             <div className={styles.bottomButtons}>
-                {/* <MuButton
-          text="Settings"
-          icon={<MuSettings />}
-          onClick={() => navigate("/dashboard/settings")}
-          style={{
-              color: "#9297AA",
-              backgroundColor: "#fff",
-              // marginBottom: "0px"
-          }}
-      /> */}
+                <MuButton
+                    text="Change Password"
+                    icon={<MuSettings />}
+                    onClick={() => navigate("/dashboard/settings/change-password")}
+                    style={{
+                        color: "#9297AA",
+                        backgroundColor: "#fff",
+                        // marginBottom: "0px"
+                    }}
+                />
                 <MuButtonLight
                     text="Logout"
                     icon={<MuLogOut />}

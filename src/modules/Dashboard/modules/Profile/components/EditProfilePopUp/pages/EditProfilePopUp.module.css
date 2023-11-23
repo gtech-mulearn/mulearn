@@ -14,8 +14,8 @@
     align-items: center;
 
     .edit_profile {
-        margin: 10dvh auto auto;
-        height: auto;
+        margin: 7dvh auto auto;
+        /* height: auto; */
         max-width: 640px;
         background: white;
         border-radius: 10px;
@@ -43,6 +43,13 @@
 
                 & input:focus {
                     outline: 1px solid #2684ff;
+                }
+
+                .btn_container {
+                    width: 100%;
+                    display: flex;
+                    gap: 10px;
+                    margin-bottom: -8px;
                 }
             }
 
@@ -74,8 +81,10 @@
     width: 100%;
     margin-top: 10px;
 }
+
 .imageBox {
     position: relative;
+
     div {
         color: #456ff6;
         position: absolute;
@@ -84,10 +93,19 @@
         align-items: center;
         right: 5%;
         height: 110%;
+
         &:active {
             transform: scale(0.9);
         }
     }
+}
+
+.imageBox input::file-selector-button {
+    background-color: rgb(69, 111, 246);
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.25rem;
 }
 
 .label {
@@ -95,6 +113,14 @@
     margin-top: 5px;
     color: var(--black);
     text-align: left;
+}
+
+.powerfulButton:hover {
+    color: hsl(var(--primary-btn-color));
+}
+
+.powerfulButton {
+    height: 50px;
 }
 
 /* @media (max-width: 1500px) {
