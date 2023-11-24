@@ -1,8 +1,7 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import styles from "../LcDashboard.module.css";
-import { CalenderIcon } from "../../../assets/svg";
-import { Attendees } from "../LcDashboard";
 import UploadImage from "../../../assets/images/uploadIcon.svg";
+import { LcAttendees } from "./LcAttendees";
 
 type Props = {
     setTemp: Dispatch<SetStateAction<LcDashboardTempData>>;
@@ -10,25 +9,40 @@ type Props = {
 };
 
 const LcReport = (props: Props) => {
+	const [currentTime, setCurrentTime] = useState<string>("");
+	const [currentDate, setCurrentDate] = useState<string>("");
+
+	useEffect(() => {
+        const now = new Date();
+        const hours = now.getHours().toString().padStart(2, "0");
+        const minutes = now.getMinutes().toString().padStart(2, "0");
+		const year = now.getFullYear().toString();
+        const month = (now.getMonth() + 1).toString().padStart(2, "0"); // Months are 0-indexed
+        const day = now.getDate().toString().padStart(2, "0");
+        setCurrentTime(`${hours}:${minutes}`);
+		setCurrentDate(`${year}-${month}-${day}`);
+    }, []);
+
     return (
         <div className={styles.ReportWrapper}>
             <div className={styles.DetailSection}>
                 <div className={styles.Sectionone}>
                     <div>
                         <label>Date:</label>
-
-                        <input type="date" className={styles.datePicker} />
-                        <div>
-                            <CalenderIcon />
-                        </div>
+                        <input
+                            type="date"
+                            className={styles.datePicker}
+                            value={currentDate}
+                            onChange={e => setCurrentDate(e.target.value)}
+                        />
                     </div>
                     <div>
                         <label htmlFor="">Time:</label>
-                        <input type="text" />
-                        <div>
-                            <button>▲</button>
-                            <button>▼</button>
-                        </div>
+                        <input
+                            type="time"
+                            value={currentTime}
+                            onChange={e => setCurrentTime(e.target.value)}
+                        />
                     </div>
                 </div>
                 <div className={styles.SectionTwo}>
@@ -39,11 +53,7 @@ const LcReport = (props: Props) => {
                     <p>Attendees</p>
                     <div>
                         <div>
-                            <Attendees />
-                            <Attendees />
-                            <Attendees />
-                            <Attendees />
-                            <Attendees />
+                            <LcAttendees />
                         </div>
                         <button>+</button>
                     </div>

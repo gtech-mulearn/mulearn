@@ -3,7 +3,6 @@ import {
 } from "../../assets/svg";
 import styles from "./LcDashboard.module.css";
 import { useEffect, useState } from "react";
-import image from "../../assets/images/profileIcon.svg";
 import { getLcDetails } from "../../services/LearningCircleAPIs";
 import { useParams } from "react-router-dom";
 import { covertNumToK } from "../../services/utils";
@@ -92,12 +91,3 @@ const LcDashboard = (props: Props) => {
 };
 
 export default LcDashboard;
-
-export const Attendees = () => {
-    return (
-        <div className={styles.AttendeesWrapperIndividual}>
-            <img src={image} alt="" />
-            <p>Enric S Neelamkavil</p>
-        </div>
-    );
-};
