@@ -37,6 +37,9 @@ import LcDashboard from "./modules/Dashboard/modules/LearningCircle/pages/LcDash
 import { Toaster } from "react-hot-toast";
 import CommunityPage from "./modules/Common/Authentication/pages/Onboarding/CommunityPage/CommunityPage";
 import Foundation from "./modules/Public/Foundation/Foundation";
+import Channels from "./modules/Dashboard/modules/Channels/Pages/Channels";
+import Settings from "./modules/Dashboard/modules/Settings/Settings";
+import ChangePassword from "./modules/Dashboard/modules/Settings/pages/ChangePassword/ChangePassword";
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
 );
@@ -277,7 +280,7 @@ function App() {
                     element: <DashboardRootLayout />,
                     children: [
                         { path: "profile", element: <Profile /> },
-                        // { path: "profileV2", element: <ProfileV2 /> },
+                        { path: "profileV2", element: <ProfileV2 /> },
                         {
                             path: "connect-discord",
                             element: <ConnectDiscord />
@@ -459,6 +462,19 @@ function App() {
                             )
                         },
                         {
+                            path: "channels",
+                            element: (
+                                <RoleChecker
+                                    roles={[
+                                        roles.ADMIN,
+                                        roles.FELLOW,
+                                        roles.ASSOCIATE
+                                    ]}
+                                    children={<Channels />}
+                                />
+                            )
+                        },
+                        {
                             path: "affiliation",
                             element: (
                                 <RoleChecker
@@ -592,6 +608,19 @@ function App() {
                                     children={<OrganizationTransfer />}
                                 />
                             )
+                        }, {
+                            path: "settings",
+                            element: <Settings />,
+                            children: [
+                                {
+                                    path: "change-password",
+                                    element: <ChangePassword />
+                                },
+                                {
+                                    path: "connected-devices",
+                                    element: <ConnectedDevices />
+                                }
+                            ]
                         }
                         // {
                         //     path: "marketplace",
@@ -613,16 +642,7 @@ function App() {
                         //     path: "marketplace-purchaseinv",
                         //     element: <PurchaseInventory />
                         // }
-                        // {
-                        //     path: "settings",
-                        //     element: <Settings />,
-                        //     children: [
-                        //         {
-                        //             path: "connected-devices",
-                        //             element: <ConnectedDevices />
-                        //         }
-                        //     ]
-                        // }
+
                     ]
                 }
             ]

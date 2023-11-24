@@ -42,7 +42,7 @@ const Socials = (props: Props) => {
         dribble: <Dribble />,
         stackoverflow: <StackOverflow />,
         medium: <Medium />,
-        hackerrank: <HackerRank/>
+        hackerrank: <HackerRank />
     };
     const formik = useFormik({
         initialValues: {
@@ -79,8 +79,9 @@ const Socials = (props: Props) => {
             getSocials(setSocials, formikRef);
         }
 
-        console.log(formik.values);
+        // console.log(formik.values);
     }, []);
+
     return (
         <>
             <div className={styles.edit_social_btn}>
@@ -111,18 +112,19 @@ const Socials = (props: Props) => {
                     </p>
                 )}
             </div>
-            {
-                Object.values(formik.values).filter(value => value === "" || value === null).length>=9 && !editSocials && (
+            {Object.values(formik.values).filter(
+                value => value === "" || value === null
+            ).length >= 9 &&
+                !editSocials && (
                     <p className={styles.display_message}>
                         You have not connected any socials medias to your
                         profile yet.
                     </p>
                 )}
             <p className={styles.socials_icons}>
-                {Object.values(formik.values).filter(value => value === "")
-                    .length !== 0 ||
-                Object.values(formik.values).filter(value => value === null)
-                    .length !== 0
+                {Object.values(formik.values).filter(
+                    value => value === "" || value === null
+                ).length <= 9
                     ? Object.entries(formik.values).map(
                           ([name, username], i) => {
                               if (editSocials ? true : username) {
@@ -197,9 +199,7 @@ const Socials = (props: Props) => {
                               return ""; // if username is empty
                           }
                       )
-                    : id
-                    ? " No socials added"
-                    : " To enhance your profile, Share your online presence with world!"}
+                    : "No socials connected yet"}
             </p>
         </>
     );

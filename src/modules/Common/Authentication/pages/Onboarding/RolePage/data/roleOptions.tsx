@@ -91,7 +91,7 @@ const roleOptions = [
                     stroke="#456FF6"
                     stroke-width="2.41667"
                     stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                 />
             </svg>
         ),

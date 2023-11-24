@@ -38,7 +38,7 @@ const Modal: FC<ModalProps> = ({
                             <RiCloseLine style={{ marginBottom: "-3px" }} />
                         </PowerfulButton>
 
-                        {type == "error"  || type == "Leave" ?(
+                        {type == "error" || type == "Leave" ? (
                             <div className={styles.checkbtndelete}>
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +67,7 @@ const Modal: FC<ModalProps> = ({
                                         stroke="#039855"
                                         stroke-width="2"
                                         stroke-linecap="round"
-                                        stroke-linejoin="round"
+                                        strokeLinejoin="round"
                                     />
                                 </svg>
                             </div>
@@ -113,9 +113,11 @@ const Modal: FC<ModalProps> = ({
                                 setIsOpen(false);
                             }}
                         >
-                            
-                            {type == "error" ? "Delete" : type == "Leave" ? "Leave" : "Confirm" }
-                    
+                            {type == "error"
+                                ? "Delete"
+                                : type == "Leave"
+                                ? "Leave"
+                                : "Confirm"}
                         </PowerfulButton>
                     </div>
                 </div>

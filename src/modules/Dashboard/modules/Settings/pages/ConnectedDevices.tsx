@@ -39,10 +39,6 @@ const ConnectedDevices = () => {
         console.log(deviceId);
     };
 
-    const handleReturn = () => {
-        nav("/");
-    };
-
     return (
         <div className={styles.connectedDevices}>
             <div className={styles.middle}>

@@ -219,7 +219,6 @@ const TaskCreate = () => {
                             name="event"
                             type="text"
                             placeholder="..."
-                            required
                         />
                         <div className={styles.btn_container}>
                             <button

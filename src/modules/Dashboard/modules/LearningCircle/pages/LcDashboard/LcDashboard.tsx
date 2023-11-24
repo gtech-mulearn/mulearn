@@ -1,6 +1,4 @@
-import {
-    ThreeDotssvg,
-} from "../../assets/svg";
+import { ThreeDotssvg } from "../../assets/svg";
 import styles from "./LcDashboard.module.css";
 import { useEffect, useState } from "react";
 import { getLcDetails } from "../../services/LearningCircleAPIs";
@@ -11,6 +9,7 @@ import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { comingSoon } from "../../../../utils/common";
 import LcTeam from "./components/LcTeam";
 import LcHome from "./components/LcHome";
+import LcProgress from "./components/LcProgress";
 
 type Props = {};
 
@@ -21,8 +20,11 @@ const LcDashboard = (props: Props) => {
         isReport: false,
         isHistory: false,
         isTeam: false,
-		isSchedule: false
+        isSchedule: false
     });
+    const [tab, setTab] = useState<"Dashboard" | "IG Progress" | "BeWeb.dev">(
+        "Dashboard"
+    );
     const { id } = useParams();
 
     const handleFetchDetails = async () => {
@@ -67,8 +69,9 @@ const LcDashboard = (props: Props) => {
             </div>
             <div className={styles.NavLink}>
                 <button
-                    className={styles.active}
+                    className={`${tab === "Dashboard" && styles.active}`}
                     onClick={() => {
+                        setTab("Dashboard");
                         setTemp({
                             ...temp,
                             isReport: false,
@@ -77,15 +80,30 @@ const LcDashboard = (props: Props) => {
                     }}
                 >
                     Dashboard
-                </button> 
-                <button onClick={handleComingSoon}>IG Progress</button>
+                </button>
+                <button
+                    className={`${tab === "IG Progress" && styles.active}`}
+                    onClick={() => setTab("IG Progress")}
+                >
+                    IG Progress
+                </button>
                 <button onClick={handleComingSoon}>BeWeb.dev</button>
             </div>
-            {temp.isTeam ? (
-                <LcTeam setTemp={setTemp} temp={temp}/>
-            ) : (
-                <LcHome setTemp={setTemp} temp={temp} lc={lc} id={id}/>
-            )}
+            {
+                {
+                    Dashboard: temp.isTeam ? (
+                        <LcTeam
+                            setTemp={setTemp}
+                            temp={temp}
+                            members={lc?.members!}
+                        />
+                    ) : (
+                        <LcHome setTemp={setTemp} temp={temp} lc={lc} id={id} />
+                    ),
+                    "IG Progress": <LcProgress />,
+                    "BeWeb.dev": <></>
+                }[tab]
+            }
         </div>
     );
 };
