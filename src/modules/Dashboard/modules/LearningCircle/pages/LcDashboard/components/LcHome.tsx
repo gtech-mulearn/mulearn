@@ -50,7 +50,7 @@ const LcHome = (props: Props) => {
                 </button>
             </div>
             {props.temp.isReport ? (
-                <LcReport setTemp={props.setTemp} id={props.id} />
+                <LcReport setTemp={props.setTemp} id={props.id} lc={props.lc} />
             ) : props.temp.isHistory ? (
                 <LcHistory setTemp={props.setTemp} temp={props.temp} />
             ) : (

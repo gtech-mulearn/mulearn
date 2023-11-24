@@ -61,13 +61,9 @@ interface ChecklistItem {
     isChecked: boolean;
 }
 
-interface Attendee {
-    id: string;
-}
-
 interface LcReport {
     agenda: string;
-    attendees: Attendee[];
+    attendees: string[];
     day: string;
     meet_time: string;
 }

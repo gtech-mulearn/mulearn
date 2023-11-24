@@ -413,10 +413,15 @@ export const searchLearningCircleWithCircleCode = (
 
 
 
-export const reportMeeting = async (id: string | undefined, data: LcReport) => {
+export const reportMeeting = async (id: string | undefined, data: {
+    agenda: string;
+    attendees: string;
+    day: string;
+    meet_time: string;
+}) => {
     try {
         const response = await privateGateway.post(
-            dashboardRoutes.reportLCMeet + id, data
+            dashboardRoutes.reportLCMeet + id + "/", data
         );
         const message: any = response?.data;
         return message;

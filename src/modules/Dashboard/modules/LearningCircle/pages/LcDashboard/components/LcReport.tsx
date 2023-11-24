@@ -1,4 +1,10 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import {
+    Dispatch,
+    MouseEvent,
+    SetStateAction,
+    useEffect,
+    useState
+} from "react";
 import styles from "../LcDashboard.module.css";
 import UploadImage from "../../../assets/images/uploadIcon.svg";
 import { LcAttendees } from "./LcAttendees";
@@ -9,6 +15,7 @@ import { comingSoon } from "../../../../../utils/common";
 type Props = {
     setTemp: Dispatch<SetStateAction<LcDashboardTempData>>;
     id: string | undefined;
+    lc: LcDetail | undefined;
 };
 
 const LcReport = (props: Props) => {
@@ -16,7 +23,7 @@ const LcReport = (props: Props) => {
         day: "",
         meet_time: "",
         agenda: "",
-        attendees: [],
+        attendees: []
     });
 
     useEffect(() => {
@@ -33,6 +40,23 @@ const LcReport = (props: Props) => {
         }));
     }, []);
 
+    const handleMemberClick = (memberId: string) => {
+        setFormData(prevState => {
+            // Check if the attendee is already in the list
+            const isAlreadySelected = prevState.attendees.includes(memberId);
+
+            // If already selected, remove them; otherwise, add them
+            const updatedAttendees = isAlreadySelected
+                ? prevState.attendees.filter(id => id !== memberId) // Remove the attendee
+                : [...prevState.attendees, memberId]; // Add the attendee
+
+            return {
+                ...prevState,
+                attendees: updatedAttendees
+            };
+        });
+    };
+
     const validateForm = (state: LcReport) => {
         let errors: { [key: string]: string } = {};
         if (!state.day) {
@@ -47,20 +71,32 @@ const LcReport = (props: Props) => {
         if (state.attendees.length === 0) {
             errors.attendees = "At least one attendee is required";
         }
-        toast.error(Object.values(errors).join("\n"));
-		return Object.keys(errors).length > 0 ? false : true
+        {
+            Object.keys(errors).length > 0
+                ? toast.error(Object.values(errors).join("\n"))
+                : null;
+        }
+        return Object.keys(errors).length > 0 ? false : true;
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = (event: any) => {
+        event.preventDefault();
         if (validateForm(formData)) {
-			toast.promise(reportMeeting(props.id, formData), {
+            const data = {
+                agenda: formData.agenda,
+                attendees: formData.attendees.join(","),
+                day: formData.day,
+                meet_time: formData.meet_time
+            };
+            console.log(props.id);
+            toast.promise(reportMeeting(props.id, data), {
                 loading: "Reporting...",
                 success: response => {
                     console.log("Meeting successfully reported:", response);
-					props.setTemp(prevState => ({
-						...prevState,
-						isReport: false
-					}))
+                    props.setTemp(prevState => ({
+                        ...prevState,
+                        isReport: false
+                    }));
                     return <b>Meeting successfully reported!</b>;
                 },
                 error: error => {
@@ -119,10 +155,21 @@ const LcReport = (props: Props) => {
                 <div className={styles.SectionThree}>
                     <p>Attendees</p>
                     <div>
-                        <div>
-                            <LcAttendees />
-                        </div>
-                        <button>+</button>
+                        {props.lc?.members.map(member => (
+                            <div
+                                key={member.id}
+                                onClick={() => handleMemberClick(member.id)}
+                            >
+                                <LcAttendees
+                                    name={member.username}
+                                    image={member.profile_pic}
+                                    isSelected={formData.attendees.includes(
+                                        member.id
+                                    )}
+                                />
+                            </div>
+                        ))}
+                        {/* <button>+</button> */}
                     </div>
                 </div>
             </div>
@@ -136,7 +183,9 @@ const LcReport = (props: Props) => {
                         </p>
                     </div>
                 </div>
-                <button onClick={handleSubmit}>Submit</button>
+                <button onClick={event => handleSubmit(event)} type="submit">
+                    Submit
+                </button>
             </div>
         </div>
     );
