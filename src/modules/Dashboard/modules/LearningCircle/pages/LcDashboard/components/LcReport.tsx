@@ -2,26 +2,74 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import styles from "../LcDashboard.module.css";
 import UploadImage from "../../../assets/images/uploadIcon.svg";
 import { LcAttendees } from "./LcAttendees";
+import { reportMeeting } from "../../../services/LearningCircleAPIs";
+import toast from "react-hot-toast";
+import { comingSoon } from "../../../../../utils/common";
 
 type Props = {
     setTemp: Dispatch<SetStateAction<LcDashboardTempData>>;
-    temp: LcDashboardTempData;
+    id: string | undefined;
 };
 
 const LcReport = (props: Props) => {
-	const [currentTime, setCurrentTime] = useState<string>("");
-	const [currentDate, setCurrentDate] = useState<string>("");
+    const [formData, setFormData] = useState<LcReport>({
+        day: "",
+        meet_time: "",
+        agenda: "",
+        attendees: [],
+    });
 
-	useEffect(() => {
+    useEffect(() => {
         const now = new Date();
         const hours = now.getHours().toString().padStart(2, "0");
         const minutes = now.getMinutes().toString().padStart(2, "0");
-		const year = now.getFullYear().toString();
-        const month = (now.getMonth() + 1).toString().padStart(2, "0"); // Months are 0-indexed
+        const year = now.getFullYear().toString();
+        const month = (now.getMonth() + 1).toString().padStart(2, "0");
         const day = now.getDate().toString().padStart(2, "0");
-        setCurrentTime(`${hours}:${minutes}`);
-		setCurrentDate(`${year}-${month}-${day}`);
+        setFormData(prevState => ({
+            ...prevState,
+            day: `${year}-${month}-${day}`,
+            meet_time: `${hours}:${minutes}`
+        }));
     }, []);
+
+    const validateForm = (state: LcReport) => {
+        let errors: { [key: string]: string } = {};
+        if (!state.day) {
+            errors.day = "Date is required";
+        }
+        if (!state.meet_time) {
+            errors.time = "Time is required";
+        }
+        if (!state.agenda.trim()) {
+            errors.agenda = "Agenda is required";
+        }
+        if (state.attendees.length === 0) {
+            errors.attendees = "At least one attendee is required";
+        }
+        toast.error(Object.values(errors).join("\n"));
+		return Object.keys(errors).length > 0 ? false : true
+    };
+
+    const handleSubmit = () => {
+        if (validateForm(formData)) {
+			toast.promise(reportMeeting(props.id, formData), {
+                loading: "Reporting...",
+                success: response => {
+                    console.log("Meeting successfully reported:", response);
+					props.setTemp(prevState => ({
+						...prevState,
+						isReport: false
+					}))
+                    return <b>Meeting successfully reported!</b>;
+                },
+                error: error => {
+                    console.error("Failed to login:", error);
+                    return <b>Failed to report meeting!</b>;
+                }
+            });
+        }
+    };
 
     return (
         <div className={styles.ReportWrapper}>
@@ -32,22 +80,41 @@ const LcReport = (props: Props) => {
                         <input
                             type="date"
                             className={styles.datePicker}
-                            value={currentDate}
-                            onChange={e => setCurrentDate(e.target.value)}
+                            value={formData.day}
+                            onChange={e =>
+                                setFormData(prevState => ({
+                                    ...prevState,
+                                    day: e.target.value
+                                }))
+                            }
                         />
                     </div>
                     <div>
-                        <label htmlFor="">Time:</label>
+                        <label>Time:</label>
                         <input
                             type="time"
-                            value={currentTime}
-                            onChange={e => setCurrentTime(e.target.value)}
+                            value={formData.meet_time}
+                            onChange={e =>
+                                setFormData(prevState => ({
+                                    ...prevState,
+                                    meet_time: e.target.value
+                                }))
+                            }
                         />
                     </div>
                 </div>
                 <div className={styles.SectionTwo}>
                     <p>Agenda</p>
-                    <textarea placeholder="Type your agenda here..."></textarea>
+                    <textarea
+                        placeholder="Type your agenda here..."
+                        value={formData.agenda}
+                        onChange={e =>
+                            setFormData(prevState => ({
+                                ...prevState,
+                                agenda: e.target.value
+                            }))
+                        }
+                    ></textarea>
                 </div>
                 <div className={styles.SectionThree}>
                     <p>Attendees</p>
@@ -60,7 +127,7 @@ const LcReport = (props: Props) => {
                 </div>
             </div>
             <div className={styles.UploadSection}>
-                <div id="uploadContainer">
+                <div id="uploadContainer" onClick={comingSoon}>
                     <p>Upload Meeting Images</p>
                     <div>
                         <img src={UploadImage} alt="" />
@@ -69,7 +136,7 @@ const LcReport = (props: Props) => {
                         </p>
                     </div>
                 </div>
-                <button>Submit</button>
+                <button onClick={handleSubmit}>Submit</button>
             </div>
         </div>
     );
