@@ -521,6 +521,12 @@
     }
 }
 
+/* Input Icon color */
+
+.Sectionone input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(31%) sepia(96%) saturate(4457%) hue-rotate(217deg) brightness(99%) contrast(101%);
+}
+
 /* HistoryDiv */
 
 .HistoryDivWrapper {
@@ -601,6 +607,21 @@
     background-color: #eef2ff;
     font-size: 17px;
     color: rgba(69, 111, 246, 1);
+	cursor: pointer;
+}
+
+.AttendeesWrapperSelected {
+	cursor: pointer;
+    padding: 10px;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border-radius: 8px;
+    background-color: rgba(69, 111, 246, 1);
+    font-size: 17px;
+    color: #eef2ff;
 }
 
 .AttendeesWrapperIndividual img {

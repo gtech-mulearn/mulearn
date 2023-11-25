@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import styles from "../LcDashboard.module.css";
-import { Attendees } from "../LcDashboard";
 import meeting from "../../../assets/images/meedingDemo.png";
+import { LcAttendees } from "./LcAttendees";
 
 type Props = {
     setTemp: Dispatch<SetStateAction<LcDashboardTempData>>;
@@ -38,11 +38,11 @@ const LcHistory = (props: Props) => {
                 <div className={styles.Headings}>
                     <h2>Attendees</h2>
                     <div>
-                        <Attendees />
-                        <Attendees />
-                        <Attendees />
-                        <Attendees />
-                        <Attendees />
+                        <LcAttendees />
+                        <LcAttendees />
+                        <LcAttendees />
+                        <LcAttendees />
+                        <LcAttendees />
                     </div>
                 </div>
                 <div className={styles.detailedSection}>

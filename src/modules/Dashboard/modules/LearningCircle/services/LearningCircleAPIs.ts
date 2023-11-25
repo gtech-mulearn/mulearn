@@ -410,3 +410,25 @@ export const searchLearningCircleWithCircleCode = (
             setIsLoading(false); // Set isLoading to false
         });
 };
+
+
+
+export const reportMeeting = async (id: string | undefined, data: {
+    agenda: string;
+    attendees: string;
+    day: string;
+    meet_time: string;
+}) => {
+    try {
+        const response = await privateGateway.post(
+            dashboardRoutes.reportLCMeet + id + "/", data
+        );
+        const message: any = response?.data;
+        return message;
+    } catch (err) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            throw error;
+        }
+    }
+};

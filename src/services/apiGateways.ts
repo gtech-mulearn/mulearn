@@ -121,13 +121,14 @@ privateGateway.interceptors.response.use(
                 return await Promise.reject(error_2);
             }
         }
-
-        if (error.response?.status === 500) {
-            // publicGatewayAuth
-            //console.log("inside", error.response, error.response?.data?.statusCode)
-            //Toast.error("A server error has occurred. Please try again later.");
-            window.location.href = "/500";
-        }
+		//! This was causeing unwanted redirects during api testing please fix.
+		//! Spend 2 hours to figure out this was causing the issue.
+        // if (error.response?.status === 500) {
+        //     // publicGatewayAuth
+        //     //console.log("inside", error.response, error.response?.data?.statusCode)
+        //     //Toast.error("A server error has occurred. Please try again later.");
+        //     window.location.href = "/500";
+        // }
 
         // Any status codes that fall outside the range of 2xx cause this function to trigger
         // Do something with response error
