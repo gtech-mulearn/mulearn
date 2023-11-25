@@ -36,7 +36,7 @@
 .connect_discord_container .content .muid_and_btn {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 12px;
     align-items: center;
     flex-wrap: wrap;
     margin: 1rem;
@@ -45,7 +45,6 @@
 .content_tagline {
     max-width: 30rem;
 }
-
 
 @media (min-width: 35rem) {
     .fb_image {
@@ -208,7 +207,6 @@
         font-size: 25px;
     }
 
-
     .onboarding_flow_container .content .onboarding_flow {
         height: 40ch;
     }
@@ -289,4 +287,13 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.follow_us {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #e0e8ff;
+    padding: 0.5rem 0.6rem;
+    border-radius: 10px;
 }

@@ -8,6 +8,7 @@ import { Popover, PopoverTrigger, Button, PopoverContent } from "@chakra-ui/reac
 import { Notification as NotificationProps, getNotifications } from "./api";
 import NotificationTab from "./Notification";
 import { useToast } from "@chakra-ui/react";
+import { SiDiscord } from "react-icons/si";
 
 const TopNavBar = () => {
     const navigate = useNavigate();
@@ -44,7 +45,9 @@ const TopNavBar = () => {
                         <b className={styles.greetings}>Hello, {name} 👋</b>
                         <div className={styles.mulearn_brand2}></div>
                         <div className={styles.menu}>
-
+                            <a href="http://discord.mulearn.org" target="_blank" rel="noopener noreferrer">
+                                <SiDiscord size={30} />
+                            </a>
                             {/* <i className="fi fi-sr-settings"></i> */}
                             <Popover placement="bottom-end">
                                 <PopoverTrigger >
@@ -57,6 +60,7 @@ const TopNavBar = () => {
                                     <NotificationTab notificationList={notificationList} setNotificationList={setNotificationList} />
                                 </PopoverContent>
                             </Popover>
+
                             <div className={styles.profile}>
                                 <img
                                     onClick={() => {
