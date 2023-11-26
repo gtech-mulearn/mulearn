@@ -40,6 +40,7 @@ import Foundation from "./modules/Public/Foundation/Foundation";
 import Channels from "./modules/Dashboard/modules/Channels/Pages/Channels";
 import Settings from "./modules/Dashboard/modules/Settings/Settings";
 import ChangePassword from "./modules/Dashboard/modules/Settings/pages/ChangePassword/ChangePassword";
+import i18next from "i18next";
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
 );
