@@ -38,7 +38,7 @@ function InterestGroup() {
     const firstFetch = useRef(true);
     const columnOrder = [
         { column: "name", Label: "Name", isSortable: true },
-        { column: "user_ig_link_ig", Label: "Members", isSortable: false },
+        { column: "members", Label: "Members", isSortable: true },
         { column: "updated_at", Label: "Updated On", isSortable: true },
         { column: "updated_by", Label: "Updated By", isSortable: true },
         { column: "created_by", Label: "Created By", isSortable: true },
