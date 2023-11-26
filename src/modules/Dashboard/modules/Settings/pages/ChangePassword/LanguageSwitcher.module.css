@@ -1,0 +1,13 @@
+.LanguageSwitch{
+    background-color: white;
+    width: 4rem;
+    margin-top: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    border: 1px solid #456ff6;
+    padding-left:1rem ;
+
+    
+}
