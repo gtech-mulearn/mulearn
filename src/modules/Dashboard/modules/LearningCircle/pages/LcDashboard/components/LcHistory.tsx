@@ -38,11 +38,11 @@ const LcHistory = (props: Props) => {
                 <div className={styles.Headings}>
                     <h2>Attendees</h2>
                     <div>
+                        {/* <LcAttendees />
                         <LcAttendees />
                         <LcAttendees />
                         <LcAttendees />
-                        <LcAttendees />
-                        <LcAttendees />
+                        <LcAttendees /> */}
                     </div>
                 </div>
                 <div className={styles.detailedSection}>
