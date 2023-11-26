@@ -22,6 +22,6 @@
       "@/MuLearnServices/*": ["src/services/*"],
 }
   },
-  "include": ["src"],
+  "include": ["src", "i18n.js"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

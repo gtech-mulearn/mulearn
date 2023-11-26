@@ -8,8 +8,12 @@ import { privateGateway } from '@/MuLearnServices/apiGateways';
 import { dashboardRoutes } from '@/MuLearnServices/urls';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-
+import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
+import i18next from "i18next";
+import LanguageSwitcher from './LanguageSwitcher';
 const ChangePassword = () => {
+  const { t } = useTranslation(["ChangePassword"]);
   const scheme = Yup.object({
     password: Yup.string()
       .required("Password is required")
@@ -41,8 +45,10 @@ const ChangePassword = () => {
       <div className={styles.profileContainer}>
         <div className={styles.changePasswordContainer}>
           <div>
-            <p className={styles.changePasswordContainerLabel}>Change Password</p>
-            <p className={styles.changePasswordContainerTagline}>Enter in a new password, and confirm it to change.</p>
+            <p className={styles.changePasswordContainerLabel}>{t("heading")}</p>
+            {/*<p className={styles.changePasswordContainerTagline}>Enter in a new password, and confirm it to change.</p>*/}
+            <p className={styles.changePasswordContainerTagline}>{t("desc")}</p>
+
           </div>
 
           <div className={styles.changePasswordInputContainer}>
@@ -120,7 +126,7 @@ const ChangePassword = () => {
                           <PowerfulButton
                             type="submit"
                           >
-                            Change Password
+                            {t("heading")}
                           </PowerfulButton>
                         </div>
                       </div>
@@ -130,6 +136,7 @@ const ChangePassword = () => {
               )}
             </Formik>
           </div>
+          <LanguageSwitcher />
         </div>
       </div>
     </div>
