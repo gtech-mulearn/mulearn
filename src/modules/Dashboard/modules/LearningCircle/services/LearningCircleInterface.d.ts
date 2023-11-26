@@ -67,3 +67,9 @@ interface LcReport {
     day: string;
     meet_time: string;
 }
+
+interface LcPastReports {
+    id: string;
+	meet_time: string;
+	day: string;
+}

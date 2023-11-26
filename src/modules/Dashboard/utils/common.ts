@@ -66,34 +66,42 @@ export const convertDateToDayAndMonth = (data: String) => {
     return `${day} ${month}`;
 };
 
-export const getMonthName = (month: String) => {
+
+export const convertDateToDayAndMonthAndYear = (data: String) => {
+    const day = data.split("-")[2];
+    const month = getMonthName(data.split("-")[1], true);
+	const year = data.split("-")[0];
+    return `${day} ${month} ${year}`;
+};
+
+export const getMonthName = (month: String, flag: boolean = false) => {
     switch (month) {
         case "01":
-            return "Jan";
+            return flag? "January" : "Jan";
         case "02":
-            return "Feb";
+            return flag? "February" : "Feb";
         case "03":
-            return "Mar";
+            return flag? "March" : "Mar";
         case "04":
-            return "Apr";
+            return flag? "April" : "Apr";
         case "05":
-            return "May";
+            return flag? "May" : "May";
         case "06":
-            return "Jun";
+            return flag? "June" : "Jun";
         case "07":
-            return "Jul";
+            return flag? "July" : "Jul";
         case "08":
-            return "Aug";
+            return flag? "August" : "Aug";
         case "09":
-            return "Sep";
+            return flag? "September" : "Sep";
         case "10":
-            return "Oct";
+            return flag? "October" : "Oct";
         case "11":
-            return "Nov";
+            return flag? "November" : "Nov";
         case "12":
-            return "Dec";
+            return flag? "December" : "Dec";
         default:
-            return "Jan";
+            return flag? "January" : "Jan";
     }
 };
 

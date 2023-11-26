@@ -88,7 +88,6 @@ const LcReport = (props: Props) => {
                 day: formData.day,
                 meet_time: formData.day + " " + formData.meet_time
             };
-            console.log(props.id);
             toast.promise(reportMeeting(props.id, data), {
                 loading: "Reporting...",
                 success: response => {
