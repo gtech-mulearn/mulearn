@@ -66,6 +66,7 @@ export const AllWeeks = [
     "Friday",
     "Saturday"
 ] as const;
+
 export const monthNames = [
     "January",
     "February",
@@ -80,6 +81,12 @@ export const monthNames = [
     "November",
     "December"
 ] as const;
+
+export function getDayOfWeek(dateString: string): string {
+    const date = new Date(dateString);
+    const dayOfWeek = date.getDay();
+    return AllWeeks[dayOfWeek];
+}
 
 export function extract24hTimeFromDateTime(dateTime: string): string {
     const date = new Date(dateTime);

@@ -447,3 +447,18 @@ export const getPastReports = async (id: string | undefined) => {
         }
     }
 };
+
+export const getLCMeetingReport = async (id: string | undefined) => {
+    try {
+        const response = await privateGateway.get(
+            dashboardRoutes.getLCMeetReport + id,
+        );
+        const message: any = response?.data;
+        return message.response[0];
+    } catch (err) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            throw error;
+        }
+    }
+};

@@ -24,6 +24,7 @@ const LcHome = (props: Props) => {
     );
 
 	const [pastReports, setPastReports] = useState<LcPastReports[]>([])
+	const [selectedMeeting, setSelectedMeeting] = useState("")
 
 	useEffect(() => {
 		getPastReports(props.id).then((res) => {
@@ -62,7 +63,7 @@ const LcHome = (props: Props) => {
             {props.temp.isReport ? (
                 <LcReport setTemp={props.setTemp} id={props.id} lc={props.lc} />
             ) : props.temp.isHistory ? (
-                <LcHistory setTemp={props.setTemp} temp={props.temp} />
+                <LcHistory id={selectedMeeting} lc={props.lc} />
             ) : (
                 <div className={styles.ContentWrapper}>
                     <div className={styles.TopContainer}>
@@ -133,6 +134,7 @@ const LcHome = (props: Props) => {
                                             isReport: false,
                                             isHistory: true
                                         });
+										setSelectedMeeting(report.id)
                                     }}
                                 >
                                     <div>
