@@ -36,14 +36,14 @@ export const Tasks = () => {
             isSortable: true
         },
         { column: "description", Label: "Description", isSortable: true },
-        { column: "updated_by", Label: "Updated By", isSortable: true },
-        { column: "updated_at", Label: "Updated On", isSortable: true },
-        { column: "created_by", Label: "Created By", isSortable: true },
-        { column: "created_at", Label: "Created On", isSortable: true },
         { column: "ig", Label: "Interest Group", isSortable: true },
         { column: "level", Label: "Level", isSortable: true },
         { column: "channel", Label: "Channel", isSortable: true },
-        { column: "event", Label: "Event", isSortable: true }
+        { column: "event", Label: "Event", isSortable: true },
+        { column: "updated_by", Label: "Updated By", isSortable: true },
+        { column: "updated_at", Label: "Updated On", isSortable: true },
+        { column: "created_by", Label: "Created By", isSortable: true },
+        { column: "created_at", Label: "Created On", isSortable: true }
     ];
     console.log(data);
     const handleNextClick = () => {

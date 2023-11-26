@@ -132,7 +132,7 @@ export const createCircle = async (
         });
         setTimeout(() => {
             navigate(
-                `/dashboard/learning-circle/details/${message.response.circle_id}`
+                `/dashboard/learning-circle/dashboard/${message.response.circle_id}`
             );
         }, 2000);
     } catch (err) {
@@ -312,7 +312,7 @@ export const removeMember = async (
             duration: 2000,
             isClosable: true
         });
-        navigate(`/dashboard/learning-circle/details/${circleId}`);
+        navigate(`/dashboard/learning-circle/dashboard/${circleId}`);
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {

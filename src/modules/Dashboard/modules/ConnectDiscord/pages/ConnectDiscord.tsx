@@ -7,6 +7,7 @@ import { MdContentCopy } from "react-icons/md";
 import { BsDiscord } from "react-icons/bs";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { FaInstagram } from "react-icons/fa6";
 
 const ConnectDiscord = () => {
     const [muid, setMuid] = useState("");
@@ -69,6 +70,19 @@ const ConnectDiscord = () => {
                                         <BsDiscord />
                                         Connect Discord
                                     </PowerfulButton>
+                                </a>
+                                <a
+                                    href="https://www.instagram.com/mulearn.official/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={styles.follow_us}
+                                >
+
+
+                                    <FaInstagram size={20} />
+                                    <p style={{ marginLeft: "0.3rem" }}>
+                                        Follow Us
+                                    </p>
                                 </a>
                             </div>
                         </div>
