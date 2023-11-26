@@ -165,7 +165,7 @@ export const organizationRoutes = {
     getCollege: "/api/v1/dashboard/organisation/institutes/show/College/",
     getCommunity: "/api/v1/dashboard/organisation/institutes/show/Community/",
     getAffiliation:
-        "/api/v1/dashboard/organisation/institutes/org/affiliation/",
+        "/api/v1/dashboard/organisation/affiliation/list/",
     createAffiliation:
         "/api/v1/dashboard/organisation/institutes/affiliation/create/",
     editAffiliation:
