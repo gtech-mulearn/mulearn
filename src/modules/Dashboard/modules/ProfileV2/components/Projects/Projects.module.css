@@ -1,0 +1,53 @@
+.ProjectsWrapper {
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.ProjectIndividual {
+    width: calc(100% / 4 - 15px);
+    min-width: 250px;
+    height: 300px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.ProjectIndividual img {
+    width: 100%;
+    object-fit: cover;
+}
+.ProjectIndividual p {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    background: linear-gradient(180deg, rgba(57, 57, 57, 0) 0%, #2b2b2b 100%);
+    padding: 20px;
+    font-weight: 700;
+    font-size: 14px;
+    color: white;
+    text-align: left;
+}
+
+@media screen and (max-width: 1400px) {
+    .ProjectIndividual {
+        width: calc(100% / 3 - 15px);
+        min-width: 220px;
+        height: auto;
+    }
+}
+@media screen and (max-width: 500px) {
+    .ProjectsWrapper {
+        gap: 15px;
+    }
+    .ProjectIndividual {
+        width: calc(100% / 2 - 15px);
+        min-width: 100px;
+        height: auto;
+    }
+}
