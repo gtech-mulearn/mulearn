@@ -7,7 +7,8 @@ import { deleteOrganization, getOrganizations } from "./OrganizationApis";
 import {
     columnsCollege,
     columnsCommunities,
-    columnsCompanies
+    columnsCompanies,
+    columnsSchool
 } from "./THeaders";
 import TableTopTab from "./TableTopTab";
 import { organizationRoutes } from "@/MuLearnServices/urls";
@@ -16,7 +17,7 @@ import OrgForm from "./OrgForm";
 import toast from "react-hot-toast";
 
 function Organizations() {
-    const ccc = ["College", "Company", "Community"] as const;
+    const ccc = ["College", "Company", "Community", "School"] as const;
     type CCC = (typeof ccc)[number];
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -124,6 +125,9 @@ function Organizations() {
                     break;
                 case "Community":
                     setColumns(columnsCommunities);
+                    break;
+                case "School":
+                    setColumns(columnsSchool);
                     break;
             }
             localStorage.setItem("activeTab", tab);

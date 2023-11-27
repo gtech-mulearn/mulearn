@@ -1,7 +1,7 @@
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { organizationRoutes } from "@/MuLearnServices/urls";
 
-const ccc = ["College", "Company", "Community"] as const;
+const ccc = ["College", "Company", "Community", "School"] as const;
 
 export const getOrganizations = async (
     activeTab: (typeof ccc)[number],
