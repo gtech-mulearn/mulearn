@@ -132,7 +132,7 @@ const TopNavBar = () => {
                                     className={styles.user_settings}
                                 >
                                     <MuButtonLight
-                                        text="Logout"
+                                        text="Log Out"
                                         icon={<MuLogOut />}
                                         style={{
                                             backgroundColor: "#fff",
