@@ -60,3 +60,29 @@ interface ChecklistItem {
     text: string;
     isChecked: boolean;
 }
+
+interface LcReport {
+    agenda: string;
+    attendees: string[];
+    day: string;
+    meet_time: string;
+}
+
+interface LcPastReports {
+    id: string;
+    meet_time: string;
+    day: string;
+}
+
+interface LcHistory {
+    id: string;
+    meet_time: string;
+    meet_place: string;
+    day: string;
+    attendees: string[];
+    agenda: string;
+    meet_created_by: string;
+    meet_created_at: string;
+    meet_updated_by: string;
+    meet_updated_at: string;
+}

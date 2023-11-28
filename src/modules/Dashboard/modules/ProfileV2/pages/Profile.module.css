@@ -4,6 +4,7 @@
     gap: 10px;
     width: 95%;
     max-width: 95%;
+    flex-wrap: wrap;
 
     .profile_details_container {
         background: #fff;
@@ -12,17 +13,19 @@
         display: flex;
         gap: 15px;
         align-items: center;
-        min-width: 300px;
-        box-shadow: 0px 3px 12px 0px rgba(0, 24, 99, 0.10);
+        min-width: 360px;
+        box-shadow: 0px 3px 12px 0px rgba(0, 24, 99, 0.1);
+        width: fit-content;
+        justify-content: space-between;
 
         .profile_pic {
-            background-image: url(../assets/images/dpm.webp);
+            background-color: #456ff6;
+            min-width: 80px;
+            min-height: 80px;
             width: 80px;
             height: 80px;
             border-radius: 50%;
             border: 8px solid #fff;
-            background-size: cover;
-            background-position: center;
         }
 
         .profile_details {
@@ -39,7 +42,7 @@
 
             & p {
                 font-size: 12px;
-                color: #7D9BC6;
+                color: #7d9bc6;
             }
 
             .socials {
@@ -47,18 +50,20 @@
                 gap: 5px;
             }
         }
+        .Levels {
+            margin-left: 10px;
+        }
     }
 
     .basic_details_detail {
         display: flex;
         gap: 10px;
-        width: calc(100% - 310px);
+        width: calc(100% - 390px);
 
         .status_container {
             display: flex;
             gap: 10px;
-            width: 50%;
-            /* flex-direction: column;             */
+            width: 100%;
 
             .status {
                 background: #fff;
@@ -69,18 +74,20 @@
                 justify-content: center;
                 gap: 10px;
                 width: 50%;
-                box-shadow: 0px 3px 12px 0px rgba(0, 24, 99, 0.10);
+                box-shadow: 0px 3px 12px 0px rgba(0, 24, 99, 0.1);
 
                 .status_box p:nth-child(1) {
                     font-size: 16px;
                     font-weight: 400;
-
                 }
 
                 .status_box p:nth-child(2) {
                     font-size: 26px;
                     font-weight: 700;
                 }
+            }
+            .Levels {
+                display: none;
             }
         }
     }
@@ -99,8 +106,8 @@
     flex-wrap: wrap;
     flex-direction: row;
     border-radius: 16px;
-    border-left: 6px solid #7E48D2;
-    box-shadow: 0px 3px 12px 0px rgba(0, 24, 99, 0.10);
+    border-left: 6px solid #7e48d2;
+    box-shadow: 0px 3px 12px 0px rgba(0, 24, 99, 0.1);
     background-color: #fff;
     margin-top: 20px;
 
@@ -132,7 +139,7 @@
                 .line {
                     width: calc(100% - 70px);
                     height: 1px;
-                    background-color: #7D9BC6;
+                    background-color: #7d9bc6;
                     position: absolute;
                     margin-left: 30px;
                 }
@@ -157,12 +164,9 @@
                     & svg {
                         animation: rotate 10s linear infinite;
                     }
-
-                   
                 }
             }
         }
-
 
         & h1 {
             position: absolute;
@@ -174,7 +178,7 @@
         }
 
         .ellipse {
-            border: 2px solid #D5D8E6;
+            border: 2px solid #d5d8e6;
             border-radius: 50%;
             width: 770px;
             height: 750px;
@@ -183,7 +187,7 @@
         }
 
         .ellipse1 {
-            border: 2px solid #D5D8E6;
+            border: 2px solid #d5d8e6;
             border-radius: 50%;
             width: 700px;
             height: 760px;
@@ -193,7 +197,7 @@
         }
 
         .ellipse2 {
-            border: 2px solid #D5D8E6;
+            border: 2px solid #d5d8e6;
             border-radius: 50%;
             width: 620px;
             height: 640px;
@@ -203,7 +207,7 @@
         }
 
         .ellipse3 {
-            border: 2px solid #D5D8E6;
+            border: 2px solid #d5d8e6;
             border-radius: 50%;
             width: 540px;
             height: 540px;
@@ -232,7 +236,6 @@
             top: 60px;
             left: 10px;
             position: absolute;
-
         }
 
         & h1 {
@@ -247,7 +250,7 @@
     }
 }
 @keyframes rotate {
-    0%{
+    0% {
         transform: rotate(0deg);
     }
     100% {
@@ -259,9 +262,9 @@
     position: relative;
     display: flex;
     /*flex-wrap: wrap;*/
-    gap: 55px;
+    gap: 5vw;
     list-style: none;
-    height: 30px;
+    height: fit-content;
     justify-content: flex-start;
     margin-top: -1rem;
     overflow: scroll;
@@ -274,16 +277,23 @@
         bottom: 0px;
         width: 2rem;
         height: 3.5px;
-        background-color: #456FF6;
-        transition: all .5s ease-in-out;
+        background-color: #456ff6;
+        transition: all 0.5s ease-in-out;
     }
 
+    .activeBar {
+        color: black;
+        border-bottom: 3px solid #456ff6;
+    }
+    .notActiveBar {
+        border-bottom: none;
+    }
     & li {
-        color: #7D9BC6;
+        color: #7d9bc6;
         font-weight: 600;
         cursor: pointer;
-        min-width: 110px;
-        transition: all .5s ease-in-out;
+        padding-bottom: 7px;
+        transition: all 0.1s ease-in;
 
         &:hover {
             font-weight: 600;
@@ -301,153 +311,23 @@
             .status_container {
                 width: unset;
             }
-
         }
     }
 }
 
-@media screen and (max-width: 1060px) {
+@media screen and (max-width: 1290px) {
     .basic_details {
         flex-direction: column;
         gap: 20px;
         width: 100%;
-
-        .basic_details_detail {
-            flex-direction: row;
-            gap: 10px;
-            width: 100%;
-
-            .status_container {
-                flex-direction: column;
-                width: calc(50% - 5px);
-
-                .status {
-                    width: 100%;
-                }
-            }
-
-        }
-    }
-
-    /* .roles_karma_dist_container {
-        flex-direction: column;
-        height: 100%;
-        width: 100%;
         margin-top: 20px;
-
-        .role_distribution_container {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            position: relative;
-            border-radius: 12px;
-
-            & h1 {
-                position: absolute;
-                text-align: left;
-                color: #000;
-                font-weight: 800;
-                left: 40px;
-                top: 10px;
-            }
-
-            .ellipse {
-                border: 2px solid #D5D8E6;
-                border-radius: 50%;
-                width: 770px;
-                height: 750px;
-                position: absolute;
-                left: -320px;
-            }
-
-            .ellipse1 {
-                border: 2px solid #D5D8E6;
-                border-radius: 50%;
-                width: 700px;
-                height: 760px;
-                position: absolute;
-                left: -320px;
-                top: 50px;
-            }
-
-            .ellipse2 {
-                border: 2px solid #D5D8E6;
-                border-radius: 50%;
-                width: 620px;
-                height: 640px;
-                position: absolute;
-                left: -320px;
-                top: 111px;
-            }
-
-            .ellipse3 {
-                border: 2px solid #D5D8E6;
-                border-radius: 50%;
-                width: 540px;
-                height: 540px;
-                position: absolute;
-                left: -320px;
-                top: 151px;
-            }
-
-            .planet {
-                width: 90px;
-                height: 90px;
-                position: absolute;
-                left: -30px;
-                bottom: -30px;
-                background-image: url(../assets/images/planet.png);
-                background-size: contain;
-            }
-        }
-
-        .karma_distribution_container {
-            width: 100%;
-            height: 100%;
-            position: relative;
-        }
-    } */
-}
-
-@media screen and (max-width:1240px) {
-    .roles_karma_dist_container {
-        gap: 30px;
-        background: transparent;
-        border-radius: unset;
-        border-left: unset;
-        box-shadow: unset;
-
-        .role_distribution_container {
-            min-width: 100%;
-            border-radius: 16px;
-            border-left: 6px solid #7E48D2;
-            box-shadow: 0px 3px 12px 0px rgba(0, 24, 99, 0.10);
-            background: #fff;
-        }
-
-        .karma_distribution_container {
-            width: 100%;
-            border-radius: 16px;
-            border-left: 6px solid #E36DFF;
-            box-shadow: 0px 3px 12px 0px rgba(0, 24, 99, 0.10);
-            background: #fff;
-            overflow: hidden;
-
-            .container {
-                left: -30px;
-            }
-        }
-    }
-}
-
-@media screen and (max-width: 800px) {
-    .basic_details {
-        margin-top: 20px;
-
+        align-items: center;
         .profile_details_container {
+            width: fit-content;
             justify-content: center;
             flex-direction: column;
             padding: 30px 20px;
+            min-width: 310px;
 
             .profile_pic {
                 margin-top: -70px;
@@ -459,11 +339,79 @@
                 align-items: center;
                 text-align: center;
             }
+            .Levels {
+                display: none;
+            }
+        }
+
+        .basic_details_detail {
+            flex-direction: row;
+            gap: 10px;
+            width: 100%;
+            flex-wrap: wrap;
+
+            .status_container {
+                flex-direction: row;
+                width: 100%;
+                flex-wrap: wrap;
+                gap: 10px;
+
+                .status {
+                    width: calc(50% - 5px);
+                    min-width: 100px;
+                }
+                .Levels {
+                    display: block;
+                }
+            }
         }
     }
+}
 
+@media screen and (max-width: 1240px) {
+    .roles_karma_dist_container {
+        gap: 30px;
+        background: transparent;
+        border-radius: unset;
+        border-left: unset;
+        box-shadow: unset;
+
+        .role_distribution_container {
+            min-width: 100%;
+            border-radius: 16px;
+            border-left: 6px solid #7e48d2;
+            box-shadow: 0px 3px 12px 0px rgba(0, 24, 99, 0.1);
+            background: #fff;
+        }
+
+        .karma_distribution_container {
+            width: 100%;
+            border-radius: 16px;
+            border-left: 6px solid #e36dff;
+            box-shadow: 0px 3px 12px 0px rgba(0, 24, 99, 0.1);
+            background: #fff;
+            overflow: hidden;
+
+            .container {
+                left: -30px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 800px) {
     .roles_karma_dist_container {
         width: 100%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .profileList {
+        gap: 30px;
+        li {
+            min-width: fit-content;
+            font-size: 15px;
+        }
     }
 }
 

@@ -132,7 +132,7 @@ export const createCircle = async (
         });
         setTimeout(() => {
             navigate(
-                `/dashboard/learning-circle/details/${message.response.circle_id}`
+                `/dashboard/learning-circle/dashboard/${message.response.circle_id}`
             );
         }, 2000);
     } catch (err) {
@@ -312,7 +312,7 @@ export const removeMember = async (
             duration: 2000,
             isClosable: true
         });
-        navigate(`/dashboard/learning-circle/details/${circleId}`);
+        navigate(`/dashboard/learning-circle/dashboard/${circleId}`);
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -409,4 +409,56 @@ export const searchLearningCircleWithCircleCode = (
             }
             setIsLoading(false); // Set isLoading to false
         });
+};
+
+
+
+export const reportMeeting = async (id: string | undefined, data: {
+    agenda: string;
+    attendees: string;
+    day: string;
+    meet_time: string;
+}) => {
+    try {
+        const response = await privateGateway.post(
+            dashboardRoutes.reportLCMeet + id + "/", data
+        );
+        const message: any = response?.data;
+        return message;
+    } catch (err) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            throw error;
+        }
+    }
+};
+
+export const getPastReports = async (id: string | undefined) => {
+    try {
+        const response = await privateGateway.get(
+            dashboardRoutes.getPastReports + id,
+        );
+        const message: any = response?.data;
+        return message.response;
+    } catch (err) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            throw error;
+        }
+    }
+};
+
+export const getLCMeetingReport = async (id: string | undefined) => {
+    try {
+        const response = await privateGateway.get(
+            dashboardRoutes.getLCMeetReport + id,
+        );
+        const message: any = response?.data;
+        return message.response[0];
+    } catch (err) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            throw error;
+        }
+    }
 };

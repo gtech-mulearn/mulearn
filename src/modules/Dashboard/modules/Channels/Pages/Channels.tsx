@@ -292,7 +292,6 @@ const Channels = () => {
                     id={["id"]}
                     onEditClick={handleEdit}
                     onDeleteClick={handleDelete}
-                    onCopyClick={handleCopy}
                     isloading={loading}
                 >
                     <THead

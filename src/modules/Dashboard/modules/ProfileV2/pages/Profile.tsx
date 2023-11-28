@@ -28,11 +28,13 @@ import moment from "moment";
 import BasicDetails from "../components/BasicDetails/pages/BasicDetails";
 import KarmaHistory from "../components/KarmaHistory/KarmaHistory";
 import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
+import { Projects } from "../components/Projects/Projects";
 import { PieChart } from "../components/Piechart/PieChart";
 import Rocket from "../assets/svg/Rocket";
 import Planet from "../assets/svg/Planets/Planet";
 import Planet2 from "../assets/svg/Planets/Planet2";
 import Planet3 from "../assets/svg/Planets/Planet3";
+import KarmaDist from "../assets/svg/KarmaDist";
 
 type Props = {};
 interface CircleSection {
@@ -169,14 +171,19 @@ const ProfileV2 = (props: Props) => {
         <>
             <div className={styles.basic_details}>
                 <div className={styles.profile_details_container}>
-                    <p
+                    {/* <p
                         className={styles.profile_pic}
                         style={{
                             backgroundImage: `url(${userProfile.profile_pic})`
                         }}
                     >
                         {" "}
-                    </p>
+                    </p> */}
+                    <img
+                        className={styles.profile_pic}
+                        src={userProfile.profile_pic}
+                        alt="hello"
+                    />
                     <div className={styles.profile_details}>
                         <h1>
                             {userProfile.first_name} {userProfile.last_name}{" "}
@@ -202,11 +209,20 @@ const ProfileV2 = (props: Props) => {
                             })}
                         </div>
                     </div>
+                    <div className={styles.Levels}>
+                        <p>Level</p>
+                        <p>
+                            {" "}
+                            {userProfile.level
+                                ? userProfile?.level?.slice(3, 4)
+                                : 1}
+                        </p>
+                    </div>
                 </div>
 
                 <div className={styles.basic_details_detail}>
                     <div className={styles.status_container}>
-                        <div className={styles.status}>
+                        <div className={styles.status + " " + styles.Levels}>
                             <div className={styles.status_box}>
                                 <p>Level</p>
                                 <p style={{ color: "#B7C7FC" }}>
@@ -230,8 +246,6 @@ const ProfileV2 = (props: Props) => {
                                 </p>
                             </div>
                         </div>
-                    </div>
-                    <div className={styles.status_container}>
                         <div className={styles.status}>
                             <Rank />
                             <div className={styles.status_box}>
@@ -275,11 +289,11 @@ const ProfileV2 = (props: Props) => {
                 <div className={styles.roles_karma_dist_container}>
                     <div className={styles.role_distribution_container}>
                         <h1>Roles and contributions</h1>
-                        {/* <div className={styles.ellipse}></div>
+                        <div className={styles.ellipse}></div>
                         <div className={styles.ellipse1}></div>
                         <div className={styles.ellipse2}></div>
                         <div className={styles.ellipse3}></div>
-                        <div className={styles.planet}></div> */}
+                        <div className={styles.planet}></div>
                         <div className={styles.roles_container}>
                             <div className={styles.roles_container_inner}>
                                 <p className={styles.line}></p>
@@ -312,75 +326,55 @@ const ProfileV2 = (props: Props) => {
                             {/* <div className={styles.ui_widgets}>
                             <div className={styles.ui_value}>85%</div>
                             <div className={styles.ui_labels}>Java</div>
-                        </div> */}
-                            {/* <KarmaDist sections={circleSections} /> */}
+                        </div> <KarmaDist sections={circleSections} /> */}
                             <PieChart data={data} />
                         </div>
                     </div>
                 </div>
-                {window.innerWidth > 1200 ? <Rocket /> : <></>}
+
+                {window.innerWidth > 1290 ? <Rocket /> : <></>}
             </div>
 
             <div className={styles.profileList}>
-                <p
-                    style={
-                        profileList === "basic-details"
-                            ? {
-                                  marginLeft: "0px",
-                                  width: "6.1rem"
-                              }
-                            : profileList === "karma-history"
-                            ? {
-                                  marginLeft: "165px",
-                                  width: "6.7rem"
-                              }
-                            : profileList === "mu-voyage"
-                            ? {
-                                  marginLeft: "340px",
-                                  width: "5.3rem"
-                              }
-                            : {}
-                    }
-                    className={styles.underline}
-                ></p>
                 <li
                     onClick={() => setProfileList("basic-details")}
-                    style={
+                    className={
                         profileList === "basic-details"
-                            ? {
-                                  fontSize: "600",
-                                  color: "#000"
-                              }
-                            : {}
+                            ? styles.activeBar
+                            : styles.notActiveBar
                     }
                 >
                     Basic Details
                 </li>
                 <li
                     onClick={() => setProfileList("karma-history")}
-                    style={
+                    className={
                         profileList === "karma-history"
-                            ? {
-                                  fontSize: "600",
-                                  color: "#000"
-                              }
-                            : {}
+                            ? styles.activeBar
+                            : styles.notActiveBar
                     }
                 >
                     Karma History
                 </li>
                 <li
                     onClick={() => setProfileList("mu-voyage")}
-                    style={
+                    className={
                         profileList === "mu-voyage"
-                            ? {
-                                  fontSize: "600",
-                                  color: "#000"
-                              }
-                            : {}
+                            ? styles.activeBar
+                            : styles.notActiveBar
                     }
                 >
                     Mu Voyage
+                </li>{" "}
+                <li
+                    onClick={() => setProfileList("projects")}
+                    className={
+                        profileList === "projects"
+                            ? styles.activeBar
+                            : styles.notActiveBar
+                    }
+                >
+                    Projects
                 </li>
             </div>
 
@@ -388,6 +382,8 @@ const ProfileV2 = (props: Props) => {
                 <BasicDetails userProfile={userProfile} userLog={userLog} />
             ) : profileList === "karma-history" ? (
                 <KarmaHistory userProfile={userProfile} userLog={userLog} />
+            ) : profileList === "projects" ? (
+                <Projects />
             ) : (
                 profileList === "mu-voyage" && (
                     <MuVoyage

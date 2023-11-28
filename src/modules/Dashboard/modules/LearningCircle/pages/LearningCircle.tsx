@@ -194,7 +194,7 @@ const LearningCircle = (props: Props) => {
         console.log("New Lead", userId);
         transferLead(circle, userId, navigate);
         setTimeout(() => {
-            navigate(`/dashboard/learning-circle/details/${id}`);
+            navigate(`/dashboard/learning-circle/dashboard/${id}`);
         }, 4000);
     }
 
@@ -585,7 +585,7 @@ const LearningCircle = (props: Props) => {
                                                     setFlag(false);
                                                     setTimeout(() => {
                                                         navigate(
-                                                            `/dashboard/learning-circle/details/${id}`
+                                                            `/dashboard/learning-circle/dashboard/${id}`
                                                         );
                                                     }, 2000);
                                                 }}
@@ -603,12 +603,12 @@ const LearningCircle = (props: Props) => {
                                         <button
                                             className={styles.BtnBtn}
                                             onClick={() => {
-                                                updateLcNote(id, note);
+                                                // updateLcNote(id, note);
                                                 setTimeout(() => {
                                                     getLcDetails(setLc, id);
                                                     setFlag(true);
                                                     navigate(
-                                                        `/dashboard/learning-circle/details/${id}`
+                                                        `/dashboard/learning-circle/dashboard/${id}`
                                                     );
                                                 }, 2000);
                                             }}
@@ -672,7 +672,7 @@ const LearningCircle = (props: Props) => {
                                                                                 id
                                                                             );
                                                                             navigate(
-                                                                                `/dashboard/learning-circle/details/${id}`
+                                                                                `/dashboard/learning-circle/dashboard/${id}`
                                                                             );
                                                                         },
                                                                         2000
@@ -699,7 +699,7 @@ const LearningCircle = (props: Props) => {
                                                                                 id
                                                                             );
                                                                             navigate(
-                                                                                `/dashboard/learning-circle/details/${id}`
+                                                                                `/dashboard/learning-circle/dashboard/${id}`
                                                                             );
                                                                         },
                                                                         2000
