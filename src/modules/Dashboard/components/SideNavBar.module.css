@@ -171,6 +171,19 @@
     cursor: pointer;
 }
 
+.right_side .top_nav .nav .nav_items .menu .user_settings{
+    position: absolute;
+    top: 70px;
+    right: 40px;
+    background: #fff;
+    padding: 5px 20px;
+    border-radius: 10px;
+    color: red;
+    font-size: 15px;
+    box-shadow: 0px 2px 4px #c4c4c473;
+    box-shadow: 0px 3px 12px 0px rgba(0, 24, 99, 0.10);
+}
+
 .main_content {
     /* position: relative; */
     padding: 1rem;
@@ -196,6 +209,7 @@
     font-weight: 100;
     margin-top: 10px;
 }
+
 
 /* responsive */
 @media screen and (min-width: 1324px) {
