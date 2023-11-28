@@ -5,6 +5,7 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import level7 from "../../../assets/images/Level 7.svg";
 import { BiDotsVertical } from "react-icons/bi";
 import LeadIcon from "../../../assets/images/Lead icon.svg";
+import { PersonIcon } from "../../../assets/svg";
 
 type Props = {
     setTemp: Dispatch<SetStateAction<LcDashboardTempData>>;
@@ -51,14 +52,31 @@ const LcTeam = (props: Props) => {
 
 const TeamList = ({ members }: { members: LcMembers[] }) => {
     return (
-        <div className={styles.teamList}>
-            {members.map((member, index) => (
-                <TeamMember
-                    member={member}
-                    index={index + 1}
-                    key={`mem${index}`}
-                />
-            ))}
+        <div className={styles.TeamNavSectionWrapper}>
+            <div className={styles.teamList}>
+                {members.map((member, index) => (
+                    <TeamMember
+                        member={member}
+                        index={index + 1}
+                        key={`mem${index}`}
+                    />
+                ))}
+            </div>
+            <div className={styles.SubHeadingWrapper}>
+                <p>Pending Requests</p>
+                <a>
+                    <PersonIcon /> <p>Add members</p>
+                </a>
+            </div>
+            <div className={styles.PendingRequestWrapper}>
+                {members.map((member, index) => (
+                    <PendingRequestMember
+                        member={member}
+                        index={index + 1}
+                        key={`mem${index}`}
+                    />
+                ))}
+            </div>
         </div>
     );
 };
@@ -72,10 +90,15 @@ const TeamMember = ({
 }) => {
     return (
         <div className={styles.memberBar}>
-            <span>{index}.</span> <img src={member.profile_pic} alt="DP" />{" "}
+            <span>{index}.</span>{" "}
+            <img
+                className={styles.MemberProfile}
+                src={member.profile_pic}
+                alt="DP"
+            />{" "}
             <span className={styles.name}>{member.username}</span>
             <p>Level{member.level || " 0"}</p>
-            <img src={level7} alt="" />
+            <img src={level7} alt="level" />
             {member.is_lead ? (
                 <img src={LeadIcon} alt="" className={styles.karma} />
             ) : (
@@ -89,4 +112,31 @@ const TeamMember = ({
     );
 };
 
+const PendingRequestMember = ({
+    member,
+    index
+}: {
+    member: LcMembers;
+    index: number;
+}) => {
+    return (
+        <div className={styles.memberBar}>
+            <div className={styles.LeftSection}>
+                <span>{index}.</span>{" "}
+                <img
+                    className={styles.MemberProfile}
+                    src={member.profile_pic}
+                    alt="DP"
+                />{" "}
+                <span className={styles.name}>{member.username}</span>
+                <p>Level{member.level || " 0"}</p>
+                <img src={level7} alt="level" />
+            </div>
+            <div className={styles.ButtonWrapper}>
+                <button style={{ backgroundColor: "#2DCE89" }}>Accept</button>
+                <button style={{ backgroundColor: "#FF5F5F" }}>Reject</button>
+            </div>
+        </div>
+    );
+};
 export default LcTeam;

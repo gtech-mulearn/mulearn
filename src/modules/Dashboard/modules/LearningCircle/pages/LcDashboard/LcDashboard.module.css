@@ -523,8 +523,10 @@
 
 /* Input Icon color */
 
-.Sectionone input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webkit-calendar-picker-indicator {
-    filter: invert(31%) sepia(96%) saturate(4457%) hue-rotate(217deg) brightness(99%) contrast(101%);
+.Sectionone input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(31%) sepia(96%) saturate(4457%) hue-rotate(217deg)
+        brightness(99%) contrast(101%);
 }
 
 /* HistoryDiv */
@@ -607,11 +609,11 @@
     background-color: #eef2ff;
     font-size: 17px;
     color: rgba(69, 111, 246, 1);
-	cursor: pointer;
+    cursor: pointer;
 }
 
 .AttendeesWrapperSelected {
-	cursor: pointer;
+    cursor: pointer;
     padding: 10px;
     width: fit-content;
     display: flex;
@@ -889,30 +891,62 @@
     justify-content: space-evenly;
 }
 
+.TeamNavSectionWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+}
+
 .teamList {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    width: 100%;
 }
 
+.TeamNavSectionWrapper .SubHeadingWrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    color: #888888;
+    font-size: 18px;
+}
+.TeamNavSectionWrapper .SubHeadingWrapper a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.TeamNavSectionWrapper .PendingRequestWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 8px;
+}
 .memberBar {
     border-radius: 8px;
     background: #eef2ff;
-    height: 4rem;
-
+    height: fit-content;
     padding: 1rem;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    flex-grow: 0;
     gap: 1rem;
+    width: 100%;
+    flex-wrap: wrap;
 }
 
 .memberBar img {
     height: 100%;
-    border-radius: 100px;
+}
+.memberBar .MemberProfile {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
 }
 
 .memberBar span {
@@ -933,3 +967,23 @@
 .memberBar .karma {
     margin-left: auto;
 }
+
+
+.memberBar .LeftSection{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    align-items: center;
+}
+
+.memberBar .ButtonWrapper{
+    display: flex;
+    gap: 15px;
+    button{
+        padding: 8px 20px;
+        color: white;
+        border-radius: 8px;
+        font-size: 13px;
+    }
+}
+
