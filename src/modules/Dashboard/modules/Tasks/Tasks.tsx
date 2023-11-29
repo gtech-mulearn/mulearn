@@ -11,6 +11,8 @@ import { useNavigate } from "react-router-dom";
 import styles from "../InterestGroup/InterestGroup.module.css";
 import { deleteTask, getTasks } from "./TaskApis";
 import { Blank } from "@/MuLearnComponents/Table/Blank";
+import MuModal from "@/MuLearnComponents/MuModal/MuModal";
+import TaskForm from "./TaskForm";
 
 export const Tasks = () => {
     const [data, setData] = useState<any[]>([]);
@@ -22,6 +24,10 @@ export const Tasks = () => {
     const firstFetch = useRef(true);
     const navigate = useNavigate();
     const toast = useToast();
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isEditMode, setIsEditMode] = useState(false);
+    const [taskId, setTaskId] = useState<string | number | boolean>("");
+    const TaskRef = useRef<any>(null);
 
     const columnOrder: ColOrder[] = [
         { column: "title", Label: "Title", isSortable: true },
@@ -129,7 +135,10 @@ export const Tasks = () => {
     };
 
     const handleEdit = (id: string | number | boolean) => {
-        navigate(`/dashboard/tasks/edit/${id}`);
+        setTaskId(id);
+        setIsEditMode(true);
+        setIsModalOpen(true);
+        //navigate(`/dashboard/tasks/edit/${id}`);
     };
 
     const handleDelete = (id: string | undefined) => {
@@ -137,7 +146,9 @@ export const Tasks = () => {
     };
 
     const handleCreate = () => {
-        navigate("/dashboard/tasks/create");
+        setIsEditMode(false);
+        setIsModalOpen(true);
+        //navigate("/dashboard/tasks/create");
     };
 
     return (
@@ -161,6 +172,23 @@ export const Tasks = () => {
                     Create
                 </PowerfulButton>
             </div>
+
+
+            <MuModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+
+                title={isEditMode ? "Edit Task" : "Create Task"}
+                type={"success"}
+                onDone={() => TaskRef.current?.handleSubmitExternally()}
+            >
+                <TaskForm
+                    ref={TaskRef}
+                    id={isEditMode ? taskId.toString() : ""}
+                    isEditMode={isEditMode}
+                    closeModal={() => setIsModalOpen(false)}
+                />
+            </MuModal>
 
             {data && (
                 <>
