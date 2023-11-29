@@ -3,20 +3,23 @@ import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import THead from "@/MuLearnComponents/Table/THead";
 import Table from "@/MuLearnComponents/Table/Table";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
-import { useEffect, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { titleCase } from "title-case";
 import {
     getCampusDetails,
     getStudentDetails,
     getStudentLevel,
-    getWeeklyKarma
+    getWeeklyKarma,
+    setAlumniStatus
 } from "../services/apis";
 import { PieChart, BarChart } from "../Components/Graphs";
 import styles from "./CampusStudentList.module.css";
 import CLIcon from "../assets/images/CampusLeadIcon.svg";
-import { useToast } from "@chakra-ui/react";
+import CEIcon from "../../LearningCircle/assets/images/Lead icon.svg";
+import { Spinner, useToast } from "@chakra-ui/react";
 import { convertDateToDayAndMonth } from "../../../utils/common";
+import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 
 type Props = {};
 
@@ -49,14 +52,29 @@ const CampusStudentList = (props: Props) => {
         });
     };
 
-    const columnOrder = [
+    const columnOrder: {
+        isSortable: boolean;
+        column: string;
+        Label: string;
+        wrap?: (data: string, id: string) => ReactJSXElement;
+    }[] = [
         { column: "fullname", Label: "Name", isSortable: true },
         // { column: "email", Label: "Email", isSortable: false },
         { column: "karma", Label: "Karma", isSortable: true },
         { column: "level", Label: "Level", isSortable: true },
         { column: "rank", Label: "Rank", isSortable: false },
         { column: "muid", Label: "MuId", isSortable: true },
-        { column: "join_date", Label: "Join Date", isSortable: false }
+        { column: "email", Label: "Email", isSortable: false },
+        { column: "mobile", Label: "Mobile", isSortable: false },
+        { column: "join_date", Label: "Join Date", isSortable: false },
+        {
+            column: "is_alumni",
+            Label: "Alumni",
+            isSortable: false,
+            wrap: (data, id) => {
+                return <AlumniCheckBox checked={data === "1"} id={id} />;
+            }
+        }
     ];
 
     const [campusData, setCampusData] = useState({
@@ -67,7 +85,11 @@ const CampusStudentList = (props: Props) => {
         total_karma: "",
         total_members: "",
         active_members: "",
-        rank: ""
+        rank: "",
+        lead: {
+            campus_lead: "",
+            enabler: ""
+        }
     });
     const firstFetch = useRef(true);
     const handleNextClick = () => {
@@ -163,7 +185,7 @@ const CampusStudentList = (props: Props) => {
         }
         //console.log(`Icon clicked for column: ${column}`);
     };
-    //console.log(perPage, currentPage);
+
     return (
         <>
             {noOrg ? (
@@ -239,9 +261,28 @@ const CampusStudentList = (props: Props) => {
                                                 >
                                                     <img src={CLIcon} alt="" />
                                                     <h2>
-                                                        {campusData.campus_lead}
+                                                        {
+                                                            campusData.lead
+                                                                .campus_lead
+                                                        }
                                                     </h2>
                                                     <p>Campus Lead</p>
+                                                </div>
+                                            </div>
+                                            <div className={styles.card}>
+                                                <div
+                                                    className={
+                                                        styles.campus_lead_card
+                                                    }
+                                                >
+                                                    <img src={CEIcon} alt="" />
+                                                    <h2>
+                                                        {
+                                                            campusData.lead
+                                                                .enabler
+                                                        }
+                                                    </h2>
+                                                    <p>Campus Enabler</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -319,5 +360,35 @@ const CampusStudentList = (props: Props) => {
         </>
     );
 };
+
+type checkbox_T = {
+    checked: boolean;
+    id: string;
+};
+
+function AlumniCheckBox(props: checkbox_T) {
+    const [checked, setChecked] = useState(props.checked);
+    const [loading, setLoading] = useState(false);
+
+    const handleChange = async (e: ChangeEvent<HTMLInputElement>) => {
+        console.log(e.target.checked);
+        setLoading(true);
+        try {
+            await setAlumniStatus(props.id, e.target.checked, msg => {});
+            setChecked(e.target.checked);
+        } catch (err) {}
+        setLoading(false);
+    };
+
+    if (loading) return <Spinner />;
+    return (
+        <input
+            type="checkbox"
+            checked={checked}
+            className={styles.checkbox}
+            onChange={handleChange}
+        />
+    );
+}
 
 export default CampusStudentList;

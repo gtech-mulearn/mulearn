@@ -302,7 +302,12 @@ function App() {
                             path: "campus-details",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.CAMPUS_LEAD, roles.ENABLER]}
+                                    // might have to remove campus_lead and enabler with lead_enabler only
+                                    roles={[
+                                        roles.CAMPUS_LEAD,
+                                        roles.ENABLER,
+                                        roles.LEAD_ENABLER
+                                    ]}
                                     children={<CampusStudentList />}
                                 />
                             )
@@ -608,7 +613,8 @@ function App() {
                                     children={<OrganizationTransfer />}
                                 />
                             )
-                        }, {
+                        },
+                        {
                             path: "settings",
                             element: <Settings />,
                             children: [
@@ -638,7 +644,6 @@ function App() {
                         //     path: "marketplace-purchaseinv",
                         //     element: <PurchaseInventory />
                         // }
-
                     ]
                 }
             ]
