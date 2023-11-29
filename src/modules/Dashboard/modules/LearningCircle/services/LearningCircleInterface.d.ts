@@ -22,9 +22,9 @@ interface LcMembers {
 type LcDetail = {
     name: string;
     circle_code: string;
-    note: string | null;
+    note: string[];
     meet_time: string;
-    meet_place: string | null;
+    meet_place: string;
     day: number[];
     college: string;
     members: LcMembers[];
@@ -34,6 +34,7 @@ type LcDetail = {
     is_lead: boolean;
     is_member: boolean;
     ig_code: string;
+    previous_meetings: LcPastReports[];
 };
 
 interface LcDashboardTempData {

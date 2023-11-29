@@ -433,21 +433,6 @@ export const reportMeeting = async (id: string | undefined, data: {
     }
 };
 
-export const getPastReports = async (id: string | undefined) => {
-    try {
-        const response = await privateGateway.get(
-            dashboardRoutes.getPastReports + id,
-        );
-        const message: any = response?.data;
-        return message.response;
-    } catch (err) {
-        const error = err as AxiosError;
-        if (error?.response) {
-            throw error;
-        }
-    }
-};
-
 export const getLCMeetingReport = async (id: string | undefined) => {
     try {
         const response = await privateGateway.get(

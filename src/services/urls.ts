@@ -123,7 +123,6 @@ export const dashboardRoutes = {
     joinLearningCircle: "/api/v1/dashboard/lc/join/",
     setLCMeetTime: "/api/v1/dashboard/lc/meet/",
     reportLCMeet: "/api/v1/dashboard/lc/meet-record/create/",
-    getPastReports: "/api/v1/dashboard/lc/meet-record/list-all/",
     getLCMeetReport: "/api/v1/dashboard/lc/meet-record/show/",
     getCampusIg: "api/v1/dashboard/ig/list/",
     getCount: "api/v1/dashboard/lc/data/",
