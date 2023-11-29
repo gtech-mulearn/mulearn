@@ -19,9 +19,9 @@ const LcCheckList = (props: prop) => {
     useEffect(() => {
         try {
             if(props.data?.note){
-				const data = JSON.parse(props.data?.note);
-				setItems(data);
-			}
+				    const data = JSON.parse(props.data?.note);
+				    setItems(data);
+			  }
         } catch (error) {
             console.error("Error parsing JSON:", error);
         }

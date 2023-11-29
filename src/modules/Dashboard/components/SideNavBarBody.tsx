@@ -173,9 +173,9 @@ const SideNavBarBody = ({
             </div>
             <div className={styles.bottomButtons}>
                 <MuButton
-                    text="Change Password"
+                    text="Account Setting"
                     icon={<MuSettings />}
-                    onClick={() => navigate("/dashboard/settings/change-password")}
+                    onClick={() => navigate("/dashboard/settings/account")}
                     style={{
                         color: "#9297AA",
                         backgroundColor: "#fff",
