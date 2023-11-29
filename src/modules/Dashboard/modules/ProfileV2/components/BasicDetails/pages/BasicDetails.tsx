@@ -69,6 +69,9 @@ const BasicDetails = (props: Props) => {
                         4 to Select
                     </p>
                 )}
+                <div className={styles.edit_ig_btn}>
+                    <i className="fi fi-sr-pencil"></i>
+                </div>
             </div>
             {/*  <div className={styles.card}>
                             UX/UI Design

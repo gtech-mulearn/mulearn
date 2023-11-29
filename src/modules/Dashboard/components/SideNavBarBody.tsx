@@ -129,10 +129,10 @@ const SideNavBarBody = ({
                                                                 navigate(
                                                                     button.url
                                                                 );
-                                                                window.innerWidth <=
-                                                                    830
-                                                                    ? toggleSideNavBar()
-                                                                    : null;
+                                                                // window.innerWidth <=
+                                                                //     830
+                                                                //     ? toggleSideNavBar()
+                                                                //     : null;
                                                             }}
                                                         />
                                                     ))}
