@@ -1,16 +1,15 @@
 import { Dispatch, SetStateAction } from "react";
 import styles from "../LcDashboard.module.css";
-import karmaIcon from "../../../assets/karma.svg";
-import { BsThreeDotsVertical } from "react-icons/bs";
 import level7 from "../../../assets/images/Level 7.svg";
 import { BiDotsVertical } from "react-icons/bi";
+import pic from "../../../assets/images/profileIcon.svg";
 import LeadIcon from "../../../assets/images/Lead icon.svg";
 import { PersonIcon } from "../../../assets/svg";
 
 type Props = {
     setTemp: Dispatch<SetStateAction<LcDashboardTempData>>;
     temp: LcDashboardTempData;
-    members: LcMembers[];
+    lc: LcDetail | undefined;
 };
 
 const LcTeam = (props: Props) => {
@@ -44,39 +43,47 @@ const LcTeam = (props: Props) => {
                 </button>
             </div>
             <div className={styles.ContentWrapper}>
-                <TeamList members={props.members} />
+                <TeamList lc={props.lc} />
             </div>
         </div>
     );
 };
 
-const TeamList = ({ members }: { members: LcMembers[] }) => {
+type Prop = {
+    lc: LcDetail | undefined;
+};
+const TeamList = (props:Prop) => {
     return (
         <div className={styles.TeamNavSectionWrapper}>
             <div className={styles.teamList}>
-                {members.map((member, index) => (
-                    <TeamMember
-                        member={member}
-                        index={index + 1}
-                        key={`mem${index}`}
-                    />
-                ))}
+                {props.lc?.members &&
+                    props.lc.members.map((member, index) => (
+                        <TeamMember
+                            member={member}
+                            index={index + 1}
+                            key={`mem${index}`}
+                        />
+                    ))}
             </div>
-            <div className={styles.SubHeadingWrapper}>
-                <p>Pending Requests</p>
-                <a>
-                    <PersonIcon /> <p>Add members</p>
-                </a>
-            </div>
-            <div className={styles.PendingRequestWrapper}>
-                {members.map((member, index) => (
-                    <PendingRequestMember
-                        member={member}
-                        index={index + 1}
-                        key={`mem${index}`}
-                    />
-                ))}
-            </div>
+            {props.lc && props.lc.pending_members.length > 0 && (
+                <>
+                    <div className={styles.SubHeadingWrapper}>
+                        <p>Pending Requests</p>
+                        <a>
+                            <PersonIcon /> <p>Add members</p>
+                        </a>
+                    </div>
+                    <div className={styles.PendingRequestWrapper}>
+                        {props.lc?.pending_members.map((member, index) => (
+                            <PendingRequestMember
+                                member={member}
+                                index={index + 1}
+                                key={`mem${index}`}
+                            />
+                        ))}
+                    </div>
+                </>
+            )}
         </div>
     );
 };
@@ -93,7 +100,7 @@ const TeamMember = ({
             <span>{index}.</span>{" "}
             <img
                 className={styles.MemberProfile}
-                src={member.profile_pic}
+                src={member.profile_pic || pic}
                 alt="DP"
             />{" "}
             <span className={styles.name}>{member.username}</span>

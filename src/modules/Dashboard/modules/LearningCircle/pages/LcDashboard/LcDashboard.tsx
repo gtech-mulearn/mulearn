@@ -95,7 +95,7 @@ const LcDashboard = (props: Props) => {
                         <LcTeam
                             setTemp={setTemp}
                             temp={temp}
-                            members={lc?.members!}
+                            lc={lc}
                         />
                     ) : (
                         <LcHome setTemp={setTemp} temp={temp} lc={lc} id={id} />
