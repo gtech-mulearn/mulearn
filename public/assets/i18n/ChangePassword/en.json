@@ -1,4 +1,5 @@
 {
-    "heading":"Change Password",
-    "desc":"Enter in a new password, and confirm it to change."
+    "fontSize": "16px",
+    "heading": "Change Password",
+    "desc": "Enter in a new password, and confirm it to change."
 }
