@@ -223,7 +223,8 @@ export const getInterestGroups = async () => {
 export const approveLcUser = async (
     circleId: string | undefined,
     memberId: string,
-    flag: number
+    flag: number,
+    message?: string
 ) => {
     try {
         const response = await privateGateway.patch(
@@ -281,6 +282,7 @@ export const leaveLc = async (
 export const removeMember = async (
     circleId: string | undefined,
     memberId: string,
+    navigate?: NavigateFunction
 ) => {
     try {
         const response = await privateGateway.post(
