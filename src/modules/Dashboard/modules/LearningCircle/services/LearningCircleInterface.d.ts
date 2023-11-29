@@ -79,10 +79,15 @@ interface LcHistory {
     meet_time: string;
     meet_place: string;
     day: string;
-    attendees: string[];
+    attendees: LcAttendees[];
     agenda: string;
     meet_created_by: string;
     meet_created_at: string;
     meet_updated_by: string;
     meet_updated_at: string;
+}
+
+interface LcAttendees {
+	fullname: string;
+	profile_pic: string;
 }

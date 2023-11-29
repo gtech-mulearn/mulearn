@@ -3,8 +3,15 @@ import meeting from "../../../assets/images/meedingDemo.png";
 import { LcAttendees } from "./LcAttendees";
 import { useEffect, useState } from "react";
 import { getLCMeetingReport } from "../../../services/LearningCircleAPIs";
-import { convertDateToDayAndMonthAndYear } from "../../../../../utils/common";
-import { convert24to12, extract24hTimeFromDateTime, getDayOfWeek } from "../../../services/utils";
+import {
+    comingSoon,
+    convertDateToDayAndMonthAndYear
+} from "../../../../../utils/common";
+import {
+    convert24to12,
+    extract24hTimeFromDateTime,
+    getDayOfWeek
+} from "../../../services/utils";
 
 type Props = {
     id: string | undefined;
@@ -49,26 +56,30 @@ const LcHistory = (props: Props) => {
                         </div>
                         <div className={styles.detailedSection}>
                             <h2>Agenda</h2>
-                            <p>
-                                {data.agenda}
-                            </p>
+                            <p>{data.agenda}</p>
                         </div>
                     </div>
                     <div className={styles.SectionBottom}>
                         <div className={styles.Headings}>
-                            {/* <h2>Attendees</h2>
-                            <div>
-                                <LcAttendees
-                                    name={"Test Name"}
-                                    image={""}
-                                    isSelected={false}
-                                />
-                            </div> */}
+                            <h2>Attendees</h2>
+                            {Array.isArray(data.attendees) &&
+                                data.attendees.map(attendee => (
+                                    <div>
+                                        <LcAttendees
+                                            name={attendee.fullname}
+                                            image={attendee.profile_pic}
+                                            isSelected={false}
+                                        />
+                                    </div>
+                                ))}
                         </div>
-                        {/* <div className={styles.detailedSection}>
+                        <div
+                            className={styles.detailedSection}
+                            onClick={comingSoon}
+                        >
                             <img src={meeting} alt="" />
                             <img src={meeting} alt="" />
-                        </div> */}
+                        </div>
                     </div>
                 </>
             )}
