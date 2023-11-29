@@ -1,13 +1,12 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import styles from "../LcDashboard.module.css";
 import { EditLogo, RightArrow } from "../../../assets/svg";
 import LcReport from "./LcReport";
 import LcHistory from "./LcHistory";
 import LcSchedule from "./LcSchedule";
-import { comingSoon, convertDateToDayAndMonthAndYear } from "../../../../../utils/common";
+import { convertDateToDayAndMonthAndYear } from "../../../../../utils/common";
 import { getNextMeetingDate } from "../utils/LcNextMeet";
 import LcCheckList from "./LcCheckList";
-import { getPastReports } from "../../../services/LearningCircleAPIs";
 import { convert24to12, extract24hTimeFromDateTime } from "../../../services/utils";
 
 type Props = {
@@ -23,14 +22,8 @@ const LcHome = (props: Props) => {
         props.lc?.meet_time === null ? "00:00" : String(props.lc?.meet_time)
     );
 
-	const [pastReports, setPastReports] = useState<LcPastReports[]>([])
 	const [selectedMeeting, setSelectedMeeting] = useState("")
 
-	useEffect(() => {
-		getPastReports(props.id).then((res) => {
-			setPastReports(res)
-		})
-	},[props.temp.isReport])
     return (
         <div className={styles.ContainerWrapper}>
             <div className={styles.SwitchNav}>
@@ -125,7 +118,7 @@ const LcHome = (props: Props) => {
                     <div className={styles.BottomContainer}>
                         <p>Your past meetings</p>
                         <div>
-                            {pastReports?.map((report, index) => (
+                            {props.lc?.previous_meetings.map((report, index) => (
                                 <div
                                     className={styles.HistoryDivWrapper}
                                     onClick={() => {
