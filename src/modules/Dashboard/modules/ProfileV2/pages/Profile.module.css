@@ -1,7 +1,7 @@
 .basic_details {
     display: flex;
     color: #000;
-    gap: 20px;
+    gap: 10px;
     width: 95%;
     max-width: 95%;
     flex-wrap: wrap;
@@ -82,7 +82,7 @@
                 }
 
                 .status_box p:nth-child(2) {
-                    font-size: 18px;
+                    font-size: 26px;
                     font-weight: 700;
                 }
             }
@@ -207,6 +207,16 @@
             left: 10px;
             position: absolute;
         }
+
+        & h1 {
+            position: absolute;
+            text-align: left;
+            color: #000;
+            font-weight: 800;
+            left: 40px;
+            top: 10px;
+        }
+
     }
 }
 @keyframes rotate {
