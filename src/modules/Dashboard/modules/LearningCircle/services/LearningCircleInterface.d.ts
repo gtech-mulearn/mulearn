@@ -75,11 +75,12 @@ interface LcPastReports {
 }
 
 interface LcHistory {
-    id: string;
+    meet_id: string;
     meet_time: string;
     meet_place: string;
     day: string;
-    attendees: LcAttendees[];
+    attendees: string;
+    attendees_details: LcAttendees[];
     agenda: string;
     meet_created_by: string;
     meet_created_at: string;

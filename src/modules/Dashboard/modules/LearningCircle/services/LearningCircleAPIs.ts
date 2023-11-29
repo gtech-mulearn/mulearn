@@ -454,7 +454,7 @@ export const getLCMeetingReport = async (id: string | undefined) => {
             dashboardRoutes.getLCMeetReport + id,
         );
         const message: any = response?.data;
-        return message.response[0];
+        return message.response;
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
