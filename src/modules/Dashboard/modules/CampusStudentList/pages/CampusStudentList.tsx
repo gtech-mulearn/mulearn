@@ -15,6 +15,7 @@ import {
 import { PieChart, BarChart } from "../Components/Graphs";
 import styles from "./CampusStudentList.module.css";
 import CLIcon from "../assets/images/CampusLeadIcon.svg";
+import CEIcon from "../../LearningCircle/assets/images/Lead icon.svg";
 import { useToast } from "@chakra-ui/react";
 import { convertDateToDayAndMonth } from "../../../utils/common";
 
@@ -34,7 +35,7 @@ const CampusStudentList = (props: Props) => {
     const [noOrg, setNoOrg] = useState(false);
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
-
+    console.log(studentData);
     //graph data
     const [pieData, setPieData] = useState<string[][] | null>(null);
     const [barData, setBarData] = useState<string[][] | null>(null);
@@ -56,6 +57,8 @@ const CampusStudentList = (props: Props) => {
         { column: "level", Label: "Level", isSortable: true },
         { column: "rank", Label: "Rank", isSortable: false },
         { column: "muid", Label: "MuId", isSortable: true },
+        { column: "email", Label: "Email", isSortable: false },
+        { column: "mobile", Label: "Mobile", isSortable: false },
         { column: "join_date", Label: "Join Date", isSortable: false }
     ];
 
@@ -67,7 +70,11 @@ const CampusStudentList = (props: Props) => {
         total_karma: "",
         total_members: "",
         active_members: "",
-        rank: ""
+        rank: "",
+        lead: {
+            campus_lead: "",
+            enabler: ""
+        }
     });
     const firstFetch = useRef(true);
     const handleNextClick = () => {
@@ -163,7 +170,7 @@ const CampusStudentList = (props: Props) => {
         }
         //console.log(`Icon clicked for column: ${column}`);
     };
-    //console.log(perPage, currentPage);
+
     return (
         <>
             {noOrg ? (
@@ -239,9 +246,28 @@ const CampusStudentList = (props: Props) => {
                                                 >
                                                     <img src={CLIcon} alt="" />
                                                     <h2>
-                                                        {campusData.campus_lead}
+                                                        {
+                                                            campusData.lead
+                                                                .campus_lead
+                                                        }
                                                     </h2>
                                                     <p>Campus Lead</p>
+                                                </div>
+                                            </div>
+                                            <div className={styles.card}>
+                                                <div
+                                                    className={
+                                                        styles.campus_lead_card
+                                                    }
+                                                >
+                                                    <img src={CEIcon} alt="" />
+                                                    <h2>
+                                                        {
+                                                            campusData.lead
+                                                                .enabler
+                                                        }
+                                                    </h2>
+                                                    <p>Campus Enabler</p>
                                                 </div>
                                             </div>
                                         </div>

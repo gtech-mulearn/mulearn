@@ -4,17 +4,19 @@ import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
 import { AxiosError } from "axios";
 
-type CampusDataSet =
-    | "college_name"
-    | "campus_lead"
-    | "campus_code"
-    | "campus_zone"
-    | "total_karma"
-    | "total_members"
-    | "active_members"
-    | "rank";
+type CampusDataSet = {
+    college_name: string;
+    campus_lead: string;
+    campus_code: string;
+    campus_zone: string;
+    total_karma: string;
+    total_members: string;
+    active_members: string;
+    rank: string;
+    lead: { campus_lead: string; enabler: string };
+};
 type studentData = UseStateFunc<any[]>;
-type campusData = UseStateFunc<{ [T in CampusDataSet]: string }>;
+type campusData = UseStateFunc<CampusDataSet>;
 
 type studentLevelType = {
     level: number;
@@ -66,7 +68,7 @@ export const getStudentDetails = (
 export const getCampusDetails = (setCampusData: campusData) => {
     privateGateway
         .get(dashboardRoutes.getCampusDetails)
-        .then((response: APIResponse<{ [T in CampusDataSet]: string }>) => {
+        .then((response: APIResponse<CampusDataSet>) => {
             // console.log(response.data.response);
             setCampusData(response.data.response);
         })
