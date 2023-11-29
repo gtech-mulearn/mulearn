@@ -46,3 +46,9 @@ export const showToasts = ({
         }
     });
 };
+
+export function isDev() {
+    return (
+        !!import.meta.env.VITE_SERVER && import.meta.env.VITE_SERVER === "dev"
+    );
+}
