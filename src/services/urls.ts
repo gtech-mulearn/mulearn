@@ -58,6 +58,7 @@ export const dashboardRoutes = {
 
     getKarmaVoucher: "/api/v1/dashboard/karma-voucher/",
     getKarmaVoucherList: "api/v1/dashboard/karma-voucher/import/",
+    getKarmaVoucherTemplate: "api/v1/dashboard/karma-voucher/base-template/",
 
     getChannels: "/api/v1/dashboard/channels/",
     createChannel: "/api/v1/dashboard/channels/",
