@@ -8,7 +8,9 @@ import { PersonIcon } from "../../../assets/svg";
 import { PendingRequest } from "./LcPendingRequest";
 import { removeMember } from "../../../services/LearningCircleAPIs";
 import { useParams } from "react-router-dom";
+import { HiUserRemove } from "react-icons/hi";
 import toast from "react-hot-toast";
+import MuModal from "@/MuLearnComponents/MuModal/MuModal";
 
 type Props = {
     setTemp: Dispatch<SetStateAction<LcDashboardTempData>>;
@@ -57,7 +59,7 @@ type Prop = {
     lc: LcDetail | undefined;
     setTemp: Dispatch<SetStateAction<LcDashboardTempData>>;
 };
-const TeamList = (props:Prop) => {
+const TeamList = (props: Prop) => {
     return (
         <div className={styles.TeamNavSectionWrapper}>
             <div className={styles.teamList}>
@@ -100,7 +102,7 @@ const TeamMember = ({
     member,
     index,
     lc,
-	setTemp
+    setTemp
 }: {
     member: LcMembers;
     index: number;
@@ -108,6 +110,8 @@ const TeamMember = ({
     setTemp: Dispatch<SetStateAction<LcDashboardTempData>>;
 }) => {
     const { id } = useParams();
+    const [isModal, setIsModal] = useState(false);
+
     const handleRemoval = (memberId: string, isLead: boolean) => {
         if (lc?.is_lead && !isLead) {
             toast.promise(
@@ -127,7 +131,9 @@ const TeamMember = ({
                     }
                 }
             );
-        } else {toast.error("Cannot remove lead")}
+        } else {
+            toast.error("Cannot remove lead");
+        }
     };
     return (
         <div className={styles.memberBar}>
@@ -148,14 +154,31 @@ const TeamMember = ({
             <span className={member.is_lead ? "" : styles.karma}>
                 {member.karma}μ
             </span>
-            <BiDotsVertical
-                onClick={() => {
-                    handleRemoval(member.id, member.is_lead);
-                }}
-				style={{
-					cursor: "pointer"
-				}}
-            />
+            {!member?.is_lead && (
+                <HiUserRemove
+                    onClick={() => {
+                        setIsModal(true);
+                    }}
+                    style={{
+                        cursor: "pointer",
+                        color: "red"
+                    }}
+                />
+            )}
+            {isModal && (
+                <MuModal
+                    isOpen={isModal}
+                    onClose={() => setIsModal(false)}
+                    title={`Remove ${member.username}`}
+                    type={"error"}
+                    onDone={() => {
+                        handleRemoval(member.id, member.is_lead);
+                        setIsModal(false);
+                    }}
+                >
+                    <p>Are you sure you want to remove {member.username}?</p>
+                </MuModal>
+            )}
         </div>
     );
 };
