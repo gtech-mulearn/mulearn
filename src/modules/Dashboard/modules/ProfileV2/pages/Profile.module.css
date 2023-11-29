@@ -126,45 +126,36 @@
             align-items: center;
             justify-content: center;
             overflow-x: scroll;
+            gap: 10px;
+            position: relative;
 
-            .roles_container_inner {
+            .RoleWrapperContainer{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                h2{
+                    font-size: 15px;
+                    color: black;
+                }
+                p{
+                    font-size: 13px;
+                    color: #7D89B1;
+                }
+            }
+            .StyleCommonRole {
+                background-color: #c6d4ff;
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
                 display: flex;
                 align-items: center;
-                padding: 0px 10px;
-                gap: 30px;
-                width: fit-content;
-                position: relative;
-                overflow-x: scroll;
-
-                .line {
-                    width: calc(100% - 70px);
-                    height: 1px;
-                    background-color: #7d9bc6;
-                    position: absolute;
-                    margin-left: 30px;
-                }
-
-                .role {
-                    width: auto;
-                    border-radius: 10px;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    margin-top: 35px;
-                    z-index: 10;
-
-                    & p {
-                        color: #000000;
-                        margin-top: 10px;
-                        font-size: 12px;
-                        font-weight: 600;
-                        width: max-content;
-                    }
-
-                    & svg {
-                        animation: rotate 10s linear infinite;
-                    }
-                }
+                justify-content: center;
+            }
+            .innerStyleCommonRole {
+                background-color: #456ff6;
+                width: 15px;
+                height: 14px;
+                border-radius: 50%;
             }
         }
 
@@ -175,55 +166,34 @@
             font-weight: 800;
             left: 40px;
             top: 10px;
+            z-index: 500;
         }
 
-        .ellipse {
+      
+        .ellipseBasic {
             border: 2px solid #d5d8e6;
             border-radius: 50%;
-            width: 770px;
-            height: 750px;
             position: absolute;
-            left: -320px;
-        }
-
-        .ellipse1 {
-            border: 2px solid #d5d8e6;
-            border-radius: 50%;
-            width: 700px;
-            height: 760px;
-            position: absolute;
-            left: -320px;
-            top: 50px;
-        }
-
-        .ellipse2 {
-            border: 2px solid #d5d8e6;
-            border-radius: 50%;
-            width: 620px;
-            height: 640px;
-            position: absolute;
-            left: -320px;
-            top: 111px;
-        }
-
-        .ellipse3 {
-            border: 2px solid #d5d8e6;
-            border-radius: 50%;
-            width: 540px;
-            height: 540px;
-            position: absolute;
-            left: -320px;
-            top: 151px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
         }
 
         .planet {
             width: 90px;
             height: 90px;
             position: absolute;
-            left: -30px;
-            bottom: -30px;
-            background-image: url(../assets/images/planet.png);
-            background-size: contain;
+
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: url(../assets/images/planet.png) center center/contain
+                no-repeat;
+        }
+        .ElipseWrapper {
+            position: absolute;
+            bottom: 15px;
+            left: 10px;
         }
     }
 
