@@ -1,10 +1,14 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import styles from "../LcDashboard.module.css";
 import level7 from "../../../assets/images/Level 7.svg";
 import { BiDotsVertical } from "react-icons/bi";
 import pic from "../../../assets/images/profileIcon.svg";
 import LeadIcon from "../../../assets/images/Lead icon.svg";
 import { PersonIcon } from "../../../assets/svg";
+import { PendingRequest } from "./LcPendingRequest";
+import { removeMember } from "../../../services/LearningCircleAPIs";
+import { useParams } from "react-router-dom";
+import toast from "react-hot-toast";
 
 type Props = {
     setTemp: Dispatch<SetStateAction<LcDashboardTempData>>;
@@ -43,7 +47,7 @@ const LcTeam = (props: Props) => {
                 </button>
             </div>
             <div className={styles.ContentWrapper}>
-                <TeamList lc={props.lc} />
+                <TeamList lc={props.lc} setTemp={props.setTemp} />
             </div>
         </div>
     );
@@ -51,6 +55,7 @@ const LcTeam = (props: Props) => {
 
 type Prop = {
     lc: LcDetail | undefined;
+    setTemp: Dispatch<SetStateAction<LcDashboardTempData>>;
 };
 const TeamList = (props:Prop) => {
     return (
@@ -62,6 +67,8 @@ const TeamList = (props:Prop) => {
                             member={member}
                             index={index + 1}
                             key={`mem${index}`}
+                            lc={props.lc}
+                            setTemp={props.setTemp}
                         />
                     ))}
             </div>
@@ -75,10 +82,11 @@ const TeamList = (props:Prop) => {
                     </div>
                     <div className={styles.PendingRequestWrapper}>
                         {props.lc?.pending_members.map((member, index) => (
-                            <PendingRequestMember
+                            <PendingRequest
                                 member={member}
                                 index={index + 1}
                                 key={`mem${index}`}
+                                setTemp={props.setTemp}
                             />
                         ))}
                     </div>
@@ -90,11 +98,37 @@ const TeamList = (props:Prop) => {
 
 const TeamMember = ({
     member,
-    index
+    index,
+    lc,
+	setTemp
 }: {
     member: LcMembers;
     index: number;
+    lc: LcDetail | undefined;
+    setTemp: Dispatch<SetStateAction<LcDashboardTempData>>;
 }) => {
+    const { id } = useParams();
+    const handleRemoval = (memberId: string, isLead: boolean) => {
+        if (lc?.is_lead && !isLead) {
+            toast.promise(
+                removeMember(id, memberId), // Ensure this is a promise-returning function
+                {
+                    loading: "Loading...",
+                    success: () => {
+                        // Updating state on successful approval
+                        setTemp(prev => ({
+                            ...prev,
+                            isSchedule: true
+                        }));
+                        return <b>Member removed</b>;
+                    },
+                    error: () => {
+                        return <b>Member not removed</b>;
+                    }
+                }
+            );
+        } else {toast.error("Cannot remove lead")}
+    };
     return (
         <div className={styles.memberBar}>
             <span>{index}.</span>{" "}
@@ -114,36 +148,17 @@ const TeamMember = ({
             <span className={member.is_lead ? "" : styles.karma}>
                 {member.karma}μ
             </span>
-            <BiDotsVertical />
+            <BiDotsVertical
+                onClick={() => {
+                    handleRemoval(member.id, member.is_lead);
+                }}
+				style={{
+					cursor: "pointer"
+				}}
+            />
         </div>
     );
 };
 
-const PendingRequestMember = ({
-    member,
-    index
-}: {
-    member: LcMembers;
-    index: number;
-}) => {
-    return (
-        <div className={styles.memberBar}>
-            <div className={styles.LeftSection}>
-                <span>{index}.</span>{" "}
-                <img
-                    className={styles.MemberProfile}
-                    src={member.profile_pic}
-                    alt="DP"
-                />{" "}
-                <span className={styles.name}>{member.username}</span>
-                <p>Level{member.level || " 0"}</p>
-                <img src={level7} alt="level" />
-            </div>
-            <div className={styles.ButtonWrapper}>
-                <button style={{ backgroundColor: "#2DCE89" }}>Accept</button>
-                <button style={{ backgroundColor: "#FF5F5F" }}>Reject</button>
-            </div>
-        </div>
-    );
-};
+
 export default LcTeam;

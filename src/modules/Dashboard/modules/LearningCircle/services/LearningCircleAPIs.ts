@@ -223,8 +223,7 @@ export const getInterestGroups = async () => {
 export const approveLcUser = async (
     circleId: string | undefined,
     memberId: string,
-    flag: number,
-    status: string
+    flag: number
 ) => {
     try {
         const response = await privateGateway.patch(
@@ -237,26 +236,13 @@ export const approveLcUser = async (
                 is_accepted: flag
             }
         );
-
-        toast({
-            title: status,
-            description: "",
-            status: "success",
-            duration: 2000,
-            isClosable: true
-        });
+        const message = response.data;
+        return message;
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
             throw error;
         }
-        toast({
-            title: "Something went wrong",
-            description: "",
-            status: "error",
-            duration: 2000,
-            isClosable: true
-        });
     }
 };
 
@@ -295,7 +281,6 @@ export const leaveLc = async (
 export const removeMember = async (
     circleId: string | undefined,
     memberId: string,
-    navigate: NavigateFunction
 ) => {
     try {
         const response = await privateGateway.post(
@@ -305,26 +290,13 @@ export const removeMember = async (
                 memberId +
                 "/"
         );
-        toast({
-            title: "Success",
-            description: "",
-            status: "success",
-            duration: 2000,
-            isClosable: true
-        });
-        navigate(`/dashboard/learning-circle/dashboard/${circleId}`);
+		const message = response.data;
+		return message
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
             throw error;
         }
-        toast({
-            title: "Something went wrong",
-            description: "",
-            status: "error",
-            duration: 2000,
-            isClosable: true
-        });
     }
 };
 

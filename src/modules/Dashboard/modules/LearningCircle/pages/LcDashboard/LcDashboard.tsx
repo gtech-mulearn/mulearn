@@ -45,7 +45,7 @@ const LcDashboard = (props: Props) => {
 
     useEffect(() => {
         handleFetchDetails();
-    }, [temp.isSchedule]);
+    }, [temp.isSchedule, temp.isTeam]);
 
     return temp.loading ? (
         <MuLoader />
