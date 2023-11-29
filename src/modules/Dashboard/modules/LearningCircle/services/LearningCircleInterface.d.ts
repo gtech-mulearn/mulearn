@@ -22,7 +22,7 @@ interface LcMembers {
 type LcDetail = {
     name: string;
     circle_code: string;
-    note: string[];
+    note: string;
     meet_time: string;
     meet_place: string;
     day: number[];
