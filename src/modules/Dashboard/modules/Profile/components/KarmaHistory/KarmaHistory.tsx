@@ -3,6 +3,7 @@ import KarmaSymbol from "../../assets/svg/KarmaSymbol";
 import styles from "./KarmaHistory.module.css";
 import { Switch } from "@chakra-ui/react";
 import { useState } from "react";
+import { KarmaWhite } from "../../assets/svg/Karma";
 
 type Props = {
     userProfile: any;
@@ -44,7 +45,7 @@ const KarmaHistory = (props: Props) => {
                     return (
                         <div className={styles.karma_history} key={i}>
                             <p className={styles.karma_history_box_bg}>
-                                <KarmaSymbol />
+                                <KarmaWhite />
                             </p>
                             <div className={styles.content}>
                                 <h1 className={styles.karma}>{log.karma} ϰ</h1>

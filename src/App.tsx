@@ -280,7 +280,7 @@ function App() {
                     element: <DashboardRootLayout />,
                     children: [
                         { path: "profile", element: <Profile /> },
-                        { path: "profileV2", element: <ProfileV2 /> },
+                        // { path: "profileV2", element: <ProfileV2 /> },
                         {
                             path: "connect-discord",
                             element: <ConnectDiscord />
@@ -588,10 +588,10 @@ function App() {
                             path: "learning-circle/details/:id",
                             element: <LearningCircle />
                         },
-                        {
-                            path: "learning-circle/dashboard/:id",
-                            element: <LcDashboard />
-                        },
+                        // {
+                        //     path: "learning-circle/dashboard/:id",
+                        //     element: <LcDashboard />
+                        // },
                         {
                             path: "learning-circle/find-circle",
                             element: <FindCircle />
