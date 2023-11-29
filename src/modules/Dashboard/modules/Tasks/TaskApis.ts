@@ -111,7 +111,7 @@ export const editTask = async (
 ) => {
     try {
         const response = await privateGateway.put(
-            dashboardRoutes.getTasksData + id + "/",
+            dashboardRoutes.getTasksData + id,
             {
                 title: title,
                 hashtag: hashtag,
