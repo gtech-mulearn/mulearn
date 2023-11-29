@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-import styles from "./ChangePassword.module.css"
+import styles from "./Account.module.css"
 import { FormikTextInputWithoutLabel as SimpleInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { PowerfulButton } from '@/MuLearnComponents/MuButtons/MuButton';
 import { privateGateway } from '@/MuLearnServices/apiGateways';
@@ -10,7 +10,7 @@ import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import Modal from "@/MuLearnComponents/Modal/Modal";
 
-const ChangePassword = () => {
+const Account = () => {
   const scheme = Yup.object({
     password: Yup.string()
       .required("Password is required")
@@ -175,4 +175,4 @@ const ChangePassword = () => {
   )
 }
 
-export default ChangePassword
+export default Account

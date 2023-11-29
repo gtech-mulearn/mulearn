@@ -39,7 +39,7 @@ import CommunityPage from "./modules/Common/Authentication/pages/Onboarding/Comm
 import Foundation from "./modules/Public/Foundation/Foundation";
 import Channels from "./modules/Dashboard/modules/Channels/Pages/Channels";
 import Settings from "./modules/Dashboard/modules/Settings/Settings";
-import ChangePassword from "./modules/Dashboard/modules/Settings/pages/ChangePassword/ChangePassword";
+import Account from "./modules/Dashboard/modules/Settings/pages/Account/Account";
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
 );
@@ -613,12 +613,8 @@ function App() {
                             element: <Settings />,
                             children: [
                                 {
-                                    path: "change-password",
-                                    element: <ChangePassword />
-                                },
-                                {
-                                    path: "connected-devices",
-                                    element: <ConnectedDevices />
+                                    path: "account",
+                                    element: <Account />
                                 }
                             ]
                         }
