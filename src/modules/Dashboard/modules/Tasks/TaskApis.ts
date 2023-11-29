@@ -21,7 +21,7 @@ const uuidMapper = (uuid: Partial<uuidType>) => {
 };
 
 //Converts all uuids to corresponding string in taskdata
-export const uuidToString = (data: any, uuid: Partial<uuidType>) => {
+const uuidToString = (data: any, uuid: Partial<uuidType>) => {
     const Mapper = uuidMapper(uuid);
     return data.map((task: any) => {
         task.level = Mapper.level![task.level];
@@ -79,7 +79,7 @@ export const getTaskDetails = async (
 ) => {
     try {
         const response = await privateGateway.get(
-            dashboardRoutes.getTasksData + id
+            dashboardRoutes.getTasksData + id + "/"
         );
         const message: any = response?.data;
         setData(message.response);
@@ -106,7 +106,6 @@ export const editTask = async (
     discord_link: string,
     desc: string,
     id: string | undefined,
-    event: string,
     toast: ToastAsPara
 ) => {
     try {
@@ -125,8 +124,7 @@ export const editTask = async (
                 level: level_id === "" ? null : level_id,
                 ig: ig_id === "" ? null : ig_id,
                 org: org_id === "" ? null : org_id,
-                discord_link: discord_link === "" ? null : discord_link,
-                event: event
+                discord_link: discord_link === "" ? null : discord_link
             }
         );
         toast({
@@ -164,7 +162,6 @@ export const createTask = async (
     ig_id: string,
     org_id: string,
     discord_link: string,
-    event: string,
     toast: ToastAsPara
 ) => {
     try {
@@ -183,8 +180,7 @@ export const createTask = async (
                 level: level_id === "" ? null : level_id,
                 ig: ig_id === "" ? null : ig_id,
                 org: org_id === "" ? null : org_id,
-                discord_link: discord_link,
-                event: event
+                discord_link: discord_link
             }
         );
         toast({
