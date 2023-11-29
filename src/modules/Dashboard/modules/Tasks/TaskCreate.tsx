@@ -16,8 +16,6 @@ import { useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { AxiosError } from "axios";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
-import Select from "react-select";
-import { customReactSelectStyles } from "../../utils/common";
 
 const TaskCreate = () => {
     const navigate = useNavigate();
@@ -68,9 +66,6 @@ const TaskCreate = () => {
         discord_link: Yup.string().nullable()
     });
 
-    const [selectedChannel, setSelectedChannel] =
-        useState<AffiliationOption | null>(null);
-    const [blurStatus, setBlurStatus] = useState({ affiliation: false });
     if (!uuidData) return <MuLoader />;
 
     return (
@@ -110,7 +105,6 @@ const TaskCreate = () => {
                             values.ig_id,
                             values.organization_id,
                             values.discord_link,
-                            "",
                             toast
                         );
 
@@ -173,42 +167,19 @@ const TaskCreate = () => {
                             placeholder="..."
                             required
                         />
-                        <FormikReactSelect
+                        <FormikSelect
                             label="Channel"
                             name="channel_id"
-                            options={uuidData?.channel.map(val => {
-                                return { value: val.name, label: val.name };
-                            })}
-                            key={12}
                             required
                         >
-
-                        </FormikReactSelect>
-
-                        <Select
-                            styles={customReactSelectStyles}
-                            options={uuidData?.channel.map(val => {
-                                return { value: val.id, label: val.name };
+                            <option value="">Select an option</option>
+                            {uuidData?.channel.map(val => {
+                                return (
+                                    <option value={val.id}>{val.name}</option>
+                                );
                             })}
-                            isClearable
-                            placeholder="Channel"
-                            isLoading={!uuidData?.channel.length}
-                            value={selectedChannel}
-                            onChange={value => setSelectedChannel(value)}
-                            onBlur={() => {
-                                setBlurStatus(prev => ({
-                                    ...prev,
-                                    channel: true
-                                }));
-                            }}
-                            name="level_id"
-                            required
-                        >
-
-                        </Select>
-
-
-                        <FormikSelect label="Type" name="type_id">
+                        </FormikSelect>
+                        <FormikSelect label="Type" name="type_id" required>
                             <option value="">Select an option</option>
                             {uuidData?.type.map(val => {
                                 return (
@@ -216,8 +187,6 @@ const TaskCreate = () => {
                                 );
                             })}
                         </FormikSelect>
-
-
                         <FormikSelect label="Level" name="level_id">
                             <option value="">Select an option</option>
                             {uuidData?.level.map(val => {

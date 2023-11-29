@@ -19,6 +19,7 @@ export const getUserProfile = (
             setAPILoadStatus(response.data.statusCode);
             setUserProfile(response.data.response);
             setProfileStatus(response.data.response.is_public);
+            localStorage.setItem("userId", response.data.response.id);
         })
         .catch(error => {
             console.log(error);

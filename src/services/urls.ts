@@ -157,7 +157,8 @@ export const dashboardRoutes = {
     clearErrorLog: "api/v1/dashboard/error-log/clear/",
 
     //Settings
-    changePassword: "api/v1/dashboard/profile/change-password/"
+    changePassword: "api/v1/dashboard/profile/change-password/",
+    deleteUser: "/api/v1/dashboard/user/",
 } as const;
 
 export const organizationRoutes = {
