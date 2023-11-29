@@ -29,7 +29,7 @@ const LcHistory = (props: Props) => {
 
     return (
         <div className={styles.HistoryDataWrapper}>
-            {data && (
+            {data ? (
                 <>
                     <div className={styles.SectionTop}>
                         <div className={styles.Headings}>
@@ -62,8 +62,8 @@ const LcHistory = (props: Props) => {
                     <div className={styles.SectionBottom}>
                         <div className={styles.Headings}>
                             <h2>Attendees</h2>
-                            {Array.isArray(data.attendees) &&
-                                data.attendees.map(attendee => (
+                            {Array.isArray(data.attendees_details) &&
+                                data.attendees_details.map(attendee => (
                                     <div>
                                         <LcAttendees
                                             name={attendee.fullname}
@@ -82,7 +82,7 @@ const LcHistory = (props: Props) => {
                         </div>
                     </div>
                 </>
-            )}
+            ) : <div>TEST</div>}
         </div>
     );
 };
