@@ -53,6 +53,8 @@ export const getStudentDetails = (
                     response.data.response.data[i].join_date = new Date(
                         response.data.response.data[i].join_date
                     ).toLocaleDateString("en-GB");
+                    response.data.response.data[i].id =
+                        response.data.response.data[i].user_id;
                 }
 
                 setStudentData(response.data.response.data);
@@ -137,5 +139,19 @@ export const getStudentLevel = async (errHandler: (err: string) => void) => {
         console.log(err);
         errHandler((err as AxiosError).message);
         return [];
+    }
+};
+
+export const setAlumniStatus = async (
+    id: string,
+    isAlumni: boolean,
+    errHandler: (err: string) => void
+) => {
+    try {
+        privateGateway.patch(dashboardRoutes.setAlumniStatus + `${id}`, {
+            is_alumni: isAlumni
+        });
+    } catch (err: any) {
+        errHandler((err as AxiosError).message);
     }
 };

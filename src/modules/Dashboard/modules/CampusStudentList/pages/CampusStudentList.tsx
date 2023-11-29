@@ -3,21 +3,23 @@ import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import THead from "@/MuLearnComponents/Table/THead";
 import Table from "@/MuLearnComponents/Table/Table";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
-import { useEffect, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { titleCase } from "title-case";
 import {
     getCampusDetails,
     getStudentDetails,
     getStudentLevel,
-    getWeeklyKarma
+    getWeeklyKarma,
+    setAlumniStatus
 } from "../services/apis";
 import { PieChart, BarChart } from "../Components/Graphs";
 import styles from "./CampusStudentList.module.css";
 import CLIcon from "../assets/images/CampusLeadIcon.svg";
 import CEIcon from "../../LearningCircle/assets/images/Lead icon.svg";
-import { useToast } from "@chakra-ui/react";
+import { Spinner, useToast } from "@chakra-ui/react";
 import { convertDateToDayAndMonth } from "../../../utils/common";
+import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 
 type Props = {};
 
@@ -35,7 +37,7 @@ const CampusStudentList = (props: Props) => {
     const [noOrg, setNoOrg] = useState(false);
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
-    console.log(studentData);
+
     //graph data
     const [pieData, setPieData] = useState<string[][] | null>(null);
     const [barData, setBarData] = useState<string[][] | null>(null);
@@ -50,7 +52,12 @@ const CampusStudentList = (props: Props) => {
         });
     };
 
-    const columnOrder = [
+    const columnOrder: {
+        isSortable: boolean;
+        column: string;
+        Label: string;
+        wrap?: (data: string, id: string) => ReactJSXElement;
+    }[] = [
         { column: "fullname", Label: "Name", isSortable: true },
         // { column: "email", Label: "Email", isSortable: false },
         { column: "karma", Label: "Karma", isSortable: true },
@@ -59,7 +66,15 @@ const CampusStudentList = (props: Props) => {
         { column: "muid", Label: "MuId", isSortable: true },
         { column: "email", Label: "Email", isSortable: false },
         { column: "mobile", Label: "Mobile", isSortable: false },
-        { column: "join_date", Label: "Join Date", isSortable: false }
+        { column: "join_date", Label: "Join Date", isSortable: false },
+        {
+            column: "is_alumni",
+            Label: "Alumni",
+            isSortable: false,
+            wrap: (data, id) => {
+                return <AlumniCheckBox checked={data === "1"} id={id} />;
+            }
+        }
     ];
 
     const [campusData, setCampusData] = useState({
@@ -345,5 +360,35 @@ const CampusStudentList = (props: Props) => {
         </>
     );
 };
+
+type checkbox_T = {
+    checked: boolean;
+    id: string;
+};
+
+function AlumniCheckBox(props: checkbox_T) {
+    const [checked, setChecked] = useState(props.checked);
+    const [loading, setLoading] = useState(false);
+
+    const handleChange = async (e: ChangeEvent<HTMLInputElement>) => {
+        console.log(e.target.checked);
+        setLoading(true);
+        try {
+            await setAlumniStatus(props.id, e.target.checked, msg => {});
+            setChecked(e.target.checked);
+        } catch (err) {}
+        setLoading(false);
+    };
+
+    if (loading) return <Spinner />;
+    return (
+        <input
+            type="checkbox"
+            checked={checked}
+            className={styles.checkbox}
+            onChange={handleChange}
+        />
+    );
+}
 
 export default CampusStudentList;
