@@ -18,11 +18,12 @@ const LcCheckList = (props: prop) => {
 
     useEffect(() => {
         try {
-            const data = JSON.parse(props.data?.note || "[]");
-            setItems(Array.isArray(data) ? data : []);
+            if(props.data?.note){
+				    const data = JSON.parse(props.data?.note);
+				    setItems(data);
+			  }
         } catch (error) {
             console.error("Error parsing JSON:", error);
-            setItems([]);
         }
     }, [props.data?.note]);
 
@@ -54,7 +55,9 @@ const LcCheckList = (props: prop) => {
 			note: data,
 			id: id
 		}
-        updateLcNote(note)
+		if(data !== "[]"){
+			updateLcNote(note)
+		}
     };
 
     useEffect(() => {
@@ -64,6 +67,7 @@ const LcCheckList = (props: prop) => {
 
     return (
         <div className={styles.CheckBoxContainerWrapper}>
+			<h4 style={{ fontWeight: "bold", textAlign: "left", width: "100%" }}>TODO</h4>
             {items.map(item => (
                 <div key={item.id} className={styles.CheckBoxContainer}>
                     <input
