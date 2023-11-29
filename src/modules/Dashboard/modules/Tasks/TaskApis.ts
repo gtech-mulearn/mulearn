@@ -21,7 +21,7 @@ const uuidMapper = (uuid: Partial<uuidType>) => {
 };
 
 //Converts all uuids to corresponding string in taskdata
-const uuidToString = (data: any, uuid: Partial<uuidType>) => {
+export const uuidToString = (data: any, uuid: Partial<uuidType>) => {
     const Mapper = uuidMapper(uuid);
     return data.map((task: any) => {
         task.level = Mapper.level![task.level];
@@ -106,6 +106,7 @@ export const editTask = async (
     discord_link: string,
     desc: string,
     id: string | undefined,
+    event: string,
     toast: ToastAsPara
 ) => {
     try {
@@ -162,6 +163,7 @@ export const createTask = async (
     ig_id: string,
     org_id: string,
     discord_link: string,
+    event: string,
     toast: ToastAsPara
 ) => {
     try {
