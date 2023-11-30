@@ -34,8 +34,28 @@ export const getCollegeLevels = async (
                 }
             }
         );
-        console.log(response.data.response.data);
-        setData(response.data.response.data);
+        const data = response.data.response.data;
+        console.log(
+            data.map((data: any) => ({
+                id: data.id,
+                no_of_alumni: data.no_of_alumni,
+                org: data.org,
+                ...data.no_of_lc,
+                ...data.number_of_members,
+                ...data.total_karma
+            }))
+        );
+
+        setData(
+            data.map((data: any) => ({
+                id: data.id,
+                no_of_alumni: data.no_of_alumni,
+                org: data.org,
+                ...data.no_of_lc,
+                ...data.number_of_members,
+                ...data.total_karma
+            }))
+        );
     } catch (err) {
         if (errHandler) errHandler(err);
         console.log(err);

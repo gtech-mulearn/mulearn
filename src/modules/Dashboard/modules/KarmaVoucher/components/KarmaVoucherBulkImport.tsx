@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 import { convertToXLSX } from "../../Tasks/TaskApis";
 import { CountCard } from "../../Tasks/TaskBulkImport";
+import { getKarmaVoucherTemplate } from "../service/api";
 
 const KarmaVoucherBulkImport = () => {
     const [uploadResponse, setUploadResponse] = useState<any>(null);
@@ -49,9 +50,7 @@ const KarmaVoucherBulkImport = () => {
                 <PowerfulButton
                     variant="secondary"
                     onClick={() =>
-                        window.open(
-                            "https://docs.google.com/spreadsheets/d/1eldAqkpzfzCsNeK40bviPtaZfppttstb/export?format=xlsx&id=1eldAqkpzfzCsNeK40bviPtaZfppttstb"
-                        )
+                        getKarmaVoucherTemplate()
                     }
                 >
                     <BiDownload />

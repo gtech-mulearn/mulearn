@@ -1,11 +1,5 @@
 import { useState } from "react";
 import styles from "./MuVoyage.module.css";
-import level1 from "../assets/images/Level1.webp";
-import level2 from "../assets/images/Level2.webp";
-import level3 from "../assets/images/Level3.webp";
-import level4 from "../assets/images/Level4.webp";
-import level5 from "../assets/images/Level5.webp";
-import level6 from "../assets/images/Level6.webp";
 import discordicon from "../assets/images/discordicon.webp";
 import {
     Progress,
@@ -13,6 +7,7 @@ import {
     CircularProgressLabel
 } from "@chakra-ui/react";
 import Roket from "../assets/images/svg/Roket";
+import { userLevelBadge } from "../../../../../utils/utils";
 
 type Props = {
     userLevelData: {
@@ -28,8 +23,6 @@ type Props = {
     }[];
     userLevel: number;
 };
-
-const levelImages = [level1, level2, level3, level4, level5, level6];
 
 const MuVoyage = (props: Props) => {
     const [userLevelData, setUserLevelData] = useState(props.userLevelData);
@@ -65,7 +58,7 @@ const MuVoyage = (props: Props) => {
                             <div className={styles.title}>
                                 <span>
                                     <img
-                                        src={levelImages[props.userLevel - 1]}
+                                        src={userLevelBadge(props.userLevel)}
                                         alt={`Level ${props.userLevel}`}
                                     />
                                     {/* <img src={level1} alt="" /> */}

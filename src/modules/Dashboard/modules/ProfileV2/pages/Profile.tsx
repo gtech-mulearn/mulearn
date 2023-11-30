@@ -31,11 +31,13 @@ import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
 import { Projects } from "../components/Projects/Projects";
 import { PieChart } from "../components/Piechart/PieChart";
 import Rocket from "../assets/svg/Rocket";
-import Planet from "../assets/svg/Planets/Planet";
+
 import Planet2 from "../assets/svg/Planets/Planet2";
 import Planet3 from "../assets/svg/Planets/Planet3";
 import KarmaDist from "../assets/svg/KarmaDist";
 import ProfileHeader from "../components/ProfileHeader/ProfileHeader";
+import { calc } from "@chakra-ui/react";
+import Example from "../components/CircularProgressChart/CircularProgressChart";
 
 type Props = {};
 interface CircleSection {
@@ -168,6 +170,11 @@ const ProfileV2 = (props: Props) => {
     };
     // console.log(socials);
 
+    const formattedData = data.map(item => ({
+        name: item[0] as string,
+        value: item[1] as number
+    }));
+
     return (
         <>
             {/* <div className={styles.basic_details}>
@@ -218,7 +225,7 @@ const ProfileV2 = (props: Props) => {
                         <div className={styles.status + " " + styles.Levels}>
                             <div className={styles.status_box}>
                                 <p>Level</p>
-                                <p style={{ color: "#B7C7FC" }}>
+                                <p>
                                     {" "}
                                     {userProfile.level
                                         ? userProfile?.level?.slice(3, 4)
@@ -284,45 +291,52 @@ const ProfileV2 = (props: Props) => {
                 <div className={styles.roles_karma_dist_container}>
                     <div className={styles.role_distribution_container}>
                         <h1>Roles and contributions</h1>
-                        <div className={styles.ellipse}></div>
-                        <div className={styles.ellipse1}></div>
-                        <div className={styles.ellipse2}></div>
-                        <div className={styles.ellipse3}></div>
-                        <div className={styles.planet}></div>
+                        <div className={styles.ElipseWrapper}>
+                            {userProfile.roles?.map((item, index) => {
+                                return (
+                                    <div
+                                        className={styles.ellipseBasic}
+                                        style={{
+                                            width: `calc(250px + ${
+                                                140 * index
+                                            }px)`,
+                                            height: `calc(200px + ${
+                                                140 * index
+                                            }px)`
+                                        }}
+                                    ></div>
+                                );
+                            })}
+
+                            <div className={styles.planet}></div>
+                        </div>
                         <div className={styles.roles_container}>
-                            <div className={styles.roles_container_inner}>
-                                <p className={styles.line}></p>
-                                {userProfile.roles?.map((item, index) => {
-                                    return (
-                                        <div
-                                            className={styles.role}
-                                            key={index}
-                                        >
-                                            {/* randome planet */}
-                                            {index === 0 ? (
-                                                <Planet />
-                                            ) : index === 1 ? (
-                                                <Planet2 />
-                                            ) : index === 2 ? (
-                                                <Planet3 />
-                                            ) : (
-                                                <Planet />
-                                            )}
-                                            <p> {item}</p>
+                            {userProfile.roles?.map((item, index) => {
+                                return (
+                                    <div
+                                        className={styles.RoleWrapperContainer}
+                                    >
+                                        <div className={styles.StyleCommonRole}>
+                                            <div
+                                                className={
+                                                    styles.innerStyleCommonRole
+                                                }
+                                            ></div>
                                         </div>
-                                    );
-                                })}
-                            </div>
+
+                                        <h2> {item}</h2>
+                                        <p>(2021)</p>
+                                    </div>
+                                );
+                            })}
                         </div>
                     </div>
                     <div className={styles.karma_distribution_container}>
+                        {" "}
                         <h1>Karma distribution</h1>
                         <div className={styles.container}>
-                            {/* <div className={styles.ui_widgets}>
-                            <div className={styles.ui_value}>85%</div>
-                            <div className={styles.ui_labels}>Java</div>
-                        </div> <KarmaDist sections={circleSections} /> */}
-                            <PieChart data={data} />
+                            {/* <PieChart data={data} /> */}
+                            <Example data={formattedData} />
                         </div>
                     </div>
                 </div>
