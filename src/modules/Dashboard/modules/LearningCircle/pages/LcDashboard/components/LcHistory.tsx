@@ -12,6 +12,7 @@ import {
     extract24hTimeFromDateTime,
     getDayOfWeek
 } from "../../../services/utils";
+import { useParams } from "react-router-dom";
 
 type Props = {
     id: string | undefined;
@@ -20,9 +21,10 @@ type Props = {
 
 const LcHistory = (props: Props) => {
     const [data, setData] = useState<LcHistory>();
+	const {id} = useParams()
 
     useEffect(() => {
-        getLCMeetingReport(props.id).then(res => {
+        getLCMeetingReport(props.id, id).then(res => {
             setData(res);
         });
     }, []);

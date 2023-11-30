@@ -13,15 +13,15 @@ type prop = {
 const LcCheckList = (props: prop) => {
     const [items, setItems] = useState<ChecklistItem[]>([]);
     const [isOpen, setIsOpen] = useState(false);
-	const {id} = useParams()
+    const { id } = useParams();
     const [newItemText, setNewItemText] = useState("");
 
     useEffect(() => {
         try {
-            if(props.data?.note){
-				    const data = JSON.parse(props.data?.note);
-				    setItems(data);
-			  }
+            if (props.data?.note) {
+                const data = JSON.parse(props.data?.note);
+                setItems(data);
+            }
         } catch (error) {
             console.error("Error parsing JSON:", error);
         }
@@ -51,13 +51,13 @@ const LcCheckList = (props: prop) => {
     };
 
     const sendToBackend = (data: string) => {
-		let note = {
-			note: data,
-			id: id
-		}
-		if(data !== "[]"){
-			updateLcNote(note)
-		}
+        let note = {
+            note: data,
+            id: id
+        };
+        if (data !== "[]") {
+            updateLcNote(note);
+        }
     };
 
     useEffect(() => {
@@ -67,7 +67,11 @@ const LcCheckList = (props: prop) => {
 
     return (
         <div className={styles.CheckBoxContainerWrapper}>
-			<h4 style={{ fontWeight: "bold", textAlign: "left", width: "100%" }}>TODO</h4>
+            <h4
+                style={{ fontWeight: "bold", textAlign: "left", width: "100%" }}
+            >
+                TODO
+            </h4>
             {items.map(item => (
                 <div key={item.id} className={styles.CheckBoxContainer}>
                     <input

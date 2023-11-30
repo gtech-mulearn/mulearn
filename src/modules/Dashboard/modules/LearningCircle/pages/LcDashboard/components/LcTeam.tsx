@@ -114,23 +114,20 @@ const TeamMember = ({
 
     const handleRemoval = (memberId: string, isLead: boolean) => {
         if (lc?.is_lead && !isLead) {
-            toast.promise(
-                removeMember(id, memberId), // Ensure this is a promise-returning function
-                {
-                    loading: "Loading...",
-                    success: () => {
-                        // Updating state on successful approval
-                        setTemp(prev => ({
-                            ...prev,
-                            isSchedule: true
-                        }));
-                        return <b>Member removed</b>;
-                    },
-                    error: () => {
-                        return <b>Member not removed</b>;
-                    }
+            toast.promise(removeMember(id, memberId), {
+                loading: "Loading...",
+                success: () => {
+                    // Updating state for re-render
+                    setTemp(prev => ({
+                        ...prev,
+                        isSchedule: !prev.isSchedule
+                    }));
+                    return <b>Member removed</b>;
+                },
+                error: () => {
+                    return <b>Member not removed</b>;
                 }
-            );
+            });
         } else {
             toast.error("Cannot remove lead");
         }

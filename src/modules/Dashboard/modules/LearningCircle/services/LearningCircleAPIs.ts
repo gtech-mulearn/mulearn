@@ -11,7 +11,7 @@ export const getUserLearningCircles = async (
 ) => {
     try {
         const response = await privateGateway.get(
-            dashboardRoutes.getCampusLearningCircles
+            dashboardRoutes.getCampusLearningCircles + "user-list/"
         );
         const message: any = response?.data;
         setCircleList(message.response);
@@ -29,7 +29,7 @@ export const getLcDetails = async (
 ) => {
     try {
         const response = (await privateGateway.get(
-            dashboardRoutes.getCampusLearningCircles + id + "/"
+            dashboardRoutes.lc + id + "/details/"
         )) as APIResponse<LcDetail & { day: string }>;
 
         const message = response.data.response;
@@ -53,7 +53,7 @@ export const getLcDetails = async (
 export const updateLcNote = async (data: LcNote) => {
     try {
         const response = await privateGateway.put(
-            dashboardRoutes.getCampusLearningCircles + data.id,
+            dashboardRoutes.lc + data.id + "/details/",
             data
         );
         const message: any = response;
@@ -163,8 +163,8 @@ export const createCircle = async (
 
 export const setLCMeetTime = async (data: LcMeetSchedule, id: string | undefined) => {
     try {
-        const response = await privateGateway.patch(
-            dashboardRoutes.setLCMeetTime + id,
+        const response = await privateGateway.put(
+            dashboardRoutes.lc + id + "/schedule-meet/",
             data
         );
         const message: any = response?.data;
@@ -395,7 +395,8 @@ export const reportMeeting = async (id: string | undefined, data: {
 }) => {
     try {
         const response = await privateGateway.post(
-            dashboardRoutes.reportLCMeet + id + "/", data
+            dashboardRoutes.lc + id + "/report/create/",
+            data
         );
         const message: any = response?.data;
         return message;
@@ -407,10 +408,10 @@ export const reportMeeting = async (id: string | undefined, data: {
     }
 };
 
-export const getLCMeetingReport = async (id: string | undefined) => {
+export const getLCMeetingReport = async (reportId: string | undefined, circleId: string | undefined) => {
     try {
         const response = await privateGateway.get(
-            dashboardRoutes.getLCMeetReport + id,
+            dashboardRoutes.lc + circleId + "/report/" + reportId + "/show/",
         );
         const message: any = response?.data;
         return message.response;
