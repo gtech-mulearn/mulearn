@@ -71,7 +71,7 @@
 .campus_student_list_container .content .sec1 .details_card .card {
     width: 230px;
     border-radius: 10px;
-    padding: 3px 30px;
+    /* padding: 3px 30px; */
     text-align: center;
     font-weight: 900;
 }
@@ -305,4 +305,7 @@
 
 .no_org_button:hover {
     background-color: #0077b6;
+}
+
+.checkbox {
 }

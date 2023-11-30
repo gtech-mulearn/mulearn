@@ -359,17 +359,17 @@ const Planet3 = (props: Props) => {
                     gradientUnits="userSpaceOnUse"
                     gradientTransform="translate(3.82108 5.33226) scale(16.0553 16.0554)"
                 >
-                    <stop offset="0.00558659" stop-color="#FFB80B" />
-                    <stop offset="0.258" stop-color="#FFB60C" />
-                    <stop offset="0.384" stop-color="#FEAE10" />
-                    <stop offset="0.4821" stop-color="#FCA117" />
-                    <stop offset="0.5656" stop-color="#FA8E21" />
-                    <stop offset="0.6392" stop-color="#F7762E" />
-                    <stop offset="0.662" stop-color="#F66D33" />
-                    <stop offset="0.7209" stop-color="#EF6836" />
-                    <stop offset="0.8061" stop-color="#DC593D" />
-                    <stop offset="0.9068" stop-color="#BD4049" />
-                    <stop offset="0.9832" stop-color="#A02A54" />
+                    <stop offset="0.00558659" stopColor="#FFB80B" />
+                    <stop offset="0.258" stopColor="#FFB60C" />
+                    <stop offset="0.384" stopColor="#FEAE10" />
+                    <stop offset="0.4821" stopColor="#FCA117" />
+                    <stop offset="0.5656" stopColor="#FA8E21" />
+                    <stop offset="0.6392" stopColor="#F7762E" />
+                    <stop offset="0.662" stopColor="#F66D33" />
+                    <stop offset="0.7209" stopColor="#EF6836" />
+                    <stop offset="0.8061" stopColor="#DC593D" />
+                    <stop offset="0.9068" stopColor="#BD4049" />
+                    <stop offset="0.9832" stopColor="#A02A54" />
                 </radialGradient>
                 <linearGradient
                     id="paint1_linear_3895_1515"
@@ -379,11 +379,11 @@ const Planet3 = (props: Props) => {
                     y2="12.9473"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop offset="0.0111732" stop-color="#FFA90B" />
-                    <stop offset="0.3713" stop-color="#FFA60E" />
-                    <stop offset="0.6354" stop-color="#FF9D16" />
-                    <stop offset="0.868" stop-color="#FF8D25" />
-                    <stop offset="1" stop-color="#FF8031" />
+                    <stop offset="0.0111732" stopColor="#FFA90B" />
+                    <stop offset="0.3713" stopColor="#FFA60E" />
+                    <stop offset="0.6354" stopColor="#FF9D16" />
+                    <stop offset="0.868" stopColor="#FF8D25" />
+                    <stop offset="1" stopColor="#FF8031" />
                 </linearGradient>
                 <linearGradient
                     id="paint2_linear_3895_1515"
@@ -393,12 +393,12 @@ const Planet3 = (props: Props) => {
                     y2="12.9473"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop offset="0.0111732" stop-color="#FFE00B" />
-                    <stop offset="0.3061" stop-color="#FFDD0D" />
-                    <stop offset="0.5224" stop-color="#FFD412" />
-                    <stop offset="0.7136" stop-color="#FFC41B" />
-                    <stop offset="0.8891" stop-color="#FFAD27" />
-                    <stop offset="1" stop-color="#FF9B31" />
+                    <stop offset="0.0111732" stopColor="#FFE00B" />
+                    <stop offset="0.3061" stopColor="#FFDD0D" />
+                    <stop offset="0.5224" stopColor="#FFD412" />
+                    <stop offset="0.7136" stopColor="#FFC41B" />
+                    <stop offset="0.8891" stopColor="#FFAD27" />
+                    <stop offset="1" stopColor="#FF9B31" />
                 </linearGradient>
                 <linearGradient
                     id="paint3_linear_3895_1515"
@@ -408,11 +408,11 @@ const Planet3 = (props: Props) => {
                     y2="7.11089"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop offset="0.0111732" stop-color="#FFA90B" />
-                    <stop offset="0.3713" stop-color="#FFA60E" />
-                    <stop offset="0.6354" stop-color="#FF9D16" />
-                    <stop offset="0.868" stop-color="#FF8D25" />
-                    <stop offset="1" stop-color="#FF8031" />
+                    <stop offset="0.0111732" stopColor="#FFA90B" />
+                    <stop offset="0.3713" stopColor="#FFA60E" />
+                    <stop offset="0.6354" stopColor="#FF9D16" />
+                    <stop offset="0.868" stopColor="#FF8D25" />
+                    <stop offset="1" stopColor="#FF8031" />
                 </linearGradient>
                 <linearGradient
                     id="paint4_linear_3895_1515"
@@ -422,12 +422,12 @@ const Planet3 = (props: Props) => {
                     y2="7.11477"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop offset="0.0111732" stop-color="#FFE00B" />
-                    <stop offset="0.3061" stop-color="#FFDD0D" />
-                    <stop offset="0.5224" stop-color="#FFD412" />
-                    <stop offset="0.7136" stop-color="#FFC41B" />
-                    <stop offset="0.8891" stop-color="#FFAD27" />
-                    <stop offset="1" stop-color="#FF9B31" />
+                    <stop offset="0.0111732" stopColor="#FFE00B" />
+                    <stop offset="0.3061" stopColor="#FFDD0D" />
+                    <stop offset="0.5224" stopColor="#FFD412" />
+                    <stop offset="0.7136" stopColor="#FFC41B" />
+                    <stop offset="0.8891" stopColor="#FFAD27" />
+                    <stop offset="1" stopColor="#FF9B31" />
                 </linearGradient>
                 <linearGradient
                     id="paint5_linear_3895_1515"
@@ -437,11 +437,11 @@ const Planet3 = (props: Props) => {
                     y2="9.51867"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop offset="0.0111732" stop-color="#FF8E0B" />
-                    <stop offset="0.3475" stop-color="#FD8B0D" />
-                    <stop offset="0.5941" stop-color="#F98215" />
-                    <stop offset="0.8113" stop-color="#F17221" />
-                    <stop offset="1" stop-color="#E65D31" />
+                    <stop offset="0.0111732" stopColor="#FF8E0B" />
+                    <stop offset="0.3475" stopColor="#FD8B0D" />
+                    <stop offset="0.5941" stopColor="#F98215" />
+                    <stop offset="0.8113" stopColor="#F17221" />
+                    <stop offset="1" stopColor="#E65D31" />
                 </linearGradient>
                 <linearGradient
                     id="paint6_linear_3895_1515"
@@ -451,12 +451,12 @@ const Planet3 = (props: Props) => {
                     y2="12.9468"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop offset="0.0111732" stop-color="#FFE00B" />
-                    <stop offset="0.3061" stop-color="#FFDD0D" />
-                    <stop offset="0.5224" stop-color="#FFD412" />
-                    <stop offset="0.7136" stop-color="#FFC41B" />
-                    <stop offset="0.8891" stop-color="#FFAD27" />
-                    <stop offset="1" stop-color="#FF9B31" />
+                    <stop offset="0.0111732" stopColor="#FFE00B" />
+                    <stop offset="0.3061" stopColor="#FFDD0D" />
+                    <stop offset="0.5224" stopColor="#FFD412" />
+                    <stop offset="0.7136" stopColor="#FFC41B" />
+                    <stop offset="0.8891" stopColor="#FFAD27" />
+                    <stop offset="1" stopColor="#FF9B31" />
                 </linearGradient>
                 <linearGradient
                     id="paint7_linear_3895_1515"
@@ -466,11 +466,11 @@ const Planet3 = (props: Props) => {
                     y2="6.71269"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop offset="0.0111732" stop-color="#FFA90B" />
-                    <stop offset="0.3713" stop-color="#FFA60E" />
-                    <stop offset="0.6354" stop-color="#FF9D16" />
-                    <stop offset="0.868" stop-color="#FF8D25" />
-                    <stop offset="1" stop-color="#FF8031" />
+                    <stop offset="0.0111732" stopColor="#FFA90B" />
+                    <stop offset="0.3713" stopColor="#FFA60E" />
+                    <stop offset="0.6354" stopColor="#FF9D16" />
+                    <stop offset="0.868" stopColor="#FF8D25" />
+                    <stop offset="1" stopColor="#FF8031" />
                 </linearGradient>
                 <linearGradient
                     id="paint8_linear_3895_1515"
@@ -480,12 +480,12 @@ const Planet3 = (props: Props) => {
                     y2="6.8861"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop offset="0.0111732" stop-color="#FFE00B" />
-                    <stop offset="0.3061" stop-color="#FFDD0D" />
-                    <stop offset="0.5224" stop-color="#FFD412" />
-                    <stop offset="0.7136" stop-color="#FFC41B" />
-                    <stop offset="0.8891" stop-color="#FFAD27" />
-                    <stop offset="1" stop-color="#FF9B31" />
+                    <stop offset="0.0111732" stopColor="#FFE00B" />
+                    <stop offset="0.3061" stopColor="#FFDD0D" />
+                    <stop offset="0.5224" stopColor="#FFD412" />
+                    <stop offset="0.7136" stopColor="#FFC41B" />
+                    <stop offset="0.8891" stopColor="#FFAD27" />
+                    <stop offset="1" stopColor="#FF9B31" />
                 </linearGradient>
                 <linearGradient
                     id="paint9_linear_3895_1515"
@@ -495,11 +495,11 @@ const Planet3 = (props: Props) => {
                     y2="18.3326"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop offset="0.0111732" stop-color="#FFA90B" />
-                    <stop offset="0.3713" stop-color="#FFA60E" />
-                    <stop offset="0.6354" stop-color="#FF9D16" />
-                    <stop offset="0.868" stop-color="#FF8D25" />
-                    <stop offset="1" stop-color="#FF8031" />
+                    <stop offset="0.0111732" stopColor="#FFA90B" />
+                    <stop offset="0.3713" stopColor="#FFA60E" />
+                    <stop offset="0.6354" stopColor="#FF9D16" />
+                    <stop offset="0.868" stopColor="#FF8D25" />
+                    <stop offset="1" stopColor="#FF8031" />
                 </linearGradient>
                 <linearGradient
                     id="paint10_linear_3895_1515"
@@ -509,12 +509,12 @@ const Planet3 = (props: Props) => {
                     y2="18.506"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop offset="0.0111732" stop-color="#FFE00B" />
-                    <stop offset="0.3061" stop-color="#FFDD0D" />
-                    <stop offset="0.5224" stop-color="#FFD412" />
-                    <stop offset="0.7136" stop-color="#FFC41B" />
-                    <stop offset="0.8891" stop-color="#FFAD27" />
-                    <stop offset="1" stop-color="#FF9B31" />
+                    <stop offset="0.0111732" stopColor="#FFE00B" />
+                    <stop offset="0.3061" stopColor="#FFDD0D" />
+                    <stop offset="0.5224" stopColor="#FFD412" />
+                    <stop offset="0.7136" stopColor="#FFC41B" />
+                    <stop offset="0.8891" stopColor="#FFAD27" />
+                    <stop offset="1" stopColor="#FF9B31" />
                 </linearGradient>
                 <linearGradient
                     id="paint11_linear_3895_1515"
@@ -524,11 +524,11 @@ const Planet3 = (props: Props) => {
                     y2="3.63659"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop offset="0.0111732" stop-color="#FFA90B" />
-                    <stop offset="0.3713" stop-color="#FFA60E" />
-                    <stop offset="0.6354" stop-color="#FF9D16" />
-                    <stop offset="0.868" stop-color="#FF8D25" />
-                    <stop offset="1" stop-color="#FF8031" />
+                    <stop offset="0.0111732" stopColor="#FFA90B" />
+                    <stop offset="0.3713" stopColor="#FFA60E" />
+                    <stop offset="0.6354" stopColor="#FF9D16" />
+                    <stop offset="0.868" stopColor="#FF8D25" />
+                    <stop offset="1" stopColor="#FF8031" />
                 </linearGradient>
                 <linearGradient
                     id="paint12_linear_3895_1515"
@@ -538,12 +538,12 @@ const Planet3 = (props: Props) => {
                     y2="3.80818"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop offset="0.0111732" stop-color="#FFE00B" />
-                    <stop offset="0.3061" stop-color="#FFDD0D" />
-                    <stop offset="0.5224" stop-color="#FFD412" />
-                    <stop offset="0.7136" stop-color="#FFC41B" />
-                    <stop offset="0.8891" stop-color="#FFAD27" />
-                    <stop offset="1" stop-color="#FF9B31" />
+                    <stop offset="0.0111732" stopColor="#FFE00B" />
+                    <stop offset="0.3061" stopColor="#FFDD0D" />
+                    <stop offset="0.5224" stopColor="#FFD412" />
+                    <stop offset="0.7136" stopColor="#FFC41B" />
+                    <stop offset="0.8891" stopColor="#FFAD27" />
+                    <stop offset="1" stopColor="#FF9B31" />
                 </linearGradient>
                 <linearGradient
                     id="paint13_linear_3895_1515"
@@ -553,12 +553,12 @@ const Planet3 = (props: Props) => {
                     y2="9.31136"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop offset="0.0111732" stop-color="#FFE00B" />
-                    <stop offset="0.3061" stop-color="#FFDD0D" />
-                    <stop offset="0.5224" stop-color="#FFD412" />
-                    <stop offset="0.7136" stop-color="#F67C27" />
-                    <stop offset="0.8891" stop-color="#ED6930" />
-                    <stop offset="1" stop-color="#E76332" />
+                    <stop offset="0.0111732" stopColor="#FFE00B" />
+                    <stop offset="0.3061" stopColor="#FFDD0D" />
+                    <stop offset="0.5224" stopColor="#FFD412" />
+                    <stop offset="0.7136" stopColor="#F67C27" />
+                    <stop offset="0.8891" stopColor="#ED6930" />
+                    <stop offset="1" stopColor="#E76332" />
                 </linearGradient>
                 <linearGradient
                     id="paint14_linear_3895_1515"
@@ -568,12 +568,12 @@ const Planet3 = (props: Props) => {
                     y2="7.26473"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop offset="0.0111732" stop-color="#FFE00B" />
-                    <stop offset="0.3061" stop-color="#FFDD0D" />
-                    <stop offset="0.5224" stop-color="#FFD412" />
-                    <stop offset="0.7136" stop-color="#FFC41B" />
-                    <stop offset="0.8891" stop-color="#FFAD27" />
-                    <stop offset="1" stop-color="#FF9B31" />
+                    <stop offset="0.0111732" stopColor="#FFE00B" />
+                    <stop offset="0.3061" stopColor="#FFDD0D" />
+                    <stop offset="0.5224" stopColor="#FFD412" />
+                    <stop offset="0.7136" stopColor="#FFC41B" />
+                    <stop offset="0.8891" stopColor="#FFAD27" />
+                    <stop offset="1" stopColor="#FF9B31" />
                 </linearGradient>
                 <linearGradient
                     id="paint15_linear_3895_1515"
@@ -583,12 +583,12 @@ const Planet3 = (props: Props) => {
                     y2="17.8577"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop offset="0.0111732" stop-color="#FFE00B" />
-                    <stop offset="0.3061" stop-color="#FFDD0D" />
-                    <stop offset="0.5224" stop-color="#FFD412" />
-                    <stop offset="0.7136" stop-color="#FFC41B" />
-                    <stop offset="0.8891" stop-color="#FFAD27" />
-                    <stop offset="1" stop-color="#FF9B31" />
+                    <stop offset="0.0111732" stopColor="#FFE00B" />
+                    <stop offset="0.3061" stopColor="#FFDD0D" />
+                    <stop offset="0.5224" stopColor="#FFD412" />
+                    <stop offset="0.7136" stopColor="#FFC41B" />
+                    <stop offset="0.8891" stopColor="#FFAD27" />
+                    <stop offset="1" stopColor="#FF9B31" />
                 </linearGradient>
                 <linearGradient
                     id="paint16_linear_3895_1515"
@@ -598,12 +598,12 @@ const Planet3 = (props: Props) => {
                     y2="3.90325"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop offset="0.0111732" stop-color="#FFE00B" />
-                    <stop offset="0.3061" stop-color="#FFDD0D" />
-                    <stop offset="0.5224" stop-color="#FFD412" />
-                    <stop offset="0.7136" stop-color="#FFC41B" />
-                    <stop offset="0.8891" stop-color="#FFAD27" />
-                    <stop offset="1" stop-color="#FF9B31" />
+                    <stop offset="0.0111732" stopColor="#FFE00B" />
+                    <stop offset="0.3061" stopColor="#FFDD0D" />
+                    <stop offset="0.5224" stopColor="#FFD412" />
+                    <stop offset="0.7136" stopColor="#FFC41B" />
+                    <stop offset="0.8891" stopColor="#FFAD27" />
+                    <stop offset="1" stopColor="#FF9B31" />
                 </linearGradient>
             </defs>
         </svg>

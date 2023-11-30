@@ -94,7 +94,8 @@ const LcReport = (props: Props) => {
                     console.log("Meeting successfully reported:", response);
                     props.setTemp(prevState => ({
                         ...prevState,
-                        isReport: false
+                        isReport: false,
+						reRender: !prevState.reRender
                     }));
                     return <b>Meeting successfully reported!</b>;
                 },

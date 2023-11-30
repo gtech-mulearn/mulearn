@@ -39,7 +39,7 @@ import CommunityPage from "./modules/Common/Authentication/pages/Onboarding/Comm
 import Foundation from "./modules/Public/Foundation/Foundation";
 import Channels from "./modules/Dashboard/modules/Channels/Pages/Channels";
 import Settings from "./modules/Dashboard/modules/Settings/Settings";
-import ChangePassword from "./modules/Dashboard/modules/Settings/pages/ChangePassword/ChangePassword";
+import Account from "./modules/Dashboard/modules/Settings/pages/Account/Account";
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
 );
@@ -302,7 +302,12 @@ function App() {
                             path: "campus-details",
                             element: (
                                 <RoleChecker
-                                    roles={[roles.CAMPUS_LEAD, roles.ENABLER]}
+                                    // might have to remove campus_lead and enabler with lead_enabler only
+                                    roles={[
+                                        roles.CAMPUS_LEAD,
+                                        roles.ENABLER,
+                                        roles.LEAD_ENABLER
+                                    ]}
                                     children={<CampusStudentList />}
                                 />
                             )
@@ -608,17 +613,14 @@ function App() {
                                     children={<OrganizationTransfer />}
                                 />
                             )
-                        }, {
+                        },
+                        {
                             path: "settings",
                             element: <Settings />,
                             children: [
                                 {
-                                    path: "change-password",
-                                    element: <ChangePassword />
-                                },
-                                {
-                                    path: "connected-devices",
-                                    element: <ConnectedDevices />
+                                    path: "account",
+                                    element: <Account />
                                 }
                             ]
                         }
@@ -642,7 +644,6 @@ function App() {
                         //     path: "marketplace-purchaseinv",
                         //     element: <PurchaseInventory />
                         // }
-
                     ]
                 }
             ]

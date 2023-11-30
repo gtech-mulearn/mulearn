@@ -129,10 +129,10 @@ const SideNavBarBody = ({
                                                                 navigate(
                                                                     button.url
                                                                 );
-                                                                window.innerWidth <=
-                                                                    830
-                                                                    ? toggleSideNavBar()
-                                                                    : null;
+                                                                // window.innerWidth <=
+                                                                //     830
+                                                                //     ? toggleSideNavBar()
+                                                                //     : null;
                                                             }}
                                                         />
                                                     ))}
@@ -173,9 +173,9 @@ const SideNavBarBody = ({
             </div>
             <div className={styles.bottomButtons}>
                 <MuButton
-                    text="Change Password"
+                    text="Account Setting"
                     icon={<MuSettings />}
-                    onClick={() => navigate("/dashboard/settings/change-password")}
+                    onClick={() => navigate("/dashboard/settings/account")}
                     style={{
                         color: "#9297AA",
                         backgroundColor: "#fff",

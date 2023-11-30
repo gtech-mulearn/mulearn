@@ -232,7 +232,7 @@ const ProfileV2 = (props: Props) => {
                         <div className={styles.status + " " + styles.Levels}>
                             <div className={styles.status_box}>
                                 <p>Level</p>
-                                <p>
+                                <p style={{ color: "#B7C7FC" }}>
                                     {" "}
                                     {userProfile.level
                                         ? userProfile?.level?.slice(3, 4)
@@ -336,8 +336,7 @@ const ProfileV2 = (props: Props) => {
                             })}
                         </div>
                     </div>
-                    <div className={styles.karma_distribution_container}>
-                        {" "}
+
                         <h1>Karma distribution</h1>
                         <div className={styles.container}>
                             {/* <PieChart data={data} /> */}
