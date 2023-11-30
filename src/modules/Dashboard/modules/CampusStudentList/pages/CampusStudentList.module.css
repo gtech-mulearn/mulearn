@@ -309,3 +309,9 @@
 
 .checkbox {
 }
+
+.btnContainer {
+    display: flex;
+    justify-content: end;
+    width: 95%;
+}

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";
-import Table from "@/MuLearnComponents/Table/Table";
+import Table, { Data } from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
@@ -12,6 +12,7 @@ import Modal from "./components/Modal";
 import CollegeLevelsEdit from "./components/CollegeLevelsEdit";
 import CollegeLevelsCreate from "./components/CollegeLevelsCreate";
 import { deleteCollegeLevels, getCollegeLevels } from "./apis";
+import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 
 function CollegeLevels() {
     const [data, setData] = useState<any[]>([]);
@@ -69,7 +70,12 @@ function CollegeLevels() {
         )
     };
 
-    const columnOrder = [
+    const columnOrder: {
+        column: string;
+        Label: string;
+        isSortable: boolean;
+        wrap?: (data: string, id: string, row: Data) => ReactJSXElement;
+    }[] = [
         // { column: "id", Label: "ID", isSortable: true },
         { column: "org", Label: "College", isSortable: true },
         // { column: "level", Label: "Level", isSortable: true },
@@ -94,13 +100,22 @@ function CollegeLevels() {
         {
             column: "total_karma_increased",
             Label: "Karma Gain",
-            isSortable: true
-        },
-        {
-            column: "increased_percentage",
-            Label: "Karma Gain%",
-            isSortable: true
+            isSortable: true,
+            wrap: (data, id, row) =>
+                data === "-" ? (
+                    <>{data}</>
+                ) : (
+                    <>
+                        {data}({Math.round(row.increased_percentage as number)}
+                        %)
+                    </>
+                )
         }
+        // {
+        //     column: "increased_percentage",
+        //     Label: "Karma Gain%",
+        //     isSortable: true
+        // }
         // { column: "updated_by", Label: "Updated By", isSortable: false },
         // { column: "updated_at", Label: "Updated At", isSortable: false },
         // { column: "created_by", Label: "Created By", isSortable: false },
@@ -209,6 +224,7 @@ function CollegeLevels() {
             delayedRefetch();
         }
     };
+    console.log(data);
     return (
         <>
             {currModal
@@ -253,7 +269,7 @@ function CollegeLevels() {
                 </PowerfulButton>
             </div> */}
 
-            {data && (
+            {data.length && (
                 <>
                     <TableTop
                         onSearchText={handleSearch}
@@ -276,7 +292,7 @@ function CollegeLevels() {
                         <THead
                             columnOrder={columnOrder}
                             onIconClick={handleIconClick}
-                            action={true}
+                            action={false}
                         />
                         <div>
                             {!isLoading && (
