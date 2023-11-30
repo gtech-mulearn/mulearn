@@ -16,46 +16,36 @@ export const PendingRequest = (props:Props) => {
     const { id } = useParams();
 
     const handleApproval = () => {
-        toast.promise(
-            approveLcUser(id, props.member.id, 1), // Ensure this is a promise-returning function
-            {
-                loading: "Loading...",
-                success: () => {
-                    // Updating state on successful approval
-                    props.setTemp(prev => ({
-                        ...prev,
-                        isSchedule: true
-                    }));
-                    // Display success message
-                    return <b>Request accepted.</b>;
-                },
-                error: () => {
-                    // Display error message
-                    return <b>Something went wrong, try again.</b>;
-                }
+        toast.promise(approveLcUser(id, props.member.id, 1), {
+            loading: "Loading...",
+            success: () => {
+                // Updating state for re-render
+                props.setTemp(prev => ({
+                    ...prev,
+                    isSchedule: !prev.isSchedule
+                }));
+                return <b>Request accepted.</b>;
+            },
+            error: () => {
+                return <b>Something went wrong, try again.</b>;
             }
-        );
+        });
     };
     const handleReject = () => {
-        toast.promise(
-            approveLcUser(id, props.member.id, 0), // Ensure this is a promise-returning function
-            {
-                loading: "Loading...",
-                success: () => {
-                    // Updating state on successful approval
-                    props.setTemp(prev => ({
-                        ...prev,
-                        isSchedule: true
-                    }));
-                    // Display success message
-                    return <b>Request rejected.</b>;
-                },
-                error: () => {
-                    // Display error message
-                    return <b>Something went wrong, try again.</b>;
-                }
+        toast.promise(approveLcUser(id, props.member.id, 0), {
+            loading: "Loading...",
+            success: () => {
+                // Updating state for re-render
+                props.setTemp(prev => ({
+                    ...prev,
+                    isSchedule: !prev.isSchedule
+                }));
+                return <b>Request rejected.</b>;
+            },
+            error: () => {
+                return <b>Something went wrong, try again.</b>;
             }
-        );
+        });
     };
     return (
         <div className={styles.memberBar}>
