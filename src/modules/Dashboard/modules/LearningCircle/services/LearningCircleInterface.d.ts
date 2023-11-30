@@ -43,6 +43,7 @@ interface LcDashboardTempData {
     isHistory: boolean;
     isTeam: boolean;
     isSchedule: boolean;
+	reRender: boolean;
 }
 
 interface LcMeetSchedule {
