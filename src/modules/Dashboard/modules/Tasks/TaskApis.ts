@@ -111,7 +111,7 @@ export const editTask = async (
 ) => {
     try {
         const response = await privateGateway.put(
-            dashboardRoutes.getTasksData + id + "/",
+            dashboardRoutes.getTasksData + id,
             {
                 title: title,
                 hashtag: hashtag,
@@ -125,7 +125,8 @@ export const editTask = async (
                 level: level_id === "" ? null : level_id,
                 ig: ig_id === "" ? null : ig_id,
                 org: org_id === "" ? null : org_id,
-                discord_link: discord_link === "" ? null : discord_link
+                discord_link: discord_link === "" ? null : discord_link,
+                event: event
             }
         );
         toast({
@@ -182,7 +183,8 @@ export const createTask = async (
                 level: level_id === "" ? null : level_id,
                 ig: ig_id === "" ? null : ig_id,
                 org: org_id === "" ? null : org_id,
-                discord_link: discord_link
+                discord_link: discord_link,
+                event: event
             }
         );
         toast({
