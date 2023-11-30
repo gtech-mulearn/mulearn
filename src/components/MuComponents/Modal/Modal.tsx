@@ -9,7 +9,7 @@ interface ModalProps {
     heading: string | undefined;
     value?: string | number | boolean;
     content: string | undefined;
-    click: any;
+    click?: any;
     type?: string;
     buttonText?: string;
 }
@@ -109,8 +109,10 @@ const Modal: FC<ModalProps> = ({
                             title="help"
                             style={{ padding: "0px 100px", width: "100px" }}
                             onClick={() => {
-                                click(id);
-                                setIsOpen(false);
+                                (async () => {
+                                    await click(id);
+                                    setIsOpen(false);
+                                })();
                             }}
                         >
                             {type == "error"
