@@ -54,8 +54,6 @@ const ProfileHeader = ({
     socials,
     monthDifference
 }: ProfileHeaderProps) => {
-    console.log(socials);
-
     return (
         <div className={styles.basic_details}>
             <div className={styles.profile_details_container}>

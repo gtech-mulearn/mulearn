@@ -137,7 +137,11 @@ const ProfileV2 = (props: Props) => {
 
     return (
         <>
-            <ProfileHeader userProfile={userProfile} monthDifference={monthDifference} socials={socials} />
+            <ProfileHeader
+                userProfile={userProfile}
+                monthDifference={monthDifference}
+                socials={socials}
+            />
 
             <div className={styles.roles_and_karma_container}>
                 <div className={styles.roles_karma_dist_container}>
@@ -159,7 +163,6 @@ const ProfileV2 = (props: Props) => {
                                     ></div>
                                 );
                             })}
-
                             <div className={styles.planet}></div>
                         </div>
                         <div className={styles.roles_container}>
