@@ -1,6 +1,5 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import styles from "../LcDashboard.module.css";
-import level7 from "../../../assets/images/Level 7.svg";
 import { BiDotsVertical } from "react-icons/bi";
 import pic from "../../../assets/images/profileIcon.svg";
 import LeadIcon from "../../../assets/images/Lead icon.svg";
@@ -11,6 +10,7 @@ import { useParams } from "react-router-dom";
 import { HiUserRemove } from "react-icons/hi";
 import toast from "react-hot-toast";
 import MuModal from "@/MuLearnComponents/MuModal/MuModal";
+import { userLevelBadge } from "../../../../../utils/utils";
 
 type Props = {
     setTemp: Dispatch<SetStateAction<LcDashboardTempData>>;
@@ -141,8 +141,8 @@ const TeamMember = ({
                 alt="DP"
             />{" "}
             <span className={styles.name}>{member.username}</span>
-            <p>Level{member.level || " 0"}</p>
-            <img src={level7} alt="level" />
+            <p>Level {member.level || 0}</p>
+            <img src={userLevelBadge(member.level)} alt="level" width={"25px"} />
             {member.is_lead ? (
                 <img src={LeadIcon} alt="" className={styles.karma} />
             ) : (
