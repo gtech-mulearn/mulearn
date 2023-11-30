@@ -35,6 +35,7 @@ import Planet from "../assets/svg/Planets/Planet";
 import Planet2 from "../assets/svg/Planets/Planet2";
 import Planet3 from "../assets/svg/Planets/Planet3";
 import KarmaDist from "../assets/svg/KarmaDist";
+import ProfileHeader from "../components/ProfileHeader/ProfileHeader";
 
 type Props = {};
 interface CircleSection {
@@ -169,20 +170,12 @@ const ProfileV2 = (props: Props) => {
 
     return (
         <>
-            <div className={styles.basic_details}>
+            {/* <div className={styles.basic_details}>
                 <div className={styles.profile_details_container}>
-                    {/* <p
-                        className={styles.profile_pic}
-                        style={{
-                            backgroundImage: `url(${userProfile.profile_pic})`
-                        }}
-                    >
-                        {" "}
-                    </p> */}
                     <img
                         className={styles.profile_pic}
                         src={userProfile.profile_pic}
-                        alt="hello"
+                        alt={userProfile.first_name}
                     />
                     <div className={styles.profile_details}>
                         <h1>
@@ -283,7 +276,9 @@ const ProfileV2 = (props: Props) => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
+
+            <ProfileHeader userProfile={userProfile} monthDifference={monthDifference} socials={socials} />
 
             <div className={styles.roles_and_karma_container}>
                 <div className={styles.roles_karma_dist_container}>

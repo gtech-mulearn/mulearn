@@ -40,6 +40,7 @@ import Foundation from "./modules/Public/Foundation/Foundation";
 import Channels from "./modules/Dashboard/modules/Channels/Pages/Channels";
 import Settings from "./modules/Dashboard/modules/Settings/Settings";
 import ChangePassword from "./modules/Dashboard/modules/Settings/pages/ChangePassword/ChangePassword";
+import Analytics from "./modules/Dashboard/modules/UrlShortener/Pages/Analytics";
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
 );
@@ -501,6 +502,19 @@ function App() {
                             )
                         },
                         {
+                            path: "url-shortener/analytics",
+                            element: (
+                                <RoleChecker
+                                    roles={[
+                                        roles.ADMIN,
+                                        roles.FELLOW,
+                                        roles.ASSOCIATE
+                                    ]}
+                                    children={<Analytics />}
+                                />
+                            )
+                        },
+                        {
                             path: "hackathon",
                             element: (
                                 <RoleChecker
@@ -608,7 +622,8 @@ function App() {
                                     children={<OrganizationTransfer />}
                                 />
                             )
-                        }, {
+                        },
+                        {
                             path: "settings",
                             element: <Settings />,
                             children: [
@@ -642,7 +657,6 @@ function App() {
                         //     path: "marketplace-purchaseinv",
                         //     element: <PurchaseInventory />
                         // }
-
                     ]
                 }
             ]
