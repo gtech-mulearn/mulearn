@@ -233,7 +233,10 @@ const CampusStudentList = (props: Props) => {
                             currBox.value,
                             msg => {}
                         );
-                        await new Promise(res => setTimeout(res, 5000));
+
+                        //workaround state not updating issue
+                        await new Promise(res => setTimeout(res, 1000));
+                        setStudentData([]);
                     }}
                 />
             )}
