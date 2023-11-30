@@ -178,215 +178,128 @@ const EditProfilePopUp = (props: Props) => {
                 >
                     <h2>Edit Profile</h2>
                     <form onSubmit={formik.handleSubmit}>
-                        <div className={styles.modalDivideWarrper}>
-                            {propsList(formik).map((item, index) => (
-                                <div key={index} className={styles.input_field}>
-                                    <label
-                                        className={styles.label}
-                                        htmlFor={item.id}
-                                    >
-                                        {item.placeholder}
-                                    </label>
-                                    <div className={styles.inputBox}>
-                                        <input {...propsList2} {...item} />
-                                        {item.touched && item.error && (
-                                            <div
-                                                className={styles.error_message}
-                                            >
-                                                {item.error}
-                                            </div>
-                                        )}
-                                    </div>
-                                </div>
-                            ))}
-                            <div className={styles.input_field}>
-                                <label className={styles.label}>Mobile</label>
-                                <div className={styles.inputBox}>
-                                    <input
-                                        type="number"
-                                        name="mobile"
-                                        value={formik.values.mobile}
-                                        placeholder="Mobile"
-                                        onBlur={formik.handleBlur}
-                                        onChange={formik.handleChange}
-                                    />
-                                    {formik.touched.mobile &&
-                                    formik.errors.mobile ? (
-                                        <p className={styles.error_message}>
-                                            {formik.errors.mobile}
-                                        </p>
-                                    ) : null}
-                                </div>
-                            </div>
-
-                            <div className={styles.input_field}>
-                                <label className={styles.label} htmlFor="">
-                                    Community
+                        {propsList(formik).map((item, index) => (
+                            <div key={index} className={styles.input_field}>
+                                <label
+                                    className={styles.label}
+                                    htmlFor={item.id}
+                                >
+                                    {item.placeholder}
                                 </label>
                                 <div className={styles.inputBox}>
-                                    {loadStatus && (
-                                        <Select {...communityProps} />
+                                    <input {...propsList2} {...item} />
+                                    {item.touched && item.error && (
+                                        <div className={styles.error_message}>
+                                            {item.error}
+                                        </div>
                                     )}
                                 </div>
                             </div>
-                            <div className={styles.input_field}>
-                                <label className={styles.label} htmlFor="">
-                                    Gender
-                                </label>
-                                <div className={styles.inputBox}>
-                                    <select
-                                        name="gender"
-                                        value={formik.values.gender}
-                                        {...propsList2}
-                                    >
-                                        <option>Select gender</option>
-                                        <option value="Male">♂ Male</option>
-                                        <option value="Female">♀ Female</option>
-                                        <option value="Other">Other</option>
-                                        <option value="">
-                                            Prefer not to say
-                                        </option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div className={styles.input_field}>
-                                <label className={styles.label} htmlFor="">
-                                    DOB
-                                </label>
-                                <div className={styles.inputBox}>
-                                    <input
-                                        type="date"
-                                        name="dob"
-                                        value={formik.values.dob}
-                                        placeholder="DOB"
-                                        max={
-                                            (
-                                                new Date().getFullYear() - 17
-                                            ).toString() + "-12-31"
-                                        }
-                                        {...propsList2}
-                                    />
-                                </div>
-                            </div>
-                            <div className={styles.input_field}>
-                                <label className={styles.label} htmlFor="">
-                                    Image
-                                </label>
-                                <div
-                                    className={`${styles.inputBox} ${styles.imageBox}`}
-                                >
-                                    <input
-                                        ref={imageRef}
-                                        type="file"
-                                        name="image"
-                                        value={formik.values.image}
-                                        placeholder="DOB"
-                                        {...propsList2}
-                                    />{" "}
-                                </div>
+                        ))}
+                        <div className={styles.input_field}>
+                            <label className={styles.label}>Mobile</label>
+                            <div className={styles.inputBox}>
+                                <input
+                                    type="number"
+                                    name="mobile"
+                                    value={formik.values.mobile}
+                                    placeholder="Mobile"
+                                    onBlur={formik.handleBlur}
+                                    onChange={formik.handleChange}
+                                />
+                                {formik.touched.mobile &&
+                                formik.errors.mobile ? (
+                                    <p className={styles.error_message}>
+                                        {formik.errors.mobile}
+                                    </p>
+                                ) : null}
                             </div>
                         </div>
-                        <div className={styles.modalDivideWarrper}>
-                            <div className={styles.input_field}>
-                                <label className={styles.label}>
-                                    Name of college/school
-                                </label>
-                                <div className={styles.inputBox}>
-                                    <input
-                                        type="text"
-                                        name="college/school"
-                                        value={""}
-                                        placeholder="college/school"
-                                        onBlur={formik.handleBlur}
-                                        onChange={formik.handleChange}
-                                    />
-                                </div>
-                            </div>
-                            <div className={styles.input_field}>
-                                <label className={styles.label}>
-                                    District of college
-                                </label>
-                                <div className={styles.inputBox}>
-                                    <input
-                                        type="text"
-                                        name="district"
-                                        value={""}
-                                        placeholder="District"
-                                        onBlur={formik.handleBlur}
-                                        onChange={formik.handleChange}
-                                    />
-                                </div>
-                            </div>
-                            <div className={styles.input_field}>
-                                <label className={styles.label}>
-                                    Year of graduation
-                                </label>
-                                <div className={styles.inputBox}>
-                                    <input
-                                        type="number"
-                                        name="year"
-                                        value={""}
-                                        placeholder="Year"
-                                        onBlur={formik.handleBlur}
-                                        onChange={formik.handleChange}
-                                    />
-                                </div>
+                        <div className={styles.input_field}>
+                            <label className={styles.label} htmlFor="">
+                                Community
+                            </label>
+                            <div className={styles.inputBox}>
+                                {loadStatus && <Select {...communityProps} />}
                             </div>
                         </div>
-                        <div className={styles.deatedInfoWarrper}>
-                            <div className={styles.input_field}>
-                                <label className={styles.label}>
-                                    Name of company
-                                </label>
-                                <div className={styles.inputBox}>
-                                    <input
-                                        type="text"
-                                        name="company"
-                                        value={""}
-                                        placeholder="Company"
-                                        onBlur={formik.handleBlur}
-                                        onChange={formik.handleChange}
-                                    />
-                                </div>
-                            </div>
-                            <div className={styles.input_field}>
-                                <label className={styles.label}>
-                                    District of company
-                                </label>
-                                <div className={styles.inputBox}>
-                                    <input
-                                        type="text"
-                                        name="company_district"
-                                        value={""}
-                                        placeholder="District"
-                                        onBlur={formik.handleBlur}
-                                        onChange={formik.handleChange}
-                                    />
-                                </div>
-                            </div>
-                            <div className={styles.btn_container}>
-                                <PowerfulButton
-                                    type="button"
-                                    variant="outline"
-                                    // disabled={discordState === "finished"}
-                                    onClick={discordSync}
-                                    className={styles.powerfulButton}
+                        <div className={styles.input_field}>
+                            <label className={styles.label} htmlFor="">
+                                Gender
+                            </label>
+                            <div className={styles.inputBox}>
+                                <select
+                                    name="gender"
+                                    value={formik.values.gender}
+                                    {...propsList2}
                                 >
-                                    Sync Discord Image
-                                    {
-                                        {
-                                            initial: <BsDiscord size={32} />,
-                                            loading: (
-                                                <BeatLoader
-                                                    size={8}
-                                                    color="#456ff6"
-                                                />
-                                            ),
-                                            finished: <BsCheck size={32} />
-                                        }[discordState]
+                                    <option>Select gender</option>
+                                    <option value="Male">♂ Male</option>
+                                    <option value="Female">♀ Female</option>
+                                    <option value="Other">Other</option>
+                                    <option value="">Prefer not to say</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div className={styles.input_field}>
+                            <label className={styles.label} htmlFor="">
+                                DOB
+                            </label>
+                            <div className={styles.inputBox}>
+                                <input
+                                    type="date"
+                                    name="dob"
+                                    value={formik.values.dob}
+                                    placeholder="DOB"
+                                    max={
+                                        (
+                                            new Date().getFullYear() - 17
+                                        ).toString() + "-12-31"
                                     }
-                                </PowerfulButton>
-                                {/* <div
+                                    {...propsList2}
+                                />
+                            </div>
+                        </div>
+                        <div className={styles.input_field}>
+                            <label className={styles.label} htmlFor="">
+                                Image
+                            </label>
+                            <div
+                                className={`${styles.inputBox} ${styles.imageBox}`}
+                            >
+                                <input
+                                    ref={imageRef}
+                                    type="file"
+                                    name="image"
+                                    value={formik.values.image}
+                                    placeholder="DOB"
+                                    {...propsList2}
+                                />{" "}
+                            </div>
+                        </div>
+                        <div className={styles.btn_container}>
+                            <PowerfulButton
+                                type="button"
+                                variant="outline"
+                                // disabled={discordState === "finished"}
+                                onClick={discordSync}
+                                className={styles.powerfulButton}
+                            >
+                                Sync Discord Image
+                                {
+                                    {
+                                        initial: <BsDiscord size={32} />,
+                                        loading: (
+                                            <BeatLoader
+                                                size={8}
+                                                color="#456ff6"
+                                            />
+                                        ),
+                                        finished: <BsCheck size={32} />
+                                    }[discordState]
+                                }
+                            </PowerfulButton>
+                            {/* <div
                                     title={
                                         discordState === "initial"
                                             ? "Click to sync discord image"
@@ -408,20 +321,19 @@ const EditProfilePopUp = (props: Props) => {
                                     }
                                 </div> */}
 
-                                <MuButton
-                                    type="submit"
-                                    style={buttonStyle}
-                                    text={"Update Profile"}
-                                />
-                            </div>
-                            <button
-                                type="button"
-                                className={styles.editProfileClose}
-                                onClick={() => props.setEditPopUP(false)}
-                            >
-                                Close
-                            </button>
+                            <MuButton
+                                type="submit"
+                                style={buttonStyle}
+                                text={"Update Profile"}
+                            />
                         </div>
+                        <button
+                            type="button"
+                            className={styles.edit_profile_close}
+                            onClick={() => props.setEditPopUP(false)}
+                        >
+                            Close
+                        </button>
                     </form>
                 </div>
             </div>
