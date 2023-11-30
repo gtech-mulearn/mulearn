@@ -336,7 +336,7 @@ const EditProfilePopUp = (props: Props) => {
                         <div className={styles.deatedInfoWarrper}>
                             <div className={styles.input_field}>
                                 <label className={styles.label}>
-                                    Name of ompany
+                                    Name of company
                                 </label>
                                 <div className={styles.inputBox}>
                                     <input
