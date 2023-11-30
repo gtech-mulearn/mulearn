@@ -55,6 +55,7 @@ export const dashboardRoutes = {
     getTaskOrganizations: "/api/v1/dashboard/task/organization/",
     getTaskChannels: "/api/v1/dashboard/task/channel/",
     getTaskTypes: "/api/v1/dashboard/task/task-types/",
+    setAlumniStatus: "/api/v1/dashboard/campus/change-student-type/",
 
     getKarmaVoucher: "/api/v1/dashboard/karma-voucher/",
     getKarmaVoucherList: "api/v1/dashboard/karma-voucher/import/",
@@ -116,6 +117,7 @@ export const dashboardRoutes = {
     getApplicationForm: "/api/v1/hackathon/list-form/",
     getApplicants: "/api/v1/hackathon/list-applicants/",
 
+	lc: "/api/v1/dashboard/lc/",
     searchLearningCircleWithCircleCode: "/api/v1/dashboard/lc/list-all/",
     getCampusLearningCircles: "/api/v1/dashboard/lc/",
     getLearningCirclesLead: "/api/v1/dashboard/lc/lead/",
@@ -159,7 +161,7 @@ export const dashboardRoutes = {
 
     //Settings
     changePassword: "api/v1/dashboard/profile/change-password/",
-    deleteUser: "/api/v1/dashboard/user/",
+    deleteUser: "/api/v1/dashboard/user/"
 } as const;
 
 export const organizationRoutes = {
@@ -167,8 +169,7 @@ export const organizationRoutes = {
     getCompany: "/api/v1/dashboard/organisation/institutes/show/Company/",
     getCollege: "/api/v1/dashboard/organisation/institutes/show/College/",
     getCommunity: "/api/v1/dashboard/organisation/institutes/show/Community/",
-    getAffiliation:
-        "/api/v1/dashboard/organisation/affiliation/list/",
+    getAffiliation: "/api/v1/dashboard/organisation/affiliation/list/",
     createAffiliation:
         "/api/v1/dashboard/organisation/institutes/affiliation/create/",
     editAffiliation:

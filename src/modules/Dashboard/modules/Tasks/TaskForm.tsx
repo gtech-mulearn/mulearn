@@ -12,6 +12,7 @@ import { AxiosError } from "axios";
 import Select from "react-select";
 import { customReactSelectStyles } from "../../utils/common";
 import { getTaskDetails, } from "./TaskApis";
+import { FormikCheckBox } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 
 
 type Props = { id: string; isEditMode: boolean; };
@@ -102,6 +103,10 @@ const TaskForm = forwardRef(
                 setData(prevData => ({ ...prevData, [name]: value }));
             }
         }
+        const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+            const { name, checked } = e.target;
+            setData(prevData => ({ ...prevData, [name]: checked }));
+        };
 
         const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
             const { name, value } = e.target;
@@ -475,6 +480,24 @@ const TaskForm = forwardRef(
                                     {errors.event}
                                 </div>
                             )}
+                        </div>
+                        <div className={styles.inputContainer}>
+                            <div
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "space-evenly"
+                                }}
+                            >
+                                <div>
+                                    <label htmlFor="active"> Active</label>
+                                    <input type="checkbox" id="active" name="active" checked={data.active} onChange={handleCheckboxChange} />
+                                </div>
+                                <div>
+                                    <label htmlFor="variable_karma"> Variable Karma</label>
+                                    <input type="checkbox" id="variable_karma" name="variable_karma" checked={data.variable_karma} onChange={handleCheckboxChange} />
+                                </div>
+
+                            </div>
                         </div>
                     </form >
                 </div >

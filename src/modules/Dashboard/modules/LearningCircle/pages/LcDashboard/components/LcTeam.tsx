@@ -1,8 +1,6 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import styles from "../LcDashboard.module.css";
-import level7 from "../../../assets/images/Level 7.svg";
-import { BiDotsVertical } from "react-icons/bi";
-import pic from "../../../assets/images/profileIcon.svg";
+import pic from "../../../assets/images/dpm.webp";
 import LeadIcon from "../../../assets/images/Lead icon.svg";
 import { PersonIcon } from "../../../assets/svg";
 import { PendingRequest } from "./LcPendingRequest";
@@ -11,6 +9,7 @@ import { useParams } from "react-router-dom";
 import { HiUserRemove } from "react-icons/hi";
 import toast from "react-hot-toast";
 import MuModal from "@/MuLearnComponents/MuModal/MuModal";
+import { userLevelBadge } from "../../../../../utils/utils";
 
 type Props = {
     setTemp: Dispatch<SetStateAction<LcDashboardTempData>>;
@@ -114,23 +113,20 @@ const TeamMember = ({
 
     const handleRemoval = (memberId: string, isLead: boolean) => {
         if (lc?.is_lead && !isLead) {
-            toast.promise(
-                removeMember(id, memberId), // Ensure this is a promise-returning function
-                {
-                    loading: "Loading...",
-                    success: () => {
-                        // Updating state on successful approval
-                        setTemp(prev => ({
-                            ...prev,
-                            isSchedule: true
-                        }));
-                        return <b>Member removed</b>;
-                    },
-                    error: () => {
-                        return <b>Member not removed</b>;
-                    }
+            toast.promise(removeMember(id, memberId), {
+                loading: "Loading...",
+                success: () => {
+                    // Updating state for re-render
+                    setTemp(prev => ({
+                        ...prev,
+                        isSchedule: !prev.isSchedule
+                    }));
+                    return <b>Member removed</b>;
+                },
+                error: () => {
+                    return <b>Member not removed</b>;
                 }
-            );
+            });
         } else {
             toast.error("Cannot remove lead");
         }
@@ -144,8 +140,8 @@ const TeamMember = ({
                 alt="DP"
             />{" "}
             <span className={styles.name}>{member.username}</span>
-            <p>Level{member.level || " 0"}</p>
-            <img src={level7} alt="level" />
+            <p>Level {member.level || 0}</p>
+            <img src={userLevelBadge(member.level)} alt="level" width={"25px"} />
             {member.is_lead ? (
                 <img src={LeadIcon} alt="" className={styles.karma} />
             ) : (
@@ -182,6 +178,5 @@ const TeamMember = ({
         </div>
     );
 };
-
 
 export default LcTeam;

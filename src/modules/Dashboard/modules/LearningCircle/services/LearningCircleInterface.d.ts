@@ -16,7 +16,7 @@ interface LcMembers {
     profile_pic: string;
     karma: number;
     is_lead: boolean;
-    level?: string;
+    level: number;
 }
 
 type LcDetail = {
@@ -43,6 +43,7 @@ interface LcDashboardTempData {
     isHistory: boolean;
     isTeam: boolean;
     isSchedule: boolean;
+	reRender: boolean;
 }
 
 interface LcMeetSchedule {

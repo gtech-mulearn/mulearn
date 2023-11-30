@@ -32,7 +32,6 @@
     font-size: 50px;
     font-weight: 600;
     margin: 0;
-    line-height: 1;
 }
 
 .TitleContainerWrapper .Title h3 {
@@ -227,6 +226,11 @@
     margin-top: 0;
     line-height: 0.8;
 }
+
+.participantsContainer {
+    margin: 1rem;
+}
+
 .ReportWrapper .UploadSection {
     display: flex;
     flex-direction: column;
@@ -458,7 +462,7 @@
 .ContainerWrapper .ContentWrapper .TopContainer .sectionOne .secondDiv button {
     background-color: rgba(69, 111, 246, 1);
     color: white;
-    padding: 10px 20px;
+    padding: 0.5rem 1rem;
     border-radius: 8px;
 }
 .ContainerWrapper .ContentWrapper .TopContainer .sectionTwo {
@@ -498,7 +502,7 @@
         gap: 15px;
     }
     .ContainerWrapper .ContentWrapper .TopContainer .sectionTwo {
-        width: 60%;
+        width: 100%;
     }
 }
 @media screen and (max-width: 500px) {
@@ -581,7 +585,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     align-items: end;
     margin-top: 10px;
     width: 100%;
-    justify-content: end;
+    justify-content: center;
 }
 
 .CheckBoxContainerButton button {
@@ -633,6 +637,20 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     border-radius: 50%;
 }
 
+.AttendeesWrapperSelected img {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+.submitButton {
+    background-color: #456ff6;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    width: fit-content;
+}
+
 /* Css for Meeting Schedule */
 .Botton {
     display: flex;
@@ -643,7 +661,6 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     border: none;
-    width: 20%;
     color: var(--White);
     background-color: var(--blue);
 }
@@ -715,6 +732,8 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     padding-top: 10px;
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
 .InputSchedule .weeks p {

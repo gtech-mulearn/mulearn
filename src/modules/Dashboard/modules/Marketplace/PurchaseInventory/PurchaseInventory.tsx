@@ -32,7 +32,7 @@ const PurchaseInventory = (props: Props) => {
         isSortable: boolean;
         column: string;
         Label: string;
-        wrap?: (data: string) => ReactJSXElement;
+        wrap?: (data: string, id: string) => ReactJSXElement;
     };
 
     const columnOrder: ColOrderType[] = [
