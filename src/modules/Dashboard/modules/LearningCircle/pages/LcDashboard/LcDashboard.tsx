@@ -11,20 +11,20 @@ import LcTeam from "./components/LcTeam";
 import LcHome from "./components/LcHome";
 import LcProgress from "./components/LcProgress";
 
-type Props = {};
-
-const LcDashboard = (props: Props) => {
+const LcDashboard = () => {
     const [lc, setLc] = useState<LcDetail>();
     const [temp, setTemp] = useState<LcDashboardTempData>({
         loading: true,
         isReport: false,
         isHistory: false,
         isTeam: false,
-        isSchedule: false
+        isSchedule: false,
+        reRender: false
     });
-    const [tab, setTab] = useState<"Dashboard" | "IG Progress" | "BeWeb.dev">(
+    const [tab, setTab] = useState<"Dashboard">(
         "Dashboard"
     );
+
     const { id } = useParams();
 
     const handleFetchDetails = async () => {
@@ -39,13 +39,9 @@ const LcDashboard = (props: Props) => {
         }
     };
 
-    const handleComingSoon = () => {
-        comingSoon();
-    };
-
     useEffect(() => {
         handleFetchDetails();
-    }, [temp.isSchedule, temp.isTeam]);
+    }, [temp.isSchedule, temp.isTeam, temp.reRender]);
 
     return temp.loading ? (
         <MuLoader />
@@ -62,12 +58,12 @@ const LcDashboard = (props: Props) => {
                         <h1>{lc?.rank}</h1>
                         <h3>{covertNumToK(Number(lc?.total_karma))} Karma</h3>
                     </div>
-                    <button onClick={handleComingSoon}>
+                    <button onClick={comingSoon}>
                         <ThreeDotssvg />
                     </button>
                 </div>
             </div>
-            <div className={styles.NavLink}>
+            {/* <div className={styles.NavLink}>
                 <button
                     className={`${tab === "Dashboard" && styles.active}`}
                     onClick={() => {
@@ -87,8 +83,8 @@ const LcDashboard = (props: Props) => {
                 >
                     IG Progress
                 </button>
-                <button onClick={handleComingSoon}>BeWeb.dev</button>
-            </div>
+                <button onClick={comingSoon}>BeWeb.dev</button>
+            </div> */}
             {
                 {
                     Dashboard: temp.isTeam ? (
@@ -99,9 +95,7 @@ const LcDashboard = (props: Props) => {
                         />
                     ) : (
                         <LcHome setTemp={setTemp} temp={temp} lc={lc} id={id} />
-                    ),
-                    "IG Progress": <LcProgress />,
-                    "BeWeb.dev": <></>
+                    )
                 }[tab]
             }
         </div>
