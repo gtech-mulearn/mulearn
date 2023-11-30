@@ -180,5 +180,4 @@ const TeamMember = ({
     );
 };
 
-
 export default LcTeam;
