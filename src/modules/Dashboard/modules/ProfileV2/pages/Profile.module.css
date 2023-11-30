@@ -229,6 +229,18 @@
 
     }
 }
+
+@media screen and (max-width: 450px) {
+    .roles_karma_dist_container {
+        .karma_distribution_container {
+            height: fit-content;
+            padding: 20px 0px;
+            .container {
+                 height: fit-content;
+            }
+        }
+    }
+}
 @keyframes rotate {
     0% {
         transform: rotate(0deg);

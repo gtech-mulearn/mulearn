@@ -31,7 +31,7 @@ import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
 import { Projects } from "../components/Projects/Projects";
 import { PieChart } from "../components/Piechart/PieChart";
 import Rocket from "../assets/svg/Rocket";
-import Planet from "../assets/svg/Planets/Planet";
+
 import Planet2 from "../assets/svg/Planets/Planet2";
 import Planet3 from "../assets/svg/Planets/Planet3";
 import KarmaDist from "../assets/svg/KarmaDist";
@@ -232,7 +232,7 @@ const ProfileV2 = (props: Props) => {
                         <div className={styles.status + " " + styles.Levels}>
                             <div className={styles.status_box}>
                                 <p>Level</p>
-                                <p style={{ color: "#B7C7FC" }}>
+                                <p>
                                     {" "}
                                     {userProfile.level
                                         ? userProfile?.level?.slice(3, 4)
@@ -336,7 +336,8 @@ const ProfileV2 = (props: Props) => {
                             })}
                         </div>
                     </div>
-
+                    <div className={styles.karma_distribution_container}>
+                        {" "}
                         <h1>Karma distribution</h1>
                         <div className={styles.container}>
                             {/* <PieChart data={data} /> */}
