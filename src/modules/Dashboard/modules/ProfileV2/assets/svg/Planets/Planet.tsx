@@ -220,17 +220,17 @@ const Planet = ({size}: Props) => {
                     gradientUnits="userSpaceOnUse"
                     gradientTransform="translate(3.87227 6.09904) scale(15.7997)"
                 >
-                    <stop offset="0.00558659" stop-color="#FF9AFF" />
-                    <stop offset="0.0930098" stop-color="#FB94FF" />
-                    <stop offset="0.2093" stop-color="#F183FF" />
-                    <stop offset="0.3418" stop-color="#E068FF" />
-                    <stop offset="0.4864" stop-color="#C841FF" />
-                    <stop offset="0.639" stop-color="#A910FF" />
-                    <stop offset="0.6844" stop-color="#9F00FF" />
-                    <stop offset="0.7432" stop-color="#9900F8" />
-                    <stop offset="0.8282" stop-color="#8700E5" />
-                    <stop offset="0.9287" stop-color="#6A00C6" />
-                    <stop offset="1" stop-color="#5200AB" />
+                    <stop offset="0.00558659" stopColor="#FF9AFF" />
+                    <stop offset="0.0930098" stopColor="#FB94FF" />
+                    <stop offset="0.2093" stopColor="#F183FF" />
+                    <stop offset="0.3418" stopColor="#E068FF" />
+                    <stop offset="0.4864" stopColor="#C841FF" />
+                    <stop offset="0.639" stopColor="#A910FF" />
+                    <stop offset="0.6844" stopColor="#9F00FF" />
+                    <stop offset="0.7432" stopColor="#9900F8" />
+                    <stop offset="0.8282" stopColor="#8700E5" />
+                    <stop offset="0.9287" stopColor="#6A00C6" />
+                    <stop offset="1" stopColor="#5200AB" />
                 </radialGradient>
                 <radialGradient
                     id="paint1_radial_3895_1599"
@@ -240,17 +240,17 @@ const Planet = ({size}: Props) => {
                     gradientUnits="userSpaceOnUse"
                     gradientTransform="translate(3.87227 6.09904) scale(15.7997)"
                 >
-                    <stop offset="0.00558659" stop-color="#FF9AFF" />
-                    <stop offset="0.0930098" stop-color="#FB94FF" />
-                    <stop offset="0.2093" stop-color="#F183FF" />
-                    <stop offset="0.3418" stop-color="#E068FF" />
-                    <stop offset="0.4864" stop-color="#C841FF" />
-                    <stop offset="0.639" stop-color="#A910FF" />
-                    <stop offset="0.6844" stop-color="#9F00FF" />
-                    <stop offset="0.7432" stop-color="#9900F8" />
-                    <stop offset="0.8282" stop-color="#8700E5" />
-                    <stop offset="0.9287" stop-color="#6A00C6" />
-                    <stop offset="1" stop-color="#5200AB" />
+                    <stop offset="0.00558659" stopColor="#FF9AFF" />
+                    <stop offset="0.0930098" stopColor="#FB94FF" />
+                    <stop offset="0.2093" stopColor="#F183FF" />
+                    <stop offset="0.3418" stopColor="#E068FF" />
+                    <stop offset="0.4864" stopColor="#C841FF" />
+                    <stop offset="0.639" stopColor="#A910FF" />
+                    <stop offset="0.6844" stopColor="#9F00FF" />
+                    <stop offset="0.7432" stopColor="#9900F8" />
+                    <stop offset="0.8282" stopColor="#8700E5" />
+                    <stop offset="0.9287" stopColor="#6A00C6" />
+                    <stop offset="1" stopColor="#5200AB" />
                 </radialGradient>
                 <radialGradient
                     id="paint2_radial_3895_1599"
@@ -260,17 +260,17 @@ const Planet = ({size}: Props) => {
                     gradientUnits="userSpaceOnUse"
                     gradientTransform="translate(4.32029 5.18487) scale(15.531)"
                 >
-                    <stop offset="0.00558659" stop-color="#FF9AFF" />
-                    <stop offset="0.0930098" stop-color="#FB94FF" />
-                    <stop offset="0.2093" stop-color="#F183FF" />
-                    <stop offset="0.3418" stop-color="#E068FF" />
-                    <stop offset="0.4864" stop-color="#C841FF" />
-                    <stop offset="0.639" stop-color="#A910FF" />
-                    <stop offset="0.6844" stop-color="#9F00FF" />
-                    <stop offset="0.7432" stop-color="#9900F8" />
-                    <stop offset="0.8282" stop-color="#8700E5" />
-                    <stop offset="0.9287" stop-color="#6A00C6" />
-                    <stop offset="1" stop-color="#5200AB" />
+                    <stop offset="0.00558659" stopColor="#FF9AFF" />
+                    <stop offset="0.0930098" stopColor="#FB94FF" />
+                    <stop offset="0.2093" stopColor="#F183FF" />
+                    <stop offset="0.3418" stopColor="#E068FF" />
+                    <stop offset="0.4864" stopColor="#C841FF" />
+                    <stop offset="0.639" stopColor="#A910FF" />
+                    <stop offset="0.6844" stopColor="#9F00FF" />
+                    <stop offset="0.7432" stopColor="#9900F8" />
+                    <stop offset="0.8282" stopColor="#8700E5" />
+                    <stop offset="0.9287" stopColor="#6A00C6" />
+                    <stop offset="1" stopColor="#5200AB" />
                 </radialGradient>
                 <radialGradient
                     id="paint3_radial_3895_1599"
@@ -280,8 +280,8 @@ const Planet = ({size}: Props) => {
                     gradientUnits="userSpaceOnUse"
                     gradientTransform="translate(6.36232 3.54225) scale(3.47279 3.47279)"
                 >
-                    <stop offset="0.630208" stop-color="white" />
-                    <stop offset="1" stop-color="#EF9AFF" />
+                    <stop offset="0.630208" stopColor="white" />
+                    <stop offset="1" stopColor="#EF9AFF" />
                 </radialGradient>
                 <radialGradient
                     id="paint4_radial_3895_1599"
@@ -291,8 +291,8 @@ const Planet = ({size}: Props) => {
                     gradientUnits="userSpaceOnUse"
                     gradientTransform="translate(6.91521 4.79759) scale(1.20813 1.20812)"
                 >
-                    <stop stop-color="white" />
-                    <stop offset="1" stop-color="#F7ABFF" />
+                    <stop stopColor="white" />
+                    <stop offset="1" stopColor="#F7ABFF" />
                 </radialGradient>
                 <radialGradient
                     id="paint5_radial_3895_1599"
@@ -302,8 +302,8 @@ const Planet = ({size}: Props) => {
                     gradientUnits="userSpaceOnUse"
                     gradientTransform="translate(6.17267 4.6859) scale(1.27307 1.27306)"
                 >
-                    <stop stop-color="white" />
-                    <stop offset="1" stop-color="#F9D0FD" />
+                    <stop stopColor="white" />
+                    <stop offset="1" stopColor="#F9D0FD" />
                 </radialGradient>
                 <radialGradient
                     id="paint6_radial_3895_1599"
@@ -313,8 +313,8 @@ const Planet = ({size}: Props) => {
                     gradientUnits="userSpaceOnUse"
                     gradientTransform="translate(5.27189 3.45972) scale(2.94073 2.94072)"
                 >
-                    <stop stop-color="white" />
-                    <stop offset="1" stop-color="#F7C2FC" />
+                    <stop stopColor="white" />
+                    <stop offset="1" stopColor="#F7C2FC" />
                 </radialGradient>
                 <radialGradient
                     id="paint7_radial_3895_1599"
@@ -324,8 +324,8 @@ const Planet = ({size}: Props) => {
                     gradientUnits="userSpaceOnUse"
                     gradientTransform="translate(4.01485 2.31673) scale(4.98587 4.98587)"
                 >
-                    <stop stop-color="white" />
-                    <stop offset="1" stop-color="#F5AEFE" />
+                    <stop stopColor="white" />
+                    <stop offset="1" stopColor="#F5AEFE" />
                 </radialGradient>
                 <radialGradient
                     id="paint8_radial_3895_1599"
@@ -335,9 +335,9 @@ const Planet = ({size}: Props) => {
                     gradientUnits="userSpaceOnUse"
                     gradientTransform="translate(5.86264 3.10641) scale(6.94718)"
                 >
-                    <stop offset="0.744792" stop-color="white" />
-                    <stop offset="0.9998" stop-color="#E886FF" />
-                    <stop offset="0.9999" stop-color="#ED8CFF" />
+                    <stop offset="0.744792" stopColor="white" />
+                    <stop offset="0.9998" stopColor="#E886FF" />
+                    <stop offset="0.9999" stopColor="#ED8CFF" />
                 </radialGradient>
                 <radialGradient
                     id="paint9_radial_3895_1599"
@@ -347,8 +347,8 @@ const Planet = ({size}: Props) => {
                     gradientUnits="userSpaceOnUse"
                     gradientTransform="translate(3.69638 3.15768) scale(11.7369)"
                 >
-                    <stop offset="0.84375" stop-color="#EEADFE" />
-                    <stop offset="1" stop-color="#B439EE" />
+                    <stop offset="0.84375" stopColor="#EEADFE" />
+                    <stop offset="1" stopColor="#B439EE" />
                 </radialGradient>
                 <radialGradient
                     id="paint10_radial_3895_1599"
@@ -358,8 +358,8 @@ const Planet = ({size}: Props) => {
                     gradientUnits="userSpaceOnUse"
                     gradientTransform="translate(7.21477 13.3793) scale(9.25043 9.25044)"
                 >
-                    <stop offset="0.572917" stop-color="#EEB9FF" />
-                    <stop offset="1" stop-color="#7801BD" />
+                    <stop offset="0.572917" stopColor="#EEB9FF" />
+                    <stop offset="1" stopColor="#7801BD" />
                 </radialGradient>
                 <radialGradient
                     id="paint11_radial_3895_1599"
@@ -369,10 +369,10 @@ const Planet = ({size}: Props) => {
                     gradientUnits="userSpaceOnUse"
                     gradientTransform="translate(3.57213 16.9484) scale(0.99837)"
                 >
-                    <stop stop-color="#6D00C2" />
-                    <stop offset="0.3995" stop-color="#6600BC" />
-                    <stop offset="0.976" stop-color="#5300AC" />
-                    <stop offset="1" stop-color="#5200AB" />
+                    <stop stopColor="#6D00C2" />
+                    <stop offset="0.3995" stopColor="#6600BC" />
+                    <stop offset="0.976" stopColor="#5300AC" />
+                    <stop offset="1" stopColor="#5200AB" />
                 </radialGradient>
                 <radialGradient
                     id="paint12_radial_3895_1599"
@@ -382,9 +382,9 @@ const Planet = ({size}: Props) => {
                     gradientUnits="userSpaceOnUse"
                     gradientTransform="translate(19.7192 11.1435) scale(1.04279 1.0428)"
                 >
-                    <stop stop-color="#1F0081" />
-                    <stop offset="0.73" stop-color="#260087" />
-                    <stop offset="1" stop-color="#2A008B" />
+                    <stop stopColor="#1F0081" />
+                    <stop offset="0.73" stopColor="#260087" />
+                    <stop offset="1" stopColor="#2A008B" />
                 </radialGradient>
             </defs>
         </svg>

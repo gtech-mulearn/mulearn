@@ -11,16 +11,15 @@ import LcTeam from "./components/LcTeam";
 import LcHome from "./components/LcHome";
 import LcProgress from "./components/LcProgress";
 
-type Props = {};
-
-const LcDashboard = (props: Props) => {
+const LcDashboard = () => {
     const [lc, setLc] = useState<LcDetail>();
     const [temp, setTemp] = useState<LcDashboardTempData>({
         loading: true,
         isReport: false,
         isHistory: false,
         isTeam: false,
-        isSchedule: false
+        isSchedule: false,
+		reRender: false
     });
     const [tab, setTab] = useState<"Dashboard" | "IG Progress" | "BeWeb.dev">(
         "Dashboard"
@@ -39,13 +38,9 @@ const LcDashboard = (props: Props) => {
         }
     };
 
-    const handleComingSoon = () => {
-        comingSoon();
-    };
-
     useEffect(() => {
         handleFetchDetails();
-    }, [temp.isSchedule]);
+    }, [temp.isSchedule, temp.isTeam, temp.reRender]);
 
     return temp.loading ? (
         <MuLoader />
@@ -62,7 +57,7 @@ const LcDashboard = (props: Props) => {
                         <h1>{lc?.rank}</h1>
                         <h3>{covertNumToK(Number(lc?.total_karma))} Karma</h3>
                     </div>
-                    <button onClick={handleComingSoon}>
+                    <button onClick={comingSoon}>
                         <ThreeDotssvg />
                     </button>
                 </div>
@@ -87,7 +82,7 @@ const LcDashboard = (props: Props) => {
                 >
                     IG Progress
                 </button>
-                <button onClick={handleComingSoon}>BeWeb.dev</button>
+                <button onClick={comingSoon}>BeWeb.dev</button>
             </div>
             {
                 {
@@ -95,7 +90,7 @@ const LcDashboard = (props: Props) => {
                         <LcTeam
                             setTemp={setTemp}
                             temp={temp}
-                            members={lc?.members!}
+                            lc={lc}
                         />
                     ) : (
                         <LcHome setTemp={setTemp} temp={temp} lc={lc} id={id} />
