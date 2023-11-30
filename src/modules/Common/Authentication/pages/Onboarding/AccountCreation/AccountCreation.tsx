@@ -16,6 +16,7 @@ import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import { getCommunities } from "../../../services/onboardingApis";
 import { BiSupport } from "react-icons/bi";
+import { isDev } from "@/MuLearnServices/common_functions";
 
 const animatedComponents = makeAnimated();
 
@@ -44,15 +45,20 @@ const scheme = z.object({
         .required(`Phone number is Required`)
         .min(10, `Phone number must be at least 10 characters`)
         .max(10, `Phone number must be at most 10 characters`),
-    password: z
-        .string()
-        .required(`Password is Required`)
-        .min(8, `Password must be at least 8 characters`),
+    ...(isDev()
+        ? {
+              password: z.string().required(`Password is Required`)
+          }
+        : {
+              password: z
+                  .string()
+                  .required(`Password is Required`)
+                  .min(8, `Password must be at least 8 characters`)
+                  .max(100, `Password must be at most 100 characters`)
+          }),
     confirmPassword: z
         .string()
         .required(`Password is Required`)
-        .min(8, `Password must be at least 8 characters`)
-        .max(100, `Password must be at most 100 characters`)
         .test(
             "passwords-match",
             "Passwords are not matching",
