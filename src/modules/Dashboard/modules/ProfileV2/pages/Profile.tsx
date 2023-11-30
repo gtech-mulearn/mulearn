@@ -31,7 +31,7 @@ import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
 import { Projects } from "../components/Projects/Projects";
 import { PieChart } from "../components/Piechart/PieChart";
 import Rocket from "../assets/svg/Rocket";
-import Planet from "../assets/svg/Planets/Planet";
+
 import Planet2 from "../assets/svg/Planets/Planet2";
 import Planet3 from "../assets/svg/Planets/Planet3";
 import KarmaDist from "../assets/svg/KarmaDist";

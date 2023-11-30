@@ -1,12 +1,15 @@
 import React from "react";
 
-type Props = {};
+type Props = {
+    size:string,
+    
+};
 
-const Planet = (props: Props) => {
+const Planet = ({size}: Props) => {
     return (
         <svg
-            width="31"
-            height="30"
+            width={size}
+            height={size}
             viewBox="0 0 21 20"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
