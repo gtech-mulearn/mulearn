@@ -1,59 +1,71 @@
-import React from "react";
+import React, { PureComponent } from "react";
+import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from "recharts";
+import { CategoricalChartFunc } from "recharts/types/chart/generateCategoricalChart";
 
-// Define the types for your data items and props
-type DataItem = [string, number];
-type CircularProgressChartProps = {
+const COLORS = ["#456FF6", "#8FBCFA", "#AED0FF", "#E0EDFF", "#EA9CF4"];
+
+interface DataItem {
+    name: string;
+    value: number;
+}
+
+interface ExampleProps {
     data: DataItem[];
-};
+}
 
-const colors = ["blue", "red", "green", "orange"]; // Define your colors array
+export default class Example extends PureComponent<ExampleProps> {
+    static demoUrl =
+        "https://codesandbox.io/s/pie-chart-with-padding-angle-7ux0o";
+    onPieEnter: CategoricalChartFunc | undefined;
 
-const CircularProgressChart: React.FC<CircularProgressChartProps> = ({
-    data
-}) => {
-    const total = data.reduce((acc, [_, value]) => acc + value, 0);
+    render() {
+        const { data } = this.props;
+        console.log(data[1].name);
 
-    // Function to calculate the end angle of each segment
-    const calculateEndAngle = (
-        value: number,
-        total: number,
-        lastEndAngle: number
-    ) => {
-        const angle = (value / total) * Math.PI * 2;
-        return lastEndAngle + angle;
-    };
-
-    let lastEndAngle = 0;
-
-    return (
-        <svg width="200" height="200" viewBox="0 0 200 200">
-            {data.map(([_, value], index) => {
-                const endAngle = calculateEndAngle(value, total, lastEndAngle);
-                const largeArcFlag = endAngle - lastEndAngle > Math.PI ? 1 : 0;
-                const pathData = [
-                    `M 100 100`, // Move to the center
-                    `L ${100 + 70 * Math.cos(lastEndAngle)} ${
-                        100 + 70 * Math.sin(lastEndAngle)
-                    }`, // Line to the start point of the arc
-                    `A 70 70 0 ${largeArcFlag} 1 ${
-                        100 + 70 * Math.cos(endAngle)
-                    } ${100 + 70 * Math.sin(endAngle)}`, // Arc to the end point
-                    `Z` // Close the path
-                ].join(" ");
-                lastEndAngle = endAngle; // Update the lastEndAngle for the next segment
-
-                return (
-                    <path
-                        key={index}
-                        d={pathData}
-                        fill={colors[index % colors.length]}
-                        stroke="white"
-                        strokeWidth="1"
-                    />
-                );
-            })}
-        </svg>
-    );
-};
-
-export default CircularProgressChart;
+        return (
+            <>
+                <PieChart
+                    width={170}
+                    height={170}
+                    onMouseEnter={this.onPieEnter}
+                >
+                    <Pie
+                        data={data}
+                        cx={80}
+                        cy={80}
+                        innerRadius={60}
+                        outerRadius={80}
+                        fill="#8884d8"
+                        paddingAngle={2}
+                        dataKey="value"
+                    >
+                        {data.map((entry, index) => (
+                            <Cell
+                                key={`cell-${index}`}
+                                fill={COLORS[index % COLORS.length]}
+                            />
+                        ))}
+                    </Pie>
+                </PieChart>
+                <div>
+                    {data.map((entry, index) =>
+                        entry.value !== 0 ? (
+                            <div style={{display:"flex",gap:"10px"}}>
+                                <div
+                                    style={{
+                                        width: "15px",
+                                        height: "15px",
+                                        backgroundColor:
+                                            COLORS[index % COLORS.length],
+                                        borderRadius: "50%"
+                                    }}
+                                ></div>
+                                <p key={index} style={{color:"black"}}>{entry.name}</p>
+                            </div>
+                        ) : null
+                    )}
+                </div>
+            </>
+        );
+    }
+}

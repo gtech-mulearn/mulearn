@@ -129,17 +129,17 @@
             gap: 10px;
             position: relative;
 
-            .RoleWrapperContainer{
+            .RoleWrapperContainer {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                h2{
+                h2 {
                     font-size: 15px;
                     color: black;
                 }
-                p{
+                p {
                     font-size: 13px;
-                    color: #7D89B1;
+                    color: #7d89b1;
                 }
             }
             .StyleCommonRole {
@@ -169,7 +169,6 @@
             z-index: 500;
         }
 
-      
         .ellipseBasic {
             border: 2px solid #d5d8e6;
             border-radius: 50%;
@@ -201,11 +200,22 @@
         width: 50%;
         height: 300px;
         position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
 
+        & h1 {
+            text-align: left;
+            color: #000;
+            font-weight: 700;
+            font-size: 22px;
+        }
         .container {
-            top: 60px;
-            left: 10px;
-            position: absolute;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
         & h1 {

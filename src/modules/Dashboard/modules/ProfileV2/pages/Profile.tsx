@@ -36,6 +36,7 @@ import Planet2 from "../assets/svg/Planets/Planet2";
 import Planet3 from "../assets/svg/Planets/Planet3";
 import KarmaDist from "../assets/svg/KarmaDist";
 import { calc } from "@chakra-ui/react";
+import Example from "../components/CircularProgressChart/CircularProgressChart";
 
 type Props = {};
 interface CircleSection {
@@ -167,6 +168,11 @@ const ProfileV2 = (props: Props) => {
         medium: <Medium />
     };
     // console.log(socials);
+
+    const formattedData = data.map(item => ({
+        name: item[0] as string,
+        value: item[1] as number
+    }));
 
     return (
         <>
@@ -330,14 +336,11 @@ const ProfileV2 = (props: Props) => {
                             })}
                         </div>
                     </div>
-                    <div className={styles.karma_distribution_container}>
+
                         <h1>Karma distribution</h1>
                         <div className={styles.container}>
-                            {/* <div className={styles.ui_widgets}>
-                            <div className={styles.ui_value}>85%</div>
-                            <div className={styles.ui_labels}>Java</div>
-                        </div> <KarmaDist sections={circleSections} /> */}
-                            <PieChart data={data} />
+                            {/* <PieChart data={data} /> */}
+                            <Example data={formattedData} />
                         </div>
                     </div>
                 </div>
