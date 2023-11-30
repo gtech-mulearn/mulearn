@@ -7,7 +7,8 @@ import { deleteOrganization, getOrganizations } from "./OrganizationApis";
 import {
     columnsCollege,
     columnsCommunities,
-    columnsCompanies
+    columnsCompanies,
+    columnsSchool
 } from "./THeaders";
 import TableTopTab from "./TableTopTab";
 import { organizationRoutes } from "@/MuLearnServices/urls";
@@ -16,7 +17,7 @@ import OrgForm from "./OrgForm";
 import toast from "react-hot-toast";
 
 function Organizations() {
-    const ccc = ["College", "Company", "Community"] as const;
+    const ccc = ["College", "Company", "Community", "School"] as const;
     type CCC = (typeof ccc)[number];
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -26,13 +27,13 @@ function Organizations() {
     const [activeTab, setActiveTab] = useState<CCC>("College");
     const [sort, setSort] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-    const firstFetch = useRef(true);
+    // const firstFetch = useRef(true);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const orgFormRef = useRef<any>(null); //! Use for modal and form button connectivity
 
     useEffect(() => {
-        if (firstFetch.current || isModalOpen === false) {
+        if (isModalOpen === false) {
             getOrganizations(
                 activeTab,
                 setData,
@@ -44,14 +45,14 @@ function Organizations() {
                 ""
             );
         }
-        firstFetch.current = false;
+        // firstFetch.current = false;
 
-        const storedActiveTab = localStorage.getItem("activeTab");
+        // const storedActiveTab = localStorage.getItem("activeTab");
 
-        if (storedActiveTab) {
-            setActiveTab(storedActiveTab as CCC);
-            handleTabClick(storedActiveTab as CCC);
-        }
+        // if (storedActiveTab) {
+        //     setActiveTab(storedActiveTab as CCC);
+        //     handleTabClick(storedActiveTab as CCC);
+        // }
     }, [currentPage, isModalOpen]);
 
     const handleNextClick = () => {
@@ -125,8 +126,11 @@ function Organizations() {
                 case "Community":
                     setColumns(columnsCommunities);
                     break;
+                case "School":
+                    setColumns(columnsSchool);
+                    break;
             }
-            localStorage.setItem("activeTab", tab);
+            // localStorage.setItem("activeTab", tab);
 
             getOrganizations(
                 tab,

@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-import styles from "./ChangePassword.module.css"
+import styles from "./Account.module.css"
 import { FormikTextInputWithoutLabel as SimpleInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { PowerfulButton } from '@/MuLearnComponents/MuButtons/MuButton';
 import { privateGateway } from '@/MuLearnServices/apiGateways';
 import { dashboardRoutes } from '@/MuLearnServices/urls';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import Modal from "@/MuLearnComponents/Modal/Modal";
 
-const ChangePassword = () => {
+const Account = () => {
   const scheme = Yup.object({
     password: Yup.string()
       .required("Password is required")
@@ -20,6 +21,7 @@ const ChangePassword = () => {
   });
 
   const naviage = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
 
   const onSubmit = (values: any) => {
     privateGateway.post(dashboardRoutes.changePassword, {
@@ -27,6 +29,16 @@ const ChangePassword = () => {
     }).then((response) => {
       toast.success(response.data.message.general[0])
       naviage("/dashboard/profile")
+
+    }).catch((error) => {
+      toast.error(error.response.data.message.general[0])
+    })
+  }
+
+  const handleLeave = () => {
+    privateGateway.delete(dashboardRoutes.deleteUser + `${localStorage.getItem("userId")}`).then((response) => {
+      toast.success(response.data.message.general[0])
+      naviage("/")
 
     }).catch((error) => {
       toast.error(error.response.data.message.general[0])
@@ -131,9 +143,36 @@ const ChangePassword = () => {
             </Formik>
           </div>
         </div>
+        <br />
+        {isOpen && (
+          <Modal
+            setIsOpen={setIsOpen}
+            id={"Leave"}
+            heading={
+              "Are you sure you want to delete your account ?"
+            }
+            content={
+              "This cannot be undone. This will permanently delete your account."
+            }
+            click={handleLeave}
+            type="Leave"
+          />
+        )}
+        <div className={styles.deleteUserContainer}>
+          <div>
+            <p className={styles.changePasswordContainerLabel}>Delete User</p>
+            <p className={styles.changePasswordContainerTagline}>Click the below button to delete your account.</p>
+          </div>
+          <div className={styles.submit}>
+            <PowerfulButton style={{ backgroundColor: "#DC143C" }} onClick={() => setIsOpen(true)}
+            >
+              Delete Account
+            </PowerfulButton>
+          </div>
+        </div>
       </div>
     </div>
   )
 }
 
-export default ChangePassword
+export default Account

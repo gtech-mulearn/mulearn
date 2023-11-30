@@ -39,6 +39,32 @@ export const getKarmaVoucher = async (
     }
 };
 
+
+
+export const getKarmaVoucherTemplate = async () => {
+    try {
+        const response = await privateGateway.get(
+            dashboardRoutes.getKarmaVoucherTemplate,
+            { responseType: 'blob' } // Set the response type to 'blob'
+        );
+        const blob = new Blob([response.data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }); // Set the correct MIME type for XLSX files
+
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'karmaVoucherTemplate.xlsx');
+
+        document.body.appendChild(link);
+        link.click();
+        
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+}
+
 export const getTaskDetails = async (
     id: string | undefined,
     setData: UseStateFunc<TaskEditInterface>
@@ -82,16 +108,4 @@ export const getUUID = async () => {
     return response;
 };
 
-// function to take a js object and convert it to a XLSX file using the SheetJS library
-// bundle size increased from 106kb to 160kb, but dynamically imported
 
-export const convertToXLSX = (data: any, fileName: string) => {
-    import("xlsx")
-        .then(({ utils, writeFile }) => {
-            const ws = utils.json_to_sheet(data);
-            const wb = utils.book_new();
-            utils.book_append_sheet(wb, ws, "Result 1");
-            writeFile(wb, fileName);
-        })
-        .catch(err => console.error(err));
-};
