@@ -30,10 +30,10 @@ const CampusLogoGenerator = () => {
   const [fileType, setFileType] = useState("PNG");
 
   const MAX_CHARS = 15;
+  setLogoColor("#ffffff");
   const logoTypes = ["MuLearn", "YIP"];
   const muLogoVariants = ["Profile Pic", "Transparent Bg"];
   const yipLogoVariants = ["Black", "Red", "Dark"];
-  const logoColors = ["#ffffff", "#000000"];
   const logoBgColors = ["#AF2EE6", "#2E85FE", "#252525"];
   const logoFgVarients = [
     { svg: logoWhite, color: "#FFFFFF" },
@@ -277,7 +277,7 @@ const CampusLogoGenerator = () => {
             <label class="block mb-3 text-sm font-medium">Logo Color</label>
             <div className="flex justify-between mb-8">
             {logoFgVarients.map((varient) =>
-                varient.svg != logoGradient ? (
+                varient.svg !== logoGradient ? (
                   <div
                     key={varient.color}
                     className="w-10 h-10 rounded-lg border border-gray-300 cursor-pointer"
@@ -289,6 +289,7 @@ const CampusLogoGenerator = () => {
                     className="w-10 h-10 rounded-lg border border-gray-300 cursor-pointer"
                     src="/assets/placeholder/gradient.svg"
                     onClick={() => setLogoFgVarient(varient.svg)}
+                    alt="gradient image box"
                   ></img>
                 )
               )}
@@ -303,7 +304,7 @@ const CampusLogoGenerator = () => {
             </label>
             <div className="flex justify-between mb-8">
               {logoFgVarients.map((varient) =>
-                varient.svg != logoGradient ? (
+                varient.svg !== logoGradient ? (
                   <div
                     key={varient.color}
                     className="w-10 h-10 rounded-lg border border-gray-300 cursor-pointer"
@@ -315,6 +316,7 @@ const CampusLogoGenerator = () => {
                     className="w-10 h-10 rounded-lg border border-gray-300 cursor-pointer"
                     src="/assets/placeholder/gradient.svg"
                     onClick={() => setLogoFgVarient(varient.svg)}
+                    alt="gradient image box"
                   ></img>
                 )
               )}
