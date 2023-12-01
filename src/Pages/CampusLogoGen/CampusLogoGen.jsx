@@ -109,8 +109,8 @@ const CampusLogoGenerator = () => {
                 ? muLogoVariant === "Profile Pic"
                   ? logoFgVarient
                   : logoColor === "#ffffff"
-                  ? logoWhite
-                  : logoBlack
+                  ? logoFgVarient
+                  : logoFgVarient
                 : yipLogoImages[yipLogoVariant]
             }
             className={
@@ -274,18 +274,24 @@ const CampusLogoGenerator = () => {
 
         {muLogoVariant === "Transparent Bg" && (
           <>
-            <label class="block mb-3 text-sm font-medium">
-              Logo Color
-            </label>
+            <label class="block mb-3 text-sm font-medium">Logo Color</label>
             <div className="flex justify-between mb-8">
-              {logoFgVarients.map((varient) => (
-                <div
-                key={varient.color}
-                className="w-10 h-10 rounded-lg border border-gray-300 cursor-pointer"
-                style={{ backgroundColor: varient.color }}
-                  onClick={() => setLogoFgVarient(varient.svg)}
-                ></div>
-              ))}
+            {logoFgVarients.map((varient) =>
+                varient.svg != logoGradient ? (
+                  <div
+                    key={varient.color}
+                    className="w-10 h-10 rounded-lg border border-gray-300 cursor-pointer"
+                    style={{ backgroundColor: varient.color }}
+                    onClick={() => setLogoFgVarient(varient.svg)}
+                  ></div>
+                ) : (
+                  <img
+                    className="w-10 h-10 rounded-lg border border-gray-300 cursor-pointer"
+                    src="/assets/placeholder/gradient.svg"
+                    onClick={() => setLogoFgVarient(varient.svg)}
+                  ></img>
+                )
+              )}
             </div>
           </>
         )}
@@ -293,17 +299,25 @@ const CampusLogoGenerator = () => {
         {logoType === "MuLearn" && muLogoVariant === "Profile Pic" && (
           <>
             <label class="block mb-3 text-sm font-medium">
-              Forground Color
+              Foreground Color
             </label>
             <div className="flex justify-between mb-8">
-              {logoFgVarients.map((varient) => (
-                <div
-                key={varient.color}
-                className="w-10 h-10 rounded-lg border border-gray-300 cursor-pointer"
-                style={{ backgroundColor: varient.color }}
-                  onClick={() => setLogoFgVarient(varient.svg)}
-                ></div>
-              ))}
+              {logoFgVarients.map((varient) =>
+                varient.svg != logoGradient ? (
+                  <div
+                    key={varient.color}
+                    className="w-10 h-10 rounded-lg border border-gray-300 cursor-pointer"
+                    style={{ backgroundColor: varient.color }}
+                    onClick={() => setLogoFgVarient(varient.svg)}
+                  ></div>
+                ) : (
+                  <img
+                    className="w-10 h-10 rounded-lg border border-gray-300 cursor-pointer"
+                    src="/assets/placeholder/gradient.svg"
+                    onClick={() => setLogoFgVarient(varient.svg)}
+                  ></img>
+                )
+              )}
             </div>
             <label class="block mb-3 text-sm font-medium">
               Background Color
