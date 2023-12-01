@@ -15,10 +15,10 @@ import BasicDetails from "../components/BasicDetails/pages/BasicDetails";
 import KarmaHistory from "../components/KarmaHistory/KarmaHistory";
 import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
 import { Projects } from "../components/Projects/Projects";
-import { PieChart } from "../components/Piechart/PieChart";
+// import { PieChart } from "../components/Piechart/PieChart";
 import Rocket from "../assets/svg/Rocket";
 import ProfileHeader from "../components/ProfileHeader/ProfileHeader";
-import { calc } from "@chakra-ui/react";
+// import { calc } from "@chakra-ui/react";
 import Example from "../components/CircularProgressChart/CircularProgressChart";
 
 type Props = {};
@@ -28,15 +28,13 @@ interface CircleSection {
     color?: string;
 }
 const ProfileV2 = (props: Props) => {
-    const circleSections: CircleSection[] = [
-        { label: "hod", percentage: 40, color: "#456FF6" },
-        { label: "hod", percentage: 0, color: "#4566F6" },
-        { label: "hod", percentage: 0, color: "#456FF6" },
-        { label: "hod", percentage: 0, color: "#456FF6" },
-        { label: "hod", percentage: 0, color: "#456FF6" }
-        // { label: "karma", percentage: 60, color: "#8FBCFA" },
-        // { label: "general", percentage: 20, color: "#E0EDFF" }
-    ];
+    // const circleSections: CircleSection[] = [
+    //     { label: "hod", percentage: 40, color: "#456FF6" },
+    //     { label: "hod", percentage: 0, color: "#4566F6" },
+    //     { label: "hod", percentage: 0, color: "#456FF6" },
+    //     { label: "hod", percentage: 0, color: "#456FF6" },
+    //     { label: "hod", percentage: 0, color: "#456FF6" }
+    // ];
 
     const { id } = useParams<{ id: string }>();
     const [APILoadStatus, setAPILoadStatus] = useState(0);
