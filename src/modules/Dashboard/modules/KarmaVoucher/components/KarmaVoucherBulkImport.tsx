@@ -15,10 +15,10 @@ const KarmaVoucherBulkImport = () => {
     const toast = useToast();
 
     const successDownload = () => {
-        convertToXLSX(uploadResponse.response.Success, "Success.xlsx");
+        convertToXLSX(uploadResponse.data.response.Success, "Success.xlsx");
     };
     const failureDownload = () => {
-        convertToXLSX(uploadResponse.response.Failed, "Failed.xlsx");
+        convertToXLSX(uploadResponse.data.response.Failed, "Failed.xlsx");
     };
     const memoizedSuccessDownload = useMemo(
         () => successDownload,
@@ -28,6 +28,7 @@ const KarmaVoucherBulkImport = () => {
         () => failureDownload,
         [uploadResponse]
     );
+
     return (
         <>
             <div
@@ -49,9 +50,7 @@ const KarmaVoucherBulkImport = () => {
                 </PowerfulButton>
                 <PowerfulButton
                     variant="secondary"
-                    onClick={() =>
-                        getKarmaVoucherTemplate()
-                    }
+                    onClick={() => getKarmaVoucherTemplate()}
                 >
                     <BiDownload />
                     Download Template
@@ -74,7 +73,7 @@ const KarmaVoucherBulkImport = () => {
                     }}
                     onError={err => {
                         console.log(err);
-                        setUploadResponse(null);
+                        setUploadResponse(err);
                         // navigate("/dashboard/karma-voucher");
                     }}
                 />
