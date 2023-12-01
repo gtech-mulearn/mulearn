@@ -248,6 +248,30 @@ export const getUUID = async () => {
     return response;
 };
 
+export const getTaskTemplate = async () => {
+    try {
+        const response = await privateGateway.get(
+            dashboardRoutes.getTaskTemplate,
+            { responseType: 'blob' } // Set the response type to 'blob'
+        );
+        const blob = new Blob([response.data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }); // Set the correct MIME type for XLSX files
+
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'TaskTemplate.xlsx');
+
+        document.body.appendChild(link);
+        link.click();
+        
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+}
+
 // function to take a js object and convert it to a XLSX file using the SheetJS library
 // bundle size increased from 106kb to 160kb, but dynamically imported
 

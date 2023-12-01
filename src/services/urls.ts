@@ -56,6 +56,7 @@ export const dashboardRoutes = {
     getTaskChannels: "/api/v1/dashboard/task/channel/",
     getTaskTypes: "/api/v1/dashboard/task/task-types/",
     setAlumniStatus: "/api/v1/dashboard/campus/change-student-type/",
+    getTaskTemplate: "/api/v1/dashboard/task/base-template/",
 
     getKarmaVoucher: "/api/v1/dashboard/karma-voucher/",
     getKarmaVoucherList: "api/v1/dashboard/karma-voucher/import/",
