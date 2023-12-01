@@ -69,31 +69,31 @@ const CampusStudentList = (props: Props) => {
         Label: string;
         wrap?: (data: string, id: string) => ReactJSXElement;
     }[] = [
-        { column: "fullname", Label: "Name", isSortable: true },
-        // { column: "email", Label: "Email", isSortable: false },
-        { column: "karma", Label: "Karma", isSortable: true },
-        { column: "level", Label: "Level", isSortable: true },
-        { column: "rank", Label: "Rank", isSortable: false },
-        { column: "muid", Label: "MuId", isSortable: true },
-        { column: "email", Label: "Email", isSortable: true },
-        { column: "mobile", Label: "Mobile", isSortable: true },
-        { column: "join_date", Label: "Join Date", isSortable: true },
-        {
-            column: "is_alumni",
-            Label: "Alumni",
-            isSortable: true,
-            wrap: (data, id) => {
-                return (
-                    <AlumniCheckBox
-                        checked={data === "1"}
-                        id={id}
-                        setCurrBox={setCurrBox}
-                        setCurrModal={setCurrModal}
-                    />
-                );
+            { column: "fullname", Label: "Name", isSortable: true },
+            // { column: "email", Label: "Email", isSortable: false },
+            { column: "karma", Label: "Karma", isSortable: true },
+            { column: "level", Label: "Level", isSortable: true },
+            { column: "rank", Label: "Rank", isSortable: false },
+            { column: "muid", Label: "MuId", isSortable: true },
+            { column: "email", Label: "Email", isSortable: true },
+            { column: "mobile", Label: "Mobile", isSortable: true },
+            { column: "join_date", Label: "Join Date", isSortable: true },
+            {
+                column: "is_alumni",
+                Label: "Alumni",
+                isSortable: true,
+                wrap: (data, id) => {
+                    return (
+                        <AlumniCheckBox
+                            checked={data === "true" ? true : false}
+                            id={id}
+                            setCurrBox={setCurrBox}
+                            setCurrModal={setCurrModal}
+                        />
+                    );
+                }
             }
-        }
-    ];
+        ];
 
     const [campusData, setCampusData] = useState({
         college_name: "",
@@ -228,15 +228,16 @@ const CampusStudentList = (props: Props) => {
                         "Are you sure you want to change the alumni status?"
                     }
                     click={async () => {
+                        setCurrModal(false);
                         await setAlumniStatus(
                             currBox.id,
                             currBox.value,
-                            msg => {}
+                            msg => { }
                         );
-
                         //workaround state not updating issue
                         await new Promise(res => setTimeout(res, 1000));
                         setStudentData([]);
+
                     }}
                 />
             )}
@@ -283,10 +284,10 @@ const CampusStudentList = (props: Props) => {
                                                         campusData.total_karma
                                                     ) > 1000
                                                         ? (
-                                                              parseInt(
-                                                                  campusData.total_karma
-                                                              ) / 1000
-                                                          ).toPrecision(4) + "K"
+                                                            parseInt(
+                                                                campusData.total_karma
+                                                            ) / 1000
+                                                        ).toPrecision(4) + "K"
                                                         : campusData.total_karma}
                                                 </h1>
                                                 <p>Karma</p>
@@ -343,7 +344,7 @@ const CampusStudentList = (props: Props) => {
                                 <div className={styles.sec2}>
                                     <p className={styles.clg_rank}>
                                         {campusData?.rank?.toString().length ===
-                                        1
+                                            1
                                             ? "0" + campusData.rank
                                             : campusData.rank}
                                     </p>
@@ -377,7 +378,7 @@ const CampusStudentList = (props: Props) => {
                         </div>
                     </div>
                     <div className={styles.btnContainer}>
-                        <PowerfulButton onClick={() => {}}>
+                        <PowerfulButton onClick={() => { }}>
                             <AiOutlineDownload />
                             <a
                                 href={
@@ -389,7 +390,7 @@ const CampusStudentList = (props: Props) => {
                             </a>
                         </PowerfulButton>
                     </div>
-                    {studentData && (
+                    {studentData &&  (
                         <>
                             <TableTop
                                 onSearchText={handleSearch}
