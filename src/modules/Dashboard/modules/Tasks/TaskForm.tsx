@@ -85,7 +85,6 @@ const TaskForm = forwardRef(
         const [selectedIg, setSelectedIg] = useState<AffiliationOption | null>(null);
         const [selectedOrg, setSelectedOrg] = useState<AffiliationOption | null>(null);
 
-
         const [blurStatus, setBlurStatus] = useState({ affiliation: false });
 
         const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -195,21 +194,27 @@ const TaskForm = forwardRef(
             console.log("HELLO");
             // Validate form data
             let isValid = true;
-            // for (const key in updatedData) {
-            //     if (
-            //         updatedData[key as keyof IGData] === "" ||
-            //         updatedData[key as keyof IGData] === "undefined"
-            //     ) {
-            //         isValid = false;
-            //         setErrors(prevErrors => ({
-            //             ...prevErrors,
-            //             [key]: `${
-            //                 key.charAt(0).toUpperCase() + key.slice(1)
-            //             } is required`
-            //         }));
-            //         toast.error(`Error: ${key} is required`);
-            //     }
-            // }
+
+            const requiredKeys: Array<keyof typeof updatedData> = ['hashtag', 'title', 'karma', 'usage_count']; // Add the keys that are required
+
+            for (const key of requiredKeys) {
+                if (!(key in updatedData) || !updatedData[key]) {
+                    isValid = false;
+                    setErrors(prevErrors => ({
+                        ...prevErrors,
+                        [key]: `${key.charAt(0).toUpperCase() + key.slice(1)} is required`
+                    }));
+                }
+            }
+            
+            // Check if the selectedType value is valid
+            if (!selectedType) {
+                isValid = false;
+                setErrors(prevErrors => ({
+                    ...prevErrors,
+                    type_id: "Type is required" // Update error message for type_id
+                }));
+            }
 
             if (isValid) {
                 console.log(updatedData);
@@ -281,6 +286,7 @@ const TaskForm = forwardRef(
                                 value={data.hashtag}
                                 onChange={handleHashChange}
                                 onBlur={handleBlur}
+                                required
                             />
                             {errors.hashtag && (
                                 <div style={{ color: "red" }}>
@@ -296,6 +302,7 @@ const TaskForm = forwardRef(
                                 value={data.title}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
+                                required
                             />
                             {errors.title && (
                                 <div style={{ color: "red" }}>
@@ -311,6 +318,7 @@ const TaskForm = forwardRef(
                                 value={data.karma}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
+                                required
                             />
                             {errors.karma && (
                                 <div style={{ color: "red" }}>{errors.karma}</div>
@@ -324,6 +332,7 @@ const TaskForm = forwardRef(
                                 value={data.usage_count}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
+                                required
                             />
                             {errors.usage_count && (
                                 <div style={{ color: "red" }}>
@@ -340,11 +349,6 @@ const TaskForm = forwardRef(
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                             />
-                            {errors.discord_link && (
-                                <div style={{ color: "red" }}>
-                                    {errors.discord_link}
-                                </div>
-                            )}
                         </div>
                         <div className={styles.inputContainer}>
                             <input
@@ -355,11 +359,6 @@ const TaskForm = forwardRef(
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                             />
-                            {errors.description && (
-                                <div style={{ color: "red" }}>
-                                    {errors.description}
-                                </div>
-                            )}
                         </div>
                         <div className={styles.inputContainer}>
                             <Select
@@ -378,8 +377,7 @@ const TaskForm = forwardRef(
                                         channel: true
                                     }));
                                 }}
-                                name="level_id"
-                                required
+                                name="channel_id"
                             />
                         </div>
                         <div className={styles.inputContainer}>
@@ -402,6 +400,11 @@ const TaskForm = forwardRef(
                                 name="type_id"
                                 required
                             />
+                            {!selectedType && errors.type_id && (
+                                <div style={{ color: "red" }}>
+                                    {errors.type_id}
+                                </div>
+                            )}
                         </div>
                         <div className={styles.inputContainer}>
                             <Select
@@ -421,7 +424,6 @@ const TaskForm = forwardRef(
                                     }));
                                 }}
                                 name="level_id"
-                                required
                             />
                         </div>
                         <div className={styles.inputContainer}>
@@ -442,7 +444,6 @@ const TaskForm = forwardRef(
                                     }));
                                 }}
                                 name="ig_id"
-                                required
                             />
                         </div>
                         <div className={styles.inputContainer}>
@@ -463,7 +464,6 @@ const TaskForm = forwardRef(
                                     }));
                                 }}
                                 name="organization_id"
-                                required
                             />
                         </div>
                         <div className={styles.inputContainer}>
@@ -475,11 +475,6 @@ const TaskForm = forwardRef(
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                             />
-                            {errors.event && (
-                                <div style={{ color: "red" }}>
-                                    {errors.event}
-                                </div>
-                            )}
                         </div>
                         <div className={styles.inputContainer}>
                             <div

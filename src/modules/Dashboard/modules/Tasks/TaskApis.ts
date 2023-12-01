@@ -183,8 +183,8 @@ export const createTask = async (
                 level: level_id === "" ? null : level_id,
                 ig: ig_id === "" ? null : ig_id,
                 org: org_id === "" ? null : org_id,
-                discord_link: discord_link,
-                event: event
+                discord_link: discord_link === "" ? null : discord_link,
+                event: event === "" ? null : event
             }
         );
         toast({
