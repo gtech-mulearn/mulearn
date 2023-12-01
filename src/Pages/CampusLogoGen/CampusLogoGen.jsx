@@ -4,7 +4,7 @@ import * as htmlToImage from "html-to-image";
 import styles from "./campusLogoGen.module.css";
 import logoBlack from "../../images/campuslogo/logo-black.svg";
 import logoWhite from "../../images/campuslogo/logo-white.svg";
-import logoViloet from "../../images/campuslogo/logo-violet.svg";
+import logoViolet from "../../images/campuslogo/logo-violet.svg";
 import logoBlue from "../../images/campuslogo/logo-blue.svg";
 import logoGradient from "../../images/campuslogo/logo-gradient.svg";
 
@@ -35,7 +35,12 @@ const CampusLogoGenerator = () => {
   const yipLogoVariants = ["Black", "Red", "Dark"];
   const logoColors = ["#ffffff", "#000000"];
   const logoBgColors = ["#AF2EE6", "#2E85FE", "#252525"];
-  const logoFgVarients = [logoWhite,logoBlue,logoViloet,logoGradient];
+  const logoFgVarients = [
+    { svg: logoWhite, color: "#FFFFFF" },
+    { svg: logoBlue, color: "#3498db" },
+    { svg: logoViolet, color: "#8e44ad" },
+    { svg: logoGradient, color: "#810FFB" },
+  ];
   const fileTypes = ["PNG", "SVG"];
 
   const yipLogoImages = {
@@ -269,13 +274,16 @@ const CampusLogoGenerator = () => {
 
         {muLogoVariant === "Transparent Bg" && (
           <>
-            <label class="block mb-3 text-sm font-medium">Logo Color</label>
-            <div className="flex mb-8 gap-4">
-              {logoColors.map((color) => (
+            <label class="block mb-3 text-sm font-medium">
+              Logo Color
+            </label>
+            <div className="flex justify-between mb-8">
+              {logoFgVarients.map((varient) => (
                 <div
-                  className="w-10 h-10 rounded-lg border border-gray-400"
-                  style={{ backgroundColor: color }}
-                  onClick={() => setLogoColor(color)}
+                key={varient.color}
+                className="w-10 h-10 rounded-lg border border-gray-300 cursor-pointer"
+                style={{ backgroundColor: varient.color }}
+                  onClick={() => setLogoFgVarient(varient.svg)}
                 ></div>
               ))}
             </div>
@@ -290,11 +298,11 @@ const CampusLogoGenerator = () => {
             <div className="flex justify-between mb-8">
               {logoFgVarients.map((varient) => (
                 <div
-                  className="w-10 h-10 rounded-lg border-gray-300 cursor-pointer"
-                  onClick={() => setLogoFgVarient(varient)}
-                >{
-                  logoFgVarients.indexOf(varient)+1
-                }</div>
+                key={varient.color}
+                className="w-10 h-10 rounded-lg border border-gray-300 cursor-pointer"
+                style={{ backgroundColor: varient.color }}
+                  onClick={() => setLogoFgVarient(varient.svg)}
+                ></div>
               ))}
             </div>
             <label class="block mb-3 text-sm font-medium">
