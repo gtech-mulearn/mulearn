@@ -13,14 +13,19 @@ import Dribble from "../../../assets/svg/Dribble";
 import StackOverflow from "../../../assets/svg/StackOverflow";
 import Medium from "../../../assets/svg/Medium";
 import HackerRank from "../../../assets/svg/HackerRank";
-
+import i18next from "i18next";
+import LanguageSwitcher from "../../../../LanguageSwitcher/LanguageSwitcher";
+import { getFontSizeForLanguage } from "../../../../LanguageSwitcher/LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 type Props = {};
 
 const Socials = (props: Props) => {
     const [socials, setSocials] = useState([]);
     const { id } = useParams<{ id: string }>();
     const [editSocials, setEditSocials] = useState(false);
+    const { t } = useTranslation(["ChangePassword"]);
 
+    const fontSize = getFontSizeForLanguage(i18next.language, i18next);
     const socialMediaUrlMappings: { [key: string]: string } = {
         github: "https://github.com/",
         facebook: "https://www.facebook.com/",
@@ -85,7 +90,7 @@ const Socials = (props: Props) => {
     return (
         <>
             <div className={styles.edit_social_btn}>
-                <h2>Connect with me</h2>
+                <h2 style={{ fontSize }}>{t("Connect with me")}</h2>
                 {!editSocials && !id && (
                     <p
                         onClick={() => setEditSocials(true)}
@@ -116,9 +121,8 @@ const Socials = (props: Props) => {
                 value => value === "" || value === null
             ).length >= 9 &&
                 !editSocials && (
-                    <p className={styles.display_message}>
-                        You have not connected any socials medias to your
-                        profile yet.
+                    <p className={styles.display_message} style={{ fontSize }}>
+                        {t("Connect With Me desc")}
                     </p>
                 )}
             <p className={styles.socials_icons}>

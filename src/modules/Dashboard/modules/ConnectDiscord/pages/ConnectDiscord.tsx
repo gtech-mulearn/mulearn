@@ -8,10 +8,16 @@ import { BsDiscord } from "react-icons/bs";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { FaInstagram } from "react-icons/fa6";
-
+import i18next from "i18next";
+import LanguageSwitcher from "../../LanguageSwitcher/LanguageSwitcher";
+import { getFontSizeForLanguage } from "../../LanguageSwitcher/LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 const ConnectDiscord = () => {
     const [muid, setMuid] = useState("");
     const toast = useToast();
+    const { t } = useTranslation(["ChangePassword"]);
+
+    const fontSize = getFontSizeForLanguage(i18next.language, i18next);
     const firstFetch = useRef(true);
     useEffect(() => {
         if (firstFetch.current) {
@@ -33,12 +39,12 @@ const ConnectDiscord = () => {
                 <div className={styles.connectDiscord}>
                     <div className={styles.connect_discord_container}>
                         <div className={styles.content}>
-                            <h1>Join Discord using your µid</h1>
+                            <LanguageSwitcher />
+                            <h1 style={{ fontSize }}>
+                                {t("Join Discord using your µid")}
+                            </h1>
                             <p className={styles.content_tagline}>
-                                To join our discord server you need to connect
-                                your account with discord. To do so you need to
-                                copy your µid and paste it in the discord
-                                server.
+                                {t("Join Discord desc")}
                             </p>
                             <div className={styles.muid_and_btn}>
                                 <PowerfulButton
@@ -77,8 +83,6 @@ const ConnectDiscord = () => {
                                     rel="noopener noreferrer"
                                     className={styles.follow_us}
                                 >
-
-
                                     <FaInstagram size={20} />
                                     <p style={{ marginLeft: "0.3rem" }}>
                                         Follow Us
@@ -91,46 +95,63 @@ const ConnectDiscord = () => {
 
                     <div className={styles.onboarding_flow_container}>
                         <div className={styles.content}>
-                            <h1>Onboarding Flow</h1>
+                            <h1 style={{ fontSize }}>{t("Onboarding Flow")}</h1>
                             <div className={styles.onboarding_flow}>
                                 <p className={styles.lines}>
                                     <div className={styles.box}>
-                                        <p>
-                                            Click the connect discord button to
-                                            join our discord server and complete
-                                            the registration progress
+                                        <p style={{ fontSize }}>
+                                            {t(
+                                                "Click the connect discord button to join our discord server and complete the registration progress"
+                                            )}
                                         </p>
-                                        <p className={styles.p}>
-                                            Onboard Discord Server Accept the
-                                            invitation
+                                        <p
+                                            className={styles.p}
+                                            style={{ fontSize }}
+                                        >
+                                            {t(
+                                                "Onboard Discord Server Accept the invitation"
+                                            )}
                                         </p>
                                     </div>
                                     <div className={styles.box2}>
-                                        <p>
-                                            From the sidebar select the
-                                            Aaronchettan to continue.
+                                        <p style={{ fontSize }}>
+                                            {t(
+                                                "From the sidebar select the Aaronchettan to continue."
+                                            )}
                                         </p>
-                                        <p className={styles.p}>
-                                            Select the Aaronchettan Profile
+                                        <p
+                                            className={styles.p}
+                                            style={{ fontSize }}
+                                        >
+                                            {t(
+                                                "Select the Aaronchettan Profile"
+                                            )}
                                         </p>
                                     </div>
                                     <div className={styles.box3}>
-                                        <p>
-                                            From the opened direct message,
-                                            click the Connect Muid button.
+                                        <p style={{ fontSize }}>
+                                            {t(
+                                                "From the opened direct message,click the Connect Muid button."
+                                            )}
                                         </p>
-                                        <p className={styles.p}>
-                                            Connect Muid!
+                                        <p
+                                            className={styles.p}
+                                            style={{ fontSize }}
+                                        >
+                                            {t("Connect Muid!")}
                                         </p>
                                     </div>
                                     <div className={styles.box4}>
-                                        <p>
-                                            Inside the modal that is opened
-                                            enter the muid you copied and click
-                                            submit.
+                                        <p style={{ fontSize }}>
+                                            {t(
+                                                "Inside the modal that is opened enter the muid you copied and click submit."
+                                            )}
                                         </p>
-                                        <p className={styles.p}>
-                                            Enter Your muid
+                                        <p
+                                            className={styles.p}
+                                            style={{ fontSize }}
+                                        >
+                                            {t("Enter Your muid")}
                                         </p>
                                     </div>
                                 </p>

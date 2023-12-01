@@ -8,6 +8,10 @@ import level5 from "../assets/images/Level5.webp";
 import level6 from "../assets/images/Level6.webp";
 import level7 from "../assets/images/Level7.webp";
 import discordicon from "../assets/images/discordicon.webp";
+import i18next from "i18next";
+import LanguageSwitcher from "../../../../LanguageSwitcher/LanguageSwitcher";
+import { getFontSizeForLanguage } from "../../../../LanguageSwitcher/LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 import {
     Progress,
     CircularProgress,
@@ -32,6 +36,9 @@ type Props = {
 const levelImages = [level1, level2, level3, level4, level5, level6, level7];
 
 const MuVoyage = (props: Props) => {
+    const { t } = useTranslation(["ChangePassword"]);
+
+    const fontSize = getFontSizeForLanguage(i18next.language, i18next);
     const [userLevelData, setUserLevelData] = useState(props.userLevelData);
     const [userLevelTrack, setUserLevelTrack] = useState(
         userLevelData[props.userLevel - 1]
@@ -45,10 +52,10 @@ const MuVoyage = (props: Props) => {
             e => e.completed
         )
             ? `${(
-                (userLevelTrack?.tasks.filter(e => e.completed).length /
-                    userLevelTrack?.tasks.length) *
-                100
-            ).toFixed(0)}`
+                  (userLevelTrack?.tasks.filter(e => e.completed).length /
+                      userLevelTrack?.tasks.length) *
+                  100
+              ).toFixed(0)}`
             : "100";
     }
 
@@ -76,11 +83,11 @@ const MuVoyage = (props: Props) => {
                             {userLevelTrack.name !== "lvl4" && (
                                 <div className={styles.progressbar}>
                                     <div className={styles.progress_title}>
-                                        <p>
+                                        <p style={{ fontSize }}>
                                             {userLevelTrackerPercentage + "%"}{" "}
-                                            complete
+                                            {t("complete")}
                                         </p>
-                                        <p>
+                                        <p style={{ fontSize }}>
                                             {userLevelTrack?.tasks
                                                 .filter(e => e.completed)
                                                 .reduce(
@@ -92,7 +99,7 @@ const MuVoyage = (props: Props) => {
                                                 (a, b) => a + b.karma,
                                                 0
                                             )}{" "}
-                                            Karma
+                                            {t("Karma")}
                                         </p>
                                     </div>
                                     <Progress
@@ -175,20 +182,20 @@ const MuVoyage = (props: Props) => {
                                                                 e => e.completed
                                                             )
                                                                 ? (levelData?.tasks.filter(
-                                                                    e =>
-                                                                        e.completed
-                                                                ).length /
-                                                                    levelData
-                                                                        ?.tasks
-                                                                        .length) *
-                                                                100
+                                                                      e =>
+                                                                          e.completed
+                                                                  ).length /
+                                                                      levelData
+                                                                          ?.tasks
+                                                                          .length) *
+                                                                  100
                                                                 : 100
                                                         }
                                                         color="green.400"
                                                         thickness="12px"
                                                         size="15px"
                                                         capIsRound={true}
-                                                    // trackColor="red.100"
+                                                        // trackColor="red.100"
                                                     >
                                                         {levelData?.tasks.every(
                                                             e => e.completed
@@ -222,20 +229,20 @@ const MuVoyage = (props: Props) => {
                                                         Mine Left:{" "}
                                                         {Math.max(
                                                             levelData.karma -
-                                                            levelData?.tasks
-                                                                .filter(
-                                                                    e =>
-                                                                        e.completed
-                                                                )
-                                                                .reduce(
-                                                                    (
-                                                                        a,
-                                                                        b
-                                                                    ) =>
-                                                                        a +
-                                                                        b.karma,
-                                                                    0
-                                                                ),
+                                                                levelData?.tasks
+                                                                    .filter(
+                                                                        e =>
+                                                                            e.completed
+                                                                    )
+                                                                    .reduce(
+                                                                        (
+                                                                            a,
+                                                                            b
+                                                                        ) =>
+                                                                            a +
+                                                                            b.karma,
+                                                                        0
+                                                                    ),
                                                             0
                                                         )}{" "}
                                                         Karma

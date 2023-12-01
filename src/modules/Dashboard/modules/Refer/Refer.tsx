@@ -15,7 +15,10 @@ import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
 import { getReferredUserList } from "./service/api";
 import { setIn } from "formik";
-
+import i18next from "i18next";
+import LanguageSwitcher from ".././LanguageSwitcher/LanguageSwitcher";
+import { getFontSizeForLanguage } from ".././LanguageSwitcher/LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 type Dataflow = {
     full_name: string;
     muid: string;
@@ -29,6 +32,9 @@ const Refer = () => {
     const [inviteType, setInviteType] = useState<string>("");
     const [perPage, setPerPage] = useState(5);
     const [data, setData] = useState<Dataflow[] | null>(null);
+    const { t } = useTranslation(["ChangePassword"]);
+
+    const fontSize = getFontSizeForLanguage(i18next.language, i18next);
     const columnOrder = [
         { column: "full_name", Label: "Name", isSortable: false },
         { column: "muid", Label: "Mu ID", isSortable: false },
@@ -62,14 +68,20 @@ const Refer = () => {
                     paragraph="Send a invite link to a email"
                     onClose={() => setOpen(false)}
                 >
-                    <InviteFormModel inviteType={inviteType} onClose={() => setOpen(false)} />
+                    <InviteFormModel
+                        inviteType={inviteType}
+                        onClose={() => setOpen(false)}
+                    />
                 </Modal>
             )}
             <div className={styles.learningCircleLandingPage}>
+                <LanguageSwitcher />
                 <div className={styles.headContent}>
                     <img src={imageTop} alt="image" loading="eager" />
                     <div className={styles.learningCircleLandingPageDesc}>
-                        <h1>Discover, collaborate and grow</h1>
+                        <h1 style={{ fontSize }}>
+                            {t("Discover, collaborate and grow")}
+                        </h1>
                         <b style={{ fontWeight: "600", width: "80%" }}>
                             An amazing opportunity to invest a brief moment in
                             exploring fresh horizons alongside a community of
@@ -91,7 +103,10 @@ const Refer = () => {
                             </PowerfulButton> */}
                             <PowerfulButton
                                 className={styles.createBtn}
-                                onClick={() => { setOpen(true); setInviteType("Karma") }}
+                                onClick={() => {
+                                    setOpen(true);
+                                    setInviteType("Karma");
+                                }}
                                 style={{
                                     display: "flex",
                                     justifyContent: "space-evenly",

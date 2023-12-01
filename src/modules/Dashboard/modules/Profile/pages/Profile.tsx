@@ -26,11 +26,16 @@ import BasicDetails from "../components/BasicDetails/pages/BasicDetails";
 import Socials from "../components/Socials/pages/Socials";
 import ShareProfilePopUp from "../components/ShareProfilePopUp/pages/ShareProfilePopUp";
 import HelmetMetaTags from "../components/HelmetMetaTags/HelmetMetaTags";
-
+import i18next from "i18next";
+import LanguageSwitcher from "../../LanguageSwitcher/LanguageSwitcher";
+import { getFontSizeForLanguage } from "../../LanguageSwitcher/LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 //TODO: Verify the relevance of profile page image
 const Profile = () => {
     const { id } = useParams<{ id: string }>();
+    const { t } = useTranslation(["ChangePassword"]);
     const navigate = useNavigate();
+    const fontSize = getFontSizeForLanguage(i18next.language, i18next);
     const toast = useToast();
     const [APILoadStatus, setAPILoadStatus] = useState(0);
     const [profileList, setProfileList] = useState("basic-details");
@@ -128,6 +133,7 @@ const Profile = () => {
     return (
         <>
             <HelmetMetaTags userProfile={userProfile} dpm={dpm} />
+
             <div
                 style={
                     id
@@ -181,8 +187,8 @@ const Profile = () => {
                                                 <div>
                                                     <MulearnBrand />
                                                 </div>
-                                                <p>
-                                                    Member since{" "}
+                                                <p style={{ fontSize }}>
+                                                    {t("Member since")}{" "}
                                                     {userProfile?.joined?.slice(
                                                         0,
                                                         4
@@ -268,7 +274,8 @@ const Profile = () => {
                                                             color: "#456FF6"
                                                         }}
                                                     >
-                                                        LEVEL{"     "}
+                                                        {t("LEVEL")}
+                                                        {"     "}
                                                         {userProfile.level
                                                             ? userProfile?.level?.slice(
                                                                   3,
@@ -277,6 +284,7 @@ const Profile = () => {
                                                             : 1}
                                                     </p>
                                                 </div>
+                                                <LanguageSwitcher />
                                             </div>
 
                                             {!id && (
@@ -362,7 +370,9 @@ const Profile = () => {
                                                         : {}
                                                 }
                                             >
-                                                Basic Details
+                                                <p style={{ fontSize }}>
+                                                    {t("BasicDetails")}
+                                                </p>
                                             </li>
                                             <li
                                                 onClick={() =>
@@ -380,7 +390,9 @@ const Profile = () => {
                                                         : {}
                                                 }
                                             >
-                                                Karma History
+                                                <p style={{ fontSize }}>
+                                                    {t("KarmaHistory")}
+                                                </p>
                                             </li>
                                             <li
                                                 onClick={() =>
@@ -395,7 +407,9 @@ const Profile = () => {
                                                         : {}
                                                 }
                                             >
-                                                Mu Voyage
+                                                <p style={{ fontSize }}>
+                                                    {t("MuVoyage")}
+                                                </p>
                                             </li>
                                         </div>
 
@@ -403,7 +417,9 @@ const Profile = () => {
                                             <div className={styles.points}>
                                                 <Karma />
                                                 <div>
-                                                    <span>Karma</span>
+                                                    <span style={{ fontSize }}>
+                                                        {t("Karma")}
+                                                    </span>
                                                     <h1>
                                                         {parseInt(
                                                             userProfile.karma
@@ -421,7 +437,9 @@ const Profile = () => {
                                             <div className={styles.points}>
                                                 <AvgKarma />
                                                 <div>
-                                                    <span>Avg.Karma/Month</span>
+                                                    <span style={{ fontSize }}>
+                                                        {t("Avg.Karma/Month")}
+                                                    </span>
                                                     <h1>
                                                         {parseInt(
                                                             userProfile.karma
@@ -459,7 +477,9 @@ const Profile = () => {
                                             <div className={styles.points}>
                                                 <Rank />
                                                 <div>
-                                                    <span>Rank</span>
+                                                    <span style={{ fontSize }}>
+                                                        {t("Rank")}
+                                                    </span>
                                                     <h1>{userProfile.rank}</h1>
                                                 </div>
                                             </div>
@@ -500,13 +520,17 @@ const Profile = () => {
                                             <Socials />
                                         </div>
                                         <div className={styles.head}>
-                                            <h2>Existing Roles</h2>
+                                            <h2 style={{ fontSize }}>
+                                                {t("Existing Roles")}
+                                            </h2>
                                             <p>
                                                 {userProfile.roles.join(", ")}
                                             </p>
                                         </div>
                                         <div className={styles.head}>
-                                            <h2>Karma Distribution</h2>
+                                            <h2 style={{ fontSize }}>
+                                                {t("Karma Distribution")}
+                                            </h2>
                                             <div className={styles.pie_chart}>
                                                 {!data.every(
                                                     item =>
@@ -516,10 +540,9 @@ const Profile = () => {
                                                     <PieChart data={data} />
                                                 ) : (
                                                     <p className={styles.msg}>
-                                                        Wanna track your Karma
-                                                        points? Send in those
-                                                        tasks and your stats
-                                                        won't disappoint!
+                                                        {t(
+                                                            "Karma distribution desc"
+                                                        )}
                                                     </p>
                                                 )}
                                             </div>
@@ -532,7 +555,9 @@ const Profile = () => {
                                         }
                                     >
                                         <div className={styles.head}>
-                                            <h2>Recent Activity</h2>
+                                            <h2 style={{ fontSize }}>
+                                                {t("Recent Activity")}
+                                            </h2>
                                             <a
                                                 onClick={() => {
                                                     setProfileList(
@@ -541,8 +566,9 @@ const Profile = () => {
                                                     navigate("#section1");
                                                 }}
                                                 href="#section1"
+                                                style={{ fontSize }}
                                             >
-                                                View More
+                                                {t("View More")}
                                             </a>
                                         </div>
                                         <div className={styles.data_card}>
@@ -616,11 +642,11 @@ const Profile = () => {
                                                         </div>
                                                     ))
                                             ) : (
-                                                <p className={styles.msg}>
-                                                    Hey there! We know you're
-                                                    new here, so grab some Karma
-                                                    and we'll keep score of it
-                                                    here!
+                                                <p
+                                                    className={styles.msg}
+                                                    style={{ fontSize }}
+                                                >
+                                                    {t("Recent Activity desc")}
                                                 </p>
                                             )}
                                             <a
@@ -632,8 +658,9 @@ const Profile = () => {
                                                 }}
                                                 href="#section1"
                                                 className={styles.view_more}
+                                                style={{ fontSize }}
                                             >
-                                                View More
+                                                {t("View More")}
                                             </a>
                                         </div>
                                     </div>

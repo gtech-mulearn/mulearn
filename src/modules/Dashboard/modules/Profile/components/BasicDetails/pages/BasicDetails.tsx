@@ -4,6 +4,10 @@ import HeatmapComponent from "../../Heatmap/HeatmapComponent";
 import { useToast } from "@chakra-ui/react";
 import { editIgDetails, getAllIg } from "../services/api";
 import { useParams } from "react-router-dom";
+import i18next from "i18next";
+import LanguageSwitcher from "../../../../LanguageSwitcher/LanguageSwitcher";
+import { getFontSizeForLanguage } from "../../../../LanguageSwitcher/LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 type Props = {
     userProfile: any;
     userLog: any;
@@ -12,7 +16,9 @@ const BasicDetails = (props: Props) => {
     const toast = useToast();
     const [editIg, setEditIg] = useState(false);
     const [allIg, setAllIg] = useState<any>([]);
+    const { t } = useTranslation(["ChangePassword"]);
 
+    const fontSize = getFontSizeForLanguage(i18next.language, i18next);
     const [ig, setIg] = useState<any>(props.userProfile.interest_groups);
     const { id } = useParams<{ id: string }>();
     useEffect(() => {
@@ -26,7 +32,7 @@ const BasicDetails = (props: Props) => {
         <>
             <div className={styles.interestGrp}>
                 <div className={styles.top_sec}>
-                    <b>Interest Groups</b>
+                    <b style={{ fontSize }}>{t("Interest Groups")}</b>
                     <div className={styles.close_and_submit_btn_div}>
                         {!id &&
                             props.userProfile.level.slice(3, 4) >= 4 &&
@@ -78,8 +84,8 @@ const BasicDetails = (props: Props) => {
                                     style={
                                         editIg
                                             ? {
-                                                transform: "scale(0.955)"
-                                            }
+                                                  transform: "scale(0.955)"
+                                              }
                                             : {}
                                     }
                                     className={styles.igs}
@@ -115,18 +121,20 @@ const BasicDetails = (props: Props) => {
                                         {data.karma !== null
                                             ? data.karma > 1000
                                                 ? (
-                                                    data.karma / 1000
-                                                ).toPrecision(2) + "K"
+                                                      data.karma / 1000
+                                                  ).toPrecision(2) + "K"
                                                 : data.karma
-                                                    ? data.karma
-                                                    : "0"
+                                                ? data.karma
+                                                : "0"
                                             : "0"}
                                     </p>
                                 </div>
                             );
                         })
                     ) : (
-                        <p>No Interest Groups to Selected, You need you reach Level 4 to Select</p>
+                        <p style={{ fontSize }}>
+                            {t("Interest Groups new user")}
+                        </p>
                     )}
                     {editIg && <hr />}
                 </div>
@@ -149,9 +157,9 @@ const BasicDetails = (props: Props) => {
                                                             (
                                                                 prevState: any
                                                             ) => [
-                                                                    ...prevState,
-                                                                    data
-                                                                ]
+                                                                ...prevState,
+                                                                data
+                                                            ]
                                                         );
                                                 }
                                                 // editIgDetails(
