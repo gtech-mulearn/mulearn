@@ -4,7 +4,9 @@ import * as htmlToImage from "html-to-image";
 import styles from "./campusLogoGen.module.css";
 import logoBlack from "../../images/campuslogo/logo-black.svg";
 import logoWhite from "../../images/campuslogo/logo-white.svg";
-import stripes from "../../images/campuslogo/stripes.svg";
+import logoViolet from "../../images/campuslogo/logo-violet.svg";
+import logoBlue from "../../images/campuslogo/logo-blue.svg";
+import logoGradient from "../../images/campuslogo/logo-gradient.svg";
 
 import yipLogoRed from "../../images/yip_logo/yip-logo-red.svg";
 import yipLogoBlack from "../../images/yip_logo/yip-logo-black.svg";
@@ -23,7 +25,8 @@ const CampusLogoGenerator = () => {
   const [muLogoVariant, setMuLogoVariant] = useState("Profile Pic");
   const [yipLogoVariant, setYipLogoVariant] = useState("Black");
   const [logoColor, setLogoColor] = useState("#ffffff");
-  const [logoBgColor, setLogoBgColor] = useState("#f5365c");
+  const [logoBgColor, setLogoBgColor] = useState("#AF2EE6");
+  const [logoFgVarient, setLogoFgVarient] = useState(logoWhite);
   const [fileType, setFileType] = useState("PNG");
 
   const MAX_CHARS = 15;
@@ -31,7 +34,13 @@ const CampusLogoGenerator = () => {
   const muLogoVariants = ["Profile Pic", "Transparent Bg"];
   const yipLogoVariants = ["Black", "Red", "Dark"];
   const logoColors = ["#ffffff", "#000000"];
-  const logoBgColors = ["#f5365c", "#172b4d", "#fb6340", "#12bbda", "#5e72e4"];
+  const logoBgColors = ["#AF2EE6", "#2E85FE", "#252525"];
+  const logoFgVarients = [
+    { svg: logoWhite, color: "#FFFFFF" },
+    { svg: logoBlue, color: "#3498db" },
+    { svg: logoViolet, color: "#8e44ad" },
+    { svg: logoGradient, color: "#810FFB" },
+  ];
   const fileTypes = ["PNG", "SVG"];
 
   const yipLogoImages = {
@@ -98,7 +107,7 @@ const CampusLogoGenerator = () => {
             src={
               logoType === "MuLearn"
                 ? muLogoVariant === "Profile Pic"
-                  ? logoWhite
+                  ? logoFgVarient
                   : logoColor === "#ffffff"
                   ? logoWhite
                   : logoBlack
@@ -114,13 +123,13 @@ const CampusLogoGenerator = () => {
             alt="Logo"
           />
 
-          {logoType === "MuLearn" && muLogoVariant === "Profile Pic" && (
+          {/* {logoType === "MuLearn" && muLogoVariant === "Profile Pic" && (
             <img
               alt="picprofile"
               src={stripes}
               className="absolute w-full h-full"
             />
-          )}
+          )} */}
 
           <span
             className={
@@ -159,7 +168,7 @@ const CampusLogoGenerator = () => {
               src={
                 logoType === "MuLearn"
                   ? muLogoVariant === "Profile Pic"
-                    ? logoWhite
+                    ? logoFgVarient
                     : logoColor === "#ffffff"
                     ? logoWhite
                     : logoBlack
@@ -174,13 +183,13 @@ const CampusLogoGenerator = () => {
               }
               alt="Logo"
             />
-            {logoType === "MuLearn" && muLogoVariant === "Profile Pic" && (
+            {/* {logoType === "MuLearn" && muLogoVariant === "Profile Pic" && (
               <img
                 src={stripes}
                 alt="stripespic"
                 className="absolute w-full h-full rounded-full"
               />
-            )}
+            )} */}
             <span
               className={
                 logoType === "MuLearn"
@@ -265,13 +274,16 @@ const CampusLogoGenerator = () => {
 
         {muLogoVariant === "Transparent Bg" && (
           <>
-            <label class="block mb-3 text-sm font-medium">Logo Color</label>
-            <div className="flex mb-8 gap-4">
-              {logoColors.map((color) => (
+            <label class="block mb-3 text-sm font-medium">
+              Logo Color
+            </label>
+            <div className="flex justify-between mb-8">
+              {logoFgVarients.map((varient) => (
                 <div
-                  className="w-10 h-10 rounded-lg border border-gray-400"
-                  style={{ backgroundColor: color }}
-                  onClick={() => setLogoColor(color)}
+                key={varient.color}
+                className="w-10 h-10 rounded-lg border border-gray-300 cursor-pointer"
+                style={{ backgroundColor: varient.color }}
+                  onClick={() => setLogoFgVarient(varient.svg)}
                 ></div>
               ))}
             </div>
@@ -280,6 +292,19 @@ const CampusLogoGenerator = () => {
 
         {logoType === "MuLearn" && muLogoVariant === "Profile Pic" && (
           <>
+            <label class="block mb-3 text-sm font-medium">
+              Forground Color
+            </label>
+            <div className="flex justify-between mb-8">
+              {logoFgVarients.map((varient) => (
+                <div
+                key={varient.color}
+                className="w-10 h-10 rounded-lg border border-gray-300 cursor-pointer"
+                style={{ backgroundColor: varient.color }}
+                  onClick={() => setLogoFgVarient(varient.svg)}
+                ></div>
+              ))}
+            </div>
             <label class="block mb-3 text-sm font-medium">
               Background Color
             </label>
