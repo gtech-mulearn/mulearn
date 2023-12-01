@@ -15,6 +15,8 @@ import yipLogoDark from "../../images/yip_logo/yip-logo-dark.svg";
 const CampusLogoGenerator = () => {
   useEffect(() => {
     document.title = "Campus Logo Generator";
+
+    setLogoColor("#ffffff");
   }, []);
 
   const domEl = useRef(null);
@@ -30,7 +32,7 @@ const CampusLogoGenerator = () => {
   const [fileType, setFileType] = useState("PNG");
 
   const MAX_CHARS = 15;
-  setLogoColor("#ffffff");
+
   const logoTypes = ["MuLearn", "YIP"];
   const muLogoVariants = ["Profile Pic", "Transparent Bg"];
   const yipLogoVariants = ["Black", "Red", "Dark"];
@@ -276,7 +278,7 @@ const CampusLogoGenerator = () => {
           <>
             <label class="block mb-3 text-sm font-medium">Logo Color</label>
             <div className="flex justify-between mb-8">
-            {logoFgVarients.map((varient) =>
+              {logoFgVarients.map((varient) =>
                 varient.svg !== logoGradient ? (
                   <div
                     key={varient.color}
