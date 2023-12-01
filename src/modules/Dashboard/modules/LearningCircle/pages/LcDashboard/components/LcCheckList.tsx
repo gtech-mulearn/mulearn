@@ -70,7 +70,7 @@ const LcCheckList = (props: prop) => {
             <h4
                 style={{ fontWeight: "bold", textAlign: "left", width: "100%" }}
             >
-                TODO
+                Enter your checklist
             </h4>
             {items.map(item => (
                 <div key={item.id} className={styles.CheckBoxContainer}>
