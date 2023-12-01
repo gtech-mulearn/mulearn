@@ -289,7 +289,7 @@ const CampusLogoGenerator = () => {
                     className="w-10 h-10 rounded-lg border border-gray-300 cursor-pointer"
                     src="/assets/placeholder/gradient.svg"
                     onClick={() => setLogoFgVarient(varient.svg)}
-                    alt="gradient image box"
+                    alt="gradient box"
                   ></img>
                 )
               )}
@@ -316,7 +316,7 @@ const CampusLogoGenerator = () => {
                     className="w-10 h-10 rounded-lg border border-gray-300 cursor-pointer"
                     src="/assets/placeholder/gradient.svg"
                     onClick={() => setLogoFgVarient(varient.svg)}
-                    alt="gradient image box"
+                    alt="gradient box"
                   ></img>
                 )
               )}
