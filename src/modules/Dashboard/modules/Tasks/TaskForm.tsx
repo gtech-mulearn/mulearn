@@ -11,21 +11,20 @@ import { useToast } from "@chakra-ui/react";
 import { AxiosError } from "axios";
 import Select from "react-select";
 import { customReactSelectStyles } from "../../utils/common";
-import { getTaskDetails, } from "./TaskApis";
+import { getTaskDetails } from "./TaskApis";
 import { FormikCheckBox } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 
-
-type Props = { id: string; isEditMode: boolean; };
+type Props = { id: string; isEditMode: boolean };
 
 const TaskForm = forwardRef(
     (props: Props & { closeModal: () => void }, ref: any) => {
-
         const navigate = useNavigate();
         const toast = useToast();
         const [errors, setErrors] = useState<OrgFormErrors>({});
-        const [uuidData, setuuidData] = useState<{ [index: string]: any[] } | null>(null);
+        const [uuidData, setuuidData] = useState<{
+            [index: string]: any[];
+        } | null>(null);
         const [taskData, setTaskData] = useState<any>(null);
-
 
         // TODO: need to set an interface up for this. Cross check TaskEditInterface and the ones used in TaskCreate/TaskEdit
         const [data, setData] = useState({
@@ -79,11 +78,17 @@ const TaskForm = forwardRef(
         // });
 
         // Data Variables for react-select Fields
-        const [selectedChannel, setSelectedChannel] = useState<AffiliationOption | null>(null);
-        const [selectedType, setSelectedType] = useState<AffiliationOption | null>(null);
-        const [selectedLevel, setSelectedLevel] = useState<AffiliationOption | null>(null);
-        const [selectedIg, setSelectedIg] = useState<AffiliationOption | null>(null);
-        const [selectedOrg, setSelectedOrg] = useState<AffiliationOption | null>(null);
+        const [selectedChannel, setSelectedChannel] =
+            useState<AffiliationOption | null>(null);
+        const [selectedType, setSelectedType] =
+            useState<AffiliationOption | null>(null);
+        const [selectedLevel, setSelectedLevel] =
+            useState<AffiliationOption | null>(null);
+        const [selectedIg, setSelectedIg] = useState<AffiliationOption | null>(
+            null
+        );
+        const [selectedOrg, setSelectedOrg] =
+            useState<AffiliationOption | null>(null);
 
         const [blurStatus, setBlurStatus] = useState({ affiliation: false });
 
@@ -97,12 +102,13 @@ const TaskForm = forwardRef(
 
             if (!value.slice(0, 1).match("#") && value) {
                 setData(prevData => ({ ...prevData, [name]: "#" + value }));
-            }
-            else if (!value.slice(1).match("#")) {
+            } else if (!value.slice(1).match("#")) {
                 setData(prevData => ({ ...prevData, [name]: value }));
             }
-        }
-        const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        };
+        const handleCheckboxChange = (
+            e: React.ChangeEvent<HTMLInputElement>
+        ) => {
             const { name, checked } = e.target;
             setData(prevData => ({ ...prevData, [name]: checked }));
         };
@@ -112,14 +118,14 @@ const TaskForm = forwardRef(
             if (!value.trim()) {
                 setErrors(prevErrors => ({
                     ...prevErrors,
-                    [name]: `${name.charAt(0).toUpperCase() + name.slice(1)
-                        } is required`
+                    [name]: `${
+                        name.charAt(0).toUpperCase() + name.slice(1)
+                    } is required`
                 }));
             } else {
                 setErrors(prevErrors => ({ ...prevErrors, [name]: undefined }));
             }
         };
-
 
         useEffect(() => {
             (async () => {
@@ -139,7 +145,6 @@ const TaskForm = forwardRef(
                     console.log(err as AxiosError);
                 }
             })();
-
         }, [props.id]);
 
         useEffect(() => {
@@ -160,28 +165,49 @@ const TaskForm = forwardRef(
                     discord_link: taskData.discord_link,
                     event: taskData.event
                 });
-                console.log(taskData)
+                console.log(taskData);
             }
         }, [taskData]);
 
         useEffect(() => {
             if (props.isEditMode && data && uuidData) {
-                const channel = uuidData.channel.filter(val => { return (val.id == data.channel_id) })[0]
-                const type = uuidData.type.filter(val => { return (val.id == data.type_id) })[0]
-                const level = uuidData.level.filter(val => { return (val.id == data.level_id) })[0]
-                const ig = uuidData.ig.filter(val => { return (val.id == data.ig_id) })[0]
-                const org = uuidData.organization.filter(val => { return (val.id == data.organization_id) })[0]
+                const channel = uuidData.channel.filter(val => {
+                    return val.id == data.channel_id;
+                })[0];
+                const type = uuidData.type.filter(val => {
+                    return val.id == data.type_id;
+                })[0];
+                const level = uuidData.level.filter(val => {
+                    return val.id == data.level_id;
+                })[0];
+                const ig = uuidData.ig.filter(val => {
+                    return val.id == data.ig_id;
+                })[0];
+                const org = uuidData.organization.filter(val => {
+                    return val.id == data.organization_id;
+                })[0];
 
-                channel ? setSelectedChannel({ value: channel.id, label: channel.name }) : setSelectedChannel(null);
-                type ? setSelectedType({ value: type.id, label: type.title }) : setSelectedType(null);
-                level ? setSelectedLevel({ value: level.id, label: level.name }) : setSelectedLevel(null);
-                ig ? setSelectedIg({ value: ig.id, label: ig.name }) : setSelectedIg(null);
-                org ? setSelectedOrg({ value: org.id, label: org.title }) : setSelectedOrg(null);
+                channel
+                    ? setSelectedChannel({
+                          value: channel.id,
+                          label: channel.name
+                      })
+                    : setSelectedChannel(null);
+                type
+                    ? setSelectedType({ value: type.id, label: type.title })
+                    : setSelectedType(null);
+                level
+                    ? setSelectedLevel({ value: level.id, label: level.name })
+                    : setSelectedLevel(null);
+                ig
+                    ? setSelectedIg({ value: ig.id, label: ig.name })
+                    : setSelectedIg(null);
+                org
+                    ? setSelectedOrg({ value: org.id, label: org.title })
+                    : setSelectedOrg(null);
                 console.log(org);
             }
-
         }, [data, uuidData]);
-
 
         useImperativeHandle(ref, () => ({
             handleSubmitExternally: handleSubmit
@@ -189,7 +215,7 @@ const TaskForm = forwardRef(
         const handleSubmit = (e: React.FormEvent) => {
             e?.preventDefault();
             const updatedData = {
-                ...data,
+                ...data
             };
             console.log("HELLO");
             // Validate form data
@@ -240,11 +266,10 @@ const TaskForm = forwardRef(
                             props.closeModal();
                             window.location.reload();
                         })
-                        .catch((err) => {
+                        .catch(err => {
                             console.error(err);
-                        })
-                }
-                else {
+                        });
+                } else {
                     editTask(
                         data.hashtag,
                         data.title,
@@ -267,17 +292,20 @@ const TaskForm = forwardRef(
                             props.closeModal();
                             window.location.reload();
                         })
-                        .catch((err) => {
+                        .catch(err => {
                             console.error(err);
-                        })
+                        });
                 }
             }
-        }
+        };
 
         return (
             <>
                 <div className={styles.container}>
-                    <form className={styles.formContainer} onSubmit={handleSubmit}>
+                    <form
+                        className={styles.formContainer}
+                        onSubmit={handleSubmit}
+                    >
                         <div className={styles.inputContainer}>
                             <input
                                 type="text"
@@ -321,7 +349,9 @@ const TaskForm = forwardRef(
                                 required
                             />
                             {errors.karma && (
-                                <div style={{ color: "red" }}>{errors.karma}</div>
+                                <div style={{ color: "red" }}>
+                                    {errors.karma}
+                                </div>
                             )}
                         </div>
                         <div className={styles.inputContainer}>
@@ -476,29 +506,52 @@ const TaskForm = forwardRef(
                                 onBlur={handleBlur}
                             />
                         </div>
-                        <div className={styles.inputContainer}>
-                            <div
-                                style={{
-                                    display: "flex",
-                                    justifyContent: "space-evenly"
-                                }}
-                            >
-                                <div>
-                                    <label htmlFor="active"> Active</label>
-                                    <input type="checkbox" id="active" name="active" checked={data.active} onChange={handleCheckboxChange} />
-                                </div>
-                                <div>
-                                    <label htmlFor="variable_karma"> Variable Karma</label>
-                                    <input type="checkbox" id="variable_karma" name="variable_karma" checked={data.variable_karma} onChange={handleCheckboxChange} />
-                                </div>
+                        <div className={styles.CheckBoxWrapperSet}>
+                            <label className={styles.toggle} htmlFor="active">
+                                <label htmlFor="active"> Active</label>
+                                <input
+                                    type="checkbox"
+                                    className={styles.toggle__input}
+                                    id="active"
+                                    name="active"
+                                    checked={data.active}
+                                    onChange={handleCheckboxChange}
+                                />
+                                <span className={styles.toggleTrack}>
+                                    <span
+                                        className={styles.toggleTndicator}
+                                    ></span>
+                                </span>
+                            </label>
 
-                            </div>
+                            <label
+                                className={styles.toggle}
+                                htmlFor="variable_karma"
+                            >
+                                <label htmlFor="variable_karma">
+                                    {" "}
+                                    Variable Karma
+                                </label>
+                                <input
+                                    type="checkbox"
+                                    id="variable_karma"
+                                    className={styles.toggle__input}
+                                    name="variable_karma"
+                                    checked={data.variable_karma}
+                                    onChange={handleCheckboxChange}
+                                />
+                                <span className={styles.toggleTrack}>
+                                    <span
+                                        className={styles.toggleTndicator}
+                                    ></span>
+                                </span>
+                            </label>
                         </div>
-                    </form >
-                </div >
+                    </form>
+                </div>
             </>
-        )
+        );
     }
 );
 
-export default TaskForm
+export default TaskForm;
