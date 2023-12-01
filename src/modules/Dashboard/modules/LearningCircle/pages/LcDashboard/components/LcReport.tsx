@@ -95,7 +95,7 @@ const LcReport = (props: Props) => {
                     props.setTemp(prevState => ({
                         ...prevState,
                         isReport: false,
-						reRender: !prevState.reRender
+                        reRender: !prevState.reRender
                     }));
                     return <b>Meeting successfully reported!</b>;
                 },
@@ -158,6 +158,7 @@ const LcReport = (props: Props) => {
                         {props.lc?.members.map(member => (
                             <div
                                 key={member.id}
+                                className={styles.participantsContainer}
                                 onClick={() => handleMemberClick(member.id)}
                             >
                                 <LcAttendees
@@ -172,8 +173,11 @@ const LcReport = (props: Props) => {
                         {/* <button>+</button> */}
                     </div>
                 </div>
+                <button className={styles.submitButton} onClick={event => handleSubmit(event)} type="submit">
+                    Submit
+                </button>
             </div>
-            <div className={styles.UploadSection}>
+            {/* <div className={styles.UploadSection}>
                 <div id="uploadContainer" onClick={comingSoon}>
                     <p>Upload Meeting Images</p>
                     <div>
@@ -183,10 +187,7 @@ const LcReport = (props: Props) => {
                         </p>
                     </div>
                 </div>
-                <button onClick={event => handleSubmit(event)} type="submit">
-                    Submit
-                </button>
-            </div>
+            </div> */}
         </div>
     );
 };

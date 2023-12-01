@@ -19,11 +19,12 @@ const LcDashboard = () => {
         isHistory: false,
         isTeam: false,
         isSchedule: false,
-		reRender: false
+        reRender: false
     });
-    const [tab, setTab] = useState<"Dashboard" | "IG Progress" | "BeWeb.dev">(
+    const [tab, setTab] = useState<"Dashboard">(
         "Dashboard"
     );
+
     const { id } = useParams();
 
     const handleFetchDetails = async () => {
@@ -62,7 +63,7 @@ const LcDashboard = () => {
                     </button>
                 </div>
             </div>
-            <div className={styles.NavLink}>
+            {/* <div className={styles.NavLink}>
                 <button
                     className={`${tab === "Dashboard" && styles.active}`}
                     onClick={() => {
@@ -83,7 +84,7 @@ const LcDashboard = () => {
                     IG Progress
                 </button>
                 <button onClick={comingSoon}>BeWeb.dev</button>
-            </div>
+            </div> */}
             {
                 {
                     Dashboard: temp.isTeam ? (
@@ -94,9 +95,7 @@ const LcDashboard = () => {
                         />
                     ) : (
                         <LcHome setTemp={setTemp} temp={temp} lc={lc} id={id} />
-                    ),
-                    "IG Progress": <LcProgress />,
-                    "BeWeb.dev": <></>
+                    )
                 }[tab]
             }
         </div>
