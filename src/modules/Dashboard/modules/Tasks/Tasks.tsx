@@ -46,6 +46,8 @@ export const Tasks = () => {
         { column: "level", Label: "Level", isSortable: true },
         { column: "channel", Label: "Channel", isSortable: true },
         { column: "event", Label: "Event", isSortable: true },
+        { column: "bonus_time", Label: "Bonus time", isSortable: true },
+        { column: "bonus_karma", Label: "Bonus karma", isSortable: true },
         { column: "updated_by", Label: "Updated By", isSortable: true },
         { column: "updated_at", Label: "Updated On", isSortable: true },
         { column: "created_by", Label: "Created By", isSortable: true },
@@ -143,6 +145,15 @@ export const Tasks = () => {
 
     const handleDelete = (id: string | undefined) => {
         deleteTask(id, toast);
+        setData(data.filter(item => item?.id !== id));
+        // getTasks(
+        //     setData,
+        //     1,
+        //     perPage,
+        //     setIsLoading,
+        //     setTotalPages,
+        //     "",
+        // );
     };
 
     const handleCreate = () => {

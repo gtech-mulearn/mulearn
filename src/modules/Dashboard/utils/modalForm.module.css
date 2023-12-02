@@ -57,36 +57,41 @@
 	background-color: rgb(0, 0, 0);
 }
 
+.CheckBoxWrapperSet .toggle .toggle__label {
+  font-size: 15px;
+}
+
+
 .CheckBoxWrapperSet .toggle .toggleTrack {
-  background: #e5efe9;
-  border: 1px solid #000000;
+  background-color: #f3f3f4;
+  border: 1px solid #a09c9c;
   border-radius: 100px;
   cursor: pointer;
   display: flex;
-  height: 30px;
+  height: 25px;
   margin-right: 12px;
   position: relative;
-  width: 60px;
+  width: 50px;
 }
 
 .CheckBoxWrapperSet .toggle .toggleTndicator {
   align-items: center;
-  background: #da1a1d;
+  background: #818181;
   border-radius: 24px;
-  bottom: 2px;
+  bottom: 1.5px;
   display: flex;
-  height: 24px;
+  height: 20px;
   justify-content: center;
   left: 2px;
   outline: solid 2px transparent;
   position: absolute;
   transition: 0.25s;
-  width: 24px;
+  width: 20px;
 }
 
 .CheckBoxWrapperSet .toggle .toggle__input:checked + .toggleTrack .toggleTndicator {
-  background: #1f8602;
-  transform: translateX(30px);
+  background: #0275d8;
+  transform: translateX(24px);
 }
 
 @media screen and (-ms-high-contrast: active) {
