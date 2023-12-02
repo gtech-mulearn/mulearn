@@ -230,7 +230,7 @@ export const approveLcUser = async (
         const response = await privateGateway.patch(
             dashboardRoutes.getCampusLearningCircles +
                 circleId +
-                "/" +
+                "/user-accept-reject" +
                 memberId +
                 "/",
             {
