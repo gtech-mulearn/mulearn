@@ -519,7 +519,7 @@ const TaskForm = forwardRef(
                         </div>
                         <div className={styles.CheckBoxWrapperSet}>
                             <label className={styles.toggle} htmlFor="active">
-                                <label htmlFor="active"> Active</label>
+                                <label className={styles.toggle__label} htmlFor="active"> Active</label>
                                 <input
                                     type="checkbox"
                                     className={styles.toggle__input}
@@ -539,7 +539,7 @@ const TaskForm = forwardRef(
                                 className={styles.toggle}
                                 htmlFor="variable_karma"
                             >
-                                <label htmlFor="variable_karma">
+                                <label className={styles.toggle__label} htmlFor="variable_karma">
                                     {" "}
                                     Variable Karma
                                 </label>
@@ -560,7 +560,7 @@ const TaskForm = forwardRef(
                         </div>
                         <div className={styles.CheckBoxWrapperSet} style={{ justifyContent:"center"}}>
                             <label className={styles.toggle} htmlFor="showBonusCheckbox">
-                                <label htmlFor="showBonusCheckbox"> Do You need bonus Karma?</label>
+                                <label className={styles.toggle__label} htmlFor="showBonusCheckbox"> Do You need bonus Karma?</label>
                                 <input
                                     type="checkbox"
                                     className={styles.toggle__input}
