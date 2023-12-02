@@ -1,16 +1,14 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useRef, useState } from "react";
 import styles from "../LcDashboard.module.css";
 import { BiDotsVertical } from "react-icons/bi";
 import pic from "../../../assets/images/profileIcon.svg";
 import LeadIcon from "../../../assets/images/Lead icon.svg";
 import { PersonIcon } from "../../../assets/svg";
 import { PendingRequest } from "./LcPendingRequest";
-import { removeMember } from "../../../services/LearningCircleAPIs";
-import { useParams } from "react-router-dom";
-import { HiUserRemove } from "react-icons/hi";
-import toast from "react-hot-toast";
-import MuModal from "@/MuLearnComponents/MuModal/MuModal";
 import { userLevelBadge } from "../../../../../utils/utils";
+import LcOptions from "./LcOptions";
+import { IoCloseCircleOutline } from "react-icons/io5";
+import { useOutsideClick } from "../../../../../hooks/useOutsideClick";
 
 type Props = {
     setTemp: Dispatch<SetStateAction<LcDashboardTempData>>;
@@ -60,6 +58,11 @@ type Prop = {
     setTemp: Dispatch<SetStateAction<LcDashboardTempData>>;
 };
 const TeamList = (props: Prop) => {
+    const [isOptionOpen, setIsOptionOpen] = useState<number | null>(null);
+
+    const toggleOption = (index: number) => {
+        setIsOptionOpen(prevIndex => (prevIndex === index ? null : index));
+    };
     return (
         <div className={styles.TeamNavSectionWrapper}>
             <div className={styles.teamList}>
@@ -67,10 +70,12 @@ const TeamList = (props: Prop) => {
                     props.lc.members.map((member, index) => (
                         <TeamMember
                             member={member}
-                            index={index + 1}
+                            index={index}
                             key={`mem${index}`}
                             lc={props.lc}
                             setTemp={props.setTemp}
+                            isOptionOpen={isOptionOpen === index}
+                            toggleOption={() => toggleOption(index)}
                         />
                     ))}
             </div>
@@ -102,39 +107,25 @@ const TeamMember = ({
     member,
     index,
     lc,
-    setTemp
+    setTemp,
+    isOptionOpen,
+    toggleOption
 }: {
     member: LcMembers;
     index: number;
     lc: LcDetail | undefined;
     setTemp: Dispatch<SetStateAction<LcDashboardTempData>>;
+    isOptionOpen: boolean;
+    toggleOption: () => void;
 }) => {
-    const { id } = useParams();
-    const [isModal, setIsModal] = useState(false);
+    const ref = useRef<HTMLDivElement>(null);
+    useOutsideClick(ref, () => {
+        if (isOptionOpen) toggleOption();
+    });
 
-    const handleRemoval = (memberId: string, isLead: boolean) => {
-        if (lc?.is_lead && !isLead) {
-            toast.promise(removeMember(id, memberId), {
-                loading: "Loading...",
-                success: () => {
-                    // Updating state for re-render
-                    setTemp(prev => ({
-                        ...prev,
-                        isSchedule: !prev.isSchedule
-                    }));
-                    return <b>Member removed</b>;
-                },
-                error: () => {
-                    return <b>Member not removed</b>;
-                }
-            });
-        } else {
-            toast.error("Cannot remove lead");
-        }
-    };
     return (
-        <div className={styles.memberBar}>
-            <span>{index}.</span>{" "}
+        <div ref={ref} className={styles.memberBar}>
+            <span>{index + 1}.</span>
             <img
                 className={styles.MemberProfile}
                 src={member.profile_pic || pic}
@@ -142,7 +133,11 @@ const TeamMember = ({
             />{" "}
             <span className={styles.name}>{member.username}</span>
             <p>Level {member.level || 0}</p>
-            <img src={userLevelBadge(member.level)} alt="level" width={"25px"} />
+            <img
+                src={userLevelBadge(member.level)}
+                alt="level"
+                width={"25px"}
+            />
             {member.is_lead ? (
                 <img src={LeadIcon} alt="" className={styles.karma} />
             ) : (
@@ -151,30 +146,17 @@ const TeamMember = ({
             <span className={member.is_lead ? "" : styles.karma}>
                 {member.karma}μ
             </span>
-            {!member?.is_lead && (
-                <HiUserRemove
-                    onClick={() => {
-                        setIsModal(true);
-                    }}
-                    style={{
-                        cursor: "pointer",
-                        color: "red"
-                    }}
-                />
+            {lc?.is_lead && isOptionOpen ? (
+                <IoCloseCircleOutline onClick={toggleOption} />
+            ) : (
+                <BiDotsVertical onClick={toggleOption} />
             )}
-            {isModal && (
-                <MuModal
-                    isOpen={isModal}
-                    onClose={() => setIsModal(false)}
-                    title={`Remove ${member.username}`}
-                    type={"error"}
-                    onDone={() => {
-                        handleRemoval(member.id, member.is_lead);
-                        setIsModal(false);
-                    }}
-                >
-                    <p>Are you sure you want to remove {member.username}?</p>
-                </MuModal>
+            {isOptionOpen && (
+                <LcOptions
+                    isLead={member.is_lead}
+                    setTemp={setTemp}
+                    member={member}
+                />
             )}
         </div>
     );
