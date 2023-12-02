@@ -24,7 +24,7 @@ type InitialLocationData = {
     state: { label: string; value: string };
     district: { label: string; value: string };
 } | null;
-const requiredFields = ["first_name","email","mobile"];
+const requiredFields = ["first_name", "email", "mobile"];
 const UserForm = forwardRef(
     (props: Props & { closeModal: () => void }, ref: any) => {
         const [initialData, setInitialData] =
@@ -85,10 +85,10 @@ const UserForm = forwardRef(
                             ...selectData,
                             selectedCommunity: data.organizations
                                 ? data.organizations
-                                      .filter(
-                                          org => org.org_type === "Community"
-                                      )
-                                      .map(org => org.org)
+                                    .filter(
+                                        org => org.org_type === "Community"
+                                    )
+                                    .map(org => org.org)
                                 : [],
                             selectedInterestGroups: data.interest_groups
                                 ? data.interest_groups
@@ -128,9 +128,8 @@ const UserForm = forwardRef(
             if (!value.trim()) {
                 setErrors(prevErrors => ({
                     ...prevErrors,
-                    [name]: `${
-                        name.charAt(0).toUpperCase() + name.slice(1)
-                    } is required`
+                    [name]: `${name.charAt(0).toUpperCase() + name.slice(1)
+                        } is required`
                 }));
             } else {
                 setErrors(prevErrors => ({ ...prevErrors, [name]: undefined }));
@@ -202,7 +201,7 @@ const UserForm = forwardRef(
             );
         }, [locationData]);
 
-        useEffect(() => {}, [selectData.roles]);
+        useEffect(() => { }, [selectData.roles]);
 
         //! useImperativeHandle for triggering submit from MuModal button
         useImperativeHandle(ref, () => ({
@@ -210,19 +209,30 @@ const UserForm = forwardRef(
         }));
         const handleSubmit = (e?: React.FormEvent) => {
             e?.preventDefault();
-            const convertedRoles = selectedRoles.map(option => option.value);
+            const convertedRoles = selectedRoles.map(option => option?.value);
             const updatedData = {
                 ...data,
-                // affiliation: String(selectedAffiliation?.value),
-                country: String(locationData.selectedCountry?.value),
-                state: String(locationData.selectedState?.value),
-                district: String(locationData.selectedDistrict?.value),
+                // affiliation: String(selectedAffiliation??.value),
+                country: (locationData.selectedCountry?.value),
+                state: (locationData.selectedState?.value),
+                district: (locationData.selectedDistrict?.value),
                 roles: selectData.selectedRoles,
-                interest_groups: selectedIg.map(option => option.value),
+                interest_groups: selectedIg.map(option => option?.value),
                 organizations: [selectData.selectedCollege],
                 department: selectData.selectedDepartment,
                 community: selectData.selectedCommunity
             };
+
+            for (const key in updatedData) {
+                if (
+                    updatedData[key as keyof typeof updatedData] === undefined ||
+                    updatedData[key as keyof typeof updatedData] === null ||
+                    updatedData[key as keyof typeof updatedData] === "" ||
+                    updatedData[key as keyof typeof updatedData] === "undefined"
+                ) {
+                    delete updatedData[key as keyof typeof updatedData];
+                }
+            }
 
             // Validate form data
             let isValid = true;
@@ -275,7 +285,7 @@ const UserForm = forwardRef(
                             placeholder="Last Name"
                             value={data.last_name}
                             onChange={handleChange}
-                            // onBlur={handleBlur}
+                        // onBlur={handleBlur}
                         />
                         {errors.last_name && (
                             <div style={{ color: "red" }}>
@@ -316,7 +326,7 @@ const UserForm = forwardRef(
                             placeholder="DiscordId"
                             value={data.discord_id as string}
                             onChange={handleChange}
-                            // onBlur={handleBlur}
+                        // onBlur={handleBlur}
                         />
                         {errors.discord_id && (
                             <div style={{ color: "red" }}>
@@ -335,14 +345,14 @@ const UserForm = forwardRef(
                             isLoading={!selectData.community.length}
                             value={selectData.community.filter(comm =>
                                 selectData.selectedCommunity.includes(
-                                    comm.value
+                                    comm?.value
                                 )
                             )}
                             onChange={(selectedOptions: any) => {
                                 setSelectData(prevState => ({
                                     ...prevState,
                                     selectedCommunity: selectedOptions.map(
-                                        (opt: any) => opt.value
+                                        (opt: any) => opt?.value
                                     )
                                 }));
                             }}
@@ -373,13 +383,13 @@ const UserForm = forwardRef(
                             placeholder="Roles"
                             isLoading={!selectData.roles.length}
                             value={selectData.roles.filter(roles =>
-                                selectData.selectedRoles.includes(roles.value)
+                                selectData.selectedRoles.includes(roles?.value)
                             )}
                             onChange={(selectedOptions: any) => {
                                 setSelectData(selectData => ({
                                     ...selectData,
                                     selectedRoles: selectedOptions.map(
-                                        (opt: any) => opt.value
+                                        (opt: any) => opt?.value
                                     )
                                 }));
                                 // setSelectedRoles(selectedOptions);
@@ -425,7 +435,7 @@ const UserForm = forwardRef(
                             }}
                             value={ig.filter(val =>
                                 selectData.selectedInterestGroups.includes(
-                                    val.value
+                                    val?.value
                                 )
                             )}
                         />
@@ -450,7 +460,7 @@ const UserForm = forwardRef(
                         onCountryChange={handleCountryChange}
                         onStateChange={handleStateChange}
                         onDistrictChange={handleDistrictChange}
-                        notRequired = {true}
+                        notRequired={true}
                     />
 
                     <div className={styles.inputContainer}>
@@ -462,12 +472,12 @@ const UserForm = forwardRef(
                             isLoading={!college.length}
                             value={college.filter(
                                 college =>
-                                    college.value === selectData.selectedCollege
+                                    college?.value === selectData.selectedCollege
                             )}
                             onChange={(selectedOptions: any) => {
                                 setSelectData(prevState => ({
                                     ...prevState,
-                                    selectedCollege: selectedOptions.value
+                                    selectedCollege: selectedOptions?.value
                                 }));
                             }}
                             onBlur={() => {
@@ -497,13 +507,13 @@ const UserForm = forwardRef(
                             isLoading={!department.length}
                             value={department.filter(
                                 dep =>
-                                    (dep.value as any) ===
+                                    (dep?.value as any) ===
                                     selectData.selectedDepartment
                             )}
                             onChange={(selectedOptions: any) => {
                                 setSelectData(prevState => ({
                                     ...prevState,
-                                    selectedDepartment: selectedOptions.value
+                                    selectedDepartment: selectedOptions?.value
                                 }));
                             }}
                             onBlur={() => {
