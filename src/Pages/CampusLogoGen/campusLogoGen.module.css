@@ -1,8 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400&display=swap");
+
 .campusCodeMulearn {
   position: absolute;
   right: calc(100% / 6);
-  bottom: 6.3rem;
-  font-size: 1.25rem;
+  font-weight: 300;
+  bottom: calc(6.3rem - 10px);
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 1.7rem;
 }
 
 .campusCodeYip {

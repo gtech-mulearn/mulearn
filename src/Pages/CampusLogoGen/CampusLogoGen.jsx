@@ -16,7 +16,7 @@ const CampusLogoGenerator = () => {
   useEffect(() => {
     document.title = "Campus Logo Generator";
 
-    setLogoColor("#ffffff");
+    setLogoColor("#fefefe");
   }, []);
 
   const domEl = useRef(null);
@@ -26,7 +26,7 @@ const CampusLogoGenerator = () => {
   const [logoType, setLogoType] = useState("MuLearn");
   const [muLogoVariant, setMuLogoVariant] = useState("Profile Pic");
   const [yipLogoVariant, setYipLogoVariant] = useState("Black");
-  const [logoColor, setLogoColor] = useState("#ffffff");
+  const [logoColor, setLogoColor] = useState("#fefefe");
   const [logoBgColor, setLogoBgColor] = useState("#AF2EE6");
   const [logoFgVarient, setLogoFgVarient] = useState(logoWhite);
   const [fileType, setFileType] = useState("PNG");
@@ -38,7 +38,7 @@ const CampusLogoGenerator = () => {
   const yipLogoVariants = ["Black", "Red", "Dark"];
   const logoBgColors = ["#AF2EE6", "#2E85FE", "#252525"];
   const logoFgVarients = [
-    { svg: logoWhite, color: "#FFFFFF" },
+    { svg: logoWhite, color: "#fefefe" },
     { svg: logoBlue, color: "#3498db" },
     { svg: logoViolet, color: "#8e44ad" },
     { svg: logoGradient, color: "#810FFB" },
@@ -54,7 +54,7 @@ const CampusLogoGenerator = () => {
   const yipLogoTextColors = {
     Black: "#262626",
     Red: "#FA5252",
-    Dark: "#ffffff",
+    Dark: "#fefefe",
   };
 
   function handleTextChange(event) {
@@ -99,10 +99,10 @@ const CampusLogoGenerator = () => {
             logoType === "MuLearn"
               ? muLogoVariant === "Transparent Bg"
                 ? { backgroundColor: "#00000000", color: logoColor }
-                : { backgroundColor: logoBgColor, color: "#ffffff" }
+                : { backgroundColor: logoBgColor, color: "#fefefe" }
               : yipLogoVariant === "Dark"
-              ? { backgroundColor: "#262626", color: "#ffffff" }
-              : { backgroundColor: "#ffffff", color: "#000" }
+              ? { backgroundColor: "#262626", color: "#fefefe" }
+              : { backgroundColor: "#fefefe", color: "#000" }
           }
         >
           <img
@@ -110,7 +110,7 @@ const CampusLogoGenerator = () => {
               logoType === "MuLearn"
                 ? muLogoVariant === "Profile Pic"
                   ? logoFgVarient
-                  : logoColor === "#ffffff"
+                  : logoColor === "#fefefe"
                   ? logoFgVarient
                   : logoFgVarient
                 : yipLogoImages[yipLogoVariant]
@@ -160,10 +160,10 @@ const CampusLogoGenerator = () => {
               logoType === "MuLearn"
                 ? muLogoVariant === "Transparent Bg"
                   ? { backgroundColor: "#00000000", color: logoColor }
-                  : { backgroundColor: logoBgColor, color: "#ffffff" }
+                  : { backgroundColor: logoBgColor, color: "#fefefe" }
                 : yipLogoVariant === "Dark"
-                ? { backgroundColor: "#262626", color: "#ffffff" }
-                : { backgroundColor: "#ffffff", color: "#000" }
+                ? { backgroundColor: "#262626", color: "#fefefe" }
+                : { backgroundColor: "#fefefe", color: "#000" }
             }
           >
             <img
@@ -171,7 +171,7 @@ const CampusLogoGenerator = () => {
                 logoType === "MuLearn"
                   ? muLogoVariant === "Profile Pic"
                     ? logoFgVarient
-                    : logoColor === "#ffffff"
+                    : logoColor === "#fefefe"
                     ? logoWhite
                     : logoBlack
                   : yipLogoImages[yipLogoVariant]
