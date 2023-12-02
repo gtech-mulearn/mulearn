@@ -13,6 +13,7 @@ import Select from "react-select";
 import { customReactSelectStyles } from "../../utils/common";
 import { getTaskDetails } from "./TaskApis";
 import { FormikCheckBox } from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import { convertDateToYYYYMMDD } from "../../utils/common";
 
 type Props = { id: string; isEditMode: boolean };
 
@@ -41,7 +42,9 @@ const TaskForm = forwardRef(
             ig_id: "",
             organization_id: "",
             discord_link: "",
-            event: ""
+            event: "",
+            bonus_time:"",
+            bonus_karma:""
         });
 
         //! taskEditSchema has not been used !!
@@ -91,6 +94,8 @@ const TaskForm = forwardRef(
             useState<AffiliationOption | null>(null);
 
         const [blurStatus, setBlurStatus] = useState({ affiliation: false });
+        const [showBonus, setShowBonus] = useState<boolean>(false);
+
 
         const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
             const { name, value } = e.target;
@@ -163,7 +168,9 @@ const TaskForm = forwardRef(
                     ig_id: taskData.ig,
                     organization_id: taskData.org,
                     discord_link: taskData.discord_link,
-                    event: taskData.event
+                    event: taskData.event,
+                    bonus_time:convertDateToYYYYMMDD(String(taskData?.bonus_time)) || null,
+                    bonus_karma:taskData.bonus_karma
                 });
                 console.log(taskData);
             }
@@ -260,11 +267,13 @@ const TaskForm = forwardRef(
                         selectedOrg?.value || "",
                         data.discord_link,
                         data.event,
+                        data.bonus_time,
+                        data.bonus_karma,
                         toast
                     )
                         .then(() => {
                             props.closeModal();
-                            window.location.reload();
+                            // window.location.reload();
                         })
                         .catch(err => {
                             console.error(err);
@@ -286,11 +295,13 @@ const TaskForm = forwardRef(
                         data.discord_link,
                         props.id,
                         data.event,
+                        data.bonus_time,
+                        data.bonus_karma,
                         toast
                     )
                         .then(() => {
                             props.closeModal();
-                            window.location.reload();
+                            // window.location.reload();
                         })
                         .catch(err => {
                             console.error(err);
@@ -547,6 +558,48 @@ const TaskForm = forwardRef(
                                 </span>
                             </label>
                         </div>
+                        <div className={styles.CheckBoxWrapperSet} style={{ justifyContent:"center"}}>
+                            <label className={styles.toggle} htmlFor="showBonusCheckbox">
+                                <label htmlFor="showBonusCheckbox"> Do You need bonus Karma?</label>
+                                <input
+                                    type="checkbox"
+                                    className={styles.toggle__input}
+                                    id="showBonusCheckbox"
+                                    name="showBonusCheckbox"
+                                    checked={showBonus}
+                                    onChange={(e) => setShowBonus(e.target.checked)}
+                                />
+                                <span className={styles.toggleTrack}>
+                                    <span
+                                        className={styles.toggleTndicator}
+                                    ></span>
+                                </span>
+                            </label>
+                        </div>
+                        {showBonus && (
+                            <div className={styles.inputContainer}>
+                                <input
+                                    type="date"
+                                    name="bonus_time"
+                                    placeholder="Bonus Time"
+                                    value={data.bonus_time}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                />
+                            </div>
+                        )}
+                        {showBonus && (
+                            <div className={styles.inputContainer}>
+                                <input
+                                    type="number"
+                                    name="bonus_karma"
+                                    placeholder="Bonus Karma"
+                                    value={data.bonus_karma}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                />
+                            </div>
+                        )}
                     </form>
                 </div>
             </>
