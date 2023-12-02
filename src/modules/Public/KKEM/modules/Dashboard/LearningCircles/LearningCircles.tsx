@@ -8,6 +8,7 @@ import THead from '@/MuLearnComponents/Table/THead';
 import Pagination from '@/MuLearnComponents/Pagination/Pagination';
 import Chart from 'react-google-charts';
 import { useSearchParams } from 'react-router-dom';
+import { KKEMRoutes } from '@/MuLearnServices/urls';
 const LearningCircles = () => {
     const [authorized, setAuthorized] = useState(true);
     const [searchParams] = useSearchParams();
@@ -311,6 +312,7 @@ const LearningCircles = () => {
                         <TableTop
                             onSearchText={handleSearch}
                             onPerPageNumber={handlePerPageNumber}
+                            CSV={KKEMRoutes.getLcReport}
                         />
                         <br />
                         <Table
