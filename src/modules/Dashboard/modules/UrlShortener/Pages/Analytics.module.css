@@ -92,7 +92,61 @@
             }
 
             .graph {
-                width: 100%;
+                width: 90%;
+                min-height: 200px;
+                position: relative;
+                margin: 20px auto;
+
+                .v_lines {
+                    width: 100%;
+                    height: 200px;
+                    display: flex;
+                    justify-content: flex-start;
+                    position: absolute;
+                    flex-direction: row;
+                    gap: 80px;
+
+
+                    .v_line {
+                        width: 1px;
+                        height: 100%;
+                        background: #E0E0E0;
+                    }
+                }
+
+                .h_lines {
+                    width: 100%;
+                    height: 200px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-end;
+                    gap: 60px;
+
+                    .h_line {
+                        width: 100%;
+                        height: 1px;
+                        background: #E0E0E0;
+                    }
+                }
+
+                .bars {
+                    width: 100%;
+                    height: 200px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: flex-start;
+                    gap: 80px;
+                    position: absolute;
+                    bottom: 0;
+                    align-items: flex-end;
+
+                    .bar {
+                        width: 30px;
+                        max-height: 100%;
+                        background: rgb(108 123 255 / 100%);
+                        border-radius: 8px 8px 0px 0px;
+                    }
+                }
             }
         }
 
@@ -103,6 +157,7 @@
             text-align: center;
             display: flex;
             justify-content: center;
+            align-items: center;
 
             .progress {
                 position: relative;
@@ -112,10 +167,10 @@
 
 
                 & p:nth-child(2) {
-                    font-size: 20px;
+                    font-size: 30px;
                     font-weight: 600;
                     margin-top: -30px;
-                    line-height: 20px;
+                    line-height: 30px;
                 }
 
                 & p:nth-child(3) {
@@ -128,8 +183,8 @@
             .barOverflow {
                 position: relative;
                 overflow: hidden;
-                width: 130px;
-                height: 64px;
+                width: 180px;
+                height: 84px;
                 margin-bottom: -14px;
             }
 
@@ -137,8 +192,8 @@
                 position: absolute;
                 top: 0;
                 left: 0;
-                width: 130px;
-                height: 130px;
+                width: 180px;
+                height: 180px;
                 border-radius: 50%;
                 box-sizing: border-box;
                 border: 9px solid #eee;
