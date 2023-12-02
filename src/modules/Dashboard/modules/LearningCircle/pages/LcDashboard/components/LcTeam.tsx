@@ -53,6 +53,8 @@ const LcTeam = (props: Props) => {
     );
 };
 
+export default LcTeam;
+
 type Prop = {
     lc: LcDetail | undefined;
     setTemp: Dispatch<SetStateAction<LcDashboardTempData>>;
@@ -146,20 +148,23 @@ const TeamMember = ({
             <span className={member.is_lead ? "" : styles.karma}>
                 {member.karma}μ
             </span>
-            {lc?.is_lead ? isOptionOpen ? (
-                <IoCloseCircleOutline onClick={toggleOption} />
+            {lc?.is_lead ? (
+                isOptionOpen ? (
+                    <IoCloseCircleOutline onClick={toggleOption} />
+                ) : (
+                    <BiDotsVertical onClick={toggleOption} />
+                )
             ) : (
-                <BiDotsVertical onClick={toggleOption} />
-            ): ""}
+                ""
+            )}
             {isOptionOpen && (
                 <LcOptions
                     isLead={member.is_lead}
                     setTemp={setTemp}
                     member={member}
+					close={toggleOption}
                 />
             )}
         </div>
     );
 };
-
-export default LcTeam;

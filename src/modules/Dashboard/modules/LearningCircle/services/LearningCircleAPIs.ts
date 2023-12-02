@@ -302,40 +302,21 @@ export const removeMember = async (
     }
 };
 
-export const transferLead = async (
-    circleId: string | undefined,
-    memberId: string,
-    navigate: NavigateFunction
-) => {
+export const transferLead = async (circleId: string | undefined, memberId: string) => {
     try {
         const response = await privateGateway.patch(
-            dashboardRoutes.getLearningCirclesLead +
+            dashboardRoutes.lc +
                 circleId +
-                "/" +
-                memberId +
-                "/"
+                "/lead-transfer/" +
+                memberId
         );
-        toast({
-            title: "Success",
-            description: "",
-            status: "success",
-            duration: 2000,
-            isClosable: true
-        });
-        window.location.reload();
-       
+        const message = response.data;
+        return message;
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
             throw error;
         }
-        toast({
-            title: "Something went wrong",
-            description: "",
-            status: "error",
-            duration: 2000,
-            isClosable: true
-        });
     }
 };
 
