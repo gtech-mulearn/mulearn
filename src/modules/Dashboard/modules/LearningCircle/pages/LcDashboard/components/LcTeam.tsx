@@ -1,7 +1,6 @@
 import { Dispatch, SetStateAction, useRef, useState } from "react";
 import styles from "../LcDashboard.module.css";
-import { BiDotsVertical } from "react-icons/bi";
-import pic from "../../../assets/images/profileIcon.svg";
+import pic from "../../../assets/images/dpm.webp";
 import LeadIcon from "../../../assets/images/Lead icon.svg";
 import { PersonIcon } from "../../../assets/svg";
 import { PendingRequest } from "./LcPendingRequest";

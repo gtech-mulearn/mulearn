@@ -7,6 +7,7 @@ import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { titleCase } from "title-case";
 import {
+    getCSV,
     getCampusDetails,
     getStudentDetails,
     getStudentLevel,
@@ -20,6 +21,9 @@ import CEIcon from "../../LearningCircle/assets/images/Lead icon.svg";
 import { Spinner, useToast } from "@chakra-ui/react";
 import { convertDateToDayAndMonth } from "../../../utils/common";
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
+import Modal from "@/MuLearnComponents/Modal/Modal";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { AiOutlineDownload } from "react-icons/ai";
 
 type Props = {};
 
@@ -36,11 +40,18 @@ const CampusStudentList = (props: Props) => {
     const [totalPages, setTotalPages] = useState(0);
     const [noOrg, setNoOrg] = useState(false);
     const [sort, setSort] = useState("");
+    const [CSVBlob, setCSVFile] = useState<Blob | null>();
     const navigate = useNavigate();
 
     //graph data
     const [pieData, setPieData] = useState<string[][] | null>(null);
     const [barData, setBarData] = useState<string[][] | null>(null);
+
+    const [currModal, setCurrModal] = useState<boolean>(false);
+    const [currBox, setCurrBox] = useState<{
+        id: string;
+        value: boolean;
+    } | null>(null);
 
     const errHandler = (err: any) => {
         toast({
@@ -58,24 +69,31 @@ const CampusStudentList = (props: Props) => {
         Label: string;
         wrap?: (data: string, id: string) => ReactJSXElement;
     }[] = [
-        { column: "fullname", Label: "Name", isSortable: true },
-        // { column: "email", Label: "Email", isSortable: false },
-        { column: "karma", Label: "Karma", isSortable: true },
-        { column: "level", Label: "Level", isSortable: true },
-        { column: "rank", Label: "Rank", isSortable: false },
-        { column: "muid", Label: "MuId", isSortable: true },
-        { column: "email", Label: "Email", isSortable: false },
-        { column: "mobile", Label: "Mobile", isSortable: false },
-        { column: "join_date", Label: "Join Date", isSortable: false },
-        {
-            column: "is_alumni",
-            Label: "Alumni",
-            isSortable: false,
-            wrap: (data, id) => {
-                return <AlumniCheckBox checked={data === "1"} id={id} />;
+            { column: "fullname", Label: "Name", isSortable: true },
+            // { column: "email", Label: "Email", isSortable: false },
+            { column: "karma", Label: "Karma", isSortable: true },
+            { column: "level", Label: "Level", isSortable: true },
+            { column: "rank", Label: "Rank", isSortable: false },
+            { column: "muid", Label: "MuId", isSortable: true },
+            { column: "email", Label: "Email", isSortable: true },
+            { column: "mobile", Label: "Mobile", isSortable: true },
+            { column: "join_date", Label: "Join Date", isSortable: true },
+            {
+                column: "is_alumni",
+                Label: "Alumni",
+                isSortable: true,
+                wrap: (data, id) => {
+                    return (
+                        <AlumniCheckBox
+                            checked={data === "true" ? true : false}
+                            id={id}
+                            setCurrBox={setCurrBox}
+                            setCurrModal={setCurrModal}
+                        />
+                    );
+                }
             }
-        }
-    ];
+        ];
 
     const [campusData, setCampusData] = useState({
         college_name: "",
@@ -104,6 +122,7 @@ const CampusStudentList = (props: Props) => {
     };
     useEffect(() => {
         if (firstFetch.current) {
+            getCSV(setCSVFile, msg => console.log(msg));
             getStudentDetails(
                 setStudentData,
                 1,
@@ -129,8 +148,20 @@ const CampusStudentList = (props: Props) => {
                 );
             })();
         }
+
+        if (!currModal) {
+            getStudentDetails(
+                setStudentData,
+                1,
+                perPage,
+                setTotalPages,
+                "",
+                "",
+                setNoOrg
+            );
+        }
         firstFetch.current = false;
-    }, []);
+    }, [currModal]);
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
@@ -188,6 +219,28 @@ const CampusStudentList = (props: Props) => {
 
     return (
         <>
+            {currModal && currBox && (
+                <Modal
+                    setIsOpen={isOpen => setCurrModal(isOpen)}
+                    id={currBox.id}
+                    heading={"Change Alumni Status"}
+                    content={
+                        "Are you sure you want to change the alumni status?"
+                    }
+                    click={async () => {
+                        setCurrModal(false);
+                        await setAlumniStatus(
+                            currBox.id,
+                            currBox.value,
+                            msg => { }
+                        );
+                        //workaround state not updating issue
+                        await new Promise(res => setTimeout(res, 1000));
+                        setStudentData([]);
+
+                    }}
+                />
+            )}
             {noOrg ? (
                 <div className={styles.no_org}>
                     <p className={styles.no_org_heading}>
@@ -231,10 +284,10 @@ const CampusStudentList = (props: Props) => {
                                                         campusData.total_karma
                                                     ) > 1000
                                                         ? (
-                                                              parseInt(
-                                                                  campusData.total_karma
-                                                              ) / 1000
-                                                          ).toPrecision(4) + "K"
+                                                            parseInt(
+                                                                campusData.total_karma
+                                                            ) / 1000
+                                                        ).toPrecision(4) + "K"
                                                         : campusData.total_karma}
                                                 </h1>
                                                 <p>Karma</p>
@@ -291,7 +344,7 @@ const CampusStudentList = (props: Props) => {
                                 <div className={styles.sec2}>
                                     <p className={styles.clg_rank}>
                                         {campusData?.rank?.toString().length ===
-                                        1
+                                            1
                                             ? "0" + campusData.rank
                                             : campusData.rank}
                                     </p>
@@ -324,7 +377,20 @@ const CampusStudentList = (props: Props) => {
                             <BarChart data={pieData} />
                         </div>
                     </div>
-                    {studentData && (
+                    <div className={styles.btnContainer}>
+                        <PowerfulButton onClick={() => { }}>
+                            <AiOutlineDownload />
+                            <a
+                                href={
+                                    CSVBlob ? URL.createObjectURL(CSVBlob) : ""
+                                }
+                                download
+                            >
+                                Download
+                            </a>
+                        </PowerfulButton>
+                    </div>
+                    {studentData &&  (
                         <>
                             <TableTop
                                 onSearchText={handleSearch}
@@ -364,6 +430,8 @@ const CampusStudentList = (props: Props) => {
 type checkbox_T = {
     checked: boolean;
     id: string;
+    setCurrModal: (isOpen: boolean) => void;
+    setCurrBox: (data: { id: string; value: boolean }) => void;
 };
 
 function AlumniCheckBox(props: checkbox_T) {
@@ -371,13 +439,8 @@ function AlumniCheckBox(props: checkbox_T) {
     const [loading, setLoading] = useState(false);
 
     const handleChange = async (e: ChangeEvent<HTMLInputElement>) => {
-        console.log(e.target.checked);
-        setLoading(true);
-        try {
-            await setAlumniStatus(props.id, e.target.checked, msg => {});
-            setChecked(e.target.checked);
-        } catch (err) {}
-        setLoading(false);
+        props.setCurrBox({ id: props.id, value: e.target.checked });
+        props.setCurrModal(true);
     };
 
     if (loading) return <Spinner />;
