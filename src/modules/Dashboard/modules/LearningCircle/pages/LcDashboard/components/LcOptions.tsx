@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { removeMember } from "../../../services/LearningCircleAPIs";
 import { useParams } from "react-router-dom";
 import MuModal from "@/MuLearnComponents/MuModal/MuModal";
+import { BiTransferAlt } from "react-icons/bi";
 
 type Props = {
     isLead: boolean;
@@ -47,7 +48,10 @@ const LcOptions = (props: Props) => {
                     Remove User
                     <HiUserRemove />
                 </div>
-                <div>Transfer Leadership</div>
+                <div>
+                    Transfer Leadership
+                    <BiTransferAlt />
+                </div>
             </div>
             {isModal && (
                 <MuModal

@@ -1053,7 +1053,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 }
 
 .LcOptions div {
-	padding: 10px;
+	padding: 10px 20px;
 	display: flex;
 	align-items: center;
 	justify-content: end;

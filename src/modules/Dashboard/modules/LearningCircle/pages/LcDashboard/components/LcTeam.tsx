@@ -8,6 +8,7 @@ import { userLevelBadge } from "../../../../../utils/utils";
 import LcOptions from "./LcOptions";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { useOutsideClick } from "../../../../../hooks/useOutsideClick";
+import { BiDotsVertical } from "react-icons/bi";
 
 type Props = {
     setTemp: Dispatch<SetStateAction<LcDashboardTempData>>;
@@ -145,11 +146,11 @@ const TeamMember = ({
             <span className={member.is_lead ? "" : styles.karma}>
                 {member.karma}μ
             </span>
-            {lc?.is_lead && isOptionOpen ? (
+            {lc?.is_lead ? isOptionOpen ? (
                 <IoCloseCircleOutline onClick={toggleOption} />
             ) : (
                 <BiDotsVertical onClick={toggleOption} />
-            )}
+            ): ""}
             {isOptionOpen && (
                 <LcOptions
                     isLead={member.is_lead}
