@@ -16,15 +16,16 @@ interface LcMembers {
     profile_pic: string;
     karma: number;
     is_lead: boolean;
-    level?: string;
+    level: number;
 }
 
 type LcDetail = {
     name: string;
     circle_code: string;
-    note: string | null;
+    ig_name: string;
+    note: string;
     meet_time: string;
-    meet_place: string | null;
+    meet_place: string;
     day: number[];
     college: string;
     members: LcMembers[];
@@ -34,6 +35,7 @@ type LcDetail = {
     is_lead: boolean;
     is_member: boolean;
     ig_code: string;
+    previous_meetings: LcPastReports[];
 };
 
 interface LcDashboardTempData {
@@ -42,6 +44,7 @@ interface LcDashboardTempData {
     isHistory: boolean;
     isTeam: boolean;
     isSchedule: boolean;
+	reRender: boolean;
 }
 
 interface LcMeetSchedule {
@@ -66,4 +69,29 @@ interface LcReport {
     attendees: string[];
     day: string;
     meet_time: string;
+}
+
+interface LcPastReports {
+    id: string;
+    meet_time: string;
+    day: string;
+}
+
+interface LcHistory {
+    meet_id: string;
+    meet_time: string;
+    meet_place: string;
+    day: string;
+    attendees: string;
+    attendees_details: LcAttendees[];
+    agenda: string;
+    meet_created_by: string;
+    meet_created_at: string;
+    meet_updated_by: string;
+    meet_updated_at: string;
+}
+
+interface LcAttendees {
+	fullname: string;
+	profile_pic: string;
 }

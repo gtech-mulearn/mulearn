@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 import { convertToXLSX } from "../../Tasks/TaskApis";
 import { CountCard } from "../../Tasks/TaskBulkImport";
+import { getKarmaVoucherTemplate } from "../service/api";
 
 const KarmaVoucherBulkImport = () => {
     const [uploadResponse, setUploadResponse] = useState<any>(null);
@@ -14,10 +15,10 @@ const KarmaVoucherBulkImport = () => {
     const toast = useToast();
 
     const successDownload = () => {
-        convertToXLSX(uploadResponse.response.Success, "Success.xlsx");
+        convertToXLSX(uploadResponse.data.response.Success, "Success.xlsx");
     };
     const failureDownload = () => {
-        convertToXLSX(uploadResponse.response.Failed, "Failed.xlsx");
+        convertToXLSX(uploadResponse.data.response.Failed, "Failed.xlsx");
     };
     const memoizedSuccessDownload = useMemo(
         () => successDownload,
@@ -27,6 +28,7 @@ const KarmaVoucherBulkImport = () => {
         () => failureDownload,
         [uploadResponse]
     );
+
     return (
         <>
             <div
@@ -48,11 +50,7 @@ const KarmaVoucherBulkImport = () => {
                 </PowerfulButton>
                 <PowerfulButton
                     variant="secondary"
-                    onClick={() =>
-                        window.open(
-                            "https://docs.google.com/spreadsheets/d/1eldAqkpzfzCsNeK40bviPtaZfppttstb/export?format=xlsx&id=1eldAqkpzfzCsNeK40bviPtaZfppttstb"
-                        )
-                    }
+                    onClick={() => getKarmaVoucherTemplate()}
                 >
                     <BiDownload />
                     Download Template
@@ -75,7 +73,7 @@ const KarmaVoucherBulkImport = () => {
                     }}
                     onError={err => {
                         console.log(err);
-                        setUploadResponse(null);
+                        setUploadResponse(err);
                         // navigate("/dashboard/karma-voucher");
                     }}
                 />

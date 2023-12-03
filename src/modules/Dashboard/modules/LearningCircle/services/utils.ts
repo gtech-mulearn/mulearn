@@ -66,6 +66,7 @@ export const AllWeeks = [
     "Friday",
     "Saturday"
 ] as const;
+
 export const monthNames = [
     "January",
     "February",
@@ -80,6 +81,27 @@ export const monthNames = [
     "November",
     "December"
 ] as const;
+
+export function getDayOfWeek(dateString: string): string {
+    const date = new Date(dateString);
+    const dayOfWeek = date.getDay();
+    return AllWeeks[dayOfWeek];
+}
+
+export function extract24hTimeFromDateTime(dateTime: string): string {
+    const date = new Date(dateTime);
+    let hours = date.getUTCHours().toString();
+    let minutes = date.getUTCMinutes().toString();
+	
+    // Pad single digit minutes and hours with a zero
+    if (hours.length === 1) {
+        hours = "0" + hours;
+    }
+    if (minutes.length === 1) {
+        minutes = "0" + minutes;
+    }
+    return `${hours}:${minutes}`;
+}
 
 export const convert24to12 = (time24: string): string => {
     const [hourStr, minuteStr] = time24.split(":");

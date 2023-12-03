@@ -3,20 +3,27 @@ import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import THead from "@/MuLearnComponents/Table/THead";
 import Table from "@/MuLearnComponents/Table/Table";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
-import { useEffect, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { titleCase } from "title-case";
 import {
+    getCSV,
     getCampusDetails,
     getStudentDetails,
     getStudentLevel,
-    getWeeklyKarma
+    getWeeklyKarma,
+    setAlumniStatus
 } from "../services/apis";
 import { PieChart, BarChart } from "../Components/Graphs";
 import styles from "./CampusStudentList.module.css";
 import CLIcon from "../assets/images/CampusLeadIcon.svg";
-import { useToast } from "@chakra-ui/react";
+import CEIcon from "../../LearningCircle/assets/images/Lead icon.svg";
+import { Spinner, useToast } from "@chakra-ui/react";
 import { convertDateToDayAndMonth } from "../../../utils/common";
+import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
+import Modal from "@/MuLearnComponents/Modal/Modal";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { AiOutlineDownload } from "react-icons/ai";
 
 import { useTranslation } from "react-i18next";
 //import { useEffect } from "react";
@@ -41,11 +48,18 @@ const CampusStudentList = (props: Props) => {
     const [totalPages, setTotalPages] = useState(0);
     const [noOrg, setNoOrg] = useState(false);
     const [sort, setSort] = useState("");
+    const [CSVBlob, setCSVFile] = useState<Blob | null>();
     const navigate = useNavigate();
 
     //graph data
     const [pieData, setPieData] = useState<string[][] | null>(null);
     const [barData, setBarData] = useState<string[][] | null>(null);
+
+    const [currModal, setCurrModal] = useState<boolean>(false);
+    const [currBox, setCurrBox] = useState<{
+        id: string;
+        value: boolean;
+    } | null>(null);
 
     const errHandler = (err: any) => {
         toast({
@@ -57,15 +71,37 @@ const CampusStudentList = (props: Props) => {
         });
     };
 
-    const columnOrder = [
-        { column: "fullname", Label: "Name", isSortable: true },
-        // { column: "email", Label: "Email", isSortable: false },
-        { column: "karma", Label: "Karma", isSortable: true },
-        { column: "level", Label: "Level", isSortable: true },
-        { column: "rank", Label: "Rank", isSortable: false },
-        { column: "muid", Label: "MuId", isSortable: true },
-        { column: "join_date", Label: "Join Date", isSortable: false }
-    ];
+    const columnOrder: {
+        isSortable: boolean;
+        column: string;
+        Label: string;
+        wrap?: (data: string, id: string) => ReactJSXElement;
+    }[] = [
+            { column: "fullname", Label: "Name", isSortable: true },
+            // { column: "email", Label: "Email", isSortable: false },
+            { column: "karma", Label: "Karma", isSortable: true },
+            { column: "level", Label: "Level", isSortable: true },
+            { column: "rank", Label: "Rank", isSortable: false },
+            { column: "muid", Label: "MuId", isSortable: true },
+            { column: "email", Label: "Email", isSortable: true },
+            { column: "mobile", Label: "Mobile", isSortable: true },
+            { column: "join_date", Label: "Join Date", isSortable: true },
+            {
+                column: "is_alumni",
+                Label: "Alumni",
+                isSortable: true,
+                wrap: (data, id) => {
+                    return (
+                        <AlumniCheckBox
+                            checked={data === "true" ? true : false}
+                            id={id}
+                            setCurrBox={setCurrBox}
+                            setCurrModal={setCurrModal}
+                        />
+                    );
+                }
+            }
+        ];
 
     const [campusData, setCampusData] = useState({
         college_name: "",
@@ -75,7 +111,11 @@ const CampusStudentList = (props: Props) => {
         total_karma: "",
         total_members: "",
         active_members: "",
-        rank: ""
+        rank: "",
+        lead: {
+            campus_lead: "",
+            enabler: ""
+        }
     });
     const firstFetch = useRef(true);
     const handleNextClick = () => {
@@ -90,6 +130,7 @@ const CampusStudentList = (props: Props) => {
     };
     useEffect(() => {
         if (firstFetch.current) {
+            getCSV(setCSVFile, msg => console.log(msg));
             getStudentDetails(
                 setStudentData,
                 1,
@@ -115,8 +156,20 @@ const CampusStudentList = (props: Props) => {
                 );
             })();
         }
+
+        if (!currModal) {
+            getStudentDetails(
+                setStudentData,
+                1,
+                perPage,
+                setTotalPages,
+                "",
+                "",
+                setNoOrg
+            );
+        }
         firstFetch.current = false;
-    }, []);
+    }, [currModal]);
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
@@ -171,9 +224,31 @@ const CampusStudentList = (props: Props) => {
         }
         //console.log(`Icon clicked for column: ${column}`);
     };
-    //console.log(perPage, currentPage);
+
     return (
         <>
+            {currModal && currBox && (
+                <Modal
+                    setIsOpen={isOpen => setCurrModal(isOpen)}
+                    id={currBox.id}
+                    heading={"Change Alumni Status"}
+                    content={
+                        "Are you sure you want to change the alumni status?"
+                    }
+                    click={async () => {
+                        setCurrModal(false);
+                        await setAlumniStatus(
+                            currBox.id,
+                            currBox.value,
+                            msg => { }
+                        );
+                        //workaround state not updating issue
+                        await new Promise(res => setTimeout(res, 1000));
+                        setStudentData([]);
+
+                    }}
+                />
+            )}
             {noOrg ? (
                 <div className={styles.no_org}>
                     <p className={styles.no_org_heading}>
@@ -217,10 +292,10 @@ const CampusStudentList = (props: Props) => {
                                                         campusData.total_karma
                                                     ) > 1000
                                                         ? (
-                                                              parseInt(
-                                                                  campusData.total_karma
-                                                              ) / 1000
-                                                          ).toPrecision(4) + "K"
+                                                            parseInt(
+                                                                campusData.total_karma
+                                                            ) / 1000
+                                                        ).toPrecision(4) + "K"
                                                         : campusData.total_karma}
                                                 </h1>
                                                 <p>{t("karma")}</p>
@@ -247,7 +322,42 @@ const CampusStudentList = (props: Props) => {
                                                 >
                                                     <img src={CLIcon} alt="" />
                                                     <h2>
-                                                        {campusData.campus_lead}
+                                                        {
+                                                            campusData.lead
+                                                                .campus_lead
+                                                        }
+                                                    </h2>
+                                                    <p>{t("CampusLead")}</p>
+                                                </div>
+                                            </div>
+                                            <div className={styles.card}>
+                                                <div
+                                                    className={
+                                                        styles.campus_lead_card
+                                                    }
+                                                >
+                                                    <img src={CEIcon} alt="" />
+                                                    <h2>
+                                                        {
+                                                            campusData.lead
+                                                                .enabler
+                                                        }
+                                                    </h2>
+                                                    <p>Campus Enabler</p>
+                                                </div>
+                                            </div>
+                                            <div className={styles.card}>
+                                                <div
+                                                    className={
+                                                        styles.campus_lead_card
+                                                    }
+                                                >
+                                                    <img src={CEIcon} alt="" />
+                                                    <h2>
+                                                        {
+                                                            campusData.lead
+                                                                .enabler
+                                                        }
                                                     </h2>
                                                     <p>{t("CampusLead")}</p>
                                                 </div>
@@ -258,7 +368,7 @@ const CampusStudentList = (props: Props) => {
                                 <div className={styles.sec2}>
                                     <p className={styles.clg_rank}>
                                         {campusData?.rank?.toString().length ===
-                                        1
+                                            1
                                             ? "0" + campusData.rank
                                             : campusData.rank}
                                     </p>
@@ -295,7 +405,20 @@ const CampusStudentList = (props: Props) => {
                     </div>
                     <LanguageSwitcher />
 
-                    {studentData && (
+                    <div className={styles.btnContainer}>
+                        <PowerfulButton onClick={() => { }}>
+                            <AiOutlineDownload />
+                            <a
+                                href={
+                                    CSVBlob ? URL.createObjectURL(CSVBlob) : ""
+                                }
+                                download
+                            >
+                                Download
+                            </a>
+                        </PowerfulButton>
+                    </div>
+                    {studentData &&  (
                         <>
                             <TableTop
                                 onSearchText={handleSearch}
@@ -332,5 +455,32 @@ const CampusStudentList = (props: Props) => {
         </>
     );
 };
+
+type checkbox_T = {
+    checked: boolean;
+    id: string;
+    setCurrModal: (isOpen: boolean) => void;
+    setCurrBox: (data: { id: string; value: boolean }) => void;
+};
+
+function AlumniCheckBox(props: checkbox_T) {
+    const [checked, setChecked] = useState(props.checked);
+    const [loading, setLoading] = useState(false);
+
+    const handleChange = async (e: ChangeEvent<HTMLInputElement>) => {
+        props.setCurrBox({ id: props.id, value: e.target.checked });
+        props.setCurrModal(true);
+    };
+
+    if (loading) return <Spinner />;
+    return (
+        <input
+            type="checkbox"
+            checked={checked}
+            className={styles.checkbox}
+            onChange={handleChange}
+        />
+    );
+}
 
 export default CampusStudentList;

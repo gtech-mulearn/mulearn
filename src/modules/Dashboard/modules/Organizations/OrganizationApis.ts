@@ -1,7 +1,7 @@
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { organizationRoutes } from "@/MuLearnServices/urls";
 
-const ccc = ["College", "Company", "Community"] as const;
+const ccc = ["College", "Company", "Community", "School"] as const;
 
 export const getOrganizations = async (
     activeTab: (typeof ccc)[number],
@@ -71,7 +71,12 @@ export const getAffiliation = async (setAffiliationData: any) => {
                 return response.data;
             })
             .then(data => {
-                const affiliation: CountryProps[] = data.response.data;
+                const affiliation: CountryProps[] = data.response.map((item: any) => (
+                    {
+                        label : item.title,
+                        value: item.id
+                    }
+                ));
                 setAffiliationData(affiliation);
             });
     } catch (err: unknown) {

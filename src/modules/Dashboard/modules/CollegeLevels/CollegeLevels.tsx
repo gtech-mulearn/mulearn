@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";
-import Table from "@/MuLearnComponents/Table/Table";
+import Table, { Data } from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
@@ -12,6 +12,7 @@ import Modal from "./components/Modal";
 import CollegeLevelsEdit from "./components/CollegeLevelsEdit";
 import CollegeLevelsCreate from "./components/CollegeLevelsCreate";
 import { deleteCollegeLevels, getCollegeLevels } from "./apis";
+import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 
 function CollegeLevels() {
     const [data, setData] = useState<any[]>([]);
@@ -69,18 +70,57 @@ function CollegeLevels() {
         )
     };
 
-    const columnOrder = [
+    const columnOrder: {
+        column: string;
+        Label: string;
+        isSortable: boolean;
+        wrap?: (data: string, id: string, row: Data) => ReactJSXElement;
+    }[] = [
         // { column: "id", Label: "ID", isSortable: true },
         { column: "org", Label: "College", isSortable: true },
-        { column: "level", Label: "Level", isSortable: true },
-        { column: "no_of_lc", Label: "Number of LCs", isSortable: true },
-        { column: "total_karma", Label: "Total Karma", isSortable: true },
-        { column: "updated_by", Label: "Updated By", isSortable: false },
-        { column: "updated_at", Label: "Updated At", isSortable: false },
-        { column: "created_by", Label: "Created By", isSortable: false },
-        { column: "created_at", Label: "Created At", isSortable: false }
-    ];
+        // { column: "level", Label: "Level", isSortable: true },
+        { column: "member_count", Label: "No of members", isSortable: true },
+        {
+            column: "no_of_members_increased",
+            Label: "Member Gain",
+            isSortable: true
+        },
+        { column: "lc_count", Label: "Number of LCs", isSortable: true },
+        {
+            column: "no_of_lc_increased",
+            Label: "LC Gain",
+            isSortable: true
+        },
 
+        {
+            column: "total_karma_gained",
+            Label: "Total Karma",
+            isSortable: true
+        },
+        {
+            column: "total_karma_increased",
+            Label: "Karma Gain",
+            isSortable: true,
+            wrap: (data, id, row) =>
+                data === "-" ? (
+                    <>{data}</>
+                ) : (
+                    <>
+                        {data}({Math.round(row.increased_percentage as number)}
+                        %)
+                    </>
+                )
+        }
+        // {
+        //     column: "increased_percentage",
+        //     Label: "Karma Gain%",
+        //     isSortable: true
+        // }
+        // { column: "updated_by", Label: "Updated By", isSortable: false },
+        // { column: "updated_at", Label: "Updated At", isSortable: false },
+        // { column: "created_by", Label: "Created By", isSortable: false },
+        // { column: "created_at", Label: "Created At", isSortable: false }
+    ];
     const errHandler = (err: any) => {
         toast({
             title: "Something went wrong",
@@ -153,7 +193,7 @@ function CollegeLevels() {
                 sortID: sort
             },
             errHandler
-        )
+        );
     };
 
     const handleEdit = (id: string | number | boolean) => {
@@ -184,56 +224,57 @@ function CollegeLevels() {
             delayedRefetch();
         }
     };
+    console.log(data);
     return (
         <>
             {currModal
                 ? (() => {
-                    if (currModal === "create")
-                        return (
-                            <Modal
-                                onClose={setCurrModal}
-                                icon={icons.tick}
-                                header="Assign College Level"
-                                paragraph="Select and assign the level"
-                            >
-                                <CollegeLevelsCreate
-                                    onClose={setCurrModal}
-                                    refetch={delayedRefetch}
-                                />
-                            </Modal>
-                        );
-                    if (currModal === "edit")
-                        return (
-                            <Modal
-                                size="small"
-                                onClose={setCurrModal}
-                                icon={icons.cross}
-                                header="Edit College Level"
-                                paragraph="Select the new level"
-                            >
-                                <CollegeLevelsEdit
-                                    onClose={setCurrModal}
-                                    org_id={currOrdId!}
-                                    refetch={delayedRefetch}
-                                />
-                            </Modal>
-                        );
-                })()
+                      if (currModal === "create")
+                          return (
+                              <Modal
+                                  onClose={setCurrModal}
+                                  icon={icons.tick}
+                                  header="Assign College Level"
+                                  paragraph="Select and assign the level"
+                              >
+                                  <CollegeLevelsCreate
+                                      onClose={setCurrModal}
+                                      refetch={delayedRefetch}
+                                  />
+                              </Modal>
+                          );
+                      if (currModal === "edit")
+                          return (
+                              <Modal
+                                  size="small"
+                                  onClose={setCurrModal}
+                                  icon={icons.cross}
+                                  header="Edit College Level"
+                                  paragraph="Select the new level"
+                              >
+                                  <CollegeLevelsEdit
+                                      onClose={setCurrModal}
+                                      org_id={currOrdId!}
+                                      refetch={delayedRefetch}
+                                  />
+                              </Modal>
+                          );
+                  })()
                 : ""}
 
-            <div className={styles.createBtnContainer}>
+            {/* <div className={styles.createBtnContainer}>
                 <PowerfulButton onClick={handleCreate}>
                     <AiOutlinePlusCircle />
                     Create
                 </PowerfulButton>
-            </div>
+            </div> */}
 
-            {data && (
+            {data.length && (
                 <>
                     <TableTop
                         onSearchText={handleSearch}
                         onPerPageNumber={handlePerPageNumber}
-                    // CSV={dashboardRoutes.getRolesList}
+                        // CSV={dashboardRoutes.getRolesList}
                     />
                     <Table
                         isloading={isLoading}
@@ -242,16 +283,16 @@ function CollegeLevels() {
                         perPage={perPage}
                         columnOrder={columnOrder}
                         id={["id"]}
-                        onEditClick={handleEdit}
-                        onDeleteClick={handleDelete}
-                        modalDeleteHeading="Delete"
-                        modalTypeContent="error"
-                        modalDeleteContent="Are you sure you want to delete this college level ?"
+                        // onEditClick={handleEdit}
+                        // onDeleteClick={handleDelete}
+                        // modalDeleteHeading="Delete"
+                        // modalTypeContent="error"
+                        // modalDeleteContent="Are you sure you want to delete this college level ?"
                     >
                         <THead
                             columnOrder={columnOrder}
                             onIconClick={handleIconClick}
-                            action={true}
+                            action={false}
                         />
                         <div>
                             {!isLoading && (

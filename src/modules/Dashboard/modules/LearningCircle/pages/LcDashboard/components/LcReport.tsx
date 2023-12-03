@@ -36,7 +36,7 @@ const LcReport = (props: Props) => {
         setFormData(prevState => ({
             ...prevState,
             day: `${year}-${month}-${day}`,
-            meet_time: `${hours}:${minutes}`
+            meet_time: `${hours}:${minutes}:00`
         }));
     }, []);
 
@@ -86,16 +86,16 @@ const LcReport = (props: Props) => {
                 agenda: formData.agenda,
                 attendees: formData.attendees.join(","),
                 day: formData.day,
-                meet_time: formData.meet_time
+                meet_time: formData.day + " " + formData.meet_time
             };
-            console.log(props.id);
             toast.promise(reportMeeting(props.id, data), {
                 loading: "Reporting...",
                 success: response => {
                     console.log("Meeting successfully reported:", response);
                     props.setTemp(prevState => ({
                         ...prevState,
-                        isReport: false
+                        isReport: false,
+                        reRender: !prevState.reRender
                     }));
                     return <b>Meeting successfully reported!</b>;
                 },
@@ -133,7 +133,7 @@ const LcReport = (props: Props) => {
                             onChange={e =>
                                 setFormData(prevState => ({
                                     ...prevState,
-                                    meet_time: e.target.value
+                                    meet_time: e.target.value + ":00"
                                 }))
                             }
                         />
@@ -158,6 +158,7 @@ const LcReport = (props: Props) => {
                         {props.lc?.members.map(member => (
                             <div
                                 key={member.id}
+                                className={styles.participantsContainer}
                                 onClick={() => handleMemberClick(member.id)}
                             >
                                 <LcAttendees
@@ -172,8 +173,11 @@ const LcReport = (props: Props) => {
                         {/* <button>+</button> */}
                     </div>
                 </div>
+                <button className={styles.submitButton} onClick={event => handleSubmit(event)} type="submit">
+                    Submit
+                </button>
             </div>
-            <div className={styles.UploadSection}>
+            {/* <div className={styles.UploadSection}>
                 <div id="uploadContainer" onClick={comingSoon}>
                     <p>Upload Meeting Images</p>
                     <div>
@@ -183,10 +187,7 @@ const LcReport = (props: Props) => {
                         </p>
                     </div>
                 </div>
-                <button onClick={event => handleSubmit(event)} type="submit">
-                    Submit
-                </button>
-            </div>
+            </div> */}
         </div>
     );
 };
