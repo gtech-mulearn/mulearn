@@ -36,14 +36,14 @@ const DashboardRootLayout = (props: { component?: any }) => {
         },
         {
             url: "/dashboard/connect-discord",
-            title: "Connect Discord",
+            title: t("Connect Discord"),
             hasView: !connected,
             icon: <i className="fi fi-sr-data-transfer"></i>
         },
 
         {
             url: "/dashboard/campus-details",
-            title: "Campus Details",
+            title: t("Campus Details"),
             hasView: true,
             roles: [roles.CAMPUS_LEAD, roles.ENABLER],
             icon: <i className="fi fi-sr-book-arrow-right"></i>
@@ -57,13 +57,13 @@ const DashboardRootLayout = (props: { component?: any }) => {
         },
         {
             url: "/dashboard/learning-circle",
-            title: "Learning Circle",
+            title: t("Learning Circle"),
             hasView: true,
             icon: <i className="fi fi-sr-books"></i>
         },
         {
             url: "/dashboard/refer",
-            title: "Referrals",
+            title: t("Referrals"),
             hasView: true,
             icon: <i className="fi fi-sr-building"></i>
         },
