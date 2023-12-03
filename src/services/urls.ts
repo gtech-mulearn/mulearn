@@ -213,6 +213,6 @@ export const KKEMRoutes = {
 export const PublicRoutes = {
     getRandomLc: "/api/v1/dashboard/lc/list/",
     getLcDashboard: "/api/v1/get-log/lc-dashboard/",
-    getLcReport: "/api/v1/get-log/lc-report/",
+    getLcReport: "/api/v1/get-log/lc-enrollment/",
     getOrgWiseReport: "/api/v1/get-log/college-wise-lc-report/"
 } as const;

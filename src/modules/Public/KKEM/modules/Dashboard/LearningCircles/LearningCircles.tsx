@@ -40,17 +40,19 @@ const LearningCircles = () => {
         }
     }, [authorized])
 
-    console.log(OrgWiseReport)
-    console.log(LcReport)
+    console.log("org",OrgWiseReport)
+    console.log("LC",LcReport)
 
 
     const columnOrder: ColOrder[] = [
         { column: "first_name", Label: "First Name", isSortable: true },
         { column: "last_name", Label: "Last Name", isSortable: true },
         { column: "muid", Label: "muid", isSortable: true },
+        { column: "email", Label: "Email", isSortable: true },
         { column: "circle_name", Label: "Circle Name", isSortable: true },
         { column: "circle_ig", Label: "Circle IG", isSortable: true },
         { column: "organisation", Label: "organisation", isSortable: true },
+        { column: "district", Label: "district", isSortable: true },
         { column: "dwms_id", Label: "DWMS ID", isSortable: true },
         { column: "karma_earned", Label: "Karma Earned", isSortable: true },
     ];
