@@ -134,3 +134,23 @@
 .counts div {
     max-width: 5rem;
 }
+.table_toggle_options{
+    display: flex; 
+    gap: 1rem;
+}
+.table_toggle_active{
+    background-color: #456ff6;
+    color: white;
+    padding: 6px 24px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+  }
+.table_toggle_inactive{
+    border: 1px solid #456ff6;
+    color: #456ff6;
+    padding: 6px 24px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+  }
