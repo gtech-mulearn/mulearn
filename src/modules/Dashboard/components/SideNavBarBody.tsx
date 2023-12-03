@@ -180,7 +180,7 @@ const SideNavBarBody = ({
             <div className={styles.bottomButtons}>
                 <LanguageSwitcher />
                 <MuButton
-                    text={t("Change Password")}
+                    text="Change Password"
                     icon={<MuSettings />}
                     onClick={() =>
                         navigate("/dashboard/settings/change-password")

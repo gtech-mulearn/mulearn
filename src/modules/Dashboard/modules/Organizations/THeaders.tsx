@@ -22,3 +22,10 @@ export const columnsCommunities = [
     { column: "state", Label: "State", isSortable: true },
     { column: "zone", Label: "Zone", isSortable: true },
 ];
+
+export const columnsSchool = [
+    { column: "title", Label: "Title", isSortable: true },
+    { column: "code", Label: "Code", isSortable: true },
+    { column: "district", Label: "District", isSortable: true },
+    { column: "zone", Label: "Zone", isSortable: true },
+];

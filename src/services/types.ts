@@ -17,5 +17,6 @@ export const roles = {
     IG_FACILITATOR: "IG Facilitator",
     TECH_TEAM: "Tech Team",
     ASSOCIATE: "Associate",
-    CAMPUS_ACTIVATION_TEAM: "Campus Activation Team"
+    CAMPUS_ACTIVATION_TEAM: "Campus Activation Team",
+    LEAD_ENABLER: "Lead Enabler"
 } as const;

@@ -1,7 +1,7 @@
 .basic_details {
     display: flex;
     color: #000;
-    gap: 20px;
+    gap: 10px;
     width: 95%;
     max-width: 95%;
     flex-wrap: wrap;
@@ -82,7 +82,7 @@
                 }
 
                 .status_box p:nth-child(2) {
-                    font-size: 18px;
+                    font-size: 26px;
                     font-weight: 700;
                 }
             }
@@ -126,46 +126,96 @@
             align-items: center;
             justify-content: center;
             overflow-x: scroll;
+            gap: 10px;
+            position: relative;
 
-            .roles_container_inner {
+            .RoleWrapperContainer {
                 display: flex;
+                flex-direction: column;
                 align-items: center;
-                padding: 0px 10px;
-                gap: 30px;
-                width: fit-content;
-                position: relative;
-                overflow-x: scroll;
-
-                .line {
-                    width: calc(100% - 70px);
-                    height: 1px;
-                    background-color: #7d9bc6;
-                    position: absolute;
-                    margin-left: 30px;
+                h2 {
+                    font-size: 15px;
+                    color: black;
                 }
-
-                .role {
-                    width: auto;
-                    border-radius: 10px;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    margin-top: 35px;
-                    z-index: 10;
-
-                    & p {
-                        color: #000000;
-                        margin-top: 10px;
-                        font-size: 12px;
-                        font-weight: 600;
-                        width: max-content;
-                    }
-
-                    & svg {
-                        animation: rotate 10s linear infinite;
-                    }
+                p {
+                    font-size: 13px;
+                    color: #7d89b1;
                 }
             }
+            .StyleCommonRole {
+                background-color: #c6d4ff;
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .innerStyleCommonRole {
+                background-color: #456ff6;
+                width: 15px;
+                height: 14px;
+                border-radius: 50%;
+            }
+        }
+
+        & h1 {
+            position: absolute;
+            text-align: left;
+            color: #000;
+            font-weight: 800;
+            left: 40px;
+            top: 10px;
+            z-index: 500;
+        }
+
+        .ellipseBasic {
+            border: 2px solid #d5d8e6;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .planet {
+            width: 90px;
+            height: 90px;
+            position: absolute;
+
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: url(../assets/images/planet.png) center center/contain
+                no-repeat;
+        }
+        .ElipseWrapper {
+            position: absolute;
+            bottom: 15px;
+            left: 10px;
+        }
+    }
+
+    .karma_distribution_container {
+        width: 50%;
+        height: 300px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        & h1 {
+            text-align: left;
+            color: #000;
+            font-weight: 700;
+            font-size: 22px;
+        }
+        .container {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
         & h1 {
@@ -177,65 +227,17 @@
             top: 10px;
         }
 
-        .ellipse {
-            border: 2px solid #d5d8e6;
-            border-radius: 50%;
-            width: 770px;
-            height: 750px;
-            position: absolute;
-            left: -320px;
-        }
-
-        .ellipse1 {
-            border: 2px solid #d5d8e6;
-            border-radius: 50%;
-            width: 700px;
-            height: 760px;
-            position: absolute;
-            left: -320px;
-            top: 50px;
-        }
-
-        .ellipse2 {
-            border: 2px solid #d5d8e6;
-            border-radius: 50%;
-            width: 620px;
-            height: 640px;
-            position: absolute;
-            left: -320px;
-            top: 111px;
-        }
-
-        .ellipse3 {
-            border: 2px solid #d5d8e6;
-            border-radius: 50%;
-            width: 540px;
-            height: 540px;
-            position: absolute;
-            left: -320px;
-            top: 151px;
-        }
-
-        .planet {
-            width: 90px;
-            height: 90px;
-            position: absolute;
-            left: -30px;
-            bottom: -30px;
-            background-image: url(../assets/images/planet.png);
-            background-size: contain;
-        }
     }
+}
 
-    .karma_distribution_container {
-        width: 50%;
-        height: 300px;
-        position: relative;
-
-        .container {
-            top: 60px;
-            left: 10px;
-            position: absolute;
+@media screen and (max-width: 450px) {
+    .roles_karma_dist_container {
+        .karma_distribution_container {
+            height: fit-content;
+            padding: 20px 0px;
+            .container {
+                 height: fit-content;
+            }
         }
     }
 }

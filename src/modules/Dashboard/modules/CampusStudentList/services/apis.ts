@@ -4,17 +4,19 @@ import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { ToastId, UseToastOptions } from "@chakra-ui/toast";
 import { AxiosError } from "axios";
 
-type CampusDataSet =
-    | "college_name"
-    | "campus_lead"
-    | "campus_code"
-    | "campus_zone"
-    | "total_karma"
-    | "total_members"
-    | "active_members"
-    | "rank";
+type CampusDataSet = {
+    college_name: string;
+    campus_lead: string;
+    campus_code: string;
+    campus_zone: string;
+    total_karma: string;
+    total_members: string;
+    active_members: string;
+    rank: string;
+    lead: { campus_lead: string; enabler: string };
+};
 type studentData = UseStateFunc<any[]>;
-type campusData = UseStateFunc<{ [T in CampusDataSet]: string }>;
+type campusData = UseStateFunc<CampusDataSet>;
 
 type studentLevelType = {
     level: number;
@@ -47,13 +49,14 @@ export const getStudentDetails = (
                 }>
             ) => {
                 //removing time from join date
-                for (let i = 0; i < response.data.response.data.length; i++) {
-                    response.data.response.data[i].join_date = new Date(
-                        response.data.response.data[i].join_date
+                const data = response.data.response.data;
+                for (let i = 0; i < data.length; i++) {
+                    data[i].join_date = new Date(
+                        data[i].join_date
                     ).toLocaleDateString("en-GB");
+                    data[i].id = data[i].user_id;
                 }
-
-                setStudentData(response.data.response.data);
+                setStudentData([...data]);
                 if (setTotalPages)
                     setTotalPages(response.data.response.pagination.totalPages);
             }
@@ -66,7 +69,7 @@ export const getStudentDetails = (
 export const getCampusDetails = (setCampusData: campusData) => {
     privateGateway
         .get(dashboardRoutes.getCampusDetails)
-        .then((response: APIResponse<{ [T in CampusDataSet]: string }>) => {
+        .then((response: APIResponse<CampusDataSet>) => {
             // console.log(response.data.response);
             setCampusData(response.data.response);
         })
@@ -92,12 +95,6 @@ export const getWeeklyKarma = async (errHandler: (err: string) => void) => {
             dashboardRoutes.getCampusWeeklyKarma
         );
         const { college_name, ...temp } = response.data.response;
-
-        console.log(
-            Object.keys(temp).map(key => {
-                return [key, temp[key] === null ? 0 : temp[key]];
-            })
-        );
 
         return Object.keys(temp)
             .map(key => {
@@ -135,5 +132,33 @@ export const getStudentLevel = async (errHandler: (err: string) => void) => {
         console.log(err);
         errHandler((err as AxiosError).message);
         return [];
+    }
+};
+
+export const setAlumniStatus = async (
+    id: string,
+    isAlumni: boolean,
+    errHandler: (err: string) => void
+) => {
+    try {
+        await privateGateway.patch(dashboardRoutes.setAlumniStatus + `${id}`, {
+            is_alumni: isAlumni
+        });
+    } catch (err: any) {
+        errHandler((err as AxiosError).message);
+    }
+};
+
+export const getCSV = async (
+    setCSVFile: any,
+    errHandler: (err: string) => void
+) => {
+    try {
+        const res = await privateGateway.get(dashboardRoutes.getStudentsList);
+        console.log(res);
+        const blob = new Blob([res.data], { type: "text/csv" });
+        setCSVFile(blob);
+    } catch (err: any) {
+        errHandler((err as AxiosError).message);
     }
 };

@@ -11,7 +11,7 @@ export const getUserLearningCircles = async (
 ) => {
     try {
         const response = await privateGateway.get(
-            dashboardRoutes.getCampusLearningCircles
+            dashboardRoutes.getCampusLearningCircles + "user-list/"
         );
         const message: any = response?.data;
         setCircleList(message.response);
@@ -29,7 +29,7 @@ export const getLcDetails = async (
 ) => {
     try {
         const response = (await privateGateway.get(
-            dashboardRoutes.getCampusLearningCircles + id + "/"
+            dashboardRoutes.lc + id + "/details/"
         )) as APIResponse<LcDetail & { day: string }>;
 
         const message = response.data.response;
@@ -53,7 +53,7 @@ export const getLcDetails = async (
 export const updateLcNote = async (data: LcNote) => {
     try {
         const response = await privateGateway.put(
-            dashboardRoutes.getCampusLearningCircles + data.id,
+            dashboardRoutes.lc + data.id + "/details/",
             data
         );
         const message: any = response;
@@ -132,7 +132,7 @@ export const createCircle = async (
         });
         setTimeout(() => {
             navigate(
-                `/dashboard/learning-circle/dashboard/${message.response.circle_id}`
+                `/dashboard/learning-circle/details/${message.response.circle_id}`
             );
         }, 2000);
     } catch (err) {
@@ -163,8 +163,8 @@ export const createCircle = async (
 
 export const setLCMeetTime = async (data: LcMeetSchedule, id: string | undefined) => {
     try {
-        const response = await privateGateway.patch(
-            dashboardRoutes.setLCMeetTime + id,
+        const response = await privateGateway.put(
+            dashboardRoutes.lc + id + "/schedule-meet/",
             data
         );
         const message: any = response?.data;
@@ -224,39 +224,26 @@ export const approveLcUser = async (
     circleId: string | undefined,
     memberId: string,
     flag: number,
-    status: string
+    message?: string
 ) => {
     try {
         const response = await privateGateway.patch(
             dashboardRoutes.getCampusLearningCircles +
                 circleId +
-                "/" +
+                "/user-accept-reject" +
                 memberId +
                 "/",
             {
                 is_accepted: flag
             }
         );
-
-        toast({
-            title: status,
-            description: "",
-            status: "success",
-            duration: 2000,
-            isClosable: true
-        });
+        const message = response.data;
+        return message;
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
             throw error;
         }
-        toast({
-            title: "Something went wrong",
-            description: "",
-            status: "error",
-            duration: 2000,
-            isClosable: true
-        });
     }
 };
 
@@ -295,73 +282,39 @@ export const leaveLc = async (
 export const removeMember = async (
     circleId: string | undefined,
     memberId: string,
-    navigate: NavigateFunction
 ) => {
     try {
         const response = await privateGateway.post(
-            dashboardRoutes.getCampusLearningCircles +
+            dashboardRoutes.lc +
                 circleId +
-                "/" +
-                memberId +
-                "/"
+                "/user-accept-reject/" +
+                memberId 
         );
-        toast({
-            title: "Success",
-            description: "",
-            status: "success",
-            duration: 2000,
-            isClosable: true
-        });
-        navigate(`/dashboard/learning-circle/dashboard/${circleId}`);
+		const message = response.data;
+		return message
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
             throw error;
         }
-        toast({
-            title: "Something went wrong",
-            description: "",
-            status: "error",
-            duration: 2000,
-            isClosable: true
-        });
     }
 };
 
-export const transferLead = async (
-    circleId: string | undefined,
-    memberId: string,
-    navigate: NavigateFunction
-) => {
+export const transferLead = async (circleId: string | undefined, memberId: string) => {
     try {
         const response = await privateGateway.patch(
-            dashboardRoutes.getLearningCirclesLead +
+            dashboardRoutes.lc +
                 circleId +
-                "/" +
-                memberId +
-                "/"
+                "/lead-transfer/" +
+                memberId
         );
-        toast({
-            title: "Success",
-            description: "",
-            status: "success",
-            duration: 2000,
-            isClosable: true
-        });
-        window.location.reload();
-       
+        const message = response.data;
+        return message;
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
             throw error;
         }
-        toast({
-            title: "Something went wrong",
-            description: "",
-            status: "error",
-            duration: 2000,
-            isClosable: true
-        });
     }
 };
 
@@ -421,7 +374,8 @@ export const reportMeeting = async (id: string | undefined, data: {
 }) => {
     try {
         const response = await privateGateway.post(
-            dashboardRoutes.reportLCMeet + id + "/", data
+            dashboardRoutes.lc + id + "/report/create/",
+            data
         );
         const message: any = response?.data;
         return message;
@@ -433,28 +387,13 @@ export const reportMeeting = async (id: string | undefined, data: {
     }
 };
 
-export const getPastReports = async (id: string | undefined) => {
+export const getLCMeetingReport = async (reportId: string | undefined, circleId: string | undefined) => {
     try {
         const response = await privateGateway.get(
-            dashboardRoutes.getPastReports + id,
+            dashboardRoutes.lc + circleId + "/report/" + reportId + "/show/",
         );
         const message: any = response?.data;
         return message.response;
-    } catch (err) {
-        const error = err as AxiosError;
-        if (error?.response) {
-            throw error;
-        }
-    }
-};
-
-export const getLCMeetingReport = async (id: string | undefined) => {
-    try {
-        const response = await privateGateway.get(
-            dashboardRoutes.getLCMeetReport + id,
-        );
-        const message: any = response?.data;
-        return message.response[0];
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {

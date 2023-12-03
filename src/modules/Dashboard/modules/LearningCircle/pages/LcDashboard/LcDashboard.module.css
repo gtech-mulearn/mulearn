@@ -32,7 +32,6 @@
     font-size: 50px;
     font-weight: 600;
     margin: 0;
-    line-height: 1;
 }
 
 .TitleContainerWrapper .Title h3 {
@@ -227,6 +226,11 @@
     margin-top: 0;
     line-height: 0.8;
 }
+
+.participantsContainer {
+    margin: 1rem;
+}
+
 .ReportWrapper .UploadSection {
     display: flex;
     flex-direction: column;
@@ -396,6 +400,7 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
+    align-items: center;
 }
 .ContainerWrapper .ContentWrapper .TopContainer {
     display: flex;
@@ -457,7 +462,7 @@
 .ContainerWrapper .ContentWrapper .TopContainer .sectionOne .secondDiv button {
     background-color: rgba(69, 111, 246, 1);
     color: white;
-    padding: 10px 20px;
+    padding: 0.5rem 1rem;
     border-radius: 8px;
 }
 .ContainerWrapper .ContentWrapper .TopContainer .sectionTwo {
@@ -497,7 +502,7 @@
         gap: 15px;
     }
     .ContainerWrapper .ContentWrapper .TopContainer .sectionTwo {
-        width: 60%;
+        width: 100%;
     }
 }
 @media screen and (max-width: 500px) {
@@ -523,8 +528,10 @@
 
 /* Input Icon color */
 
-.Sectionone input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webkit-calendar-picker-indicator {
-    filter: invert(31%) sepia(96%) saturate(4457%) hue-rotate(217deg) brightness(99%) contrast(101%);
+.Sectionone input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(31%) sepia(96%) saturate(4457%) hue-rotate(217deg)
+        brightness(99%) contrast(101%);
 }
 
 /* HistoryDiv */
@@ -578,7 +585,7 @@
     align-items: end;
     margin-top: 10px;
     width: 100%;
-    justify-content: end;
+    justify-content: center;
 }
 
 .CheckBoxContainerButton button {
@@ -607,11 +614,11 @@
     background-color: #eef2ff;
     font-size: 17px;
     color: rgba(69, 111, 246, 1);
-	cursor: pointer;
+    cursor: pointer;
 }
 
 .AttendeesWrapperSelected {
-	cursor: pointer;
+    cursor: pointer;
     padding: 10px;
     width: fit-content;
     display: flex;
@@ -630,6 +637,20 @@
     border-radius: 50%;
 }
 
+.AttendeesWrapperSelected img {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+.submitButton {
+    background-color: #456ff6;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    width: fit-content;
+}
+
 /* Css for Meeting Schedule */
 .Botton {
     display: flex;
@@ -640,7 +661,6 @@
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     border: none;
-    width: 20%;
     color: var(--White);
     background-color: var(--blue);
 }
@@ -712,6 +732,8 @@
     padding-top: 10px;
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
 .InputSchedule .weeks p {
@@ -775,6 +797,8 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    width: 90%;
+    justify-content: space-between;
 }
 .progressContainer .heading h1 {
     font-size: 25px;
@@ -833,9 +857,14 @@
 
 .taskContainer .top {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     gap: min(3rem, 10vw);
+    div {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
 }
 
 .taskContainer .top h2 {
@@ -881,38 +910,95 @@
     width: 60%;
     text-align: left;
     margin-right: auto;
-}
-
-.flexCol {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+}
+
+.KarmaButton {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+@media screen and (max-width: 550px) {
+    .taskContainer .top h2 {
+        font-size: 1.35rem;
+
+        font-weight: 600;
+    }
+    .taskContainer .top span {
+        font-size: 1rem;
+
+        font-weight: 400;
+    }
+    .task {
+        flex-direction: column;
+    }
+    .task .content {
+        width: 100%;
+    }
+    .KarmaButton {
+        flex-direction: row;
+    }
+}
+
+.TeamNavSectionWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
 }
 
 .teamList {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    width: 100%;
 }
 
+.TeamNavSectionWrapper .SubHeadingWrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    color: #888888;
+    font-size: 18px;
+}
+.TeamNavSectionWrapper .SubHeadingWrapper a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.TeamNavSectionWrapper .PendingRequestWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 8px;
+}
 .memberBar {
     border-radius: 8px;
     background: #eef2ff;
-    height: 4rem;
-
+    height: fit-content;
     padding: 1rem;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    flex-grow: 0;
     gap: 1rem;
+    width: 100%;
+    flex-wrap: wrap;
 }
 
 .memberBar img {
     height: 100%;
-    border-radius: 100px;
+}
+.memberBar .MemberProfile {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
 }
 
 .memberBar span {
@@ -932,4 +1018,64 @@
 
 .memberBar .karma {
     margin-left: auto;
+}
+
+.memberBar .LeftSection {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    align-items: center;
+}
+
+.memberBar .ButtonWrapper {
+    display: flex;
+    gap: 15px;
+    button {
+        padding: 8px 20px;
+        color: white;
+        border-radius: 8px;
+        font-size: 13px;
+    }
+}
+
+/* LC Option */
+.LcOptions {
+	position: absolute;
+	right: 2rem;
+	margin-bottom: 140px;
+	background-color: var(--White);
+	border-radius: 10px;
+	display: flex;
+	align-items: end;
+	justify-content: center;
+	flex-direction: column;
+	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+}
+
+.LcOptions div {
+	padding: 10px 20px;
+	display: flex;
+	align-items: center;
+	justify-content: end;
+	gap: 10px;
+	cursor: pointer;
+	color: red;
+}
+
+.LcOptions div:hover {
+	background-color: rgba(238, 242, 255, 1);
+	width: 100%;
+	border-radius: 10px 10px 0 0;
+}
+
+.LcOptions div:hover:last-child {
+	background-color: rgba(238, 242, 255, 1);
+	width: 100%;
+	border-radius: 0 0 10px 10px;
+}
+
+.LcOptions div:hover:first-child {
+	background-color: rgba(238, 242, 255, 1);
+	width: 100%;
+	border-radius: 10px 10px 0 0;
 }

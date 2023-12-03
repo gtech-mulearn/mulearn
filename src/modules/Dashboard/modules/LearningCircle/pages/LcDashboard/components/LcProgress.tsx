@@ -94,22 +94,30 @@ function TaskContainer({
             <div className={styles.top}>
                 <h2>{heading}</h2>
                 <span>{description}</span>
-                <h2 className={styles.totalKarma}>{totalKarma}μ</h2>
-                {open ? (
-                    <IoIosArrowUp size={24} onClick={() => setOpen(!open)} />
-                ) : (
-                    <IoIosArrowDown size={24} onClick={() => setOpen(!open)} />
-                )}
+                <div>
+                    <h2 className={styles.totalKarma}>{totalKarma}μ</h2>
+                    {open ? (
+                        <IoIosArrowUp
+                            size={24}
+                            onClick={() => setOpen(!open)}
+                        />
+                    ) : (
+                        <IoIosArrowDown
+                            size={24}
+                            onClick={() => setOpen(!open)}
+                        />
+                    )}
+                </div>
             </div>
 
             {taskList.map((task, index) => (
                 <div key={`task${index}`} className={styles.task}>
                     <input type="checkbox" checked={task.completed} />
-                    <div className={`${styles.flexCol} ${styles.content}`}>
+                    <div className={` ${styles.content}`}>
                         <h3>{task.heading}</h3>
                         <p>{task.description}</p>
                     </div>
-                    <div className={styles.flexCol}>
+                    <div className={styles.KarmaButton}>
                         <h3>{task.karma}μ</h3>
                         <a href={task.link}>
                             <PowerfulButton>View Task</PowerfulButton>

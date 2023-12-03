@@ -3809,8 +3809,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint1_linear_2593_12716"
@@ -3820,8 +3820,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint2_linear_2593_12716"
@@ -3831,8 +3831,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint3_linear_2593_12716"
@@ -3842,8 +3842,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint4_linear_2593_12716"
@@ -3853,8 +3853,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint5_linear_2593_12716"
@@ -3864,8 +3864,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint6_linear_2593_12716"
@@ -3875,8 +3875,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint7_linear_2593_12716"
@@ -3886,8 +3886,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint8_linear_2593_12716"
@@ -3897,8 +3897,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint9_linear_2593_12716"
@@ -3908,8 +3908,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint10_linear_2593_12716"
@@ -3919,8 +3919,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint11_linear_2593_12716"
@@ -3930,8 +3930,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint12_linear_2593_12716"
@@ -3941,8 +3941,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint13_linear_2593_12716"
@@ -3952,8 +3952,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint14_linear_2593_12716"
@@ -3963,8 +3963,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint15_linear_2593_12716"
@@ -3974,8 +3974,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint16_linear_2593_12716"
@@ -3985,8 +3985,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint17_linear_2593_12716"
@@ -3996,8 +3996,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint18_linear_2593_12716"
@@ -4007,8 +4007,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint19_linear_2593_12716"
@@ -4018,8 +4018,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint20_linear_2593_12716"
@@ -4029,8 +4029,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint21_linear_2593_12716"
@@ -4040,8 +4040,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint22_linear_2593_12716"
@@ -4051,8 +4051,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint23_linear_2593_12716"
@@ -4062,8 +4062,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint24_linear_2593_12716"
@@ -4073,8 +4073,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint25_linear_2593_12716"
@@ -4084,8 +4084,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint26_linear_2593_12716"
@@ -4095,8 +4095,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint27_linear_2593_12716"
@@ -4106,8 +4106,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint28_linear_2593_12716"
@@ -4117,8 +4117,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint29_linear_2593_12716"
@@ -4128,8 +4128,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint30_linear_2593_12716"
@@ -4139,8 +4139,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint31_linear_2593_12716"
@@ -4150,8 +4150,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint32_linear_2593_12716"
@@ -4161,8 +4161,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint33_linear_2593_12716"
@@ -4172,8 +4172,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint34_linear_2593_12716"
@@ -4183,8 +4183,8 @@ const Roket = (props: Props) => {
                     y2="298.894"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint35_linear_2593_12716"
@@ -4194,8 +4194,8 @@ const Roket = (props: Props) => {
                     y2="298.896"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint36_linear_2593_12716"
@@ -4205,8 +4205,8 @@ const Roket = (props: Props) => {
                     y2="298.896"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint37_linear_2593_12716"
@@ -4216,8 +4216,8 @@ const Roket = (props: Props) => {
                     y2="298.896"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint38_linear_2593_12716"
@@ -4227,8 +4227,8 @@ const Roket = (props: Props) => {
                     y2="298.896"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint39_linear_2593_12716"
@@ -4238,8 +4238,8 @@ const Roket = (props: Props) => {
                     y2="298.896"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint40_linear_2593_12716"
@@ -4249,8 +4249,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint41_linear_2593_12716"
@@ -4260,8 +4260,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint42_linear_2593_12716"
@@ -4271,8 +4271,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint43_linear_2593_12716"
@@ -4282,8 +4282,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint44_linear_2593_12716"
@@ -4293,8 +4293,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint45_linear_2593_12716"
@@ -4304,8 +4304,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint46_linear_2593_12716"
@@ -4315,8 +4315,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint47_linear_2593_12716"
@@ -4326,8 +4326,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint48_linear_2593_12716"
@@ -4337,8 +4337,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint49_linear_2593_12716"
@@ -4348,8 +4348,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint50_linear_2593_12716"
@@ -4359,8 +4359,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint51_linear_2593_12716"
@@ -4370,8 +4370,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint52_linear_2593_12716"
@@ -4381,8 +4381,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint53_linear_2593_12716"
@@ -4392,8 +4392,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint54_linear_2593_12716"
@@ -4403,8 +4403,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint55_linear_2593_12716"
@@ -4414,8 +4414,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint56_linear_2593_12716"
@@ -4425,8 +4425,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint57_linear_2593_12716"
@@ -4436,8 +4436,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint58_linear_2593_12716"
@@ -4447,8 +4447,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint59_linear_2593_12716"
@@ -4458,8 +4458,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint60_linear_2593_12716"
@@ -4469,8 +4469,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint61_linear_2593_12716"
@@ -4480,8 +4480,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint62_linear_2593_12716"
@@ -4491,8 +4491,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint63_linear_2593_12716"
@@ -4502,8 +4502,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint64_linear_2593_12716"
@@ -4513,8 +4513,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint65_linear_2593_12716"
@@ -4524,8 +4524,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint66_linear_2593_12716"
@@ -4535,8 +4535,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint67_linear_2593_12716"
@@ -4546,8 +4546,8 @@ const Roket = (props: Props) => {
                     y2="298.895"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint68_linear_2593_12716"
@@ -4557,8 +4557,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint69_linear_2593_12716"
@@ -4568,8 +4568,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint70_linear_2593_12716"
@@ -4579,8 +4579,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint71_linear_2593_12716"
@@ -4590,8 +4590,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint72_linear_2593_12716"
@@ -4601,8 +4601,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint73_linear_2593_12716"
@@ -4612,8 +4612,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint74_linear_2593_12716"
@@ -4623,8 +4623,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint75_linear_2593_12716"
@@ -4634,8 +4634,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint76_linear_2593_12716"
@@ -4645,8 +4645,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint77_linear_2593_12716"
@@ -4656,8 +4656,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint78_linear_2593_12716"
@@ -4667,8 +4667,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint79_linear_2593_12716"
@@ -4678,8 +4678,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint80_linear_2593_12716"
@@ -4689,8 +4689,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint81_linear_2593_12716"
@@ -4700,8 +4700,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint82_linear_2593_12716"
@@ -4711,8 +4711,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint83_linear_2593_12716"
@@ -4722,8 +4722,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint84_linear_2593_12716"
@@ -4733,8 +4733,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint85_linear_2593_12716"
@@ -4744,8 +4744,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint86_linear_2593_12716"
@@ -4755,8 +4755,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint87_linear_2593_12716"
@@ -4766,8 +4766,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint88_linear_2593_12716"
@@ -4777,8 +4777,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint89_linear_2593_12716"
@@ -4788,8 +4788,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint90_linear_2593_12716"
@@ -4799,8 +4799,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint91_linear_2593_12716"
@@ -4810,8 +4810,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint92_linear_2593_12716"
@@ -4821,8 +4821,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint93_linear_2593_12716"
@@ -4832,8 +4832,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint94_linear_2593_12716"
@@ -4843,8 +4843,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint95_linear_2593_12716"
@@ -4854,8 +4854,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint96_linear_2593_12716"
@@ -4865,8 +4865,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint97_linear_2593_12716"
@@ -4876,8 +4876,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint98_linear_2593_12716"
@@ -4887,8 +4887,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint99_linear_2593_12716"
@@ -4898,8 +4898,8 @@ const Roket = (props: Props) => {
                     y2="298.892"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint100_linear_2593_12716"
@@ -4909,8 +4909,8 @@ const Roket = (props: Props) => {
                     y2="298.895"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint101_linear_2593_12716"
@@ -4920,8 +4920,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint102_linear_2593_12716"
@@ -4931,8 +4931,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint103_linear_2593_12716"
@@ -4942,8 +4942,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint104_linear_2593_12716"
@@ -4953,8 +4953,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint105_linear_2593_12716"
@@ -4964,8 +4964,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint106_linear_2593_12716"
@@ -4975,8 +4975,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint107_linear_2593_12716"
@@ -4986,8 +4986,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint108_linear_2593_12716"
@@ -4997,8 +4997,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint109_linear_2593_12716"
@@ -5008,8 +5008,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint110_linear_2593_12716"
@@ -5019,8 +5019,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint111_linear_2593_12716"
@@ -5030,8 +5030,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint112_linear_2593_12716"
@@ -5041,8 +5041,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint113_linear_2593_12716"
@@ -5052,8 +5052,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint114_linear_2593_12716"
@@ -5063,8 +5063,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint115_linear_2593_12716"
@@ -5074,8 +5074,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint116_linear_2593_12716"
@@ -5085,8 +5085,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint117_linear_2593_12716"
@@ -5096,8 +5096,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint118_linear_2593_12716"
@@ -5107,8 +5107,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint119_linear_2593_12716"
@@ -5118,8 +5118,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint120_linear_2593_12716"
@@ -5129,8 +5129,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint121_linear_2593_12716"
@@ -5140,8 +5140,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint122_linear_2593_12716"
@@ -5151,8 +5151,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint123_linear_2593_12716"
@@ -5162,8 +5162,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint124_linear_2593_12716"
@@ -5173,8 +5173,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint125_linear_2593_12716"
@@ -5184,8 +5184,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint126_linear_2593_12716"
@@ -5195,8 +5195,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint127_linear_2593_12716"
@@ -5206,8 +5206,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint128_linear_2593_12716"
@@ -5217,8 +5217,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint129_linear_2593_12716"
@@ -5228,8 +5228,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint130_linear_2593_12716"
@@ -5239,8 +5239,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint131_linear_2593_12716"
@@ -5250,8 +5250,8 @@ const Roket = (props: Props) => {
                     y2="298.893"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint132_linear_2593_12716"
@@ -5261,8 +5261,8 @@ const Roket = (props: Props) => {
                     y2="298.893"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint133_linear_2593_12716"
@@ -5272,8 +5272,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint134_linear_2593_12716"
@@ -5283,8 +5283,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint135_linear_2593_12716"
@@ -5294,8 +5294,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint136_linear_2593_12716"
@@ -5305,8 +5305,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint137_linear_2593_12716"
@@ -5316,8 +5316,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint138_linear_2593_12716"
@@ -5327,8 +5327,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint139_linear_2593_12716"
@@ -5338,8 +5338,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint140_linear_2593_12716"
@@ -5349,8 +5349,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint141_linear_2593_12716"
@@ -5360,8 +5360,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint142_linear_2593_12716"
@@ -5371,8 +5371,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint143_linear_2593_12716"
@@ -5382,8 +5382,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint144_linear_2593_12716"
@@ -5393,8 +5393,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint145_linear_2593_12716"
@@ -5404,8 +5404,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint146_linear_2593_12716"
@@ -5415,8 +5415,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint147_linear_2593_12716"
@@ -5426,8 +5426,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint148_linear_2593_12716"
@@ -5437,8 +5437,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint149_linear_2593_12716"
@@ -5448,8 +5448,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint150_linear_2593_12716"
@@ -5459,8 +5459,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint151_linear_2593_12716"
@@ -5470,8 +5470,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint152_linear_2593_12716"
@@ -5481,8 +5481,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint153_linear_2593_12716"
@@ -5492,8 +5492,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint154_linear_2593_12716"
@@ -5503,8 +5503,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint155_linear_2593_12716"
@@ -5514,8 +5514,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint156_linear_2593_12716"
@@ -5525,8 +5525,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint157_linear_2593_12716"
@@ -5536,8 +5536,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint158_linear_2593_12716"
@@ -5547,8 +5547,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint159_linear_2593_12716"
@@ -5558,8 +5558,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint160_linear_2593_12716"
@@ -5569,8 +5569,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint161_linear_2593_12716"
@@ -5580,8 +5580,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint162_linear_2593_12716"
@@ -5591,8 +5591,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint163_linear_2593_12716"
@@ -5602,8 +5602,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint164_linear_2593_12716"
@@ -5613,8 +5613,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint165_linear_2593_12716"
@@ -5624,8 +5624,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint166_linear_2593_12716"
@@ -5635,8 +5635,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint167_linear_2593_12716"
@@ -5646,8 +5646,8 @@ const Roket = (props: Props) => {
                     y2="298.896"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint168_linear_2593_12716"
@@ -5657,8 +5657,8 @@ const Roket = (props: Props) => {
                     y2="298.896"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint169_linear_2593_12716"
@@ -5668,8 +5668,8 @@ const Roket = (props: Props) => {
                     y2="298.896"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint170_linear_2593_12716"
@@ -5679,8 +5679,8 @@ const Roket = (props: Props) => {
                     y2="298.896"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint171_linear_2593_12716"
@@ -5690,8 +5690,8 @@ const Roket = (props: Props) => {
                     y2="298.896"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint172_linear_2593_12716"
@@ -5701,8 +5701,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint173_linear_2593_12716"
@@ -5712,8 +5712,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint174_linear_2593_12716"
@@ -5723,8 +5723,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint175_linear_2593_12716"
@@ -5734,8 +5734,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint176_linear_2593_12716"
@@ -5745,8 +5745,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint177_linear_2593_12716"
@@ -5756,8 +5756,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint178_linear_2593_12716"
@@ -5767,8 +5767,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint179_linear_2593_12716"
@@ -5778,8 +5778,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint180_linear_2593_12716"
@@ -5789,8 +5789,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint181_linear_2593_12716"
@@ -5800,8 +5800,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint182_linear_2593_12716"
@@ -5811,8 +5811,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint183_linear_2593_12716"
@@ -5822,8 +5822,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint184_linear_2593_12716"
@@ -5833,8 +5833,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint185_linear_2593_12716"
@@ -5844,8 +5844,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint186_linear_2593_12716"
@@ -5855,8 +5855,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint187_linear_2593_12716"
@@ -5866,8 +5866,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint188_linear_2593_12716"
@@ -5877,8 +5877,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint189_linear_2593_12716"
@@ -5888,8 +5888,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint190_linear_2593_12716"
@@ -5899,8 +5899,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint191_linear_2593_12716"
@@ -5910,8 +5910,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint192_linear_2593_12716"
@@ -5921,8 +5921,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint193_linear_2593_12716"
@@ -5932,8 +5932,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint194_linear_2593_12716"
@@ -5943,8 +5943,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint195_linear_2593_12716"
@@ -5954,8 +5954,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint196_linear_2593_12716"
@@ -5965,8 +5965,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint197_linear_2593_12716"
@@ -5976,8 +5976,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint198_linear_2593_12716"
@@ -5987,8 +5987,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint199_linear_2593_12716"
@@ -5998,8 +5998,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint200_linear_2593_12716"
@@ -6009,8 +6009,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint201_linear_2593_12716"
@@ -6020,8 +6020,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint202_linear_2593_12716"
@@ -6031,8 +6031,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint203_linear_2593_12716"
@@ -6042,8 +6042,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint204_linear_2593_12716"
@@ -6053,8 +6053,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint205_linear_2593_12716"
@@ -6064,8 +6064,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint206_linear_2593_12716"
@@ -6075,8 +6075,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint207_linear_2593_12716"
@@ -6086,8 +6086,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint208_linear_2593_12716"
@@ -6097,8 +6097,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint209_linear_2593_12716"
@@ -6108,8 +6108,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint210_linear_2593_12716"
@@ -6119,8 +6119,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint211_linear_2593_12716"
@@ -6130,8 +6130,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint212_linear_2593_12716"
@@ -6141,8 +6141,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint213_linear_2593_12716"
@@ -6152,8 +6152,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint214_linear_2593_12716"
@@ -6163,8 +6163,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint215_linear_2593_12716"
@@ -6174,8 +6174,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint216_linear_2593_12716"
@@ -6185,8 +6185,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint217_linear_2593_12716"
@@ -6196,8 +6196,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint218_linear_2593_12716"
@@ -6207,8 +6207,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint219_linear_2593_12716"
@@ -6218,8 +6218,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint220_linear_2593_12716"
@@ -6229,8 +6229,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint221_linear_2593_12716"
@@ -6240,8 +6240,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint222_linear_2593_12716"
@@ -6251,8 +6251,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint223_linear_2593_12716"
@@ -6262,8 +6262,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint224_linear_2593_12716"
@@ -6273,8 +6273,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint225_linear_2593_12716"
@@ -6284,8 +6284,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint226_linear_2593_12716"
@@ -6295,8 +6295,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint227_linear_2593_12716"
@@ -6306,8 +6306,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint228_linear_2593_12716"
@@ -6317,8 +6317,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint229_linear_2593_12716"
@@ -6328,8 +6328,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint230_linear_2593_12716"
@@ -6339,8 +6339,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint231_linear_2593_12716"
@@ -6350,8 +6350,8 @@ const Roket = (props: Props) => {
                     y2="298.894"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint232_linear_2593_12716"
@@ -6361,8 +6361,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint233_linear_2593_12716"
@@ -6372,8 +6372,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint234_linear_2593_12716"
@@ -6383,8 +6383,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint235_linear_2593_12716"
@@ -6394,8 +6394,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint236_linear_2593_12716"
@@ -6405,8 +6405,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint237_linear_2593_12716"
@@ -6416,8 +6416,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint238_linear_2593_12716"
@@ -6427,8 +6427,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint239_linear_2593_12716"
@@ -6438,8 +6438,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint240_linear_2593_12716"
@@ -6449,8 +6449,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint241_linear_2593_12716"
@@ -6460,8 +6460,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint242_linear_2593_12716"
@@ -6471,8 +6471,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint243_linear_2593_12716"
@@ -6482,8 +6482,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint244_linear_2593_12716"
@@ -6493,8 +6493,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint245_linear_2593_12716"
@@ -6504,8 +6504,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint246_linear_2593_12716"
@@ -6515,8 +6515,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint247_linear_2593_12716"
@@ -6526,8 +6526,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint248_linear_2593_12716"
@@ -6537,8 +6537,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint249_linear_2593_12716"
@@ -6548,8 +6548,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint250_linear_2593_12716"
@@ -6559,8 +6559,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint251_linear_2593_12716"
@@ -6570,8 +6570,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint252_linear_2593_12716"
@@ -6581,8 +6581,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint253_linear_2593_12716"
@@ -6592,8 +6592,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint254_linear_2593_12716"
@@ -6603,8 +6603,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint255_linear_2593_12716"
@@ -6614,8 +6614,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint256_linear_2593_12716"
@@ -6625,8 +6625,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint257_linear_2593_12716"
@@ -6636,8 +6636,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint258_linear_2593_12716"
@@ -6647,8 +6647,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint259_linear_2593_12716"
@@ -6658,8 +6658,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint260_linear_2593_12716"
@@ -6669,8 +6669,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint261_linear_2593_12716"
@@ -6680,8 +6680,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint262_linear_2593_12716"
@@ -6691,8 +6691,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint263_linear_2593_12716"
@@ -6702,8 +6702,8 @@ const Roket = (props: Props) => {
                     y2="298.895"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint264_linear_2593_12716"
@@ -6713,8 +6713,8 @@ const Roket = (props: Props) => {
                     y2="298.895"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint265_linear_2593_12716"
@@ -6724,8 +6724,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint266_linear_2593_12716"
@@ -6735,8 +6735,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint267_linear_2593_12716"
@@ -6746,8 +6746,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint268_linear_2593_12716"
@@ -6757,8 +6757,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint269_linear_2593_12716"
@@ -6768,8 +6768,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint270_linear_2593_12716"
@@ -6779,8 +6779,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint271_linear_2593_12716"
@@ -6790,8 +6790,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint272_linear_2593_12716"
@@ -6801,8 +6801,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint273_linear_2593_12716"
@@ -6812,8 +6812,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint274_linear_2593_12716"
@@ -6823,8 +6823,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint275_linear_2593_12716"
@@ -6834,8 +6834,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint276_linear_2593_12716"
@@ -6845,8 +6845,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint277_linear_2593_12716"
@@ -6856,8 +6856,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint278_linear_2593_12716"
@@ -6867,8 +6867,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint279_linear_2593_12716"
@@ -6878,8 +6878,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint280_linear_2593_12716"
@@ -6889,8 +6889,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint281_linear_2593_12716"
@@ -6900,8 +6900,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint282_linear_2593_12716"
@@ -6911,8 +6911,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint283_linear_2593_12716"
@@ -6922,8 +6922,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint284_linear_2593_12716"
@@ -6933,8 +6933,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint285_linear_2593_12716"
@@ -6944,8 +6944,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint286_linear_2593_12716"
@@ -6955,8 +6955,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint287_linear_2593_12716"
@@ -6966,8 +6966,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint288_linear_2593_12716"
@@ -6977,8 +6977,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint289_linear_2593_12716"
@@ -6988,8 +6988,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint290_linear_2593_12716"
@@ -6999,8 +6999,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint291_linear_2593_12716"
@@ -7010,8 +7010,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint292_linear_2593_12716"
@@ -7021,8 +7021,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint293_linear_2593_12716"
@@ -7032,8 +7032,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint294_linear_2593_12716"
@@ -7043,8 +7043,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint295_linear_2593_12716"
@@ -7054,8 +7054,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint296_linear_2593_12716"
@@ -7065,8 +7065,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint297_linear_2593_12716"
@@ -7076,8 +7076,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint298_linear_2593_12716"
@@ -7087,8 +7087,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint299_linear_2593_12716"
@@ -7098,8 +7098,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint300_linear_2593_12716"
@@ -7109,8 +7109,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint301_linear_2593_12716"
@@ -7120,8 +7120,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint302_linear_2593_12716"
@@ -7131,8 +7131,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint303_linear_2593_12716"
@@ -7142,8 +7142,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint304_linear_2593_12716"
@@ -7153,8 +7153,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint305_linear_2593_12716"
@@ -7164,8 +7164,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint306_linear_2593_12716"
@@ -7175,8 +7175,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint307_linear_2593_12716"
@@ -7186,8 +7186,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint308_linear_2593_12716"
@@ -7197,8 +7197,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint309_linear_2593_12716"
@@ -7208,8 +7208,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint310_linear_2593_12716"
@@ -7219,8 +7219,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint311_linear_2593_12716"
@@ -7230,8 +7230,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint312_linear_2593_12716"
@@ -7241,8 +7241,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint313_linear_2593_12716"
@@ -7252,8 +7252,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint314_linear_2593_12716"
@@ -7263,8 +7263,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint315_linear_2593_12716"
@@ -7274,8 +7274,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint316_linear_2593_12716"
@@ -7285,8 +7285,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint317_linear_2593_12716"
@@ -7296,8 +7296,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint318_linear_2593_12716"
@@ -7307,8 +7307,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint319_linear_2593_12716"
@@ -7318,8 +7318,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint320_linear_2593_12716"
@@ -7329,8 +7329,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint321_linear_2593_12716"
@@ -7340,8 +7340,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint322_linear_2593_12716"
@@ -7351,8 +7351,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint323_linear_2593_12716"
@@ -7362,8 +7362,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint324_linear_2593_12716"
@@ -7373,8 +7373,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint325_linear_2593_12716"
@@ -7384,8 +7384,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint326_linear_2593_12716"
@@ -7395,8 +7395,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint327_linear_2593_12716"
@@ -7406,8 +7406,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint328_linear_2593_12716"
@@ -7417,8 +7417,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint329_linear_2593_12716"
@@ -7428,8 +7428,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint330_linear_2593_12716"
@@ -7439,8 +7439,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint331_linear_2593_12716"
@@ -7450,8 +7450,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint332_linear_2593_12716"
@@ -7461,8 +7461,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint333_linear_2593_12716"
@@ -7472,8 +7472,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint334_linear_2593_12716"
@@ -7483,8 +7483,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint335_linear_2593_12716"
@@ -7494,8 +7494,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint336_linear_2593_12716"
@@ -7505,8 +7505,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint337_linear_2593_12716"
@@ -7516,8 +7516,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint338_linear_2593_12716"
@@ -7527,8 +7527,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint339_linear_2593_12716"
@@ -7538,8 +7538,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint340_linear_2593_12716"
@@ -7549,8 +7549,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint341_linear_2593_12716"
@@ -7560,8 +7560,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint342_linear_2593_12716"
@@ -7571,8 +7571,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint343_linear_2593_12716"
@@ -7582,8 +7582,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint344_linear_2593_12716"
@@ -7593,8 +7593,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint345_linear_2593_12716"
@@ -7604,8 +7604,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint346_linear_2593_12716"
@@ -7615,8 +7615,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint347_linear_2593_12716"
@@ -7626,8 +7626,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint348_linear_2593_12716"
@@ -7637,8 +7637,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint349_linear_2593_12716"
@@ -7648,8 +7648,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint350_linear_2593_12716"
@@ -7659,8 +7659,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint351_linear_2593_12716"
@@ -7670,8 +7670,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint352_linear_2593_12716"
@@ -7681,8 +7681,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint353_linear_2593_12716"
@@ -7692,8 +7692,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint354_linear_2593_12716"
@@ -7703,8 +7703,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint355_linear_2593_12716"
@@ -7714,8 +7714,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint356_linear_2593_12716"
@@ -7725,8 +7725,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint357_linear_2593_12716"
@@ -7736,8 +7736,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint358_linear_2593_12716"
@@ -7747,8 +7747,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint359_linear_2593_12716"
@@ -7758,8 +7758,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint360_linear_2593_12716"
@@ -7769,8 +7769,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint361_linear_2593_12716"
@@ -7780,8 +7780,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint362_linear_2593_12716"
@@ -7791,8 +7791,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint363_linear_2593_12716"
@@ -7802,8 +7802,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint364_linear_2593_12716"
@@ -7813,8 +7813,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint365_linear_2593_12716"
@@ -7824,8 +7824,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint366_linear_2593_12716"
@@ -7835,8 +7835,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint367_linear_2593_12716"
@@ -7846,8 +7846,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint368_linear_2593_12716"
@@ -7857,8 +7857,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint369_linear_2593_12716"
@@ -7868,8 +7868,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint370_linear_2593_12716"
@@ -7879,8 +7879,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint371_linear_2593_12716"
@@ -7890,8 +7890,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint372_linear_2593_12716"
@@ -7901,8 +7901,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint373_linear_2593_12716"
@@ -7912,8 +7912,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint374_linear_2593_12716"
@@ -7923,8 +7923,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint375_linear_2593_12716"
@@ -7934,8 +7934,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint376_linear_2593_12716"
@@ -7945,8 +7945,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint377_linear_2593_12716"
@@ -7956,8 +7956,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint378_linear_2593_12716"
@@ -7967,8 +7967,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint379_linear_2593_12716"
@@ -7978,8 +7978,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint380_linear_2593_12716"
@@ -7989,8 +7989,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint381_linear_2593_12716"
@@ -8000,8 +8000,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint382_linear_2593_12716"
@@ -8011,8 +8011,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint383_linear_2593_12716"
@@ -8022,8 +8022,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint384_linear_2593_12716"
@@ -8033,8 +8033,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint385_linear_2593_12716"
@@ -8044,8 +8044,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint386_linear_2593_12716"
@@ -8055,8 +8055,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint387_linear_2593_12716"
@@ -8066,8 +8066,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint388_linear_2593_12716"
@@ -8077,8 +8077,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint389_linear_2593_12716"
@@ -8088,8 +8088,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint390_linear_2593_12716"
@@ -8099,8 +8099,8 @@ const Roket = (props: Props) => {
                     y2="298.894"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint391_linear_2593_12716"
@@ -8110,8 +8110,8 @@ const Roket = (props: Props) => {
                     y2="298.894"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint392_linear_2593_12716"
@@ -8121,8 +8121,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint393_linear_2593_12716"
@@ -8132,8 +8132,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint394_linear_2593_12716"
@@ -8143,8 +8143,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint395_linear_2593_12716"
@@ -8154,8 +8154,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint396_linear_2593_12716"
@@ -8165,8 +8165,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint397_linear_2593_12716"
@@ -8176,8 +8176,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint398_linear_2593_12716"
@@ -8187,8 +8187,8 @@ const Roket = (props: Props) => {
                     y2="298.891"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint399_linear_2593_12716"
@@ -8198,8 +8198,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint400_linear_2593_12716"
@@ -8209,8 +8209,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint401_linear_2593_12716"
@@ -8220,8 +8220,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint402_linear_2593_12716"
@@ -8231,8 +8231,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint403_linear_2593_12716"
@@ -8242,8 +8242,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint404_linear_2593_12716"
@@ -8253,8 +8253,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint405_linear_2593_12716"
@@ -8264,8 +8264,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint406_linear_2593_12716"
@@ -8275,8 +8275,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint407_linear_2593_12716"
@@ -8286,8 +8286,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint408_linear_2593_12716"
@@ -8297,8 +8297,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint409_linear_2593_12716"
@@ -8308,8 +8308,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint410_linear_2593_12716"
@@ -8319,8 +8319,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint411_linear_2593_12716"
@@ -8330,8 +8330,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint412_linear_2593_12716"
@@ -8341,8 +8341,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint413_linear_2593_12716"
@@ -8352,8 +8352,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint414_linear_2593_12716"
@@ -8363,8 +8363,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint415_linear_2593_12716"
@@ -8374,8 +8374,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint416_linear_2593_12716"
@@ -8385,8 +8385,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint417_linear_2593_12716"
@@ -8396,8 +8396,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint418_linear_2593_12716"
@@ -8407,8 +8407,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint419_linear_2593_12716"
@@ -8418,8 +8418,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint420_linear_2593_12716"
@@ -8429,8 +8429,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint421_linear_2593_12716"
@@ -8440,8 +8440,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint422_linear_2593_12716"
@@ -8451,8 +8451,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint423_linear_2593_12716"
@@ -8462,8 +8462,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint424_linear_2593_12716"
@@ -8473,8 +8473,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint425_linear_2593_12716"
@@ -8484,8 +8484,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint426_linear_2593_12716"
@@ -8495,8 +8495,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint427_linear_2593_12716"
@@ -8506,8 +8506,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint428_linear_2593_12716"
@@ -8517,8 +8517,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint429_linear_2593_12716"
@@ -8528,8 +8528,8 @@ const Roket = (props: Props) => {
                     y2="298.894"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint430_linear_2593_12716"
@@ -8539,8 +8539,8 @@ const Roket = (props: Props) => {
                     y2="298.894"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint431_linear_2593_12716"
@@ -8550,8 +8550,8 @@ const Roket = (props: Props) => {
                     y2="298.891"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint432_linear_2593_12716"
@@ -8561,8 +8561,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint433_linear_2593_12716"
@@ -8572,8 +8572,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint434_linear_2593_12716"
@@ -8583,8 +8583,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint435_linear_2593_12716"
@@ -8594,8 +8594,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint436_linear_2593_12716"
@@ -8605,8 +8605,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint437_linear_2593_12716"
@@ -8616,8 +8616,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint438_linear_2593_12716"
@@ -8627,8 +8627,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint439_linear_2593_12716"
@@ -8638,8 +8638,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint440_linear_2593_12716"
@@ -8649,8 +8649,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint441_linear_2593_12716"
@@ -8660,8 +8660,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint442_linear_2593_12716"
@@ -8671,8 +8671,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint443_linear_2593_12716"
@@ -8682,8 +8682,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint444_linear_2593_12716"
@@ -8693,8 +8693,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint445_linear_2593_12716"
@@ -8704,8 +8704,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint446_linear_2593_12716"
@@ -8715,8 +8715,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint447_linear_2593_12716"
@@ -8726,8 +8726,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint448_linear_2593_12716"
@@ -8737,8 +8737,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint449_linear_2593_12716"
@@ -8748,8 +8748,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint450_linear_2593_12716"
@@ -8759,8 +8759,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint451_linear_2593_12716"
@@ -8770,8 +8770,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint452_linear_2593_12716"
@@ -8781,8 +8781,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint453_linear_2593_12716"
@@ -8792,8 +8792,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint454_linear_2593_12716"
@@ -8803,8 +8803,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint455_linear_2593_12716"
@@ -8814,8 +8814,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint456_linear_2593_12716"
@@ -8825,8 +8825,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint457_linear_2593_12716"
@@ -8836,8 +8836,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint458_linear_2593_12716"
@@ -8847,8 +8847,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint459_linear_2593_12716"
@@ -8858,8 +8858,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint460_linear_2593_12716"
@@ -8869,8 +8869,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint461_linear_2593_12716"
@@ -8880,8 +8880,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint462_linear_2593_12716"
@@ -8891,8 +8891,8 @@ const Roket = (props: Props) => {
                     y2="298.894"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint463_linear_2593_12716"
@@ -8902,8 +8902,8 @@ const Roket = (props: Props) => {
                     y2="298.902"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint464_linear_2593_12716"
@@ -8913,8 +8913,8 @@ const Roket = (props: Props) => {
                     y2="298.892"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint465_linear_2593_12716"
@@ -8924,8 +8924,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint466_linear_2593_12716"
@@ -8935,8 +8935,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint467_linear_2593_12716"
@@ -8946,8 +8946,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint468_linear_2593_12716"
@@ -8957,8 +8957,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint469_linear_2593_12716"
@@ -8968,8 +8968,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint470_linear_2593_12716"
@@ -8979,8 +8979,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint471_linear_2593_12716"
@@ -8990,8 +8990,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint472_linear_2593_12716"
@@ -9001,8 +9001,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint473_linear_2593_12716"
@@ -9012,8 +9012,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint474_linear_2593_12716"
@@ -9023,8 +9023,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint475_linear_2593_12716"
@@ -9034,8 +9034,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint476_linear_2593_12716"
@@ -9045,8 +9045,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint477_linear_2593_12716"
@@ -9056,8 +9056,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint478_linear_2593_12716"
@@ -9067,8 +9067,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint479_linear_2593_12716"
@@ -9078,8 +9078,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint480_linear_2593_12716"
@@ -9089,8 +9089,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint481_linear_2593_12716"
@@ -9100,8 +9100,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint482_linear_2593_12716"
@@ -9111,8 +9111,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint483_linear_2593_12716"
@@ -9122,8 +9122,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint484_linear_2593_12716"
@@ -9133,8 +9133,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint485_linear_2593_12716"
@@ -9144,8 +9144,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint486_linear_2593_12716"
@@ -9155,8 +9155,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint487_linear_2593_12716"
@@ -9166,8 +9166,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint488_linear_2593_12716"
@@ -9177,8 +9177,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint489_linear_2593_12716"
@@ -9188,8 +9188,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint490_linear_2593_12716"
@@ -9199,8 +9199,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint491_linear_2593_12716"
@@ -9210,8 +9210,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint492_linear_2593_12716"
@@ -9221,8 +9221,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint493_linear_2593_12716"
@@ -9232,8 +9232,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint494_linear_2593_12716"
@@ -9243,8 +9243,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint495_linear_2593_12716"
@@ -9254,8 +9254,8 @@ const Roket = (props: Props) => {
                     y2="298.894"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint496_linear_2593_12716"
@@ -9265,8 +9265,8 @@ const Roket = (props: Props) => {
                     y2="298.894"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint497_linear_2593_12716"
@@ -9276,8 +9276,8 @@ const Roket = (props: Props) => {
                     y2="298.891"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint498_linear_2593_12716"
@@ -9287,8 +9287,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint499_linear_2593_12716"
@@ -9298,8 +9298,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint500_linear_2593_12716"
@@ -9309,8 +9309,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint501_linear_2593_12716"
@@ -9320,8 +9320,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint502_linear_2593_12716"
@@ -9331,8 +9331,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint503_linear_2593_12716"
@@ -9342,8 +9342,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint504_linear_2593_12716"
@@ -9353,8 +9353,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint505_linear_2593_12716"
@@ -9364,8 +9364,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint506_linear_2593_12716"
@@ -9375,8 +9375,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint507_linear_2593_12716"
@@ -9386,8 +9386,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint508_linear_2593_12716"
@@ -9397,8 +9397,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint509_linear_2593_12716"
@@ -9408,8 +9408,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint510_linear_2593_12716"
@@ -9419,8 +9419,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint511_linear_2593_12716"
@@ -9430,8 +9430,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint512_linear_2593_12716"
@@ -9441,8 +9441,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint513_linear_2593_12716"
@@ -9452,8 +9452,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint514_linear_2593_12716"
@@ -9463,8 +9463,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint515_linear_2593_12716"
@@ -9474,8 +9474,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint516_linear_2593_12716"
@@ -9485,8 +9485,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint517_linear_2593_12716"
@@ -9496,8 +9496,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint518_linear_2593_12716"
@@ -9507,8 +9507,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint519_linear_2593_12716"
@@ -9518,8 +9518,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint520_linear_2593_12716"
@@ -9529,8 +9529,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint521_linear_2593_12716"
@@ -9540,8 +9540,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint522_linear_2593_12716"
@@ -9551,8 +9551,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint523_linear_2593_12716"
@@ -9562,8 +9562,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint524_linear_2593_12716"
@@ -9573,8 +9573,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint525_linear_2593_12716"
@@ -9584,8 +9584,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint526_linear_2593_12716"
@@ -9595,8 +9595,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint527_linear_2593_12716"
@@ -9606,8 +9606,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint528_linear_2593_12716"
@@ -9617,8 +9617,8 @@ const Roket = (props: Props) => {
                     y2="298.902"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint529_linear_2593_12716"
@@ -9628,8 +9628,8 @@ const Roket = (props: Props) => {
                     y2="298.902"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint530_linear_2593_12716"
@@ -9639,8 +9639,8 @@ const Roket = (props: Props) => {
                     y2="298.892"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint531_linear_2593_12716"
@@ -9650,8 +9650,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint532_linear_2593_12716"
@@ -9661,8 +9661,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint533_linear_2593_12716"
@@ -9672,8 +9672,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint534_linear_2593_12716"
@@ -9683,8 +9683,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint535_linear_2593_12716"
@@ -9694,8 +9694,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint536_linear_2593_12716"
@@ -9705,8 +9705,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint537_linear_2593_12716"
@@ -9716,8 +9716,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint538_linear_2593_12716"
@@ -9727,8 +9727,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint539_linear_2593_12716"
@@ -9738,8 +9738,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint540_linear_2593_12716"
@@ -9749,8 +9749,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint541_linear_2593_12716"
@@ -9760,8 +9760,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint542_linear_2593_12716"
@@ -9771,8 +9771,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint543_linear_2593_12716"
@@ -9782,8 +9782,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint544_linear_2593_12716"
@@ -9793,8 +9793,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint545_linear_2593_12716"
@@ -9804,8 +9804,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint546_linear_2593_12716"
@@ -9815,8 +9815,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint547_linear_2593_12716"
@@ -9826,8 +9826,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint548_linear_2593_12716"
@@ -9837,8 +9837,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint549_linear_2593_12716"
@@ -9848,8 +9848,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint550_linear_2593_12716"
@@ -9859,8 +9859,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint551_linear_2593_12716"
@@ -9870,8 +9870,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint552_linear_2593_12716"
@@ -9881,8 +9881,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint553_linear_2593_12716"
@@ -9892,8 +9892,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint554_linear_2593_12716"
@@ -9903,8 +9903,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint555_linear_2593_12716"
@@ -9914,8 +9914,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint556_linear_2593_12716"
@@ -9925,8 +9925,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint557_linear_2593_12716"
@@ -9936,8 +9936,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint558_linear_2593_12716"
@@ -9947,8 +9947,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint559_linear_2593_12716"
@@ -9958,8 +9958,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint560_linear_2593_12716"
@@ -9969,8 +9969,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint561_linear_2593_12716"
@@ -9980,8 +9980,8 @@ const Roket = (props: Props) => {
                     y2="298.894"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint562_linear_2593_12716"
@@ -9991,8 +9991,8 @@ const Roket = (props: Props) => {
                     y2="298.894"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint563_linear_2593_12716"
@@ -10002,8 +10002,8 @@ const Roket = (props: Props) => {
                     y2="298.893"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint564_linear_2593_12716"
@@ -10013,8 +10013,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint565_linear_2593_12716"
@@ -10024,8 +10024,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint566_linear_2593_12716"
@@ -10035,8 +10035,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint567_linear_2593_12716"
@@ -10046,8 +10046,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint568_linear_2593_12716"
@@ -10057,8 +10057,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint569_linear_2593_12716"
@@ -10068,8 +10068,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint570_linear_2593_12716"
@@ -10079,8 +10079,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint571_linear_2593_12716"
@@ -10090,8 +10090,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint572_linear_2593_12716"
@@ -10101,8 +10101,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint573_linear_2593_12716"
@@ -10112,8 +10112,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint574_linear_2593_12716"
@@ -10123,8 +10123,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint575_linear_2593_12716"
@@ -10134,8 +10134,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint576_linear_2593_12716"
@@ -10145,8 +10145,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint577_linear_2593_12716"
@@ -10156,8 +10156,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint578_linear_2593_12716"
@@ -10167,8 +10167,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint579_linear_2593_12716"
@@ -10178,8 +10178,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint580_linear_2593_12716"
@@ -10189,8 +10189,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint581_linear_2593_12716"
@@ -10200,8 +10200,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint582_linear_2593_12716"
@@ -10211,8 +10211,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint583_linear_2593_12716"
@@ -10222,8 +10222,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint584_linear_2593_12716"
@@ -10233,8 +10233,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint585_linear_2593_12716"
@@ -10244,8 +10244,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint586_linear_2593_12716"
@@ -10255,8 +10255,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint587_linear_2593_12716"
@@ -10266,8 +10266,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint588_linear_2593_12716"
@@ -10277,8 +10277,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint589_linear_2593_12716"
@@ -10288,8 +10288,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint590_linear_2593_12716"
@@ -10299,8 +10299,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint591_linear_2593_12716"
@@ -10310,8 +10310,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint592_linear_2593_12716"
@@ -10321,8 +10321,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint593_linear_2593_12716"
@@ -10332,8 +10332,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint594_linear_2593_12716"
@@ -10343,8 +10343,8 @@ const Roket = (props: Props) => {
                     y2="298.901"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint595_linear_2593_12716"
@@ -10354,8 +10354,8 @@ const Roket = (props: Props) => {
                     y2="298.895"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint596_linear_2593_12716"
@@ -10365,8 +10365,8 @@ const Roket = (props: Props) => {
                     y2="298.893"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint597_linear_2593_12716"
@@ -10376,8 +10376,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint598_linear_2593_12716"
@@ -10387,8 +10387,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint599_linear_2593_12716"
@@ -10398,8 +10398,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint600_linear_2593_12716"
@@ -10409,8 +10409,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint601_linear_2593_12716"
@@ -10420,8 +10420,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint602_linear_2593_12716"
@@ -10431,8 +10431,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint603_linear_2593_12716"
@@ -10442,8 +10442,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint604_linear_2593_12716"
@@ -10453,8 +10453,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint605_linear_2593_12716"
@@ -10464,8 +10464,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint606_linear_2593_12716"
@@ -10475,8 +10475,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint607_linear_2593_12716"
@@ -10486,8 +10486,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint608_linear_2593_12716"
@@ -10497,8 +10497,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint609_linear_2593_12716"
@@ -10508,8 +10508,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint610_linear_2593_12716"
@@ -10519,8 +10519,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint611_linear_2593_12716"
@@ -10530,8 +10530,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint612_linear_2593_12716"
@@ -10541,8 +10541,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint613_linear_2593_12716"
@@ -10552,8 +10552,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint614_linear_2593_12716"
@@ -10563,8 +10563,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint615_linear_2593_12716"
@@ -10574,8 +10574,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint616_linear_2593_12716"
@@ -10585,8 +10585,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint617_linear_2593_12716"
@@ -10596,8 +10596,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint618_linear_2593_12716"
@@ -10607,8 +10607,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint619_linear_2593_12716"
@@ -10618,8 +10618,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint620_linear_2593_12716"
@@ -10629,8 +10629,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint621_linear_2593_12716"
@@ -10640,8 +10640,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint622_linear_2593_12716"
@@ -10651,8 +10651,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint623_linear_2593_12716"
@@ -10662,8 +10662,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint624_linear_2593_12716"
@@ -10673,8 +10673,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint625_linear_2593_12716"
@@ -10684,8 +10684,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint626_linear_2593_12716"
@@ -10695,8 +10695,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint627_linear_2593_12716"
@@ -10706,8 +10706,8 @@ const Roket = (props: Props) => {
                     y2="298.901"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint628_linear_2593_12716"
@@ -10717,8 +10717,8 @@ const Roket = (props: Props) => {
                     y2="298.901"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint629_linear_2593_12716"
@@ -10728,8 +10728,8 @@ const Roket = (props: Props) => {
                     y2="298.893"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint630_linear_2593_12716"
@@ -10739,8 +10739,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint631_linear_2593_12716"
@@ -10750,8 +10750,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint632_linear_2593_12716"
@@ -10761,8 +10761,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint633_linear_2593_12716"
@@ -10772,8 +10772,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint634_linear_2593_12716"
@@ -10783,8 +10783,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint635_linear_2593_12716"
@@ -10794,8 +10794,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint636_linear_2593_12716"
@@ -10805,8 +10805,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint637_linear_2593_12716"
@@ -10816,8 +10816,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint638_linear_2593_12716"
@@ -10827,8 +10827,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint639_linear_2593_12716"
@@ -10838,8 +10838,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint640_linear_2593_12716"
@@ -10849,8 +10849,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint641_linear_2593_12716"
@@ -10860,8 +10860,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint642_linear_2593_12716"
@@ -10871,8 +10871,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint643_linear_2593_12716"
@@ -10882,8 +10882,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint644_linear_2593_12716"
@@ -10893,8 +10893,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint645_linear_2593_12716"
@@ -10904,8 +10904,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint646_linear_2593_12716"
@@ -10915,8 +10915,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint647_linear_2593_12716"
@@ -10926,8 +10926,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint648_linear_2593_12716"
@@ -10937,8 +10937,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint649_linear_2593_12716"
@@ -10948,8 +10948,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint650_linear_2593_12716"
@@ -10959,8 +10959,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint651_linear_2593_12716"
@@ -10970,8 +10970,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint652_linear_2593_12716"
@@ -10981,8 +10981,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint653_linear_2593_12716"
@@ -10992,8 +10992,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint654_linear_2593_12716"
@@ -11003,8 +11003,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint655_linear_2593_12716"
@@ -11014,8 +11014,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint656_linear_2593_12716"
@@ -11025,8 +11025,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint657_linear_2593_12716"
@@ -11036,8 +11036,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint658_linear_2593_12716"
@@ -11047,8 +11047,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint659_linear_2593_12716"
@@ -11058,8 +11058,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint660_linear_2593_12716"
@@ -11069,8 +11069,8 @@ const Roket = (props: Props) => {
                     y2="298.89"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint661_linear_2593_12716"
@@ -11080,8 +11080,8 @@ const Roket = (props: Props) => {
                     y2="298.89"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint662_linear_2593_12716"
@@ -11091,8 +11091,8 @@ const Roket = (props: Props) => {
                     y2="298.893"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint663_linear_2593_12716"
@@ -11102,8 +11102,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint664_linear_2593_12716"
@@ -11113,8 +11113,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint665_linear_2593_12716"
@@ -11124,8 +11124,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint666_linear_2593_12716"
@@ -11135,8 +11135,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint667_linear_2593_12716"
@@ -11146,8 +11146,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint668_linear_2593_12716"
@@ -11157,8 +11157,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint669_linear_2593_12716"
@@ -11168,8 +11168,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint670_linear_2593_12716"
@@ -11179,8 +11179,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint671_linear_2593_12716"
@@ -11190,8 +11190,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint672_linear_2593_12716"
@@ -11201,8 +11201,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint673_linear_2593_12716"
@@ -11212,8 +11212,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint674_linear_2593_12716"
@@ -11223,8 +11223,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint675_linear_2593_12716"
@@ -11234,8 +11234,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint676_linear_2593_12716"
@@ -11245,8 +11245,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint677_linear_2593_12716"
@@ -11256,8 +11256,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint678_linear_2593_12716"
@@ -11267,8 +11267,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint679_linear_2593_12716"
@@ -11278,8 +11278,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint680_linear_2593_12716"
@@ -11289,8 +11289,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint681_linear_2593_12716"
@@ -11300,8 +11300,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint682_linear_2593_12716"
@@ -11311,8 +11311,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint683_linear_2593_12716"
@@ -11322,8 +11322,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint684_linear_2593_12716"
@@ -11333,8 +11333,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint685_linear_2593_12716"
@@ -11344,8 +11344,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint686_linear_2593_12716"
@@ -11355,8 +11355,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint687_linear_2593_12716"
@@ -11366,8 +11366,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint688_linear_2593_12716"
@@ -11377,8 +11377,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint689_linear_2593_12716"
@@ -11388,8 +11388,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint690_linear_2593_12716"
@@ -11399,8 +11399,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint691_linear_2593_12716"
@@ -11410,8 +11410,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint692_linear_2593_12716"
@@ -11421,8 +11421,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint693_linear_2593_12716"
@@ -11432,8 +11432,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint694_linear_2593_12716"
@@ -11443,8 +11443,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint695_linear_2593_12716"
@@ -11454,8 +11454,8 @@ const Roket = (props: Props) => {
                     y2="298.894"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint696_linear_2593_12716"
@@ -11465,8 +11465,8 @@ const Roket = (props: Props) => {
                     y2="298.896"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint697_linear_2593_12716"
@@ -11476,8 +11476,8 @@ const Roket = (props: Props) => {
                     y2="298.896"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint698_linear_2593_12716"
@@ -11487,8 +11487,8 @@ const Roket = (props: Props) => {
                     y2="298.896"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint699_linear_2593_12716"
@@ -11498,8 +11498,8 @@ const Roket = (props: Props) => {
                     y2="298.896"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint700_linear_2593_12716"
@@ -11509,8 +11509,8 @@ const Roket = (props: Props) => {
                     y2="298.896"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint701_linear_2593_12716"
@@ -11520,8 +11520,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint702_linear_2593_12716"
@@ -11531,8 +11531,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint703_linear_2593_12716"
@@ -11542,8 +11542,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint704_linear_2593_12716"
@@ -11553,8 +11553,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint705_linear_2593_12716"
@@ -11564,8 +11564,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint706_linear_2593_12716"
@@ -11575,8 +11575,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint707_linear_2593_12716"
@@ -11586,8 +11586,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint708_linear_2593_12716"
@@ -11597,8 +11597,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint709_linear_2593_12716"
@@ -11608,8 +11608,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint710_linear_2593_12716"
@@ -11619,8 +11619,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint711_linear_2593_12716"
@@ -11630,8 +11630,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint712_linear_2593_12716"
@@ -11641,8 +11641,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint713_linear_2593_12716"
@@ -11652,8 +11652,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint714_linear_2593_12716"
@@ -11663,8 +11663,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint715_linear_2593_12716"
@@ -11674,8 +11674,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint716_linear_2593_12716"
@@ -11685,8 +11685,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint717_linear_2593_12716"
@@ -11696,8 +11696,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint718_linear_2593_12716"
@@ -11707,8 +11707,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint719_linear_2593_12716"
@@ -11718,8 +11718,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint720_linear_2593_12716"
@@ -11729,8 +11729,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint721_linear_2593_12716"
@@ -11740,8 +11740,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint722_linear_2593_12716"
@@ -11751,8 +11751,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint723_linear_2593_12716"
@@ -11762,8 +11762,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint724_linear_2593_12716"
@@ -11773,8 +11773,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint725_linear_2593_12716"
@@ -11784,8 +11784,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint726_linear_2593_12716"
@@ -11795,8 +11795,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint727_linear_2593_12716"
@@ -11806,8 +11806,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint728_linear_2593_12716"
@@ -11817,8 +11817,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint729_linear_2593_12716"
@@ -11828,8 +11828,8 @@ const Roket = (props: Props) => {
                     y2="298.88"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint730_linear_2593_12716"
@@ -11839,8 +11839,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint731_linear_2593_12716"
@@ -11850,8 +11850,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint732_linear_2593_12716"
@@ -11861,8 +11861,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint733_linear_2593_12716"
@@ -11872,8 +11872,8 @@ const Roket = (props: Props) => {
                     y2="298.895"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint734_linear_2593_12716"
@@ -11883,8 +11883,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint735_linear_2593_12716"
@@ -11894,8 +11894,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint736_linear_2593_12716"
@@ -11905,8 +11905,8 @@ const Roket = (props: Props) => {
                     y2="298.896"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint737_linear_2593_12716"
@@ -11916,8 +11916,8 @@ const Roket = (props: Props) => {
                     y2="298.906"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint738_linear_2593_12716"
@@ -11927,8 +11927,8 @@ const Roket = (props: Props) => {
                     y2="298.906"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint739_linear_2593_12716"
@@ -11938,8 +11938,8 @@ const Roket = (props: Props) => {
                     y2="298.903"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint740_linear_2593_12716"
@@ -11949,8 +11949,8 @@ const Roket = (props: Props) => {
                     y2="298.896"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint741_linear_2593_12716"
@@ -11960,8 +11960,8 @@ const Roket = (props: Props) => {
                     y2="298.896"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint742_linear_2593_12716"
@@ -11971,8 +11971,8 @@ const Roket = (props: Props) => {
                     y2="298.906"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint743_linear_2593_12716"
@@ -11982,8 +11982,8 @@ const Roket = (props: Props) => {
                     y2="298.906"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint744_linear_2593_12716"
@@ -11993,8 +11993,8 @@ const Roket = (props: Props) => {
                     y2="298.906"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint745_linear_2593_12716"
@@ -12004,8 +12004,8 @@ const Roket = (props: Props) => {
                     y2="298.906"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint746_linear_2593_12716"
@@ -12015,8 +12015,8 @@ const Roket = (props: Props) => {
                     y2="298.906"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint747_linear_2593_12716"
@@ -12026,8 +12026,8 @@ const Roket = (props: Props) => {
                     y2="298.817"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint748_linear_2593_12716"
@@ -12037,8 +12037,8 @@ const Roket = (props: Props) => {
                     y2="298.906"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint749_linear_2593_12716"
@@ -12048,8 +12048,8 @@ const Roket = (props: Props) => {
                     y2="298.906"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint750_linear_2593_12716"
@@ -12059,8 +12059,8 @@ const Roket = (props: Props) => {
                     y2="298.906"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint751_linear_2593_12716"
@@ -12070,8 +12070,8 @@ const Roket = (props: Props) => {
                     y2="298.906"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint752_linear_2593_12716"
@@ -12081,8 +12081,8 @@ const Roket = (props: Props) => {
                     y2="298.906"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint753_linear_2593_12716"
@@ -12092,8 +12092,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint754_linear_2593_12716"
@@ -12103,8 +12103,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint755_linear_2593_12716"
@@ -12114,8 +12114,8 @@ const Roket = (props: Props) => {
                     y2="298.906"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint756_linear_2593_12716"
@@ -12125,8 +12125,8 @@ const Roket = (props: Props) => {
                     y2="298.906"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint757_linear_2593_12716"
@@ -12136,8 +12136,8 @@ const Roket = (props: Props) => {
                     y2="298.906"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint758_linear_2593_12716"
@@ -12147,8 +12147,8 @@ const Roket = (props: Props) => {
                     y2="298.906"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint759_linear_2593_12716"
@@ -12158,8 +12158,8 @@ const Roket = (props: Props) => {
                     y2="298.906"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint760_linear_2593_12716"
@@ -12169,8 +12169,8 @@ const Roket = (props: Props) => {
                     y2="298.82"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint761_linear_2593_12716"
@@ -12180,8 +12180,8 @@ const Roket = (props: Props) => {
                     y2="298.906"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint762_linear_2593_12716"
@@ -12191,8 +12191,8 @@ const Roket = (props: Props) => {
                     y2="298.893"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint763_linear_2593_12716"
@@ -12202,8 +12202,8 @@ const Roket = (props: Props) => {
                     y2="298.906"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint764_linear_2593_12716"
@@ -12213,8 +12213,8 @@ const Roket = (props: Props) => {
                     y2="298.906"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint765_linear_2593_12716"
@@ -12224,8 +12224,8 @@ const Roket = (props: Props) => {
                     y2="298.905"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint766_linear_2593_12716"
@@ -12235,8 +12235,8 @@ const Roket = (props: Props) => {
                     y2="298.905"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint767_linear_2593_12716"
@@ -12246,8 +12246,8 @@ const Roket = (props: Props) => {
                     y2="298.893"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint768_linear_2593_12716"
@@ -12257,8 +12257,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint769_linear_2593_12716"
@@ -12268,8 +12268,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint770_linear_2593_12716"
@@ -12279,8 +12279,8 @@ const Roket = (props: Props) => {
                     y2="298.893"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint771_linear_2593_12716"
@@ -12290,8 +12290,8 @@ const Roket = (props: Props) => {
                     y2="298.906"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint772_linear_2593_12716"
@@ -12301,8 +12301,8 @@ const Roket = (props: Props) => {
                     y2="298.906"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint773_linear_2593_12716"
@@ -12312,8 +12312,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint774_linear_2593_12716"
@@ -12323,8 +12323,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint775_linear_2593_12716"
@@ -12334,8 +12334,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint776_linear_2593_12716"
@@ -12345,8 +12345,8 @@ const Roket = (props: Props) => {
                     y2="298.88"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint777_linear_2593_12716"
@@ -12356,8 +12356,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint778_linear_2593_12716"
@@ -12367,8 +12367,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint779_linear_2593_12716"
@@ -12378,8 +12378,8 @@ const Roket = (props: Props) => {
                     y2="298.895"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint780_linear_2593_12716"
@@ -12389,8 +12389,8 @@ const Roket = (props: Props) => {
                     y2="298.896"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint781_linear_2593_12716"
@@ -12400,8 +12400,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint782_linear_2593_12716"
@@ -12411,8 +12411,8 @@ const Roket = (props: Props) => {
                     y2="298.896"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint783_linear_2593_12716"
@@ -12422,8 +12422,8 @@ const Roket = (props: Props) => {
                     y2="298.905"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint784_linear_2593_12716"
@@ -12433,8 +12433,8 @@ const Roket = (props: Props) => {
                     y2="298.906"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint785_linear_2593_12716"
@@ -12444,8 +12444,8 @@ const Roket = (props: Props) => {
                     y2="298.903"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint786_linear_2593_12716"
@@ -12455,8 +12455,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint787_linear_2593_12716"
@@ -12466,8 +12466,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint788_linear_2593_12716"
@@ -12477,8 +12477,8 @@ const Roket = (props: Props) => {
                     y2="298.892"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint789_linear_2593_12716"
@@ -12488,8 +12488,8 @@ const Roket = (props: Props) => {
                     y2="298.905"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint790_linear_2593_12716"
@@ -12499,8 +12499,8 @@ const Roket = (props: Props) => {
                     y2="298.906"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint791_linear_2593_12716"
@@ -12510,8 +12510,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint792_linear_2593_12716"
@@ -12521,8 +12521,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint793_linear_2593_12716"
@@ -12532,8 +12532,8 @@ const Roket = (props: Props) => {
                     y2="298.896"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint794_linear_2593_12716"
@@ -12543,8 +12543,8 @@ const Roket = (props: Props) => {
                     y2="298.896"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint795_linear_2593_12716"
@@ -12554,8 +12554,8 @@ const Roket = (props: Props) => {
                     y2="298.896"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint796_linear_2593_12716"
@@ -12565,8 +12565,8 @@ const Roket = (props: Props) => {
                     y2="298.896"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint797_linear_2593_12716"
@@ -12576,8 +12576,8 @@ const Roket = (props: Props) => {
                     y2="298.896"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint798_linear_2593_12716"
@@ -12587,8 +12587,8 @@ const Roket = (props: Props) => {
                     y2="298.896"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint799_linear_2593_12716"
@@ -12598,8 +12598,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint800_linear_2593_12716"
@@ -12609,8 +12609,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint801_linear_2593_12716"
@@ -12620,8 +12620,8 @@ const Roket = (props: Props) => {
                     y2="298.895"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint802_linear_2593_12716"
@@ -12631,8 +12631,8 @@ const Roket = (props: Props) => {
                     y2="298.905"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint803_linear_2593_12716"
@@ -12642,8 +12642,8 @@ const Roket = (props: Props) => {
                     y2="298.896"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint804_linear_2593_12716"
@@ -12653,8 +12653,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint805_linear_2593_12716"
@@ -12664,8 +12664,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint806_linear_2593_12716"
@@ -12675,8 +12675,8 @@ const Roket = (props: Props) => {
                     y2="298.895"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint807_linear_2593_12716"
@@ -12686,8 +12686,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint808_linear_2593_12716"
@@ -12697,8 +12697,8 @@ const Roket = (props: Props) => {
                     y2="298.868"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint809_linear_2593_12716"
@@ -12708,8 +12708,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint810_linear_2593_12716"
@@ -12719,8 +12719,8 @@ const Roket = (props: Props) => {
                     y2="298.868"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint811_linear_2593_12716"
@@ -12730,8 +12730,8 @@ const Roket = (props: Props) => {
                     y2="298.9"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint812_linear_2593_12716"
@@ -12741,8 +12741,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint813_linear_2593_12716"
@@ -12752,8 +12752,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint814_linear_2593_12716"
@@ -12763,8 +12763,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint815_linear_2593_12716"
@@ -12774,8 +12774,8 @@ const Roket = (props: Props) => {
                     y2="298.899"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint816_linear_2593_12716"
@@ -12785,8 +12785,8 @@ const Roket = (props: Props) => {
                     y2="298.904"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint817_linear_2593_12716"
@@ -12796,8 +12796,8 @@ const Roket = (props: Props) => {
                     y2="298.905"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint818_linear_2593_12716"
@@ -12807,8 +12807,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint819_linear_2593_12716"
@@ -12818,8 +12818,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint820_linear_2593_12716"
@@ -12829,8 +12829,8 @@ const Roket = (props: Props) => {
                     y2="298.897"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint821_linear_2593_12716"
@@ -12840,8 +12840,8 @@ const Roket = (props: Props) => {
                     y2="298.896"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint822_linear_2593_12716"
@@ -12851,8 +12851,8 @@ const Roket = (props: Props) => {
                     y2="298.896"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint823_linear_2593_12716"
@@ -12862,8 +12862,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint824_linear_2593_12716"
@@ -12873,8 +12873,8 @@ const Roket = (props: Props) => {
                     y2="298.896"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint825_linear_2593_12716"
@@ -12884,8 +12884,8 @@ const Roket = (props: Props) => {
                     y2="298.898"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint826_linear_2593_12716"
@@ -12895,8 +12895,8 @@ const Roket = (props: Props) => {
                     y2="298.895"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint827_linear_2593_12716"
@@ -12906,8 +12906,8 @@ const Roket = (props: Props) => {
                     y2="298.895"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint828_linear_2593_12716"
@@ -12917,8 +12917,8 @@ const Roket = (props: Props) => {
                     y2="260.048"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint829_linear_2593_12716"
@@ -12928,8 +12928,8 @@ const Roket = (props: Props) => {
                     y2="260.159"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint830_linear_2593_12716"
@@ -12939,8 +12939,8 @@ const Roket = (props: Props) => {
                     y2="260.159"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint831_linear_2593_12716"
@@ -12950,8 +12950,8 @@ const Roket = (props: Props) => {
                     y2="260.159"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint832_linear_2593_12716"
@@ -12961,8 +12961,8 @@ const Roket = (props: Props) => {
                     y2="260.159"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint833_linear_2593_12716"
@@ -12972,8 +12972,8 @@ const Roket = (props: Props) => {
                     y2="260.159"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint834_linear_2593_12716"
@@ -12983,8 +12983,8 @@ const Roket = (props: Props) => {
                     y2="260.159"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint835_linear_2593_12716"
@@ -12994,8 +12994,8 @@ const Roket = (props: Props) => {
                     y2="260.159"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint836_linear_2593_12716"
@@ -13005,8 +13005,8 @@ const Roket = (props: Props) => {
                     y2="260.159"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint837_linear_2593_12716"
@@ -13016,8 +13016,8 @@ const Roket = (props: Props) => {
                     y2="260.159"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint838_linear_2593_12716"
@@ -13027,8 +13027,8 @@ const Roket = (props: Props) => {
                     y2="260.159"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint839_linear_2593_12716"
@@ -13038,8 +13038,8 @@ const Roket = (props: Props) => {
                     y2="260.159"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint840_linear_2593_12716"
@@ -13049,8 +13049,8 @@ const Roket = (props: Props) => {
                     y2="260.159"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint841_linear_2593_12716"
@@ -13060,8 +13060,8 @@ const Roket = (props: Props) => {
                     y2="260.159"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint842_linear_2593_12716"
@@ -13071,8 +13071,8 @@ const Roket = (props: Props) => {
                     y2="260.159"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint843_linear_2593_12716"
@@ -13082,8 +13082,8 @@ const Roket = (props: Props) => {
                     y2="260.159"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint844_linear_2593_12716"
@@ -13093,8 +13093,8 @@ const Roket = (props: Props) => {
                     y2="260.159"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint845_linear_2593_12716"
@@ -13104,8 +13104,8 @@ const Roket = (props: Props) => {
                     y2="260.159"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint846_linear_2593_12716"
@@ -13115,8 +13115,8 @@ const Roket = (props: Props) => {
                     y2="260.159"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint847_linear_2593_12716"
@@ -13126,8 +13126,8 @@ const Roket = (props: Props) => {
                     y2="260.159"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint848_linear_2593_12716"
@@ -13137,8 +13137,8 @@ const Roket = (props: Props) => {
                     y2="260.159"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint849_linear_2593_12716"
@@ -13148,8 +13148,8 @@ const Roket = (props: Props) => {
                     y2="260.159"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint850_linear_2593_12716"
@@ -13159,8 +13159,8 @@ const Roket = (props: Props) => {
                     y2="260.159"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint851_linear_2593_12716"
@@ -13170,8 +13170,8 @@ const Roket = (props: Props) => {
                     y2="260.159"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint852_linear_2593_12716"
@@ -13181,8 +13181,8 @@ const Roket = (props: Props) => {
                     y2="260.159"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint853_linear_2593_12716"
@@ -13192,8 +13192,8 @@ const Roket = (props: Props) => {
                     y2="260.159"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint854_linear_2593_12716"
@@ -13203,8 +13203,8 @@ const Roket = (props: Props) => {
                     y2="260.159"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint855_linear_2593_12716"
@@ -13214,8 +13214,8 @@ const Roket = (props: Props) => {
                     y2="260.159"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint856_linear_2593_12716"
@@ -13225,8 +13225,8 @@ const Roket = (props: Props) => {
                     y2="260.157"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint857_linear_2593_12716"
@@ -13236,8 +13236,8 @@ const Roket = (props: Props) => {
                     y2="260.159"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint858_linear_2593_12716"
@@ -13247,8 +13247,8 @@ const Roket = (props: Props) => {
                     y2="260.159"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint859_linear_2593_12716"
@@ -13258,8 +13258,8 @@ const Roket = (props: Props) => {
                     y2="260.159"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint860_linear_2593_12716"
@@ -13269,8 +13269,8 @@ const Roket = (props: Props) => {
                     y2="260.159"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint861_linear_2593_12716"
@@ -13280,8 +13280,8 @@ const Roket = (props: Props) => {
                     y2="260.159"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint862_linear_2593_12716"
@@ -13291,8 +13291,8 @@ const Roket = (props: Props) => {
                     y2="260.159"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint863_linear_2593_12716"
@@ -13302,8 +13302,8 @@ const Roket = (props: Props) => {
                     y2="260.158"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
                 <linearGradient
                     id="paint864_linear_2593_12716"
@@ -13313,8 +13313,8 @@ const Roket = (props: Props) => {
                     y2="260.159"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#BF4B50" />
-                    <stop offset="1" stop-color="#291A68" />
+                    <stop stopColor="#BF4B50" />
+                    <stop offset="1" stopColor="#291A68" />
                 </linearGradient>
             </defs>
         </svg>

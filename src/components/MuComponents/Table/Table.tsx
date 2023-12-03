@@ -43,7 +43,7 @@ type TableProps = {
         column: string;
         Label: string;
         isSortable: boolean;
-        wrap?: (data: string) => ReactJSXElement;
+        wrap?: (data: string, id: string, row: Data) => ReactJSXElement;
     }[];
     id?: string[];
     onEditClick?: (column: string | number | boolean) => void;
@@ -171,7 +171,9 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                 ? column.wrap(
                                                       convertToNormalDate(
                                                           rowData[column.column]
-                                                      )
+                                                      ),
+                                                      rowData["id"] as string,
+                                                      rowData
                                                   )
                                                 : convertToNormalDate(
                                                       rowData[column.column]
@@ -309,7 +311,13 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                         }
                                                         onClose={closeAllModals}
                                                         title={String(
-                                                            rowData["title"] ? rowData["title"] : rowData["full_name"]
+                                                            rowData["title"]
+                                                                ? rowData[
+                                                                      "title"
+                                                                  ]
+                                                                : rowData[
+                                                                      "full_name"
+                                                                  ]
                                                         )}
                                                         type={"error"}
                                                         onDone={() => {
