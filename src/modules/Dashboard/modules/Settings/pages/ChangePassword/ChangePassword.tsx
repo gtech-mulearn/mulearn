@@ -159,7 +159,6 @@ const ChangePassword = () => {
                             )}
                         </Formik>
                     </div>
-                    <LanguageSwitcher />
                 </div>
             </div>
         </div>

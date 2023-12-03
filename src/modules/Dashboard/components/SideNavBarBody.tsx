@@ -11,7 +11,10 @@ import { useNavigate } from "react-router-dom";
 import styles from "./SideNavBar.module.css";
 import MuLogOut from "../assets/svg/MuLogOut";
 import MuSettings from "../assets/svg/MuSettings";
-
+import i18next from "i18next";
+import LanguageSwitcher from "../../Dashboard/modules/LanguageSwitcher/LanguageSwitcher";
+import { getFontSizeForLanguage } from "../../Dashboard/modules/LanguageSwitcher/LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 type SideNavBarBodyProps = {
     sidebarButtons: {
         url: string;
@@ -46,7 +49,9 @@ const SideNavBarBody = ({
 
     const elements = document.getElementById("right");
     const element = elements as HTMLElement;
+    const { t } = useTranslation(["ChangePassword"]);
 
+    const fontSize = getFontSizeForLanguage(i18next.language, i18next);
     return (
         <div className={styles.side_nav_bar_items}>
             <div className={styles.side_nav_bar_main_items}>
@@ -99,7 +104,7 @@ const SideNavBarBody = ({
                                                 }
                                                 display={
                                                     level2dropDownDisplay ===
-                                                        button.title
+                                                    button.title
                                                         ? "max-content"
                                                         : "0"
                                                 }
@@ -130,7 +135,7 @@ const SideNavBarBody = ({
                                                                     button.url
                                                                 );
                                                                 window.innerWidth <=
-                                                                    830
+                                                                830
                                                                     ? toggleSideNavBar()
                                                                     : null;
                                                             }}
@@ -171,19 +176,23 @@ const SideNavBarBody = ({
                         )
                     )}
             </div>
+
             <div className={styles.bottomButtons}>
+                <LanguageSwitcher />
                 <MuButton
-                    text="Change Password"
+                    text={t("Change Password")}
                     icon={<MuSettings />}
-                    onClick={() => navigate("/dashboard/settings/change-password")}
+                    onClick={() =>
+                        navigate("/dashboard/settings/change-password")
+                    }
                     style={{
                         color: "#9297AA",
-                        backgroundColor: "#fff",
+                        backgroundColor: "#fff"
                         // marginBottom: "0px"
                     }}
                 />
                 <MuButtonLight
-                    text="Logout"
+                    text={t("Logout")}
                     icon={<MuLogOut />}
                     style={{
                         backgroundColor: "#fff",

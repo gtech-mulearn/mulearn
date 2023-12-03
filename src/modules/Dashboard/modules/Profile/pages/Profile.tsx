@@ -284,7 +284,6 @@ const Profile = () => {
                                                             : 1}
                                                     </p>
                                                 </div>
-                                                <LanguageSwitcher />
                                             </div>
 
                                             {!id && (

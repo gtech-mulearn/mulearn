@@ -75,7 +75,6 @@ const Refer = () => {
                 </Modal>
             )}
             <div className={styles.learningCircleLandingPage}>
-                <LanguageSwitcher />
                 <div className={styles.headContent}>
                     <img src={imageTop} alt="image" loading="eager" />
                     <div className={styles.learningCircleLandingPageDesc}>
@@ -83,9 +82,7 @@ const Refer = () => {
                             {t("Discover, collaborate and grow")}
                         </h1>
                         <b style={{ fontWeight: "600", width: "80%" }}>
-                            An amazing opportunity to invest a brief moment in
-                            exploring fresh horizons alongside a community of
-                            like-minded enthusiasts!
+                            <p style={{ fontSize }}>{t("Referral desc")}</p>
                         </b>
                         <div className={styles.learningCircleLandingPageButton}>
                             {/* <PowerfulButton

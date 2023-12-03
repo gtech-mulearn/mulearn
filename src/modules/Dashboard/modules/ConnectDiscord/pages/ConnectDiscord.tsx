@@ -39,7 +39,6 @@ const ConnectDiscord = () => {
                 <div className={styles.connectDiscord}>
                     <div className={styles.connect_discord_container}>
                         <div className={styles.content}>
-                            <LanguageSwitcher />
                             <h1 style={{ fontSize }}>
                                 {t("Join Discord using your µid")}
                             </h1>
