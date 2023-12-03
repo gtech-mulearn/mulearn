@@ -123,6 +123,8 @@ export const dashboardRoutes = {
     joinLearningCircle: "/api/v1/dashboard/lc/join/",
     setLCMeetTime: "/api/v1/dashboard/lc/meet/",
     reportLCMeet: "/api/v1/dashboard/lc/meet-record/create/",
+    getPastReports: "/api/v1/dashboard/lc/meet-record/list-all/",
+    getLCMeetReport: "/api/v1/dashboard/lc/meet-record/show/",
     getCampusIg: "api/v1/dashboard/ig/list/",
     getCount: "api/v1/dashboard/lc/data/",
 
@@ -165,7 +167,7 @@ export const organizationRoutes = {
     getCollege: "/api/v1/dashboard/organisation/institutes/show/College/",
     getCommunity: "/api/v1/dashboard/organisation/institutes/show/Community/",
     getAffiliation:
-        "/api/v1/dashboard/organisation/institutes/org/affiliation/",
+        "/api/v1/dashboard/organisation/affiliation/list/",
     createAffiliation:
         "/api/v1/dashboard/organisation/institutes/affiliation/create/",
     editAffiliation:

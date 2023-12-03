@@ -36,7 +36,7 @@ const LcReport = (props: Props) => {
         setFormData(prevState => ({
             ...prevState,
             day: `${year}-${month}-${day}`,
-            meet_time: `${hours}:${minutes}`
+            meet_time: `${hours}:${minutes}:00`
         }));
     }, []);
 
@@ -86,9 +86,8 @@ const LcReport = (props: Props) => {
                 agenda: formData.agenda,
                 attendees: formData.attendees.join(","),
                 day: formData.day,
-                meet_time: formData.meet_time
+                meet_time: formData.day + " " + formData.meet_time
             };
-            console.log(props.id);
             toast.promise(reportMeeting(props.id, data), {
                 loading: "Reporting...",
                 success: response => {
@@ -133,7 +132,7 @@ const LcReport = (props: Props) => {
                             onChange={e =>
                                 setFormData(prevState => ({
                                     ...prevState,
-                                    meet_time: e.target.value
+                                    meet_time: e.target.value + ":00"
                                 }))
                             }
                         />

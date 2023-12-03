@@ -71,7 +71,12 @@ export const getAffiliation = async (setAffiliationData: any) => {
                 return response.data;
             })
             .then(data => {
-                const affiliation: CountryProps[] = data.response.data;
+                const affiliation: CountryProps[] = data.response.map((item: any) => (
+                    {
+                        label : item.title,
+                        value: item.id
+                    }
+                ));
                 setAffiliationData(affiliation);
             });
     } catch (err: unknown) {

@@ -54,7 +54,6 @@ const LcCheckList = (props: prop) => {
 			note: data,
 			id: id
 		}
-		console.log(id)
         updateLcNote(note)
     };
 
