@@ -33,3 +33,8 @@ export type OrgCircle = {
     orgName: string;
     circleCount: number;
 };
+export type TableToggleProps = {
+    active : string;
+    tabClick : (tab : string) => void;
+    toggleOptions : string[];
+}

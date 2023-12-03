@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from './LearningCircles.module.css'
 import { getLCDashboard, getLCReport, getOrgWiseReport } from './services/LearningCircles';
-import { OrgCircle, OrgData, ResponseType, UserDetail } from './services/types';
+import { OrgCircle, OrgData, ResponseType, TableToggleProps, UserDetail } from './services/types';
 import TableTop from '@/MuLearnComponents/TableTop/TableTop';
 import Table from "@/MuLearnComponents/Table/Table";
 import THead from '@/MuLearnComponents/Table/THead';
@@ -9,6 +9,7 @@ import Pagination from '@/MuLearnComponents/Pagination/Pagination';
 import Chart from 'react-google-charts';
 import { useSearchParams } from 'react-router-dom';
 import { KKEMRoutes } from '@/MuLearnServices/urls';
+import { PowerfulButton } from '@/MuLearnComponents/MuButtons/MuButton';
 const LearningCircles = () => {
     const [authorized, setAuthorized] = useState(true);
     const [searchParams] = useSearchParams();
@@ -200,8 +201,27 @@ const LearningCircles = () => {
         .forEach((item) => {
             data.push([item.name, item.total_circles.toString()]);
         });
-
-
+    const [active, setActive] = useState("Learning Circles & Interest Group Counts");
+    const TableToggle = ({active, tabClick, toggleOptions} : TableToggleProps) => {
+        return(
+            <div className={styles.table_toggle_options}>
+                {toggleOptions.map((item: string): any => (
+                    <PowerfulButton className={
+                        active === item
+                            ? styles.table_toggle_active
+                            : styles.table_toggle_inactive
+                    }
+                    variant="plain"
+                    onClick={() => {
+                        tabClick(item);
+                    }}>{item}</PowerfulButton>
+                ))}
+            </div>
+        )
+    }
+    const handleToggle = (tab: string) => {
+        setActive(tab);
+    }
     useEffect(() => {
         // Create a mapping of organisations to unique learning circles
         const orgCircleMap: { [key: string]: Set<string> } = {};
@@ -249,6 +269,11 @@ const LearningCircles = () => {
                             }>Clear</button>
                         </div>
                     </div>
+                    <TableToggle 
+                        active={active} 
+                        tabClick={handleToggle} 
+                        toggleOptions={["Learning Circles & Interest Group Counts", "Hackathon"]} />
+                    {active === "Learning Circles & Interest Group Counts" ? <div>
                     <p className={styles.heading}>Learning Circles & Interest Group Counts</p>
                     <div className={styles.countsContainer}>
                         <div className={styles.studentsInvoled}>
@@ -286,11 +311,8 @@ const LearningCircles = () => {
                                     );
                                 })
                         }
-
-
                     </div>
                     <br />
-
                     <div className={styles.chartContainer}>
                         <Chart
                             width={"100%"}
@@ -307,6 +329,10 @@ const LearningCircles = () => {
 
                     </div>
 
+                    </div> : 
+                    <div>
+                        <h2>comming soon</h2>
+                    </div>}
 
                     <p className={styles.heading}>User Wise Counts</p>
                     <div className={styles.tableContainer}>
