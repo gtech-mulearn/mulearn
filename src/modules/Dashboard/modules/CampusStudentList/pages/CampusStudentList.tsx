@@ -234,16 +234,10 @@ const CampusStudentList = (props: Props) => {
                             currBox.value,
                             msg => { }
                         );
-                        setTimeout(async () => {
-                            getStudentDetails(
-                                setStudentData,
-                                1,
-                                perPage,
-                                setTotalPages,
-                                "",
-                                ""
-                            );
-                        }, 3000);
+                        //workaround state not updating issue
+                        await new Promise(res => setTimeout(res, 1000));
+                        setStudentData([]);
+
                     }}
                 />
             )}

@@ -103,10 +103,12 @@ export const editTask = async (
     level_id: string,
     ig_id: string,
     org_id: string,
+    description: string,
     discord_link: string,
-    desc: string,
     id: string | undefined,
     event: string,
+    bonus_time:string,
+    bonus_karma:string,
     toast: ToastAsPara
 ) => {
     try {
@@ -121,12 +123,14 @@ export const editTask = async (
                 variable_karma: variable_karma,
                 channel: channel_id,
                 type: type_id,
-                description: desc,
+                description: description === "" ? null: description,
                 level: level_id === "" ? null : level_id,
                 ig: ig_id === "" ? null : ig_id,
                 org: org_id === "" ? null : org_id,
-                discord_link: discord_link === "" ? null : discord_link,
-                event: event
+                discord_link: discord_link,
+                event: event === "" ? null : event,
+                bonus_time:bonus_time === "" ? null : bonus_time,
+                bonus_karma:parseInt(bonus_karma)
             }
         );
         toast({
@@ -165,6 +169,8 @@ export const createTask = async (
     org_id: string,
     discord_link: string,
     event: string,
+    bonus_time:string,
+    bonus_karma:string,
     toast: ToastAsPara
 ) => {
     try {
@@ -177,14 +183,16 @@ export const createTask = async (
                 usage_count: parseInt(usage_count),
                 active: active,
                 variable_karma: variable_karma,
-                description: description,
+                description: description === "" ? null: description,
                 channel: channel_id,
                 type: type_id,
                 level: level_id === "" ? null : level_id,
                 ig: ig_id === "" ? null : ig_id,
                 org: org_id === "" ? null : org_id,
                 discord_link: discord_link,
-                event: event
+                event: event === "" ? null : event,
+                bonus_time:bonus_time === "" ? null : bonus_time,
+                bonus_karma:parseInt(bonus_karma)
             }
         );
         toast({
@@ -240,13 +248,37 @@ export const getUUID = async () => {
         ).sort((a, b) =>
             //check for name/title key and then compare
             (a.name !== undefined && a.name < b.name) ||
-                (a.title !== undefined && a.title < b.title)
+            (a.title !== undefined && a.title < b.title)
                 ? -1
                 : 1
         );
     }
     return response;
 };
+
+export const getTaskTemplate = async () => {
+    try {
+        const response = await privateGateway.get(
+            dashboardRoutes.getTaskTemplate,
+            { responseType: 'blob' } // Set the response type to 'blob'
+        );
+        const blob = new Blob([response.data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }); // Set the correct MIME type for XLSX files
+
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'TaskTemplate.xlsx');
+
+        document.body.appendChild(link);
+        link.click();
+        
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+}
 
 // function to take a js object and convert it to a XLSX file using the SheetJS library
 // bundle size increased from 106kb to 160kb, but dynamically imported
