@@ -7,8 +7,15 @@ import { useEffect, useState } from "react";
 import { BsChevronRight } from "react-icons/bs";
 import { getUserLearningCircles } from "../services/LearningCircleAPIs";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
+import i18next from "i18next";
+import LanguageSwitcher from "../../LanguageSwitcher/LanguageSwitcher";
+import { getFontSizeForLanguage } from "../../LanguageSwitcher/LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 
 const LearningCircleLandingPage = () => {
+
+    const { t } = useTranslation(["LearningCircle"]);
+
     const navigate = useNavigate();
     const [userCircleList, setUserCircleList] = useState<LcType[]>();
     const [isLoading, setIsLoading] = useState(true);
@@ -38,11 +45,9 @@ const LearningCircleLandingPage = () => {
                     <div className={styles.headContent}>
                         <img src={imageTop} alt="image" loading="eager" />
                         <div className={styles.learningCircleLandingPageDesc}>
-                            <h1>Learn, share, together</h1>
+                            <h1>{t("MainHeading")}</h1>
                             <b>
-                                A fantastic way to spend a small amount of time
-                                learning about new things with a group of people
-                                with same interests!
+                            {t("MainDescription")}
                             </b>
                             <div
                                 className={
@@ -50,7 +55,7 @@ const LearningCircleLandingPage = () => {
                                 }
                             >
                                 <PowerfulButton
-                                    children="Join"
+                                    children={t("Join")}
                                     style={{
                                         paddingLeft: "2rem",
                                         paddingRight: "2rem"
@@ -58,7 +63,7 @@ const LearningCircleLandingPage = () => {
                                     onClick={handleJoin}
                                 />
                                 <PowerfulButton
-                                    children="Create"
+                                    children={t("Create")}
                                     variant="outline"
                                     onClick={handleCreate}
                                 />
@@ -74,7 +79,7 @@ const LearningCircleLandingPage = () => {
                         >
                             {userCircleList && userCircleList.length > 0 ? (
                                 <>
-                                    <b>Your learning circles</b>
+                                    <b>{t("Yourlearningcircles")}</b>
                                     {userCircleList?.map((circle, pos) => (
                                         <div key={pos}>
                                             <li
@@ -157,15 +162,15 @@ const LearningCircleLandingPage = () => {
                                         loading="eager"
                                         className={styles.desaturate}
                                     />
-                                    <b>Nothing yet!</b>
+                                    <b>{t("Nothingyet")}</b>
                                     <p>
-                                        You haven't joined any learning circles
-                                        yet.
+                                        {t("NotJoined")}
                                     </p>
                                 </div>
                             )}
                         </ul>
                     </div>
+                    
                 </div>
             )}
         </>

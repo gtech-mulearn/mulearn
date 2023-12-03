@@ -5,5 +5,10 @@
     "TotalMembers":"ആകെ അംഗങ്ങൾ",
     "ActiveMembers":"സജീവ അംഗങ്ങൾ",
     "CampusLead":"കാമ്പസ് ലീഡ്",
-    "StudentStatistics":"വിദ്യാർത്ഥികളുടെ സ്ഥിതിവിവരക്കണക്കുകൾ"
+    "StudentStatistics":"വിദ്യാർത്ഥികളുടെ സ്ഥിതിവിവരക്കണക്കുകൾ",
+    "Campus Enabler":"കാമ്പസ് എനേബ്ലർ",
+    "No Organisation Found":"ഒരു സംഘടനയും കണ്ടെത്തിയില്ല",
+    "Kindly, raise a support ticket by typing '/support-ticket' in the discord to add one.":"ദയവായി, '/support-ticket' എന്ന് ടൈപ്പ് ചെയ്തുകൊണ്ട് ഒരു സപ്പോർട്ട് ടിക്കറ്റ് ഉയർത്തുക.",
+    "Download":"ഡൌൺലോഡ്"
+
 }
