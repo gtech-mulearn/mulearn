@@ -14,6 +14,7 @@ i18n
     fallbackLng: "en",
     debug: true,
     ns: ["ChangePassword"],
+    ns: ["CampusStudentList"],
     interpolation: {
       escapeValue: false,
       formatSeparator: ",",
