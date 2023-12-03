@@ -8,11 +8,16 @@ import { Suspense, useEffect, useState } from "react";
 import { roles } from "@/MuLearnServices/types";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { fetchLocalStorage } from "@/MuLearnServices/common_functions";
-
+import i18next from "i18next";
+import LanguageSwitcher from "../../Dashboard/modules/LanguageSwitcher/LanguageSwitcher";
+import { getFontSizeForLanguage } from "../../Dashboard/modules/LanguageSwitcher/LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 //TODO: Remove flaticons and use react-icons or vice-versa
 const DashboardRootLayout = (props: { component?: any }) => {
     const [connected, setConnected] = useState(false);
+    const { t } = useTranslation(["ChangePassword", "DashboardRootLayout"]);
 
+    const fontSize = getFontSizeForLanguage(i18next.language, i18next);
     useEffect(() => {
         const userInfo = fetchLocalStorage<UserInfo>("userInfo");
         if (userInfo) {
@@ -24,20 +29,21 @@ const DashboardRootLayout = (props: { component?: any }) => {
     const buttons = [
         {
             url: "/dashboard/profile",
-            title: "Profile",
+            title: t("Profile"),
             hasView: true,
+
             icon: <i className="fi fi-sr-clipboard-user"></i>
         },
         {
             url: "/dashboard/connect-discord",
-            title: "Connect Discord",
+            title: t("Connect Discord"),
             hasView: !connected,
             icon: <i className="fi fi-sr-data-transfer"></i>
         },
 
         {
             url: "/dashboard/campus-details",
-            title: "Campus Details",
+            title: t("Campus Details"),
             hasView: true,
             roles: [roles.CAMPUS_LEAD, roles.ENABLER],
             icon: <i className="fi fi-sr-book-arrow-right"></i>
@@ -51,13 +57,13 @@ const DashboardRootLayout = (props: { component?: any }) => {
         },
         {
             url: "/dashboard/learning-circle",
-            title: "Learning Circle",
+            title: t("Learning Circle"),
             hasView: true,
             icon: <i className="fi fi-sr-books"></i>
         },
         {
             url: "/dashboard/refer",
-            title: "Referrals",
+            title: t("Referrals"),
             hasView: true,
             icon: <i className="fi fi-sr-building"></i>
         },
@@ -207,6 +213,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
         <div className={styles.full_page}>
             <SideNavBar sidebarButtons={buttons} />
             <div className={styles.right_side}>
+                {/*<LanguageSwitcher />*/}
                 <TopNavBar />
                 <div className={styles.main_content}>
                     <Suspense fallback={<MuLoader />}>

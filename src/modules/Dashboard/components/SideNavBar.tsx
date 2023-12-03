@@ -4,7 +4,10 @@ import styles from "./SideNavBar.module.css";
 
 import MulearnBrand from "../assets/MulearnBrand";
 import SideNavBarBody from "./SideNavBarBody";
-
+import i18next from "i18next";
+import LanguageSwitcher from "../../Dashboard/modules/LanguageSwitcher/LanguageSwitcher";
+import { getFontSizeForLanguage } from "../../Dashboard/modules/LanguageSwitcher/LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 type Props = {
     sidebarButtons: {
         url: string;
@@ -45,7 +48,9 @@ const SideNavBar = ({ sidebarButtons }: Props) => {
     const myElementRef = useRef<HTMLDivElement>(null);
     const elements = document.getElementById("right");
     const element = elements as HTMLElement;
+    const { t } = useTranslation(["ChangePassword"]);
 
+    const fontSize = getFontSizeForLanguage(i18next.language, i18next);
     const toggleSideNavBar = () => {
         if (window.innerWidth <= 830) {
             animateHamburgerIcon();
