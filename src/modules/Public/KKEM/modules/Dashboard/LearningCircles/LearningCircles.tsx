@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from './LearningCircles.module.css'
-import { getLCDashboard, getLCReport, getOrgWiseReport } from './services/LearningCircles';
-import { OrgCircle, OrgData, ResponseType, TableToggleProps, UserDetail } from './services/types';
+import { getHackathonReport, getLCDashboard, getLCReport, getOrgWiseReport } from './services/LearningCircles';
+import { OrgCircle, OrgData, ResponseType, TableToggleProps, UserDetail, HackData } from './services/types';
 import TableTop from '@/MuLearnComponents/TableTop/TableTop';
 import Table from "@/MuLearnComponents/Table/Table";
 import THead from '@/MuLearnComponents/Table/THead';
@@ -27,10 +27,9 @@ const LearningCircles = () => {
     const [LcCounts, setLcCounts] = useState<ResponseType>({ lc_count: 0, total_enrollment: 0, circle_count_by_ig: [], unique_users: 0 })
     const [LcReport, setLcReport] = useState<UserDetail[]>([])
     const [OrgWiseReport, setOrgWiseReport] = useState<OrgData[]>([])
-
+    const [HackathonReport, setHackathonReport] = useState<HackData[]>([])
     const [sort, setSort] = useState("");
     const [sortOrg, setSortOrg] = useState("");
-
     const [date, setDate] = useState("");
 
     useEffect(() => {
@@ -38,12 +37,9 @@ const LearningCircles = () => {
             getLCDashboard(setLcCounts);
             getLCReport(setLcReport, currentPage, perPage, setTotalPages, "", sort,"", setLoading);
             getOrgWiseReport(setOrgWiseReport, orgCurrentPage, orgPerPage, setOrgTotalPages, "", sortOrg,"", setOrgLoading);
+            getHackathonReport(setHackathonReport, currentHackPage, perHackPage, setTotalHackPages, "","",setHackLoading);
         }
     }, [authorized])
-
-    console.log("org",OrgWiseReport)
-    console.log("LC",LcReport)
-
 
     const columnOrder: ColOrder[] = [
         { column: "first_name", Label: "First Name", isSortable: true },
@@ -64,18 +60,29 @@ const LearningCircles = () => {
         { column: "user_count", Label: "User Count", isSortable: true },
     ];
 
+    const HackathonColumnOrder: ColOrder[] = [
+        { column: "CandidateName", Label: "Candidate Name", isSortable: false },
+        { column: "ContactDetails", Label: "Contact Details", isSortable: false },
+        { column: "DWMSID", Label: "DWMSID", isSortable: false },
+        { column: "Email", Label: "Email", isSortable: false },
+        { column: "HackathonName", Label: "Hackathon Name", isSortable: false },
+    ];
+
     const [currentPage, setCurrentPage] = useState(1);
     const [orgCurrentPage, setOrgCurrentPage] = useState(1);
+    const [currentHackPage, setCurrentHackPage] = useState(1);
 
     const [totalPages, setTotalPages] = useState(0);
     const [orgTotalPages, setOrgTotalPages] = useState(0);
+    const [totalHackPages, setTotalHackPages] = useState(0);
 
     const [loading, setLoading] = useState(false);
     const [orgLoading, setOrgLoading] = useState(false);
+    const [hackLoading, setHackLoading] = useState(false);
 
     const [perPage, setPerPage] = useState(20);
     const [orgPerPage, setOrgPerPage] = useState(20);
-
+    const [perHackPage, setPerHackPage] = useState(20);
 
 
     const handleNextClick = () => {
@@ -90,6 +97,12 @@ const LearningCircles = () => {
         getOrgWiseReport(setOrgWiseReport, nextPage, orgPerPage, setOrgTotalPages);
     }
 
+    const handleHackNextClick = () => {
+        const nextPage = currentHackPage + 1;
+        setCurrentHackPage(nextPage);
+        getHackathonReport(setHackathonReport, nextPage, perHackPage, setTotalHackPages)
+    }
+
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
@@ -101,6 +114,12 @@ const LearningCircles = () => {
         setOrgCurrentPage(prevPage);
         getOrgWiseReport(setOrgWiseReport, 1, orgPerPage, setOrgTotalPages);
     }
+    
+    const handleHackPreviousClick = () => {
+        const prevPage = currentHackPage - 1;
+        setCurrentHackPage(prevPage);
+        getHackathonReport(setHackathonReport, prevPage, perHackPage, setTotalHackPages)
+    }
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
@@ -110,6 +129,11 @@ const LearningCircles = () => {
     const handleOrgSearch = (search: string) => {
         setOrgCurrentPage(1);
         getOrgWiseReport(setOrgWiseReport, 1, orgPerPage, setOrgTotalPages, search, "");
+    }
+
+    const handleHackSearch = (search: string) => {
+        setCurrentHackPage(1);
+        getHackathonReport(setHackathonReport, 1, perHackPage, setTotalHackPages, search, "")
     }
 
     const handlePerPageNumber = (selectedValue: number) => {
@@ -137,7 +161,11 @@ const LearningCircles = () => {
             ""
         );
     }
-
+    const handleHackPerPageNumber = (selectedValue: number) => {
+        setCurrentHackPage(1);
+        setPerHackPage(selectedValue);
+        getHackathonReport(setHackathonReport, 1, selectedValue, setTotalHackPages, "", "")
+    }
     const handleIconClick = (column: string) => {
         if (sort === column) {
             setSort(`-${column}`);
@@ -195,13 +223,17 @@ const LearningCircles = () => {
         }
     };
 
+    const handlehackIconClick = (column: string) => {
+       console.log("sortButtonNotAdded")
+    };
+
     const data = [["Interest Group", "Total Circles"]];
     LcCounts.circle_count_by_ig
         .sort((a, b) => a.total_circles - b.total_circles) // sort by total_circles in ascending order
         .forEach((item) => {
             data.push([item.name, item.total_circles.toString()]);
         });
-    const [active, setActive] = useState("Learning Circles & Interest Group Counts");
+    const [active, setActive] = useState("Learning Circles");
     const TableToggle = ({active, tabClick, toggleOptions} : TableToggleProps) => {
         return(
             <div className={styles.table_toggle_options}>
@@ -272,8 +304,8 @@ const LearningCircles = () => {
                     <TableToggle 
                         active={active} 
                         tabClick={handleToggle} 
-                        toggleOptions={["Learning Circles & Interest Group Counts", "Hackathon"]} />
-                    {active === "Learning Circles & Interest Group Counts" ? <div>
+                        toggleOptions={["Learning Circles", "Hackathon"]} />
+                    {active === "Learning Circles" ? <div>
                     <p className={styles.heading}>Learning Circles & Interest Group Counts</p>
                     <div className={styles.countsContainer}>
                         <div className={styles.studentsInvoled}>
@@ -331,7 +363,35 @@ const LearningCircles = () => {
 
                     </div> : 
                     <div>
-                        <h2>comming soon</h2>
+                        <p className={styles.heading}>Hackathon</p>
+                        <div className={styles.tableContainer}>
+                        <TableTop
+                            onSearchText={handleHackSearch}
+                            onPerPageNumber={handleHackPerPageNumber}
+                        />
+                        <br />
+                        <Table
+                            rows={HackathonReport}
+                            page={currentHackPage}
+                            perPage={perHackPage}
+                            columnOrder={HackathonColumnOrder}
+                            isloading={hackLoading}
+                        >
+                            <THead
+                                columnOrder={HackathonColumnOrder}
+                                onIconClick={handlehackIconClick}
+                            />
+                            <Pagination
+                                currentPage={currentHackPage}
+                                totalPages={totalHackPages}
+                                margin="10px 0"
+                                handleNextClick={handleHackNextClick}
+                                handlePreviousClick={handleHackPreviousClick}
+                                onPerPageNumber={handleHackPerPageNumber}
+                                perPage={perHackPage}
+                                setPerPage={setPerHackPage}
+                            />
+                        </Table></div>
                     </div>}
 
                     <p className={styles.heading}>User Wise Counts</p>
