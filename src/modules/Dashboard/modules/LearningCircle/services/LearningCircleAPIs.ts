@@ -282,15 +282,13 @@ export const leaveLc = async (
 export const removeMember = async (
     circleId: string | undefined,
     memberId: string,
-    navigate?: NavigateFunction
 ) => {
     try {
         const response = await privateGateway.post(
-            dashboardRoutes.getCampusLearningCircles +
+            dashboardRoutes.lc +
                 circleId +
-                "/" +
-                memberId +
-                "/"
+                "/user-accept-reject/" +
+                memberId 
         );
 		const message = response.data;
 		return message
