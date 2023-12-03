@@ -18,12 +18,20 @@ import CLIcon from "../assets/images/CampusLeadIcon.svg";
 import { useToast } from "@chakra-ui/react";
 import { convertDateToDayAndMonth } from "../../../utils/common";
 
+import { useTranslation } from "react-i18next";
+//import { useEffect } from "react";
+import i18next from "i18next";
+import LanguageSwitcher from "../../LanguageSwitcher/LanguageSwitcher";
+import { getFontSizeForLanguage } from "../../LanguageSwitcher/LanguageSwitcher";
+
 type Props = {};
 
 //TODO: Change the styles to camelCase from snake_case'
 //TODO: Move Logic to another file.
 
 const CampusStudentList = (props: Props) => {
+    const { t } = useTranslation(["CampusStudentList"]);
+
     const toast = useToast();
 
     const columns = [];
@@ -215,13 +223,13 @@ const CampusStudentList = (props: Props) => {
                                                           ).toPrecision(4) + "K"
                                                         : campusData.total_karma}
                                                 </h1>
-                                                <p>Karma</p>
+                                                <p>{t("karma")}</p>
                                             </div>
                                             <div className={styles.card}>
                                                 <h1>
                                                     {campusData.total_members}
                                                 </h1>
-                                                <p>Total Members</p>
+                                                <p>{t("TotalMembers")}</p>
                                             </div>
                                         </div>
                                         <div className={styles.card_one}>
@@ -229,7 +237,7 @@ const CampusStudentList = (props: Props) => {
                                                 <h1>
                                                     {campusData.active_members}
                                                 </h1>
-                                                <p>Active Members</p>
+                                                <p>{t("ActiveMembers")}</p>
                                             </div>
                                             <div className={styles.card}>
                                                 <div
@@ -241,7 +249,7 @@ const CampusStudentList = (props: Props) => {
                                                     <h2>
                                                         {campusData.campus_lead}
                                                     </h2>
-                                                    <p>Campus Lead</p>
+                                                    <p>{t("CampusLead")}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -267,7 +275,9 @@ const CampusStudentList = (props: Props) => {
                     )}
                     <div className={styles.graphs}>
                         <div className={styles.container}>
-                            <h2>Weekly Karma Insights</h2>
+                            <h2>
+                                {t("GraphHeading")}
+                            </h2>
 
                             <BarChart
                                 data={barData}
@@ -279,10 +289,12 @@ const CampusStudentList = (props: Props) => {
                             />
                         </div>
                         <div className={styles.container}>
-                            <h2>Student Statistics</h2>
+                            <h2>{t("StudentStatistics")}</h2>
                             <BarChart data={pieData} />
                         </div>
                     </div>
+                    <LanguageSwitcher />
+
                     {studentData && (
                         <>
                             <TableTop
@@ -313,6 +325,7 @@ const CampusStudentList = (props: Props) => {
                                 {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
                             </Table>
                         </>
+
                     )}
                 </>
             )}
