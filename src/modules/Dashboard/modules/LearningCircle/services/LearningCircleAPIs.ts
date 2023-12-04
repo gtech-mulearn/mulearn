@@ -168,32 +168,7 @@ export const getInterestGroups = async () => {
 };
 
 
-export const approveLcUser = async (
-    circleId: string | undefined,
-    memberId: string,
-    flag: number,
-    message?: string
-) => {
-    try {
-        const response = await privateGateway.patch(
-            dashboardRoutes.getCampusLearningCircles +
-                circleId +
-                "/user-accept-reject" +
-                memberId +
-                "/",
-            {
-                is_accepted: flag
-            }
-        );
-        const message = response.data;
-        return message;
-    } catch (err) {
-        const error = err as AxiosError;
-        if (error?.response) {
-            throw error;
-        }
-    }
-};
+
 
 export const leaveLc = async (
     circleId: string | undefined,
