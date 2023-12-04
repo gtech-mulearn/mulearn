@@ -51,6 +51,7 @@ const LcDashboard = () => {
                 <div className={styles.Title}>
                     <h1>{lc?.name}</h1>
                     <h3>{lc?.college}</h3> <h3>Code: {lc?.circle_code}</h3>
+                    <h3>Interest Group: {lc?.ig_name}</h3>
                 </div>
                 <div className={styles.RankSession}>
                     <div>
