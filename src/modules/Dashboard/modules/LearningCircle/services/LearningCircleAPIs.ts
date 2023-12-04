@@ -24,9 +24,6 @@ export const getUserLearningCircles = async (
     }
 };
 
-
-
-
 export const getUserOrg = (setOrg: {
     (value: SetStateAction<string | null>): void;
     (arg0: any): void;
@@ -122,8 +119,6 @@ export const createCircle = async (
     }
 };
 
-
-
 export const joinCircle = async (circleCode: string) => {
     try {
         const response = await privateGateway.post(
@@ -167,33 +162,32 @@ export const getInterestGroups = async () => {
     }
 };
 
-
-export const approveLcUser = async (
-    circleId: string | undefined,
-    memberId: string,
-    flag: number,
-    message?: string
-) => {
-    try {
-        const response = await privateGateway.patch(
-            dashboardRoutes.getCampusLearningCircles +
-                circleId +
-                "/user-accept-reject" +
-                memberId +
-                "/",
-            {
-                is_accepted: flag
-            }
-        );
-        const message = response.data;
-        return message;
-    } catch (err) {
-        const error = err as AxiosError;
-        if (error?.response) {
-            throw error;
-        }
-    }
-};
+// export const approveLcUser = async (
+//     circleId: string | undefined,
+//     memberId: string,
+//     flag: number,
+//     message?: string
+// ) => {
+//     try {
+//         const response = await privateGateway.patch(
+//             dashboardRoutes.getCampusLearningCircles +
+//                 circleId +
+//                 "/user-accept-reject" +
+//                 memberId +
+//                 "/",
+//             {
+//                 is_accepted: flag
+//             }
+//         );
+//         const message = response.data;
+//         return message;
+//     } catch (err) {
+//         const error = err as AxiosError;
+//         if (error?.response) {
+//             throw error;
+//         }
+//     }
+// };
 
 export const leaveLc = async (
     circleId: string | undefined,
@@ -226,10 +220,6 @@ export const leaveLc = async (
         });
     }
 };
-
-
-
-
 
 export const searchLearningCircleWithCircleCode = (
     setLc: UseStateFunc<LcType[]>,
@@ -276,7 +266,6 @@ export const searchLearningCircleWithCircleCode = (
             setIsLoading(false); // Set isLoading to false
         });
 };
-
 
 //! New LC APIs ---------------------------------------------------------------------------->
 export const getLcDetails = async (
@@ -341,12 +330,15 @@ export const setLCMeetTime = async (
     }
 };
 
-export const reportMeeting = async (id: string | undefined, data: {
-    agenda: string;
-    attendees: string;
-    day: string;
-    meet_time: string;
-}) => {
+export const reportMeeting = async (
+    id: string | undefined,
+    data: {
+        agenda: string;
+        attendees: string;
+        day: string;
+        meet_time: string;
+    }
+) => {
     try {
         const response = await privateGateway.post(
             dynamicRoute(lcRoutes.createReport, id as string),
@@ -362,10 +354,17 @@ export const reportMeeting = async (id: string | undefined, data: {
     }
 };
 
-export const getLCMeetingReport = async (reportId: string | undefined, circleId: string | undefined) => {
+export const getLCMeetingReport = async (
+    reportId: string | undefined,
+    circleId: string | undefined
+) => {
     try {
         const response = await privateGateway.get(
-            dynamicRoute(lcRoutes.getReport, circleId as string, reportId as string)
+            dynamicRoute(
+                lcRoutes.getReport,
+                circleId as string,
+                reportId as string
+            )
         );
         const message: any = response?.data;
         return message.response;
@@ -379,11 +378,12 @@ export const getLCMeetingReport = async (reportId: string | undefined, circleId:
 
 export const transferLead = async (
     circleId: string | undefined,
-    memberId: string
+    memberId: string,
+    naviage: any
 ) => {
     try {
         const response = await privateGateway.patch(
-            dynamicRoute(lcRoutes.transferLead, circleId as string, memberId),
+            dynamicRoute(lcRoutes.transferLead, circleId as string, memberId)
         );
         const message = response.data;
         return message;
@@ -398,11 +398,15 @@ export const transferLead = async (
 export const approveLcUser = async (
     circleId: string | undefined,
     memberId: string,
-    flag: number,
+    flag: number
 ) => {
     try {
         const response = await privateGateway.patch(
-            dynamicRoute(lcRoutes.approveRejectRemoveUser, circleId as string, memberId),
+            dynamicRoute(
+                lcRoutes.approveRejectRemoveUser,
+                circleId as string,
+                memberId
+            ),
             {
                 is_accepted: flag
             }
@@ -419,11 +423,16 @@ export const approveLcUser = async (
 
 export const removeMember = async (
     circleId: string | undefined,
-    memberId: string
+    memberId: string,
+    navigate?: any
 ) => {
     try {
         const response = await privateGateway.post(
-            dynamicRoute(lcRoutes.approveRejectRemoveUser, circleId as string, memberId),
+            dynamicRoute(
+                lcRoutes.approveRejectRemoveUser,
+                circleId as string,
+                memberId
+            )
         );
         const message = response.data;
         return message;
