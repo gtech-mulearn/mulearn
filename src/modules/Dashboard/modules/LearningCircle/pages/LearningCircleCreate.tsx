@@ -16,8 +16,13 @@ type interestGroupType = {
     value: string;
     label: string;
 };
+import i18next from "i18next";
+import LanguageSwitcher from "../../LanguageSwitcher/LanguageSwitcher";
+import { getFontSizeForLanguage } from "../../LanguageSwitcher/LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 
 const LearningCircleCreate = (props: Props) => {
+    const { t } = useTranslation(["LearningCircle"]);
     const [interestGroups, setInterestGroups] = useState<interestGroupType[]>();
     const [id, setId] = useState("");
     const navigate = useNavigate();
@@ -49,8 +54,8 @@ const LearningCircleCreate = (props: Props) => {
 
                     <div className={styles.LearningCircleCreateHeading}>
                         <div>
-                            <b>Create a Learning circle</b>
-                            <p>Connect, Collaborate, and Learn Together!</p>
+                            <b>{t("CreateCircle")}</b>
+                            <p>{t("Connect")}</p>
                         </div>
 
                         <Formik
@@ -77,7 +82,7 @@ const LearningCircleCreate = (props: Props) => {
                                     <FormikTextInput
                                         type="text"
                                         name="circle_name"
-                                        placeholder="Learning circle name"
+                                        placeholder={t("Learning circle name")}
                                     />
                                     <FormikReactSelect
                                         isDisabled={!interestGroups}
@@ -87,7 +92,7 @@ const LearningCircleCreate = (props: Props) => {
                                         options={interestGroups!}
                                     />
                                 </div>
-                                <button type="submit">Create</button>
+                                <button type="submit">{t("Create")}</button>
                             </Form>
                         </Formik>
                     </div>

@@ -252,11 +252,10 @@ const CampusStudentList = (props: Props) => {
             {noOrg ? (
                 <div className={styles.no_org}>
                     <p className={styles.no_org_heading}>
-                        No Organisation Found
+                        {t("No Organisation Found")}
                     </p>
                     <p className={styles.no_org_tagline}>
-                        Kindly, raise a support ticket by typing
-                        '/support-ticket' in the discord to add one.
+                        {t("Kindly, raise a support ticket by typing '/support-ticket' in the discord to add one.")}
                     </p>
                     <button
                         className={styles.no_org_button}
@@ -343,7 +342,7 @@ const CampusStudentList = (props: Props) => {
                                                                 .enabler
                                                         }
                                                     </h2>
-                                                    <p>Campus Enabler</p>
+                                                    <p>{t("Campus Enabler")}</p>
                                                 </div>
                                             </div>
                                             <div className={styles.card}>
@@ -403,7 +402,6 @@ const CampusStudentList = (props: Props) => {
                             <BarChart data={pieData} />
                         </div>
                     </div>
-                    <LanguageSwitcher />
 
                     <div className={styles.btnContainer}>
                         <PowerfulButton onClick={() => { }}>
@@ -414,7 +412,7 @@ const CampusStudentList = (props: Props) => {
                                 }
                                 download
                             >
-                                Download
+                                {t("Download")}
                             </a>
                         </PowerfulButton>
                     </div>
