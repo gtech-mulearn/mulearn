@@ -379,7 +379,7 @@ export const getLCMeetingReport = async (
 export const transferLead = async (
     circleId: string | undefined,
     memberId: string,
-    naviage: any
+    navigate?: any
 ) => {
     try {
         const response = await privateGateway.patch(
@@ -398,7 +398,8 @@ export const transferLead = async (
 export const approveLcUser = async (
     circleId: string | undefined,
     memberId: string,
-    flag: number
+    flag: number,
+    message?: string
 ) => {
     try {
         const response = await privateGateway.patch(
