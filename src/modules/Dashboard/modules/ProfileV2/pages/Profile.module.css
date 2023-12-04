@@ -1,4 +1,4 @@
-.basic_details {
+/* .basic_details {
     display: flex;
     color: #000;
     gap: 10px;
@@ -91,7 +91,7 @@
             }
         }
     }
-}
+} */
 
 .roles_and_karma_container {
     display: flex;
@@ -293,7 +293,7 @@
         }
     }
 }
-
+/* 
 @media screen and (max-width: 1400px) {
     .basic_details {
         .basic_details_detail {
@@ -358,7 +358,7 @@
             }
         }
     }
-}
+} */
 
 @media screen and (max-width: 1240px) {
     .roles_karma_dist_container {
