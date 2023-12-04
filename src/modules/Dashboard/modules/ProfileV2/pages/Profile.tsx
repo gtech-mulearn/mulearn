@@ -133,6 +133,59 @@ const ProfileV2 = (props: Props) => {
         value: item[1] as number
     }));
 
+    const RolesPositionArrayX = [
+        "85px",
+        "50px",
+        "150px",
+        "235px",
+        "260px",
+        "290px",
+        "390px",
+        "355px",
+        "400px",
+        "450px",
+        "500px",
+        "550px",
+        "600px",
+        "650px",
+        "700px",
+        "750px",
+        "800px",
+        "850px"
+    ];
+    const RolesPositionArrayY = [
+        "220px",
+        "110px",
+        "90px",
+        "190px",
+        "110px",
+        "150px",
+        "220px",
+        "110px",
+        "150px",
+        "220px",
+        "110px",
+        "150px",
+        "220px",
+        "110px",
+        "150px",
+        "220px",
+        "110px",
+        "150px",
+        "220px",
+        "110px",
+        "150px",
+        "220px",
+        "110px",
+        "150px",
+        "220px",
+        "110px",
+        "150px",
+        "220px",
+        "110px",
+        "150px"
+    ];
+
     return (
         <>
             <ProfileHeader
@@ -168,6 +221,10 @@ const ProfileV2 = (props: Props) => {
                                 return (
                                     <div
                                         className={styles.RoleWrapperContainer}
+                                        style={{
+                                            top: RolesPositionArrayY[index],
+                                            left: RolesPositionArrayX[index]
+                                        }}
                                     >
                                         <div className={styles.StyleCommonRole}>
                                             <div

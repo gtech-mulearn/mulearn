@@ -124,15 +124,17 @@
             height: 100%;
             display: flex;
             align-items: center;
-            justify-content: center;
             overflow-x: scroll;
             gap: 10px;
-            position: relative;
+            margin-left: 10px;
+            background-color: transparent;
 
             .RoleWrapperContainer {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                position: absolute;
+
                 h2 {
                     font-size: 15px;
                     color: black;
@@ -163,7 +165,8 @@
             position: absolute;
             text-align: left;
             color: #000;
-            font-weight: 800;
+            font-weight: 700;
+            font-size: 22px;
             left: 40px;
             top: 10px;
             z-index: 500;
@@ -217,16 +220,6 @@
             align-items: center;
             gap: 15px;
         }
-
-        & h1 {
-            position: absolute;
-            text-align: left;
-            color: #000;
-            font-weight: 800;
-            left: 40px;
-            top: 10px;
-        }
-
     }
 }
 
@@ -236,7 +229,7 @@
             height: fit-content;
             padding: 20px 0px;
             .container {
-                 height: fit-content;
+                height: fit-content;
             }
         }
     }
