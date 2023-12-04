@@ -315,16 +315,17 @@ export const setLCMeetTime = async (
     }
 };
 
-export const reportMeeting = async (id: string | undefined, data: {
-    agenda: string;
-    attendees: string;
-    day: string;
-    meet_time: string;
-}) => {
+export const reportMeeting = async (id: string | undefined, data: FormData) => {
     try {
         const response = await privateGateway.post(
             dynamicRoute(lcRoutes.createReport, id as string),
-            data
+            data,
+            {
+                maxBodyLength: Infinity,
+                headers: {
+                    "Content-Type": "multipart/form-data"
+                }
+            }
         );
         const message: any = response?.data;
         return message;
@@ -335,6 +336,7 @@ export const reportMeeting = async (id: string | undefined, data: {
         }
     }
 };
+
 
 export const getLCMeetingReport = async (reportId: string | undefined, circleId: string | undefined) => {
     try {

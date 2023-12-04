@@ -1,6 +1,5 @@
 import {
     Dispatch,
-    MouseEvent,
     SetStateAction,
     useEffect,
     useState
@@ -10,7 +9,6 @@ import UploadImage from "../../../assets/images/uploadIcon.svg";
 import { LcAttendees } from "./LcAttendees";
 import { reportMeeting } from "../../../services/LearningCircleAPIs";
 import toast from "react-hot-toast";
-import { comingSoon } from "../../../../../utils/common";
 
 type Props = {
     setTemp: Dispatch<SetStateAction<LcDashboardTempData>>;
@@ -25,6 +23,7 @@ const LcReport = (props: Props) => {
         agenda: "",
         attendees: []
     });
+	const [uploadedImage, setUploadedImage] = useState<File | null>(null);
 
     useEffect(() => {
         const now = new Date();
@@ -39,6 +38,13 @@ const LcReport = (props: Props) => {
             meet_time: `${hours}:${minutes}:00`
         }));
     }, []);
+
+    const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files && event.target.files[0];
+        if (file) {
+            setUploadedImage(file);
+        }
+    };
 
     const handleMemberClick = (memberId: string) => {
         setFormData(prevState => {
@@ -71,6 +77,15 @@ const LcReport = (props: Props) => {
         if (state.attendees.length === 0) {
             errors.attendees = "At least one attendee is required";
         }
+		if (!uploadedImage) {
+            errors.image = "Image is required";
+        } else {
+            const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
+            if (!allowedTypes.includes(uploadedImage.type)) {
+                errors.image =
+                    "Invalid image type. Please upload a JPEG, PNG, or GIF.";
+            }
+        }
         {
             Object.keys(errors).length > 0
                 ? toast.error(Object.values(errors).join("\n"))
@@ -82,12 +97,14 @@ const LcReport = (props: Props) => {
     const handleSubmit = (event: any) => {
         event.preventDefault();
         if (validateForm(formData)) {
-            const data = {
-                agenda: formData.agenda,
-                attendees: formData.attendees.join(","),
-                day: formData.day,
-                meet_time: formData.day + " " + formData.meet_time
-            };
+            const data = new FormData();
+            data.append("agenda", formData.agenda);
+            data.append("attendees", formData.attendees.join(","));
+            data.append("time", formData.day + " " + formData.meet_time);
+            if (uploadedImage) {
+                data.append("meet_report", uploadedImage);
+            }
+
             toast.promise(reportMeeting(props.id, data), {
                 loading: "Reporting...",
                 success: response => {
@@ -115,6 +132,7 @@ const LcReport = (props: Props) => {
                         <label>Date:</label>
                         <input
                             type="date"
+                            disabled
                             className={styles.datePicker}
                             value={formData.day}
                             onChange={e =>
@@ -123,6 +141,10 @@ const LcReport = (props: Props) => {
                                     day: e.target.value
                                 }))
                             }
+                            style={{
+                                backgroundColor: "#f0f0f0",
+                                color: "lightgrey"
+                            }}
                         />
                     </div>
                     <div>
@@ -173,21 +195,32 @@ const LcReport = (props: Props) => {
                         {/* <button>+</button> */}
                     </div>
                 </div>
-                <button className={styles.submitButton} onClick={event => handleSubmit(event)} type="submit">
+                <div className={styles.UploadSection}>
+                    <div id="uploadContainer">
+                        <p>Upload Meeting Images</p>
+                        <label htmlFor="fileInput">
+                            <div>
+                                <img src={UploadImage} alt="" />
+                                Drag and drop or <br></br>click to choose a file
+                            </div>
+                        </label>
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onChange={handleImageUpload}
+                            style={{ display: "none" }}
+                            id="fileInput"
+                        />
+                    </div>
+                </div>
+                <button
+                    className={styles.submitButton}
+                    onClick={event => handleSubmit(event)}
+                    type="submit"
+                >
                     Submit
                 </button>
             </div>
-            {/* <div className={styles.UploadSection}>
-                <div id="uploadContainer" onClick={comingSoon}>
-                    <p>Upload Meeting Images</p>
-                    <div>
-                        <img src={UploadImage} alt="" />
-                        <p>
-                            Drag and drop or <br></br>browse to choose a file
-                        </p>
-                    </div>
-                </div>
-            </div> */}
         </div>
     );
 };
