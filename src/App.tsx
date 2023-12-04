@@ -40,6 +40,7 @@ import Foundation from "./modules/Public/Foundation/Foundation";
 import Channels from "./modules/Dashboard/modules/Channels/Pages/Channels";
 import Settings from "./modules/Dashboard/modules/Settings/Settings";
 import Account from "./modules/Dashboard/modules/Settings/pages/Account/Account";
+import Test from "./modules/Dashboard/modules/Test/Test";
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
 );
@@ -611,6 +612,15 @@ function App() {
                                 <RoleChecker
                                     roles={[roles.ADMIN]}
                                     children={<OrganizationTransfer />}
+                                />
+                            )
+                        },
+                        {
+                            path: "test",
+                            element: (
+                                <RoleChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<Test />}
                                 />
                             )
                         },
