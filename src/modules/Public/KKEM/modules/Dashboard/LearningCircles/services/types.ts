@@ -33,3 +33,15 @@ export type OrgCircle = {
     orgName: string;
     circleCount: number;
 };
+export type HackData = {
+    CandidateName : string;
+    ContactDetails : number;
+    DWMSID : string;
+    Email : string;
+    HackathonName : string;
+}
+export type TableToggleProps = {
+    active : string;
+    tabClick : (tab : string) => void;
+    toggleOptions : string[];
+}
