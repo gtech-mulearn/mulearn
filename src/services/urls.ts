@@ -165,7 +165,8 @@ export const dashboardRoutes = {
     deleteUser: "/api/v1/dashboard/user/",
 
     //discord moderation
-    taskList:"api/v1/dashboard/discord-moderator/tasklist"
+    taskList:"api/v1/dashboard/discord-moderator/tasklist",
+    taskListCount:"api/v1/dashboard/discord-moderator/pendingcounts/"
 } as const;
 
 export const organizationRoutes = {

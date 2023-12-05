@@ -3,7 +3,7 @@ import styles from './DiscordModeration.module.css'
 import SelectTab from "react-select";
 
 import { customReactSelectStyles } from "../../utils/common";
-import { getTaskList } from './services/apis';
+import { getTaskCount, getTaskList } from './services/apis';
 import TableTop from '@/MuLearnComponents/TableTop/TableTop';
 import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
@@ -14,6 +14,12 @@ interface Option {
     value: string;
     label: string;
 }
+
+interface taskCount {
+    peerpending: Number;
+    appraiserPending: Number;
+}
+
 interface TaskOption {
     value: string;
     label: string;
@@ -52,6 +58,7 @@ export const DiscordModeration = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [loading, setLoading] = useState(false);
     const [perPage, setPerPage] = useState(20);
+    const [taskCount, setTaskCount] = useState(null);
     const handleChange = (selected: Option | null) => {
         setSelectedOption(selected);
     };
@@ -59,9 +66,10 @@ export const DiscordModeration = () => {
     const handleTaskChange = (selected: Option | null) => {
         setSelectedTaskOption(selected);
     };
-    console.log("data=>", taskData[5]?.discordlink)
+
     useEffect(() => {
-        getTaskList(setTaskData, setLoading)
+        getTaskList(setTaskData, setLoading);
+        getTaskCount(setTaskCount);
     }, [])
 
     const handleIconClick = (column: string) => {
@@ -109,7 +117,9 @@ export const DiscordModeration = () => {
             </div>
             {currentTab === "tasks" &&
                 <div className={styles.DiscordModerationCountRow}>
-                    <div className={styles.DiscordApprovalCount}>h</div>
+                    <div className={styles.DiscordApprovalCount}>
+                        
+                    </div>
                     <div className={styles.DiscordApprovalCount}>h</div>
                 </div>
             }
