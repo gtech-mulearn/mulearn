@@ -1,15 +1,29 @@
-import React, { useEffect, useState } from 'react'
-import styles from './LearningCircles.module.css'
-import { getHackDashboard, getHackathonReport, getLCDashboard, getLCReport, getOrgWiseReport } from './services/LearningCircles';
-import { OrgCircle, OrgData, ResponseType, TableToggleProps, UserDetail, HackData, HackDashboard } from './services/types';
-import TableTop from '@/MuLearnComponents/TableTop/TableTop';
+import React, { useEffect, useState } from "react";
+import styles from "./LearningCircles.module.css";
+import {
+    getHackDashboard,
+    getHackathonReport,
+    getLCDashboard,
+    getLCReport,
+    getOrgWiseReport
+} from "./services/LearningCircles";
+import {
+    OrgCircle,
+    OrgData,
+    ResponseType,
+    TableToggleProps,
+    UserDetail,
+    HackData,
+    HackDashboard
+} from "./services/types";
+import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import Table from "@/MuLearnComponents/Table/Table";
-import THead from '@/MuLearnComponents/Table/THead';
-import Pagination from '@/MuLearnComponents/Pagination/Pagination';
-import Chart from 'react-google-charts';
-import { useSearchParams } from 'react-router-dom';
-import { KKEMRoutes } from '@/MuLearnServices/urls';
-import { PowerfulButton } from '@/MuLearnComponents/MuButtons/MuButton';
+import THead from "@/MuLearnComponents/Table/THead";
+import Pagination from "@/MuLearnComponents/Pagination/Pagination";
+import Chart from "react-google-charts";
+import { useSearchParams } from "react-router-dom";
+import { KKEMRoutes } from "@/MuLearnServices/urls";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 const LearningCircles = () => {
     const [authorized, setAuthorized] = useState(true);
     const [searchParams] = useSearchParams();
@@ -18,31 +32,63 @@ const LearningCircles = () => {
     useEffect(() => {
         if (key === "CDV9co7KhOxA9pqbsi68Q07tsDlg9llapsMvmTSdFHs81SH1ol") {
             setAuthorized(true);
-        }
-        else {
+        } else {
             setAuthorized(false);
         }
     }, [key]);
 
-    const [LcCounts, setLcCounts] = useState<ResponseType>({ lc_count: 0, total_enrollment: 0, circle_count_by_ig: [], unique_users: 0 })
-    const [LcReport, setLcReport] = useState<UserDetail[]>([])
-    const [OrgWiseReport, setOrgWiseReport] = useState<OrgData[]>([])
-    const [HackathonReport, setHackathonReport] = useState<HackData[]>([])
+    const [LcCounts, setLcCounts] = useState<ResponseType>({
+        lc_count: 0,
+        total_enrollment: 0,
+        circle_count_by_ig: [],
+        unique_users: 0
+    });
+    const [LcReport, setLcReport] = useState<UserDetail[]>([]);
+    const [OrgWiseReport, setOrgWiseReport] = useState<OrgData[]>([]);
+    const [HackathonReport, setHackathonReport] = useState<HackData[]>([]);
     const [sort, setSort] = useState("");
     const [sortOrg, setSortOrg] = useState("");
     const [date, setDate] = useState("");
-    const [HackathonDashboard , setHackathonDashboard] = useState<HackDashboard[]>([])
+    const [HackathonDashboard, setHackathonDashboard] = useState<
+        HackDashboard[]
+    >([]);
 
     useEffect(() => {
         if (authorized) {
             getLCDashboard(setLcCounts);
-            getLCReport(setLcReport, currentPage, perPage, setTotalPages, "", sort,"", setLoading);
-            getOrgWiseReport(setOrgWiseReport, orgCurrentPage, orgPerPage, setOrgTotalPages, "", sortOrg,"", setOrgLoading);
-            getHackathonReport(setHackathonReport, currentHackPage, perHackPage, setTotalHackPages, "","",setHackLoading);
-            getHackDashboard(setHackathonDashboard)
+            getLCReport(
+                setLcReport,
+                currentPage,
+                perPage,
+                setTotalPages,
+                "",
+                sort,
+                "",
+                setLoading
+            );
+            getOrgWiseReport(
+                setOrgWiseReport,
+                orgCurrentPage,
+                orgPerPage,
+                setOrgTotalPages,
+                "",
+                sortOrg,
+                "",
+                setOrgLoading
+            );
+            getHackathonReport(
+                setHackathonReport,
+                currentHackPage,
+                perHackPage,
+                setTotalHackPages,
+                "",
+                "",
+                setHackLoading
+            );
+            getHackDashboard(setHackathonDashboard);
         }
-    }, [authorized])
-    console.log(HackathonDashboard[0])
+    }, [authorized]);
+    console.log(HackathonDashboard[0]);
 
     const columnOrder: ColOrder[] = [
         { column: "first_name", Label: "First Name", isSortable: true },
@@ -54,21 +100,29 @@ const LearningCircles = () => {
         { column: "organisation", Label: "organisation", isSortable: true },
         { column: "district", Label: "district", isSortable: true },
         { column: "dwms_id", Label: "DWMS ID", isSortable: true },
-        { column: "karma_earned", Label: "Karma Earned", isSortable: true },
+        { column: "karma_earned", Label: "Karma Earned", isSortable: true }
     ];
 
     const orgColumnOrder: ColOrder[] = [
         { column: "org_title", Label: "Organisation", isSortable: true },
-        { column: "learning_circle_count", Label: "Circle Count", isSortable: true },
-        { column: "user_count", Label: "User Count", isSortable: true },
+        {
+            column: "learning_circle_count",
+            Label: "Circle Count",
+            isSortable: true
+        },
+        { column: "user_count", Label: "User Count", isSortable: true }
     ];
 
     const HackathonColumnOrder: ColOrder[] = [
         { column: "CandidateName", Label: "Candidate Name", isSortable: false },
-        { column: "ContactDetails", Label: "Contact Details", isSortable: false },
+        {
+            column: "ContactDetails",
+            Label: "Contact Details",
+            isSortable: false
+        },
         { column: "DWMSID", Label: "DWMSID", isSortable: false },
         { column: "Email", Label: "Email", isSortable: false },
-        { column: "HackathonName", Label: "Hackathon Name", isSortable: false },
+        { column: "HackathonName", Label: "Hackathon Name", isSortable: false }
     ];
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -87,7 +141,6 @@ const LearningCircles = () => {
     const [orgPerPage, setOrgPerPage] = useState(20);
     const [perHackPage, setPerHackPage] = useState(20);
 
-
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
@@ -97,14 +150,24 @@ const LearningCircles = () => {
     const handleOrgNextClick = () => {
         const nextPage = orgCurrentPage + 1;
         setOrgCurrentPage(nextPage);
-        getOrgWiseReport(setOrgWiseReport, nextPage, orgPerPage, setOrgTotalPages);
-    }
+        getOrgWiseReport(
+            setOrgWiseReport,
+            nextPage,
+            orgPerPage,
+            setOrgTotalPages
+        );
+    };
 
     const handleHackNextClick = () => {
         const nextPage = currentHackPage + 1;
         setCurrentHackPage(nextPage);
-        getHackathonReport(setHackathonReport, nextPage, perHackPage, setTotalHackPages)
-    }
+        getHackathonReport(
+            setHackathonReport,
+            nextPage,
+            perHackPage,
+            setTotalHackPages
+        );
+    };
 
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
@@ -116,13 +179,18 @@ const LearningCircles = () => {
         const prevPage = orgCurrentPage - 1;
         setOrgCurrentPage(prevPage);
         getOrgWiseReport(setOrgWiseReport, 1, orgPerPage, setOrgTotalPages);
-    }
-    
+    };
+
     const handleHackPreviousClick = () => {
         const prevPage = currentHackPage - 1;
         setCurrentHackPage(prevPage);
-        getHackathonReport(setHackathonReport, prevPage, perHackPage, setTotalHackPages)
-    }
+        getHackathonReport(
+            setHackathonReport,
+            prevPage,
+            perHackPage,
+            setTotalHackPages
+        );
+    };
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
@@ -131,25 +199,32 @@ const LearningCircles = () => {
 
     const handleOrgSearch = (search: string) => {
         setOrgCurrentPage(1);
-        getOrgWiseReport(setOrgWiseReport, 1, orgPerPage, setOrgTotalPages, search, "");
-    }
+        getOrgWiseReport(
+            setOrgWiseReport,
+            1,
+            orgPerPage,
+            setOrgTotalPages,
+            search,
+            ""
+        );
+    };
 
     const handleHackSearch = (search: string) => {
         setCurrentHackPage(1);
-        getHackathonReport(setHackathonReport, 1, perHackPage, setTotalHackPages, search, "")
-    }
+        getHackathonReport(
+            setHackathonReport,
+            1,
+            perHackPage,
+            setTotalHackPages,
+            search,
+            ""
+        );
+    };
 
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
         setPerPage(selectedValue);
-        getLCReport(
-            setLcReport,
-            1,
-            selectedValue,
-            setTotalPages,
-            "",
-            ""
-        );
+        getLCReport(setLcReport, 1, selectedValue, setTotalPages, "", "");
     };
 
     const handleOrgPerPageNumber = (selectedValue: number) => {
@@ -163,12 +238,19 @@ const LearningCircles = () => {
             "",
             ""
         );
-    }
+    };
     const handleHackPerPageNumber = (selectedValue: number) => {
         setCurrentHackPage(1);
         setPerHackPage(selectedValue);
-        getHackathonReport(setHackathonReport, 1, selectedValue, setTotalHackPages, "", "")
-    }
+        getHackathonReport(
+            setHackathonReport,
+            1,
+            selectedValue,
+            setTotalHackPages,
+            "",
+            ""
+        );
+    };
     const handleIconClick = (column: string) => {
         if (sort === column) {
             setSort(`-${column}`);
@@ -181,7 +263,6 @@ const LearningCircles = () => {
                 `-${column}`,
                 "",
                 setLoading
-
             );
         } else {
             setSort(column);
@@ -227,59 +308,65 @@ const LearningCircles = () => {
     };
 
     const handlehackIconClick = (column: string) => {
-       console.log("sortButtonNotAdded")
+        console.log("sortButtonNotAdded");
     };
 
     const data = [["Interest Group", "Total Circles"]];
     LcCounts.circle_count_by_ig
         .sort((a, b) => a.total_circles - b.total_circles) // sort by total_circles in ascending order
-        .forEach((item) => {
+        .forEach(item => {
             data.push([item.name, item.total_circles.toString()]);
         });
     const [active, setActive] = useState("Learning Circles");
-    const TableToggle = ({active, tabClick, toggleOptions} : TableToggleProps) => {
-        return(
+    const TableToggle = ({
+        active,
+        tabClick,
+        toggleOptions
+    }: TableToggleProps) => {
+        return (
             <div className={styles.table_toggle_options}>
                 {toggleOptions.map((item: string): any => (
-                    <PowerfulButton className={
-                        active === item
-                            ? styles.table_toggle_active
-                            : styles.table_toggle_inactive
-                    }
-                    variant="plain"
-                    onClick={() => {
-                        tabClick(item);
-                    }}>{item}</PowerfulButton>
+                    <PowerfulButton
+                        className={
+                            active === item
+                                ? styles.table_toggle_active
+                                : styles.table_toggle_inactive
+                        }
+                        variant="plain"
+                        onClick={() => {
+                            tabClick(item);
+                        }}
+                    >
+                        {item}
+                    </PowerfulButton>
                 ))}
             </div>
-        )
-    }
+        );
+    };
     const handleToggle = (tab: string) => {
         setActive(tab);
-    }
+    };
 
-    const handleHackDashInputs = (input : string) => {
+    const handleHackDashInputs = (input: string) => {
         const regex = /\[(.*?)\]/;
         const match = input.match(regex);
         if (match) {
-            const subtext = match[1].split(',');
-            const num = input.split('[')[0];
+            const subtext = match[1].split(",");
+            const num = input.split("[")[0];
             return (
                 <>
                     <p className={styles.count}>{num}</p>
                     <p className={styles.sublabel}>{subtext}</p>
                 </>
-            )
-        }
-        else {
+            );
+        } else {
             return (
                 <>
                     <p className={styles.count}>{input}</p>
                 </>
-            )
+            );
         }
-        
-    }
+    };
     useEffect(() => {
         // Create a mapping of organisations to unique learning circles
         const orgCircleMap: { [key: string]: Set<string> } = {};
@@ -294,10 +381,12 @@ const LearningCircles = () => {
         });
 
         // Convert the mapping to an array of { orgName, circleCount }
-        const resultArray: OrgCircle[] = Object.entries(orgCircleMap).map(([org, circles]) => ({
-            orgName: org,
-            circleCount: circles.size
-        }));
+        const resultArray: OrgCircle[] = Object.entries(orgCircleMap).map(
+            ([org, circles]) => ({
+                orgName: org,
+                circleCount: circles.size
+            })
+        );
 
         // setOrgCirclesArray(resultArray);
 
@@ -306,230 +395,452 @@ const LearningCircles = () => {
         });
     }, [LcReport]);
 
-
     return (
         <>
-            {authorized ? <div className={styles.dashboardContainer}>
-                <div className={styles.dashboardContent}>
-                    <div className={styles.dateContainer}>
-                        <p className={styles.heading}>Filter By Date</p>
-                        <p className={styles.tagline}>If a date is selected, only the values that were recorded after that date will be displayed.</p>
-                        <div>
-                            <input type="date" className={styles.date} onChange={(e) => setDate(e.target.value)} />
-                            <button className={styles.dateButton} onClick={() => {
-                                getLCReport(setLcReport, currentPage, perPage, setTotalPages, "", "", date, setLoading);
-                                getLCDashboard(setLcCounts, date);
-                            }}>Filter</button>
-                            <button className={styles.dateButton} onClick={() => {
-                                getLCReport(setLcReport, currentPage, perPage, setTotalPages, "", "","", setLoading);
-                                getLCDashboard(setLcCounts);
-                            }
-                            }>Clear</button>
+            {authorized ? (
+                <div className={styles.dashboardContainer}>
+                    <div className={styles.dashboardContent}>
+                        <div className={styles.dateContainer}>
+                            <p className={styles.heading}>Filter By Date</p>
+                            <p className={styles.tagline}>
+                                If a date is selected, only the values that were
+                                recorded after that date will be displayed.
+                            </p>
+                            <div>
+                                <input
+                                    type="date"
+                                    className={styles.date}
+                                    onChange={e => setDate(e.target.value)}
+                                />
+                                <button
+                                    className={styles.dateButton}
+                                    onClick={() => {
+                                        getLCReport(
+                                            setLcReport,
+                                            currentPage,
+                                            perPage,
+                                            setTotalPages,
+                                            "",
+                                            "",
+                                            date,
+                                            setLoading
+                                        );
+                                        getLCDashboard(setLcCounts, date);
+                                    }}
+                                >
+                                    Filter
+                                </button>
+                                <button
+                                    className={styles.dateButton}
+                                    onClick={() => {
+                                        getLCReport(
+                                            setLcReport,
+                                            currentPage,
+                                            perPage,
+                                            setTotalPages,
+                                            "",
+                                            "",
+                                            "",
+                                            setLoading
+                                        );
+                                        getLCDashboard(setLcCounts);
+                                    }}
+                                >
+                                    Clear
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                    <TableToggle 
-                        active={active} 
-                        tabClick={handleToggle} 
-                        toggleOptions={["Learning Circles", "Hackathon"]} />
-                    {active === "Learning Circles" ? <div>
-                    <p className={styles.heading}>Learning Circles & Interest Group Counts</p>
-                    <div className={styles.countsContainer}>
-                        <div className={styles.studentsInvoled}>
-                            <p className={styles.label}>Total Enrollment</p>
-                            {LcCounts.total_enrollment && <p className={styles.count}>{LcCounts.total_enrollment}</p>}
-                        </div>
-                        <div className={styles.studentsInvoled}>
-                            <p className={styles.label}>Unique Users</p>
-                            {LcCounts.total_enrollment && <p className={styles.count}>{LcCounts.unique_users}</p>}
-                        </div>
-                        <div className={styles.lcCount}>
-                            <p className={styles.label}>Learning Circles</p>
-                            {LcCounts.lc_count && <p className={styles.count}>{LcCounts.lc_count}</p>}
-                        </div>
-
-                        {
-
-                            LcCounts.circle_count_by_ig
-                                .sort((a, b) => ((b.total_users ?? 0) as number) - ((a.total_users ?? 0) as number)) // sort by total_users in descending order
-                                .map((item, index) => {
-                                    return (
-                                        <div className={styles.studentsInvoled} key={index}>
-                                            <p className={styles.label}>{item.name}</p>
-                                            <div className={styles.counts}>
-                                                <div>
-                                                    <p className={styles.count}>{item.total_circles}</p>
-                                                    <span>Circles</span>
-                                                </div>
-                                                <div>
-                                                    <p className={styles.count}>{item.total_users}</p>
-                                                    <span>Users</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    );
-                                })
-                        }
-                    </div>
-                    <br />
-                    <div className={styles.chartContainer}>
-                        <Chart
-                            width={"100%"}
-                            height={"400px"}
-                            chartType="Bar"
-                            loader={<div>Loading Chart</div>}
-                            data={data}
-                            options={{
-                                chart: {
-                                    title: "Interest Group Counts",
-                                },
-                            }}
+                        <TableToggle
+                            active={active}
+                            tabClick={handleToggle}
+                            toggleOptions={["Learning Circles", "Hackathon"]}
                         />
-
-                    </div>
-
-                    </div> : 
-                    <div>
-                        <p className={styles.heading}>Hackathon</p>
-                        {HackathonDashboard.map((item) => {
-                            return (
-                                <>
-                                <p className={styles.subheading}>{`${item['Hackathon Name']}:${item.Domains}`}</p>
+                        {active === "Learning Circles" ? (
+                            <div>
+                                <p className={styles.heading}>
+                                    Learning Circles & Interest Group Counts
+                                </p>
                                 <div className={styles.countsContainer}>
-                                    {item['Total Applicants'] && <div className={styles.studentsInvoled}>
-                                        <p className={styles.label}>Total Applicants</p>
-                                        {handleHackDashInputs(item['Total Applicants'])}
-                                    </div>}
-                                    {item['Shortlisted Candidates'] && <div className={styles.studentsInvoled}>
-                                        <p className={styles.label}>Shortlisted Candidates</p>
-                                        {handleHackDashInputs(item['Shortlisted Candidates'])}
-                                    </div>}
-                                    {item['Shortlisted Team Count'] && <div className={styles.studentsInvoled}>
-                                        <p className={styles.label}>Shortlisted Team Count</p>
-                                        {handleHackDashInputs(item['Shortlisted Team Count'])}
-                                    </div>}
-                                    {item['Attended People'] && <div className={styles.studentsInvoled}>
-                                            <p className={styles.label}>Attended People</p>
-                                            {handleHackDashInputs(item['Attended People'])}
-                                    </div>}
-                                    {item['Offerings Count'] && 
-                                        <div className={styles.studentsInvoled}>
-                                            <p className={styles.label}>Offerings Count</p>
-                                            {handleHackDashInputs(item['Offerings Count'])}
-                                    </div>}
-                                    {item['Placement Count'] && 
                                     <div className={styles.studentsInvoled}>
-                                        <p className={styles.label}>Placement Count</p>
-                                        {handleHackDashInputs(item['Placement Count'])}
-                                    </div> }
+                                        <p className={styles.label}>
+                                            Total Enrollment
+                                        </p>
+                                        {LcCounts.total_enrollment && (
+                                            <p className={styles.count}>
+                                                {LcCounts.total_enrollment}
+                                            </p>
+                                        )}
+                                    </div>
+                                    <div className={styles.studentsInvoled}>
+                                        <p className={styles.label}>
+                                            Unique Users
+                                        </p>
+                                        {LcCounts.total_enrollment && (
+                                            <p className={styles.count}>
+                                                {LcCounts.unique_users}
+                                            </p>
+                                        )}
+                                    </div>
+                                    <div className={styles.lcCount}>
+                                        <p className={styles.label}>
+                                            Learning Circles
+                                        </p>
+                                        {LcCounts.lc_count && (
+                                            <p className={styles.count}>
+                                                {LcCounts.lc_count}
+                                            </p>
+                                        )}
+                                    </div>
+
+                                    {LcCounts.circle_count_by_ig
+                                        .sort(
+                                            (a, b) =>
+                                                ((b.total_users ??
+                                                    0) as number) -
+                                                ((a.total_users ?? 0) as number)
+                                        ) // sort by total_users in descending order
+                                        .map((item, index) => {
+                                            return (
+                                                <div
+                                                    className={
+                                                        styles.studentsInvoled
+                                                    }
+                                                    key={index}
+                                                >
+                                                    <p className={styles.label}>
+                                                        {item.name}
+                                                    </p>
+                                                    <div
+                                                        className={
+                                                            styles.counts
+                                                        }
+                                                    >
+                                                        <div>
+                                                            <p
+                                                                className={
+                                                                    styles.count
+                                                                }
+                                                            >
+                                                                {
+                                                                    item.total_circles
+                                                                }
+                                                            </p>
+                                                            <span>Circles</span>
+                                                        </div>
+                                                        <div>
+                                                            <p
+                                                                className={
+                                                                    styles.count
+                                                                }
+                                                            >
+                                                                {
+                                                                    item.total_users
+                                                                }
+                                                            </p>
+                                                            <span>Users</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            );
+                                        })}
                                 </div>
-                                </>
-                            )
-                        })}
-                        <div className={styles.tableContainer}>
-                        <TableTop
-                            onSearchText={handleHackSearch}
-                            onPerPageNumber={handleHackPerPageNumber}
-                        />
-                        <br />
-                        <Table
-                            rows={HackathonReport}
-                            page={currentHackPage}
-                            perPage={perHackPage}
-                            columnOrder={HackathonColumnOrder}
-                            isloading={hackLoading}
-                        >
-                            <THead
-                                columnOrder={HackathonColumnOrder}
-                                onIconClick={handlehackIconClick}
-                            />
-                            <Pagination
-                                currentPage={currentHackPage}
-                                totalPages={totalHackPages}
-                                margin="10px 0"
-                                handleNextClick={handleHackNextClick}
-                                handlePreviousClick={handleHackPreviousClick}
-                                onPerPageNumber={handleHackPerPageNumber}
-                                perPage={perHackPage}
-                                setPerPage={setPerHackPage}
-                            />
-                        </Table></div>
-                    </div>}
-
-                    <p className={styles.heading}>User Wise Counts</p>
-                    <div className={styles.tableContainer}>
-
-                        <TableTop
-                            onSearchText={handleSearch}
-                            onPerPageNumber={handlePerPageNumber}
-                            CSV={KKEMRoutes.getLcReport}
-                        />
-                        <br />
-                        <Table
-                            rows={LcReport}
-                            page={currentPage}
-                            perPage={perPage}
-                            columnOrder={columnOrder}
-                            isloading={loading}
-                        >
-                            <THead
-                                columnOrder={columnOrder}
-                                // editableColumnNames={editableColumnNames}
-                                onIconClick={handleIconClick}
-                            />
-                            <Pagination
-                                currentPage={currentPage}
-                                totalPages={totalPages}
-                                margin="10px 0"
-                                handleNextClick={handleNextClick}
-                                handlePreviousClick={handlePreviousClick}
-                                onPerPageNumber={handlePerPageNumber}
-                                perPage={perPage}
-                                setPerPage={setPerPage}
-                            />
-                            {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
-                        </Table>
-
-                    </div>
-                    <br />
-                    <p className={styles.heading}>Organization Wise Counts</p>
-                    <div className={styles.tableContainer}>
-
-                        <TableTop
-                            onSearchText={handleOrgSearch}
-                            onPerPageNumber={handleOrgPerPageNumber}
-                        />
-                        <br />
-                        <Table
-                            rows={OrgWiseReport}
-                            page={orgCurrentPage}
-                            perPage={orgPerPage}
-                            columnOrder={orgColumnOrder}
-                            isloading={orgLoading}
-                        >
-                            <THead
-                                columnOrder={orgColumnOrder}
-                                // editableColumnNames={editableColumnNames}
-                                onIconClick={handleOrgIconClick}
-                            />
-                            <Pagination
-                                currentPage={orgCurrentPage}
-                                totalPages={orgTotalPages}
-                                margin="10px 0"
-                                handleNextClick={handleOrgNextClick}
-                                handlePreviousClick={handleOrgPreviousClick}
-                                onPerPageNumber={handleOrgPerPageNumber}
-                                perPage={orgPerPage}
-                                setPerPage={setOrgPerPage}
-                            />
-                            {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
-                        </Table>
-
+                                <br />
+                                <div className={styles.chartContainer}>
+                                    <Chart
+                                        width={"100%"}
+                                        height={"400px"}
+                                        chartType="Bar"
+                                        loader={<div>Loading Chart</div>}
+                                        data={data}
+                                        options={{
+                                            chart: {
+                                                title: "Interest Group Counts"
+                                            }
+                                        }}
+                                    />
+                                </div>
+                                <p className={styles.heading}>
+                                    Organization Wise Counts
+                                </p>
+                                <div className={styles.tableContainer}>
+                                    <TableTop
+                                        onSearchText={handleOrgSearch}
+                                        onPerPageNumber={handleOrgPerPageNumber}
+                                    />
+                                    <br />
+                                    <Table
+                                        rows={OrgWiseReport}
+                                        page={orgCurrentPage}
+                                        perPage={orgPerPage}
+                                        columnOrder={orgColumnOrder}
+                                        isloading={orgLoading}
+                                    >
+                                        <THead
+                                            columnOrder={orgColumnOrder}
+                                            // editableColumnNames={editableColumnNames}
+                                            onIconClick={handleOrgIconClick}
+                                        />
+                                        <Pagination
+                                            currentPage={orgCurrentPage}
+                                            totalPages={orgTotalPages}
+                                            margin="10px 0"
+                                            handleNextClick={handleOrgNextClick}
+                                            handlePreviousClick={
+                                                handleOrgPreviousClick
+                                            }
+                                            onPerPageNumber={
+                                                handleOrgPerPageNumber
+                                            }
+                                            perPage={orgPerPage}
+                                            setPerPage={setOrgPerPage}
+                                        />
+                                        {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                                    </Table>
+                                </div>
+                                <br />
+                                <p className={styles.heading}>
+                                    User Wise Counts
+                                </p>
+                                <div className={styles.tableContainer}>
+                                    <TableTop
+                                        onSearchText={handleSearch}
+                                        onPerPageNumber={handlePerPageNumber}
+                                        CSV={KKEMRoutes.getLcReport}
+                                    />
+                                    <br />
+                                    <Table
+                                        rows={LcReport}
+                                        page={currentPage}
+                                        perPage={perPage}
+                                        columnOrder={columnOrder}
+                                        isloading={loading}
+                                    >
+                                        <THead
+                                            columnOrder={columnOrder}
+                                            // editableColumnNames={editableColumnNames}
+                                            onIconClick={handleIconClick}
+                                        />
+                                        <Pagination
+                                            currentPage={currentPage}
+                                            totalPages={totalPages}
+                                            margin="10px 0"
+                                            handleNextClick={handleNextClick}
+                                            handlePreviousClick={
+                                                handlePreviousClick
+                                            }
+                                            onPerPageNumber={
+                                                handlePerPageNumber
+                                            }
+                                            perPage={perPage}
+                                            setPerPage={setPerPage}
+                                        />
+                                        {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                                    </Table>
+                                </div>
+                                <br />
+                            </div>
+                        ) : (
+                            <div>
+                                <p className={styles.heading}>Hackathon</p>
+                                {HackathonDashboard.map(item => {
+                                    return (
+                                        <>
+                                            <p
+                                                className={styles.subheading}
+                                            >{`${item["Hackathon Name"]}:${item.Domains}`}</p>
+                                            <div
+                                                className={
+                                                    styles.countsContainer
+                                                }
+                                            >
+                                                {item["Total Applicants"] && (
+                                                    <div
+                                                        className={
+                                                            styles.studentsInvoled
+                                                        }
+                                                    >
+                                                        <p
+                                                            className={
+                                                                styles.label
+                                                            }
+                                                        >
+                                                            Total Applicants
+                                                        </p>
+                                                        {handleHackDashInputs(
+                                                            item[
+                                                                "Total Applicants"
+                                                            ]
+                                                        )}
+                                                    </div>
+                                                )}
+                                                {item[
+                                                    "Shortlisted Candidates"
+                                                ] && (
+                                                    <div
+                                                        className={
+                                                            styles.studentsInvoled
+                                                        }
+                                                    >
+                                                        <p
+                                                            className={
+                                                                styles.label
+                                                            }
+                                                        >
+                                                            Shortlisted
+                                                            Candidates
+                                                        </p>
+                                                        {handleHackDashInputs(
+                                                            item[
+                                                                "Shortlisted Candidates"
+                                                            ]
+                                                        )}
+                                                    </div>
+                                                )}
+                                                {item[
+                                                    "Shortlisted Team Count"
+                                                ] && (
+                                                    <div
+                                                        className={
+                                                            styles.studentsInvoled
+                                                        }
+                                                    >
+                                                        <p
+                                                            className={
+                                                                styles.label
+                                                            }
+                                                        >
+                                                            Shortlisted Team
+                                                            Count
+                                                        </p>
+                                                        {handleHackDashInputs(
+                                                            item[
+                                                                "Shortlisted Team Count"
+                                                            ]
+                                                        )}
+                                                    </div>
+                                                )}
+                                                {item["Attended People"] && (
+                                                    <div
+                                                        className={
+                                                            styles.studentsInvoled
+                                                        }
+                                                    >
+                                                        <p
+                                                            className={
+                                                                styles.label
+                                                            }
+                                                        >
+                                                            Attended People
+                                                        </p>
+                                                        {handleHackDashInputs(
+                                                            item[
+                                                                "Attended People"
+                                                            ]
+                                                        )}
+                                                    </div>
+                                                )}
+                                                {item["Offerings Count"] && (
+                                                    <div
+                                                        className={
+                                                            styles.studentsInvoled
+                                                        }
+                                                    >
+                                                        <p
+                                                            className={
+                                                                styles.label
+                                                            }
+                                                        >
+                                                            Offerings Count
+                                                        </p>
+                                                        {handleHackDashInputs(
+                                                            item[
+                                                                "Offerings Count"
+                                                            ]
+                                                        )}
+                                                    </div>
+                                                )}
+                                                {item["Placement Count"] && (
+                                                    <div
+                                                        className={
+                                                            styles.studentsInvoled
+                                                        }
+                                                    >
+                                                        <p
+                                                            className={
+                                                                styles.label
+                                                            }
+                                                        >
+                                                            Placement Count
+                                                        </p>
+                                                        {handleHackDashInputs(
+                                                            item[
+                                                                "Placement Count"
+                                                            ]
+                                                        )}
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </>
+                                    );
+                                })}
+                                <div className={styles.tableContainer}>
+                                    <TableTop
+                                        onSearchText={handleHackSearch}
+                                        onPerPageNumber={
+                                            handleHackPerPageNumber
+                                        }
+                                    />
+                                    <br />
+                                    <Table
+                                        rows={HackathonReport}
+                                        page={currentHackPage}
+                                        perPage={perHackPage}
+                                        columnOrder={HackathonColumnOrder}
+                                        isloading={hackLoading}
+                                    >
+                                        <THead
+                                            columnOrder={HackathonColumnOrder}
+                                            onIconClick={handlehackIconClick}
+                                        />
+                                        <Pagination
+                                            currentPage={currentHackPage}
+                                            totalPages={totalHackPages}
+                                            margin="10px 0"
+                                            handleNextClick={
+                                                handleHackNextClick
+                                            }
+                                            handlePreviousClick={
+                                                handleHackPreviousClick
+                                            }
+                                            onPerPageNumber={
+                                                handleHackPerPageNumber
+                                            }
+                                            perPage={perHackPage}
+                                            setPerPage={setPerHackPage}
+                                        />
+                                    </Table>
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </div>
-            </div> : (key ? <div className={styles.dashboardContainer}> <p className={styles.heading}>You are not authorized to view this page</p></div> : <div className={styles.dashboardContainer}> <p className={styles.heading}>Please enter the key to view this page</p></div>)}
-
+            ) : key ? (
+                <div className={styles.dashboardContainer}>
+                    {" "}
+                    <p className={styles.heading}>
+                        You are not authorized to view this page
+                    </p>
+                </div>
+            ) : (
+                <div className={styles.dashboardContainer}>
+                    {" "}
+                    <p className={styles.heading}>
+                        Please enter the key to view this page
+                    </p>
+                </div>
+            )}
         </>
-    )
-}
+    );
+};
 
-export default LearningCircles
+export default LearningCircles;
