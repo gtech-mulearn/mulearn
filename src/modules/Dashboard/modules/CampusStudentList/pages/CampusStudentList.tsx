@@ -41,6 +41,7 @@ const CampusStudentList = (props: Props) => {
     const [noOrg, setNoOrg] = useState(false);
     const [sort, setSort] = useState("");
     const [CSVBlob, setCSVFile] = useState<Blob | null>();
+    const [search, setSearch] = useState("");
     const navigate = useNavigate();
 
     //graph data
@@ -113,12 +114,24 @@ const CampusStudentList = (props: Props) => {
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        getStudentDetails(setStudentData, nextPage, perPage);
+        getStudentDetails(
+            setStudentData,
+            nextPage,
+            perPage,
+            setTotalPages,
+            search
+        );
     };
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-        getStudentDetails(setStudentData, prevPage, perPage);
+        getStudentDetails(
+            setStudentData,
+            prevPage,
+            perPage,
+            setTotalPages,
+            search
+        );
     };
     useEffect(() => {
         if (firstFetch.current) {
@@ -165,6 +178,7 @@ const CampusStudentList = (props: Props) => {
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
+        setSearch(search);
         getStudentDetails(
             setStudentData,
             1,
@@ -184,7 +198,7 @@ const CampusStudentList = (props: Props) => {
             1,
             selectedValue,
             setTotalPages,
-            "",
+            search,
             ""
         );
     };
@@ -200,7 +214,7 @@ const CampusStudentList = (props: Props) => {
                 1,
                 perPage,
                 setTotalPages,
-                "",
+                search,
                 `-${column}`
             );
         } else {
@@ -210,7 +224,7 @@ const CampusStudentList = (props: Props) => {
                 1,
                 perPage,
                 setTotalPages,
-                "",
+                search,
                 column
             );
         }
