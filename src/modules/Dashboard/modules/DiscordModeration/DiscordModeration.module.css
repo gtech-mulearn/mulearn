@@ -1,0 +1,39 @@
+.DiscordModerationWrapper {
+    background-color: #fff;
+    width: 95%;
+    margin: 0;
+    height: 100%;
+    align-self: self-start;
+}
+
+.DiscordModerationContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.DiscordModerationRow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    gap: 1rem;
+    width: 100%;
+    background: #fff;
+}
+
+.DiscordModerationSwitchTab {
+    padding: 0.7rem;
+    border-radius: 15px;
+    background: rgb(222, 230, 255);
+}
+
+.DiscordModerationFrom {
+    position: absolute;
+    left: 1rem;
+}
+
+.DiscordModerationTable{
+    width: 100%;
+    height: 10rem;
+}

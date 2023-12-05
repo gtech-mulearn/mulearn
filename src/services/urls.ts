@@ -162,7 +162,10 @@ export const dashboardRoutes = {
 
     //Settings
     changePassword: "api/v1/dashboard/profile/change-password/",
-    deleteUser: "/api/v1/dashboard/user/"
+    deleteUser: "/api/v1/dashboard/user/",
+
+    //discord moderation
+    taskList:"api/v1/dashboard/discord-moderator/tasklist"
 } as const;
 
 export const organizationRoutes = {

@@ -40,7 +40,7 @@ import Foundation from "./modules/Public/Foundation/Foundation";
 import Channels from "./modules/Dashboard/modules/Channels/Pages/Channels";
 import Settings from "./modules/Dashboard/modules/Settings/Settings";
 import Account from "./modules/Dashboard/modules/Settings/pages/Account/Account";
-import Analytics from "./modules/Dashboard/modules/UrlShortener/Pages/Analytics";
+import { DiscordModeration } from "./modules/Dashboard/modules/DiscordModeration/DiscordModeration";
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
 );
@@ -281,7 +281,7 @@ function App() {
                     element: <DashboardRootLayout />,
                     children: [
                         { path: "profile", element: <Profile /> },
-                        { path: "profileV2", element: <ProfileV2 /> },
+                        // { path: "profileV2", element: <ProfileV2 /> },
                         {
                             path: "connect-discord",
                             element: <ConnectDiscord />
@@ -507,19 +507,6 @@ function App() {
                             )
                         },
                         {
-                            path: "url-shortener/analytics",
-                            element: (
-                                <RoleChecker
-                                    roles={[
-                                        roles.ADMIN,
-                                        roles.FELLOW,
-                                        roles.ASSOCIATE
-                                    ]}
-                                    children={<Analytics />}
-                                />
-                            )
-                        },
-                        {
                             path: "hackathon",
                             element: (
                                 <RoleChecker
@@ -570,6 +557,15 @@ function App() {
                                 <RoleChecker
                                     roles={[roles.ADMIN]}
                                     children={<HackathonParticipants />}
+                                />
+                            )
+                        },
+                        {
+                            path: "discord-moderation",
+                            element: (
+                                <RoleChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<DiscordModeration />}
                                 />
                             )
                         },
