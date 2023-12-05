@@ -222,7 +222,7 @@ const UserForm = forwardRef(
             getLocations(locationParam, setLocationDatas, setIsApiCalled)
         }
 
-        const handleDistrictsChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const handleLocationChange = (e: ChangeEvent<HTMLInputElement>) => {
             console.log(e)
             const data = e;
             if (data) {
@@ -379,7 +379,7 @@ const UserForm = forwardRef(
                                 placeholder="Select your location"
                                 onChange={(e: any) =>
                                     {console.log(e);
-                                    handleDistrictsChange(e)}
+                                    handleLocationChange(e)}
                                 }
                                 components={animatedComponents}
                                 isClearable
