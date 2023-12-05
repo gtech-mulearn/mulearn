@@ -15,7 +15,7 @@
     background-color: rgb(255, 255, 255);
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     padding: 30px;
     border-radius: 12px;
     gap: 10px;
@@ -32,6 +32,7 @@
     font-size: 50px;
     font-weight: 600;
     margin: 0;
+	line-height: 1;
 }
 
 .TitleContainerWrapper .Title h3 {
@@ -424,6 +425,7 @@
     gap: 10px;
     font-weight: 600;
     min-width: none;
+	justify-self: space-between;
 }
 .ContainerWrapper .ContentWrapper .TopContainer .sectionOne p {
     font-size: 18px;
@@ -464,11 +466,11 @@
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 8px;
+	height: fit-content;
 }
 .ContainerWrapper .ContentWrapper .TopContainer .sectionTwo {
     width: 30%;
     min-width: 250px;
-    align-items: center;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -571,9 +573,17 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     flex-direction: column;
     gap: 10px;
     font-size: 17px;
-    align-items: center;
     font-weight: 500;
     width: 100%;
+	padding: 5px;
+}
+
+.CheckBoxContentWrapper{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
 }
 
 .CheckBoxContainerWrapper input {
@@ -584,8 +594,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     display: flex;
     align-items: end;
     margin-top: 10px;
-    width: 100%;
-    justify-content: center;
+    align-self: flex-end;
 }
 
 .CheckBoxContainerButton button {
@@ -599,8 +608,22 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    min-width: 20rem;
+	gap: 2px;
+	width: 100%;
+	label{
+		width: 80%;
+	}
 }
+
+@media  screen and (max-width: 500px) {
+	.CheckBoxContainer{
+		label{
+			width: 80%;
+		}
+	}
+	
+}
+
 
 /* Attendees */
 .AttendeesWrapperIndividual {
@@ -1036,4 +1059,46 @@ input[type="time"]::-webkit-calendar-picker-indicator {
         border-radius: 8px;
         font-size: 13px;
     }
+}
+
+/* LC Option */
+.LcOptions {
+	position: absolute;
+	right: 2rem;
+	margin-bottom: 140px;
+	background-color: var(--White);
+	border-radius: 10px;
+	display: flex;
+	align-items: end;
+	justify-content: center;
+	flex-direction: column;
+	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+}
+
+.LcOptions div {
+	padding: 10px 20px;
+	display: flex;
+	align-items: center;
+	justify-content: end;
+	gap: 10px;
+	cursor: pointer;
+	color: red;
+}
+
+.LcOptions div:hover {
+	background-color: rgba(238, 242, 255, 1);
+	width: 100%;
+	border-radius: 10px 10px 0 0;
+}
+
+.LcOptions div:hover:last-child {
+	background-color: rgba(238, 242, 255, 1);
+	width: 100%;
+	border-radius: 0 0 10px 10px;
+}
+
+.LcOptions div:hover:first-child {
+	background-color: rgba(238, 242, 255, 1);
+	width: 100%;
+	border-radius: 10px 10px 0 0;
 }

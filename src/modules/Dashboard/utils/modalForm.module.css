@@ -1,23 +1,23 @@
 .container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .formContainer {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-wrap: wrap;
-	gap: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .inputContainer input {
-	border-radius: 8px;
-	background-color: #F3F3F4;
-	padding: 10px;
-	width: 300px;
-	color: black;
+    border-radius: 8px;
+    background-color: #f3f3f4;
+    padding: 10px;
+    width: 300px;
+    color: black;
 }
 
 /* .inputContainer input::placeholder {
@@ -25,5 +25,77 @@
 } */
 
 .inputContainer div {
-	text-align: left;
+    text-align: left;
+}
+
+.CheckBoxWrapperSet {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.CheckBoxWrapperSet .toggle {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+	color: black;
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.CheckBoxWrapperSet .toggle .toggle__input {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+	background-color: rgb(0, 0, 0);
+}
+
+.CheckBoxWrapperSet .toggle .toggle__label {
+  font-size: 15px;
+}
+
+
+.CheckBoxWrapperSet .toggle .toggleTrack {
+  background-color: #f3f3f4;
+  border: 1px solid #a09c9c;
+  border-radius: 100px;
+  cursor: pointer;
+  display: flex;
+  height: 25px;
+  margin-right: 12px;
+  position: relative;
+  width: 50px;
+}
+
+.CheckBoxWrapperSet .toggle .toggleTndicator {
+  align-items: center;
+  background: #818181;
+  border-radius: 24px;
+  bottom: 1.5px;
+  display: flex;
+  height: 20px;
+  justify-content: center;
+  left: 2px;
+  outline: solid 2px transparent;
+  position: absolute;
+  transition: 0.25s;
+  width: 20px;
+}
+
+.CheckBoxWrapperSet .toggle .toggle__input:checked + .toggleTrack .toggleTndicator {
+  background: #0275d8;
+  transform: translateX(24px);
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .CheckBoxWrapperSet .toggle .toggleTrack {
+    border-radius: 0;
+  }
 }

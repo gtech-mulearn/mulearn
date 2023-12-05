@@ -4,6 +4,7 @@ import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { createStandaloneToast } from "@chakra-ui/react";
 import { SetStateAction } from "react";
 import { NavigateFunction } from "react-router-dom";
+import { dynamicRoute, lcRoutes } from "@/MuLearnServices/endpoints";
 export const { toast } = createStandaloneToast();
 
 export const getUserLearningCircles = async (
@@ -15,49 +16,6 @@ export const getUserLearningCircles = async (
         );
         const message: any = response?.data;
         setCircleList(message.response);
-    } catch (err: unknown) {
-        const error = err as AxiosError;
-        if (error?.response) {
-            throw error;
-        }
-    }
-};
-
-export const getLcDetails = async (
-    setCircleList: UseStateFunc<LcDetail | undefined>,
-    id: string | undefined
-) => {
-    try {
-        const response = (await privateGateway.get(
-            dashboardRoutes.lc + id + "/details/"
-        )) as APIResponse<LcDetail & { day: string }>;
-
-        const message = response.data.response;
-
-        if (message.day) {
-            const dayArray = message.day
-                .split(",")
-                .map((x: string) => parseInt(x));
-            setCircleList({ ...message, day: dayArray });
-        } else {
-            setCircleList(message);
-        }
-    } catch (err: unknown) {
-        const error = err as AxiosError;
-        if (error?.response) {
-            throw error;
-        }
-    }
-};
-
-export const updateLcNote = async (data: LcNote) => {
-    try {
-        const response = await privateGateway.put(
-            dashboardRoutes.lc + data.id + "/details/",
-            data
-        );
-        const message: any = response;
-		return message
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -161,22 +119,6 @@ export const createCircle = async (
     }
 };
 
-export const setLCMeetTime = async (data: LcMeetSchedule, id: string | undefined) => {
-    try {
-        const response = await privateGateway.put(
-            dashboardRoutes.lc + id + "/schedule-meet/",
-            data
-        );
-        const message: any = response?.data;
-		return message;
-    } catch (err) {
-        const error = err as AxiosError;
-        if (error?.response) {
-            throw error;
-        }
-    }
-};
-
 export const joinCircle = async (circleCode: string) => {
     try {
         const response = await privateGateway.post(
@@ -220,32 +162,32 @@ export const getInterestGroups = async () => {
     }
 };
 
-export const approveLcUser = async (
-    circleId: string | undefined,
-    memberId: string,
-    flag: number,
-    message?: string
-) => {
-    try {
-        const response = await privateGateway.patch(
-            dashboardRoutes.getCampusLearningCircles +
-                circleId +
-                "/user-accept-reject/" +
-                memberId +
-                "/",
-            {
-                is_accepted: flag
-            }
-        );
-        const message = response.data;
-        return message;
-    } catch (err) {
-        const error = err as AxiosError;
-        if (error?.response) {
-            throw error;
-        }
-    }
-};
+// export const approveLcUser = async (
+//     circleId: string | undefined,
+//     memberId: string,
+//     flag: number,
+//     message?: string
+// ) => {
+//     try {
+//         const response = await privateGateway.patch(
+//             dashboardRoutes.getCampusLearningCircles +
+//                 circleId +
+//                 "/user-accept-reject" +
+//                 memberId +
+//                 "/",
+//             {
+//                 is_accepted: flag
+//             }
+//         );
+//         const message = response.data;
+//         return message;
+//     } catch (err) {
+//         const error = err as AxiosError;
+//         if (error?.response) {
+//             throw error;
+//         }
+//     }
+// };
 
 export const leaveLc = async (
     circleId: string | undefined,
@@ -264,66 +206,6 @@ export const leaveLc = async (
             isClosable: true
         });
         navigate("/dashboard/learning-circle/");
-    } catch (err) {
-        const error = err as AxiosError;
-        if (error?.response) {
-            throw error;
-        }
-        toast({
-            title: "Something went wrong",
-            description: "",
-            status: "error",
-            duration: 2000,
-            isClosable: true
-        });
-    }
-};
-
-export const removeMember = async (
-    circleId: string | undefined,
-    memberId: string,
-    navigate?: NavigateFunction
-) => {
-    try {
-        const response = await privateGateway.post(
-            dashboardRoutes.getCampusLearningCircles +
-                circleId +
-                "/" +
-                memberId +
-                "/"
-        );
-		const message = response.data;
-		return message
-    } catch (err) {
-        const error = err as AxiosError;
-        if (error?.response) {
-            throw error;
-        }
-    }
-};
-
-export const transferLead = async (
-    circleId: string | undefined,
-    memberId: string,
-    navigate: NavigateFunction
-) => {
-    try {
-        const response = await privateGateway.patch(
-            dashboardRoutes.getLearningCirclesLead +
-                circleId +
-                "/" +
-                memberId +
-                "/"
-        );
-        toast({
-            title: "Success",
-            description: "",
-            status: "success",
-            duration: 2000,
-            isClosable: true
-        });
-        window.location.reload();
-       
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -385,17 +267,57 @@ export const searchLearningCircleWithCircleCode = (
         });
 };
 
-
-
-export const reportMeeting = async (id: string | undefined, data: {
-    agenda: string;
-    attendees: string;
-    day: string;
-    meet_time: string;
-}) => {
+//! New LC APIs ---------------------------------------------------------------------------->
+export const getLcDetails = async (
+    setCircleList: UseStateFunc<LcDetail | undefined>,
+    id: string | undefined
+) => {
     try {
-        const response = await privateGateway.post(
-            dashboardRoutes.lc + id + "/report/create/",
+        const response = (await privateGateway.get(
+            dynamicRoute(lcRoutes.getDetailsUpdateNote, id as string)
+        )) as APIResponse<LcDetail & { day: string }>;
+
+        const message = response.data.response;
+
+        if (message.day) {
+            const dayArray = message.day
+                .split(",")
+                .map((x: string) => parseInt(x));
+            setCircleList({ ...message, day: dayArray });
+        } else {
+            setCircleList(message);
+        }
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            throw error;
+        }
+    }
+};
+
+export const updateLcNote = async (data: LcNote) => {
+    try {
+        const response = await privateGateway.put(
+            dynamicRoute(lcRoutes.getDetailsUpdateNote, data.id as string),
+            data
+        );
+        const message: any = response;
+        return message;
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            throw error;
+        }
+    }
+};
+
+export const setLCMeetTime = async (
+    data: LcMeetSchedule,
+    id: string | undefined
+) => {
+    try {
+        const response = await privateGateway.put(
+            dynamicRoute(lcRoutes.scheduleMeet, id as string),
             data
         );
         const message: any = response?.data;
@@ -408,13 +330,113 @@ export const reportMeeting = async (id: string | undefined, data: {
     }
 };
 
-export const getLCMeetingReport = async (reportId: string | undefined, circleId: string | undefined) => {
+export const reportMeeting = async (
+    id: string | undefined,
+    data: {
+        agenda: string;
+        attendees: string;
+        day: string;
+        meet_time: string;
+    }
+) => {
+    try {
+        const response = await privateGateway.post(
+            dynamicRoute(lcRoutes.createReport, id as string),
+            data
+        );
+        const message: any = response?.data;
+        return message;
+    } catch (err) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            throw error;
+        }
+    }
+};
+
+export const getLCMeetingReport = async (
+    reportId: string | undefined,
+    circleId: string | undefined
+) => {
     try {
         const response = await privateGateway.get(
-            dashboardRoutes.lc + circleId + "/report/" + reportId + "/show/",
+            dynamicRoute(
+                lcRoutes.getReport,
+                circleId as string,
+                reportId as string
+            )
         );
         const message: any = response?.data;
         return message.response;
+    } catch (err) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            throw error;
+        }
+    }
+};
+
+export const transferLead = async (
+    circleId: string | undefined,
+    memberId: string,
+    navigate?: any
+) => {
+    try {
+        const response = await privateGateway.patch(
+            dynamicRoute(lcRoutes.transferLead, circleId as string, memberId)
+        );
+        const message = response.data;
+        return message;
+    } catch (err) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            throw error;
+        }
+    }
+};
+
+export const approveLcUser = async (
+    circleId: string | undefined,
+    memberId: string,
+    flag: number,
+    message?: string
+) => {
+    try {
+        const response = await privateGateway.patch(
+            dynamicRoute(
+                lcRoutes.approveRejectRemoveUser,
+                circleId as string,
+                memberId
+            ),
+            {
+                is_accepted: flag
+            }
+        );
+        const message = response.data;
+        return message;
+    } catch (err) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            throw error;
+        }
+    }
+};
+
+export const removeMember = async (
+    circleId: string | undefined,
+    memberId: string,
+    navigate?: any
+) => {
+    try {
+        const response = await privateGateway.post(
+            dynamicRoute(
+                lcRoutes.approveRejectRemoveUser,
+                circleId as string,
+                memberId
+            )
+        );
+        const message = response.data;
+        return message;
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
