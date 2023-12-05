@@ -40,7 +40,7 @@ import Foundation from "./modules/Public/Foundation/Foundation";
 import Channels from "./modules/Dashboard/modules/Channels/Pages/Channels";
 import Settings from "./modules/Dashboard/modules/Settings/Settings";
 import Account from "./modules/Dashboard/modules/Settings/pages/Account/Account";
-import { DiscordModeration } from "./modules/Dashboard/modules/DiscordModeration/DiscordModeration";
+import DiscordModeration from "./modules/Dashboard/modules/DiscordModeration/DiscordModeration";
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
 );

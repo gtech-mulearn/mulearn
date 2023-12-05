@@ -18,15 +18,17 @@ export const getTaskList = async (
 };
 
 export const getTaskCount = async (
-    setTaskCount: UseStateFunc<any>,
-    // setIsLoading: UseStateFunc<boolean>
+    setpeerTaskCount: UseStateFunc<any>,
+    setappraiserTaskCount: UseStateFunc<any>,
+    setCountLoading: UseStateFunc<boolean>
 ) => {
-    // setIsLoading(true);
+    setCountLoading(true);
     try {
         const response = await privateGateway.get(dashboardRoutes.taskListCount);
         const taskCount: any = response?.data.response;
-        setTaskCount(taskCount)
-        // setIsLoading(false);
+        setpeerTaskCount(taskCount.peer_pending)
+        setappraiserTaskCount(taskCount.peer_pending)
+        setCountLoading(false);
     } catch (err: unknown) {
         const error = err as AxiosError;
     }

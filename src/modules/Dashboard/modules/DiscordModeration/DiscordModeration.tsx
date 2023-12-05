@@ -15,9 +15,9 @@ interface Option {
     label: string;
 }
 
-interface taskCount {
-    peerpending: Number;
-    appraiserPending: Number;
+type taskCount = {
+    peer_pending: number;
+    appraiser_Pending: number;
 }
 
 interface TaskOption {
@@ -32,8 +32,7 @@ type taskData = {
     status: string;
     discordlink: string
 };
-
-export const DiscordModeration = () => {
+const DiscordModeration = () => {
     const columnOrder: ColOrder[] = [
         { column: "fullname", Label: "Fullname", isSortable: false },
         { column: "task_name", Label: "Task name", isSortable: false },
@@ -57,8 +56,11 @@ export const DiscordModeration = () => {
     const [taskData, setTaskData] = useState<taskData[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [loading, setLoading] = useState(false);
+    const [countLoading, setCountLoading] = useState(false);
     const [perPage, setPerPage] = useState(20);
-    const [taskCount, setTaskCount] = useState(null);
+    const [peerTaskCount, setpeerTaskCount] = useState<number | null>();
+    const [appraiserTaskCount, setappraiserTaskCount] = useState<number | null>();
+
     const handleChange = (selected: Option | null) => {
         setSelectedOption(selected);
     };
@@ -69,7 +71,7 @@ export const DiscordModeration = () => {
 
     useEffect(() => {
         getTaskList(setTaskData, setLoading);
-        getTaskCount(setTaskCount);
+        getTaskCount(setpeerTaskCount, setappraiserTaskCount, setCountLoading);
     }, [])
 
     const handleIconClick = (column: string) => {
@@ -115,14 +117,20 @@ export const DiscordModeration = () => {
 
                 </div>
             </div>
-            {currentTab === "tasks" &&
-                <div className={styles.DiscordModerationCountRow}>
-                    <div className={styles.DiscordApprovalCount}>
-                        
+            {!countLoading && <>
+                {currentTab === "tasks" &&
+                    <div className={styles.DiscordModerationCountRow}>
+                        <div className={styles.DiscordApprovalCount}>
+                            <span className={styles.count}>1234</span>
+                            <span className={styles.txt}>tasks pending for <br /><span className={styles.highlight}>peer-approval</span></span>
+                        </div>
+                        <div className={styles.DiscordApprovalCount}>
+                            <span className={styles.count}>1234</span>
+                            <span className={styles.txt}>tasks pending for <br /><span className={styles.highlight}>appraisal-approval</span></span>
+                        </div>
                     </div>
-                    <div className={styles.DiscordApprovalCount}>h</div>
-                </div>
-            }
+                }
+            </>}
             {currentTab === "leaderboard" ?
                 <div className={styles.DiscordModerationRow}>
                     comming soon !!!
@@ -160,3 +168,6 @@ export const DiscordModeration = () => {
         </>
     )
 }
+
+
+export default DiscordModeration;

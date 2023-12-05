@@ -25,7 +25,6 @@
 .DiscordModerationSwitchTab {
     padding: 0.7rem;
     border-radius: 15px;
-    background: rgb(222, 230, 255);
 }
 
 .DiscordModerationFrom {
@@ -51,8 +50,25 @@
 
 .DiscordApprovalCount {
     display: flex;
-    width: 5rem;
-    height: 7rem;
+    width: 10rem;
+    align-items: center;
+    justify-content: center;
+    height: 10rem;
+    flex-direction: column;
     margin: 1rem;
-    background-color: rgb(222, 230, 255);
+    flex-wrap: nowrap;
+    border-radius: 10px;
+    background-color: rgb(236, 241, 255);
+}
+
+.count{
+    font-size: 2rem;
+}
+
+.txt{
+    font-size: 0.95rem;
+}
+
+.highlight{
+    font-size: 1rem;
 }
