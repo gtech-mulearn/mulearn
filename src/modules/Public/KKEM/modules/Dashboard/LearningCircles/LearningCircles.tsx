@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from './LearningCircles.module.css'
-import { getHackathonReport, getLCDashboard, getLCReport, getOrgWiseReport } from './services/LearningCircles';
-import { OrgCircle, OrgData, ResponseType, TableToggleProps, UserDetail, HackData } from './services/types';
+import { getHackDashboard, getHackathonReport, getLCDashboard, getLCReport, getOrgWiseReport } from './services/LearningCircles';
+import { OrgCircle, OrgData, ResponseType, TableToggleProps, UserDetail, HackData, HackDashboard } from './services/types';
 import TableTop from '@/MuLearnComponents/TableTop/TableTop';
 import Table from "@/MuLearnComponents/Table/Table";
 import THead from '@/MuLearnComponents/Table/THead';
@@ -31,6 +31,7 @@ const LearningCircles = () => {
     const [sort, setSort] = useState("");
     const [sortOrg, setSortOrg] = useState("");
     const [date, setDate] = useState("");
+    const [HackathonDashboard , setHackathonDashboard] = useState<HackDashboard[]>([])
 
     useEffect(() => {
         if (authorized) {
@@ -38,8 +39,10 @@ const LearningCircles = () => {
             getLCReport(setLcReport, currentPage, perPage, setTotalPages, "", sort,"", setLoading);
             getOrgWiseReport(setOrgWiseReport, orgCurrentPage, orgPerPage, setOrgTotalPages, "", sortOrg,"", setOrgLoading);
             getHackathonReport(setHackathonReport, currentHackPage, perHackPage, setTotalHackPages, "","",setHackLoading);
+            getHackDashboard(setHackathonDashboard)
         }
     }, [authorized])
+    console.log(HackathonDashboard[0])
 
     const columnOrder: ColOrder[] = [
         { column: "first_name", Label: "First Name", isSortable: true },
@@ -254,6 +257,29 @@ const LearningCircles = () => {
     const handleToggle = (tab: string) => {
         setActive(tab);
     }
+
+    const handleHackDashInputs = (input : string) => {
+        const regex = /\[(.*?)\]/;
+        const match = input.match(regex);
+        if (match) {
+            const subtext = match[1].split(',');
+            const num = input.split('[')[0];
+            return (
+                <>
+                    <p className={styles.count}>{num}</p>
+                    <p className={styles.sublabel}>{subtext}</p>
+                </>
+            )
+        }
+        else {
+            return (
+                <>
+                    <p className={styles.count}>{input}</p>
+                </>
+            )
+        }
+        
+    }
     useEffect(() => {
         // Create a mapping of organisations to unique learning circles
         const orgCircleMap: { [key: string]: Set<string> } = {};
@@ -364,6 +390,41 @@ const LearningCircles = () => {
                     </div> : 
                     <div>
                         <p className={styles.heading}>Hackathon</p>
+                        {HackathonDashboard.map((item) => {
+                            return (
+                                <>
+                                <p className={styles.subheading}>{`${item['Hackathon Name']}:${item.Domains}`}</p>
+                                <div className={styles.countsContainer}>
+                                    {item['Total Applicants'] && <div className={styles.studentsInvoled}>
+                                        <p className={styles.label}>Total Applicants</p>
+                                        {handleHackDashInputs(item['Total Applicants'])}
+                                    </div>}
+                                    {item['Shortlisted Candidates'] && <div className={styles.studentsInvoled}>
+                                        <p className={styles.label}>Shortlisted Candidates</p>
+                                        {handleHackDashInputs(item['Shortlisted Candidates'])}
+                                    </div>}
+                                    {item['Shortlisted Team Count'] && <div className={styles.studentsInvoled}>
+                                        <p className={styles.label}>Shortlisted Team Count</p>
+                                        {handleHackDashInputs(item['Shortlisted Team Count'])}
+                                    </div>}
+                                    {item['Attended People'] && <div className={styles.studentsInvoled}>
+                                            <p className={styles.label}>Attended People</p>
+                                            {handleHackDashInputs(item['Attended People'])}
+                                    </div>}
+                                    {item['Offerings Count'] && 
+                                        <div className={styles.studentsInvoled}>
+                                            <p className={styles.label}>Offerings Count</p>
+                                            {handleHackDashInputs(item['Offerings Count'])}
+                                    </div>}
+                                    {item['Placement Count'] && 
+                                    <div className={styles.studentsInvoled}>
+                                        <p className={styles.label}>Placement Count</p>
+                                        {handleHackDashInputs(item['Placement Count'])}
+                                    </div> }
+                                </div>
+                                </>
+                            )
+                        })}
                         <div className={styles.tableContainer}>
                         <TableTop
                             onSearchText={handleHackSearch}

@@ -40,6 +40,16 @@ export type HackData = {
     Email : string;
     HackathonName : string;
 }
+export type HackDashboard = {
+    "Hackathon Name": string;
+    "Domains" : string;
+    "Total Applicants": string;
+    "Shortlisted Candidates": string;
+    "Shortlisted Team Count": string;
+    "Attended People": string;
+    "Offerings Count": string;
+    "Placement Count": string;
+}
 export type TableToggleProps = {
     active : string;
     tabClick : (tab : string) => void;
