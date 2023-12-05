@@ -72,19 +72,23 @@ const LcCheckList = (props: prop) => {
             >
                 Enter your checklist
             </h4>
-            {items.map(item => (
-                <div key={item.id} className={styles.CheckBoxContainer}>
-                    <input
-                        type="checkbox"
-                        checked={item.isChecked}
-                        onChange={() => toggleItem(item.id)}
-                    />
-                    <label htmlFor="textInput">{item.text}</label>
-                    <IoMdRemoveCircleOutline
-                        onClick={() => removeItem(item.id)}
-                    />
-                </div>
-            ))}
+            <div className={styles.CheckBoxContentWrapper}>
+                {items.map(item => (
+                    <div key={item.id} className={styles.CheckBoxContainer}>
+                        <input
+                            type="checkbox"
+                            checked={item.isChecked}
+                            onChange={() => toggleItem(item.id)}
+                        />
+                        <label htmlFor="textInput">{item.text}</label>
+                        <IoMdRemoveCircleOutline
+							style={{ fontSize: "20px !important" }}
+                            onClick={() => removeItem(item.id)}
+                        />
+                    </div>
+                ))}
+            </div>
+
             <div className={styles.CheckBoxContainerButton}>
                 <button
                     onClick={() => {

@@ -5,6 +5,7 @@ import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { useState, useMemo } from "react";
 import { BiDownload, BiArrowBack } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
+import { getTaskTemplate } from "./TaskApis";
 export const CountCard = ({
     title,
     count
@@ -66,9 +67,11 @@ const TaskBulkImport = () => {
                 />
                 <SingleButton
                     text={"Download Template"}
-                    onClick={handleClick}
+                    onClick={() =>
+                        getTaskTemplate()
+                    }
                     icon={<BiDownload />}
-                    link="https://docs.google.com/spreadsheets/d/1Lj-rRc_uo6MY_Lz6wJhpWZA8ya39EZw-omy-yN4-OBA/edit?usp=drivesdk"
+                    // link="https://docs.google.com/spreadsheets/d/1Lj-rRc_uo6MY_Lz6wJhpWZA8ya39EZw-omy-yN4-OBA/edit?usp=drivesdk"
                 />
             </div>
 

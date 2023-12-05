@@ -85,7 +85,7 @@ const CampusStudentList = (props: Props) => {
             wrap: (data, id) => {
                 return (
                     <AlumniCheckBox
-                        checked={data === "true"}
+                        checked={data === "true" ? true : false}
                         id={id}
                         setCurrBox={setCurrBox}
                         setCurrModal={setCurrModal}
@@ -241,12 +241,12 @@ const CampusStudentList = (props: Props) => {
                         "Are you sure you want to change the alumni status?"
                     }
                     click={async () => {
+                        setCurrModal(false);
                         await setAlumniStatus(
                             currBox.id,
                             currBox.value,
                             msg => {}
                         );
-
                         //workaround state not updating issue
                         await new Promise(res => setTimeout(res, 1000));
                         setStudentData([]);

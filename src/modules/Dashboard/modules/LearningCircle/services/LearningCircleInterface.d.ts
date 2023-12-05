@@ -22,6 +22,7 @@ interface LcMembers {
 type LcDetail = {
     name: string;
     circle_code: string;
+    ig_name: string;
     note: string;
     meet_time: string;
     meet_place: string;

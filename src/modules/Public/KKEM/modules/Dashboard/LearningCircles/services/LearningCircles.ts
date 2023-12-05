@@ -1,11 +1,23 @@
 import axios from "axios";
 import { publicGateway } from "@/MuLearnServices/apiGateways";
-import { PublicRoutes } from "@/MuLearnServices/urls";
+import { PublicRoutes, googleSheetRoutes } from "@/MuLearnServices/urls";
+
 
 type ResponseType = (data: any) => void;
 type UserDetail = (data: any) => void;
 type OrgData = (data: any) => void;
+type HackData = (data: any) => void;
+type HackDashboard = (data: any) => void;
 
+export const getHackDashboard = (setHackDashboard: HackDashboard) => {
+    publicGateway
+    publicGateway.get(googleSheetRoutes.getHackathonDashboardData,{
+    }).then(response=>{
+        setHackDashboard(response.data);
+    }).catch(error=>{
+        console.error(error);
+    })
+}
 export const getLCDashboard = (setLcCounts: ResponseType, date?: string) => {
     publicGateway
         .get(PublicRoutes.getLcDashboard, {
@@ -43,7 +55,7 @@ export const getLCReport = (
             }
         })
         .then(response => {
-            setLcReport(response.data.response.data);
+            setLcReport(response.data.response);
             if (setTotalPages) {
                 const totalPages = response.data.response.pagination.totalPages;
                 setTotalPages(totalPages);
@@ -92,3 +104,42 @@ export const getOrgWiseReport = (
             setLoading && setLoading(false);
         });
 };
+export const getHackathonReport = (
+    setHackathonReport : HackData,
+    page: number,
+    selectedValue: number,
+    setTotalPages?: UseStateFunc<number>,
+    search?: string,
+    date?: string,
+    setLoading?: UseStateFunc<boolean>)=>{
+    publicGateway.get(googleSheetRoutes.getHackathonData,{
+    })
+    .then(response=>{
+        if (search != null && search != "") {
+            response.data = response.data.filter((item: any) => {
+                if(
+                    (item.CandidateName?.toLowerCase() || '').includes(search.toLowerCase()) ||
+                    (item.DWMSID?.toLowerCase() || '').includes(search.toLowerCase()) ||
+                    (item.Email?.toLowerCase() || '').includes(search.toLowerCase()) ||
+                    (item.HackathonName?.toLowerCase() || '').includes(search.toLowerCase())
+                ){
+                    return item
+                }
+            });
+        }
+        const startIndex = (page - 1) * selectedValue;
+        const endIndex = page * selectedValue;
+        const paginatedData = response.data.slice(startIndex, endIndex);
+        setHackathonReport(paginatedData);
+        if (setTotalPages) {
+            const totalPages = Math.ceil(response.data.length / selectedValue);
+            setTotalPages(totalPages);
+        }
+    }).catch(error=>{
+        console.error(error);
+    }).finally(() => {
+        setLoading && setLoading(false);
+    });
+}
+
+
