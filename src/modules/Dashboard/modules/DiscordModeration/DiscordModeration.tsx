@@ -105,6 +105,7 @@ const DiscordModeration = () => {
                                 />
                                 :
                                 <SelectTab
+                                    isDisabled
                                     placeholder={"Select criteria"}
                                     options={taskOptions}
                                     styles={customReactSelectStyles}
