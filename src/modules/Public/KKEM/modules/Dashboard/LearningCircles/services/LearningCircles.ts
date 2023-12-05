@@ -7,8 +7,17 @@ type ResponseType = (data: any) => void;
 type UserDetail = (data: any) => void;
 type OrgData = (data: any) => void;
 type HackData = (data: any) => void;
+type HackDashboard = (data: any) => void;
 
-
+export const getHackDashboard = (setHackDashboard: HackDashboard) => {
+    publicGateway
+    publicGateway.get(googleSheetRoutes.getHackathonDashboardData,{
+    }).then(response=>{
+        setHackDashboard(response.data);
+    }).catch(error=>{
+        console.error(error);
+    })
+}
 export const getLCDashboard = (setLcCounts: ResponseType, date?: string) => {
     publicGateway
         .get(PublicRoutes.getLcDashboard, {
