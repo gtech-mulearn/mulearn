@@ -43,8 +43,8 @@
     justify-content: space-evenly;
     position: relative;
     gap: 1rem;
-
-    width: 100%;
+    align-self: self-start;
+    width: 95%;
     background: #fff;
 }
 
