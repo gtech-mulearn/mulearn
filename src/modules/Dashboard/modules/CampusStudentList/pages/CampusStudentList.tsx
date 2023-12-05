@@ -14,11 +14,11 @@ import {
     getWeeklyKarma,
     setAlumniStatus
 } from "../services/apis";
-import { PieChart, BarChart } from "../Components/Graphs";
+import { BarChart } from "../Components/Graphs";
 import styles from "./CampusStudentList.module.css";
 import CLIcon from "../assets/images/CampusLeadIcon.svg";
 import CEIcon from "../../LearningCircle/assets/images/Lead icon.svg";
-import { Spinner, useToast } from "@chakra-ui/react";
+import { useToast } from "@chakra-ui/react";
 import { convertDateToDayAndMonth } from "../../../utils/common";
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 import Modal from "@/MuLearnComponents/Modal/Modal";
@@ -33,7 +33,6 @@ type Props = {};
 const CampusStudentList = (props: Props) => {
     const toast = useToast();
 
-    const columns = [];
     const [studentData, setStudentData] = useState<any[]>([]);
     const [perPage, setPerPage] = useState(20);
     const [currentPage, setCurrentPage] = useState(1);
@@ -41,6 +40,7 @@ const CampusStudentList = (props: Props) => {
     const [noOrg, setNoOrg] = useState(false);
     const [sort, setSort] = useState("");
     const [CSVBlob, setCSVFile] = useState<Blob | null>();
+    const [search, setSearch] = useState("");
     const navigate = useNavigate();
 
     //graph data
@@ -69,31 +69,31 @@ const CampusStudentList = (props: Props) => {
         Label: string;
         wrap?: (data: string, id: string) => ReactJSXElement;
     }[] = [
-            { column: "fullname", Label: "Name", isSortable: true },
-            // { column: "email", Label: "Email", isSortable: false },
-            { column: "karma", Label: "Karma", isSortable: true },
-            { column: "level", Label: "Level", isSortable: true },
-            { column: "rank", Label: "Rank", isSortable: false },
-            { column: "muid", Label: "MuId", isSortable: true },
-            { column: "email", Label: "Email", isSortable: true },
-            { column: "mobile", Label: "Mobile", isSortable: true },
-            { column: "join_date", Label: "Join Date", isSortable: true },
-            {
-                column: "is_alumni",
-                Label: "Alumni",
-                isSortable: true,
-                wrap: (data, id) => {
-                    return (
-                        <AlumniCheckBox
-                            checked={data === "true" ? true : false}
-                            id={id}
-                            setCurrBox={setCurrBox}
-                            setCurrModal={setCurrModal}
-                        />
-                    );
-                }
+        { column: "fullname", Label: "Name", isSortable: true },
+        // { column: "email", Label: "Email", isSortable: false },
+        { column: "karma", Label: "Karma", isSortable: true },
+        { column: "level", Label: "Level", isSortable: true },
+        { column: "rank", Label: "Rank", isSortable: false },
+        { column: "muid", Label: "MuId", isSortable: true },
+        { column: "email", Label: "Email", isSortable: true },
+        { column: "mobile", Label: "Mobile", isSortable: true },
+        { column: "join_date", Label: "Join Date", isSortable: true },
+        {
+            column: "is_alumni",
+            Label: "Alumni",
+            isSortable: true,
+            wrap: (data, id) => {
+                return (
+                    <AlumniCheckBox
+                        checked={data === "true"}
+                        id={id}
+                        setCurrBox={setCurrBox}
+                        setCurrModal={setCurrModal}
+                    />
+                );
             }
-        ];
+        }
+    ];
 
     const [campusData, setCampusData] = useState({
         college_name: "",
@@ -113,12 +113,24 @@ const CampusStudentList = (props: Props) => {
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        getStudentDetails(setStudentData, nextPage, perPage);
+        getStudentDetails(
+            setStudentData,
+            nextPage,
+            perPage,
+            setTotalPages,
+            search
+        );
     };
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-        getStudentDetails(setStudentData, prevPage, perPage);
+        getStudentDetails(
+            setStudentData,
+            prevPage,
+            perPage,
+            setTotalPages,
+            search
+        );
     };
     useEffect(() => {
         if (firstFetch.current) {
@@ -165,6 +177,7 @@ const CampusStudentList = (props: Props) => {
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
+        setSearch(search);
         getStudentDetails(
             setStudentData,
             1,
@@ -184,7 +197,7 @@ const CampusStudentList = (props: Props) => {
             1,
             selectedValue,
             setTotalPages,
-            "",
+            search,
             ""
         );
     };
@@ -200,7 +213,7 @@ const CampusStudentList = (props: Props) => {
                 1,
                 perPage,
                 setTotalPages,
-                "",
+                search,
                 `-${column}`
             );
         } else {
@@ -210,7 +223,7 @@ const CampusStudentList = (props: Props) => {
                 1,
                 perPage,
                 setTotalPages,
-                "",
+                search,
                 column
             );
         }
@@ -232,12 +245,11 @@ const CampusStudentList = (props: Props) => {
                         await setAlumniStatus(
                             currBox.id,
                             currBox.value,
-                            msg => { }
+                            msg => {}
                         );
                         //workaround state not updating issue
                         await new Promise(res => setTimeout(res, 1000));
                         setStudentData([]);
-
                     }}
                 />
             )}
@@ -284,10 +296,10 @@ const CampusStudentList = (props: Props) => {
                                                         campusData.total_karma
                                                     ) > 1000
                                                         ? (
-                                                            parseInt(
-                                                                campusData.total_karma
-                                                            ) / 1000
-                                                        ).toPrecision(4) + "K"
+                                                              parseInt(
+                                                                  campusData.total_karma
+                                                              ) / 1000
+                                                          ).toPrecision(4) + "K"
                                                         : campusData.total_karma}
                                                 </h1>
                                                 <p>Karma</p>
@@ -344,7 +356,7 @@ const CampusStudentList = (props: Props) => {
                                 <div className={styles.sec2}>
                                     <p className={styles.clg_rank}>
                                         {campusData?.rank?.toString().length ===
-                                            1
+                                        1
                                             ? "0" + campusData.rank
                                             : campusData.rank}
                                     </p>
@@ -378,7 +390,7 @@ const CampusStudentList = (props: Props) => {
                         </div>
                     </div>
                     <div className={styles.btnContainer}>
-                        <PowerfulButton onClick={() => { }}>
+                        <PowerfulButton onClick={() => {}}>
                             <AiOutlineDownload />
                             <a
                                 href={
@@ -390,7 +402,7 @@ const CampusStudentList = (props: Props) => {
                             </a>
                         </PowerfulButton>
                     </div>
-                    {studentData &&  (
+                    {studentData && (
                         <>
                             <TableTop
                                 onSearchText={handleSearch}
@@ -435,19 +447,15 @@ type checkbox_T = {
 };
 
 function AlumniCheckBox(props: checkbox_T) {
-    const [checked, setChecked] = useState(props.checked);
-    const [loading, setLoading] = useState(false);
-
     const handleChange = async (e: ChangeEvent<HTMLInputElement>) => {
         props.setCurrBox({ id: props.id, value: e.target.checked });
         props.setCurrModal(true);
     };
 
-    if (loading) return <Spinner />;
     return (
         <input
             type="checkbox"
-            checked={checked}
+            checked={props.checked}
             className={styles.checkbox}
             onChange={handleChange}
         />
