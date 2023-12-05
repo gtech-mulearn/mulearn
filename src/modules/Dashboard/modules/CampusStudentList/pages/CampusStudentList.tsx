@@ -85,7 +85,7 @@ const CampusStudentList = (props: Props) => {
             wrap: (data, id) => {
                 return (
                     <AlumniCheckBox
-                        checked={data === "true" ? true : false}
+                        checked={data === "true"}
                         id={id}
                         setCurrBox={setCurrBox}
                         setCurrModal={setCurrModal}
