@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
+import { ChangeEvent, forwardRef, useEffect, useImperativeHandle, useState } from "react";
 import styles from "../../utils/modalForm.module.css";
 
 import toast from "react-hot-toast";
@@ -10,11 +10,14 @@ import {
     getCommunities,
     getInterests,
     getManageUsersDetails,
-    getRoles
+    getRoles,
+    getLocations
 } from "./apis";
 import CountryStateDistrict from "@/MuLearnComponents/CascadingSelects/CountryStateDistrict";
 import Select from "react-select";
 import { customReactSelectStyles } from "../../utils/common";
+
+import makeAnimated from "react-select/animated";
 import { getColleges } from "src/modules/Common/Authentication/services/onboardingApis";
 
 type Props = { id: string };
@@ -29,7 +32,7 @@ const UserForm = forwardRef(
     (props: Props & { closeModal: () => void }, ref: any) => {
         const [initialData, setInitialData] =
             useState<InitialLocationData>(null);
-
+            const animatedComponents = makeAnimated();
         const {
             locationData,
             loadingCountries,
@@ -163,6 +166,7 @@ const UserForm = forwardRef(
             }
         };
 
+        const [location, setLocation] = useState<AffiliationOption[]>([]);
         const [college, setCollege] = useState<AffiliationOption[]>([]);
         const [department, setDepartment] = useState<AffiliationOption[]>([]);
         const [ig, setIg] = useState<AffiliationOption[]>([]);
@@ -170,6 +174,11 @@ const UserForm = forwardRef(
         const [selectedRoles, setSelectedRoles] = useState<AffiliationOption[]>(
             []
         );
+        const [locationParam, setLocationParam] = useState("india");
+        const [locationDatas, setLocationDatas] = useState([
+            { id: "", location: "" }
+        ])
+        const [isApiCalled, setIsApiCalled] = useState(false);
         const [selectData, setSelectData] = useState({
             community: [] as AffiliationOption[],
             selectedCommunity: [] as string[],
@@ -202,6 +211,29 @@ const UserForm = forwardRef(
         }, [locationData]);
 
         useEffect(() => { }, [selectData.roles]);
+
+        useEffect(() => {
+            if (!isApiCalled) {
+                handleGetLocation()
+            }
+        }, [locationParam])
+
+        const handleGetLocation = async () => {
+            getLocations(locationParam, setLocationDatas, setIsApiCalled)
+        }
+
+        const handleDistrictsChange = (e: ChangeEvent<HTMLInputElement>) => {
+            console.log(e)
+            const data = e;
+            if (data) {
+              // Use a type assertion to specify the correct type
+              const id = (data as any).value;
+              console.log(data);
+        
+              // Update the "district" state variable
+              setLocation(id);
+            }
+          };
 
         //! useImperativeHandle for triggering submit from MuModal button
         useImperativeHandle(ref, () => ({
@@ -263,275 +295,323 @@ const UserForm = forwardRef(
         return (
             <div className={styles.container}>
                 <form className={styles.formContainer} onSubmit={handleSubmit}>
-                    <div className={styles.inputContainer}>
-                        <input
-                            type="text"
-                            name="first_name"
-                            placeholder="First Name"
-                            value={data.first_name}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                        />
-                        {errors.first_name && (
-                            <div style={{ color: "red" }}>
-                                {errors.first_name}
-                            </div>
-                        )}
-                    </div>
-                    <div className={styles.inputContainer}>
-                        <input
-                            type="text"
-                            name="last_name"
-                            placeholder="Last Name"
-                            value={data.last_name}
-                            onChange={handleChange}
-                        // onBlur={handleBlur}
-                        />
-                        {errors.last_name && (
-                            <div style={{ color: "red" }}>
-                                {errors.last_name}
-                            </div>
-                        )}
-                    </div>
-                    <div className={styles.inputContainer}>
-                        <input
-                            type="text"
-                            name="email"
-                            placeholder="Email"
-                            value={data.email}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                        />
-                        {errors.email && (
-                            <div style={{ color: "red" }}>{errors.email}</div>
-                        )}
-                    </div>
-                    <div className={styles.inputContainer}>
-                        <input
-                            type="text"
-                            name="mobile"
-                            placeholder="Mobile"
-                            value={data.mobile}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                        />
-                        {errors.mobile && (
-                            <div style={{ color: "red" }}>{errors.mobile}</div>
-                        )}
-                    </div>
-                    <div className={styles.inputContainer}>
-                        <input
-                            type="text"
-                            name="discord_id"
-                            placeholder="DiscordId"
-                            value={data.discord_id as string}
-                            onChange={handleChange}
-                        // onBlur={handleBlur}
-                        />
-                        {errors.discord_id && (
-                            <div style={{ color: "red" }}>
-                                {errors.discord_id}
-                            </div>
-                        )}
-                    </div>
-
-                    <div className={styles.inputContainer}>
-                        <Select
-                            styles={customReactSelectStyles}
-                            options={selectData.community}
-                            isClearable
-                            isMulti
-                            placeholder="Community"
-                            isLoading={!selectData.community.length}
-                            value={selectData.community.filter(comm =>
-                                selectData.selectedCommunity.includes(
-                                    comm?.value
-                                )
+                    {/* <p className={styles.formHeader}>BASIC INFO</p>  */}
+                    <div className={styles.formContainer}>
+                        <div className={styles.inputContainer}>
+                            <input
+                                type="text"
+                                name="first_name"
+                                placeholder="First Name"
+                                value={data.first_name}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                            />
+                            {errors.first_name && (
+                                <div style={{ color: "red" }}>
+                                    {errors.first_name}
+                                </div>
                             )}
-                            onChange={(selectedOptions: any) => {
-                                setSelectData(prevState => ({
-                                    ...prevState,
-                                    selectedCommunity: selectedOptions.map(
-                                        (opt: any) => opt?.value
-                                    )
-                                }));
-                            }}
-                            onBlur={() => {
-                                setSelectData(prev => ({
-                                    ...prev,
-                                    blurStatus: {
-                                        ...prev.blurStatus,
-                                        community: true
+                        </div>
+                        <div className={styles.inputContainer}>
+                            <input
+                                type="text"
+                                name="last_name"
+                                placeholder="Last Name"
+                                value={data.last_name}
+                                onChange={handleChange}
+                                // onBlur={handleBlur}
+                            />
+                            {errors.last_name && (
+                                <div style={{ color: "red" }}>
+                                    {errors.last_name}
+                                </div>
+                            )}
+                        </div>
+                        <div className={styles.inputContainer}>
+                            <input
+                                type="text"
+                                name="email"
+                                placeholder="Email"
+                                value={data.email}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                            />
+                            {errors.email && (
+                                <div style={{ color: "red" }}>
+                                    {errors.email}
+                                </div>
+                            )}
+                        </div>
+                        <div className={styles.inputContainer}>
+                            <input
+                                type="text"
+                                name="mobile"
+                                placeholder="Mobile"
+                                value={data.mobile}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                            />
+                            {errors.mobile && (
+                                <div style={{ color: "red" }}>
+                                    {errors.mobile}
+                                </div>
+                            )}
+                        </div>
+                        <div className={styles.inputContainer}>
+                            <input
+                                type="text"
+                                name="discord_id"
+                                placeholder="DiscordId"
+                                value={data.discord_id as string}
+                                onChange={handleChange}
+                                // onBlur={handleBlur}
+                            />
+                            {errors.discord_id && (
+                                <div style={{ color: "red" }}>
+                                    {errors.discord_id}
+                                </div>
+                            )}
+                        </div>
+
+                        <div className={styles.inputContainer}>
+                            <Select
+                            styles={customReactSelectStyles}
+                                placeholder="Select your location"
+                                onChange={(e: any) =>
+                                    {console.log(e);
+                                    handleDistrictsChange(e)}
+                                }
+                                components={animatedComponents}
+                                isClearable
+                                // isMulti
+                                filterOption={(option, inputValue) => {
+                                    if (inputValue === "") {
+                                        setLocationParam("india");
                                     }
-                                }));
-                            }}
-                        />
-                        {/* {selectData.blurStatus.community &&
+                                    setLocationParam(inputValue);
+                                    return option.label
+                                        .toLowerCase()
+                                        .includes(inputValue.toLowerCase());
+                                }}
+                                options={locationDatas.map(location => {
+                                    return {
+                                        value: location.id,
+                                        label: location.location
+                                    };
+                                })}
+                            />
+                        </div>
+
+                        <div className={styles.inputContainer}>
+                            <Select
+                                styles={customReactSelectStyles}
+                                options={selectData.community}
+                                isClearable
+                                isMulti
+                                placeholder="Community"
+                                isLoading={!selectData.community.length}
+                                value={selectData.community.filter(comm =>
+                                    selectData.selectedCommunity.includes(
+                                        comm?.value
+                                    )
+                                )}
+                                onChange={(selectedOptions: any) => {
+                                    setSelectData(prevState => ({
+                                        ...prevState,
+                                        selectedCommunity: selectedOptions.map(
+                                            (opt: any) => opt?.value
+                                        )
+                                    }));
+                                }}
+                                onBlur={() => {
+                                    setSelectData(prev => ({
+                                        ...prev,
+                                        blurStatus: {
+                                            ...prev.blurStatus,
+                                            community: true
+                                        }
+                                    }));
+                                }}
+                            />
+                            {/* {selectData.blurStatus.community &&
                             !selectData.selectedCommunity && (
                                 <div style={{ color: "red" }}>
                                     Community is Required
                                 </div>
                             )} */}
-                    </div>
+                        </div>
 
-                    <div className={styles.inputContainer}>
-                        <Select
-                            styles={customReactSelectStyles}
-                            options={selectData.roles}
-                            isClearable
-                            isMulti
-                            placeholder="Roles"
-                            isLoading={!selectData.roles.length}
-                            value={selectData.roles.filter(roles =>
-                                selectData.selectedRoles.includes(roles?.value)
-                            )}
-                            onChange={(selectedOptions: any) => {
-                                setSelectData(selectData => ({
-                                    ...selectData,
-                                    selectedRoles: selectedOptions.map(
-                                        (opt: any) => opt?.value
+                        <div className={styles.inputContainer}>
+                            <Select
+                                styles={customReactSelectStyles}
+                                options={selectData.roles}
+                                isClearable
+                                isMulti
+                                placeholder="Roles"
+                                isLoading={!selectData.roles.length}
+                                value={selectData.roles.filter(roles =>
+                                    selectData.selectedRoles.includes(
+                                        roles?.value
                                     )
-                                }));
-                                // setSelectedRoles(selectedOptions);
-                            }}
-                            onBlur={() => {
-                                setSelectData(prev => ({
-                                    ...prev,
-                                    blurStatus: {
-                                        ...prev.blurStatus,
-                                        roles: true
-                                    }
-                                }));
-                            }}
-                        />
-                        {/* {selectData.blurStatus.roles &&
+                                )}
+                                onChange={(selectedOptions: any) => {
+                                    setSelectData(selectData => ({
+                                        ...selectData,
+                                        selectedRoles: selectedOptions.map(
+                                            (opt: any) => opt?.value
+                                        )
+                                    }));
+                                    // setSelectedRoles(selectedOptions);
+                                }}
+                                onBlur={() => {
+                                    setSelectData(prev => ({
+                                        ...prev,
+                                        blurStatus: {
+                                            ...prev.blurStatus,
+                                            roles: true
+                                        }
+                                    }));
+                                }}
+                            />
+                            {/* {selectData.blurStatus.roles &&
                             !selectData.selectedRoles && (
                                 <div style={{ color: "red" }}>
                                     Roles is Required
                                 </div>
                             )} */}
-                    </div>
+                        </div>
 
-                    <div className={styles.inputContainer}>
-                        <Select
-                            styles={customReactSelectStyles}
-                            options={ig}
-                            isClearable
-                            isMulti
-                            placeholder="Interest Groups"
-                            isLoading={ig.length ? false : true}
-                            // value={selectData.selectedInterestGroups}
-                            onChange={(selectedOptions: any) => {
-                                setSelectedIg(selectedOptions);
-                            }}
-                            onBlur={() => {
-                                setSelectData(prev => ({
-                                    ...prev,
-                                    blurStatus: {
-                                        ...prev.blurStatus,
-                                        interest_groups: true
-                                    }
-                                }));
-                            }}
-                            value={ig.filter(val =>
-                                selectData.selectedInterestGroups.includes(
-                                    val?.value
-                                )
-                            )}
-                        />
-                        {/* {selectData.blurStatus.interestGroups &&
+                        <div className={styles.inputContainer}>
+                            <Select
+                                styles={customReactSelectStyles}
+                                options={ig}
+                                isClearable
+                                isMulti
+                                placeholder="Interest Groups"
+                                isLoading={ig.length ? false : true}
+                                // value={selectData.selectedInterestGroups}
+                                onChange={(selectedOptions: any) => {
+                                    setSelectedIg(selectedOptions);
+                                }}
+                                onBlur={() => {
+                                    setSelectData(prev => ({
+                                        ...prev,
+                                        blurStatus: {
+                                            ...prev.blurStatus,
+                                            interest_groups: true
+                                        }
+                                    }));
+                                }}
+                                value={ig.filter(val =>
+                                    selectData.selectedInterestGroups.includes(
+                                        val?.value
+                                    )
+                                )}
+                            />
+                            {/* {selectData.blurStatus.interestGroups &&
                             !selectData.selectedInterestGroups && (
                                 <div style={{ color: "red" }}>
                                     IG is Required
                                 </div>
                             )} */}
+                        </div>
                     </div>
-
-                    <CountryStateDistrict
-                        countries={locationData.countries}
-                        states={locationData.states}
-                        districts={locationData.districts}
-                        selectedCountry={locationData.selectedCountry}
-                        selectedState={locationData.selectedState}
-                        selectedDistrict={locationData.selectedDistrict}
-                        loadingCountries={loadingCountries}
-                        loadingStates={loadingStates}
-                        loadingDistricts={loadingDistricts}
-                        onCountryChange={handleCountryChange}
-                        onStateChange={handleStateChange}
-                        onDistrictChange={handleDistrictChange}
-                        notRequired={true}
+                    <hr
+                        style={{
+                            width: "50%",
+                            textAlign: "left",
+                            marginLeft: 0
+                        }}
                     />
-
-                    <div className={styles.inputContainer}>
-                        <Select
-                            styles={customReactSelectStyles}
-                            options={college}
-                            isClearable
-                            placeholder="College"
-                            isLoading={!college.length}
-                            value={college.filter(
-                                college =>
-                                    college?.value === selectData.selectedCollege
-                            )}
-                            onChange={(selectedOptions: any) => {
-                                setSelectData(prevState => ({
-                                    ...prevState,
-                                    selectedCollege: selectedOptions?.value
-                                }));
-                            }}
-                            onBlur={() => {
-                                setSelectData(prev => ({
-                                    ...prev,
-                                    blurStatus: {
-                                        ...prev.blurStatus,
-                                        college: true
-                                    }
-                                }));
-                            }}
+                    <div className={styles.formContainer}>
+                        <CountryStateDistrict
+                            countries={locationData.countries}
+                            states={locationData.states}
+                            districts={locationData.districts}
+                            selectedCountry={locationData.selectedCountry}
+                            selectedState={locationData.selectedState}
+                            selectedDistrict={locationData.selectedDistrict}
+                            loadingCountries={loadingCountries}
+                            loadingStates={loadingStates}
+                            loadingDistricts={loadingDistricts}
+                            onCountryChange={handleCountryChange}
+                            onStateChange={handleStateChange}
+                            onDistrictChange={handleDistrictChange}
+                            notRequired={true}
                         />
-                        {/* {selectData.blurStatus.college &&
+
+                        <div className={styles.inputContainer}>
+                            <Select
+                                styles={customReactSelectStyles}
+                                options={college}
+                                isClearable
+                                placeholder="College"
+                                isLoading={!college.length}
+                                value={college.filter(
+                                    college =>
+                                        college?.value ===
+                                        selectData.selectedCollege
+                                )}
+                                onChange={(selectedOptions: any) => {
+                                    setSelectData(prevState => ({
+                                        ...prevState,
+                                        selectedCollege: selectedOptions?.value
+                                    }));
+                                }}
+                                onBlur={() => {
+                                    setSelectData(prev => ({
+                                        ...prev,
+                                        blurStatus: {
+                                            ...prev.blurStatus,
+                                            college: true
+                                        }
+                                    }));
+                                }}
+                            />
+                            {/* {selectData.blurStatus.college &&
                             !selectData.selectedCollege && (
                                 <div style={{ color: "red" }}>
                                     College is Required
                                 </div>
                             )} */}
-                    </div>
+                        </div>
 
-                    <div className={styles.inputContainer}>
-                        <Select
-                            styles={customReactSelectStyles}
-                            options={department}
-                            isClearable
-                            placeholder="Department"
-                            isLoading={!department.length}
-                            value={department.filter(
-                                dep =>
-                                    (dep?.value as any) ===
-                                    selectData.selectedDepartment
-                            )}
-                            onChange={(selectedOptions: any) => {
-                                setSelectData(prevState => ({
-                                    ...prevState,
-                                    selectedDepartment: selectedOptions?.value
-                                }));
-                            }}
-                            onBlur={() => {
-                                setSelectData(prev => ({
-                                    ...prev,
-                                    blurStatus: {
-                                        ...prev.blurStatus,
-                                        department: true
-                                    }
-                                }));
-                            }}
-                        />
-                        {/* {selectData.blurStatus.department &&
+                        <div className={styles.inputContainer}>
+                            <Select
+                                styles={customReactSelectStyles}
+                                options={department}
+                                isClearable
+                                placeholder="Department"
+                                isLoading={!department.length}
+                                value={department.filter(
+                                    dep =>
+                                        (dep?.value as any) ===
+                                        selectData.selectedDepartment
+                                )}
+                                onChange={(selectedOptions: any) => {
+                                    setSelectData(prevState => ({
+                                        ...prevState,
+                                        selectedDepartment:
+                                            selectedOptions?.value
+                                    }));
+                                }}
+                                onBlur={() => {
+                                    setSelectData(prev => ({
+                                        ...prev,
+                                        blurStatus: {
+                                            ...prev.blurStatus,
+                                            department: true
+                                        }
+                                    }));
+                                }}
+                            />
+                            {/* {selectData.blurStatus.department &&
                             !selectData.selectedDepartment && (
                                 <div style={{ color: "red" }}>
                                     Department is Required
                                 </div>
                             )} */}
+                        </div>
                     </div>
                 </form>
             </div>
@@ -540,3 +620,5 @@ const UserForm = forwardRef(
 );
 
 export default UserForm;
+
+
