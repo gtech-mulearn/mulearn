@@ -108,8 +108,9 @@ export const DiscordModeration = () => {
                 </div>
             </div>
             {currentTab === "tasks" &&
-                <div className={styles.DiscordModerationRow}>
-                    comming soon !!! hy
+                <div className={styles.DiscordModerationCountRow}>
+                    <div className={styles.DiscordApprovalCount}>h</div>
+                    <div className={styles.DiscordApprovalCount}>h</div>
                 </div>
             }
             {currentTab === "leaderboard" ?
