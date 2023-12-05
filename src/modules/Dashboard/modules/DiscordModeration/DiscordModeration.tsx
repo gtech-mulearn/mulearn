@@ -121,18 +121,18 @@ const DiscordModeration = () => {
                 {currentTab === "tasks" &&
                     <div className={styles.DiscordModerationCountRow}>
                         <div className={styles.DiscordApprovalCount}>
-                            <span className={styles.count}>1234</span>
+                            <span className={styles.count}>{peerTaskCount}</span>
                             <span className={styles.txt}>tasks pending for <br /><span className={styles.highlight}>peer-approval</span></span>
                         </div>
                         <div className={styles.DiscordApprovalCount}>
-                            <span className={styles.count}>1234</span>
+                            <span className={styles.count}>{appraiserTaskCount}</span>
                             <span className={styles.txt}>tasks pending for <br /><span className={styles.highlight}>appraisal-approval</span></span>
                         </div>
                     </div>
                 }
             </>}
             {currentTab === "leaderboard" ?
-                <div className={styles.DiscordModerationRow}>
+                <div className={styles.DiscordModerationLeaderboardRow}>
                     comming soon !!!
                 </div>
                 :

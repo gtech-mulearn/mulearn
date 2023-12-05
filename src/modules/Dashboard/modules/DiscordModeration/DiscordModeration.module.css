@@ -72,3 +72,13 @@
 .highlight{
     font-size: 1rem;
 }
+
+.DiscordModerationLeaderboardRow{
+    display: flex;
+    height: 5rem;
+    background: #fff;
+    width: 95%;
+    align-items: center;
+    justify-content: center;
+    align-self: self-start;
+}

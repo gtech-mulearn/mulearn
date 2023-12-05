@@ -25,9 +25,10 @@ export const getTaskCount = async (
     setCountLoading(true);
     try {
         const response = await privateGateway.get(dashboardRoutes.taskListCount);
-        const taskCount: any = response?.data.response;
-        setpeerTaskCount(taskCount.peer_pending)
-        setappraiserTaskCount(taskCount.peer_pending)
+        const taskData: any = response?.data.response;
+        console.log(taskData)
+        setpeerTaskCount(taskData.peer_pending)
+        setappraiserTaskCount(taskData.peer_pending)
         setCountLoading(false);
     } catch (err: unknown) {
         const error = err as AxiosError;
