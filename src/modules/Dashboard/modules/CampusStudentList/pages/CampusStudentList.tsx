@@ -85,7 +85,7 @@ const CampusStudentList = (props: Props) => {
             wrap: (data, id) => {
                 return (
                     <AlumniCheckBox
-                        checked={data === "true"}
+                        checked={data === "true" ? true : false}
                         id={id}
                         setCurrBox={setCurrBox}
                         setCurrModal={setCurrModal}
@@ -334,22 +334,27 @@ const CampusStudentList = (props: Props) => {
                                                     <p>Campus Lead</p>
                                                 </div>
                                             </div>
-                                            <div className={styles.card}>
-                                                <div
-                                                    className={
-                                                        styles.campus_lead_card
-                                                    }
-                                                >
-                                                    <img src={CEIcon} alt="" />
-                                                    <h2>
-                                                        {
-                                                            campusData.lead
-                                                                .enabler
+                                            {campusData.lead.enabler && (
+                                                <div className={styles.card}>
+                                                    <div
+                                                        className={
+                                                            styles.campus_lead_card
                                                         }
-                                                    </h2>
-                                                    <p>Campus Enabler</p>
+                                                    >
+                                                        <img
+                                                            src={CEIcon}
+                                                            alt=""
+                                                        />
+                                                        <h2>
+                                                            {
+                                                                campusData.lead
+                                                                    .enabler
+                                                            }
+                                                        </h2>
+                                                        <p>Campus Enabler</p>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
