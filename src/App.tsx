@@ -58,6 +58,13 @@ const Tasks = lazy(() =>
         default: module.Tasks
     }))
 );
+
+const TaskType = lazy(() =>
+    import("./modules/Dashboard/modules/TaskType/TaskType").then(module => ({
+        default: module.TaskType
+    }))
+);
+
 const ManageUsersCreate = lazy(
     () => import("./modules/Dashboard/modules/ManageUsers/ManageUsersCreate")
 );
@@ -435,6 +442,10 @@ function App() {
                         {
                             path: "tasks/edit/:id",
                             element: <TaskEdit />
+                        },
+                        {
+                            path: "task-type",
+                            element: <TaskType />
                         },
                         {
                             path: "tasks/bulk-import",
