@@ -139,9 +139,11 @@
                     position: absolute;
                     bottom: 0;
                     align-items: flex-end;
+                    z-index: 555;
+
 
                     .bar {
-                        width: 30px;
+                        width: 30px !important;
                         max-height: 100%;
                         background: rgb(108 123 255 / 100%);
                         border-radius: 8px 8px 0px 0px;
@@ -301,6 +303,125 @@
         gap: 20px;
         margin-top: 40px;
 
+        .sources {
+            width: calc(50% - 10px);
+            box-shadow: 0px 6.619px 12.292px 0px rgba(77, 77, 77, 0.10);
+            padding: 25px 20px;
+            border-radius: 10px;
+
+            & h1 {
+                color: #4F4F4F;
+                font-size: 20px;
+                font-weight: 600;
+            }
+
+            .source_list {
+                .rowsH {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 5px 0px;
+                    margin-bottom: -20px;
+
+                    .sourceH,
+                    .visitsH {
+                        color: #777;
+                        font-size: 15px;
+                    }
+                }
+
+                .rows {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 15px 0px;
+                    border-bottom: 1px solid rgba(106, 106, 106, 0.19);
+
+                    .source {
+                        color: #000D7F;
+                        font-size: 18px;
+                        font-weight: 600;
+                    }
+
+                    .visits {
+                        display: flex;
+                        align-items: center;
+                        gap: 5px;
+
+                        & span {
+                            border-radius: 10px;
+                            background: #A9B2FF;
+                            font-size: 10px;
+                            font-weight: 600;
+                            padding: 1px 5px;
+                            color: #000E88;
+                        }
+                    }
+                }
+            }
+        }
+
+        .countries {
+            width: calc(50% - 10px);
+            box-shadow: 0px 6.619px 12.292px 0px rgba(77, 77, 77, 0.10);
+            padding: 25px 20px;
+            border-radius: 10px;
+
+            & h1 {
+                color: #4F4F4F;
+                font-size: 20px;
+                font-weight: 600;
+            }
+
+            .source_list {
+                .rowsH {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 5px 0px;
+                    margin-bottom: -20px;
+
+                    .sourceH,
+                    .visitsH {
+                        color: #777;
+                        font-size: 15px;
+                    }
+                }
+
+                .rows {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 15px 0px;
+                    border-bottom: 1px solid rgba(106, 106, 106, 0.19);
+
+                    .source {
+                        color: #000D7F;
+                        font-size: 18px;
+                        font-weight: 600;
+                    }
+
+                    .visits {
+                        display: flex;
+                        align-items: center;
+                        gap: 5px;
+
+                        & span {
+                            border-radius: 10px;
+                            background: #A9B2FF;
+                            font-size: 10px;
+                            font-weight: 600;
+                            padding: 1px 5px;
+                            color: #000E88;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .screen_size {
+        display: flex;
+        width: 100%;
+        gap: 20px;
+        margin-top: 40px;
+        justify-content: center;
+        
         .sources {
             width: calc(50% - 10px);
             box-shadow: 0px 6.619px 12.292px 0px rgba(77, 77, 77, 0.10);

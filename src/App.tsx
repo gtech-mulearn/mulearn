@@ -507,7 +507,7 @@ function App() {
                             )
                         },
                         {
-                            path: "url-shortener/analytics",
+                            path: "url-shortener/analytics/:id",
                             element: (
                                 <RoleChecker
                                     roles={[
