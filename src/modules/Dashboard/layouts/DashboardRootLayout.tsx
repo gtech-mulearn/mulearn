@@ -98,6 +98,13 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     // icon: <i className="fi fi-sr-note"></i>
                 },
                 {
+                    url: "/dashboard/task-type",
+                    title: "Task Type",
+                    hasView: true,
+                    roles: [roles.ADMIN]
+                    // icon: <i className="fi fi-sr-note"></i>
+                },
+                {
                     url: "/dashboard/karma-voucher",
                     title: "Karma Voucher",
                     hasView: true,
