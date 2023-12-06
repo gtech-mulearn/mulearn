@@ -783,6 +783,9 @@ const LearningCircles = () => {
                                         </>
                                     );
                                 })}
+                                 <p className={styles.heading}>
+                                    Participant Data
+                                </p>
                                 <div className={styles.tableContainer}>
                                     <TableTop
                                         onSearchText={handleHackSearch}
