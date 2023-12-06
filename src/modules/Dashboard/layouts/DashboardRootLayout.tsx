@@ -191,7 +191,14 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     title: "Organization Transfer",
                     hasView: true,
                     roles: [roles.ADMIN]
-                }
+                },
+                {
+                    url: "/dashboard/discord-moderation",
+                    title: "Discord Moderation",
+                    hasView: true,
+                    roles: [roles.ADMIN]
+                    // icon: <i className="fi fi-sr-users-gear"></i>
+                },
             ]
         },
         {
