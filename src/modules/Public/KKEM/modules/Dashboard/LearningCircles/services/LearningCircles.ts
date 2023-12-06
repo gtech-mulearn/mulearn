@@ -55,7 +55,7 @@ export const getLCReport = (
             }
         })
         .then(response => {
-            setLcReport(response.data.response);
+            setLcReport(response.data.response.data);
             if (setTotalPages) {
                 const totalPages = response.data.response.pagination.totalPages;
                 setTotalPages(totalPages);
