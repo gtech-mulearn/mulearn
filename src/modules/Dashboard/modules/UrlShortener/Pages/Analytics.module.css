@@ -97,6 +97,7 @@
                 min-height: 200px;
                 position: relative;
                 margin: 20px auto;
+                overflow: scroll;
 
                 .v_lines {
                     width: 100%;
@@ -130,7 +131,7 @@
                 }
 
                 .bars {
-                    width: 100%;
+                    /* width: 100%; */
                     height: 200px;
                     display: flex;
                     flex-direction: row;
@@ -143,7 +144,7 @@
 
 
                     .bar {
-                        width: 30px !important;
+                        width: 30px;
                         max-height: 100%;
                         background: rgb(108 123 255 / 100%);
                         border-radius: 8px 8px 0px 0px;
@@ -217,6 +218,7 @@
             display: flex;
             justify-content: space-between;
             border-radius: 10px;
+            max-height: 510px;
 
             .source_box {
                 display: flex;
@@ -229,6 +231,7 @@
                 text-align: center;
                 gap: 20px;
                 flex-direction: column;
+                overflow: scroll;
 
 
                 & h1 {
@@ -259,6 +262,7 @@
             box-shadow: 0px 6.619px 12.292px 0px rgba(77, 77, 77, 0.10);
             padding: 25px 20px;
             border-radius: 10px;
+            max-height: 510px;
 
             .header {
                 display: flex;
@@ -415,13 +419,14 @@
             }
         }
     }
+
     .screen_size {
         display: flex;
         width: 100%;
         gap: 20px;
         margin-top: 40px;
         justify-content: center;
-        
+
         .sources {
             width: calc(50% - 10px);
             box-shadow: 0px 6.619px 12.292px 0px rgba(77, 77, 77, 0.10);
@@ -531,6 +536,77 @@
                         }
                     }
                 }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .analytics_header {
+        flex-direction: column;
+        gap: 20px;
+
+        .link_basics {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .link_copy {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+
+    .main_section_analytics {
+        .clicks_visits {
+            flex-direction: column;
+            gap: 20px;
+
+            .clicks {
+                width: 100%;
+            }
+
+            .visits {
+                width: 100%;
+            }
+        }
+
+        .sources_weeks {
+            flex-direction: column;
+            gap: 20px;
+
+            .sources {
+                width: 100%;
+            }
+
+            .week_analytics {
+                width: 100%;
+            }
+        }
+
+        .sources_countries {
+            flex-direction: column;
+            gap: 20px;
+
+            .sources {
+                width: 100%;
+            }
+
+            .countries {
+                width: 100%;
+            }
+        }
+
+        .screen_size {
+            flex-direction: column;
+            gap: 20px;
+
+            .sources {
+                width: 100%;
+            }
+
+            .countries {
+                width: 100%;
             }
         }
     }

@@ -180,8 +180,8 @@ export const getAnalytics = (
         privateGateway
             .get(dashboardRoutes.getAnalytics.replace("${urlId}", id))
             .then(response => {
-                resolve(true);
-                console.log(response.data.response);
+                resolve(response.data.response);
+                // console.log(response.data.response);
                 
                 // setResponseData(response.data.response);
             })

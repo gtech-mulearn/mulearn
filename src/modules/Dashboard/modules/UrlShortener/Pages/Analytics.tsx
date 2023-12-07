@@ -13,76 +13,6 @@ export const options = {
     curveType: "function",
     legend: { position: "bottom" }
 };
-const response1 = {
-    total_clicks: 500,
-    created_on: "2023-12-03",
-    browsers: {
-        Instagram: 24,
-        Firefox: 1,
-        "Chrome Mobile": 7,
-        FacebookBot: 2,
-        "Mobile Safari UI/WKWebView": 4,
-        Chrome: 14,
-        Facebook: 1
-    },
-    platforms: {
-        Android: 32,
-        Windows: 13,
-        Other: 2,
-        iOS: 4,
-        "Mac OS X": 2
-    },
-    devices: {
-        Mobile: 36,
-        PC: 17
-    },
-    sources: {
-        "https://l.instagram.com/": 37,
-        "https://x.com/": 15,
-        "https://mulearn.org/": 1
-    },
-    countries: {
-        USA: 20,
-        Canada: 15,
-        UK: 8,
-        India: 5
-    },
-    dimensions: {
-        "360x640": 10,
-        "1366x768": 5,
-        "1920x1080": 2
-    },
-    time_based_data: {
-        all_time: [
-            ["time", "clicks"],
-            ["2023-12-03T18:43:27.654Z", 100],
-            ["2023-12-03T19:15:45.123Z", 350],
-            ["2023-12-03T20:30:12.789Z", 200],
-            ["2023-12-03T21:05:59.321Z", 250],
-            ["2023-12-03T22:12:34.567Z", 100],
-            ["2023-12-03T23:45:12.345Z", 150],
-            ["2023-12-04T00:00:00.000Z", 200],
-            ["2023-12-04T01:45:12.345Z", 250],
-            ["2023-12-05T02:43:27.654Z", 300],
-            ["2023-12-05T03:43:27.654Z", 350],
-            ["2023-12-06T04:45:12.345Z", 400],
-            ["2023-12-07T05:00:00.000Z", 450],
-            ["2023-12-07T06:45:12.345Z", 100],
-            ["2023-12-08T07:00:00.000Z", 250],
-            ["2023-12-08T08:43:27.654Z", 400],
-            ["2023-12-09T09:45:12.345Z", 350],
-            ["2023-12-09T10:00:00.000Z", 300],
-            ["2023-12-10T11:45:12.345Z", 250],
-            ["2023-12-10T12:00:00.000Z", 200],
-            ["2023-12-11T13:00:00.000Z", 150],
-            ["2023-12-11T14:45:12.345Z", 100],
-            ["2023-12-18T15:00:00.000Z", 50]
-        ]
-    }
-};
-
-// Function to get the date of the last occurrence of a specific day of the week
-// const dayOfWeek = 1; // 0 for Sunday, 1 for Monday, ..., 6 for Saturday
 
 type Response = {
     total_clicks: number;
@@ -108,6 +38,9 @@ type Response = {
     time_based_data: {
         all_time: Array<[string, number]>;
     };
+    long_url: string;
+    short_url: string;
+    title: string;
 };
 
 type Props = {};
@@ -127,10 +60,15 @@ const Analytics = (props: Props) => {
         dimensions: {},
         time_based_data: {
             all_time: []
-        }
+        },
+        long_url: "",
+        short_url: "",
+        title: ""
     } as Response);
     const [visits, setVisits] = useState<number>(response.total_clicks);
-    const [month, setMonth] = useState<number>(0);
+    const [month, setMonth] = useState<number>(
+        new Date().getDay() === 0 ? 6 : new Date().getDay() - 1
+    );
     function getLastDayOfWeek(dayOfWeek: number) {
         const today = new Date();
         const diff = today.getDay() - dayOfWeek;
@@ -140,12 +78,19 @@ const Analytics = (props: Props) => {
     }
 
     // Example: Get last Monday's date
-    const lastMonday = getLastDayOfWeek(month); // 0 for Sunday, 1 for Monday, ..., 6 for Saturday
+    const lastMonday = getLastDayOfWeek(month);
+    // console.log(lastMonday);
 
     // Filter data for last Monday
-    const lastMondayData = (
-        response.time_based_data.all_time as Array<[string, number]>
-    ).filter(entry => (entry[0] as string).startsWith(lastMonday));
+    const lastMondayData = response.time_based_data
+        ? (response.time_based_data.all_time as Array<[string, number]>).filter(
+              entry => (entry[0] as string).startsWith(lastMonday)
+          )
+        : [];
+
+    // console.log(response.time_based_data.all_time.filter(
+    //     entry => (entry[0] as string).startsWith(lastMonday)
+    // ));
 
     // Convert to the desired format with 12-hour time
     const convertedData = [
@@ -159,9 +104,17 @@ const Analytics = (props: Props) => {
             entry[1]
         ])
     ];
-    const devicesCount = Object.keys(response.devices).length;
-    const platformsCount = Object.keys(response.platforms).length;
-    const browsersCount = Object.keys(response.browsers).length;
+    // console.log(convertedData);
+
+    const devicesCount = response.devices
+        ? Object.keys(response.devices).length
+        : 0;
+    const platformsCount = response.platforms
+        ? Object.keys(response.platforms).length
+        : 0;
+    const browsersCount = response.browsers
+        ? Object.keys(response.browsers).length
+        : 0;
 
     const totalCategories = platformsCount + devicesCount + browsersCount;
     useEffect(() => {
@@ -169,31 +122,65 @@ const Analytics = (props: Props) => {
             // get analytics for the link with id
             getAnalytics(id)
                 .then((res: any) => {
-                    console.log(res);
+                    // console.log(res);
                     setResponse(res);
                     setVisits(res.total_clicks);
                 })
                 .catch((err: any) => console.log(err));
         }
-    });
+    }, []);
 
     useEffect(() => {
+        const totalValue = visits; // Set the total value you want to represent
         const bar = document.getElementById("progress-bar");
+
         if (bar) {
-            const perc = visits;
+            const perc = visits > 100 ? (visits / totalValue) * 100 : visits; // Calculate the percentage
             const rotateDegree = 45 + perc * 1.8;
             bar.style.transition = "transform 3s ease";
             bar.style.transform = `rotate(${rotateDegree}deg)`;
         }
     }, [visits]);
     const buttonMap = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-    // console.log(response1.time_based_data.all_time[1][1]);
+
+    const dateWiseData =
+        response.time_based_data &&
+        response.time_based_data.all_time &&
+        response.time_based_data.all_time.reduce(
+            (result, [dateTime, clicks]) => {
+                const date = new Date(dateTime).toLocaleDateString("en-US", {
+                    year: "2-digit",
+                    month: "2-digit",
+                    day: "2-digit"
+                });
+
+                if (result.has(date)) {
+                    result.set(date, result.get(date) + clicks);
+                } else {
+                    result.set(date, clicks);
+                }
+
+                return result;
+            },
+            new Map()
+        );
+
+    const sortedDateWiseData = Array.from(dateWiseData).map(
+        ([date, clicks]) => [
+            date.split("/").reverse().join("-"), // Format date as "YY-MM-DD"
+            clicks
+        ]
+    );
+
+    console.log(sortedDateWiseData);
+
+    // console.log(response);
     return (
         <>
             <div className={styles.analytics_header}>
                 <div className={styles.link_basics}>
                     <h1>Analytics</h1>
-                    <p>Link title</p>
+                    <p>{response.title}</p>
                     <p className={styles.date}>
                         Created on{" "}
                         {new Date(response.created_on).toLocaleDateString(
@@ -215,8 +202,20 @@ const Analytics = (props: Props) => {
                     </select>
                 </div>
                 <div className={styles.link_copy}>
-                    <a href="/">https://mulearn.r/shortenlink</a>
-                    <a href="/">https://mulearn.org/longlonglonglongl...</a>
+                    <a
+                        href={`https://mulearn.r/${response.short_url}`}
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        https://mulearn.r/{response.short_url}
+                    </a>
+                    <a
+                        href={response.long_url}
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        {response.long_url}
+                    </a>
                 </div>
             </div>
 
@@ -246,29 +245,71 @@ const Analytics = (props: Props) => {
                                 <i className={styles.h_line}></i>
                             </div>
                             <div className={styles.bars}>
-                                {Object.keys(
-                                    response1.time_based_data.all_time
-                                ).map((key: any, i: number) => {
-                                    const data: any =
-                                        response1.time_based_data.all_time[
-                                            key as any
-                                        ];
-                                    console.log(data[0], data[1]);
+                                {response.time_based_data &&
+                                    response.time_based_data.all_time &&
+                                    (() => {
+                                        const dateWiseData =
+                                            response.time_based_data.all_time.reduce(
+                                                (
+                                                    result,
+                                                    [dateTime, clicks]
+                                                ) => {
+                                                    const date = new Date(
+                                                        dateTime
+                                                    ).toLocaleDateString(
+                                                        "en-US",
+                                                        {
+                                                            year: "2-digit",
+                                                            month: "2-digit",
+                                                            day: "2-digit"
+                                                        }
+                                                    );
 
-                                    return (
-                                        <i
-                                            key={i}
-                                            style={{
-                                                height: `${data[1] / 5}%`,
-                                                width: "30px",
-                                                background: `rgb(108 123 255 / ${
-                                                    data[1] / 5
-                                                }%)`
-                                            }}
-                                            className={styles.bar}
-                                        ></i>
-                                    );
-                                })}
+                                                    if (result.has(date)) {
+                                                        result.set(
+                                                            date,
+                                                            result.get(date) +
+                                                                clicks
+                                                        );
+                                                    } else {
+                                                        result.set(
+                                                            date,
+                                                            clicks
+                                                        );
+                                                    }
+
+                                                    return result;
+                                                },
+                                                new Map()
+                                            );
+
+                                        const sortedDateWiseData = Array.from(
+                                            dateWiseData
+                                        ).map(([date, clicks]) => [
+                                            date.split("/").reverse().join("-"), // Format date as "YY-MM-DD"
+                                            clicks
+                                        ]);
+
+                                        return sortedDateWiseData.map(
+                                            ([date, clicks], i) => (
+                                                <i
+                                                    key={i}
+                                                    style={{
+                                                        height: `${
+                                                            (clicks /
+                                                                response.total_clicks) *
+                                                            100
+                                                        }%`,
+                                                        minHeight: "10%",
+                                                        background: `rgb(108 123 255 / ${
+                                                            clicks * 10
+                                                        }%)`
+                                                    }}
+                                                    className={styles.bar}
+                                                ></i>
+                                            )
+                                        );
+                                    })()}
                             </div>
                         </div>
                     </div>
@@ -347,33 +388,38 @@ const Analytics = (props: Props) => {
                                 <p className={styles.sourceH}>Source</p>
                                 <p className={styles.visitsH}>Visits</p>
                             </div>
-                            {Object.keys(response.sources).map(key => (
-                                <div className={styles.rows} key={key}>
-                                    <p className={styles.source}>
-                                        {new URL(key).hostname
-                                            .split(".")
-                                            .slice(-2)
-                                            .join(".")}
-                                    </p>
-                                    <p className={styles.visits}>
-                                        {
-                                            response.sources[
-                                                key as keyof typeof response.sources
-                                            ]
-                                        }
-                                        <span>
-                                            {(
-                                                (response.sources[
-                                                    key as keyof typeof response.sources
-                                                ] /
-                                                    response.total_clicks) *
-                                                100
-                                            ).toPrecision(2)}
-                                            %
-                                        </span>
-                                    </p>
-                                </div>
-                            ))}
+                            {response.sources &&
+                                Object.keys(response.sources).map(key => {
+                                    return (
+                                        <div className={styles.rows} key={key}>
+                                            <p className={styles.source}>
+                                                {/* {key != null
+                                                    ? new URL(key).hostname
+                                                          .split(".")
+                                                          .slice(-2)
+                                                          .join(".")
+                                                    : "Unknown"} */}
+                                                {key}
+                                            </p>
+                                            <p className={styles.visits}>
+                                                {response.sources &&
+                                                    response.sources[
+                                                        key as keyof typeof response.sources
+                                                    ]}
+                                                <span>
+                                                    {(
+                                                        (response.sources[
+                                                            key as keyof typeof response.sources
+                                                        ] /
+                                                            response.total_clicks) *
+                                                        100
+                                                    ).toPrecision(3)}
+                                                    %
+                                                </span>
+                                            </p>
+                                        </div>
+                                    );
+                                })}
                         </div>
                     </div>
                     <div className={styles.countries}>
@@ -383,28 +429,28 @@ const Analytics = (props: Props) => {
                                 <p className={styles.sourceH}>Country</p>
                                 <p className={styles.visitsH}>Visits</p>
                             </div>
-                            {Object.keys(response.countries).map(key => (
-                                <div className={styles.rows} key={key}>
-                                    <p className={styles.source}>{key}</p>
-                                    <p className={styles.visits}>
-                                        {
-                                            response.countries[
-                                                key as keyof typeof response.countries
-                                            ]
-                                        }
-                                        <span>
-                                            {(
-                                                (response.countries[
+                            {response.countries &&
+                                Object.keys(response.countries).map(key => (
+                                    <div className={styles.rows} key={key}>
+                                        <p className={styles.source}>{key}</p>
+                                        <p className={styles.visits}>
+                                            {response.countries &&
+                                                response.countries[
                                                     key as keyof typeof response.countries
-                                                ] /
-                                                    response.total_clicks) *
-                                                100
-                                            ).toPrecision(2)}
-                                            %
-                                        </span>
-                                    </p>
-                                </div>
-                            ))}
+                                                ]}
+                                            <span>
+                                                {(
+                                                    (response.countries[
+                                                        key as keyof typeof response.countries
+                                                    ] /
+                                                        response.total_clicks) *
+                                                    100
+                                                ).toPrecision(3)}
+                                                %
+                                            </span>
+                                        </p>
+                                    </div>
+                                ))}
                         </div>
                     </div>
                 </div>
@@ -417,28 +463,29 @@ const Analytics = (props: Props) => {
                                 <p className={styles.sourceH}>Dimensions</p>
                                 <p className={styles.visitsH}>Visits</p>
                             </div>
-                            {Object.keys(response.dimensions).map(key => (
-                                <div className={styles.rows} key={key}>
-                                    <p className={styles.source}>{key}</p>
-                                    <p className={styles.visits}>
-                                        {
-                                            response.dimensions[
-                                                key as keyof typeof response.dimensions
-                                            ]
-                                        }
-                                        <span>
-                                            {(
-                                                (response.dimensions[
+                            {response.dimensions &&
+                                Object.keys(response.dimensions).map(key => (
+                                    <div className={styles.rows} key={key}>
+                                        <p className={styles.source}>{key}</p>
+                                        <p className={styles.visits}>
+                                            {
+                                                response.dimensions[
                                                     key as keyof typeof response.dimensions
-                                                ] /
-                                                    response.total_clicks) *
-                                                100
-                                            ).toPrecision(2)}
-                                            %
-                                        </span>
-                                    </p>
-                                </div>
-                            ))}
+                                                ]
+                                            }
+                                            <span>
+                                                {(
+                                                    (response.dimensions[
+                                                        key as keyof typeof response.dimensions
+                                                    ] /
+                                                        response.total_clicks) *
+                                                    100
+                                                ).toPrecision(3)}
+                                                %
+                                            </span>
+                                        </p>
+                                    </div>
+                                ))}
                         </div>
                     </div>
                 </div>
@@ -480,13 +527,14 @@ const Sources = ({ title, sourceCount, totalCategories, response }: Props2) => {
                 </CircularProgress>
             </div>
             <div className={styles.source_list}>
-                {Object.keys(
-                    response[title.toLowerCase() as keyof typeof response]
-                ).map(key => (
-                    <p className={styles.source} key={key}>
-                        {key}
-                    </p>
-                ))}
+                {response[title.toLowerCase() as keyof typeof response] &&
+                    Object.keys(
+                        response[title.toLowerCase() as keyof typeof response]
+                    ).map(key => (
+                        <p className={styles.source} key={key}>
+                            {key}
+                        </p>
+                    ))}
             </div>
         </div>
     );

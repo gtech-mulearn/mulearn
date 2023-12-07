@@ -201,7 +201,7 @@ const UrlShortener = () => {
     const analytics = (id: any) => {
         console.log(id);
         // redirect to analytics paga
-        navigate(`/dashboard/url-shortener/analytics/id=${id}`);
+        navigate(`/dashboard/url-shortener/analytics/${id}`);
     }
 
     const handleDelete = (id: any) => {
