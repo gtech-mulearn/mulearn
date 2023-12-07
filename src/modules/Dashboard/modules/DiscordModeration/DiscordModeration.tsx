@@ -59,7 +59,7 @@ const DiscordModeration = () => {
         { value: "approved", label: "Approved" },
     ]
 
-    const [selectedOption, setSelectedOption] = useState<Option | null>(options[0]);
+    const [selectedLeaderBoardOption, setSelectedLeaderBoardOption] = useState<Option | null>(options[0]);
     const [selectedTaskOption, setSelectedTaskOption] = useState<TaskOption | null>(taskOptions[0]);
     const [currentTab, setCurrentTab] = useState("leaderboard");
     const [taskData, setTaskData] = useState<taskData[]>([]);
@@ -72,8 +72,8 @@ const DiscordModeration = () => {
     const [appraiserTaskCount, setappraiserTaskCount] = useState<number | null>();
     const [moderatorType, setModeratorType] = useState<String | null>("appraiser");
 
-    const handleChange = (selected: Option | null) => {
-        setSelectedTaskOption(selected);
+    const handleLeaderBoardChange = (selected: Option | null) => {
+        setSelectedLeaderBoardOption(selected);
 
         // Set the moderator type based on the selected value
         if (selected) {
@@ -81,7 +81,7 @@ const DiscordModeration = () => {
         }
     };
     const handleTaskChange = (selected: TaskOption | null) => {
-        setSelectedOption(selected);
+        setSelectedTaskOption(selected);
     };
 
     useEffect(() => {
@@ -119,12 +119,11 @@ const DiscordModeration = () => {
                                     placeholder={"Select Role"}
                                     options={options}
                                     styles={customReactSelectStyles}
-                                    value={selectedOption}
-                                    onChange={handleChange}
+                                    value={selectedLeaderBoardOption}
+                                    onChange={handleLeaderBoardChange}
                                 />
                                 :
                                 <SelectTab
-                                    isDisabled
                                     placeholder={"Select criteria"}
                                     options={taskOptions}
                                     styles={customReactSelectStyles}
@@ -167,16 +166,6 @@ const DiscordModeration = () => {
                             columnOrder={leaderBoardColumnOrder}
                             onIconClick={handleIconClick}
                         />
-                        {/* <Pagination
-                           currentPage={currentPage}
-                           totalPages={totalPages}
-                           margin="10px 0"
-                           // handleNextClick={handleNextClick}
-                           // handlePreviousClick={handlePreviousClick}
-                           // onPerPageNumber={handlePerPageNumber}
-                           perPage={perPage}
-                           setPerPage={setPerPage}
-                       /> */}
                         <Blank />
                     </Table>
                 </div>
@@ -196,16 +185,6 @@ const DiscordModeration = () => {
                             columnOrder={taskColumnOrder}
                             onIconClick={handleIconClick}
                         />
-                        {/* <Pagination
-                                currentPage={currentPage}
-                                totalPages={totalPages}
-                                margin="10px 0"
-                                // handleNextClick={handleNextClick}
-                                // handlePreviousClick={handlePreviousClick}
-                                // onPerPageNumber={handlePerPageNumber}
-                                perPage={perPage}
-                                setPerPage={setPerPage}
-                            /> */}
                         <Blank />
                     </Table>
                 </div>
