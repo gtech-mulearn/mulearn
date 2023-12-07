@@ -149,6 +149,7 @@ const UserForm = forwardRef(
                         value: community.id
                     }))
                 }));
+
                 const roles = await getRoles();
                 setSelectData(prevState => ({
                     ...prevState,
@@ -159,7 +160,13 @@ const UserForm = forwardRef(
                 }));
 
                 const interestGroups = await getInterests();
-
+                setSelectData(prevState => ({
+                    ...prevState,
+                    intersetGroups: interestGroups.map(ig => ({
+                        label: ig.name,
+                        value: ig.id
+                    }))
+                }));
                 setIg(interestGroups);
             } catch (error) {
                 // Handle error here
@@ -492,6 +499,8 @@ const UserForm = forwardRef(
                                 // value={selectData.selectedInterestGroups}
                                 onChange={(selectedOptions: any) => {
                                     setSelectedIg(selectedOptions);
+                                    console.log(ig)
+                                    console.log("Selected options",selectedOptions)
                                 }}
                                 onBlur={() => {
                                     setSelectData(prev => ({
@@ -502,11 +511,7 @@ const UserForm = forwardRef(
                                         }
                                     }));
                                 }}
-                                value={ig.filter(val =>
-                                    selectData.selectedInterestGroups.includes(
-                                        val?.value
-                                    )
-                                )}
+                                value={selectedIg}
                             />
                             {/* {selectData.blurStatus.interestGroups &&
                             !selectData.selectedInterestGroups && (
