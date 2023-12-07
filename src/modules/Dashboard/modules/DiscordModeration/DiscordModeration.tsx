@@ -84,10 +84,12 @@ const DiscordModeration = () => {
         setSelectedTaskOption(selected);
     };
 
+    //to get the leaderboard data when loading the page.
     useEffect(() => {
         getLeaderBoard(setLeaderBoardData, setLoading, moderatorType);
     }, [moderatorType])
 
+    //to get the task list & task count when loading the page.
     useEffect(() => {
         getTaskList(setTaskData, setLoading);
         getTaskCount(setpeerTaskCount, setappraiserTaskCount, setCountLoading);
