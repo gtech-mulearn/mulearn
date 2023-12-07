@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import styles from './DiscordModeration.module.css'
 import SelectTab from "react-select";
-
 import { customReactSelectStyles } from "../../utils/common";
 import { getLeaderBoard, getTaskCount, getTaskList } from './services/apis';
 import TableTop from '@/MuLearnComponents/TableTop/TableTop';
 import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
-import Pagination from '@/MuLearnComponents/Pagination/Pagination';
 import { Blank } from '@/MuLearnComponents/Table/Blank';
 
 interface Option {
@@ -74,12 +72,11 @@ const DiscordModeration = () => {
 
     const handleLeaderBoardChange = (selected: Option | null) => {
         setSelectedLeaderBoardOption(selected);
-
-        // Set the moderator type based on the selected value
         if (selected) {
             setModeratorType(selected.value);
         }
     };
+
     const handleTaskChange = (selected: TaskOption | null) => {
         setSelectedTaskOption(selected);
     };
@@ -87,13 +84,13 @@ const DiscordModeration = () => {
     //to get the leaderboard data when loading the page.
     useEffect(() => {
         getLeaderBoard(setLeaderBoardData, setLoading, moderatorType);
-    }, [moderatorType])
+    }, [moderatorType]);//to call the getleaderboard method when the moderatortype is changed.
 
     //to get the task list & task count when loading the page.
     useEffect(() => {
         getTaskList(setTaskData, setLoading);
         getTaskCount(setpeerTaskCount, setappraiserTaskCount, setCountLoading);
-    }, [])
+    }, []);
 
 
     const handleIconClick = (column: string) => {
@@ -126,6 +123,7 @@ const DiscordModeration = () => {
                                 />
                                 :
                                 <SelectTab
+                                    isDisabled //currently disabled!!!
                                     placeholder={"Select criteria"}
                                     options={taskOptions}
                                     styles={customReactSelectStyles}
