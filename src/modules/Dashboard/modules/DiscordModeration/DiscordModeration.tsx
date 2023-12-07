@@ -3,7 +3,7 @@ import styles from './DiscordModeration.module.css'
 import SelectTab from "react-select";
 
 import { customReactSelectStyles } from "../../utils/common";
-import { getTaskCount, getTaskList } from './services/apis';
+import { getLeaderBoard, getTaskCount, getTaskList } from './services/apis';
 import TableTop from '@/MuLearnComponents/TableTop/TableTop';
 import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
@@ -13,11 +13,6 @@ import { Blank } from '@/MuLearnComponents/Table/Blank';
 interface Option {
     value: string;
     label: string;
-}
-
-type taskCount = {
-    peer_pending: number;
-    appraiser_Pending: number;
 }
 
 interface TaskOption {
@@ -32,6 +27,8 @@ type taskData = {
     status: string;
     discordlink: string
 };
+
+
 const DiscordModeration = () => {
     const columnOrder: ColOrder[] = [
         { column: "fullname", Label: "Fullname", isSortable: false },
@@ -54,22 +51,29 @@ const DiscordModeration = () => {
     const [selectedTaskOption, setSelectedTaskOption] = useState<TaskOption | null>(taskOptions[0]);
     const [currentTab, setCurrentTab] = useState("leaderboard");
     const [taskData, setTaskData] = useState<taskData[]>([]);
+    const [leaderBoardData, setLeaderBoardData] = useState<taskData[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [loading, setLoading] = useState(false);
     const [countLoading, setCountLoading] = useState(false);
     const [perPage, setPerPage] = useState(20);
     const [peerTaskCount, setpeerTaskCount] = useState<number | null>();
     const [appraiserTaskCount, setappraiserTaskCount] = useState<number | null>();
+    const [moderatorType, setModeratorType] = useState<String | null>("appraiser");
 
     const handleChange = (selected: Option | null) => {
-        setSelectedOption(selected);
-    };
+        setSelectedTaskOption(selected);
 
-    const handleTaskChange = (selected: Option | null) => {
+        // Set the moderator type based on the selected value
+        if (selected) {
+            setModeratorType(selected.value);
+        }
+    };
+    const handleTaskChange = (selected: TaskOption | null) => {
         setSelectedTaskOption(selected);
     };
 
     useEffect(() => {
+        getLeaderBoard(setLeaderBoardData, setLoading, moderatorType);
         getTaskList(setTaskData, setLoading);
         getTaskCount(setpeerTaskCount, setappraiserTaskCount, setCountLoading);
     }, [])
@@ -96,7 +100,6 @@ const DiscordModeration = () => {
                         <div className={styles.DiscordModerationFrom}>
                             {currentTab === "leaderboard" ?
                                 <SelectTab
-                                    isDisabled
                                     placeholder={"Select Role"}
                                     options={options}
                                     styles={customReactSelectStyles}
@@ -133,8 +136,33 @@ const DiscordModeration = () => {
                 }
             </>}
             {currentTab === "leaderboard" ?
-                <div className={styles.DiscordModerationLeaderboardRow}>
-                    comming soon !!!
+                <div className={styles.DiscordModerationTable}>
+                    <TableTop
+                    />
+                    <Table
+                        rows={leaderBoardData}
+                        page={currentPage}
+                        perPage={perPage}
+                        columnOrder={columnOrder}
+                        id={["id"]}
+                        isloading={loading}
+                    >
+                        <THead
+                            columnOrder={columnOrder}
+                            onIconClick={handleIconClick}
+                        />
+                        {/* <Pagination
+                           currentPage={currentPage}
+                           totalPages={totalPages}
+                           margin="10px 0"
+                           // handleNextClick={handleNextClick}
+                           // handlePreviousClick={handlePreviousClick}
+                           // onPerPageNumber={handlePerPageNumber}
+                           perPage={perPage}
+                           setPerPage={setPerPage}
+                       /> */}
+                        <Blank />
+                    </Table>
                 </div>
                 :
                 <div className={styles.DiscordModerationTable}>

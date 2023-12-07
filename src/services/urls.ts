@@ -166,7 +166,8 @@ export const dashboardRoutes = {
 
     //discord moderation
     taskList:"api/v1/dashboard/discord-moderator/tasklist",
-    taskListCount:"api/v1/dashboard/discord-moderator/pendingcounts/"
+    taskListCount:"api/v1/dashboard/discord-moderator/pendingcounts/",
+    leaderboard:"api/v1/dashboard/discord-moderator/leaderboard/"
 } as const;
 
 export const organizationRoutes = {
