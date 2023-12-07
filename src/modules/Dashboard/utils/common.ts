@@ -66,12 +66,28 @@ export const convertDateToDayAndMonth = (data: String) => {
     return `${day} ${month}`;
 };
 
+export const convertToFormatedDate = (input: string): string => {
+    // Parse the input string into a Date object
+    const date = new Date(input);
 
-export const convertDateToDayAndMonthAndYear = (data: String) => {
-    const day = data.split("-")[2];
-    const month = getMonthName(data.split("-")[1], true);
-	const year = data.split("-")[0];
-    return `${day} ${month} ${year}`;
+    // Extract the day, month, and year
+    const day = date.getUTCDate().toString().substring(0, 2).padStart(2, "0");
+    const month = date.getUTCMonth();
+    const year = date.getUTCFullYear();
+
+    // Format the date
+    return `${day} ${getMonthName(String(month + 1), true)} ${year}`;
+};
+
+
+export const convertDateToDayAndMonthAndYear = (data: string) => {
+    // Extract the date part (before the space)
+    const datePart = data.split(" ")[0];
+
+    // Now proceed as before
+    const [year, month, day] = datePart.split("-");
+    const monthName = getMonthName(month, true);
+    return `${day} ${monthName} ${year}`;
 };
 
 export const getMonthName = (month: String, flag: boolean = false) => {

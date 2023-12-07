@@ -1,18 +1,15 @@
 import styles from "../LcDashboard.module.css";
-import meeting from "../../../assets/images/meedingDemo.png";
 import { LcAttendees } from "./LcAttendees";
 import { useEffect, useState } from "react";
 import { getLCMeetingReport } from "../../../services/LearningCircleAPIs";
-import {
-    comingSoon,
-    convertDateToDayAndMonthAndYear
-} from "../../../../../utils/common";
+import { convertDateToDayAndMonthAndYear } from "../../../../../utils/common";
 import {
     convert24to12,
     extract24hTimeFromDateTime,
     getDayOfWeek
 } from "../../../services/utils";
 import { useParams } from "react-router-dom";
+import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
 type Props = {
     id: string | undefined;
@@ -21,7 +18,7 @@ type Props = {
 
 const LcHistory = (props: Props) => {
     const [data, setData] = useState<LcHistory>();
-	const {id} = useParams()
+    const { id } = useParams();
 
     useEffect(() => {
         getLCMeetingReport(props.id, id).then(res => {
@@ -37,9 +34,11 @@ const LcHistory = (props: Props) => {
                         <div className={styles.Headings}>
                             <div>
                                 <h1>
-                                    {convertDateToDayAndMonthAndYear(data?.day)}
+                                    {convertDateToDayAndMonthAndYear(
+                                        data?.meet_time
+                                    )}
                                 </h1>
-                                <p>{getDayOfWeek(data?.day)}</p>
+                                <p>{getDayOfWeek(data?.meet_time)}</p>
                             </div>
                             <div>
                                 <p>
@@ -75,16 +74,16 @@ const LcHistory = (props: Props) => {
                                     </div>
                                 ))}
                         </div>
-                        <div
-                            className={styles.detailedSection}
-                            onClick={comingSoon}
-                        >
-                            <img src={meeting} alt="" />
-                            <img src={meeting} alt="" />
+                        <div className={styles.detailedSection}>
+                            <img src={data.image} alt="" />
                         </div>
                     </div>
                 </>
-            ) : <div>TEST</div>}
+            ) : (
+                <div className={`${styles.HistoryDataWrapper} ${styles.loading}`}>
+                    <MuLoader />
+                </div>
+            )}
         </div>
     );
 };

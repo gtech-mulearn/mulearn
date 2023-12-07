@@ -41,6 +41,7 @@ import Channels from "./modules/Dashboard/modules/Channels/Pages/Channels";
 import Settings from "./modules/Dashboard/modules/Settings/Settings";
 import Account from "./modules/Dashboard/modules/Settings/pages/Account/Account";
 import DiscordModeration from "./modules/Dashboard/modules/DiscordModeration/DiscordModeration";
+import Test from "./modules/Dashboard/modules/Test/Test";
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
 );
@@ -632,6 +633,15 @@ function App() {
                                 <RoleChecker
                                     roles={[roles.ADMIN]}
                                     children={<OrganizationTransfer />}
+                                />
+                            )
+                        },
+                        {
+                            path: "test",
+                            element: (
+                                <RoleChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<Test />}
                                 />
                             )
                         },
