@@ -102,7 +102,7 @@ const LcReport = (props: Props) => {
             data.append("attendees", formData.attendees.join(","));
             data.append("time", formData.meet_time);
             if (uploadedImage) {
-                data.append("meet_report", uploadedImage);
+                data.append("images", uploadedImage);
             }
 
             toast.promise(reportMeeting(props.id, data), {
@@ -122,6 +122,10 @@ const LcReport = (props: Props) => {
                 }
             });
         }
+    };
+
+	const handleRemoveImage = () => {
+        setUploadedImage(null);
     };
 
     return (
@@ -198,15 +202,25 @@ const LcReport = (props: Props) => {
                 <div className={styles.UploadSection}>
                     <div id="uploadContainer">
                         <p>Upload Meeting Images</p>
-                        <label htmlFor="fileInput">
+                        {uploadedImage ? (
                             <div>
-                                <img src={UploadImage} alt="" />
-                                Drag and drop or <br></br>click to choose a file
+                                <p>{uploadedImage.name}</p>
+                                <button onClick={handleRemoveImage}>
+                                    Remove
+                                </button>
                             </div>
-                        </label>
+                        ) : (
+                            <label htmlFor="fileInput">
+                                <div>
+                                    <img src={UploadImage} alt="" />
+                                    Drag and drop or <br />
+                                    click to choose a file
+                                </div>
+                            </label>
+                        )}
                         <input
                             type="file"
-                            accept=".png,.jepg,.jpg"
+                            accept=".png,.jpeg,.jpg"
                             onChange={handleImageUpload}
                             style={{ display: "none" }}
                             id="fileInput"
