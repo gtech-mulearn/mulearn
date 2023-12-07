@@ -107,9 +107,9 @@ export const editTask = async (
     discord_link: string,
     id: string | undefined,
     event: string,
-    bonus_time:string,
-    bonus_karma:string,
-    toast: ToastAsPara
+    toast: ToastAsPara,
+    bonus_time?:string,
+    bonus_karma?:string,
 ) => {
     try {
         const response = await privateGateway.put(
@@ -130,7 +130,7 @@ export const editTask = async (
                 discord_link: discord_link,
                 event: event === "" ? null : event,
                 bonus_time:bonus_time === "" ? null : bonus_time,
-                bonus_karma:parseInt(bonus_karma)
+                bonus_karma: parseInt(bonus_karma ?? "0")
             }
         );
         toast({
@@ -169,9 +169,9 @@ export const createTask = async (
     org_id: string,
     discord_link: string,
     event: string,
-    bonus_time:string,
-    bonus_karma:string,
-    toast: ToastAsPara
+    toast: ToastAsPara,
+    bonus_time?:string,
+    bonus_karma?:string,
 ) => {
     try {
         const response = await privateGateway.post(
@@ -192,7 +192,7 @@ export const createTask = async (
                 discord_link: discord_link,
                 event: event === "" ? null : event,
                 bonus_time:bonus_time === "" ? null : bonus_time,
-                bonus_karma:parseInt(bonus_karma)
+                bonus_karma: parseInt(bonus_karma ?? "0")
             }
         );
         toast({

@@ -12,6 +12,13 @@
     gap: 10px;
 }
 
+.formHeader  {
+  text-align:left ;
+  display: flex;
+  justify-content: start;
+}
+
+
 .inputContainer input {
     border-radius: 8px;
     background-color: #f3f3f4;

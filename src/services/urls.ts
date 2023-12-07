@@ -162,7 +162,11 @@ export const dashboardRoutes = {
 
     //Settings
     changePassword: "api/v1/dashboard/profile/change-password/",
-    deleteUser: "/api/v1/dashboard/user/"
+    deleteUser: "/api/v1/dashboard/user/",
+
+    //discord moderation
+    taskList:"api/v1/dashboard/discord-moderator/tasklist",
+    taskListCount:"api/v1/dashboard/discord-moderator/pendingcounts/"
 } as const;
 
 export const organizationRoutes = {
@@ -219,4 +223,6 @@ export const PublicRoutes = {
 
 export const googleSheetRoutes = {
     getHackathonData: "https://opensheet.elk.sh/1w2Ax918fkkumNiCJ42tc5T9fJeidVGL9_9B-2j7klDM/Sheet1/",
+    getHackathonDashboardData : "https://opensheet.elk.sh/1cGUHmdPd8ticzuuEpkX6j7G5p7hU47SZvnvgUnd6xBk/Sheet1"
 }
+
