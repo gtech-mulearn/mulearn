@@ -39,11 +39,13 @@ export const getLeaderBoard = async (
     setIsLoading: UseStateFunc<boolean>,
     moderatorType:String | null
 ) => {
-    console.log("api called")
     setIsLoading(true);
     try {
+        console.log("api called",moderatorType)
         const response = await privateGateway.get(dashboardRoutes.leaderboard,{
-            params:moderatorType,
+            params:{
+                option:moderatorType
+            },
         });
         const leaderboardList: any = response?.data.response;
         console.log(leaderboardList)
@@ -51,5 +53,6 @@ export const getLeaderBoard = async (
         setIsLoading(false);
     } catch (err: unknown) {
         const error = err as AxiosError;
+        console.log(err)
     }
 };

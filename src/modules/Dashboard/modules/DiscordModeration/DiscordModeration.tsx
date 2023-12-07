@@ -28,13 +28,25 @@ type taskData = {
     discordlink: string
 };
 
+type leaderBoardData = {
+    id: string | number | boolean;
+    name: string;
+    count: number;
+    muid: string;
+};
+
 
 const DiscordModeration = () => {
-    const columnOrder: ColOrder[] = [
+    const taskColumnOrder: ColOrder[] = [
         { column: "fullname", Label: "Fullname", isSortable: false },
         { column: "task_name", Label: "Task name", isSortable: false },
         { column: "status", Label: "Status", isSortable: false },
         { column: "discordlink", Label: "Discord link", isSortable: false },
+    ];
+    const leaderBoardColumnOrder: ColOrder[] = [
+        { column: "name", Label: "Name", isSortable: false },
+        { column: "count", Label: "Task Count", isSortable: false },
+        { column: "muid", Label: "Muid", isSortable: false },
     ];
     const options: Option[] = [
         { value: "appraiser", label: "Appraiser" },
@@ -51,7 +63,7 @@ const DiscordModeration = () => {
     const [selectedTaskOption, setSelectedTaskOption] = useState<TaskOption | null>(taskOptions[0]);
     const [currentTab, setCurrentTab] = useState("leaderboard");
     const [taskData, setTaskData] = useState<taskData[]>([]);
-    const [leaderBoardData, setLeaderBoardData] = useState<taskData[]>([]);
+    const [leaderBoardData, setLeaderBoardData] = useState<leaderBoardData[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [loading, setLoading] = useState(false);
     const [countLoading, setCountLoading] = useState(false);
@@ -69,14 +81,18 @@ const DiscordModeration = () => {
         }
     };
     const handleTaskChange = (selected: TaskOption | null) => {
-        setSelectedTaskOption(selected);
+        setSelectedOption(selected);
     };
 
     useEffect(() => {
         getLeaderBoard(setLeaderBoardData, setLoading, moderatorType);
+    }, [moderatorType])
+
+    useEffect(() => {
         getTaskList(setTaskData, setLoading);
         getTaskCount(setpeerTaskCount, setappraiserTaskCount, setCountLoading);
     }, [])
+
 
     const handleIconClick = (column: string) => {
 
@@ -143,12 +159,12 @@ const DiscordModeration = () => {
                         rows={leaderBoardData}
                         page={currentPage}
                         perPage={perPage}
-                        columnOrder={columnOrder}
+                        columnOrder={leaderBoardColumnOrder}
                         id={["id"]}
                         isloading={loading}
                     >
                         <THead
-                            columnOrder={columnOrder}
+                            columnOrder={leaderBoardColumnOrder}
                             onIconClick={handleIconClick}
                         />
                         {/* <Pagination
@@ -172,12 +188,12 @@ const DiscordModeration = () => {
                         rows={taskData}
                         page={currentPage}
                         perPage={perPage}
-                        columnOrder={columnOrder}
+                        columnOrder={taskColumnOrder}
                         id={["id"]}
                         isloading={loading}
                     >
                         <THead
-                            columnOrder={columnOrder}
+                            columnOrder={taskColumnOrder}
                             onIconClick={handleIconClick}
                         />
                         {/* <Pagination
