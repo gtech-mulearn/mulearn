@@ -100,7 +100,7 @@ const LcReport = (props: Props) => {
             const data = new FormData();
             data.append("agenda", formData.agenda);
             data.append("attendees", formData.attendees.join(","));
-            data.append("time", formData.day + " " + formData.meet_time);
+            data.append("time", formData.meet_time);
             if (uploadedImage) {
                 data.append("meet_report", uploadedImage);
             }
