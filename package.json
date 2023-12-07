@@ -41,7 +41,7 @@
         "yup": "^1.2.0"
     },
     "devDependencies": {
-        "@types/d3": "^7.4.0",
+        "@types/d3": "^7.4.3",
         "@types/file-saver": "^2.0.5",
         "@types/node": "^18.15.13",
         "@types/react": "^18.0.27",

@@ -225,3 +225,4 @@ export const googleSheetRoutes = {
     getHackathonData: "https://opensheet.elk.sh/1w2Ax918fkkumNiCJ42tc5T9fJeidVGL9_9B-2j7klDM/Sheet1/",
     getHackathonDashboardData : "https://opensheet.elk.sh/1cGUHmdPd8ticzuuEpkX6j7G5p7hU47SZvnvgUnd6xBk/Sheet1"
 }
+
