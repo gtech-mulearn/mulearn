@@ -206,7 +206,7 @@ const LcReport = (props: Props) => {
                         </label>
                         <input
                             type="file"
-                            accept="image/*"
+                            accept=".png,.jepg,.jpg"
                             onChange={handleImageUpload}
                             style={{ display: "none" }}
                             id="fileInput"

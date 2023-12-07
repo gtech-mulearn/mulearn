@@ -1,27 +1,41 @@
-type Props = {};
+import { FaSort } from "react-icons/fa";
+import styles from "./MuTable.module.css";
+
+type Props = {
+    tableHeader: TableHeader[];
+    tableData: TableDataBackendResponse | undefined;
+};
 
 const MuTable = (props: Props) => {
     return (
-        <div>
-            <table>
+        <div className={styles.table}>
+            <table className={styles.tableActual}>
                 <thead>
                     <tr>
-                        <th>Column 1</th>
-                        <th>Column 2</th>
-                        <th>Column 3</th>
+						<th>S/N</th>
+                        {props.tableHeader.map(column => (
+                            <th className={styles.th} key={column.column}>
+                                <div className={styles.thContainer}>
+                                    {column.label}{" "}
+                                    {column.isSortable && (
+                                        <FaSort style={{ cursor: "pointer" }} />
+                                    )}
+                                </div>
+                            </th>
+                        ))}
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Row 1 Cell 1</td>
-                        <td>Row 1 Cell 2</td>
-                        <td>Row 1 Cell 3</td>
-                    </tr>
-                    <tr>
-                        <td>Row 2 Cell 1</td>
-                        <td>Row 2 Cell 2</td>
-                        <td>Row 2 Cell 3</td>
-                    </tr>
+                    {props.tableData?.data?.map((rowData, index) => (
+                        <tr key={index}>
+                            <td className={styles.td}>{index + 1}</td>{" "}
+                            {props.tableHeader.map(column => (
+                                <td className={styles.td} key={column.column}>
+                                    {rowData[column.column]}
+                                </td>
+                            ))}
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </div>
