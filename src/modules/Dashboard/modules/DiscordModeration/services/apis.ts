@@ -26,11 +26,33 @@ export const getTaskCount = async (
     try {
         const response = await privateGateway.get(dashboardRoutes.taskListCount);
         const taskData: any = response?.data.response;
-        console.log(taskData)
         setpeerTaskCount(taskData.peer_pending)
         setappraiserTaskCount(taskData.peer_pending)
         setCountLoading(false);
     } catch (err: unknown) {
         const error = err as AxiosError;
+    }
+};
+
+export const getLeaderBoard = async (
+    setLeaderBoardData: UseStateFunc<any>,
+    setIsLoading: UseStateFunc<boolean>,
+    moderatorType:String | null
+) => {
+    setIsLoading(true);
+    try {
+        console.log("api called",moderatorType)
+        const response = await privateGateway.get(dashboardRoutes.leaderboard,{
+            params:{
+                option:moderatorType
+            },
+        });
+        const leaderboardList: any = response?.data.response;
+        console.log(leaderboardList)
+        setLeaderBoardData(leaderboardList)
+        setIsLoading(false);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        console.log(err)
     }
 };

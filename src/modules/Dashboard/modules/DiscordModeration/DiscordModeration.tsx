@@ -1,23 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import styles from './DiscordModeration.module.css'
 import SelectTab from "react-select";
-
 import { customReactSelectStyles } from "../../utils/common";
-import { getTaskCount, getTaskList } from './services/apis';
+import { getLeaderBoard, getTaskCount, getTaskList } from './services/apis';
 import TableTop from '@/MuLearnComponents/TableTop/TableTop';
 import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
-import Pagination from '@/MuLearnComponents/Pagination/Pagination';
 import { Blank } from '@/MuLearnComponents/Table/Blank';
 
 interface Option {
     value: string;
     label: string;
-}
-
-type taskCount = {
-    peer_pending: number;
-    appraiser_Pending: number;
 }
 
 interface TaskOption {
@@ -32,12 +25,26 @@ type taskData = {
     status: string;
     discordlink: string
 };
+
+type leaderBoardData = {
+    id: string | number | boolean;
+    name: string;
+    count: number;
+    muid: string;
+};
+
+
 const DiscordModeration = () => {
-    const columnOrder: ColOrder[] = [
+    const taskColumnOrder: ColOrder[] = [
         { column: "fullname", Label: "Fullname", isSortable: false },
         { column: "task_name", Label: "Task name", isSortable: false },
         { column: "status", Label: "Status", isSortable: false },
         { column: "discordlink", Label: "Discord link", isSortable: false },
+    ];
+    const leaderBoardColumnOrder: ColOrder[] = [
+        { column: "name", Label: "Name", isSortable: false },
+        { column: "count", Label: "Task Count", isSortable: false },
+        { column: "muid", Label: "Muid", isSortable: false },
     ];
     const options: Option[] = [
         { value: "appraiser", label: "Appraiser" },
@@ -50,29 +57,41 @@ const DiscordModeration = () => {
         { value: "approved", label: "Approved" },
     ]
 
-    const [selectedOption, setSelectedOption] = useState<Option | null>(options[0]);
+    const [selectedLeaderBoardOption, setSelectedLeaderBoardOption] = useState<Option | null>(options[0]);
     const [selectedTaskOption, setSelectedTaskOption] = useState<TaskOption | null>(taskOptions[0]);
     const [currentTab, setCurrentTab] = useState("leaderboard");
     const [taskData, setTaskData] = useState<taskData[]>([]);
+    const [leaderBoardData, setLeaderBoardData] = useState<leaderBoardData[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [loading, setLoading] = useState(false);
     const [countLoading, setCountLoading] = useState(false);
     const [perPage, setPerPage] = useState(20);
     const [peerTaskCount, setpeerTaskCount] = useState<number | null>();
     const [appraiserTaskCount, setappraiserTaskCount] = useState<number | null>();
+    const [moderatorType, setModeratorType] = useState<String | null>("appraiser");
 
-    const handleChange = (selected: Option | null) => {
-        setSelectedOption(selected);
+    const handleLeaderBoardChange = (selected: Option | null) => {
+        setSelectedLeaderBoardOption(selected);
+        if (selected) {
+            setModeratorType(selected.value);
+        }
     };
 
-    const handleTaskChange = (selected: Option | null) => {
+    const handleTaskChange = (selected: TaskOption | null) => {
         setSelectedTaskOption(selected);
     };
 
+    //to get the leaderboard data when loading the page.
+    useEffect(() => {
+        getLeaderBoard(setLeaderBoardData, setLoading, moderatorType);
+    }, [moderatorType]);//to call the getleaderboard method when the moderatortype is changed.
+
+    //to get the task list & task count when loading the page.
     useEffect(() => {
         getTaskList(setTaskData, setLoading);
         getTaskCount(setpeerTaskCount, setappraiserTaskCount, setCountLoading);
-    }, [])
+    }, []);
+
 
     const handleIconClick = (column: string) => {
 
@@ -96,16 +115,15 @@ const DiscordModeration = () => {
                         <div className={styles.DiscordModerationFrom}>
                             {currentTab === "leaderboard" ?
                                 <SelectTab
-                                    isDisabled
                                     placeholder={"Select Role"}
                                     options={options}
                                     styles={customReactSelectStyles}
-                                    value={selectedOption}
-                                    onChange={handleChange}
+                                    value={selectedLeaderBoardOption}
+                                    onChange={handleLeaderBoardChange}
                                 />
                                 :
                                 <SelectTab
-                                    isDisabled
+                                    isDisabled //currently disabled!!!
                                     placeholder={"Select criteria"}
                                     options={taskOptions}
                                     styles={customReactSelectStyles}
@@ -133,8 +151,23 @@ const DiscordModeration = () => {
                 }
             </>}
             {currentTab === "leaderboard" ?
-                <div className={styles.DiscordModerationLeaderboardRow}>
-                    comming soon !!!
+                <div className={styles.DiscordModerationTable}>
+                    <TableTop
+                    />
+                    <Table
+                        rows={leaderBoardData}
+                        page={currentPage}
+                        perPage={perPage}
+                        columnOrder={leaderBoardColumnOrder}
+                        id={["id"]}
+                        isloading={loading}
+                    >
+                        <THead
+                            columnOrder={leaderBoardColumnOrder}
+                            onIconClick={handleIconClick}
+                        />
+                        <Blank />
+                    </Table>
                 </div>
                 :
                 <div className={styles.DiscordModerationTable}>
@@ -144,24 +177,14 @@ const DiscordModeration = () => {
                         rows={taskData}
                         page={currentPage}
                         perPage={perPage}
-                        columnOrder={columnOrder}
+                        columnOrder={taskColumnOrder}
                         id={["id"]}
                         isloading={loading}
                     >
                         <THead
-                            columnOrder={columnOrder}
+                            columnOrder={taskColumnOrder}
                             onIconClick={handleIconClick}
                         />
-                        {/* <Pagination
-                                currentPage={currentPage}
-                                totalPages={totalPages}
-                                margin="10px 0"
-                                // handleNextClick={handleNextClick}
-                                // handlePreviousClick={handlePreviousClick}
-                                // onPerPageNumber={handlePerPageNumber}
-                                perPage={perPage}
-                                setPerPage={setPerPage}
-                            /> */}
                         <Blank />
                     </Table>
                 </div>
