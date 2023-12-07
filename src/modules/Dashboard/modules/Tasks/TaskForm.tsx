@@ -267,9 +267,9 @@ const TaskForm = forwardRef(
                         selectedOrg?.value || "",
                         data.discord_link,
                         data.event,
+                        toast,
                         data.bonus_time,
-                        data.bonus_karma,
-                        toast
+                        data.bonus_karma
                     )
                         .then(() => {
                             props.closeModal();
@@ -295,9 +295,10 @@ const TaskForm = forwardRef(
                         data.discord_link,
                         props.id,
                         data.event,
+                        toast,
                         data.bonus_time,
-                        data.bonus_karma,
-                        toast
+                        data.bonus_karma
+                        
                     )
                         .then(() => {
                             props.closeModal();
