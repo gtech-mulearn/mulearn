@@ -25,10 +25,10 @@ type urlData = {
 const Affiliation = () => {
     const columnOrder: ColOrder[] = [
         { column: "title", Label: "Title", isSortable: true },
-        { column: "created_by", Label: "Created By", isSortable: true },
-        { column: "created_at", Label: "Created At", isSortable: true },
-        { column: "updated_by", Label: "Updated By", isSortable: true },
-        { column: "updated_at", Label: "Updated At", isSortable: true },
+        { column: "created_by", Label: "Created By", isSortable: false },
+        { column: "created_at", Label: "Created At", isSortable: false },
+        { column: "updated_by", Label: "Updated By", isSortable: false },
+        { column: "updated_at", Label: "Updated At", isSortable: false },
     ];
 
     const toast = useToast();
