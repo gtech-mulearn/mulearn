@@ -32,7 +32,7 @@
     font-size: 50px;
     font-weight: 600;
     margin: 0;
-	line-height: 1;
+    line-height: 1;
 }
 
 .TitleContainerWrapper .Title h3 {
@@ -196,7 +196,7 @@
     background-color: rgba(238, 242, 255, 1);
     min-height: 130px;
     border-radius: 10px;
-    padding: 10px;	
+    padding: 10px;
 }
 .ReportWrapper .DetailSection .SectionThree {
     display: flex;
@@ -260,11 +260,12 @@
     font-size: 18px;
     font-weight: 600;
 }
-.ReportWrapper .UploadSection > div > label > div, .ReportWrapper .UploadSection > div > div {
+.ReportWrapper .UploadSection > div > label > div,
+.ReportWrapper .UploadSection > div > div {
     width: 100%;
     height: 50vh;
     display: flex;
-	cursor: pointer;
+    cursor: pointer;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -319,9 +320,9 @@
     gap: 10px;
 }
 
-.loading{
-	align-items: center;
-	justify-content: center;
+.loading {
+    align-items: center;
+    justify-content: center;
 }
 
 .HistoryDataWrapper > div {
@@ -439,7 +440,7 @@
     gap: 10px;
     font-weight: 600;
     min-width: none;
-	justify-self: space-between;
+    justify-self: space-between;
 }
 .ContainerWrapper .ContentWrapper .TopContainer .sectionOne p {
     font-size: 18px;
@@ -480,7 +481,7 @@
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 8px;
-	height: fit-content;
+    height: fit-content;
 }
 .ContainerWrapper .ContentWrapper .TopContainer .sectionTwo {
     width: 30%;
@@ -589,15 +590,15 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     font-size: 17px;
     font-weight: 500;
     width: 100%;
-	padding: 5px;
+    padding: 5px;
 }
 
-.CheckBoxContentWrapper{
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 10px;
+.CheckBoxContentWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
 .CheckBoxContainerWrapper input {
@@ -622,22 +623,20 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     display: flex;
     align-items: center;
     justify-content: space-between;
-	gap: 2px;
-	width: 100%;
-	label{
-		width: 80%;
-	}
+    gap: 2px;
+    width: 100%;
+    label {
+        width: 80%;
+    }
 }
 
-@media  screen and (max-width: 500px) {
-	.CheckBoxContainer{
-		label{
-			width: 80%;
-		}
-	}
-	
+@media screen and (max-width: 500px) {
+    .CheckBoxContainer {
+        label {
+            width: 80%;
+        }
+    }
 }
-
 
 /* Attendees */
 .AttendeesWrapperIndividual {
@@ -830,6 +829,11 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     color: var(--White);
 }
 
+@media screen and (max-width: 500px) {
+    .Lcweek {
+        justify-content: center;
+    }
+}
 .progressContainer {
     display: flex;
     flex-direction: column;
@@ -1077,42 +1081,42 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 /* LC Option */
 .LcOptions {
-	position: absolute;
-	right: 2rem;
-	margin-bottom: 140px;
-	background-color: var(--White);
-	border-radius: 10px;
-	display: flex;
-	align-items: end;
-	justify-content: center;
-	flex-direction: column;
-	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+    position: absolute;
+    right: 2rem;
+    margin-bottom: 140px;
+    background-color: var(--White);
+    border-radius: 10px;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
 }
 
 .LcOptions div {
-	padding: 10px 20px;
-	display: flex;
-	align-items: center;
-	justify-content: end;
-	gap: 10px;
-	cursor: pointer;
-	color: red;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 10px;
+    cursor: pointer;
+    color: red;
 }
 
 .LcOptions div:hover {
-	background-color: rgba(238, 242, 255, 1);
-	width: 100%;
-	border-radius: 10px 10px 0 0;
+    background-color: rgba(238, 242, 255, 1);
+    width: 100%;
+    border-radius: 10px 10px 0 0;
 }
 
 .LcOptions div:hover:last-child {
-	background-color: rgba(238, 242, 255, 1);
-	width: 100%;
-	border-radius: 0 0 10px 10px;
+    background-color: rgba(238, 242, 255, 1);
+    width: 100%;
+    border-radius: 0 0 10px 10px;
 }
 
 .LcOptions div:hover:first-child {
-	background-color: rgba(238, 242, 255, 1);
-	width: 100%;
-	border-radius: 10px 10px 0 0;
+    background-color: rgba(238, 242, 255, 1);
+    width: 100%;
+    border-radius: 10px 10px 0 0;
 }

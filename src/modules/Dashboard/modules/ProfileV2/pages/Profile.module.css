@@ -1,97 +1,4 @@
-/* .basic_details {
-    display: flex;
-    color: #000;
-    gap: 10px;
-    width: 95%;
-    max-width: 95%;
-    flex-wrap: wrap;
 
-    .profile_details_container {
-        background: #fff;
-        padding: 10px 20px;
-        border-radius: 10px;
-        display: flex;
-        gap: 15px;
-        align-items: center;
-        min-width: 360px;
-        box-shadow: 0px 3px 12px 0px rgba(0, 24, 99, 0.1);
-        width: fit-content;
-        justify-content: space-between;
-
-        .profile_pic {
-            background-color: #456ff6;
-            min-width: 80px;
-            min-height: 80px;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border: 8px solid #fff;
-        }
-
-        .profile_details {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 5px;
-
-            & h1 {
-                font-weight: 700;
-                text-align: left;
-                line-height: 15px;
-            }
-
-            & p {
-                font-size: 12px;
-                color: #7d9bc6;
-            }
-
-            .socials {
-                display: flex;
-                gap: 5px;
-            }
-        }
-        .Levels {
-            margin-left: 10px;
-        }
-    }
-
-    .basic_details_detail {
-        display: flex;
-        gap: 10px;
-        width: calc(100% - 390px);
-
-        .status_container {
-            display: flex;
-            gap: 10px;
-            width: 100%;
-
-            .status {
-                background: #fff;
-                padding: 10px 20px;
-                border-radius: 10px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 10px;
-                width: 50%;
-                box-shadow: 0px 3px 12px 0px rgba(0, 24, 99, 0.1);
-
-                .status_box p:nth-child(1) {
-                    font-size: 16px;
-                    font-weight: 400;
-                }
-
-                .status_box p:nth-child(2) {
-                    font-size: 26px;
-                    font-weight: 700;
-                }
-            }
-            .Levels {
-                display: none;
-            }
-        }
-    }
-} */
 
 .roles_and_karma_container {
     display: flex;
@@ -201,7 +108,7 @@
 
     .karma_distribution_container {
         width: 50%;
-        height: 300px;
+        min-height: 300px;
         position: relative;
         display: flex;
         align-items: center;
@@ -215,7 +122,7 @@
             font-size: 22px;
         }
         .container {
-            height: 200px;
+            min-height: 200px;
             display: flex;
             align-items: center;
             gap: 15px;
@@ -286,72 +193,7 @@
         }
     }
 }
-/* 
-@media screen and (max-width: 1400px) {
-    .basic_details {
-        .basic_details_detail {
-            flex-direction: column;
-            gap: 20px;
 
-            .status_container {
-                width: unset;
-            }
-        }
-    }
-}
-
-@media screen and (max-width: 1290px) {
-    .basic_details {
-        flex-direction: column;
-        gap: 20px;
-        width: 100%;
-        margin-top: 20px;
-        align-items: center;
-        .profile_details_container {
-            width: fit-content;
-            justify-content: center;
-            flex-direction: column;
-            padding: 30px 20px;
-            min-width: 310px;
-
-            .profile_pic {
-                margin-top: -70px;
-                width: 120px;
-                height: 120px;
-            }
-
-            .profile_details {
-                align-items: center;
-                text-align: center;
-            }
-            .Levels {
-                display: none;
-            }
-        }
-
-        .basic_details_detail {
-            flex-direction: row;
-            gap: 10px;
-            width: 100%;
-            flex-wrap: wrap;
-
-            .status_container {
-                flex-direction: row;
-                width: 100%;
-                flex-wrap: wrap;
-                gap: 10px;
-
-                .status {
-                    width: calc(50% - 5px);
-                    min-width: 100px;
-                }
-                .Levels {
-                    display: block;
-                }
-            }
-        }
-    }
-} */
 
 @media screen and (max-width: 1240px) {
     .roles_karma_dist_container {
