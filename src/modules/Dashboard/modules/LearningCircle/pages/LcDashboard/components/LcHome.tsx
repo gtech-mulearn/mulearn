@@ -4,7 +4,7 @@ import { EditLogo, RightArrow } from "../../../assets/svg";
 import LcReport from "./LcReport";
 import LcHistory from "./LcHistory";
 import LcSchedule from "./LcSchedule";
-import { convertDateToDayAndMonthAndYear } from "../../../../../utils/common";
+import { convertDateToDayAndMonthAndYear, convertToFormatedDate } from "../../../../../utils/common";
 import { getNextMeetingDate } from "../utils/LcNextMeet";
 import LcCheckList from "./LcCheckList";
 import { convert24to12, extract24hTimeFromDateTime } from "../../../services/utils";
@@ -132,7 +132,7 @@ const LcHome = (props: Props) => {
                                 >
                                     <div>
                                         <p>{index + 1}.</p>
-                                        <p>{convertDateToDayAndMonthAndYear(report.day)}</p>
+                                        <p>{convertToFormatedDate(report.meet_time)}</p>
                                     </div>
                                     <div>
                                         <p

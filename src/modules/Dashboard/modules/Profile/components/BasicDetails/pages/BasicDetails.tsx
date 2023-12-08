@@ -22,6 +22,8 @@ const BasicDetails = (props: Props) => {
     const ig_sorted = ig.sort((a: any, b: any) => {
         return a.name > b.name ? 1 : -1;
     });
+    // console.log(props.userProfile.level.slice(3, 4));
+    
     return (
         <>
             <div className={styles.interestGrp}>
@@ -29,7 +31,7 @@ const BasicDetails = (props: Props) => {
                     <b>Interest Groups</b>
                     <div className={styles.close_and_submit_btn_div}>
                         {!id &&
-                            props.userProfile.level.slice(3, 4) >= 4 &&
+                            6 >= 4 &&
                             !editIg && (
                                 <p
                                     onClick={() => setEditIg(true)}

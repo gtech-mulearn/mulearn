@@ -76,6 +76,7 @@ export const dashboardRoutes = {
     createShortenUrl: "/api/v1/url-shortener/create/",
     editShortenUrl: "/api/v1/url-shortener/edit/${urlId}/",
     deleteShortenUrl: "/api/v1/url-shortener/delete/${urlId}/",
+    getAnalytics: "/api/v1/url-shortener/get-analytics/${urlId}/",
 
     getUserProfile: "/api/v1/dashboard/profile/user-profile/",
     getPublicUserProfile: "/api/v1/dashboard/profile/user-profile/${muid}/",
@@ -166,7 +167,8 @@ export const dashboardRoutes = {
 
     //discord moderation
     taskList:"api/v1/dashboard/discord-moderator/tasklist",
-    taskListCount:"api/v1/dashboard/discord-moderator/pendingcounts/"
+    taskListCount:"api/v1/dashboard/discord-moderator/pendingcounts/",
+    leaderboard:"api/v1/dashboard/discord-moderator/leaderboard/"
 } as const;
 
 export const organizationRoutes = {

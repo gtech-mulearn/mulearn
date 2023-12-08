@@ -50,6 +50,7 @@ type TableProps = {
     onDeleteClick?: (column: string | undefined) => void;
     onVerifyClick?: (column: string | number | boolean) => void;
     onCopyClick?: (column: string | number | boolean) => void;
+    analytics?: (column: string | number | boolean) => void;
     modalVerifyHeading?: string;
     modalVerifyContent?: string;
     modalDeleteHeading?: string;
@@ -188,6 +189,20 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                 key={column}
                                             >
                                                 <div className={styles.icons}>
+                                                    {props.analytics && (
+                                                        <button
+                                                            onClick={() =>
+                                                                props.analytics &&
+                                                                props.analytics(
+                                                                    rowData[
+                                                                        column
+                                                                    ]
+                                                                )
+                                                            }
+                                                        >
+                                                            <i className="fi fi-rr-arrow-trend-up"></i>
+                                                        </button>
+                                                    )}
                                                     {props.onCopyClick && (
                                                         <button
                                                             onClick={() =>

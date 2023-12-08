@@ -41,6 +41,8 @@ import Channels from "./modules/Dashboard/modules/Channels/Pages/Channels";
 import Settings from "./modules/Dashboard/modules/Settings/Settings";
 import Account from "./modules/Dashboard/modules/Settings/pages/Account/Account";
 import DiscordModeration from "./modules/Dashboard/modules/DiscordModeration/DiscordModeration";
+import Test from "./modules/Dashboard/modules/Test/Test";
+import Analytics from "./modules/Dashboard/modules/UrlShortener/Pages/Analytics";
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
 );
@@ -518,6 +520,19 @@ function App() {
                             )
                         },
                         {
+                            path: "url-shortener/analytics/:id",
+                            element: (
+                                <RoleChecker
+                                    roles={[
+                                        roles.ADMIN,
+                                        roles.FELLOW,
+                                        roles.ASSOCIATE
+                                    ]}
+                                    children={<Analytics />}
+                                />
+                            )
+                        },
+                        {
                             path: "hackathon",
                             element: (
                                 <RoleChecker
@@ -632,6 +647,15 @@ function App() {
                                 <RoleChecker
                                     roles={[roles.ADMIN]}
                                     children={<OrganizationTransfer />}
+                                />
+                            )
+                        },
+                        {
+                            path: "test",
+                            element: (
+                                <RoleChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<Test />}
                                 />
                             )
                         },
