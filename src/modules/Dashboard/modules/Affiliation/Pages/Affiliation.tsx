@@ -25,6 +25,7 @@ type urlData = {
 const Affiliation = () => {
     const columnOrder: ColOrder[] = [
         { column: "title", Label: "Title", isSortable: true },
+        { column: "organization_count", Label: "No. of Organizations", isSortable: false },
         { column: "created_by", Label: "Created By", isSortable: false },
         { column: "created_at", Label: "Created At", isSortable: false },
         { column: "updated_by", Label: "Updated By", isSortable: false },
@@ -45,11 +46,13 @@ const Affiliation = () => {
         initialValues: {
             id: "",
             title: "",
+           
         },
         onSubmit: values => {
             const affiliationCreateData = {
                 id: values.id,
                 title: values.title,
+               
             };
             if (!editBtn) {
                 createAffiliation(toast, affiliationCreateData, formik).then(result => {
