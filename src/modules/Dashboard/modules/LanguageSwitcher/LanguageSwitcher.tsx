@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import styles from "./LanguageSwitcher.module.css";
-export function getFontSizeForLanguage(lang: string, i18n: any): string {
-    const fontSize = i18n.t("fontSize", { lng: lang });
-    return fontSize || "10px";
+export function getFontSizeForLanguage(lang: string): string {
+    const malayalamFontSize = "14px";
+
+    const fontSize = lang === "mal" ? malayalamFontSize : "";
+
+    return fontSize;
 }
 
 function LanguageSwitcher() {

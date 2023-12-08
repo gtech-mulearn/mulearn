@@ -34,7 +34,7 @@ const Refer = () => {
     const [data, setData] = useState<Dataflow[] | null>(null);
     const { t } = useTranslation(["ChangePassword"]);
 
-    const fontSize = getFontSizeForLanguage(i18next.language, i18next);
+    const fontSize = getFontSizeForLanguage(i18next.language);
     const columnOrder = [
         { column: "full_name", Label: "Name", isSortable: false },
         { column: "muid", Label: "Mu ID", isSortable: false },
@@ -78,9 +78,7 @@ const Refer = () => {
                 <div className={styles.headContent}>
                     <img src={imageTop} alt="image" loading="eager" />
                     <div className={styles.learningCircleLandingPageDesc}>
-                        <h1 style={{ fontSize }}>
-                            {t("Discover, collaborate and grow")}
-                        </h1>
+                        <h1>{t("Discover, collaborate and grow")}</h1>
                         <b style={{ fontWeight: "600", width: "80%" }}>
                             <p style={{ fontSize }}>{t("Referral desc")}</p>
                         </b>

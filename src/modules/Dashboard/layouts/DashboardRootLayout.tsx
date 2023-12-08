@@ -17,7 +17,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
     const [connected, setConnected] = useState(false);
     const { t } = useTranslation(["ChangePassword", "DashboardRootLayout"]);
 
-    const fontSize = getFontSizeForLanguage(i18next.language, i18next);
+    const fontSize = getFontSizeForLanguage(i18next.language);
     useEffect(() => {
         const userInfo = fetchLocalStorage<UserInfo>("userInfo");
         if (userInfo) {

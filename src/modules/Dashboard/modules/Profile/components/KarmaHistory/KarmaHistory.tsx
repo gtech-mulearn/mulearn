@@ -3,7 +3,10 @@ import KarmaSymbol from "../../assets/svg/KarmaSymbol";
 import styles from "./KarmaHistory.module.css";
 import { Switch } from "@chakra-ui/react";
 import { useState } from "react";
-
+import i18next from "i18next";
+import LanguageSwitcher from "../../../LanguageSwitcher/LanguageSwitcher";
+import { getFontSizeForLanguage } from "../../../LanguageSwitcher/LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 type Props = {
     userProfile: any;
     userLog: {
@@ -45,9 +48,7 @@ const KarmaHistory = (props: Props) => {
                 {userLog.map((log: any, i) => {
                     return (
                         <div className={styles.karma_history} key={i}>
-                            <p className={styles.karma_history_box_bg}>
-                                <KarmaWhite />
-                            </p>
+                            <p className={styles.karma_history_box_bg}></p>
                             <div className={styles.content}>
                                 <h1 className={styles.karma}>{log.karma} ϰ</h1>
                                 <h2>Karma</h2>

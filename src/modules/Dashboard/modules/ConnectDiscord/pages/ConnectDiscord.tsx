@@ -16,8 +16,7 @@ const ConnectDiscord = () => {
     const [muid, setMuid] = useState("");
     const toast = useToast();
     const { t } = useTranslation(["ChangePassword"]);
-
-    const fontSize = getFontSizeForLanguage(i18next.language, i18next);
+    const fontSize = getFontSizeForLanguage(i18next.language);
     const firstFetch = useRef(true);
     useEffect(() => {
         if (firstFetch.current) {
@@ -39,10 +38,10 @@ const ConnectDiscord = () => {
                 <div className={styles.connectDiscord}>
                     <div className={styles.connect_discord_container}>
                         <div className={styles.content}>
-                            <h1 style={{ fontSize }}>
-                                {t("Join Discord using your µid")}
-                            </h1>
-                            <p className={styles.content_tagline}>
+                            <p
+                                className={styles.content_tagline}
+                                style={{ fontSize }}
+                            >
                                 {t("Join Discord desc")}
                             </p>
                             <div className={styles.muid_and_btn}>
@@ -94,7 +93,7 @@ const ConnectDiscord = () => {
 
                     <div className={styles.onboarding_flow_container}>
                         <div className={styles.content}>
-                            <h1 style={{ fontSize }}>{t("Onboarding Flow")}</h1>
+                            <h1>{t("Onboarding Flow")}</h1>
                             <div className={styles.onboarding_flow}>
                                 <p className={styles.lines}>
                                     <div className={styles.box}>
