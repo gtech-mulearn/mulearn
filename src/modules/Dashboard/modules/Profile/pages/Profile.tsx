@@ -52,6 +52,7 @@ const Profile = () => {
         level: "",
         profile_pic: "",
         is_public: false,
+        percentile: "",
         roles: []
     });
     const [profileStatus, setProfileStatus] = useState<boolean>();
@@ -462,6 +463,13 @@ const Profile = () => {
                                                 <div>
                                                     <span>Rank</span>
                                                     <h1>{userProfile.rank}</h1>
+                                                </div>
+                                            </div>
+                                            <div className={styles.points}>
+                                                < Rank/>
+                                                <div>
+                                                    <span>Percentile</span>
+                                                    <h1>{userProfile.percentile}</h1>
                                                 </div>
                                             </div>
                                         </div>
