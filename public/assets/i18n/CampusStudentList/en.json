@@ -5,5 +5,11 @@
     "TotalMembers":"Total Memebers",
     "ActiveMembers":"Active Memebrs",
     "CampusLead":"Campus Lead",
-    "StudentStatistics":"Student Statistics"
+    "StudentStatistics":"Student Statistics",
+    "Campus Enabler":"Campus Enabler",
+    "No Organisation Found":"No Organisation Found",
+    "Kindly, raise a support ticket by typing '/support-ticket' in the discord to add one.":"Kindly, raise a support ticket by typing '/support-ticket' in the discord to add one.",
+    "Download":"Download"
+
+
 }

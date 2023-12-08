@@ -12,10 +12,15 @@ import {
 import { SearchBar } from "@/MuLearnComponents/TableTop/SearchBar";
 import LearningCircleForm from "./LearningCircleFilter";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
+import i18next from "i18next";
+import LanguageSwitcher from "../../LanguageSwitcher/LanguageSwitcher";
+import { getFontSizeForLanguage } from "../../LanguageSwitcher/LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 
 const { toast } = createStandaloneToast();
 
 const FindCircle = () => {
+    const { t } = useTranslation(["LearningCircle"]);
     const [isLoading, setIsLoading] = useState(false);
     const [lc, setLc] = useState<LcType[]>([]);
     const navigate = useNavigate();
@@ -52,13 +57,13 @@ const FindCircle = () => {
             <div className={styles.FindCircleContent}>
                 <div className={styles.FindCircleContentTop}>
                     <div className={styles.desc}>
-                        <h3>Find your learning circle</h3>
+                        <h3>{t("Find")}</h3>
                         <b style={{ color: "#000" }}>
-                            Browse and join learning circle around you
+                            {t("Browse")}
                         </b>
                         <div style={{ width: "75%" }}>
                             <SearchBar
-                                placeholder="Enter circle code"
+                                placeholder={t("Enter circle code")}
                                 onSearch={handleData}
                                 onClear={reset}
                             />
@@ -93,7 +98,7 @@ const FindCircle = () => {
                                                 <p>{circle?.org}</p>
                                                 <p>
                                                     {circle?.member_count}{" "}
-                                                    Members
+                                                    {t("Members")}
                                                 </p>
                                                 {circle?.member_count < 5 ? (
                                                     <div
@@ -115,7 +120,7 @@ const FindCircle = () => {
                                                                 );
                                                             }}
                                                         >
-                                                            Join
+                                                            {t("Join")}
                                                         </button>
                                                     </div>
                                                 ) : (
@@ -127,7 +132,7 @@ const FindCircle = () => {
                                                                 styles.disabled_button
                                                             }
                                                         >
-                                                            Circle Full
+                                                            {t("CircleFull")}
                                                         </button>
                                                     </div>
                                                 )}
@@ -137,7 +142,7 @@ const FindCircle = () => {
                             </div>
                         ) : (
                             <div className={styles.error_container}>
-                                <h1>Found no learning circles </h1>
+                                <h1>{t("nocircle")}</h1>
                             </div>
                         )}
                     </>

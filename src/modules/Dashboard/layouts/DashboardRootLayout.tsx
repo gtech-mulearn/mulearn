@@ -50,7 +50,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
         },
         {
             url: "/dashboard/hackathon",
-            title: "Hackathon",
+            title: t("Hackathon"),
             hasView: true,
             roles: [roles.ADMIN],
             icon: <i className="fi fi-sr-head-side-thinking"></i>
@@ -69,7 +69,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
         },
         {
             url: "",
-            title: "Management",
+            title: t("Management"),
             hasView: true,
             roles: [roles.ADMIN, roles.FELLOW, roles.ASSOCIATE],
             icon: <i className="fi fi-sr-layout-fluid"></i>,
@@ -195,7 +195,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
         },
         {
             url: "/dashboard/zonal-dashboard",
-            title: "Zonal Dashboard",
+            title: t("Zonal Dashboard"),
             hasView: true,
             roles: [roles.ZONAL_CAMPUS_LEAD],
             icon: <i className="fi fi-sr-marker"></i>
