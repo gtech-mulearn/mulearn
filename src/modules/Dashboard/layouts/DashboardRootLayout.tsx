@@ -139,19 +139,46 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     roles: [roles.ADMIN, roles.FELLOW]
                     // icon: <i className="fi fi-sr-building"></i>
                 },
+                // {
+                //     url: "/dashboard/tasks",
+                //     title: "Tasks",
+                //     hasView: true,
+                //     roles: [roles.ADMIN]
+                //     // icon: <i className="fi fi-sr-note"></i>
+                // },
+                // {
+                //     url: "/dashboard/task-type",
+                //     title: "Task Type",
+                //     hasView: true,
+                //     roles: [roles.ADMIN]
+                //     // icon: <i className="fi fi-sr-note"></i>
+                // },
                 {
-                    url: "/dashboard/tasks",
-                    title: "Tasks",
+                    url: "",
+                    title: "Task Management",
                     hasView: true,
-                    roles: [roles.ADMIN]
-                    // icon: <i className="fi fi-sr-note"></i>
-                },
-                {
-                    url: "/dashboard/task-type",
-                    title: "Task Type",
-                    hasView: true,
-                    roles: [roles.ADMIN]
-                    // icon: <i className="fi fi-sr-note"></i>
+                    roles: [roles.ADMIN],
+                    // icon: <i className="fi fi-sr-users"></i>,
+                    children: [
+                        {
+                            url: "/dashboard/tasks",
+                            title: "Tasks",
+                            hasView: true,
+                            roles: [roles.ADMIN]
+                        },
+                        {
+                            url: "/dashboard/task-type",
+                            title: "Task Type",
+                            hasView: true,
+                            roles: [roles.ADMIN]
+                        },
+                        {
+                            url: "/dashboard/events",
+                            title: "Events",
+                            hasView: true,
+                            roles: [roles.ADMIN]
+                        }
+                    ]
                 },
                 {
                     url: "/dashboard/karma-voucher",
