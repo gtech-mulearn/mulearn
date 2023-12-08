@@ -1,7 +1,6 @@
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 
-import { ToastId, UseToastOptions } from "@chakra-ui/toast";
 import { AxiosError } from "axios";
 
 type CampusDataSet = {

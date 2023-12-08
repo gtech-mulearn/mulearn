@@ -98,6 +98,13 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     // icon: <i className="fi fi-sr-note"></i>
                 },
                 {
+                    url: "/dashboard/task-type",
+                    title: "Task Type",
+                    hasView: true,
+                    roles: [roles.ADMIN]
+                    // icon: <i className="fi fi-sr-note"></i>
+                },
+                {
                     url: "/dashboard/karma-voucher",
                     title: "Karma Voucher",
                     hasView: true,
@@ -184,7 +191,14 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     title: "Organization Transfer",
                     hasView: true,
                     roles: [roles.ADMIN]
-                }
+                },
+                {
+                    url: "/dashboard/discord-moderation",
+                    title: "Discord Moderation",
+                    hasView: true,
+                    roles: [roles.ADMIN]
+                    // icon: <i className="fi fi-sr-users-gear"></i>
+                },
             ]
         },
         {

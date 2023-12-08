@@ -162,32 +162,8 @@ export const getInterestGroups = async () => {
     }
 };
 
-// export const approveLcUser = async (
-//     circleId: string | undefined,
-//     memberId: string,
-//     flag: number,
-//     message?: string
-// ) => {
-//     try {
-//         const response = await privateGateway.patch(
-//             dashboardRoutes.getCampusLearningCircles +
-//                 circleId +
-//                 "/user-accept-reject" +
-//                 memberId +
-//                 "/",
-//             {
-//                 is_accepted: flag
-//             }
-//         );
-//         const message = response.data;
-//         return message;
-//     } catch (err) {
-//         const error = err as AxiosError;
-//         if (error?.response) {
-//             throw error;
-//         }
-//     }
-// };
+
+
 
 export const leaveLc = async (
     circleId: string | undefined,
@@ -330,19 +306,17 @@ export const setLCMeetTime = async (
     }
 };
 
-export const reportMeeting = async (
-    id: string | undefined,
-    data: {
-        agenda: string;
-        attendees: string;
-        day: string;
-        meet_time: string;
-    }
-) => {
+export const reportMeeting = async (id: string | undefined, data: FormData) => {
     try {
         const response = await privateGateway.post(
             dynamicRoute(lcRoutes.createReport, id as string),
-            data
+            data,
+            {
+                maxBodyLength: Infinity,
+                headers: {
+                    "Content-Type": "multipart/form-data"
+                }
+            }
         );
         const message: any = response?.data;
         return message;
@@ -354,10 +328,8 @@ export const reportMeeting = async (
     }
 };
 
-export const getLCMeetingReport = async (
-    reportId: string | undefined,
-    circleId: string | undefined
-) => {
+
+export const getLCMeetingReport = async (reportId: string | undefined, circleId: string | undefined) => {
     try {
         const response = await privateGateway.get(
             dynamicRoute(

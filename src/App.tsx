@@ -40,7 +40,8 @@ import Foundation from "./modules/Public/Foundation/Foundation";
 import Channels from "./modules/Dashboard/modules/Channels/Pages/Channels";
 import Settings from "./modules/Dashboard/modules/Settings/Settings";
 import Account from "./modules/Dashboard/modules/Settings/pages/Account/Account";
-import Analytics from "./modules/Dashboard/modules/UrlShortener/Pages/Analytics";
+import DiscordModeration from "./modules/Dashboard/modules/DiscordModeration/DiscordModeration";
+import Test from "./modules/Dashboard/modules/Test/Test";
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
 );
@@ -58,6 +59,13 @@ const Tasks = lazy(() =>
         default: module.Tasks
     }))
 );
+
+const TaskType = lazy(() =>
+    import("./modules/Dashboard/modules/TaskType/TaskType").then(module => ({
+        default: module.TaskType
+    }))
+);
+
 const ManageUsersCreate = lazy(
     () => import("./modules/Dashboard/modules/ManageUsers/ManageUsersCreate")
 );
@@ -281,7 +289,7 @@ function App() {
                     element: <DashboardRootLayout />,
                     children: [
                         { path: "profile", element: <Profile /> },
-                        { path: "profileV2", element: <ProfileV2 /> },
+                        // { path: "profileV2", element: <ProfileV2 /> },
                         {
                             path: "connect-discord",
                             element: <ConnectDiscord />
@@ -437,6 +445,10 @@ function App() {
                             element: <TaskEdit />
                         },
                         {
+                            path: "task-type",
+                            element: <TaskType />
+                        },
+                        {
                             path: "tasks/bulk-import",
                             element: <TaskBulkImport />
                         },
@@ -574,6 +586,15 @@ function App() {
                             )
                         },
                         {
+                            path: "discord-moderation",
+                            element: (
+                                <RoleChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<DiscordModeration />}
+                                />
+                            )
+                        },
+                        {
                             path: "manage-locations",
                             element: (
                                 <RoleChecker
@@ -625,6 +646,15 @@ function App() {
                                 <RoleChecker
                                     roles={[roles.ADMIN]}
                                     children={<OrganizationTransfer />}
+                                />
+                            )
+                        },
+                        {
+                            path: "test",
+                            element: (
+                                <RoleChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<Test />}
                                 />
                             )
                         },
