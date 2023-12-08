@@ -519,6 +519,19 @@ function App() {
                             )
                         },
                         {
+                            path: "url-shortener/analytics/:id",
+                            element: (
+                                <RoleChecker
+                                    roles={[
+                                        roles.ADMIN,
+                                        roles.FELLOW,
+                                        roles.ASSOCIATE
+                                    ]}
+                                    children={<Analytics />}
+                                />
+                            )
+                        },
+                        {
                             path: "hackathon",
                             element: (
                                 <RoleChecker

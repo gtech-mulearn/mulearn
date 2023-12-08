@@ -17,6 +17,7 @@ import {
     PowerfulButton
 } from "@/MuLearnComponents/MuButtons/MuButton";
 import { Blank } from "@/MuLearnComponents/Table/Blank";
+import { useNavigate } from "react-router-dom";
 type urlData = {
     id: string | number | boolean;
     long_url: string;
@@ -32,6 +33,7 @@ const UrlShortener = () => {
     ];
 
     const toast = useToast();
+    const navigate = useNavigate();
     const [editBtn, setEditBtn] = useState(false);
     const [createBtn, setCreateBtn] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
@@ -196,6 +198,11 @@ const UrlShortener = () => {
         );
         setEditBtn(true);
     };
+    const analytics = (id: any) => {
+        console.log(id);
+        // redirect to analytics paga
+        navigate(`/dashboard/url-shortener/analytics/${id}`);
+    }
 
     const handleDelete = (id: any) => {
         deleteShortenUrl(id.toString(), toast);
@@ -347,6 +354,7 @@ const UrlShortener = () => {
                     onEditClick={handleEdit}
                     onDeleteClick={handleDelete}
                     onCopyClick={handleCopy}
+                    analytics={analytics}
                     isloading={loading}
                 >
                     <THead

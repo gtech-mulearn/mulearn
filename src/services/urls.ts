@@ -76,6 +76,7 @@ export const dashboardRoutes = {
     createShortenUrl: "/api/v1/url-shortener/create/",
     editShortenUrl: "/api/v1/url-shortener/edit/${urlId}/",
     deleteShortenUrl: "/api/v1/url-shortener/delete/${urlId}/",
+    getAnalytics: "/api/v1/url-shortener/get-analytics/${urlId}/",
 
     getUserProfile: "/api/v1/dashboard/profile/user-profile/",
     getPublicUserProfile: "/api/v1/dashboard/profile/user-profile/${muid}/",

@@ -171,3 +171,23 @@ export const deleteShortenUrl = (id: string, toast: ToastAsPara) => {
             console.log(error);
         });
 };
+
+export const getAnalytics = (
+    // setResponseData: shortUrlData,
+    id: string
+): Promise<boolean> => {
+    return new Promise((resolve, reject) => {
+        privateGateway
+            .get(dashboardRoutes.getAnalytics.replace("${urlId}", id))
+            .then(response => {
+                resolve(response.data.response);
+                // console.log(response.data.response);
+                
+                // setResponseData(response.data.response);
+            })
+            .catch(error => {
+                reject(false);
+                console.log(error);
+            });
+    });
+};
