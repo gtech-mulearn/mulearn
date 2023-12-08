@@ -9,7 +9,7 @@
         & h1 {
             font-size: 35px;
             font-weight: 400;
-            line-height: 41px;
+            /* line-height: 41px; */
         }
 
         & p {
@@ -47,6 +47,9 @@
             border-radius: 40px;
             width: 390px;
             color: #2A83FF;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
 
         }
     }
@@ -227,6 +230,7 @@
                 box-shadow: 0px 6.619px 12.292px 0px rgba(77, 77, 77, 0.10);
                 padding: 20px 10px;
                 min-width: 160px;
+                max-height: 510px;
                 width: 32%;
                 text-align: center;
                 gap: 20px;
@@ -549,11 +553,25 @@
         .link_basics {
             width: 100%;
             margin-bottom: 20px;
+            text-align: center;
+
+            .date {
+                margin: 10px auto;
+            }
+
+            & select {
+                margin-top: 10px;
+            }
         }
 
         .link_copy {
             width: 100%;
             justify-content: center;
+
+            & a {
+                border-radius: 8px;
+                width: 100%;
+            }
         }
     }
 
@@ -577,10 +595,28 @@
 
             .sources {
                 width: 100%;
+                flex-direction: column;
+                gap: 20px 0px;
+                max-height: unset;
+
+                .source_box {
+                    width: 100%;
+
+                }
             }
 
             .week_analytics {
                 width: 100%;
+                padding: 25px 0px;
+
+                .footer {
+                    padding: 0px 10px;
+
+                    & button {
+                        padding: 4px 10px;
+                        width: 60px;
+                    }
+                }
             }
         }
 
@@ -590,6 +626,7 @@
 
             .sources {
                 width: 100%;
+                /* flex-direction: column; */
             }
 
             .countries {
@@ -603,6 +640,7 @@
 
             .sources {
                 width: 100%;
+                /* flex-direction: column; */
             }
 
             .countries {

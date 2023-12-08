@@ -203,11 +203,11 @@ const Analytics = (props: Props) => {
                 </div>
                 <div className={styles.link_copy}>
                     <a
-                        href={`https://mulearn.r/${response.short_url}`}
+                        href={`https://mulearn.org/r/${response.short_url}`}
                         target="_blank"
                         rel="noreferrer"
                     >
-                        https://mulearn.r/{response.short_url}
+                        https://mulearn.org/r/{response.short_url}
                     </a>
                     <a
                         href={response.long_url}
@@ -389,37 +389,46 @@ const Analytics = (props: Props) => {
                                 <p className={styles.visitsH}>Visits</p>
                             </div>
                             {response.sources &&
-                                Object.keys(response.sources).map(key => {
-                                    return (
-                                        <div className={styles.rows} key={key}>
-                                            <p className={styles.source}>
-                                                {/* {key != null
-                                                    ? new URL(key).hostname
-                                                          .split(".")
-                                                          .slice(-2)
-                                                          .join(".")
-                                                    : "Unknown"} */}
-                                                {key}
-                                            </p>
-                                            <p className={styles.visits}>
-                                                {response.sources &&
-                                                    response.sources[
-                                                        key as keyof typeof response.sources
-                                                    ]}
-                                                <span>
-                                                    {(
-                                                        (response.sources[
+                                Object.keys(response.sources).map(
+                                    (key: string) => {
+                                        const hostname =
+                                            key.split("/")[2] &&
+                                            key
+                                                .split("/")[2]
+                                                .toString()
+                                                .split(".")
+                                                .slice(-2)
+                                                .join(".").split(".")[0];
+                                        return (
+                                            <div
+                                                className={styles.rows}
+                                                key={key as string}
+                                            >
+                                                <p className={styles.source}>
+                                                    {hostname == null
+                                                        ? "Direct"
+                                                        : hostname}
+                                                </p>
+                                                <p className={styles.visits}>
+                                                    {response.sources &&
+                                                        response.sources[
                                                             key as keyof typeof response.sources
-                                                        ] /
-                                                            response.total_clicks) *
-                                                        100
-                                                    ).toPrecision(3)}
-                                                    %
-                                                </span>
-                                            </p>
-                                        </div>
-                                    );
-                                })}
+                                                        ]}
+                                                    <span>
+                                                        {(
+                                                            (response.sources[
+                                                                key as keyof typeof response.sources
+                                                            ] /
+                                                                response.total_clicks) *
+                                                            100
+                                                        ).toPrecision(3)}
+                                                        %
+                                                    </span>
+                                                </p>
+                                            </div>
+                                        );
+                                    }
+                                )}
                         </div>
                     </div>
                     <div className={styles.countries}>
