@@ -40,7 +40,14 @@
     line-height: normal;
     text-align: center;
 }
-
+.sublabel{
+    font-family: Plus Jakarta Sans, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+}
 .count {
     color: #000;
 
@@ -58,6 +65,16 @@
     margin-top: 1rem;
     font-style: normal;
     font-weight: 600;
+    margin-bottom: 1rem;
+    line-height: normal;
+}
+.subheading{
+    color: #292929;
+    font-family: Plus Jakarta Sans;
+    font-size: 20px;
+    margin-top: 1rem;
+    font-style: normal;
+    font-weight: 500;
     margin-bottom: 1rem;
     line-height: normal;
 }
