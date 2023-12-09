@@ -1,0 +1,107 @@
+.analytics_header {
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    color: #000;
+    text-align: left;
+
+    .link_basics {
+        & h1 {
+            font-size: 35px;
+            font-weight: 400;
+            /* line-height: 41px; */
+        }
+
+        & p {
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .date {
+            border-radius: 20px;
+            background: #2A83FF;
+            padding: 7px 10px;
+            color: #fff;
+            width: fit-content;
+            margin-top: 10px;
+        }
+
+        /* & select {
+            margin-top: 20px;
+            border-radius: 10px;
+            padding: 10px 15px;
+            width: 210px;
+            border: 1px solid #456FF6;
+        } */
+    }
+
+    .link_copy {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 10px;
+
+        & div {
+            /* padding: 10px 25px; */
+            background: #fff;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid #456ff6db;
+
+            & span {
+                padding: 12px;
+                background: #456ff6db;
+                color: #fff;
+                border-radius: 40px 0px 0px 40px;
+                width: 80px;
+                height: 100%;
+                font-weight: 600;
+            }
+
+            & a {
+                width: 340px;
+                color: #2A83FF;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .analytics_header {
+        flex-direction: column;
+        gap: 20px;
+
+        .link_basics {
+            width: 100%;
+            margin-bottom: 20px;
+            text-align: center;
+
+            .date {
+                margin: 10px auto;
+            }
+
+            & select {
+                margin-top: 10px;
+            }
+        }
+
+        .link_copy {
+            width: 100%;
+            justify-content: center;
+
+            & div {
+                border-radius: 8px;
+                width: 100%;
+
+                & span {
+                    border-radius: 10px 0px 0px 10px;
+                }
+            }
+        }
+    }
+}
