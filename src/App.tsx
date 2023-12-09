@@ -67,6 +67,12 @@ const TaskType = lazy(() =>
     }))
 );
 
+const Events = lazy(() =>
+    import("./modules/Dashboard/modules/Events/Events").then(module => ({
+        default: module.Events
+    }))
+);
+
 const ManageUsersCreate = lazy(
     () => import("./modules/Dashboard/modules/ManageUsers/ManageUsersCreate")
 );
@@ -290,7 +296,7 @@ function App() {
                     element: <DashboardRootLayout />,
                     children: [
                         { path: "profile", element: <Profile /> },
-                        // { path: "profileV2", element: <ProfileV2 /> },
+                        { path: "profileV2", element: <ProfileV2 /> },
                         {
                             path: "connect-discord",
                             element: <ConnectDiscord />
@@ -315,7 +321,6 @@ function App() {
                                     // might have to remove campus_lead and enabler with lead_enabler only
                                     roles={[
                                         roles.CAMPUS_LEAD,
-                                        roles.ENABLER,
                                         roles.LEAD_ENABLER
                                     ]}
                                     children={<CampusStudentList />}
@@ -447,11 +452,25 @@ function App() {
                         },
                         {
                             path: "task-type",
-                            element: <TaskType />
+                            element: (
+                                <RoleChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<TaskType />}
+                                />
+                            )
                         },
                         {
                             path: "tasks/bulk-import",
                             element: <TaskBulkImport />
+                        },
+                        {
+                            path: "events",
+                            element: (
+                                <RoleChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<Events />}
+                                />
+                            )
                         },
                         {
                             path: "karma-voucher",

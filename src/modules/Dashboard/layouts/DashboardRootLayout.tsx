@@ -69,56 +69,6 @@ const DashboardRootLayout = (props: { component?: any }) => {
             icon: <i className="fi fi-sr-layout-fluid"></i>,
             children: [
                 {
-                    url: "/dashboard/interest-groups",
-                    title: "Interest Groups",
-                    hasView: true,
-                    roles: [roles.ADMIN]
-                    // icon: <i className="fi fi-sr-books"></i>
-                },
-                {
-                    url: "/dashboard/organizations",
-                    title: "Organizations",
-                    hasView: true,
-                    roles: [roles.ADMIN]
-                    // icon: <i className="fi fi-sr-building"></i>
-                },
-
-                {
-                    url: "/dashboard/college-levels",
-                    title: "College Levels",
-                    hasView: true,
-                    roles: [roles.ADMIN, roles.FELLOW]
-                    // icon: <i className="fi fi-sr-building"></i>
-                },
-                {
-                    url: "/dashboard/tasks",
-                    title: "Tasks",
-                    hasView: true,
-                    roles: [roles.ADMIN]
-                    // icon: <i className="fi fi-sr-note"></i>
-                },
-                {
-                    url: "/dashboard/task-type",
-                    title: "Task Type",
-                    hasView: true,
-                    roles: [roles.ADMIN]
-                    // icon: <i className="fi fi-sr-note"></i>
-                },
-                {
-                    url: "/dashboard/karma-voucher",
-                    title: "Karma Voucher",
-                    hasView: true,
-                    roles: [roles.ADMIN, roles.FELLOW]
-                    // icon: <i className="fi fi-sr-note"></i>
-                },
-                {
-                    url: "/dashboard/error-log",
-                    title: "Error Log",
-                    hasView: true,
-                    roles: [roles.ADMIN, roles.TECH_TEAM]
-                    // icon: <i className="fi fi-sr-note"></i>
-                },
-                {
                     url: "",
                     title: "User Management",
                     hasView: true,
@@ -140,6 +90,112 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     ]
                 },
                 {
+                    url: "",
+                    title: "Manage Organization",
+                    hasView:true,
+                    roles: [roles.ADMIN],
+                    children: [
+                        {
+                            url: "/dashboard/affiliation",
+                            title: "Affiliation",
+                            hasView: true,
+                            roles: [roles.ADMIN, roles.FELLOW, roles.ASSOCIATE]
+                        },
+                        {
+                            url: "/dashboard/organization-transfer",
+                            title: "Organization Transfer",
+                            hasView: true,
+                            roles: [roles.ADMIN]
+                        },
+                        {
+                            url: "/dashboard/manage-departments",
+                            title: "Departments",
+                            hasView: true,
+                            roles: [roles.ADMIN]
+                            // icon: <i className="fi fi-sr-users-gear"></i>
+                        },
+                        {
+                            url: "/dashboard/organizations",
+                            title: "Organizations",
+                            hasView: true,
+                            roles: [roles.ADMIN]
+                            // icon: <i className="fi fi-sr-building"></i>
+                        },
+                    ]
+                },
+                {
+                    url: "/dashboard/interest-groups",
+                    title: "Interest Groups",
+                    hasView: true,
+                    roles: [roles.ADMIN]
+                    // icon: <i className="fi fi-sr-books"></i>
+                },
+                
+
+                {
+                    url: "/dashboard/college-levels",
+                    title: "College Levels",
+                    hasView: true,
+                    roles: [roles.ADMIN, roles.FELLOW]
+                    // icon: <i className="fi fi-sr-building"></i>
+                },
+                // {
+                //     url: "/dashboard/tasks",
+                //     title: "Tasks",
+                //     hasView: true,
+                //     roles: [roles.ADMIN]
+                //     // icon: <i className="fi fi-sr-note"></i>
+                // },
+                // {
+                //     url: "/dashboard/task-type",
+                //     title: "Task Type",
+                //     hasView: true,
+                //     roles: [roles.ADMIN]
+                //     // icon: <i className="fi fi-sr-note"></i>
+                // },
+                {
+                    url: "",
+                    title: "Task Management",
+                    hasView: true,
+                    roles: [roles.ADMIN],
+                    // icon: <i className="fi fi-sr-users"></i>,
+                    children: [
+                        {
+                            url: "/dashboard/tasks",
+                            title: "Tasks",
+                            hasView: true,
+                            roles: [roles.ADMIN]
+                        },
+                        {
+                            url: "/dashboard/task-type",
+                            title: "Task Type",
+                            hasView: true,
+                            roles: [roles.ADMIN]
+                        },
+                        {
+                            url: "/dashboard/events",
+                            title: "Events",
+                            hasView: true,
+                            roles: [roles.ADMIN]
+                        }
+                    ]
+                },
+                {
+                    url: "/dashboard/karma-voucher",
+                    title: "Karma Voucher",
+                    hasView: true,
+                    roles: [roles.ADMIN, roles.FELLOW]
+                    // icon: <i className="fi fi-sr-note"></i>
+                },
+                {
+                    url: "/dashboard/error-log",
+                    title: "Error Log",
+                    hasView: true,
+                    roles: [roles.ADMIN, roles.TECH_TEAM]
+                    // icon: <i className="fi fi-sr-note"></i>
+                },
+              
+                {
                     url: "/dashboard/dynamic-type",
                     title: "Dynamic Type",
                     hasView: true,
@@ -153,13 +209,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     roles: [roles.ADMIN]
                     // icon: <i className="fi fi-sr-users-gear"></i>
                 },
-                {
-                    url: "/dashboard/manage-departments",
-                    title: "Manage Departments",
-                    hasView: true,
-                    roles: [roles.ADMIN]
-                    // icon: <i className="fi fi-sr-users-gear"></i>
-                },
+                
                 {
                     url: "/dashboard/manage-locations",
                     title: "Manage Locations",
@@ -173,12 +223,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     hasView: true,
                     roles: [roles.ADMIN, roles.FELLOW, roles.ASSOCIATE]
                 },
-                {
-                    url: "/dashboard/affiliation",
-                    title: "Affiliation",
-                    hasView: true,
-                    roles: [roles.ADMIN, roles.FELLOW, roles.ASSOCIATE]
-                },
+                
                 {
                     url: "/dashboard/url-shortener",
                     title: "URL Shortener",
@@ -186,12 +231,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     roles: [roles.ADMIN, roles.FELLOW, roles.ASSOCIATE]
                     // icon: <i className="fi fi-sr-globe"></i>
                 },
-                {
-                    url: "/dashboard/organization-transfer",
-                    title: "Organization Transfer",
-                    hasView: true,
-                    roles: [roles.ADMIN]
-                },
+                
                 {
                     url: "/dashboard/discord-moderation",
                     title: "Discord Moderation",

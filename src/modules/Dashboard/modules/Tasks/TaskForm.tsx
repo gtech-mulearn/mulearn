@@ -43,8 +43,8 @@ const TaskForm = forwardRef(
             organization_id: "",
             discord_link: "",
             event: "",
-            bonus_time:"",
-            bonus_karma:""
+            bonus_time: "",
+            bonus_karma: ""
         });
 
         //! taskEditSchema has not been used !!
@@ -123,9 +123,8 @@ const TaskForm = forwardRef(
             if (!value.trim()) {
                 setErrors(prevErrors => ({
                     ...prevErrors,
-                    [name]: `${
-                        name.charAt(0).toUpperCase() + name.slice(1)
-                    } is required`
+                    [name]: `${name.charAt(0).toUpperCase() + name.slice(1)
+                        } is required`
                 }));
             } else {
                 setErrors(prevErrors => ({ ...prevErrors, [name]: undefined }));
@@ -169,8 +168,8 @@ const TaskForm = forwardRef(
                     organization_id: taskData.org,
                     discord_link: taskData.discord_link,
                     event: taskData.event,
-                    bonus_time:convertDateToYYYYMMDD(String(taskData?.bonus_time)) || null,
-                    bonus_karma:taskData.bonus_karma
+                    bonus_time: convertDateToYYYYMMDD(String(taskData?.bonus_time)) || null,
+                    bonus_karma: taskData.bonus_karma
                 });
                 console.log(taskData);
             }
@@ -196,9 +195,9 @@ const TaskForm = forwardRef(
 
                 channel
                     ? setSelectedChannel({
-                          value: channel.id,
-                          label: channel.name
-                      })
+                        value: channel.id,
+                        label: channel.name
+                    })
                     : setSelectedChannel(null);
                 type
                     ? setSelectedType({ value: type.id, label: type.title })
@@ -212,7 +211,7 @@ const TaskForm = forwardRef(
                 org
                     ? setSelectedOrg({ value: org.id, label: org.title })
                     : setSelectedOrg(null);
-                console.log(org);
+                data.bonus_karma && data.bonus_time && setShowBonus(true);
             }
         }, [data, uuidData]);
 
@@ -239,7 +238,7 @@ const TaskForm = forwardRef(
                     }));
                 }
             }
-            
+
             // Check if the selectedType value is valid
             if (!selectedType) {
                 isValid = false;
@@ -298,7 +297,7 @@ const TaskForm = forwardRef(
                         toast,
                         data.bonus_time,
                         data.bonus_karma
-                        
+
                     )
                         .then(() => {
                             props.closeModal();
@@ -559,7 +558,7 @@ const TaskForm = forwardRef(
                                 </span>
                             </label>
                         </div>
-                        <div className={styles.CheckBoxWrapperSet} style={{ justifyContent:"center"}}>
+                        <div className={styles.CheckBoxWrapperSet} style={{ justifyContent: "center" }}>
                             <label className={styles.toggle} htmlFor="showBonusCheckbox">
                                 <label className={styles.toggle__label} htmlFor="showBonusCheckbox"> Do You need bonus Karma?</label>
                                 <input

@@ -351,7 +351,7 @@ const CampusStudentList = (props: Props) => {
                                                                     .enabler
                                                             }
                                                         </h2>
-                                                        <p>Campus Enabler</p>
+                                                        <p>Campus Lead Enabler</p>
                                                     </div>
                                                 </div>
                                             )}
