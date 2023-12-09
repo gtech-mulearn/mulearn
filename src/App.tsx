@@ -67,6 +67,12 @@ const TaskType = lazy(() =>
     }))
 );
 
+const Events = lazy(() =>
+    import("./modules/Dashboard/modules/Events/Events").then(module => ({
+        default: module.Events
+    }))
+);
+
 const ManageUsersCreate = lazy(
     () => import("./modules/Dashboard/modules/ManageUsers/ManageUsersCreate")
 );
@@ -446,11 +452,25 @@ function App() {
                         },
                         {
                             path: "task-type",
-                            element: <TaskType />
+                            element: (
+                                <RoleChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<TaskType />}
+                                />
+                            )
                         },
                         {
                             path: "tasks/bulk-import",
                             element: <TaskBulkImport />
+                        },
+                        {
+                            path: "events",
+                            element: (
+                                <RoleChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<Events />}
+                                />
+                            )
                         },
                         {
                             path: "karma-voucher",
