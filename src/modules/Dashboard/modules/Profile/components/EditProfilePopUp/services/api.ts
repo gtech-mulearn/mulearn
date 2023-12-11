@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
 
@@ -54,36 +54,26 @@ export const getEditUserProfile = (
         });
 };
 
-export const updateProfileImage = async (
-    profile: File,
-    id: string,
-    succ?: (msg: string) => void,
-    fail?: (msg: string) => void
-) => {
-    try {
-        const access = localStorage.getItem("accessToken");
-        const payload = new FormData();
-        payload.append("profile", profile);
-        payload.append("user_id", id);
-        const res = await axios.post(
-            `${import.meta.env.VITE_BACKEND_URL}${
-                dashboardRoutes.postProfileImage
-            }`,
-            payload,
-            {
-                headers: {
-                    Authorization: `Bearer ${access}`,
-                    "Content-Type": "multipart/form-data"
-                }
+export const updateProfileImage = async (profile: File, id: string) => {
+    const access = localStorage.getItem("accessToken");
+    const payload = new FormData();
+    payload.append("profile", profile);
+    payload.append("user_id", id);
+    const res = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}${
+            dashboardRoutes.postProfileImage
+        }`,
+        payload,
+        {
+            headers: {
+                Authorization: `Bearer ${access}`,
+                "Content-Type": "multipart/form-data"
             }
-        );
-        reloadLocalImage(
-            res.data.response.profile_pic + `?${Math.random() * 1000}`
-        );
-        if (succ) succ(res.toString());
-    } catch (err) {
-        if (fail) fail(err as any);
-    }
+        }
+    );
+    reloadLocalImage(
+        res.data.response.profile_pic + `?${Math.random() * 1000}`
+    );
 };
 export const syncDiscordImage = async (
     succ?: (msg: string) => void,
@@ -99,42 +89,57 @@ export const syncDiscordImage = async (
         if (fail) fail(err as any);
     }
 };
-export const patchEditUserProfile = (
+export const patchEditUserProfile = async (
     toast: ToastAsPara,
     editedProfileDetails: profileDetails,
+    id: string,
     setEditPopUp: (value: boolean) => void,
-    setFieldError: (field: string, message: string) => void
+    setFieldError: (field: string, message: string) => void,
+    image?: File
 ) => {
-    privateGateway
-        .patch(dashboardRoutes.getEditUserProfile, editedProfileDetails)
-        .then(response => {
-            // console.log(response.data.response);
-            toast({
-                title: "Profile Updated",
-                description: "Your profile has been updated",
-                status: "success",
-                duration: 3000,
-                isClosable: true
-            });
-            setTimeout(() => {
-                setEditPopUp(false);
-            }, 1000);
-        })
-        .catch(error => {
-            console.log(error.response.data.response);
-            const fieldErrors = error.response.data.response;
-            Object.keys(fieldErrors).forEach(field => {
-                console.log(`${field}: ${fieldErrors[field][0]}`);
-                setFieldError(field, fieldErrors[field][0]);
+    try {
+        if (image) await updateProfileImage(image, id);
+
+        privateGateway
+            .patch(dashboardRoutes.getEditUserProfile, editedProfileDetails)
+            .then(response => {
+                // console.log(response.data.response);
                 toast({
-                    title: `${field} Error`,
-                    description: `${fieldErrors[field][0]}`,
-                    status: "error",
+                    title: "Profile Data Updated",
+                    description: "Your profile has been updated",
+                    status: "success",
                     duration: 3000,
                     isClosable: true
                 });
+                setTimeout(() => {
+                    setEditPopUp(false);
+                }, 1000);
+            })
+            .catch(error => {
+                console.log(error.response.data.response);
+                const fieldErrors = error.response.data.response;
+                Object.keys(fieldErrors).forEach(field => {
+                    console.log(`${field}: ${fieldErrors[field][0]}`);
+                    setFieldError(field, fieldErrors[field][0]);
+                    toast({
+                        title: `${field} Error`,
+                        description: `${fieldErrors[field][0]}`,
+                        status: "error",
+                        duration: 3000,
+                        isClosable: true
+                    });
+                });
             });
-        });
+    } catch (err) {
+        if (err instanceof AxiosError)
+            toast({
+                title: "Image upload failed",
+                description: err.response?.data.message.general[0]??"",
+                status:"error"
+            });
+        
+            
+    }
 };
 
 // request for community list
@@ -161,4 +166,5 @@ const reloadLocalImage = async (newLink: string) => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo") || "");
     userInfo.profile_pic = newLink;
     localStorage.setItem("userInfo", JSON.stringify(userInfo));
+    window.location.reload();
 };

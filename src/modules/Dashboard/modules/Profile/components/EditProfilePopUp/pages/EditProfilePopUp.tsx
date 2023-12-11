@@ -59,15 +59,15 @@ const EditProfilePopUp = (props: Props) => {
                 updateProfileImage(
                     imageRef.current.files[0],
                     props.id,
-                    msg => console.log(msg),
-                    msg => console.log(msg)
                 );
             }
             patchEditUserProfile(
                 toast,
                 data,
+                props.id,
                 props.setEditPopUP,
-                formik.setFieldError
+                formik.setFieldError,
+                imageRef?.current?.files?.item(0)??undefined
             );
             props.triggerUpdateProfile();
         },
