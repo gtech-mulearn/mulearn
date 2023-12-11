@@ -199,6 +199,9 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                                     ]
                                                                 )
                                                             }
+                                                            className={
+                                                                styles.tBtns
+                                                            }
                                                         >
                                                             <i className="fi fi-rr-arrow-trend-up"></i>
                                                         </button>
@@ -213,6 +216,9 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                                     ]
                                                                 )
                                                             }
+                                                            className={
+                                                                styles.tBtns
+                                                            }
                                                         >
                                                             <i className="fi fi-rr-duplicate"></i>
                                                         </button>
@@ -226,6 +232,9 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                                         column
                                                                     ]
                                                                 )
+                                                            }
+                                                            className={
+                                                                styles.tBtns
                                                             }
                                                         >
                                                             <HiOutlinePencil />
@@ -315,6 +324,9 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                                     index,
                                                                     ModalType[1]
                                                                 )
+                                                            }
+                                                            className={
+                                                                styles.tBtns
                                                             }
                                                         >
                                                             <AiOutlineDelete />
