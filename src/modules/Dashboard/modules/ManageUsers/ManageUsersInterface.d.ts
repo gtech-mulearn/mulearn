@@ -9,6 +9,7 @@ interface UserData {
     role: string[] | null;
     interest_groups: string[];
     graduation_year: number | null;
+    district: string;
 }
 
 interface UserDataFromBackend {
@@ -23,7 +24,7 @@ interface UserDataFromBackend {
     role: string[] | null;
     organizations: OrgData[] | null;
     interest_groups: string[];
-    graduation_year: number;
+    district: string;
 }
 
 interface OrgData {

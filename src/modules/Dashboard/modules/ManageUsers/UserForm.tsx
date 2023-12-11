@@ -53,7 +53,8 @@ const UserForm = forwardRef(
             department: "",
             role: [],
             interest_groups: [],
-            graduation_year: null
+            graduation_year: null,
+            district: ""
         });
 
         const [errors, setErrors] = useState<OrgFormErrors>({});
@@ -101,7 +102,8 @@ const UserForm = forwardRef(
                             selectedCollege: college ? college.org : "",
                             selectedDepartment: college
                                 ? college.department
-                                : ""
+                                : "",
+                            selectedLocation: data.district
                         }));
                     }
                     setData({
@@ -116,10 +118,12 @@ const UserForm = forwardRef(
                         department: "",
                         role: data.role,
                         interest_groups: data.interest_groups,
-                        graduation_year: data.organizations?.map(org => org.graduation_year)[0] || null
+                        graduation_year: data.organizations?.filter(org => org.org_type === "College").map(org => org.graduation_year)[0] || null,
+                        district: data.district
                     });
                 }
             );
+            console.log(selectData.selectedLocation);
         }, [props.id]);
 
         const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -202,6 +206,7 @@ const UserForm = forwardRef(
             // interestGroups: [] as AffiliationOption[],
             selectedInterestGroups: [] as string[],
             selectedCollege: "",
+            selectedLocation: "",
             selectedDepartment: "",
             blurStatus: {
                 community: false,
@@ -247,6 +252,7 @@ const UserForm = forwardRef(
 
                 // Update the "district" state variable
                 setLocation(id);
+                console.log();
             }
         };
 
@@ -260,16 +266,16 @@ const UserForm = forwardRef(
             const updatedData = {
                 ...data,
                 // affiliation: String(selectedAffiliation??.value),
-                country: (locationData.selectedCountry?.value),
-                state: (locationData.selectedState?.value),
-                district: (locationData.selectedDistrict?.value),
+                // country: (locationData.selectedCountry?.value),
+                // state: (locationData.selectedState?.value),
+                district: (selectData.selectedLocation),
                 roles: selectData.selectedRoles,
-                interest_groups: selectedIg.map(option => option?.value),
-                organizations: [selectData.selectedCollege],
+                interest_groups: selectData.selectedInterestGroups,
+                organizations: [selectData.selectedCollege, ...selectData.selectedCommunity],
                 department: selectData.selectedDepartment,
                 community: selectData.selectedCommunity
             };
-
+            console.log(selectData.selectedLocation, selectData.selectedDepartment);
             for (const key in updatedData) {
                 if (
                     updatedData[key as keyof typeof updatedData] === undefined ||
@@ -393,11 +399,23 @@ const UserForm = forwardRef(
                             <Select
                                 styles={customReactSelectStyles}
                                 placeholder="Select your location"
-                                onChange={(e: any) => {
-                                    console.log(e);
-                                    handleLocationChange(e)
-                                }
-                                }
+                                onChange={(selectedOptions: any) => {
+                                    setSelectData(prevState => ({
+                                        ...prevState,
+                                        selectedLocation:
+                                            selectedOptions?.value
+                                    }));
+                                }}
+                                value={locationDatas.map(location => {
+                                    return {
+                                        value: location.id,
+                                        label: location.location
+                                    };
+                                }).filter(
+                                    loc =>
+                                        (loc?.value as any) ===
+                                        selectData.selectedLocation
+                                )}
                                 components={animatedComponents}
                                 isClearable
                                 // isMulti
@@ -506,11 +524,17 @@ const UserForm = forwardRef(
                                 isMulti
                                 placeholder="Interest Groups"
                                 isLoading={ig.length ? false : true}
-                                // value={selectData.selectedInterestGroups}
+                                value={ig.filter(intg =>
+                                    selectData.selectedInterestGroups.includes(
+                                        intg?.value
+                                    ))}
                                 onChange={(selectedOptions: any) => {
-                                    setSelectedIg(selectedOptions);
-                                    console.log(ig)
-                                    console.log("Selected options", selectedOptions)
+                                    setSelectData(prevState => ({
+                                        ...prevState,
+                                        selectedInterestGroups: selectedOptions.map(
+                                            (opt: any) => opt?.value
+                                        )
+                                    }));
                                 }}
                                 onBlur={() => {
                                     setSelectData(prev => ({
@@ -521,7 +545,7 @@ const UserForm = forwardRef(
                                         }
                                     }));
                                 }}
-                                value={selectedIg}
+                            // value={selectedIg}
                             />
                             {/* {selectData.blurStatus.interestGroups &&
                             !selectData.selectedInterestGroups && (
