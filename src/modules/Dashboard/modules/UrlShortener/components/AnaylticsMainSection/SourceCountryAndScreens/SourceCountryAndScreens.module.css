@@ -9,6 +9,8 @@
         box-shadow: 0px 6.619px 12.292px 0px rgba(77, 77, 77, 0.10);
         padding: 25px 20px;
         border-radius: 10px;
+        max-height: 500px;
+        overflow: scroll;
 
         & h1 {
             color: #4F4F4F;
