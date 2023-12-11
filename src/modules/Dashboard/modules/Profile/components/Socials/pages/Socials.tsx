@@ -25,7 +25,7 @@ const Socials = (props: Props) => {
     const [editSocials, setEditSocials] = useState(false);
     const { t } = useTranslation(["ChangePassword"]);
 
-    const fontSize = getFontSizeForLanguage(i18next.language, i18next);
+    const fontSize = getFontSizeForLanguage(i18next.language);
     const socialMediaUrlMappings: { [key: string]: string } = {
         github: "https://github.com/",
         facebook: "https://www.facebook.com/",
@@ -90,7 +90,7 @@ const Socials = (props: Props) => {
     return (
         <>
             <div className={styles.edit_social_btn}>
-                <h2 style={{ fontSize }}>{t("Connect with me")}</h2>
+                <h2>{t("Connect with me")}</h2>
                 {!editSocials && !id && (
                     <p
                         onClick={() => setEditSocials(true)}

@@ -18,7 +18,7 @@ const BasicDetails = (props: Props) => {
     const [allIg, setAllIg] = useState<any>([]);
     const { t } = useTranslation(["ChangePassword"]);
 
-    const fontSize = getFontSizeForLanguage(i18next.language, i18next);
+    const fontSize = getFontSizeForLanguage(i18next.language);
     const [ig, setIg] = useState<any>(props.userProfile.interest_groups);
     const { id } = useParams<{ id: string }>();
     useEffect(() => {
@@ -32,7 +32,7 @@ const BasicDetails = (props: Props) => {
         <>
             <div className={styles.interestGrp}>
                 <div className={styles.top_sec}>
-                    <b style={{ fontSize }}>{t("Interest Groups")}</b>
+                    <b>{t("Interest Groups")}</b>
                     <div className={styles.close_and_submit_btn_div}>
                         {!id &&
                             props.userProfile.level.slice(3, 4) >= 4 &&

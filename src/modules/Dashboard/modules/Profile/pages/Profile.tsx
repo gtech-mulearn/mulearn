@@ -26,18 +26,16 @@ import BasicDetails from "../components/BasicDetails/pages/BasicDetails";
 import Socials from "../components/Socials/pages/Socials";
 import ShareProfilePopUp from "../components/ShareProfilePopUp/pages/ShareProfilePopUp";
 import HelmetMetaTags from "../components/HelmetMetaTags/HelmetMetaTags";
-
 import i18next from "i18next";
 import LanguageSwitcher from "../../LanguageSwitcher/LanguageSwitcher";
 import { getFontSizeForLanguage } from "../../LanguageSwitcher/LanguageSwitcher";
 import { useTranslation } from "react-i18next";
-
 //TODO: Verify the relevance of profile page image
 const Profile = () => {
     const { id } = useParams<{ id: string }>();
     const { t } = useTranslation(["ChangePassword"]);
     const navigate = useNavigate();
-    const fontSize = getFontSizeForLanguage(i18next.language, i18next);
+    const fontSize = getFontSizeForLanguage(i18next.language);
     const toast = useToast();
     const [APILoadStatus, setAPILoadStatus] = useState(0);
     const [profileList, setProfileList] = useState("basic-details");
@@ -189,8 +187,8 @@ const Profile = () => {
                                                 <div>
                                                     <MulearnBrand />
                                                 </div>
-                                                <p style={{ fontSize }}>
-                                                    {t("Member since")}{" "}
+                                                <p>
+                                                    Member since{" "}
                                                     {userProfile?.joined?.slice(
                                                         0,
                                                         4
@@ -521,17 +519,13 @@ const Profile = () => {
                                             <Socials />
                                         </div>
                                         <div className={styles.head}>
-                                            <h2 style={{ fontSize }}>
-                                                {t("Existing Roles")}
-                                            </h2>
+                                            <h2>{t("Existing Roles")}</h2>
                                             <p>
                                                 {userProfile.roles.join(", ")}
                                             </p>
                                         </div>
                                         <div className={styles.head}>
-                                            <h2 style={{ fontSize }}>
-                                                {t("Karma Distribution")}
-                                            </h2>
+                                            <h2>{t("Karma Distribution")}</h2>
                                             <div className={styles.pie_chart}>
                                                 {!data.every(
                                                     item =>
@@ -540,7 +534,10 @@ const Profile = () => {
                                                 ) ? (
                                                     <PieChart data={data} />
                                                 ) : (
-                                                    <p className={styles.msg}>
+                                                    <p
+                                                        className={styles.msg}
+                                                        style={{ fontSize }}
+                                                    >
                                                         {t(
                                                             "Karma distribution desc"
                                                         )}
@@ -556,9 +553,7 @@ const Profile = () => {
                                         }
                                     >
                                         <div className={styles.head}>
-                                            <h2 style={{ fontSize }}>
-                                                {t("Recent Activity")}
-                                            </h2>
+                                            <h2>{t("Recent Activity")}</h2>
                                             <a
                                                 onClick={() => {
                                                     setProfileList(

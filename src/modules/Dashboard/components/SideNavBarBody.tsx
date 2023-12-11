@@ -50,8 +50,7 @@ const SideNavBarBody = ({
     const elements = document.getElementById("right");
     const element = elements as HTMLElement;
     const { t } = useTranslation(["ChangePassword"]);
-
-    const fontSize = getFontSizeForLanguage(i18next.language, i18next);
+    const fontSize = getFontSizeForLanguage(i18next.language);
     return (
         <div className={styles.side_nav_bar_items}>
             <div className={styles.side_nav_bar_main_items}>
@@ -134,10 +133,10 @@ const SideNavBarBody = ({
                                                                 navigate(
                                                                     button.url
                                                                 );
-                                                                window.innerWidth <=
+                                                                /* window.innerWidth <=
                                                                 830
                                                                     ? toggleSideNavBar()
-                                                                    : null;
+                                                                    : null;*/
                                                             }}
                                                         />
                                                     ))}
@@ -162,7 +161,8 @@ const SideNavBarBody = ({
                         ) : (
                             <MuButton
                                 style={{
-                                    width: "100%"
+                                    width: "100%",
+                                    fontSize: fontSize
                                 }}
                                 key={i}
                                 text={button.title}
@@ -180,11 +180,9 @@ const SideNavBarBody = ({
             <div className={styles.bottomButtons}>
                 <LanguageSwitcher />
                 <MuButton
-                    text="Change Password"
+                    text={t("Account Setting")}
                     icon={<MuSettings />}
-                    onClick={() =>
-                        navigate("/dashboard/settings/change-password")
-                    }
+                    onClick={() => navigate("/dashboard/settings/account")}
                     style={{
                         color: "#9297AA",
                         backgroundColor: "#fff"

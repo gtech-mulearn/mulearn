@@ -1,7 +1,7 @@
 {
     "fontSize": "16px",
-    "heading": "Change Password",
-    "desc": "Enter in a new password, and confirm it to change.",
+    "Change Password": "Change Password",
+    "Change Password desc": "Enter in a new password, and confirm it to change.",
     "BasicDetails": "Basic Details",
     "KarmaHistory": "Karma History",
     "MuVoyage": "Mu Voyage",
@@ -36,14 +36,11 @@
     "Inside the modal that is opened enter the muid you copied and click submit.": "Inside the modal that is opened enter the muid you copied and click submit.",
     "Discover, collaborate and grow": "Discover, collaborate and grow",
     "Referral desc": " An amazing opportunity to invest a brief moment in exploring fresh horizons alongside a community of like-minded enthusiasts!",
-    "Change Password": "Change Password",
     "Logout": "Logout",
     "Profile": "Profile",
     "Connect Discord": "Connect Discord",
     "Campus Details": "Campus Details",
     "Learning Circle": "Learning Circle",
     "Referrals": "Referrals",
-    "Hackathon":"Hackathon",
-    "Management":"Management",
-    "Zonal Dashboard":"Zonal Dashboard"
+    "Account Setting": "Account Setting"
 }
