@@ -20,11 +20,15 @@ const SourceCountryAndScreens = ({ response }: Props) => {
                 <Box response={response} title={"Sources"} />
                 <Box response={response} title={"Countries"} />
             </div>
+            <div className={styles.sources_countries}>
+                <Box response={response} title={"City"} />
+                <Box response={response} title={"Region"} />
+            </div>
             <div
                 className={styles.sources_countries}
                 style={{ justifyContent: "center" }}
             >
-                <Box response={response} title={"Dimensions"} />
+                <Box response={response} title={"IP_Address"} />
             </div>
         </>
     );

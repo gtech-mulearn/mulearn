@@ -20,7 +20,7 @@
             min-width: 160px;
             max-height: 510px;
             width: 32%;
-            text-align: center;
+            /* text-align: center; */
             gap: 20px;
             flex-direction: column;
             overflow: scroll;
@@ -44,6 +44,18 @@
                     font-size: 16px;
                     padding: 5px 0px;
                     border-bottom: 1px solid rgba(106, 106, 106, 0.19);
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .percentage {
+                        border-radius: 10px;
+                        background: #A9B2FF;
+                        font-size: 10px;
+                        font-weight: 600;
+                        padding: 1px 5px;
+                        color: #000E88;
+                    }
                 }
             }
         }
@@ -62,13 +74,14 @@
         }
 
         .graph {
-            padding: 20px 10px;
+            padding: 40px 10px;
         }
 
         .footer {
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
+            margin-top: 20px;
             padding: 0px 30px;
 
             & button {

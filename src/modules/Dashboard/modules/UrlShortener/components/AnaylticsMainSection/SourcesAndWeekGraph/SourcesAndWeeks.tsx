@@ -80,11 +80,11 @@ const SourcesAndWeeks = ({ response }: Props) => {
             </div>
 
             <div className={styles.week_analytics}>
-                <div className={styles.header}>
+                {/* <div className={styles.header}>
                     <Day />
                     <Night />
                     <DayAndNight />
-                </div>
+                </div> */}
                 <div className={styles.graph}>
                     <Chart
                         chartType="LineChart"
@@ -122,7 +122,7 @@ const Sources = ({ title, sourceCount, totalCategories, response }: Props2) => {
     return (
         <div className={styles.source_box}>
             <h1>{title}</h1>
-            <div className={styles.circle_progress_bar}>
+            {/* <div className={styles.circle_progress_bar}>
                 <CircularProgress
                     value={
                         parseInt(
@@ -141,15 +141,27 @@ const Sources = ({ title, sourceCount, totalCategories, response }: Props2) => {
                         ).toPrecision(3)}
                     </CircularProgressLabel>
                 </CircularProgress>
-            </div>
+            </div> */}
             <div className={styles.source_list}>
                 {response[title.toLowerCase() as keyof typeof response] &&
                     Object.keys(
                         response[title.toLowerCase() as keyof typeof response]
                     ).map(key => (
-                        <p className={styles.source} key={key}>
-                            {key}
-                        </p>
+                        <div className={styles.source} key={key}>
+                            <p> {key}</p>
+                            <p className={styles.percentage}>
+                                {(
+                                    (response[
+                                        title.toLowerCase() as keyof typeof response
+                                    ][
+                                        key as keyof (typeof response)[typeof title]
+                                    ] /
+                                        response.total_clicks) *
+                                    100
+                                ).toPrecision(2)}
+                                %
+                            </p>
+                        </div>
                     ))}
             </div>
         </div>
