@@ -1,30 +1,32 @@
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .formContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.formHeader  {
-  text-align:left ;
+.formHeader {
+  text-align: left;
   display: flex;
+  margin-top: 10px;
+  margin-bottom: 5px;
   justify-content: start;
 }
 
 
 .inputContainer input {
-    border-radius: 8px;
-    background-color: #f3f3f4;
-    padding: 10px;
-    width: 300px;
-    color: black;
+  border-radius: 8px;
+  background-color: #f3f3f4;
+  padding: 10px;
+  width: 300px;
+  color: black;
 }
 
 /* .inputContainer input::placeholder {
@@ -32,36 +34,36 @@
 } */
 
 .inputContainer div {
-    text-align: left;
+  text-align: left;
 }
 
 .CheckBoxWrapperSet {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .CheckBoxWrapperSet .toggle {
-    width: 50%;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    justify-content: center;
-	color: black;
-	font-size: 18px;
-	font-weight: 600;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+  color: black;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .CheckBoxWrapperSet .toggle .toggle__input {
-    clip: rect(0 0 0 0);
-    clip-path: inset(50%);
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
-	background-color: rgb(0, 0, 0);
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  background-color: rgb(0, 0, 0);
 }
 
 .CheckBoxWrapperSet .toggle .toggle__label {
@@ -96,7 +98,7 @@
   width: 20px;
 }
 
-.CheckBoxWrapperSet .toggle .toggle__input:checked + .toggleTrack .toggleTndicator {
+.CheckBoxWrapperSet .toggle .toggle__input:checked+.toggleTrack .toggleTndicator {
   background: #0275d8;
   transform: translateX(24px);
 }

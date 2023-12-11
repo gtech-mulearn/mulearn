@@ -32,7 +32,7 @@ const UserForm = forwardRef(
     (props: Props & { closeModal: () => void }, ref: any) => {
         const [initialData, setInitialData] =
             useState<InitialLocationData>(null);
-            const animatedComponents = makeAnimated();
+        const animatedComponents = makeAnimated();
         const {
             locationData,
             loadingCountries,
@@ -52,7 +52,8 @@ const UserForm = forwardRef(
             organizations: [],
             department: "",
             role: [],
-            interest_groups: []
+            interest_groups: [],
+            graduation_year: null
         });
 
         const [errors, setErrors] = useState<OrgFormErrors>({});
@@ -114,7 +115,8 @@ const UserForm = forwardRef(
                             : data.organizations!.map(org => org.org),
                         department: "",
                         role: data.role,
-                        interest_groups: data.interest_groups
+                        interest_groups: data.interest_groups,
+                        graduation_year: data.organizations?.map(org => org.graduation_year)[0] || null
                     });
                 }
             );
@@ -125,6 +127,12 @@ const UserForm = forwardRef(
 
             setData(prevData => ({ ...prevData, [name]: value }));
         };
+
+        const handleYearChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+            const { name, value } = e.target;
+            if (value.length > 4) return;
+            setData(prevData => ({ ...prevData, [name]: value }));
+        }
 
         const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
             const { name, value } = e.target;
@@ -233,14 +241,14 @@ const UserForm = forwardRef(
             console.log(e)
             const data = e;
             if (data) {
-              // Use a type assertion to specify the correct type
-              const id = (data as any).value;
-              console.log(data);
-        
-              // Update the "district" state variable
-              setLocation(id);
+                // Use a type assertion to specify the correct type
+                const id = (data as any).value;
+                console.log(data);
+
+                // Update the "district" state variable
+                setLocation(id);
             }
-          };
+        };
 
         //! useImperativeHandle for triggering submit from MuModal button
         useImperativeHandle(ref, () => ({
@@ -292,9 +300,9 @@ const UserForm = forwardRef(
                     loading: "Saving...",
                     success: () => {
                         props.closeModal();
-                        return <b>Organization added</b>;
+                        return <b>User edited</b>;
                     },
-                    error: <b>Failed to add new organization</b>
+                    error: <b>Failed to edit user</b>
                 });
             }
         };
@@ -302,8 +310,9 @@ const UserForm = forwardRef(
         return (
             <div className={styles.container}>
                 <form className={styles.formContainer} onSubmit={handleSubmit}>
-                    {/* <p className={styles.formHeader}>BASIC INFO</p>  */}
+                    {<p className={styles.formHeader}>BASIC INFO</p>}
                     <div className={styles.formContainer}>
+
                         <div className={styles.inputContainer}>
                             <input
                                 type="text"
@@ -326,7 +335,7 @@ const UserForm = forwardRef(
                                 placeholder="Last Name"
                                 value={data.last_name}
                                 onChange={handleChange}
-                                // onBlur={handleBlur}
+                            // onBlur={handleBlur}
                             />
                             {errors.last_name && (
                                 <div style={{ color: "red" }}>
@@ -371,7 +380,7 @@ const UserForm = forwardRef(
                                 placeholder="DiscordId"
                                 value={data.discord_id as string}
                                 onChange={handleChange}
-                                // onBlur={handleBlur}
+                            // onBlur={handleBlur}
                             />
                             {errors.discord_id && (
                                 <div style={{ color: "red" }}>
@@ -382,11 +391,12 @@ const UserForm = forwardRef(
 
                         <div className={styles.inputContainer}>
                             <Select
-                            styles={customReactSelectStyles}
+                                styles={customReactSelectStyles}
                                 placeholder="Select your location"
-                                onChange={(e: any) =>
-                                    {console.log(e);
-                                    handleLocationChange(e)}
+                                onChange={(e: any) => {
+                                    console.log(e);
+                                    handleLocationChange(e)
+                                }
                                 }
                                 components={animatedComponents}
                                 isClearable
@@ -500,7 +510,7 @@ const UserForm = forwardRef(
                                 onChange={(selectedOptions: any) => {
                                     setSelectedIg(selectedOptions);
                                     console.log(ig)
-                                    console.log("Selected options",selectedOptions)
+                                    console.log("Selected options", selectedOptions)
                                 }}
                                 onBlur={() => {
                                     setSelectData(prev => ({
@@ -525,9 +535,11 @@ const UserForm = forwardRef(
                         style={{
                             width: "50%",
                             textAlign: "left",
-                            marginLeft: 0
+                            marginLeft: 0,
+                            display: "none"
                         }}
                     />
+                    {<p className={styles.formHeader}>COLLEGE / SCHOOL</p>}
                     <div className={styles.formContainer}>
                         <CountryStateDistrict
                             countries={locationData.countries}
@@ -616,6 +628,21 @@ const UserForm = forwardRef(
                                     Department is Required
                                 </div>
                             )} */}
+                        </div>
+                        <div className={styles.inputContainer}>
+                            <input
+                                type="number"
+                                name="graduation_year"
+                                placeholder="Year"
+                                value={data.graduation_year as number}
+                                onChange={handleYearChange}
+                                onBlur={handleBlur}
+                            />
+                            {errors.email && (
+                                <div style={{ color: "red" }}>
+                                    {errors.email}
+                                </div>
+                            )}
                         </div>
                     </div>
                 </form>
