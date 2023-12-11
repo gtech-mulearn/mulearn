@@ -40,6 +40,7 @@ export const getCollegeLevels = async (
             data.map((data: any) => ({
                 id: data.id,
                 no_of_alumni: data.no_of_alumni,
+                level: data.level,
                 org: data.org,
                 ...data.no_of_lc,
                 ...data.number_of_members,
