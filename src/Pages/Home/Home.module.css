@@ -378,6 +378,7 @@ a {
 
 .jv_content {
   margin-top: 0.5rem;
+  max-width: 35rem;
   font-family: "Poppins", sans-serif;
 }
 

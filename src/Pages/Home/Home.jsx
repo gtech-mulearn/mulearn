@@ -498,7 +498,11 @@ const Home = () => {
                 The Story of Aami <span>MuStory</span>
               </p>
               <p className={styles.jv_content}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo consectetur repellat ea. Nihil id, autem eaque deserunt reiciendis assumenda est quas esse magnam ex nulla dignissimos suscipit delectus mollitia veritatis minus. Omnis facere possimus porro.
+                Tune into the story of Aami, a student who is passionate about
+                learning and is always looking for opportunities to upskill
+                herself, and see how she discovers the MuVerse and how it helps
+                her to upskill herself and become industry ready by forming a
+                learning circles and participating in various events.
               </p>
             </div>
             <div className={styles.mu_story}>
