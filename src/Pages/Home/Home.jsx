@@ -495,22 +495,21 @@ const Home = () => {
           <div className={styles.join_view}>
             <div className={styles.jv_texts}>
               <p className={styles.jv_heading}>
-                Let's Learn & Gain <span>Karma Points</span>
+                The Story of Aami <span>MuStory</span>
               </p>
               <p className={styles.jv_content}>
-                Karma points are points earned by completing tasks, challenges,
-                and boot camps in the uLearn platform Points serve as proof of
-                the work done by the students and can be used to obtain various
-                benefits, such as invitations to exclusive events and promotions
-                in the local community. The more Karma points a student has, the
-                more accomplished they are seen in the community.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo consectetur repellat ea. Nihil id, autem eaque deserunt reiciendis assumenda est quas esse magnam ex nulla dignissimos suscipit delectus mollitia veritatis minus. Omnis facere possimus porro.
               </p>
             </div>
-            <img
-              src="/assets/home/karma.png"
-              alt="join"
-              className={styles.karma_img}
-            />
+            <div className={styles.mu_story}>
+              <iframe
+                src="https://www.youtube.com/embed/M9serw-CLU0?si=rqJ8ZNA4vl8byH07"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
           </div>
         </div>
       </div>

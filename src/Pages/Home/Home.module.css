@@ -20,9 +20,11 @@ a {
   padding-top: 3rem;
   background-color: #f2f3f9;
   opacity: 1;
-  background-image: repeating-radial-gradient(circle at 0 0,
+  background-image: repeating-radial-gradient(
+      circle at 0 0,
       transparent 0,
-      #f2f3f9 15px),
+      #f2f3f9 15px
+    ),
     repeating-linear-gradient(#fdf1e755, #fdf1e7);
 }
 
@@ -425,10 +427,15 @@ a {
   }
 }
 
+.joinviewmain_container {
+  padding-top: 2rem;
+}
+
 @media only screen and (min-width: 1000px) {
   .joinviewmain_container {
     max-width: 1300px;
     margin: auto;
+    margin-top: 2rem;
   }
 
   .jv_texts {
@@ -761,5 +768,28 @@ a {
     display: block;
     margin: auto;
     margin-top: 2rem;
+  }
+}
+
+.mu_story {
+  position: relative;
+  padding-bottom: 25.25%; /* 16:9 aspect ratio for responsive video */
+  overflow: hidden;
+  width: 48.25%;
+}
+
+.mu_story iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@media only screen and (max-width: 998px) {
+  .mu_story {
+    margin: auto;
+    margin-top: 1rem;
+    width: 49%;
   }
 }
