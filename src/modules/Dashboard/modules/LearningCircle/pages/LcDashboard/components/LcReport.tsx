@@ -1,9 +1,4 @@
-import {
-    Dispatch,
-    SetStateAction,
-    useEffect,
-    useState
-} from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import styles from "../LcDashboard.module.css";
 import UploadImage from "../../../assets/images/uploadIcon.svg";
 import { LcAttendees } from "./LcAttendees";
@@ -23,7 +18,7 @@ const LcReport = (props: Props) => {
         agenda: "",
         attendees: []
     });
-	const [uploadedImage, setUploadedImage] = useState<File | null>(null);
+    const [uploadedImage, setUploadedImage] = useState<File | null>(null);
 
     useEffect(() => {
         const now = new Date();
@@ -77,7 +72,7 @@ const LcReport = (props: Props) => {
         if (state.attendees.length === 0) {
             errors.attendees = "At least one attendee is required";
         }
-		if (!uploadedImage) {
+        if (!uploadedImage) {
             errors.image = "Image is required";
         } else {
             const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
@@ -118,13 +113,16 @@ const LcReport = (props: Props) => {
                 },
                 error: error => {
                     console.error("Failed to login:", error);
+                    if (error?.response?.data?.message.non_field_errors)
+                        return <b>{error?.response?.data?.message?.non_field_errors[0]}</b>;
+
                     return <b>Failed to report meeting!</b>;
                 }
             });
         }
     };
 
-	const handleRemoveImage = () => {
+    const handleRemoveImage = () => {
         setUploadedImage(null);
     };
 
@@ -199,40 +197,38 @@ const LcReport = (props: Props) => {
                         {/* <button>+</button> */}
                     </div>
                 </div>
-                <div className={styles.UploadSection}>
-                    <div id="uploadContainer">
-                        <p>Upload Meeting Images</p>
-                        {uploadedImage ? (
+            </div>
+            <div className={styles.UploadSection}>
+                <div id="uploadContainer">
+                    <p>Upload Meeting Images</p>
+                    {uploadedImage ? (
+                        <div>
+                            <p>{uploadedImage.name}</p>
+                            <button onClick={handleRemoveImage}>Remove</button>
+                        </div>
+                    ) : (
+                        <label htmlFor="fileInput">
                             <div>
-                                <p>{uploadedImage.name}</p>
-                                <button onClick={handleRemoveImage}>
-                                    Remove
-                                </button>
+                                <img src={UploadImage} alt="" />
+                                Drag and drop or <br />
+                                click to choose a file
                             </div>
-                        ) : (
-                            <label htmlFor="fileInput">
-                                <div>
-                                    <img src={UploadImage} alt="" />
-                                    Drag and drop or <br />
-                                    click to choose a file
-                                </div>
-                            </label>
-                        )}
-                        <input
-                            type="file"
-                            accept=".png,.jpeg,.jpg"
-                            onChange={handleImageUpload}
-                            style={{ display: "none" }}
-                            id="fileInput"
-                        />
-                    </div>
+                        </label>
+                    )}
+                    <input
+                        type="file"
+                        accept=".png,.jpeg,.jpg"
+                        onChange={handleImageUpload}
+                        style={{ display: "none" }}
+                        id="fileInput"
+                    />
                 </div>
                 <button
                     className={styles.submitButton}
                     onClick={event => handleSubmit(event)}
                     type="submit"
                 >
-                    Submit
+                    Submit Report
                 </button>
             </div>
         </div>

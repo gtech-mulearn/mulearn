@@ -90,7 +90,7 @@ export const dashboardRoutes = {
     getStudentLeaderBoard: "/api/v1/leaderboard/students/",
     getIgDetails: "/api/v1/dashboard/profile/ig-edit/",
     getSocials: "/api/v1/dashboard/profile/socials/",
-    postProfileImage: "/api/v1/dashboard/user/profile/update/",
+    postProfileImage: "api/v1/dashboard/user/profile/update/",
 
     zonalStudentDetails: "/api/v1/dashboard/zonal/student-details/",
     zonalStudentData: "/api/v1/dashboard/zonal/student-details/csv/",
@@ -130,7 +130,7 @@ export const dashboardRoutes = {
     reportLCMeet: "/api/v1/dashboard/lc/meet-record/create/",
     getLCMeetReport: "/api/v1/dashboard/lc/meet-record/show/",
     getCampusIg: "api/v1/dashboard/ig/list/",
-    getCount: "api/v1/dashboard/lc/data/",
+    getCount: "api/v1/dashboard/lc/stats/",
 
     getAllOrganisations: "/api/v1/hackathon/list-organisations/",
     getAllDistricts: "/api/v1/hackathon/list-districts/",

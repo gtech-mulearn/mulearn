@@ -90,7 +90,7 @@ export const createCircle = async (
         });
         setTimeout(() => {
             navigate(
-                `/dashboard/learning-circle/details/${message.response.circle_id}`
+                `/dashboard/learning-circle/dashboard/${message.response.circle_id}`
             );
         }, 2000);
     } catch (err) {
