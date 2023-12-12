@@ -112,6 +112,10 @@ export const editTask = async (
     bonus_karma?:string,
 ) => {
     try {
+        const formattedBonusTime = bonus_time
+        ? new Date(bonus_time).toISOString() // Convert bonus_time to ISO format
+        : null;
+
         const response = await privateGateway.put(
             dashboardRoutes.getTasksData + id,
             {
@@ -129,7 +133,7 @@ export const editTask = async (
                 org: org_id === "" ? null : org_id,
                 discord_link: discord_link,
                 event: event === "" ? null : event,
-                bonus_time:bonus_time === "" ? null : bonus_time,
+                bonus_time:formattedBonusTime === "" ? null : formattedBonusTime,
                 bonus_karma: parseInt(bonus_karma ?? "0")
             }
         );
@@ -174,6 +178,10 @@ export const createTask = async (
     bonus_karma?:string,
 ) => {
     try {
+        const formattedBonusTime = bonus_time
+            ? new Date(bonus_time).toISOString() // Convert bonus_time to ISO format
+            : null;
+
         const response = await privateGateway.post(
             dashboardRoutes.getTasksData,
             {
@@ -191,7 +199,7 @@ export const createTask = async (
                 org: org_id === "" ? null : org_id,
                 discord_link: discord_link,
                 event: event === "" ? null : event,
-                bonus_time:bonus_time === "" ? null : bonus_time,
+                bonus_time: formattedBonusTime === "" ? null : formattedBonusTime,
                 bonus_karma: parseInt(bonus_karma ?? "0")
             }
         );
