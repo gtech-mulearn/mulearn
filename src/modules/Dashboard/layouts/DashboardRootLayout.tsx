@@ -124,6 +124,33 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     ]
                 },
                 {
+                    url: "",
+                    title: "Task Management",
+                    hasView: true,
+                    roles: [roles.ADMIN],
+                    // icon: <i className="fi fi-sr-users"></i>,
+                    children: [
+                        {
+                            url: "/dashboard/tasks",
+                            title: "Tasks",
+                            hasView: true,
+                            roles: [roles.ADMIN]
+                        },
+                        {
+                            url: "/dashboard/task-type",
+                            title: "Task Type",
+                            hasView: true,
+                            roles: [roles.ADMIN]
+                        },
+                        {
+                            url: "/dashboard/events",
+                            title: "Events",
+                            hasView: true,
+                            roles: [roles.ADMIN]
+                        }
+                    ]
+                },
+                {
                     url: "/dashboard/interest-groups",
                     title: "Interest Groups",
                     hasView: true,
@@ -153,33 +180,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
                 //     roles: [roles.ADMIN]
                 //     // icon: <i className="fi fi-sr-note"></i>
                 // },
-                {
-                    url: "",
-                    title: "Task Management",
-                    hasView: true,
-                    roles: [roles.ADMIN],
-                    // icon: <i className="fi fi-sr-users"></i>,
-                    children: [
-                        {
-                            url: "/dashboard/tasks",
-                            title: "Tasks",
-                            hasView: true,
-                            roles: [roles.ADMIN]
-                        },
-                        {
-                            url: "/dashboard/task-type",
-                            title: "Task Type",
-                            hasView: true,
-                            roles: [roles.ADMIN]
-                        },
-                        {
-                            url: "/dashboard/events",
-                            title: "Events",
-                            hasView: true,
-                            roles: [roles.ADMIN]
-                        }
-                    ]
-                },
+                
                 {
                     url: "/dashboard/karma-voucher",
                     title: "Karma Voucher",
