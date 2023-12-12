@@ -29,10 +29,9 @@ const MuLiveCounter = () => {
       "wss://mulearn.org/ws/v1/public/landing-stats/"
     );
 
-    socket.addEventListener("open", (event) => console.log("connected"));
-
     socket.addEventListener("message", (event) => {
       setCounts(JSON.parse(event.data));
+      console.log("Message from server ", event.data)
     });
 
     socket.addEventListener("error", (event) => {
@@ -52,7 +51,7 @@ const MuLiveCounter = () => {
           });
       }
     };
-  }, [counts]);
+  }, []);
 
   return (
     <div className={styles.rightside}>
