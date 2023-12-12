@@ -122,7 +122,7 @@ const LandingPage = () => {
             color: "#000",
             width: "100%",
             padding: ".3rem .4rem",
-            minWidth: "200px",
+            minWidth: "200px"
         }),
         placeholder: (provided: any) => ({
             ...provided,
@@ -148,15 +148,14 @@ const LandingPage = () => {
             rect.top >= 0 &&
             rect.left >= 0 &&
             rect.bottom <=
-            (window.innerHeight || document.documentElement.clientHeight) &&
+                (window.innerHeight || document.documentElement.clientHeight) &&
             rect.right <=
-            (window.innerWidth || document.documentElement.clientWidth)
+                (window.innerWidth || document.documentElement.clientWidth)
         );
     };
 
     useEffect(() => {
         const finalValues: number[] = [
-
             count?.interest_group ?? 0,
             count?.college ?? 0,
             count?.learning_circle ?? 0,
@@ -169,9 +168,9 @@ const LandingPage = () => {
                     prevCounters.map((counter, index) =>
                         counter < finalValues[index]
                             ? counter +
-                            Math.ceil(
-                                finalValues[index] / (durationInSeconds * 20)
-                            ) // Increment smoothly
+                              Math.ceil(
+                                  finalValues[index] / (durationInSeconds * 20)
+                              ) // Increment smoothly
                             : finalValues[index]
                     )
                 );
@@ -213,8 +212,6 @@ const LandingPage = () => {
         };
     }, [count]);
 
-
-
     return (
         <div className={styles.LClandingPage}>
             <nav className={styles.LClandingPageNav}>
@@ -223,7 +220,9 @@ const LandingPage = () => {
                     <div>
                         <Link to="https://mulearn.org/">About</Link>
                         <Link to="https://mulearn.org/events/">Programs</Link>
-                        <Link to="https://learn.mulearn.org/">Interest Group</Link>
+                        <Link to="https://learn.mulearn.org/">
+                            Interest Group
+                        </Link>
                         <Link to="https://mulearn.org/careers">Careers</Link>
                     </div>
                     <button
@@ -273,12 +272,12 @@ const LandingPage = () => {
                                     {index === 0
                                         ? "Interest Groups"
                                         : index === 1
-                                            ? "Colleges"
-                                            : index === 2
-                                                ? "Learning Circles"
-                                                : index === 3
-                                                    ? "Number of Users"
-                                                    : ""}
+                                        ? "Colleges"
+                                        : index === 2
+                                        ? "Learning Circles"
+                                        : index === 3
+                                        ? "Number of Users"
+                                        : ""}
                                 </p>
                             </div>
                         ))}
@@ -344,11 +343,12 @@ const LandingPage = () => {
                     </div>
                 </form>
 
-                {loading ?
+                {loading ? (
                     <div className={styles.loader}>
                         <MuLoader />
                     </div>
-                    : <div className={styles.container}>
+                ) : (
+                    <div className={styles.container}>
                         {data.length > 0 ? (
                             data.map((lc: LcRandom) => (
                                 <div className={styles.exploreCards}>
@@ -359,7 +359,23 @@ const LandingPage = () => {
                                     <h1>{lc.name}</h1>
                                     <span>
                                         <b>{lc.ig_name}</b> &nbsp;{" "}
-                                        <b>Members count: {lc.member_count}</b>
+                                        <b>Members count: {lc.member_count}</b>{" "}
+                                        {lc.meet_place && (
+                                            <>
+                                                <br />
+                                                <b>
+                                                    Meet Place: {lc.meet_place}
+                                                </b>{" "}
+                                            </>
+                                        )}
+                                        {lc.meet_time && (
+                                            <>
+                                                <br />
+                                                <b>
+                                                    Meet Time: {lc.meet_time}
+                                                </b>{" "}
+                                            </>
+                                        )}
                                     </span>
                                 </div>
                             ))
@@ -374,7 +390,7 @@ const LandingPage = () => {
                             </div>
                         )}
                     </div>
-                }
+                )}
             </div>
         </div>
     );
