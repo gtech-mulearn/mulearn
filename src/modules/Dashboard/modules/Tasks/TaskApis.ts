@@ -79,7 +79,7 @@ export const getTaskDetails = async (
 ) => {
     try {
         const response = await privateGateway.get(
-            dashboardRoutes.getTasksData + id + "/"
+            dashboardRoutes.getTasksData + id 
         );
         const message: any = response?.data;
         setData(message.response);
