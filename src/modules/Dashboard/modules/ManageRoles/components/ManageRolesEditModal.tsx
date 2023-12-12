@@ -41,9 +41,10 @@ const ManageRolesEditModal = (props: Props) => {
                 title: Yup.string()
                     .max(30, "Must be 30 characters or less")
                     .required("Required"),
-                description: Yup.string()
-                    .max(30, "Must be 30 characters or less")
-                    .required("Required")
+                description: Yup.string().max(
+                    30,
+                    "Must be 30 characters or less"
+                )
             })}
             onSubmit={values => {
                 (async () => {
@@ -78,11 +79,15 @@ const ManageRolesEditModal = (props: Props) => {
                         onClick={() => {
                             props.onClose(null);
                         }}
-                    >Decline</PowerfulButton>
+                    >
+                        Decline
+                    </PowerfulButton>
                     <PowerfulButton
                         className={`${mustyles.btn} ${styles.Confirm}`}
                         type="submit"
-                    >Confirm</PowerfulButton>
+                    >
+                        Confirm
+                    </PowerfulButton>
                 </div>
             </Form>
         </Formik>
