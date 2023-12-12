@@ -34,7 +34,11 @@ const ManageRolesCreateModal = (props: Props) => {
                         async value => {
                             return !isRoleUnique(value, props.values);
                         }
-                    )
+                    ),
+                description: Yup.string().max(
+                    100,
+                    "Must be 100 characters or less"
+                )
             })}
             onSubmit={values => {
                 (async () => {
