@@ -37,20 +37,6 @@ const MuLiveCounter = () => {
     socket.addEventListener("error", (event) => {
       console.error("WebSocket error: ", event);
     });
-
-    return () => {
-      socket.close();
-      if (!counts) {
-        fetch("https://mulearn.org/api/v1/get-log/global-count/")
-          .then((response) => response.json())
-          .then((data) => {
-            setCounts(data.response);
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-          });
-      }
-    };
   }, []);
 
   return (
