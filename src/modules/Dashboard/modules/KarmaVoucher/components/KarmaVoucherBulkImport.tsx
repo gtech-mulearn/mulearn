@@ -15,10 +15,10 @@ const KarmaVoucherBulkImport = () => {
     const toast = useToast();
 
     const successDownload = () => {
-        convertToXLSX(uploadResponse.data.response.Success, "Success.xlsx");
+        convertToXLSX(uploadResponse.response.Success, "Success.xlsx");
     };
     const failureDownload = () => {
-        convertToXLSX(uploadResponse.data.response.Failed, "Failed.xlsx");
+        convertToXLSX(uploadResponse.response.Failed, "Failed.xlsx");
     };
     const memoizedSuccessDownload = useMemo(
         () => successDownload,
