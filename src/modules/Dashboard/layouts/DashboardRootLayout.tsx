@@ -92,7 +92,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
                 {
                     url: "",
                     title: "Manage Organization",
-                    hasView:true,
+                    hasView: true,
                     roles: [roles.ADMIN],
                     children: [
                         {
@@ -120,7 +120,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
                             hasView: true,
                             roles: [roles.ADMIN]
                             // icon: <i className="fi fi-sr-building"></i>
-                        },
+                        }
                     ]
                 },
                 {
@@ -130,7 +130,6 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     roles: [roles.ADMIN]
                     // icon: <i className="fi fi-sr-books"></i>
                 },
-                
 
                 {
                     url: "/dashboard/college-levels",
@@ -194,7 +193,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     roles: [roles.ADMIN, roles.TECH_TEAM]
                     // icon: <i className="fi fi-sr-note"></i>
                 },
-              
+
                 {
                     url: "/dashboard/dynamic-type",
                     title: "Dynamic Type",
@@ -209,7 +208,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     roles: [roles.ADMIN]
                     // icon: <i className="fi fi-sr-users-gear"></i>
                 },
-                
+
                 {
                     url: "/dashboard/manage-locations",
                     title: "Manage Locations",
@@ -223,7 +222,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     hasView: true,
                     roles: [roles.ADMIN, roles.FELLOW, roles.ASSOCIATE]
                 },
-                
+
                 {
                     url: "/dashboard/url-shortener",
                     title: "URL Shortener",
@@ -231,14 +230,14 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     roles: [roles.ADMIN, roles.FELLOW, roles.ASSOCIATE]
                     // icon: <i className="fi fi-sr-globe"></i>
                 },
-                
+
                 {
                     url: "/dashboard/discord-moderation",
                     title: "Discord Moderation",
                     hasView: true,
                     roles: [roles.ADMIN]
                     // icon: <i className="fi fi-sr-users-gear"></i>
-                },
+                }
             ]
         },
         {
