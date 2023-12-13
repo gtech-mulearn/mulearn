@@ -4,6 +4,11 @@ import HeatmapComponent from "../../Heatmap/HeatmapComponent";
 import { useToast } from "@chakra-ui/react";
 import { editIgDetails, getAllIg, getIgDetails } from "../services/api";
 import { useParams } from "react-router-dom";
+import i18next from "i18next";
+import LanguageSwitcher from "../../../../LanguageSwitcher/LanguageSwitcher";
+import { getFontSizeForLanguage } from "../../../../LanguageSwitcher/LanguageSwitcher";
+import { useTranslation } from "react-i18next";
+
 import {
     PlanetGreen,
     PlanetOrange,
@@ -30,7 +35,8 @@ const BasicDetails = (props: Props) => {
     const ig_sorted = ig.sort((a: any, b: any) => {
         return a.name > b.name ? 1 : -1;
     });
-
+    const { t } = useTranslation(["Profile"]);
+    const fontSize = getFontSizeForLanguage(i18next.language);
     return (
         <>
             <div className={styles.card_container}>
@@ -65,8 +71,9 @@ const BasicDetails = (props: Props) => {
                     })
                 ) : (
                     <p>
-                        No Interest Groups to Selected, You need you reach Level
-                        4 to Select
+                        {t(
+                            "No Interest Groups to Selected, You need you reach Level 4 to Select"
+                        )}
                     </p>
                 )}
                 <div className={styles.edit_ig_btn}>

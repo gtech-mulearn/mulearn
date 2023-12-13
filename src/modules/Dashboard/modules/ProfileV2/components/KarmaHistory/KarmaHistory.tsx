@@ -3,7 +3,10 @@ import KarmaSymbol from "../../assets/svg/KarmaSymbol";
 import styles from "./KarmaHistory.module.css";
 import { Switch } from "@chakra-ui/react";
 import { useState } from "react";
-
+import i18next from "i18next";
+import LanguageSwitcher from "../../../LanguageSwitcher/LanguageSwitcher";
+import { getFontSizeForLanguage } from "../../../LanguageSwitcher/LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 type Props = {
     userProfile: any;
     userLog: {
@@ -16,11 +19,12 @@ type Props = {
 const KarmaHistory = (props: Props) => {
     // console.log(props.userLog);
     const [userLog, setUserLog] = useState(props.userLog);
-
+    const { t } = useTranslation(["Profile"]);
+    const fontSize = getFontSizeForLanguage(i18next.language);
     return userLog.length !== 0 ? (
         <div className={styles.karma_history_page}>
             <p className={styles.hide_chat_karma}>
-                Hide daily chat karma{" "}
+                {t("Hide daily chat karma")}{" "}
                 <span>
                     <Switch
                         size="md"
@@ -40,14 +44,14 @@ const KarmaHistory = (props: Props) => {
                 </span>
             </p>
             <div className={styles.karma_history_container} id="section1">
-                {userLog.map((log: any,i) => {
+                {userLog.map((log: any, i) => {
                     return (
                         <div className={styles.karma_history} key={i}>
                             <p className={styles.task_name}>#{log.task_name}</p>
 
                             <div className={styles.content}>
                                 <h1 className={styles.karma}>+{log.karma} </h1>
-                                <h1>Karma</h1>
+                                <h1>{t("Karma")}</h1>
                                 <p className={styles.karma_history_box_bg}>
                                     <KarmaSymbol />
                                 </p>
@@ -67,8 +71,9 @@ const KarmaHistory = (props: Props) => {
         </div>
     ) : (
         <p className={styles.msg}>
-            Hey there! We know you're new here, so grab some Karma and we'll
-            keep score of it here!
+            {t(
+                "Hey there! We know you're new here, so grab some Karma and we'll keep score of it here!"
+            )}
         </p>
     );
 };

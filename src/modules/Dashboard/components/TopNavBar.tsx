@@ -16,7 +16,10 @@ import { useToast } from "@chakra-ui/react";
 import { SiDiscord } from "react-icons/si";
 import { MuButtonLight } from "@/MuLearnComponents/MuButtons/MuButton";
 import MuLogOut from "../assets/svg/MuLogOut";
-
+import LanguageSwitcher from "../modules/LanguageSwitcher/LanguageSwitcher";
+import { PiTranslateFill } from "react-icons/pi";
+import TranslateMal from "../assets/svg/TranslateMal";
+import TranslateEng from "../assets/svg/TranslateEng";
 const TopNavBar = () => {
     const navigate = useNavigate();
     const [name, setName] = useState("");
@@ -139,7 +142,7 @@ const TopNavBar = () => {
                                             color: "#FF7676",
                                             marginBottom: "0px",
                                             minWidth: "0px",
-                                            padding: "0px",
+                                            padding: "0px"
                                         }}
                                         onClick={() => {
                                             localStorage.clear();
@@ -156,6 +159,10 @@ const TopNavBar = () => {
                                                 900
                                             );
                                         }}
+                                    />
+                                    <LanguageSwitcher
+                                        icon1={<TranslateMal />}
+                                        icon2={<TranslateEng />}
                                     />
                                 </div>
                             )}

@@ -8,7 +8,10 @@ import {
 } from "@chakra-ui/react";
 import Roket from "../assets/images/svg/Roket";
 import { userLevelBadge } from "../../../../../utils/utils";
-
+import i18next from "i18next";
+import LanguageSwitcher from "../../../../LanguageSwitcher/LanguageSwitcher";
+import { getFontSizeForLanguage } from "../../../../LanguageSwitcher/LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 type Props = {
     userLevelData: {
         karma: number;
@@ -29,7 +32,8 @@ const MuVoyage = (props: Props) => {
     const [userLevelTrack, setUserLevelTrack] = useState(
         userLevelData[props.userLevel - 1]
     );
-
+    const { t } = useTranslation(["Profile"]);
+    const fontSize = getFontSizeForLanguage(i18next.language);
     let userLevelTrackerPercentage = "0";
 
     if (userLevelTrack) {
@@ -74,7 +78,7 @@ const MuVoyage = (props: Props) => {
                                     <div className={styles.progress_title}>
                                         <p>
                                             {userLevelTrackerPercentage + "%"}{" "}
-                                            complete
+                                            {t("complete")}
                                         </p>
                                         <p>
                                             {userLevelTrack?.tasks
@@ -88,7 +92,7 @@ const MuVoyage = (props: Props) => {
                                                 (a, b) => a + b.karma,
                                                 0
                                             )}{" "}
-                                            Karma
+                                            {t("Karma")}
                                         </p>
                                     </div>
                                     <Progress
@@ -201,7 +205,7 @@ const MuVoyage = (props: Props) => {
                                                             levelData?.tasks
                                                                 .length
                                                         }{" "}
-                                                        Tasks
+                                                        {t("Tasks")}
                                                     </p>
                                                     <i
                                                         className={`fi fi-br-angle-down ${styles.icon_down_arrow}`}
@@ -234,12 +238,13 @@ const MuVoyage = (props: Props) => {
                                                                     ),
                                                             0
                                                         )}{" "}
-                                                        Karma
+                                                        {t("Karma")}
                                                     </p>
                                                     <p className={styles.goal}>
                                                         <i className="fi fi-sr-bullseye-arrow"></i>{" "}
-                                                        Goal: {levelData.karma}{" "}
-                                                        Karma
+                                                        {t("Goal")}:{" "}
+                                                        {levelData.karma}{" "}
+                                                        {t("Karma")}
                                                     </p>
                                                 </div>
                                                 <ul
