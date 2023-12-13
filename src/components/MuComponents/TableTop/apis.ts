@@ -30,7 +30,17 @@ export const getCSV = async (
 ) => {
     setIsLoading(true);
     try {
-        const response = await privateGateway.get(CSV, {});
+        const containsOpenSheet = (CSV: string): boolean => {
+            return CSV.includes("spreadsheets");
+        };
+        let response: any;
+
+        if (containsOpenSheet(CSV)) {
+            
+            window.open(CSV, "_blank");
+            setIsLoading(false);
+            return;
+        } else response = await privateGateway.get(CSV, {});
         // toast({
         //  title: "Interest Group created",
         // 	status: "success",
@@ -38,7 +48,7 @@ export const getCSV = async (
         // 	isClosable: true
         // });
         const message: any = response?.data;
-        
+
         if (message) {
             const csvContent = convertToCSV(message);
             // Create a temporary HTML element to trigger the download
