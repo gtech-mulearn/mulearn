@@ -12,10 +12,6 @@ import Facebook from "../../assets/svg/Facebook";
 import Dribble from "../../assets/svg/Dribble";
 import StackOverflow from "../../assets/svg/StackOverflow";
 import Medium from "../../assets/svg/Medium";
-import i18next from "i18next";
-import LanguageSwitcher from "../../../LanguageSwitcher/LanguageSwitcher";
-import { getFontSizeForLanguage } from "../../../LanguageSwitcher/LanguageSwitcher";
-import { useTranslation } from "react-i18next";
 interface ProfileHeaderProps {
     userProfile: {
         first_name: string;
@@ -58,8 +54,6 @@ const ProfileHeader = ({
     socials,
     monthDifference
 }: ProfileHeaderProps) => {
-    const { t } = useTranslation(["Profile"]);
-    const fontSize = getFontSizeForLanguage(i18next.language);
     return (
         <div className={styles.basic_details}>
             <div className={styles.profile_details_container}>
@@ -116,7 +110,7 @@ const ProfileHeader = ({
                     <div className={styles.status}>
                         <Karma />
                         <div className={styles.status_box}>
-                            <p>{t("Karma")}</p>
+                            <p>Karma</p>
                             <p>
                                 {parseInt(userProfile.karma) > 1000
                                     ? (
@@ -129,14 +123,14 @@ const ProfileHeader = ({
                     <div className={styles.status}>
                         <Rank />
                         <div className={styles.status_box}>
-                            <p>{t("Rank")}</p>
+                            <p>Rank</p>
                             <p>{userProfile.rank}</p>
                         </div>
                     </div>
                     <div className={styles.status}>
                         <AvgKarma />
                         <div className={styles.status_box}>
-                            <p>{t("Avg.Karma")} </p>
+                            <p>Avg.Karma</p>
                             <p>
                                 {parseInt(userProfile.karma) / monthDifference >
                                     1000 && monthDifference !== 0
