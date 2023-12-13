@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./Modal.module.css";
-import mustyles from "@/MuLearnComponents/MuButtons/MuButtons.module.css";
+import mustyles from "@/MuLearnComponents/MuButtons/MuButton.module.css";
 
 import * as Yup from "yup";
 import { Formik, Form } from 'formik'

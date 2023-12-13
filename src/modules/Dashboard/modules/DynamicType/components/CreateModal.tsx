@@ -1,8 +1,8 @@
 import { useToast } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import styles from "./Modal.module.css";
-import mustyles from "@/MuLearnComponents/MuButtons/MuButtons.module.css";
-import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import mustyles from "@/MuLearnComponents/MuButtons/MuButton.module.css";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import * as Yup from "yup";
 import FormikReactSelect, {
     FormikTextInput

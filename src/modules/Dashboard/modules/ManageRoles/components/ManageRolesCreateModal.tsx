@@ -2,7 +2,7 @@ import { createManageRoles, isRoleUnique } from "../apis";
 import { useToast } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import styles from "./Modal.module.css";
-import mustyles from "@/MuLearnComponents/MuButtons/MuButtons.module.css";
+import mustyles from "@/MuLearnComponents/MuButtons/MuButton.module.css";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import * as Yup from "yup";
 import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";

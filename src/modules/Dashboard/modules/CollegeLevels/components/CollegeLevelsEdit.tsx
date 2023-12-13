@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import FormikReactSelect from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import styles from "./Modal.module.css";
-import mustyles from "@/MuLearnComponents/MuButtons/MuButtons.module.css";
+import mustyles from "@/MuLearnComponents/MuButtons/MuButton.module.css";
 import { editCollegeLevels } from "../apis";
 import { levelCount } from "../Utisl";
 
