@@ -43,7 +43,6 @@ import Account from "./modules/Dashboard/modules/Settings/pages/Account/Account"
 import DiscordModeration from "./modules/Dashboard/modules/DiscordModeration/DiscordModeration";
 import Test from "./modules/Dashboard/modules/Test/Test";
 import Analytics from "./modules/Dashboard/modules/UrlShortener/Pages/Analytics";
-import i18next from "i18next";
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
 );

@@ -1,8 +1,0 @@
-.LanguageSwitch {
-    display: flex;
-    justify-content: space-between;
-}
-.LanguageSwitch p {
-    margin-left: 15px;
-    font-weight: 500;
-}

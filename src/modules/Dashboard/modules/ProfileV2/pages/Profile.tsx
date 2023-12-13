@@ -20,10 +20,6 @@ import Rocket from "../assets/svg/Rocket";
 import ProfileHeader from "../components/ProfileHeader/ProfileHeader";
 // import { calc } from "@chakra-ui/react";
 import Example from "../components/CircularProgressChart/CircularProgressChart";
-import i18next from "i18next";
-import LanguageSwitcher from "../../LanguageSwitcher/LanguageSwitcher";
-import { getFontSizeForLanguage } from "../../LanguageSwitcher/LanguageSwitcher";
-import { useTranslation } from "react-i18next";
 
 type Props = {};
 interface CircleSection {
@@ -44,8 +40,6 @@ const ProfileV2 = (props: Props) => {
     const [APILoadStatus, setAPILoadStatus] = useState(0);
     const [socials, setSocials] = useState([]);
     const [profileList, setProfileList] = useState("basic-details");
-    const { t } = useTranslation(["Profile"]);
-    const fontSize = getFontSizeForLanguage(i18next.language);
     const [userProfile, setUserProfile] = useState({
         first_name: "",
         last_name: "",
@@ -194,7 +188,6 @@ const ProfileV2 = (props: Props) => {
 
     return (
         <>
-            {/* <LanguageSwitcher />*/}
             <ProfileHeader
                 userProfile={userProfile}
                 monthDifference={monthDifference}
@@ -204,7 +197,7 @@ const ProfileV2 = (props: Props) => {
             <div className={styles.roles_and_karma_container}>
                 <div className={styles.roles_karma_dist_container}>
                     <div className={styles.role_distribution_container}>
-                        <h1>{t("Roles and contributions")}</h1>
+                        <h1>Roles and contributions</h1>
                         <div className={styles.ElipseWrapper}>
                             {userProfile.roles?.map((item, index) => {
                                 return (
@@ -250,13 +243,14 @@ const ProfileV2 = (props: Props) => {
                     </div>
                     <div className={styles.karma_distribution_container}>
                         {" "}
-                        <h1>{t("Karma distribution")}</h1>
+                        <h1>Karma distribution</h1>
                         <div className={styles.container}>
                             {/* <PieChart data={data} /> */}
                             <Example data={formattedData} />
                         </div>
                     </div>
                 </div>
+
                 {window.innerWidth > 1290 ? <Rocket /> : <></>}
             </div>
 
@@ -269,7 +263,7 @@ const ProfileV2 = (props: Props) => {
                             : styles.notActiveBar
                     }
                 >
-                    {t("Basic Details")}
+                    Basic Details
                 </li>
                 <li
                     onClick={() => setProfileList("karma-history")}
@@ -279,7 +273,7 @@ const ProfileV2 = (props: Props) => {
                             : styles.notActiveBar
                     }
                 >
-                    {t("Karma History")}
+                    Karma History
                 </li>
                 <li
                     onClick={() => setProfileList("mu-voyage")}
@@ -289,7 +283,7 @@ const ProfileV2 = (props: Props) => {
                             : styles.notActiveBar
                     }
                 >
-                    {t("Mu Voyage")}
+                    Mu Voyage
                 </li>{" "}
                 <li
                     onClick={() => setProfileList("projects")}
@@ -299,7 +293,7 @@ const ProfileV2 = (props: Props) => {
                             : styles.notActiveBar
                     }
                 >
-                    {t("Projects")}
+                    Projects
                 </li>
             </div>
 
