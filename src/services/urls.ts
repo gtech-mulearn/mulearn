@@ -130,7 +130,7 @@ export const dashboardRoutes = {
     reportLCMeet: "/api/v1/dashboard/lc/meet-record/create/",
     getLCMeetReport: "/api/v1/dashboard/lc/meet-record/show/",
     getCampusIg: "api/v1/dashboard/ig/list/",
-    getCount: "api/v1/dashboard/lc/data/",
+    getCount: "api/v1/dashboard/lc/stats/",
 
     getAllOrganisations: "/api/v1/hackathon/list-organisations/",
     getAllDistricts: "/api/v1/hackathon/list-districts/",
