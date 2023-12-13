@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.title {
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+
+.input {
+    padding: 8px;
+    margin-bottom: 16px;
+    width: 16rem;
+    border: 1px solid #ccc;
+    margin-top: 2rem;
+}
+
+.description {
+    margin-top: -1rem;
+    max-width: 20rem;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.button {
+    padding: 8px 24px;
+    background-color: #007bff;
+    color: #fff;
+
+    border: none;
+    cursor: pointer;
+}
