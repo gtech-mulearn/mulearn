@@ -1,4 +1,4 @@
-import styles from './ModalCreateComponent.module.css'
+import styles from './ModalCreate.module.css'
 import React, { Dispatch, SetStateAction, useState } from 'react';
 import { RiCloseLine } from 'react-icons/ri';
 import { useToast } from "@chakra-ui/react";
