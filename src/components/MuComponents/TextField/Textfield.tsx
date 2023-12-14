@@ -1,4 +1,3 @@
-import { background } from "@chakra-ui/react";
 import styles from "./Textfield.module.css";
 import React from "react";
 

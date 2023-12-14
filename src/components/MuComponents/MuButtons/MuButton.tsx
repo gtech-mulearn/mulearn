@@ -2,7 +2,6 @@ import React, { ReactNode, useState } from "react";
 import styles from "./MuButton.module.css";
 import { ClipLoader } from "react-spinners";
 import { Spinner } from "@chakra-ui/react";
-import { LuCheck } from "react-icons/lu";
 
 /**
  * TODO: Make Single and Powerful Button Component(Multi-Purpose)

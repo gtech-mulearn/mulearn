@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { editManageRoles, getManageRolesDetails } from "../apis";
-import { useToast } from "@chakra-ui/react";
+
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
@@ -25,7 +25,7 @@ const ManageRolesEditModal = (props: Props) => {
         description: ""
     });
     const id = props.id;
-    const toast = useToast();
+    
     useEffect(() => {
         getManageRolesDetails(id, setData);
     }, []);

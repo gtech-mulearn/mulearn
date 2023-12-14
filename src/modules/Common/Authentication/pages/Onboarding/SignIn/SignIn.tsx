@@ -13,7 +13,7 @@ import {
     otpVerification,
     requestEmailOrMuidOtp
 } from "../../../services/apis";
-import { useToast } from "@chakra-ui/react";
+
 import { useNavigate } from "react-router-dom";
 
 const inputObject = {
@@ -23,7 +23,7 @@ const inputObject = {
 };
 
 export default function SignIn() {
-    const toast = useToast();
+    
     const navigate = useNavigate();
 
     let ruri = window.location.href.split("=")[1];

@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 import { deleteUserRole, editUserRoleVerification, getUserRoleVerification } from "./apis";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
-import { useToast } from "@chakra-ui/react";
 
 
 function UsersRoleVerification() {
@@ -18,7 +17,6 @@ function UsersRoleVerification() {
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
     const firstFetch = useRef(true);
-    const toast = useToast();
 
     const [loading, setLoading] = useState(false);
     type TData = {

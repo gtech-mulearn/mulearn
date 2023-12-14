@@ -12,7 +12,7 @@ import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { getCompanies } from "../../../services/newOnboardingApis";
 import ReactSelect from "react-select";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useToast } from "@chakra-ui/react";
+
 
 const inputObject = {
     company: "Company Name"
@@ -42,7 +42,7 @@ export default function CompanyPage({
     selectedRole: string;
 }) {
     const navigate = useNavigate();
-    const toast = useToast();
+    
     const location = useLocation();
     let userData = location.state;
 
@@ -126,7 +126,6 @@ export default function CompanyPage({
         submitUserData({
             setIsLoading: setIsLoading,
             userData: newUserData,
-            toast: toast,
             navigate: navigate
         });
     };

@@ -1,6 +1,5 @@
 import { hasRole } from "@/MuLearnServices/common_functions";
 import { roles } from "@/MuLearnServices/types";
-import { useToast } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
@@ -52,7 +51,7 @@ const useFormData = (props: CollegeFormProps) => {
     const [isSuccess, setIsSuccess] = useState(false);
 
     const navigate = useNavigate();
-    const toast = useToast();
+    
     function camelCase(str: string) {
         return str?.replace(
             /\b[A-Z]+\b/g,
@@ -78,7 +77,7 @@ const useFormData = (props: CollegeFormProps) => {
             zone: string;
             district: string;
             orgType: string;
-            toast: ToastAsPara;
+            
         }
 
         const SelectBody = (item: string) => {
@@ -90,7 +89,7 @@ const useFormData = (props: CollegeFormProps) => {
                 zone: zone.value,
                 district: district.value,
                 orgType,
-                toast
+                
             };
         };
 

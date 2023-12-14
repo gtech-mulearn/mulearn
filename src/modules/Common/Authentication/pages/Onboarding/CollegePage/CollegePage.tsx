@@ -12,7 +12,7 @@ import {
 } from "../../../services/newOnboardingApis";
 import ReactSelect from "react-select";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useToast } from "@chakra-ui/react";
+
 
 const inputObject = {
     college: "Collage Name",
@@ -51,7 +51,7 @@ export default function CollegePage({
     selectedRole: string;
 }) {
     const navigate = useNavigate();
-    const toast = useToast();
+    
     const location = useLocation();
     let userData: any = location.state as Object;
 
@@ -153,7 +153,6 @@ export default function CollegePage({
         submitUserData({
             setIsLoading: setIsLoading,
             userData: newUserData,
-            toast: toast,
             navigate: navigate
         });
     };

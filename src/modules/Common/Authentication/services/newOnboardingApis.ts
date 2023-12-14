@@ -1,7 +1,7 @@
 import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
 import { showToasts } from "@/MuLearnServices/common_functions";
 import { KKEMRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
-import { ToastId, UseToastOptions } from "@chakra-ui/react";
+
 import { Dispatch, SetStateAction } from "react";
 import { NavigateFunction } from "react-router-dom";
 import { bool, boolean } from "yup";
@@ -140,12 +140,10 @@ export const getCompanies = async ({
 export const submitUserData = async ({
     setIsLoading,
     userData,
-    toast,
     navigate
 }: {
     setIsLoading: Dispatch<SetStateAction<boolean>>;
     userData: Object;
-    toast: (options?: UseToastOptions | undefined) => ToastId;
     navigate: NavigateFunction;
 }) => {
     console.log("UserData", userData);

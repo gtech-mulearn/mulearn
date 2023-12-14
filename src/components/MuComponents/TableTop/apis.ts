@@ -1,6 +1,5 @@
 import { AxiosError } from "axios";
 import { privateGateway } from "../../../services/apiGateways";
-import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import toast from "react-hot-toast";
 
 /*

@@ -23,8 +23,6 @@ type UserInfo = {
 
 type ColOrder = { column: string, Label: string, isSortable: boolean }
 
-type ToastAsPara = (options?: import('@chakra-ui/react').UseToastOptions) => import('@chakra-ui/react').ToastId;
-
 // just pass json structure type as parameters
 type APIResponse< R = {}, M = {}[] > = {
     data : {

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import styles from "./ResetPassword.module.css";
-import { useToast } from "@chakra-ui/react";
+
 
 import * as Yup from "yup";
 import { Form, Formik } from 'formik';
@@ -18,7 +18,7 @@ const ResetPassword = () => {
     const [token, setToken] = useState("");
     localStorage.clear();
     const navigate = useNavigate();
-    const toast = useToast();
+    
 
     useEffect(() => {
         const paramToken = searchParams.get("token");

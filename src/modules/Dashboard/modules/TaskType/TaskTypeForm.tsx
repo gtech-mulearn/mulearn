@@ -1,7 +1,6 @@
 import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
 import styles from "../../utils/modalForm.module.css";
 import { useNavigate } from "react-router-dom";
-import { useToast } from "@chakra-ui/react";
 import {
     createTaskType,
     editTaskType,
@@ -14,7 +13,6 @@ type Props = { id: string; isEditMode: boolean; reload: () => void };
 const TaskTypeForm = forwardRef(
     (props: Props & { closeModal: () => void }, ref: any) => {
         const navigate = useNavigate();
-        const toast = useToast();
         const [errors, setErrors] = useState<OrgFormErrors>({});
         const [taskData, setTaskData] = useState<any>(null);
         console.log(props.id);

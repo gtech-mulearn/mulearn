@@ -1,4 +1,4 @@
-import { ToastId, UseToastOptions } from "@chakra-ui/react";
+
 import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
 import {
     authRoutes,

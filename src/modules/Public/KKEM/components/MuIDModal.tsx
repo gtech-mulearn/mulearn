@@ -3,7 +3,6 @@ import styles from "./MuIDModal.module.css";
 import { RiCloseLine } from "react-icons/ri";
 import { AiOutlineLoading } from "react-icons/ai";
 import { HiCheck, HiOutlineArrowRight } from "react-icons/hi";
-import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { KKEMLogin } from "../services/apis";
 
@@ -64,7 +63,6 @@ export default function Modal({
     const [error, setError] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(false);
     const [integration, setIntegration] = useState("");
-    const toast = useToast();
     const navigate = useNavigate();
     let ruri = window.location.href.split("=")[1];
 

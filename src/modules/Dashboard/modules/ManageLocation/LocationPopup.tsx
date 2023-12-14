@@ -10,7 +10,7 @@ import {
 import { getStateData } from "./apis/StateAPI";
 import { getZoneData } from "./apis/ZoneAPI";
 import { getDistrictData } from "./apis/DistrictAPI";
-import { useToast } from "@chakra-ui/react";
+
 
 interface SelectedDataProps {
     Country: { value: string; label: string } | null;
@@ -65,7 +65,7 @@ const LocationPopup: FC<LocationPopupProps> = ({
         Zone: null
     });
 
-    const toast = useToast();
+    
 
     useEffect(() => {
         if (selectedData.Country === null) {

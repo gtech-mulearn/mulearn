@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import OnboardingTemplate from "../../../components/OnboardingTeamplate/OnboardingTemplate";
 import OnboardingHeader from "../../../components/OnboardingHeader/OnboardingHeader";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useToast } from "@chakra-ui/react";
+
 import { getCommunities, getLocations } from "../../../services/onboardingApis";
 import { validate } from "../../../services/newOnboardingApis";
 import { Form, Formik } from "formik";
@@ -18,7 +18,7 @@ export default function CommunityPage() {
         { id: "", title: "" }
     ]);
     const navigate = useNavigate();
-    // const toast = useToast();
+    // 
     const location = useLocation();
     let userData = location.state;
     const animatedComponents = makeAnimated();
@@ -29,7 +29,7 @@ export default function CommunityPage() {
     ])
     const [isApiCalled, setIsApiCalled] = useState(false);
     const param = urlParams.get("param");
-    const toast = useToast();
+    
     useEffect(() => {
         if (userData === undefined || userData === null) {
             navigate("/register", { replace: true });

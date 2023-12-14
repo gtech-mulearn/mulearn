@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import { SearchBar } from "./SearchBar";
-import ShowPerPage from "../Pagination/ShowPerPage";
 import styles from "./TableTop.module.css";
 import { MuButton, PowerfulButton } from "../MuButtons/MuButton";
 import { HiDownload } from "react-icons/hi";
 import { getCSV } from "./apis";
-import { useToast } from "@chakra-ui/react";
 import { ClipLoader } from "react-spinners";
 
 type Props = {
@@ -17,7 +15,6 @@ type Props = {
 const TableTop = (props: Props) => {
     const [isLoading, setIsLoading] = useState(false);
     const [hasError, setHasError] = useState(false);
-    const toast = useToast();
 
     const handleData = (search: string) => {
         props.onSearchText && props.onSearchText(search);

@@ -1,7 +1,6 @@
 import styles from './ModalCreate.module.css'
 import React, { Dispatch, SetStateAction, useState } from 'react';
 import { RiCloseLine } from 'react-icons/ri';
-import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";

@@ -18,7 +18,7 @@ import { getZoneData, deleteZoneData } from "./apis/ZoneAPI";
 import { getDistrictData, deleteDistrictData } from "./apis/DistrictAPI";
 import LocationPopup from "./LocationPopup";
 import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
-import { useToast } from "@chakra-ui/react";
+
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
 type LocationItem = { value: string; label: string } | string;
@@ -46,7 +46,7 @@ const ManageLocation = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    const toast = useToast();
+    
 
     useEffect(() => {
         if (location.state) {

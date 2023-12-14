@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import styles from "./Login.module.css";
-import { useToast } from "@chakra-ui/react";
 import {
     login,
     requestEmailOrMuidOtp,
@@ -25,7 +24,6 @@ const Login = () => {
     const [otpLoading, setOtpLoading] = useState(false);
     const [otpError, setOtpError] = useState(false);
     let ruri = window.location.href.split("=")[1];
-    const toast = useToast();
     const navigate = useNavigate();
     useEffect(() => {
         setHasError(true);

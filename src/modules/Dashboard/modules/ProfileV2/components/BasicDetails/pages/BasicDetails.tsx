@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./BasicDetails.module.css";
 import HeatmapComponent from "../../Heatmap/HeatmapComponent";
-import { useToast } from "@chakra-ui/react";
+
 import { editIgDetails, getAllIg, getIgDetails } from "../services/api";
 import { useParams } from "react-router-dom";
 import {
@@ -14,7 +14,7 @@ type Props = {
     userLog: any;
 };
 const BasicDetails = (props: Props) => {
-    const toast = useToast();
+    
     const [editIg, setEditIg] = useState(false);
     const [allIg, setAllIg] = useState<any>([]);
 

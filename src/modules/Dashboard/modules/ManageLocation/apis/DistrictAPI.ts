@@ -1,7 +1,6 @@
 import { AxiosError, AxiosRequestConfig } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { ManageLocationsRoutes } from "@/MuLearnServices/urls";
-import { ToastId, UseToastOptions } from "@chakra-ui/toast";
 
 //*WORKING✅
 export const getDistrictData = async (

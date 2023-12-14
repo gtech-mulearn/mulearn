@@ -11,7 +11,7 @@ import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import { useFormik } from "formik";
-import { useToast } from "@chakra-ui/react";
+
 import {
     MuButton,
     PowerfulButton
@@ -32,7 +32,7 @@ const Affiliation = () => {
         { column: "updated_at", Label: "Updated At", isSortable: false },
     ];
 
-    const toast = useToast();
+    
     const [editBtn, setEditBtn] = useState(false);
     const [createBtn, setCreateBtn] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
