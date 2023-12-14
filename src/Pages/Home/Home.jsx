@@ -31,7 +31,7 @@ const MuLiveCounter = () => {
 
     socket.addEventListener("message", (event) => {
       setCounts(JSON.parse(event.data));
-      console.log("Message from server ", event.data)
+      console.log("Message from server ", event.data);
     });
 
     socket.addEventListener("error", (event) => {
@@ -308,6 +308,34 @@ const Home = () => {
         </div>
       </div>
 
+      <br />
+      <div className={styles.joinviewmain_container}>
+        <div className={styles.joinview_container}>
+          <div className={styles.join_view}>
+            <div className={styles.jv_texts}>
+              <p className={styles.jv_heading}>
+                The Story of Aami <span>MuStory</span>
+              </p>
+              <p className={styles.jv_content}>
+                Meet Aami, an eager learner hungry for growth! Join her voyage
+                through the captivating µVerse, where she seizes opportunities,
+                builds learning circles, and immerses herself in events,
+                emerging industry-ready with newfound skills and confidence.
+              </p>
+            </div>
+            <div className={styles.mu_story}>
+              <iframe
+                src="https://www.youtube.com/embed/M9serw-CLU0?si=rqJ8ZNA4vl8byH07"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className={styles.thirdviewmain_container}>
         <div className={styles.thirdview_container}>
           <div className={styles.third_view}>
@@ -471,30 +499,6 @@ const Home = () => {
               alt="join"
               className={styles.join_img}
             />
-          </div>
-        </div>
-      </div>
-      <br />
-      <div className={styles.joinviewmain_container}>
-        <div className={styles.joinview_container}>
-          <div className={styles.join_view}>
-            <div className={styles.jv_texts}>
-              <p className={styles.jv_heading}>
-                The Story of Aami <span>MuStory</span>
-              </p>
-              <p className={styles.jv_content}>
-              Meet Aami, an eager learner hungry for growth! Join her voyage through the captivating µVerse, where she seizes opportunities, builds learning circles, and immerses herself in events, emerging industry-ready with newfound skills and confidence.
-              </p>
-            </div>
-            <div className={styles.mu_story}>
-              <iframe
-                src="https://www.youtube.com/embed/M9serw-CLU0?si=rqJ8ZNA4vl8byH07"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-              ></iframe>
-            </div>
           </div>
         </div>
       </div>
