@@ -1,8 +1,8 @@
 import styles from "./NotFound.module.css";
-import stone from "./assests/NotFound/stone.webp"
-import fourNotFour from "./assests/NotFound/fourNotFour.webp"
-import NoBgFourNotFour from "./assests/NotFound/noBgFourNotFour.webp"
-import smallRocks from "./assests/NotFound/smallRocks.webp"
+import stone from "./assests/NotFound/Stone.webp"
+import fourNotFour from "./assests/NotFound/FourNotFour.webp"
+import NoBgFourNotFour from "./assests/NotFound/NoBgFourNotFour.webp"
+import smallRocks from "./assests/NotFound/SmallRocks.webp"
 
 const NotFound = () => {
     return (
