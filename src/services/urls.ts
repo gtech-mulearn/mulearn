@@ -216,14 +216,14 @@ export const KKEMRoutes = {
     userLogin: "/api/v1/integrations/kkem/login/",
     getDWMSDetails: "/api/v1/integrations/kkem/user/${param}/",
     userStatus: "/api/v1/integrations/kkem/user/status/",
-    getLcReport: "/api/v1/get-log/lc-enrollment/csv/"
+    getLcReport: "/api/v1/public/lc-enrollment/csv/"
 };
 
 export const PublicRoutes = {
     getRandomLc: "/api/v1/dashboard/lc/list/",
-    getLcDashboard: "/api/v1/get-log/lc-dashboard/",
-    getLcReport: "/api/v1/get-log/lc-enrollment/",
-    getOrgWiseReport: "/api/v1/get-log/college-wise-lc-report/"
+    getLcDashboard: "/api/v1/public/lc-dashboard/",
+    getLcReport: "/api/v1/public/lc-enrollment/",
+    getOrgWiseReport: "/api/v1/public/college-wise-lc-report/"
 } as const;
 
 export const googleSheetRoutes = {

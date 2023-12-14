@@ -162,7 +162,7 @@ function ManageRoles() {
     };
     const toast = useToast();
     const handleDelete = (id: string | undefined) => {
-        deleteManageRoles(id, toast);
+        deleteManageRoles(id);
         getManageRoles(
             setData,
             1,

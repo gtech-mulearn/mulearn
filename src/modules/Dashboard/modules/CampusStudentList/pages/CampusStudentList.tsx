@@ -18,12 +18,12 @@ import { BarChart } from "../Components/Graphs";
 import styles from "./CampusStudentList.module.css";
 import CLIcon from "../assets/images/CampusLeadIcon.svg";
 import CEIcon from "../../LearningCircle/assets/images/Lead icon.svg";
-import { useToast } from "@chakra-ui/react";
 import { convertDateToDayAndMonth } from "../../../utils/common";
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 import Modal from "@/MuLearnComponents/Modal/Modal";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { AiOutlineDownload } from "react-icons/ai";
+import toast from "react-hot-toast";
 
 type Props = {};
 
@@ -31,8 +31,6 @@ type Props = {};
 //TODO: Move Logic to another file.
 
 const CampusStudentList = (props: Props) => {
-    const toast = useToast();
-
     const [studentData, setStudentData] = useState<any[]>([]);
     const [perPage, setPerPage] = useState(20);
     const [currentPage, setCurrentPage] = useState(1);
@@ -54,13 +52,8 @@ const CampusStudentList = (props: Props) => {
     } | null>(null);
 
     const errHandler = (err: any) => {
-        toast({
-            title: "Data fetch failed",
-            description: err,
-            status: "error",
-            duration: 3000,
-            isClosable: true
-        });
+        toast.error("Data fetch failed");
+        toast.error(err);
     };
 
     const columnOrder: {
@@ -351,7 +344,9 @@ const CampusStudentList = (props: Props) => {
                                                                     .enabler
                                                             }
                                                         </h2>
-                                                        <p>Campus Lead Enabler</p>
+                                                        <p>
+                                                            Campus Lead Enabler
+                                                        </p>
                                                     </div>
                                                 </div>
                                             )}

@@ -1,4 +1,3 @@
-import { useToast } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import styles from "./Modal.module.css";
 import mustyles from "@/MuLearnComponents/MuButtons/MuButton.module.css";
@@ -8,6 +7,7 @@ import FormikReactSelect, {
     FormikTextInput
 } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { createRoleType, createUserType } from "../apis";
+import toast from "react-hot-toast";
 
 type Props = {
     onClose: any;
@@ -17,24 +17,12 @@ type Props = {
 };
 
 const CreateModal = (props: Props) => {
-    const toast = useToast();
     const errHandler = (err: any) => {
-        toast({
-            title: "Something went wrong",
-            description: err.toString(),
-            status: "error",
-            duration: 3000,
-            isClosable: true
-        });
+        toast.error("Something Went Wrong");
+        toast.error(err);
     };
     const succHandler = (msg: any) => {
-        toast({
-            title: "Something went wrong",
-            description: msg.toString(),
-            status: "success",
-            duration: 3000,
-            isClosable: true
-        });
+        toast.success(msg.toString());
     };
     return (
         <Formik

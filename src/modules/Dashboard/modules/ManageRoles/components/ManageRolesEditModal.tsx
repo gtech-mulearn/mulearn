@@ -48,12 +48,7 @@ const ManageRolesEditModal = (props: Props) => {
             })}
             onSubmit={values => {
                 (async () => {
-                    await editManageRoles(
-                        id,
-                        values.title,
-                        values.description,
-                        toast
-                    );
+                    await editManageRoles(id, values.title, values.description);
                     props.onClose(null);
                 })();
             }}

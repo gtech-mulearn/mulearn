@@ -144,7 +144,7 @@ export const Tasks = () => {
     };
 
     const handleDelete = (id: string | undefined) => {
-        deleteTask(id, toast);
+        deleteTask(id);
         setData(data.filter(item => item?.id !== id));
         // getTasks(
         //     setData,

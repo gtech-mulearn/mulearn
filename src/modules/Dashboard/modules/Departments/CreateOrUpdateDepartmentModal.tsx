@@ -53,8 +53,8 @@ const CreateOrUpdateDepartmentModal = ({
                     })}
                     onSubmit={async values => {
                         id
-                            ? await updateDepartment(id!, values.title, toast)
-                            : await createDepartment(values.title, toast);
+                            ? await updateDepartment(id!, values.title)
+                            : await createDepartment(values.title);
                         getDepartments({
                             setDepartments: setDepartments,
                             setIsLoading: setIsLoading

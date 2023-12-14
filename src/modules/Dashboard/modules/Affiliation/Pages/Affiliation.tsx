@@ -55,7 +55,7 @@ const Affiliation = () => {
                
             };
             if (!editBtn) {
-                createAffiliation(toast, affiliationCreateData, formik).then(result => {
+                createAffiliation( affiliationCreateData, formik).then(result => {
                     if (result) {
                         setTimeout(() => {
                             getAffiliation(
@@ -70,7 +70,7 @@ const Affiliation = () => {
                     }
                 });
             } else {
-                editAffiliation(values.id, toast, affiliationCreateData, formik).then(
+                editAffiliation(values.id, affiliationCreateData, formik).then(
                     result => {
                         if (result) {
                             setTimeout(() => {
@@ -165,20 +165,8 @@ const Affiliation = () => {
     };
 
     const handleDelete = (id: any) => {
-        deleteAffiliation(id.toString(), toast);
+        deleteAffiliation(id.toString());
         setAffiliationData(affiliationData.filter(item => item?.id !== id));
-    };
-    const handleCopy = (id: any) => {
-        navigator.clipboard.writeText(
-            affiliationData.filter(item => item?.id === id)[0].title
-        );
-        console.log(affiliationData.filter(item => item?.id === id)[0].title);
-        toast({
-            title: "Copied",
-            status: "success",
-            duration: 2000,
-            isClosable: true
-        });
     };
 
     useEffect(() => {

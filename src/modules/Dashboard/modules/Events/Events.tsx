@@ -138,7 +138,7 @@ export const Events = () => {
     };
 
     const handleDelete = (id: string | undefined) => {
-        deleteEvent(id, toast);
+        deleteEvent(id);
         setData(data.filter(item => item?.id !== id));
         setTimeout(() => { reloadTaskTypes() }, 500)
     };

@@ -96,7 +96,6 @@ const TaskForm = forwardRef(
         const [blurStatus, setBlurStatus] = useState({ affiliation: false });
         const [showBonus, setShowBonus] = useState<boolean>(false);
 
-
         const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
             const { name, value } = e.target;
             setData(prevData => ({ ...prevData, [name]: value }));
@@ -123,8 +122,9 @@ const TaskForm = forwardRef(
             if (!value.trim()) {
                 setErrors(prevErrors => ({
                     ...prevErrors,
-                    [name]: `${name.charAt(0).toUpperCase() + name.slice(1)
-                        } is required`
+                    [name]: `${
+                        name.charAt(0).toUpperCase() + name.slice(1)
+                    } is required`
                 }));
             } else {
                 setErrors(prevErrors => ({ ...prevErrors, [name]: undefined }));
@@ -168,7 +168,9 @@ const TaskForm = forwardRef(
                     organization_id: taskData.org,
                     discord_link: taskData.discord_link,
                     event: taskData.event,
-                    bonus_time: convertDateToYYYYMMDD(String(taskData?.bonus_time)) || null,
+                    bonus_time:
+                        convertDateToYYYYMMDD(String(taskData?.bonus_time)) ||
+                        null,
                     bonus_karma: taskData.bonus_karma
                 });
                 console.log(taskData);
@@ -195,9 +197,9 @@ const TaskForm = forwardRef(
 
                 channel
                     ? setSelectedChannel({
-                        value: channel.id,
-                        label: channel.name
-                    })
+                          value: channel.id,
+                          label: channel.name
+                      })
                     : setSelectedChannel(null);
                 type
                     ? setSelectedType({ value: type.id, label: type.title })
@@ -227,14 +229,21 @@ const TaskForm = forwardRef(
             // Validate form data
             let isValid = true;
 
-            const requiredKeys: Array<keyof typeof updatedData> = ['hashtag', 'title', 'karma', 'usage_count']; // Add the keys that are required
+            const requiredKeys: Array<keyof typeof updatedData> = [
+                "hashtag",
+                "title",
+                "karma",
+                "usage_count"
+            ]; // Add the keys that are required
 
             for (const key of requiredKeys) {
                 if (!(key in updatedData) || !updatedData[key]) {
                     isValid = false;
                     setErrors(prevErrors => ({
                         ...prevErrors,
-                        [key]: `${key.charAt(0).toUpperCase() + key.slice(1)} is required`
+                        [key]: `${
+                            key.charAt(0).toUpperCase() + key.slice(1)
+                        } is required`
                     }));
                 }
             }
@@ -266,7 +275,6 @@ const TaskForm = forwardRef(
                         selectedOrg?.value || "",
                         data.discord_link,
                         data.event,
-                        toast,
                         data.bonus_time,
                         data.bonus_karma
                     )
@@ -294,10 +302,8 @@ const TaskForm = forwardRef(
                         data.discord_link,
                         props.id,
                         data.event,
-                        toast,
                         data.bonus_time,
                         data.bonus_karma
-
                     )
                         .then(() => {
                             props.closeModal();
@@ -519,7 +525,13 @@ const TaskForm = forwardRef(
                         </div>
                         <div className={styles.CheckBoxWrapperSet}>
                             <label className={styles.toggle} htmlFor="active">
-                                <label className={styles.toggle__label} htmlFor="active"> Active</label>
+                                <label
+                                    className={styles.toggle__label}
+                                    htmlFor="active"
+                                >
+                                    {" "}
+                                    Active
+                                </label>
                                 <input
                                     type="checkbox"
                                     className={styles.toggle__input}
@@ -539,7 +551,10 @@ const TaskForm = forwardRef(
                                 className={styles.toggle}
                                 htmlFor="variable_karma"
                             >
-                                <label className={styles.toggle__label} htmlFor="variable_karma">
+                                <label
+                                    className={styles.toggle__label}
+                                    htmlFor="variable_karma"
+                                >
                                     {" "}
                                     Variable Karma
                                 </label>
@@ -558,16 +573,30 @@ const TaskForm = forwardRef(
                                 </span>
                             </label>
                         </div>
-                        <div className={styles.CheckBoxWrapperSet} style={{ justifyContent: "center" }}>
-                            <label className={styles.toggle} htmlFor="showBonusCheckbox">
-                                <label className={styles.toggle__label} htmlFor="showBonusCheckbox"> Do You need bonus Karma?</label>
+                        <div
+                            className={styles.CheckBoxWrapperSet}
+                            style={{ justifyContent: "center" }}
+                        >
+                            <label
+                                className={styles.toggle}
+                                htmlFor="showBonusCheckbox"
+                            >
+                                <label
+                                    className={styles.toggle__label}
+                                    htmlFor="showBonusCheckbox"
+                                >
+                                    {" "}
+                                    Do You need bonus Karma?
+                                </label>
                                 <input
                                     type="checkbox"
                                     className={styles.toggle__input}
                                     id="showBonusCheckbox"
                                     name="showBonusCheckbox"
                                     checked={showBonus}
-                                    onChange={(e) => setShowBonus(e.target.checked)}
+                                    onChange={e =>
+                                        setShowBonus(e.target.checked)
+                                    }
                                 />
                                 <span className={styles.toggleTrack}>
                                     <span

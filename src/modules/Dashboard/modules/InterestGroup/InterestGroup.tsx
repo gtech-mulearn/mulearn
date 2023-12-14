@@ -129,7 +129,7 @@ function InterestGroup() {
     };
 
     const handleDelete = (id: string | undefined) => {
-        deleteInterestGroups(id, toast);
+        deleteInterestGroups(id);
         setTimeout(() => {
             getInterestGroups(
                 setData,

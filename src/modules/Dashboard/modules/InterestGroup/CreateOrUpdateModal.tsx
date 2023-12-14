@@ -25,25 +25,6 @@ const CreateOrUpdateModal = ({ id, setCurrModal, toast }: Props) => {
         igIcon: ""
     });
 
-    // useEffect(() => {
-    //     try {
-    //         getIGDetails(
-    //             id
-    //             //     , val => {
-    //             //     setPrefill({
-    //             //         igName: val.name,
-    //             //         igCode: val.code,
-    //             //         igIcon: val.icon
-    //             //     });
-    //             // }
-    //         );
-    //     } catch (err) {
-    //         toast({
-    //             title: "Something went wrong",
-    //             status: "error"
-    //         });
-    //     }
-    // }, []);
     return (
         <Modal
             onClose={setCurrModal}
@@ -73,8 +54,7 @@ const CreateOrUpdateModal = ({ id, setCurrModal, toast }: Props) => {
                     //             name: values.igName,
                     //             code: values.igCode,
                     //             icon: values.igIcon
-                    //         }
-                    //         // msg => toast({ status: "error", title: msg }),
+                    //       },
                     //         // toast
                     //     );
                     // else

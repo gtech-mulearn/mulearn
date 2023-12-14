@@ -49,7 +49,6 @@ export default function CommunityPage() {
         const isSuccess = await validate({
             userData: userData,
             setIsSubmitting: setIsLoading,
-            toast: toast
         });
         isSuccess? navigate("/register/select-role", { state: userData }) :  delete userData.referral;
     };

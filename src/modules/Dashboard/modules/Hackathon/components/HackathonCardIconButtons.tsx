@@ -1,4 +1,3 @@
-import { useToast } from "@chakra-ui/react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { BsPersonAdd } from "react-icons/bs";
@@ -13,6 +12,7 @@ import {
 import { HackList } from "../services/HackathonInterfaces";
 import styles from "../pages/HackathonCreate.module.css";
 import { FaThList } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 enum ModalType {
     Publish,
@@ -37,7 +37,6 @@ const HackathonCardIconButtons = ({
     style
 }: Props) => {
     const navigate = useNavigate();
-    const toast = useToast();
 
     const shareData = {
         title: hackathon.title as (string | undefined),
@@ -186,13 +185,7 @@ const HackathonCardIconButtons = ({
                             style={{ gridArea: "1 / 2 / 2 / 3" }}
                             onClick={() => {
                                 window.navigator.clipboard.writeText(shareData.url);
-                                toast({
-                                    title: "Success",
-                                    description: "Link copied to clipboard",
-                                    status: "success",
-                                    duration: 3000,
-                                    isClosable: true
-                                });
+                                toast.success("Link copied to clipboard")
                                 if (isShareable) window.navigator.share(shareData);
                             }}
                         >

@@ -82,7 +82,7 @@ function UsersRoleVerification() {
     };
 
     const handleDelete = async(id: string | undefined) => {
-        await deleteUserRole(id,toast)
+        await deleteUserRole(id)
         const updatedData = data.filter(item => item.id !== id);
         setData(updatedData);
     };

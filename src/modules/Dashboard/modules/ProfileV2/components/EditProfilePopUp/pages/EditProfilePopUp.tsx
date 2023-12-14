@@ -42,7 +42,7 @@ const EditProfilePopUp = (props: Props) => {
         },
         onSubmit: values => {
             2;
-            patchEditUserProfile(toast, values);
+            patchEditUserProfile(values);
             props.triggerUpdateProfile();
             setTimeout(() => {
                 props.setEditPopUP(false);

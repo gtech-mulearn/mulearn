@@ -1,7 +1,7 @@
 import React from "react";
-import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
+import toast from "react-hot-toast";
 
 type profileDetails = {
     first_name: string;
@@ -54,21 +54,11 @@ export const getEditUserProfile = (
         });
 };
 
-export const patchEditUserProfile = (
-    toast: ToastAsPara,
-    editedProfileDetails: profileDetails
-) => {    
+export const patchEditUserProfile = (editedProfileDetails: profileDetails) => {
     privateGateway
         .patch(dashboardRoutes.getEditUserProfile, editedProfileDetails)
         .then(response => {
-            // console.log(response.data.response);
-            toast({
-                title: "Profile Updated",
-                description: "Your profile has been updated",
-                status: "success",
-                duration: 3000,
-                isClosable: true
-            });
+            toast.success("Profile Updated");
         })
         .catch(error => {
             console.log(error);
@@ -80,8 +70,6 @@ export const getCommunities = (
     setCommunityAPI: getAPI,
     setLoadStatus: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
-
-
     publicGateway
         .get(onboardingRoutes.communityList)
         .then(response => {

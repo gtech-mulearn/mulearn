@@ -1,12 +1,11 @@
 import { AxiosError, AxiosRequestConfig } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { ManageLocationsRoutes } from "@/MuLearnServices/urls";
-import { ToastId, UseToastOptions } from "@chakra-ui/toast";
+import toast from "react-hot-toast";
 
 //* WORKING✅
 export const getCountryData = async (
     setData?: UseStateFunc<any>,
-    toast?: (options?: UseToastOptions | undefined) => ToastId,
     perPage?: number,
     page?: number,
     setTotalPages?: UseStateFunc<number>,
@@ -33,23 +32,13 @@ export const getCountryData = async (
     } catch (err: any) {
         if (err?.response) {
             const errorMsg = err.response?.data?.message?.general[0] ?? "";
-            if (!toast) return console.log(errorMsg);
-            toast({
-                title: `Error`,
-                description: errorMsg,
-                status: "error",
-                duration: 3000,
-                isClosable: true
-            });
+            toast.error(errorMsg);
         }
     }
 };
 
 //*WORKING ✅
-export const postCountryData = async (
-    countryName: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId
-) => {
+export const postCountryData = async (countryName: string) => {
     try {
         await privateGateway
             .post(ManageLocationsRoutes.getCountryData, {
@@ -62,13 +51,8 @@ export const postCountryData = async (
     } catch (err: any) {
         if (err?.response) {
             const errorMsg = err.response.data.message.general[0];
-            toast({
-                title: `Error`,
-                description: errorMsg,
-                status: "error",
-                duration: 3000,
-                isClosable: true
-            });
+
+            toast.error(errorMsg);
         }
     }
 };
@@ -76,8 +60,7 @@ export const postCountryData = async (
 //*WORKING ✅
 export const patchCountryData = async (
     countryID: string,
-    newName: string,
-    toast?: (options?: UseToastOptions | undefined) => ToastId
+    newName: string
 ) => {
     try {
         console.log(countryID);
@@ -100,8 +83,7 @@ export const patchCountryData = async (
 
 //*WORKING ✅
 export const deleteCountryData = async (
-    id: string,
-    toast?: (options?: UseToastOptions | undefined) => ToastId
+    id: string
 ) => {
     try {
         await privateGateway

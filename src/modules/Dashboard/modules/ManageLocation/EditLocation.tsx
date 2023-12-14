@@ -3,14 +3,17 @@ import { useNavigate } from "react-router-dom";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
-import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import {
+    MuButton,
+    PowerfulButton
+} from "@/MuLearnComponents/MuButtons/MuButton";
 import { patchCountryData } from "./apis/CountryAPI";
 import { patchStateData } from "./apis/StateAPI";
 import { patchZoneData } from "./apis/ZoneAPI";
 import { patchDistrictData } from "./apis/DistrictAPI";
-import { useToast } from "@chakra-ui/react";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const EditLocation = () => {
     const [selectedItem, setSelectedItem] = useState("");
@@ -21,7 +24,6 @@ const EditLocation = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    const toast = useToast();
 
     useEffect(() => {
         setSelectedItem(location.state.name);
@@ -33,12 +35,7 @@ const EditLocation = () => {
 
     function handleSubmitEdit(values: any) {
         if (selectedItem === values.ItemName) {
-            toast({
-                title: "No Changes Made",
-                status: "warning",
-                duration: 3000,
-                isClosable: true
-            });
+            toast.error("No changes made");
         } else {
             if (activeItem === "Country") {
                 patchCountryData(location.state.value, values.ItemName);
@@ -62,12 +59,8 @@ const EditLocation = () => {
                     values.ItemName
                 );
             }
-            toast({
-                title: "Location Updated Successfully",
-                status: "success",
-                duration: 3000,
-                isClosable: true
-            });
+
+            toast.success("Location Updated");
         }
         navigate("/dashboard/manage-locations", {
             state: { activeItem: activeItem }
@@ -120,7 +113,7 @@ const EditLocation = () => {
                             }}
                         />
                         <div className="ml_popup_btn_container">
-                            <PowerfulButton                               
+                            <PowerfulButton
                                 className={styles.btn_cancel}
                                 onClick={() => {
                                     navigate("/dashboard/manage-locations", {
@@ -130,7 +123,9 @@ const EditLocation = () => {
                                         }
                                     });
                                 }}
-                            >Decline</PowerfulButton>
+                            >
+                                Decline
+                            </PowerfulButton>
                             <button type="submit" className={styles.btn_submit}>
                                 Confirm
                             </button>

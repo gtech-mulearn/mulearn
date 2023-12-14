@@ -10,13 +10,13 @@ import { FormikTextInputWithoutLabel as SimpleInput } from "@/MuLearnComponents/
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useEffect, useRef, useState } from "react";
 
-import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import { getCommunities } from "../../../services/onboardingApis";
 import { BiSupport } from "react-icons/bi";
 import { isDev } from "@/MuLearnServices/common_functions";
+import toast from "react-hot-toast";
 
 const animatedComponents = makeAnimated();
 
@@ -69,7 +69,6 @@ const scheme = z.object({
 });
 
 export default function AccountCreation() {
-    const toast = useToast();
     const navigate = useNavigate();
     const urlParams = new URLSearchParams(window.location.search);
     const param = urlParams.get("param");
@@ -133,12 +132,8 @@ export default function AccountCreation() {
 
     const onsubmit = async (values: any, actions: any) => {
         if (!isTncChecked) {
-            toast({
-                title: "Please accept the terms and conditions",
-                status: "error",
-                duration: 3000,
-                isClosable: true
-            });
+
+            toast.error("Please accept the terms and conditions")
             return;
         }
 
@@ -201,7 +196,6 @@ export default function AccountCreation() {
         const isSuccess = await validate({
             userData: userData,
             setIsSubmitting: setIsLoading,
-            toast: toast
         });
         if (isSuccess) navigate("select-community", { state: userData });
     };

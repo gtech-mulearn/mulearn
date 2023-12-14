@@ -11,12 +11,10 @@ import toast from "react-hot-toast";
 
 export const validate = async ({
     userData,
-    setIsSubmitting,
-    toast
+    setIsSubmitting
 }: {
     userData: Object;
     setIsSubmitting: Dispatch<SetStateAction<boolean>>;
-    toast: (options?: UseToastOptions | undefined) => ToastId;
 }): Promise<boolean> => {
     let returnval = false;
     try {
@@ -29,9 +27,7 @@ export const validate = async ({
         const messages = err.response.data.message.general[0];
         console.log("validate - messages", messages);
         showToasts({
-            toast: toast,
-            messages: messages,
-            status: "error"
+            messages: messages
         });
     }
     return returnval;
@@ -65,9 +61,7 @@ export const createAccount = async ({
     } catch (err: any) {
         const messages = err.response.data.message.general[0];
         showToasts({
-            toast: toast,
-            messages: messages,
-            status: "error"
+            messages: messages
         });
     }
     setIsSubmitting(false);
@@ -169,9 +163,7 @@ export const submitUserData = async ({
         setIsLoading(false);
         const messages = err.response.data.message.general[0];
         showToasts({
-            toast: toast,
             messages: messages,
-            status: "error"
         });
     }
 };

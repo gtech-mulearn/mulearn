@@ -11,7 +11,7 @@ type Props = {
     profileStatus: boolean | undefined;
     setProfileStatus: React.Dispatch<React.SetStateAction<boolean | undefined>>;
     userProfile: any;
-    putIsPublic: (isPublic: boolean, toast: any) => void;
+    putIsPublic: (isPublic: boolean) => void;
     toast: any;
 };
 
@@ -63,10 +63,7 @@ const ShareProfilePopUp = (props: Props) => {
                                         props.setProfileStatus(
                                             e.target.checked
                                         );
-                                        props.putIsPublic(
-                                            e.target.checked,
-                                            props.toast
-                                        );
+                                        props.putIsPublic(e.target.checked);
                                     }}
                                 />
                             </div>

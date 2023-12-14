@@ -1,16 +1,15 @@
 import { createManageUsers } from "./apis";
-import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { Form, Formik } from "formik";
 import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
 import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import * as Yup from "yup";
 import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import toast from "react-hot-toast";
 
 type Props = {};
 
 const ManageUsersCreate = (props: Props) => {
-    const toast = useToast();
     const navigate = useNavigate();
 
     return (
@@ -59,12 +58,8 @@ const ManageUsersCreate = (props: Props) => {
                             values.dob,
                             values.gender
                         );
-                        toast({
-                            title: "User created",
-                            status: "success",
-                            duration: 3000,
-                            isClosable: true
-                        });
+
+                        toast.success("User created");
                         navigate("/dashboard/manage-users");
                     }}
                 >

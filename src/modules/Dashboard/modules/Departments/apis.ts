@@ -1,7 +1,7 @@
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
-import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import { Dispatch, SetStateAction } from "react";
+import toast from "react-hot-toast";
 
 export const getDepartments = async ({
     setDepartments,
@@ -43,89 +43,35 @@ export const getDepartments = async ({
     setIsLoading(false);
 };
 
-export const getDepartmentData = async ({
-    id,
-    setTitle,
-    setIsFetching,
-    toast
-}: {
-    id: string;
-    setTitle: Dispatch<SetStateAction<string>>;
-    setIsFetching?: Dispatch<SetStateAction<boolean>>;
-    toast: (options?: UseToastOptions | undefined) => ToastId;
-}) => {
-    // setIsFetching(true);
-    try {
-        const response = await privateGateway.get(
-            `${dashboardRoutes.departments}${id}/`
-        );
-        const department: any = response?.data;
-        console.log("getDepartmentData - data", department.response);
-    } catch (err: unknown) {
-        console.log(err);
-        toast({
-            title: "Error",
-            description: "Something went wrong",
-            status: "error",
-            isClosable: true
-        });
-    }
-    // setIsFetching(false);
-};
-
-export const createDepartment = async (
-    title: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId
-) => {
+export const createDepartment = async (title: string) => {
     try {
         const response = await privateGateway.post(
             dashboardRoutes.createDepartment,
             { title: title }
         );
-        const message: String = response?.data.message.general[0];
+        const message= response?.data.message.general[0];
         console.log("createDepartment - data", message);
-        toast({
-            title: message,
-            status: "success",
-            isClosable: true
-        });
+        toast.success(message);
     } catch (err: unknown) {
         console.log(err);
-
-        toast({
-            title: "Error",
-            description: "Something went wrong",
-            status: "error",
-            isClosable: true
-        });
+        toast.error("Something went wrong");
     }
 };
 
-export const updateDepartment = async (
-    id: string,
-    title: string,
-    toast: (options?: UseToastOptions | undefined) => ToastId
-) => {
+export const updateDepartment = async (id: string, title: string) => {
     console.log("updateDepartment - id", id);
     try {
         const response = await privateGateway.put(
             `${dashboardRoutes.editDepartment}${id}/`,
             { title: title }
         );
-        const message: String = response?.data.message.general[0];
-        toast({
-            title: message,
-            status: "success",
-            isClosable: true
-        });
+        const message = response?.data.message.general[0];
+
+        toast.success(message);
     } catch (err: unknown) {
         console.log(err);
-        toast({
-            title: "Error",
-            description: "Something went wrong",
-            status: "error",
-            isClosable: true
-        });
+
+        toast.error("Something went wrong");
     }
 };
 

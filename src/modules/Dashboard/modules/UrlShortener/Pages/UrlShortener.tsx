@@ -11,13 +11,13 @@ import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import { useFormik } from "formik";
-import { useToast } from "@chakra-ui/react";
 import {
     MuButton,
     PowerfulButton
 } from "@/MuLearnComponents/MuButtons/MuButton";
 import { Blank } from "@/MuLearnComponents/Table/Blank";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 type urlData = {
     id: string | number | boolean;
     long_url: string;
@@ -32,7 +32,6 @@ const UrlShortener = () => {
         { column: "created_at", Label: "Created Date", isSortable: true }
     ];
 
-    const toast = useToast();
     const navigate = useNavigate();
     const [editBtn, setEditBtn] = useState(false);
     const [createBtn, setCreateBtn] = useState(false);
@@ -58,7 +57,7 @@ const UrlShortener = () => {
                 short_url: values.short_url
             };
             if (!editBtn) {
-                createShortenUrl(toast, urlCreateData, formik).then(result => {
+                createShortenUrl(urlCreateData, formik).then(result => {
                     if (result) {
                         setShortUrlData(prevShortUrlData => [
                             ...prevShortUrlData.filter(
@@ -85,7 +84,7 @@ const UrlShortener = () => {
                     }
                 });
             } else {
-                editShortenUrl(values.id, toast, urlCreateData, formik).then(
+                editShortenUrl(values.id, urlCreateData, formik).then(
                     result => {
                         if (result) {
                             setShortUrlData(prevShortUrlData => [
@@ -164,7 +163,6 @@ const UrlShortener = () => {
                 "",
                 `-${column}`,
                 setLoading
-
             );
         } else {
             setSort(column);
@@ -202,10 +200,10 @@ const UrlShortener = () => {
         console.log(id);
         // redirect to analytics paga
         navigate(`/dashboard/url-shortener/analytics/${id}`);
-    }
+    };
 
     const handleDelete = (id: any) => {
-        deleteShortenUrl(id.toString(), toast);
+        deleteShortenUrl(id.toString());
         setShortUrlData(shortUrlData.filter(item => item?.id !== id));
     };
     const handleCopy = (id: any) => {
@@ -213,16 +211,20 @@ const UrlShortener = () => {
             shortUrlData.filter(item => item?.id === id)[0].short_url
         );
         console.log(shortUrlData.filter(item => item?.id === id)[0].short_url);
-        toast({
-            title: "Copied",
-            status: "success",
-            duration: 2000,
-            isClosable: true
-        });
+
+        toast.success("Copied");
     };
 
     useEffect(() => {
-        getShortenUrls(setShortUrlData, 1, perPage, setTotalPages, "", sort, setLoading);
+        getShortenUrls(
+            setShortUrlData,
+            1,
+            perPage,
+            setTotalPages,
+            "",
+            sort,
+            setLoading
+        );
         getShortenUrls(
             setShortUrlData,
             currentPage,
@@ -236,9 +238,8 @@ const UrlShortener = () => {
 
     return (
         <>
-
-            <PowerfulButton onClick={() => setCreateBtn(true)}
-
+            <PowerfulButton
+                onClick={() => setCreateBtn(true)}
                 style={{
                     width: "fit-content",
                     minWidth: "auto",
@@ -246,7 +247,10 @@ const UrlShortener = () => {
                     color: "#fff",
                     margin: "auto",
                     marginRight: "3%"
-                }}>Create</PowerfulButton>
+                }}
+            >
+                Create
+            </PowerfulButton>
             {(editBtn || createBtn) && (
                 <div className={styles.url_shortener_container}>
                     <div className={styles.create_new_url}>
