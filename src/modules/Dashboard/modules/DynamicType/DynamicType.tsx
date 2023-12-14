@@ -10,8 +10,6 @@ import {
 import { AiOutlinePlusCircle, AiOutlineUser } from "react-icons/ai";
 import styles from "./DynamicType.module.css";
 import modalStyles from "./components/Modal.module.css";
-import { dashboardRoutes } from "@/MuLearnServices/urls";
-import { useToast } from "@chakra-ui/react";
 import Modal from "./components/Modal";
 import CreateModal from "./components/CreateModal";
 import TableTopTab from "../ZonalDashboard/TableTopTab";
@@ -25,6 +23,8 @@ import {
 } from "./apis";
 import EditModal from "./components/EditModal";
 import { Blank } from "@/MuLearnComponents/Table/Blank";
+import toast from "react-hot-toast";
+import { dashboardRoutes } from "@/MuLearnServices/urls";
 
 function DynamicType() {
     const [data, setData] = useState<any[]>([]);
@@ -35,7 +35,6 @@ function DynamicType() {
     const [search, setSearch] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const firstFetch = useRef(true);
-    const toast = useToast();
     const [tab, setTab] = useState<"Role" | "User">("Role");
     const [currRow, setCurrRow] = useState<string>("");
     //Modal
@@ -97,22 +96,11 @@ function DynamicType() {
     ];
 
     const errHandler = (err: any) => {
-        toast({
-            title: "Something went wrong",
-            description: err.toString(),
-            status: "error",
-            duration: 3000,
-            isClosable: true
-        });
+        toast.error("Something went wrong");
     };
 
     const succHandler = (msg: any, add?: Function) => {
-        toast({
-            title: msg,
-            status: "success",
-            duration: 3000,
-            isClosable: true
-        });
+        toast.success(msg);
         if (add) add();
     };
 
