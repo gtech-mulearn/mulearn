@@ -1,6 +1,7 @@
 import { AxiosError } from "axios";
 import { privateGateway } from "../../../services/apiGateways";
 import { ToastId, UseToastOptions } from "@chakra-ui/react";
+import toast from "react-hot-toast";
 
 /*
 !: Not Working Properly
@@ -26,7 +27,6 @@ export const getCSV = async (
     CSV: any,
     setIsLoading: (isLoading: boolean) => void,
     setHasError: (hasError: boolean) => void,
-    toast: (options?: UseToastOptions | undefined) => ToastId
 ) => {
     setIsLoading(true);
     try {
@@ -41,12 +41,7 @@ export const getCSV = async (
             setIsLoading(false);
             return;
         } else response = await privateGateway.get(CSV, {});
-        // toast({
-        //  title: "Interest Group created",
-        // 	status: "success",
-        // 	duration: 3000,
-        // 	isClosable: true
-        // });
+
         const message: any = response?.data;
 
         if (message) {
@@ -70,12 +65,7 @@ export const getCSV = async (
             console.log(error.response);
         }
         if (error?.response?.status === 500) {
-            toast({
-                title: "CSV doesn't exists!",
-                status: "error",
-                duration: 3000,
-                isClosable: true
-            });
+            toast.error("CSV doesn't exists!");
         }
     }
 };
