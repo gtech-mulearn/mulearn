@@ -62,6 +62,7 @@
 
 .Modal .ButtonContainer {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     padding-top: 10px;
 }
@@ -118,4 +119,22 @@
     font-size: smaller;
     display: block;
     height: 0;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+.modeBtn{
+   width: fit-content;
+   padding: .5rem;
+   padding-top: 2rem;
+   padding-right: 0;
+}
+.deleteBtn:hover{
+    color: red;
+}
+.deleteBtn:active{
+    transform: scale(1.1);
 }
