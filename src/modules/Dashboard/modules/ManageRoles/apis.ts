@@ -1,6 +1,7 @@
 import { AxiosError } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
+import { roleUsers } from "./components/ManageUsers";
 import toast from "react-hot-toast";
 
 export const getManageRoles = async (
@@ -129,6 +130,65 @@ export const deleteManageRoles = async (
 export const isRoleUnique = (roleName: string, roles: string[]): boolean => {
     return roles.includes(roleName);
 };
+
+type ResultHandler = (msg: string) => void;
+export const deleteUser = async (userId: string, roleId: string,
+    error?: ResultHandler,
+    success?: ResultHandler) => {
+        try{
+            const res = await privateGateway.patch(dashboardRoutes.roleBulkAssign + roleId + "/",{
+                users:[userId]
+            })
+            if(success)success('User role removed')
+        } catch (err) {
+            if (err instanceof AxiosError) if (error) error(err.response?.data);
+        }
+};
+
+export const addUsers = async (userIds: string[], roleId: string,
+    error?: ResultHandler,
+    success?: ResultHandler) => {
+    try{
+        console.log(userIds)
+        const res = await privateGateway.post(dashboardRoutes.roleBulkAssign + roleId + "/",{
+            users:userIds
+        })
+        if(success)success('User role added')
+    } catch (err) {
+        if (err instanceof AxiosError) if (error) error(err.response?.data);
+    }
+};
+
+export const getUser = async (
+    roleId: string,
+    hasRole = true,
+    error?: ResultHandler,
+    success?: ResultHandler
+) => {
+    type userReqBody = {
+        fullname: string;
+        id: string;
+        muid: string;
+    };
+
+    try {
+
+        const res = hasRole?await privateGateway.get(
+            dashboardRoutes.roleBulkAssign + roleId + "/"
+        ):await privateGateway.put(
+            dashboardRoutes.roleBulkAssign + roleId + "/"
+        )
+
+        const data: roleUsers[] = res.data.response
+            .map((user: userReqBody) => ({
+                label: user.fullname,
+                value: user.id
+            }));
+
+        return data;
+    } catch (err) {
+        if (err instanceof AxiosError) if (error) error(err.response?.data);
+    }
 
 export const deleteUser = async (userId: string, roleId: string) => {
     console.log(userId, roleId);
