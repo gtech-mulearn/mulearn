@@ -32,6 +32,7 @@ const ErrorLog = () => {
     const handlePatch = async (id: string | undefined) => {
         if (id) {
             patchLog(id, toast);
+            getDisplay(setDisplayData)
         }
     };
 
@@ -58,7 +59,7 @@ const ErrorLog = () => {
                 rows={convertedRows}
                 columnOrder={columnOrder}
                 page={1}
-                perPage={10}
+                perPage={convertedRows.length}
                 id={["id"]}
                 onDeleteClick={handlePatch}
                 modalDeleteHeading="Delete"
