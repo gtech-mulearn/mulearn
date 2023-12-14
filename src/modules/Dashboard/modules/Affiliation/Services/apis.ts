@@ -63,6 +63,8 @@ export const createAffiliation= (
                     duration: 3000,
                     isClosable: true
                 });
+
+                
             })
             .catch((error: APIError<{ general: string[] }>) => {
                 reject(false);

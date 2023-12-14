@@ -168,18 +168,6 @@ const Affiliation = () => {
         deleteAffiliation(id.toString(), toast);
         setAffiliationData(affiliationData.filter(item => item?.id !== id));
     };
-    const handleCopy = (id: any) => {
-        navigator.clipboard.writeText(
-            affiliationData.filter(item => item?.id === id)[0].title
-        );
-        console.log(affiliationData.filter(item => item?.id === id)[0].title);
-        toast({
-            title: "Copied",
-            status: "success",
-            duration: 2000,
-            isClosable: true
-        });
-    };
 
     useEffect(() => {
         getAffiliation(setAffiliationData, 1, perPage, setTotalPages, "", sort, setLoading);
