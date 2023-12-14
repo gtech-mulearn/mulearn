@@ -4,14 +4,12 @@ import styles from "./Auth.module.css";
 import { userAuth } from "../services/auth";
 import { HiOutlineArrowRight, HiCheck } from "react-icons/hi";
 import { AiOutlineLoading } from "react-icons/ai";
-import { createStandaloneToast } from "@chakra-ui/react";
-
+import toast from "react-hot-toast";
 
 /**
  * Page for KKEM auth when dwms_id is present in the URL
  */
 export default function KKEMAuth({ param }: { param: string }) {
-    const { toast } = createStandaloneToast();
     const [muid, setMuid] = useState("");
     const [error, setError] = useState<string | null>(null);
     const [success, setSuccess] = useState(false);
@@ -35,24 +33,16 @@ export default function KKEMAuth({ param }: { param: string }) {
                 if (res.statusCode === 400) {
                     setError(res.message?.general?.toString());
                     setSuccess(false);
-                    toast({
-                        title: "Error Occured",
-                        description: res.message?.general?.toString(),
-                        status: "error",
-                        duration: 2000,
-                        isClosable: true
-                    });
+
+                    toast.error(res.message?.general?.toString());
                 }
                 if (res.statusCode === 200) {
                     setError(null);
                     setSuccess(true);
-                    toast({
-                        title: "Email Sent Successfully", 
-                        description: "Success! please check your email for further instructions.",
-                        status: "success",
-                        duration: 2000,
-                        isClosable: true
-                    });
+
+                    toast.success(
+                        "Success! please check your email for further instructions."
+                    );
                 }
                 setDisabled(false);
             });
@@ -77,8 +67,9 @@ export default function KKEMAuth({ param }: { param: string }) {
 
                 <button
                     type="submit"
-                    className={`${styles.submit} ${success ? styles.successBtn : ""
-                        }`}
+                    className={`${styles.submit} ${
+                        success ? styles.successBtn : ""
+                    }`}
                     disabled={disabled}
                 >
                     {disabled ? (
@@ -95,8 +86,6 @@ export default function KKEMAuth({ param }: { param: string }) {
                 <p className={styles.success}>
                     Success! please check your email for further instructions.
                 </p>
-
-
             )}
         </div>
     );

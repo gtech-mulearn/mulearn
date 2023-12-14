@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import styles from "./LearningCircle.module.css";
 import imageTop from "../assets/images/LC1.svg";
 import { useNavigate } from "react-router-dom";
-import { createStandaloneToast } from "@chakra-ui/react";
 import {
     getCampusLearningCircles,
     getUserOrg,
@@ -12,8 +11,7 @@ import {
 import { SearchBar } from "@/MuLearnComponents/TableTop/SearchBar";
 import LearningCircleForm from "./LearningCircleFilter";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
-
-const { toast } = createStandaloneToast();
+import toast from "react-hot-toast";
 
 const FindCircle = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -34,12 +32,7 @@ const FindCircle = () => {
     const reset = () => {
         getCampusLearningCircles(setLc, setIsLoading);
         if (lc.length === 1)
-            toast({
-                description: "Loading learning circles",
-                status: "info",
-                duration: 2000,
-                isClosable: true
-            });
+            toast.loading("Loading learning circles");
         setSearchString(null);
     };
 

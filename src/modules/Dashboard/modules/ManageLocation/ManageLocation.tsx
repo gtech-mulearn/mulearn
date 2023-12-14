@@ -80,7 +80,6 @@ const ManageLocation = () => {
             (async () => {
                 const res = await getCountryData(
                     undefined,
-                    toast,
                     perPage,
                     currentPage,
                     setTotalPages,
@@ -135,7 +134,6 @@ const ManageLocation = () => {
             (async () => {
                 const res = await getCountryData(
                     undefined,
-                    toast,
                     perPage,
                     currentPage,
                     setTotalPages,
@@ -153,7 +151,6 @@ const ManageLocation = () => {
             getStateData(
                 undefined,
                 selectedCountry,
-                toast,
                 perPage,
                 currentPage,
                 setTotalPages,

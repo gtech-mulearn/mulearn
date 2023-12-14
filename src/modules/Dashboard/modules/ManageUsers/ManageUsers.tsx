@@ -103,7 +103,7 @@ function ManageRoles() {
     };
 
     const handleDelete = (id: string | undefined) => {
-        deleteManageUsers(id, toast);
+        deleteManageUsers(id);
         getManageUsers({
             setData: setData,
             page: 1,

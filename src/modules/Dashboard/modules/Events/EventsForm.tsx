@@ -1,10 +1,9 @@
-import { forwardRef, useEffect, useImperativeHandle, useState, } from "react";
+import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
 import styles from "../../utils/modalForm.module.css";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 import { getEventDetails, createEvent, editEvent } from "./EventsApis";
 import { AxiosError } from "axios";
-
 
 type Props = { id: string; isEditMode: boolean; reload: () => void };
 const EventsForm = forwardRef(
@@ -13,13 +12,12 @@ const EventsForm = forwardRef(
         const toast = useToast();
         const [errors, setErrors] = useState<OrgFormErrors>({});
         const [taskData, setTaskData] = useState<any>(null);
-        console.log(props.id)
+        console.log(props.id);
         // TODO: need to set an interface up for this. Cross check TaskEditInterface and the ones used in TaskCreate/TaskEdit
         const [data, setData] = useState({
             name: "",
             description: ""
         });
-
 
         const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
             const { name, value } = e.target;
@@ -31,14 +29,14 @@ const EventsForm = forwardRef(
             if (!value.trim()) {
                 setErrors(prevErrors => ({
                     ...prevErrors,
-                    [name]: `${name.charAt(0).toUpperCase() + name.slice(1)
-                        } is required`
+                    [name]: `${
+                        name.charAt(0).toUpperCase() + name.slice(1)
+                    } is required`
                 }));
             } else {
                 setErrors(prevErrors => ({ ...prevErrors, [name]: undefined }));
             }
         };
-
 
         useEffect(() => {
             (async () => {
@@ -75,14 +73,16 @@ const EventsForm = forwardRef(
             // Validate form data
             let isValid = true;
 
-            const requiredKeys: Array<keyof typeof updatedData> = ['name']; // Add the keys that are required
+            const requiredKeys: Array<keyof typeof updatedData> = ["name"]; // Add the keys that are required
 
             for (const key of requiredKeys) {
                 if (!(key in updatedData) || !updatedData[key]) {
                     isValid = false;
                     setErrors(prevErrors => ({
                         ...prevErrors,
-                        [key]: `${key.charAt(0).toUpperCase() + key.slice(1)} is required`
+                        [key]: `${
+                            key.charAt(0).toUpperCase() + key.slice(1)
+                        } is required`
                     }));
                 }
             }
@@ -90,11 +90,7 @@ const EventsForm = forwardRef(
             if (isValid) {
                 console.log(updatedData);
                 if (!props.isEditMode) {
-                    createEvent(
-                        data.name,
-                        data.description,
-                        toast
-                    )
+                    createEvent(data.name, data.description)
                         .then(() => {
                             props.closeModal();
                             props.reload();
@@ -103,15 +99,12 @@ const EventsForm = forwardRef(
                             console.error(err);
                         });
                 } else {
-                    editEvent(
-                        data.name,
-                        data.description,
-                        props.id,
-                        toast
-                    )
+                    editEvent(data.name, data.description, props.id)
                         .then(() => {
                             props.closeModal();
-                            setTimeout(() => { props.reload() }, 500)
+                            setTimeout(() => {
+                                props.reload();
+                            }, 500);
                         })
                         .catch(err => {
                             console.error(err);
@@ -163,6 +156,7 @@ const EventsForm = forwardRef(
                 </div>
             </>
         );
-    })
+    }
+);
 
-export default EventsForm
+export default EventsForm;

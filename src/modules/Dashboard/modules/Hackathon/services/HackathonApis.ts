@@ -1,7 +1,6 @@
 import axios, { AxiosError } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
-import { UseToastOptions, createStandaloneToast } from "@chakra-ui/react";
 import { Option } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { Data } from "@/MuLearnComponents/Table/Table";
 import { NavigateFunction } from "react-router-dom";
@@ -11,7 +10,7 @@ import {
     HackathonApplication
 } from "./HackathonInterfaces";
 import { formatErrorMessage, transformData } from "./HackathonUtils";
-const { toast } = createStandaloneToast();
+import toast from "react-hot-toast";
 
 export const getHackathons = async (setData: UseStateFunc<HackList[]>) => {
     try {
@@ -149,15 +148,10 @@ export function editHackathon(
                     }
                 }
             );
-            const message: String = response?.data.message.general[0];
+            const message = response?.data.message.general[0];
             resolve(hackathonData.id!);
-            toast({
-                title: message,
-                description: "",
-                status: "success",
-                duration: 3000,
-                isClosable: true
-            });
+
+            toast.success(message);
             if (response?.data?.statusCode == 200) {
                 navigate("/dashboard/hackathon");
             }
@@ -212,13 +206,8 @@ export const deleteHackathon = async (id: string) => {
             dashboardRoutes.deleteHackathon + id + "/"
         );
         const message: any = response?.data;
-        toast({
-            title: "Delete Successful",
-            description: "Hackathon has been deleted",
-            status: "success",
-            duration: 3000,
-            isClosable: true
-        });
+
+        toast.success("Hackathon Delete Successful");
     } catch (err: unknown) {
         const error = err as AxiosError;
     }
@@ -233,32 +222,17 @@ export const addOrganizer = async (id: string | undefined, muid: string) => {
             }
         );
         const message: any = response?.data;
-        toast({
-            title: "Success",
-            description: "Organizer added successfully",
-            status: "success",
-            duration: 3000,
-            isClosable: true
-        });
+
+        toast.success("Organizer added successfully");
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
-            toast({
-                title: "Error",
-                description: "Failed to add new organizer.",
-                status: "error",
-                duration: 3000,
-                isClosable: true
-            });
+            toast.error("Failed to add new organizer");
         }
     }
 };
 
-export const publishHackathon = async (
-    id: string,
-    status: string,
-    toast: (options?: UseToastOptions | undefined) => any
-) => {
+export const publishHackathon = async (id: string, status: string) => {
     let a = status === "Draft" ? "Published" : "Draft";
 
     try {
@@ -272,13 +246,8 @@ export const publishHackathon = async (
         let msg =
             error?.response?.data?.message.non_field_errors[0] ||
             "Make sure all fields are filled";
-        toast({
-            title: "Error",
-            description: formatErrorMessage(msg),
-            status: "error",
-            duration: 5000,
-            isClosable: true
-        });
+
+        toast.error(formatErrorMessage(msg));
     }
 };
 export const getApplicationForm = async (
@@ -325,14 +294,8 @@ export const submitHackApplication = async (
 
         // Display a success toast
         navigate("/dashboard/hackathon");
-        toast({
-            title: "Submitted Successfully",
-            description:
-                "Hackathon application has been successfully submitted.",
-            status: "success",
-            duration: 3000,
-            isClosable: true
-        });
+
+        toast.success("Hackathon application has been successfully submitted.");
         return response; // You might want to return the response from the API call
     } catch (err: unknown) {
         const error = err as APIError;
@@ -348,19 +311,14 @@ export const submitHackApplication = async (
             )?.general?.[0]
         );
         if (error?.response) {
-            toast({
-                title:
-                    (
-                        error?.response?.data?.message as {
-                            code?: string[];
-                            general?: string[];
-                        }
-                    )?.general?.[0] || "Something went wrong",
-                description: "",
-                status: "error",
-                duration: 3000,
-                isClosable: true
-            });
+            toast.error(
+                (
+                    error?.response?.data?.message as {
+                        code?: string[];
+                        general?: string[];
+                    }
+                )?.general?.[0] || "Something went wrong"
+            );
             throw error;
         }
     }
