@@ -205,11 +205,10 @@ const LearningCircle = (props: Props) => {
 
     const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         const inputValue = e.target.value;
-        const sanitizedInput = inputValue.replace(/[<>/]/g, ''); // Remove < and > characters
+        const sanitizedInput = inputValue.replace(/[<>/]/g, ""); // Remove < and > characters
 
         setNote(sanitizedInput);
     };
-
     return (
         <>
             {temp ? (
@@ -337,11 +336,13 @@ const LearningCircle = (props: Props) => {
                                                     }
                                                 >
                                                     <div>
-                                                        <b>
-                                                            Venue:{" "}
-                                                            {lc?.meet_place}{" "}
-                                                            <br />
-                                                        </b>
+                                                        {lc?.meet_place && (
+                                                            <b>
+                                                                Venueasdfasdf:{" "}
+                                                                {lc?.meet_place}{" "}
+                                                                <br />
+                                                            </b>
+                                                        )}
                                                         {lc?.meet_time && (
                                                             <b>
                                                                 Time:{" "}
@@ -620,7 +621,7 @@ const LearningCircle = (props: Props) => {
                             </div>
 
                             {lc?.pending_members &&
-                                lc.pending_members.length > 0 ? (
+                            lc.pending_members.length > 0 ? (
                                 <div className={styles.PendingApp}>
                                     <b className={styles.PendingTitle}>
                                         Pending approvals

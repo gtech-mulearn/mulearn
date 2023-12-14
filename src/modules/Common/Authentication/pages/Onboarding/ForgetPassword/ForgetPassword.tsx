@@ -25,7 +25,7 @@ const ForgetPassword = () => {
 
     const onSubmit = (values: any) => {
         if (values.emailOrMuId.length > 0) {
-            forgetPassword(values.emailOrMuId, toast, navigate, setShowLoader);
+            forgetPassword(values.emailOrMuId, navigate, setShowLoader);
         } else {
             toast({
                 title: "Error",

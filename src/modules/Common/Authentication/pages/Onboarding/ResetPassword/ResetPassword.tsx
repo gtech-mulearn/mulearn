@@ -24,7 +24,7 @@ const ResetPassword = () => {
         const paramToken = searchParams.get("token");
         setToken(paramToken as string);
         if (token.length > 0 && muid.length === 0) {
-            getMuid(token, toast, navigate, setMuID);
+            getMuid(token, navigate, setMuID);
         }
     }, [token]);
 
@@ -40,7 +40,7 @@ const ResetPassword = () => {
 
     const onSubmit = async (values: any) => {
         console.log(values);
-        resetPassword(token, values.password, toast, navigate);
+        resetPassword(token, values.password, navigate);
     };
 
     return (

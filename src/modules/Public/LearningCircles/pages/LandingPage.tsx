@@ -13,6 +13,9 @@ import {
 } from "../services/LandingPageApi";
 import Select from "react-select";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
+import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { joinCircle } from "../../../Dashboard/modules/LearningCircle/services/LearningCircleAPIs";
+import toast from "react-hot-toast";
 
 interface Option {
     value: string;
@@ -212,6 +215,14 @@ const LandingPage = () => {
         };
     }, [count]);
 
+    const handleJoinClick = (id: string) => {
+        const acessToken = localStorage.getItem("accessToken");
+        if (!acessToken) {
+            toast.error("Please login to join a circle");
+            navigate("/login");
+        } else joinCircle(id);
+    };
+
     return (
         <div className={styles.LClandingPage}>
             <nav className={styles.LClandingPageNav}>
@@ -377,6 +388,14 @@ const LandingPage = () => {
                                             </>
                                         )}
                                     </span>
+                                    <div
+                                        onClick={() => {
+                                            handleJoinClick(lc.id.toString());
+                                        }}
+                                        className={styles.joinCircle}
+                                    >
+                                        Join Circle
+                                    </div>{" "}
                                 </div>
                             ))
                         ) : (

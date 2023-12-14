@@ -25,9 +25,7 @@ const TableTop = (props: Props) => {
 
     const handleClick = async () => {
         try {
-            await getCSV(props.CSV, setIsLoading, setHasError, toast);
-            // Convert data to CSV format
-            // await getCSV(props.CSV, setCsv);
+            await getCSV(props.CSV, setIsLoading, setHasError);
         } catch (error) {
             console.error("Error fetching data:", error);
         }

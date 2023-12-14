@@ -50,7 +50,6 @@ export default function SignIn() {
             login(
                 values.emailOrMuId,
                 values.password,
-                toast,
                 navigate,
                 setIsLoading,
                 ruri
@@ -62,7 +61,6 @@ export default function SignIn() {
         if (!didOtpSent) {
             requestEmailOrMuidOtp({
                 emailOrMuid: values.emailOrMuId,
-                toast,
                 setOtpLoading: setIsLoading,
                 setDidOtpSent
             });
@@ -70,7 +68,6 @@ export default function SignIn() {
             otpVerification(
                 values.emailOrMuId,
                 values.otp,
-                toast,
                 navigate,
                 setIsLoading,
                 ruri

@@ -22,7 +22,7 @@ const ResetPassword = (props: Props) => {
         setToken(paramToken as string);
         console.log(token);
         if (token.length > 0 && muid.length === 0) {
-            getMuid(token, toast, navigate, setMuID);
+            getMuid(token, navigate, setMuID);
         }
     }, [token]);
 
@@ -35,7 +35,7 @@ const ResetPassword = (props: Props) => {
 
     const onSubmit = async (values: any) => {
         if (formik.errors.password || formik.errors.confirmPassword) return;
-        resetPassword(token, values.password, toast, navigate);
+        resetPassword(token, values.password, navigate);
     };
 
     const validate = (values: any) => {

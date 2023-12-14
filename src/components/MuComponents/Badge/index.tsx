@@ -1,6 +1,8 @@
 import { ReactNode } from "react";
 import { PowerfulButton } from "../MuButtons/MuButton";
 
+//Used in HackathonCard.tsx
+
 type BadgeVarient = "small" | "large"
 const Badge = ({ children, style, variant = "large" }: { children: ReactNode, style?: React.CSSProperties, variant?: BadgeVarient }) => {
     const badgeStyle: React.CSSProperties = variant === "large" ? {

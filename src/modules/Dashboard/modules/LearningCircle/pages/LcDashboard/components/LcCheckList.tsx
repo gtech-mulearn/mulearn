@@ -55,7 +55,7 @@ const LcCheckList = (props: prop) => {
             note: data,
             id: id
         };
-        if (data !== "[]") {
+        if (data !== "[]" || items.length === 0) {
             updateLcNote(note);
         }
     };
@@ -82,7 +82,7 @@ const LcCheckList = (props: prop) => {
                         />
                         <label htmlFor="textInput">{item.text}</label>
                         <IoMdRemoveCircleOutline
-							style={{ fontSize: "20px !important" }}
+                            style={{ fontSize: "20px !important" }}
                             onClick={() => removeItem(item.id)}
                         />
                     </div>

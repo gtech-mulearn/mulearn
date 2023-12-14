@@ -39,7 +39,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
             url: "/dashboard/campus-details",
             title: "Campus Details",
             hasView: true,
-            roles: [roles.CAMPUS_LEAD, roles.ENABLER],
+            roles: [roles.CAMPUS_LEAD, roles.LEAD_ENABLER],
             icon: <i className="fi fi-sr-book-arrow-right"></i>
         },
         {

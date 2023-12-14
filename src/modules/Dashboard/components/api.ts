@@ -85,7 +85,7 @@ export const requestApproval = (
 
     const lcId = url.split("/")[7],
         userId = created_by;
-    const newUrl = `${dashboardRoutes.getCampusLearningCircles}${lcId}/${userId}/`;
+    const newUrl = `${dashboardRoutes.getCampusLearningCircles}${lcId}/user-accept-reject/${userId}/`;
     privateGateway
         .patch(newUrl, { is_accepted: is_accepted ? "1" : "0" })
         .then(() => {
