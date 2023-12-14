@@ -160,6 +160,7 @@ export const dashboardRoutes = {
 
     getErrorLog: "api/v1/dashboard/error-log/",
     clearErrorLog: "api/v1/dashboard/error-log/clear/",
+    patchLogError: "api/v1/dashboard/error-log/patch/",
 
     //Settings
     changePassword: "api/v1/dashboard/profile/change-password/",
