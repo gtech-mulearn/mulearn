@@ -54,25 +54,6 @@ const ErrorLog = () => {
     }));
     return (
         <>
-            <div className={styles.tableContainer}>
-            <Table
-                rows={convertedRows}
-                columnOrder={columnOrder}
-                page={1}
-                perPage={convertedRows.length}
-                id={["id"]}
-                onDeleteClick={handlePatch}
-                modalDeleteHeading="Delete"
-                modalTypeContent="error"
-                modalDeleteContent="Are you sure you want to delete "
-                >
-                <THead
-                    columnOrder={columnOrder}
-                    onIconClick={() => {console.log("Icon Clicked")}}
-                />
-                <Blank />
-            </Table>
-            </div>
             <div className={styles.ErrorLogButtonContainer}>
                 <button
                     className={styles.errorLogButton}
@@ -138,6 +119,25 @@ const ErrorLog = () => {
                     </div>
                     Clear Root
                 </button>
+            </div>
+            <div className={styles.tableContainer}>
+            <Table
+                rows={convertedRows}
+                columnOrder={columnOrder}
+                page={1}
+                perPage={convertedRows.length}
+                id={["id"]}
+                onDeleteClick={handlePatch}
+                modalDeleteHeading="Delete"
+                modalTypeContent="error"
+                modalDeleteContent="Are you sure you want to delete "
+                >
+                <THead
+                    columnOrder={columnOrder}
+                    onIconClick={() => {console.log("Icon Clicked")}}
+                />
+                <Blank />
+            </Table>
             </div>
         </>
     );
