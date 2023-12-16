@@ -33,7 +33,7 @@ const TaskForm = forwardRef(
             title: "",
             karma: "",
             usage_count: "",
-            active: false,
+            active: true,
             variable_karma: false,
             description: "",
             channel_id: "",
@@ -122,9 +122,8 @@ const TaskForm = forwardRef(
             if (!value.trim()) {
                 setErrors(prevErrors => ({
                     ...prevErrors,
-                    [name]: `${
-                        name.charAt(0).toUpperCase() + name.slice(1)
-                    } is required`
+                    [name]: `${name.charAt(0).toUpperCase() + name.slice(1)
+                        } is required`
                 }));
             } else {
                 setErrors(prevErrors => ({ ...prevErrors, [name]: undefined }));
@@ -197,9 +196,9 @@ const TaskForm = forwardRef(
 
                 channel
                     ? setSelectedChannel({
-                          value: channel.id,
-                          label: channel.name
-                      })
+                        value: channel.id,
+                        label: channel.name
+                    })
                     : setSelectedChannel(null);
                 type
                     ? setSelectedType({ value: type.id, label: type.title })
@@ -241,9 +240,8 @@ const TaskForm = forwardRef(
                     isValid = false;
                     setErrors(prevErrors => ({
                         ...prevErrors,
-                        [key]: `${
-                            key.charAt(0).toUpperCase() + key.slice(1)
-                        } is required`
+                        [key]: `${key.charAt(0).toUpperCase() + key.slice(1)
+                            } is required`
                     }));
                 }
             }

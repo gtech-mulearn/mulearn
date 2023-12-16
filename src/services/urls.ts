@@ -119,7 +119,7 @@ export const dashboardRoutes = {
     getApplicationForm: "/api/v1/hackathon/list-form/",
     getApplicants: "/api/v1/hackathon/list-applicants/",
 
-	lc: "/api/v1/dashboard/lc/",
+    lc: "/api/v1/dashboard/lc/",
     searchLearningCircleWithCircleCode: "/api/v1/dashboard/lc/list-all/",
     getCampusLearningCircles: "/api/v1/dashboard/lc/",
     getLearningCirclesLead: "/api/v1/dashboard/lc/lead/",
@@ -160,15 +160,19 @@ export const dashboardRoutes = {
 
     getErrorLog: "api/v1/dashboard/error-log/",
     clearErrorLog: "api/v1/dashboard/error-log/clear/",
+    patchLogError: "api/v1/dashboard/error-log/patch/",
 
     //Settings
     changePassword: "api/v1/dashboard/profile/change-password/",
     deleteUser: "/api/v1/dashboard/user/",
 
     //discord moderation
-    taskList:"api/v1/dashboard/discord-moderator/tasklist",
-    taskListCount:"api/v1/dashboard/discord-moderator/pendingcounts/",
-    leaderboard:"api/v1/dashboard/discord-moderator/leaderboard/"
+    taskList: "api/v1/dashboard/discord-moderator/tasklist",
+    taskListCount: "api/v1/dashboard/discord-moderator/pendingcounts/",
+    leaderboard: "api/v1/dashboard/discord-moderator/leaderboard/",
+
+    //Bulk User Role Management
+    roleBulkAssign:"api/v1/dashboard/roles/bulk-assign/",
 } as const;
 
 export const organizationRoutes = {
@@ -224,7 +228,8 @@ export const PublicRoutes = {
 } as const;
 
 export const googleSheetRoutes = {
-    getHackathonData: "https://opensheet.elk.sh/1w2Ax918fkkumNiCJ42tc5T9fJeidVGL9_9B-2j7klDM/Sheet1/",
-    getHackathonDashboardData : "https://opensheet.elk.sh/1cGUHmdPd8ticzuuEpkX6j7G5p7hU47SZvnvgUnd6xBk/Sheet1"
-}
-
+    getHackathonData:
+        "https://opensheet.elk.sh/1w2Ax918fkkumNiCJ42tc5T9fJeidVGL9_9B-2j7klDM/Sheet1/",
+    getHackathonDashboardData:
+        "https://opensheet.elk.sh/1cGUHmdPd8ticzuuEpkX6j7G5p7hU47SZvnvgUnd6xBk/Sheet1"
+};
