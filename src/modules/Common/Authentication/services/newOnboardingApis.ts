@@ -36,12 +36,10 @@ export const validate = async ({
 export const createAccount = async ({
     userData,
     setIsSubmitting,
-    toast,
     navigate
 }: {
     userData: Object;
     setIsSubmitting: Dispatch<SetStateAction<boolean>>;
-    toast: (options?: UseToastOptions | undefined) => ToastId;
     navigate: NavigateFunction;
 }) => {
     setIsSubmitting(true);

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { ReactElement, useEffect, useRef, useState } from "react";
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import Table, { Data } from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
@@ -72,7 +72,7 @@ function CollegeLevels() {
         column: string;
         Label: string;
         isSortable: boolean;
-        wrap?: (data: string, id: string, row: Data) => ReactJSXElement;
+        wrap?: (data: string | ReactElement, id: string, row: Data) => ReactJSXElement;
     }[] = [
             // { column: "id", Label: "ID", isSortable: true },
             { column: "org", Label: "College", isSortable: true },

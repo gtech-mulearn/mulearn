@@ -14,10 +14,9 @@ import { getIGDetails } from "./apis";
 type Props = {
     id?: string;
     setCurrModal: Dispatch<SetStateAction<modalTypes>>;
-    toast: (options?: UseToastOptions | undefined) => ToastId;
 };
 
-const CreateOrUpdateModal = ({ id, setCurrModal, toast }: Props) => {
+const CreateOrUpdateModal = ({ id, setCurrModal }: Props) => {
     const [loading, setLoading] = useState<boolean>(false);
     const [prefill, setPrefill] = useState({
         igName: "",

@@ -3,7 +3,7 @@ import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import THead from "@/MuLearnComponents/Table/THead";
 import Table from "@/MuLearnComponents/Table/Table";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, ReactElement, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { titleCase } from "title-case";
 import {
@@ -60,7 +60,7 @@ const CampusStudentList = (props: Props) => {
         isSortable: boolean;
         column: string;
         Label: string;
-        wrap?: (data: string, id: string) => ReactJSXElement;
+        wrap?: (data: string | ReactElement, id: string) => ReactJSXElement;
     }[] = [
         { column: "fullname", Label: "Name", isSortable: true },
         // { column: "email", Label: "Email", isSortable: false },
