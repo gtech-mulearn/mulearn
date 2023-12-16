@@ -34,6 +34,6 @@
     flex-wrap: wrap;
 }
 .tableContainer {
-    height: auto;
-    width: 100%;
+    display: block;
+    margin: auto;
 }

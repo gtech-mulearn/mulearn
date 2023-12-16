@@ -11,14 +11,14 @@ import { Blank } from "@/MuLearnComponents/Table/Blank";
 import { displayData } from "./ErrorLogTypes";
 
 const ErrorLog = () => {
-    
+
     const columnOrder: ColOrder[] = [
-        { column: "type" , Label: "Type", isSortable: false },
-        { column: "message" , Label: "Message", isSortable: false },
-        { column: "method" , Label: "Method", isSortable: false },
-        { column: "path" , Label: "Path", isSortable: false },
-        { column: "timestamp" , Label: "TimeStamps", isSortable: false },
-        { column: "muid" , Label: "Muid", isSortable: false },
+        { column: "type", Label: "Type", isSortable: false },
+        { column: "message", Label: "Message", isSortable: false },
+        { column: "method", Label: "Method", isSortable: false },
+        { column: "path", Label: "Path", isSortable: false },
+        { column: "timestamp", Label: "TimeStamps", isSortable: false },
+        { column: "muid", Label: "Muid", isSortable: false },
     ];
 
 
@@ -41,8 +41,8 @@ const ErrorLog = () => {
     const [displayData, setDisplayData] = useState<displayData[]>([]);
     useEffect(() => {
         getDisplay(setDisplayData)
-        console.log("Data",displayData)
-    },[])
+        console.log("Data", displayData)
+    }, [])
     const convertedRows: displayData[] = displayData.map(item => ({
         id: item.id,
         type: item.type,
@@ -70,7 +70,7 @@ const ErrorLog = () => {
                     onClick={() => handleClearLog("error/")}
                 >
                     <div className={styles.errorLogBox}>
-                    <TbRefresh />
+                        <TbRefresh />
                     </div>
                     Clear Error
                 </button>
@@ -120,7 +120,7 @@ const ErrorLog = () => {
                     Clear Root
                 </button>
             </div>
-            <div className={styles.tableContainer}>
+
             <Table
                 rows={convertedRows}
                 columnOrder={columnOrder}
@@ -131,14 +131,14 @@ const ErrorLog = () => {
                 modalDeleteHeading="Delete"
                 modalTypeContent="error"
                 modalDeleteContent="Are you sure you want to delete "
-                >
+            >
                 <THead
                     columnOrder={columnOrder}
-                    onIconClick={() => {console.log("Icon Clicked")}}
+                    onIconClick={() => { console.log("Icon Clicked") }}
                 />
                 <Blank />
             </Table>
-            </div>
+
         </>
     );
 };
