@@ -21,6 +21,7 @@ const Teams = () => {
   let mulearnhq = require("./2023/mulearnhq.json");
   let communityteam = require("./2023/communityteam.json");
   let associates = require("./2023/associates.json");
+  let enablerhq = require("./2023/enablerhq.json");
 
   const handleFilterChange = (e) => {
     setTeamfilter(e.target.value);
@@ -66,6 +67,7 @@ const Teams = () => {
             <option value="execom">Execom</option>
             <option value="mulearnhq">µLearn HQ</option>
             <option value="associates">Associates</option>
+            <option value="enablershq">Enablers HQ</option>
             <option value="mulearnpillar3">µLearn Pillars Q3</option>
             <option value="mulearnpillar1">µLearn Pillars Q1</option>
             <option value="communityteam">Community Team</option>
@@ -146,6 +148,24 @@ const Teams = () => {
         </section>
       )}
 
+      {(teamName === "all" || teamName === "enablerhq") && (
+        <section id={styles.execom} className={styles.team_group}>
+          <p className={styles.team_title}>Enablers HQ</p>
+          <p className={styles.team_desc}></p>
+          <div className={styles.members_list}>
+            {enablerhq.map((member) => {
+              return (
+                <TeamCard
+                  name={member.name}
+                  designation={member.position}
+                  image={member.image}
+                />
+              );
+            })}
+          </div>
+        </section>
+      )}
+
       {(teamName === "all" || teamName === "mulearnpillar3") && (
         <section id={styles.execom} className={styles.team_group}>
           <p className={styles.team_title}>µLearn Pillars Q3</p>
@@ -176,7 +196,7 @@ const Teams = () => {
           </div>
         </section>
       )}
-      {(teamName === "mulearnpillar1") && (
+      {teamName === "mulearnpillar1" && (
         <section id={styles.execom} className={styles.team_group}>
           <p className={styles.team_title}>µLearn Pillars Q1</p>
           <p className={styles.team_desc}>

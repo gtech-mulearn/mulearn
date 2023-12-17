@@ -23,6 +23,7 @@ img {
   width: 8rem;
   height: 8rem;
   object-fit: cover;
+  object-position: top;
 }
 
 .team-card__content {
