@@ -29,30 +29,15 @@ const MuLiveCounter = () => {
       "wss://mulearn.org/ws/v1/public/landing-stats/"
     );
 
-    socket.addEventListener("open", (event) => console.log("connected"));
-
     socket.addEventListener("message", (event) => {
       setCounts(JSON.parse(event.data));
+      console.log("Message from server ", event.data)
     });
 
     socket.addEventListener("error", (event) => {
       console.error("WebSocket error: ", event);
     });
-
-    return () => {
-      socket.close();
-      if (!counts) {
-        fetch("https://mulearn.org/api/v1/get-log/global-count/")
-          .then((response) => response.json())
-          .then((data) => {
-            setCounts(data.response);
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-          });
-      }
-    };
-  }, [counts]);
+  }, []);
 
   return (
     <div className={styles.rightside}>
@@ -498,11 +483,7 @@ const Home = () => {
                 The Story of Aami <span>MuStory</span>
               </p>
               <p className={styles.jv_content}>
-                Tune into the story of Aami, a student who is passionate about
-                learning and is always looking for opportunities to upskill
-                herself, and see how she discovers the MuVerse and how it helps
-                her to upskill herself and become industry ready by forming a
-                learning circles and participating in various events.
+              Meet Aami, an eager learner hungry for growth! Join her voyage through the captivating µVerse, where she seizes opportunities, builds learning circles, and immerses herself in events, emerging industry-ready with newfound skills and confidence.
               </p>
             </div>
             <div className={styles.mu_story}>

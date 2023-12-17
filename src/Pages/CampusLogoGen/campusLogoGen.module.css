@@ -7,6 +7,7 @@
   bottom: calc(6.3rem - 10px);
   font-family: "Plus Jakarta Sans", sans-serif;
   font-size: 1.7rem;
+  letter-spacing: 0.25px;
 }
 
 .campusCodeYip {
