@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./Modal.module.css";
 import mustyles from "@/MuLearnComponents/MuButtons/MuButton.module.css";
-import { useToast } from "@chakra-ui/react";
+import toast from "react-hot-toast"
 import * as Yup from "yup";
 import { Formik, Form } from "formik";
 import {
@@ -38,12 +38,11 @@ const ManageUsers = (props: Props) => {
     });
     const [mode, setMode] = useState<"add" | "remove">("remove");
 
-    const toast = useToast()
     const errorHandler = (msg:string)=>{
-        toast({status:"error",title:msg})
+        toast.error(msg)
     }
     const successHandler = (msg:string)=>{
-        toast({status:"success",title:msg})
+        toast.success(msg)
     }
     const handleUserDelete = async (userId: string) => {
         deleteUser(userId,currRole.id,errorHandler,successHandler)
