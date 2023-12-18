@@ -22,7 +22,7 @@ export default class Example extends PureComponent<ExampleProps> {
 
     render() {
         const { data } = this.props;
-        console.log(data[1].name);
+        //console.log(data[1].name);
 
         return (
             <div className={styles.CircularGraphWrapper}>

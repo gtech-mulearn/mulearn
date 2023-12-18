@@ -13,7 +13,10 @@ import Facebook from "../assets/svg/Facebook";
 import Dribble from "../assets/svg/Dribble";
 import StackOverflow from "../assets/svg/StackOverflow";
 import Medium from "../assets/svg/Medium";
-
+import i18next from "i18next";
+import LanguageSwitcher from "../../LanguageSwitcher/LanguageSwitcher";
+import { getFontSizeForLanguage } from "../../LanguageSwitcher/LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 import {
     getPublicUserLevels,
     getPublicUserLog,
@@ -59,6 +62,8 @@ const ProfileV2 = (props: Props) => {
     const [APILoadStatus, setAPILoadStatus] = useState(0);
     const [socials, setSocials] = useState([]);
     const [profileList, setProfileList] = useState("basic-details");
+    const { t } = useTranslation(["profilev2"]);
+    const fontSize = getFontSizeForLanguage(i18next.language);
     const [userProfile, setUserProfile] = useState({
         first_name: "",
         last_name: "",
@@ -231,7 +236,7 @@ const ProfileV2 = (props: Props) => {
                     <div className={styles.status_container}>
                         <div className={styles.status + " " + styles.Levels}>
                             <div className={styles.status_box}>
-                                <p>Level</p>
+                                <p>{t("Level")}</p>
                                 <p>
                                     {" "}
                                     {userProfile.level
@@ -243,7 +248,7 @@ const ProfileV2 = (props: Props) => {
                         <div className={styles.status}>
                             <Karma />
                             <div className={styles.status_box}>
-                                <p>Karma</p>
+                                <p>{t("Karma")}</p>
                                 <p>
                                     {parseInt(userProfile.karma) > 1000
                                         ? (
@@ -256,14 +261,14 @@ const ProfileV2 = (props: Props) => {
                         <div className={styles.status}>
                             <Rank />
                             <div className={styles.status_box}>
-                                <p>Rank</p>
+                                <p>{t("Rank")}</p>
                                 <p>{userProfile.rank}</p>
                             </div>
                         </div>
                         <div className={styles.status}>
                             <AvgKarma />
                             <div className={styles.status_box}>
-                                <p>Avg.Karma</p>
+                                <p>{t("Avg.Karma")}</p>
                                 <p>
                                     {" "}
                                     {parseInt(userProfile.karma) /
@@ -295,7 +300,7 @@ const ProfileV2 = (props: Props) => {
             <div className={styles.roles_and_karma_container}>
                 <div className={styles.roles_karma_dist_container}>
                     <div className={styles.role_distribution_container}>
-                        <h1>Roles and contributions</h1>
+                        <h1>{t("Roles and contributions")}</h1>
                         <div className={styles.ElipseWrapper}>
                             {userProfile.roles?.map((item, index) => {
                                 return (
@@ -338,7 +343,7 @@ const ProfileV2 = (props: Props) => {
                     </div>
                     <div className={styles.karma_distribution_container}>
                         {" "}
-                        <h1>Karma distribution</h1>
+                        <h1>{t("Karma distribution")}</h1>
                         <div className={styles.container}>
                             {/* <PieChart data={data} /> */}
                             <Example data={formattedData} />
@@ -358,7 +363,7 @@ const ProfileV2 = (props: Props) => {
                             : styles.notActiveBar
                     }
                 >
-                    Basic Details
+                    {t("Basic Details")}
                 </li>
                 <li
                     onClick={() => setProfileList("karma-history")}
@@ -368,7 +373,7 @@ const ProfileV2 = (props: Props) => {
                             : styles.notActiveBar
                     }
                 >
-                    Karma History
+                    {t("Karma History")}
                 </li>
                 <li
                     onClick={() => setProfileList("mu-voyage")}
@@ -378,7 +383,7 @@ const ProfileV2 = (props: Props) => {
                             : styles.notActiveBar
                     }
                 >
-                    Mu Voyage
+                    {t("Mu Voyage")}
                 </li>{" "}
                 <li
                     onClick={() => setProfileList("projects")}
@@ -388,7 +393,7 @@ const ProfileV2 = (props: Props) => {
                             : styles.notActiveBar
                     }
                 >
-                    Projects
+                    {t("Projects")}
                 </li>
             </div>
 

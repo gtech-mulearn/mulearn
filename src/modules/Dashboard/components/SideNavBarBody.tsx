@@ -178,7 +178,6 @@ const SideNavBarBody = ({
             </div>
 
             <div className={styles.bottomButtons}>
-                <LanguageSwitcher />
                 <MuButton
                     text={t("Account Setting")}
                     icon={<MuSettings />}
