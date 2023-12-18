@@ -1,13 +1,8 @@
-.LanguageSwitch{
-    background-color: white;
-    width: 4rem;
-    margin-top: 1rem;
-    border-radius: 10px;
-    text-align: center;
+.LanguageSwitch {
     display: flex;
-    justify-content: center;
-    border: 1px solid #456ff6;
-    padding-left: .6rem;
-
-    
+    justify-content: space-between;
+}
+.LanguageSwitch p {
+    margin-left: 15px;
+    font-weight: 500;
 }

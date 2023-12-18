@@ -16,7 +16,7 @@ i18n.use(Backend)
         ns: ["ChangePassword"],
         ns: ["Profile"],
         ns: ["ConnectDiscord"],
-
+        ns: ["profilev2"],
         interpolation: {
             escapeValue: false,
             formatSeparator: ","
