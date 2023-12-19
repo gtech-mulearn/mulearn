@@ -62,31 +62,31 @@ const CampusStudentList = (props: Props) => {
         Label: string;
         wrap?: (data: string | ReactElement, id: string) => ReactJSXElement;
     }[] = [
-        { column: "fullname", Label: "Name", isSortable: true },
-        // { column: "email", Label: "Email", isSortable: false },
-        { column: "karma", Label: "Karma", isSortable: true },
-        { column: "level", Label: "Level", isSortable: true },
-        { column: "rank", Label: "Rank", isSortable: false },
-        { column: "muid", Label: "MuId", isSortable: true },
-        { column: "email", Label: "Email", isSortable: true },
-        { column: "mobile", Label: "Mobile", isSortable: true },
-        { column: "join_date", Label: "Join Date", isSortable: true },
-        {
-            column: "is_alumni",
-            Label: "Alumni",
-            isSortable: true,
-            wrap: (data, id) => {
-                return (
-                    <AlumniCheckBox
-                        checked={data === "true" ? true : false}
-                        id={id}
-                        setCurrBox={setCurrBox}
-                        setCurrModal={setCurrModal}
-                    />
-                );
+            { column: "fullname", Label: "Name", isSortable: true },
+            // { column: "email", Label: "Email", isSortable: false },
+            { column: "karma", Label: "Karma", isSortable: true },
+            { column: "level", Label: "Level", isSortable: true },
+            { column: "rank", Label: "Rank", isSortable: false },
+            { column: "muid", Label: "MuId", isSortable: true },
+            { column: "email", Label: "Email", isSortable: true },
+            { column: "mobile", Label: "Mobile", isSortable: true },
+            { column: "join_date", Label: "Join Date", isSortable: true },
+            {
+                column: "is_alumni",
+                Label: "Alumni",
+                isSortable: true,
+                wrap: (data, id) => {
+                    return (
+                        <AlumniCheckBox
+                            checked={data === "true" ? true : false}
+                            id={id}
+                            setCurrBox={setCurrBox}
+                            setCurrModal={setCurrModal}
+                        />
+                    );
+                }
             }
-        }
-    ];
+        ];
 
     const [campusData, setCampusData] = useState({
         college_name: "",
@@ -238,7 +238,7 @@ const CampusStudentList = (props: Props) => {
                         await setAlumniStatus(
                             currBox.id,
                             currBox.value,
-                            msg => {}
+                            msg => { }
                         );
                         //workaround state not updating issue
                         await new Promise(res => setTimeout(res, 1000));
@@ -289,10 +289,10 @@ const CampusStudentList = (props: Props) => {
                                                         campusData.total_karma
                                                     ) > 1000
                                                         ? (
-                                                              parseInt(
-                                                                  campusData.total_karma
-                                                              ) / 1000
-                                                          ).toPrecision(4) + "K"
+                                                            parseInt(
+                                                                campusData.total_karma
+                                                            ) / 1000
+                                                        ).toPrecision(4) + "K"
                                                         : campusData.total_karma}
                                                 </h1>
                                                 <p>Karma</p>
@@ -356,7 +356,7 @@ const CampusStudentList = (props: Props) => {
                                 <div className={styles.sec2}>
                                     <p className={styles.clg_rank}>
                                         {campusData?.rank?.toString().length ===
-                                        1
+                                            1
                                             ? "0" + campusData.rank
                                             : campusData.rank}
                                     </p>
@@ -389,8 +389,8 @@ const CampusStudentList = (props: Props) => {
                             <BarChart data={pieData} />
                         </div>
                     </div>
-                    <div className={styles.btnContainer}>
-                        <PowerfulButton onClick={() => {}}>
+                    {/* <div className={styles.btnContainer}>
+                        <PowerfulButton onClick={() => { }}>
                             <AiOutlineDownload />
                             <a
                                 href={
@@ -401,8 +401,8 @@ const CampusStudentList = (props: Props) => {
                                 Download
                             </a>
                         </PowerfulButton>
-                    </div>
-                    {studentData && (
+                    </div> */}
+                    {/* {studentData && (
                         <>
                             <TableTop
                                 onSearchText={handleSearch}
@@ -429,10 +429,10 @@ const CampusStudentList = (props: Props) => {
                                     setPerPage={setPerPage}
                                 />
 
-                                {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                                
                             </Table>
                         </>
-                    )}
+                    )} */}
                 </>
             )}
         </>
