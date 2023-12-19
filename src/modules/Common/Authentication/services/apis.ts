@@ -189,7 +189,7 @@ export const otpVerification = (
 ) => {
     setOtpVerifyLoading(true);
     publicGateway
-        .post(authRoutes.otpVerification, { emailOrMuid, otp })
+        .post(authRoutes.login, { emailOrMuid, otp })
         .then((response: authRoutesLoginRes) => {
             //console.log(response.data);
             localStorage.setItem(
