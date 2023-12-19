@@ -22,7 +22,7 @@ export const onboardingRoutes = {
 export const authRoutes = {
     login: "/api/v1/auth/user-authentication/",
     getAccessToken: "/api/v1/auth/get-access-token/",
-    otpVerification: "/api/v1/auth/otp-verification/",
+    otpVerification: "/api/v1/auth/token-verification/",
     requestEmailOrMuidOtp: "/api/v1/auth/request-otp/"
 } as const;
 export const NotificationRoutes = {
@@ -172,7 +172,7 @@ export const dashboardRoutes = {
     leaderboard: "api/v1/dashboard/discord-moderator/leaderboard/",
 
     //Bulk User Role Management
-    roleBulkAssign:"api/v1/dashboard/roles/bulk-assign/",
+    roleBulkAssign: "api/v1/dashboard/roles/bulk-assign/",
 } as const;
 
 export const organizationRoutes = {
