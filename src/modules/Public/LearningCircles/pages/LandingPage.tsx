@@ -16,6 +16,7 @@ import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { joinCircle } from "../../../Dashboard/modules/LearningCircle/services/LearningCircleAPIs";
 import toast from "react-hot-toast";
+import Modal from "@/MuLearnComponents/Modal/Modal";
 
 interface Option {
     value: string;
@@ -45,6 +46,8 @@ const LandingPage = () => {
     const [selectedIg, setSelectedIg] = useState<Option | null>(null);
     const [msg, setMsg] = useState<string>("Select a district");
     const [loading, setLoading] = useState<boolean>(false);
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [lcId, setLcId] = useState<string>("");
 
     useEffect(() => {
         fetchCountryOptions(setCountryOptions);
@@ -353,7 +356,22 @@ const LandingPage = () => {
                         />
                     </div>
                 </form>
-
+                {isOpen && (
+                    <Modal
+                        setIsOpen={setIsOpen}
+                        id={"Join Circle"}
+                        heading={
+                            "Join Learning Circle"
+                        }
+                        content={
+                            "Are you sure you want to join this learning circle?"
+                        }
+                        click={() => {
+                            handleJoinClick(lcId);
+                        }}
+                        type="Join"
+                    />
+                )}
                 {loading ? (
                     <div className={styles.loader}>
                         <MuLoader />
@@ -390,7 +408,8 @@ const LandingPage = () => {
                                     </span>
                                     <div
                                         onClick={() => {
-                                            handleJoinClick(lc.id.toString());
+                                            setIsOpen(true);
+                                            setLcId(lc.id.toString());
                                         }}
                                         className={styles.joinCircle}
                                     >
