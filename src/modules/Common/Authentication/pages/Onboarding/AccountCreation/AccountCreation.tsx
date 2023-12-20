@@ -14,7 +14,7 @@ import { FormikTextInputWithoutLabel as SimpleInput } from "@/MuLearnComponents/
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useEffect, useRef, useState } from "react";
 
-import { useToast } from "@chakra-ui/react";
+// import { useToast } from "@chakra-ui/react";
 import { useNavigate, useParams } from "react-router-dom";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
@@ -78,7 +78,7 @@ const scheme = z.object({
 export default function AccountCreation() {
     let { role } = useParams();
     const [popUP, setPopUp] = useState(role ? false : true);
-    const toast = useToast();
+    // const toast = useToast();
     const navigate = useNavigate();
     const [roles, setRoles] = useState([{ id: "", title: "" }]);
     const urlParams = new URLSearchParams(window.location.search);
@@ -229,7 +229,7 @@ export default function AccountCreation() {
         const isSuccess = await validate({
             userData: userData,
             setIsSubmitting: setIsLoading,
-            toast: toast // Make sure to pass the toast parameter correctly
+            // toast: toast // Make sure to pass the toast parameter correctly
         });
 
         if (isSuccess && selectedRole.toLowerCase() !== "other") {
@@ -238,7 +238,7 @@ export default function AccountCreation() {
             submitUserData({
                 setIsLoading: setIsLoading,
                 userData: userData,
-                toast: toast,
+                // toast: toast,
                 navigate: navigate
             });
         }
