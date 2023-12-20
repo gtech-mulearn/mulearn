@@ -95,9 +95,9 @@ export default function CollegePage({
                 setIsLoading: setIsLoading,
                 setDepartments: setDepartments
             });
-            getRoles({
-                setIsLoading: setIsLoading,
-                setRoles: setRoles
+            getRoles().then((res: any) => {
+                setRoles(res);
+                setIsLoading(false);
             });
         }
     }, []);
@@ -110,12 +110,11 @@ export default function CollegePage({
     const onSubmit = async (values: any) => {
         const newUserData: any = {
             user: {
-                first_name: userData.user.first_name,
-                last_name: userData.user.last_name,
-                mobile: userData.user.mobile,
+                full_name: userData.user.full_name,
+                // mobile: userData.user.mobile,
                 email: userData.user.email,
                 password: userData.user.password,
-                district:userData.district
+                district: userData.district
             },
             organization: {
                 ...(values.department !== "Others" && {
@@ -149,6 +148,7 @@ export default function CollegePage({
         if (userData.dob) {
             newUserData.user["dob"] = userData.dob;
         }
+        console.log(newUserData);
 
         submitUserData({
             setIsLoading: setIsLoading,
@@ -157,7 +157,7 @@ export default function CollegePage({
             navigate: navigate
         });
     };
-    console.log(userData);
+    // console.log(userData);
     return (
         <Formik
             initialValues={Object.fromEntries(
