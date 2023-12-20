@@ -27,7 +27,7 @@ type InitialLocationData = {
     state: { label: string; value: string };
     district: { label: string; value: string };
 } | null;
-const requiredFields = ["first_name", "email", "mobile"];
+const requiredFields = ["full_name", "email", "mobile"];
 const UserForm = forwardRef(
     (props: Props & { closeModal: () => void }, ref: any) => {
         const [initialData, setInitialData] =
@@ -44,8 +44,7 @@ const UserForm = forwardRef(
         } = useLocationData(initialData);
 
         const [data, setData] = useState<UserData>({
-            first_name: "",
-            last_name: "",
+            full_name: "",
             email: "",
             mobile: "",
             discord_id: "",
@@ -107,8 +106,7 @@ const UserForm = forwardRef(
                         }));
                     }
                     setData({
-                        first_name: data.first_name,
-                        last_name: data.last_name,
+                        full_name: data.full_name,
                         email: data.email,
                         mobile: data.mobile,
                         discord_id: data.discord_id,
@@ -322,30 +320,15 @@ const UserForm = forwardRef(
                         <div className={styles.inputContainer}>
                             <input
                                 type="text"
-                                name="first_name"
-                                placeholder="First Name"
-                                value={data.first_name}
+                                name="full_name"
+                                placeholder="Full Name"
+                                value={data.full_name}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                             />
-                            {errors.first_name && (
+                            {errors.full_name && (
                                 <div style={{ color: "red" }}>
-                                    {errors.first_name}
-                                </div>
-                            )}
-                        </div>
-                        <div className={styles.inputContainer}>
-                            <input
-                                type="text"
-                                name="last_name"
-                                placeholder="Last Name"
-                                value={data.last_name}
-                                onChange={handleChange}
-                            // onBlur={handleBlur}
-                            />
-                            {errors.last_name && (
-                                <div style={{ color: "red" }}>
-                                    {errors.last_name}
+                                    {errors.full_name}
                                 </div>
                             )}
                         </div>
