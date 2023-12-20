@@ -7,8 +7,7 @@ type Role = (typeof import('./services/types').roles)[keyof typeof import('./ser
 
 type UserInfo = {
     muid          : string,
-    first_name    : string,
-    last_Name     : string,
+    full_name     : string,
     email         : string,
     mobile        : string,
     gender        : null,
