@@ -1,11 +1,11 @@
 import { createManageRoles, isRoleUnique } from "../apis";
-import { useToast } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import styles from "./Modal.module.css";
-import mustyles from "@/MuLearnComponents/MuButtons/MuButtons.module.css";
+import mustyles from "@/MuLearnComponents/MuButtons/MuButton.module.css";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import * as Yup from "yup";
 import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import toast from "react-hot-toast";
 
 type Props = {
     id: string;
@@ -14,8 +14,6 @@ type Props = {
 };
 
 const ManageRolesCreateModal = (props: Props) => {
-    const toast = useToast();
-
     return (
         <Formik
             initialValues={{
@@ -34,17 +32,17 @@ const ManageRolesCreateModal = (props: Props) => {
                         async value => {
                             return !isRoleUnique(value, props.values);
                         }
-                    )
+                    ),
+                description: Yup.string().max(
+                    100,
+                    "Must be 100 characters or less"
+                )
             })}
             onSubmit={values => {
                 (async () => {
                     await createManageRoles(values.title, values.description);
-                    toast({
-                        title: "Role created",
-                        status: "success",
-                        duration: 3000,
-                        isClosable: true
-                    });
+
+                    toast.success("Role created");
                     props.onClose(null);
                 })();
             }}

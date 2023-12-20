@@ -1,14 +1,12 @@
 import { AxiosError, AxiosRequestConfig } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { ManageLocationsRoutes } from "@/MuLearnServices/urls";
-import { ToastId, UseToastOptions } from "@chakra-ui/toast";
-import { stat } from "fs";
+import toast from "react-hot-toast";
 
 //*WORKING✅
 export const getStateData = async (
     setData?: UseStateFunc<any>,
     country?: string,
-    toast?: (options?: UseToastOptions | undefined) => ToastId,
     perPage?: number,
     page?: number,
     setTotalPages?: UseStateFunc<number>,
@@ -39,14 +37,7 @@ export const getStateData = async (
     } catch (err: any) {
         if (err?.response) {
             const errorMsg = err.response?.data?.message?.general[0] ?? "";
-            if (!toast) return console.log(errorMsg);
-            toast({
-                title: `Error`,
-                description: errorMsg,
-                status: "error",
-                duration: 3000,
-                isClosable: true
-            });
+            toast.error(errorMsg);
         }
     }
 };

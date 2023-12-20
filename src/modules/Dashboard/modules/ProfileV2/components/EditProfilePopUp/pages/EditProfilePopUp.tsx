@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./EditProfilePopUp.module.css";
-import { useToast } from "@chakra-ui/react";
+
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import {
     getCommunities,
@@ -21,7 +21,7 @@ type Props = {
 };
 
 const EditProfilePopUp = (props: Props) => {
-    const toast = useToast();
+    
     const [communityAPI, setCommunityAPI] = useState([{ id: "", title: "" }]);
     const [loadStatus, setLoadStatus] = useState(false);
     useEffect(() => {
@@ -42,7 +42,7 @@ const EditProfilePopUp = (props: Props) => {
         },
         onSubmit: values => {
             2;
-            patchEditUserProfile(toast, values);
+            patchEditUserProfile(values);
             props.triggerUpdateProfile();
             setTimeout(() => {
                 props.setEditPopUP(false);

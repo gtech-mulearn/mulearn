@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import styles from "./Login.module.css";
-import { useToast } from "@chakra-ui/react";
+
 import { getMuid, resetPassword } from "../services/apis";
 import { useFormik } from "formik";
 
@@ -15,14 +15,14 @@ const ResetPassword = (props: Props) => {
     const [token, setToken] = useState("");
     localStorage.clear();
     const navigate = useNavigate();
-    const toast = useToast();
+    
 
     useEffect(() => {
         const paramToken = searchParams.get("token");
         setToken(paramToken as string);
         console.log(token);
         if (token.length > 0 && muid.length === 0) {
-            getMuid(token, toast, navigate, setMuID);
+            getMuid(token, navigate, setMuID);
         }
     }, [token]);
 
@@ -35,7 +35,7 @@ const ResetPassword = (props: Props) => {
 
     const onSubmit = async (values: any) => {
         if (formik.errors.password || formik.errors.confirmPassword) return;
-        resetPassword(token, values.password, toast, navigate);
+        resetPassword(token, values.password, navigate);
     };
 
     const validate = (values: any) => {

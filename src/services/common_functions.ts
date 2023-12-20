@@ -1,4 +1,4 @@
-import { ToastId, UseToastOptions } from "@chakra-ui/react";
+import toast from "react-hot-toast";
 
 export const hasRole = (roles: Role[]) => {
     const localRoles = fetchLocalStorage<UserInfo>("userInfo")?.roles || [];
@@ -17,31 +17,13 @@ export const fetchLocalStorage = <T>(key: string) => {
     return result as T;
 };
 
-export const showToasts = ({
-    toast,
-    messages,
-    status = "success"
-}: {
-    toast: (options?: UseToastOptions | undefined) => ToastId;
-    messages: any;
-    status?: "success" | "error";
-}) => {
+export const showToasts = ({ messages }: { messages: any }) => {
     Object.entries(messages).forEach(([fieldName, errorMessage]) => {
-        console.log("showToasts - errorMessage", errorMessage);
         if (Array.isArray(errorMessage)) {
-            console.log(errorMessage);
-            toast({
-                title: errorMessage?.join(", ") || "",
-                status: status,
-                isClosable: true
-            });
+            toast.error(errorMessage?.join(", ") || "");
         } else if (typeof errorMessage === "object" && errorMessage !== null) {
             Object.entries(errorMessage).forEach(([key, value]) => {
-                toast({
-                    title: value as string,
-                    status: status,
-                    isClosable: true
-                });
+                toast.error(value);
             });
         }
     });

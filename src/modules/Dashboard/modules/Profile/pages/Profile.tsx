@@ -16,7 +16,7 @@ import {
 } from "../services/api";
 import styles from "./Profile.module.css";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
-import { useToast } from "@chakra-ui/react";
+
 import { useNavigate, useParams } from "react-router-dom";
 import KarmaHistory from "../components/KarmaHistory/KarmaHistory";
 import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
@@ -32,7 +32,7 @@ import { isDev } from "@/MuLearnServices/common_functions";
 const Profile = () => {
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
-    const toast = useToast();
+    
     const [APILoadStatus, setAPILoadStatus] = useState(0);
     const [profileList, setProfileList] = useState("basic-details");
     const [popUP, setPopUP] = useState(false);
@@ -168,7 +168,6 @@ const Profile = () => {
                                 setProfileStatus={setProfileStatus}
                                 userProfile={userProfile}
                                 putIsPublic={putIsPublic}
-                                toast={toast}
                             />
 
                             <div className={styles.profileDash}>

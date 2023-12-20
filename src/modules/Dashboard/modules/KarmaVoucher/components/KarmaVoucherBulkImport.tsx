@@ -4,21 +4,20 @@ import BulkImport from "@/MuLearnComponents/BulkImport/BulkImport";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { BiArrowBack, BiDownload } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
-import { useToast } from "@chakra-ui/react";
 import { convertToXLSX } from "../../Tasks/TaskApis";
 import { CountCard } from "../../Tasks/TaskBulkImport";
 import { getKarmaVoucherTemplate } from "../service/api";
+import toast from "react-hot-toast";
 
 const KarmaVoucherBulkImport = () => {
     const [uploadResponse, setUploadResponse] = useState<any>(null);
     const navigate = useNavigate();
-    const toast = useToast();
 
     const successDownload = () => {
-        convertToXLSX(uploadResponse.data.response.Success, "Success.xlsx");
+        convertToXLSX(uploadResponse.response.Success, "Success.xlsx");
     };
     const failureDownload = () => {
-        convertToXLSX(uploadResponse.data.response.Failed, "Failed.xlsx");
+        convertToXLSX(uploadResponse.response.Failed, "Failed.xlsx");
     };
     const memoizedSuccessDownload = useMemo(
         () => successDownload,
@@ -62,13 +61,7 @@ const KarmaVoucherBulkImport = () => {
                     fileName="voucher_log"
                     onUpload={res => {
                         setUploadResponse(res);
-                        toast({
-                            title: "Success",
-                            description: "CSV upload successful",
-                            status: "success",
-                            duration: 5000,
-                            isClosable: true
-                        });
+                        toast.success("CSV upload successful");
                         // navigate("/dashboard/karma-voucher");
                     }}
                     onError={err => {

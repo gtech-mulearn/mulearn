@@ -8,7 +8,6 @@ import {
     leaveLc,
     removeMember,
     setLCMeetTime,
-    toast,
     transferLead,
     updateLcNote
 } from "../services/LearningCircleAPIs";
@@ -28,6 +27,7 @@ import data from "../data/data.json";
 import { BsFillBookmarksFill } from "react-icons/bs";
 import { TbArrowsTransferUp } from "react-icons/tb";
 import Select from "react-select";
+import toast from "react-hot-toast";
 
 type Props = {};
 
@@ -115,13 +115,9 @@ const LearningCircle = (props: Props) => {
 
     useEffect(() => {
         if (lc && !lc.is_member && lc?.circle_code?.length > 0) {
-            toast({
-                title: "Access Denied",
-                description: "Make sure you are a member of that circle",
-                status: "error",
-                duration: 2000,
-                isClosable: true
-            });
+            toast.error(
+                "Access Denied, Make sure you are a member of that circle"
+            );
             navigate("/dashboard/learning-circle/");
         }
     }, [lc]);
@@ -161,13 +157,7 @@ const LearningCircle = (props: Props) => {
 
     const handleSchedule = async (event: any) => {
         if (meetDays.length === 0 || meetTime === "" || meetVenue === "") {
-            toast({
-                title: "Please fill all the fields",
-                description: "",
-                status: "warning",
-                duration: 2000,
-                isClosable: true
-            });
+            toast.error("Please fill all the fields");
             return;
         }
 
@@ -205,11 +195,10 @@ const LearningCircle = (props: Props) => {
 
     const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         const inputValue = e.target.value;
-        const sanitizedInput = inputValue.replace(/[<>/]/g, ''); // Remove < and > characters
+        const sanitizedInput = inputValue.replace(/[<>/]/g, ""); // Remove < and > characters
 
         setNote(sanitizedInput);
     };
-
     return (
         <>
             {temp ? (
@@ -337,11 +326,13 @@ const LearningCircle = (props: Props) => {
                                                     }
                                                 >
                                                     <div>
-                                                        <b>
-                                                            Venue:{" "}
-                                                            {lc?.meet_place}{" "}
-                                                            <br />
-                                                        </b>
+                                                        {lc?.meet_place && (
+                                                            <b>
+                                                                Venueasdfasdf:{" "}
+                                                                {lc?.meet_place}{" "}
+                                                                <br />
+                                                            </b>
+                                                        )}
                                                         {lc?.meet_time && (
                                                             <b>
                                                                 Time:{" "}
@@ -620,7 +611,7 @@ const LearningCircle = (props: Props) => {
                             </div>
 
                             {lc?.pending_members &&
-                                lc.pending_members.length > 0 ? (
+                            lc.pending_members.length > 0 ? (
                                 <div className={styles.PendingApp}>
                                     <b className={styles.PendingTitle}>
                                         Pending approvals

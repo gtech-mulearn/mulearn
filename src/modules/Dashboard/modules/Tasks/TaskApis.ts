@@ -1,6 +1,7 @@
 import { AxiosError } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
+import toast from "react-hot-toast";
 
 //function that converts the uuid object into a map
 //with uuid as key and name/title as value
@@ -79,7 +80,7 @@ export const getTaskDetails = async (
 ) => {
     try {
         const response = await privateGateway.get(
-            dashboardRoutes.getTasksData + id + "/"
+            dashboardRoutes.getTasksData + id
         );
         const message: any = response?.data;
         setData(message.response);
@@ -107,11 +108,14 @@ export const editTask = async (
     discord_link: string,
     id: string | undefined,
     event: string,
-    toast: ToastAsPara,
-    bonus_time?:string,
-    bonus_karma?:string,
+    bonus_time?: string,
+    bonus_karma?: string
 ) => {
     try {
+        const formattedBonusTime = bonus_time
+            ? new Date(bonus_time).toISOString() // Convert bonus_time to ISO format
+            : null;
+
         const response = await privateGateway.put(
             dashboardRoutes.getTasksData + id,
             {
@@ -123,33 +127,25 @@ export const editTask = async (
                 variable_karma: variable_karma,
                 channel: channel_id,
                 type: type_id,
-                description: description === "" ? null: description,
+                description: description === "" ? null : description,
                 level: level_id === "" ? null : level_id,
                 ig: ig_id === "" ? null : ig_id,
                 org: org_id === "" ? null : org_id,
                 discord_link: discord_link,
                 event: event === "" ? null : event,
-                bonus_time:bonus_time === "" ? null : bonus_time,
+                bonus_time:
+                    formattedBonusTime === "" ? null : formattedBonusTime,
                 bonus_karma: parseInt(bonus_karma ?? "0")
             }
         );
-        toast({
-            title: "Task Updated",
-            description: "Task has been updated successfully",
-            status: "success",
-            duration: 5000,
-            isClosable: true
-        });
+
+        toast.success("Task has been updated successfully");
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
             console.log(error.response);
-            toast({
-                title: "Task Update Failed",
-                status: "error",
-                duration: 5000,
-                isClosable: true
-            });
+
+            toast.error("Task Update Failed");
         }
     }
 };
@@ -169,11 +165,14 @@ export const createTask = async (
     org_id: string,
     discord_link: string,
     event: string,
-    toast: ToastAsPara,
-    bonus_time?:string,
-    bonus_karma?:string,
+    bonus_time?: string,
+    bonus_karma?: string
 ) => {
     try {
+        const formattedBonusTime = bonus_time
+            ? new Date(bonus_time).toISOString() // Convert bonus_time to ISO format
+            : null;
+
         const response = await privateGateway.post(
             dashboardRoutes.getTasksData,
             {
@@ -183,7 +182,7 @@ export const createTask = async (
                 usage_count: parseInt(usage_count),
                 active: active,
                 variable_karma: variable_karma,
-                description: description === "" ? null: description,
+                description: description === "" ? null : description,
                 channel: channel_id,
                 type: type_id,
                 level: level_id === "" ? null : level_id,
@@ -191,16 +190,13 @@ export const createTask = async (
                 org: org_id === "" ? null : org_id,
                 discord_link: discord_link,
                 event: event === "" ? null : event,
-                bonus_time:bonus_time === "" ? null : bonus_time,
+                bonus_time:
+                    formattedBonusTime === "" ? null : formattedBonusTime,
                 bonus_karma: parseInt(bonus_karma ?? "0")
             }
         );
-        toast({
-            title: "Task created",
-            status: "success",
-            duration: 3000,
-            isClosable: true
-        });
+
+        toast.success("Task has been created successfully");
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -210,19 +206,14 @@ export const createTask = async (
 };
 
 export const deleteTask = async (
-    id: string | undefined,
-    toast: ToastAsPara
+    id: string | undefined
 ) => {
     try {
         const response = await privateGateway.delete(
             dashboardRoutes.getTasksData + id + "/"
         );
-        toast({
-            title: "Task deleted",
-            status: "success",
-            duration: 3000,
-            isClosable: true
-        });
+
+        toast.success("Task has been deleted successfully");
         const message: any = response?.data;
     } catch (err: unknown) {
         const error = err as AxiosError;
@@ -260,25 +251,26 @@ export const getTaskTemplate = async () => {
     try {
         const response = await privateGateway.get(
             dashboardRoutes.getTaskTemplate,
-            { responseType: 'blob' } // Set the response type to 'blob'
+            { responseType: "blob" } // Set the response type to 'blob'
         );
-        const blob = new Blob([response.data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }); // Set the correct MIME type for XLSX files
+        const blob = new Blob([response.data], {
+            type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        }); // Set the correct MIME type for XLSX files
 
         const url = URL.createObjectURL(blob);
-        const link = document.createElement('a');
+        const link = document.createElement("a");
         link.href = url;
-        link.setAttribute('download', 'TaskTemplate.xlsx');
+        link.setAttribute("download", "TaskTemplate.xlsx");
 
         document.body.appendChild(link);
         link.click();
-        
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
             console.log(error.response);
         }
     }
-}
+};
 
 // function to take a js object and convert it to a XLSX file using the SheetJS library
 // bundle size increased from 106kb to 160kb, but dynamically imported

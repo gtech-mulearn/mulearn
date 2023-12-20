@@ -1,9 +1,12 @@
 import React, { FC, ReactElement, useEffect, useState } from "react";
+import { renderToString } from 'react-dom/server';
 import styles from "./Table.module.css";
-import { FaEdit } from "react-icons/fa";
+import { FaCheck, FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { AiOutlineDelete } from "react-icons/ai";
 import { HiOutlinePencil } from "react-icons/hi";
+import { ImCross } from "react-icons/im";
+
 import Modal from "../Modal/Modal";
 import MuLoader from "../MuLoader/MuLoader";
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
@@ -43,7 +46,7 @@ type TableProps = {
         column: string;
         Label: string;
         isSortable: boolean;
-        wrap?: (data: string, id: string, row: Data) => ReactJSXElement;
+        wrap?: (data: string | ReactElement, id: string, row: Data) => ReactJSXElement;
     }[];
     id?: string[];
     onEditClick?: (column: string | number | boolean) => void;
@@ -94,13 +97,13 @@ const Table: FC<TableProps> = (props: TableProps) => {
         }
     };
 
-    function convertToNormalDate(dateString: any): string {
+    function convertToTableData(dateString: any):string | ReactElement{
         const numberRegex = /^[0-9]+$/;
         if (String(dateString) == "true") {
-            return "true";
+            return <FaCheck  style={{ color: "#556FF1" }} />
         }
         if (String(dateString) == "false") {
-            return "false";
+            return <ImCross style={{color: "#394C4BB3"}}/>;        
         }
 
         if (String(dateString).match(numberRegex)) {
@@ -170,13 +173,13 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                         >
                                             {column.wrap
                                                 ? column.wrap(
-                                                      convertToNormalDate(
+                                                      convertToTableData(
                                                           rowData[column.column]
                                                       ),
                                                       rowData["id"] as string,
                                                       rowData
                                                   )
-                                                : convertToNormalDate(
+                                                : convertToTableData(
                                                       rowData[column.column]
                                                   )}
                                             {}

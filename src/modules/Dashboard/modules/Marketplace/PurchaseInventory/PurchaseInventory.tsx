@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ReactElement, useState } from "react";
 
 import styles from "./PurchaseInventory.module.css";
 import coin from "../assets/muCoin.svg";
@@ -32,7 +32,7 @@ const PurchaseInventory = (props: Props) => {
         isSortable: boolean;
         column: string;
         Label: string;
-        wrap?: (data: string, id: string) => ReactJSXElement;
+        wrap?: (data: string | ReactElement, id: string) => ReactJSXElement;
     };
 
     const columnOrder: ColOrderType[] = [
@@ -70,7 +70,7 @@ const PurchaseInventory = (props: Props) => {
                         color: {
                             Claimed: "#26D157",
                             "Not Claimed": "##FF4646"
-                        }[data]
+                        }[data as string]
                     }}
                 >
                     {data}

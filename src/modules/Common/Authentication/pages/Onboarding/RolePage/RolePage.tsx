@@ -5,14 +5,14 @@ import CollegePage from "../CollegePage/CollegePage";
 import roleOptions from "./data/roleOptions";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useToast } from "@chakra-ui/react";
+
 import { getRoles, submitUserData } from "../../../services/newOnboardingApis";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import CompanyPage from "../CompanyPage/CompanyPage";
 
 export default function Rolepage() {
     const navigate = useNavigate();
-    const toast = useToast();
+    
     const location = useLocation();
     let userData = location.state;
 
@@ -73,7 +73,6 @@ export default function Rolepage() {
         submitUserData({
             setIsLoading: setIsLoading,
             userData: newUserData,
-            toast: toast,
             navigate: navigate
         });
     };

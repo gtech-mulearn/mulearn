@@ -1,9 +1,5 @@
 import React, { useState } from "react";
 import styles from "./SourcesAndWeeks.module.css";
-import { CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
-import Day from "../../../assets/SVGs/Day";
-import Night from "../../../assets/SVGs/Night";
-import DayAndNight from "../../../assets/SVGs/DayAndNight";
 import { Chart } from "react-google-charts";
 
 export const options = {

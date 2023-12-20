@@ -3,11 +3,14 @@ import Select from "react-select";
 import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
 import { useNavigate } from "react-router-dom";
 import { getCountryData } from "./apis/CountryAPI";
-import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import {
+    MuButton,
+    PowerfulButton
+} from "@/MuLearnComponents/MuButtons/MuButton";
 import { getStateData } from "./apis/StateAPI";
 import { getZoneData } from "./apis/ZoneAPI";
 import { getDistrictData } from "./apis/DistrictAPI";
-import { useToast } from "@chakra-ui/react";
+
 
 interface SelectedDataProps {
     Country: { value: string; label: string } | null;
@@ -62,17 +65,16 @@ const LocationPopup: FC<LocationPopupProps> = ({
         Zone: null
     });
 
-    const toast = useToast();
+    
 
     useEffect(() => {
         if (selectedData.Country === null) {
-            getCountryData(setCountryData, toast).then(() => setLoader(false));
+            getCountryData(setCountryData).then(() => setLoader(false));
         }
         if (selectedData.Country !== null) {
             getStateData(
                 setStateData,
                 selectedData.Country?.value,
-                toast,
                 5,
                 1,
                 setTotalPages,
@@ -137,7 +139,6 @@ const LocationPopup: FC<LocationPopupProps> = ({
                 getStateData(
                     handleData,
                     selectedData.Country?.value,
-                    toast,
                     5,
                     1,
                     setTotalPages,
@@ -212,7 +213,9 @@ const LocationPopup: FC<LocationPopupProps> = ({
                             onClick={() => {
                                 handlePopup(false), handleDeclined(true);
                             }}
-                        >Decline</PowerfulButton>
+                        >
+                            Decline
+                        </PowerfulButton>
                         <button
                             type="submit"
                             className={styles.btn_submit}

@@ -41,10 +41,10 @@ const LcHistory = (props: Props) => {
                                 <p>{getDayOfWeek(data?.meet_time)}</p>
                             </div>
                             <div>
-                                <p>
-                                    Venue:{" "}
+                                {<p>
+                                    Venuesdf:{" "}
                                     {data.meet_place || props.lc?.meet_place}
-                                </p>
+                                </p>}
                                 <p>
                                     Time:{" "}
                                     {convert24to12(

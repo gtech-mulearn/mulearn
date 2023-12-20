@@ -1,7 +1,7 @@
-import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import { NavigateFunction } from "react-router-dom";
 import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
+import toast from "react-hot-toast";
 
 type userProfile = UseStateFunc<any>;
 type userLog = UseStateFunc<any>;
@@ -63,19 +63,12 @@ export const getPublicUserLog = (setUserLog: userLog, muid: string) => {
             console.log(error);
         });
 };
-export const putIsPublic = (is_public: boolean, toast: ToastAsPara) => {
+export const putIsPublic = (is_public: boolean) => {
     privateGateway
         .put(dashboardRoutes.putIsPublic, { is_public })
         .then((response: APIResponse<{}, string[]>) => {
             console.log(response.data.message.general[0]);
-
-            toast({
-                title: response.data.message.general[0],
-                description: "Profile status is updated",
-                status: "success",
-                duration: 3000,
-                isClosable: true
-            });
+            toast.success("Profile status is updated");
         })
         .catch(error => {
             console.log(error);

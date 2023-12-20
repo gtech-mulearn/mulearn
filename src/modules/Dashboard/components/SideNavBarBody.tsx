@@ -4,13 +4,13 @@ import {
     MuButtonLight
 } from "@/MuLearnComponents/MuButtons/MuButton";
 import { fetchLocalStorage } from "@/MuLearnServices/common_functions";
-import { useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import styles from "./SideNavBar.module.css";
 import MuLogOut from "../assets/svg/MuLogOut";
 import MuSettings from "../assets/svg/MuSettings";
+import toast from "react-hot-toast";
 
 type SideNavBarBodyProps = {
     sidebarButtons: {
@@ -28,7 +28,6 @@ const SideNavBarBody = ({
     sidebarButtons,
     toggleSideNavBar
 }: SideNavBarBodyProps) => {
-    const toast = useToast();
     const navigate = useNavigate();
 
     const [dropDownBtnDisplay, setDropDownBtnDisplay] = useState("0");
@@ -191,13 +190,7 @@ const SideNavBarBody = ({
                     }}
                     onClick={() => {
                         localStorage.clear();
-                        toast({
-                            title: "Logged out",
-                            description: "Redirecting to login page.",
-                            status: "error",
-                            duration: 9000,
-                            isClosable: true
-                        });
+                        toast.error("Logged Out, Redirecting to login page.");
                         setTimeout(() => window.location.reload(), 900);
                     }}
                 />

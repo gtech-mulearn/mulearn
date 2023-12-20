@@ -1,11 +1,11 @@
 import { NavigateFunction } from "react-router-dom";
 import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
 import { KKEMRoutes, dashboardRoutes } from "@/MuLearnServices/urls";
+import toast from "react-hot-toast";
 
 export const KKEMLogin = (
     emailOrMuid: string,
     password: string,
-    toast: ToastAsPara,
     navigate: NavigateFunction,
     setIsLoading: UseStateFunc<boolean>,
     redirectPath: string,
@@ -24,31 +24,16 @@ export const KKEMLogin = (
                     "refreshToken",
                     response.data.response.refreshToken
                 );
-                toast({
-                    title: "Login Successful",
-                    description: "You have been logged in successfully",
-                    status: "success",
-                    duration: 3000,
-                    isClosable: true
-                });
+
+                toast.success("You have been logged in successfully");
                 if (response.data.response.data.verified) {
-                    toast({
-                        title: "Verification Successful",
-                        description:
-                            "Your account has been verified successfully and connected with KKEM",
-                        status: "success",
-                        duration: 3000,
-                        isClosable: true
-                    });
+                    toast.success(
+                        "Your account has been verified successfully and connected with KKEM"
+                    );
                 } else if (response.data.response.data.verified) {
-                    toast({
-                        title: "Verification Failed",
-                        description:
-                            "There was an error while verifying your account. Please try again later.",
-                        status: "success",
-                        duration: 3000,
-                        isClosable: true
-                    });
+                    toast.success(
+                        "There was an error while verifying your account. Please try again later."
+                    );
                 }
                 privateGateway
                     .get(dashboardRoutes.getInfo)
@@ -78,11 +63,7 @@ export const KKEMLogin = (
         .catch(error => {
             console.log(error);
             setIsLoading(false);
-            toast({
-                title: error.response.data.message.general[0],
-                status: "error",
-                duration: 3000,
-                isClosable: true
-            });
+
+            toast.error(error.response.data.message.general[0]);
         });
 };

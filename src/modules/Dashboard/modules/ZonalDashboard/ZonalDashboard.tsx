@@ -2,7 +2,6 @@ import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import THead from "@/MuLearnComponents/Table/THead";
 import Table, { Data } from "@/MuLearnComponents/Table/Table";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
-import { useToast } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getzonaldashboard, getTopDistrict, getStudentLevels } from "./apis";
@@ -13,6 +12,7 @@ import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { BarChart, ColumnChart } from "../CampusStudentList/Components/Graphs";
 import graphStyles from "../CampusStudentList/pages/CampusStudentList.module.css";
 import { Blank } from "@/MuLearnComponents/Table/Blank";
+import toast from "react-hot-toast";
 
 function ZonalDashboard() {
     const [data, setData] = useState<Data[]>([]);
@@ -33,16 +33,8 @@ function ZonalDashboard() {
 
     const navigate = useNavigate();
 
-    const toast = useToast();
-
     const errHandler = (err: any) => {
-        toast({
-            title: "Data fetch failed",
-            description: err,
-            status: "error",
-            duration: 3000,
-            isClosable: true
-        });
+        toast.error("Data fetch failed");
     };
 
     useEffect(() => {

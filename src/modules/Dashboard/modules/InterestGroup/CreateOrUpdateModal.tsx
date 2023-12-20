@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import * as Yup from "yup";
-import { ToastId, UseToastOptions } from "@chakra-ui/react";
+
 import { Form, Formik } from "formik";
 
 import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
@@ -14,10 +14,9 @@ import { getIGDetails } from "./apis";
 type Props = {
     id?: string;
     setCurrModal: Dispatch<SetStateAction<modalTypes>>;
-    toast: (options?: UseToastOptions | undefined) => ToastId;
 };
 
-const CreateOrUpdateModal = ({ id, setCurrModal, toast }: Props) => {
+const CreateOrUpdateModal = ({ id, setCurrModal }: Props) => {
     const [loading, setLoading] = useState<boolean>(false);
     const [prefill, setPrefill] = useState({
         igName: "",
@@ -25,25 +24,6 @@ const CreateOrUpdateModal = ({ id, setCurrModal, toast }: Props) => {
         igIcon: ""
     });
 
-    // useEffect(() => {
-    //     try {
-    //         getIGDetails(
-    //             id
-    //             //     , val => {
-    //             //     setPrefill({
-    //             //         igName: val.name,
-    //             //         igCode: val.code,
-    //             //         igIcon: val.icon
-    //             //     });
-    //             // }
-    //         );
-    //     } catch (err) {
-    //         toast({
-    //             title: "Something went wrong",
-    //             status: "error"
-    //         });
-    //     }
-    // }, []);
     return (
         <Modal
             onClose={setCurrModal}
@@ -73,8 +53,7 @@ const CreateOrUpdateModal = ({ id, setCurrModal, toast }: Props) => {
                     //             name: values.igName,
                     //             code: values.igCode,
                     //             icon: values.igIcon
-                    //         }
-                    //         // msg => toast({ status: "error", title: msg }),
+                    //       },
                     //         // toast
                     //     );
                     // else

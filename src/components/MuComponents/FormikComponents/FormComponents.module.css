@@ -159,7 +159,7 @@
 .InputSet {
     display: flex;
     flex-direction: column;
-    /* width: 100%; */
+    width: 100%;
     height: fit-content;
     /* gap: .5rem; */
     padding-top: 1rem;

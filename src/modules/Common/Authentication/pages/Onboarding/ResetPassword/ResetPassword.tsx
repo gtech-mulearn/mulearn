@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import styles from "./ResetPassword.module.css";
-import { useToast } from "@chakra-ui/react";
+
 
 import * as Yup from "yup";
 import { Form, Formik } from 'formik';
@@ -18,13 +18,13 @@ const ResetPassword = () => {
     const [token, setToken] = useState("");
     localStorage.clear();
     const navigate = useNavigate();
-    const toast = useToast();
+    
 
     useEffect(() => {
         const paramToken = searchParams.get("token");
         setToken(paramToken as string);
         if (token.length > 0 && muid.length === 0) {
-            getMuid(token, toast, navigate, setMuID);
+            getMuid(token, navigate, setMuID);
         }
     }, [token]);
 
@@ -40,7 +40,7 @@ const ResetPassword = () => {
 
     const onSubmit = async (values: any) => {
         console.log(values);
-        resetPassword(token, values.password, toast, navigate);
+        resetPassword(token, values.password, navigate);
     };
 
     return (

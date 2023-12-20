@@ -16,6 +16,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { useToast } from "@chakra-ui/react";
 import { useNavigate, useParams } from "react-router-dom";
+import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import { getCommunities } from "../../../services/onboardingApis";
 import { BiSupport } from "react-icons/bi";
@@ -23,6 +24,7 @@ import { isDev } from "@/MuLearnServices/common_functions";
 import roleOptions from "../RolePage/data/roleOptions";
 import muBrand from "/src/modules/Common/Authentication/assets/µLearn.png";
 import { submitUserData } from "../../../services/newOnboardingApis";
+import toast from "react-hot-toast";
 
 const animatedComponents = makeAnimated();
 
@@ -157,12 +159,8 @@ export default function AccountCreation() {
 
     const onsubmit = async (values: any, actions: any) => {
         if (!isTncChecked) {
-            toast({
-                title: "Please accept the terms and conditions",
-                status: "error",
-                duration: 3000,
-                isClosable: true
-            });
+
+            toast.error("Please accept the terms and conditions")
             return;
         }
 

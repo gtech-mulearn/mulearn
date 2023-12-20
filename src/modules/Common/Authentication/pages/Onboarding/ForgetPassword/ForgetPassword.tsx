@@ -1,4 +1,3 @@
-import { useToast } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as z from "yup";
@@ -9,11 +8,11 @@ import { FormikTextInputWithoutLabel as SimpleInput } from "@/MuLearnComponents/
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { forgetPassword } from "../../../services/apis";
 import styles from "./ForgetPassword.module.css";
+import toast from "react-hot-toast";
 
 const ForgetPassword = () => {
     const [showLoader, setShowLoader] = useState(false);
     const navigate = useNavigate();
-    const toast = useToast();
 
     const scheme = z.object({
         emailOrMuId: z
@@ -25,15 +24,9 @@ const ForgetPassword = () => {
 
     const onSubmit = (values: any) => {
         if (values.emailOrMuId.length > 0) {
-            forgetPassword(values.emailOrMuId, toast, navigate, setShowLoader);
+            forgetPassword(values.emailOrMuId, navigate, setShowLoader);
         } else {
-            toast({
-                title: "Error",
-                description: "Please enter your email or muid",
-                status: "error",
-                duration: 3000,
-                isClosable: true
-            });
+            toast.error("Please enter your email or muid")
         }
     };
 

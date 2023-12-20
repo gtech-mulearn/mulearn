@@ -36,9 +36,14 @@ const Account = () => {
   }
 
   const handleLeave = () => {
-    privateGateway.delete(dashboardRoutes.deleteUser + `${localStorage.getItem("userId")}`).then((response) => {
+    privateGateway.delete(dashboardRoutes.getEditUserProfile).then((response) => {
       toast.success(response.data.message.general[0])
-      naviage("/")
+
+      localStorage.removeItem("userInfo")
+      localStorage.removeItem("accessToken")
+      localStorage.removeItem("refreshToken")
+
+      naviage("/register")
 
     }).catch((error) => {
       toast.error(error.response.data.message.general[0])
@@ -158,7 +163,7 @@ const Account = () => {
             type="Leave"
           />
         )}
-        {/* <div className={styles.deleteUserContainer}>
+        <div className={styles.deleteUserContainer}>
           <div>
             <p className={styles.changePasswordContainerLabel}>Delete User</p>
             <p className={styles.changePasswordContainerTagline}>Click the below button to delete your account.</p>
@@ -169,7 +174,7 @@ const Account = () => {
               Delete Account
             </PowerfulButton>
           </div>
-        </div> */}
+        </div>
       </div>
     </div>
   )

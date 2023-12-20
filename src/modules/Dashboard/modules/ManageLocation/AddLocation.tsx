@@ -10,15 +10,14 @@ import { getCountryData, postCountryData } from "./apis/CountryAPI";
 import { getStateData, postStateData } from "./apis/StateAPI";
 import { getZoneData, postZoneData } from "./apis/ZoneAPI";
 import { postDistrictData } from "./apis/DistrictAPI";
-import { useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const AddLocation = () => {
     const [activeItem, setActiveItem] = useState("");
 
     const navigate = useNavigate();
     const location = useLocation();
-    const toast = useToast();
     const [option, setOption] = useState<{ label: string; value: string }[]>(
         []
     );
@@ -36,7 +35,7 @@ const AddLocation = () => {
 
     function handleSubmitAdd(values: any) {
         if (activeItem === "Country") {
-            postCountryData(values.ItemName, toast);
+            postCountryData(values.ItemName);
         } else if (activeItem === "State") {
             postStateData(values.dropdata, values.ItemName);
         } else if (activeItem === "Zone") {
@@ -44,12 +43,7 @@ const AddLocation = () => {
         } else if (activeItem === "District") {
             postDistrictData(values.dropdata, values.ItemName);
         }
-        toast({
-            title: "Location created",
-            status: "success",
-            duration: 3000,
-            isClosable: true
-        });
+        toast.success("Location created");
         navigate("/dashboard/manage-locations", {
             state: { activeItem: activeItem }
         });

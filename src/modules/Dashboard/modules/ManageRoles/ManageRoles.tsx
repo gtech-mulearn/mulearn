@@ -10,7 +10,7 @@ import { AiOutlinePlusCircle, AiOutlineUser } from "react-icons/ai";
 import styles from "./Manageroles.module.css";
 import modalStyles from "./components/Modal.module.css";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
-import { useToast } from "@chakra-ui/react";
+
 import Modal from "./components/Modal";
 import ManageRolesEditModal from "./components/ManageRolesEditModal";
 import ManageRolesCreateModal from "./components/ManageRolesCreateModal";
@@ -160,9 +160,9 @@ function ManageRoles() {
         setCurrRoleID(id as string);
         setCurrModal("edit");
     };
-    const toast = useToast();
+    
     const handleDelete = (id: string | undefined) => {
-        deleteManageRoles(id, toast);
+        deleteManageRoles(id);
         getManageRoles(
             setData,
             1,

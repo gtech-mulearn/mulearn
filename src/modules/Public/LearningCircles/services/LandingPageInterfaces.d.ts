@@ -1,7 +1,10 @@
 interface LcRandom {
+    id(id: any): unknown;
     ig_name: string;
     member_count: number;
     name: string;
+    meet_place: string;
+    meet_time: string;
 }
 
 interface LcCount {

@@ -3,7 +3,7 @@ import THead from "@/MuLearnComponents/Table/THead";
 import Table from "@/MuLearnComponents/Table/Table";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
-import { useToast } from "@chakra-ui/react";
+
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { deleteManageUsers, getManageUsers } from "./apis";
@@ -20,7 +20,7 @@ function ManageRoles() {
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
     const firstFetch = useRef(true);
-    const toast = useToast();
+    
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [id, setId] = useState("");
@@ -103,7 +103,7 @@ function ManageRoles() {
     };
 
     const handleDelete = (id: string | undefined) => {
-        deleteManageUsers(id, toast);
+        deleteManageUsers(id);
         getManageUsers({
             setData: setData,
             page: 1,

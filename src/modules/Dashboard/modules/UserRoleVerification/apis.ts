@@ -1,6 +1,7 @@
 import { AxiosError } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
+import toast from "react-hot-toast";
 
 export const getUserRoleVerification = async (
     setData: UseStateFunc<any>,
@@ -10,7 +11,6 @@ export const getUserRoleVerification = async (
     search?: string,
     sortID?: string
 ) => {
-
     try {
         const response = await privateGateway.get(
             dashboardRoutes.getUsersRoleVerificationData,
@@ -31,30 +31,29 @@ export const getUserRoleVerification = async (
         for (let i = 0; i < datasuser.length; i++) {
             if (datasuser[i].verified == false) {
                 //console.log(datasuser[i].verified);
-                datasuser[i].verified = "Not Verified"
-            } 
-            else {
+                datasuser[i].verified = "Not Verified";
+            } else {
                 //console.log(datasuser[i].verified);
                 datasuser[i].verified = "Verified";
             }
         }
         setData(datasuser);
         //console.log(manageusers.response.data);
-        if (setTotalPages) setTotalPages(manageusers.response.pagination.totalPages);
+        if (setTotalPages)
+            setTotalPages(manageusers.response.pagination.totalPages);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
             console.log(error.response);
         }
     }
-    console.log('table fetched')
+    console.log("table fetched");
 };
 
 export const editUserRoleVerification = async (
     verified: boolean,
     id: string | number | boolean
 ) => {
-    
     try {
         const response = await privateGateway.patch(
             dashboardRoutes.getUsersRoleVerificationData + id + "/",
@@ -72,23 +71,14 @@ export const editUserRoleVerification = async (
     }
 };
 
-export const deleteUserRole =  async (
-    id: string | undefined,
-    toast: ToastAsPara,
-) => {
-    
+export const deleteUserRole = async (id: string | undefined) => {
     try {
         const response = await privateGateway.delete(
-            dashboardRoutes.getUsersRoleVerificationData + id + "/",
+            dashboardRoutes.getUsersRoleVerificationData + id + "/"
         );
         const message: any = response?.data;
-        toast({
-            title: "User deleted",
-            status: "success",
-            duration: 3000,
-            isClosable: true
-        });
-        console.log(message)
+        toast.success("User deleted");
+        console.log(message);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -120,20 +110,13 @@ export const getUserRoleVerificationDetails = async (
     }
 };
 
-export const deleteUserRoleVerification = async (
-    id: string,
-    toast: ToastAsPara
-) => {
+export const deleteUserRoleVerification = async (id: string) => {
     try {
         const response = await privateGateway.delete(
             dashboardRoutes.getUsersData + id + "/"
         );
-        toast({
-            title: "User deleted",
-            status: "success",
-            duration: 3000,
-            isClosable: true
-        });
+
+        toast.success("User deleted");
         const message: any = response?.data;
         //console.log(message);
     } catch (err: unknown) {

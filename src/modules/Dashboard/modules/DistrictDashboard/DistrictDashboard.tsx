@@ -2,7 +2,6 @@ import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import THead from "@/MuLearnComponents/Table/THead";
 import Table from "@/MuLearnComponents/Table/Table";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
-import { useToast } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import { BarChart, ColumnChart } from "../CampusStudentList/Components/Graphs";
 import { getdistrictdashboard, getStudentLevels, getTopCampus } from "./apis";
@@ -13,6 +12,7 @@ import "./DistricDashboard.scss";
 import TableTopTab from "./TableTopTab";
 import graphStyles from "../CampusStudentList/pages/CampusStudentList.module.css";
 import { Blank } from "@/MuLearnComponents/Table/Blank";
+import toast from "react-hot-toast";
 
 function DistrictDashboard() {
     const [data, setData] = useState<any[]>([]);
@@ -25,20 +25,13 @@ function DistrictDashboard() {
 
     const firstFetch = useRef(true);
 
-    const toast = useToast();
-
     //graph data
     const [colData, setColData] = useState<string[][] | null>(null);
     const [barData, setBarData] = useState<string[][] | null>(null);
 
     const errHandler = (err: any) => {
-        toast({
-            title: "Data fetch failed",
-            description: err,
-            status: "error",
-            duration: 3000,
-            isClosable: true
-        });
+        toast.error("Data Fetch Failed");
+        toast.error(err);
     };
 
     useEffect(() => {

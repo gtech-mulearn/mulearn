@@ -1,7 +1,7 @@
 import { AxiosError } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { taskTypeRoutes, dynamicRoute } from "@/MuLearnServices/endpoints";
-
+import toast from "react-hot-toast";
 
 export const getTaskTypes = async (
     setData: any,
@@ -14,17 +14,14 @@ export const getTaskTypes = async (
 ) => {
     setIsLoading(true);
     try {
-        const response = await privateGateway.get(
-            taskTypeRoutes.getTaskTypes,
-            {
-                params: {
-                    perPage: selectedValue,
-                    pageIndex: page,
-                    search: search,
-                    sortBy: sortID
-                }
+        const response = await privateGateway.get(taskTypeRoutes.getTaskTypes, {
+            params: {
+                perPage: selectedValue,
+                pageIndex: page,
+                search: search,
+                sortBy: sortID
             }
-        );
+        });
         const tasks: any = response?.data;
         setData(tasks.response.data);
         // const uuids: Partial<uuidType> = await getUUID();
@@ -42,10 +39,7 @@ export const getTaskTypes = async (
     }
 };
 
-export const createTaskType = async (
-    title: string,
-    toast: ToastAsPara
-) => {
+export const createTaskType = async (title: string) => {
     try {
         const response = await privateGateway.post(
             dynamicRoute(taskTypeRoutes.getTaskTypes),
@@ -53,12 +47,8 @@ export const createTaskType = async (
                 title: title
             }
         );
-        toast({
-            title: "Task created",
-            status: "success",
-            duration: 3000,
-            isClosable: true
-        });
+
+        toast.success("Task created");
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -72,12 +62,12 @@ export const getTaskTypeDetails = async (
     setData: UseStateFunc<{ title: string }>
 ) => {
     try {
-        const response = await privateGateway.get(
-            taskTypeRoutes.getTaskTypes
-        );
+        const response = await privateGateway.get(taskTypeRoutes.getTaskTypes);
         const message: any = response?.data;
         const list = message.response.data;
-        const { title } = list.filter((item: any) => { return item.id == id })[0]
+        const { title } = list.filter((item: any) => {
+            return item.id == id;
+        })[0];
         setData({ title: title as string });
     } catch (err: unknown) {
         const error = err as AxiosError;
@@ -89,8 +79,7 @@ export const getTaskTypeDetails = async (
 
 export const editTaskType = async (
     title: string,
-    id: string | undefined,
-    toast: ToastAsPara,
+    id: string | undefined
 ) => {
     try {
         const response = await privateGateway.put(
@@ -99,43 +88,27 @@ export const editTaskType = async (
                 title: title
             }
         );
-        toast({
-            title: "Task Updated",
-            description: "Task has been updated successfully",
-            status: "success",
-            duration: 5000,
-            isClosable: true
-        });
+
+        toast.success("Task has been updated successfully");
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
             console.log(error.response);
-            toast({
-                title: "Task Update Failed",
-                status: "error",
-                duration: 5000,
-                isClosable: true
-            });
+
+            toast.error("Task Update Failed");
         }
     }
 };
 
-export const deleteTaskType = async (
-    id: string | undefined,
-    toast: ToastAsPara
-) => {
+export const deleteTaskType = async (id: string | undefined) => {
     try {
         const response = await privateGateway.delete(
             dynamicRoute(taskTypeRoutes.editTaskType, id as string)
         );
-        toast({
-            title: "Task deleted",
-            status: "success",
-            duration: 3000,
-            isClosable: true
-        });
+
+        toast.success("Task has been deleted successfully");
         const message: any = response?.data;
-        console.log(dynamicRoute(taskTypeRoutes.editTaskType, id as string))
+        console.log(dynamicRoute(taskTypeRoutes.editTaskType, id as string));
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -143,4 +116,3 @@ export const deleteTaskType = async (
         }
     }
 };
-

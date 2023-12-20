@@ -24,8 +24,11 @@ import Chart from "react-google-charts";
 import { useSearchParams } from "react-router-dom";
 import { KKEMRoutes } from "@/MuLearnServices/urls";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import KKEMAuthentication from "./Authentication/KKEMAuthentication";
+import toast from "react-hot-toast";
 const LearningCircles = () => {
     const [authorized, setAuthorized] = useState(true);
+
     const [searchParams] = useSearchParams();
     const key = searchParams.get("key"); // [key: string
 
@@ -140,6 +143,22 @@ const LearningCircles = () => {
     const [perPage, setPerPage] = useState(20);
     const [orgPerPage, setOrgPerPage] = useState(20);
     const [perHackPage, setPerHackPage] = useState(20);
+
+    const [dashboardPassword, setDashboardPassword] = useState("");
+    const [loginTriggered, setLoginTriggered] = useState(false);
+    const [passwordAuth, setPasswordAuth] = useState(false);
+
+    useEffect(() => {
+        if (loginTriggered)
+            if (dashboardPassword === "paru@123") {
+                setPasswordAuth(true);
+                toast.success("Logged In");
+            } else {
+                toast.error("Wrong Password");
+            }
+        {
+        }
+    }, [loginTriggered]);
 
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
@@ -398,435 +417,480 @@ const LearningCircles = () => {
     return (
         <>
             {authorized ? (
-                <div className={styles.dashboardContainer}>
-                    <div className={styles.dashboardContent}>
-                        <div className={styles.dateContainer}>
-                            <p className={styles.heading}>Filter By Date</p>
-                            <p className={styles.tagline}>
-                                If a date is selected, only the values that were
-                                recorded after that date will be displayed.
-                            </p>
-                            <div>
-                                <input
-                                    type="date"
-                                    className={styles.date}
-                                    onChange={e => setDate(e.target.value)}
-                                />
-                                <button
-                                    className={styles.dateButton}
-                                    onClick={() => {
-                                        getLCReport(
-                                            setLcReport,
-                                            currentPage,
-                                            perPage,
-                                            setTotalPages,
-                                            "",
-                                            "",
-                                            date,
-                                            setLoading
-                                        );
-                                        getLCDashboard(setLcCounts, date);
-                                    }}
-                                >
-                                    Filter
-                                </button>
-                                <button
-                                    className={styles.dateButton}
-                                    onClick={() => {
-                                        getLCReport(
-                                            setLcReport,
-                                            currentPage,
-                                            perPage,
-                                            setTotalPages,
-                                            "",
-                                            "",
-                                            "",
-                                            setLoading
-                                        );
-                                        getLCDashboard(setLcCounts);
-                                    }}
-                                >
-                                    Clear
-                                </button>
-                            </div>
-                        </div>
-                        <TableToggle
-                            active={active}
-                            tabClick={handleToggle}
-                            toggleOptions={["Learning Circles", "Hackathon"]}
-                        />
-                        {active === "Learning Circles" ? (
-                            <div>
-                                <p className={styles.heading}>
-                                    Learning Circles & Interest Group Counts
+                passwordAuth ? (
+                    <div className={styles.dashboardContainer}>
+                        <div className={styles.dashboardContent}>
+                            <div className={styles.dateContainer}>
+                                <p className={styles.heading}>Filter By Date</p>
+                                <p className={styles.tagline}>
+                                    If a date is selected, only the values that
+                                    were recorded after that date will be
+                                    displayed.
                                 </p>
-                                <div className={styles.countsContainer}>
-                                    <div className={styles.studentsInvoled}>
-                                        <p className={styles.label}>
-                                            Total Enrollment
-                                        </p>
-                                        {LcCounts.total_enrollment && (
-                                            <p className={styles.count}>
-                                                {LcCounts.total_enrollment}
+                                <div>
+                                    <input
+                                        type="date"
+                                        className={styles.date}
+                                        onChange={e => setDate(e.target.value)}
+                                    />
+                                    <button
+                                        className={styles.dateButton}
+                                        onClick={() => {
+                                            getLCReport(
+                                                setLcReport,
+                                                currentPage,
+                                                perPage,
+                                                setTotalPages,
+                                                "",
+                                                "",
+                                                date,
+                                                setLoading
+                                            );
+                                            getLCDashboard(setLcCounts, date);
+                                        }}
+                                    >
+                                        Filter
+                                    </button>
+                                    <button
+                                        className={styles.dateButton}
+                                        onClick={() => {
+                                            getLCReport(
+                                                setLcReport,
+                                                currentPage,
+                                                perPage,
+                                                setTotalPages,
+                                                "",
+                                                "",
+                                                "",
+                                                setLoading
+                                            );
+                                            getLCDashboard(setLcCounts);
+                                        }}
+                                    >
+                                        Clear
+                                    </button>
+                                </div>
+                            </div>
+                            <TableToggle
+                                active={active}
+                                tabClick={handleToggle}
+                                toggleOptions={[
+                                    "Learning Circles",
+                                    "Hackathon"
+                                ]}
+                            />
+                            {active === "Learning Circles" ? (
+                                <div>
+                                    <p className={styles.heading}>
+                                        Learning Circles & Interest Group Counts
+                                    </p>
+                                    <div className={styles.countsContainer}>
+                                        <div className={styles.studentsInvoled}>
+                                            <p className={styles.label}>
+                                                Total Enrollment
                                             </p>
-                                        )}
-                                    </div>
-                                    <div className={styles.studentsInvoled}>
-                                        <p className={styles.label}>
-                                            Unique Users
-                                        </p>
-                                        {LcCounts.total_enrollment && (
-                                            <p className={styles.count}>
-                                                {LcCounts.unique_users}
+                                            {LcCounts.total_enrollment && (
+                                                <p className={styles.count}>
+                                                    {LcCounts.total_enrollment}
+                                                </p>
+                                            )}
+                                        </div>
+                                        <div className={styles.studentsInvoled}>
+                                            <p className={styles.label}>
+                                                Unique Users
                                             </p>
-                                        )}
-                                    </div>
-                                    <div className={styles.lcCount}>
-                                        <p className={styles.label}>
-                                            Learning Circles
-                                        </p>
-                                        {LcCounts.lc_count && (
-                                            <p className={styles.count}>
-                                                {LcCounts.lc_count}
+                                            {LcCounts.total_enrollment && (
+                                                <p className={styles.count}>
+                                                    {LcCounts.unique_users}
+                                                </p>
+                                            )}
+                                        </div>
+                                        <div className={styles.lcCount}>
+                                            <p className={styles.label}>
+                                                Learning Circles
                                             </p>
-                                        )}
-                                    </div>
+                                            {LcCounts.lc_count && (
+                                                <p className={styles.count}>
+                                                    {LcCounts.lc_count}
+                                                </p>
+                                            )}
+                                        </div>
 
-                                    {LcCounts.circle_count_by_ig
-                                        .sort(
-                                            (a, b) =>
-                                                ((b.total_users ??
-                                                    0) as number) -
-                                                ((a.total_users ?? 0) as number)
-                                        ) // sort by total_users in descending order
-                                        .map((item, index) => {
-                                            return (
-                                                <div
-                                                    className={
-                                                        styles.studentsInvoled
-                                                    }
-                                                    key={index}
-                                                >
-                                                    <p className={styles.label}>
-                                                        {item.name}
-                                                    </p>
+                                        {LcCounts.circle_count_by_ig
+                                            .sort(
+                                                (a, b) =>
+                                                    ((b.total_users ??
+                                                        0) as number) -
+                                                    ((a.total_users ??
+                                                        0) as number)
+                                            ) // sort by total_users in descending order
+                                            .map((item, index) => {
+                                                return (
                                                     <div
                                                         className={
-                                                            styles.counts
+                                                            styles.studentsInvoled
                                                         }
+                                                        key={index}
                                                     >
-                                                        <div>
-                                                            <p
-                                                                className={
-                                                                    styles.count
-                                                                }
-                                                            >
-                                                                {
-                                                                    item.total_circles
-                                                                }
-                                                            </p>
-                                                            <span>Circles</span>
-                                                        </div>
-                                                        <div>
-                                                            <p
-                                                                className={
-                                                                    styles.count
-                                                                }
-                                                            >
-                                                                {
-                                                                    item.total_users
-                                                                }
-                                                            </p>
-                                                            <span>Users</span>
+                                                        <p
+                                                            className={
+                                                                styles.label
+                                                            }
+                                                        >
+                                                            {item.name}
+                                                        </p>
+                                                        <div
+                                                            className={
+                                                                styles.counts
+                                                            }
+                                                        >
+                                                            <div>
+                                                                <p
+                                                                    className={
+                                                                        styles.count
+                                                                    }
+                                                                >
+                                                                    {
+                                                                        item.total_circles
+                                                                    }
+                                                                </p>
+                                                                <span>
+                                                                    Circles
+                                                                </span>
+                                                            </div>
+                                                            <div>
+                                                                <p
+                                                                    className={
+                                                                        styles.count
+                                                                    }
+                                                                >
+                                                                    {
+                                                                        item.total_users
+                                                                    }
+                                                                </p>
+                                                                <span>
+                                                                    Users
+                                                                </span>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            );
-                                        })}
-                                </div>
-                                <br />
-                                <div className={styles.chartContainer}>
-                                    <Chart
-                                        width={"100%"}
-                                        height={"400px"}
-                                        chartType="Bar"
-                                        loader={<div>Loading Chart</div>}
-                                        data={data}
-                                        options={{
-                                            chart: {
-                                                title: "Interest Group Counts"
-                                            }
-                                        }}
-                                    />
-                                </div>
-                                <p className={styles.heading}>
-                                    Organization Wise Counts
-                                </p>
-                                <div className={styles.tableContainer}>
-                                    <TableTop
-                                        onSearchText={handleOrgSearch}
-                                        onPerPageNumber={handleOrgPerPageNumber}
-                                    />
+                                                );
+                                            })}
+                                    </div>
                                     <br />
-                                    <Table
-                                        rows={OrgWiseReport}
-                                        page={orgCurrentPage}
-                                        perPage={orgPerPage}
-                                        columnOrder={orgColumnOrder}
-                                        isloading={orgLoading}
-                                    >
-                                        <THead
-                                            columnOrder={orgColumnOrder}
-                                            // editableColumnNames={editableColumnNames}
-                                            onIconClick={handleOrgIconClick}
+                                    <div className={styles.chartContainer}>
+                                        <Chart
+                                            width={"100%"}
+                                            height={"400px"}
+                                            chartType="Bar"
+                                            loader={<div>Loading Chart</div>}
+                                            data={data}
+                                            options={{
+                                                chart: {
+                                                    title: "Interest Group Counts"
+                                                }
+                                            }}
                                         />
-                                        <Pagination
-                                            currentPage={orgCurrentPage}
-                                            totalPages={orgTotalPages}
-                                            margin="10px 0"
-                                            handleNextClick={handleOrgNextClick}
-                                            handlePreviousClick={
-                                                handleOrgPreviousClick
-                                            }
+                                    </div>
+                                    <p className={styles.heading}>
+                                        Organization Wise Counts
+                                    </p>
+                                    <div className={styles.tableContainer}>
+                                        <TableTop
+                                            onSearchText={handleOrgSearch}
                                             onPerPageNumber={
                                                 handleOrgPerPageNumber
                                             }
+                                        />
+                                        <br />
+                                        <Table
+                                            rows={OrgWiseReport}
+                                            page={orgCurrentPage}
                                             perPage={orgPerPage}
-                                            setPerPage={setOrgPerPage}
-                                        />
-                                        {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
-                                    </Table>
-                                </div>
-                                <br />
-                                <p className={styles.heading}>
-                                    User Wise Counts
-                                </p>
-                                <div className={styles.tableContainer}>
-                                    <TableTop
-                                        onSearchText={handleSearch}
-                                        onPerPageNumber={handlePerPageNumber}
-                                        CSV={KKEMRoutes.getLcReport}
-                                    />
+                                            columnOrder={orgColumnOrder}
+                                            isloading={orgLoading}
+                                        >
+                                            <THead
+                                                columnOrder={orgColumnOrder}
+                                                // editableColumnNames={editableColumnNames}
+                                                onIconClick={handleOrgIconClick}
+                                            />
+                                            <Pagination
+                                                currentPage={orgCurrentPage}
+                                                totalPages={orgTotalPages}
+                                                margin="10px 0"
+                                                handleNextClick={
+                                                    handleOrgNextClick
+                                                }
+                                                handlePreviousClick={
+                                                    handleOrgPreviousClick
+                                                }
+                                                onPerPageNumber={
+                                                    handleOrgPerPageNumber
+                                                }
+                                                perPage={orgPerPage}
+                                                setPerPage={setOrgPerPage}
+                                            />
+                                            {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                                        </Table>
+                                    </div>
                                     <br />
-                                    <Table
-                                        rows={LcReport}
-                                        page={currentPage}
-                                        perPage={perPage}
-                                        columnOrder={columnOrder}
-                                        isloading={loading}
-                                    >
-                                        <THead
-                                            columnOrder={columnOrder}
-                                            // editableColumnNames={editableColumnNames}
-                                            onIconClick={handleIconClick}
-                                        />
-                                        <Pagination
-                                            currentPage={currentPage}
-                                            totalPages={totalPages}
-                                            margin="10px 0"
-                                            handleNextClick={handleNextClick}
-                                            handlePreviousClick={
-                                                handlePreviousClick
-                                            }
+                                    <p className={styles.heading}>
+                                        User Wise Counts
+                                    </p>
+                                    <div className={styles.tableContainer}>
+                                        <TableTop
+                                            onSearchText={handleSearch}
                                             onPerPageNumber={
                                                 handlePerPageNumber
                                             }
+                                            CSV={KKEMRoutes.getLcReport}
+                                        />
+                                        <br />
+                                        <Table
+                                            rows={LcReport}
+                                            page={currentPage}
                                             perPage={perPage}
-                                            setPerPage={setPerPage}
-                                        />
-                                        {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
-                                    </Table>
-                                </div>
-                                <br />
-                            </div>
-                        ) : (
-                            <div>
-                                <p className={styles.heading}>Hackathon</p>
-                                {HackathonDashboard.map(item => {
-                                    return (
-                                        <>
-                                            <p
-                                                className={styles.subheading}
-                                            >{`${item["Hackathon Name"]}:${item.Domains}`}</p>
-                                            <div
-                                                className={
-                                                    styles.countsContainer
+                                            columnOrder={columnOrder}
+                                            isloading={loading}
+                                        >
+                                            <THead
+                                                columnOrder={columnOrder}
+                                                // editableColumnNames={editableColumnNames}
+                                                onIconClick={handleIconClick}
+                                            />
+                                            <Pagination
+                                                currentPage={currentPage}
+                                                totalPages={totalPages}
+                                                margin="10px 0"
+                                                handleNextClick={
+                                                    handleNextClick
                                                 }
-                                            >
-                                                {item["Total Applicants"] && (
-                                                    <div
-                                                        className={
-                                                            styles.studentsInvoled
-                                                        }
-                                                    >
-                                                        <p
-                                                            className={
-                                                                styles.label
-                                                            }
-                                                        >
-                                                            Total Applicants
-                                                        </p>
-                                                        {handleHackDashInputs(
-                                                            item[
-                                                                "Total Applicants"
-                                                            ]
-                                                        )}
-                                                    </div>
-                                                )}
-                                                {item[
-                                                    "Shortlisted Candidates"
-                                                ] && (
-                                                    <div
-                                                        className={
-                                                            styles.studentsInvoled
-                                                        }
-                                                    >
-                                                        <p
-                                                            className={
-                                                                styles.label
-                                                            }
-                                                        >
-                                                            Shortlisted
-                                                            Candidates
-                                                        </p>
-                                                        {handleHackDashInputs(
-                                                            item[
-                                                                "Shortlisted Candidates"
-                                                            ]
-                                                        )}
-                                                    </div>
-                                                )}
-                                                {item[
-                                                    "Shortlisted Team Count"
-                                                ] && (
-                                                    <div
-                                                        className={
-                                                            styles.studentsInvoled
-                                                        }
-                                                    >
-                                                        <p
-                                                            className={
-                                                                styles.label
-                                                            }
-                                                        >
-                                                            Shortlisted Team
-                                                            Count
-                                                        </p>
-                                                        {handleHackDashInputs(
-                                                            item[
-                                                                "Shortlisted Team Count"
-                                                            ]
-                                                        )}
-                                                    </div>
-                                                )}
-                                                {item["Attended People"] && (
-                                                    <div
-                                                        className={
-                                                            styles.studentsInvoled
-                                                        }
-                                                    >
-                                                        <p
-                                                            className={
-                                                                styles.label
-                                                            }
-                                                        >
-                                                            Attended People
-                                                        </p>
-                                                        {handleHackDashInputs(
-                                                            item[
-                                                                "Attended People"
-                                                            ]
-                                                        )}
-                                                    </div>
-                                                )}
-                                                {item["Offerings Count"] && (
-                                                    <div
-                                                        className={
-                                                            styles.studentsInvoled
-                                                        }
-                                                    >
-                                                        <p
-                                                            className={
-                                                                styles.label
-                                                            }
-                                                        >
-                                                            Offerings Count
-                                                        </p>
-                                                        {handleHackDashInputs(
-                                                            item[
-                                                                "Offerings Count"
-                                                            ]
-                                                        )}
-                                                    </div>
-                                                )}
-                                                {item["Placement Count"] && (
-                                                    <div
-                                                        className={
-                                                            styles.studentsInvoled
-                                                        }
-                                                    >
-                                                        <p
-                                                            className={
-                                                                styles.label
-                                                            }
-                                                        >
-                                                            Placement Count
-                                                        </p>
-                                                        {handleHackDashInputs(
-                                                            item[
-                                                                "Placement Count"
-                                                            ]
-                                                        )}
-                                                    </div>
-                                                )}
-                                            </div>
-                                        </>
-                                    );
-                                })}
-                                 <p className={styles.heading}>
-                                    Participant Data
-                                </p>
-                                <div className={styles.tableContainer}>
-                                    <TableTop
-                                        onSearchText={handleHackSearch}
-                                        onPerPageNumber={
-                                            handleHackPerPageNumber
-                                        }
-                                    />
+                                                handlePreviousClick={
+                                                    handlePreviousClick
+                                                }
+                                                onPerPageNumber={
+                                                    handlePerPageNumber
+                                                }
+                                                perPage={perPage}
+                                                setPerPage={setPerPage}
+                                            />
+                                            {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                                        </Table>
+                                    </div>
                                     <br />
-                                    <Table
-                                        rows={HackathonReport}
-                                        page={currentHackPage}
-                                        perPage={perHackPage}
-                                        columnOrder={HackathonColumnOrder}
-                                        isloading={hackLoading}
-                                    >
-                                        <THead
-                                            columnOrder={HackathonColumnOrder}
-                                            onIconClick={handlehackIconClick}
-                                        />
-                                        <Pagination
-                                            currentPage={currentHackPage}
-                                            totalPages={totalHackPages}
-                                            margin="10px 0"
-                                            handleNextClick={
-                                                handleHackNextClick
-                                            }
-                                            handlePreviousClick={
-                                                handleHackPreviousClick
-                                            }
+                                </div>
+                            ) : (
+                                <div>
+                                    <p className={styles.heading}>Hackathon</p>
+                                    {HackathonDashboard.map(item => {
+                                        return (
+                                            <>
+                                                <p
+                                                    className={
+                                                        styles.subheading
+                                                    }
+                                                >{`${item["Hackathon Name"]}:${item.Domains}`}</p>
+                                                <div
+                                                    className={
+                                                        styles.countsContainer
+                                                    }
+                                                >
+                                                    {item[
+                                                        "Total Applicants"
+                                                    ] && (
+                                                        <div
+                                                            className={
+                                                                styles.studentsInvoled
+                                                            }
+                                                        >
+                                                            <p
+                                                                className={
+                                                                    styles.label
+                                                                }
+                                                            >
+                                                                Total Applicants
+                                                            </p>
+                                                            {handleHackDashInputs(
+                                                                item[
+                                                                    "Total Applicants"
+                                                                ]
+                                                            )}
+                                                        </div>
+                                                    )}
+                                                    {item[
+                                                        "Shortlisted Candidates"
+                                                    ] && (
+                                                        <div
+                                                            className={
+                                                                styles.studentsInvoled
+                                                            }
+                                                        >
+                                                            <p
+                                                                className={
+                                                                    styles.label
+                                                                }
+                                                            >
+                                                                Shortlisted
+                                                                Candidates
+                                                            </p>
+                                                            {handleHackDashInputs(
+                                                                item[
+                                                                    "Shortlisted Candidates"
+                                                                ]
+                                                            )}
+                                                        </div>
+                                                    )}
+                                                    {item[
+                                                        "Shortlisted Team Count"
+                                                    ] && (
+                                                        <div
+                                                            className={
+                                                                styles.studentsInvoled
+                                                            }
+                                                        >
+                                                            <p
+                                                                className={
+                                                                    styles.label
+                                                                }
+                                                            >
+                                                                Shortlisted Team
+                                                                Count
+                                                            </p>
+                                                            {handleHackDashInputs(
+                                                                item[
+                                                                    "Shortlisted Team Count"
+                                                                ]
+                                                            )}
+                                                        </div>
+                                                    )}
+                                                    {item[
+                                                        "Attended People"
+                                                    ] && (
+                                                        <div
+                                                            className={
+                                                                styles.studentsInvoled
+                                                            }
+                                                        >
+                                                            <p
+                                                                className={
+                                                                    styles.label
+                                                                }
+                                                            >
+                                                                Attended People
+                                                            </p>
+                                                            {handleHackDashInputs(
+                                                                item[
+                                                                    "Attended People"
+                                                                ]
+                                                            )}
+                                                        </div>
+                                                    )}
+                                                    {item[
+                                                        "Offerings Count"
+                                                    ] && (
+                                                        <div
+                                                            className={
+                                                                styles.studentsInvoled
+                                                            }
+                                                        >
+                                                            <p
+                                                                className={
+                                                                    styles.label
+                                                                }
+                                                            >
+                                                                Offerings Count
+                                                            </p>
+                                                            {handleHackDashInputs(
+                                                                item[
+                                                                    "Offerings Count"
+                                                                ]
+                                                            )}
+                                                        </div>
+                                                    )}
+                                                    {item[
+                                                        "Placement Count"
+                                                    ] && (
+                                                        <div
+                                                            className={
+                                                                styles.studentsInvoled
+                                                            }
+                                                        >
+                                                            <p
+                                                                className={
+                                                                    styles.label
+                                                                }
+                                                            >
+                                                                Placement Count
+                                                            </p>
+                                                            {handleHackDashInputs(
+                                                                item[
+                                                                    "Placement Count"
+                                                                ]
+                                                            )}
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            </>
+                                        );
+                                    })}
+                                    <p className={styles.heading}>
+                                        Participant Data
+                                    </p>
+                                    <div className={styles.tableContainer}>
+                                        <TableTop
+                                            onSearchText={handleHackSearch}
                                             onPerPageNumber={
                                                 handleHackPerPageNumber
                                             }
-                                            perPage={perHackPage}
-                                            setPerPage={setPerHackPage}
+                                            CSV="https://docs.google.com/spreadsheets/d/1w2Ax918fkkumNiCJ42tc5T9fJeidVGL9_9B-2j7klDM/edit#gid=0"
                                         />
-                                    </Table>
+                                        <br />
+                                        <Table
+                                            rows={HackathonReport}
+                                            page={currentHackPage}
+                                            perPage={perHackPage}
+                                            columnOrder={HackathonColumnOrder}
+                                            isloading={hackLoading}
+                                        >
+                                            <THead
+                                                columnOrder={
+                                                    HackathonColumnOrder
+                                                }
+                                                onIconClick={
+                                                    handlehackIconClick
+                                                }
+                                            />
+                                            <Pagination
+                                                currentPage={currentHackPage}
+                                                totalPages={totalHackPages}
+                                                margin="10px 0"
+                                                handleNextClick={
+                                                    handleHackNextClick
+                                                }
+                                                handlePreviousClick={
+                                                    handleHackPreviousClick
+                                                }
+                                                onPerPageNumber={
+                                                    handleHackPerPageNumber
+                                                }
+                                                perPage={perHackPage}
+                                                setPerPage={setPerHackPage}
+                                            />
+                                        </Table>
+                                    </div>
                                 </div>
-                            </div>
-                        )}
+                            )}
+                        </div>
                     </div>
-                </div>
+                ) : (
+                    <KKEMAuthentication
+                        dashboardPassword={dashboardPassword}
+                        setDashboardPassword={setDashboardPassword}
+                        loginTriggered={loginTriggered}
+                        setLoginTriggered={setLoginTriggered}
+                    />
+                )
             ) : key ? (
                 <div className={styles.dashboardContainer}>
                     {" "}

@@ -7,9 +7,9 @@ import styles from "./HackathonCreate.module.css";
 import { DateConverter, convertDateToYYYYMMDD } from "../../../utils/common";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { HackList } from "../services/HackathonInterfaces";
-import { useToast } from "@chakra-ui/react";
 import { LuCopy } from "react-icons/lu";
 import Countdown from "../../../utils/Countdown";
+import toast from "react-hot-toast";
 
 type Props = {};
 
@@ -27,7 +27,6 @@ export const HackathonDetails = (props: Props) => {
     const { id } = useParams();
     const [data, setData] = useState<HackList>();
     const navigate = useNavigate();
-    const toast = useToast();
 
     const shareData = {
         title: data?.title || "not yet named",
@@ -177,14 +176,10 @@ export const HackathonDetails = (props: Props) => {
                                         window.navigator.clipboard.writeText(
                                             shareData.url
                                         );
-                                        toast({
-                                            title: "Success",
-                                            description:
-                                                "Link copied to clipboard",
-                                            status: "success",
-                                            duration: 3000,
-                                            isClosable: true
-                                        });
+
+                                        toast.success(
+                                            "Link copied to clipboard"
+                                        );
                                         if (isShareable)
                                             window.navigator.share(shareData);
                                     }}
