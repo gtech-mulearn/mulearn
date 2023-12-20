@@ -27,19 +27,34 @@ export default function Rolepage() {
         if (userData === undefined || userData === null) {
             navigate("/register", { replace: true });
         } else {
-            getRoles({
-                setIsLoading: setIsLoading,
-                setRoles: setRoles
-            });
+            getRoles()
+                .then((res: any) => {
+                    // Update roles state
+                    setRoles(res);
+
+                    setIsLoading(false);
+                    setSelectedRoleId(userData.role);
+
+                    const role = res.find(
+                        (role: any) => role.id === userData?.role
+                    )?.title;
+                    setSelectedRole(role || "");
+                    setNextPage(
+                        roleOptions.find(
+                            roleOption => roleOption.value === role
+                        )?.nextPage || ""
+                    );
+                })
+                .catch(error => {
+                    console.error("Error fetching roles", error);
+                });
         }
     }, []);
 
     const submitData = () => {
         const newUserData: any = {
             user: {
-                first_name: userData.user.first_name,
-                last_name: userData.user.last_name,
-                mobile: userData.user.mobile,
+                full_name: userData.user.full_name,
                 email: userData.user.email,
                 password: userData.user.password
             }
@@ -53,6 +68,7 @@ export default function Rolepage() {
         }
         if (userData.referral)
             newUserData["referral"] = { muid: userData.referral.muid };
+        console.log(newUserData);
 
         submitUserData({
             setIsLoading: setIsLoading,
@@ -65,14 +81,12 @@ export default function Rolepage() {
     return (
         <OnboardingTemplate>
             <OnboardingHeader
-                title={"What describes you the most!"}
-                desc={"Please select your role"}
+                title={"Tell us about yourself"}
+                desc={"Fill in the details below to get started"}
             />
-            {isloading ? (
-                <MuLoader />
-            ) : (
-                <div className={styles.rolePageConatiner}>
-                    <div
+
+            <div className={styles.rolePageConatiner}>
+                {/* <div
                         className={
                             styles.rolePageCards +
                             " " +
@@ -104,26 +118,25 @@ export default function Rolepage() {
                                 </div>
                             );
                         })}
-                    </div>
-                    {nextPage &&
-                        (nextPage === "select-college" ? (
-                            <CollegePage selectedRole={selectedRoleId} />
-                        ) : (
-                            <CompanyPage selectedRole={selectedRoleId} />
-                        ))}
+                    </div> */}
+                {nextPage &&
+                    (nextPage === "select-college" ? (
+                        <CollegePage selectedRole={selectedRoleId} />
+                    ) : (
+                        <CompanyPage selectedRole={selectedRoleId} />
+                    ))}
 
-                    {["Other", "Graduate"].includes(selectedRole) && (
-                        <button
-                            className={styles.buttonWidth}
-                            onClick={() => {
-                                submitData();
-                            }}
-                        >
-                            Submit
-                        </button>
-                    )}
-                </div>
-            )}
+                {["Other", "Graduate"].includes(selectedRole) && (
+                    <button
+                        className={styles.buttonWidth}
+                        onClick={() => {
+                            submitData();
+                        }}
+                    >
+                        Submit
+                    </button>
+                )}
+            </div>
         </OnboardingTemplate>
     );
 }
