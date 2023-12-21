@@ -110,7 +110,6 @@ function ManageRoles() {
                     className={styles.cursor}
                 >
                     <IoPersonAddOutline size={20} />
-
                 </div>
             )
         }
@@ -308,14 +307,6 @@ function ManageRoles() {
                 : ""}
 
             <div className={styles.createBtnContainer}>
-                <PowerfulButton
-                    className={styles.createUserBtn}
-                    onClick={handleUsers}
-                >
-                    <AiOutlinePlusCircle />
-                    Users
-                </PowerfulButton>
-
                 <PowerfulButton
                     className={styles.createBtn}
                     onClick={handleCreate}

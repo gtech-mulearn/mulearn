@@ -72,13 +72,6 @@ const Events = lazy(() =>
         default: module.Events
     }))
 );
-
-const ManageUsersCreate = lazy(
-    () => import("./modules/Dashboard/modules/ManageUsers/ManageUsersCreate")
-);
-const ManageUsersEdit = lazy(
-    () => import("./modules/Dashboard/modules/ManageUsers/ManageUsersEdit")
-);
 const DynamicType = lazy(
     () => import("./modules/Dashboard/modules/DynamicType/DynamicType")
 );
@@ -336,14 +329,6 @@ function App() {
                                     children={<ManageUsers />}
                                 />
                             )
-                        },
-                        {
-                            path: "manage-users/create",
-                            element: <ManageUsersCreate />
-                        },
-                        {
-                            path: "manage-users/edit/:id",
-                            element: <ManageUsersEdit />
                         },
                         {
                             path: "manage-roles",
