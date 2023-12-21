@@ -31,8 +31,7 @@ export const getEditUserProfile = (
         .then(response => {
             // console.log(response.data.response);
             const {
-                first_name,
-                last_name,
+                full_name,
                 email,
                 mobile,
                 gender,
@@ -40,8 +39,8 @@ export const getEditUserProfile = (
                 communities
             } = response.data.response;
             const profileDetails: profileDetails = {
-                first_name: first_name,
-                last_name: last_name,
+                first_name: full_name.split(" ")[0],
+                last_name: full_name.split(" ")[1] ?? "",
                 email,
                 mobile: mobile,
                 gender,
@@ -100,8 +99,15 @@ export const patchEditUserProfile = async (
     try {
         if (image) await updateProfileImage(image, id);
 
+        // concat first_name and last_name and store it in full_name
+        const full_name = `${editedProfileDetails.first_name} ${editedProfileDetails.last_name}`;
+        const payload = {
+            ...editedProfileDetails,
+            full_name
+        };
+
         privateGateway
-            .patch(dashboardRoutes.getEditUserProfile, editedProfileDetails)
+            .patch(dashboardRoutes.getEditUserProfile, payload)
             .then(response => {
                 // console.log(response.data.response);
 

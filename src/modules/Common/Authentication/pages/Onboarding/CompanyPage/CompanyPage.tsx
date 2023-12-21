@@ -1,7 +1,11 @@
 import OnboardingHeader from "../../../components/OnboardingHeader/OnboardingHeader";
 import OnboardingTemplate from "../../../components/OnboardingTeamplate/OnboardingTemplate";
 import styles from "./CompanyPage.module.css";
-import { getRoles, submitUserData } from "../../../services/newOnboardingApis";
+import {
+    // getInterestGroups,
+    getRoles,
+    submitUserData
+} from "../../../services/newOnboardingApis";
 
 import { Form, Formik } from "formik";
 import * as z from "yup";
@@ -14,8 +18,15 @@ import ReactSelect from "react-select";
 import { useLocation, useNavigate } from "react-router-dom";
 
 
+type InterestGroup = {
+    id: string;
+    name: string;
+};
+
 const inputObject = {
-    company: "Company Name"
+    company: "Company Name",
+    aois: "Area of interest",
+    about: "Tell us about yourself"
 };
 
 const scheme = z.object({
@@ -24,7 +35,11 @@ const scheme = z.object({
         .required(`Company Name is Required`)
         .min(3, `Company Name must be at least 3 characters`)
         .max(100, `Company Name must be at most 100 characters`),
-    radio: z.string().required(`This field is Required`)
+    radio: z.string().required(`This field is Required`),
+    hours: z.string().required(`This field is Required`),
+    reason: z.string().required(`This field is Required`),
+    aois: z.string().required(`This field is Required`),
+    about: z.string().required(`This field is Required`)
 });
 
 const CustomFilter = (
@@ -35,7 +50,16 @@ const CustomFilter = (
     if (!string) return true;
     return label.toLowerCase().startsWith(string.toLowerCase());
 };
-
+// const renderErrorSpan = (formik: any, fieldName: string) => {
+//     return (
+//         formik.touched[fieldName as keyof typeof formik.touched] &&
+//         formik.errors[fieldName as keyof typeof formik.touched] && (
+//             <span className={styles.errorsSpan}>
+//                 {formik.errors[fieldName as keyof typeof formik.touched]}
+//             </span>
+//         )
+//     );
+// };
 export default function CompanyPage({
     selectedRole
 }: {
@@ -49,6 +73,7 @@ export default function CompanyPage({
     const [isloading, setIsLoading] = useState(true);
     const [companies, setCompanies] = useState([{ id: "", title: "" }]);
     const [roles, setRoles] = useState([{ id: "", title: "" }]);
+    // const [interestGroups, setInterestGroups] = useState([] as InterestGroup[]);
 
     useEffect(() => {
         if (
@@ -62,10 +87,14 @@ export default function CompanyPage({
                 setIsLoading: setIsLoading,
                 setCompanies: setCompanies
             });
-            getRoles({
-                setIsLoading: setIsLoading,
-                setRoles: setRoles
+            getRoles().then((res: any) => {
+                setRoles(res);
+                setIsLoading(false);
             });
+            // getInterestGroups().then((res: any) => {
+            //     setInterestGroups(res);
+            //     setIsLoading(false);
+            // });
         }
     }, []);
 
@@ -73,19 +102,18 @@ export default function CompanyPage({
         id: "",
         title: ""
     });
+    // const [selectedAois, setSelectedAois] = useState([]);
 
     const onSubmit = async (values: any) => {
         // Remove "Others" company from organizations array if it exists
         const organizations =
-            values.company === "Others"
+        values.company === "Others"
                 ? userData.communities
                 : [values.company, ...userData.communities];
 
         const newUserData: any = {
             user: {
-                first_name: userData.user.first_name,
-                last_name: userData.user.last_name,
-                mobile: userData.user.mobile,
+                full_name: userData.user.full_name,
                 email: userData.user.email,
                 password: userData.user.password
             },
@@ -93,6 +121,12 @@ export default function CompanyPage({
                 year_of_graduation: values.graduationYear,
                 organizations: organizations,
                 verified: true
+            },
+            mentor: {
+                // mentor_interest: values.aois,
+                reason: values.reason,
+                hours: values.hours,
+                about: values.about
             }
         };
 
@@ -105,14 +139,8 @@ export default function CompanyPage({
         if (userData.referral)
             newUserData["referral"] = { muid: userData.referral.muid };
 
-        /// If user doesn't want to be a mentor set role to null
-        if (values.radio === "yes") {
-            if (selectedRole === "") {
-                const mentorRole = roles.find(role => role.title === "Mentor");
-                newUserData.user["role"] = mentorRole?.id;
-            } else {
-                newUserData.user["role"] = selectedRole;
-            }
+        if (userData.role) {
+            newUserData.user["role"] = userData.role;
         }
 
         if (userData.gender) {
@@ -123,6 +151,9 @@ export default function CompanyPage({
             newUserData.user["dob"] = userData.dob;
         }
 
+
+
+        // console.log(newUserData);
         submitUserData({
             setIsLoading: setIsLoading,
             userData: newUserData,
@@ -136,7 +167,11 @@ export default function CompanyPage({
                 ...Object.fromEntries(
                     Object.keys(inputObject).map(key => [key, ""])
                 ),
-                radio: ""
+                radio: "",
+                hours: "",
+                reason: "",
+                // aois: "",
+                about: ""
             }}
             validationSchema={scheme}
             onSubmit={onSubmit}
@@ -145,55 +180,115 @@ export default function CompanyPage({
                 <div>
                     <div className={styles.wrapper}>
                         <Form onSubmit={formik.handleSubmit}>
-                            <h5 className={styles.text}>
+                            {/* <h5 className={styles.text}>
                                 Please enter your company details
                                 <span className={styles.errorsSpan}> *</span>
-                            </h5>
-                            <ReactSelect
-                                options={
-                                    [
-                                        {
-                                            value: "Others",
-                                            label: "Others"
-                                        },
-                                        ...(companies.map(company => ({
-                                            value: company.id,
-                                            label: company.title
+                            </h5> */}
+
+                            {/* <h5 className={styles.text}>
+                                Hour contribute weekly?
+                                <span className={styles.errorsSpan}> *</span>
+                            </h5> */}
+                            <div className={styles.inputBox}>
+                                <SimpleInput
+                                    value={formik.values.hours}
+                                    name="hours"
+                                    type="number"
+                                    onChange={formik.handleChange}
+                                    placeholder="Hour contribute weekly?"
+                                    required
+                                    disabled={isloading}
+                                />
+                            </div>
+
+                            <div className={styles.inputBox}>
+                                <SimpleInput
+                                    name={"reason"}
+                                    type="text"
+                                    value={formik.values.reason}
+                                    onChange={formik.handleChange}
+                                    placeholder="Why should I be a mentor?"
+                                    required
+                                    disabled={isloading}
+                                />
+                            </div>
+
+                            <div className={styles.inputBox}>
+                                <SimpleInput
+                                    name={"about"}
+                                    type="text"
+                                    value={formik.values.about}
+                                    onChange={formik.handleChange}
+                                    placeholder="Tell us about yourself"
+                                    required
+                                    disabled={isloading}
+                                />
+                            </div>
+
+                            {/* <div className={styles.inputBox}>
+                                <ReactSelect
+                                    options={[
+                                        ...(interestGroups.map(aois => ({
+                                            value: aois.id,
+                                            label: aois.name
                                         })) as any)
-                                    ] as any
-                                }
-                                name="company"
-                                placeholder="Company Name"
-                                value={selectedCompany.title}
-                                isDisabled={isloading}
-                                filterOption={CustomFilter}
-                                onChange={(e: any) => {
-                                    if (e) {
-                                        setSelectedCompany(e);
-                                        formik.setFieldValue(
-                                            "company",
-                                            e.value
-                                        );
-                                        inputObject.company = e.value;
-                                    }
-                                }}
-                                required
-                            />
-                            {formik.touched[
-                                "company" as keyof typeof formik.touched
-                            ] &&
-                                formik.errors[
-                                    "company" as keyof typeof formik.touched
-                                ] && (
-                                    <span className={styles.errorsSpan}>
-                                        {
-                                            formik.errors[
-                                                "company" as keyof typeof formik.touched
-                                            ]
+                                    ]}
+                                    name="aois"
+                                    placeholder="Area of interest"
+                                    value={selectedAois}
+                                    isDisabled={isloading}
+                                    isMulti
+                                    filterOption={CustomFilter}
+                                    onChange={(selectedOptions: any) => {
+                                        if (selectedOptions.length <= 3) {
+                                            setSelectedAois(selectedOptions);
+                                            formik.setFieldValue(
+                                                "aois",
+                                                selectedOptions.map(
+                                                    (option: any) =>
+                                                        option.value
+                                                )
+                                            );
                                         }
-                                    </span>
-                                )}
-                            <div className={styles.content}>
+                                    }}
+                                    required
+                                />
+                            </div> */}
+
+                            <div className={styles.inputBox}>
+                                <ReactSelect
+                                    options={
+                                        [
+                                            {
+                                                value: "Others",
+                                                label: "Others"
+                                            },
+                                            ...(companies.map(company => ({
+                                                value: company.id,
+                                                label: company.title
+                                            })) as any)
+                                        ] as any
+                                    }
+                                    name="company"
+                                    placeholder="Company Name"
+                                    value={selectedCompany.title}
+                                    isDisabled={isloading}
+                                    filterOption={CustomFilter}
+                                    onChange={(e: any) => {
+                                        if (e) {
+                                            setSelectedCompany(e);
+                                            formik.setFieldValue(
+                                                "company",
+                                                e.value
+                                            );
+                                            inputObject.company = e.value;
+                                        }
+                                    }}
+                                    // required
+                                />
+                            </div>
+                            {/* {renderErrorSpan(formik, "company")} */}
+                            {/* <div className={styles.content}>
                                 <h5 className={styles.text}>
                                     Do you want to become a mentor?
                                     <span className={styles.errorsSpan}>
@@ -249,12 +344,16 @@ export default function CompanyPage({
                                         </label>
                                     </button>
                                 </div>
-                            </div>
+                            </div> */}
 
                             <div className={styles.submit}>
                                 <PowerfulButton
                                     type="submit"
                                     isLoading={isloading}
+                                    style={{ marginTop: "20px" }}
+                                    onClick={() => {
+                                        onSubmit(formik.values);
+                                    }}
                                 >
                                     {isloading ? "Please wait..." : "Submit"}
                                 </PowerfulButton>

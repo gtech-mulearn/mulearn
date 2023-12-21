@@ -43,7 +43,7 @@ const TopNavBar = () => {
         const userInfo = fetchLocalStorage<UserInfo>("userInfo");
 
         if (userInfo) {
-            setName(userInfo?.first_name);
+            setName(userInfo?.full_name.split(" ")[0]);
             setProfilePic(userInfo?.profile_pic || null);
         }
     }, []);

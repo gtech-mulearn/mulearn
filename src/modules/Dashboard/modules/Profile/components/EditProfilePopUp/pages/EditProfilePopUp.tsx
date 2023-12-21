@@ -69,7 +69,7 @@ const EditProfilePopUp = (props: Props) => {
         validate: (values: any) => {
             let errors: any = {};
             const emailRegex = /\S+@\S+\.\S+/;
-            ["first_name", "last_name", "mobile"].forEach(key => {
+            ["first_name", "mobile"].forEach(key => {
                 if (!values[key]) errors[key] = "Required";
             });
             if (!values.email) errors.email = "Email is required";

@@ -268,7 +268,8 @@ function App() {
             path: "/",
             element: <AuthRoutes />,
             children: [
-                { path: "register", element: <AccountCreation /> },
+                { path: "register/:role", element: <AccountCreation /> },
+                { path: "register/", element: <AccountCreation /> },
                 { path: "login", element: <SignIn /> },
                 { path: "forgot-password", element: <ForgetPassword /> },
                 { path: "reset-password", element: <ResetPassword /> }
@@ -278,15 +279,15 @@ function App() {
             path: "/signin",
             element: <SignIn />
         },
+        // {
+        //     path: "/signup/:role",
+        //     element: <AccountCreation />
+        // },
         {
-            path: "/signup",
-            element: <AccountCreation />
-        },
-        {
-            path: "register/select-role",
+            path: "register/about",
             element: <Rolepage />
         },
-        { path: "register/select-community", element: <CommunityPage /> },
+        // { path: "register/select-community", element: <CommunityPage /> },
         {
             path: "/",
             element: <PrivateRoutes />,

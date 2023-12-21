@@ -42,6 +42,7 @@ export default function CommunityPage() {
         getLocations(locationParam, setLocationData, setIsApiCalled)
         setIsLoading(false);
     }, []);
+        
     const handleSubmit = async (values: any) => {
         if (values.communities) userData.communities = values.communities;
         if (values.district) userData.district = values.district;
@@ -50,6 +51,8 @@ export default function CommunityPage() {
             userData: userData,
             setIsSubmitting: setIsLoading,
         });
+        console.log(isSuccess);
+        
         isSuccess? navigate("/register/select-role", { state: userData }) :  delete userData.referral;
     };
 
@@ -154,7 +157,7 @@ export default function CommunityPage() {
                                         }
                                     />
                                 </div>
-                                <div className={styles.inputBox}>
+                                {/* <div className={styles.inputBox}>
                                     <SimpleInput
                                         name={"referral"}
                                         value={formik.values.referral}
@@ -162,7 +165,7 @@ export default function CommunityPage() {
                                         placeholder="Referral MuID (Optional)"
                                         disabled={isLoading}
                                     />
-                                </div>
+                                </div> */}
 
                                 <PowerfulButton
                                     type="submit"
