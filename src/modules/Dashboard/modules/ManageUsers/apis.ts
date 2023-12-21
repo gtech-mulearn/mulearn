@@ -59,8 +59,9 @@ export const getManageUsers = async ({
 };
 
 export const createManageUsers = async (
-    firstName: string,
-    last_name: string,
+    // firstName: string,
+    // last_name: string,
+    full_name: string,
     email: string,
     mobile: string,
     dob: string,
@@ -70,8 +71,9 @@ export const createManageUsers = async (
         const response = await privateGateway.post(
             dashboardRoutes.getUsersData,
             {
-                first_name: firstName,
-                last_name: last_name,
+                // first_name: firstName,
+                // last_name: last_name,
+                full_name: full_name,
                 email: email,
                 mobile: mobile
             }
@@ -87,8 +89,9 @@ export const createManageUsers = async (
 export const editManageUsers = async (
     navigate: NavigateFunction,
     id?: string,
-    first_name?: string,
-    last_name?: string,
+    // first_name?: string,
+    // last_name?: string,
+    full_name?: string,
     email?: string,
     mobile?: string,
     discord_id?: string | null,
@@ -102,8 +105,9 @@ export const editManageUsers = async (
         const response = await privateGateway.patch(
             dashboardRoutes.getUsersData + id + "/",
             {
-                first_name: first_name,
-                last_name: last_name,
+                // first_name: first_name,
+                // last_name: last_name,
+                full_name: full_name,
                 email: email,
                 mobile: mobile,
                 discord_id: discord_id,

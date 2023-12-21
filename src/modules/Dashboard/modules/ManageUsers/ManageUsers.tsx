@@ -20,7 +20,7 @@ function ManageRoles() {
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
     const firstFetch = useRef(true);
-    
+
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [id, setId] = useState("");
@@ -29,8 +29,9 @@ function ManageRoles() {
     type ColOrderType = { isSortable: boolean; column: string; Label: string };
 
     const columnOrder: ColOrderType[] = [
-        { column: "first_name", Label: "First Name", isSortable: true },
-        { column: "last_name", Label: "Last Name", isSortable: true },
+        // { column: "first_name", Label: "First Name", isSortable: true },
+        // { column: "last_name", Label: "Last Name", isSortable: true },
+        { column: "full_name", Label: "Full Name", isSortable: true },
         { column: "karma", Label: "Total Karma", isSortable: true },
         { column: "muid", Label: "Mu ID", isSortable: true },
         { column: "email", Label: "Email", isSortable: true },
@@ -63,7 +64,7 @@ function ManageRoles() {
             page: nextPage,
             selectedValue: perPage,
             setIsLoading: setIsLoading,
-            setTotalPages: () => {},
+            setTotalPages: () => { },
             search: "",
             sortID: sort
         });
@@ -77,7 +78,7 @@ function ManageRoles() {
             page: prevPage,
             selectedValue: perPage,
             setIsLoading: setIsLoading,
-            setTotalPages: () => {},
+            setTotalPages: () => { },
             search: "",
             sortID: sort
         });
@@ -164,7 +165,7 @@ function ManageRoles() {
                         onSearchText={handleSearch}
                         onPerPageNumber={handlePerPageNumber}
                         CSV={dashboardRoutes.getUsersList}
-                        // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
+                    // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
                     />
                     <MuModal
                         isOpen={isModalOpen}
