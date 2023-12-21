@@ -166,7 +166,7 @@ export const getUser = async (
     success?: ResultHandler
 ) => {
     type userReqBody = {
-        fullname: string;
+        full_name: string;
         id: string;
         muid: string;
     };
@@ -181,7 +181,7 @@ export const getUser = async (
 
         const data: roleUsers[] = res.data.response
             .map((user: userReqBody) => ({
-                label: user.fullname,
+                label: user.muid,
                 value: user.id
             }));
 
