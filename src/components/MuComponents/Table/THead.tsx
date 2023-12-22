@@ -1,12 +1,16 @@
 import styles from "./Table.module.css";
 import { RxCaretSort } from "react-icons/rx";
 import { BiSortAlt2 } from "react-icons/bi";
+import { ReactElement } from "react";
+import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
+import { Data } from "./Table";
 
 interface TableHeadProps {
     columnOrder: {
         column: string;
         Label: string;
         isSortable: boolean;
+        wrap?: (data: string | ReactElement, id: string, row: Data) => ReactJSXElement;
     }[];
     onIconClick: (column: string) => void;
     action?: true | false;
