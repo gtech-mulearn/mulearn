@@ -2,7 +2,7 @@ import OnboardingHeader from "../../../components/OnboardingHeader/OnboardingHea
 import OnboardingTemplate from "../../../components/OnboardingTeamplate/OnboardingTemplate";
 import styles from "./CompanyPage.module.css";
 import {
-    // getInterestGroups,
+    getInterestGroups,
     getRoles,
     submitUserData
 } from "../../../services/newOnboardingApis";
@@ -73,7 +73,7 @@ export default function CompanyPage({
     const [isloading, setIsLoading] = useState(true);
     const [companies, setCompanies] = useState([{ id: "", title: "" }]);
     const [roles, setRoles] = useState([{ id: "", title: "" }]);
-    // const [interestGroups, setInterestGroups] = useState([] as InterestGroup[]);
+    const [interestGroups, setInterestGroups] = useState([] as InterestGroup[]);
 
     useEffect(() => {
         if (
@@ -91,10 +91,10 @@ export default function CompanyPage({
                 setRoles(res);
                 setIsLoading(false);
             });
-            // getInterestGroups().then((res: any) => {
-            //     setInterestGroups(res);
-            //     setIsLoading(false);
-            // });
+            getInterestGroups().then((res: any) => {
+                setInterestGroups(res);
+                setIsLoading(false);
+            });
         }
     }, []);
 
@@ -102,7 +102,7 @@ export default function CompanyPage({
         id: "",
         title: ""
     });
-    // const [selectedAois, setSelectedAois] = useState([]);
+    const [selectedAois, setSelectedAois] = useState([]);
 
     const onSubmit = async (values: any) => {
         // Remove "Others" company from organizations array if it exists
@@ -115,7 +115,8 @@ export default function CompanyPage({
             user: {
                 full_name: userData.user.full_name,
                 email: userData.user.email,
-                password: userData.user.password
+                password: userData.user.password,
+                area_of_interest: values.aois,
             },
             organization: {
                 year_of_graduation: values.graduationYear,
@@ -123,7 +124,6 @@ export default function CompanyPage({
                 verified: true
             },
             mentor: {
-                // mentor_interest: values.aois,
                 reason: values.reason,
                 hours: values.hours,
                 about: values.about
@@ -170,7 +170,7 @@ export default function CompanyPage({
                 radio: "",
                 hours: "",
                 reason: "",
-                // aois: "",
+                aois: "",
                 about: ""
             }}
             validationSchema={scheme}
@@ -225,7 +225,7 @@ export default function CompanyPage({
                                 />
                             </div>
 
-                            {/* <div className={styles.inputBox}>
+                            <div className={styles.inputBox}>
                                 <ReactSelect
                                     options={[
                                         ...(interestGroups.map(aois => ({
@@ -253,7 +253,7 @@ export default function CompanyPage({
                                     }}
                                     required
                                 />
-                            </div> */}
+                            </div>
 
                             <div className={styles.inputBox}>
                                 <ReactSelect
