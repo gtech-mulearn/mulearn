@@ -1,4 +1,3 @@
-import toast from "react-hot-toast";
 import { Navigate, Outlet } from "react-router-dom";
 
 const PrivateRoutes: React.FC = () => {
@@ -21,9 +20,6 @@ const PrivateRoutes: React.FC = () => {
         return (
             <>
                 <Navigate to={`/login?ruri=${redirection}`} />;
-                {toast.error(
-                    "Kindly verify your email first, check your email for the verification link"
-                )}
             </>
         );
     }
