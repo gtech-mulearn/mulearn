@@ -3,6 +3,19 @@ import { NavigateFunction } from "react-router-dom";
 import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 
+type CampusDataSet = {
+    college_name: string;
+    campus_lead: string;
+    campus_code: string;
+    campus_zone: string;
+    total_karma: string;
+    total_members: string;
+    active_members: string;
+    rank: string;
+    lead: { campus_lead: string; enabler: string };
+};
+type campusData = UseStateFunc<CampusDataSet>;
+
 type userProfile = UseStateFunc<any>;
 type userLog = UseStateFunc<any>;
 type APILoadStatus = UseStateFunc<any>;
@@ -109,3 +122,14 @@ export const getPublicUserLevels = (
         });
 };
 
+export const getCampusDetails = (setCampusData: campusData) => {
+    privateGateway
+        .get(dashboardRoutes.getCampusDetails)
+        .then((response: APIResponse<CampusDataSet>) => {
+            // console.log(response.data.response);
+            setCampusData(response.data.response);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+};

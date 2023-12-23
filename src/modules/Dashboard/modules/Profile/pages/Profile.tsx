@@ -6,6 +6,7 @@ import MulearnBrand from "../assets/svg/MulearnBrand";
 import Rank from "../assets/svg/Rank";
 import { PieChart } from "../components/Piechart/PieChart";
 import {
+    getCampusDetails,
     getPublicUserLevels,
     getPublicUserLog,
     getPublicUserProfile,
@@ -26,7 +27,11 @@ import BasicDetails from "../components/BasicDetails/pages/BasicDetails";
 import Socials from "../components/Socials/pages/Socials";
 import ShareProfilePopUp from "../components/ShareProfilePopUp/pages/ShareProfilePopUp";
 import HelmetMetaTags from "../components/HelmetMetaTags/HelmetMetaTags";
-import { isDev } from "@/MuLearnServices/common_functions";
+import { titleCase } from "title-case";
+import CLIcon from "../../CampusStudentList/assets/images/CampusLeadIcon.svg";
+import CEIcon from "../../LearningCircle/assets/images/Lead icon.svg";
+
+
 
 //TODO: Verify the relevance of profile page image
 const Profile = () => {
@@ -106,6 +111,21 @@ const Profile = () => {
         }, 1000);
     };
 
+    const [campusData, setCampusData] = useState({
+        college_name: "",
+        campus_lead: "",
+        campus_code: "",
+        campus_zone: "",
+        total_karma: "",
+        total_members: "",
+        active_members: "",
+        rank: "",
+        lead: {
+            campus_lead: "",
+            enabler: ""
+        }
+    });
+
     useEffect(() => {
         if (firstFetch.current) {
             if (!id) {
@@ -116,6 +136,7 @@ const Profile = () => {
                 );
                 getUserLog(setUserLog);
                 getUserLevels(setUserLevelData);
+                getCampusDetails(setCampusData);
             } else {
                 getPublicUserProfile(setUserProfile, setAPILoadStatus, id);
                 getPublicUserLog(setUserLog, id);
@@ -203,9 +224,10 @@ const Profile = () => {
                                                         src={
                                                             userProfile.profile_pic
                                                                 ? userProfile.profile_pic +
-                                                                `?${Math.random() *
-                                                                1000
-                                                                }`
+                                                                  `?${
+                                                                      Math.random() *
+                                                                      1000
+                                                                  }`
                                                                 : dpm
                                                         }
                                                         alt={
@@ -214,24 +236,26 @@ const Profile = () => {
                                                         style={
                                                             !id
                                                                 ? {
-                                                                    outlineColor:
-                                                                        !profileStatus
-                                                                            ? "#456FF6"
-                                                                            : "#2dce89"
-                                                                }
+                                                                      outlineColor:
+                                                                          !profileStatus
+                                                                              ? "#456FF6"
+                                                                              : "#2dce89"
+                                                                  }
                                                                 : {}
                                                         }
                                                     />
                                                     {!id && (
                                                         <span>
                                                             <i
-                                                                className={`${!profileStatus
+                                                                className={`${
+                                                                    !profileStatus
                                                                         ? "fi fi-sr-shield-exclamation"
                                                                         : "fi fi-sr-shield-check"
-                                                                    }  ${!profileStatus
+                                                                }  ${
+                                                                    !profileStatus
                                                                         ? styles.private
                                                                         : styles.public
-                                                                    }`}
+                                                                }`}
                                                             ></i>
                                                             <div
                                                                 className={
@@ -251,8 +275,8 @@ const Profile = () => {
                                                         {userProfile.last_name}{" "}
                                                         {userProfile.college_code
                                                             ? "(" +
-                                                            userProfile.college_code +
-                                                            ")"
+                                                              userProfile.college_code +
+                                                              ")"
                                                             : null}
                                                     </h1>
                                                     <p
@@ -270,9 +294,9 @@ const Profile = () => {
                                                         LEVEL{"     "}
                                                         {userProfile.level
                                                             ? userProfile?.level?.slice(
-                                                                3,
-                                                                4
-                                                            )
+                                                                  3,
+                                                                  4
+                                                              )
                                                             : 1}
                                                     </p>
                                                 </div>
@@ -322,26 +346,26 @@ const Profile = () => {
                                             <p
                                                 style={
                                                     profileList ===
-                                                        "basic-details"
+                                                    "basic-details"
                                                         ? {
-                                                            marginLeft: "0px",
-                                                            width: "6.1rem"
-                                                        }
+                                                              marginLeft: "0px",
+                                                              width: "6.1rem"
+                                                          }
                                                         : profileList ===
-                                                            "karma-history"
-                                                            ? {
-                                                                marginLeft:
-                                                                    "125px",
-                                                                width: "6.7rem"
-                                                            }
-                                                            : profileList ===
-                                                                "mu-voyage"
-                                                                ? {
-                                                                    marginLeft:
-                                                                        "250px",
-                                                                    width: "5.3rem"
-                                                                }
-                                                                : {}
+                                                          "karma-history"
+                                                        ? {
+                                                              marginLeft:
+                                                                  "125px",
+                                                              width: "6.7rem"
+                                                          }
+                                                        : profileList ===
+                                                          "mu-voyage"
+                                                        ? {
+                                                              marginLeft:
+                                                                  "250px",
+                                                              width: "5.3rem"
+                                                          }
+                                                        : {}
                                                 }
                                                 className={styles.underline}
                                             ></p>
@@ -353,11 +377,11 @@ const Profile = () => {
                                                 }
                                                 style={
                                                     profileList ===
-                                                        "basic-details"
+                                                    "basic-details"
                                                         ? {
-                                                            fontSize: "600",
-                                                            color: "#000"
-                                                        }
+                                                              fontSize: "600",
+                                                              color: "#000"
+                                                          }
                                                         : {}
                                                 }
                                             >
@@ -371,11 +395,11 @@ const Profile = () => {
                                                 }
                                                 style={
                                                     profileList ===
-                                                        "karma-history"
+                                                    "karma-history"
                                                         ? {
-                                                            fontSize: "600",
-                                                            color: "#000"
-                                                        }
+                                                              fontSize: "600",
+                                                              color: "#000"
+                                                          }
                                                         : {}
                                                 }
                                             >
@@ -388,9 +412,9 @@ const Profile = () => {
                                                 style={
                                                     profileList === "mu-voyage"
                                                         ? {
-                                                            fontSize: "600",
-                                                            color: "#000"
-                                                        }
+                                                              fontSize: "600",
+                                                              color: "#000"
+                                                          }
                                                         : {}
                                                 }
                                             >
@@ -408,11 +432,11 @@ const Profile = () => {
                                                             userProfile.karma
                                                         ) > 1000
                                                             ? (
-                                                                parseInt(
-                                                                    userProfile.karma
-                                                                ) / 1000
-                                                            ).toPrecision(3) +
-                                                            "K"
+                                                                  parseInt(
+                                                                      userProfile.karma
+                                                                  ) / 1000
+                                                              ).toPrecision(3) +
+                                                              "K"
                                                             : userProfile.karma}
                                                     </h1>
                                                 </div>
@@ -427,31 +451,31 @@ const Profile = () => {
                                                         ) /
                                                             monthDifference >
                                                             1000 &&
-                                                            monthDifference !== 0
+                                                        monthDifference !== 0
                                                             ? (
-                                                                parseInt(
-                                                                    userProfile.karma
-                                                                ) /
-                                                                monthDifference /
-                                                                1000
-                                                            ).toPrecision(4) +
-                                                            "K"
+                                                                  parseInt(
+                                                                      userProfile.karma
+                                                                  ) /
+                                                                  monthDifference /
+                                                                  1000
+                                                              ).toPrecision(4) +
+                                                              "K"
                                                             : isNaN(
-                                                                parseInt(
-                                                                    userProfile.karma
-                                                                ) /
-                                                                monthDifference
-                                                            )
-                                                                ? "0"
-                                                                : monthDifference ===
-                                                                    0
-                                                                    ? "0"
-                                                                    : (
-                                                                        parseInt(
-                                                                            userProfile.karma
-                                                                        ) /
-                                                                        monthDifference
-                                                                    ).toPrecision(3)}
+                                                                  parseInt(
+                                                                      userProfile.karma
+                                                                  ) /
+                                                                      monthDifference
+                                                              )
+                                                            ? "0"
+                                                            : monthDifference ===
+                                                              0
+                                                            ? "0"
+                                                            : (
+                                                                  parseInt(
+                                                                      userProfile.karma
+                                                                  ) /
+                                                                  monthDifference
+                                                              ).toPrecision(3)}
                                                     </h1>
                                                 </div>
                                             </div>
@@ -463,10 +487,14 @@ const Profile = () => {
                                                 </div>
                                             </div>
                                             <div className={styles.points}>
-                                                < Rank />
+                                                <Rank />
                                                 <div>
                                                     <span>Percentile</span>
-                                                    <h1>{parseFloat(userProfile.percentile).toFixed(2)}</h1>
+                                                    <h1>
+                                                        {parseFloat(
+                                                            userProfile.percentile
+                                                        ).toFixed(2)}
+                                                    </h1>
                                                 </div>
                                             </div>
                                         </div>
@@ -488,11 +516,11 @@ const Profile = () => {
                                                 userLevel={
                                                     userProfile.level !== null
                                                         ? parseInt(
-                                                            userProfile.level.slice(
-                                                                3,
-                                                                4
-                                                            )
-                                                        )
+                                                              userProfile.level.slice(
+                                                                  3,
+                                                                  4
+                                                              )
+                                                          )
                                                         : 1
                                                 }
                                             />
@@ -649,8 +677,84 @@ const Profile = () => {
                     )
                 )}
             </div>
+            {!id &&(<div className={styles.campus_student_list_container}>
+                <div className={styles.content}>
+                    <div className={styles.sec1}>
+                        <div className={styles.sec_clg}>
+                            <h1 className={styles.clg_name}>
+                                {campusData &&
+                                    campusData.college_name &&
+                                    titleCase(
+                                        campusData?.college_name?.toLowerCase()
+                                    )}
+                                ({campusData.campus_code})
+                            </h1>
+                        </div>
+                        <div className={styles.details_card}>
+                            <div className={styles.card_one}>
+                                <div className={styles.card}>
+                                    <h1>
+                                        {parseInt(campusData.total_karma) > 1000
+                                            ? (
+                                                  parseInt(
+                                                      campusData.total_karma
+                                                  ) / 1000
+                                              ).toPrecision(4) + "K"
+                                            : campusData.total_karma}
+                                    </h1>
+                                    <p>Karma</p>
+                                </div>
+                                <div className={styles.card}>
+                                    <h1>{campusData.total_members}</h1>
+                                    <p>Total Members</p>
+                                </div>
+                            </div>
+                            <div className={styles.card_one}>
+                                <div className={styles.card}>
+                                    <h1>{campusData.active_members}</h1>
+                                    <p>Active Members</p>
+                                </div>
+                                <div className={styles.card}>
+                                    <div className={styles.campus_lead_card}>
+                                        <img src={CLIcon} alt="" />
+                                        <h2>{campusData.lead.campus_lead}</h2>
+                                        <p>Campus Lead</p>
+                                    </div>
+                                </div>
+                                {campusData.lead.enabler && (
+                                    <div className={styles.card}>
+                                        <div
+                                            className={styles.campus_lead_card}
+                                        >
+                                            <img src={CEIcon} alt="" />
+                                            <h2>{campusData.lead.enabler}</h2>
+                                            <p>Campus Lead Enabler</p>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles.sec2}>
+                        <p className={styles.clg_rank}>
+                            {campusData?.rank?.toString().length === 1
+                                ? "0" + campusData.rank
+                                : campusData.rank}
+                        </p>
+                        <p className={styles.clg_rank_overlay}>RANK</p>
+
+                        <p className={styles.clg_zone}>
+                            {campusData.campus_zone} Zone
+                        </p>
+                    </div>
+                </div>
+            </div>)}
         </>
     );
 };
 
 export default Profile;
+function errHandler(err: string): void {
+    throw new Error("Function not implemented.");
+}
+
