@@ -4,7 +4,7 @@ import THead from "@/MuLearnComponents/Table/THead";
 import Table from "@/MuLearnComponents/Table/Table";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
-import { useToast } from "@chakra-ui/react";
+
 import { useEffect, useRef, useState } from "react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
@@ -23,7 +23,7 @@ export const Events = () => {
     const [sort, setSort] = useState("");
     const firstFetch = useRef(true);
     const navigate = useNavigate();
-    const toast = useToast();
+    
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isEditMode, setIsEditMode] = useState(false);
     const [taskId, setTaskId] = useState<string | number | boolean>("");
@@ -138,7 +138,7 @@ export const Events = () => {
     };
 
     const handleDelete = (id: string | undefined) => {
-        deleteEvent(id, toast);
+        deleteEvent(id);
         setData(data.filter(item => item?.id !== id));
         setTimeout(() => { reloadTaskTypes() }, 500)
     };

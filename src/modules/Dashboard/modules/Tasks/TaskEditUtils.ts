@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import * as Yup from "yup";
 import { editTask, getTaskDetails, getUUID } from "./TaskApis";
-import { useToast } from "@chakra-ui/react";
+
 
 const taskEditSchema = Yup.object().shape({
     hashtag: Yup.string() //
@@ -41,7 +41,7 @@ type IVType = {
 
 const useFormikData = () => {
     const { id } = useParams();
-    const toast = useToast();
+    
     const navigate = useNavigate();
     const [data, setData] = useState<TaskEditInterface>({
         hashtag: "",
@@ -98,8 +98,7 @@ const useFormikData = () => {
             values.discord_link,
             values.desc,
             id,
-            "",
-            toast
+            ""
         );
 
         setTimeout(() => {

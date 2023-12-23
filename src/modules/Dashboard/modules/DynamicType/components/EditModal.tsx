@@ -1,13 +1,16 @@
-import { useToast } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import styles from "./Modal.module.css";
-import mustyles from "@/MuLearnComponents/MuButtons/MuButtons.module.css";
-import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import mustyles from "@/MuLearnComponents/MuButtons/MuButton.module.css";
+import {
+    MuButton,
+    PowerfulButton
+} from "@/MuLearnComponents/MuButtons/MuButton";
 import * as Yup from "yup";
 import FormikReactSelect, {
     FormikTextInput
 } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { updateRoleType, updateUserType } from "../apis";
+import toast from "react-hot-toast";
 
 type Props = {
     onClose: any;
@@ -17,24 +20,12 @@ type Props = {
 };
 
 const EditModal = (props: Props) => {
-    const toast = useToast();
     const errHandler = (err: any) => {
-        toast({
-            title: "Something went wrong",
-            description: err.toString(),
-            status: "error",
-            duration: 3000,
-            isClosable: true
-        });
+        toast.error("Something Went Wrong");
+        toast.error(err);
     };
     const succHandler = (msg: any) => {
-        toast({
-            title: "Something went wrong",
-            description: msg.toString(),
-            status: "success",
-            duration: 3000,
-            isClosable: true
-        });
+        toast.success(msg.toString());
     };
     return (
         <Formik
@@ -88,7 +79,7 @@ const EditModal = (props: Props) => {
                 )}
 
                 <div className={styles.ButtonContainer}>
-                <PowerfulButton
+                    <PowerfulButton
                         className={`${mustyles.btn} ${styles.Decline}`}
                         onClick={() => {
                             props.onClose(null);

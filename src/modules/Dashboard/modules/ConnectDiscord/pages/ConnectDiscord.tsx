@@ -2,16 +2,15 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./ConnectDiscord.module.css";
 import cdimage from "../assets/images/connectdiscordpng1.webp";
 import { getInfo } from "../services/apis";
-import { useToast } from "@chakra-ui/react";
 import { MdContentCopy } from "react-icons/md";
 import { BsDiscord } from "react-icons/bs";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { FaInstagram } from "react-icons/fa6";
+import toast from "react-hot-toast";
 
 const ConnectDiscord = () => {
     const [muid, setMuid] = useState("");
-    const toast = useToast();
     const firstFetch = useRef(true);
     useEffect(() => {
         if (firstFetch.current) {
@@ -45,15 +44,10 @@ const ConnectDiscord = () => {
                                     variant="secondary"
                                     onClick={() => {
                                         navigator.clipboard.writeText(muid);
-                                        toast.closeAll();
-                                        toast({
-                                            title: "Copied to clipboard",
-                                            description:
-                                                "Please paste it in discord to connect your account",
-                                            status: "success",
-                                            duration: 9000,
-                                            isClosable: true
-                                        });
+
+                                        toast.success(
+                                            "Copied to clipboard, Please paste it in discord to connect your account"
+                                        );
                                     }}
                                 >
                                     <MdContentCopy />
@@ -77,8 +71,6 @@ const ConnectDiscord = () => {
                                     rel="noopener noreferrer"
                                     className={styles.follow_us}
                                 >
-
-
                                     <FaInstagram size={20} />
                                     <p style={{ marginLeft: "0.3rem" }}>
                                         Follow Us

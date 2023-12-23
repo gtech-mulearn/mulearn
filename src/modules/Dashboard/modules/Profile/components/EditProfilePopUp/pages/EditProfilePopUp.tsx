@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./EditProfilePopUp.module.css";
-import { useToast } from "@chakra-ui/react";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { FormikImageComponent } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
@@ -19,6 +18,7 @@ import {
 } from "../../../../../utils/common";
 import { BsDiscord, BsCheck } from "react-icons/bs";
 import { BeatLoader } from "react-spinners";
+import toast from "react-hot-toast";
 
 type Props = {
     editPopUp: boolean;
@@ -28,7 +28,6 @@ type Props = {
 };
 
 const EditProfilePopUp = (props: Props) => {
-    const toast = useToast();
     const [communityAPI, setCommunityAPI] = useState([{ id: "", title: "" }]);
     const [loadStatus, setLoadStatus] = useState(false);
     const imageRef = useRef<HTMLInputElement>(null);
@@ -56,25 +55,21 @@ const EditProfilePopUp = (props: Props) => {
             const { image, ...data } = values;
 
             if (imageRef.current && imageRef.current.files) {
-                updateProfileImage(
-                    imageRef.current.files[0],
-                    props.id,
-                );
+                updateProfileImage(imageRef.current.files[0], props.id);
             }
             patchEditUserProfile(
-                toast,
                 data,
                 props.id,
                 props.setEditPopUP,
                 formik.setFieldError,
-                imageRef?.current?.files?.item(0)??undefined
+                imageRef?.current?.files?.item(0) ?? undefined
             );
             props.triggerUpdateProfile();
         },
         validate: (values: any) => {
             let errors: any = {};
             const emailRegex = /\S+@\S+\.\S+/;
-            ["first_name", "last_name", "mobile"].forEach(key => {
+            ["first_name", "mobile"].forEach(key => {
                 if (!values[key]) errors[key] = "Required";
             });
             if (!values.email) errors.email = "Email is required";
@@ -88,13 +83,7 @@ const EditProfilePopUp = (props: Props) => {
         setDiscordState("loading");
         await syncDiscordImage();
         setDiscordState("finished");
-        toast({
-            title: "Image Synced",
-            description: "Profile picture synced with discord",
-            status: "success",
-            duration: 1500,
-            isClosable: true
-        });
+        toast.success("Profile picture synced with discord");
     };
 
     useEffect(() => {

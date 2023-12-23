@@ -12,7 +12,7 @@ import {
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import styles from "./InterestGroup.module.css";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
-import { useToast } from "@chakra-ui/react";
+
 import { Blank } from "@/MuLearnComponents/Table/Blank";
 import CreateOrUpdateModal from "./CreateOrUpdateModal";
 import MuModal from "@/MuLearnComponents/MuModal/MuModal";
@@ -34,7 +34,7 @@ function InterestGroup() {
     const [perPage, setPerPage] = useState(20);
     const [sort, setSort] = useState("");
     const navigate = useNavigate();
-    const toast = useToast();
+    
     const firstFetch = useRef(true);
     const columnOrder = [
         { column: "name", Label: "Name", isSortable: true },
@@ -129,7 +129,7 @@ function InterestGroup() {
     };
 
     const handleDelete = (id: string | undefined) => {
-        deleteInterestGroups(id, toast);
+        deleteInterestGroups(id);
         setTimeout(() => {
             getInterestGroups(
                 setData,

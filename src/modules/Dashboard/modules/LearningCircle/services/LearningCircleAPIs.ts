@@ -1,11 +1,11 @@
 import { AxiosError } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
-import { createStandaloneToast } from "@chakra-ui/react";
 import { SetStateAction } from "react";
 import { NavigateFunction } from "react-router-dom";
 import { dynamicRoute, lcRoutes } from "@/MuLearnServices/endpoints";
-export const { toast } = createStandaloneToast();
+
+import { toast } from "react-hot-toast";
 
 export const getUserLearningCircles = async (
     setCircleList: UseStateFunc<LcType[] | undefined>
@@ -81,37 +81,20 @@ export const createCircle = async (
         );
         const message: any = response?.data;
         setId(message.response.circle_id);
-        toast({
-            title: "Learning Circle Created",
-            description: "",
-            status: "success",
-            duration: 2000,
-            isClosable: true
-        });
+        toast.success("Learning Circle Created");
         setTimeout(() => {
             navigate(
-                `/dashboard/learning-circle/details/${message.response.circle_id}`
+                `/dashboard/learning-circle/dashboard/${message.response.circle_id}`
             );
         }, 2000);
     } catch (err) {
         const error: any = err as AxiosError;
         if (error?.response) {
-            toast({
-                title: `${error.response.data.message.non_field_errors}`,
-                description: "",
-                status: "error",
-                duration: 2000,
-                isClosable: true
-            });
-            console.log(error.response.data);
+            toast.error(`${error.response.data.message.non_field_errors}`);
         } else {
-            toast({
-                title: "Something went wrong, learning Circle was not created",
-                description: "",
-                status: "error",
-                duration: 2000,
-                isClosable: true
-            });
+            toast.error(
+                "Something went wrong, learning Circle was not created"
+            );
             setTimeout(() => {
                 navigate(`/dashboard/learning-circle/`);
             }, 2000);
@@ -125,23 +108,11 @@ export const joinCircle = async (circleCode: string) => {
             dashboardRoutes.joinLearningCircle + circleCode + "/"
         );
 
-        toast({
-            title: "Wait for approval",
-            description: "",
-            status: "warning",
-            duration: 2000,
-            isClosable: true
-        });
+        toast.success("Waiting for approval");
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
-            toast({
-                title: `${error.response.data}`,
-                description: "",
-                status: "error",
-                duration: 2000,
-                isClosable: true
-            });
+            toast.error(`${error.response.data}`);
         }
     }
 };
@@ -162,9 +133,6 @@ export const getInterestGroups = async () => {
     }
 };
 
-
-
-
 export const leaveLc = async (
     circleId: string | undefined,
     memberId: string,
@@ -174,26 +142,16 @@ export const leaveLc = async (
         const response = await privateGateway.delete(
             dashboardRoutes.getCampusLearningCircles + circleId + "/"
         );
-        toast({
-            title: "Success",
-            description: "",
-            status: "success",
-            duration: 2000,
-            isClosable: true
-        });
+
+        toast.success("Learning Circle Left");
         navigate("/dashboard/learning-circle/");
     } catch (err) {
         const error = err as AxiosError;
         if (error?.response) {
             throw error;
         }
-        toast({
-            title: "Something went wrong",
-            description: "",
-            status: "error",
-            duration: 2000,
-            isClosable: true
-        });
+
+        toast.error("Something went wrong, learning Circle was not left");
     }
 };
 
@@ -208,12 +166,7 @@ export const searchLearningCircleWithCircleCode = (
         if (lc.length === 1) {
             getCampusLearningCircles(setLc, setIsLoading);
         }
-        toast({
-            title: "Enter circle code",
-            status: "info",
-            duration: 2000,
-            isClosable: true
-        });
+        toast.error("Enter circle code");
         return;
     }
     const regex = /[^a-zA-Z0-9]/g;
@@ -232,12 +185,7 @@ export const searchLearningCircleWithCircleCode = (
         })
         .catch(err => {
             for (let error of err.response?.data?.message?.general) {
-                toast({
-                    description: error,
-                    status: "error",
-                    duration: 2000,
-                    isClosable: true
-                });
+                toast.error(error);
             }
             setIsLoading(false); // Set isLoading to false
         });
@@ -328,8 +276,10 @@ export const reportMeeting = async (id: string | undefined, data: FormData) => {
     }
 };
 
-
-export const getLCMeetingReport = async (reportId: string | undefined, circleId: string | undefined) => {
+export const getLCMeetingReport = async (
+    reportId: string | undefined,
+    circleId: string | undefined
+) => {
     try {
         const response = await privateGateway.get(
             dynamicRoute(

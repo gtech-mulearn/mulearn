@@ -11,7 +11,7 @@ import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import { useFormik } from "formik";
-import { useToast } from "@chakra-ui/react";
+
 import {
     MuButton,
     PowerfulButton
@@ -32,7 +32,7 @@ const Affiliation = () => {
         { column: "updated_at", Label: "Updated At", isSortable: false },
     ];
 
-    const toast = useToast();
+    
     const [editBtn, setEditBtn] = useState(false);
     const [createBtn, setCreateBtn] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
@@ -55,7 +55,7 @@ const Affiliation = () => {
                
             };
             if (!editBtn) {
-                createAffiliation(toast, affiliationCreateData, formik).then(result => {
+                createAffiliation( affiliationCreateData, formik).then(result => {
                     if (result) {
                         setTimeout(() => {
                             getAffiliation(
@@ -70,7 +70,7 @@ const Affiliation = () => {
                     }
                 });
             } else {
-                editAffiliation(values.id, toast, affiliationCreateData, formik).then(
+                editAffiliation(values.id, affiliationCreateData, formik).then(
                     result => {
                         if (result) {
                             setTimeout(() => {
@@ -165,20 +165,8 @@ const Affiliation = () => {
     };
 
     const handleDelete = (id: any) => {
-        deleteAffiliation(id.toString(), toast);
+        deleteAffiliation(id.toString());
         setAffiliationData(affiliationData.filter(item => item?.id !== id));
-    };
-    const handleCopy = (id: any) => {
-        navigator.clipboard.writeText(
-            affiliationData.filter(item => item?.id === id)[0].title
-        );
-        console.log(affiliationData.filter(item => item?.id === id)[0].title);
-        toast({
-            title: "Copied",
-            status: "success",
-            duration: 2000,
-            isClosable: true
-        });
     };
 
     useEffect(() => {

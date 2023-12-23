@@ -12,10 +12,10 @@ import {
 } from "@chakra-ui/react";
 import { Notification as NotificationProps, getNotifications } from "./api";
 import NotificationTab from "./Notification";
-import { useToast } from "@chakra-ui/react";
 import { SiDiscord } from "react-icons/si";
 import { MuButtonLight } from "@/MuLearnComponents/MuButtons/MuButton";
 import MuLogOut from "../assets/svg/MuLogOut";
+import toast from "react-hot-toast";
 
 const TopNavBar = () => {
     const navigate = useNavigate();
@@ -25,7 +25,6 @@ const TopNavBar = () => {
     const [notificationList, setNotificationList] = useState<
         NotificationProps[]
     >([]);
-    const toast = useToast();
     const notificationStyle = {
         backgroundColor: "#ffffff00",
         _hover: {
@@ -44,7 +43,7 @@ const TopNavBar = () => {
         const userInfo = fetchLocalStorage<UserInfo>("userInfo");
 
         if (userInfo) {
-            setName(userInfo?.first_name);
+            setName(userInfo?.full_name.split(" ")[0]);
             setProfilePic(userInfo?.profile_pic || null);
         }
     }, []);
@@ -143,14 +142,9 @@ const TopNavBar = () => {
                                         }}
                                         onClick={() => {
                                             localStorage.clear();
-                                            toast({
-                                                title: "Logged out",
-                                                description:
-                                                    "Redirecting to login page.",
-                                                status: "error",
-                                                duration: 9000,
-                                                isClosable: true
-                                            });
+                                           
+                                            toast.error("Logged Out, Redirecting to login page.");
+
                                             setTimeout(
                                                 () => window.location.reload(),
                                                 900

@@ -17,7 +17,7 @@ import {
 } from "../services/api";
 import styles from "./Profile.module.css";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
-import { useToast } from "@chakra-ui/react";
+
 import { useNavigate, useParams } from "react-router-dom";
 import KarmaHistory from "../components/KarmaHistory/KarmaHistory";
 import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
@@ -37,14 +37,13 @@ import CEIcon from "../../LearningCircle/assets/images/Lead icon.svg";
 const Profile = () => {
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
-    const toast = useToast();
+
     const [APILoadStatus, setAPILoadStatus] = useState(0);
     const [profileList, setProfileList] = useState("basic-details");
     const [popUP, setPopUP] = useState(false);
     const [editPopUp, setEditPopUp] = useState(false);
     const [userProfile, setUserProfile] = useState({
-        first_name: "",
-        last_name: "",
+        full_name: "",
         college_code: "",
         interest_groups: [{ name: "", karma: 0 }],
         karma_distribution: [{ task_type: "", karma: 0 }],
@@ -189,7 +188,6 @@ const Profile = () => {
                                 setProfileStatus={setProfileStatus}
                                 userProfile={userProfile}
                                 putIsPublic={putIsPublic}
-                                toast={toast}
                             />
 
                             <div className={styles.profileDash}>
@@ -231,7 +229,7 @@ const Profile = () => {
                                                                 : dpm
                                                         }
                                                         alt={
-                                                            userProfile.first_name
+                                                            userProfile.full_name
                                                         }
                                                         style={
                                                             !id
@@ -271,8 +269,7 @@ const Profile = () => {
                                                 </div>
                                                 <div className={styles.name}>
                                                     <h1>
-                                                        {userProfile.first_name}{" "}
-                                                        {userProfile.last_name}{" "}
+                                                        {userProfile.full_name}
                                                         {userProfile.college_code
                                                             ? "(" +
                                                               userProfile.college_code +
@@ -516,11 +513,11 @@ const Profile = () => {
                                                 userLevel={
                                                     userProfile.level !== null
                                                         ? parseInt(
-                                                              userProfile.level.slice(
-                                                                  3,
-                                                                  4
-                                                              )
-                                                          )
+                                                            userProfile.level?.slice(
+                                                                3,
+                                                                4
+                                                            )
+                                                        )
                                                         : 1
                                                 }
                                             />

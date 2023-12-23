@@ -54,6 +54,7 @@
 
 .Modal .Form {
     width: 100%;
+    padding-top: 1rem;
 }
 
 .Modal input {
@@ -62,6 +63,7 @@
 
 .Modal .ButtonContainer {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     padding-top: 10px;
 }
@@ -118,4 +120,26 @@
     font-size: smaller;
     display: block;
     height: 0;
+}
+
+.flex {
+    display: flex;
+    align-items: self-start;
+}
+
+.modeBtn{
+   width: fit-content;
+   padding:.5rem  ;
+   margin: 0 .5rem;
+   border-radius: .5rem;
+   
+
+   background-color: hsl(var(--primary-btn-color));
+   color: white;
+}
+.deleteBtn:hover{
+    color: red;
+}
+.deleteBtn:active{
+    transform: scale(1.1);
 }

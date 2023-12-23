@@ -1,7 +1,6 @@
-import { useToast } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import styles from "./Modal.module.css";
-import mustyles from "@/MuLearnComponents/MuButtons/MuButtons.module.css";
+import mustyles from "@/MuLearnComponents/MuButtons/MuButton.module.css";
 import {
     MuButton,
     PowerfulButton
@@ -17,6 +16,7 @@ import {
     getDistrict,
     getState
 } from "../../../../Common/Authentication/services/onboardingApis";
+import toast from "react-hot-toast";
 
 type Props = {
     onClose: any;
@@ -24,20 +24,15 @@ type Props = {
 };
 
 const CollegeLevelsCreate = (props: Props) => {
-    const toast = useToast();
     const [countrys, setCountrys] = useState([{ value: "", label: "" }]);
     const [states, setStates] = useState([{ value: "", label: "" }]);
     const [districts, setDistricts] = useState([{ value: "", label: "" }]);
     const [colleges, setColleges] = useState([{ value: "", label: "" }]);
 
     const errorHandler = (err: any) => {
-        toast({
-            title: "Error",
-            description: err,
-            status: "error",
-            duration: 5000,
-            isClosable: true
-        });
+
+        toast.error("Something Went Wrong");
+        toast.error(err)
     };
 
     const selectProps = [
@@ -139,12 +134,8 @@ const CollegeLevelsCreate = (props: Props) => {
                             level: values.level
                         });
                         if (props.refetch) props.refetch();
-                        toast({
-                            title: "College level created",
-                            status: "success",
-                            duration: 3000,
-                            isClosable: true
-                        });
+                        
+                        toast.success("College level created");
                     } catch (err) {
                         errorHandler;
                     }

@@ -11,7 +11,6 @@ import React, {
     useState
 } from "react";
 import Select, { Props as SelectProps } from "react-select";
-import { propNames } from "@chakra-ui/react";
 
 /*
 TODO: Verify the Unused Code/Components in this File

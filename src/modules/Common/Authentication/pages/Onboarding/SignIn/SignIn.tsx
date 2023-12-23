@@ -13,7 +13,7 @@ import {
     otpVerification,
     requestEmailOrMuidOtp
 } from "../../../services/apis";
-import { useToast } from "@chakra-ui/react";
+
 import { useNavigate } from "react-router-dom";
 
 const inputObject = {
@@ -23,7 +23,7 @@ const inputObject = {
 };
 
 export default function SignIn() {
-    const toast = useToast();
+    
     const navigate = useNavigate();
 
     let ruri = window.location.href.split("=")[1];
@@ -50,7 +50,6 @@ export default function SignIn() {
             login(
                 values.emailOrMuId,
                 values.password,
-                toast,
                 navigate,
                 setIsLoading,
                 ruri
@@ -62,7 +61,6 @@ export default function SignIn() {
         if (!didOtpSent) {
             requestEmailOrMuidOtp({
                 emailOrMuid: values.emailOrMuId,
-                toast,
                 setOtpLoading: setIsLoading,
                 setDidOtpSent
             });
@@ -70,7 +68,6 @@ export default function SignIn() {
             otpVerification(
                 values.emailOrMuId,
                 values.otp,
-                toast,
                 navigate,
                 setIsLoading,
                 ruri

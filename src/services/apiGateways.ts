@@ -1,10 +1,7 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { authRoutes } from "./urls";
-import { createStandaloneToast } from "@chakra-ui/react";
-import { toast as Toast, Toaster } from "react-hot-toast";
+import toast, { toast as Toast, Toaster } from "react-hot-toast";
 import { fetchLocalStorage } from "./common_functions";
-
-const { toast } = createStandaloneToast();
 
 export const publicGateway = axios.create({
     baseURL: import.meta.env.VITE_BACKEND_URL as string,
@@ -103,15 +100,7 @@ privateGateway.interceptors.response.use(
                         });
                 });
             } catch (error_2) {
-                //console.log('error_2',error_2);
-                toast.closeAll();
-                toast({
-                    title: "Your session has expired.",
-                    description: "Please login again.",
-                    status: "error",
-                    duration: 5000,
-                    isClosable: true
-                });
+                toast.error("Your session has expired. Please login again.");
 
                 // Wait for 3 seconds
                 setTimeout(() => {
@@ -121,8 +110,8 @@ privateGateway.interceptors.response.use(
                 return await Promise.reject(error_2);
             }
         }
-		//! This was causeing unwanted redirects during api testing please fix.
-		//! Spend 2 hours to figure out this was causing the issue.
+        //! This was causeing unwanted redirects during api testing please fix.
+        //! Spend 2 hours to figure out this was causing the issue.
         // if (error.response?.status === 500) {
         //     // publicGatewayAuth
         //     //console.log("inside", error.response, error.response?.data?.statusCode)

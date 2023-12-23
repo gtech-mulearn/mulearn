@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-import { useToast } from "@chakra-ui/react";
 
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import Table from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
-import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import {
+    MuButton,
+    PowerfulButton
+} from "@/MuLearnComponents/MuButtons/MuButton";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 
 import { deleteDepartment, getDepartments } from "./apis";
@@ -15,8 +17,6 @@ import CreateOrUpdateDepartmentModal from "./CreateOrUpdateDepartmentModal";
 import { Blank } from "@/MuLearnComponents/Table/Blank";
 
 const Departments = () => {
-    const toast = useToast();
-
     const [departments, setDepartments] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
@@ -123,8 +123,7 @@ const Departments = () => {
                             setCurrModal: setCurrModal,
                             setDepartments: setDepartments,
                             loading: isLoading,
-                            setIsLoading: setIsLoading,
-                            toast: toast
+                            setIsLoading: setIsLoading
                         });
                     if (currModal === modalTypes.edit)
                         return choosenDeptId
@@ -134,7 +133,6 @@ const Departments = () => {
                                 setDepartments: setDepartments,
                                 loading: isLoading,
                                 setIsLoading: setIsLoading,
-                                toast: toast,
                                 title: title
                             })
                             : null;
@@ -166,7 +164,7 @@ const Departments = () => {
                         onDeleteClick={handleDelete}
                         modalDeleteHeading="Delete"
                         modalTypeContent="error"
-                        modalDeleteContent="Are you sure you want to delete "
+                        modalDeleteContent="Are you sure you want to delete this department ?"
                     >
                         <THead
                             columnOrder={columnOrder}

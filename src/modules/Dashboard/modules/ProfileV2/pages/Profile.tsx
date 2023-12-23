@@ -18,7 +18,6 @@ import { Projects } from "../components/Projects/Projects";
 // import { PieChart } from "../components/Piechart/PieChart";
 import Rocket from "../assets/svg/Rocket";
 import ProfileHeader from "../components/ProfileHeader/ProfileHeader";
-// import { calc } from "@chakra-ui/react";
 import Example from "../components/CircularProgressChart/CircularProgressChart";
 
 type Props = {};

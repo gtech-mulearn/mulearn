@@ -3,7 +3,6 @@ import styles from "./MuIDModal.module.css";
 import { RiCloseLine } from "react-icons/ri";
 import { AiOutlineLoading } from "react-icons/ai";
 import { HiCheck, HiOutlineArrowRight } from "react-icons/hi";
-import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { KKEMLogin } from "../services/apis";
 
@@ -24,7 +23,6 @@ export default function Modal({
 }: ModalProps) {
     const modalRef = useRef<HTMLDialogElement>(null);
     useEffect(() => {
-
         const modal = modalRef.current;
         if (modal) {
             if (open) {
@@ -65,7 +63,6 @@ export default function Modal({
     const [error, setError] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(false);
     const [integration, setIntegration] = useState("");
-    const toast = useToast();
     const navigate = useNavigate();
     let ruri = window.location.href.split("=")[1];
 
@@ -126,10 +123,9 @@ export default function Modal({
                             <input
                                 type="text"
                                 name="muId"
-
                                 placeholder="Enter µ-Id"
                                 value={muId}
-                                onChange={(e) => setMuId(e.target.value)}
+                                onChange={e => setMuId(e.target.value)}
                             />
                             <div className={styles.pass}>
                                 <input
@@ -143,8 +139,9 @@ export default function Modal({
 
                                 <button
                                     type="submit"
-                                    className={`${styles.submit} ${success ? styles.successBtn : ""
-                                        }`}
+                                    className={`${styles.submit} ${
+                                        success ? styles.successBtn : ""
+                                    }`}
                                     disabled={isLoading}
                                     onClick={e => {
                                         e.preventDefault();
@@ -169,7 +166,6 @@ export default function Modal({
                                             KKEMLogin(
                                                 muId,
                                                 password,
-                                                toast,
                                                 navigate,
                                                 setIsLoading,
                                                 ruri,

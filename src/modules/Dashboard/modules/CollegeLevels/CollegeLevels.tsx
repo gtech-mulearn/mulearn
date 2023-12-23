@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { ReactElement, useEffect, useRef, useState } from "react";
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import Table, { Data } from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
@@ -7,12 +7,12 @@ import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { AiOutlinePlusCircle, AiOutlineUser } from "react-icons/ai";
 import styles from "./CollegeLevels.module.css";
 import modalStyles from "./components/Modal.module.css";
-import { useToast } from "@chakra-ui/react";
 import Modal from "./components/Modal";
 import CollegeLevelsEdit from "./components/CollegeLevelsEdit";
 import CollegeLevelsCreate from "./components/CollegeLevelsCreate";
 import { deleteCollegeLevels, getCollegeLevels } from "./apis";
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
+import toast from "react-hot-toast";
 
 function CollegeLevels() {
     const [data, setData] = useState<any[]>([]);
@@ -25,8 +25,6 @@ function CollegeLevels() {
     //Modal
     const [currModal, setCurrModal] = useState<null | "create" | "edit">(null);
     const [currOrdId, setCurrOrgId] = useState<string | null>(null);
-
-    const toast = useToast();
     const icons = {
         user: (
             <div className={modalStyles.tickIcon}>
@@ -74,7 +72,7 @@ function CollegeLevels() {
         column: string;
         Label: string;
         isSortable: boolean;
-        wrap?: (data: string, id: string, row: Data) => ReactJSXElement;
+        wrap?: (data: string | ReactElement, id: string, row: Data) => ReactJSXElement;
     }[] = [
             // { column: "id", Label: "ID", isSortable: true },
             { column: "org", Label: "College", isSortable: true },
@@ -122,13 +120,8 @@ function CollegeLevels() {
             // { column: "created_at", Label: "Created At", isSortable: false }
         ];
     const errHandler = (err: any) => {
-        toast({
-            title: "Something went wrong",
-            description: err,
-            status: "error",
-            duration: 3000,
-            isClosable: true
-        });
+        toast.error("Something Went Wrong");
+        toast.error(err.message)
     };
 
     const handleNextClick = () => {

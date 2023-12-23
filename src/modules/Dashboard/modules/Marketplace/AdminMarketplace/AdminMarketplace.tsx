@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ReactElement, useState } from "react";
 
 import styles from "./AdminMarketplace.module.css";
 import coin from "../assets/muCoin.svg";
@@ -33,7 +33,7 @@ const AdminMarketplace = (props: Props) => {
         isSortable: boolean;
         column: string;
         Label: string;
-        wrap?: (data: string) => ReactJSXElement;
+        wrap?: (data: string | ReactElement) => ReactJSXElement;
     };
 
     const columnOrder: ColOrderType[] = [
@@ -63,7 +63,7 @@ const AdminMarketplace = (props: Props) => {
                         color: {
                             Claimed: "#26D157",
                             "Not Claimed": "##FF4646"
-                        }[data]
+                        }[data as string]
                     }}
                 >
                     {data}

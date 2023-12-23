@@ -1,6 +1,7 @@
 interface UserData {
-    first_name: string;
-    last_name: string;
+    // first_name: string;
+    // last_name: string;
+    full_name: string;
     email: string;
     mobile: string;
     discord_id: string | null;
@@ -14,8 +15,9 @@ interface UserData {
 
 interface UserDataFromBackend {
     user_id: string;
-    first_name: string;
-    last_name: string;
+    // first_name: string;
+    // last_name: string;
+    full_name: string;
     email: string;
     mobile: string;
     gender: string;

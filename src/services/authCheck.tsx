@@ -1,14 +1,14 @@
 import { FC, useEffect } from "react";
 import { Navigate, redirect } from "react-router-dom";
 import { fetchLocalStorage } from "./common_functions";
-import { useToast } from "@chakra-ui/react";
+import toast from "react-hot-toast";
 
 interface AuthRoutesProps {
     redirectPath?: JSX.Element;
     children: JSX.Element;
     roles: Role[];
-	toastTitle?: string;
-	toastDescription?: string;
+    toastTitle?: string;
+    toastDescription?: string;
 }
 
 let localRoles = [] as Role[];
@@ -26,25 +26,17 @@ function SecureAuthRoutes() {
         redirectPath,
         children,
         roles,
-		toastTitle,
-		toastDescription
+        toastTitle,
+        toastDescription
     }): JSX.Element => {
         console.log("redirectPath:", redirectPath); // Log the redirectPath
         if (hasRoleNoFetch(roles)) {
             return children;
         } else {
-			const toast = useToast();
-
             useEffect(() => {
-				if(toast){
-					toast({
-						title: `${toastTitle}`,
-						description: `${toastDescription}`,
-						status: "error",
-						duration: 3000,
-						isClosable: true
-					});
-				}
+                if (toast) {
+                    toast.error(`${toastDescription}`);
+                }
             }, [toast]);
 
             return redirectPath ? (

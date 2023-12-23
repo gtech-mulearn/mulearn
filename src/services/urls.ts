@@ -22,7 +22,7 @@ export const onboardingRoutes = {
 export const authRoutes = {
     login: "/api/v1/auth/user-authentication/",
     getAccessToken: "/api/v1/auth/get-access-token/",
-    otpVerification: "/api/v1/auth/otp-verification/",
+    otpVerification: "/api/v1/auth/token-verification/",
     requestEmailOrMuidOtp: "/api/v1/auth/request-otp/"
 } as const;
 export const NotificationRoutes = {
@@ -90,7 +90,7 @@ export const dashboardRoutes = {
     getStudentLeaderBoard: "/api/v1/leaderboard/students/",
     getIgDetails: "/api/v1/dashboard/profile/ig-edit/",
     getSocials: "/api/v1/dashboard/profile/socials/",
-    postProfileImage: "/api/v1/dashboard/user/profile/update/",
+    postProfileImage: "api/v1/dashboard/user/profile/update/",
 
     zonalStudentDetails: "/api/v1/dashboard/zonal/student-details/",
     zonalStudentData: "/api/v1/dashboard/zonal/student-details/csv/",
@@ -119,7 +119,7 @@ export const dashboardRoutes = {
     getApplicationForm: "/api/v1/hackathon/list-form/",
     getApplicants: "/api/v1/hackathon/list-applicants/",
 
-	lc: "/api/v1/dashboard/lc/",
+    lc: "/api/v1/dashboard/lc/",
     searchLearningCircleWithCircleCode: "/api/v1/dashboard/lc/list-all/",
     getCampusLearningCircles: "/api/v1/dashboard/lc/",
     getLearningCirclesLead: "/api/v1/dashboard/lc/lead/",
@@ -130,7 +130,7 @@ export const dashboardRoutes = {
     reportLCMeet: "/api/v1/dashboard/lc/meet-record/create/",
     getLCMeetReport: "/api/v1/dashboard/lc/meet-record/show/",
     getCampusIg: "api/v1/dashboard/ig/list/",
-    getCount: "api/v1/dashboard/lc/data/",
+    getCount: "api/v1/dashboard/lc/stats/",
 
     getAllOrganisations: "/api/v1/hackathon/list-organisations/",
     getAllDistricts: "/api/v1/hackathon/list-districts/",
@@ -160,15 +160,19 @@ export const dashboardRoutes = {
 
     getErrorLog: "api/v1/dashboard/error-log/",
     clearErrorLog: "api/v1/dashboard/error-log/clear/",
+    patchLogError: "api/v1/dashboard/error-log/patch/",
 
     //Settings
     changePassword: "api/v1/dashboard/profile/change-password/",
     deleteUser: "/api/v1/dashboard/user/",
 
     //discord moderation
-    taskList:"api/v1/dashboard/discord-moderator/tasklist",
-    taskListCount:"api/v1/dashboard/discord-moderator/pendingcounts/",
-    leaderboard:"api/v1/dashboard/discord-moderator/leaderboard/"
+    taskList: "api/v1/dashboard/discord-moderator/tasklist",
+    taskListCount: "api/v1/dashboard/discord-moderator/pendingcounts/",
+    leaderboard: "api/v1/dashboard/discord-moderator/leaderboard/",
+
+    //Bulk User Role Management
+    roleBulkAssign: "api/v1/dashboard/roles/bulk-assign/",
 } as const;
 
 export const organizationRoutes = {
@@ -213,18 +217,19 @@ export const KKEMRoutes = {
     userLogin: "/api/v1/integrations/kkem/login/",
     getDWMSDetails: "/api/v1/integrations/kkem/user/${param}/",
     userStatus: "/api/v1/integrations/kkem/user/status/",
-    getLcReport: "/api/v1/get-log/lc-enrollment/csv/"
+    getLcReport: "/api/v1/public/lc-enrollment/csv/"
 };
 
 export const PublicRoutes = {
     getRandomLc: "/api/v1/dashboard/lc/list/",
-    getLcDashboard: "/api/v1/get-log/lc-dashboard/",
-    getLcReport: "/api/v1/get-log/lc-enrollment/",
-    getOrgWiseReport: "/api/v1/get-log/college-wise-lc-report/"
+    getLcDashboard: "/api/v1/public/lc-dashboard/",
+    getLcReport: "/api/v1/public/lc-enrollment/",
+    getOrgWiseReport: "/api/v1/public/college-wise-lc-report/"
 } as const;
 
 export const googleSheetRoutes = {
-    getHackathonData: "https://opensheet.elk.sh/1w2Ax918fkkumNiCJ42tc5T9fJeidVGL9_9B-2j7klDM/Sheet1/",
-    getHackathonDashboardData : "https://opensheet.elk.sh/1cGUHmdPd8ticzuuEpkX6j7G5p7hU47SZvnvgUnd6xBk/Sheet1"
-}
-
+    getHackathonData:
+        "https://opensheet.elk.sh/1w2Ax918fkkumNiCJ42tc5T9fJeidVGL9_9B-2j7klDM/Sheet1/",
+    getHackathonDashboardData:
+        "https://opensheet.elk.sh/1cGUHmdPd8ticzuuEpkX6j7G5p7hU47SZvnvgUnd6xBk/Sheet1"
+};

@@ -12,7 +12,7 @@ import {
 } from "../../../services/newOnboardingApis";
 import ReactSelect from "react-select";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useToast } from "@chakra-ui/react";
+
 
 const inputObject = {
     college: "Collage Name",
@@ -51,7 +51,7 @@ export default function CollegePage({
     selectedRole: string;
 }) {
     const navigate = useNavigate();
-    const toast = useToast();
+    
     const location = useLocation();
     let userData: any = location.state as Object;
 
@@ -95,9 +95,9 @@ export default function CollegePage({
                 setIsLoading: setIsLoading,
                 setDepartments: setDepartments
             });
-            getRoles({
-                setIsLoading: setIsLoading,
-                setRoles: setRoles
+            getRoles().then((res: any) => {
+                setRoles(res);
+                setIsLoading(false);
             });
         }
     }, []);
@@ -110,12 +110,11 @@ export default function CollegePage({
     const onSubmit = async (values: any) => {
         const newUserData: any = {
             user: {
-                first_name: userData.user.first_name,
-                last_name: userData.user.last_name,
-                mobile: userData.user.mobile,
+                full_name: userData.user.full_name,
+                // mobile: userData.user.mobile,
                 email: userData.user.email,
                 password: userData.user.password,
-                district:userData.district
+                district: userData.district
             },
             organization: {
                 ...(values.department !== "Others" && {
@@ -149,15 +148,15 @@ export default function CollegePage({
         if (userData.dob) {
             newUserData.user["dob"] = userData.dob;
         }
+        console.log(newUserData);
 
         submitUserData({
             setIsLoading: setIsLoading,
             userData: newUserData,
-            toast: toast,
             navigate: navigate
         });
     };
-    console.log(userData);
+    // console.log(userData);
     return (
         <Formik
             initialValues={Object.fromEntries(

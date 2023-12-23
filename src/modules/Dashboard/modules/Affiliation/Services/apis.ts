@@ -1,5 +1,6 @@
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
+import toast from "react-hot-toast";
 
 type affiliationData = UseStateFunc<any>;
 type hasValidationError = UseStateFunc<{
@@ -26,7 +27,8 @@ export const getAffiliation = (
                 sortBy: sortID
             }
         })
-        .then((
+        .then(
+            (
                 response: APIResponse<{
                     data: any[];
                     pagination: { totalPages: number };
@@ -46,8 +48,7 @@ export const getAffiliation = (
         });
 };
 
-export const createAffiliation= (
-    toast: ToastAsPara,
+export const createAffiliation = (
     affiliationData: any,
     formik: any
 ): Promise<boolean> => {
@@ -56,24 +57,12 @@ export const createAffiliation= (
             .post(dashboardRoutes.createAffiliation, affiliationData)
             .then(response => {
                 resolve(true);
-                toast({
-                    title: "Affiliation Created",
-                    description: "its added to your list",
-                    status: "success",
-                    duration: 3000,
-                    isClosable: true
-                });
+                toast.success("Affiliation Created Successfully");
             })
             .catch((error: APIError<{ general: string[] }>) => {
                 reject(false);
                 error?.response?.data?.message?.general?.length != 0 &&
-                    toast({
-                        title: error.response.data.message.general[0],
-                        description: "",
-                        status: "error",
-                        duration: 3000,
-                        isClosable: true
-                    });
+                    toast.error(error.response.data.message.general[0]);
                 if (
                     error.response.data.message &&
                     Object.keys(error.response.data.message).length > 0
@@ -95,7 +84,6 @@ export const createAffiliation= (
 
 export const editAffiliation = (
     id: string,
-    toast: ToastAsPara,
     affiliationEditedData: any,
     formik: any
 ): Promise<boolean> => {
@@ -107,13 +95,8 @@ export const editAffiliation = (
             )
             .then(response => {
                 resolve(true);
-                toast({
-                    title: "Affiliation Edited",
-                    description: "its added to your list",
-                    status: "success",
-                    duration: 3000,
-                    isClosable: true
-                });
+
+                toast.success("Affiliation Edited Successfully");
             })
             .catch(error => {
                 reject(false);
@@ -133,31 +116,20 @@ export const editAffiliation = (
                     );
                 }
                 error.response.data.message.general.length != 0 &&
-                    toast({
-                        title: error.response.data.message.general[0],
-                        description: "",
-                        status: "error",
-                        duration: 3000,
-                        isClosable: true
-                    });
+                    toast.error(error.response.data.message.general[0]);
             });
     });
 };
 
-export const deleteAffiliation = (id: string, toast: ToastAsPara) => {
+export const deleteAffiliation = (id: string) => {
     privateGateway
-        .delete(dashboardRoutes.deleteAffiliation.replace("${affiliationId}", id))
+        .delete(
+            dashboardRoutes.deleteAffiliation.replace("${affiliationId}", id)
+        )
         .then(response => {
-            //console.log(response.data.response);
-            toast({
-                title: "Affiliation Deleted",
-                description: "it's deleted from your list",
-                status: "error",
-                duration: 3000,
-                isClosable: true
-            });
+            toast.success("Affiliation Deleted Successfully");
         })
         .catch(error => {
-            console.log(error);
+            toast.error("Affiliation Not Deleted");
         });
 };

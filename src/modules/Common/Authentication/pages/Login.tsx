@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import styles from "./Login.module.css";
-import { useToast } from "@chakra-ui/react";
 import {
     login,
     requestEmailOrMuidOtp,
     otpVerification
 } from "../services/apis";
 import { useNavigate } from "react-router-dom";
-import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import {
+    MuButton,
+    PowerfulButton
+} from "@/MuLearnComponents/MuButtons/MuButton";
 
 const Login = () => {
     const [showOrHidePassword, setShowOrHidePassword] = useState("password");
@@ -22,7 +24,6 @@ const Login = () => {
     const [otpLoading, setOtpLoading] = useState(false);
     const [otpError, setOtpError] = useState(false);
     let ruri = window.location.href.split("=")[1];
-    const toast = useToast();
     const navigate = useNavigate();
     useEffect(() => {
         setHasError(true);
@@ -83,24 +84,27 @@ const Login = () => {
                                     Login with <b>OTP</b>
                                 </a>
                             </p>
-                            
-                            <PowerfulButton 
-                            variant="plain"
-                                type="submit"  className={styles.signin_button}
+
+                            <PowerfulButton
+                                variant="plain"
+                                type="submit"
+                                className={styles.signin_button}
                                 onClick={e => {
                                     e.preventDefault();
                                     if (muid != "" && password != "") {
                                         login(
                                             muid,
                                             password,
-                                            toast,
                                             navigate,
                                             setIsLoading,
                                             ruri
                                         );
                                     }
                                 }}
-                                isLoading={isLoading}>Sign In</PowerfulButton>
+                                isLoading={isLoading}
+                            >
+                                Sign In
+                            </PowerfulButton>
                             <span className={styles.register}>
                                 <a href="/register">
                                     Don't have an account? Sign up
@@ -167,15 +171,17 @@ const Login = () => {
                                     Login with <b>password</b>
                                 </a>
                             </p>
-                            
-                            <PowerfulButton variant="plain" type="submit" className={styles.signin_button}
+
+                            <PowerfulButton
+                                variant="plain"
+                                type="submit"
+                                className={styles.signin_button}
                                 onClick={e => {
                                     setHasError(false);
                                     e.preventDefault();
                                     if (emailOrMuid != "" && hasError) {
                                         requestEmailOrMuidOtp({
                                             emailOrMuid,
-                                            toast,
                                             setHasError,
                                             setStatus,
                                             setOtpLoading,
@@ -186,7 +192,6 @@ const Login = () => {
                                         otpVerification(
                                             emailOrMuid,
                                             password,
-                                            toast,
                                             navigate,
                                             setOtpVerifyLoading,
                                             ruri
@@ -196,15 +201,16 @@ const Login = () => {
                                 // disabled={status === 1 ? true : false}
                                 isLoading={
                                     otpLoading ? otpLoading : otpVerifyLoading
-                                }>{
-                                    hasError
-                                        ? "Request OTP"
-                                        : otpLoading
-                                        ? "Processing"
-                                        : otpError
-                                        ? "Request OTP"
-                                        : "Sign In"
-                                }</PowerfulButton>
+                                }
+                            >
+                                {hasError
+                                    ? "Request OTP"
+                                    : otpLoading
+                                    ? "Processing"
+                                    : otpError
+                                    ? "Request OTP"
+                                    : "Sign In"}
+                            </PowerfulButton>
                             <span className={styles.register}>
                                 {" "}
                                 <a href="/register">

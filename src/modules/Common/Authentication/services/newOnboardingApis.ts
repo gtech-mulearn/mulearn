@@ -1,7 +1,7 @@
 import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
 import { showToasts } from "@/MuLearnServices/common_functions";
 import { KKEMRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
-import { ToastId, UseToastOptions } from "@chakra-ui/react";
+
 import { Dispatch, SetStateAction } from "react";
 import { NavigateFunction } from "react-router-dom";
 import { bool, boolean } from "yup";
@@ -11,12 +11,10 @@ import toast from "react-hot-toast";
 
 export const validate = async ({
     userData,
-    setIsSubmitting,
-    toast
+    setIsSubmitting
 }: {
     userData: Object;
     setIsSubmitting: Dispatch<SetStateAction<boolean>>;
-    toast: (options?: UseToastOptions | undefined) => ToastId;
 }): Promise<boolean> => {
     let returnval = false;
     try {
@@ -29,9 +27,7 @@ export const validate = async ({
         const messages = err.response.data.message.general[0];
         console.log("validate - messages", messages);
         showToasts({
-            toast: toast,
-            messages: messages,
-            status: "error"
+            messages: messages
         });
     }
     return returnval;
@@ -40,12 +36,10 @@ export const validate = async ({
 export const createAccount = async ({
     userData,
     setIsSubmitting,
-    toast,
     navigate
 }: {
     userData: Object;
     setIsSubmitting: Dispatch<SetStateAction<boolean>>;
-    toast: (options?: UseToastOptions | undefined) => ToastId;
     navigate: NavigateFunction;
 }) => {
     setIsSubmitting(true);
@@ -65,29 +59,38 @@ export const createAccount = async ({
     } catch (err: any) {
         const messages = err.response.data.message.general[0];
         showToasts({
-            toast: toast,
-            messages: messages,
-            status: "error"
+            messages: messages
         });
     }
     setIsSubmitting(false);
 };
 
-export const getRoles = async ({
-    setIsLoading,
-    setRoles
-}: {
-    setIsLoading: Dispatch<SetStateAction<boolean>>;
-    setRoles: Dispatch<SetStateAction<any[]>>;
-}) => {
-    try {
-        const response = await publicGateway.get(onboardingRoutes.roles);
-        const roles = response.data.response.roles;
-        setRoles(roles);
-        setIsLoading(false);
-    } catch (err: any) {
-        console.log("getRoles Error", err);
-    }
+export const getRoles = () => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const response = await publicGateway.get(onboardingRoutes.roles);
+            const roles = response.data.response.roles;
+            resolve(roles);
+        } catch (err) {
+            console.log("getRoles Error", err);
+            reject(err);
+        }
+    });
+};
+
+export const getInterestGroups = () => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const response = await publicGateway.get(
+                onboardingRoutes.areaOfInterestList
+            );
+            const interestGroups = response.data.response.aois;            
+            resolve(interestGroups);
+        } catch (err) {
+            console.log("getInterestGroups Error", err);
+            reject(err);
+        }
+    });
 };
 
 export const getColleges = async ({
@@ -146,12 +149,10 @@ export const getCompanies = async ({
 export const submitUserData = async ({
     setIsLoading,
     userData,
-    toast,
     navigate
 }: {
     setIsLoading: Dispatch<SetStateAction<boolean>>;
     userData: Object;
-    toast: (options?: UseToastOptions | undefined) => ToastId;
     navigate: NavigateFunction;
 }) => {
     console.log("UserData", userData);
@@ -169,9 +170,7 @@ export const submitUserData = async ({
         setIsLoading(false);
         const messages = err.response.data.message.general[0];
         showToasts({
-            toast: toast,
             messages: messages,
-            status: "error"
         });
     }
 };

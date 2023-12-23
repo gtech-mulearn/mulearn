@@ -11,7 +11,7 @@ import { IoIosClose } from "react-icons/io";
 import { MdRefresh } from "react-icons/md";
 import dpm from "../assets/images/dpm.webp";
 import { filterNotification, getTimeAgo, isRequest } from "./utils";
-import { useToast } from "@chakra-ui/react";
+import toast from "react-hot-toast";
 
 interface NotificationComponentProps {
     notificationList: NotificationProps[];
@@ -32,7 +32,6 @@ const NotificationMessage = ({
     created_by
 }: NotificationMessageProps) => {
     const props = {
-        toast: useToast(),
         updateList: updateList,
         clearElementFromView: clearElementFromView
     };
@@ -102,12 +101,8 @@ const NotificationTab = ({
     setNotificationList
 }: NotificationComponentProps) => {
     const [active, setActive] = useState(0);
-    const toast = useToast();
-    const props = { toast: toast };
     const links = [
         { title: "View All", count: notificationList.length }
-        // { title: 'Requests', count: notificationList.filter((item: NotificationProps) => isRequest(item.title)).length },
-        // { title: 'Followers', count: 0 },
     ];
 
     const filteredNotification = filterNotification(active, notificationList);
@@ -121,17 +116,10 @@ const NotificationTab = ({
         if (notificationList.length > 0) {
             setNotificationList([]);
             clearAllNotifications({
-                toast: toast,
                 setNotificationList: setNotificationList
             });
         } else {
-            toast({
-                title: "Error",
-                description: "No notifications to clear",
-                status: "error",
-                duration: 3000,
-                isClosable: true
-            });
+            toast.error("No notifications to clear");
         }
     };
 
@@ -144,7 +132,7 @@ const NotificationTab = ({
                 </div>
                 <div
                     className="clearAll"
-                    onClick={() => getNotifications(setNotificationList, props)}
+                    onClick={() => getNotifications(setNotificationList)}
                 >
                     <MdRefresh size={20} />
                 </div>
@@ -163,7 +151,6 @@ const NotificationTab = ({
                                     updateList={() =>
                                         getNotifications(
                                             setNotificationList,
-                                            props
                                         )
                                     }
                                 />

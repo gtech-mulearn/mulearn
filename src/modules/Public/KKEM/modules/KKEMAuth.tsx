@@ -5,16 +5,15 @@ import Astronaut from "../assets/astronaut.webp";
 import styles from "./KKEMAuth.module.css";
 import Footer from "../components/Footer";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
-import { useToast } from "@chakra-ui/react";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { refreshRoles } from "@/MuLearnServices/authCheck";
+import toast from "react-hot-toast";
 type authGetUserInfo = APIResponse<UserInfo>;
 export default function KKEMAuth() {
     const { token } = useParams<{ token: string }>();
     const [status, setStatus] = useState("pending");
     const navigate = useNavigate();
-    const toast = useToast();
     useEffect(() => {
         if (!token) {
             return;
@@ -25,7 +24,6 @@ export default function KKEMAuth() {
                 privateGateway
                     .get(dashboardRoutes.getInfo)
                     .then((response: authGetUserInfo) => {
-
                         localStorage.setItem(
                             "userInfo",
                             JSON.stringify(response.data.response)
@@ -36,18 +34,16 @@ export default function KKEMAuth() {
                         console.log(error);
                     });
                 setStatus("success");
-               
+
                 localStorage.setItem("accessToken", res?.response?.accessToken);
                 localStorage.setItem(
                     "refreshToken",
                     res?.response?.refreshToken
                 );
-                toast({
-                    title: "Integration successful.You will be redirected to learning circle page shortly",
-                    status: "success",
-                    duration: 3000,
-                    isClosable: true
-                });
+
+                toast.success(
+                    "Integration successful.You will be redirected to learning circle page shortly"
+                );
                 setTimeout(() => {
                     navigate("/dashboard/learning-circle");
                 }, 2000);
@@ -55,12 +51,7 @@ export default function KKEMAuth() {
             .catch(err => {
                 if (err?.hasError) {
                     setStatus("failure");
-                    toast({
-                        title: "Invalid token.",
-                        status: "error",
-                        duration: 3000,
-                        isClosable: true
-                    });
+                    toast.error("Invalid token.");
                 }
             });
         return () => {

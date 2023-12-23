@@ -1,11 +1,11 @@
-import styles from './ModalCreateComponent.module.css'
+import styles from './ModalCreate.module.css'
 import React, { Dispatch, SetStateAction, useState } from 'react';
 import { RiCloseLine } from 'react-icons/ri';
-import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import toast from 'react-hot-toast';
 
 // ModalProps type definition
 interface ModalProps {
@@ -25,7 +25,6 @@ interface ModalProps {
 
 const ModalCreateComponent: React.FC<ModalProps> = ({ isOpen, onClose, content, heading, placeholder, inputType, name, onRender, toastMsg, navigateRoute, btnPrimaryText, btnSecondaryText }) => {
     if (!isOpen) return null;
-    const toast = useToast();
     const navigate = useNavigate();
 
     return (
@@ -56,12 +55,9 @@ const ModalCreateComponent: React.FC<ModalProps> = ({ isOpen, onClose, content, 
                             values => {
                                 console.log(values.igName);
                                 onRender(values.igName, onClose);
-                                toast({
-                                    title: toastMsg,
-                                    status: "success",
-                                    duration: 3000,
-                                    isClosable: true
-                                });
+
+
+                                toast.success(toastMsg || "");
                                 navigate(navigateRoute);
                             }
                         }

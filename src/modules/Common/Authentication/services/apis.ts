@@ -1,12 +1,11 @@
-import { ToastId, UseToastOptions } from "@chakra-ui/react";
 import { useNavigate, NavigateFunction } from "react-router-dom";
 import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
 import { authRoutes, dashboardRoutes } from "@/MuLearnServices/urls";
 import { refreshRoles } from "@/MuLearnServices/authCheck";
+import toast from "react-hot-toast";
 
 export const forgetPassword = (
     emailOrMuid: string,
-    toast: ToastAsPara,
     navigate: NavigateFunction,
     setShowLoader: UseStateFunc<boolean>
 ) => {
@@ -15,28 +14,18 @@ export const forgetPassword = (
         .post(dashboardRoutes.forgetPassword, { emailOrMuid })
         .then(response => {
             setShowLoader(false);
-            toast({
-                title: "Token Mail Sent",
-                description:
-                    "Kindly check your mail for the reset password link",
-                status: "success",
-                duration: 3000,
-                isClosable: true
-            });
+            toast.success("Kindly check your mail for the reset password link");
             setTimeout(() => {
                 navigate("/login");
             }, 4000);
         })
         .catch(error => {
             setShowLoader(false);
-            toast({
-                title: error.response?.data?.message?.general[0]
+            toast.error(
+                error.response?.data?.message?.general[0]
                     ? error.response?.data?.message?.general[0]
-                    : "Something went wrong",
-                status: "error",
-                duration: 3000,
-                isClosable: true
-            });
+                    : "Something went wrong"
+            );
         });
 };
 
@@ -51,7 +40,6 @@ type authGetUserInfo = APIResponse<UserInfo>;
 export const login = (
     emailOrMuid: string,
     password: string,
-    toast: ToastAsPara,
     navigate: NavigateFunction,
     setIsLoading: UseStateFunc<boolean>,
     redirectPath: string
@@ -72,13 +60,7 @@ export const login = (
                     "refreshToken",
                     response.data.response.refreshToken
                 );
-                toast({
-                    title: "Login Successful",
-                    description: "You have been logged in successfully",
-                    status: "success",
-                    duration: 3000,
-                    isClosable: true
-                });
+                toast.success("Login Successful");
                 privateGateway
                     .get(dashboardRoutes.getInfo)
                     .then((response: authGetUserInfo) => {
@@ -107,26 +89,15 @@ export const login = (
         .catch(error => {
             setIsLoading(false);
             if (error.response.data) {
-                toast({
-                    title: error.response.data.message.general[0],
-                    status: "error",
-                    duration: 3000,
-                    isClosable: true
-                });
+                toast.error(error.response.data.message.general[0]);
             } else {
-                toast({
-                    title: "Something went wrong",
-                    status: "error",
-                    duration: 3000,
-                    isClosable: true
-                });
+                toast.error("Something went wrong");
             }
         });
 };
 
 export const getMuid = (
     token: string,
-    toast: ToastAsPara,
     navigate: NavigateFunction,
     setMuID: UseStateFunc<string>
 ) => {
@@ -134,25 +105,11 @@ export const getMuid = (
         .post(dashboardRoutes.resetPasswordVerify.replace("${token}", token))
         .then((response: APIResponse<{ muid: string }>) => {
             //console.log(response.data);
-            toast({
-                title: "User Verified",
-                description:
-                    "Your Token has been validated,reset your password",
-                status: "success",
-                duration: 5000,
-                isClosable: true
-            });
+            toast.success("Token validated, reset your password");
             setMuID(response.data.response.muid);
         })
         .catch(error => {
-            toast({
-                title: "Invalid Token",
-                description:
-                    "Make sure you entered the correct token, try again",
-                status: "error",
-                duration: 4000,
-                isClosable: true
-            });
+            toast.error("Make sure you entered the correct token, try again");
 
             setTimeout(() => {
                 navigate("/forgot-password");
@@ -163,7 +120,6 @@ export const getMuid = (
 export const resetPassword = (
     token: string,
     password: string,
-    toast: ToastAsPara,
     navigate: NavigateFunction
 ) => {
     privateGateway
@@ -172,27 +128,16 @@ export const resetPassword = (
         })
         .then((response: APIResponse<{}, {}>) => {
             if (response.data.statusCode === 200) {
-                toast({
-                    title: "Password Reset Successful",
-                    description: "You will be redirected to login page shortly",
-                    status: "success",
-                    duration: 3000,
-                    isClosable: true
-                });
+                toast.success(
+                    "Password Reset Successful, you will be redirected to login page shortly"
+                );
                 setTimeout(() => {
                     navigate("/login");
                 }, 4000);
             }
         })
         .catch(error => {
-            toast({
-                title: "Invalid Token",
-                description:
-                    "Kindly request for a new token, you will be redirected.",
-                status: "error",
-                duration: 3000,
-                isClosable: true
-            });
+            toast.error("Make sure you entered the correct token, try again");
             setTimeout(() => {
                 navigate("/forgot-password");
             }, 4000);
@@ -201,7 +146,6 @@ export const resetPassword = (
 
 export const requestEmailOrMuidOtp = ({
     emailOrMuid,
-    toast,
     setHasError,
     setStatus,
     setOtpLoading,
@@ -209,7 +153,6 @@ export const requestEmailOrMuidOtp = ({
     setDidOtpSent
 }: {
     emailOrMuid: string;
-    toast: ToastAsPara;
     setHasError?: UseStateFunc<boolean>;
     setStatus?: UseStateFunc<number>;
     setOtpLoading: UseStateFunc<boolean>;
@@ -226,39 +169,27 @@ export const requestEmailOrMuidOtp = ({
                 setOtpError && setOtpError(false);
                 setHasError && setHasError(false);
                 setDidOtpSent && setDidOtpSent(true);
-                toast({
-                    title: "OTP Sent",
-                    description: "OTP has been sent to your email",
-                    status: "success",
-                    duration: 5000,
-                    isClosable: true
-                });
+                toast.success("OTP has been sent to your email");
             }
         })
         .catch(error => {
             setOtpLoading(false);
             setOtpError && setOtpError(true);
-            toast({
-                title: "Invalid Email or Muid",
-                description: "Kindly enter a valid email or Muid",
-                status: "error",
-                duration: 5000,
-                isClosable: true
-            });
+
+            toast.error("Kindly enter a valid email or Muid");
         });
 };
 
 export const otpVerification = (
     emailOrMuid: string,
     otp: string,
-    toast: ToastAsPara,
     navigate: NavigateFunction,
     setOtpVerifyLoading: UseStateFunc<boolean>,
     redirectPath: string
 ) => {
     setOtpVerifyLoading(true);
     publicGateway
-        .post(authRoutes.otpVerification, { emailOrMuid, otp })
+        .post(authRoutes.login, { emailOrMuid, otp })
         .then((response: authRoutesLoginRes) => {
             //console.log(response.data);
             localStorage.setItem(
@@ -271,13 +202,7 @@ export const otpVerification = (
             );
             if (response.data.hasError == false) {
                 setOtpVerifyLoading(false);
-                toast({
-                    title: "OTP verified",
-                    description: "You will be redirected to home page",
-                    status: "success",
-                    duration: 5000,
-                    isClosable: true
-                });
+                toast.success("OTP verified, you will be redirected shortly");
             }
             privateGateway
                 .get(dashboardRoutes.getInfo)
@@ -304,12 +229,6 @@ export const otpVerification = (
         })
         .catch(error => {
             setOtpVerifyLoading(false);
-            toast({
-                title: "Invalid OTP",
-                description: "Kindly enter a valid OTP",
-                status: "error",
-                duration: 5000,
-                isClosable: true
-            });
+            toast.error("OTP verification failed, try again");
         });
 };

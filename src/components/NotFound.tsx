@@ -1,8 +1,8 @@
 import styles from "./NotFound.module.css";
 import stone from "./assests/NotFound/Stone.webp"
-import FourNotFour from "./assests/NotFound/FourNotFour.webp"
+import fourNotFour from "./assests/NotFound/FourNotFour.webp"
 import NoBgFourNotFour from "./assests/NotFound/NoBgFourNotFour.webp"
-import SmallRocks from "./assests/NotFound/SmallRocks.webp"
+import smallRocks from "./assests/NotFound/SmallRocks.webp"
 
 const NotFound = () => {
     return (
@@ -37,10 +37,10 @@ const NotFound = () => {
                 src="https://i.ibb.co/CQDjhGP/ufo.png" alt="" />
 
             <img className={styles.NotFound404}
-                src={FourNotFour} alt="" />
+                src={fourNotFour} alt="" />
 
             <img className={styles.NotFoundRocks}
-                src={SmallRocks} alt="" />
+                src={smallRocks} alt="" />
 
             <img className={styles.NotFoundMars}
                 src={NoBgFourNotFour} alt="" />

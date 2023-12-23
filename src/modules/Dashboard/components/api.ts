@@ -1,5 +1,6 @@
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { NotificationRoutes, dashboardRoutes } from "@/MuLearnServices/urls";
+import toast from "react-hot-toast";
 
 export type Notification = {
     [K in
@@ -12,65 +13,37 @@ export type Notification = {
         | "created_by"]: string;
 };
 
-export function getNotifications(
-    setResponse: UseStateFunc<Notification[]>,
-    props?: any
-) {
+export function getNotifications(setResponse: UseStateFunc<Notification[]>) {
     privateGateway
         .get(NotificationRoutes.getNotification)
         .then(response => {
             setResponse((response.data.response as []).reverse());
         })
         .catch(err => {
-            props.toast({
-                title: "Error",
-                description: err.response.data.message,
-                status: "error",
-                duration: 3000,
-                isClosable: true
-            });
-            console.error(err);
+            toast.error(err.response.data.message);
         });
 }
 
 export function clearAllNotifications(props: any) {
-    const { toast, setNotificationList } = props;
+    const { setNotificationList } = props;
     privateGateway
         .delete(NotificationRoutes.deleteAllNotification)
         .then(() => {
-            props.toast({
-                title: "Success",
-                description: "All notifications cleared",
-                status: "success",
-                duration: 3000,
-                isClosable: true
-            });
+            toast.success("All notifications cleared");
         })
         .catch(err => {
-            getNotifications(setNotificationList, { toast });
-            toast({
-                title: "Error",
-                description: err.response.data.response,
-                status: "error",
-                duration: 3000,
-                isClosable: true
-            });
+            getNotifications(setNotificationList);
+
+            toast.error(err.response.data.message);
         });
 }
 export async function clearNotification(id: string, props: any) {
-    const { clearElementFromView, toast, updateList } = props;
+    const { clearElementFromView, updateList } = props;
     clearElementFromView();
     return await privateGateway
         .delete(`${NotificationRoutes.deleteNotification}${id}/`)
         .catch(err => {
-            toast({
-                title: "Error",
-                description: err.response.data.message.general,
-                status: "error",
-                duration: 3000,
-                isClosable: true
-            });
-            console.error(err);
+            toast.error(err.response.data.message.general);
         })
         .finally(() => updateList());
 }
@@ -81,35 +54,23 @@ export const requestApproval = (
     is_accepted: boolean,
     props: any
 ) => {
-    const { toast, updateList, clearElementFromView } = props;
+    const { updateList, clearElementFromView } = props;
 
     const lcId = url.split("/")[7],
         userId = created_by;
-    const newUrl = `${dashboardRoutes.getCampusLearningCircles}${lcId}/${userId}/`;
+    const newUrl = `${dashboardRoutes.getCampusLearningCircles}${lcId}/user-accept-reject/${userId}/`;
     privateGateway
         .patch(newUrl, { is_accepted: is_accepted ? "1" : "0" })
         .then(() => {
-            toast({
-                title: "Success",
-                description: "Request Approved",
-                status: "success",
-                duration: 3000,
-                isClosable: true
-            });
+            toast.success("Request Approved");
             clearNotification(id, {
-                toast: toast,
                 updateList: updateList,
                 clearElementFromView: clearElementFromView
             });
         })
         .catch(err => {
             updateList();
-            toast({
-                title: "Error",
-                description: err.response.data.message.general,
-                status: "error",
-                duration: 3000,
-                isClosable: true
-            });
+
+            toast.error(err.response.data.message.general);
         });
 };

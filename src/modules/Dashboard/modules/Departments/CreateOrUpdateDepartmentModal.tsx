@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 import * as Yup from "yup";
-import { ToastId, UseToastOptions } from "@chakra-ui/react";
+
 import { Form, Formik } from "formik";
 
 import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
@@ -17,7 +17,6 @@ type Props = {
     setDepartments: Dispatch<SetStateAction<any[]>>;
     loading: boolean;
     setIsLoading: Dispatch<SetStateAction<boolean>>;
-    toast: (options?: UseToastOptions | undefined) => ToastId;
     title?: string;
 };
 
@@ -27,7 +26,6 @@ const CreateOrUpdateDepartmentModal = ({
     setDepartments,
     loading,
     setIsLoading,
-    toast,
     title,
 }: Props) => {
     return (
@@ -53,8 +51,8 @@ const CreateOrUpdateDepartmentModal = ({
                     })}
                     onSubmit={async values => {
                         id
-                            ? await updateDepartment(id!, values.title, toast)
-                            : await createDepartment(values.title, toast);
+                            ? await updateDepartment(id!, values.title)
+                            : await createDepartment(values.title);
                         getDepartments({
                             setDepartments: setDepartments,
                             setIsLoading: setIsLoading

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import OnboardingTemplate from "../../../components/OnboardingTeamplate/OnboardingTemplate";
 import OnboardingHeader from "../../../components/OnboardingHeader/OnboardingHeader";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useToast } from "@chakra-ui/react";
+
 import { getCommunities, getLocations } from "../../../services/onboardingApis";
 import { validate } from "../../../services/newOnboardingApis";
 import { Form, Formik } from "formik";
@@ -18,7 +18,7 @@ export default function CommunityPage() {
         { id: "", title: "" }
     ]);
     const navigate = useNavigate();
-    // const toast = useToast();
+    // 
     const location = useLocation();
     let userData = location.state;
     const animatedComponents = makeAnimated();
@@ -29,7 +29,7 @@ export default function CommunityPage() {
     ])
     const [isApiCalled, setIsApiCalled] = useState(false);
     const param = urlParams.get("param");
-    const toast = useToast();
+    
     useEffect(() => {
         if (userData === undefined || userData === null) {
             navigate("/register", { replace: true });
@@ -42,6 +42,7 @@ export default function CommunityPage() {
         getLocations(locationParam, setLocationData, setIsApiCalled)
         setIsLoading(false);
     }, []);
+        
     const handleSubmit = async (values: any) => {
         if (values.communities) userData.communities = values.communities;
         if (values.district) userData.district = values.district;
@@ -49,8 +50,9 @@ export default function CommunityPage() {
         const isSuccess = await validate({
             userData: userData,
             setIsSubmitting: setIsLoading,
-            toast: toast
         });
+        console.log(isSuccess);
+        
         isSuccess? navigate("/register/select-role", { state: userData }) :  delete userData.referral;
     };
 
@@ -155,7 +157,7 @@ export default function CommunityPage() {
                                         }
                                     />
                                 </div>
-                                <div className={styles.inputBox}>
+                                {/* <div className={styles.inputBox}>
                                     <SimpleInput
                                         name={"referral"}
                                         value={formik.values.referral}
@@ -163,7 +165,7 @@ export default function CommunityPage() {
                                         placeholder="Referral MuID (Optional)"
                                         disabled={isLoading}
                                     />
-                                </div>
+                                </div> */}
 
                                 <PowerfulButton
                                     type="submit"

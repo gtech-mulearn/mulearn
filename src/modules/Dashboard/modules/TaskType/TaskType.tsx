@@ -4,15 +4,18 @@ import THead from "@/MuLearnComponents/Table/THead";
 import Table from "@/MuLearnComponents/Table/Table";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
-import { useToast } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import styles from "../InterestGroup/InterestGroup.module.css";
-import { getTaskTypes, getTaskTypeDetails, deleteTaskType } from "./TaskTypeApis";
+import {
+    getTaskTypes,
+    getTaskTypeDetails,
+    deleteTaskType
+} from "./TaskTypeApis";
 import { Blank } from "@/MuLearnComponents/Table/Blank";
 import MuModal from "@/MuLearnComponents/MuModal/MuModal";
-import TaskTypeForm from './TaskTypeForm';
+import TaskTypeForm from "./TaskTypeForm";
 
 export const TaskType = () => {
     const [data, setData] = useState<any[]>([]);
@@ -23,7 +26,6 @@ export const TaskType = () => {
     const [sort, setSort] = useState("");
     const firstFetch = useRef(true);
     const navigate = useNavigate();
-    const toast = useToast();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isEditMode, setIsEditMode] = useState(false);
     const [taskId, setTaskId] = useState<string | number | boolean>("");
@@ -67,14 +69,30 @@ export const TaskType = () => {
 
     useEffect(() => {
         if (firstFetch.current) {
-            getTaskTypes(setData, 1, perPage, setIsLoading, setTotalPages, "", "");
+            getTaskTypes(
+                setData,
+                1,
+                perPage,
+                setIsLoading,
+                setTotalPages,
+                "",
+                ""
+            );
         }
         firstFetch.current = false;
     }, [data]);
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
-        getTaskTypes(setData, 1, perPage, setIsLoading, setTotalPages, search, "");
+        getTaskTypes(
+            setData,
+            1,
+            perPage,
+            setIsLoading,
+            setTotalPages,
+            search,
+            ""
+        );
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
@@ -120,15 +138,8 @@ export const TaskType = () => {
     };
 
     const reloadTaskTypes = () => {
-        getTaskTypes(
-            setData,
-            1,
-            perPage,
-            setIsLoading,
-            setTotalPages,
-            "",
-        );
-    }
+        getTaskTypes(setData, 1, perPage, setIsLoading, setTotalPages, "");
+    };
     const handleEdit = (id: string | number | boolean) => {
         setTaskId(id);
         setIsEditMode(true);
@@ -137,9 +148,11 @@ export const TaskType = () => {
     };
 
     const handleDelete = (id: string | undefined) => {
-        deleteTaskType(id, toast);
+        deleteTaskType(id);
         setData(data.filter(item => item?.id !== id));
-        setTimeout(() => { reloadTaskTypes() }, 500)
+        setTimeout(() => {
+            reloadTaskTypes();
+        }, 500);
     };
 
     const handleCreate = () => {
@@ -156,18 +169,15 @@ export const TaskType = () => {
                     gap: "15px"
                 }}
             >
-
                 <PowerfulButton onClick={handleCreate}>
                     <AiOutlinePlusCircle />
                     Create
                 </PowerfulButton>
             </div>
 
-
             <MuModal
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
-
                 title={isEditMode ? "Edit Task" : "Create Task"}
                 type={"success"}
                 onDone={() => TaskRef.current?.handleSubmitExternally()}
@@ -225,5 +235,4 @@ export const TaskType = () => {
             )}
         </>
     );
-}
-
+};

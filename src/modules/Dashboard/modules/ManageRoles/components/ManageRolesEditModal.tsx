@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { editManageRoles, getManageRolesDetails } from "../apis";
-import { useToast } from "@chakra-ui/react";
+
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { FormikTextInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import styles from "./Modal.module.css";
-import mustyles from "@/MuLearnComponents/MuButtons/MuButtons.module.css";
+import mustyles from "@/MuLearnComponents/MuButtons/MuButton.module.css";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
 type Props = {
@@ -25,7 +25,7 @@ const ManageRolesEditModal = (props: Props) => {
         description: ""
     });
     const id = props.id;
-    const toast = useToast();
+    
     useEffect(() => {
         getManageRolesDetails(id, setData);
     }, []);
@@ -48,12 +48,7 @@ const ManageRolesEditModal = (props: Props) => {
             })}
             onSubmit={values => {
                 (async () => {
-                    await editManageRoles(
-                        id,
-                        values.title,
-                        values.description,
-                        toast
-                    );
+                    await editManageRoles(id, values.title, values.description);
                     props.onClose(null);
                 })();
             }}

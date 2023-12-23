@@ -3,27 +3,34 @@ import { HiEye, HiEyeSlash } from "react-icons/hi2";
 
 import OnboardingTemplate from "../../../components/OnboardingTeamplate/OnboardingTemplate";
 import OnboardingHeader from "../../../components/OnboardingHeader/OnboardingHeader";
-import { getDWMSDetails, validate } from "../../../services/newOnboardingApis";
+import {
+    getDWMSDetails,
+    getRoles,
+    validate
+} from "../../../services/newOnboardingApis";
 import { Form, Formik } from "formik";
 import * as z from "yup";
 import { FormikTextInputWithoutLabel as SimpleInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useEffect, useRef, useState } from "react";
 
-import { useToast } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
+// import { useToast } from "@chakra-ui/react";
+import { useNavigate, useParams } from "react-router-dom";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import { getCommunities } from "../../../services/onboardingApis";
 import { BiSupport } from "react-icons/bi";
 import { isDev } from "@/MuLearnServices/common_functions";
+import roleOptions from "../RolePage/data/roleOptions";
+import muBrand from "/src/modules/Common/Authentication/assets/µLearn.png";
+import { submitUserData } from "../../../services/newOnboardingApis";
+import toast from "react-hot-toast";
 
 const animatedComponents = makeAnimated();
 
 type DWMSData = {
     email: string;
-    firstName: string;
-    lastName: string;
+    fullName: string;
     phoneNumber: string;
     gender?: string;
     dob?: string;
@@ -35,16 +42,16 @@ const scheme = z.object({
         .required(`Email is Required`)
         .min(5, `Email must be at least 3 characters`)
         .max(100, `Email must be at most 100 characters`),
-    firstName: z
+    fullName: z
         .string()
-        .required(`Firstname is Required`)
-        .min(3, `Firstname must be at least 3 characters`)
-        .max(100, `Firstname must be at most 100 characters`),
-    phoneNumber: z
-        .string()
-        .required(`Phone number is Required`)
-        .min(10, `Phone number must be at least 10 characters`)
-        .max(10, `Phone number must be at most 10 characters`),
+        .required(`Full Name is Required`)
+        .min(3, `Full Name must be at least 3 characters`)
+        .max(100, `Full Name must be at most 100 characters`),
+    // phoneNumber: z
+    //     .string()
+    //     .required(`Phone number is Required`)
+    //     .min(10, `Phone number must be at least 10 characters`)
+    //     .max(10, `Phone number must be at most 10 characters`),
     ...(isDev()
         ? {
               password: z.string().required(`Password is Required`)
@@ -55,25 +62,30 @@ const scheme = z.object({
                   .required(`Password is Required`)
                   .min(8, `Password must be at least 8 characters`)
                   .max(100, `Password must be at most 100 characters`)
-          }),
-    confirmPassword: z
-        .string()
-        .required(`Password is Required`)
-        .test(
-            "passwords-match",
-            "Passwords are not matching",
-            function (value) {
-                return this.parent.password === value;
-            }
-        )
+          })
+    // confirmPassword: z
+    //     .string()
+    //     .required(`Password is Required`)
+    //     .test(
+    //         "passwords-match",
+    //         "Passwords are not matching",
+    //         function (value) {
+    //             return this.parent.password === value;
+    //         }
+    //     )
 });
 
 export default function AccountCreation() {
-    const toast = useToast();
+    let { role } = useParams();
+    const [popUP, setPopUp] = useState(role ? false : true);
+    // const toast = useToast();
     const navigate = useNavigate();
+    const [roles, setRoles] = useState([{ id: "", title: "" }]);
     const urlParams = new URLSearchParams(window.location.search);
     const param = urlParams.get("param");
     const referralId = urlParams.get("referral_id");
+    const [selectedRoleId, setSelectedRoleId] = useState<string>("");
+    const [selectedRole, setSelectedRole] = useState<string>("");
 
     //ref to community selector for resetting - temporary fix
     const community_select_ref = useRef<any>();
@@ -90,15 +102,17 @@ export default function AccountCreation() {
     ]);
     const [initialValues, setInitialValues] = useState({
         email: "",
-        firstName: "",
-        lastName: "",
-        countryCode: "+91",
-        phoneNumber: "",
+        fullName: "",
         password: "",
-        confirmPassword: "",
+        role: "",
         muid: "",
         communities: []
     });
+
+    role =
+        role === "student" || role === "mentor" || role === "enabler"
+            ? role
+            : "other";
 
     useEffect(() => {
         if (isLoading) return;
@@ -107,12 +121,22 @@ export default function AccountCreation() {
             setCommunityAPI: setCommunitiesList,
             setIsLoading: setIsLoading
         });
+        getRoles().then((res: any) => {
+            setRoles(res);
+            setIsLoading(false);
+            setSelectedRoleId(
+                res.find((role: any) => role.title.toLowerCase() === role)
+                    ?.id || ""
+            );
+            // setSelectedRole(role);
+        });
         if (param) {
             getDWMSDetails(param, (data: any) => {
                 setDWMSData({
                     email: data?.email_id || "",
-                    firstName: data?.job_seeker_fname || "",
-                    lastName: data?.job_seeker_lname || "",
+                    fullName:
+                        data?.job_seeker_fname + " " + data?.job_seeker_lname ||
+                        "",
                     phoneNumber: data?.mobile_no || "",
                     gender: data?.gender || "",
                     dob: data?.dob || ""
@@ -121,37 +145,34 @@ export default function AccountCreation() {
                 setInitialValues({
                     ...initialValues,
                     email: data?.email_id || "",
-                    firstName: data?.job_seeker_fname || "",
-                    lastName: data?.job_seeker_lname || "",
-                    phoneNumber: data?.mobile_no || ""
+                    fullName:
+                        data?.job_seeker_fname + " " + data?.job_seeker_lname ||
+                        ""
+                    // phoneNumber: data?.mobile_no || ""
                 });
             });
         }
 
         setIsLoading(false);
     }, []);
+    // console.log(roles.find(e => e.title.toLowerCase() === role)?.id);
 
     const onsubmit = async (values: any, actions: any) => {
         if (!isTncChecked) {
-            toast({
-                title: "Please accept the terms and conditions",
-                status: "error",
-                duration: 3000,
-                isClosable: true
-            });
+
+            toast.error("Please accept the terms and conditions")
             return;
         }
 
-        console.log(values);
+        // console.log(values);
 
         const userData: {
             user: {
-                first_name: any;
+                full_name: any;
                 email: any;
-                mobile: any;
                 password: any;
-                last_name?: any;
             };
+            role?: string;
             referral?: { muid: string };
             gender?: string;
             dob?: string;
@@ -162,16 +183,15 @@ export default function AccountCreation() {
             };
         } = {
             user: {
-                first_name: values.firstName,
+                full_name: values.fullName,
                 email: values.email,
-                mobile: values.phoneNumber,
                 password: values.password
             }
         };
 
-        if (values.lastName) {
-            userData.user.last_name = values.lastName;
-        }
+        // if (values.lastName) {
+        //     userData.user.last_name = values.lastName;
+        // }
 
         if (values.muid) {
             userData.referral = { muid: values.muid };
@@ -185,6 +205,14 @@ export default function AccountCreation() {
 
         if (values.communities) {
             userData.communities = values.communities;
+        }
+
+        if (role) {
+            userData.role = roles.find(e => e.title.toLowerCase() === role)?.id;
+        }
+
+        if (selectedRoleId) {
+            userData.role = selectedRoleId;
         }
 
         if (param) {
@@ -201,10 +229,21 @@ export default function AccountCreation() {
         const isSuccess = await validate({
             userData: userData,
             setIsSubmitting: setIsLoading,
-            toast: toast
+            // toast: toast // Make sure to pass the toast parameter correctly
         });
-        if (isSuccess) navigate("select-community", { state: userData });
+
+        if (isSuccess && selectedRole.toLowerCase() !== "other") {
+            navigate("/register/about", { state: userData });
+        } else if (isSuccess && selectedRole.toLowerCase() === "other") {
+            submitUserData({
+                setIsLoading: setIsLoading,
+                userData: userData,
+                // toast: toast,
+                navigate: navigate
+            });
+        }
     };
+    // console.log(selectedRole, role);
 
     return (
         <OnboardingTemplate>
@@ -220,6 +259,51 @@ export default function AccountCreation() {
             >
                 {formik => (
                     <Form>
+                        {popUP && (
+                            <div className={styles.popUp}>
+                                <div className={styles.box}>
+                                    <img src={muBrand} alt="mulearn" />
+                                    <h1>What describes you the most!</h1>
+                                    <p className={styles.subText}>
+                                        Choose the role that best fits your
+                                        profile.
+                                    </p>
+                                    <div className={styles.rolePageCards}>
+                                        {roleOptions.map((roleOption: any) => {
+                                            let classname = `${
+                                                styles.rolePageCard
+                                            } ${
+                                                selectedRole ===
+                                                    roleOption.value &&
+                                                styles.active
+                                            }`;
+                                            return (
+                                                <div
+                                                    className={classname}
+                                                    onClick={() => {
+                                                        let rolId = roles.find(
+                                                            role =>
+                                                                role.title ===
+                                                                roleOption.value
+                                                        )?.id;
+                                                        setSelectedRoleId(
+                                                            rolId || ""
+                                                        );
+                                                        setSelectedRole(
+                                                            roleOption.value
+                                                        );
+                                                        setPopUp(false);
+                                                    }}
+                                                >
+                                                    {roleOption.icon}
+                                                    <p>{roleOption.title}</p>
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+                            </div>
+                        )}
                         <div className={styles.accountCreationContainer}>
                             <div className={styles.accountCreationInputs}>
                                 <div className={styles.inputBox}>
@@ -249,22 +333,22 @@ export default function AccountCreation() {
                                 <div className={styles.accountCreationName}>
                                     <div className={styles.inputBox}>
                                         <SimpleInput
-                                            name={"firstName"}
+                                            name={"fullName"}
                                             onChange={formik.handleChange}
                                             type="text"
-                                            placeholder="First Name"
+                                            placeholder="Full Name"
                                             value={
-                                                formik.values.firstName ||
-                                                dwmsData?.firstName
+                                                formik.values.fullName ||
+                                                dwmsData?.fullName
                                             }
                                             required
                                             disabled={
-                                                isLoading || dwmsData?.firstName
+                                                isLoading || dwmsData?.fullName
                                                     ? true
                                                     : false
                                             }
                                             style={
-                                                dwmsData?.firstName
+                                                dwmsData?.fullName
                                                     ? {
                                                           backgroundColor:
                                                               "#f7f7f7"
@@ -276,8 +360,39 @@ export default function AccountCreation() {
                                             }
                                         />
                                     </div>
+                                    <div
+                                        className={
+                                            styles.accountCreationPassword
+                                        }
+                                    >
+                                        <div className={styles.inputBox}>
+                                            <SimpleInput
+                                                name={"password"}
+                                                value={formik.values.password}
+                                                onChange={formik.handleChange}
+                                                type={
+                                                    isVisible
+                                                        ? "text"
+                                                        : "password"
+                                                }
+                                                placeholder="Password"
+                                                required
+                                                disabled={isLoading}
+                                            />
+                                        </div>
 
-                                    <div className={styles.inputBox}>
+                                        <button
+                                            type="button"
+                                            onClick={() => setVisible(e => !e)}
+                                        >
+                                            {isVisible ? (
+                                                <HiEye size={26} />
+                                            ) : (
+                                                <HiEyeSlash size={26} />
+                                            )}
+                                        </button>
+                                    </div>
+                                    {/* <div className={styles.inputBox}>
                                         <SimpleInput
                                             name={"lastName"}
                                             onChange={formik.handleChange}
@@ -304,10 +419,10 @@ export default function AccountCreation() {
                                                       }
                                             }
                                         />
-                                    </div>
+                                    </div> */}
                                 </div>
 
-                                <div className={styles.col_2}>
+                                {/* <div className={styles.col_2}>
                                     <select
                                         style={{
                                             width: "15%",
@@ -352,8 +467,8 @@ export default function AccountCreation() {
                                             }
                                         />
                                     </div>
-                                </div>
-                                <div className={styles.col_2}>
+                                </div> */}
+                                {/* <div className={styles.col_2}>
                                     <div
                                         className={
                                             styles.accountCreationPassword
@@ -420,7 +535,7 @@ export default function AccountCreation() {
                                             )}
                                         </button>
                                     </div>
-                                </div>
+                                </div> */}
                                 {/* <div>
                                     <Select
                                         name="community.id"
@@ -514,7 +629,13 @@ export default function AccountCreation() {
                                     style={{ marginTop: "10px" }}
                                     isLoading={isLoading}
                                 >
-                                    {isLoading ? "Validating..." : "Next Step"}
+                                    {selectedRole.toLowerCase() !== "other"
+                                        ? isLoading
+                                            ? "Validating..."
+                                            : "Next Step"
+                                        : isLoading
+                                        ? "Validating..."
+                                        : "Submit"}
                                 </PowerfulButton>
                             </div>
 

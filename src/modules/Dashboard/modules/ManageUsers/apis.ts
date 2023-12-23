@@ -1,14 +1,13 @@
 import { AxiosError } from "axios";
 import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
-import { ToastId, UseToastOptions } from "@chakra-ui/toast";
 import { NavigateFunction } from "react-router-dom";
-import { reject } from "lodash";
 import {
     TT,
     collegeOptions
 } from "src/modules/Common/Authentication/services/onboardingApis";
 import { Dispatch, SetStateAction } from "react";
+import toast from "react-hot-toast";
 export const getManageUsers = async ({
     setData,
     page,
@@ -60,8 +59,9 @@ export const getManageUsers = async ({
 };
 
 export const createManageUsers = async (
-    firstName: string,
-    last_name: string,
+    // firstName: string,
+    // last_name: string,
+    full_name: string,
     email: string,
     mobile: string,
     dob: string,
@@ -71,8 +71,9 @@ export const createManageUsers = async (
         const response = await privateGateway.post(
             dashboardRoutes.getUsersData,
             {
-                first_name: firstName,
-                last_name: last_name,
+                // first_name: firstName,
+                // last_name: last_name,
+                full_name: full_name,
                 email: email,
                 mobile: mobile
             }
@@ -86,11 +87,11 @@ export const createManageUsers = async (
 };
 
 export const editManageUsers = async (
-    toast: (options?: UseToastOptions | undefined) => ToastId,
     navigate: NavigateFunction,
     id?: string,
-    first_name?: string,
-    last_name?: string,
+    // first_name?: string,
+    // last_name?: string,
+    full_name?: string,
     email?: string,
     mobile?: string,
     discord_id?: string | null,
@@ -104,8 +105,9 @@ export const editManageUsers = async (
         const response = await privateGateway.patch(
             dashboardRoutes.getUsersData + id + "/",
             {
-                first_name: first_name,
-                last_name: last_name,
+                // first_name: first_name,
+                // last_name: last_name,
+                full_name: full_name,
                 email: email,
                 mobile: mobile,
                 discord_id: discord_id,
@@ -121,12 +123,8 @@ export const editManageUsers = async (
         const message: any = response?.data;
         console.log(message);
         //console.log(message);
-        toast({
-            title: "Updated SuccessFully",
-            status: "success",
-            duration: 3000,
-            isClosable: true
-        });
+
+        toast.success("Updated SuccessFully");
     } catch (err: unknown) {
         const error = err as APIError;
         let errorMessage = "Some Error Occurred..";
@@ -142,13 +140,7 @@ export const editManageUsers = async (
         }
 
         if (error?.response) {
-            toast({
-                title: errorMessage,
-                description: "",
-                status: "error",
-                duration: 2000,
-                isClosable: true
-            });
+            toast.error(errorMessage);
         }
     }
 };
@@ -202,29 +194,17 @@ export const getAllOrganisations = async (
 
     }catch(err){
         console.log(err)
-        toast({
-            title: "Error in org fetch",
-            status: "error",
-            duration: 3000,
-            isClosable: true
-        })
+        
     }
 }
 */
-export const deleteManageUsers = async (
-    id: string | undefined,
-    toast: (options?: UseToastOptions | undefined) => ToastId
-) => {
+export const deleteManageUsers = async (id: string | undefined) => {
     try {
         const response = await privateGateway.delete(
             dashboardRoutes.getUsersData + id + "/"
         );
-        toast({
-            title: "User deleted",
-            status: "success",
-            duration: 3000,
-            isClosable: true
-        });
+
+        toast.success("User deleted");
         const message: any = response?.data;
     } catch (err: unknown) {
         const error = err as AxiosError;
@@ -332,29 +312,32 @@ export const editUsers = async (id: string, data: any) => {
     }
 };
 
-
 export const getLocations = async (
     param: string,
     setLocationData: Dispatch<SetStateAction<any[]>>,
     setIsApiCalled: UseStateFunc<boolean>
 ) => {
     setIsApiCalled(true);
-    await publicGateway.get(onboardingRoutes.location.replace(
-        "${param}",
-        param === "" ? "india" : param
-    )).then((response) => {
-        if(response.data.response.length === 0){
+    await publicGateway
+        .get(
+            onboardingRoutes.location.replace(
+                "${param}",
+                param === "" ? "india" : param
+            )
+        )
+        .then(response => {
+            if (response.data.response.length === 0) {
+                setIsApiCalled(false);
+                setLocationData([{ id: "", location: "" }]);
+                console.log("success");
+            } else {
+                setIsApiCalled(false);
+                console.log(response.data.response);
+                setLocationData(response.data.response);
+            }
+        })
+        .catch((error: APIError) => {
             setIsApiCalled(false);
-            setLocationData([{ id : '', location : ''}])
-            console.log("success")
-        }
-        else{
-            setIsApiCalled(false);
-            console.log(response.data.response)
-            setLocationData(response.data.response);
-        }
-    }).catch((error: APIError) => {
-        setIsApiCalled(false);
-        console.log(error)
-    });
-}
+            console.log(error);
+        });
+};

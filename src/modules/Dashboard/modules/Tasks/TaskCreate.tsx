@@ -12,14 +12,14 @@ import {
     MuButton,
     PowerfulButton
 } from "@/MuLearnComponents/MuButtons/MuButton";
-import { useToast } from "@chakra-ui/react";
+
 import { useEffect, useState } from "react";
 import { AxiosError } from "axios";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
 const TaskCreate = () => {
     const navigate = useNavigate();
-    const toast = useToast();
+    
     const [uuidData, setuuidData] = useState<{ [index: string]: any[] } | null>(
         null
     );
@@ -105,8 +105,7 @@ const TaskCreate = () => {
                             values.ig_id,
                             values.organization_id,
                             values.discord_link,
-                            "",
-                            toast
+                            ""
                         );
 
                         setTimeout(() => {

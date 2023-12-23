@@ -2,6 +2,7 @@ import React from "react";
 import axios, { AxiosError } from "axios";
 import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
+import toast from "react-hot-toast";
 
 type profileDetails = {
     first_name: string;
@@ -30,8 +31,7 @@ export const getEditUserProfile = (
         .then(response => {
             // console.log(response.data.response);
             const {
-                first_name,
-                last_name,
+                full_name,
                 email,
                 mobile,
                 gender,
@@ -39,8 +39,8 @@ export const getEditUserProfile = (
                 communities
             } = response.data.response;
             const profileDetails: profileDetails = {
-                first_name: first_name,
-                last_name: last_name,
+                first_name: full_name.split(" ")[0],
+                last_name: full_name.split(" ")[1] ?? "",
                 email,
                 mobile: mobile,
                 gender,
@@ -90,7 +90,6 @@ export const syncDiscordImage = async (
     }
 };
 export const patchEditUserProfile = async (
-    toast: ToastAsPara,
     editedProfileDetails: profileDetails,
     id: string,
     setEditPopUp: (value: boolean) => void,
@@ -100,17 +99,19 @@ export const patchEditUserProfile = async (
     try {
         if (image) await updateProfileImage(image, id);
 
+        // concat first_name and last_name and store it in full_name
+        const full_name = `${editedProfileDetails.first_name} ${editedProfileDetails.last_name}`;
+        const payload = {
+            ...editedProfileDetails,
+            full_name
+        };
+
         privateGateway
-            .patch(dashboardRoutes.getEditUserProfile, editedProfileDetails)
+            .patch(dashboardRoutes.getEditUserProfile, payload)
             .then(response => {
                 // console.log(response.data.response);
-                toast({
-                    title: "Profile Data Updated",
-                    description: "Your profile has been updated",
-                    status: "success",
-                    duration: 3000,
-                    isClosable: true
-                });
+
+                toast.success("Profile Data Updated");
                 setTimeout(() => {
                     setEditPopUp(false);
                 }, 1000);
@@ -121,24 +122,14 @@ export const patchEditUserProfile = async (
                 Object.keys(fieldErrors).forEach(field => {
                     console.log(`${field}: ${fieldErrors[field][0]}`);
                     setFieldError(field, fieldErrors[field][0]);
-                    toast({
-                        title: `${field} Error`,
-                        description: `${fieldErrors[field][0]}`,
-                        status: "error",
-                        duration: 3000,
-                        isClosable: true
-                    });
+                    toast.error(`${fieldErrors[field][0]}`);
                 });
             });
     } catch (err) {
         if (err instanceof AxiosError)
-            toast({
-                title: "Image upload failed",
-                description: err.response?.data.message.general[0]??"",
-                status:"error"
-            });
-        
-            
+            toast.error(
+                err.response?.data.message.general[0] ?? "Image Upload Failed"
+            );
     }
 };
 

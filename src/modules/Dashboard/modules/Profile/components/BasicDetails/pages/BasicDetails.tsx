@@ -1,46 +1,42 @@
 import { useEffect, useState } from "react";
 import styles from "./BasicDetails.module.css";
 import HeatmapComponent from "../../Heatmap/HeatmapComponent";
-import { useToast } from "@chakra-ui/react";
 import { editIgDetails, getAllIg } from "../services/api";
 import { useParams } from "react-router-dom";
+import toast from "react-hot-toast";
 type Props = {
     userProfile: any;
     userLog: any;
 };
 const BasicDetails = (props: Props) => {
-    const toast = useToast();
     const [editIg, setEditIg] = useState(false);
     const [allIg, setAllIg] = useState<any>([]);
 
     const [ig, setIg] = useState<any>(props.userProfile.interest_groups);
     const { id } = useParams<{ id: string }>();
     useEffect(() => {
-        // getIgDetails(toast, setIg);
         getAllIg(setAllIg);
     }, []);
     const ig_sorted = ig.sort((a: any, b: any) => {
         return a.name > b.name ? 1 : -1;
     });
     // console.log(props.userProfile.level.slice(3, 4));
-    
+
     return (
         <>
             <div className={styles.interestGrp}>
                 <div className={styles.top_sec}>
                     <b>Interest Groups</b>
                     <div className={styles.close_and_submit_btn_div}>
-                        {!id &&
-                            6 >= 4 &&
-                            !editIg && (
-                                <p
-                                    onClick={() => setEditIg(true)}
-                                    className={styles.edit_profile_btn}
-                                    tabIndex={0}
-                                >
-                                    <i className="fi fi-rr-pencil"></i>
-                                </p>
-                            )}
+                        {!id && 6 >= 4 && !editIg && (
+                            <p
+                                onClick={() => setEditIg(true)}
+                                className={styles.edit_profile_btn}
+                                tabIndex={0}
+                            >
+                                <i className="fi fi-rr-pencil"></i>
+                            </p>
+                        )}
                         {editIg && (
                             <p
                                 onClick={() => {
@@ -58,7 +54,6 @@ const BasicDetails = (props: Props) => {
                                 onClick={() => {
                                     setEditIg(false);
                                     editIgDetails(
-                                        toast,
                                         ig_sorted.map((ig: any) => {
                                             return ig.id;
                                         })
@@ -80,8 +75,8 @@ const BasicDetails = (props: Props) => {
                                     style={
                                         editIg
                                             ? {
-                                                transform: "scale(0.955)"
-                                            }
+                                                  transform: "scale(0.955)"
+                                              }
                                             : {}
                                     }
                                     className={styles.igs}
@@ -99,14 +94,9 @@ const BasicDetails = (props: Props) => {
                                                         )
                                                     );
                                                 } else {
-                                                    toast({
-                                                        title: "Error",
-                                                        description:
-                                                            "You must have atleast one interest group",
-                                                        status: "error",
-                                                        duration: 3000,
-                                                        isClosable: true
-                                                    });
+                                                    toast.error(
+                                                        "You must have atleast one interest group"
+                                                    );
                                                 }
                                             }}
                                             className="fi fi-sr-circle-xmark"
@@ -117,18 +107,21 @@ const BasicDetails = (props: Props) => {
                                         {data.karma !== null
                                             ? data.karma > 1000
                                                 ? (
-                                                    data.karma / 1000
-                                                ).toPrecision(2) + "K"
+                                                      data.karma / 1000
+                                                  ).toPrecision(2) + "K"
                                                 : data.karma
-                                                    ? data.karma
-                                                    : "0"
+                                                ? data.karma
+                                                : "0"
                                             : "0"}
                                     </p>
                                 </div>
                             );
                         })
                     ) : (
-                        <p>No Interest Groups to Selected, You need you reach Level 4 to Select</p>
+                        <p>
+                            No Interest Groups to Selected, You need you reach
+                            Level 4 to Select
+                        </p>
                     )}
                     {editIg && <hr />}
                 </div>
@@ -151,9 +144,9 @@ const BasicDetails = (props: Props) => {
                                                             (
                                                                 prevState: any
                                                             ) => [
-                                                                    ...prevState,
-                                                                    data
-                                                                ]
+                                                                ...prevState,
+                                                                data
+                                                            ]
                                                         );
                                                 }
                                                 // editIgDetails(

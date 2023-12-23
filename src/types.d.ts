@@ -7,8 +7,7 @@ type Role = (typeof import('./services/types').roles)[keyof typeof import('./ser
 
 type UserInfo = {
     muid          : string,
-    first_name    : string,
-    last_Name     : string,
+    full_name     : string,
     email         : string,
     mobile        : string,
     gender        : null,
@@ -22,8 +21,6 @@ type UserInfo = {
 }
 
 type ColOrder = { column: string, Label: string, isSortable: boolean }
-
-type ToastAsPara = (options?: import('@chakra-ui/react').UseToastOptions) => import('@chakra-ui/react').ToastId;
 
 // just pass json structure type as parameters
 type APIResponse< R = {}, M = {}[] > = {

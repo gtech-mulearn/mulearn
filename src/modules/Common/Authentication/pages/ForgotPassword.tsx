@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { forgetPassword } from "../services/apis";
 import { useNavigate } from "react-router-dom";
-import { useToast } from "@chakra-ui/react";
 import styles from "./Login.module.css";
 import {
     MuButton,
@@ -14,7 +13,6 @@ const ForgotPassword = (props: Props) => {
     const [muid, setMuid] = useState("");
     const [showLoader, setShowLoader] = useState(false);
     const navigate = useNavigate();
-    const toast = useToast();
 
     return (
         <div className={styles.login_page}>
@@ -44,7 +42,6 @@ const ForgotPassword = (props: Props) => {
                                 if (muid.length > 0) {
                                     forgetPassword(
                                         muid,
-                                        toast,
                                         navigate,
                                         setShowLoader
                                     );

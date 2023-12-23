@@ -14,7 +14,6 @@ import {
 } from "../services/HackathonApis";
 import { useNavigate, useParams } from "react-router-dom";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
-import { useToast } from "@chakra-ui/react";
 import {
     convertDateToYYYYMMDD,
     getLocationIdByName
@@ -27,6 +26,7 @@ import { FormTabAdvanced } from "../components/FormTabAdvanced";
 import { FormTabApplication } from "../components/FormTabApplication";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import toast from "react-hot-toast";
 
 /**
  * TODO: Make the form things json and iterate and display, store the jsons in a separate file.
@@ -62,8 +62,6 @@ const HackathonCreate = () => {
     );
     const [isPublishing, setIsPublishing] = useState(false);
     const [id, setID] = useState(useParams().id);
-
-    const toast = useToast();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -133,13 +131,7 @@ const HackathonCreate = () => {
         if (isPublishing) {
             let checker = false;
             const runToast = (title: string, description: string) => {
-                toast({
-                    title,
-                    description,
-                    status: "error",
-                    isClosable: true,
-                    position: "top-right"
-                });
+                toast.error(title);
             };
 
             if (RSD > RED) {
@@ -200,7 +192,11 @@ const HackathonCreate = () => {
         (async () => {
             try {
                 if (id) {
-                    await editHackathon(hackathon, formattedFormFields,navigate);
+                    await editHackathon(
+                        hackathon,
+                        formattedFormFields,
+                        navigate
+                    );
                 } else {
                     setID(
                         await createHackathon(hackathon, formattedFormFields)
@@ -209,25 +205,13 @@ const HackathonCreate = () => {
 
                 if (isPublishing && id) {
                     setIsPublishing(false);
-                    publishHackathon(id, hackathon.status, toast);
+                    publishHackathon(id, hackathon.status);
                 } else {
-                    toast({
-                        title: "Changes Saved",
-                        description: "Change has been saved Successfully",
-                        status: "success",
-                        duration: 4000,
-                        isClosable: true
-                    });
+                    toast.success("Changes Saved")
                     navigate("/dashboard/hackathon");
                 }
             } catch (err) {
-                toast({
-                    title: "Failed to make changes",
-                    description: err as string,
-                    status: "error",
-                    duration: 5000,
-                    isClosable: true
-                });
+                toast.error("Failed to make changes")
             }
         })();
     };
@@ -245,7 +229,8 @@ const HackathonCreate = () => {
             convertDateToYYYYMMDD(String(data?.application_ends)) || null,
         orgId: data?.org_id || null,
         place: data?.place || null,
-        districtId: getLocationIdByName(district, String(data?.district)) || null,
+        districtId:
+            getLocationIdByName(district, String(data?.district)) || null,
         isOpenToAll: data?.is_open_to_all || false,
         formFields: data?.form_fields || [],
         event_logo: null,
