@@ -97,13 +97,31 @@ const Table: FC<TableProps> = (props: TableProps) => {
         }
     };
 
-    function convertToTableData(dateString: any):string | ReactElement{
+    function findModalDeleteHeading(rowData: Data): string {
+
+        if (props.modalDeleteHeading) {
+            return props.modalDeleteHeading;
+        }
+
+        const requiredKeys = ["title", "full_name", "first_name", "last_name", "name"];
+        for (const key of requiredKeys) {
+            if (rowData[key]) {
+                if (key == "first_name" || key == "last_name") {
+                    return `${rowData["first_name"]} ${rowData["last_name"]}`;
+                }
+                return String(rowData[key]);
+            }
+        }
+        return "undefined";
+    }
+
+    function convertToTableData(dateString: any): string | ReactElement {
         const numberRegex = /^[0-9]+$/;
         if (String(dateString) == "true") {
-            return <FaCheck  style={{ color: "#556FF1" }} />
+            return <FaCheck style={{ color: "#556FF1" }} />
         }
         if (String(dateString) == "false") {
-            return <ImCross style={{color: "#394C4BB3"}}/>;        
+            return <ImCross style={{ color: "#394C4BB3" }} />;
         }
 
         if (String(dateString).match(numberRegex)) {
@@ -164,25 +182,24 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                     </td>{" "}
                                     {props.columnOrder.map(column => (
                                         <td
-                                            className={`${styles.td} ${
-                                                column.column === "long_url"
-                                                    ? styles["url_wrap"]
-                                                    : ""
-                                            }`}
+                                            className={`${styles.td} ${column.column === "long_url"
+                                                ? styles["url_wrap"]
+                                                : ""
+                                                }`}
                                             key={column.column}
                                         >
                                             {column.wrap
                                                 ? column.wrap(
-                                                      convertToTableData(
-                                                          rowData[column.column]
-                                                      ),
-                                                      rowData["id"] as string,
-                                                      rowData
-                                                  )
+                                                    convertToTableData(
+                                                        rowData[column.column]
+                                                    ),
+                                                    rowData["id"] as string,
+                                                    rowData
+                                                )
                                                 : convertToTableData(
-                                                      rowData[column.column]
-                                                  )}
-                                            {}
+                                                    rowData[column.column]
+                                                )}
+                                            { }
                                         </td>
                                     ))}
                                     {props.id &&
@@ -198,7 +215,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                                 props.analytics &&
                                                                 props.analytics(
                                                                     rowData[
-                                                                        column
+                                                                    column
                                                                     ]
                                                                 )
                                                             }
@@ -215,7 +232,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                                 props.onCopyClick &&
                                                                 props.onCopyClick(
                                                                     rowData[
-                                                                        column
+                                                                    column
                                                                     ]
                                                                 )
                                                             }
@@ -232,7 +249,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                                 props.onEditClick &&
                                                                 props.onEditClick(
                                                                     rowData[
-                                                                        column
+                                                                    column
                                                                     ]
                                                                 )
                                                             }
@@ -274,7 +291,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                                 props.onVerifyClick(
                                                                     String(
                                                                         rowData[
-                                                                            column
+                                                                        column
                                                                         ]
                                                                     )
                                                                 );
@@ -340,15 +357,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                             isDeleteOpen[index]
                                                         }
                                                         onClose={closeAllModals}
-                                                        title={String(
-                                                            rowData["title"]
-                                                                ? rowData[
-                                                                      "title"
-                                                                  ]
-                                                                : rowData[
-                                                                      "full_name"
-                                                                  ]
-                                                        )}
+                                                        title={findModalDeleteHeading(rowData)}
                                                         type={"error"}
                                                         onDone={() => {
                                                             if (
@@ -357,7 +366,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                                 props.onDeleteClick(
                                                                     String(
                                                                         rowData[
-                                                                            column
+                                                                        column
                                                                         ]
                                                                     )
                                                                 );

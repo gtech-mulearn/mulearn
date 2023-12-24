@@ -59,7 +59,7 @@ const Refer = () => {
                 <Modal
                     icon="send"
                     header="Invite"
-                    paragraph="Send a invite link to a email"
+                    paragraph="Send an invite link to an email"
                     onClose={() => setOpen(false)}
                 >
                     <InviteFormModel inviteType={inviteType} onClose={() => setOpen(false)} />

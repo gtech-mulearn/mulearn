@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import styles from "./Modal.module.css";
 import mustyles from "@/MuLearnComponents/MuButtons/MuButton.module.css";
-import toast from "react-hot-toast"
+import toast from "react-hot-toast";
 import * as Yup from "yup";
 import { Formik, Form } from "formik";
 import {
     MuButton,
     PowerfulButton
 } from "@/MuLearnComponents/MuButtons/MuButton";
-import FormikReactSelect from "@/MuLearnComponents/FormikComponents/FormikComponents";
+import FormikReactSelect, {
+    FormikTextInput
+} from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { addUsers, deleteUser, getUser } from "../apis";
 import { AiOutlineDelete } from "react-icons/ai";
 import { Option } from "@/MuLearnComponents/FormikComponents/FormikComponents";
@@ -27,26 +29,29 @@ export type roleUsers = {
 type Props = {
     onClose: any;
     roles: role[];
+    currRole: { title: string; id: string };
 };
 
 const ManageUsers = (props: Props) => {
     const [selectedUsers, setSelectedUsers] = useState<roleUsers[]>([]);
     const [unselectedUsers, setUnselectedUsers] = useState<roleUsers[]>([]);
-    const [currRole, setCurrRole] = useState<role>({
-        title: "",
-        id: ""
-    });
+    const [search, setSearch] = useState("");
+    const { currRole } = props;
     const [mode, setMode] = useState<"add" | "remove">("remove");
 
-    const errorHandler = (msg:string)=>{
-        toast.error(msg)
-    }
-    const successHandler = (msg:string)=>{
-        toast.success(msg)
-    }
+    const errorHandler = (msg: string) => {
+        toast.error(msg);
+    };
+    const successHandler = (msg: string) => {
+        toast.success(msg);
+    };
     const handleUserDelete = async (userId: string) => {
-        deleteUser(userId,currRole.id,errorHandler,successHandler)
-        setSelectedUsers(users=>users.filter(user=>user.value!==userId))
+        deleteUser(userId, currRole.id, errorHandler, msg => {
+            successHandler(msg);
+            setSelectedUsers(users =>
+                users.filter(user => user.value !== userId)
+            );
+        });
     };
 
     useEffect(() => {
@@ -61,51 +66,40 @@ const ManageUsers = (props: Props) => {
             }
         })();
     }, [currRole, mode]);
-
+    console.log(selectedUsers, unselectedUsers);
     return (
         <Formik
             enableReinitialize={true}
             initialValues={{
-                users: [],
-                role: ""
+                users: []
             }}
             onSubmit={values => {
-                addUsers(values.users, values.role,errorHandler,successHandler);
-                props.onClose(null);
+                addUsers(values.users, currRole.id, errorHandler, msg => {
+                    successHandler(msg);
+                    setMode("remove");
+                });
             }}
             validationSchema={Yup.object({
-                role: Yup.string().required("Role required"),
                 users: Yup.array().required("users required")
             })}
         >
             <Form className={styles.Form}>
                 <div className={styles.flex}>
-                    <FormikReactSelect
-                        name="role"
-                        options={props.roles.map(obj => {
-                            return { label: obj.title, value: obj.id };
-                        })}
-                        label=""
-                        placeholder="Select the role"
-                        isClearable
-                        isSearchable
-                        maxMenuHeight={200}
-                        addOnChange={(obj: Option) => {
-                            if (obj)
-                                setCurrRole({
-                                    title: obj.label,
-                                    id: obj.value.toString()
-                                });
-                            else setCurrRole({ title: "", id: "" });
+                    {mode==='remove'&&<FormikTextInput
+                        name="search"
+                        placeholder="Search..."
+                        value={search}
+                        onChange={e => {
+                            setSearch(e.target.value)
                         }}
-                    />
+                    />}
                     <button
                         className={`${styles.modeBtn}`}
                         type="button"
                         onClick={() =>
-                            setMode(mode === "remove" ? "add":"remove")
+                            setMode(mode === "remove" ? "add" : "remove")
                         }
-                        title={mode === "add" ? "Remove Users":"Add Users"}
+                        title={mode === "add" ? "Remove Users" : "Add Users"}
                     >
                         {mode == "remove" ? (
                             <BiUserPlus size={28} />
@@ -117,10 +111,10 @@ const ManageUsers = (props: Props) => {
                 {mode === "remove" ? (
                     !!currRole.id && (
                         <ul className={styles.userList}>
-                            {selectedUsers.map(user => (
+                            {selectedUsers.filter(user=>user.label.startsWith(search)).map(user => (
                                 <li>
                                     <span>
-                                        {`${user.label.substring(0, 10)}
+                                        {`${user.label.substring(0, 20)}
                                         ${user.label.length > 10 ? "..." : ""}`}
                                     </span>
                                     <button
@@ -171,13 +165,15 @@ const ManageUsers = (props: Props) => {
                     >
                         Close
                     </PowerfulButton>
-                    {mode==='add'&&<PowerfulButton
-                        className={`${mustyles.btn} ${styles.Confirm}`}
-                        type="submit"
-                        disabled={!currRole.id}
-                    >
-                        Add Users
-                    </PowerfulButton>}
+                    {mode === "add" && (
+                        <PowerfulButton
+                            className={`${mustyles.btn} ${styles.Confirm}`}
+                            type="submit"
+                            disabled={!currRole.id}
+                        >
+                            Add Users
+                        </PowerfulButton>
+                    )}
                 </div>
                 <span className={styles.note}>
                     Submission is not required for user deletion

@@ -72,13 +72,6 @@ const Events = lazy(() =>
         default: module.Events
     }))
 );
-
-const ManageUsersCreate = lazy(
-    () => import("./modules/Dashboard/modules/ManageUsers/ManageUsersCreate")
-);
-const ManageUsersEdit = lazy(
-    () => import("./modules/Dashboard/modules/ManageUsers/ManageUsersEdit")
-);
 const DynamicType = lazy(
     () => import("./modules/Dashboard/modules/DynamicType/DynamicType")
 );
@@ -268,7 +261,8 @@ function App() {
             path: "/",
             element: <AuthRoutes />,
             children: [
-                { path: "register", element: <AccountCreation /> },
+                { path: "register/:role", element: <AccountCreation /> },
+                { path: "register/", element: <AccountCreation /> },
                 { path: "login", element: <SignIn /> },
                 { path: "forgot-password", element: <ForgetPassword /> },
                 { path: "reset-password", element: <ResetPassword /> }
@@ -278,15 +272,15 @@ function App() {
             path: "/signin",
             element: <SignIn />
         },
+        // {
+        //     path: "/signup/:role",
+        //     element: <AccountCreation />
+        // },
         {
-            path: "/signup",
-            element: <AccountCreation />
-        },
-        {
-            path: "register/select-role",
+            path: "register/about",
             element: <Rolepage />
         },
-        { path: "register/select-community", element: <CommunityPage /> },
+        // { path: "register/select-community", element: <CommunityPage /> },
         {
             path: "/",
             element: <PrivateRoutes />,
@@ -335,14 +329,6 @@ function App() {
                                     children={<ManageUsers />}
                                 />
                             )
-                        },
-                        {
-                            path: "manage-users/create",
-                            element: <ManageUsersCreate />
-                        },
-                        {
-                            path: "manage-users/edit/:id",
-                            element: <ManageUsersEdit />
                         },
                         {
                             path: "manage-roles",

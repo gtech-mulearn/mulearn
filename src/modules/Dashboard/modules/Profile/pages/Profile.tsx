@@ -32,14 +32,13 @@ import { isDev } from "@/MuLearnServices/common_functions";
 const Profile = () => {
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
-    
+
     const [APILoadStatus, setAPILoadStatus] = useState(0);
     const [profileList, setProfileList] = useState("basic-details");
     const [popUP, setPopUP] = useState(false);
     const [editPopUp, setEditPopUp] = useState(false);
     const [userProfile, setUserProfile] = useState({
-        first_name: "",
-        last_name: "",
+        full_name: "",
         college_code: "",
         interest_groups: [{ name: "", karma: 0 }],
         karma_distribution: [{ task_type: "", karma: 0 }],
@@ -208,7 +207,7 @@ const Profile = () => {
                                                                 : dpm
                                                         }
                                                         alt={
-                                                            userProfile.first_name
+                                                            userProfile.full_name
                                                         }
                                                         style={
                                                             !id
@@ -246,8 +245,7 @@ const Profile = () => {
                                                 </div>
                                                 <div className={styles.name}>
                                                     <h1>
-                                                        {userProfile.first_name}{" "}
-                                                        {userProfile.last_name}{" "}
+                                                        {userProfile.full_name}
                                                         {userProfile.college_code
                                                             ? "(" +
                                                             userProfile.college_code +
@@ -462,10 +460,14 @@ const Profile = () => {
                                                 </div>
                                             </div>
                                             <div className={styles.points}>
-                                                < Rank />
+                                                <Rank />
                                                 <div>
                                                     <span>Percentile</span>
-                                                    <h1>{parseFloat(userProfile.percentile).toFixed(2)}</h1>
+                                                    <h1>
+                                                        {parseFloat(
+                                                            userProfile.percentile
+                                                        ).toFixed(2)}
+                                                    </h1>
                                                 </div>
                                             </div>
                                         </div>
@@ -487,7 +489,7 @@ const Profile = () => {
                                                 userLevel={
                                                     userProfile.level !== null
                                                         ? parseInt(
-                                                            userProfile.level.slice(
+                                                            userProfile.level?.slice(
                                                                 3,
                                                                 4
                                                             )

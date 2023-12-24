@@ -65,21 +65,32 @@ export const createAccount = async ({
     setIsSubmitting(false);
 };
 
-export const getRoles = async ({
-    setIsLoading,
-    setRoles
-}: {
-    setIsLoading: Dispatch<SetStateAction<boolean>>;
-    setRoles: Dispatch<SetStateAction<any[]>>;
-}) => {
-    try {
-        const response = await publicGateway.get(onboardingRoutes.roles);
-        const roles = response.data.response.roles;
-        setRoles(roles);
-        setIsLoading(false);
-    } catch (err: any) {
-        console.log("getRoles Error", err);
-    }
+export const getRoles = () => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const response = await publicGateway.get(onboardingRoutes.roles);
+            const roles = response.data.response.roles;
+            resolve(roles);
+        } catch (err) {
+            console.log("getRoles Error", err);
+            reject(err);
+        }
+    });
+};
+
+export const getInterestGroups = () => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const response = await publicGateway.get(
+                onboardingRoutes.areaOfInterestList
+            );
+            const interestGroups = response.data.response.aois;            
+            resolve(interestGroups);
+        } catch (err) {
+            console.log("getInterestGroups Error", err);
+            reject(err);
+        }
+    });
 };
 
 export const getColleges = async ({

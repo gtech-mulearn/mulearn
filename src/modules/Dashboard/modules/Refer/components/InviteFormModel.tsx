@@ -59,7 +59,7 @@ const InviteFormModel = (props: Props) => {
                 <FormikTextInput
                     name="email"
                     type="email"
-                    placeholder="Enter a email address"
+                    placeholder="Enter an email address..."
                 />
                 <div className={styles.ButtonContainer}>
                     <PowerfulButton
