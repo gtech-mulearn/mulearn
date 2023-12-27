@@ -247,7 +247,7 @@ const Profile = () => {
                                                     <h1>
                                                         {userProfile.full_name}
                                                         {userProfile.college_code
-                                                            ? "(" +
+                                                            ? " (" +
                                                             userProfile.college_code +
                                                             ")"
                                                             : null}

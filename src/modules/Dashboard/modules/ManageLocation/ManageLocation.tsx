@@ -79,11 +79,6 @@ const ManageLocation = () => {
         if (activeTab === "Country") {
             // setPopupStatus(false);
             setColumns(columnsCountry);
-            // setPopupFields({
-            //     countryShow: true,
-            //     stateShow: false,
-            //     zoneShow: false
-            // });
         } else if (activeTab === "State") {
             // setPopupStatus(true);
             // setPopupFields(prev => ({
