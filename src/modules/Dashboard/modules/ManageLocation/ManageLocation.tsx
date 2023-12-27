@@ -17,7 +17,10 @@ import { getStateData, deleteStateData } from "./apis/StateAPI";
 import { getZoneData, deleteZoneData } from "./apis/ZoneAPI";
 import { getDistrictData, deleteDistrictData } from "./apis/DistrictAPI";
 import LocationPopup from "./LocationPopup";
-import { MuButton, PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import {
+    MuButton,
+    PowerfulButton
+} from "@/MuLearnComponents/MuButtons/MuButton";
 
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
@@ -46,7 +49,6 @@ const ManageLocation = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    
 
     useEffect(() => {
         if (location.state) {
@@ -64,7 +66,6 @@ const ManageLocation = () => {
     }, [popupStatus]);
 
     useEffect(() => {
-        console.log(activeTab);
         loadTableData();
         // setCurrentPage(1);
         // setPerPage(5);
@@ -72,34 +73,17 @@ const ManageLocation = () => {
         // setSort("");
         // return setData([]), setTotalPages(1);
     }, [activeTab, sort, currentPage, perPage, search]);
-
+    
     function loadTableData() {
         setLoading(true);
         if (activeTab === "Country") {
-            setPopupStatus(false);
-            (async () => {
-                const res = await getCountryData(
-                    undefined,
-                    perPage,
-                    currentPage,
-                    setTotalPages,
-                    search,
-                    sort
-                );
-                setData(
-                    res.map((data: any) => ({
-                        label: data.label,
-                        id: data.value
-                    }))
-                );
-                setLoading(false);
-            })();
-            setPopupFields({
-                countryShow: true,
-                stateShow: false,
-                zoneShow: false
-            });
+            // setPopupStatus(false);
             setColumns(columnsCountry);
+            // setPopupFields({
+            //     countryShow: true,
+            //     stateShow: false,
+            //     zoneShow: false
+            // });
         } else if (activeTab === "State") {
             // setPopupStatus(true);
             // setPopupFields(prev => ({
@@ -126,10 +110,10 @@ const ManageLocation = () => {
             setColumns(columnsDistrict);
         }
         getLocationData();
+        setLoading(false);
     }
 
     function getLocationData() {
-        console.log("asd", activeTab);
         if (activeTab === "Country") {
             (async () => {
                 const res = await getCountryData(
@@ -142,8 +126,12 @@ const ManageLocation = () => {
                 );
                 setData(
                     res.map((data: any) => ({
+                        id: data.value,
                         label: data.label,
-                        id: data.value
+                        created_by: data.created_by,
+                        created_at: data.created_at,    
+                        updated_by: data.updated_by,
+                        updated_at: data.updated_at
                     }))
                 );
             })();
@@ -163,7 +151,6 @@ const ManageLocation = () => {
                         id: data.value
                     }))
                 );
-                console.log(res);
                 setLoading(false);
             });
         } else if (activeTab === "Zone") {
@@ -415,14 +402,19 @@ const TableTopToggle: FC<TableTopToggleType> = ({
                         onClick={() => {
                             handleTabClick(item);
                         }}
-                    >{item}</PowerfulButton>
+                    >
+                        {item}
+                    </PowerfulButton>
                 ))}
             </div>
             <div className="createBtnContainer">
                 <PowerfulButton
                     className="createBtn"
                     onClick={handleAddLocation}
-                ><AiOutlinePlusCircle/>{`Add ${active}`}</PowerfulButton>
+                >
+                    <AiOutlinePlusCircle />
+                    {`Add ${active}`}
+                </PowerfulButton>
             </div>
         </div>
     );
