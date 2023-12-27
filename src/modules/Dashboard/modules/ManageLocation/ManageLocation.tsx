@@ -110,7 +110,6 @@ const ManageLocation = () => {
             setColumns(columnsDistrict);
         }
         getLocationData();
-        setLoading(false);
     }
 
     function getLocationData() {
@@ -147,11 +146,15 @@ const ManageLocation = () => {
             ).then(res => {
                 setData(
                     res.map((data: any) => ({
+                        id: data.value,
                         label: data.label,
-                        id: data.value
+                        country: data.country,
+                        created_by: data.created_by,
+                        created_at: data.created_at,    
+                        updated_by: data.updated_by,
+                        updated_at: data.updated_at
                     }))
                 );
-                setLoading(false);
             });
         } else if (activeTab === "Zone") {
             getZoneData(
@@ -165,11 +168,16 @@ const ManageLocation = () => {
             ).then(res => {
                 setData(
                     res.map((data: any) => ({
+                        id: data.value,
                         label: data.label,
-                        id: data.value
+                        state: data.state,
+                        country: data.country,
+                        created_by: data.created_by,
+                        created_at: data.created_at,
+                        updated_by: data.updated_by,
+                        updated_at: data.updated_at
                     }))
                 );
-                setLoading(false);
             });
         } else if (activeTab === "District") {
             getDistrictData(
@@ -183,13 +191,20 @@ const ManageLocation = () => {
             ).then(res => {
                 setData(
                     res.map((data: any) => ({
+                        id: data.value,
                         label: data.label,
-                        id: data.value
+                        zone: data.zone,
+                        state: data.state,
+                        country: data.country,
+                        created_by: data.created_by,
+                        created_at: data.created_at,
+                        updated_by: data.updated_by,
+                        updated_at: data.updated_at
                     }))
                 );
-                setLoading(false);
             });
         }
+        setLoading(false);
     }
 
     const handleNextClick = () => {
