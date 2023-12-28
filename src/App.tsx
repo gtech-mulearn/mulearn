@@ -105,6 +105,9 @@ const TaskCreate = lazy(
 const TaskBulkImport = lazy(
     () => import("./modules/Dashboard/modules/Tasks/TaskBulkImport")
 );
+const RolesBulkImport = lazy(
+    () => import("./modules/Dashboard/modules/ManageRoles/RolesBulkImport")
+);
 const Hackathon = lazy(
     () => import("./modules/Dashboard/modules/Hackathon/pages/Hackathon")
 );
@@ -448,6 +451,10 @@ function App() {
                         {
                             path: "tasks/bulk-import",
                             element: <TaskBulkImport />
+                        },
+                        {
+                            path: "roles/bulk-import",
+                            element: <RolesBulkImport />
                         },
                         {
                             path: "events",
