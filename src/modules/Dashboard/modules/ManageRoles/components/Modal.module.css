@@ -127,19 +127,22 @@
     align-items: self-start;
 }
 
-.modeBtn{
-   width: fit-content;
-   padding:.5rem  ;
-   margin: 0 .5rem;
-   border-radius: .5rem;
-   
+.modeBtn {
+    width: fit-content;
+    padding: 0.5rem;
+    margin: 0 0.5rem;
+    border-radius: 0.5rem;
 
-   background-color: hsl(var(--primary-btn-color));
-   color: white;
+    background-color: hsl(var(--primary-btn-color));
+    color: white;
 }
-.deleteBtn:hover{
+.deleteBtn:hover {
     color: red;
 }
-.deleteBtn:active{
+.deleteBtn:active {
     transform: scale(1.1);
+}
+.flexEnd {
+    display: flex;
+    align-items: end;
 }
