@@ -174,6 +174,8 @@ export const dashboardRoutes = {
 
     //Bulk User Role Management
     roleBulkAssign: "api/v1/dashboard/roles/bulk-assign/",
+    roleBulkAssignExcel: "api/v1/dashboard/roles/bulk-assign-excel/",
+    getRolesTemplate: "api/v1/dashboard/roles/base-template/",
 } as const;
 
 export const organizationRoutes = {
