@@ -24,11 +24,14 @@ export const getCountryData = async (
             })
         ).data.response;
 
-        if (setTotalPages) setTotalPages(data.pagination.totalPages);
-        if (setData) setData(data.data);
-        else {
-            return data.data;
+        if (setTotalPages) {
+          setTotalPages(data.pagination.totalPages);
         }
+        if (setData) {
+          setData(data.data);
+        } else {
+                    return data.data;
+                }
     } catch (err: any) {
         if (err?.response) {
             const errorMsg = err.response?.data?.message?.general[0] ?? "";

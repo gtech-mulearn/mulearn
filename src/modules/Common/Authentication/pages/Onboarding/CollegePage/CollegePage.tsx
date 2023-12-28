@@ -15,7 +15,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 
 const inputObject = {
-    college: "Collage Name",
+    college: "College Name",
     department: "Department",
     graduationYear: "Graduation Year"
 };
@@ -170,7 +170,7 @@ export default function CollegePage({
                     <div className={styles.wrapper}>
                         <Form onSubmit={formik.handleSubmit}>
                             <h5 className={styles.text}>
-                                Please enter your collage details
+                                Please enter your college details
                             </h5>
                             <div className={styles.inputBox}>
                                 <ReactSelect
