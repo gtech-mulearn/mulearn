@@ -262,37 +262,49 @@ export const getInterests = () => {
     });
 };
 
-export const getCollegeOptions = (
+export const getCollegeOptions = async (
     setCollegeOptions: collegeOptions,
     setDepartmentAPI: collegeOptions,
     district: string
 ) => {
-    publicGateway
-        .post(onboardingRoutes.collegeList, {
+    try {
+        const response: APIResponse<{ colleges: TT[]; departments: TT[] }> = await publicGateway.post(onboardingRoutes.collegeList, {
             district: district
         })
-        .then(
-            (response: APIResponse<{ colleges: TT[]; departments: TT[] }>) => {
-                const colleges = response.data.response.colleges;
-                setCollegeOptions(
-                    colleges
-                        .sort((a, b) => a.title.localeCompare(b.title))
-                        .map(college => ({
-                            value: college.id,
-                            label: college.title
-                        }))
-                );
-                setDepartmentAPI(
-                    response.data.response.departments.map(dept => ({
-                        value: dept.id,
-                        label: dept.title
+
+        const response2: APIResponse<{ schools: TT[] }> = await publicGateway.post(onboardingRoutes.schoolList, {
+            district: district
+        })
+
+        const colleges = response.data.response.colleges;
+        const schools = response2.data.response.schools;
+        setCollegeOptions(
+            [
+                ...colleges
+                    .sort((a, b) => a.title.localeCompare(b.title))
+                    .map(college => ({
+                        value: college.id,
+                        label: college.title
+                    })),
+                ...schools
+                    .sort((a, b) => a.title.localeCompare(b.title))
+                    .map(school => ({
+                        value: school.id,
+                        label: school.title
                     }))
-                );
-            }
-        )
-        .catch((error: APIError) => {
-            // errorHandler(error.response.status, error.response.data.status);
-        });
+            ]
+        );
+        setDepartmentAPI(
+            response.data.response.departments.map(dept => ({
+                value: dept.id,
+                label: dept.title
+            }))
+        );
+    }
+    catch (error: any) {
+        console.log(error);
+        //errorHandler(error.response.status, error.response.data.status);
+    }
 };
 
 export const editUsers = async (id: string, data: any) => {

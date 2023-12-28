@@ -66,7 +66,7 @@ const UserForm = forwardRef(
                     console.log(data.organizations);
                     if (data.organizations) {
                         const college = data.organizations!.filter(
-                            org => org.org_type === "College"
+                            org => org.org_type === "College" || org.org_type === "School"
                         )[0];
                         if (college) {
                             setInitialData({
@@ -116,7 +116,7 @@ const UserForm = forwardRef(
                         department: "",
                         role: data.role,
                         interest_groups: data.interest_groups,
-                        graduation_year: data.organizations?.filter(org => org.org_type === "College").map(org => org.graduation_year)[0] || null,
+                        graduation_year: data.organizations?.filter(org => org.org_type === "College" || org.org_type === "School").map(org => org.graduation_year)[0] || null,
                         district: data.district
                     });
                 }
@@ -569,7 +569,7 @@ const UserForm = forwardRef(
                                 styles={customReactSelectStyles}
                                 options={college}
                                 isClearable
-                                placeholder="College"
+                                placeholder="College / School"
                                 isLoading={!college.length}
                                 value={college.filter(
                                     college =>
