@@ -55,18 +55,36 @@ const ManageUsers = (props: Props) => {
     };
 
     useEffect(() => {
-        (async () => {
-            if (!!currRole.id) {
-                if (mode === "remove")
-                    setSelectedUsers((await getUser(currRole.id)) ?? []);
-                if (mode === "add")
-                    setUnselectedUsers(
-                        (await getUser(currRole.id, false)) ?? []
-                    );
+        // (async () => {
+        //     if (!!currRole.id) {
+        //         if (mode === "remove")
+        //             setSelectedUsers((await getUser(currRole.id)) ?? []);
+        //         if (mode === "add")
+        //             setUnselectedUsers(
+        //                 (await getUser(currRole.id, false)) ?? []
+        //             );
+        //     }
+        // })();
+        setSearch("");
+    }, [mode]);
+    useEffect(() => {
+        const handleSearch = async () => {
+            if (search.length < 3) return;
+
+            if (mode === "remove")
+                setSelectedUsers((await getUser(currRole.id, search)) ?? []);
+            if (mode === "add") {
+                const addUsers =
+                    (await getUser(currRole.id, search, false)) ?? [];
+                setUnselectedUsers(users => [...users, ...addUsers]);
             }
-        })();
-    }, [currRole, mode]);
-    console.log(selectedUsers, unselectedUsers);
+        };
+        const timeout = setTimeout(handleSearch, 1000);
+
+        return () => clearTimeout(timeout);
+    }, [search]);
+
+    console.log(search);
     return (
         <Formik
             enableReinitialize={true}
@@ -85,74 +103,78 @@ const ManageUsers = (props: Props) => {
         >
             <Form className={styles.Form}>
                 <div className={styles.flex}>
-                    {mode==='remove'&&<FormikTextInput
-                        name="search"
-                        placeholder="Search..."
-                        value={search}
-                        onChange={e => {
-                            setSearch(e.target.value)
-                        }}
-                    />}
-                    <button
-                        className={`${styles.modeBtn}`}
-                        type="button"
-                        onClick={() =>
-                            setMode(mode === "remove" ? "add" : "remove")
-                        }
-                        title={mode === "add" ? "Remove Users" : "Add Users"}
-                    >
-                        {mode == "remove" ? (
-                            <BiUserPlus size={28} />
-                        ) : (
-                            <BiUserMinus size={28} />
-                        )}
-                    </button>
+                    {mode === "remove" && (
+                        <>
+                            <FormikTextInput
+                                name="search"
+                                placeholder="Search..."
+                                value={search}
+                                onChange={e => {
+                                    setSearch(e.target.value);
+                                }}
+                            />
+
+                            <button
+                                className={`${styles.modeBtn}`}
+                                type="button"
+                                onClick={() => setMode("add")}
+                                title="Add Users"
+                            >
+                                <BiUserPlus size={28} />
+                            </button>
+                        </>
+                    )}
                 </div>
                 {mode === "remove" ? (
                     !!currRole.id && (
                         <ul className={styles.userList}>
-                            {selectedUsers.filter(user=>user.label.startsWith(search)).map(user => (
-                                <li>
-                                    <span>
-                                        {`${user.label.substring(0, 20)}
+                            {selectedUsers
+                                .filter(user => user.label.startsWith(search))
+                                .map(user => (
+                                    <li>
+                                        <span>
+                                            {`${user.label.substring(0, 20)}
                                         ${user.label.length > 10 ? "..." : ""}`}
-                                    </span>
-                                    <button
-                                        type="button"
-                                        onClick={() =>
-                                            handleUserDelete(user.value)
-                                        }
-                                        className={styles.deleteBtn}
-                                    >
-                                        <AiOutlineDelete />
-                                    </button>
-                                </li>
-                            ))}
+                                        </span>
+                                        <button
+                                            type="button"
+                                            onClick={() =>
+                                                handleUserDelete(user.value)
+                                            }
+                                            className={styles.deleteBtn}
+                                        >
+                                            <AiOutlineDelete />
+                                        </button>
+                                    </li>
+                                ))}
                         </ul>
                     )
                 ) : (
-                    <FormikReactSelect
-                        name="users"
-                        options={unselectedUsers!
-                            .filter(
-                                (
-                                    obj //remove selected users ie users of currRole
-                                ) =>
-                                    !selectedUsers
-                                        .map(user => user.value)
-                                        .includes(obj.value)
-                            )
-                            .map(obj => {
-                                return { value: obj.value, label: obj.label };
-                            })}
-                        label=""
-                        placeholder="Select the users to be added"
-                        maxMenuHeight={150}
-                        isClearable
-                        isSearchable
-                        isMulti
-                        isDisabled={!currRole.id}
-                    />
+                    <div className={styles.flexEnd}>
+                        <FormikReactSelect
+                            name="users"
+                            options={unselectedUsers}
+                            label=""
+                            placeholder="Select the users to be added"
+                            maxMenuHeight={150}
+                            isClearable
+                            isSearchable
+                            isMulti
+                            isDisabled={!currRole.id}
+                            onInputChange={changedValue =>
+                                setSearch(changedValue)
+                            }
+                            inputValue={search}
+                        />
+                        <button
+                            className={`${styles.modeBtn}`}
+                            type="button"
+                            onClick={() => setMode("remove")}
+                            title="Remove Users"
+                        >
+                            <BiUserMinus size={28} />
+                        </button>
+                    </div>
                 )}
 
                 <div className={styles.ButtonContainer}>
