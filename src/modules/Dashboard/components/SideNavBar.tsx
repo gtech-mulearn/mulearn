@@ -11,6 +11,7 @@ type Props = {
         title: string;
         hasView: boolean;
         roles?: Role[];
+        dynamicType?: string[];
         icon?: any;
         children?: Props["sidebarButtons"];
     }[];
