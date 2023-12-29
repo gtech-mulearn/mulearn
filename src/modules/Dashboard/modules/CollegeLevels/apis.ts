@@ -35,7 +35,9 @@ export const getCollegeLevels = async (
             }
         );
         const data = response.data.response.data;
-
+        if (setTotalPages) {
+            setTotalPages(response.data.response.pagination.totalPages);
+        }
         setData(
             data.map((data: any) => ({
                 id: data.id,

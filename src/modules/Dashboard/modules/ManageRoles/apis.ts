@@ -202,8 +202,14 @@ export const getUser = async (
                   }
               );
 
-        const data: roleUsers[] = res.data.response.map(
-            (user: userReqBody) => ({
+        const res = hasRole ? await privateGateway.get(
+            dashboardRoutes.roleBulkAssign + roleId + "/"
+        ) : await privateGateway.put(
+            dashboardRoutes.roleBulkAssign + roleId + "/"
+        )
+
+        const data: roleUsers[] = res.data.response
+            .map((user: userReqBody) => ({
                 label: user.muid,
                 value: user.id
             })
@@ -268,3 +274,43 @@ export const getUser = async (
 //         }
 //     ];
 // };
+
+
+export const getRolesTemplate = async () => {
+    try {
+        const response = await privateGateway.get(
+            dashboardRoutes.getRolesTemplate,
+            { responseType: "blob" } // Set the response type to 'blob'
+        );
+        const blob = new Blob([response.data], {
+            type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        }); // Set the correct MIME type for XLSX files
+
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.setAttribute("download", "RolesTemplate.xlsx");
+
+        document.body.appendChild(link);
+        link.click();
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.log(error.response);
+        }
+    }
+};
+
+// function to take a js object and convert it to a XLSX file using the SheetJS library
+// bundle size increased from 106kb to 160kb, but dynamically imported
+
+export const convertToXLSX = (data: any, fileName: string) => {
+    import("xlsx")
+        .then(({ utils, writeFile }) => {
+            const ws = utils.json_to_sheet(data);
+            const wb = utils.book_new();
+            utils.book_append_sheet(wb, ws, "Result 1");
+            writeFile(wb, fileName);
+        })
+        .catch(err => console.error(err));
+};
