@@ -109,9 +109,7 @@ export const getManageRolesDetails = async (
     }
 };
 
-export const deleteManageRoles = async (
-    id: string | undefined,
-) => {
+export const deleteManageRoles = async (id: string | undefined) => {
     try {
         const response = await privateGateway.delete(
             dashboardRoutes.getRolesData + id + "/"
@@ -132,28 +130,40 @@ export const isRoleUnique = (roleName: string, roles: string[]): boolean => {
 };
 
 type ResultHandler = (msg: string) => void;
-export const deleteUser = async (userId: string, roleId: string,
+export const deleteUser = async (
+    userId: string,
+    roleId: string,
     error?: ResultHandler,
-    success?: ResultHandler) => {
+    success?: ResultHandler
+) => {
     try {
-        const res = await privateGateway.patch(dashboardRoutes.roleBulkAssign + roleId + "/", {
-            users: [userId]
-        })
-        if (success) success('User role removed')
+        const res = await privateGateway.patch(
+            dashboardRoutes.roleBulkAssign + roleId + "/",
+            {
+                users: [userId]
+            }
+        );
+        if (success) success("User role removed");
     } catch (err) {
         if (err instanceof AxiosError) if (error) error(err.response?.data);
     }
 };
 
-export const addUsers = async (userIds: string[], roleId: string,
+export const addUsers = async (
+    userIds: string[],
+    roleId: string,
     error?: ResultHandler,
-    success?: ResultHandler) => {
+    success?: ResultHandler
+) => {
     try {
-        console.log(userIds)
-        const res = await privateGateway.post(dashboardRoutes.roleBulkAssign + roleId + "/", {
-            users: userIds
-        })
-        if (success) success('User role added')
+        console.log(userIds);
+        const res = await privateGateway.post(
+            dashboardRoutes.roleBulkAssign + roleId + "/",
+            {
+                users: userIds
+            }
+        );
+        if (success) success("User role added");
     } catch (err) {
         if (err instanceof AxiosError) if (error) error(err.response?.data);
     }
@@ -161,6 +171,7 @@ export const addUsers = async (userIds: string[], roleId: string,
 
 export const getUser = async (
     roleId: string,
+    search: string,
     hasRole = true,
     error?: ResultHandler,
     success?: ResultHandler
@@ -172,6 +183,24 @@ export const getUser = async (
     };
 
     try {
+        const res = hasRole
+            ? await privateGateway.get(
+                  dashboardRoutes.roleBulkAssign + roleId + "/",
+                  {
+                      params: {
+                          search: search
+                      }
+                  }
+              )
+            : await privateGateway.put(
+                  dashboardRoutes.roleBulkAssign + roleId + "/",
+                  null,
+                  {
+                      params: {
+                          search: search
+                      }
+                  }
+              );
 
         const res = hasRole ? await privateGateway.get(
             dashboardRoutes.roleBulkAssign + roleId + "/"
@@ -183,13 +212,14 @@ export const getUser = async (
             .map((user: userReqBody) => ({
                 label: user.muid,
                 value: user.id
-            }));
+            })
+        );
 
         return data;
     } catch (err) {
         if (err instanceof AxiosError) if (error) error(err.response?.data);
     }
-}
+};
 
 // export const getUser = async (byRole = "") => {
 //     //byRole to get users of certain role o.w all users
