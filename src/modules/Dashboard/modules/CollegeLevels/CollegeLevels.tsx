@@ -1,5 +1,6 @@
 import { ReactElement, useEffect, useRef, useState } from "react";
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";
+import { Blank } from "@/MuLearnComponents/Table/Blank";
 import Table, { Data } from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
@@ -17,7 +18,7 @@ import toast from "react-hot-toast";
 function CollegeLevels() {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(0);
+    const [totalPages, setTotalPages] = useState(1);
     const [perPage, setPerPage] = useState(20);
     const [sort, setSort] = useState("");
     const [isLoading, setIsLoading] = useState(false);
@@ -127,11 +128,35 @@ function CollegeLevels() {
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
+        getCollegeLevels(
+            {
+                setData: setData,
+                page: nextPage,
+                selectedValue: perPage,
+                setIsLoading: setIsLoading,
+                setTotalPages: setTotalPages,
+                search: "",
+                sortID: sort
+            },
+            errHandler
+        );
     };
 
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
+        getCollegeLevels(
+            {
+                setData: setData,
+                page: prevPage,
+                selectedValue: perPage,
+                setIsLoading: setIsLoading,
+                setTotalPages: setTotalPages,
+                search: "",
+                sortID: sort
+            },
+            errHandler
+        );
     };
 
     useEffect(() => {
@@ -202,6 +227,18 @@ function CollegeLevels() {
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
         setPerPage(selectedValue);
+        getCollegeLevels(
+            {
+                setData: setData,
+                page: 1,
+                selectedValue: selectedValue,
+                setIsLoading: setIsLoading,
+                setTotalPages: setTotalPages,
+                search: "",
+                sortID: ""
+            },
+            errHandler
+        );
     };
 
     const handleCreate = () => {
@@ -262,7 +299,7 @@ function CollegeLevels() {
                 </PowerfulButton>
             </div> */}
 
-            {data.length && (
+            {data && (
                 <>
                     <TableTop
                         onSearchText={handleSearch}
@@ -295,6 +332,7 @@ function CollegeLevels() {
                                     margin="10px 0"
                                     handleNextClick={handleNextClick}
                                     handlePreviousClick={handlePreviousClick}
+                                    onSearchText={handleSearch}
                                     onPerPageNumber={handlePerPageNumber}
                                     perPage={perPage}
                                     setPerPage={setPerPage}
