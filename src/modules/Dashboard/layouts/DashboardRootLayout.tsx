@@ -5,14 +5,16 @@ import TopNavBar from "../components/TopNavBar";
 import { Suspense, useEffect, useState } from "react";
 // import companyButtons from "../utils/userwiseButtonsData/companyButtons";
 // import userButtons from "../utils/userwiseButtonsData/userButtons";
-import { roles } from "@/MuLearnServices/types";
+import { roles, managementTypes } from "@/MuLearnServices/types";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { fetchLocalStorage } from "@/MuLearnServices/common_functions";
+import DynamicType from "../modules/DynamicType/DynamicType";
 
 //TODO: Remove flaticons and use react-icons or vice-versa
 const DashboardRootLayout = (props: { component?: any }) => {
     const [connected, setConnected] = useState(false);
 
+    const Management: ManagementTypes[] = Object.values(managementTypes).slice(2);
     useEffect(() => {
         const userInfo = fetchLocalStorage<UserInfo>("userInfo");
         if (userInfo) {
@@ -40,6 +42,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
             title: "Campus Details",
             hasView: true,
             roles: [roles.CAMPUS_LEAD, roles.LEAD_ENABLER],
+            dynamicType: [managementTypes.CAMPUS],
             icon: <i className="fi fi-sr-book-arrow-right"></i>
         },
         {
@@ -47,6 +50,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
             title: "Hackathon",
             hasView: true,
             roles: [roles.ADMIN],
+            dynamicType: [managementTypes.HACKATHON],
             icon: <i className="fi fi-sr-head-side-thinking"></i>
         },
         {
@@ -67,13 +71,15 @@ const DashboardRootLayout = (props: { component?: any }) => {
             hasView: true,
             roles: [roles.ADMIN, roles.FELLOW, roles.ASSOCIATE],
             icon: <i className="fi fi-sr-layout-fluid"></i>,
+            dynamicType: Management,
             children: [
                 {
                     url: "",
                     title: "User Management",
                     hasView: true,
-                    roles: [roles.ADMIN],
+                    roles: [roles.ADMIN, roles.FELLOW],
                     // icon: <i className="fi fi-sr-users"></i>,
+                    dynamicType: [managementTypes.USER_MANAGEMENT],
                     children: [
                         {
                             url: "/dashboard/manage-users",
@@ -92,8 +98,8 @@ const DashboardRootLayout = (props: { component?: any }) => {
                 {
                     url: "",
                     title: "Manage Organization",
-                    hasView:true,
-                    roles: [roles.ADMIN],
+                    hasView: true,
+                    roles: [roles.ADMIN, roles.FELLOW, roles.ASSOCIATE],
                     children: [
                         {
                             url: "/dashboard/affiliation",
@@ -157,7 +163,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     roles: [roles.ADMIN]
                     // icon: <i className="fi fi-sr-books"></i>
                 },
-                
+
 
                 {
                     url: "/dashboard/college-levels",
@@ -180,7 +186,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
                 //     roles: [roles.ADMIN]
                 //     // icon: <i className="fi fi-sr-note"></i>
                 // },
-                
+
                 {
                     url: "/dashboard/karma-voucher",
                     title: "Karma Voucher",
@@ -195,12 +201,13 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     roles: [roles.ADMIN, roles.TECH_TEAM]
                     // icon: <i className="fi fi-sr-note"></i>
                 },
-              
+
                 {
                     url: "/dashboard/dynamic-type",
                     title: "Dynamic Type",
                     hasView: true,
-                    roles: [roles.ADMIN]
+                    roles: [roles.ADMIN],
+                    dynamicType: [managementTypes.DYNAMIC_TYPE]
                     // icon: <i className="fi fi-sr-users-gear"></i>
                 },
                 {
@@ -210,7 +217,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     roles: [roles.ADMIN]
                     // icon: <i className="fi fi-sr-users-gear"></i>
                 },
-                
+
                 {
                     url: "/dashboard/manage-locations",
                     title: "Manage Locations",
@@ -224,15 +231,16 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     hasView: true,
                     roles: [roles.ADMIN, roles.FELLOW, roles.ASSOCIATE]
                 },
-                
+
                 {
                     url: "/dashboard/url-shortener",
                     title: "URL Shortener",
                     hasView: true,
-                    roles: [roles.ADMIN, roles.FELLOW, roles.ASSOCIATE]
+                    roles: [roles.ADMIN, roles.FELLOW, roles.ASSOCIATE],
+                    dynamicType: [managementTypes.URL_SHORTENER]
                     // icon: <i className="fi fi-sr-globe"></i>
                 },
-                
+
                 {
                     url: "/dashboard/discord-moderation",
                     title: "Discord Moderation",
