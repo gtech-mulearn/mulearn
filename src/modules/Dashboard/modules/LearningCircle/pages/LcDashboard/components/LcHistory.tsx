@@ -41,10 +41,13 @@ const LcHistory = (props: Props) => {
                                 <p>{getDayOfWeek(data?.meet_time)}</p>
                             </div>
                             <div>
-                                {<p>
-                                    Venuesdf:{" "}
-                                    {data.meet_place || props.lc?.meet_place}
-                                </p>}
+                                {
+                                    <p>
+                                        Venuesdf:{" "}
+                                        {data.meet_place ||
+                                            props.lc?.meet_place}
+                                    </p>
+                                }
                                 <p>
                                     Time:{" "}
                                     {convert24to12(
@@ -80,7 +83,9 @@ const LcHistory = (props: Props) => {
                     </div>
                 </>
             ) : (
-                <div className={`${styles.HistoryDataWrapper} ${styles.loading}`}>
+                <div
+                    className={`${styles.HistoryDataWrapper} ${styles.loading}`}
+                >
                     <MuLoader />
                 </div>
             )}

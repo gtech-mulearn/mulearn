@@ -11,9 +11,7 @@
     background: #6f6f6f;
   } */
 
-
-
-.mainContainer{
+.mainContainer {
     max-width: 200rem;
     margin: 0 auto;
 }
@@ -36,6 +34,3 @@
 html {
     scroll-behavior: smooth;
 }
-
-
-

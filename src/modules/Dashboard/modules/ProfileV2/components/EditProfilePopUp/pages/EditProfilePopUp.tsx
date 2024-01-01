@@ -21,7 +21,6 @@ type Props = {
 };
 
 const EditProfilePopUp = (props: Props) => {
-    
     const [communityAPI, setCommunityAPI] = useState([{ id: "", title: "" }]);
     const [loadStatus, setLoadStatus] = useState(false);
     useEffect(() => {

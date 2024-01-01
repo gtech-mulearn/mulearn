@@ -62,9 +62,9 @@
 
                     .short_url_input {
                         display: flex;
-                        align-items:baseline;
+                        align-items: baseline;
                         justify-content: space-between;
-                        
+
                         .short_url {
                             width: 100%;
                         }
@@ -102,7 +102,10 @@
 }
 
 @media screen and (max-width: 500px) {
-    .affiliation_container .create_affiliation form .affiliation_input_container {
+    .affiliation_container
+        .create_affiliation
+        form
+        .affiliation_input_container {
         margin-left: 10px;
     }
 }

@@ -54,8 +54,8 @@ const SideNavBarBody = ({
                         button =>
                             button.hasView &&
                             (!button.roles ||
-                                button.roles?.some(role =>
-                                    userInfo?.roles?.includes(role)
+                                button.roles?.some(
+                                    role => userInfo?.roles?.includes(role)
                                 ))
                     )
                     .map((button, i) =>
@@ -76,10 +76,11 @@ const SideNavBarBody = ({
                                         button =>
                                             button.hasView &&
                                             (!button.roles ||
-                                                button.roles?.some(role =>
-                                                    userInfo?.roles?.includes(
-                                                        role
-                                                    )
+                                                button.roles?.some(
+                                                    role =>
+                                                        userInfo?.roles?.includes(
+                                                            role
+                                                        )
                                                 ))
                                     )
                                     .map((button, i) =>
@@ -98,7 +99,7 @@ const SideNavBarBody = ({
                                                 }
                                                 display={
                                                     level2dropDownDisplay ===
-                                                        button.title
+                                                    button.title
                                                         ? "max-content"
                                                         : "0"
                                                 }
@@ -177,7 +178,7 @@ const SideNavBarBody = ({
                     onClick={() => navigate("/dashboard/settings/account")}
                     style={{
                         color: "#9297AA",
-                        backgroundColor: "#fff",
+                        backgroundColor: "#fff"
                         // marginBottom: "0px"
                     }}
                 />

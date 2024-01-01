@@ -17,9 +17,17 @@ const AuthRoutes: React.FC = () => {
         }
     }, [onboardingStatus]);
 
-    return refreshToken && refreshToken.length > 0
-        ? <Navigate to={onboardingStatus ? "/dashboard/profile" : "/dashboard/connect-discord"} />
-        : <Outlet />;
+    return refreshToken && refreshToken.length > 0 ? (
+        <Navigate
+            to={
+                onboardingStatus
+                    ? "/dashboard/profile"
+                    : "/dashboard/connect-discord"
+            }
+        />
+    ) : (
+        <Outlet />
+    );
 };
 
 export default AuthRoutes;

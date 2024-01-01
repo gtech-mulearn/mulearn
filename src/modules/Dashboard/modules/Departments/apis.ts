@@ -49,7 +49,7 @@ export const createDepartment = async (title: string) => {
             dashboardRoutes.createDepartment,
             { title: title }
         );
-        const message= response?.data.message.general[0];
+        const message = response?.data.message.general[0];
         console.log("createDepartment - data", message);
         toast.success(message);
     } catch (err: unknown) {

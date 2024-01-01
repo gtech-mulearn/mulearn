@@ -19,30 +19,30 @@
         position: relative;
         overflow: hidden;
         /* margin-top: 20px; */
-        box-shadow: 0px 3px 12px 0px rgba(0, 24, 99, 0.10);
+        box-shadow: 0px 3px 12px 0px rgba(0, 24, 99, 0.1);
 
-        &:nth-child(2n+1) {
-            border-color: #23A047;
+        &:nth-child(2n + 1) {
+            border-color: #23a047;
         }
 
-        &:nth-child(2n+1) p {
-            background-color: #23A047;
+        &:nth-child(2n + 1) p {
+            background-color: #23a047;
         }
 
-        &:nth-child(2n+2) {
-            border-color: #FCA004;
+        &:nth-child(2n + 2) {
+            border-color: #fca004;
         }
 
-        &:nth-child(2n+2) p {
-            background-color: #FCA004;
+        &:nth-child(2n + 2) p {
+            background-color: #fca004;
         }
 
-        &:nth-child(2n+3) {
-            border-color: #F44336;
+        &:nth-child(2n + 3) {
+            border-color: #f44336;
         }
 
-        &:nth-child(2n+3) p {
-            background-color: #F44336;
+        &:nth-child(2n + 3) p {
+            background-color: #f44336;
         }
 
         & p {
@@ -68,7 +68,7 @@
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        box-shadow: 0px 3px 12px 0px rgba(0, 24, 99, 0.10);
+        box-shadow: 0px 3px 12px 0px rgba(0, 24, 99, 0.1);
     }
 }
 
@@ -77,7 +77,7 @@
     justify-content: center;
     width: 95%;
     overflow: scroll;
-    background: #FFFFFF;
+    background: #ffffff;
     /* box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.06); */
     border-radius: 10px;
     padding: 10px 5px;

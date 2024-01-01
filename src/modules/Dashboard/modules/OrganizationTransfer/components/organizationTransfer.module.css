@@ -1,17 +1,17 @@
-.organizationTransfer{
+.organizationTransfer {
     background-color: var(--White);
     border-radius: var(--borderRadius);
-    padding:50px 100px;
+    padding: 50px 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
 }
-.organizationTransfer h1{
+.organizationTransfer h1 {
     font-size: 2.2rem;
     font-weight: 600;
 }
-.organizationTransfer button{
+.organizationTransfer button {
     padding: 0.5rem 2rem;
     background-color: var(--blue);
     color: var(--White);

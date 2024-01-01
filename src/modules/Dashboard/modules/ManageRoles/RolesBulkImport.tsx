@@ -67,9 +67,7 @@ const RolesBulkImport = () => {
                 />
                 <SingleButton
                     text={"Download Template"}
-                    onClick={() =>
-                        getRolesTemplate()
-                    }
+                    onClick={() => getRolesTemplate()}
                     icon={<BiDownload />}
                 />
             </div>

@@ -202,14 +202,16 @@ export const getUser = async (
                   }
               );
 
-        const res = hasRole ? await privateGateway.get(
-            dashboardRoutes.roleBulkAssign + roleId + "/"
-        ) : await privateGateway.put(
-            dashboardRoutes.roleBulkAssign + roleId + "/"
-        )
+        const res = hasRole
+            ? await privateGateway.get(
+                  dashboardRoutes.roleBulkAssign + roleId + "/"
+              )
+            : await privateGateway.put(
+                  dashboardRoutes.roleBulkAssign + roleId + "/"
+              );
 
-        const data: roleUsers[] = res.data.response
-            .map((user: userReqBody) => ({
+        const data: roleUsers[] = res.data.response.map(
+            (user: userReqBody) => ({
                 label: user.muid,
                 value: user.id
             })
@@ -274,7 +276,6 @@ export const getUser = async (
 //         }
 //     ];
 // };
-
 
 export const getRolesTemplate = async () => {
     try {

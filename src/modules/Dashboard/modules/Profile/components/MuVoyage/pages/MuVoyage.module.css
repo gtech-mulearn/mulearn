@@ -127,7 +127,9 @@
 .main_task .tasks .accordion .main_list .content {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.5s, padding 0.5s;
+    transition:
+        max-height 0.5s,
+        padding 0.5s;
 }
 
 .main_task .tasks .accordion .main_list .content .goal_container {
@@ -151,12 +153,18 @@
     height: 10px;
 }
 
-.main_task .tasks .accordion .main_list .expandBtn:checked~.content {
+.main_task .tasks .accordion .main_list .expandBtn:checked ~ .content {
     max-height: 400px;
     overflow-y: scroll;
 }
 
-.main_task .tasks .accordion .main_list .expandBtn:checked+.level .icon_down_arrow {
+.main_task
+    .tasks
+    .accordion
+    .main_list
+    .expandBtn:checked
+    + .level
+    .icon_down_arrow {
     transform: rotate(180deg);
 }
 
@@ -175,8 +183,6 @@
 .discord:hover {
     transform: scale(1.15);
 }
-
-
 
 .main_task .tasks .accordion .main_list .content .list_list li {
     display: flex;
@@ -218,8 +224,6 @@
     }
 }
 
-
-
 .main_task .tasks .accordion .main_list .content .list_list li label p {
     position: absolute;
     right: 10px;
@@ -228,7 +232,6 @@
     display: flex;
     align-items: flex-end;
 }
-
 
 @media (max-width: 700px) {
     .main_task {

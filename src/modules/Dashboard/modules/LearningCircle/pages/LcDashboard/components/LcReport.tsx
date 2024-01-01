@@ -114,7 +114,14 @@ const LcReport = (props: Props) => {
                 error: error => {
                     console.error("Failed to login:", error);
                     if (error?.response?.data?.message.non_field_errors)
-                        return <b>{error?.response?.data?.message?.non_field_errors[0]}</b>;
+                        return (
+                            <b>
+                                {
+                                    error?.response?.data?.message
+                                        ?.non_field_errors[0]
+                                }
+                            </b>
+                        );
 
                     return <b>Failed to report meeting!</b>;
                 }

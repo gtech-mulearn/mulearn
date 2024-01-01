@@ -1,4 +1,4 @@
-.karma_history_page{
+.karma_history_page {
     background-color: #fff;
     border-radius: 20px;
     padding: 15px;
@@ -23,10 +23,10 @@
     max-height: 445px;
     scroll-snap-type: y mandatory;
     background-color: #fff;
-    border-radius: 0 0  1rem 1rem;
+    border-radius: 0 0 1rem 1rem;
     padding: 2rem;
 }
- .msg {
+.msg {
     padding: 10px;
     /* text-align: center; */
     font-size: 15px;
@@ -35,15 +35,15 @@
     flex-direction: column;
     font-style: italic;
     align-items: center;
-  }
+}
 .karma_history_container .karma_history {
     min-height: 250px;
     min-width: 200px;
     max-width: 200px;
     border-radius: 13px;
     /* margin: 1rem; */
-    border: 1px solid #CCE2FF;
-    background: #E1EDFF;
+    border: 1px solid #cce2ff;
+    background: #e1edff;
     padding: 20px 5px;
     display: flex;
     box-shadow: 0px 0px 6px 0px rgba(1, 75, 178, 0.15);
@@ -72,7 +72,7 @@
 }
 
 .karma_history_container .karma_history .content h1 {
-    color: #014BB2;
+    color: #014bb2;
 }
 
 .karma_history_container .karma_history .content .karma_div {
@@ -81,10 +81,10 @@
 }
 
 .karma_history_container .karma_history .content .karma_div .task_name {
-    color: #014BB2;
+    color: #014bb2;
     font-weight: 500;
     border-radius: 2.003px;
-    background: rgba(203, 225, 255, 0.50);
+    background: rgba(203, 225, 255, 0.5);
 }
 
 .karma_history_container .karma_history .content .date {

@@ -70,14 +70,14 @@ const HeatmapComponent = (props: Props) => {
                 totalKarma >= 500
                     ? "#00814a"
                     : totalKarma >= 100
-                    ? "#27b176"
-                    : totalKarma >= 50
-                    ? "#2dce89ba"
-                    : totalKarma >= 10
-                    ? "#2dce899e"
-                    : totalKarma > 0
-                    ? "#2dce897d"
-                    : "";
+                      ? "#27b176"
+                      : totalKarma >= 50
+                        ? "#2dce89ba"
+                        : totalKarma >= 10
+                          ? "#2dce899e"
+                          : totalKarma > 0
+                            ? "#2dce897d"
+                            : "";
             const tooltipContent = existingItem
                 ? `Total Task: ${
                       existingItem.taskCount

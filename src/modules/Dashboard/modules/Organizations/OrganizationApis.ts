@@ -71,12 +71,12 @@ export const getAffiliation = async (setAffiliationData: any) => {
                 return response.data;
             })
             .then(data => {
-                const affiliation: CountryProps[] = data.response.map((item: any) => (
-                    {
-                        label : item.title,
+                const affiliation: CountryProps[] = data.response.map(
+                    (item: any) => ({
+                        label: item.title,
                         value: item.id
-                    }
-                ));
+                    })
+                );
                 setAffiliationData(affiliation);
             });
     } catch (err: unknown) {
@@ -96,11 +96,13 @@ export const addNewOrganization = async (data: {
     if (data.org_type !== "College") {
         delete (data as any).affiliation;
     }
-	console.log(data);
+    console.log(data);
     try {
-        const response = await privateGateway.post(organizationRoutes.createOrganisation, data);
+        const response = await privateGateway.post(
+            organizationRoutes.createOrganisation,
+            data
+        );
         return response?.data;
-
     } catch (err: any) {
         throw err.response.data;
     }
@@ -108,7 +110,9 @@ export const addNewOrganization = async (data: {
 
 export const getOrganizationDetails = async (id: string) => {
     try {
-        const response = await privateGateway.get(organizationRoutes.getOrganisationDetails + id + "/");
+        const response = await privateGateway.get(
+            organizationRoutes.getOrganisationDetails + id + "/"
+        );
         console.log(response?.data.response[0]);
         return response?.data.response[0];
     } catch (err: any) {
@@ -116,15 +120,18 @@ export const getOrganizationDetails = async (id: string) => {
     }
 };
 
-export const editOrganization = async (data: {
-    country: string;
-    state: string;
-    district: string;
-    affiliation: string;
-    code: string;
-    org_type: string;
-    title: string;
-}, code: string) => {
+export const editOrganization = async (
+    data: {
+        country: string;
+        state: string;
+        district: string;
+        affiliation: string;
+        code: string;
+        org_type: string;
+        title: string;
+    },
+    code: string
+) => {
     if (data.org_type !== "College") {
         delete (data as any).affiliation;
     }

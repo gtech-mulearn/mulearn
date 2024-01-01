@@ -1,5 +1,5 @@
-interface IGData{
-    name: string
-    code: string
-    icon: string
+interface IGData {
+    name: string;
+    code: string;
+    icon: string;
 }

@@ -73,7 +73,7 @@ const ManageLocation = () => {
         // setSort("");
         // return setData([]), setTotalPages(1);
     }, [activeTab, sort, currentPage, perPage, search]);
-    
+
     function loadTableData() {
         setLoading(true);
         if (activeTab === "Country") {
@@ -123,7 +123,7 @@ const ManageLocation = () => {
                         id: data.value,
                         label: data.label,
                         created_by: data.created_by,
-                        created_at: data.created_at,    
+                        created_at: data.created_at,
                         updated_by: data.updated_by,
                         updated_at: data.updated_at
                     }))
@@ -145,7 +145,7 @@ const ManageLocation = () => {
                         label: data.label,
                         country: data.country,
                         created_by: data.created_by,
-                        created_at: data.created_at,    
+                        created_at: data.created_at,
                         updated_by: data.updated_by,
                         updated_at: data.updated_at
                     }))

@@ -1,7 +1,7 @@
 interface TableHeader {
-	column: string;
-	label: string;
-	isSortable: boolean;
+    column: string;
+    label: string;
+    isSortable: boolean;
 }
 
 interface TableDataBackendResponse {

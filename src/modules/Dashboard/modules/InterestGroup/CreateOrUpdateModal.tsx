@@ -64,7 +64,6 @@ const CreateOrUpdateModal = ({ id, setCurrModal }: Props) => {
                     //             icon: values.igIcon
                     //         }
                     //     );
-
                     // setCurrModal(null);
                 }}
             >

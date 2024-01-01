@@ -26,7 +26,7 @@ const CreateOrUpdateDepartmentModal = ({
     setDepartments,
     loading,
     setIsLoading,
-    title,
+    title
 }: Props) => {
     return (
         <Modal
@@ -62,7 +62,6 @@ const CreateOrUpdateDepartmentModal = ({
                 >
                     {({ handleSubmit }) => (
                         <Form onSubmit={handleSubmit}>
-
                             <FormikTextInput
                                 label={`${id ? "Department " : "New "}Name`}
                                 name="title"

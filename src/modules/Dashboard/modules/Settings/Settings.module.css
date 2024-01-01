@@ -1,12 +1,12 @@
-.reset :not(svg|*){
-    all:revert;
-    margin:0;
+.reset :not(svg|*) {
+    all: revert;
+    margin: 0;
 }
 
-.reset{
+.reset {
     width: 100%;
 }
 
-.reset svg{
-    color:black;
+.reset svg {
+    color: black;
 }

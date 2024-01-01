@@ -12,7 +12,7 @@ const MuTable = (props: Props) => {
             <table className={styles.tableActual}>
                 <thead>
                     <tr>
-						<th>S/N</th>
+                        <th>S/N</th>
                         {props.tableHeader.map(column => (
                             <th className={styles.th} key={column.column}>
                                 <div className={styles.thContainer}>

@@ -1,7 +1,7 @@
 .ThreadCardBg {
     height: 100vh;
     width: 100%;
-    background-color: #EEF2FF;
+    background-color: #eef2ff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -138,9 +138,9 @@
     height: 100%;
     width: 100%;
     background-color: #fff;
-    border-radius: .3rem;
+    border-radius: 0.3rem;
     padding: 1.5rem;
-    box-shadow: 0 0 1px rgba(0, 0, 0, .2);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
     backface-visibility: hidden;
     animation: fade 10s infinite linear;
 }
@@ -160,12 +160,12 @@
 }
 
 .ThreadCardBackDetails {
-    gap: .8rem;
+    gap: 0.8rem;
     font-size: 1rem;
 }
 
 .ThreadCardBackDetails p {
-    font-size: .8rem;
+    font-size: 0.8rem;
 }
 
 .ThreadCardBackArrow {
@@ -178,7 +178,7 @@
 }
 
 .ThreadCardBarcode {
-    font-size: .8rem;
+    font-size: 0.8rem;
 }
 
 /*Marquee CSS*/

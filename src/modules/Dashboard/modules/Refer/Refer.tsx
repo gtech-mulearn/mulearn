@@ -62,7 +62,10 @@ const Refer = () => {
                     paragraph="Send an invite link to an email"
                     onClose={() => setOpen(false)}
                 >
-                    <InviteFormModel inviteType={inviteType} onClose={() => setOpen(false)} />
+                    <InviteFormModel
+                        inviteType={inviteType}
+                        onClose={() => setOpen(false)}
+                    />
                 </Modal>
             )}
             <div className={styles.learningCircleLandingPage}>
@@ -91,7 +94,10 @@ const Refer = () => {
                             </PowerfulButton> */}
                             <PowerfulButton
                                 className={styles.createBtn}
-                                onClick={() => { setOpen(true); setInviteType("Karma") }}
+                                onClick={() => {
+                                    setOpen(true);
+                                    setInviteType("Karma");
+                                }}
                                 style={{
                                     display: "flex",
                                     justifyContent: "space-evenly",

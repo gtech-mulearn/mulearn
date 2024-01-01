@@ -4,7 +4,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import * as Yup from "yup";
 import { editTask, getTaskDetails, getUUID } from "./TaskApis";
 
-
 const taskEditSchema = Yup.object().shape({
     hashtag: Yup.string() //
         .required("Required")
@@ -41,7 +40,7 @@ type IVType = {
 
 const useFormikData = () => {
     const { id } = useParams();
-    
+
     const navigate = useNavigate();
     const [data, setData] = useState<TaskEditInterface>({
         hashtag: "",

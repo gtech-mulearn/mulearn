@@ -4,37 +4,30 @@ import toast from "react-hot-toast";
 import { customReactSelectStyles } from "../../utils/common";
 import { createInterestGroups, editInterestGroups, getIGDetails } from "./apis";
 
-type Props = { id: string; isEditMode: boolean; };
-
-
+type Props = { id: string; isEditMode: boolean };
 
 const IntrestGroupForm = forwardRef(
     (props: Props & { closeModal: () => void }, ref: any) => {
-       
-
         const [data, setData] = useState<IGData>({
             name: "",
             icon: "",
-            code: "",
-            
+            code: ""
         });
 
         const [errors, setErrors] = useState<OrgFormErrors>({});
 
-
         // //Fetch the initial data if in edit mode
         useEffect(() => {
             if (props.isEditMode) {
-              getIGDetails(props.id).then((data: IGData) => {
-                setData({
-                  name: data.name,
-                  icon: data.icon,
-                  code: data.code,
+                getIGDetails(props.id).then((data: IGData) => {
+                    setData({
+                        name: data.name,
+                        icon: data.icon,
+                        code: data.code
+                    });
                 });
-              });
             }
-          }, [props.id]);
-          
+        }, [props.id]);
 
         const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
             const { name, value } = e.target;
@@ -55,12 +48,6 @@ const IntrestGroupForm = forwardRef(
             }
         };
 
-        
-        
-
-      
-
-
         //! useImperativeHandle for triggering submit from MuModal button
         useImperativeHandle(ref, () => ({
             handleSubmitExternally: handleSubmit
@@ -68,8 +55,7 @@ const IntrestGroupForm = forwardRef(
         const handleSubmit = (e?: React.FormEvent) => {
             e?.preventDefault();
             const updatedData = {
-                ...data,
-                
+                ...data
             };
 
             // Validate form data
@@ -102,14 +88,13 @@ const IntrestGroupForm = forwardRef(
                         error: <b>Failed to edit Interest Group</b>
                     });
                 } else {
-                    toast.promise(createInterestGroups(updatedData),{
+                    toast.promise(createInterestGroups(updatedData), {
                         loading: "Saving...",
                         success: () => {
                             props.closeModal();
                             return <b>Interest Group is created.</b>;
                         },
                         error: <b>Failed to create Interest Group</b>
-                    
                     });
                 }
             }
@@ -128,9 +113,7 @@ const IntrestGroupForm = forwardRef(
                             onBlur={handleBlur}
                         />
                         {errors.name && (
-                            <div style={{ color: "red" }}>
-                                {errors.name}
-                            </div>
+                            <div style={{ color: "red" }}>{errors.name}</div>
                         )}
                     </div>
                     <div className={styles.inputContainer}>
@@ -143,9 +126,7 @@ const IntrestGroupForm = forwardRef(
                             onBlur={handleBlur}
                         />
                         {errors.code && (
-                            <div style={{ color: "red" }}>
-                                {errors.code}
-                            </div>
+                            <div style={{ color: "red" }}>{errors.code}</div>
                         )}
                     </div>
                     <div className={styles.inputContainer}>
@@ -161,8 +142,6 @@ const IntrestGroupForm = forwardRef(
                             <div style={{ color: "red" }}>{errors.icon}</div>
                         )}
                     </div>
-                    
-
                 </form>
             </div>
         );

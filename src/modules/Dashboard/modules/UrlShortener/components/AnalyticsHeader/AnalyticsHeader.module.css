@@ -19,7 +19,7 @@
 
         .date {
             border-radius: 20px;
-            background: #2A83FF;
+            background: #2a83ff;
             padding: 7px 10px;
             color: #fff;
             width: fit-content;
@@ -62,7 +62,7 @@
 
             & a {
                 width: 340px;
-                color: #2A83FF;
+                color: #2a83ff;
                 overflow: hidden;
                 white-space: nowrap;
                 text-overflow: ellipsis;

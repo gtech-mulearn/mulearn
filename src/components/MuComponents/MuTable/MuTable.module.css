@@ -1,13 +1,13 @@
 .table {
     border-radius: 10px;
     overflow: auto;
-	min-width: fit-content;
+    min-width: fit-content;
     margin-bottom: 10px;
     scrollbar-color: #c7c7c7 #eeeeee;
     scrollbar-width: thin;
     background-color: var(--White);
     padding: 5px;
-	color: black;
+    color: black;
 }
 
 .table::-webkit-scrollbar {
@@ -24,16 +24,15 @@
     border-radius: 10px;
 }
 
-
 .thContainer {
-	display: flex;
-	align-items: center;
-	gap: 5px;
-	padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 15px;
 }
 
 .table tr td {
-	padding: 5px;
+    padding: 5px;
 }
 
 /* Define alternating row colors */

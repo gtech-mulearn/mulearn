@@ -10,7 +10,11 @@ interface TableHeadProps {
         column: string;
         Label: string;
         isSortable: boolean;
-        wrap?: (data: string | ReactElement, id: string, row: Data) => ReactJSXElement;
+        wrap?: (
+            data: string | ReactElement,
+            id: string,
+            row: Data
+        ) => ReactJSXElement;
     }[];
     onIconClick: (column: string) => void;
     action?: true | false;

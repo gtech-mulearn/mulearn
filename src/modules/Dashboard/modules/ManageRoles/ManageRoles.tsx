@@ -123,7 +123,7 @@ function ManageRoles() {
             nextPage,
             perPage,
             setIsLoading,
-            () => { },
+            () => {},
             sort
         );
     };
@@ -136,7 +136,7 @@ function ManageRoles() {
             prevPage,
             perPage,
             setIsLoading,
-            () => { },
+            () => {},
             sort
         );
     };
@@ -254,60 +254,59 @@ function ManageRoles() {
         <>
             {currModal
                 ? (() => {
-                    if (currModal === "create")
-                        return (
-                            <Modal
-                                onClose={setCurrModal}
-                                icon={icons.tick}
-                                header="Create Role"
-                                paragraph="Enter the values for the new role"
-                            >
-                                <ManageRolesCreateModal
-                                    id={currRoleID}
-                                    onClose={setCurrModal}
-                                    values={roles.map(
-                                        (obj: any) => obj.title
-                                    )}
-                                />
-                            </Modal>
-                        );
-                    if (currModal === "edit")
-                        return (
-                            <Modal
-                                onClose={setCurrModal}
-                                icon={icons.tick}
-                                header="Edit Role"
-                                paragraph="Enter the new values for this role"
-                            >
-                                <ManageRolesEditModal
-                                    id={currRoleID}
-                                    onClose={setCurrModal}
-                                    values={roles.map(
-                                        (obj: any) => obj.title
-                                    )}
-                                />
-                            </Modal>
-                        );
-                    if (currModal === "users")
-                        return (
-                            <Modal
-                                onClose={setCurrModal}
-                                icon={icons.user}
-                                header="Bulk Change User Roles"
-                                paragraph={`Change users in ${currRole?.title}`}
-                            >
-                                <ManageUsers
-                                    onClose={setCurrModal}
-                                    roles={roles}
-                                    currRole={currRole!}
-                                />
-                            </Modal>
-                        );
-                })()
+                      if (currModal === "create")
+                          return (
+                              <Modal
+                                  onClose={setCurrModal}
+                                  icon={icons.tick}
+                                  header="Create Role"
+                                  paragraph="Enter the values for the new role"
+                              >
+                                  <ManageRolesCreateModal
+                                      id={currRoleID}
+                                      onClose={setCurrModal}
+                                      values={roles.map(
+                                          (obj: any) => obj.title
+                                      )}
+                                  />
+                              </Modal>
+                          );
+                      if (currModal === "edit")
+                          return (
+                              <Modal
+                                  onClose={setCurrModal}
+                                  icon={icons.tick}
+                                  header="Edit Role"
+                                  paragraph="Enter the new values for this role"
+                              >
+                                  <ManageRolesEditModal
+                                      id={currRoleID}
+                                      onClose={setCurrModal}
+                                      values={roles.map(
+                                          (obj: any) => obj.title
+                                      )}
+                                  />
+                              </Modal>
+                          );
+                      if (currModal === "users")
+                          return (
+                              <Modal
+                                  onClose={setCurrModal}
+                                  icon={icons.user}
+                                  header="Bulk Change User Roles"
+                                  paragraph={`Change users in ${currRole?.title}`}
+                              >
+                                  <ManageUsers
+                                      onClose={setCurrModal}
+                                      roles={roles}
+                                      currRole={currRole!}
+                                  />
+                              </Modal>
+                          );
+                  })()
                 : ""}
 
             <div className={styles.createBtnContainer}>
-
                 <PowerfulButton
                     variant="secondary"
                     onClick={() => navigate("/dashboard/roles/bulk-import")}

@@ -1,8 +1,8 @@
 * {
-    --padding-card : 1.5rem;
+    --padding-card: 1.5rem;
     --bg-card: #fff;
     --for-card: #000;
-    --inner-padding-card: .2rem;
+    --inner-padding-card: 0.2rem;
 }
 
 .card {
@@ -49,6 +49,6 @@
     margin-bottom: 0.2rem;
 }
 .cardDescription {
-    font-size: .8rem;
+    font-size: 0.8rem;
     font-weight: normal;
 }

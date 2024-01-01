@@ -52,39 +52,37 @@ const OrgForm = forwardRef(
         useEffect(() => {
             if (props.isEditMode) {
                 // Replace this with your actual API call
-                getOrganizationDetails(props.itemId).then(
-                    (data: OrgInfo) => {
-                        const initialData: InitialLocationData = {
-                            country: {
-                                label: data.country_name,
-                                value: data.country_uuid
-                            },
-                            state: {
-                                label: data.state_name,
-                                value: data.state_uuid
-                            },
-                            district: {
-                                label: data.district_name,
-                                value: data.district_uuid
-                            }
-                        };
-                        setInitialData(initialData);
-						setData({
-                            affiliation: data.affiliation_uuid,
-                            code: data.code,
-                            country: data.country_uuid,
-                            district: data.district_uuid,
-                            org_type: props.type,
-                            state: data.state_uuid,
-                            title: data.title
-                        });
-						setSelectedAffiliation({
-							label: data.affiliation_name,
-							value: data.affiliation_uuid
-						})
-						setOldCode(data.code)
-                    }
-                );
+                getOrganizationDetails(props.itemId).then((data: OrgInfo) => {
+                    const initialData: InitialLocationData = {
+                        country: {
+                            label: data.country_name,
+                            value: data.country_uuid
+                        },
+                        state: {
+                            label: data.state_name,
+                            value: data.state_uuid
+                        },
+                        district: {
+                            label: data.district_name,
+                            value: data.district_uuid
+                        }
+                    };
+                    setInitialData(initialData);
+                    setData({
+                        affiliation: data.affiliation_uuid,
+                        code: data.code,
+                        country: data.country_uuid,
+                        district: data.district_uuid,
+                        org_type: props.type,
+                        state: data.state_uuid,
+                        title: data.title
+                    });
+                    setSelectedAffiliation({
+                        label: data.affiliation_name,
+                        value: data.affiliation_uuid
+                    });
+                    setOldCode(data.code);
+                });
             }
         }, [props.isEditMode, props.itemId]);
 
@@ -142,16 +140,16 @@ const OrgForm = forwardRef(
                     continue;
                 }
                 if (props.type !== "College" && key === "country") {
-					if (
+                    if (
                         updatedData[key as keyof OrgFormData] === "" ||
                         updatedData[key as keyof OrgFormData] === "undefined"
-                    ){
-						delete updatedData[key as keyof OrgFormData]
-					}
+                    ) {
+                        delete updatedData[key as keyof OrgFormData];
+                    }
                     continue;
                 }
                 if (props.type !== "College" && key === "state") {
-					if (
+                    if (
                         updatedData[key as keyof OrgFormData] === "" ||
                         updatedData[key as keyof OrgFormData] === "undefined"
                     ) {
@@ -224,28 +222,32 @@ const OrgForm = forwardRef(
                         )}
                     </div>
 
-                    {props.type === "College" && <div className={styles.inputContainer}>
-                        <Select
-                            styles={customReactSelectStyles}
-                            options={affiliations}
-                            isClearable
-                            placeholder="Affiliation"
-                            isLoading={!affiliations.length}
-                            value={selectedAffiliation}
-                            onChange={value => setSelectedAffiliation(value)}
-                            onBlur={() => {
-                                setBlurStatus(prev => ({
-                                    ...prev,
-                                    affiliation: true
-                                }));
-                            }}
-                        />
-                        {blurStatus.affiliation && !selectedAffiliation && (
-                            <div style={{ color: "red" }}>
-                                Affiliation is Required
-                            </div>
-                        )}
-                    </div>}
+                    {props.type === "College" && (
+                        <div className={styles.inputContainer}>
+                            <Select
+                                styles={customReactSelectStyles}
+                                options={affiliations}
+                                isClearable
+                                placeholder="Affiliation"
+                                isLoading={!affiliations.length}
+                                value={selectedAffiliation}
+                                onChange={value =>
+                                    setSelectedAffiliation(value)
+                                }
+                                onBlur={() => {
+                                    setBlurStatus(prev => ({
+                                        ...prev,
+                                        affiliation: true
+                                    }));
+                                }}
+                            />
+                            {blurStatus.affiliation && !selectedAffiliation && (
+                                <div style={{ color: "red" }}>
+                                    Affiliation is Required
+                                </div>
+                            )}
+                        </div>
+                    )}
 
                     <div className={styles.inputContainer}>
                         <input
@@ -274,7 +276,7 @@ const OrgForm = forwardRef(
                         onCountryChange={handleCountryChange}
                         onStateChange={handleStateChange}
                         onDistrictChange={handleDistrictChange}
-						notRequired={props.type !== "College" ? true : false}
+                        notRequired={props.type !== "College" ? true : false}
                     />
                 </form>
             </div>

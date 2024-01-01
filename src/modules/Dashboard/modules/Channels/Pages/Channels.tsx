@@ -19,21 +19,20 @@ import {
 import { Blank } from "@/MuLearnComponents/Table/Blank";
 
 type channelData = {
-    id: string ;
-    name : string ;
-    discord_id : string ;
-    created_at : string ;
-    updated_at : string ;
-    created_by : string ;
-    updated_by : string ;
-}
+    id: string;
+    name: string;
+    discord_id: string;
+    created_at: string;
+    updated_at: string;
+    created_by: string;
+    updated_by: string;
+};
 
 type channelCreate = {
-    id: string ;
-    name : string ;
-    discord_id : string ;
-}
-
+    id: string;
+    name: string;
+    discord_id: string;
+};
 
 const Channels = () => {
     const columnOrder: ColOrder[] = [
@@ -42,7 +41,7 @@ const Channels = () => {
         { column: "created_by", Label: "Created By", isSortable: true },
         { column: "created_at", Label: "Created At", isSortable: true },
         { column: "updated_by", Label: "Updated By", isSortable: true },
-        { column: "updated_at", Label: "Updated At", isSortable: true },
+        { column: "updated_at", Label: "Updated At", isSortable: true }
     ];
 
     const [editBtn, setEditBtn] = useState(false);
@@ -58,7 +57,7 @@ const Channels = () => {
         initialValues: {
             id: "",
             name: "",
-            discord_id:""
+            discord_id: ""
         },
         onSubmit: values => {
             const channelCreateData = {
@@ -82,7 +81,7 @@ const Channels = () => {
                     }
                 });
             } else {
-                editChannel(values.id,channelCreateData, formik).then(
+                editChannel(values.id, channelCreateData, formik).then(
                     result => {
                         if (result) {
                             setTimeout(() => {
@@ -112,7 +111,6 @@ const Channels = () => {
         }
     });
 
-
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
@@ -133,14 +131,7 @@ const Channels = () => {
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
         setPerPage(selectedValue);
-        getChannels(
-            setChannelsData,
-            1,
-            selectedValue,
-            setTotalPages,
-            "",
-            ""
-        );
+        getChannels(setChannelsData, 1, selectedValue, setTotalPages, "", "");
     };
 
     const handleIconClick = (column: string) => {
@@ -154,7 +145,6 @@ const Channels = () => {
                 "",
                 `-${column}`,
                 setLoading
-
             );
         } else {
             setSort(column);
@@ -196,13 +186,21 @@ const Channels = () => {
     };
 
     useEffect(() => {
-        getChannels(setChannelsData, 1, perPage, setTotalPages, "", sort, setLoading);
+        getChannels(
+            setChannelsData,
+            1,
+            perPage,
+            setTotalPages,
+            "",
+            sort,
+            setLoading
+        );
     }, []);
 
     return (
         <>
-
-            <PowerfulButton onClick={() => setCreateBtn(true)}
+            <PowerfulButton
+                onClick={() => setCreateBtn(true)}
                 style={{
                     width: "fit-content",
                     minWidth: "auto",
@@ -210,7 +208,10 @@ const Channels = () => {
                     color: "#fff",
                     margin: "auto",
                     marginRight: "3%"
-                }}>Create</PowerfulButton>
+                }}
+            >
+                Create
+            </PowerfulButton>
             {(editBtn || createBtn) && (
                 <div className={styles.channelsContainer}>
                     <div className={styles.createChannel}>
@@ -240,11 +241,12 @@ const Channels = () => {
                                 placeholder="Discord ID"
                                 required
                             />
-                            {formik.touched.discord_id && formik.errors.discord_id && (
-                                <p className={styles.errorMessage}>
-                                    {formik.errors.discord_id}
-                                </p>
-                            )}
+                            {formik.touched.discord_id &&
+                                formik.errors.discord_id && (
+                                    <p className={styles.errorMessage}>
+                                        {formik.errors.discord_id}
+                                    </p>
+                                )}
 
                             <div className={styles.channelsInputContainer}>
                                 <div className={styles.formBtns}>

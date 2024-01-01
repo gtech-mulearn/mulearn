@@ -21,9 +21,7 @@ const LcDashboard = () => {
         isSchedule: false,
         reRender: false
     });
-    const [tab, setTab] = useState<"Dashboard">(
-        "Dashboard"
-    );
+    const [tab, setTab] = useState<"Dashboard">("Dashboard");
 
     const { id } = useParams();
 
@@ -89,11 +87,7 @@ const LcDashboard = () => {
             {
                 {
                     Dashboard: temp.isTeam ? (
-                        <LcTeam
-                            setTemp={setTemp}
-                            temp={temp}
-                            lc={lc}
-                        />
+                        <LcTeam setTemp={setTemp} temp={temp} lc={lc} />
                     ) : (
                         <LcHome setTemp={setTemp} temp={temp} lc={lc} id={id} />
                     )

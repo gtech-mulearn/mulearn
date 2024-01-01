@@ -21,14 +21,18 @@ export const FormTabBasics = () => {
                     type="text"
                     className={styles.placeholder}
                     placeholder="eg: worlds realest hackathon"
-                    />
+                />
                 <FormikTextInputWhite
-                    label={<span className="requiredLabel">Approx. Participants</span>}
+                    label={
+                        <span className="requiredLabel">
+                            Approx. Participants
+                        </span>
+                    }
                     name="participantCount"
                     type="number"
                     className={styles.placeholder}
                     placeholder="eg: 250."
-                    />
+                />
             </div>
             <FormikTextAreaWhite
                 label={<span className="requiredLabel">About</span>}

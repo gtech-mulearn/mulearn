@@ -6,7 +6,7 @@
     padding: 5rem 3rem;
 }
 
-.content>h1,
+.content > h1,
 .failure {
     color: #293338;
     font-size: 5rem;
@@ -14,7 +14,7 @@
     line-height: 111.5%;
 }
 
-.content>h1::after,
+.content > h1::after,
 .failure::after {
     content: "";
     display: block;
@@ -30,7 +30,7 @@
     background: #ff4d4d !important;
 }
 
-.content>p {
+.content > p {
     color: #293338;
     font-size: 1.8rem;
     font-weight: 400;
@@ -69,11 +69,11 @@
         padding: 2rem 1rem;
     }
 
-    .content>h1 {
+    .content > h1 {
         font-size: 3rem;
     }
 
-    .content>p {
+    .content > p {
         font-size: 1.4rem;
     }
 

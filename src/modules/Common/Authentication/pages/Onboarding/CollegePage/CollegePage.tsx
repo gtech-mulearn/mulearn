@@ -13,7 +13,6 @@ import {
 import ReactSelect from "react-select";
 import { useLocation, useNavigate } from "react-router-dom";
 
-
 const inputObject = {
     college: "College Name",
     department: "Department",
@@ -51,7 +50,7 @@ export default function CollegePage({
     selectedRole: string;
 }) {
     const navigate = useNavigate();
-    
+
     const location = useLocation();
     let userData: any = location.state as Object;
 

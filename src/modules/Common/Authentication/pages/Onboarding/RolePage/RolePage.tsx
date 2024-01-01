@@ -12,7 +12,7 @@ import CompanyPage from "../CompanyPage/CompanyPage";
 
 export default function Rolepage() {
     const navigate = useNavigate();
-    
+
     const location = useLocation();
     let userData = location.state;
 

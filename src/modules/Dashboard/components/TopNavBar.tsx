@@ -138,12 +138,14 @@ const TopNavBar = () => {
                                             color: "#FF7676",
                                             marginBottom: "0px",
                                             minWidth: "0px",
-                                            padding: "0px",
+                                            padding: "0px"
                                         }}
                                         onClick={() => {
                                             localStorage.clear();
-                                           
-                                            toast.error("Logged Out, Redirecting to login page.");
+
+                                            toast.error(
+                                                "Logged Out, Redirecting to login page."
+                                            );
 
                                             setTimeout(
                                                 () => window.location.reload(),

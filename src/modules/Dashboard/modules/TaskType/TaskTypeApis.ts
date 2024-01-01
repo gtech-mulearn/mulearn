@@ -77,10 +77,7 @@ export const getTaskTypeDetails = async (
     }
 };
 
-export const editTaskType = async (
-    title: string,
-    id: string | undefined
-) => {
+export const editTaskType = async (title: string, id: string | undefined) => {
     try {
         const response = await privateGateway.put(
             dynamicRoute(taskTypeRoutes.editTaskType, id as string),

@@ -79,7 +79,6 @@ export const convertToFormatedDate = (input: string): string => {
     return `${day} ${getMonthName(String(month + 1), true)} ${year}`;
 };
 
-
 export const convertDateToDayAndMonthAndYear = (data: string) => {
     // Extract the date part (before the space)
     const datePart = data.split(" ")[0];
@@ -93,34 +92,33 @@ export const convertDateToDayAndMonthAndYear = (data: string) => {
 export const getMonthName = (month: String, flag: boolean = false) => {
     switch (month) {
         case "01":
-            return flag? "January" : "Jan";
+            return flag ? "January" : "Jan";
         case "02":
-            return flag? "February" : "Feb";
+            return flag ? "February" : "Feb";
         case "03":
-            return flag? "March" : "Mar";
+            return flag ? "March" : "Mar";
         case "04":
-            return flag? "April" : "Apr";
+            return flag ? "April" : "Apr";
         case "05":
-            return flag? "May" : "May";
+            return flag ? "May" : "May";
         case "06":
-            return flag? "June" : "Jun";
+            return flag ? "June" : "Jun";
         case "07":
-            return flag? "July" : "Jul";
+            return flag ? "July" : "Jul";
         case "08":
-            return flag? "August" : "Aug";
+            return flag ? "August" : "Aug";
         case "09":
-            return flag? "September" : "Sep";
+            return flag ? "September" : "Sep";
         case "10":
-            return flag? "October" : "Oct";
+            return flag ? "October" : "Oct";
         case "11":
-            return flag? "November" : "Nov";
+            return flag ? "November" : "Nov";
         case "12":
-            return flag? "December" : "Dec";
+            return flag ? "December" : "Dec";
         default:
-            return flag? "January" : "Jan";
+            return flag ? "January" : "Jan";
     }
 };
-
 
 //! React Select Custom Style for Modal
 export const customReactSelectStyles = {
@@ -149,8 +147,8 @@ export const customReactSelectStyles = {
         backgroundColor: state.isSelected
             ? "rgba(184, 196, 234, 0.29)"
             : state.isFocused
-            ? "lightgray"
-            : null
+              ? "lightgray"
+              : null
     }),
     loadingIndicator: (base: any, state: any) => ({
         ...base,
@@ -159,11 +157,8 @@ export const customReactSelectStyles = {
     // Add more components as needed
 };
 
-
-
 export const comingSoon = () => {
-	toast("Feature coming soon!", {
+    toast("Feature coming soon!", {
         icon: "⌛"
     });
-}
-
+};

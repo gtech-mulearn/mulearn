@@ -9,7 +9,13 @@ type Props = {
 
 export const LcAttendees = (props: Props) => {
     return (
-        <div className={props.isSelected ? styles.AttendeesWrapperSelected : styles.AttendeesWrapperIndividual }>
+        <div
+            className={
+                props.isSelected
+                    ? styles.AttendeesWrapperSelected
+                    : styles.AttendeesWrapperIndividual
+            }
+        >
             <img src={props.image || image} alt="" />
             <p>{props.name}</p>
         </div>

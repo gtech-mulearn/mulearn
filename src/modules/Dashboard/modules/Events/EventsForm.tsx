@@ -9,7 +9,7 @@ type Props = { id: string; isEditMode: boolean; reload: () => void };
 const EventsForm = forwardRef(
     (props: Props & { closeModal: () => void }, ref: any) => {
         const navigate = useNavigate();
-        
+
         const [errors, setErrors] = useState<OrgFormErrors>({});
         const [taskData, setTaskData] = useState<any>(null);
         console.log(props.id);

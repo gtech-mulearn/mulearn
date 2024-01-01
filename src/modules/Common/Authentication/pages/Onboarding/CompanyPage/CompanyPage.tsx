@@ -17,7 +17,6 @@ import { getCompanies } from "../../../services/newOnboardingApis";
 import ReactSelect from "react-select";
 import { useLocation, useNavigate } from "react-router-dom";
 
-
 type InterestGroup = {
     id: string;
     name: string;
@@ -66,7 +65,7 @@ export default function CompanyPage({
     selectedRole: string;
 }) {
     const navigate = useNavigate();
-    
+
     const location = useLocation();
     let userData = location.state;
 
@@ -107,7 +106,7 @@ export default function CompanyPage({
     const onSubmit = async (values: any) => {
         // Remove "Others" company from organizations array if it exists
         const organizations =
-        values.company === "Others"
+            values.company === "Others"
                 ? userData.communities
                 : [values.company, ...userData.communities];
 
@@ -116,7 +115,7 @@ export default function CompanyPage({
                 full_name: userData.user.full_name,
                 email: userData.user.email,
                 password: userData.user.password,
-                area_of_interest: values.aois,
+                area_of_interest: values.aois
             },
             organization: {
                 year_of_graduation: values.graduationYear,
@@ -150,8 +149,6 @@ export default function CompanyPage({
         if (userData.dob) {
             newUserData.user["dob"] = userData.dob;
         }
-
-
 
         // console.log(newUserData);
         submitUserData({

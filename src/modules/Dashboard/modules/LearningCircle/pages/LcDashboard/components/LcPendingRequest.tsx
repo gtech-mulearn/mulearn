@@ -12,7 +12,7 @@ type Props = {
     setTemp: React.Dispatch<SetStateAction<LcDashboardTempData>>;
 };
 
-export const PendingRequest = (props:Props) => {
+export const PendingRequest = (props: Props) => {
     const { id } = useParams();
 
     const handleApproval = () => {

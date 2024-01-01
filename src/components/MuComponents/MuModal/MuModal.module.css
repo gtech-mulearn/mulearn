@@ -39,7 +39,7 @@
     height: 70px;
     width: 70px;
     display: flex;
-	font-size: 24px;
+    font-size: 24px;
     color: #039855;
     align-items: center;
     justify-content: center;
@@ -49,7 +49,7 @@
 }
 
 .iconError {
-	font-size: 24px;
+    font-size: 24px;
     color: red;
     border-radius: 50%;
     background-color: #fad2d1;
@@ -65,12 +65,12 @@
     font-weight: bold;
     font-size: 20px;
     color: black;
-	text-align: center;
+    text-align: center;
     padding-top: 10px;
 }
 
 .modalText {
-	color: black;
+    color: black;
 }
 
 .modalHeader {

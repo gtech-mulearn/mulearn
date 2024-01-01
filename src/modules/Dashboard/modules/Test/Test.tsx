@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 type Props = {};
 
 const Test = (props: Props) => {
-	const columnOrder: TableHeader[] = [
+    const columnOrder: TableHeader[] = [
         { column: "name", label: "Name", isSortable: true },
         { column: "members", label: "Members", isSortable: false },
         { column: "updated_at", label: "Updated On", isSortable: true },
@@ -15,14 +15,14 @@ const Test = (props: Props) => {
         { column: "created_at", label: "Created On", isSortable: true }
     ];
 
-	const [data, setData] = useState<TestData>();
-	const [tableData, setTableData] = useState<TestDataBackendResponse>();
+    const [data, setData] = useState<TestData>();
+    const [tableData, setTableData] = useState<TestDataBackendResponse>();
 
-	const handleFetchDetails = async () => {
+    const handleFetchDetails = async () => {
         try {
             const response = await getTestData(data);
-			setTableData(response.response);
-			console.log(tableData);
+            setTableData(response.response);
+            console.log(tableData);
         } catch (error) {
             toast.error("Something went wrong, failed to load data");
         }

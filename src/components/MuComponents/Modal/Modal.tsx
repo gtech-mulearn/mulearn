@@ -118,8 +118,8 @@ const Modal: FC<ModalProps> = ({
                             {type == "error"
                                 ? "Delete"
                                 : type == "Leave"
-                                ? "Leave"
-                                : "Confirm"}
+                                  ? "Leave"
+                                  : "Confirm"}
                         </PowerfulButton>
                     </div>
                 </div>

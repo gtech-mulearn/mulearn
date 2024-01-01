@@ -286,12 +286,12 @@ const LandingPage = () => {
                                     {index === 0
                                         ? "Interest Groups"
                                         : index === 1
-                                        ? "Colleges"
-                                        : index === 2
-                                        ? "Learning Circles"
-                                        : index === 3
-                                        ? "Number of Users"
-                                        : ""}
+                                          ? "Colleges"
+                                          : index === 2
+                                            ? "Learning Circles"
+                                            : index === 3
+                                              ? "Number of Users"
+                                              : ""}
                                 </p>
                             </div>
                         ))}
@@ -360,9 +360,7 @@ const LandingPage = () => {
                     <Modal
                         setIsOpen={setIsOpen}
                         id={"Join Circle"}
-                        heading={
-                            "Join Learning Circle"
-                        }
+                        heading={"Join Learning Circle"}
                         content={
                             "Are you sure you want to join this learning circle?"
                         }

@@ -1,11 +1,10 @@
 import React from "react";
 
 type Props = {
-    size:string,
-    
+    size: string;
 };
 
-const Planet = ({size}: Props) => {
+const Planet = ({ size }: Props) => {
     return (
         <svg
             width={size}

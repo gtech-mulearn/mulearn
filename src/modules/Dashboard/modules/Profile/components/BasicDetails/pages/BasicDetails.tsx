@@ -112,8 +112,8 @@ const BasicDetails = (props: Props) => {
                                                       data.karma / 1000
                                                   ).toPrecision(2) + "K"
                                                 : data.karma
-                                                ? data.karma
-                                                : "0"
+                                                  ? data.karma
+                                                  : "0"
                                             : "0"}
                                     </p>
                                 </div>

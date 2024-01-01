@@ -16,7 +16,6 @@ type Props = {
 };
 
 const Pagination = (props: Props) => {
-
     const handleOptionChange = (value: number) => {
         props.setPerPage(value);
         props.onPerPageNumber && props.onPerPageNumber(value);
@@ -41,7 +40,7 @@ const Pagination = (props: Props) => {
                             onClick={
                                 props.currentPage > 1
                                     ? props.handlePreviousClick
-                                    : () => { }
+                                    : () => {}
                             }
                             style={{ color: "var(--Dark)", cursor: "pointer" }}
                         />
@@ -53,7 +52,7 @@ const Pagination = (props: Props) => {
                             onClick={
                                 props.currentPage < props.totalPages
                                     ? props.handleNextClick
-                                    : () => { }
+                                    : () => {}
                             }
                             style={{ color: "var(--Dark)", cursor: "pointer" }}
                         />
