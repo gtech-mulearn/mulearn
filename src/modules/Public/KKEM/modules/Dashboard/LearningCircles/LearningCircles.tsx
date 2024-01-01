@@ -94,8 +94,7 @@ const LearningCircles = () => {
     console.log(HackathonDashboard[0]);
 
     const columnOrder: ColOrder[] = [
-        { column: "first_name", Label: "First Name", isSortable: true },
-        { column: "last_name", Label: "Last Name", isSortable: true },
+        { column: "full_name", Label: "Full Name", isSortable: true },
         { column: "muid", Label: "muid", isSortable: true },
         { column: "email", Label: "Email", isSortable: true },
         { column: "circle_name", Label: "Circle Name", isSortable: true },
