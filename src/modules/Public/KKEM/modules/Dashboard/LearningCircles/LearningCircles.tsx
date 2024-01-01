@@ -150,7 +150,7 @@ const LearningCircles = () => {
 
     useEffect(() => {
         if (loginTriggered)
-            if (dashboardPassword === "paru@123") {
+            if (dashboardPassword === "kkem@123") {
                 setPasswordAuth(true);
                 toast.success("Logged In");
             } else {
