@@ -30,14 +30,8 @@ export const getEditUserProfile = (
         .get(dashboardRoutes.getEditUserProfile)
         .then(response => {
             // console.log(response.data.response);
-            const {
-                full_name,
-                email,
-                mobile,
-                gender,
-                dob,
-                communities
-            } = response.data.response;
+            const { full_name, email, mobile, gender, dob, communities } =
+                response.data.response;
             const profileDetails: profileDetails = {
                 first_name: full_name.split(" ")[0],
                 last_name: full_name.split(" ")[1] ?? "",

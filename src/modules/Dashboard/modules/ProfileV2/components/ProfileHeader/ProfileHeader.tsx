@@ -140,16 +140,16 @@ const ProfileHeader = ({
                                           1000
                                       ).toPrecision(4) + "K"
                                     : isNaN(
-                                          parseInt(userProfile.karma) /
+                                            parseInt(userProfile.karma) /
+                                                monthDifference
+                                        )
+                                      ? "0"
+                                      : monthDifference === 0
+                                        ? "0"
+                                        : (
+                                              parseInt(userProfile.karma) /
                                               monthDifference
-                                      )
-                                    ? "0"
-                                    : monthDifference === 0
-                                    ? "0"
-                                    : (
-                                          parseInt(userProfile.karma) /
-                                          monthDifference
-                                      ).toPrecision(3)}
+                                          ).toPrecision(3)}
                             </p>
                         </div>
                     </div>

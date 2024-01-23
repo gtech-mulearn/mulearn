@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const Foundation = () => {
-  return (
-    <div>Foundation</div>
-  )
-}
+    return <div>Foundation</div>;
+};
 
-export default Foundation
+export default Foundation;

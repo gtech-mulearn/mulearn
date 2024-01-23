@@ -194,7 +194,7 @@ const SideNavBarBody = ({
                     onClick={() => navigate("/dashboard/settings/account")}
                     style={{
                         color: "#9297AA",
-                        backgroundColor: "#fff",
+                        backgroundColor: "#fff"
                         // marginBottom: "0px"
                     }}
                 />

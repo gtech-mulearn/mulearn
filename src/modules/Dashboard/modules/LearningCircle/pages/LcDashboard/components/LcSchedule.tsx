@@ -10,15 +10,15 @@ type Props = {
 };
 
 const LcSchedule = (props: Props) => {
-	const [meetDays, setMeetDays] = useState<number[]>([]);
+    const [meetDays, setMeetDays] = useState<number[]>([]);
 
-	const [meetSchedule, setMeetSchedule] = useState<LcMeetSchedule>({
+    const [meetSchedule, setMeetSchedule] = useState<LcMeetSchedule>({
         meet_time: "",
         meet_place: "",
         day: ""
     });
 
-	const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
 
         // Use the spread operator to create a new object with the updated property
@@ -28,7 +28,7 @@ const LcSchedule = (props: Props) => {
         }));
     };
 
-	const handleCheckboxChange = (
+    const handleCheckboxChange = (
         event: React.ChangeEvent<HTMLInputElement>
     ) => {
         const id = parseInt(event.target.id);
@@ -39,27 +39,30 @@ const LcSchedule = (props: Props) => {
         );
     };
 
-	const handleSchedule = async (event: any) => {
-		meetSchedule.day = meetDays.join(",");
-        if (meetDays.length === 0 || meetSchedule.meet_time === "" || meetSchedule.meet_place === "") {
+    const handleSchedule = async (event: any) => {
+        meetSchedule.day = meetDays.join(",");
+        if (
+            meetDays.length === 0 ||
+            meetSchedule.meet_time === "" ||
+            meetSchedule.meet_place === ""
+        ) {
             toast.error("Please fill all the fields");
-		}
-		else {
-			console.log(meetSchedule)
-			toast.promise(setLCMeetTime(meetSchedule, props.id), {
+        } else {
+            console.log(meetSchedule);
+            toast.promise(setLCMeetTime(meetSchedule, props.id), {
                 loading: "Saving...",
                 success: () => {
-					props.setTemp(prev => ({
-						...prev,
-						isSchedule: false
-					}))
+                    props.setTemp(prev => ({
+                        ...prev,
+                        isSchedule: false
+                    }));
                     return <b>Meeting schedule updated.</b>;
                 },
                 error: <b>Could not save.</b>
             });
-		}
-	}
-	
+        }
+    };
+
     return (
         <>
             <div className={styles.ScheduleOn}>
@@ -71,7 +74,7 @@ const LcSchedule = (props: Props) => {
                 <input
                     type="time"
                     id="timePicker"
-					required
+                    required
                     placeholder="Meeting time"
                     name="meet_time"
                     value={meetSchedule.meet_time}

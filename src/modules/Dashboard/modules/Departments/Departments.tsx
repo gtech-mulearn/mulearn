@@ -128,13 +128,13 @@ const Departments = () => {
                     if (currModal === modalTypes.edit)
                         return choosenDeptId
                             ? CreateOrUpdateDepartmentModal({
-                                id: choosenDeptId!,
-                                setCurrModal: setCurrModal,
-                                setDepartments: setDepartments,
-                                loading: isLoading,
-                                setIsLoading: setIsLoading,
-                                title: title
-                            })
+                                  id: choosenDeptId!,
+                                  setCurrModal: setCurrModal,
+                                  setDepartments: setDepartments,
+                                  loading: isLoading,
+                                  setIsLoading: setIsLoading,
+                                  title: title
+                              })
                             : null;
                 })()}
             <div className={styles.createBtnContainer}>
@@ -151,7 +151,7 @@ const Departments = () => {
                     <TableTop
                         onSearchText={handleSearch}
                         onPerPageNumber={handlePerPageNumber}
-                    // CSV={}
+                        // CSV={}
                     />
                     <Table
                         rows={departments}

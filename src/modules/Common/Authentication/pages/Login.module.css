@@ -1,205 +1,204 @@
 .login_page {
-  background-color: #fbfbfb;
-  min-height: 100dvh;
+    background-color: #fbfbfb;
+    min-height: 100dvh;
 }
 
 .error_message {
-  color: red;
-  font-size: 0.8rem;
-  font-weight: 500;
-  margin-top: 5px;
-  text-align: left;
+    color: red;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-top: 5px;
+    text-align: left;
 }
 
 .login_page {
-  transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .login_page .hidden {
-  opacity: 0;
+    opacity: 0;
 }
 
 .login_container {
-  min-height: 100dvh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .login_page .login_container .login_form {
-  background: #ffffff;
-  border: 1px solid #dde2e5;
-  border-radius: 20px;
-  display: flex;
-  max-width: 500px;
-  /* min-height: 500px; */
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 45px 30px;
-  text-align: center;
+    background: #ffffff;
+    border: 1px solid #dde2e5;
+    border-radius: 20px;
+    display: flex;
+    max-width: 500px;
+    /* min-height: 500px; */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 45px 30px;
+    text-align: center;
 }
 
 .login_page .login_container .login_form h1 {
-  font-weight: 700;
-  font-size: 34px;
-  line-height: 46px;
-  color: #404d61;
-  /* padding: 20px; */
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 46px;
+    color: #404d61;
+    /* padding: 20px; */
 }
 
 .login_page .login_container .login_form .p_welcome {
-  /* padding: 20px 50px; */
-  max-width: 320px;
-  margin: auto;
+    /* padding: 20px 50px; */
+    max-width: 320px;
+    margin: auto;
 }
 
 .login_page .login_container .login_form p {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  color: #404d61;
-  padding: 20px 0px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #404d61;
+    padding: 20px 0px;
 }
 
 .login_page .login_container .login_form form {
-  min-width: 380px;
-  display: flex;
-  flex-direction: column;
+    min-width: 380px;
+    display: flex;
+    flex-direction: column;
 }
 
 .login_page .login_container .login_form .password_div {
-  position: relative;
+    position: relative;
 }
 
 .login_page .login_container .login_form .password_div .password_icon {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  cursor: pointer;
-  background: none;
-  padding: 14px 0px;
-  min-width: unset;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    background: none;
+    padding: 14px 0px;
+    min-width: unset;
 }
 
 .login_page .login_container .login_form form p {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .register {
-  font-weight: 500;
-  display: block;
-  width: 100%;
-  margin-top: 0.75rem;
-  text-align: center;
-  font-size: 15px;
+    font-weight: 500;
+    display: block;
+    width: 100%;
+    margin-top: 0.75rem;
+    text-align: center;
+    font-size: 15px;
 }
 
 .login_page .login_container .login_form form p.otp_link {
-  padding-top: 0px;
-  margin-top: -20px;
-  cursor: pointer;
-
+    padding-top: 0px;
+    margin-top: -20px;
+    cursor: pointer;
 }
 
 .login_page .login_container .login_form form p a {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .login_page .login_container .login_form form p a:hover {
-  color: #5570f1;
+    color: #5570f1;
 }
 
 .login_page .login_container .login_form i {
-  color: #404d61;
+    color: #404d61;
 }
 
 .login_page .login_container .login_form button {
-  background: #5570f1;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px 0px;
-  min-width: 200px;
-  border-radius: 10px;
+    background: #5570f1;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 0px;
+    min-width: 200px;
+    border-radius: 10px;
 }
 
 .login_page .login_container .login_form b {
-  font-weight: 600;
+    font-weight: 600;
 }
 
 @media screen and (max-width: 500px) {
-  .login_page {
-    background-color: #fff;
-  }
+    .login_page {
+        background-color: #fff;
+    }
 
-  .login_page .login_container .login_form {
-    border: none;
-    padding: 0px;
-  }
+    .login_page .login_container .login_form {
+        border: none;
+        padding: 0px;
+    }
 
-  .login_page .login_container .login_form form {
-    min-width: 350px;
-    margin: 0px 20px;
-  }
+    .login_page .login_container .login_form form {
+        min-width: 350px;
+        margin: 0px 20px;
+    }
 }
 
 .validation_error_message {
-  position: absolute;
-  padding: 10px 50px;
-  right: 30px;
-  top: 30px;
-  background-color: #5570f2;
-  font-size: 1rem;
-  border-radius: 5px;
+    position: absolute;
+    padding: 10px 50px;
+    right: 30px;
+    top: 30px;
+    background-color: #5570f2;
+    font-size: 1rem;
+    border-radius: 5px;
 }
 
 .validation_error_message p {
-  color: white;
+    color: white;
 }
 
 .signin_loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
 .otp_loader {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 5px;
 }
 
 .signin_button {
-  background: #5570f1;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 9px 0px;
-  width: 100px;
-  min-width: 200px;
-  border-radius: 10px;
-  align-self: center;
-  cursor: pointer;
+    background: #5570f1;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9px 0px;
+    width: 100px;
+    min-width: 200px;
+    border-radius: 10px;
+    align-self: center;
+    cursor: pointer;
 }
 
-.reset_button{
-  background: #5570f1;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 9px 0px;
-  width: 100%;
-  min-width: 200px;
-  border-radius: 10px;
-  align-self: center;
-  cursor: pointer;
+.reset_button {
+    background: #5570f1;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9px 0px;
+    width: 100%;
+    min-width: 200px;
+    border-radius: 10px;
+    align-self: center;
+    cursor: pointer;
 }

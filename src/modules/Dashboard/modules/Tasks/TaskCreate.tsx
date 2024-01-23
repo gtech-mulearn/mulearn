@@ -19,7 +19,7 @@ import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
 const TaskCreate = () => {
     const navigate = useNavigate();
-    
+
     const [uuidData, setuuidData] = useState<{ [index: string]: any[] } | null>(
         null
     );

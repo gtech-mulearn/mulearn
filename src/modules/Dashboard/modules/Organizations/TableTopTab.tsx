@@ -12,7 +12,7 @@ interface TableTopTabProps {
 
 const TableTopTab = ({ active, onTabClick }: TableTopTabProps) => {
     const tabletopTab = ["College", "Company", "Community", "School"];
-	
+
     const [isModalOpen, setIsModalOpen] = useState(false);
     const orgFormRef = useRef<any>(null); //! Use for modal and form button connectivity
 

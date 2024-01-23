@@ -389,8 +389,8 @@ const CampusStudentList = (props: Props) => {
                             <BarChart data={pieData} />
                         </div>
                     </div>
-                    <div className={styles.btnContainer}>
-                        <PowerfulButton onClick={() => {}}>
+                    {/* <div className={styles.btnContainer}>
+                        <PowerfulButton onClick={() => { }}>
                             <AiOutlineDownload />
                             <a
                                 href={
@@ -401,8 +401,8 @@ const CampusStudentList = (props: Props) => {
                                 Download
                             </a>
                         </PowerfulButton>
-                    </div>
-                    {studentData && (
+                    </div> */}
+                    {/* {studentData && (
                         <>
                             <TableTop
                                 onSearchText={handleSearch}
@@ -429,10 +429,10 @@ const CampusStudentList = (props: Props) => {
                                     setPerPage={setPerPage}
                                 />
 
-                                {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
+                                
                             </Table>
                         </>
-                    )}
+                    )} */}
                 </>
             )}
         </>

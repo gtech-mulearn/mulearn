@@ -1,4 +1,10 @@
-import { ChangeEvent, forwardRef, useEffect, useImperativeHandle, useState } from "react";
+import {
+    ChangeEvent,
+    forwardRef,
+    useEffect,
+    useImperativeHandle,
+    useState
+} from "react";
 import styles from "../../utils/modalForm.module.css";
 
 import toast from "react-hot-toast";
@@ -66,7 +72,9 @@ const UserForm = forwardRef(
                     console.log(data.organizations);
                     if (data.organizations) {
                         const college = data.organizations!.filter(
-                            org => org.org_type === "College" || org.org_type === "School"
+                            org =>
+                                org.org_type === "College" ||
+                                org.org_type === "School"
                         )[0];
                         if (college) {
                             setInitialData({
@@ -89,10 +97,10 @@ const UserForm = forwardRef(
                             ...selectData,
                             selectedCommunity: data.organizations
                                 ? data.organizations
-                                    .filter(
-                                        org => org.org_type === "Community"
-                                    )
-                                    .map(org => org.org)
+                                      .filter(
+                                          org => org.org_type === "Community"
+                                      )
+                                      .map(org => org.org)
                                 : [],
                             selectedInterestGroups: data.interest_groups
                                 ? data.interest_groups
@@ -116,7 +124,14 @@ const UserForm = forwardRef(
                         department: "",
                         role: data.role,
                         interest_groups: data.interest_groups,
-                        graduation_year: data.organizations?.filter(org => org.org_type === "College" || org.org_type === "School").map(org => org.graduation_year)[0] || null,
+                        graduation_year:
+                            data.organizations
+                                ?.filter(
+                                    org =>
+                                        org.org_type === "College" ||
+                                        org.org_type === "School"
+                                )
+                                .map(org => org.graduation_year)[0] || null,
                         district: data.district
                     });
                 }
@@ -134,15 +149,16 @@ const UserForm = forwardRef(
             const { name, value } = e.target;
             if (value.length > 4) return;
             setData(prevData => ({ ...prevData, [name]: value }));
-        }
+        };
 
         const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
             const { name, value } = e.target;
             if (!value.trim()) {
                 setErrors(prevErrors => ({
                     ...prevErrors,
-                    [name]: `${name.charAt(0).toUpperCase() + name.slice(1)
-                        } is required`
+                    [name]: `${
+                        name.charAt(0).toUpperCase() + name.slice(1)
+                    } is required`
                 }));
             } else {
                 setErrors(prevErrors => ({ ...prevErrors, [name]: undefined }));
@@ -194,7 +210,7 @@ const UserForm = forwardRef(
         const [locationParam, setLocationParam] = useState("india");
         const [locationDatas, setLocationDatas] = useState([
             { id: "", location: "" }
-        ])
+        ]);
         const [isApiCalled, setIsApiCalled] = useState(false);
         const [selectData, setSelectData] = useState({
             community: [] as AffiliationOption[],
@@ -228,20 +244,20 @@ const UserForm = forwardRef(
             );
         }, [locationData]);
 
-        useEffect(() => { }, [selectData.roles]);
+        useEffect(() => {}, [selectData.roles]);
 
         useEffect(() => {
             if (!isApiCalled) {
-                handleGetLocation()
+                handleGetLocation();
             }
-        }, [locationParam])
+        }, [locationParam]);
 
         const handleGetLocation = async () => {
-            getLocations(locationParam, setLocationDatas, setIsApiCalled)
-        }
+            getLocations(locationParam, setLocationDatas, setIsApiCalled);
+        };
 
         const handleLocationChange = (e: ChangeEvent<HTMLInputElement>) => {
-            console.log(e)
+            console.log(e);
             const data = e;
             if (data) {
                 // Use a type assertion to specify the correct type
@@ -266,17 +282,24 @@ const UserForm = forwardRef(
                 // affiliation: String(selectedAffiliation??.value),
                 // country: (locationData.selectedCountry?.value),
                 // state: (locationData.selectedState?.value),
-                district: (selectData.selectedLocation),
+                district: selectData.selectedLocation,
                 roles: selectData.selectedRoles,
                 interest_groups: selectData.selectedInterestGroups,
-                organizations: [selectData.selectedCollege, ...selectData.selectedCommunity],
+                organizations: [
+                    selectData.selectedCollege,
+                    ...selectData.selectedCommunity
+                ],
                 department: selectData.selectedDepartment,
                 community: selectData.selectedCommunity
             };
-            console.log(selectData.selectedLocation, selectData.selectedDepartment);
+            console.log(
+                selectData.selectedLocation,
+                selectData.selectedDepartment
+            );
             for (const key in updatedData) {
                 if (
-                    updatedData[key as keyof typeof updatedData] === undefined ||
+                    updatedData[key as keyof typeof updatedData] ===
+                        undefined ||
                     updatedData[key as keyof typeof updatedData] === null ||
                     updatedData[key as keyof typeof updatedData] === "" ||
                     updatedData[key as keyof typeof updatedData] === "undefined"
@@ -293,7 +316,9 @@ const UserForm = forwardRef(
                     isValid = false;
                     setErrors(prevErrors => ({
                         ...prevErrors,
-                        [key]: `${key.charAt(0).toUpperCase() + key.slice(1)} is required`
+                        [key]: `${
+                            key.charAt(0).toUpperCase() + key.slice(1)
+                        } is required`
                     }));
                     toast.error(`Error: ${key} is required`);
                 }
@@ -316,7 +341,6 @@ const UserForm = forwardRef(
                 <form className={styles.formContainer} onSubmit={handleSubmit}>
                     {<p className={styles.formHeader}>BASIC INFO</p>}
                     <div className={styles.formContainer}>
-
                         <div className={styles.inputContainer}>
                             <input
                                 type="text"
@@ -369,7 +393,7 @@ const UserForm = forwardRef(
                                 placeholder="DiscordId"
                                 value={data.discord_id as string}
                                 onChange={handleChange}
-                            // onBlur={handleBlur}
+                                // onBlur={handleBlur}
                             />
                             {errors.discord_id && (
                                 <div style={{ color: "red" }}>
@@ -385,20 +409,21 @@ const UserForm = forwardRef(
                                 onChange={(selectedOptions: any) => {
                                     setSelectData(prevState => ({
                                         ...prevState,
-                                        selectedLocation:
-                                            selectedOptions?.value
+                                        selectedLocation: selectedOptions?.value
                                     }));
                                 }}
-                                value={locationDatas.map(location => {
-                                    return {
-                                        value: location.id,
-                                        label: location.location
-                                    };
-                                }).filter(
-                                    loc =>
-                                        (loc?.value as any) ===
-                                        selectData.selectedLocation
-                                )}
+                                value={locationDatas
+                                    .map(location => {
+                                        return {
+                                            value: location.id,
+                                            label: location.location
+                                        };
+                                    })
+                                    .filter(
+                                        loc =>
+                                            (loc?.value as any) ===
+                                            selectData.selectedLocation
+                                    )}
                                 components={animatedComponents}
                                 isClearable
                                 // isMulti
@@ -510,13 +535,15 @@ const UserForm = forwardRef(
                                 value={ig.filter(intg =>
                                     selectData.selectedInterestGroups.includes(
                                         intg?.value
-                                    ))}
+                                    )
+                                )}
                                 onChange={(selectedOptions: any) => {
                                     setSelectData(prevState => ({
                                         ...prevState,
-                                        selectedInterestGroups: selectedOptions.map(
-                                            (opt: any) => opt?.value
-                                        )
+                                        selectedInterestGroups:
+                                            selectedOptions.map(
+                                                (opt: any) => opt?.value
+                                            )
                                     }));
                                 }}
                                 onBlur={() => {
@@ -528,7 +555,7 @@ const UserForm = forwardRef(
                                         }
                                     }));
                                 }}
-                            // value={selectedIg}
+                                // value={selectedIg}
                             />
                             {/* {selectData.blurStatus.interestGroups &&
                             !selectData.selectedInterestGroups && (
@@ -659,5 +686,3 @@ const UserForm = forwardRef(
 );
 
 export default UserForm;
-
-

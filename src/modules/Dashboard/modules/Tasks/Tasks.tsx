@@ -23,7 +23,7 @@ export const Tasks = () => {
     const [sort, setSort] = useState("");
     const firstFetch = useRef(true);
     const navigate = useNavigate();
-    
+
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isEditMode, setIsEditMode] = useState(false);
     const [taskId, setTaskId] = useState<string | number | boolean>("");
@@ -184,11 +184,9 @@ export const Tasks = () => {
                 </PowerfulButton>
             </div>
 
-
             <MuModal
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
-
                 title={isEditMode ? "Edit Task" : "Create Task"}
                 type={"success"}
                 onDone={() => TaskRef.current?.handleSubmitExternally()}

@@ -268,40 +268,39 @@ export const getCollegeOptions = async (
     district: string
 ) => {
     try {
-        const response: APIResponse<{ colleges: TT[]; departments: TT[] }> = await publicGateway.post(onboardingRoutes.collegeList, {
-            district: district
-        })
+        const response: APIResponse<{ colleges: TT[]; departments: TT[] }> =
+            await publicGateway.post(onboardingRoutes.collegeList, {
+                district: district
+            });
 
-        const response2: APIResponse<{ schools: TT[] }> = await publicGateway.post(onboardingRoutes.schoolList, {
-            district: district
-        })
+        const response2: APIResponse<{ schools: TT[] }> =
+            await publicGateway.post(onboardingRoutes.schoolList, {
+                district: district
+            });
 
         const colleges = response.data.response.colleges;
         const schools = response2.data.response.schools;
-        setCollegeOptions(
-            [
-                ...colleges
-                    .sort((a, b) => a.title.localeCompare(b.title))
-                    .map(college => ({
-                        value: college.id,
-                        label: college.title
-                    })),
-                ...schools
-                    .sort((a, b) => a.title.localeCompare(b.title))
-                    .map(school => ({
-                        value: school.id,
-                        label: school.title
-                    }))
-            ]
-        );
+        setCollegeOptions([
+            ...colleges
+                .sort((a, b) => a.title.localeCompare(b.title))
+                .map(college => ({
+                    value: college.id,
+                    label: college.title
+                })),
+            ...schools
+                .sort((a, b) => a.title.localeCompare(b.title))
+                .map(school => ({
+                    value: school.id,
+                    label: school.title
+                }))
+        ]);
         setDepartmentAPI(
             response.data.response.departments.map(dept => ({
                 value: dept.id,
                 label: dept.title
             }))
         );
-    }
-    catch (error: any) {
+    } catch (error: any) {
         console.log(error);
         //errorHandler(error.response.status, error.response.data.status);
     }

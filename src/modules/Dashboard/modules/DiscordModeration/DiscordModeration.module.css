@@ -61,20 +61,20 @@
     background-color: rgb(236, 241, 255);
 }
 
-.count{
+.count {
     font-size: 2rem;
     font-weight: 600;
 }
 
-.txt{
+.txt {
     font-size: 0.95rem;
 }
 
-.highlight{
+.highlight {
     font-size: 1rem;
 }
 
-.DiscordModerationLeaderboardRow{
+.DiscordModerationLeaderboardRow {
     display: flex;
     height: 5rem;
     background: #fff;

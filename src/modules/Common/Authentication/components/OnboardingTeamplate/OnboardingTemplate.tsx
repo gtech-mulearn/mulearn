@@ -19,10 +19,7 @@ export default function OnboardingTemplate({ children }: TemplateProps) {
             <img className={styles.templateMufo} src={mufo} alt="" />
             <img className={styles.templateMuship} src={muship} alt="" />
 
-            <div className={styles.templateContent}>
-                {children}
-            </div>
-
+            <div className={styles.templateContent}>{children}</div>
         </div>
     );
 }

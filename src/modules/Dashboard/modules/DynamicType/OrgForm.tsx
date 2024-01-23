@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const OrgForm = () => {
-  return (
-    <div>OrgForm</div>
-  )
-}
+    return <div>OrgForm</div>;
+};
 
-export default OrgForm
+export default OrgForm;

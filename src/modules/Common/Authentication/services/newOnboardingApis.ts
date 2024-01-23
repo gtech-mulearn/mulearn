@@ -84,7 +84,7 @@ export const getInterestGroups = () => {
             const response = await publicGateway.get(
                 onboardingRoutes.areaOfInterestList
             );
-            const interestGroups = response.data.response.aois;            
+            const interestGroups = response.data.response.aois;
             resolve(interestGroups);
         } catch (err) {
             console.log("getInterestGroups Error", err);
@@ -170,7 +170,7 @@ export const submitUserData = async ({
         setIsLoading(false);
         const messages = err.response.data.message.general[0];
         showToasts({
-            messages: messages,
+            messages: messages
         });
     }
 };

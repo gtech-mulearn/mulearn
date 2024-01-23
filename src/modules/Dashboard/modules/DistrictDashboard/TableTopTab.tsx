@@ -1,5 +1,5 @@
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
-import { PowerfulButton} from "@/MuLearnComponents/MuButtons/MuButton";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useNavigate } from "react-router-dom";
 
 interface TableTopTabProps {

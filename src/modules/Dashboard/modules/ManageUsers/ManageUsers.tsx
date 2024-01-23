@@ -21,7 +21,6 @@ function ManageRoles() {
     const navigate = useNavigate();
     const firstFetch = useRef(true);
 
-
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [id, setId] = useState("");
     const UserFormRef = useRef<any>(null); //! Use for modal and form button connectivity
@@ -64,7 +63,7 @@ function ManageRoles() {
             page: nextPage,
             selectedValue: perPage,
             setIsLoading: setIsLoading,
-            setTotalPages: () => { },
+            setTotalPages: () => {},
             search: "",
             sortID: sort
         });
@@ -78,7 +77,7 @@ function ManageRoles() {
             page: prevPage,
             selectedValue: perPage,
             setIsLoading: setIsLoading,
-            setTotalPages: () => { },
+            setTotalPages: () => {},
             search: "",
             sortID: sort
         });
@@ -165,7 +164,7 @@ function ManageRoles() {
                         onSearchText={handleSearch}
                         onPerPageNumber={handlePerPageNumber}
                         CSV={dashboardRoutes.getUsersList}
-                    // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
+                        // CSV={"http://localhost:8000/api/v1/dashboard/ig/csv"}
                     />
                     <MuModal
                         isOpen={isModalOpen}

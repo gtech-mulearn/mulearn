@@ -12,7 +12,7 @@ const projects: Project[] = [
     { image: defaultimage, title: "Loan Planner - Fintech Mobile App" },
     { image: defaultimage, title: "Loan Planner - Fintech Mobile App" },
     { image: defaultimage, title: "Loan Planner - Fintech Mobile App" },
-    { image: defaultimage, title: "Loan Planner - Fintech Mobile App" },   
+    { image: defaultimage, title: "Loan Planner - Fintech Mobile App" },
     { image: defaultimage, title: "Loan Planner - Fintech Mobile App" },
     { image: defaultimage, title: "Loan Planner - Fintech Mobile App" }
 ];

@@ -8,7 +8,7 @@
     width: 100%;
     z-index: 50;
     display: flex;
-    transition: .3s ease;
+    transition: 0.3s ease;
     transform: scale(0);
     flex-direction: column;
     align-items: center;
@@ -49,7 +49,7 @@
             & button {
                 width: 100%;
                 padding: 16px;
-                background: #F3F3F4;
+                background: #f3f3f4;
                 border-radius: 10px;
             }
 
@@ -63,7 +63,6 @@
         }
     }
 }
-
 
 @media (max-width: 1500px) {
     .edit_profile_container {

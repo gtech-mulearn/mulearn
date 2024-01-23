@@ -11,16 +11,14 @@ import { Blank } from "@/MuLearnComponents/Table/Blank";
 import { displayData } from "./ErrorLogTypes";
 
 const ErrorLog = () => {
-
     const columnOrder: ColOrder[] = [
         { column: "type", Label: "Type", isSortable: false },
         { column: "message", Label: "Message", isSortable: false },
         { column: "method", Label: "Method", isSortable: false },
         { column: "path", Label: "Path", isSortable: false },
         { column: "timestamp", Label: "TimeStamps", isSortable: false },
-        { column: "muid", Label: "Muid", isSortable: false },
+        { column: "muid", Label: "Muid", isSortable: false }
     ];
-
 
     const handleSubmit = async (type: string) => {
         getLog(type, setErrorData);
@@ -32,17 +30,16 @@ const ErrorLog = () => {
     const handlePatch = async (id: string | undefined) => {
         if (id) {
             patchLog(id, toast);
-            getDisplay(setDisplayData)
+            getDisplay(setDisplayData);
         }
     };
-
 
     const [errorData, setErrorData] = useState("");
     const [displayData, setDisplayData] = useState<displayData[]>([]);
     useEffect(() => {
-        getDisplay(setDisplayData)
-        console.log("Data", displayData)
-    }, [])
+        getDisplay(setDisplayData);
+        console.log("Data", displayData);
+    }, []);
     const convertedRows: displayData[] = displayData.map(item => ({
         id: item.id,
         type: item.type,
@@ -50,7 +47,7 @@ const ErrorLog = () => {
         method: item.method,
         path: item.path,
         timestamp: item.timestamp,
-        muid: item.muid,
+        muid: item.muid
     }));
     return (
         <>
@@ -76,7 +73,6 @@ const ErrorLog = () => {
                 </button>
             </div>
 
-
             <div className={styles.ErrorLogButtonContainer}>
                 <button
                     className={styles.errorLogButton}
@@ -98,7 +94,6 @@ const ErrorLog = () => {
                     Clear Root
                 </button>
             </div>
-
 
             <div className={styles.ErrorLogButtonContainer}>
                 <button
@@ -134,11 +129,12 @@ const ErrorLog = () => {
             >
                 <THead
                     columnOrder={columnOrder}
-                    onIconClick={() => { console.log("Icon Clicked") }}
+                    onIconClick={() => {
+                        console.log("Icon Clicked");
+                    }}
                 />
                 <Blank />
             </Table>
-
         </>
     );
 };

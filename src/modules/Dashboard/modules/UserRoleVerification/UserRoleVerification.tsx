@@ -4,10 +4,13 @@ import Table from "@/MuLearnComponents/Table/Table";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { deleteUserRole, editUserRoleVerification, getUserRoleVerification } from "./apis";
+import {
+    deleteUserRole,
+    editUserRoleVerification,
+    getUserRoleVerification
+} from "./apis";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
-
 
 function UsersRoleVerification() {
     const [data, setData] = useState<TData[]>([]);
@@ -22,7 +25,7 @@ function UsersRoleVerification() {
     type TData = {
         full_name: string;
         muid: string;
-        id:string;
+        id: string;
         discord_id: string;
         role_title: string;
         verified: boolean;
@@ -79,8 +82,8 @@ function UsersRoleVerification() {
         navigate(`/dashboard/user-role-verification/edit/${id}`);
     };
 
-    const handleDelete = async(id: string | undefined) => {
-        await deleteUserRole(id)
+    const handleDelete = async (id: string | undefined) => {
+        await deleteUserRole(id);
         const updatedData = data.filter(item => item.id !== id);
         setData(updatedData);
     };

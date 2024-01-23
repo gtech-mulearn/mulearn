@@ -30,9 +30,8 @@ const CollegeLevelsCreate = (props: Props) => {
     const [colleges, setColleges] = useState([{ value: "", label: "" }]);
 
     const errorHandler = (err: any) => {
-
         toast.error("Something Went Wrong");
-        toast.error(err)
+        toast.error(err);
     };
 
     const selectProps = [
@@ -134,7 +133,7 @@ const CollegeLevelsCreate = (props: Props) => {
                             level: values.level
                         });
                         if (props.refetch) props.refetch();
-                        
+
                         toast.success("College level created");
                     } catch (err) {
                         errorHandler;

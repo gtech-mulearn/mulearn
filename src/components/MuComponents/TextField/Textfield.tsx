@@ -21,7 +21,7 @@ const Textfield = (props: {
             style={props.style}
             onClick={props.onClick}
         >
-			<span>{props.content}</span>
+            <span>{props.content}</span>
             <input
                 type={props.inputType}
                 value={props.input}

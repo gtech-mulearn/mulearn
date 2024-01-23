@@ -27,9 +27,9 @@
 
 @media screen and (max-width: 600px) {
     .modal {
-        height:90%;
+        height: 90%;
         max-height: 550px;
-           width: 95%;
+        width: 95%;
     }
 }
 
@@ -55,7 +55,7 @@
 
 @media screen and (max-width: 600px) {
     .modalContent {
-        height:92%;
+        height: 92%;
         padding: 2rem;
     }
 }
@@ -102,14 +102,12 @@
     white-space: nowrap;
 }
 
-
 @media screen and (min-width: 768px) {
     .modalButton {
         margin-top: -10px;
         margin-right: -10px;
     }
 }
-
 
 .modalButton:hover {
     background: #2e85feee;
@@ -140,7 +138,7 @@
 }
 @media screen and (max-width: 600px) {
     .form input {
-       width: 100%;
+        width: 100%;
     }
 }
 .form input:focus {
@@ -206,11 +204,11 @@
     .flowContainer {
         flex-direction: column;
         align-items: end;
-       margin-top: -4.5rem;
+        margin-top: -4.5rem;
     }
 }
 
-.loginHelp{
+.loginHelp {
     display: flex;
     align-items: center;
     width: 60%;
@@ -226,10 +224,10 @@
     }
 }
 
-.loginHelpers{
+.loginHelpers {
     cursor: pointer;
 }
 
-.loginHelperBold{
+.loginHelperBold {
     font-weight: 600;
 }

@@ -99,6 +99,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     url: "",
                     title: "Manage Organization",
                     hasView: true,
+
                     roles: [roles.ADMIN, roles.FELLOW, roles.ASSOCIATE],
                     children: [
                         {
@@ -126,7 +127,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
                             hasView: true,
                             roles: [roles.ADMIN]
                             // icon: <i className="fi fi-sr-building"></i>
-                        },
+                        }
                     ]
                 },
                 {
@@ -163,8 +164,6 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     roles: [roles.ADMIN]
                     // icon: <i className="fi fi-sr-books"></i>
                 },
-
-
                 {
                     url: "/dashboard/college-levels",
                     title: "College Levels",
@@ -247,7 +246,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     hasView: true,
                     roles: [roles.ADMIN]
                     // icon: <i className="fi fi-sr-users-gear"></i>
-                },
+                }
             ]
         },
         {

@@ -92,7 +92,7 @@ export function extract24hTimeFromDateTime(dateTime: string): string {
     const date = new Date(dateTime);
     let hours = date.getUTCHours().toString();
     let minutes = date.getUTCMinutes().toString();
-	
+
     // Pad single digit minutes and hours with a zero
     if (hours.length === 1) {
         hours = "0" + hours;

@@ -206,10 +206,10 @@ const Login = () => {
                                 {hasError
                                     ? "Request OTP"
                                     : otpLoading
-                                    ? "Processing"
-                                    : otpError
-                                    ? "Request OTP"
-                                    : "Sign In"}
+                                      ? "Processing"
+                                      : otpError
+                                        ? "Request OTP"
+                                        : "Sign In"}
                             </PowerfulButton>
                             <span className={styles.register}>
                                 {" "}

@@ -37,7 +37,7 @@ export const getStateOptions = async (country: string): Promise<Option[]> => {
                     b: { id: string; name: string }
                 ) => a.name.localeCompare(b.name)
             )
-            .map((state: { id: any; name: any; }) => ({
+            .map((state: { id: any; name: any }) => ({
                 value: state.id,
                 label: state.name
             }));
@@ -59,8 +59,10 @@ export const getDistrictOptions = async (state: string): Promise<Option[]> => {
             }
         );
         return response.data.response.districts
-            .sort((a: { name: string; }, b: { name: any; }) => a.name.localeCompare(b.name))
-            .map((district: { id: any; name: any; }) => ({
+            .sort((a: { name: string }, b: { name: any }) =>
+                a.name.localeCompare(b.name)
+            )
+            .map((district: { id: any; name: any }) => ({
                 value: district.id,
                 label: district.name
             }));

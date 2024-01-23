@@ -34,24 +34,24 @@ export type OrgCircle = {
     circleCount: number;
 };
 export type HackData = {
-    CandidateName : string;
-    ContactDetails : number;
-    DWMSID : string;
-    Email : string;
-    HackathonName : string;
-}
+    CandidateName: string;
+    ContactDetails: number;
+    DWMSID: string;
+    Email: string;
+    HackathonName: string;
+};
 export type HackDashboard = {
     "Hackathon Name": string;
-    "Domains" : string;
+    Domains: string;
     "Total Applicants": string;
     "Shortlisted Candidates": string;
     "Shortlisted Team Count": string;
     "Attended People": string;
     "Offerings Count": string;
     "Placement Count": string;
-}
+};
 export type TableToggleProps = {
-    active : string;
-    tabClick : (tab : string) => void;
-    toggleOptions : string[];
-}
+    active: string;
+    tabClick: (tab: string) => void;
+    toggleOptions: string[];
+};

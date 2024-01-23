@@ -1,18 +1,21 @@
-import React from 'react'
-import styles from './Thread.module.css'
-import qr from '/src/modules/Public/ThreadsCard/assets/qr.webp'
-import mu from '/src/modules/Public/ThreadsCard/assets/mu.webp'
-import title from '/src/modules/Public/ThreadsCard/assets/title.webp'
-import arrow from '/src/modules/Public/ThreadsCard/assets/arrow.webp'
-import barcode from '/src/modules/Public/ThreadsCard/assets/barcode.webp'
-import blend1 from '/src/modules/Public/ThreadsCard/assets/Blend-1.webp'
-import blend2 from '/src/modules/Public/ThreadsCard/assets/Blend-2.webp'
-import blend3 from '/src/modules/Public/ThreadsCard/assets/Blend-3.webp'
+import React from "react";
+import styles from "./Thread.module.css";
+import qr from "/src/modules/Public/ThreadsCard/assets/qr.webp";
+import mu from "/src/modules/Public/ThreadsCard/assets/mu.webp";
+import title from "/src/modules/Public/ThreadsCard/assets/title.webp";
+import arrow from "/src/modules/Public/ThreadsCard/assets/arrow.webp";
+import barcode from "/src/modules/Public/ThreadsCard/assets/barcode.webp";
+import blend1 from "/src/modules/Public/ThreadsCard/assets/Blend-1.webp";
+import blend2 from "/src/modules/Public/ThreadsCard/assets/Blend-2.webp";
+import blend3 from "/src/modules/Public/ThreadsCard/assets/Blend-3.webp";
 
 export default function Thread() {
     return (
         <div className={styles.ThreadCardBg}>
-            <button className={styles.ThreadCardReturn} onClick={() => window.history.back()}>
+            <button
+                className={styles.ThreadCardReturn}
+                onClick={() => window.history.back()}
+            >
                 &larr;
             </button>
 
@@ -44,7 +47,8 @@ export default function Thread() {
                                 <b>Date</b>
                                 <p>THU 6 JUL</p>
                             </span>
-                            <span><b>Time</b>
+                            <span>
+                                <b>Time</b>
                                 <p>10:00 AM IST</p>
                             </span>
                         </div>
@@ -61,13 +65,19 @@ export default function Thread() {
 
             <div className={styles.marquee}>
                 <div className={styles.marquee_group}>
-                    <p>MULEARN | EVENT INVITATION |    | THU 6 JUL | 4:30 AM IST | MULEARN | EVENT INVITATION | </p>
+                    <p>
+                        MULEARN | EVENT INVITATION | | THU 6 JUL | 4:30 AM IST |
+                        MULEARN | EVENT INVITATION |{" "}
+                    </p>
                 </div>
 
                 <div className={styles.marquee_group}>
-                    <p>MULEARN | EVENT INVITATION |    | THU 6 JUL | 4:30 AM IST | MULEARN | EVENT INVITATION | </p>
+                    <p>
+                        MULEARN | EVENT INVITATION | | THU 6 JUL | 4:30 AM IST |
+                        MULEARN | EVENT INVITATION |{" "}
+                    </p>
                 </div>
             </div>
         </div>
-    )
+    );
 }

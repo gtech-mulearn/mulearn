@@ -1,5 +1,4 @@
 const adminButtons = [
-
     {
         url: "interest-groups",
         title: "Interest Groups",

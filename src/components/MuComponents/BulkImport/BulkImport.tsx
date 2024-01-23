@@ -19,7 +19,6 @@ const BulkImport = ({ path, fileName, onUpload, onError, ...rest }: Props) => {
     const [errorMessage, setErrorMessage] = useState("");
     const [isLoading, setIsLoading] = useState(false);
 
-
     const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
         if (event.target.files && event.target.files.length > 0) {
             const file = event.target.files[0];
@@ -99,7 +98,7 @@ const BulkImport = ({ path, fileName, onUpload, onError, ...rest }: Props) => {
                         onError(response);
                     }
                     if (response.status === 400 || response.status === 403) {
-                        toast.error(response.data?.message?.general[0])
+                        toast.error(response.data?.message?.general[0]);
                         return;
                     }
                 }
@@ -162,11 +161,11 @@ const BulkImport = ({ path, fileName, onUpload, onError, ...rest }: Props) => {
 
             <div>
                 {isLoading && (
-                        <div>
-                            <MuLoader />
-                        </div>
-                    )}
-            </div>           
+                    <div>
+                        <MuLoader />
+                    </div>
+                )}
+            </div>
         </div>
     );
 };

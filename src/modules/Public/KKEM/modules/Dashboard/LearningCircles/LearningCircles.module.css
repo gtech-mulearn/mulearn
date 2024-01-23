@@ -33,15 +33,19 @@
 }
 
 .label {
-    font-family: Plus Jakarta Sans, sans-serif;
+    font-family:
+        Plus Jakarta Sans,
+        sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
     text-align: center;
 }
-.sublabel{
-    font-family: Plus Jakarta Sans, sans-serif;
+.sublabel {
+    font-family:
+        Plus Jakarta Sans,
+        sans-serif;
     font-size: 12px;
     font-style: normal;
     font-weight: 400;
@@ -68,7 +72,7 @@
     margin-bottom: 1rem;
     line-height: normal;
 }
-.subheading{
+.subheading {
     color: #292929;
     font-family: Plus Jakarta Sans;
     font-size: 20px;
@@ -151,23 +155,23 @@
 .counts div {
     max-width: 5rem;
 }
-.table_toggle_options{
-    display: flex; 
+.table_toggle_options {
+    display: flex;
     gap: 1rem;
 }
-.table_toggle_active{
+.table_toggle_active {
     background-color: #456ff6;
     color: white;
     padding: 6px 24px;
     border-radius: 10px;
     cursor: pointer;
     text-align: center;
-  }
-.table_toggle_inactive{
+}
+.table_toggle_inactive {
     border: 1px solid #456ff6;
     color: #456ff6;
     padding: 6px 24px;
     border-radius: 10px;
     cursor: pointer;
     text-align: center;
-  }
+}

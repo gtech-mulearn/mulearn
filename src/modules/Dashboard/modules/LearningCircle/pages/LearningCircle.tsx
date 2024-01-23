@@ -99,9 +99,8 @@ const LearningCircle = (props: Props) => {
     useEffect(() => {
         //find the corresponding resourceLink from the data by matching the igcode from lc
         const igCode = lc?.ig_code;
-        const resourceLink = data.find(
-            ig => ig.igcode === igCode
-        )?.resourcelink;
+        const resourceLink = data.find(ig => ig.igcode === igCode)
+            ?.resourcelink;
         setResourceLink(resourceLink || "");
 
         if (lc) {

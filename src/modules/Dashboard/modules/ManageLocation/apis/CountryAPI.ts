@@ -25,13 +25,13 @@ export const getCountryData = async (
         ).data.response;
 
         if (setTotalPages) {
-          setTotalPages(data.pagination.totalPages);
+            setTotalPages(data.pagination.totalPages);
         }
         if (setData) {
-          setData(data.data);
+            setData(data.data);
         } else {
-                    return data.data;
-                }
+            return data.data;
+        }
     } catch (err: any) {
         if (err?.response) {
             const errorMsg = err.response?.data?.message?.general[0] ?? "";
@@ -61,10 +61,7 @@ export const postCountryData = async (countryName: string) => {
 };
 
 //*WORKING ✅
-export const patchCountryData = async (
-    countryID: string,
-    newName: string
-) => {
+export const patchCountryData = async (countryID: string, newName: string) => {
     try {
         console.log(countryID);
         await privateGateway
@@ -85,9 +82,7 @@ export const patchCountryData = async (
 };
 
 //*WORKING ✅
-export const deleteCountryData = async (
-    id: string
-) => {
+export const deleteCountryData = async (id: string) => {
     try {
         await privateGateway
             .delete(

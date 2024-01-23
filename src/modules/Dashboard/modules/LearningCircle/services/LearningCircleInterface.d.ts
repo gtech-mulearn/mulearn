@@ -44,7 +44,7 @@ interface LcDashboardTempData {
     isHistory: boolean;
     isTeam: boolean;
     isSchedule: boolean;
-	reRender: boolean;
+    reRender: boolean;
 }
 
 interface LcMeetSchedule {
@@ -86,11 +86,11 @@ interface LcHistory {
     agenda: string;
     meet_created_by: string;
     meet_created_at: string;
-	images: string;
-	image: string;
+    images: string;
+    image: string;
 }
 
 interface LcAttendees {
-	fullname: string;
-	profile_pic: string;
+    fullname: string;
+    profile_pic: string;
 }

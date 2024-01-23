@@ -85,9 +85,8 @@ privateGateway.interceptors.response.use(
                 //console.log('new access token',response.data.response.accessToken)
                 // Retry the original request
                 const { config } = error;
-                config.headers[
-                    "Authorization"
-                ] = `Bearer ${localStorage.getItem("accessToken")}`;
+                config.headers["Authorization"] =
+                    `Bearer ${localStorage.getItem("accessToken")}`;
                 return await new Promise((resolve, reject) => {
                     privateGateway
                         .request(config)
