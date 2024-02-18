@@ -185,22 +185,22 @@ export const getUser = async (
     try {
         const res = hasRole
             ? await privateGateway.get(
-                  dashboardRoutes.roleBulkAssign + roleId + "/",
-                  {
-                      params: {
-                          search: search
-                      }
-                  }
-              )
+                dashboardRoutes.roleBulkAssign + roleId + "/",
+                {
+                    params: {
+                        search: search
+                    }
+                }
+            )
             : await privateGateway.put(
-                  dashboardRoutes.roleBulkAssign + roleId + "/",
-                  null,
-                  {
-                      params: {
-                          search: search
-                      }
-                  }
-              );
+                dashboardRoutes.roleBulkAssign + roleId + "/",
+                null,
+                {
+                    params: {
+                        search: search
+                    }
+                }
+            );
 
         const res = hasRole
             ? await privateGateway.get(
@@ -215,7 +215,7 @@ export const getUser = async (
                 label: user.muid,
                 value: user.id
             })
-        );
+            );
 
         return data;
     } catch (err) {

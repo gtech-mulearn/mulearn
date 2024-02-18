@@ -18,6 +18,7 @@ type SideNavBarBodyProps = {
         title: string;
         hasView: boolean;
         roles?: Role[];
+        dynamicType?: ManagementTypes[];
         icon?: any;
         children?: SideNavBarBodyProps["sidebarButtons"];
     }[];
@@ -53,10 +54,16 @@ const SideNavBarBody = ({
                     .filter(
                         button =>
                             button.hasView &&
-                            (!button.roles ||
-                                button.roles?.some(
-                                    role => userInfo?.roles?.includes(role)
+                            ((!button.roles ||
+                                button.roles?.some(role =>
+                                    userInfo?.roles?.includes(role)
                                 ))
+                                ||
+                                (
+                                    button.dynamicType?.some(type =>
+                                        userInfo?.dynamic_type?.includes(type as ManagementTypes)
+                                    ))
+                            )
                     )
                     .map((button, i) =>
                         button.children ? (
@@ -76,12 +83,16 @@ const SideNavBarBody = ({
                                         button =>
                                             button.hasView &&
                                             (!button.roles ||
-                                                button.roles?.some(
-                                                    role =>
-                                                        userInfo?.roles?.includes(
-                                                            role
-                                                        )
-                                                ))
+                                                button.roles?.some(role =>
+                                                    userInfo?.roles?.includes(
+                                                        role
+                                                    )
+                                                )
+                                                ||
+                                                (
+                                                    button.dynamicType?.some(type =>
+                                                        userInfo?.dynamic_type?.includes(type as ManagementTypes)
+                                                    )))
                                     )
                                     .map((button, i) =>
                                         button.children ? (
@@ -99,7 +110,7 @@ const SideNavBarBody = ({
                                                 }
                                                 display={
                                                     level2dropDownDisplay ===
-                                                    button.title
+                                                        button.title
                                                         ? "max-content"
                                                         : "0"
                                                 }
@@ -113,7 +124,12 @@ const SideNavBarBody = ({
                                                                         userInfo?.roles?.includes(
                                                                             role
                                                                         )
-                                                                ))
+                                                                )
+                                                                ||
+                                                                (
+                                                                    button.dynamicType?.some(type =>
+                                                                        userInfo?.dynamic_type?.includes(type as ManagementTypes)
+                                                                    )))
                                                     )
                                                     .map((button, i) => (
                                                         <MuButton

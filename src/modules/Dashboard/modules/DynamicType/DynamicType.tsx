@@ -90,6 +90,7 @@ function DynamicType() {
         { column: "role", Label: "Role", isSortable: false }
     ];
     const columnOrderUser = [
+        { column: "name", Label: "Name", isSortable: false },
         { column: "type", Label: "Type", isSortable: false },
         { column: "email", Label: "Email", isSortable: false },
         { column: "muid", Label: "MUID", isSortable: false }
@@ -223,37 +224,37 @@ function DynamicType() {
             />
             {currModal
                 ? (() => {
-                      if (currModal === "create")
-                          return (
-                              <Modal
-                                  onClose={setCurrModal}
-                                  icon={icons.tick}
-                                  header="Create Role"
-                                  paragraph="Enter the values for the new role"
-                              >
-                                  <CreateModal
-                                      roles={tab === "Role" ? roles : undefined}
-                                      type={types}
-                                      onClose={setCurrModal}
-                                  />
-                              </Modal>
-                          );
-                      if (currModal === "edit")
-                          return (
-                              <Modal
-                                  onClose={setCurrModal}
-                                  icon={icons.tick}
-                                  header="Create Role"
-                                  paragraph="Enter the values for the new role"
-                              >
-                                  <EditModal
-                                      roles={tab === "Role" ? roles : undefined}
-                                      rowId={currRow}
-                                      onClose={setCurrModal}
-                                  />
-                              </Modal>
-                          );
-                  })()
+                    if (currModal === "create")
+                        return (
+                            <Modal
+                                onClose={setCurrModal}
+                                icon={icons.tick}
+                                header="Create Role"
+                                paragraph="Enter the values for the new role"
+                            >
+                                <CreateModal
+                                    roles={tab === "Role" ? roles : undefined}
+                                    type={types}
+                                    onClose={setCurrModal}
+                                />
+                            </Modal>
+                        );
+                    if (currModal === "edit")
+                        return (
+                            <Modal
+                                onClose={setCurrModal}
+                                icon={icons.tick}
+                                header="Create Role"
+                                paragraph="Enter the values for the new role"
+                            >
+                                <EditModal
+                                    roles={tab === "Role" ? roles : undefined}
+                                    rowId={currRow}
+                                    onClose={setCurrModal}
+                                />
+                            </Modal>
+                        );
+                })()
                 : ""}
 
             <div className={styles.createBtnContainer}>
