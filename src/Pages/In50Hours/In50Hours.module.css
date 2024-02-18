@@ -13,13 +13,14 @@
 
 .firstSectionContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   padding: 2rem;
   color: #414d59;
-  width: 100vw;
-  margin: auto;
+  max-width: 1300px;
+  width: 100%;
 }
 
 .fsHeading {
@@ -53,4 +54,84 @@
   font-family: "Poppins", sans-serif;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
+}
+
+.steps {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: space-evenly;
+  padding: 0 2rem;
+  color: #414d59;
+  width: 100vw;
+  margin: auto;
+  flex-wrap: wrap;
+}
+
+.step {
+  width: 20rem;
+  margin: 1rem;
+  margin-top: 0;
+}
+
+.stepHeading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: left;
+  font-family: "Poppins", sans-serif;
+  margin-top: 1rem;
+}
+
+.stepHeading span {
+  color: #0098ca;
+}
+
+.stepTagline {
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: left;
+  font-family: "Poppins", sans-serif;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tsHeading {
+  font-size: 3.25rem;
+  font-weight: 700;
+  text-align: left;
+  font-family: "Poppins", sans-serif;
+}
+
+.tsHeading span {
+  color: #0098ca;
+}
+
+.tsTagline {
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: left;
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 1rem;
+  max-width: 30rem;
+}
+
+.thirdSectionContainer {
+  max-width: 1300px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  color: #414d59;
+  margin: auto;
+}
+
+.register {
+  background-color: #0098ca;
+  color: #ffffff;
+  margin-top: 1rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
 }
