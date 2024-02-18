@@ -202,13 +202,7 @@ export const getUser = async (
                 }
             );
 
-        const res = hasRole
-            ? await privateGateway.get(
-                  dashboardRoutes.roleBulkAssign + roleId + "/"
-              )
-            : await privateGateway.put(
-                  dashboardRoutes.roleBulkAssign + roleId + "/"
-              );
+        
 
         const data: roleUsers[] = res.data.response.map(
             (user: userReqBody) => ({
