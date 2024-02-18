@@ -1,0 +1,56 @@
+.fsImage {
+  max-width: 45rem;
+  width: 100%;
+  object-fit: cover;
+}
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.firstSectionContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  color: #414d59;
+  width: 100vw;
+  margin: auto;
+}
+
+.fsHeading {
+  font-size: 4.5rem;
+  font-weight: 600;
+  text-align: left;
+  font-family: "Poppins", sans-serif;
+}
+
+.fsHeading span {
+  color: #0098ca;
+}
+
+.fsTagline {
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: left;
+  font-family: "Poppins", sans-serif;
+  margin-top: -1rem;
+  max-width: 30rem;
+}
+
+.supporters {
+  width: 18rem;
+}
+
+.supportedBy {
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-align: left;
+  font-family: "Poppins", sans-serif;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}

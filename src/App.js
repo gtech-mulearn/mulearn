@@ -51,6 +51,7 @@ import Spiderman from "./Pages/CapTF/Spiderman";
 import Submission from "./Pages/CapTF/Submission";
 import Pathway from "./Pages/Pathway/Pathway";
 import EnablersPage from "./Pages/EnablersPage/EnablersPage";
+import In50Hours from "./Pages/In50Hours/In50Hours";
 function App() {
   const [redirects, setRedirects] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -94,6 +95,7 @@ function App() {
           <Route path="*" element={<NotFound isLoaded={isLoaded} />} />
           <Route path="/termsandconditions" element={<TermsAndCondition />} />
           <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+          <Route path="/in50hours" element={<In50Hours />} />
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
             <Route path="/blogs" element={<BlogLanding />} />
