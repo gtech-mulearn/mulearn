@@ -5,6 +5,7 @@ import Footer from "../../Components/Footer/Footer";
 import heroImage from "./heroimg.png";
 import supporters from "./supporters.png";
 import tsImage from "./tsimg.png";
+import makemyPass from "./makemypass.png";
 
 const In50Hours = () => {
   return (
@@ -73,8 +74,9 @@ const In50Hours = () => {
               event completely free of cost. If you are not, you can still
               participate by paying a nominal fee of INR 1000.
             </p>
+            <p className={styles.supportedBy}>Ticketing Partner</p>
+            <img src={makemyPass} alt="" className={styles.tsImage} />{" "}
           </div>
-          <img src={tsImage} alt="" className={styles.tsImage} />
         </div>
         <div className={styles.steps}>
           <div className={styles.step}>
@@ -83,7 +85,7 @@ const In50Hours = () => {
             </p>
             <p className={styles.stepTagline}>
               Collect your coupons, got to the to In-50hr-Challenge and type
-              /get-in50hours-coupon to get your coupon code.
+              <strong> /get-in50hours-coupon</strong> to get your coupon code.
             </p>
           </div>
           <div className={styles.step}>
@@ -91,8 +93,9 @@ const In50Hours = () => {
               STEP <span>2</span>
             </p>
             <p className={styles.stepTagline}>
-              Go to MakeMyPass.com and register for the event using the coupon
-              code. In case you are not in level 5, you can pay and register.
+              <strong>Go to MakeMyPass.com </strong> and register for the event
+              using the coupon code. In case you are not in level 5, you can pay
+              and register.
             </p>
           </div>
           <div className={styles.step}>

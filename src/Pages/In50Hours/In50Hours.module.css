@@ -135,3 +135,77 @@
   padding: 0.5rem 1.5rem;
   border-radius: 0.5rem;
 }
+
+.tsImage {
+  width: 5rem;
+}
+
+@media (max-width: 1240px) {
+  .firstSectionContainer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .fsImage {
+    max-width: 30rem;
+  }
+
+  .fsHeading {
+    font-size: 3.75rem;
+  }
+
+  .fsTagline {
+    font-size: 0.875rem;
+  }
+
+  .stepHeading {
+    font-size: 1.25rem;
+  }
+
+  .stepTagline {
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 728px) {
+  .fsImage {
+    width: 25rem;
+  }
+
+  .tsImage {
+    width: 20rem;
+  }
+
+  .fsHeading {
+    font-size: 3rem;
+  }
+
+  .fsTagline {
+    font-size: 0.875rem;
+    margin-top: 1rem;
+  }
+
+  .firstSectionContainer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .steps {
+    justify-content: flex-start;
+  }
+
+  .stepHeading {
+    font-size: 1.25rem;
+  }
+
+  .stepTagline {
+    font-size: 0.875rem;
+  }
+
+  .tsHeading {
+    font-size: 2.25rem;
+  }
+
+  .tsTagline {
+    font-size: 0.875rem;
+  }
+}
