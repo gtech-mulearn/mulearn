@@ -22,7 +22,7 @@ const In50Hours = () => {
               Dive into a whirlwind of innovation, collaboration, and
               caffeine-fueled brilliance!
             </p>
-            <p className={styles.supportedBy}>Supported By</p>
+            <p className={styles.supportedBy}>Organized By</p>
             <img src={supporters} alt="" className={styles.supporters} />
             <a
               target="_blank"
