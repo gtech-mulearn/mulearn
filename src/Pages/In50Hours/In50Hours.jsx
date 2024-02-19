@@ -4,7 +4,6 @@ import styles from "./In50Hours.module.css";
 import Footer from "../../Components/Footer/Footer";
 import heroImage from "./heroimg.png";
 import supporters from "./supporters.png";
-import tsImage from "./tsimg.png";
 import makemyPass from "./makemypass.png";
 
 const In50Hours = () => {
