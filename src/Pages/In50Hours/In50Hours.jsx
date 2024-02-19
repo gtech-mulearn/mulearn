@@ -33,33 +33,32 @@ const In50Hours = () => {
             </a>
           </div>
         </div>
-        <div className={styles.secondSectionContainer}>
-          <div className={styles.steps}>
-            <div className={styles.step}>
-              <p className={styles.stepHeading}>
-                P<span>IT</span>CH
-              </p>
-              <p className={styles.stepTagline}>
-                Pitch your boldest ideas and captivate them all in just minutes.{" "}
-              </p>
-            </div>
-            <div className={styles.step}>
-              <p className={styles.stepHeading}>
-                PRO<span>TO</span>TYPE
-              </p>
-              <p className={styles.stepTagline}>
-                Dive into the hustle and bustle of collaboration as teams form
-                and dive headfirst into building their prototypes.
-              </p>
-            </div>
-            <div className={styles.step}>
-              <p className={styles.stepHeading}>
-                <span>GET</span> FUNDED
-              </p>
-              <p className={styles.stepTagline}>
-                Pitch your boldest ideas and captivate them all in just minutes.{" "}
-              </p>
-            </div>
+
+        <div className={styles.steps}>
+          <div className={styles.step}>
+            <p className={styles.stepHeading}>
+              P<span>IT</span>CH
+            </p>
+            <p className={styles.stepTagline}>
+              Pitch your boldest ideas and captivate them all in just minutes.{" "}
+            </p>
+          </div>
+          <div className={styles.step}>
+            <p className={styles.stepHeading}>
+              PRO<span>TO</span>TYPE
+            </p>
+            <p className={styles.stepTagline}>
+              Dive into the hustle and bustle of collaboration as teams form and
+              dive headfirst into building their prototypes.
+            </p>
+          </div>
+          <div className={styles.step}>
+            <p className={styles.stepHeading}>
+              <span>GET</span> FUNDED
+            </p>
+            <p className={styles.stepTagline}>
+              Pitch your boldest ideas and captivate them all in just minutes.{" "}
+            </p>
           </div>
         </div>
 
