@@ -59,7 +59,7 @@
 .steps {
   display: flex;
   flex-direction: row;
-  align-items: start;
+  align-items: flex-start;
   justify-content: space-evenly;
   padding: 0 2rem;
   color: #414d59;
