@@ -1,212 +1,221 @@
 .fsImage {
-  max-width: 45rem;
-  width: 100%;
-  object-fit: cover;
+    max-width: 45rem;
+    width: 100%;
+    object-fit: cover;
 }
 
 .mainContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .firstSectionContainer {
-  display: flex;
-  flex-direction: row-reverse;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 2rem;
-  color: #414d59;
-  max-width: 1300px;
-  width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    color: #414d59;
+    max-width: 1300px;
+    width: 100%;
 }
 
 .fsHeading {
-  font-size: 4.5rem;
-  font-weight: 600;
-  text-align: left;
-  font-family: "Poppins", sans-serif;
+    font-size: 4.5rem;
+    font-weight: 600;
+    text-align: left;
+    font-family: "Poppins", sans-serif;
 }
 
 .fsHeading span {
-  color: #0098ca;
+    color: #0098ca;
 }
 
 .fsTagline {
-  font-size: 1rem;
-  font-weight: 400;
-  text-align: left;
-  font-family: "Poppins", sans-serif;
-  margin-top: -1rem;
-  max-width: 30rem;
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: left;
+    font-family: "Poppins", sans-serif;
+    margin-top: -1rem;
+    max-width: 30rem;
 }
 
 .supporters {
-  width: 18rem;
+    width: 18rem;
 }
 
 .supportedBy {
-  font-size: 1.05rem;
-  font-weight: 600;
-  text-align: left;
-  font-family: "Poppins", sans-serif;
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-align: left;
+    font-family: "Poppins", sans-serif;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .steps {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-between;
-  padding: 0 2rem;
-  color: #414d59;
-  max-width: 1300px;
-  width: 100%;
-  margin: auto;
-  flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    color: #414d59;
+    max-width: 1300px;
+    width: 100%;
+    margin: auto;
+    flex-wrap: wrap;
 }
 
 .step {
-  width: 20rem;
-  margin: 1rem;
-  margin-top: 0;
+    width: 20rem;
+    margin: 1rem;
+    margin-top: 0;
 }
 
 .stepHeading {
-  font-size: 1.5rem;
-  font-weight: 600;
-  text-align: left;
-  font-family: "Poppins", sans-serif;
-  margin-top: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: left;
+    font-family: "Poppins", sans-serif;
+    margin-top: 1rem;
 }
 
 .stepHeading span {
-  color: #0098ca;
+    color: #0098ca;
 }
 
 .stepTagline {
-  font-size: 1rem;
-  font-weight: 400;
-  text-align: left;
-  font-family: "Poppins", sans-serif;
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: left;
+    font-family: "Poppins", sans-serif;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .tsHeading {
-  font-size: 3.25rem;
-  font-weight: 700;
-  text-align: left;
-  font-family: "Poppins", sans-serif;
+    font-size: 3.25rem;
+    font-weight: 700;
+    text-align: left;
+    font-family: "Poppins", sans-serif;
 }
 
 .tsHeading span {
-  color: #0098ca;
+    color: #0098ca;
 }
 
 .tsTagline {
-  font-size: 1rem;
-  font-weight: 400;
-  text-align: left;
-  font-family: "Poppins", sans-serif;
-  margin-bottom: 1rem;
-  max-width: 30rem;
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: left;
+    font-family: "Poppins", sans-serif;
+    margin-bottom: 1rem;
+    max-width: 30rem;
 }
 
 .thirdSectionContainer {
-  max-width: 1300px;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 2rem;
-  color: #414d59;
-  margin: auto;
+    max-width: 1300px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    color: #414d59;
+    margin: auto;
 }
 
 .register {
-  background-color: #0098ca;
-  color: #ffffff;
-  margin-top: 1rem;
-  padding: 0.5rem 1.5rem;
-  border-radius: 0.5rem;
+    background-color: #0098ca;
+    color: #ffffff;
+    margin-top: 1rem;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
 }
 
 .tsImage {
-  width: 8rem;
+    width: 8rem;
 }
 
 @media (max-width: 1240px) {
-  .firstSectionContainer {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .fsImage {
-    max-width: 30rem;
-  }
+    .firstSectionContainer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .fsImage {
+        max-width: 30rem;
+    }
 
-  .fsHeading {
-    font-size: 3.75rem;
-  }
+    .fsHeading {
+        font-size: 3.75rem;
+    }
 
-  .fsTagline {
-    font-size: 0.875rem;
-  }
+    .fsTagline {
+        font-size: 0.875rem;
+    }
 
-  .stepHeading {
-    font-size: 1.25rem;
-  }
+    .stepHeading {
+        font-size: 1.25rem;
+    }
 
-  .stepTagline {
-    font-size: 0.875rem;
-  }
+    .stepTagline {
+        font-size: 0.875rem;
+    }
 }
 
 @media (max-width: 728px) {
-  .fsImage {
-    width: 20rem;
-  }
+    .fsImage {
+        width: 20rem;
+    }
 
-  .tsImage {
-    width: 5rem;
-  }
+    .tsImage {
+        width: 5rem;
+    }
 
-  .fsHeading {
-    font-size: 3rem;
-  }
+    .fsHeading {
+        font-size: 3rem;
+    }
 
-  .fsTagline {
-    font-size: 0.875rem;
-    margin-top: 1rem;
-  }
+    .fsTagline {
+        font-size: 0.875rem;
+        margin-top: 1rem;
+    }
 
-  .firstSectionContainer {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+    .firstSectionContainer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
-  .steps {
-    justify-content: flex-start;
-  }
+    .steps {
+        justify-content: flex-start;
+    }
 
-  .stepHeading {
-    font-size: 1.25rem;
-  }
+    .stepHeading {
+        font-size: 1.25rem;
+    }
 
-  .stepTagline {
-    font-size: 0.875rem;
-  }
+    .stepTagline {
+        font-size: 0.875rem;
+    }
 
-  .tsHeading {
-    font-size: 2.25rem;
-  }
+    .tsHeading {
+        font-size: 2.25rem;
+    }
 
-  .tsTagline {
-    font-size: 0.875rem;
-  }
+    .tsTagline {
+        font-size: 0.875rem;
+    }
+}
+
+.tsSideImage {
+    width: 30rem;
+}
+
+@media (max-width: 728px) {
+    .tsSideImage {
+        width: 20rem;
+    }
 }

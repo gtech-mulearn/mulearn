@@ -5,6 +5,7 @@ import Footer from "../../Components/Footer/Footer";
 import heroImage from "./heroimg.png";
 import supporters from "./supporters.png";
 import makemyPass from "./makemypass.png";
+import tsimg from "./tsimg.png";
 
 const In50Hours = () => {
   return (
@@ -75,6 +76,7 @@ const In50Hours = () => {
             <p className={styles.supportedBy}>Ticketing Partner</p>
             <img src={makemyPass} alt="" className={styles.tsImage} />{" "}
           </div>
+          <img src={tsimg} alt="" className={styles.tsSideImage} />
         </div>
         <div className={styles.steps}>
           <div className={styles.step}>
