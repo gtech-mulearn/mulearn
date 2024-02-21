@@ -1,5 +1,5 @@
 import { ReactNode, useEffect, useState } from "react";
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 import { Outlet, useNavigate } from "react-router-dom";
 
 type Props = {
@@ -22,7 +22,7 @@ export const RoleChecker = ({ allowedRoles }: Props) => {
         if (!userHasAllowedRole) {
             if (window.location.pathname !== "/") {
                 navigate("/");
-                toast.error("You don't have permission to access this page");
+                // toast.error("You don't have permission to access this page");
             }
         } else {
             setIsAuthorized(true);
