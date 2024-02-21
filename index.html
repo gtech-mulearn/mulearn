@@ -1,35 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="theme-color" content="#e30069" />
-		<meta name="µLearn" content="MuLearn" />
-		<meta name="description" content="MuLearn website" />
-		<link rel="apple-touch-icon" href="/vite.svg" />
-		<meta name="robots" content="index, follow" />
-		<link rel="manifest" href="/manifest.json" />
-		<title>µLearn</title>
-	</head>
-	<body>
-		<div id="root"></div>
-		<script>
-			if ("serviceWorker" in navigator) {
-				window.addEventListener("load", () => {
-					navigator.serviceWorker
-						.register("./serviceWorker.js")
-						.then((reg) => {
-							console.log("Worker Registered");
-						})
-						.catch((err) => {
-							console.log(
-								"Error in service worker registration."
-							);
-						});
-				});
+
+<head>
+	<meta charset="UTF-8" />
+	<link rel="icon" type="image/svg+xml" href="/Icon.png" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="theme-color" content="#ffffff" />
+	<meta name="µLearn" content="MuLearn" />
+	<meta name="description" content="MuLearn website" />
+	<link rel="apple-touch-icon" href="/Icon.png" />
+	<meta name="robots" content="index, follow" />
+	<link rel="manifest" href="/manifest.json" />
+	<title>µLearn</title>
+	<style>
+		#overlay {
+			width: 100vw;
+			height: 100vh;
+			position: fixed;
+			top: 0;
+			background-color: #ffffff;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			z-index: 9999;
+			left: 0;
+			gap: 10px;
+		}
+
+		#overlay::-webkit-scrollbar {
+			display: none;
+			color: white;
+		}
+
+		#overlay img {
+			width: 300px;
+			height: auto;
+			object-fit: contain;
+		}
+
+		.loader {
+			font-size: 48px;
+			color: #99069e;
+			width: 1em;
+			height: 1em;
+			box-sizing: border-box;
+			background-color: currentcolor;
+			position: relative;
+			border-radius: 50%;
+			transform: rotateX(-60deg) perspective(1000px);
+		}
+
+		.loader:before,
+		.loader:after {
+			content: '';
+			display: block;
+			position: absolute;
+			box-sizing: border-box;
+			top: 0;
+			left: 0;
+			width: inherit;
+			height: inherit;
+			border-radius: inherit;
+			animation: flowerFlow 1s ease-out infinite;
+		}
+
+		.loader:after {
+			animation-delay: .4s;
+		}
+
+		@keyframes flowerFlow {
+			0% {
+				opacity: 1;
+				transform: rotate(0deg);
+				box-shadow: 0 0 0 -.5em currentcolor,
+					0 0 0 -.5em currentcolor,
+					0 0 0 -.5em currentcolor,
+					0 0 0 -.5em currentcolor,
+					0 0 0 -.5em currentcolor,
+					0 0 0 -.5em currentcolor,
+					0 0 0 -.5em currentcolor,
+					0 0 0 -.5em currentcolor;
 			}
-		</script>
-		<script type="module" src="/src/main.tsx"></script>
-	</body>
+
+			100% {
+				opacity: 0;
+				transform: rotate(180deg);
+				box-shadow: -1em -1em 0 -.35em currentcolor,
+					0 -1.5em 0 -.35em currentcolor,
+					1em -1em 0 -.35em currentcolor,
+					-1.5em 0 0 -.35em currentcolor,
+					1.5em -0 0 -.35em currentcolor,
+					-1em 1em 0 -.35em currentcolor,
+					0 1.5em 0 -.35em currentcolor,
+					1em 1em 0 -.35em currentcolor;
+			}
+		}
+	</style>
+	<script>
+		window.addEventListener('load', function () {
+			setTimeout(function () {
+				document.getElementById('overlay').style.display = 'none';
+			}, 1000); // Hide the overlay after 1000 milliseconds (1 second)
+		});
+	</script>
+</head>
+
+<body>
+	<div id="overlay">
+		<img src="./Loader.png" alt="">
+		<span class="loader"></span>
+	</div>
+	<div id="root"></div>
+	<script>
+		if ("serviceWorker" in navigator) {
+			window.addEventListener("load", () => {
+				navigator.serviceWorker
+					.register("./serviceWorker.js")
+					.then((reg) => {
+						console.log("Worker Registered");
+					})
+					.catch((err) => {
+						console.log(
+							"Error in service worker registration."
+						);
+					});
+			});
+		}
+	</script>
+	<script type="module" src="/src/main.tsx"></script>
+</body>
+
 </html>
