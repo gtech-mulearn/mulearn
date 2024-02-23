@@ -125,6 +125,9 @@ const Home = () => {
               >
                 <button className={styles.primary}>Join Us</button>
               </a>
+              <a target="_blank" rel="noopener noreferrer" href="/mulearn.apk">
+                <button className={styles.secondary}>Download APK</button>
+              </a>
             </div>
           </div>
           <img
