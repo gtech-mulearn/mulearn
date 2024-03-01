@@ -77,8 +77,8 @@ const LcHome = (props: Props) => {
                                 <>
                                     <div className={styles.divOne}>
                                         {nextMeet &&
-                                        props.lc?.meet_place &&
-                                        props.lc?.meet_time ? (
+                                            props.lc?.meet_place &&
+                                            props.lc?.meet_time ? (
                                             <div>
                                                 <p>Next meeting on</p>
                                                 <h1>
@@ -125,7 +125,7 @@ const LcHome = (props: Props) => {
                                                 </p>
                                             )}
                                         </div>
-                                        <button
+                                        {props.lc?.meet_time && (<button
                                             onClick={() => {
                                                 props.setTemp(prev => ({
                                                     ...prev,
@@ -134,7 +134,7 @@ const LcHome = (props: Props) => {
                                             }}
                                         >
                                             Report
-                                        </button>
+                                        </button>)}
                                     </div>
                                 </>
                             )}
