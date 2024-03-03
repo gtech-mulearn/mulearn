@@ -16,6 +16,13 @@ export const links = [
             link: "/team",
             foreign: false,
           },
+          {
+            name: "Enablers",
+            submenu: false,
+            sublinks: [],
+            link: "/enablers",
+            foreign: false,
+          },
         ],
       },
 

@@ -29,30 +29,15 @@ const MuLiveCounter = () => {
       "wss://mulearn.org/ws/v1/public/landing-stats/"
     );
 
-    socket.addEventListener("open", (event) => console.log("connected"));
-
     socket.addEventListener("message", (event) => {
       setCounts(JSON.parse(event.data));
+      console.log("Message from server ", event.data);
     });
 
     socket.addEventListener("error", (event) => {
       console.error("WebSocket error: ", event);
     });
-
-    return () => {
-      socket.close();
-      if (!counts) {
-        fetch("https://mulearn.org/api/v1/get-log/global-count/")
-          .then((response) => response.json())
-          .then((data) => {
-            setCounts(data.response);
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-          });
-      }
-    };
-  }, [counts]);
+  }, []);
 
   return (
     <div className={styles.rightside}>
@@ -114,6 +99,8 @@ const MuLiveCounter = () => {
 };
 
 const Home = () => {
+  const donationLink = process.env.REACT_APP_DONATION_LINK
+
   return (
     <>
       <Navbar />
@@ -136,9 +123,12 @@ const Home = () => {
               <a
                 target="_blank"
                 rel="noopener noreferrer"
-                href="https://app.mulearn.org/register"
+                href={donationLink}
               >
-                <button className={styles.primary}>Join Us</button>
+                <button className={styles.primary}>Make a Donation ❤️</button>
+              </a>
+              <a target="_blank" rel="noopener noreferrer" href="/mulearn.apk">
+                <button className={styles.secondary}>Download APK</button>
               </a>
             </div>
           </div>
@@ -323,6 +313,34 @@ const Home = () => {
         </div>
       </div>
 
+      <br />
+      <div className={styles.joinviewmain_container}>
+        <div className={styles.joinview_container}>
+          <div className={styles.join_view}>
+            <div className={styles.jv_texts}>
+              <p className={styles.jv_heading}>
+                The Story of Aami <span>MuStory</span>
+              </p>
+              <p className={styles.jv_content}>
+                Meet Aami, an eager learner hungry for growth! Join her voyage
+                through the captivating µVerse, where she seizes opportunities,
+                builds learning circles, and immerses herself in events,
+                emerging industry-ready with newfound skills and confidence.
+              </p>
+            </div>
+            <div className={styles.mu_story}>
+              <iframe
+                src="https://www.youtube.com/embed/M9serw-CLU0?si=rqJ8ZNA4vl8byH07"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className={styles.thirdviewmain_container}>
         <div className={styles.thirdview_container}>
           <div className={styles.third_view}>
@@ -486,30 +504,6 @@ const Home = () => {
               alt="join"
               className={styles.join_img}
             />
-          </div>
-        </div>
-      </div>
-      <br />
-      <div className={styles.joinviewmain_container}>
-        <div className={styles.joinview_container}>
-          <div className={styles.join_view}>
-            <div className={styles.jv_texts}>
-              <p className={styles.jv_heading}>
-                The Story of Aami <span>MuStory</span>
-              </p>
-              <p className={styles.jv_content}>
-              Meet Aami, an eager learner hungry for growth! Join her voyage through the captivating µVerse, where she seizes opportunities, builds learning circles, and immerses herself in events, emerging industry-ready with newfound skills and confidence.
-              </p>
-            </div>
-            <div className={styles.mu_story}>
-              <iframe
-                src="https://www.youtube.com/embed/M9serw-CLU0?si=rqJ8ZNA4vl8byH07"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-              ></iframe>
-            </div>
           </div>
         </div>
       </div>
