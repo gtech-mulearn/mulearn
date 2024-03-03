@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "../Home/Home.module.css";
 
 import Footer from "../../Components/Footer/Footer";
