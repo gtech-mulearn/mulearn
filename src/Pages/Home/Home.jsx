@@ -120,13 +120,13 @@ const Home = () => {
               </p>
             </div>
             <div className={styles.buttons}>
-              <a
+{/*               <a
                 target="_blank"
                 rel="noopener noreferrer"
                 href={donationLink}
               >
                 <button className={styles.primary}>Make a Donation ❤️</button>
-              </a>
+              </a> */}
               <a target="_blank" rel="noopener noreferrer" href="/mulearn.apk">
                 <button className={styles.secondary}>Download APK</button>
               </a>
