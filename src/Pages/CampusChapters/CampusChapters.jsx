@@ -317,12 +317,13 @@ const CampusChapters = () => {
             <div className={styles.d_video_container}>
               <div className={styles.d_video}>
                 <iframe
-                  src="https://www.youtube.com/embed/pEwJhL9A7xc"
+                  src="https://www.youtube.com/embed/3sycnoFCeaM?si=a0t4z26fI-BaO5C_"
                   title="YouTube video player"
                   frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowfullscreen
                 ></iframe>
+                
               </div>
 
               <div className={styles.d_main_container}>

@@ -99,6 +99,8 @@ const MuLiveCounter = () => {
 };
 
 const Home = () => {
+  // const donationLink = process.env.REACT_APP_DONATION_LINK
+
   return (
     <>
       <Navbar />
@@ -118,13 +120,13 @@ const Home = () => {
               </p>
             </div>
             <div className={styles.buttons}>
-              <a
+{/*               <a
                 target="_blank"
                 rel="noopener noreferrer"
-                href="https://app.mulearn.org/register"
+                href={donationLink}
               >
-                <button className={styles.primary}>Join Us</button>
-              </a>
+                <button className={styles.primary}>Make a Donation ❤️</button>
+              </a> */}
               <a target="_blank" rel="noopener noreferrer" href="/mulearn.apk">
                 <button className={styles.secondary}>Download APK</button>
               </a>
