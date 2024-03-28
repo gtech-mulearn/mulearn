@@ -99,7 +99,7 @@ const MuLiveCounter = () => {
 };
 
 const Home = () => {
-  const donationLink = process.env.REACT_APP_DONATION_LINK
+  // const donationLink = process.env.REACT_APP_DONATION_LINK
 
   return (
     <>
