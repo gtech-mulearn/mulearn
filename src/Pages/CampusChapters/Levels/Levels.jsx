@@ -25,7 +25,7 @@ const Levels = () => {
           </div>
           <div className={styles.levels_image}>
             <img
-              src="/assets/campuscommunity/chaptership.svg"
+              src="/assets/campuscommunity/chapter.svg"
               alt=""
               className={styles.levels_img}
             />
