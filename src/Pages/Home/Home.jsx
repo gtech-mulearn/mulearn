@@ -127,8 +127,8 @@ const Home = () => {
               >
                 <button className={styles.primary}>Make a Donation ❤️</button>
               </a> */}
-              <a target="_blank" rel="noopener noreferrer" href='https://drive.usercontent.google.com/download?id=1REc-xUU6P2RsvZ8ZsQm71guL8SQVd7D2&export=download&authuser=0'>
-                <button className={styles.primary}>Download Newsletter</button>
+              <a target="_blank" rel="noopener noreferrer" href='https://drive.google.com/file/d/1REc-xUU6P2RsvZ8ZsQm71guL8SQVd7D2/view'>
+                <button className={styles.primary}>Newsletter</button>
               </a>
               <a target="_blank" rel="noopener noreferrer" href="/mulearn.apk">
                 <button className={styles.secondary}>Download APK</button>
