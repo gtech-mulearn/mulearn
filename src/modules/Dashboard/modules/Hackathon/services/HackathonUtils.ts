@@ -61,6 +61,7 @@ export function formatErrorMessage(error: string): string {
             .join(" ");
     });
     // Construct the new message
-    return "The following fields are empty: " + formattedFields.join(", ") + ".";
+    return (
+        "The following fields are empty: " + formattedFields.join(", ") + "."
+    );
 }
-

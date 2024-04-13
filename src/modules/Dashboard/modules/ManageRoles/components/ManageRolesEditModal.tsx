@@ -25,7 +25,7 @@ const ManageRolesEditModal = (props: Props) => {
         description: ""
     });
     const id = props.id;
-    
+
     useEffect(() => {
         getManageRolesDetails(id, setData);
     }, []);

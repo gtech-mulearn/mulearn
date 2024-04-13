@@ -1,5 +1,5 @@
 import { FC, ReactNode } from "react";
-import styles from "./MuModal.module.css"
+import styles from "./MuModal.module.css";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { BiCheckCircle } from "react-icons/bi";
 
@@ -19,8 +19,8 @@ const MuModal: FC<ModalProps> = ({
     title,
     children,
     type,
-	onDone,
-	body
+    onDone,
+    body
 }) => {
     if (!isOpen) {
         return null;

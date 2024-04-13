@@ -18,7 +18,7 @@ export default function CommunityPage() {
         { id: "", title: "" }
     ]);
     const navigate = useNavigate();
-    // 
+    //
     const location = useLocation();
     let userData = location.state;
     const animatedComponents = makeAnimated();
@@ -26,10 +26,10 @@ export default function CommunityPage() {
     const [locationParam, setLocationParam] = useState("india");
     const [locationData, setLocationData] = useState([
         { id: "", location: "" }
-    ])
+    ]);
     const [isApiCalled, setIsApiCalled] = useState(false);
     const param = urlParams.get("param");
-    
+
     useEffect(() => {
         if (userData === undefined || userData === null) {
             navigate("/register", { replace: true });
@@ -39,31 +39,33 @@ export default function CommunityPage() {
             setCommunityAPI: setCommunitiesList,
             setIsLoading: setIsLoading
         });
-        getLocations(locationParam, setLocationData, setIsApiCalled)
+        getLocations(locationParam, setLocationData, setIsApiCalled);
         setIsLoading(false);
     }, []);
-        
+
     const handleSubmit = async (values: any) => {
         if (values.communities) userData.communities = values.communities;
         if (values.district) userData.district = values.district;
         if (values.referral) userData.referral = { muid: values.referral };
         const isSuccess = await validate({
             userData: userData,
-            setIsSubmitting: setIsLoading,
+            setIsSubmitting: setIsLoading
         });
         console.log(isSuccess);
-        
-        isSuccess? navigate("/register/select-role", { state: userData }) :  delete userData.referral;
+
+        isSuccess
+            ? navigate("/register/select-role", { state: userData })
+            : delete userData.referral;
     };
 
     const handleGetLocation = async () => {
-        getLocations(locationParam, setLocationData, setIsApiCalled)
-    }
+        getLocations(locationParam, setLocationData, setIsApiCalled);
+    };
     useEffect(() => {
         if (!isApiCalled) {
-            handleGetLocation()
+            handleGetLocation();
         }
-    }, [locationParam])
+    }, [locationParam]);
     return (
         <OnboardingTemplate>
             <OnboardingHeader
@@ -86,7 +88,7 @@ export default function CommunityPage() {
                                     <Select
                                         name="District"
                                         placeholder="Select your location"
-                                        onChange={(data) => {
+                                        onChange={data => {
                                             if (data) {
                                                 // Use a type assertion to specify the correct type
                                                 const id = (data as any).value;
@@ -102,19 +104,21 @@ export default function CommunityPage() {
                                         // isMulti
                                         filterOption={(option, inputValue) => {
                                             if (inputValue === "") {
-                                                setLocationParam("india")
+                                                setLocationParam("india");
                                             }
-                                            setLocationParam(inputValue)
-                                            return option.label.toLowerCase().includes(inputValue.toLowerCase());
+                                            setLocationParam(inputValue);
+                                            return option.label
+                                                .toLowerCase()
+                                                .includes(
+                                                    inputValue.toLowerCase()
+                                                );
                                         }}
-                                        options={locationData.map(
-                                            location => {
-                                                return {
-                                                    value: location.id,
-                                                    label: location.location
-                                                };
-                                            }
-                                        )}
+                                        options={locationData.map(location => {
+                                            return {
+                                                value: location.id,
+                                                label: location.location
+                                            };
+                                        })}
                                     />
                                 </div>
                                 <div>
@@ -136,9 +140,9 @@ export default function CommunityPage() {
                                         defaultValue={
                                             param
                                                 ? {
-                                                    value: "ebb42790-571e-4d9e-b65e-d367faad5746",
-                                                    label: "KKEM"
-                                                }
+                                                      value: "ebb42790-571e-4d9e-b65e-d367faad5746",
+                                                      label: "KKEM"
+                                                  }
                                                 : null
                                         }
                                         isMulti

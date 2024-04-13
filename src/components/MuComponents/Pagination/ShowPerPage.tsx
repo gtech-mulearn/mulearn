@@ -20,7 +20,9 @@ const ShowPerPage: React.FC<ShowPerPageProps> = ({
 
     return (
         <div className={styles.showContainer}>
-            <label htmlFor="showPerPage" className={styles.showLabel}>Rows per page:</label>
+            <label htmlFor="showPerPage" className={styles.showLabel}>
+                Rows per page:
+            </label>
             <select
                 id="showPerPage"
                 value={selectedOption}

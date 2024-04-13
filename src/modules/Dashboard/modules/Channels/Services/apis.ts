@@ -5,23 +5,22 @@ import toast from "react-hot-toast";
 import { useFormik } from "formik";
 
 type channelData = {
-    id: string ;
-    name : string ;
-    discord_id : string ;
-    created_at : string ;
-    updated_at : string ;
-    created_by : string ;
-    updated_by : string ;
-}
+    id: string;
+    name: string;
+    discord_id: string;
+    created_at: string;
+    updated_at: string;
+    created_by: string;
+    updated_by: string;
+};
 
 type channelCreate = {
-    id: string ;
-    name : string ;
-    discord_id : string ;
-}
+    id: string;
+    name: string;
+    discord_id: string;
+};
 
 type FormikType = ReturnType<typeof useFormik<channelCreate>>;
-
 
 type hasValidationError = UseStateFunc<{
     error: boolean;
@@ -49,7 +48,8 @@ export const getChannels = async (
                     sortBy: sortID
                 }
             })
-            .then((
+            .then(
+                (
                     response: APIResponse<{
                         data: any[];
                         pagination: { totalPages: number };
@@ -58,22 +58,23 @@ export const getChannels = async (
                     const channelsData = response.data.response.data;
                     setChannelsData(channelsData);
                     if (setTotalPages)
-                        setTotalPages(response.data.response.pagination.totalPages);
+                        setTotalPages(
+                            response.data.response.pagination.totalPages
+                        );
                 }
-            )
+            );
     } catch (err) {
         setLoading && setLoading(false);
         const error = err as AxiosError;
-        console.log(error)
+        console.log(error);
         if (error?.response) {
             if (errorHandler) errorHandler();
             else console.log(error.response);
         }
     }
-
 };
 
-export const createChannel= (
+export const createChannel = (
     channelData: channelCreate,
     formik: FormikType
 ): Promise<boolean> => {
@@ -150,7 +151,7 @@ export const deleteChannel = (id: string) => {
         .delete(dashboardRoutes.deleteChannel.replace("${channelId}", id))
         .then(response => {
             //console.log(response.data.response);
-            toast.error("Channel Deleted")
+            toast.error("Channel Deleted");
         })
         .catch(error => {
             console.log(error);

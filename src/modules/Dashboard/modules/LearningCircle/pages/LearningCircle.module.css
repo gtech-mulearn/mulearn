@@ -697,7 +697,7 @@
     flex-wrap: wrap;
 }
 
-.inputVenue{
+.inputVenue {
     width: 50%;
     background: #ececec;
     display: flex;
@@ -708,7 +708,7 @@
     padding: 1rem;
 }
 
-.inputTime{
+.inputTime {
     width: 40%;
 }
 
@@ -1256,11 +1256,11 @@
     justify-content: center;
     align-items: center;
     z-index: 200;
-    transition: all .5s ease-in;
+    transition: all 0.5s ease-in;
     /* transform: scaleX(-1); */
 
     & p {
-      color: #5570f2;
-      transform: scaleX(-1);
+        color: #5570f2;
+        transform: scaleX(-1);
     }
-  }
+}

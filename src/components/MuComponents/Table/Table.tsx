@@ -1,5 +1,5 @@
 import React, { FC, ReactElement, useEffect, useState } from "react";
-import { renderToString } from 'react-dom/server';
+import { renderToString } from "react-dom/server";
 import styles from "./Table.module.css";
 import { FaCheck, FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
@@ -46,7 +46,11 @@ type TableProps = {
         column: string;
         Label: string;
         isSortable: boolean;
-        wrap?: (data: string | ReactElement, id: string, row: Data) => ReactJSXElement;
+        wrap?: (
+            data: string | ReactElement,
+            id: string,
+            row: Data
+        ) => ReactJSXElement;
     }[];
     id?: string[];
     onEditClick?: (column: string | number | boolean) => void;
@@ -98,12 +102,17 @@ const Table: FC<TableProps> = (props: TableProps) => {
     };
 
     function findModalDeleteHeading(rowData: Data): string {
-
         if (props.modalDeleteHeading) {
             return props.modalDeleteHeading;
         }
 
-        const requiredKeys = ["title", "full_name", "first_name", "last_name", "name"];
+        const requiredKeys = [
+            "title",
+            "full_name",
+            "first_name",
+            "last_name",
+            "name"
+        ];
         for (const key of requiredKeys) {
             if (rowData[key]) {
                 if (key == "first_name" || key == "last_name") {
@@ -118,7 +127,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
     function convertToTableData(dateString: any): string | ReactElement {
         const numberRegex = /^[0-9]+$/;
         if (String(dateString) == "true") {
-            return <FaCheck style={{ color: "#556FF1" }} />
+            return <FaCheck style={{ color: "#556FF1" }} />;
         }
         if (String(dateString) == "false") {
             return <ImCross style={{ color: "#394C4BB3" }} />;
@@ -182,24 +191,25 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                     </td>{" "}
                                     {props.columnOrder.map(column => (
                                         <td
-                                            className={`${styles.td} ${column.column === "long_url"
-                                                ? styles["url_wrap"]
-                                                : ""
-                                                }`}
+                                            className={`${styles.td} ${
+                                                column.column === "long_url"
+                                                    ? styles["url_wrap"]
+                                                    : ""
+                                            }`}
                                             key={column.column}
                                         >
                                             {column.wrap
                                                 ? column.wrap(
-                                                    convertToTableData(
-                                                        rowData[column.column]
-                                                    ),
-                                                    rowData["id"] as string,
-                                                    rowData
-                                                )
+                                                      convertToTableData(
+                                                          rowData[column.column]
+                                                      ),
+                                                      rowData["id"] as string,
+                                                      rowData
+                                                  )
                                                 : convertToTableData(
-                                                    rowData[column.column]
-                                                )}
-                                            { }
+                                                      rowData[column.column]
+                                                  )}
+                                            {}
                                         </td>
                                     ))}
                                     {props.id &&
@@ -215,7 +225,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                                 props.analytics &&
                                                                 props.analytics(
                                                                     rowData[
-                                                                    column
+                                                                        column
                                                                     ]
                                                                 )
                                                             }
@@ -232,7 +242,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                                 props.onCopyClick &&
                                                                 props.onCopyClick(
                                                                     rowData[
-                                                                    column
+                                                                        column
                                                                     ]
                                                                 )
                                                             }
@@ -249,7 +259,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                                 props.onEditClick &&
                                                                 props.onEditClick(
                                                                     rowData[
-                                                                    column
+                                                                        column
                                                                     ]
                                                                 )
                                                             }
@@ -291,7 +301,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                                 props.onVerifyClick(
                                                                     String(
                                                                         rowData[
-                                                                        column
+                                                                            column
                                                                         ]
                                                                     )
                                                                 );
@@ -357,7 +367,9 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                             isDeleteOpen[index]
                                                         }
                                                         onClose={closeAllModals}
-                                                        title={findModalDeleteHeading(rowData)}
+                                                        title={findModalDeleteHeading(
+                                                            rowData
+                                                        )}
                                                         type={"error"}
                                                         onDone={() => {
                                                             if (
@@ -366,7 +378,7 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                                 props.onDeleteClick(
                                                                     String(
                                                                         rowData[
-                                                                        column
+                                                                            column
                                                                         ]
                                                                     )
                                                                 );

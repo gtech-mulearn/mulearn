@@ -25,14 +25,17 @@ type urlData = {
 const Affiliation = () => {
     const columnOrder: ColOrder[] = [
         { column: "title", Label: "Title", isSortable: true },
-        { column: "organization_count", Label: "No. of Organizations", isSortable: false },
+        {
+            column: "organization_count",
+            Label: "No. of Organizations",
+            isSortable: false
+        },
         { column: "created_by", Label: "Created By", isSortable: false },
         { column: "created_at", Label: "Created At", isSortable: false },
         { column: "updated_by", Label: "Updated By", isSortable: false },
-        { column: "updated_at", Label: "Updated At", isSortable: false },
+        { column: "updated_at", Label: "Updated At", isSortable: false }
     ];
 
-    
     const [editBtn, setEditBtn] = useState(false);
     const [createBtn, setCreateBtn] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
@@ -45,30 +48,30 @@ const Affiliation = () => {
     const formik = useFormik({
         initialValues: {
             id: "",
-            title: "",
-           
+            title: ""
         },
         onSubmit: values => {
             const affiliationCreateData = {
                 id: values.id,
-                title: values.title,
-               
+                title: values.title
             };
             if (!editBtn) {
-                createAffiliation( affiliationCreateData, formik).then(result => {
-                    if (result) {
-                        setTimeout(() => {
-                            getAffiliation(
-                                setAffiliationData,
-                                1,
-                                perPage,
-                                setTotalPages
-                            );
-                        }, 500);
-                        setEditBtn(false);
-                        setCreateBtn(false);
+                createAffiliation(affiliationCreateData, formik).then(
+                    result => {
+                        if (result) {
+                            setTimeout(() => {
+                                getAffiliation(
+                                    setAffiliationData,
+                                    1,
+                                    perPage,
+                                    setTotalPages
+                                );
+                            }, 500);
+                            setEditBtn(false);
+                            setCreateBtn(false);
+                        }
                     }
-                });
+                );
             } else {
                 editAffiliation(values.id, affiliationCreateData, formik).then(
                     result => {
@@ -111,7 +114,14 @@ const Affiliation = () => {
 
     const handleSearch = (search: string) => {
         setCurrentPage(1);
-        getAffiliation(setAffiliationData, 1, perPage, setTotalPages, search, "");
+        getAffiliation(
+            setAffiliationData,
+            1,
+            perPage,
+            setTotalPages,
+            search,
+            ""
+        );
     };
 
     const handlePerPageNumber = (selectedValue: number) => {
@@ -138,7 +148,6 @@ const Affiliation = () => {
                 "",
                 `-${column}`,
                 setLoading
-
             );
         } else {
             setSort(column);
@@ -156,7 +165,7 @@ const Affiliation = () => {
 
     const handleEdit = (id: string | number | boolean) => {
         formik.setFieldValue("id", id);
-        console.log(id)
+        console.log(id);
         formik.setFieldValue(
             "title",
             affiliationData.filter(item => item?.id === id)[0].title
@@ -170,13 +179,21 @@ const Affiliation = () => {
     };
 
     useEffect(() => {
-        getAffiliation(setAffiliationData, 1, perPage, setTotalPages, "", sort, setLoading);
+        getAffiliation(
+            setAffiliationData,
+            1,
+            perPage,
+            setTotalPages,
+            "",
+            sort,
+            setLoading
+        );
     }, []);
-    
+
     return (
         <>
-
-            <PowerfulButton onClick={() => setCreateBtn(true)}
+            <PowerfulButton
+                onClick={() => setCreateBtn(true)}
                 style={{
                     width: "fit-content",
                     minWidth: "auto",
@@ -184,7 +201,10 @@ const Affiliation = () => {
                     color: "#fff",
                     margin: "auto",
                     marginRight: "3%"
-                }}>Create</PowerfulButton>
+                }}
+            >
+                Create
+            </PowerfulButton>
             {(editBtn || createBtn) && (
                 <div className={styles.affiliation_container}>
                     <div className={styles.create_affiliation}>

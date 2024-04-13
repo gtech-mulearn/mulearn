@@ -67,9 +67,7 @@ const TaskBulkImport = () => {
                 />
                 <SingleButton
                     text={"Download Template"}
-                    onClick={() =>
-                        getTaskTemplate()
-                    }
+                    onClick={() => getTaskTemplate()}
                     icon={<BiDownload />}
                     // link="https://docs.google.com/spreadsheets/d/1Lj-rRc_uo6MY_Lz6wJhpWZA8ya39EZw-omy-yN4-OBA/edit?usp=drivesdk"
                 />

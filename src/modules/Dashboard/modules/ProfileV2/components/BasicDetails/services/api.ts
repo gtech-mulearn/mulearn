@@ -1,4 +1,3 @@
-
 import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
 import {
     authRoutes,

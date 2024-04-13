@@ -45,8 +45,8 @@ const customStyles: any = {
 type Props = {
     setLc: (lc: LcType[]) => void;
 
-    callAllLc: () => void
-    searchString: string | null,
+    callAllLc: () => void;
+    searchString: string | null;
     ChangeLoadingState: (data: any) => void;
 };
 const IndiaId = "f1840070-ec45-4b09-b582-763482137474";
@@ -71,7 +71,11 @@ const LearningCircleForm = (props: Props) => {
         if (selectedDistrict) {
             setSelectedDistrict(selectedDistrict);
             fetchCampusOptions(selectedDistrict.value, setCampuses);
-            fetchDistrictLc(props?.setLc, selectedDistrict.value, props?.ChangeLoadingState);
+            fetchDistrictLc(
+                props?.setLc,
+                selectedDistrict.value,
+                props?.ChangeLoadingState
+            );
 
             // Reset other options
             setIgOptions(undefined);
@@ -84,7 +88,12 @@ const LearningCircleForm = (props: Props) => {
             setSelectedCampus(selectedCampus);
             setIgOptions(await getInterestGroups());
             setSelectedIg(null);
-            fetchLCFull(props?.setLc, selectedCampus.value, district, props?.ChangeLoadingState);
+            fetchLCFull(
+                props?.setLc,
+                selectedCampus.value,
+                district,
+                props?.ChangeLoadingState
+            );
         }
     };
     const handleIgChange = (selectedIg: Option | null) => {
@@ -97,7 +106,6 @@ const LearningCircleForm = (props: Props) => {
                 district,
                 props?.ChangeLoadingState
             );
-
         }
     };
     const enableResetBtn =

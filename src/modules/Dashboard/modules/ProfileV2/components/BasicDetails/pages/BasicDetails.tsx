@@ -14,7 +14,6 @@ type Props = {
     userLog: any;
 };
 const BasicDetails = (props: Props) => {
-    
     const [editIg, setEditIg] = useState(false);
     const [allIg, setAllIg] = useState<any>([]);
 
@@ -47,8 +46,8 @@ const BasicDetails = (props: Props) => {
                                                   2
                                               ) + "K"
                                             : data.karma
-                                            ? data.karma
-                                            : "0"
+                                              ? data.karma
+                                              : "0"
                                         : "0"}
                                 </p>
                                 <div className={styles.planet}>

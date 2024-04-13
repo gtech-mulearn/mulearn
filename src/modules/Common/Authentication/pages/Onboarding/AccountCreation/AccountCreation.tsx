@@ -159,8 +159,7 @@ export default function AccountCreation() {
 
     const onsubmit = async (values: any, actions: any) => {
         if (!isTncChecked) {
-
-            toast.error("Please accept the terms and conditions")
+            toast.error("Please accept the terms and conditions");
             return;
         }
 
@@ -228,7 +227,7 @@ export default function AccountCreation() {
 
         const isSuccess = await validate({
             userData: userData,
-            setIsSubmitting: setIsLoading,
+            setIsSubmitting: setIsLoading
             // toast: toast // Make sure to pass the toast parameter correctly
         });
 
@@ -634,8 +633,8 @@ export default function AccountCreation() {
                                             ? "Validating..."
                                             : "Next Step"
                                         : isLoading
-                                        ? "Validating..."
-                                        : "Submit"}
+                                          ? "Validating..."
+                                          : "Submit"}
                                 </PowerfulButton>
                             </div>
 

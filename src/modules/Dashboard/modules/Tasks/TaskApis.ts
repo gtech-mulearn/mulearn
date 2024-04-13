@@ -205,9 +205,7 @@ export const createTask = async (
     }
 };
 
-export const deleteTask = async (
-    id: string | undefined
-) => {
+export const deleteTask = async (id: string | undefined) => {
     try {
         const response = await privateGateway.delete(
             dashboardRoutes.getTasksData + id + "/"

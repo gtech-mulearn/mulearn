@@ -6,31 +6,41 @@ import toast from "react-hot-toast";
 interface AuthRoutesProps {
     redirectPath?: JSX.Element;
     children: JSX.Element;
-    roles: Role[];
+    dynamicType?: ManagementTypes[];
+    roles?: Role[];
     toastTitle?: string;
     toastDescription?: string;
 }
 
 let localRoles = [] as Role[];
+let localDynamicTypes = [] as ManagementTypes[];
 
 export const refreshRoles = () => {
     localRoles = fetchLocalStorage<UserInfo>("userInfo")?.roles || [];
     return localRoles;
 };
+
+export const refreshDynamicTypes = () => {
+    localDynamicTypes = fetchLocalStorage<UserInfo>("userInfo")?.dynamic_type || [];
+    return localDynamicTypes;
+}
+
 function SecureAuthRoutes() {
-    const hasRoleNoFetch = (roles: Role[]) => {
+    const hasRoleNoFetch = (roles?: Role[], dynamicType?: ManagementTypes[]) => {
         localRoles = refreshRoles();
-        return roles.some(role => localRoles.includes(role));
+        localDynamicTypes = refreshDynamicTypes();
+        return roles?.some(role => localRoles.includes(role)) || dynamicType?.some(type => localDynamicTypes.includes(type));
     };
     const func: FC<AuthRoutesProps> = ({
         redirectPath,
         children,
+        dynamicType,
         roles,
         toastTitle,
         toastDescription
     }): JSX.Element => {
         console.log("redirectPath:", redirectPath); // Log the redirectPath
-        if (hasRoleNoFetch(roles)) {
+        if (hasRoleNoFetch(roles, dynamicType)) {
             return children;
         } else {
             useEffect(() => {

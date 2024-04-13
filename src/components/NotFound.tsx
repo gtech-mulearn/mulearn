@@ -1,14 +1,12 @@
 import styles from "./NotFound.module.css";
-import stone from "./assests/NotFound/Stone.webp"
-import fourNotFour from "./assests/NotFound/FourNotFour.webp"
-import NoBgFourNotFour from "./assests/NotFound/NoBgFourNotFour.webp"
-import smallRocks from "./assests/NotFound/SmallRocks.webp"
+import stone from "./assests/NotFound/Stone.webp";
+import fourNotFour from "./assests/NotFound/FourNotFour.webp";
+import NoBgFourNotFour from "./assests/NotFound/NoBgFourNotFour.webp";
+import smallRocks from "./assests/NotFound/SmallRocks.webp";
 
 const NotFound = () => {
     return (
         <div className={styles.container_404}>
-            
-
             <div className={styles.NotBg}></div>
 
             <div className={styles.Notbox}>
@@ -32,19 +30,17 @@ const NotFound = () => {
                 </div>
             </div>
 
+            <img
+                className={styles.NotFoundUfo}
+                src="https://i.ibb.co/CQDjhGP/ufo.png"
+                alt=""
+            />
 
-            <img className={styles.NotFoundUfo}
-                src="https://i.ibb.co/CQDjhGP/ufo.png" alt="" />
+            <img className={styles.NotFound404} src={fourNotFour} alt="" />
 
-            <img className={styles.NotFound404}
-                src={fourNotFour} alt="" />
+            <img className={styles.NotFoundRocks} src={smallRocks} alt="" />
 
-            <img className={styles.NotFoundRocks}
-                src={smallRocks} alt="" />
-
-            <img className={styles.NotFoundMars}
-                src={NoBgFourNotFour} alt="" />
-
+            <img className={styles.NotFoundMars} src={NoBgFourNotFour} alt="" />
         </div>
     );
 };

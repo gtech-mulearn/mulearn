@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./LandingPage.module.css";
 import imageBottom from "../Assets/LC3.webp";
+import LCCard from "../components/LCCard";
 import { Link, useNavigate } from "react-router-dom";
 import {
     fetchCampusOptions,
@@ -154,9 +155,9 @@ const LandingPage = () => {
             rect.top >= 0 &&
             rect.left >= 0 &&
             rect.bottom <=
-                (window.innerHeight || document.documentElement.clientHeight) &&
+            (window.innerHeight || document.documentElement.clientHeight) &&
             rect.right <=
-                (window.innerWidth || document.documentElement.clientWidth)
+            (window.innerWidth || document.documentElement.clientWidth)
         );
     };
 
@@ -174,9 +175,9 @@ const LandingPage = () => {
                     prevCounters.map((counter, index) =>
                         counter < finalValues[index]
                             ? counter +
-                              Math.ceil(
-                                  finalValues[index] / (durationInSeconds * 20)
-                              ) // Increment smoothly
+                            Math.ceil(
+                                finalValues[index] / (durationInSeconds * 20)
+                            ) // Increment smoothly
                             : finalValues[index]
                     )
                 );
@@ -286,12 +287,12 @@ const LandingPage = () => {
                                     {index === 0
                                         ? "Interest Groups"
                                         : index === 1
-                                        ? "Colleges"
-                                        : index === 2
-                                        ? "Learning Circles"
-                                        : index === 3
-                                        ? "Number of Users"
-                                        : ""}
+                                            ? "Colleges"
+                                            : index === 2
+                                                ? "Learning Circles"
+                                                : index === 3
+                                                    ? "Number of Users"
+                                                    : ""}
                                 </p>
                             </div>
                         ))}
@@ -360,9 +361,7 @@ const LandingPage = () => {
                     <Modal
                         setIsOpen={setIsOpen}
                         id={"Join Circle"}
-                        heading={
-                            "Join Learning Circle"
-                        }
+                        heading={"Join Learning Circle"}
                         content={
                             "Are you sure you want to join this learning circle?"
                         }
@@ -380,42 +379,12 @@ const LandingPage = () => {
                     <div className={styles.container}>
                         {data.length > 0 ? (
                             data.map((lc: LcRandom) => (
-                                <div className={styles.exploreCards}>
-                                    <img
-                                        src="https://i.ibb.co/zJkPfqB/Iot-Vector.png"
-                                        alt="png"
-                                    />
-                                    <h1>{lc.name}</h1>
-                                    <span>
-                                        <b>{lc.ig_name}</b> &nbsp;{" "}
-                                        <b>Members count: {lc.member_count}</b>{" "}
-                                        {lc.meet_place && (
-                                            <>
-                                                <br />
-                                                <b>
-                                                    Meet Place: {lc.meet_place}
-                                                </b>{" "}
-                                            </>
-                                        )}
-                                        {lc.meet_time && (
-                                            <>
-                                                <br />
-                                                <b>
-                                                    Meet Time: {lc.meet_time}
-                                                </b>{" "}
-                                            </>
-                                        )}
-                                    </span>
-                                    <div
-                                        onClick={() => {
-                                            setIsOpen(true);
-                                            setLcId(lc.id.toString());
-                                        }}
-                                        className={styles.joinCircle}
-                                    >
-                                        Join Circle
-                                    </div>{" "}
-                                </div>
+                                <LCCard
+                                    lc={lc}
+                                    setIsOpen={setIsOpen}
+                                    msg={msg}
+                                    setLcId={setLcId}
+                                />
                             ))
                         ) : (
                             <div className={styles.LClandingPagenone}>
@@ -427,6 +396,7 @@ const LandingPage = () => {
                                 <b>{msg}</b>
                             </div>
                         )}
+
                     </div>
                 )}
             </div>

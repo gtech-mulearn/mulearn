@@ -132,7 +132,7 @@ export const fetchDistrictLc = async (
     district: string,
     ChangeLoadingState: (data: any) => void
 ) => {
-    ChangeLoadingState(true)
+    ChangeLoadingState(true);
     try {
         const response = await privateGateway.post(
             dashboardRoutes.listLearningCircle,
@@ -141,9 +141,9 @@ export const fetchDistrictLc = async (
             }
         );
         setLc(response.data.response);
-        ChangeLoadingState(false)
+        ChangeLoadingState(false);
     } catch (err: unknown) {
-        ChangeLoadingState(false)
+        ChangeLoadingState(false);
         const error = err as AxiosError;
         if (error?.response) {
             throw error;

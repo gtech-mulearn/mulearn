@@ -2,7 +2,10 @@ import { Dispatch, SetStateAction, useState } from "react";
 import styles from "../LcDashboard.module.css";
 import { HiUserRemove } from "react-icons/hi";
 import toast from "react-hot-toast";
-import { removeMember, transferLead } from "../../../services/LearningCircleAPIs";
+import {
+    removeMember,
+    transferLead
+} from "../../../services/LearningCircleAPIs";
 import { useParams } from "react-router-dom";
 import MuModal from "@/MuLearnComponents/MuModal/MuModal";
 import { BiTransferAlt } from "react-icons/bi";
@@ -29,21 +32,21 @@ const LcOptions = (props: Props) => {
                         ...prev,
                         reRender: !prev.reRender
                     }));
-					props.close();
+                    props.close();
                     return <b>Member removed</b>;
                 },
                 error: () => {
-					props.close();
+                    props.close();
                     return <b>Member not removed</b>;
                 }
             });
         } else {
-			props.close();
+            props.close();
             toast.error("Cannot remove lead");
         }
     };
-    
-	const handleTranfer = (memberId: string, isLead: boolean) => {
+
+    const handleTranfer = (memberId: string, isLead: boolean) => {
         if (!isLead) {
             toast.promise(transferLead(id, memberId), {
                 loading: "Loading...",
@@ -53,16 +56,16 @@ const LcOptions = (props: Props) => {
                         ...prev,
                         reRender: !prev.reRender
                     }));
-					props.close();
+                    props.close();
                     return <b>Lead transfer successful</b>;
                 },
                 error: () => {
-					props.close();
+                    props.close();
                     return <b>Lead transfer failed</b>;
                 }
             });
         } else {
-			props.close();
+            props.close();
             toast.error("You already have lead role");
         }
     };
@@ -108,7 +111,10 @@ const LcOptions = (props: Props) => {
                     setIsTransfer(false);
                 }}
             >
-                <p>Are you sure you want to transfer the ownership of learning circle to {props.member.username}?</p>
+                <p>
+                    Are you sure you want to transfer the ownership of learning
+                    circle to {props.member.username}?
+                </p>
             </MuModal>
         </>
     );

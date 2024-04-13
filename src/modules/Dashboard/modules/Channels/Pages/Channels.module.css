@@ -56,7 +56,6 @@
                 display: flex;
                 justify-content: space-between;
                 gap: 10px;
-
             }
         }
     }
@@ -80,7 +79,6 @@
 
         .createChannel form .channelsInputContainer {
             flex-direction: column;
-
         }
     }
 }

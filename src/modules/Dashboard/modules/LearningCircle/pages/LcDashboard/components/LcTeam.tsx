@@ -162,7 +162,7 @@ const TeamMember = ({
                     isLead={member.is_lead}
                     setTemp={setTemp}
                     member={member}
-					close={toggleOption}
+                    close={toggleOption}
                 />
             )}
         </div>

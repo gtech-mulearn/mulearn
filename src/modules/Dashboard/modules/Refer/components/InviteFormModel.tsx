@@ -60,6 +60,7 @@ const InviteFormModel = (props: Props) => {
                     name="email"
                     type="email"
                     placeholder="Enter an email address..."
+                    autoComplete="on"
                 />
                 <div className={styles.ButtonContainer}>
                     <PowerfulButton

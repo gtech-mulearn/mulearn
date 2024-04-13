@@ -1,5 +1,6 @@
 import { ReactElement, useEffect, useRef, useState } from "react";
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";
+import { Blank } from "@/MuLearnComponents/Table/Blank";
 import Table, { Data } from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
@@ -17,7 +18,7 @@ import toast from "react-hot-toast";
 function CollegeLevels() {
     const [data, setData] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(0);
+    const [totalPages, setTotalPages] = useState(1);
     const [perPage, setPerPage] = useState(20);
     const [sort, setSort] = useState("");
     const [isLoading, setIsLoading] = useState(false);
@@ -72,66 +73,94 @@ function CollegeLevels() {
         column: string;
         Label: string;
         isSortable: boolean;
-        wrap?: (data: string | ReactElement, id: string, row: Data) => ReactJSXElement;
+        wrap?: (
+            data: string | ReactElement,
+            id: string,
+            row: Data
+        ) => ReactJSXElement;
     }[] = [
-            // { column: "id", Label: "ID", isSortable: true },
-            { column: "org", Label: "College", isSortable: true },
-            { column: "level", Label: "Level", isSortable: true },
-            { column: "member_count", Label: "No of members", isSortable: true },
-            {
-                column: "no_of_members_increased",
-                Label: "Member Gain",
-                isSortable: true
-            },
-            { column: "lc_count", Label: "Number of LCs", isSortable: true },
-            {
-                column: "no_of_lc_increased",
-                Label: "LC Gain",
-                isSortable: true
-            },
+        // { column: "id", Label: "ID", isSortable: true },
+        { column: "org", Label: "College", isSortable: true },
+        { column: "level", Label: "Level", isSortable: true },
+        { column: "member_count", Label: "No of members", isSortable: true },
+        {
+            column: "no_of_members_increased",
+            Label: "Member Gain",
+            isSortable: true
+        },
+        { column: "lc_count", Label: "Number of LCs", isSortable: true },
+        {
+            column: "no_of_lc_increased",
+            Label: "LC Gain",
+            isSortable: true
+        },
 
-            {
-                column: "total_karma_gained",
-                Label: "Total Karma",
-                isSortable: true
-            },
-            {
-                column: "total_karma_increased",
-                Label: "Karma Gain",
-                isSortable: true,
-                wrap: (data, id, row) =>
-                    data === "-" ? (
-                        <>{data}</>
-                    ) : (
-                        <>
-                            {data}({Math.round(row.increased_percentage as number)}
-                            %)
-                        </>
-                    )
-            }
-            // {
-            //     column: "increased_percentage",
-            //     Label: "Karma Gain%",
-            //     isSortable: true
-            // }
-            // { column: "updated_by", Label: "Updated By", isSortable: false },
-            // { column: "updated_at", Label: "Updated At", isSortable: false },
-            // { column: "created_by", Label: "Created By", isSortable: false },
-            // { column: "created_at", Label: "Created At", isSortable: false }
-        ];
+        {
+            column: "total_karma_gained",
+            Label: "Total Karma",
+            isSortable: true
+        },
+        {
+            column: "total_karma_increased",
+            Label: "Karma Gain",
+            isSortable: true,
+            wrap: (data, id, row) =>
+                data === "-" ? (
+                    <>{data}</>
+                ) : (
+                    <>
+                        {data}({Math.round(row.increased_percentage as number)}
+                        %)
+                    </>
+                )
+        }
+        // {
+        //     column: "increased_percentage",
+        //     Label: "Karma Gain%",
+        //     isSortable: true
+        // }
+        // { column: "updated_by", Label: "Updated By", isSortable: false },
+        // { column: "updated_at", Label: "Updated At", isSortable: false },
+        // { column: "created_by", Label: "Created By", isSortable: false },
+        // { column: "created_at", Label: "Created At", isSortable: false }
+    ];
     const errHandler = (err: any) => {
         toast.error("Something Went Wrong");
-        toast.error(err.message)
+        toast.error(err.message);
     };
 
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
+        getCollegeLevels(
+            {
+                setData: setData,
+                page: nextPage,
+                selectedValue: perPage,
+                setIsLoading: setIsLoading,
+                setTotalPages: setTotalPages,
+                search: "",
+                sortID: sort
+            },
+            errHandler
+        );
     };
 
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
+        getCollegeLevels(
+            {
+                setData: setData,
+                page: prevPage,
+                selectedValue: perPage,
+                setIsLoading: setIsLoading,
+                setTotalPages: setTotalPages,
+                search: "",
+                sortID: sort
+            },
+            errHandler
+        );
     };
 
     useEffect(() => {
@@ -202,6 +231,18 @@ function CollegeLevels() {
     const handlePerPageNumber = (selectedValue: number) => {
         setCurrentPage(1);
         setPerPage(selectedValue);
+        getCollegeLevels(
+            {
+                setData: setData,
+                page: 1,
+                selectedValue: selectedValue,
+                setIsLoading: setIsLoading,
+                setTotalPages: setTotalPages,
+                search: "",
+                sortID: ""
+            },
+            errHandler
+        );
     };
 
     const handleCreate = () => {
@@ -222,37 +263,37 @@ function CollegeLevels() {
         <>
             {currModal
                 ? (() => {
-                    if (currModal === "create")
-                        return (
-                            <Modal
-                                onClose={setCurrModal}
-                                icon={icons.tick}
-                                header="Assign College Level"
-                                paragraph="Select and assign the level"
-                            >
-                                <CollegeLevelsCreate
-                                    onClose={setCurrModal}
-                                    refetch={delayedRefetch}
-                                />
-                            </Modal>
-                        );
-                    if (currModal === "edit")
-                        return (
-                            <Modal
-                                size="small"
-                                onClose={setCurrModal}
-                                icon={icons.cross}
-                                header="Edit College Level"
-                                paragraph="Select the new level"
-                            >
-                                <CollegeLevelsEdit
-                                    onClose={setCurrModal}
-                                    org_id={currOrdId!}
-                                    refetch={delayedRefetch}
-                                />
-                            </Modal>
-                        );
-                })()
+                      if (currModal === "create")
+                          return (
+                              <Modal
+                                  onClose={setCurrModal}
+                                  icon={icons.tick}
+                                  header="Assign College Level"
+                                  paragraph="Select and assign the level"
+                              >
+                                  <CollegeLevelsCreate
+                                      onClose={setCurrModal}
+                                      refetch={delayedRefetch}
+                                  />
+                              </Modal>
+                          );
+                      if (currModal === "edit")
+                          return (
+                              <Modal
+                                  size="small"
+                                  onClose={setCurrModal}
+                                  icon={icons.cross}
+                                  header="Edit College Level"
+                                  paragraph="Select the new level"
+                              >
+                                  <CollegeLevelsEdit
+                                      onClose={setCurrModal}
+                                      org_id={currOrdId!}
+                                      refetch={delayedRefetch}
+                                  />
+                              </Modal>
+                          );
+                  })()
                 : ""}
 
             {/* <div className={styles.createBtnContainer}>
@@ -262,12 +303,12 @@ function CollegeLevels() {
                 </PowerfulButton>
             </div> */}
 
-            {data.length && (
+            {data && (
                 <>
                     <TableTop
                         onSearchText={handleSearch}
                         onPerPageNumber={handlePerPageNumber}
-                    // CSV={dashboardRoutes.getRolesList}
+                        // CSV={dashboardRoutes.getRolesList}
                     />
                     <Table
                         isloading={isLoading}
@@ -276,11 +317,11 @@ function CollegeLevels() {
                         perPage={perPage}
                         columnOrder={columnOrder}
                         id={["id"]}
-                    // onEditClick={handleEdit}
-                    // onDeleteClick={handleDelete}
-                    // modalDeleteHeading="Delete"
-                    // modalTypeContent="error"
-                    // modalDeleteContent="Are you sure you want to delete this college level ?"
+                        // onEditClick={handleEdit}
+                        // onDeleteClick={handleDelete}
+                        // modalDeleteHeading="Delete"
+                        // modalTypeContent="error"
+                        // modalDeleteContent="Are you sure you want to delete this college level ?"
                     >
                         <THead
                             columnOrder={columnOrder}
@@ -295,6 +336,7 @@ function CollegeLevels() {
                                     margin="10px 0"
                                     handleNextClick={handleNextClick}
                                     handlePreviousClick={handlePreviousClick}
+                                    onSearchText={handleSearch}
                                     onPerPageNumber={handlePerPageNumber}
                                     perPage={perPage}
                                     setPerPage={setPerPage}

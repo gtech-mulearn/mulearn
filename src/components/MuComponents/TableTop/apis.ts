@@ -25,7 +25,7 @@ const convertToCSV = (data: any) => {
 export const getCSV = async (
     CSV: any,
     setIsLoading: (isLoading: boolean) => void,
-    setHasError: (hasError: boolean) => void,
+    setHasError: (hasError: boolean) => void
 ) => {
     setIsLoading(true);
     try {
@@ -35,7 +35,6 @@ export const getCSV = async (
         let response: any;
 
         if (containsOpenSheet(CSV)) {
-            
             window.open(CSV, "_blank");
             setIsLoading(false);
             return;

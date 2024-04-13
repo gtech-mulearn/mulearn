@@ -12,7 +12,7 @@ import styles from "../InterestGroup/InterestGroup.module.css";
 import { getEvents, editEvent, deleteEvent } from "./EventsApis";
 import { Blank } from "@/MuLearnComponents/Table/Blank";
 import MuModal from "@/MuLearnComponents/MuModal/MuModal";
-import EventsForm from './EventsForm';
+import EventsForm from "./EventsForm";
 
 export const Events = () => {
     const [data, setData] = useState<any[]>([]);
@@ -23,7 +23,7 @@ export const Events = () => {
     const [sort, setSort] = useState("");
     const firstFetch = useRef(true);
     const navigate = useNavigate();
-    
+
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isEditMode, setIsEditMode] = useState(false);
     const [taskId, setTaskId] = useState<string | number | boolean>("");
@@ -121,15 +121,8 @@ export const Events = () => {
     };
 
     const reloadTaskTypes = () => {
-        getEvents(
-            setData,
-            1,
-            perPage,
-            setIsLoading,
-            setTotalPages,
-            "",
-        );
-    }
+        getEvents(setData, 1, perPage, setIsLoading, setTotalPages, "");
+    };
     const handleEdit = (id: string | number | boolean) => {
         setTaskId(id);
         setIsEditMode(true);
@@ -140,7 +133,9 @@ export const Events = () => {
     const handleDelete = (id: string | undefined) => {
         deleteEvent(id);
         setData(data.filter(item => item?.id !== id));
-        setTimeout(() => { reloadTaskTypes() }, 500)
+        setTimeout(() => {
+            reloadTaskTypes();
+        }, 500);
     };
 
     const handleCreate = () => {
@@ -157,18 +152,15 @@ export const Events = () => {
                     gap: "15px"
                 }}
             >
-
                 <PowerfulButton onClick={handleCreate}>
                     <AiOutlinePlusCircle />
                     Create
                 </PowerfulButton>
             </div>
 
-
             <MuModal
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
-
                 title={isEditMode ? "Edit Task" : "Create Task"}
                 type={"success"}
                 onDone={() => TaskRef.current?.handleSubmitExternally()}
@@ -226,5 +218,4 @@ export const Events = () => {
             )}
         </>
     );
-}
-
+};

@@ -183,7 +183,7 @@ type Props = {
 };
 
 type Variants =
-      "primary"
+    | "primary"
     | "secondary"
     | "ghost"
     | "outline"
@@ -219,7 +219,7 @@ export const PowerfulButton: ButtonProps = ({
     loaderClass = "",
     ...props
 }) => {
-    const variantName = styles[`${variant}-btn`]
+    const variantName = styles[`${variant}-btn`];
 
     return (
         <button

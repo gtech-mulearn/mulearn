@@ -21,7 +21,7 @@ const FindCircle = () => {
     const [org, setOrg] = useState<string | null>("default");
     useEffect(() => {
         getUserOrg(setOrg);
-        if (org !== "default"){
+        if (org !== "default") {
             getCampusLearningCircles(setLc, setIsLoading, org);
         }
     }, [org]);
@@ -31,8 +31,7 @@ const FindCircle = () => {
     };
     const reset = () => {
         getCampusLearningCircles(setLc, setIsLoading);
-        if (lc.length === 1)
-            toast.loading("Loading learning circles");
+        if (lc.length === 1) toast.loading("Loading learning circles");
         setSearchString(null);
     };
 

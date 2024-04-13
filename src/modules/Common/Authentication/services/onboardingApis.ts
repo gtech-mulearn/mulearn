@@ -7,7 +7,7 @@ import { Dispatch, SetStateAction } from "react";
 
 // Define the type of MyValues
 type NN = { name: string; id: string };
- export type TT = { title: string; id: string };
+export type TT = { title: string; id: string };
 
 type InitialValues = {
     firstName: string;
@@ -284,10 +284,11 @@ export const registerUser = (
                                     console.log(subFieldName, subErrorMessage);
                                     formik.setFieldError(
                                         subFieldName,
-                                        (subErrorMessage as string[]).join(", ") || ""
+                                        (subErrorMessage as string[]).join(
+                                            ", "
+                                        ) || ""
                                     );
                                 }
-
                             );
                         }
                     }
@@ -378,29 +379,32 @@ export const getDWMSDetails = (
         });
 };
 
-
 export const getLocations = async (
     param: string,
     setLocationData: Dispatch<SetStateAction<any[]>>,
     setIsApiCalled: UseStateFunc<boolean>
 ) => {
     setIsApiCalled(true);
-    await publicGateway.get(onboardingRoutes.location.replace(
-        "${param}",
-        param === "" ? "india" : param
-    )).then((response) => {
-        if(response.data.response.length === 0){
+    await publicGateway
+        .get(
+            onboardingRoutes.location.replace(
+                "${param}",
+                param === "" ? "india" : param
+            )
+        )
+        .then(response => {
+            if (response.data.response.length === 0) {
+                setIsApiCalled(false);
+                setLocationData([{ id: "", location: "" }]);
+                console.log("success");
+            } else {
+                setIsApiCalled(false);
+                console.log(response.data.response);
+                setLocationData(response.data.response);
+            }
+        })
+        .catch((error: APIError) => {
             setIsApiCalled(false);
-            setLocationData([{ id : '', location : ''}])
-            console.log("success")
-        }
-        else{
-            setIsApiCalled(false);
-            console.log(response.data.response)
-            setLocationData(response.data.response);
-        }
-    }).catch((error: APIError) => {
-        setIsApiCalled(false);
-        console.log(error)
-    });
-}
+            console.log(error);
+        });
+};

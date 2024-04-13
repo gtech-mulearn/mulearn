@@ -194,8 +194,8 @@ const Socials = (props: Props) => {
                           }
                       )
                     : id
-                    ? " No socials added"
-                    : " To enhance your profile, Share your online presence with world!"}
+                      ? " No socials added"
+                      : " To enhance your profile, Share your online presence with world!"}
             </p>
         </>
     );

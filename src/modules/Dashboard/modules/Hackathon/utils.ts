@@ -1,10 +1,7 @@
 import * as yup from "yup";
 
 export const hackathonSchema = yup.object().shape({
-    title: yup
-        .string()
-        .min(2, "Too Short!")
-        .max(50, "Too Long!"),
+    title: yup.string().min(2, "Too Short!").max(50, "Too Long!"),
     tagline: yup.string().min(2, "Too Short!").max(100, "Too Long!"),
     orgId: yup.string().min(2, "Too Short!"),
     place: yup.string().min(2, "Too Short!"),

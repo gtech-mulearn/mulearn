@@ -48,7 +48,6 @@ const useFormData = (props: CollegeFormProps) => {
     const [isSuccess, setIsSuccess] = useState(false);
 
     const navigate = useNavigate();
-    
 
     function camelCase(str: string) {
         return str?.replace(

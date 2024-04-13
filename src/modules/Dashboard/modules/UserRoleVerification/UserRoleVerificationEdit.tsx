@@ -119,7 +119,9 @@ const UserRoleVerificationEdit = (props: Props) => {
                                     onClick={() => {
                                         navigate("/user-role-verification");
                                     }}
-                                >Decline</button>
+                                >
+                                    Decline
+                                </button>
                                 <button
                                     type="submit"
                                     className={styles.btn_submit}

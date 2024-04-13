@@ -23,7 +23,6 @@ const inputObject = {
 };
 
 export default function SignIn() {
-    
     const navigate = useNavigate();
 
     let ruri = window.location.href.split("=")[1];

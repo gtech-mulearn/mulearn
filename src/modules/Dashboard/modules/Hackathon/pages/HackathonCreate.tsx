@@ -207,11 +207,11 @@ const HackathonCreate = () => {
                     setIsPublishing(false);
                     publishHackathon(id, hackathon.status);
                 } else {
-                    toast.success("Changes Saved")
+                    toast.success("Changes Saved");
                     navigate("/dashboard/hackathon");
                 }
             } catch (err) {
-                toast.error("Failed to make changes")
+                toast.error("Failed to make changes");
             }
         })();
     };

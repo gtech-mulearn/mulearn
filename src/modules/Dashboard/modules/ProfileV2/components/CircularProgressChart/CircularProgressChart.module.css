@@ -1,4 +1,4 @@
-.CircularGraphWrapper{
+.CircularGraphWrapper {
     display: flex;
     align-items: center;
     gap: 15px;
@@ -6,20 +6,18 @@
     justify-content: center;
 }
 
-.GraphSection{
+.GraphSection {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.planetWrapper{
+.planetWrapper {
     position: absolute;
- 
-
 }
 
-.DataDisplayList{
+.DataDisplayList {
     display: flex;
     flex-direction: column;
     gap: 10px;

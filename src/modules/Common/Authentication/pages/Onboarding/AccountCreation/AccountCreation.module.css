@@ -19,7 +19,7 @@
     border-radius: 8px;
     padding-left: 1rem;
 
-    &+span {
+    & + span {
         color: red;
         font-size: smaller;
         padding-left: 0.5rem;
@@ -181,7 +181,6 @@
     font-weight: 600;
 }
 
-
 .popUp {
     position: absolute;
     top: 0;
@@ -293,6 +292,5 @@
                 font-size: 0.65rem;
             }
         }
-
     }
 }

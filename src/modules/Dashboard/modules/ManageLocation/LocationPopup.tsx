@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Select from "react-select";
 import styles from "@/MuLearnComponents/FormikComponents/FormComponents.module.css";
 import { useNavigate } from "react-router-dom";
-import { getCountryData } from "./apis/CountryAPI";
 import {
     MuButton,
     PowerfulButton
@@ -10,7 +9,6 @@ import {
 import { getStateData } from "./apis/StateAPI";
 import { getZoneData } from "./apis/ZoneAPI";
 import { getDistrictData } from "./apis/DistrictAPI";
-
 
 interface SelectedDataProps {
     Country: { value: string; label: string } | null;
@@ -64,36 +62,6 @@ const LocationPopup: FC<LocationPopupProps> = ({
         State: null,
         Zone: null
     });
-
-    
-
-    useEffect(() => {
-        if (selectedData.Country === null) {
-            getCountryData(setCountryData).then(() => setLoader(false));
-        }
-        if (selectedData.Country !== null) {
-            getStateData(
-                setStateData,
-                selectedData.Country?.value,
-                5,
-                1,
-                setTotalPages,
-                "",
-                ""
-            ).then(() => setLoader(false));
-        }
-        if (selectedData.Country !== null && selectedData.State !== null) {
-            getZoneData(
-                setZoneData,
-                selectedData.State?.value,
-                5,
-                1,
-                setTotalPages,
-                "",
-                ""
-            ).then(() => setLoader(false));
-        }
-    }, [selectedData]);
 
     interface Option {
         value: string;
@@ -167,28 +135,27 @@ const LocationPopup: FC<LocationPopupProps> = ({
                 handleCountry(selectedData.Country.label);
                 handleState(selectedData.State.label);
             }
-        } else if (activeItem === "District") {
-            if (
-                selectedData.Country &&
-                selectedData.Country.value &&
-                selectedData.State &&
-                selectedData.State.value &&
-                selectedData.Zone &&
-                selectedData.Zone.value
-            ) {
-                getDistrictData(
-                    handleData,
-                    selectedData.Zone.value,
-                    5,
-                    1,
-                    setTotalPages,
-                    "",
-                    ""
-                ).then(() => setLoader(false));
-                handleCountry(selectedData.Country.label);
-                handleState(selectedData.State.label);
-                handleZone(selectedData.Zone.label);
-            }
+        } else if (
+            activeItem === "District" &&
+            selectedData.Country &&
+            selectedData.Country.value &&
+            selectedData.State &&
+            selectedData.State.value &&
+            selectedData.Zone &&
+            selectedData.Zone.value
+        ) {
+            getDistrictData(
+                handleData,
+                selectedData.Zone.value,
+                5,
+                1,
+                setTotalPages,
+                "",
+                ""
+            ).then(() => setLoader(false));
+            handleCountry(selectedData.Country.label);
+            handleState(selectedData.State.label);
+            handleZone(selectedData.Zone.label);
         }
         handlePopup(false);
     }

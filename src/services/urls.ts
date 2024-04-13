@@ -3,6 +3,7 @@ export const onboardingRoutes = {
     stateList: "/api/v1/register/state/list/",
     districtList: "/api/v1/register/district/list/",
     collegeList: "/api/v1/register/college/list/",
+    schoolList: "/api/v1/register/schools/list/",
     companyList: "/api/v1/register/company/list/",
     roleList: "/api/v1/register/role/list/",
     areaOfInterestList: "/api/v1/register/area-of-interest/list/",
@@ -173,6 +174,8 @@ export const dashboardRoutes = {
 
     //Bulk User Role Management
     roleBulkAssign: "api/v1/dashboard/roles/bulk-assign/",
+    roleBulkAssignExcel: "api/v1/dashboard/roles/bulk-assign-excel/",
+    getRolesTemplate: "api/v1/dashboard/roles/base-template/"
 } as const;
 
 export const organizationRoutes = {

@@ -168,8 +168,8 @@
     font-size: 17px;
     padding: 6px 15px;
     transition: var(--transition-speed);
-	/* width: 100%;  this code is causing button inconsistency look in hackathon cards*/ 
-  
+    /* width: 100%;  this code is causing button inconsistency look in hackathon cards*/
+
     &:hover {
         cursor: pointer;
     }
@@ -240,7 +240,7 @@
 
 .ghost-btn {
     color: hsl(var(--primary-btn-color));
-    outline-offset: 0px!important;
+    outline-offset: 0px !important;
 
     &:hover {
         background-color: hsl(var(--secondary-btn-color));

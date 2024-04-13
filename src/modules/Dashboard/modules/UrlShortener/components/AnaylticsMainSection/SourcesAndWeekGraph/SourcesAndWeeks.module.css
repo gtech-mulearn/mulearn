@@ -15,7 +15,7 @@
             display: flex;
             border-radius: 10px;
             border: 0.946px solid rgba(108, 123, 255, 0.36);
-            box-shadow: 0px 6.619px 12.292px 0px rgba(77, 77, 77, 0.10);
+            box-shadow: 0px 6.619px 12.292px 0px rgba(77, 77, 77, 0.1);
             padding: 20px 10px;
             min-width: 160px;
             max-height: 510px;
@@ -24,7 +24,6 @@
             gap: 20px;
             flex-direction: column;
             overflow: scroll;
-
 
             & h1 {
                 font-size: 20px;
@@ -50,11 +49,11 @@
 
                     .percentage {
                         border-radius: 10px;
-                        background: #A9B2FF;
+                        background: #a9b2ff;
                         font-size: 10px;
                         font-weight: 600;
                         padding: 1px 5px;
-                        color: #000E88;
+                        color: #000e88;
                     }
                 }
             }
@@ -63,7 +62,7 @@
 
     .week_analytics {
         width: calc(50% - 10px);
-        box-shadow: 0px 6.619px 12.292px 0px rgba(77, 77, 77, 0.10);
+        box-shadow: 0px 6.619px 12.292px 0px rgba(77, 77, 77, 0.1);
         padding: 25px 20px;
         border-radius: 10px;
         max-height: 510px;
@@ -86,19 +85,19 @@
 
             & button {
                 padding: 8px 10px;
-                border: 1px solid #6C7BFF;
+                border: 1px solid #6c7bff;
                 border-radius: 10px;
                 width: 110px;
                 transition: all 0.3s ease-in-out;
             }
 
             .active {
-                background: #6C7BFF;
+                background: #6c7bff;
                 color: #fff;
             }
 
             & button:hover {
-                background: #6C7BFF;
+                background: #6c7bff;
                 color: #fff;
             }
         }
@@ -118,7 +117,6 @@
 
             .source_box {
                 width: 100%;
-
             }
         }
 

@@ -8,7 +8,6 @@ export const getLog = async (
     logName: string,
     setErrorData: Dispatch<SetStateAction<string>>
 ) => {
-  
     try {
         const response = await privateGateway.get(
             dashboardRoutes.getErrorLog + logName
@@ -38,29 +37,37 @@ export const clearLog = async (logName: string, toast: any) => {
     }
 };
 
-export const getDisplay = async (setDisplayData: React.Dispatch<React.SetStateAction<displayData[]>>) =>{
-    privateGateway.get(dashboardRoutes.getErrorLog,{}).then(response=>{
-        
-        const formattedData: displayData[] = response.data.response.map((data: any) => {
-            return {
-                id: data.id,
-                type: data.type,
-                message: data.message,
-                method: data.method,
-                path: data.path,
-                timestamp: data.timestamp[0],
-                muid : data.auth.map((item : any) => {
-                    return item.muid;
-                }).join(", ")
-            };
-        });
+export const getDisplay = async (
+    setDisplayData: React.Dispatch<React.SetStateAction<displayData[]>>
+) => {
+    privateGateway
+        .get(dashboardRoutes.getErrorLog, {})
+        .then(response => {
+            const formattedData: displayData[] = response.data.response.map(
+                (data: any) => {
+                    return {
+                        id: data.id,
+                        type: data.type,
+                        message: data.message,
+                        method: data.method,
+                        path: data.path,
+                        timestamp: data.timestamp[0],
+                        muid: data.auth
+                            .map((item: any) => {
+                                return item.muid;
+                            })
+                            .join(", ")
+                    };
+                }
+            );
 
-        console.log(response.data.response);
-        setDisplayData(formattedData);
-    }).catch(error=>{
-        console.error(error);
-    })
-}
+            console.log(response.data.response);
+            setDisplayData(formattedData);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+};
 
 export const patchLog = async (id: string, toast: any) => {
     try {
@@ -71,5 +78,4 @@ export const patchLog = async (id: string, toast: any) => {
     } catch (err) {
         toast.success("Something went wrong!");
     }
-
-}
+};

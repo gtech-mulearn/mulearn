@@ -5,6 +5,7 @@ interface LcRandom {
     name: string;
     meet_place: string;
     meet_time: string;
+    org_name: string;
 }
 
 interface LcCount {

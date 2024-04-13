@@ -54,13 +54,9 @@ type Props = {
     title: string;
     description: string;
     icon: JSX.Element;
-}
+};
 
-const Feature:FC<Props> = ({
-    title,
-    description,
-    icon
-}) => {
+const Feature: FC<Props> = ({ title, description, icon }) => {
     return (
         <div className={styles.feature}>
             <div className={styles.featureGroup}>
@@ -70,4 +66,4 @@ const Feature:FC<Props> = ({
             <div className={styles.featureIcon}>{icon}</div>
         </div>
     );
-}
+};

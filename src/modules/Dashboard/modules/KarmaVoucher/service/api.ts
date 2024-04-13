@@ -39,31 +39,30 @@ export const getKarmaVoucher = async (
     }
 };
 
-
-
 export const getKarmaVoucherTemplate = async () => {
     try {
         const response = await privateGateway.get(
             dashboardRoutes.getKarmaVoucherTemplate,
-            { responseType: 'blob' } // Set the response type to 'blob'
+            { responseType: "blob" } // Set the response type to 'blob'
         );
-        const blob = new Blob([response.data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }); // Set the correct MIME type for XLSX files
+        const blob = new Blob([response.data], {
+            type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        }); // Set the correct MIME type for XLSX files
 
         const url = URL.createObjectURL(blob);
-        const link = document.createElement('a');
+        const link = document.createElement("a");
         link.href = url;
-        link.setAttribute('download', 'karmaVoucherTemplate.xlsx');
+        link.setAttribute("download", "karmaVoucherTemplate.xlsx");
 
         document.body.appendChild(link);
         link.click();
-        
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
             console.log(error.response);
         }
     }
-}
+};
 
 export const getTaskDetails = async (
     id: string | undefined,
@@ -107,5 +106,3 @@ export const getUUID = async () => {
     }
     return response;
 };
-
-

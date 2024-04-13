@@ -31,7 +31,7 @@ function ManageRoles() {
     const [sort, setSort] = useState("-created_at");
     const [isLoading, setIsLoading] = useState(false);
     const firstFetch = useRef(true);
-
+    const navigate = useNavigate();
     //Modal
     const [currRoleID, setCurrRoleID] = useState("");
     const [currModal, setCurrModal] = useState<
@@ -308,7 +308,15 @@ function ManageRoles() {
 
             <div className={styles.createBtnContainer}>
                 <PowerfulButton
-                    className={styles.createBtn}
+                    variant="secondary"
+                    onClick={() => navigate("/dashboard/roles/bulk-import")}
+                >
+                    <AiOutlinePlusCircle />
+                    Bulk Import
+                </PowerfulButton>
+
+                <PowerfulButton
+                    //className={styles.createBtn}
                     onClick={handleCreate}
                 >
                     <AiOutlinePlusCircle />

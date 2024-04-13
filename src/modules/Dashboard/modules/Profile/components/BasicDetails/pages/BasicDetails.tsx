@@ -20,7 +20,6 @@ const BasicDetails = (props: Props) => {
     const ig_sorted = ig.sort((a: any, b: any) => {
         return a.name > b.name ? 1 : -1;
     });
-    // console.log(props.userProfile.level.slice(3, 4));
 
     return (
         <>
@@ -28,15 +27,18 @@ const BasicDetails = (props: Props) => {
                 <div className={styles.top_sec}>
                     <b>Interest Groups</b>
                     <div className={styles.close_and_submit_btn_div}>
-                        {!id && 6 >= 4 && !editIg && (
-                            <p
-                                onClick={() => setEditIg(true)}
-                                className={styles.edit_profile_btn}
-                                tabIndex={0}
-                            >
-                                <i className="fi fi-rr-pencil"></i>
-                            </p>
-                        )}
+                        {!id &&
+                            (props.userProfile.level.slice(3, 4) >= 4 ||
+                                props.userProfile.roles.includes("Mentor")) &&
+                            !editIg && (
+                                <p
+                                    onClick={() => setEditIg(true)}
+                                    className={styles.edit_profile_btn}
+                                    tabIndex={0}
+                                >
+                                    <i className="fi fi-rr-pencil"></i>
+                                </p>
+                            )}
                         {editIg && (
                             <p
                                 onClick={() => {
@@ -89,13 +91,13 @@ const BasicDetails = (props: Props) => {
                                                     setIg(
                                                         ig.filter(
                                                             (ig: any) =>
-                                                                ig.name !=
+                                                                ig.name !==
                                                                 data.name
                                                         )
                                                     );
                                                 } else {
                                                     toast.error(
-                                                        "You must have atleast one interest group"
+                                                        "You must have at least one interest group"
                                                     );
                                                 }
                                             }}
@@ -110,8 +112,8 @@ const BasicDetails = (props: Props) => {
                                                       data.karma / 1000
                                                   ).toPrecision(2) + "K"
                                                 : data.karma
-                                                ? data.karma
-                                                : "0"
+                                                  ? data.karma
+                                                  : "0"
                                             : "0"}
                                     </p>
                                 </div>

@@ -14,7 +14,7 @@ import PrivateRoutes from "./components/PrivateRoutes";
 import DashboardRootLayout from "./modules/Dashboard/layouts/DashboardRootLayout";
 import NotFound from "./components/NotFound";
 
-import { roles } from "./services/types";
+import { roles, managementTypes } from "./services/types";
 import SecureAuthRoutes from "./services/authCheck";
 
 import { CampusStudentList, ConnectDiscord } from "./modules/Dashboard/modules";
@@ -104,6 +104,9 @@ const TaskCreate = lazy(
 );
 const TaskBulkImport = lazy(
     () => import("./modules/Dashboard/modules/Tasks/TaskBulkImport")
+);
+const RolesBulkImport = lazy(
+    () => import("./modules/Dashboard/modules/ManageRoles/RolesBulkImport")
 );
 const Hackathon = lazy(
     () => import("./modules/Dashboard/modules/Hackathon/pages/Hackathon")
@@ -234,7 +237,7 @@ const ConnectedDevices = lazy(
 );
 
 function App() {
-    const RoleChecker = SecureAuthRoutes();
+    const AuthChecker = SecureAuthRoutes();
     const router = createBrowserRouter([
         // Add redirect from '/' to '/login'
         {
@@ -302,8 +305,9 @@ function App() {
                         {
                             path: "interest-groups",
                             element: (
-                                <RoleChecker
+                                <AuthChecker
                                     roles={[roles.ADMIN, roles.FELLOW]}
+                                    dynamicType={[managementTypes.INTEREST_GROUP]}
                                     children={<InterestGroup />}
                                 />
                             )
@@ -311,11 +315,14 @@ function App() {
                         {
                             path: "campus-details",
                             element: (
-                                <RoleChecker
+                                <AuthChecker
                                     // might have to remove campus_lead and enabler with lead_enabler only
                                     roles={[
                                         roles.CAMPUS_LEAD,
                                         roles.LEAD_ENABLER
+                                    ]}
+                                    dynamicType={[
+                                        managementTypes.CAMPUS
                                     ]}
                                     children={<CampusStudentList />}
                                 />
@@ -324,8 +331,9 @@ function App() {
                         {
                             path: "manage-users",
                             element: (
-                                <RoleChecker
+                                <AuthChecker
                                     roles={[roles.ADMIN]}
+                                    dynamicType={[managementTypes.USER_MANAGEMENT]}
                                     children={<ManageUsers />}
                                 />
                             )
@@ -333,8 +341,9 @@ function App() {
                         {
                             path: "manage-roles",
                             element: (
-                                <RoleChecker
+                                <AuthChecker
                                     roles={[roles.ADMIN]}
+                                    dynamicType={[managementTypes.MANAGE_ROLES]}
                                     children={<ManageRoles />}
                                 />
                             )
@@ -342,8 +351,9 @@ function App() {
                         {
                             path: "dynamic-type",
                             element: (
-                                <RoleChecker
+                                <AuthChecker
                                     roles={[roles.ADMIN]}
+                                    dynamicType={[managementTypes.DYNAMIC_TYPE]}
                                     children={<DynamicType />}
                                 />
                             )
@@ -352,7 +362,7 @@ function App() {
                         {
                             path: "user-role-verification",
                             element: (
-                                <RoleChecker
+                                <AuthChecker
                                     roles={[roles.ADMIN, roles.FELLOW]}
                                     children={<UserRoleVerification />}
                                 />
@@ -365,7 +375,7 @@ function App() {
                         {
                             path: "manage-departments",
                             element: (
-                                <RoleChecker
+                                <AuthChecker
                                     roles={[roles.ADMIN, roles.FELLOW]}
                                     children={<Departments />}
                                 />
@@ -374,7 +384,7 @@ function App() {
                         {
                             path: "zonal-dashboard",
                             element: (
-                                <RoleChecker
+                                <AuthChecker
                                     roles={[
                                         roles.ADMIN,
                                         roles.FELLOW,
@@ -387,7 +397,7 @@ function App() {
                         {
                             path: "district-dashboard",
                             element: (
-                                <RoleChecker
+                                <AuthChecker
                                     roles={[
                                         roles.ADMIN,
                                         roles.FELLOW,
@@ -400,7 +410,7 @@ function App() {
                         {
                             path: "organizations",
                             element: (
-                                <RoleChecker
+                                <AuthChecker
                                     roles={[roles.ADMIN]}
                                     children={<Organizations />}
                                 />
@@ -409,7 +419,7 @@ function App() {
                         {
                             path: "college-levels",
                             element: (
-                                <RoleChecker
+                                <AuthChecker
                                     roles={[
                                         roles.ADMIN,
                                         roles.FELLOW,
@@ -422,7 +432,7 @@ function App() {
                         {
                             path: "tasks",
                             element: (
-                                <RoleChecker
+                                <AuthChecker
                                     roles={[roles.ADMIN]}
                                     children={<Tasks />}
                                 />
@@ -439,7 +449,7 @@ function App() {
                         {
                             path: "task-type",
                             element: (
-                                <RoleChecker
+                                <AuthChecker
                                     roles={[roles.ADMIN]}
                                     children={<TaskType />}
                                 />
@@ -450,9 +460,13 @@ function App() {
                             element: <TaskBulkImport />
                         },
                         {
+                            path: "roles/bulk-import",
+                            element: <RolesBulkImport />
+                        },
+                        {
                             path: "events",
                             element: (
-                                <RoleChecker
+                                <AuthChecker
                                     roles={[roles.ADMIN]}
                                     children={<Events />}
                                 />
@@ -461,7 +475,7 @@ function App() {
                         {
                             path: "karma-voucher",
                             element: (
-                                <RoleChecker
+                                <AuthChecker
                                     roles={[roles.ADMIN, roles.FELLOW]}
                                     children={<KarmaVoucher />}
                                 />
@@ -470,7 +484,7 @@ function App() {
                         {
                             path: "/dashboard/error-log",
                             element: (
-                                <RoleChecker
+                                <AuthChecker
                                     roles={[roles.ADMIN, roles.TECH_TEAM]}
                                     children={<ErrorLog />}
                                 />
@@ -479,7 +493,7 @@ function App() {
                         {
                             path: "karma-voucher/bulk-import",
                             element: (
-                                <RoleChecker
+                                <AuthChecker
                                     roles={[roles.ADMIN, roles.FELLOW]}
                                     children={<KarmaVoucherBulkImport />}
                                 />
@@ -488,7 +502,7 @@ function App() {
                         {
                             path: "channels",
                             element: (
-                                <RoleChecker
+                                <AuthChecker
                                     roles={[
                                         roles.ADMIN,
                                         roles.FELLOW,
@@ -501,7 +515,7 @@ function App() {
                         {
                             path: "affiliation",
                             element: (
-                                <RoleChecker
+                                <AuthChecker
                                     roles={[
                                         roles.ADMIN,
                                         roles.FELLOW,
@@ -514,12 +528,13 @@ function App() {
                         {
                             path: "url-shortener",
                             element: (
-                                <RoleChecker
+                                <AuthChecker
                                     roles={[
                                         roles.ADMIN,
                                         roles.FELLOW,
                                         roles.ASSOCIATE
                                     ]}
+                                    dynamicType={[managementTypes.URL_SHORTENER]}
                                     children={<UrlShortener />}
                                 />
                             )
@@ -527,7 +542,7 @@ function App() {
                         {
                             path: "url-shortener/analytics/:id",
                             element: (
-                                <RoleChecker
+                                <AuthChecker
                                     roles={[
                                         roles.ADMIN,
                                         roles.FELLOW,
@@ -540,7 +555,7 @@ function App() {
                         {
                             path: "hackathon",
                             element: (
-                                <RoleChecker
+                                <AuthChecker
                                     roles={[roles.ADMIN]}
                                     children={<Hackathon />}
                                 />
@@ -549,7 +564,7 @@ function App() {
                         {
                             path: "hackathon/edit/:id",
                             element: (
-                                <RoleChecker
+                                <AuthChecker
                                     roles={[roles.ADMIN]}
                                     children={<HackathonCreate />}
                                 />
@@ -558,7 +573,7 @@ function App() {
                         {
                             path: "hackathon/create",
                             element: (
-                                <RoleChecker
+                                <AuthChecker
                                     roles={[roles.ADMIN]}
                                     children={<HackathonCreate />}
                                 />
@@ -567,7 +582,7 @@ function App() {
                         {
                             path: "hackathon/details/:id",
                             element: (
-                                <RoleChecker
+                                <AuthChecker
                                     roles={[roles.ADMIN]}
                                     children={<HackathonDetails />}
                                 />
@@ -576,7 +591,7 @@ function App() {
                         {
                             path: "hackathon/apply/:id",
                             element: (
-                                <RoleChecker
+                                <AuthChecker
                                     roles={[roles.ADMIN]}
                                     children={<HackathonRegistration />}
                                 />
@@ -585,7 +600,7 @@ function App() {
                         {
                             path: "hackathon/applicants/:id",
                             element: (
-                                <RoleChecker
+                                <AuthChecker
                                     roles={[roles.ADMIN]}
                                     children={<HackathonParticipants />}
                                 />
@@ -594,7 +609,7 @@ function App() {
                         {
                             path: "discord-moderation",
                             element: (
-                                <RoleChecker
+                                <AuthChecker
                                     roles={[roles.ADMIN]}
                                     children={<DiscordModeration />}
                                 />
@@ -603,7 +618,7 @@ function App() {
                         {
                             path: "manage-locations",
                             element: (
-                                <RoleChecker
+                                <AuthChecker
                                     roles={[roles.ADMIN]}
                                     children={<ManageLocation />}
                                 />
@@ -620,7 +635,7 @@ function App() {
                         {
                             path: "hackathon/organizers/:id",
                             element: (
-                                <RoleChecker
+                                <AuthChecker
                                     roles={[roles.ADMIN]}
                                     children={<HackathonOrganizers />}
                                 />
@@ -649,7 +664,7 @@ function App() {
                         {
                             path: "organization-transfer",
                             element: (
-                                <RoleChecker
+                                <AuthChecker
                                     roles={[roles.ADMIN]}
                                     children={<OrganizationTransfer />}
                                 />
@@ -658,7 +673,7 @@ function App() {
                         {
                             path: "test",
                             element: (
-                                <RoleChecker
+                                <AuthChecker
                                     roles={[roles.ADMIN]}
                                     children={<Test />}
                                 />

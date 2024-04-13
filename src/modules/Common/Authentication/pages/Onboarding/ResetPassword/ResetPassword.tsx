@@ -2,9 +2,8 @@ import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import styles from "./ResetPassword.module.css";
 
-
 import * as Yup from "yup";
-import { Form, Formik } from 'formik';
+import { Form, Formik } from "formik";
 import { FormikTextInputWithoutLabel as SimpleInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import OnboardingTemplate from "../../../components/OnboardingTeamplate/OnboardingTemplate";
 import OnboardingHeader from "../../../components/OnboardingHeader/OnboardingHeader";
@@ -12,13 +11,13 @@ import { getMuid, resetPassword } from "../../../services/apis";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 const ResetPassword = () => {
     const [showOrHidePassword, setShowOrHidePassword] = useState("password");
-    const [showOrHideConfirmPassword, setShowOrHideConfirmPassword] = useState("password");
+    const [showOrHideConfirmPassword, setShowOrHideConfirmPassword] =
+        useState("password");
     const [muid, setMuID] = useState("");
     const [searchParams] = useSearchParams();
     const [token, setToken] = useState("");
     localStorage.clear();
     const navigate = useNavigate();
-    
 
     useEffect(() => {
         const paramToken = searchParams.get("token");
@@ -27,7 +26,6 @@ const ResetPassword = () => {
             getMuid(token, navigate, setMuID);
         }
     }, [token]);
-
 
     const scheme = Yup.object({
         password: Yup.string()
@@ -45,7 +43,6 @@ const ResetPassword = () => {
 
     return (
         <>
-
             <OnboardingTemplate>
                 <OnboardingHeader
                     title={"Reset Password"}
@@ -81,7 +78,6 @@ const ResetPassword = () => {
                                             type={showOrHidePassword}
                                             onChange={formik.handleChange}
                                             style={{ marginTop: "10px" }}
-
                                         />
                                         <span
                                             className={styles.eye}
@@ -95,11 +91,12 @@ const ResetPassword = () => {
                                             }}
                                         >
                                             <i
-                                                className={`fa fa-eye${showOrHidePassword ===
+                                                className={`fa fa-eye${
+                                                    showOrHidePassword ===
                                                     "password"
-                                                    ? "-slash"
-                                                    : ""
-                                                    }`}
+                                                        ? "-slash"
+                                                        : ""
+                                                }`}
                                             />
                                         </span>
                                         <SimpleInput
@@ -124,17 +121,16 @@ const ResetPassword = () => {
                                             }}
                                         >
                                             <i
-                                                className={`fa fa-eye${showOrHideConfirmPassword ===
+                                                className={`fa fa-eye${
+                                                    showOrHideConfirmPassword ===
                                                     "password"
-                                                    ? "-slash"
-                                                    : ""
-                                                    }`}
+                                                        ? "-slash"
+                                                        : ""
+                                                }`}
                                             />
                                         </span>
                                         <div className={styles.submit}>
-                                            <PowerfulButton
-                                                type="submit"
-                                            >
+                                            <PowerfulButton type="submit">
                                                 Reset password
                                             </PowerfulButton>
                                         </div>
@@ -146,7 +142,7 @@ const ResetPassword = () => {
                 </Formik>
             </OnboardingTemplate>
         </>
-    )
-}
+    );
+};
 
-export default ResetPassword
+export default ResetPassword;

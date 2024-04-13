@@ -40,7 +40,7 @@ const KarmaHistory = (props: Props) => {
                 </span>
             </p>
             <div className={styles.karma_history_container} id="section1">
-                {userLog.map((log: any,i) => {
+                {userLog.map((log: any, i) => {
                     return (
                         <div className={styles.karma_history} key={i}>
                             <p className={styles.task_name}>#{log.task_name}</p>

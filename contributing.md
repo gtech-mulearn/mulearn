@@ -2,11 +2,11 @@
 
 To contribure to this project you can create new branches from either the `dev` or the `staging` branch, make required changes and create a new pull request as per the below given structure.
 
-- feature-\* : Create new branch from the dev branch and merge back into the dev branch
+-   feature-\* : Create new branch from the dev branch and merge back into the dev branch
 
-- bugfix-\* : Create new branch from the dev branch and merge back into the dev branch
+-   bugfix-\* : Create new branch from the dev branch and merge back into the dev branch
 
-- hotfix-\* : Create new branch from the staging branch and merge back into the staging branch.
+-   hotfix-\* : Create new branch from the staging branch and merge back into the staging branch.
 
 ## Running Code Locally
 

@@ -178,15 +178,14 @@ function Organizations() {
     };
     console.log(data);
 
-	const [itemId, setItemId] = useState("")
+    const [itemId, setItemId] = useState("");
     const handleEdit = (id: string | number | boolean) => {
-		setItemId(String(id))
-		setIsModalOpen(true);
+        setItemId(String(id));
+        setIsModalOpen(true);
     };
 
     const handleDelete = (id: string | undefined) => {
-        
-		toast.promise(deleteOrganization(id as string), {
+        toast.promise(deleteOrganization(id as string), {
             loading: "Deleting...",
             success: () => {
                 return <b>Organization deleted.</b>;

@@ -101,9 +101,7 @@ const NotificationTab = ({
     setNotificationList
 }: NotificationComponentProps) => {
     const [active, setActive] = useState(0);
-    const links = [
-        { title: "View All", count: notificationList.length }
-    ];
+    const links = [{ title: "View All", count: notificationList.length }];
 
     const filteredNotification = filterNotification(active, notificationList);
 
@@ -149,9 +147,7 @@ const NotificationTab = ({
                                         clearElementFromView(item?.id)
                                     }
                                     updateList={() =>
-                                        getNotifications(
-                                            setNotificationList,
-                                        )
+                                        getNotifications(setNotificationList)
                                     }
                                 />
                             </div>

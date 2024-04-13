@@ -1,8 +1,8 @@
 interface TestData {
     perPage: number;
-	pageIndex: number;
-	search: string;
-	sortBy: string;
+    pageIndex: number;
+    search: string;
+    sortBy: string;
 }
 
 interface TestDataBackendResponse {

@@ -51,7 +51,7 @@ const useFormData = (props: CollegeFormProps) => {
     const [isSuccess, setIsSuccess] = useState(false);
 
     const navigate = useNavigate();
-    
+
     function camelCase(str: string) {
         return str?.replace(
             /\b[A-Z]+\b/g,
@@ -77,7 +77,6 @@ const useFormData = (props: CollegeFormProps) => {
             zone: string;
             district: string;
             orgType: string;
-            
         }
 
         const SelectBody = (item: string) => {
@@ -88,8 +87,7 @@ const useFormData = (props: CollegeFormProps) => {
                 state: state.value,
                 zone: zone.value,
                 district: district.value,
-                orgType,
-                
+                orgType
             };
         };
 

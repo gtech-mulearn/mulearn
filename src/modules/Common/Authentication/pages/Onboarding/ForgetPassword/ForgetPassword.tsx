@@ -26,7 +26,7 @@ const ForgetPassword = () => {
         if (values.emailOrMuId.length > 0) {
             forgetPassword(values.emailOrMuId, navigate, setShowLoader);
         } else {
-            toast.error("Please enter your email or muid")
+            toast.error("Please enter your email or muid");
         }
     };
 
