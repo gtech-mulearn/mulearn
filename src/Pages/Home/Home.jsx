@@ -127,8 +127,8 @@ const Home = () => {
               >
                 <button className={styles.primary}>Make a Donation ❤️</button>
               </a> */}
-              <a target="_blank" rel="noopener noreferrer" href='https://drive.google.com/file/d/1REc-xUU6P2RsvZ8ZsQm71guL8SQVd7D2/view'>
-                <button className={styles.primary}>Newsletter</button>
+              <a target="_blank" rel="noopener noreferrer" href='https://online.fliphtml5.com/slydm/yljq/#p=1'>
+                <button className={styles.primary}>μNewsletter</button>
               </a>
               <a target="_blank" rel="noopener noreferrer" href="/mulearn.apk">
                 <button className={styles.secondary}>Download APK</button>
