@@ -1,0 +1,248 @@
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    display: inline-block;
+    vertical-align: bottom;
+    white-space: nowrap;
+    max-width: 90%;
+
+    white-space: pre-wrap;
+    /* CSS3 */
+    white-space: -moz-pre-wrap;
+    /* Mozilla, since 1999 */
+    white-space: -pre-wrap;
+    /* Opera 4-6 */
+    white-space: -o-pre-wrap;
+    /* Opera 7 */
+    word-wrap: break-word;
+    /* Internet Explorer 5.5+ */
+}
+
+.steps_ulist {
+    list-style: disc;
+    margin-left: 1.5rem;
+    max-width: 50rem;
+}
+
+.sample_message a {
+    white-space: pre-wrap;
+    /* CSS3 */
+    white-space: -moz-pre-wrap;
+    /* Mozilla, since 1999 */
+    white-space: -pre-wrap;
+    /* Opera 4-6 */
+    white-space: -o-pre-wrap;
+    /* Opera 7 */
+    word-wrap: break-word;
+    /* Internet Explorer 5.5+ */
+}
+
+.steps_ulist img {
+    margin: 1rem 0 0;
+    border-radius: 0.3rem;
+}
+
+.first_view_container {
+    margin: 2rem;
+}
+
+.first_view {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.fv_img {
+    display: block;
+    width: 20rem;
+}
+
+.fv_heading {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #404040;
+    font-family: "Noto Sans", sans-serif;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.fv_heading span {
+    color: #f6842c;
+}
+
+.fv_content,
+.fv_content_karma {
+    margin: 0.5rem auto 0;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.fv_content_karma {
+    color: #f6842c;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.screenshots {
+    max-width: 50rem;
+    margin: 5rem auto 0;
+}
+
+.screenshots img {
+    margin-bottom: 3rem;
+    border-radius: 0.5rem;
+}
+
+.ss_title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+@media only screen and (min-width: 1000px) {
+    .first_view_container {
+        margin: 6rem;
+    }
+
+    .first_view {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .fv_heading {
+        font-size: 4.25rem;
+    }
+
+    .fv_content {
+        width: 80%;
+        font-size: 1.1rem;
+    }
+
+    .fv_img {
+        display: block;
+        width: 30rem;
+    }
+}
+
+/* Second Section Sytles */
+
+.second_view_container {
+    margin: 2rem;
+    margin-top: 4rem;
+}
+
+.sv_heading {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 2.75rem;
+    color: #f78c40;
+    text-align: center;
+}
+
+.sv_content {
+    margin-top: 0.25rem;
+    font-size: 0.9rem;
+}
+
+@media only screen and (min-width: 1000px) {
+    .second_view_container {
+        margin: 6rem;
+    }
+
+    .sv_heading {
+        font-size: 2.25rem;
+        line-height: 4rem;
+    }
+
+    .sv_content {
+        margin-top: 0;
+        font-size: 1.05rem;
+        width: 40%;
+    }
+}
+
+.steps {
+    margin-top: 1rem;
+}
+
+.steps_ulist_sub li {
+    margin-top: 0.5rem;
+}
+
+b {
+    color: #404040;
+}
+
+.steps_ulist li {
+    margin-top: 1rem;
+}
+
+.sample_container {
+    margin: 2rem auto 0;
+    background: #f5f5f5;
+    padding: 2rem;
+    border-radius: 0.2rem;
+    max-width: 50rem;
+}
+
+.callout {
+    margin: 2rem auto 0;
+    border: 1px solid #f78c4080;
+    padding: 2rem;
+    border-radius: 0.2rem;
+    max-width: 50rem;
+}
+
+.sample_header {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #404040;
+}
+
+.sample_message {
+    margin: 0.5rem 0;
+}
+
+.sample_img {
+    margin-top: 1rem;
+    width: 20rem;
+    border-radius: 5px;
+}
+
+@media only screen and (min-width: 1000px) {
+
+    .sample_container,
+    .callout {
+        margin: 4rem auto 0;
+    }
+
+    .steps_ulist_sub li {
+        width: 45%;
+    }
+
+    .sample_message {
+        margin-top: 0;
+        font-size: 1.05rem;
+    }
+
+    .sample_img {
+        margin-top: 1rem;
+        width: 15rem;
+        border-radius: 5px;
+    }
+}
