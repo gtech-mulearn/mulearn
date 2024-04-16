@@ -44,7 +44,7 @@ import Journey from "./Pages/UserJourney/Journey";
 import MutechLeaderboard from "./Pages/MutechLeaderBoard/MutechLeaderBoard";
 import CodeStorm from "./Pages/Events/GTA/CodeStorm/CodeStorm";
 import KKEMLearningFest from "./Pages/KKEMLearningFest/KKEMLearningFest";
-
+import Launchpad from "./Pages/Launchpad/Launchpad";
 import MaveliPortfolio from "./Pages/Events/MaveliPortfolio/MaveliPortfolio";
 import Level1 from "./Pages/CapTF/Level1";
 import Spiderman from "./Pages/CapTF/Spiderman";
@@ -96,6 +96,7 @@ function App() {
           <Route path="/termsandconditions" element={<TermsAndCondition />} />
           <Route path="/privacypolicy" element={<PrivacyPolicy />} />
           <Route path="/in50hours" element={<In50Hours />} />
+          <Route path="/pathway" element={<Pathway />} />
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
             <Route path="/blogs" element={<BlogLanding />} />
@@ -147,13 +148,14 @@ function App() {
             />
             <Route path="/yipredirect" element={<YipForm />} />
             <Route path="/journey" element={<Journey />} />
-            <Route path="/pathway" element={<Pathway />} />
+
             <Route path="/enablers" element={<EnablersPage />} />
           </Route>
 
           <Route path="/level1" element={<Level1 />} />
           <Route path="/spiderman" element={<Spiderman />} />
           <Route path="/submission" element={<Submission />} />
+          <Route path="/launchpad" element={<Launchpad />} />
         </Routes>
       </Router>
     </div>
