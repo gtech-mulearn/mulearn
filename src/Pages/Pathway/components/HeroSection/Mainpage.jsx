@@ -49,9 +49,9 @@ export default function mainpage() {
         </p>
       </section>
       <p className={styles.Lower_red}>
-        Only <b> 20 individuals </b> will be selected for the{" "}
+        {/* Only <b> 20 individuals </b> will be selected for the{" "}
         <b> beta cohort,</b> while the remaining applicants will be placed on a
-        waiting list.
+        waiting list. */}
       </p>
     </div>
   );
