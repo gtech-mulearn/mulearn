@@ -42,13 +42,13 @@ export const Resources = ({ notificationOpen }) => {
         </button>
       </a>
       <a
-        href="http://mulearn.org/r/magazine"
+        href="https://online.fliphtml5.com/slydm/yljq/#p=1"
         target="_blank"
         rel="noopener noreferrer"
         className="py-7 px-3 inline-block"
       >
         <button className="border-2 border-muorange text-muorange px-6 py-2 rounded-md">
-          Magazine
+          µNewsletter
         </button>
       </a>
     </div>
