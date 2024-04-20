@@ -122,6 +122,18 @@ const Home = () => {
             <div className={styles.buttons}>
               <a
                 target="_blank"
+
+                href="https://app.mulearn.org/register"
+              >
+                <button className={styles.primary}>Join µLearn</button>
+              </a>
+              <a rel="noopener noreferrer" href="/launchpad">
+                <button className={styles.secondary} >Join Launchpad 🚀</button>
+              </a>
+            </div>
+            {/* <div className={styles.buttons}>
+              <a
+                target="_blank"
                 rel="noopener noreferrer"
                 href={donationLink}
               >
@@ -130,7 +142,7 @@ const Home = () => {
               <a target="_blank" rel="noopener noreferrer" href="/mulearn.apk">
                 <button className={styles.secondary}>Download APK</button>
               </a>
-            </div>
+            </div> */}
           </div>
           <img
             className={styles.fv_image}
