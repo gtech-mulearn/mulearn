@@ -122,7 +122,7 @@ const Home = () => {
             <div className={styles.buttons}>
               <a
                 target="_blank"
-
+                rel="noopener noreferrer"
                 href="https://app.mulearn.org/register"
               >
                 <button className={styles.primary}>Join µLearn</button>
