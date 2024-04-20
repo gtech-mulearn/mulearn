@@ -114,6 +114,28 @@ export const links = [
           },
         ],
       },
+      {
+        name: "Others",
+        submenu: true,
+        sublinks: [
+          {
+            name: "Magazine",
+            submenu: false,
+            sublinks: [],
+            link: "https://online.fliphtml5.com/blxtf/bicl/#p=1",
+            foreign: true,
+          },
+          {
+            name: "Download Apk",
+            submenu: false,
+            sublinks: [],
+            link: "/mulearn.apk",
+            foreign: false,
+          },
+        ],
+
+
+      },
     ],
   },
   {

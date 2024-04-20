@@ -85,17 +85,17 @@ export const MobileMenu = ({
           className="py-3 px-28 "
         >
           <button className="bg-orange-400 text-white  px-6 py-2 rounded-md ">
-            Join Discord
+            Join µLearn
           </button>
         </a>
         <a
-          href="http://mulearn.org/r/magazine"
+          href="https://online.fliphtml5.com/slydm/yljq/#p=1"
           target="_blank"
           rel="noopener noreferrer"
           className="py-3 px-3 inline-block"
         >
           <button className="border-2 border-orange-400 text-orange-400 px-6 py-2 rounded-md">
-            Magazine
+            µNewsletter
           </button>
         </a>
       </div>
