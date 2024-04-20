@@ -120,20 +120,32 @@ const Home = () => {
               </p>
             </div>
             <div className={styles.buttons}>
-              {/*<a
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://app.mulearn.org/register"
+              >
+                <button className={styles.primary}>Join µLearn</button>
+              </a>
+              <a rel="noopener noreferrer" href="/launchpad">
+                <button className={styles.secondary} >Join Launchpad 🚀</button>
+              </a>
+            </div>
+            {/* <div className={styles.buttons}>
+              <a
                 target="_blank"
                 rel="noopener noreferrer"
                 href={donationLink}
               >
                 <button className={styles.primary}>Make a Donation ❤️</button>
-              </a> */}
+              </a>
               <a target="_blank" rel="noopener noreferrer" href='https://online.fliphtml5.com/slydm/yljq/#p=1'>
                 <button className={styles.primary}>μNewsletter</button>
               </a>
               <a target="_blank" rel="noopener noreferrer" href="/mulearn.apk">
                 <button className={styles.secondary}>Download APK</button>
               </a>
-            </div>
+            </div>  */}
           </div>
           <img
             className={styles.fv_image}
