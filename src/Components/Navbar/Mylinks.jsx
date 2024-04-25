@@ -176,6 +176,13 @@ export const links = [
             link: "/events/gta/codestorm",
             foreign: false,
           },
+          {
+            name: "Top100 Coders",
+            submenu: false,
+            sublinks: [],
+            link: "https://top100coders.com/",
+            foreign: true,
+          }
         ],
       },
       {
