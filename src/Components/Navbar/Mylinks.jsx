@@ -176,6 +176,28 @@ export const links = [
             link: "/events/gta/codestorm",
             foreign: false,
           },
+          {
+            name: "Top100 Coders",
+            submenu: false,
+            sublinks: [],
+            link: "https://top100coders.com/",
+            foreign: true,
+          },
+          {
+            name: "IEEE Launchpad",
+            submenu: false,
+            sublinks: [],
+            link: "https://launchpadkerala.org/",
+            foreign: true,
+          },
+          {
+            name: "in50hours",
+            submenu: false,
+            sublinks: [],
+            link: "/in50hours",
+            foreign: false,
+          }
+
         ],
       },
       {
