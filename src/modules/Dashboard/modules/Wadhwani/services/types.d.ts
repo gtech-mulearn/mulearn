@@ -3,7 +3,7 @@ interface WadhwaniTokenResponse {
     expires_in: number;
     refresh_expires_in: number;
     token_type: string;
-    'not-before-policy': number;
+    "not-before-policy": number;
     scope: string;
 }
 
@@ -17,4 +17,9 @@ interface wadhwaniCourseResponse {
     thumbnail: string;
     language: string;
     enrollStatus: boolean;
+}
+
+interface wadhwaniCourseRedirectResponse {
+    status: string;
+    data: any;
 }

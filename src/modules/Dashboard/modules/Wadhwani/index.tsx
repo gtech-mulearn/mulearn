@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
-import { getWadhwaniClientToken, getWadhwaniCourses } from "./services/api";
+import {
+    getWadhwaniClientToken,
+    getWadhwaniCourseLink,
+    getWadhwaniCourses
+} from "./services/api";
 import toast from "react-hot-toast";
 import styles from "./index.module.css";
 
 const Wadhwani = () => {
     const [data, setData] = useState<wadhwaniCourseResponse[]>([]);
+    const [clientToken, setClientToken] = useState("");
 
     useEffect(() => {
         fetchData();
@@ -15,6 +20,7 @@ const Wadhwani = () => {
         if (error) {
             toast.error(error);
         } else if (response) {
+            setClientToken(response.access_token);
             const { response: courses, error } = await getWadhwaniCourses(
                 response.access_token
             );
@@ -26,12 +32,28 @@ const Wadhwani = () => {
         }
     };
 
+    const handleCourseSelection = async (course: wadhwaniCourseResponse) => {
+        const { response, error } = await getWadhwaniCourseLink(
+            clientToken,
+            course.courseRootId
+        );
+        if (error) {
+            toast.error(error);
+        } else if (response) {
+            window.open(response.data, "_blank", "noopener,noreferrer");
+        }
+    };
+
     return (
         <div className={styles.wrapper}>
             <h1>Wadhwani Foundation Courses</h1>
             <div className={styles.container}>
                 {data.map(course => (
-                    <div key={course.courseId} className={styles.card}>
+                    <div
+                        key={course.courseId}
+                        className={styles.card}
+                        onClick={() => handleCourseSelection(course)}
+                    >
                         <h2>{course.courseName}</h2>
                     </div>
                 ))}

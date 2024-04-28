@@ -180,6 +180,7 @@ export const dashboardRoutes = {
     //Wadhwani
     getWadhwaniClientToken: "api/v1/integrations/wadhwani/auth-token/",
     getWadhwaniCourses: "api/v1/integrations/wadhwani/course-details/",
+    getWadhwaniCourseLink: "api/v1/integrations/wadhwani/user-login/",
 } as const;
 
 export const organizationRoutes = {
