@@ -8,7 +8,7 @@ import { Suspense, useEffect, useState } from "react";
 import { roles, managementTypes } from "@/MuLearnServices/types";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { fetchLocalStorage } from "@/MuLearnServices/common_functions";
-import DynamicType from "../modules/DynamicType/DynamicType";
+// import DynamicType from "../modules/DynamicType/DynamicType";
 
 //TODO: Remove flaticons and use react-icons or vice-versa
 const DashboardRootLayout = (props: { component?: any }) => {
@@ -36,7 +36,6 @@ const DashboardRootLayout = (props: { component?: any }) => {
             hasView: !connected,
             icon: <i className="fi fi-sr-data-transfer"></i>
         },
-
         {
             url: "/dashboard/campus-details",
             title: "Campus Details",
@@ -58,6 +57,12 @@ const DashboardRootLayout = (props: { component?: any }) => {
             title: "Learning Circle",
             hasView: true,
             icon: <i className="fi fi-sr-books"></i>
+        },
+        {
+            url: "/dashboard/wadhwani",
+            title: "Wadhwani",
+            hasView: true,
+            icon: <i className="fi fi-sr-building"></i>
         },
         {
             url: "/dashboard/refer",
