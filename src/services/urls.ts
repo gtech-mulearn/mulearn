@@ -175,7 +175,11 @@ export const dashboardRoutes = {
     //Bulk User Role Management
     roleBulkAssign: "api/v1/dashboard/roles/bulk-assign/",
     roleBulkAssignExcel: "api/v1/dashboard/roles/bulk-assign-excel/",
-    getRolesTemplate: "api/v1/dashboard/roles/base-template/"
+    getRolesTemplate: "api/v1/dashboard/roles/base-template/",
+
+    //Wadhwani
+    getWadhwaniClientToken: "api/v1/integrations/wadhwani/auth-token/",
+    getWadhwaniCourses: "api/v1/integrations/wadhwani/course-details/",
 } as const;
 
 export const organizationRoutes = {
