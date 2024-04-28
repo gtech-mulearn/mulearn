@@ -1,0 +1,21 @@
+.wrapper h1 {
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.card {
+  width: 300px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: var(--White);
+  color: black;
+  cursor: pointer;
+}

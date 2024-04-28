@@ -6,3 +6,15 @@ interface WadhwaniTokenResponse {
     'not-before-policy': number;
     scope: string;
 }
+
+interface wadhwaniCourseResponse {
+    courseId: string;
+    courseName: string;
+    servingMode: string[];
+    courseRootId: string;
+    description: string;
+    version: string;
+    thumbnail: string;
+    language: string;
+    enrollStatus: boolean;
+}

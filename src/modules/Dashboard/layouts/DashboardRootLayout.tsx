@@ -45,12 +45,6 @@ const DashboardRootLayout = (props: { component?: any }) => {
             icon: <i className="fi fi-sr-book-arrow-right"></i>
         },
         {
-            url: "/dashboard/wadhwani",
-            title: "Wadhwani",
-            hasView: true,
-            icon: <i className="fi fi-sr-building"></i>
-        },
-        {
             url: "/dashboard/hackathon",
             title: "Hackathon",
             hasView: true,
@@ -63,6 +57,12 @@ const DashboardRootLayout = (props: { component?: any }) => {
             title: "Learning Circle",
             hasView: true,
             icon: <i className="fi fi-sr-books"></i>
+        },
+        {
+            url: "/dashboard/wadhwani",
+            title: "Wadhwani",
+            hasView: true,
+            icon: <i className="fi fi-sr-building"></i>
         },
         {
             url: "/dashboard/refer",
