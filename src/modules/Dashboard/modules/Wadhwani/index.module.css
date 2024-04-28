@@ -6,16 +6,42 @@
 .container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
+  width: 100%;
 }
 
 .card {
-  width: 300px;
-  margin: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
+  width: 20vw;
+  margin: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--Primary);
   border-radius: 5px;
   background-color: var(--White);
   color: black;
   cursor: pointer;
+}
+
+.card:hover {
+  background-color: aliceblue;
+}
+
+@media screen and (max-width: 1300px) {
+  .card {
+    width: 30vw;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .wrapper h1 {
+    font-size: 2rem;
+  }
+  .card {
+    width: 70vw;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .card {
+    width: 85vw;
+  }
 }
