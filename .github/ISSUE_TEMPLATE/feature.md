@@ -1,7 +1,7 @@
 ---
 name: Mulearn Frontend
 about: MuLearn Community Issues Template
-title: "[Coding Habits] Button for likes"
+title: "[Mulearn] Button for likes"
 labels: MuLearn Community
 assignees: ''
 
