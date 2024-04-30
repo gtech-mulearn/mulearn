@@ -48,7 +48,7 @@ const Footer = () => {
 
           <div className={styles.fs_rightside}>
             <a
-              href="http://mulearn.org/whatsapp-community"
+              href="https://mulearn.org/r/whatsapp-community"
               target="_blank"
               rel="noopener noreferrer"
             >
