@@ -15,6 +15,7 @@ import Career from "./Pages/Career/Career";
 import LeaderBoard from "./Pages/LeaderBoard/leaderBoard";
 import WikiSyllabus from "./Pages/WikiSyllabus/WikiSyllabus";
 import HacktoberFest from "./Pages/Events/HacktoberFest/HacktoberFest";
+import Roadmap from "./Pages/Roadmap/Roadmap";
 // import Yip from "./Pages/YIP/Yip";
 import CampusChapters from "./Pages/CampusChapters/CampusChapters";
 import BlogLanding from "./Pages/CampusChapters/Blogs/BlogLanding";
@@ -117,13 +118,13 @@ function App() {
             <Route path="/community-partners" element={<CommunityPartner />} />
             <Route path="/artofteaching" element={<ArtOfTeaching />} />
             <Route path="/wikisyllabus" element={<WikiSyllabus />} />
+            <Route path="/roadmap" element={<Roadmap />} />
             <Route path="/yip" element={<YIP2023 />} />
             <Route path="/events/bewebdev" element={<BeWebDev />} />
             <Route path="events/gta/codestorm" element={<CodeStorm />} />
             <Route path="events/learningfest" element={<KKEMLearningFest />} />
             <Route path="/keralatechfest" element={<KKEMLearningFest />} />
             <Route path="/maveliportfolio" element={<MaveliPortfolio />} />
-
             <Route path="/team">
               <Route path="" element={<Teams />} />
             </Route>
