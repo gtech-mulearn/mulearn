@@ -119,6 +119,13 @@ export const links = [
         submenu: true,
         sublinks: [
           {
+            name: "Roadmap",
+            submenu: false,
+            sublinks: [],
+            link: "/roadmap",
+            foreign: false,
+          },
+          {
             name: "Magazine",
             submenu: false,
             sublinks: [],
@@ -133,8 +140,6 @@ export const links = [
             foreign: false,
           },
         ],
-
-
       },
     ],
   },
@@ -197,7 +202,6 @@ export const links = [
             link: "/in50hours",
             foreign: false,
           }
-
         ],
       },
       {

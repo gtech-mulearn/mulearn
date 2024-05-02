@@ -16,12 +16,12 @@ const Teams = () => {
   let zonal = require("./teamdata/zonal.json");
   let district = require("./teamdata/district.json");
   let ca = require("./teamdata/ca.json");
-  let pillars = require("./2023/pillars.json");
-  let pillarsQ1 = require("./2023/pillarsQ1.json");
-  let mulearnhq = require("./2023/mulearnhq.json");
-  let communityteam = require("./2023/communityteam.json");
-  let associates = require("./2023/associates.json");
-  let enablerhq = require("./2023/enablerhq.json");
+  let pillars = require("./2024/pillars.json");
+  let pillarsQ1 = require("./2024/pillarsQ1.json");
+  let mulearnhq = require("./2024/mulearnhq.json");
+  let communityteam = require("./2024/communityteam.json");
+  let associates = require("./2024/associates.json");
+  let enablerhq = require("./2024/enablerhq.json");
 
   const handleFilterChange = (e) => {
     setTeamfilter(e.target.value);
@@ -63,7 +63,7 @@ const Teams = () => {
           <option value="all" selected>
             All
           </option>
-          <optgroup label="2023">
+          <optgroup label="2024">
             <option value="execom">Execom</option>
             <option value="mulearnhq">µLearn HQ</option>
             <option value="associates">Associates</option>

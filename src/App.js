@@ -8,6 +8,7 @@ import MuAnnouncements from "./Pages/Events/MuAnnouncements/MuAnnouncements";
 import ISR from "./Pages/Events/ISR/ISR";
 import Company from "./Pages/Company/Company";
 import Teams from "./Pages/Teams/Teams";
+import Roadmap from "./Pages/Roadmap/Roadmap";
 import CommunityPartner from "./Pages/CommPartners/CommPartners";
 import ArtOfTeaching from "./Pages/ArtOfTeaching/ArtOfTeaching";
 import Career from "./Pages/Career/Career";
@@ -126,6 +127,7 @@ function App() {
             <Route path="/team">
               <Route path="" element={<Teams />} />
             </Route>
+            <Route path="/roadmap" element={<Roadmap />}/>
             <Route path="/leaderboard" element={<LeaderBoard />} />
             <Route
               path="/leaderboard/monthly"
