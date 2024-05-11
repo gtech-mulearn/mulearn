@@ -1,7 +1,7 @@
 name: Mulearn Ticket Form
 description: Create a new Ticket for MuLearn Community
 title: "[MuLearn Community]: "
-labels: ["MuLearn Community"]
+labels: ["New Login Page"]
 body:
   - type: textarea
     id: ticket-description
@@ -22,11 +22,9 @@ body:
       description: List the goals of the feature.
       value: |
         ## Goals
-        - [ ] [Goal 1]
-        - [ ] [Goal 2]
-        - [ ] [Goal 3]
-        - [ ] [Goal 4]
-        - [ ] [Goal 5]
+        - [ ] Goal 1
+        - [ ] Goal 2
+        - [ ] Goal 3
 
   - type: textarea
     id: ticket-expected-outcome
@@ -192,28 +190,10 @@ body:
         - Analytics
         - Accessibility
         - Backend
-        - Breaking Change
-        - Beginner Friendly
-        - Configuration
-        - CI/CD
         - Database
-        - Data Science
-        - Deprecation
         - Documentation
         - Delpoyment
         - Frontend
-        - Internationalization
-        - Localization
-        - Machine Learning
-        - Maintenance
-        - Mobile
-        - Performance Improvement
-        - Question
-        - Refactoring
-        - Research
-        - Needs Reproduction
-        - SEO
-        - Security
         - Testing
         - Other
     validations:
