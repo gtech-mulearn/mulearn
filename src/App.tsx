@@ -43,6 +43,7 @@ import Account from "./modules/Dashboard/modules/Settings/pages/Account/Account"
 import DiscordModeration from "./modules/Dashboard/modules/DiscordModeration/DiscordModeration";
 import Test from "./modules/Dashboard/modules/Test/Test";
 import Analytics from "./modules/Dashboard/modules/UrlShortener/Pages/Analytics";
+import Donation from "./modules/Public/Donation/Donation";
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
 );
@@ -260,6 +261,10 @@ function App() {
         {
             path: "kkem/authorization/:token",
             element: <KKEMAuth />
+        },
+        {
+            path: "donation",
+            element: <Donation />
         },
         {
             path: "/",
