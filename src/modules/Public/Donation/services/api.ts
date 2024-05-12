@@ -40,7 +40,7 @@ export const submitForm = async ({
         const paymentAmount: string = response.data.response.amount;
 
         const options = {
-          key_id: "rzp_test_Qf6bk1uoYK3slf",
+          key_id: import.meta.env.VITE_RAZORPAY_KEY_ID,
           amount: paymentAmount,
           currency: response.data.response.currency,
           name: 'Gtech Mulearn',
