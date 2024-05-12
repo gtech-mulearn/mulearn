@@ -241,3 +241,8 @@ export const googleSheetRoutes = {
     getHackathonDashboardData:
         "https://opensheet.elk.sh/1cGUHmdPd8ticzuuEpkX6j7G5p7hU47SZvnvgUnd6xBk/Sheet1"
 };
+
+export const donationRoutes = {
+    order: "api/v1/donate/order/",
+    verify : "api/v1/donate/verify/",
+}
