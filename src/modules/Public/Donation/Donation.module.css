@@ -1,0 +1,16 @@
+.fieldsContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.inputStyles{
+    padding: 10px;  
+    border-radius: 4px;
+    outline: none;
+    background-color: #f3f3f4;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+}
