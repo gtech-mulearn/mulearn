@@ -14,7 +14,6 @@ body:
     attributes:
       label: Description
       placeholder: |
-        ## Description
         A button in the screen X that allows to do Y
 
   - type: textarea
@@ -25,7 +24,6 @@ body:
       label: Goals
       description: List the goals of the feature.
       placeholder: |
-        ## Goals
         - Goal 1
         - Goal 2
 
@@ -37,7 +35,6 @@ body:
       label: Implementation Details
       description: List any technical details about the proposed implementation, including any specific technologies that will be used.
       placeholder: |
-        ## Implementation Details
         - Implementation Detail 1
         - Implementation Detail 2
         - also add images is possible
