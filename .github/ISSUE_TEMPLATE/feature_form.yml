@@ -140,6 +140,8 @@ body:
     attributes:
       label: Mentor(s)
       description: Please tag relevant mentors for the ticket
+      placeholder: |
+        @Jenin82
     validations:
       required: true
 
