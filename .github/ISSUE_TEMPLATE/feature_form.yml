@@ -1,6 +1,8 @@
 name: Mulearn Feature Request
 description: Create a new Feature Request for MuLearn Community
-title: "Campus Details - Feature Request"
+title: 
+  -placeholder: |
+    What is the name of the new feature you are proposing?
 labels: ["feature"]
 body:
   - type: markdown
