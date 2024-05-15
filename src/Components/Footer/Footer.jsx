@@ -22,7 +22,7 @@ const Footer = () => {
             />
 
             <div className={styles.links}>
-              <a href="/careers">
+              <a href="https://mulearn.org/careers">
                 <p className={styles.link}>Career Labs</p>
               </a>
               <a href="https://gtechmulearn.medium.com/">
