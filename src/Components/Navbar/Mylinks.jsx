@@ -195,7 +195,6 @@ export const links = [
             link: "https://launchpadkerala.org/",
             foreign: true,
           },
-          ,
         ],
       },
       {
@@ -743,7 +742,7 @@ export function getLinks(ig = []) {
               sublinks: [],
               link: "https://launchpadkerala.org/",
               foreign: true,
-            }
+            },
           ],
         },
         {
