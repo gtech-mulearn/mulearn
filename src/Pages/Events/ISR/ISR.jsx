@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import styles from "./ISR.module.css"
 
 import fvimg from "./assets/fvimg.gif"
@@ -10,19 +10,19 @@ import axios from "axios"
 const ISR = () => {
   const [isrData, setisrData] = useState([])
   const [error, setError] = useState()
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("https://opensheet.elk.sh/1r5Pav8TlUEao_9GuMcFasKUEPSDIJOPB9PXKbt4KlTQ/isrcsv");
-        setisrData(response.data);
-      } catch (error) {
-        console.error(error);
-        setError("We are currently facing some difficulties in fetching the data at the moment, will be back soon.");
-      }
-    };
-
-    fetchData(); 
-  }, []);
+  axios
+    .get(
+      "https://opensheet.elk.sh/1r5Pav8TlUEao_9GuMcFasKUEPSDIJOPB9PXKbt4KlTQ/isrcsv"
+    )
+    .then((response) => {
+      setisrData(response.data)
+    })
+    .catch((error) => {
+      console.log(error)
+      setError(
+        "We are currently facing some difficulties in fetching the data at the moment, will be back soon."
+      )
+    })
 
   const ReadMore = ({ children }) => {
     const text = children
