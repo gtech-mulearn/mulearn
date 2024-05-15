@@ -1,7 +1,7 @@
 {
     "name": "mulearnfrontend",
     "private": true,
-    "version": "0.0.0",
+    "version": "0.0.4",
     "type": "module",
     "scripts": {
         "dev": "vite --host",
@@ -21,6 +21,7 @@
         "framer-motion": "^10.15.0",
         "lottie-react": "^2.4.0",
         "moment": "^2.29.4",
+        "razorpay": "^2.9.3",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-google-charts": "^4.0.0",

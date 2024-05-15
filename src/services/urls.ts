@@ -175,7 +175,12 @@ export const dashboardRoutes = {
     //Bulk User Role Management
     roleBulkAssign: "api/v1/dashboard/roles/bulk-assign/",
     roleBulkAssignExcel: "api/v1/dashboard/roles/bulk-assign-excel/",
-    getRolesTemplate: "api/v1/dashboard/roles/base-template/"
+    getRolesTemplate: "api/v1/dashboard/roles/base-template/",
+
+    //Wadhwani
+    getWadhwaniClientToken: "api/v1/integrations/wadhwani/auth-token/",
+    getWadhwaniCourses: "api/v1/integrations/wadhwani/course-details/",
+    getWadhwaniCourseLink: "api/v1/integrations/wadhwani/user-login/",
 } as const;
 
 export const organizationRoutes = {
@@ -236,3 +241,8 @@ export const googleSheetRoutes = {
     getHackathonDashboardData:
         "https://opensheet.elk.sh/1cGUHmdPd8ticzuuEpkX6j7G5p7hU47SZvnvgUnd6xBk/Sheet1"
 };
+
+export const donationRoutes = {
+    order: "api/v1/donate/order/",
+    verify : "api/v1/donate/verify/",
+}

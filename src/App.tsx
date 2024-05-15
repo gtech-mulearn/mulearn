@@ -43,6 +43,7 @@ import Account from "./modules/Dashboard/modules/Settings/pages/Account/Account"
 import DiscordModeration from "./modules/Dashboard/modules/DiscordModeration/DiscordModeration";
 import Test from "./modules/Dashboard/modules/Test/Test";
 import Analytics from "./modules/Dashboard/modules/UrlShortener/Pages/Analytics";
+import Donation from "./modules/Public/Donation/Donation";
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
 );
@@ -235,6 +236,7 @@ const PurchaseInventory = lazy(
 const ConnectedDevices = lazy(
     () => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices")
 );
+const Wadhwani = lazy(() => import("./modules/Dashboard/modules/Wadhwani"));
 
 function App() {
     const AuthChecker = SecureAuthRoutes();
@@ -259,6 +261,10 @@ function App() {
         {
             path: "kkem/authorization/:token",
             element: <KKEMAuth />
+        },
+        {
+            path: "donation",
+            element: <Donation />
         },
         {
             path: "/",
@@ -299,6 +305,10 @@ function App() {
                             element: <ConnectDiscord />
                         },
                         {
+                            path: "wadhwani",
+                            element: <Wadhwani />
+                        },
+                        {
                             path: "refer",
                             element: <Refer />
                         },
@@ -307,7 +317,9 @@ function App() {
                             element: (
                                 <AuthChecker
                                     roles={[roles.ADMIN, roles.FELLOW]}
-                                    dynamicType={[managementTypes.INTEREST_GROUP]}
+                                    dynamicType={[
+                                        managementTypes.INTEREST_GROUP
+                                    ]}
                                     children={<InterestGroup />}
                                 />
                             )
@@ -321,9 +333,7 @@ function App() {
                                         roles.CAMPUS_LEAD,
                                         roles.LEAD_ENABLER
                                     ]}
-                                    dynamicType={[
-                                        managementTypes.CAMPUS
-                                    ]}
+                                    dynamicType={[managementTypes.CAMPUS]}
                                     children={<CampusStudentList />}
                                 />
                             )
@@ -333,7 +343,9 @@ function App() {
                             element: (
                                 <AuthChecker
                                     roles={[roles.ADMIN]}
-                                    dynamicType={[managementTypes.USER_MANAGEMENT]}
+                                    dynamicType={[
+                                        managementTypes.USER_MANAGEMENT
+                                    ]}
                                     children={<ManageUsers />}
                                 />
                             )
@@ -534,7 +546,9 @@ function App() {
                                         roles.FELLOW,
                                         roles.ASSOCIATE
                                     ]}
-                                    dynamicType={[managementTypes.URL_SHORTENER]}
+                                    dynamicType={[
+                                        managementTypes.URL_SHORTENER
+                                    ]}
                                     children={<UrlShortener />}
                                 />
                             )
