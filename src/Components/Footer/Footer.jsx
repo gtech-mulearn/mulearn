@@ -70,7 +70,7 @@ const Footer = () => {
               />
             </a>
             <a
-              href="http://www.instagram.com/gtechmulearn/"
+              href="https://www.instagram.com/mulearn.official/"
               target="_blank"
               rel="noopener noreferrer"
             >

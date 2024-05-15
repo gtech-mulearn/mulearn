@@ -67,7 +67,7 @@ const Teams = () => {
             <option value="execom">Execom</option>
             <option value="mulearnhq">µLearn HQ</option>
             <option value="associates">Associates</option>
-            <option value="enablershq">Enablers HQ</option>
+            <option value="enablerhq">Enablers HQ</option>
             <option value="mulearnpillar3">µLearn Pillars Q3</option>
             <option value="mulearnpillar1">µLearn Pillars Q1</option>
             <option value="communityteam">Community Team</option>
