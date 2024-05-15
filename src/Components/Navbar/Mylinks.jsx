@@ -119,13 +119,6 @@ export const links = [
         submenu: true,
         sublinks: [
           {
-            name: "Roadmaps",
-            submenu: false,
-            sublinks: [],
-            link: "/roadmap",
-            foreign: false,
-          },
-          {
             name: "Magazine",
             submenu: false,
             sublinks: [],
@@ -140,6 +133,8 @@ export const links = [
             foreign: false,
           },
         ],
+
+
       },
     ],
   },
@@ -195,6 +190,14 @@ export const links = [
             link: "https://launchpadkerala.org/",
             foreign: true,
           },
+          {
+            name: "in50hours",
+            submenu: false,
+            sublinks: [],
+            link: "/in50hours",
+            foreign: false,
+          }
+
         ],
       },
       {
@@ -565,7 +568,7 @@ export const links = [
             submenu: false,
             sublinks: [],
             foreign: true,
-          },
+          }
         ],
       },
       {
@@ -579,7 +582,7 @@ export const links = [
             submenu: false,
             sublinks: [],
             foreign: false,
-          },
+          }
         ],
       },
     ],
@@ -728,20 +731,6 @@ export function getLinks(ig = []) {
               sublinks: [],
               link: "/artofteaching",
               foreign: false,
-            },
-            {
-              name: "Top100 Coders",
-              submenu: false,
-              sublinks: [],
-              link: "https://top100coders.com/",
-              foreign: true,
-            },
-            {
-              name: "IEEE Launchpad",
-              submenu: false,
-              sublinks: [],
-              link: "https://launchpadkerala.org/",
-              foreign: true,
             },
           ],
         },

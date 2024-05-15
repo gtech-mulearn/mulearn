@@ -56,8 +56,7 @@ const Build4Team = () => {
                     Join Whatsapp Group
                   </button>
                 </a>
-              </div> 
-              */}
+              </div> */}
             </div>
             <img
               src="/assets/events/build4team/fvimgr.gif"
