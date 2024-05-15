@@ -21,7 +21,7 @@ const ISR = () => {
       }
     };
 
-    fetchData(); // Call the fetchData function when the component mounts
+    fetchData(); 
   }, []);
 
   const ReadMore = ({ children }) => {
