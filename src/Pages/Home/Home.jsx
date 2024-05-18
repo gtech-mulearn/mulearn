@@ -128,7 +128,7 @@ const Home = () => {
                 <button className={styles.primary}>Join µLearn</button>
               </a>
               <a rel="noopener noreferrer" href="/launchpad">
-                <button className={styles.secondary} >Join Launchpad 🚀</button>
+                <button className={styles.secondary}>Join Launchpad 🚀</button>
               </a>
             </div>
             {/* <div className={styles.buttons}>
@@ -345,11 +345,12 @@ const Home = () => {
             </div>
             <div className={styles.mu_story}>
               <iframe
-                src="https://www.youtube.com/embed/M9serw-CLU0?si=rqJ8ZNA4vl8byH07"
+                src="https://www.youtube-nocookie.com/embed/M9serw-CLU0?si=rqJ8ZNA4vl8byH07"
                 title="YouTube video player"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen
+                loading="lazy"
               ></iframe>
             </div>
           </div>

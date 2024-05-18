@@ -123,11 +123,12 @@ function Yip() {
 
               <iframe
                 className="yt-video"
-                src="https://www.youtube.com/embed/cHK16ItlY3w"
+                src="https://www.youtube-nocookie.com/embed/cHK16ItlY3w"
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
+                allowfullscreen
+                loading="lazy"
               ></iframe>
               <div className="s3s4">
                 <div className="s3">
