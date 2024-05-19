@@ -93,7 +93,7 @@ const Footer = () => {
             </a>
 
             <a
-              href="https://www.youtube.com/c/mulearn"
+              href="https://www.youtube-nocookie.com/c/mulearn"
               target="_blank"
               rel="noopener noreferrer"
             >
