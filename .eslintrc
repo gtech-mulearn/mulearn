@@ -1,0 +1,14 @@
+{
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+      "requireConfigFile": false,
+      "babelOptions": {
+        "plugins": ["@babel/plugin-proposal-private-property-in-object"]
+      }
+    },
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  }
+  
