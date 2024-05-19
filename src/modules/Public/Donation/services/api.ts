@@ -12,12 +12,14 @@ declare global {
 export const submitForm = async ({
     amount,
     name,
+    company,
     email,
     mobile,
-    pan
+  pan
 }: {
         amount: number;
         name: string;
+        company?: string;
         email: string;
         mobile: number;
         pan: string;
@@ -32,6 +34,7 @@ export const submitForm = async ({
     .post(donationRoutes.order, {
         amount,
         name,
+        company,
         email,
         mobile
     })
