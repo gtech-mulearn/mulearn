@@ -1,0 +1,39 @@
+.LClandingPageNav {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    padding: 3rem 5rem;
+}
+
+.LClandingPageNav .navLinks,
+.LClandingPageNav .navLinks div {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.LClandingPageNav .navLinks div {
+    font-weight: 600;
+    color: #00204c;
+}
+
+.LClandingPageNav .navLinks button {
+    background: var(--blue);
+    border-radius: var(--borderRadius);
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    color: #fff;
+}
+
+@media (width <=820px) {
+    .LClandingPageNav {
+        padding: 3rem 2rem;
+    }
+
+    .LClandingPageNav .navLinks {
+        display: none;
+    }
+}
