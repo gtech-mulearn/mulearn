@@ -20,7 +20,7 @@ export default function RefundPage(){
                     offer refunds on donations, we understand that circumstances
                     may arise where a donor may request a refund.
                 </p>
-                <h2 id="95b9be19-b97b-4376-bb6c-0fabaf498d2b">
+                <h2 className={styles.heading2} id="95b9be19-b97b-4376-bb6c-0fabaf498d2b">
                     <strong>Receipt Issuance and Verification</strong>
                 </h2>
                 <ol
@@ -47,7 +47,7 @@ export default function RefundPage(){
                         donation for verification purposes.
                     </li>
                 </ol>
-                <h2 id="7faed5eb-26a3-4156-97f7-bfc5f739aa17">
+                <h2 className={styles.heading2} id="7faed5eb-26a3-4156-97f7-bfc5f739aa17">
                     <strong>Refund Eligibility</strong>
                 </h2>
                 <ol
@@ -85,7 +85,7 @@ export default function RefundPage(){
                     subscription-based donation (see below for
                     subscription-based donations policy).
                 </p>
-                <h2 id="abde7fa0-e02d-4ca1-87b4-226aaf1be01e">
+                <h2 className={styles.heading2} id="abde7fa0-e02d-4ca1-87b4-226aaf1be01e">
                     <strong>Subscription-Based Donations</strong>
                 </h2>
                 <ol
@@ -114,7 +114,7 @@ export default function RefundPage(){
                         non-refundable.
                     </li>
                 </ol>
-                <h2 id="5ef42403-f10d-4410-9163-4acd02e85dac">
+                <h2 className={styles.heading2} id="5ef42403-f10d-4410-9163-4acd02e85dac">
                     <strong>Refund Process</strong>
                 </h2>
                 <ol
@@ -155,7 +155,7 @@ export default function RefundPage(){
                         otherwise specified by the donor.
                     </li>
                 </ol>
-                <h2 id="f1777bc2-ccbf-49dd-8c99-a8497e99917f">
+                <h2 className={styles.heading2} id="f1777bc2-ccbf-49dd-8c99-a8497e99917f">
                     <strong>Contact Information</strong>
                 </h2>
                 <p id="ca78dd35-7554-423b-9d4e-e5ab30c0a505">
@@ -173,7 +173,7 @@ export default function RefundPage(){
                 <p id="98d09a7f-4a43-4940-8ef7-fd132921fb74">
                     Karyavattom, Trivandrum
                 </p>
-                <h2 id="4ad3ba19-4ee8-45ec-b29e-01cedc6c6b79">
+                <h2 className={styles.heading2} id="4ad3ba19-4ee8-45ec-b29e-01cedc6c6b79">
                     <strong>Policy Revision</strong>
                 </h2>
                 <p id="f9251d08-8b1c-4c2a-a086-3481a238c063">

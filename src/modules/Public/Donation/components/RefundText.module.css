@@ -1,6 +1,5 @@
-h1,
-h2,
-h3 {
+.pageTitle,
+.heading2 {
     letter-spacing: -0.01em;
     line-height: 1.2;
     font-weight: 600;
@@ -14,43 +13,20 @@ h3 {
     margin-bottom: 0.75em;
 }
 
-h1 {
+.pageTitle {
     font-size: 1.875rem;
     margin-top: 1.875rem;
 }
 
-h2 {
+.heading2 {
     font-size: 1.5rem;
     margin-top: 1.5rem;
 }
 
-h3 {
-    font-size: 1.25rem;
-    margin-top: 1.25rem;
-}
-
-ol,
-ul {
+.numberedList {
     margin: 0;
     margin-block-start: 0.6em;
     margin-block-end: 0.6em;
-}
-
-li > ol:first-child,
-li > ul:first-child {
-    margin-block-start: 0.6em;
-}
-
-ul > li {
-    list-style: disc;
-}
-
-ul.to-do-list {
-    padding-inline-start: 0;
-}
-
-ul.to-do-list > li {
-    list-style: none;
 }
 
 .to-do-children-checked {
@@ -58,47 +34,22 @@ ul.to-do-list > li {
     opacity: 0.375;
 }
 
-ul.toggle > li {
-    list-style: none;
-}
-
-ul {
-    padding-inline-start: 1.7em;
-}
-
-ul > li {
-    padding-left: 0.1em;
-}
-
-ol {
+.numberedList {
     padding-inline-start: 1.6em;
 }
 
-ol > li {
+.numberedList > li {
     padding-left: 0.2em;
 }
 
-.mono ol {
+.mono .numberedList {
     padding-inline-start: 2em;
 }
 
-.mono ol > li {
+.mono .numberedList > li {
     text-indent: -0.4em;
 }
 
-.toggle {
-    padding-inline-start: 0em;
-    list-style-type: none;
-}
-
-/* Indent toggle children */
-.toggle > li > details {
-    padding-left: 1.7em;
-}
-
-.toggle > li > details > summary {
-    margin-left: -1.1em;
-}
 .pageDescription {
     margin-bottom: 2em;
 }
@@ -113,26 +64,17 @@ ol > li {
         font-size: 1.6rem;
     }
 
-    h1 {
+    .pageTitle {
         font-size: 1.4rem;
         margin-top: 1.875rem;
     }
 
-    h2 {
+    .heading2 {
         font-size: 1.1rem;
         margin-top: 1.5rem;
     }
 
-    h3 {
+    .pageBody p {
         font-size: 0.9rem;
-        margin-top: 1.25rem;
-    }
-
-    p {
-        font-size: 0.9rem;
-    }
-
-    li {
-        font-size: 0.8rem;
     }
 }
