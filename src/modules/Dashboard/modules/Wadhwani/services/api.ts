@@ -1,7 +1,7 @@
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { AxiosError } from "axios";
-
+import toast from "react-hot-toast";
 export const getWadhwaniClientToken = async () => {
     try {
         const response = await privateGateway.post(
@@ -47,6 +47,7 @@ export const getWadhwaniCourseLink = async (
     clientToken: string,
     courseId: string
 ) => {
+    const toastId=toast.loading("Fetching course link...")
     try {
         const response = await privateGateway.post(
             dashboardRoutes.getWadhwaniCourseLink,
@@ -61,12 +62,16 @@ export const getWadhwaniCourseLink = async (
         const message: wadhwaniCourseRedirectResponse = response?.data?.response;
         if (message.data?.error?.code) {
             return { response: null, error: message.data.error.description };
+        }else{
+            toast.success("Course link opened successfully!",{id:toastId})
         }
         return { response: message, error: null };
-    } catch (err: unknown) {
+    } catch (err: unknown) { 
+        toast.error("Please try again later.",{id:toastId})
         const error = err as AxiosError;
         if (error?.response) {
             throw error;
+           
         } else {
             return { response: null, error: error.message };
         }
