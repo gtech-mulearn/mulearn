@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
@@ -7,12 +6,14 @@ import { submitForm } from "./services/api";
 import styles from "./Donation.module.css";
 
 const Donation = () => {
-    const [amount, setAmount] = useState<number | string>(10000);
+    const [amount, setAmount] = useState<number>();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const [mobile, setMobile] = useState<number | string>("");
+    const [mobile, setMobile] = useState<number>();
     const [pan, setPan] = useState("");
     const [selectedAmount, setSelectedAmount] = useState<number>(10000);
+    const [isOrganisation, setIsOrganisation] = useState(false);
+    const [company, setCompany] = useState("");
 
     const callRazorpay = () => {
         if (!amount || !name || !email || !mobile || !pan) {
@@ -20,48 +21,32 @@ const Donation = () => {
             return;
         }
 
-        if (!validatePAN(pan)) {
-            toast.error("Invalid PAN number");
-            return;
+        // if (!validatePAN(pan)) {
+        //     toast.error("Invalid PAN number");
+        //     return;
+        // }
+
+        if (isOrganisation) {
+            submitForm({
+                amount: amount,
+                name: name,
+                company: company,
+                email: email,
+                mobile: mobile,
+                pan: pan
+            });
+        } else {
+            submitForm({
+                amount: amount,
+                name: name,
+                email: email,
+                mobile: mobile,
+                pan: pan
+            });
         }
-
-        submitForm({
-            amount: Number(amount),
-            name: name,
-            email: email,
-            mobile: Number(mobile),
-            pan: pan
-        });
     };
 
-    const validatePAN = (pan: string) => /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(pan);
-
-    const navigate = useNavigate();
-    const customStyles: any = {
-        control: (provided: any) => ({
-            ...provided,
-            backgroundColor: "#F3F3F4",
-            border: "none",
-            borderRadius: "10px",
-            fontSize: "12px",
-            fontWeight: "bold",
-            color: "#000",
-            width: "100%",
-            padding: ".3rem .4rem",
-            minWidth: "200px"
-        }),
-        placeholder: (provided: any) => ({
-            ...provided,
-            color: "#000"
-        }),
-        indicatorSeparator: (provided: any) => ({
-            ...provided,
-            display: "none"
-        })
-    };
-
-    const [counters, setCounters] = useState<number[]>([0, 0, 0, 0, 0]); // Initialize counters
-    const durationInSeconds = 3; // Duration in seconds
+    // const validatePAN = (pan: string) => /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(pan);
 
     const targetRef = useRef<HTMLDivElement>(null); // Create a ref
 
@@ -147,6 +132,32 @@ const Donation = () => {
                             onChange={e => setName(e.target.value)}
                             required
                         />
+                        <div className={styles.TermsContainer}>
+                            <input
+                                id="checkc"
+                                type="checkbox"
+                                onClick={() =>
+                                    setIsOrganisation(!isOrganisation)
+                                }
+                            ></input>
+                            <label htmlFor="checkc">
+                                Are you trying to pay for an organisation?
+                            </label>
+                        </div>
+                        {isOrganisation && (
+                            <>
+                                <label htmlFor="company">Organization:</label>
+                                <input
+                                    type="text"
+                                    id="company"
+                                    placeholder="Organisation Name"
+                                    className={styles.DonationInputStyles}
+                                    value={company}
+                                    onChange={e => setCompany(e.target.value)}
+                                    required
+                                />
+                            </>
+                        )}
                         <label htmlFor="email">Email:</label>
                         <input
                             type="email"
@@ -162,11 +173,11 @@ const Donation = () => {
                         <input
                             type="number"
                             id="mobile"
-                            placeholder="+91 98765 43210"
+                            placeholder="98765 43210"
                             aria-label="Mobile Number"
                             className={styles.DonationInputStyles}
                             value={mobile || ""}
-                            onChange={e => setMobile(e.target.value)}
+                            onChange={e => setMobile(Number(e.target.value))}
                             required
                         />
                         <label htmlFor="pan">PAN:</label>
@@ -189,6 +200,7 @@ const Donation = () => {
                             className={styles.DonateButtonContainer}
                         >
                             <button
+                                type="button"
                                 className={
                                     selectedAmount === 10000
                                         ? styles.selectedButton
@@ -199,6 +211,7 @@ const Donation = () => {
                                 10,000
                             </button>
                             <button
+                                type="button"
                                 className={
                                     selectedAmount === 15000
                                         ? styles.selectedButton
@@ -209,6 +222,7 @@ const Donation = () => {
                                 15,000
                             </button>
                             <button
+                                type="button"
                                 className={
                                     selectedAmount === 20000
                                         ? styles.selectedButton
@@ -231,7 +245,9 @@ const Donation = () => {
                                     styles.AmountField
                                 ].join(" ")}
                                 value={amount || ""}
-                                onChange={e => setAmount(e.target.value)}
+                                onChange={e =>
+                                    setAmount(Number(e.target.value))
+                                }
                                 required
                             />
                         </div>
