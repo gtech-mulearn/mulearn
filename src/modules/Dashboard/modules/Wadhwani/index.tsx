@@ -6,10 +6,13 @@ import {
 } from "./services/api";
 import toast from "react-hot-toast";
 import styles from "./index.module.css";
+import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
+
 
 const Wadhwani = () => {
     const [data, setData] = useState<wadhwaniCourseResponse[]>([]);
     const [clientToken, setClientToken] = useState("");
+    const [isLoading,setIsLoading]=useState(true)
 
     useEffect(() => {
         fetchData();
@@ -29,6 +32,7 @@ const Wadhwani = () => {
             } else if (courses) {
                 setData(courses);
             }
+            setIsLoading(false)
         }
     };
 
@@ -48,7 +52,8 @@ const Wadhwani = () => {
         <div className={styles.wrapper}>
             <h1>Wadhwani Foundation Courses</h1>
             <div className={styles.container}>
-                {data.map(course => (
+                {isLoading?<MuLoader/>:
+                data.map(course => (
                     <div
                         key={course.courseId}
                         className={styles.card}
