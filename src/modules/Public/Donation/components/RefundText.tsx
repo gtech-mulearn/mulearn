@@ -27,7 +27,7 @@ export default function RefundPage(){
                     type="1"
                     id="4a16632e-f9d0-4c76-bee2-3700f3ef72e2"
                     className={styles.numberedList}
-                    start="1"
+                    start={1}
                 >
                     <li>
                         Receipts: Upon making a donation, donors will receive a
@@ -39,7 +39,7 @@ export default function RefundPage(){
                     type="1"
                     id="1c216c4e-0d03-4e5b-a51b-0fe82ff174ec"
                     className={styles.numberedList}
-                    start="2"
+                    start={2}
                 >
                     <li>
                         Verification: In the event of a refund request, donors
@@ -54,7 +54,7 @@ export default function RefundPage(){
                     type="1"
                     id="0c814ce7-97f9-45d2-a3f6-3dd047f12826"
                     className={styles.numberedList}
-                    start="1"
+                    start={1}
                 >
                     <li>
                         Notification Period: Donors seeking a refund must
@@ -67,7 +67,7 @@ export default function RefundPage(){
                     type="1"
                     id="100e4008-cf49-4892-9fee-6b8b27577952"
                     className={styles.numberedList}
-                    start="2"
+                    start={2}
                 >
                     <li>
                         Valid Reasons: Refunds may be considered under the
@@ -92,7 +92,7 @@ export default function RefundPage(){
                     type="1"
                     id="63c461df-ebde-4bb9-9031-68185b880873"
                     className={styles.numberedList}
-                    start="1"
+                    start={1}
                 >
                     <li>
                         Subscription Terms: Mulearn Foundation offers
@@ -104,7 +104,7 @@ export default function RefundPage(){
                     type="1"
                     id="bd007a54-78a8-4cc5-90e5-b7a9258df731"
                     className={styles.numberedList}
-                    start="2"
+                    start={2}
                 >
                     <li>
                         Cancellation: Donors subscribed to recurring donations
@@ -121,7 +121,7 @@ export default function RefundPage(){
                     type="1"
                     id="2eba47cf-c08c-4125-9c6f-97c1f313e772"
                     className={styles.numberedList}
-                    start="1"
+                    start={1}
                 >
                     <li>
                         Request Submission: Donors must submit their refund
@@ -134,7 +134,7 @@ export default function RefundPage(){
                     type="1"
                     id="a05170c6-aa28-4c1d-bf9f-408d4a92d091"
                     className={styles.numberedList}
-                    start="2"
+                    start={2}
                 >
                     <li>
                         Review and Approval: Mulearn Foundation will review the
@@ -147,7 +147,7 @@ export default function RefundPage(){
                     type="1"
                     id="fc7c02c9-b5a0-45ba-a7b5-fdda9cc84b3d"
                     className={styles.numberedList}
-                    start="3"
+                    start={3}
                 >
                     <li>
                         Refund Issuance: Upon approval, refunds will be
