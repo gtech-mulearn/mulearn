@@ -1,22 +1,22 @@
-import React from "react"
-import Navbar from "../../Components/Navbar/Navbar"
-import Footer from "../../Components/Footer/Footer"
+import React from "react";
+import Navbar from "../../Components/Navbar/Navbar";
+import Footer from "../../Components/Footer/Footer";
 
-import styles from "./ArtOfTeaching.module.css"
-import "./ArtOfTeaching.scss"
+import styles from "./ArtOfTeaching.module.css";
+import "./ArtOfTeaching.scss";
 
-import Faq from "react-faq-component"
+import Faq from "react-faq-component";
 
-import fvimg from "./assets/fvimg.gif"
+import fvimg from "./assets/fvimg.gif";
 
-import MentorCard from "../../Components/MentorCard/MentorCard"
+import MentorCard from "../../Components/MentorCard/MentorCard";
 
-import { Swiper, SwiperSlide } from "swiper/react"
+import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
-import "swiper/css"
-import "swiper/css/pagination"
-import "swiper/css/navigation"
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 // import { Pagination, Navigation } from "swiper"
 
@@ -50,7 +50,7 @@ const ArtOfTeaching = () => {
           "Yes, you can resubmit your entry if you think your previous submission lacked a certain element that you aimed for.",
       },
     ],
-  }
+  };
 
   const fstyles = {
     // bgColor: 'white',
@@ -58,7 +58,7 @@ const ArtOfTeaching = () => {
     rowTitleColor: "#404040",
     rowContentColor: "#373737",
     arrowColor: "#f78c40",
-  }
+  };
   return (
     <>
       <Navbar />
@@ -72,8 +72,9 @@ const ArtOfTeaching = () => {
 
               <p className={styles.fv_tagline}>
                 µLearn is back with Art of Teaching to honor teachers who mould
-                our future generation. µLearn Foundation is partnering with Google
-                developers, KTU and Kerala University for Art of Teaching 2.0.
+                our future generation. µLearn Foundation is partnering with
+                Google developers, KTU and Kerala University for Art of Teaching
+                2.0.
               </p>
               <div className={styles.event_partners}>
                 <div className={styles.partners}>
@@ -292,11 +293,12 @@ const ArtOfTeaching = () => {
               <div className={styles.ytplayer}>
                 <iframe
                   className={styles.yt_video}
-                  src="https://www.youtube.com/embed/vPLuA5kXoBI"
+                  src="https://www.youtube-nocookie.com/embed/vPLuA5kXoBI"
                   title="YouTube video player"
                   frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowfullscreen
+                  loading="lazy"
                 ></iframe>
               </div>
             </div>
@@ -366,31 +368,34 @@ const ArtOfTeaching = () => {
               <div className={styles.video}>
                 <iframe
                   className={styles.ytvideo}
-                  src="https://www.youtube.com/embed/Wmo0StqW9Kc"
+                  src="https://www.youtube-nocookie.com/embed/Wmo0StqW9Kc"
                   title="YouTube video player"
                   frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowfullscreen
+                  loading="lazy"
                 ></iframe>
               </div>
               <div className={styles.video}>
                 <iframe
                   className={styles.ytvideo}
-                  src="https://www.youtube.com/embed/TEylubYDzhQ"
+                  src="https://www.youtube-nocookie.com/embed/TEylubYDzhQ"
                   title="YouTube video player"
                   frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowfullscreen
+                  loading="lazy"
                 ></iframe>
               </div>
               <div className={styles.video}>
                 <iframe
                   className={styles.ytvideo}
-                  src="https://www.youtube.com/embed/jRcseEVk2sk"
+                  src="https://www.youtube-nocookie.com/embed/jRcseEVk2sk"
                   title="YouTube video player"
                   frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowfullscreen
+                  loading="lazy"
                 ></iframe>
               </div>
             </div>
@@ -405,7 +410,7 @@ const ArtOfTeaching = () => {
       </div>
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default ArtOfTeaching
+export default ArtOfTeaching;

@@ -58,7 +58,7 @@ const Submission = () => {
         <a
           href={
             showParam === "true" || name !== "Secret Key"
-              ? "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+              ? "https://www.youtube-nocookie.com/watch?v=dQw4w9WgXcQ"
               : process.env.REACT_APP_CTF_SUMISSION_LINK
           }
           target="_blank"
