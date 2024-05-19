@@ -112,7 +112,6 @@ const Donation = () => {
             <div className={styles.DonationSection}>
                 <div className={styles.heightFixer}></div>
                 <form
-                    title="Donation"
                     className={styles.DonationFormElement}
                     onSubmit={e => {
                         e.preventDefault();
@@ -255,9 +254,10 @@ const Donation = () => {
                         <div className={styles.TermsContainer}>
                             <input id="check" type="checkbox" required></input>
                             <label htmlFor="check">
-                                Terms and condition Lorem ipsum dolor sit amet,
-                                consectetur adipiscing elit. In viverra augue
-                                eget lacus commodo euismod. Phasellu ultrices.
+                                By clicking "Donate", you agree to our Terms and
+                                Conditions, Privacy Policy and Refund Policy.
+                                Please read these documents carefully before
+                                completing your donation.
                             </label>
                         </div>
                         <div
