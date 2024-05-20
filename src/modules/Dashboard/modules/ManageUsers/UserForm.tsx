@@ -378,7 +378,7 @@ const UserForm = forwardRef(
                                 placeholder="Mobile"
                                 value={data.mobile}
                                 onChange={handleChange}
-                                onBlur={handleBlur}
+                                
                             />
                             {errors.mobile && (
                                 <div style={{ color: "red" }}>
