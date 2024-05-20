@@ -1,5 +1,6 @@
 import styles from "./Footer.module.css";
 import { footerData } from "../services/footerData";
+import { Link } from "react-router-dom";
 import {
     RiWhatsappFill,
     RiTwitterFill,
@@ -8,12 +9,15 @@ import {
     RiYoutubeFill,
     RiFacebookBoxFill
 } from "react-icons/ri";
+
+
+
 export default function Footer() {
     return (
         <footer className={styles.footer}>
             <div className={styles.container}>
                 <div className={styles.footerLogo}>
-                    <img src="https://i.ibb.co/FDQ2M4n/Learn.png" alt="mulearn" />
+                    <Link to="https://mulearn.org/"><img src="https://i.ibb.co/FDQ2M4n/Learn.png" alt="mulearn" /></Link>
                     <p>µLearn is one of India's largest student communities that provides learn new skills, network with peers. Oru line koode venam just to make it aesthetic.</p>
                 </div>
                 {footerData.map((data, index) => {

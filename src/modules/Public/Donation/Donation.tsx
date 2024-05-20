@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
@@ -207,7 +208,7 @@ const Donation = () => {
                                 }
                                 onClick={() => handleAmountClick(10000)}
                             >
-                                10,000
+                                ₹10,000
                             </button>
                             <button
                                 type="button"
@@ -218,7 +219,7 @@ const Donation = () => {
                                 }
                                 onClick={() => handleAmountClick(15000)}
                             >
-                                15,000
+                                ₹15,000
                             </button>
                             <button
                                 type="button"
@@ -229,7 +230,7 @@ const Donation = () => {
                                 }
                                 onClick={() => handleAmountClick(20000)}
                             >
-                                20,000
+                                ₹20,000
                             </button>
                         </label>
                         <div className={styles.CurrencyContainer}>
@@ -237,7 +238,7 @@ const Donation = () => {
                             <input
                                 type="number"
                                 id="amount"
-                                placeholder="10,000"
+                                placeholder="₹10,000"
                                 aria-label="Amount"
                                 className={[
                                     styles.DonationInputStyles,
@@ -254,8 +255,12 @@ const Donation = () => {
                         <div className={styles.TermsContainer}>
                             <input id="check" type="checkbox" required></input>
                             <label htmlFor="check">
-                                By clicking "Donate", you agree to our Terms and
-                                Conditions, Privacy Policy and Refund Policy.
+                                By clicking "Donate", you agree to our <Link to="https://mulearn.org/termsandconditions" target="_blank" rel="noopener noreferrer" >
+                                    <u>
+                                        Terms and
+                                        Conditions
+                                    </u>
+                                </Link>, <Link to="https://mulearn.org/privacypolicy" target="_blank" rel="noopener noreferrer" ><u>Privacy Policy</u></Link> and <Link to="./refund" target="_blank" rel="noopener noreferrer" ><u>Refund Policy</u></Link>.
                                 Please read these documents carefully before
                                 completing your donation.
                             </label>
