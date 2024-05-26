@@ -94,17 +94,21 @@ const SaltMangoTree = () => {
                 ))}
             </div>
             {error && (
-               <div>
-               <h1 style={{
-                 width:"auto",
-                 display: 'flex',
-                 justifyContent:'center',
-                 alignContent:'center',
-                 fontSize:'1.5rem',
-                 fontWeight:'500',
-                 padding:"10px"
-               }} >{error}</h1>
-             </div>
+              <div>
+                <h1
+                  style={{
+                    width: "auto",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignContent: "center",
+                    fontSize: "1.5rem",
+                    fontWeight: "500",
+                    padding: "10px",
+                  }}
+                >
+                  {error}
+                </h1>
+              </div>
             )}
           </div>
         </div>
