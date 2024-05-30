@@ -122,7 +122,7 @@ const Level1 = () => {
               + Muhammad Kutty Panaparambil Ismai's Son
             </p>
             <a
-              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+              href="https://www.youtube-nocookie.com/watch?v=dQw4w9WgXcQ"
               target="_blank"
               rel="noopener noreferrer"
             >

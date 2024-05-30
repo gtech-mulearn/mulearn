@@ -1,35 +1,41 @@
-import React, { useState } from "react"
-import styles from "./ISR.module.css"
+import React, { useEffect, useState } from "react";
+import styles from "./ISR.module.css";
 
-import fvimg from "./assets/fvimg.gif"
-import rvimg from "./assets/rvimg.gif"
-import Navbar from "../../../Components/Navbar/Navbar"
-import Footer from "../../../Components/Footer/Footer"
-import axios from "axios"
+import fvimg from "./assets/fvimg.gif";
+import rvimg from "./assets/rvimg.gif";
+import Navbar from "../../../Components/Navbar/Navbar";
+import Footer from "../../../Components/Footer/Footer";
+import axios from "axios";
 
 const ISR = () => {
-  const [isrData, setisrData] = useState([])
-  const [error, setError] = useState()
-  axios
-    .get(
-      "https://opensheet.elk.sh/1r5Pav8TlUEao_9GuMcFasKUEPSDIJOPB9PXKbt4KlTQ/isrcsv"
-    )
-    .then((response) => {
-      setisrData(response.data)
-    })
-    .catch((error) => {
-      console.log(error)
-      setError(
-        "We are currently facing some difficulties in fetching the data at the moment, will be back soon."
+  const [isrData, setIsrData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get(
+        "https://opensheet.elk.sh/1r5Pav8TlUEao_9GuMcFasKUEPSDIJOPB9PXKbt4KlTQ/isrcsv"
       )
-    })
+      .then((response) => {
+        setIsrData(response.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setError(
+          "We are currently facing some difficulties in fetching the data at the moment, will be back soon."
+        );
+        setLoading(false);
+      });
+  }, []);
 
   const ReadMore = ({ children }) => {
-    const text = children
-    const [isReadMore, setIsReadMore] = useState(true)
+    const text = children;
+    const [isReadMore, setIsReadMore] = useState(true);
     const toggleReadMore = () => {
-      setIsReadMore(!isReadMore)
-    }
+      setIsReadMore(!isReadMore);
+    };
     return (
       <p className={styles.card_description}>
         {isReadMore ? text.slice(0, 150) : text}
@@ -37,8 +43,8 @@ const ISR = () => {
           {isReadMore ? "...read more" : " show less"}
         </span>
       </p>
-    )
-  }
+    );
+  };
 
   return (
     <>
@@ -59,14 +65,22 @@ const ISR = () => {
               </p>
             </div>
             <div className={styles.fv_images}>
-              <img src={fvimg} alt="" className={styles.fv_img} />
+              <img
+                src={fvimg}
+                alt="Inspiration Station"
+                className={styles.fv_img}
+              />
             </div>
           </div>
         </div>
         <div className={styles.request_view_container}>
           <div className={styles.request_view}>
             <div className={styles.rv_images}>
-              <img src={rvimg} alt="" className={styles.rv_img} />
+              <img
+                src={rvimg}
+                alt="Speaker Application"
+                className={styles.rv_img}
+              />
             </div>
             <div className={styles.rv_texts}>
               <p className={styles.rv_heading}>
@@ -96,49 +110,37 @@ const ISR = () => {
               </p>
               <p className={styles.sv_tagline}>
                 Listed below are the speakers who came to the inspiration
-                stations and insprired our listeners with their stories and
+                stations and inspired our listeners with their stories and
                 experiences.
               </p>
             </div>
             <div className={styles.sv_cards_container}>
+              {loading && <p>Loading...</p>}
+              {error && <p className={styles.error}>{error}</p>}
               {isrData
                 .slice(0)
                 .reverse()
-                .map((isr) => (
-                  <div className={styles.sv_cards}>
+                .map((isr, index) => (
+                  <div key={index} className={styles.sv_cards}>
                     <div className={styles.card}>
-                      <img src={isr.image} alt="" className={styles.card_img} />
+                      <img
+                        src={isr.image}
+                        alt={isr.speaker}
+                        className={styles.card_img}
+                      />
                       <p className={styles.card_name}>{isr.speaker}</p>
-
                       <ReadMore>{isr.description}</ReadMore>
-                      <p className={styles.card_date}>Held On:{isr.date}</p>
+                      <p className={styles.card_date}>Held On: {isr.date}</p>
                     </div>
                   </div>
                 ))}
             </div>
-            {error && (
-              <div>
-                <h1
-                  style={{
-                    width: "auto",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignContent: "center",
-                    fontSize: "1.5rem",
-                    fontWeight: "500",
-                    padding: "10px",
-                  }}
-                >
-                  {error}
-                </h1>
-              </div>
-            )}
           </div>
         </div>
       </div>
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default ISR
+export default ISR;

@@ -22,7 +22,7 @@ const Footer = () => {
             />
 
             <div className={styles.links}>
-              <a href="/careers">
+              <a href="https://mulearn.org/careers">
                 <p className={styles.link}>Career Labs</p>
               </a>
               <a href="https://gtechmulearn.medium.com/">
@@ -70,7 +70,7 @@ const Footer = () => {
               />
             </a>
             <a
-              href="http://www.instagram.com/gtechmulearn/"
+              href="https://www.instagram.com/mulearn.official/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -93,7 +93,7 @@ const Footer = () => {
             </a>
 
             <a
-              href="https://www.youtube.com/c/mulearn"
+              href="https://www.youtube-nocookie.com/c/mulearn"
               target="_blank"
               rel="noopener noreferrer"
             >
