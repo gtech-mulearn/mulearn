@@ -44,6 +44,8 @@ import DiscordModeration from "./modules/Dashboard/modules/DiscordModeration/Dis
 import Test from "./modules/Dashboard/modules/Test/Test";
 import Analytics from "./modules/Dashboard/modules/UrlShortener/Pages/Analytics";
 import Donation from "./modules/Public/Donation/Donation";
+import Refund from "./modules/Public/Donation/pages/Refund";
+
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
 );
@@ -265,6 +267,10 @@ function App() {
         {
             path: "donation",
             element: <Donation />
+        },
+        {
+            path: "donation/refund",
+            element: <Refund />
         },
         {
             path: "/",

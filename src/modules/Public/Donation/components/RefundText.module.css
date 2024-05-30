@@ -1,0 +1,80 @@
+.pageTitle,
+.heading2 {
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.pageTitle {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 0.75em;
+}
+
+.pageTitle {
+    font-size: 1.875rem;
+    margin-top: 1.875rem;
+}
+
+.heading2 {
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.numberedList {
+    margin: 0;
+    margin-block-start: 0.6em;
+    margin-block-end: 0.6em;
+}
+
+.to-do-children-checked {
+    text-decoration: line-through;
+    opacity: 0.375;
+}
+
+.numberedList {
+    padding-inline-start: 1.6em;
+}
+
+.numberedList > li {
+    padding-left: 0.2em;
+}
+
+.mono .numberedList {
+    padding-inline-start: 2em;
+}
+
+.mono .numberedList > li {
+    text-indent: -0.4em;
+}
+
+.pageDescription {
+    margin-bottom: 2em;
+}
+.sans {
+    font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji",
+        "Segoe UI Symbol";
+}
+
+@media (width<=550px) {
+    .pageTitle {
+        font-size: 1.6rem;
+    }
+
+    .pageTitle {
+        font-size: 1.4rem;
+        margin-top: 1.875rem;
+    }
+
+    .heading2 {
+        font-size: 1.1rem;
+        margin-top: 1.5rem;
+    }
+
+    .pageBody p {
+        font-size: 0.9rem;
+    }
+}

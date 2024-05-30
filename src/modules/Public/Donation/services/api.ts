@@ -12,12 +12,14 @@ declare global {
 export const submitForm = async ({
     amount,
     name,
+    company,
     email,
     mobile,
-    pan
+  pan
 }: {
         amount: number;
         name: string;
+        company?: string;
         email: string;
         mobile: number;
         pan: string;
@@ -32,6 +34,7 @@ export const submitForm = async ({
     .post(donationRoutes.order, {
         amount,
         name,
+        company,
         email,
         mobile
     })
@@ -43,9 +46,9 @@ export const submitForm = async ({
           key_id: import.meta.env.VITE_RAZORPAY_KEY_ID,
           amount: paymentAmount,
           currency: response.data.response.currency,
-          name: 'Gtech Mulearn',
+          name: 'Mulearn Foundation',
           description: 'Donation',
-          image: '/favicon.ico',
+          image: '/assets/µLearn.png', 
           order_id: paymentId,
           handler: function (response: any) {
             console.log(response);
@@ -86,7 +89,7 @@ export const submitForm = async ({
               });
           },
           theme: {
-            color: '#F37254',
+            color: '#456ff6',
           },
         };
 

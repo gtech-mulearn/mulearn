@@ -1,73 +1,46 @@
-name: Mulearn Ticket Form
-description: Create a new Ticket for MuLearn Community
-title: "[MuLearn Community]: "
-labels: ["New Login Page"]
+name: Mulearn Feature Request
+description: Create a new Feature Request for MuLearn Community
+labels: ["enhancement"]
 body:
+  - type: markdown
+    attributes:
+      value: |
+        Please fill out the sections below to properly describe the new feature you are suggesting.
+
   - type: textarea
-    id: ticket-description
+    id: description
     validations:
       required: true
     attributes:
-      label: Ticket Contents
-      value: |
-        ## Description
-        [Provide a brief description of the feature, including why it is needed and what it will accomplish.]
+      label: Description
+      placeholder: |
+        A button in the screen X that allows to do Y
 
   - type: textarea
-    id: ticket-goals
+    id: goals
     validations:
       required: true
     attributes:
       label: Goals
       description: List the goals of the feature.
-      value: |
-        ## Goals
-        - [ ] Goal 1
-        - [ ] Goal 2
-        - [ ] Goal 3
+      placeholder: |
+        - Goal 1
+        - Goal 2
 
   - type: textarea
-    id: ticket-expected-outcome
-    attributes:
-      label: Expected Outcome
-      description: Describe in detail what the final product or result should look like and how it should behave.
-
-  - type: textarea
-    id: ticket-acceptance-criteria
-    attributes:
-      label: Acceptance Criteria
-      description: List the acceptance criteria for this feature.
-
-  - type: textarea
-    id: ticket-implementation-details
+    id: implementation-details
     validations:
       required: true
     attributes:
       label: Implementation Details
       description: List any technical details about the proposed implementation, including any specific technologies that will be used.
-
-  - type: textarea
-    id: ticket-mockups
-    attributes:
-      label: Mockups/Wireframes
-      description: Include links to any visual aids, mockups, wireframes, or diagrams that help illustrate what the final product should look like. This is not always necessary, but can be very helpful in many cases.
-
-  - type: input
-    id: ticket-product
-    attributes:
-      label: Product Name
-      placeholder: Enter Product Name
-    validations:
-      required: true
-
-  - type: input
-    id: ticket-governance-domain
-    attributes:
-      label: Domain
-      placeholder: Enter Area of Governance
+      placeholder: |
+        - Implementation Detail 1
+        - Implementation Detail 2
+        - also add images is possible
 
   - type: dropdown
-    id: ticket-technical-skills-required
+    id: skills-required
     attributes:
       label: Tech Skills Needed
       description: Select the technologies needed for this ticket (use Ctrl or Command to select multiple)
@@ -163,6 +136,8 @@ body:
     attributes:
       label: Mentor(s)
       description: Please tag relevant mentors for the ticket
+      placeholder: |
+        @Jenin82
     validations:
       required: true
 
@@ -180,21 +155,22 @@ body:
       required: true
 
   - type: dropdown
-    id: ticket-category
+    id: category
     attributes: 
       label: Category
       description: Choose the categories that best describe your ticket
       multiple: true
       options:
         - API
-        - Analytics
-        - Accessibility
         - Backend
         - Database
         - Documentation
         - Delpoyment
         - Frontend
         - Testing
+        - Bot
+        - UI
+        - UX
         - Other
     validations:
       required: true

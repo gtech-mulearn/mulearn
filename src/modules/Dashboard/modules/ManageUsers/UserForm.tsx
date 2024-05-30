@@ -33,7 +33,7 @@ type InitialLocationData = {
     state: { label: string; value: string };
     district: { label: string; value: string };
 } | null;
-const requiredFields = ["full_name", "email", "mobile"];
+const requiredFields = ["full_name", "email"];
 const UserForm = forwardRef(
     (props: Props & { closeModal: () => void }, ref: any) => {
         const [initialData, setInitialData] =
@@ -378,7 +378,7 @@ const UserForm = forwardRef(
                                 placeholder="Mobile"
                                 value={data.mobile}
                                 onChange={handleChange}
-                                onBlur={handleBlur}
+                                
                             />
                             {errors.mobile && (
                                 <div style={{ color: "red" }}>
