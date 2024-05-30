@@ -17,11 +17,18 @@ const CampusChapters = () => {
   const [districts, setDistricts] = useState([]);
   const [selectedDistrict, setSelectedDistrict] = useState("all");
   const [campusData, setCampusData] = useState([]);
-  const districtZone={
-    'South':['Pathanamthitta','Trivandrum','Kollam'],
-    'Central':['Alappuzha','Ernakulam','Kottayam','Idukki'],
-    'North':['Palakkad','Thrissur','Kasaragod','Malappuram','Kozhikode','Kannur']
-  }
+  const districtZone = {
+    South: ["Pathanamthitta", "Trivandrum", "Kollam"],
+    Central: ["Alappuzha", "Ernakulam", "Kottayam", "Idukki"],
+    North: [
+      "Palakkad",
+      "Thrissur",
+      "Kasaragod",
+      "Malappuram",
+      "Kozhikode",
+      "Kannur",
+    ],
+  };
 
   useEffect(() => {
     axios
@@ -167,13 +174,13 @@ const CampusChapters = () => {
                   {
                     //iterate through the districts array and return the option element
                     districts
-                    .filter((district) => {
-                      if (selectedZone === 'all') return true
-                      return (  districtZone[selectedZone].includes(district) )
-                    })
-                    .map((district) => {
-                        return <option value={district}>{district}</option>
-                    })
+                      .filter((district) => {
+                        if (selectedZone === "all") return true;
+                        return districtZone[selectedZone].includes(district);
+                      })
+                      .map((district) => {
+                        return <option value={district}>{district}</option>;
+                      })
                   }
                 </select>
               </div>
@@ -184,11 +191,11 @@ const CampusChapters = () => {
                   // return the campuses that match the selected zone
                   if (
                     (campus.zone === selectedZone &&
-                    selectedDistrict === "all") |
+                      selectedDistrict === "all") |
                     (campus.zone === selectedZone &&
-                    campus.district === selectedDistrict) |
-                    (selectedZone === 'all' &&
-                    campus.district === selectedDistrict)
+                      campus.district === selectedDistrict) |
+                    (selectedZone === "all" &&
+                      campus.district === selectedDistrict)
                   ) {
                     return (
                       <div className={styles.college}>
@@ -317,13 +324,13 @@ const CampusChapters = () => {
             <div className={styles.d_video_container}>
               <div className={styles.d_video}>
                 <iframe
-                  src="https://www.youtube.com/embed/3sycnoFCeaM?si=a0t4z26fI-BaO5C_"
+                  src="https://www.youtube-nocookie.com/embed/3sycnoFCeaM?si=a0t4z26fI-BaO5C_"
                   title="YouTube video player"
                   frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowfullscreen
+                  loading="lazy"
                 ></iframe>
-                
               </div>
 
               <div className={styles.d_main_container}>
