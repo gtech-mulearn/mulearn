@@ -89,13 +89,13 @@ export const MobileMenu = ({
           </button>
         </a>
         <a
-          href="https://online.fliphtml5.com/slydm/yljq/#p=1"
+          href="https://app.mulearn.org/donation"
           target="_blank"
           rel="noopener noreferrer"
           className="py-3 px-3 inline-block"
         >
           <button className="border-2 border-orange-400 text-orange-400 px-6 py-2 rounded-md">
-            µNewsletter
+            Donate
           </button>
         </a>
       </div>
