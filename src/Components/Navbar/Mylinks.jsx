@@ -132,6 +132,13 @@ export const links = [
             link: "/mulearn.apk",
             foreign: false,
           },
+          {
+            name: "µNewsletter",
+            submenu: false,
+            sublinks: [],
+            link: "https://online.fliphtml5.com/slydm/yljq/#p=1",
+            foreign: false,
+          }
         ],
 
 
