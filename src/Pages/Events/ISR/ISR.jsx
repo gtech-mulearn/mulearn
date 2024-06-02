@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import styles from "./ISR.module.css";
+import React, { useState,useEffect } from "react"
+import styles from "./ISR.module.css"
 
 import fvimg from "./assets/fvimg.gif";
 import rvimg from "./assets/rvimg.gif";
@@ -8,9 +8,8 @@ import Footer from "../../../Components/Footer/Footer";
 import axios from "axios";
 
 const ISR = () => {
-  const [isrData, setIsrData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [isrData, setisrData] = useState([])
+  const [error, setError] = useState()
 
   useEffect(() => {
     axios
@@ -18,17 +17,15 @@ const ISR = () => {
         "https://opensheet.elk.sh/1r5Pav8TlUEao_9GuMcFasKUEPSDIJOPB9PXKbt4KlTQ/isrcsv"
       )
       .then((response) => {
-        setIsrData(response.data);
-        setLoading(false);
+        setisrData(response.data)
       })
       .catch((error) => {
-        console.log(error);
         setError(
           "We are currently facing some difficulties in fetching the data at the moment, will be back soon."
-        );
-        setLoading(false);
-      });
-  }, []);
+        )
+      })
+  
+  }, [])
 
   const ReadMore = ({ children }) => {
     const text = children;

@@ -1,28 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState,useEffect } from "react";
 import styles from "./SaltMangoTree.module.css";
 import Navbar from "../../../Components/Navbar/Navbar";
 import Footer from "../../../Components/Footer/Footer";
 import axios from "axios";
 
 const SaltMangoTree = () => {
-  const [data, setData] = useState([]);
-  const [error, setError] = useState();
-  useEffect(() => {
-    axios
-      .get(
-        "https://opensheet.elk.sh/1r5Pav8TlUEao_9GuMcFasKUEPSDIJOPB9PXKbt4KlTQ/saltmangotree"
-      )
-      .then((response) => {
-        setData(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-        setError(
-          "We are currently facing some difficulties in fetching the data at the moment, will be back soon."
-        );
-      });
-  }, []);
+  const [data,setData] = useState([])
+  const [error,setError]= useState()
 
+  useEffect(()=>{
+    axios.get("https://opensheet.elk.sh/1r5Pav8TlUEao_9GuMcFasKUEPSDIJOPB9PXKbt4KlTQ/saltmangotree").then(
+      (response)=>{
+        setData(response.data)
+      })
+      .catch((error)=>{
+        console.log(error);
+        setError("We are currently facing some difficulties in fetching the data at the moment, will be back soon.")
+      })
+  },[])
   const ReadMore = ({ children }) => {
     const text = children;
     const [isReadMore, setIsReadMore] = useState(true);
