@@ -194,8 +194,8 @@ export const links = [
             name: "IEEE Launchpad",
             submenu: false,
             sublinks: [],
-            link: "https://launchpadkerala.org/",
-            foreign: true,
+            link: "/launchpad",
+            foreign: false,
           },
           {
             name: "in50hours",
