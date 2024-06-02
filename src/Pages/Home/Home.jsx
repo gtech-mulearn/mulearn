@@ -127,7 +127,7 @@ const Home = () => {
               >
                 <button className={styles.primary}>Join µLearn</button>
               </a>
-              <a rel="noopener noreferrer" href="/launchpad">
+              <a rel="noopener noreferrer"  target="_blank" href="https://launchpadkerala.org/">
                 <button className={styles.secondary}>Join Launchpad 🚀</button>
               </a>
             </div>
