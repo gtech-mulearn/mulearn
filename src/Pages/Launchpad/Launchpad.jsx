@@ -85,7 +85,7 @@ const Launchpad = () => {
                   <div className="ktimeline__event__content">
                     <div className="ktimeline__event__title">Step Two</div>
                     <div className="ktimeline__event__description">
-                      Join the GTech µLearn Discord Server! Dive into the action{" "}
+                      Join the GTech µLearn Discord Server! Dive into the action {" "}
                       <a
                         href="https://app.mulearn.org/register"
                         target="_blank"

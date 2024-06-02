@@ -505,21 +505,20 @@ h2 {
 }
 
 .ktimeline__event__register_btn {
-  padding: 0.5rem 1rem;
+  padding: 1rem 0rem 0 0;
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .ktimeline__event__register {
   padding: 0.5rem 1rem;
   background: #f6832a;
-  margin-top: 0.5rem;
+  /* margin-top: 0.5rem; */
   border-radius: 8px;
   color: #fff;
   border: none;
   outline: none;
-  align-self: flex-end;
   cursor: pointer;
 }
