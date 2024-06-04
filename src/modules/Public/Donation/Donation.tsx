@@ -255,13 +255,31 @@ const Donation = () => {
                         <div className={styles.TermsContainer}>
                             <input id="check" type="checkbox" required></input>
                             <label htmlFor="check">
-                                By clicking "Donate", you agree to our <Link to="https://mulearn.org/termsandconditions" target="_blank" rel="noopener noreferrer" >
-                                    <u>
-                                        Terms and
-                                        Conditions
-                                    </u>
-                                </Link>, <Link to="https://mulearn.org/privacypolicy" target="_blank" rel="noopener noreferrer" ><u>Privacy Policy</u></Link> and <Link to="./refund" target="_blank" rel="noopener noreferrer" ><u>Refund Policy</u></Link>.
-                                Please read these documents carefully before
+                                By clicking "Donate", you agree to our{" "}
+                                <Link
+                                    to="https://mulearn.org/termsandconditions"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <u>Terms and Conditions</u>
+                                </Link>
+                                ,{" "}
+                                <Link
+                                    to="https://mulearn.org/privacypolicy"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <u>Privacy Policy</u>
+                                </Link>{" "}
+                                and{" "}
+                                <Link
+                                    to="./refund"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <u>Refund Policy</u>
+                                </Link>
+                                . Please read these documents carefully before
                                 completing your donation.
                             </label>
                         </div>
