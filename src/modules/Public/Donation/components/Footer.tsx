@@ -10,15 +10,17 @@ import {
     RiFacebookBoxFill
 } from "react-icons/ri";
 
-
-
 export default function Footer() {
     return (
         <footer className={styles.footer}>
             <div className={styles.container}>
                 <div className={styles.footerLogo}>
-                    <Link to="https://mulearn.org/"><img src="https://i.ibb.co/FDQ2M4n/Learn.png" alt="mulearn" /></Link>
-                    <p>µLearn is one of India's largest student communities that provides learn new skills, network with peers. Oru line koode venam just to make it aesthetic.</p>
+                    <Link to="https://mulearn.org/">
+                        <img
+                            src="https://i.ibb.co/FDQ2M4n/Learn.png"
+                            alt="mulearn"
+                        />
+                    </Link>
                 </div>
                 {footerData.map((data, index) => {
                     return (
@@ -43,7 +45,9 @@ export default function Footer() {
                 })}
             </div>
             <hr />
-            <div className={[styles.container, styles.centerContainer].join(" ")}>
+            <div
+                className={[styles.container, styles.centerContainer].join(" ")}
+            >
                 <div className={styles.socialMedia}>
                     <a
                         target="_blank"

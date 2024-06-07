@@ -87,19 +87,19 @@ const Donation = () => {
             <Navbar />
 
             <div className={styles.LClandingPageHero}>
-                <div className={styles.backgroundImage}>
+                {/* <div className={styles.backgroundImage}>
                     <img
                         src="https://i.ibb.co/cCvB4r6/Learning-BG.png"
                         alt="textured background"
                     ></img>
-                </div>
-                <div className={styles.dash}></div>
+                </div> */}
+                {/* <div className={styles.dash}></div> */}
                 <div className={styles.heroTitle}>
                     <span>
                         <b>Donate to</b>{" "}
                         <img src="https://i.ibb.co/FDQ2M4n/Learn.png" alt="" />
                     </span>
-                    <b>Let's grow together</b>
+                    {/* <b>Let's grow together</b> */}
                 </div>
                 <p>
                     An informal mechanism for bringing together learners who are
