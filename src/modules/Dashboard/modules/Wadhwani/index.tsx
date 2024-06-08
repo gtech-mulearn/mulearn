@@ -115,6 +115,9 @@ function stringSlice(inputString: string): string {
             </div>
         );
     };
+    if (isLoading) {
+        return <MuLoader />;
+    }
     return (
         <div className={styles.wrapper}>
             <h1>Wadhwani Foundation Courses</h1>
