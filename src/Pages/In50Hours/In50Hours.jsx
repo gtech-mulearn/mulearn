@@ -28,7 +28,7 @@ const In50Hours = () => {
             <a
               target="_blank"
               rel="noreferrer"
-              href="https://www.makemypass.com/in50hours"
+              href="https://www.makemypass.com/in50hrs"
             >
               <button className={styles.register}>Register Now</button>
             </a>
