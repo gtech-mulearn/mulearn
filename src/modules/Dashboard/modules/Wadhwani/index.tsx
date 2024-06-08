@@ -90,10 +90,17 @@ function getRootIdByTitle(titleToSearch: string): string  {
     console.log(course?.courseName + titleToSearch)
     return course ? course.courseRootId : "null";
 }
-
-    function stringSlice(inputString: string): string {
-        return inputString.substring(3, 200);
+function stringSlice(inputString: string): string {
+    const secondPeriodIndex = inputString.indexOf(
+        ".",
+        inputString.indexOf(".") + 1
+    );
+    if (secondPeriodIndex !== -1) {
+        return inputString.substring(0, secondPeriodIndex + 1).trim();
     }
+    return inputString.substring(0, 200);
+}
+
         const CourseCard: React.FC<CourseCardProps> = ({ title, desc, duration, rootId }) => {
         return (
             <div className={styles.containercard}>
@@ -108,7 +115,6 @@ function getRootIdByTitle(titleToSearch: string): string  {
             </div>
         );
     };
-
     return (
         <div className={styles.wrapper}>
             <h1>Wadhwani Foundation Courses</h1>
