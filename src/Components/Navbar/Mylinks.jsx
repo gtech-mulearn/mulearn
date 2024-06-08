@@ -114,6 +114,35 @@ export const links = [
           },
         ],
       },
+      {
+        name: "Others",
+        submenu: true,
+        sublinks: [
+          {
+            name: "Magazine",
+            submenu: false,
+            sublinks: [],
+            link: "https://online.fliphtml5.com/blxtf/bicl/#p=1",
+            foreign: true,
+          },
+          {
+            name: "Download Apk",
+            submenu: false,
+            sublinks: [],
+            link: "/mulearn.apk",
+            foreign: false,
+          },
+          {
+            name: "µNewsletter",
+            submenu: false,
+            sublinks: [],
+            link: "https://online.fliphtml5.com/slydm/yljq/#p=1",
+            foreign: false,
+          }
+        ],
+
+
+      },
     ],
   },
   {
@@ -154,6 +183,28 @@ export const links = [
             link: "/events/gta/codestorm",
             foreign: false,
           },
+          {
+            name: "Top100 Coders",
+            submenu: false,
+            sublinks: [],
+            link: "https://top100coders.com/",
+            foreign: true,
+          },
+          {
+            name: "IEEE Launchpad",
+            submenu: false,
+            sublinks: [],
+            link: "/launchpad",
+            foreign: false,
+          },
+          {
+            name: "in50hours",
+            submenu: false,
+            sublinks: [],
+            link: "/in50hours",
+            foreign: false,
+          }
+
         ],
       },
       {
