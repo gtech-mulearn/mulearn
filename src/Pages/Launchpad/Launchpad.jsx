@@ -109,7 +109,7 @@ const Launchpad = () => {
                   <div className="ktimeline__event__content">
                     <div className="ktimeline__event__title">Step Three</div>
                     <div className="ktimeline__event__description">
-                      Conquer the <b>21-day challenge</b> and earn{" "}
+                      Conquer the <b>2 month learning challenge</b> and earn{" "}
                       <b>Karma points</b>! Log in, climb the ranks from{" "}
                       <b> Level 1 to 3</b>, and don't miss our daily{" "}
                       <b>Office Hours</b> from 8 to 9 pm for support.
