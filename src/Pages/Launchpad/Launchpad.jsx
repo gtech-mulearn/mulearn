@@ -62,14 +62,16 @@ const Launchpad = () => {
                       future!
                     </div>
                     <div className="ktimeline__event__register_btn">
-                      <button
-                        href="https://forms.gle/C5e6XHhVGkV3axQS8"
+                      <a
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="ktimeline__event__register"
+                        href="https://forms.gle/C5e6XHhVGkV3axQS8"
+                        className=""
                       >
-                        Register now
-                      </button>
+                        <button className="ktimeline__event__register">
+                          Register now
+                        </button>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -85,7 +87,7 @@ const Launchpad = () => {
                   <div className="ktimeline__event__content">
                     <div className="ktimeline__event__title">Step Two</div>
                     <div className="ktimeline__event__description">
-                      Join the GTech µLearn Discord Server! Dive into the action {" "}
+                      Join the GTech µLearn Discord Server! Dive into the action{" "}
                       <a
                         href="https://app.mulearn.org/register"
                         target="_blank"
