@@ -142,7 +142,15 @@ const UserForm = forwardRef(
         const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
             const { name, value } = e.target;
 
-            setData(prevData => ({ ...prevData, [name]: value }));
+            if (name === "mobile" && value && !/^\+?\d{0,12}$/.test(value.trim())) {
+                setErrors(prevErrors => ({
+                    ...prevErrors,
+                    mobile: "Invalid format"
+                }));
+            } else {
+                setErrors(prevErrors => ({ ...prevErrors, mobile: undefined }));
+                setData(prevData => ({ ...prevData, [name]: value.trim() || " " }));
+            }
         };
 
         const handleYearChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -373,7 +381,7 @@ const UserForm = forwardRef(
                         </div>
                         <div className={styles.inputContainer}>
                             <input
-                                type="text"
+                                type="tel"
                                 name="mobile"
                                 placeholder="Mobile"
                                 value={data.mobile}
