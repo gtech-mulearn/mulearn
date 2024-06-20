@@ -1,18 +1,24 @@
 .LClandingPageNav {
-    position: absolute;
+    position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1;
+    z-index: 2;
     display: flex;
-    justify-content: space-between;
-    padding: 3rem 5rem;
+    justify-content: space-around;
+    padding: 1rem 0rem;
+    gap: 10vw;
+    backdrop-filter:blur(30px);
 }
-
+.LClandingPageNav img{
+    width: 32px;
+    height: 40px;
+}
 .LClandingPageNav .navLinks,
 .LClandingPageNav .navLinks div {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 3rem;
+    font-size: 1.1rem;
 }
 
 .LClandingPageNav .navLinks div {
@@ -23,17 +29,19 @@
 .LClandingPageNav .navLinks button {
     background: var(--blue);
     border-radius: var(--borderRadius);
-    padding: 0.5rem 1rem;
-    font-size: 0.8rem;
+    padding: .5rem 2rem;
+    font-size: 1.1rem;
     color: #fff;
 }
 
-@media (width <=820px) {
+@media (width <=800px) {
     .LClandingPageNav {
-        padding: 3rem 2rem;
+        justify-content: space-between;
+        padding: 2rem 2rem;
     }
 
-    .LClandingPageNav .navLinks {
+    .LClandingPageNav .navLinks div{
         display: none;
     }
+
 }
