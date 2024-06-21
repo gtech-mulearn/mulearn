@@ -241,6 +241,8 @@ const ConnectedDevices = lazy(
 );
 const Wadhwani = lazy(() => import("./modules/Dashboard/modules/Wadhwani"));
 
+const Trivial = lazy(() => import("./modules/Public/TrivialIdeas/modules/trivial"));
+
 function App() {
     const AuthChecker = SecureAuthRoutes();
     const router = createBrowserRouter([
@@ -276,6 +278,10 @@ function App() {
         {
             path: "donation/refund",
             element: <Refund />
+        },
+        {
+            path:"trivial-ideas",
+            element:<Trivial />
         },
         {
             path: "/",

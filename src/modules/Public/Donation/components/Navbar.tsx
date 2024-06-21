@@ -1,13 +1,13 @@
 import styles from "./Navbar.module.css";
 import { Link, useNavigate} from "react-router-dom";
-
+import logo from "../assets/µ.png"
 
 export default function Navbar(){
     const navigate = useNavigate();
 
     return(
         <nav className={styles.LClandingPageNav}>
-                <Link to="https://mulearn.org/"><img src="https://i.ibb.co/vY786NX/image.png" alt="muLearn" /></Link>
+                <Link to="https://mulearn.org/"><img src={logo} alt="muLearn" /></Link>
                 <div className={styles.navLinks}>
                     <div>
                         <Link to="https://mulearn.org/">About</Link>
