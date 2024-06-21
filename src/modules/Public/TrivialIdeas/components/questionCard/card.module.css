@@ -1,0 +1,58 @@
+.questionCard {
+    width: 100%;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    border: 2px solid #e5e5e5;
+    /* border: 2px solid #2E85FE; */
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px 20px;
+    cursor: pointer;
+  }
+  
+  .questionText {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .arrowButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background-color: #e5e5e5;
+    border: none;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  .arrowButton svg {
+    transform: rotate(0deg);
+    transition: transform 0.3s ease;
+  }
+  
+  .ani_svg {
+    transform: rotate(90deg);
+    background: #2E85FE;
+  }
+  
+  .content {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.5s ease;
+    padding: 0px 20px;
+  }
+  
+  .content.show {
+    height: 100px; /* Adjust according to content length */
+    padding: 0px 20px 20px;
+  }
