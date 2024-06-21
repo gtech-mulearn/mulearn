@@ -1,0 +1,96 @@
+.processDiagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+  }
+  
+  .heading {
+    font-size: 24px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  .stepsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 80%;
+  }
+  .stepsInnerContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  .arrow {
+    font-size: 24px;
+    margin: 0 20px;
+  }
+  
+  @media (max-width: 768px) {
+    .stepsContainer {
+      flex-direction: column;
+    }
+    
+    .arrow {
+      transform: rotate(90deg);
+      margin: 10px 0;
+    }
+  }
+  .processDiagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+  }
+  
+  .heading {
+    font-size: 3vw;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .stepsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .arrow {
+    font-size: 24px;
+    margin: 0 20px;
+    display: none;
+  }
+  
+  @media (max-width: 768px) {
+    .heading {
+      font-size: 6vw;
+    }
+    .stepsContainer {
+      flex-direction: column;
+    }
+    
+    .arrow {
+      transform: rotate(90deg);
+      margin: 10px 0;
+    }
+  }
+  
+  @media (min-width: 1500px) { 
+    /* .processDiagram{
+       
+    } */
+  }
+
+/*mobile view*/
+@media (max-width: 768px) {
+  .stepsContainer{
+    max-width: 100%;
+  }
+    .arrow {
+      display: block;
+    }
+}
