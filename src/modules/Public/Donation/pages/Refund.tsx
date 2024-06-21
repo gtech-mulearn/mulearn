@@ -5,7 +5,7 @@ import RefundPage from "../components/RefundText";
 
 const Refund = () => {
     return (
-        <div className={styles.LClandingPage}>
+        <div className={styles.RefundPage}>
             <Navbar />
             <div className={styles.backgroundImage}>
                 <img
