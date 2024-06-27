@@ -91,7 +91,7 @@ function Receipt() {
                                             src={mulearn}
                                         />
                                     </div>
-                                    <div className={styles['contribution-sum']}>Contribution Summary</div>
+                                    <div className={styles['contribution-sum']}>Contribution Receipt</div>
                                 </div>
                             </div>
                             <div className={styles['frame-parent1']}>
@@ -104,7 +104,7 @@ function Receipt() {
                                 <div className={styles['may20240649-wrapper']}>
                                     <div className={styles['may20240649']}>
                                         {
-                                            //11May,2024,06:49PM
+                                            //to print the date and time in this format 11May,2024,06:49PM
                                             formatDate(new Date())
                                         }
                                     </div>
@@ -115,14 +115,14 @@ function Receipt() {
                             <div className={styles['background']}></div>
                             <div className={styles['frame-parent3']}>
                                 <div className={styles['beneficiaryfund-wrapper']}>
-                                    <div className={styles['beneficiaryfund']}>BENEFICIARY FUND</div>
+                                    <div className={styles['beneficiaryfund']}>BENEFICIARY INFO</div>
                                 </div>
                                 <div className={styles['frame-parent4']}>
                                     <div className={styles['swami-vivekanand-wrapper']}>
-                                        <h1 className={styles['swami-vivekanand']}>µLearn</h1>
+                                        <h1 className={styles['swami-vivekanand']}>µLearn Foundation</h1>
                                     </div>
                                     <div className={styles['b-207pacific-es']}>
-                                        Technopark Trivandrum, Kazhakkoottam, Trivandrum - 695581,
+                                        Gtech Lobby Area Technopark Trivandrum,
                                         Kerala, India
                                     </div>
                                 </div>
@@ -157,7 +157,7 @@ function Receipt() {
                                     <div className={styles['upi']}>{pdfData.Payment_method}</div>
                                 </div>
                                 <div className={styles['paytm-order-id-parent']}>
-                                    <div className={styles['paytm-order-id']}>Paytm Order ID</div>
+                                    <div className={styles['paytm-order-id']}>Razorpay Order ID</div>
                                     <div className={styles['div1']}>{pdfData.payment_id}</div>
                                 </div>
                                 <div className={styles['amount-paid-parent']}>

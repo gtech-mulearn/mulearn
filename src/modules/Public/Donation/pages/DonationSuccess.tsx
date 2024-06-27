@@ -76,8 +76,8 @@ const DonationSuccess = () => {
     return pdfData ? (
         <>
             <div ref={pdfElement} style={{
-                position: "absolute",
-                top: "-1000px",
+                // position: "absolute",
+                // top: "-1000px",
             }}>
                 <Receipt />
             </div>
