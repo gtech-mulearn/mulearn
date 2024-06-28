@@ -91,7 +91,7 @@ export const dashboardRoutes = {
     getStudentLeaderBoard: "/api/v1/leaderboard/students/",
     getIgDetails: "/api/v1/dashboard/profile/ig-edit/",
     getSocials: "/api/v1/dashboard/profile/socials/",
-    postProfileImage: "api/v1/dashboard/user/profile/update/",
+    postProfileImage: "/api/v1/dashboard/user/profile/update/",
 
     zonalStudentDetails: "/api/v1/dashboard/zonal/student-details/",
     zonalStudentData: "/api/v1/dashboard/zonal/student-details/csv/",

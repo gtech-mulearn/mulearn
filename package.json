@@ -19,6 +19,8 @@
         "file-saver": "^2.0.5",
         "formik": "^2.2.9",
         "framer-motion": "^10.18.0",
+        "html2canvas": "^1.4.1",
+        "jspdf": "^2.5.1",
         "lottie-react": "^2.4.0",
         "moment": "^2.29.4",
         "razorpay": "^2.9.3",
