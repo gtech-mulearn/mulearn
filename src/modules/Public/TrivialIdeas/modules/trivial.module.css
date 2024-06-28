@@ -300,7 +300,7 @@ div[style*="padding: 0rem 0"] {
 }
 @media (max-width: 425px) {
     .content p{
-        font-size: 24px;
+        font-size: 8vw;
     }
     .content img{
         width: 50px;

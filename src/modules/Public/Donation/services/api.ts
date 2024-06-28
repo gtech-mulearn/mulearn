@@ -34,7 +34,8 @@ export const submitForm = async ({
             name,
             company,
             email,
-            mobile
+            mobile,
+            pan
         })
         .then(response => {
             const paymentId: string = response.data.response.id;
@@ -49,8 +50,7 @@ export const submitForm = async ({
                 image: "/assets/µLearn.png",
                 order_id: paymentId,
                 handler: function (response: any) {
-                    console.log(response);
-
+                    console.log(paymentAmount,this.currency)
                     publicGateway
                         .post(donationRoutes.verify, {
                             razorpay_order_id: response.razorpay_order_id,
@@ -59,6 +59,7 @@ export const submitForm = async ({
                         })
                         .then(res => {
                             console.log(res?.data);
+                            console.log("type",typeof(res?.data));
                             toast.success(
                                 res?.data?.message?.general[0] ||
                                     "Payment Successful"
@@ -66,11 +67,12 @@ export const submitForm = async ({
                             // Assuming response.data contains the PDF data
 
                             const pdfData = res?.data;
+                            localStorage.setItem("pdfData", JSON.stringify(pdfData));
 
                             // Create a new blob from the PDF data
-                            const pdfBlob = new Blob([pdfData], {
-                                type: "application/pdf"
-                            });
+                            // const pdfBlob = new Blob([pdfData], {
+                            //     type: "application/pdf"
+                            // });
 
                             // // Create a URL for the blob
                             // const pdfUrl = URL.createObjectURL(pdfBlob);
@@ -86,21 +88,27 @@ export const submitForm = async ({
                             // window.location.href = "/donation/success";
 
                             // Convert blob data to a base64 string
-                            const reader = new FileReader();
-                            reader.onloadend = function () {
-                                const base64data = reader.result;
-                                if (base64data) {
-                                    localStorage.setItem(
-                                        "pdfData",
-                                        base64data as string
-                                    );
+                            // const reader = new FileReader();
+                            // reader.onloadend = function () {
+                            //     const base64data = reader.result;
+                            //     if (base64data) {
+                            //         localStorage.setItem(
+                            //             "pdfData",
+                            //             base64data as string
+                            //         );
 
-                                    window.location.href = "/donation/success";
-                                } else {
-                                    console.error("Failed to read PDF data.");
-                                }
-                            };
-                            reader.readAsDataURL(pdfBlob);
+                            //         window.location.href = "/donation/success";
+                            //     } else {
+                            //         console.error("Failed to read PDF data.");
+                            //     }
+                            // };
+                            // reader.readAsDataURL(pdfBlob);
+                            const storeData = localStorage.getItem("pdfData");
+                            if (storeData) {
+                                window.location.href = "/donation/success";
+                            } else {
+                                console.error("Failed to read PDF data.");
+                            }
                         })
                         .catch(error => {
                             console.log(error);

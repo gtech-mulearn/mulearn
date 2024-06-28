@@ -42,6 +42,8 @@ const Donation = () => {
                 mobile: mobile,
                 pan: pan
             });
+            //save data to local storage
+            localStorage.setItem("donationData", JSON.stringify({ amount, name, company, email, mobile, pan }));// saving the data because the server does not return all the required data
         } else {
             submitForm({
                 amount: amount,
@@ -50,6 +52,8 @@ const Donation = () => {
                 mobile: mobile,
                 pan: pan
             });
+            //save data to local storage
+            localStorage.setItem("donationData", JSON.stringify({ amount, name, email, mobile, pan }));
         }
     };
 
