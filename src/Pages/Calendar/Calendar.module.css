@@ -46,6 +46,7 @@
 
 .calendar_view_container {
   margin: 2rem;
+  border:none;
 }
 
 .calendar_view {
