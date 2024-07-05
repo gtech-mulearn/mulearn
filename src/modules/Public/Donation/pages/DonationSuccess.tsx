@@ -75,12 +75,6 @@ const DonationSuccess = () => {
 
     return pdfData ? (
         <>
-            <div ref={pdfElement} style={{
-                // position: "absolute",
-                // top: "-1000px",
-            }}>
-                <Receipt />
-            </div>
             <div className={styles.LClandingPage}>
                 <Navbar />
 
@@ -126,7 +120,12 @@ const DonationSuccess = () => {
                         </div>
                     </div>
                 </div>
-
+                <div ref={pdfElement} style={{
+                position: "absolute",
+                top: "-1000%",
+            }}>
+                <Receipt />
+            </div>
                 <Footer />
             </div>
         </>
