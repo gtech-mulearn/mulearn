@@ -1,6 +1,6 @@
 import { useState,useEffect } from 'react'
 import logo from '../../assets/receipt/logo.svg'
-import mulearn from '../../assets/receipt/learn.svg'
+import mulearn from '../../assets/receipt/logo.png'
 import vector from '../../assets/receipt/vector.svg'
 import bigLogo from '../../assets/receipt/group-75.svg'
 import styles from './Receipt.module.css';
