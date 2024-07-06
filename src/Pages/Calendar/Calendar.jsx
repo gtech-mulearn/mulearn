@@ -28,16 +28,7 @@ const Calendar = () => {
           <div className={styles.calendar_view}>
             <div className={styles.cv_texts}></div>
             <div className={styles.iframe_container}>
-              <iframe
-                class="airtable-embed"
-                title="calendar"
-                src="https://airtable.com/embed/shrUHMmdVuDRrYzYx?backgroundColor=yellow&viewControls=on"
-                frameborder="0"
-                onmousewheel=""
-                width="100%"
-                height="533"
-                style={{ background: "transparent", border: "1px solid #ccc" }}
-              ></iframe>
+              <iframe src="https://embed.styledcalendar.com/#hew26NgCmtLDa4E2BeTK" title="Styled Calendar" class="airtable-embed"  data-cy="calendar-embed-iframe" width="100%" height="700"></iframe>
             </div>
           </div>
         </div>
