@@ -181,9 +181,8 @@ function Receipt() {
                         <div className={styles['the-contribution']}>
                             The contribution made to is eligible for µLearn claiming exemptions
                             under Section 80(G)of the Income Tax Act, 1961 vide Registration
-                            No.- ############## by the Office of the Income Tax
-                            Department（Dehradun)valid from assessment year 2022-23 till
-                            2026-27.
+                            No.- AAQCM8688KF20231 by the Office of the Income Tax
+                            Department（Dehradun)valid from assessment year 01-12-2023
                         </div>
                     </div>
                     <div className={styles['all-donations-are-voluntary-a-wrapper']}>
