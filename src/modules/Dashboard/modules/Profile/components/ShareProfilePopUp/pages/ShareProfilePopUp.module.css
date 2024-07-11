@@ -16,7 +16,7 @@
     .share_pop_up {
         margin: 15dvh auto auto;
         height: auto;
-        width: 400px;
+        width: 450px;
         background: white;
         border-radius: 10px;
         box-shadow: 1px 1px 20px 1px #8c8c8c47;
@@ -39,10 +39,12 @@
             }
 
             & button {
+
                 width: 100%;
                 padding: 16px;
-                background: #f3f3f4;
+                background: red;
                 border-radius: 10px;
+                color: white
             }
 
             .profile_state {
@@ -63,6 +65,7 @@
                 display: flex;
                 gap: 10px;
                 width: 100%;
+
 
                 .embed_copy_btn {
                     background: #456ff6;
