@@ -1,0 +1,29 @@
+.certificate_container {
+    display: flex;
+    align-items: center; /* Centers horizontally */
+    justify-content: center; /* Centers vertically */
+    margin-top: 20px;
+}
+
+.certificate {
+    padding: 20px;
+    border: 2px solid #000;
+    border-radius: 10px;
+    width: 80%;
+    text-align: center;
+    background-color: #20151d;
+}
+
+.certificate h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.certificate p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.certificate strong {
+    font-weight: bold;
+}
