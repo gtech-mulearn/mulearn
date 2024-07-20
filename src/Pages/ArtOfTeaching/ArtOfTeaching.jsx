@@ -303,7 +303,8 @@ const ArtOfTeaching = () => {
       </div>
       
       <div className="mt-5">
-          <button style={{font:'bold', fontSize:'16px'}} className={styles.create }>Download Pdf</button>
+      <a href="https://docs.google.com/document/d/1wnzN2rwKfS3Y4t_A6KMxyCm3mSNWMvGhzqjNaZ-hYGk/edit?usp=drivesdk">
+      <button style={{font:'bold', fontSize:'16px',width:'180px'}} className={styles.create }>Download Pdf</button></a> 
         </div>
     </div>
                   </div>
