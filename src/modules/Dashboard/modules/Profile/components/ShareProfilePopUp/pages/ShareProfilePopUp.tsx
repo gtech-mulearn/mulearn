@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
+import ReactDOM from "react-dom";
 import styles from "./ShareProfilePopUp.module.css";
 import { Switch } from "@chakra-ui/react";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { saveAs } from "file-saver";
 import { fetchQRCode } from "../services/api";
+import Certificate from "../../Certificate/Certificate";
+
+import html2canvas from "html2canvas";
 
 type Props = {
     popUP: boolean;
@@ -14,32 +18,63 @@ type Props = {
     putIsPublic: (isPublic: boolean) => void;
 };
 
-const ShareProfilePopUp = (props: Props) => {
+const ShareProfilePopUp: React.FC<Props> = props => {
     const [copy, setCopy] = useState(false);
     const [blob, setBlob] = useState<any>();
     const [embedSize, setEmbedSize] = useState("100px");
+    const certificateRef = useRef<HTMLDivElement>(null);
+
     useEffect(() => {
         fetchQRCode(setBlob);
     }, []);
+
     useEffect(() => {
         window.history.pushState(null, "", window.location.href);
         window.addEventListener("popstate", () => {
             props.setPopUP(false);
         });
     }, [props.popUP]);
+
     const downloadQR = () => {
         saveAs(blob, `${props.userProfile.muid}.png`);
     };
+
+    const downloadPNG = () => {
+        if (certificateRef.current) {
+            html2canvas(certificateRef.current).then((canvas) => {
+                const imgData = canvas.toDataURL('image/png');
+                const link = document.createElement('a');
+                link.href = imgData;
+                link.download = 'certificate.png';
+                link.click();
+            });
+        }
+    };
+
+    const openCertificateInNewTab = () => {
+        const newTab = window.open('', '_blank');
+        if (newTab) {
+            const certificateComponent = (
+                <Certificate
+                    name={props.userProfile.full_name}
+                    muid={props.userProfile.muid}
+                    level={props.userProfile.level}
+                    karma={props.userProfile.karma}
+                    interestGroups={props.userProfile.interest_groups}
+                />
+            );
+            newTab.document.body.innerHTML = '<div id="certificate-root"></div>';
+            ReactDOM.render(certificateComponent, newTab.document.getElementById('certificate-root'));
+        }
+    };
+
     return (
         <>
             <div
                 style={
                     props.popUP
                         ? { transform: "scale(1)" }
-                        : {
-                              transform: "scale(0)"
-                              // opacity: "0",
-                          }
+                        : { transform: "scale(0)" }
                 }
                 className={styles.share_pop_up_container}
                 onKeyDown={e => {
@@ -70,19 +105,16 @@ const ShareProfilePopUp = (props: Props) => {
                         {props.profileStatus && (
                             <div className={styles.share_profile_container}>
                                 <div className={styles.qr_code}>
-                                    <img src={blob} alt="" />
+                                    <img src={blob} alt="QR Code" />
                                 </div>
-                                {/* Todo: Reusable copy link component */}
                                 <div className={styles.link}>
                                     <p>
                                         {
                                             import.meta.env
                                                 .VITE_FRONTEND_URL as string
                                         }
-                                        /profile/
-                                        {props.userProfile.muid}
+                                        /profile/{props.userProfile.muid}
                                     </p>
-
                                     <i
                                         onClick={() => {
                                             navigator.clipboard.writeText(
@@ -100,11 +132,9 @@ const ShareProfilePopUp = (props: Props) => {
                                         }}
                                         className="fi fi-sr-link"
                                     >
-                                        {/* Todo: Create as left Side Tooltip Component for below component */}
                                         <div className={styles.toast}>
                                             <p>{!copy ? "Copy" : "Copied!"}</p>
                                         </div>
-                                        {/* Todo: Create as left Side Tooltip Component for above component*/}
                                     </i>
                                 </div>
                             </div>
@@ -141,25 +171,38 @@ const ShareProfilePopUp = (props: Props) => {
                                     </select>
                                 </button>
                                 <MuButton
+                                    className={styles.embed_copy_btn}
                                     style={{
-                                        border: "1px solid #456FF6",
-                                        color: "#000",
-                                        margin: "0px 0px -8px 0px",
                                         display: "flex",
-                                        justifyContent: "center",
-                                        padding: "26px 16px",
-                                        minWidth: "auto"
+                                        justifyContent: "center"
                                     }}
                                     text={"Download QR"}
-                                    onClick={() => {
-                                        downloadQR();
-                                    }}
+                                    onClick={downloadQR}
                                 />
                             </div>
                         )}
-                        <button onClick={() => props.setPopUP(false)}>
-                            {!props.profileStatus ? "Cancel" : "Close"}
-                        </button>
+                        <div
+                            style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                alignItems: "center",
+                                width: "100%"
+                            }}
+                        >
+                            <MuButton
+                                style={{
+                                    background: "#456ff6",
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    color: "#fff"
+                                }}
+                                text={"Download Certificate"}
+                                onClick={openCertificateInNewTab}
+                            />
+                            <button onClick={() => props.setPopUP(false)}>
+                                {!props.profileStatus ? "Cancel" : "Close"}
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
