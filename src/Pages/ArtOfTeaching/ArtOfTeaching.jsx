@@ -8,6 +8,7 @@ import "./ArtOfTeaching.scss";
 import Faq from "react-faq-component";
 
 import fvimg from "./assets/fvimg.gif";
+import Guidlines from "./assets/Guidlines.pdf";
 
 import MentorCard from "../../Components/MentorCard/MentorCard";
 
@@ -263,7 +264,10 @@ const ArtOfTeaching = () => {
         
       </div>
       <div className="mt-2">
-          <a href="https://docs.google.com/document/d/1wnzN2rwKfS3Y4t_A6KMxyCm3mSNWMvGhzqjNaZ-hYGk/edit?usp=drivesdk">
+          <a href={Guidlines}
+         
+           download="Art of Teaching Guidelines.pdf"
+          >
           <button style={{font:'bold', fontSize:'16px',width:'180px'}} className={styles.create }>Download Pdf</button></a> 
         </div>
     </div>
@@ -303,7 +307,13 @@ const ArtOfTeaching = () => {
       </div>
       
       <div className="mt-5">
-      <a href="https://docs.google.com/document/d/1wnzN2rwKfS3Y4t_A6KMxyCm3mSNWMvGhzqjNaZ-hYGk/edit?usp=drivesdk">
+      <a
+          href={Guidlines}
+           download="Art of Teaching Guidelines.pdf"
+          className="download-button"
+        >
+         
+       
       <button style={{font:'bold', fontSize:'16px',width:'180px'}} className={styles.create }>Download Pdf</button></a> 
         </div>
     </div>
