@@ -122,7 +122,7 @@ export const links = [
             name: "Magazine",
             submenu: false,
             sublinks: [],
-            link: "https://online.fliphtml5.com/blxtf/bicl/#p=1",
+            link: "https://online.fliphtml5.com/slydm/hrgi/",
             foreign: true,
           },
           {
