@@ -5,14 +5,13 @@ import CardContent from "@mui/material/CardContent";
 
 import Typography from "@mui/material/Typography";
 import { CircularProgress } from "@mui/material";
-import axios from "axios";
 
 import styles from "./Wadhwani2.module.css";
 import styles2 from "./Wadhwani.module.css";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 import leader from "./assets/Leader.gif";
-
+import {  getData  } from "./services/api";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 const theme = createTheme({
   palette: {
@@ -27,19 +26,7 @@ const Wadhwani = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios
-      .get(
-        "https://opensheet.elk.sh/1LEvZozIVVquXjSvtptQcjiU0_WFaxVuEYBCYyCdsCtY/sheet"
-      )
-      .then((response) => {
-        setData(response.data);
-        setLoading(false);
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-        setLoading(false);
-      });
+    getData(setData,setLoading)
   }, []);
 
   if (loading) {
