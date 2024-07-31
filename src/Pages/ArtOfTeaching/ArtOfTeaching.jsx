@@ -8,7 +8,7 @@ import "./ArtOfTeaching.scss";
 import Faq from "react-faq-component";
 
 import fvimg from "./assets/fvimg.gif";
-import Guidlines from "./assets/Guidlines.pdf";
+import Guidlines from "./assets/Guidlines1.pdf";
 
 import MentorCard from "../../Components/MentorCard/MentorCard";
 
@@ -247,7 +247,7 @@ const ArtOfTeaching = () => {
       <div className=" pl-4" style={timelineItemStyle}>
         <div className=" pl-4" style={circleStyle}></div>
         <div className=" ml-4" style={lineStyle}></div>
-        <div style={contentStyle} ><p style={{fontSize:'17px'}}>Task 1 - Self introduction with welcome ticket.</p></div>
+        <div style={contentStyle} ><p style={{fontSize:'17px'}}>Task 1 - Self introduction.</p></div>
       </div>
       <div className=" pl-4" style={timelineItemStyle}>
         <div className=" pl-4" style={circleStyle}></div>
