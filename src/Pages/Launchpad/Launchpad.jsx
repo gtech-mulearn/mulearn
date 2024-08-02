@@ -1,13 +1,13 @@
 import React from "react";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
-import styles from "./Launchpad.module.css";
+// import styles from "./Launchpad.module.css";
 import "./steps.css";
 const Launchpad = () => {
   return (
     <>
       <Navbar />
-      <div className={styles.main_container}>
+      {/*<div className={styles.main_container}>
         <div className={styles.first_view_container}>
           <div className={styles.first_view}>
             <div className={styles.fv_texts}>
@@ -18,8 +18,7 @@ const Launchpad = () => {
                 The IEEE LAUNCHPAD Job Fair is an opportunity to secure your
                 spotlight and connect with potential employers through karma
                 points!{" "}
-                {/* <br />
-                                <br /> */}
+
                 This event is designed to facilitate meaningful interactions
                 between talented individuals like yourself and companies seeking
                 top-tier talent.
@@ -48,15 +47,7 @@ const Launchpad = () => {
                   <div className="ktimeline__event__content">
                     <div className="ktimeline__event__title">Step One</div>
                     <div className="ktimeline__event__description">
-                      {/* Register{" "}
-                                            <a
-                                                href="https://forms.gle/C5e6XHhVGkV3axQS8"
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                here
-                                            </a>
-                                            {" "}and */}
+
                       Get ready for the adventure! Once you receive your
                       confirmation email, we're set to chart a course to your
                       future!
@@ -179,7 +170,17 @@ const Launchpad = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div>*/}
+
+      <iframe
+        title="launchpad leaderboard"
+        style={{
+          height: "100vh",
+          width: "100%",
+        }}
+        src="https://mu-3.vercel.app/launchpad"
+        frameborder="0"
+      ></iframe>
       <Footer />
     </>
   );
