@@ -8,6 +8,7 @@ import "./ArtOfTeaching.scss";
 import Faq from "react-faq-component";
 
 import fvimg from "./assets/fvimg.gif";
+import Guidlines from "./assets/Guidlines.pdf";
 
 import MentorCard from "../../Components/MentorCard/MentorCard";
 
@@ -20,24 +21,76 @@ import "swiper/css/navigation";
 
 // import { Pagination, Navigation } from "swiper"
 
+
+
+
 const ArtOfTeaching = () => {
+
+  const timelineStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    marginLeft: '20px'
+  };
+
+  const timelineItemStyle = {
+    display: 'flex',
+    alignItems: 'center',
+    position: 'relative',
+    marginBottom: '20px'
+  };
+
+  const circleStyle = {
+    width: '20px',
+    height: '20px',
+    backgroundColor: '#555',
+    borderRadius: '50%',
+    position: 'relative',
+    zIndex: '1'
+  };
+
+  const lineStyle = {
+    width: '2px',
+    height: '40px',
+    backgroundColor: '#555',
+    position: 'absolute',
+    top: '20px',
+    left: '9px',
+    zIndex: '0'
+  };
+  const mobilelineStyle = {
+    width: '2px',
+    height: '40px',
+    backgroundColor: '#555',
+    position: 'absolute',
+    top: '42px',
+    left: '9px',
+    zIndex: '0'
+  };
+
+  const contentStyle = {
+    marginLeft: '40px',
+    
+  };
+
+
   const data = {
     title: "Frequently Asked Questions",
     rows: [
       {
         title: "What are the Judgement Criteria?",
         content:
-          "The maximum length of the video can be 3 minutes. Fact check of the information provided in the video. Clarity of the topic taught. Way of Presentation etc..",
+          " There will be 2 levels, judging is done by evaluating creativity, clarity, effectiveness and delivery of teaching. Ensure all information is fact-checked.",
       },
       {
         title: "What all are the event Guidelines?",
         content:
-          "The maximum length of the video can be 3 minutes. It is not necessary that you send a 'lecture' video, you can also send in a screen recording of you teaching a concept in a creative manner.",
+          "Submit a 5-minute video on a specific topic. Then provide a detailed course design document based on your video. All submissions should be made on Discord.",
       },
       {
         title: "What is the Registration Process?",
         content:
-          "Register using the airtable form given above. Upon registration you'll receive a ticket of participation. Which ensures your slot in the contest. You'll then receive another link to submit your video within a day. When submitting the video you are supposed to upload the ticket of participation. You will then receive an acknowledgement of submission.",
+          "Complete the registration form available on the μLearn website and social media handles. After registering, upload your video submission by the specified deadline. If selected for the second level, you will need to submit your detailed course design document by the given deadline.",
       },
       {
         title: "Can I submit multiple videos?",
@@ -47,7 +100,7 @@ const ArtOfTeaching = () => {
       {
         title: "Can I resubmit my video?",
         content:
-          "Yes, you can resubmit your entry if you think your previous submission lacked a certain element that you aimed for.",
+          "Yes, you may resubmit your video if you feel the previous one lacked a certain element that you aimed for.",
       },
     ],
   };
@@ -67,16 +120,13 @@ const ArtOfTeaching = () => {
           <div className={styles.first_view}>
             <div className={styles.fv_texts}>
               <p className={styles.fv_heading}>
-                <span>µLearn Art</span> of Teaching 2.0
+                <span>µLearn Art</span> of Teaching 3.0
               </p>
 
               <p className={styles.fv_tagline}>
-                µLearn is back with Art of Teaching to honor teachers who mould
-                our future generation. µLearn Foundation is partnering with
-                Google developers, KTU and Kerala University for Art of Teaching
-                2.0.
+              µLearn is returning with Art of Teaching to pay tribute to educators who shape the next generation. 
               </p>
-              <div className={styles.event_partners}>
+              {/*<div className={styles.event_partners}>
                 <div className={styles.partners}>
                   <p className={styles.event_partners_heading}>
                     Event Partners
@@ -96,12 +146,32 @@ const ArtOfTeaching = () => {
                     />
                   </div>
                 </div>
-              </div>
+              </div> */}
+              
+           
+              <div className="flex flex-col lg:flex-row justify-center items-center lg:justify-start text-center lg:items-start gap-2 mt-2">
+               
+                <a href="https://mulearn.org/r/artofteaching" className="no-underline">
+               <button className="px-6 py-2 bg-muorange text-center text-white rounded-md lg:w-[150px] w-[300px] lg:mr-0 ">
+               Register Now
+               </button>
+               </a>
+             
 
-              <div className={styles.fv_buttons}>
-                <button className={styles.create}>Registrations Closed</button>
-              </div>
-            </div>
+    <div className="flex flex-row justify-center items-center gap-1" >  
+   <a href="https://mulearn.org/enablers"><button className="border-2 border-muorange text-muorange px-6 py-2 rounded-md w-[150px] lg:w-auto">
+    Enablers
+    </button></a> 
+    <a href="https://mulearn.org"><button className="border-2 border-muorange text-muorange px-6 py-2 rounded-md w-[150px] lg:w-auto">
+     µlearn
+  </button></a>
+    </div>
+  
+  
+</div>
+</div>
+             
+            
             <div className={styles.fv_images}>
               <img src={fvimg} alt="" className={styles.fv_img} />
             </div>
@@ -118,16 +188,15 @@ const ArtOfTeaching = () => {
               <p className={styles.sv_tagline}>
                 {/* Teaching is an art and teachers are the artists, calling all the
                 artists to present their masterpieces of teaching to the world. */}
-                Art of teaching is a contest, custom made for Educators.
+                The 'Art of Teaching' is a contest that celebrates educators who creatively simplify complex 
+                topics for better student understanding and retention.
                 <br />
                 <br />
                 {/* Art of Teaching is a 3-minute video contest, where the teachers
                 can send in a video of them teaching any of the following topic
                 in a creative manner. */}
-                In-order to participate in this contest, all one has to do is
-                create a 3 minute video of them teaching a specific topics in a
-                creative way or learn android and create a 3 minute summary of
-                the course Android Development with Kotlin.
+                To participate in the "Art of Teaching" contest, submit a 5-minute video for Level 1 showcasing your innovative approach to a selected topic.
+                 After which for Level 2, provide a detailed course design document based on your video presentation to further develop your ideas.
               </p>
             </div>
 
@@ -138,8 +207,9 @@ const ArtOfTeaching = () => {
                 // modules={[Pagination, Navigation]}
                 className="aswiper"
               >
-                <SwiperSlide>
-                  <div className={styles.topic_card_android}>
+               <SwiperSlide>
+                
+                 {/* <div className={styles.topic_card_android}>
                     <div className={styles.topic_card}>
                       <p className={styles.card_heading}>
                         <span>Android Development with Kotlin</span> by Google.
@@ -164,114 +234,92 @@ const ArtOfTeaching = () => {
                         </button>
                       </a>
                     </div>
+                  </div>*/}
+
+                  <div className={styles.topic_card_android}>
+                  <p className={styles.card_heading}>
+                     <span> Guidlines</span>
+                    </p>
+                  <div style={timelineStyle}>
+                  <div>
+                  <h3 className={"styles.sv_tagline mt-2 mb-2"} style={{fontSize:'18px'}}>Level1</h3>
+      </div>
+      <div className=" pl-4" style={timelineItemStyle}>
+        <div className=" pl-4" style={circleStyle}></div>
+        <div className=" ml-4" style={lineStyle}></div>
+        <div style={contentStyle} ><p style={{fontSize:'17px'}}>Task 1 - Self introduction with welcome ticket.</p></div>
+      </div>
+      <div className=" pl-4" style={timelineItemStyle}>
+        <div className=" pl-4" style={circleStyle}></div>
+        <div className=" ml-4"style={lineStyle}></div>
+        <div style={contentStyle}><p style={{fontSize:'17px'}}>Task 2 - Video submission explaining a selected topic.</p></div>
+      </div>
+      <div>
+        <h3 className={"styles.sv_tagline mt-2 pt-3 pb-1"} style={{fontSize:'18px'}}>Level2</h3>
+      </div>
+      <div  className=" pl-4"style={timelineItemStyle}>
+        <div className=" pl-4"style={circleStyle}></div>
+        <div className="ml-4" style={lineStyle}></div>
+        <div style={contentStyle}><p style={{fontSize:'17px'}}>Task 1 - Detailed document submission of the designed course curriculam.</p></div>
+        
+      </div>
+      <div className="mt-2">
+          <a href={Guidlines}
+         
+           download="Art of Teaching Guidelines.pdf"
+          >
+          <button style={{font:'bold', fontSize:'16px',width:'180px'}} className={styles.create }>Download Pdf</button></a> 
+        </div>
+    </div>
                   </div>
                 </SwiperSlide>
-                <SwiperSlide>
-                  <div className={styles.topic_card}>
-                    <p className={styles.card_heading}>
-                      <span>Lessons of</span> Future
-                    </p>
-                    <p className={styles.card_description}>
-                      The participants can choose any topic which is related to
-                      emerging topics in their field and they can create video
-                      on that topic. Some sample topics are given below.
-                    </p>
-                    <ul className={styles.examples}>
-                      <li>
-                        <span>Civil Engineering</span> : BIM, Smart city
-                        planning. etc..
-                      </li>
-                      <li>
-                        <span>Mechanical Engineering</span>: 3D Printing,
-                        Friction Stir Welding etc..
-                      </li>
-                      <li>
-                        <span>Electronics Engineering</span>: IoT, Quantum
-                        Computing, Bioelectronics etc..
-                      </li>
-                      <li>
-                        <span>Electrical Engineering</span>: Battery Technology,
-                        Fast Charging, wireless charging, smart grid etc..
-                      </li>
-                      <li>
-                        <span>Chemical Engineering</span>: Nanomaterials, Water
-                        Purification etc ..
-                      </li>
-                      <li>
-                        <span>Arts & Sciences</span>: Impact of Artificial
-                        Intelligence and Machine Learning in their respective
-                        fields like driverless tractor in Agriculture to
-                        Election Campaign strategies for Social Media. etc..
-                      </li>
-                    </ul>
-                  </div>
-                </SwiperSlide>
+                
+          
               </Swiper>
             </div>
 
-            <div className={styles.cards_container_mobile}>
-              <div className={styles.topic_card}>
-                <p className={styles.card_heading}>
-                  <span>Android Development with Kotlin</span> by Google.
-                </p>
-                <p className={styles.card_description}>
-                  If you choose Android Development as the content you would
-                  have to learn the Android Development with Kotlin and have to
-                  create a 3 minute video summary of the course.
-                </p>
-                <a
-                  href="https://developer.android.com/courses/android-basics-compose/course"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <button
-                    style={{ fontSize: "1rem" }}
-                    className={styles.detailsbtn}
-                    type="submit"
-                  >
-                    View Course
-                  </button>
-                </a>
-              </div>
+            <div className={styles.cards_container_mobile} style={{marginTop:'45px',marginBottom:'30px'}}>
+            <div className={styles.topic_card_android} style={{marginTop:'45px',marginBottom:'30px'}}>
+                  <p className={styles.card_heading}>
+                     <span className="pt-5"> Guidlines</span>
+                    </p>
+                  <div style={timelineStyle}>
+                  <div>
+                  <h3 className={styles.sv_tagline} style={{fontSize:'18px'}}>Level1</h3>
+      </div>
+      <div className=" pl-4" style={timelineItemStyle}>
+        <div className=" pl-4" style={circleStyle}></div>
+        <div className=" ml-4" style={mobilelineStyle}></div>
+        <div style={contentStyle}  className={styles.sv_tagline}>Task 1 - Self introduction with welcome ticket.</div>
+      </div>
+      <div className=" pl-4" style={timelineItemStyle}>
+        <div className=" pl-4" style={circleStyle}></div>
+        <div className=" ml-4"style={mobilelineStyle}></div>
+        <div style={contentStyle}  className={styles.sv_tagline}>Task 2 - Video submission explaining a selected topic.</div>
+      </div>
+      <div className="mt-3 pt-2">
+        <h3 className={styles.sv_tagline} style={{fontSize:'18px'}}>Level2</h3>
+      </div>
+      <div  className=" pl-4"style={timelineItemStyle}>
+        <div className=" pl-4 pb-5"style={circleStyle}></div>
+        <div className="ml-4" style={mobilelineStyle}></div>
+        <div style={contentStyle} className={styles.sv_tagline} ><p className="pt-3">Task 1 - Detailed document submission of the designed course curriculam.</p></div>
+      </div>
+      
+      <div className="mt-5">
+      <a
+          href={Guidlines}
+           download="Art of Teaching Guidelines.pdf"
+          className="download-button"
+        >
+         
+       
+      <button style={{font:'bold', fontSize:'16px',width:'180px'}} className={styles.create }>Download Pdf</button></a> 
+        </div>
+    </div>
+                  </div>
 
-              <div className={styles.topic_card}>
-                <p className={styles.card_heading}>
-                  <span>Lessons of</span> Future
-                </p>
-                <p className={styles.card_description}>
-                  The participants can choose any topic which is related to
-                  emerging topics in their field and they can create video on
-                  that topic. Some sample topics are given below.
-                </p>
-                <ul className={styles.examples}>
-                  <li>
-                    <span>Civil Engineering</span> : BIM, Smart city planning.
-                    etc..
-                  </li>
-                  <li>
-                    <span>Mechanical Engineering</span>: 3D Printing, Friction
-                    Stir Welding etc..
-                  </li>
-                  <li>
-                    <span>Electronics Engineering</span>: IoT, Quantum
-                    Computing, Bioelectronics etc..
-                  </li>
-                  <li>
-                    <span>Electrical Engineering</span>: Battery Technology,
-                    Fast Charging, wireless charging, smart grid etc..
-                  </li>
-                  <li>
-                    <span>Chemical Engineering</span>: Nanomaterials, Water
-                    Purification etc ..
-                  </li>
-                  <li>
-                    <span>Arts & Sciences</span>: Impact of Artificial
-                    Intelligence and Machine Learning in their respective fields
-                    like driverless tractor in Agriculture to Election Campaign
-                    strategies for Social Media. etc..
-                  </li>
-                </ul>
-              </div>
+           
             </div>
           </div>
         </div>
