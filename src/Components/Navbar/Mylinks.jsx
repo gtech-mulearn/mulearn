@@ -138,10 +138,8 @@ export const links = [
             sublinks: [],
             link: "https://online.fliphtml5.com/slydm/yljq/#p=1",
             foreign: false,
-          }
+          },
         ],
-
-
       },
     ],
   },
@@ -191,7 +189,7 @@ export const links = [
             foreign: true,
           },
           {
-            name: "IEEE Launchpad",
+            name: "Launchpad",
             submenu: false,
             sublinks: [],
             link: "/launchpad",
@@ -203,8 +201,7 @@ export const links = [
             sublinks: [],
             link: "/in50hours",
             foreign: false,
-          }
-
+          },
         ],
       },
       {
@@ -575,7 +572,7 @@ export const links = [
             submenu: false,
             sublinks: [],
             foreign: true,
-          }
+          },
         ],
       },
       {
@@ -589,7 +586,7 @@ export const links = [
             submenu: false,
             sublinks: [],
             foreign: false,
-          }
+          },
         ],
       },
     ],
