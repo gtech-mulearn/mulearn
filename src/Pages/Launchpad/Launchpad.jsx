@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
-import styles from "./Launchpad.module.css";
+// import styles from "./Launchpad.module.css";
 import "./steps.css";
 const Launchpad = () => {
   return (
@@ -173,6 +173,7 @@ const Launchpad = () => {
       </div>*/}
 
       <iframe
+        title="launchpad leaderboard"
         style={{
           height: "100vh",
           width: "100%",
