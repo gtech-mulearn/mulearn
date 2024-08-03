@@ -27,16 +27,19 @@
 .tv_story_container {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
+    gap: 2rem;
 }
 
 .tv_story {
     display: flex;
     flex-direction: column;
     justify-content: end;
-    box-shadow: 1px 1px 45px -5px rgb(0 0 0 / 8%);
-    -webkit-box-shadow: 1px 1px 45px -5px rgb(0 0 0 / 8%);
+}
+.header .tv_texts {
+    display: flex;
+    flex-direction: column;
 }
 
 @media only screen and (max-width: 1350px) {
@@ -48,7 +51,7 @@
 
 @media only screen and (max-width: 1180px) {
     .tv_story_container {
-        justify-content: space-around;
+        justify-content: center;
     }
 
     .header .tv_texts p:nth-child(1) {

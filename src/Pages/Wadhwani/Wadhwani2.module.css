@@ -19,6 +19,7 @@
     /* rounded-md */
     border: none;
     cursor: pointer;
+    width: fit-content;
 }
 
 p {
