@@ -23,6 +23,13 @@ export const links = [
             link: "/enablers",
             foreign: false,
           },
+          {
+            name: "Manifesto",
+            submenu: false,
+            sublinks: [],
+            link: "/manifesto",
+            foreign: false,
+          },
         ],
       },
 
