@@ -212,7 +212,7 @@ const ArtOfTeaching = () => {
 
                   <div className={styles.topic_card_android}>
                   <p className={styles.card_heading}>
-                     <span> Guidlines</span>
+                     <span>Guidelines</span>
                     </p>
                   <div style={timelineStyle}>
                   <div>
@@ -234,7 +234,7 @@ const ArtOfTeaching = () => {
       <div  className=" pl-4"style={timelineItemStyle}>
         <div className=" pl-4"style={circleStyle}></div>
         <div className="ml-4" style={lineStyle}></div>
-        <div style={contentStyle}><p style={{fontSize:'17px'}}>Task 1 - Detailed document submission of the designed course curriculam.</p></div>
+        <div style={contentStyle}><p style={{fontSize:'17px'}}>Task 1 - Detailed document submission of the designed course curriculum.</p></div>
         
       </div>
       <div className="mt-2">
