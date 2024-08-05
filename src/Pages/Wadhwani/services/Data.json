@@ -1,0 +1,152 @@
+[
+    {
+    "courseId": "1",
+    "courseName": "Effective Speaking and Listening Skills",
+    "description": "The “Effective Speaking and Listening Skills” program is a comprehensive course that enhances communication skills, like polite greetings, clear reading, active listening, phone conversation techniques, and workplace conversations, preparing students with effective communication skills for various settings.",
+    "CourseDuration": "9.75",
+    "CourseTOC": "1. Communication - Basics and Importance 2. Greetings and Introductions 3. Read English Text With Appropriate Articulation 4. Active Listening 5. Effective Phone Conversations 6. Making Requests 7. Give and Seek Opinions Effectively 8. Participating in Buyer Seller Interactions 9. Saying No or Refusing Politely 10. Workplace Conversations",
+    "LearningObjectives": "1. Grasp the basics and importance of effective communication. 2. Master polite greetings, introductions, and clear English articulation. 3. Enhance active listening skills for accurate comprehension and response. 4. Acquire techniques for effective phone conversations and polite refusal. 5. Develop skills for opinion exchange, buyer-seller interactions, and workplace dialogue.",
+    "AssessmentQuestionCalculation": "10 questions ( 1 from each lesson)",
+    "thumbnail": "https://www.shutterstock.com/image-photo/skilled-young-arab-female-presenter-standing-1805573932"
+    },
+    {
+    "courseId": "2",
+    "courseName": "Impactful Writing Skills",
+    "description": "The “Impactful Writing Skills”  course enhances communication skills by teaching how to craft clear sentences, express personal experiences and ideas effectively, draft professional emails, resumes, reports, and letters, and prepare participants for a professional setting.",
+    "CourseDuration": "5.75",
+    "CourseTOC": "1. Construct Meaningful Sentences 2. Describe Personal Experiences and Thoughts 3. Write Effective Emails 4. Write Effective Notes 5. Write Effective Resumes and Reports 6. Letter Writing",
+    "LearningObjectives": "1. Improve sentence construction for clearer communication. 2. Share personal stories and thoughts effectively. 3. Learn to write professional emails. 4. Master the skill of note-taking. 5. Create standout resumes, reports, and letters.",
+    "AssessmentQuestionCalculation": "L1 - 1 L2 - 2 L3 - 2 L4 - 2 L5 - 2 L6 - 1",
+    "thumbnail": "https://www.freepik.com/free-photo/business-women-signature-document_1155996.htm#query=writing%20skill&position=3&from_view=search&track=ais"
+    },
+    {
+    "courseId": "3",
+    "courseName": "Self Presentation",
+    "description": "The “Self Presentation” course teaches you to make great first impressions, communicate non-verbally, and excel in group discussions. You'll learn the impact of a smile, handshake, body language, and facial expressions, gaining skills to share ideas and listen effectively, and hence becoming a confident communicator in social situations.",
+    "CourseDuration": "3",
+    "CourseTOC": "1. Making a Great First Impression",
+    "LearningObjectives": "1. Understand the basics of making a good first impression. 2. Recognize and use non-verbal communication cues like body language and facial expressions. 3. Develop the ability to listen actively and speak confidently in a group discussion.",
+    "AssessmentQuestionCalculation": "L1 - 4 L2 - 3 L3 - 3",
+    "thumbnail": "https://www.shutterstock.com/image-vector/body-language-word-cloud-concept-vector-760813123"
+    },
+    {
+    "courseId": "4",
+    "courseName": "Self Management",
+    "description": " The “Self Management” course covers understanding and managing emotions, self-awareness, health, attitude, and ethics. You'll learn the importance of continuous learning, maintaining balance, and effective planning and prioritization. By the end of this course, you'll be more emotionally aware, self-confident, healthy, positive, and skilled at task management.",
+    "CourseDuration": "8.75",
+    "CourseTOC": "1. Emotional Intelligence 2. Know Yourself 3. Personal Health, Hygiene, and Grooming 4. Positive Attitude 5. Personal Values & Ethics 6. Introduction to Learnability 7. Balance Your Body & Mind: The Power of Nutrition and Physical Activity 8. Plan and Manage Tasks Within a Timeline 9. Techniques for Effective Task Prioritization",
+    "LearningObjectives": "1. Develop emotional intelligence to understand and control feelings. 2. Gain self-awareness and a better understanding of your strengths and weaknesses. 3. Learn about personal health, hygiene, grooming, and the importance of nutrition and physical activity. 4. Cultivate a positive attitude towards life and challenges. 5. Understand personal values and ethics and apply them in daily life and decision-making.",
+    "AssessmentQuestionCalculation": "L1 - 1 L2 - 1 L3 - 1 L4 - 1 L5 - 1 L6 - 1 L7 - 1 L8 - 1 L9 - 2",
+    "thumbnail": "https://www.freepik.com/free-photo/positivity-message-cartoon-illustrations-concept_18134237.htm#query=Self%20management&position=21&from_view=search&track=ais"
+    },
+    {
+    "courseId": "5",
+    "courseName": "Interpersonal Skills",
+    "description": "The “Interpersonal skills” course teaches conflict resolution, understanding different viewpoints, and maintaining strong relationships. You'll learn about negotiation, building good relationships, effective communication, and comparing products and services. By the end, you'll be better at managing conflicts, understanding people, and working as a team.",
+    "CourseDuration": "11",
+    "CourseTOC": "1. Conflict Management - An Introduction 2. Understanding Perspectives 3. Identify and Resolve Conflicts 4. Resolve Conflicts to Maintain Relationships 5. Negotiation in Action Getting to YES 6. Build Effective Relationships with Stakeholders 7. Communicate Effectively to Gain Acceptance 8. Compare Features and Benefits of Products & Services 9. Personality Types at Work 10. Collaborate Across Different Teams 11. Collaborate to Achieve Team Goals",
+    "LearningObjectives": "1. Understand what conflicts are and why they happen. 2. See things from different perspectives to find common ground. 3. Identify and resolve conflicts in a peaceful and fair way. 4. Learn how to maintain good relationships even when conflicts arise. 5. Master negotiation skills and reach agreements that benefit everyone involved.",
+    "AssessmentQuestionCalculation": "L1 - 0 L2 - 1 L3 - 1 L4 - 1 L5 - 1 L6 - 1 L7 - 1 L8 - 1 L9 - 1 L10 - 1 L11 - 1",
+    "thumbnail": "https://www.shutterstock.com/image-vector/loading-skills-two-human-heads-concept-196391999"
+    },
+    {
+    "courseId": "6",
+    "courseName": "Problem Solving & Innovation",
+    "description": "This course covers creative thinking, generating new ideas, and critical problem-solving. You'll also learn about decision-making and using design thinking for real-world challenges. By the end, you'll be better at creative thinking, data analysis, decision-making, and responding effectively to various situations.",
+    "CourseDuration": "7",
+    "CourseTOC": "1. Introduction to Creative Thinking",
+    "LearningObjectives": "1. Understand the basics of creative thinking and generating innovative ideas.",
+    "AssessmentQuestionCalculation": "L1 - 1",
+    "thumbnail": "https://www.shutterstock.com/image-vector/light-bulbs-icons-shining-fibers-shape-1813823876"
+    },
+    {
+    "courseId": "7",
+    "courseName": "Professionalism",
+    "description": "The ‘Professionalism’ course teaches essential professional skills, including change management, goal planning, ethics, diversity, and inclusive behaviour. Participants will understand organizational values, the impact of errors, and how to improve outcomes. Insights into organizational structure, hierarchy, and workplace culture are also provided.",
+    "CourseDuration": "10.25",
+    "CourseTOC": "1. Understand Change 2. Introduction to Result Orientation 3. Plan Tasks to Achieve Goals 4. Introduction to Quality 5. Understand the Impact of Errors 6. Organizational Structure and Values 7. Values and Beliefs - Make Ethical Decisions 8. Cultural Fitment & Diversity 9. Gender Equality 10. Prevention of Sexual Harassment (POSH) Act 11. Behave Appropriately Towards People with Disabilities",
+    "LearningObjectives": "1. Understand and embrace change, quality, and diversity in personal and professional life. 2. Develop a result-oriented mindset and apply the result orientation cycle for success. 3. Recognize the importance of values and beliefs, and align them with organizational policies. 4. Comprehend the impact of errors and rectify them for improved outcomes. 5. Gain insights into organizational structure, hierarchy, and workplace culture. 6. Align personal beliefs and behaviors with organizational policies on cultural diversity, gender sensitivity, POSH, and People with Disabilities. ",
+    "AssessmentQuestionCalculation": "L1 - 1 L2 - 1 L3 - 1 L4 - 1 L5 - 1 L6 - 1 L7 - 1 L8 - 0 L9 - 1 L10 - 1 L11 - 1",
+    "thumbnail": "https://www.freepik.com/free-photo/medium-shot-woman-working-laptop_23404542.htm#query=professionalism&position=19&from_view=search&track=sph"
+    },
+    {
+    "courseId": "8",
+    "courseName": "Customer Centricity",
+    "description": "This course covers customer service and engagement comprehensively, including customer segmentation, handling diverse customer types, building strong relationships, and fostering a customer-focused mindset. Participants will learn to differentiate customer types, master rapport-building, fulfil customer needs, address concerns, leverage CRM tools, and use POS devices effectively.",
+    "CourseDuration": "6",
+    "CourseTOC": "1. Types of Customers - I 2. Types of Customers - II 3. Build a Customer-Focused Mindset 4. Building Rapport with Customers 5. Respond Effectively to Customers 6. Introduction to CRM Systems",
+    "LearningObjectives": "1- Differentiate customer types and understand their needs. 2- Develop a customer-centric mindset and outline steps for its implementation in an organization. 3- Implement strategies for instilling a customer-focused mindset in employees. 4- Master the art of customer rapport-building techniques. 5- Deliver exceptional customer experiences and handle concerns effectively. 6- Utilize CRM tools and work with POS devices to enhance customer service.",
+    "AssessmentQuestionCalculation": "L1-1 L2-1 L3-2 L4-2 L5-2 L6-2",
+    "thumbnail": "https://www.freepik.com/free-photo/confident-call-center-operator-talking-with-client_6882148.htm#query=customer%20service&position=8&from_view=search&track=ais"
+    },
+    {
+    "courseId": "9",
+    "courseName": "Work Productivity Tools",
+    "description": "This comprehensive course bundle will help you master the digital landscape, equipping you with essential computer skills, productivity tools, and effective online search strategies. Learn computer principles, create professional documents, spreadsheets, and presentations, optimize workflow with useful features, interpret data efficiently, and increase productivity. Gain the digital abilities needed to succeed in today's technologically driven world.",
+    "CourseDuration": "9.5",
+    "CourseTOC": "1. Computer Fundamentals 2. Windows Operating System and File Management 3. Create Documents Using MS Word 4. Create Spreadsheets Using MS Excel 5. Excel Skills to Boost Your Productivity 6. Useful Excel Features for the Workplace 7. Create Slide Decks Using MS PowerPoint 8. PowerPoint Skills to Boost Your Productivity 9. Useful MS PowerPoint Features for the Workplace 10. Effective Information Search Online",
+    "LearningObjectives": "1. Gain a foundational understanding of computer hardware and software. 2. Develop proficiency in using a common operating system, such as Windows. 3. Master and practice the basics of word processing, spreadsheets, and presentations using Microsoft Office software. 4. Develop effective online search skills. 5. Enhance your work productivity using technology. ",
+    "AssessmentQuestionCalculation": "L1 - 1 L2 - 1 L3 - 1 L4 - 1 L5 - 1 L6 - 1 L7 - 1 L8 - 1 L9 - 1 L10 - 1",
+    "thumbnail": "https://www.shutterstock.com/image-photo/montreal-canada-february-28-2019-microsofrt-1326313196 "
+    },
+    {
+    "courseId": "10",
+    "courseName": "Online Communication & Data Security",
+    "description": "This course teaches you to master online communication, protect your information, and navigate the online landscape. You will learn to connect, collaborate, and achieve your goals using online tools, safeguard your devices and data from online threats, and utilize social networks responsibly. By the end of the course, you will be able to navigate the Digital World with confidence.",
+    "CourseDuration": "8.5",
+    "CourseTOC": "1. Introduction to Online Communication Tools 2. Communicate using Email 3. Features of Online Communication Tools 4. Conducting Online Meetings 5. Criteria for Evaluating Online Information 6. Internet Safety 7. Keeping Your Device and Data Secure 8. Organizational Data Security 9. Benefits and Risks of Social Networking Platforms",
+    "LearningObjectives": "1. Master effective communication and collaboration skills using online tools. 2. Protect your personal and organizational information online. 3. Evaluate the credibility and accuracy of online information. 4. Enhance your productivity and collaboration with online tools 5. Utilize social networking platforms responsibly and ethically. 6. Become a proficient communicator, data protector, and critical thinker in the digital world. 7. Navigate the digital landscape with confidence and awareness.",
+    "AssessmentQuestionCalculation": "L1 - 1 L2 - 1 L3 - 1 L4 - 1 L5 - 1 L6 - 1 L7 - 1 L8 - 1 L9 - 2",
+    "thumbnail": "https://www.shutterstock.com/image-photo/digital-marketing-media-virtual-screen-working-1380061061 "
+    },
+    {
+    "courseId": "11",
+    "courseName": "Safety Practices",
+    "description": "This course equips learners with essential first aid skills and knowledge on health, environment, and safety. It consists of two lessons: “Basic First Aid” and “Health, Environment, and Safety Awareness.” This module is suitable for individuals seeking to acquire basic first aid competencies and those interested in promoting health, environmental sustainability, and safety in diverse settings",
+    "CourseDuration": "2",
+    "CourseTOC": "1. Basic First-Aid 2. Health, Environment, and Safety Awareness",
+    "LearningObjectives": "1. Understand what ‘Basic First Aid’ and its importance 2. List items in a First Aid Kit; know what each item is used for, and how and when to use 3. Recognize the significance of maintaining high standards in health, environment, and safety, and identify safety hazards while understanding their causes and prevention strategies.",
+    "AssessmentQuestionCalculation": "L1-5 L2-5",
+    "thumbnail": "https://www.shutterstock.com/image-vector/hse-health-safety-environment-acronym-concept-1685154994"
+    },
+    {
+    "courseId": "12",
+    "courseName": "Financial Literacy",
+    "description": "This course covers the fundamentals of banking, including the importance of banking, different types of bank accounts and their purposes, and how to open a bank account. You will learn about money management principles, salary slip components, loans, insurance, budgeting, and digital transactions. By the end of the course, you will have acquired the knowledge and skills to manage your finances effectively and navigate the banking and finance world with confidence",
+    "CourseDuration": "6.25",
+    "CourseTOC": "1. Basics of Banking 2. Money Management: Earning vs Spending 3. Understanding Financial Concepts 4. Develop Your Own Financial Plan 5. Offline and Online Financial Transactions 6. Mobile Banking 7. Gain Control of Your Financial Situation ",
+    "LearningObjectives": "1. Understand the significance of banking while exploring the various categories of bank accounts. 2. Learn how to open a bank account 3. Gain insights into the principles of money management and its vital role in financial well-being. 4. Understand the components present in a typical salary slip. 5. Learn different forms of loans and insurance products. 6. Recognize the value of effective budgeting in financial stability. 7. Learn the different ways of conducting digital transactions. 8. Gain proficiency in using mobile banking applications. 9. Cultivate effective money management strategies.",
+    "AssessmentQuestionCalculation": "L1 - 1 L2 - 1 L3 - 1 L4 - 1 L5 - 2 L6 - 2 L7 - 2 ",
+    "thumbnail": "https://thumbs.dreamstime.com/b/financial-literacy-written-notepad-sheet-education-concept-92574377.jpg"
+    },
+    {
+    "courseId": "13",
+    "courseName": "Start-up Mindset",
+    "description": "The “Start-up mindset” course explains the key characteristics of an entrepreneur, explore the roles and responsibilities in business settings, and understand the importance of self-confidence and resilience in your entrepreneurial journey. You will establish a vision and mission for your startup idea, discover how to integrate social and environmental values, and analyze inspiring and failure stories of successful entrepreneurs to identify common challenges faced in entrepreneurship",
+    "CourseDuration": "9",
+    "CourseTOC": "1. Who is an Entrepreneur? 2. Self-confidence and Resilience 3. Establish the Vision and Mission of Your Enterprise 4. Build Your Business 5. Taking Ownership 6. Leadership and Team Spirit 7. Serving the Society 8. Success and Failure Stories of Famous Entrepreneurs 9. Inspiring Stories of Famous Entrepreneurs",
+    "LearningObjectives": "1. Define the key characteristics and qualities of an entrepreneur 2. Understand the various roles and responsibilities of an entrepreneur in a business context 3. Develop self-confidence and resilience as essential traits for entrepreneurship 4. Create a clear and compelling vision and mission statement for your startup 5. Explore the fundamental steps involved in building and structuring a startup 6. Discover how taking ownership of your actions can lead to better decision-making in your entrepreneurial journey 7. Identify ways to integrate social and environmental values into your startup 8. Analyze inspiring and failure stories to understand the common challenges in entrepreneurship",
+    "AssessmentQuestionCalculation": "L1-1 L2-1 L3-1 L4-1 L5-1 L6-1 L7-2 L8-1 L9-1",
+    "thumbnail": "https://www.shutterstock.com/image-photo/thoughtful-young-european-woman-on-concrete-631185698"
+    },
+    {
+    "courseId": "14",
+    "courseName": "Introduction to Entrepreneurship ",
+    "description": "The “Introduction to Entrepreneurship” course equips students with fundamental knowledge and practical skills to succeed in the dynamic field of entrepreneurship and business growth. It covers business accounting principles, enterprise types, marketing, business plan development, customer identification, competition analysis, risk mitigation, funding methods, and accounting principles.",
+    "CourseDuration": "9",
+    "CourseTOC": "1. Understanding Entrepreneurship 2. Types of Entrepreneurship and Enterprises 3. Build an Effective Business Plan 4. Identify Your Customer 5. Competition Analysis 6. Risks – Identification and Mitigation 7. Getting Money for Your Business 8. Principles of Marketing 9. Business Accounting ",
+    "LearningObjectives": "1. Define entrepreneurship and its significance in the business world. 2. Distinguish between different types of entrepreneurship and enterprises. 3. Learn marketing and basics of marketing 4. Develop a comprehensive and well-structured business plan. 5.Identify and segment potential customers for their business. 6. Understand and apply the principles of competition analysis for assessing opportunities 7. Recognize potential risks associated with entrepreneurship and employ mitigation strategies. 8. Understand various methods of acquiring funding for their business. 9. Apply fundamental principles of marketing to promote their products or services. 10. Understand essential principles of business accounting, including financial statements and budgeting.",
+    "AssessmentQuestionCalculation": "L1-1 L2-1 L3-1 L4-1 L5-1 L6-1 L7-1 L8-1 L9-2"
+    },
+    {
+    "courseId": "15",
+    "courseName": "Obtain an Appropriate Job",
+    "description": "The “Obtain an Appropriate Job” course is your gateway to securing a job that aligns with your skills, aspirations, and ambitions. This comprehensive course provides you with the knowledge and skills needed to navigate the competitive job market successfully.",
+    "CourseDuration": "11.75",
+    "CourseTOC": "1. Identify Your Own Skill Set 2. Understanding Appropriate Job Options 3. Define Short & Long Term Career Goals 4. Searching and Applying for Relevant Jobs 5. Create a Winning Resume 6. Build Confidence for an Interview 7. Getting Ready for the Interview 8. Interview Venue Etiquettes 9. Navigating Interview Questions 10. Wrapping the Interview 11. Keep Up the Post-Interview Momentum 12. Your Interview Success Guide",
+    "LearningObjectives": "1. Identify high-growth skill sectors, align skills with job sectors, and create a list of relevant jobs. 2. Master job search techniques, including defining career goals and locating job opportunities. 3. Construct effective resumes and prepare for interviews with confidence and professionalism. 4. Project professionalism and create positive first impressions during interviews. 5. Convey personal attributes and suitability for the job to leave a lasting impression. 6. Navigate the job application process and maintain a positive outlook. 7. Understand and apply the DISC framework to enhance interview preparation and skills. ",
+    "AssessmentQuestionCalculation": "L1-1 L2-1 L3-1 L4-1 L5-1 L6-1 L7-1 L8-1 L9-1 L10-0 L-11-0 L12-1",
+    "thumbnail": "https://www.shutterstock.com/image-photo/happy-satisfied-hr-manager-handshaking-hiring-1302585133"
+    }
+    ]
+    

@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 
 import Typography from "@mui/material/Typography";
-import { CircularProgress } from "@mui/material";
+// import { CircularProgress } from "@mui/material";
 
 import styles from "./Wadhwani2.module.css";
 import styles2 from "./Wadhwani.module.css";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 import leader from "./assets/Leader.gif";
-import {  getData  } from "./services/api";
+// import {  getData  } from "./services/api";
+import courseData from "./services/Data.json"
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 const theme = createTheme({
   palette: {
@@ -22,21 +23,22 @@ const theme = createTheme({
 });
 
 const Wadhwani = () => {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  // const [data, setData] = useState([]);
+  // const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    getData(setData,setLoading)
-  }, []);
+  // useEffect(() => {
+  //   getData(setData,setLoading)
+  //   getData(setData)
+  // }, []);
 
-  if (loading) {
-    return (
-      <div className={styles.loadingContainer}>
-        <CircularProgress />
-        <Typography>Loading...</Typography>
-      </div>
-    );
-  }
+  // if (loading) {
+  //   return (
+  //     <div className={styles.loadingContainer}>
+  //       <CircularProgress />
+  //       <Typography>Loading...</Typography>
+  //     </div>
+  //   );
+  // }
 
   return (
     <ThemeProvider theme={theme}>
@@ -63,7 +65,7 @@ const Wadhwani = () => {
           </div>
 
           <div className={styles2.tv_story_container}>
-            {data.map((item, index) => (
+            {courseData.map((item, index) => (
               <div className={styles2.tv_story}>
                 <Card
                   key={index}
