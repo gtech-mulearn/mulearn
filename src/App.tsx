@@ -46,6 +46,7 @@ import Analytics from "./modules/Dashboard/modules/UrlShortener/Pages/Analytics"
 import Donation from "./modules/Public/Donation/Donation";
 import Refund from "./modules/Public/Donation/pages/Refund";
 import DonationSuccess from "./modules/Public/Donation/pages/DonationSuccess";
+import OpenGrad from "./modules/Dashboard/modules/OpenGrad";
 
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
@@ -241,7 +242,9 @@ const ConnectedDevices = lazy(
 );
 const Wadhwani = lazy(() => import("./modules/Dashboard/modules/Wadhwani"));
 
-const Trivial = lazy(() => import("./modules/Public/TrivialIdeas/modules/trivial"));
+const Trivial = lazy(
+    () => import("./modules/Public/TrivialIdeas/modules/trivial")
+);
 
 function App() {
     const AuthChecker = SecureAuthRoutes();
@@ -280,8 +283,8 @@ function App() {
             element: <Refund />
         },
         {
-            path:"trivial-ideas",
-            element:<Trivial />
+            path: "trivial-ideas",
+            element: <Trivial />
         },
         {
             path: "/",
@@ -324,6 +327,10 @@ function App() {
                         {
                             path: "wadhwani",
                             element: <Wadhwani />
+                        },
+                        {
+                            path: "opengrad",
+                            element: <OpenGrad />
                         },
                         {
                             path: "refer",
