@@ -14,6 +14,7 @@ import Career from "./Pages/Career/Career";
 import LeaderBoard from "./Pages/LeaderBoard/leaderBoard";
 import WikiSyllabus from "./Pages/WikiSyllabus/WikiSyllabus";
 import HacktoberFest from "./Pages/Events/HacktoberFest/HacktoberFest";
+import Wadhwani from "./Pages/Wadhwani/Wadhwani";
 // import Yip from "./Pages/YIP/Yip";
 import CampusChapters from "./Pages/CampusChapters/CampusChapters";
 import BlogLanding from "./Pages/CampusChapters/Blogs/BlogLanding";
@@ -52,6 +53,7 @@ import Submission from "./Pages/CapTF/Submission";
 import Pathway from "./Pages/Pathway/Pathway";
 import EnablersPage from "./Pages/EnablersPage/EnablersPage";
 import In50Hours from "./Pages/In50Hours/In50Hours";
+import Manifesto from "./Pages/Manifesto/Manifesto";
 function App() {
   const [redirects, setRedirects] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -122,6 +124,8 @@ function App() {
             <Route path="events/learningfest" element={<KKEMLearningFest />} />
             <Route path="/keralatechfest" element={<KKEMLearningFest />} />
             <Route path="/maveliportfolio" element={<MaveliPortfolio />} />
+            <Route path="/wadhwani" element={<Wadhwani />} />
+            <Route path="/manifesto" element={<Manifesto />} />
 
             <Route path="/team">
               <Route path="" element={<Teams />} />

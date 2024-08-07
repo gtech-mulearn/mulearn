@@ -23,6 +23,13 @@ export const links = [
             link: "/enablers",
             foreign: false,
           },
+          {
+            name: "Manifesto",
+            submenu: false,
+            sublinks: [],
+            link: "/manifesto",
+            foreign: false,
+          },
         ],
       },
 
@@ -122,7 +129,7 @@ export const links = [
             name: "Magazine",
             submenu: false,
             sublinks: [],
-            link: "https://online.fliphtml5.com/blxtf/bicl/#p=1",
+            link: "https://online.fliphtml5.com/slydm/hrgi/",
             foreign: true,
           },
           {
@@ -138,10 +145,8 @@ export const links = [
             sublinks: [],
             link: "https://online.fliphtml5.com/slydm/yljq/#p=1",
             foreign: false,
-          }
+          },
         ],
-
-
       },
     ],
   },
@@ -191,7 +196,7 @@ export const links = [
             foreign: true,
           },
           {
-            name: "IEEE Launchpad",
+            name: "Launchpad",
             submenu: false,
             sublinks: [],
             link: "/launchpad",
@@ -203,8 +208,7 @@ export const links = [
             sublinks: [],
             link: "/in50hours",
             foreign: false,
-          }
-
+          },
         ],
       },
       {
@@ -575,7 +579,7 @@ export const links = [
             submenu: false,
             sublinks: [],
             foreign: true,
-          }
+          },
         ],
       },
       {
@@ -589,7 +593,7 @@ export const links = [
             submenu: false,
             sublinks: [],
             foreign: false,
-          }
+          },
         ],
       },
     ],

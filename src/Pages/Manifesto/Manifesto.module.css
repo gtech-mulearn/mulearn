@@ -1,0 +1,232 @@
+@font-face {
+  font-family: retro-team;
+  src: url("./assets/Fonts/Retro\ Team.otf");
+}
+.main {
+  overflow-x: hidden;
+}
+
+.head {
+  background-color: #f58c49;
+  height: 20vw;
+  position: relative;
+  display: flex;
+  margin-top: 6vw;
+}
+
+.head .muLogoBg {
+  position: absolute;
+  width: 35vw;
+}
+
+.head .textContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 80%;
+  padding-left: 5rem;
+  padding-top: 3rem;
+}
+
+.textContainer .logoContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.textContainer .logoContainer img {
+  width: 10vw;
+}
+
+.logoContainer .ourManifestoText {
+  color: white;
+  text-transform: uppercase;
+  background-color: rgba(255, 255, 255, 0.28);
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 2rem;
+  border-radius: 100px;
+  padding-right: 4rem;
+  font-size: 1.3vw;
+}
+
+.head .textContainer h1 {
+  font-family: retro-team;
+  font-size: 6.5vw;
+  color: white;
+}
+
+.head .imgContainer {
+  width: fit-content;
+  height: 100%;
+  position: relative;
+}
+
+.head .imgContainer img {
+  position: absolute;
+  bottom: 0;
+  left: -4vw;
+  width: 20vw;
+}
+
+.firstPara {
+  padding: 4rem 5rem;
+}
+
+.firstPara p {
+  font-size: 2rem;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.firstPara p span {
+  font-weight: 600;
+}
+
+.secondPara {
+  padding: 0 6rem;
+}
+
+.secondPara p {
+  font-size: 2rem;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.secondPara p span {
+  color: #f58c49;
+  font-weight: 500;
+}
+
+.joinRevolution {
+  background-color: #f58c49;
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  align-items: center;
+  height: fit-content;
+  gap: 2rem;
+  margin: 5rem 0;
+  margin-bottom: 6rem; /* 6rem*/
+  flex-wrap: wrap;
+}
+
+.joinRevolution h2 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 400;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  width: 100%;
+}
+
+.joinRevolution h2 span {
+  font-weight: 600;
+}
+
+.joinRevolution button {
+  background-color: white;
+  padding: 8px 2rem;
+  color: #f58c49;
+  font-size: 1.3rem;
+  font-weight: 600;
+  border-radius: 10px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+@media (width<750px) {
+  .head {
+    height: 40vw;
+  }
+  .head .muLogoBg {
+    width: 55vw;
+  }
+  .head .textContainer {
+    padding-left: 3rem;
+  }
+  .textContainer .logoContainer img {
+    width: 15vw;
+  }
+  .logoContainer .ourManifestoText {
+    font-size: 1.5vw;
+    padding: 1vw 5vw;
+    padding-right: 6vw;
+  }
+  .head .textContainer h1 {
+    font-size: 10vw;
+  }
+  .head .imgContainer img {
+    left: -8vw;
+    width: 38vw;
+  }
+
+  .firstPara {
+    padding: 3rem 2rem;
+  }
+  .firstPara p {
+    font-size: 1.8rem;
+  }
+  .secondPara {
+    padding: 0 2.5rem;
+  }
+  .secondPara p {
+    font-size: 1.8rem;
+  }
+  .joinRevolution {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+}
+
+@media (width<500px) {
+  .firstPara {
+    padding: 2.5rem 1.5rem;
+  }
+  .firstPara p {
+    font-size: 1.5rem;
+  }
+  .secondPara {
+    padding: 0 2rem;
+  }
+  .secondPara p {
+    font-size: 1.5rem;
+  }
+  .joinRevolution {
+    margin: 4rem 0;
+    margin-bottom: 2.5rem;
+  }
+  .joinRevolution h2 {
+    font-size: 1.4rem;
+  }
+  .joinRevolution button {
+    font-size: 1.2rem;
+  }
+}
+
+@media (width<300px) {
+  .firstPara {
+    padding: 2rem 1rem;
+  }
+  .firstPara p {
+    font-size: 1rem;
+  }
+  .secondPara {
+    padding: 0 1.2rem;
+  }
+  .secondPara p {
+    font-size: 1rem;
+  }
+  .joinRevolution {
+    margin: 3rem 0;
+    margin-bottom: 0rem;
+  }
+  .joinRevolution h2 {
+    font-size: 1rem;
+  }
+  .joinRevolution button {
+    font-size: 1.2rem;
+    padding: 5px 1rem;
+  }
+}
