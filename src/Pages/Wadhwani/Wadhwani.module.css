@@ -35,7 +35,7 @@
 .tv_story {
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: flex-end;
 }
 .header .tv_texts {
     display: flex;
