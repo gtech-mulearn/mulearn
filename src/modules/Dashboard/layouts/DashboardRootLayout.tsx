@@ -66,6 +66,12 @@ const DashboardRootLayout = (props: { component?: any }) => {
             icon: <i className="fi fi-sr-building"></i>
         },
         {
+            url: "/dashboard/opengrad",
+            title: "OpenGrad",
+            hasView: true,
+            icon: <i className="fi fi-sr-building"></i>
+        },
+        {
             url: "/dashboard/refer",
             title: "Referrals",
             hasView: true,
