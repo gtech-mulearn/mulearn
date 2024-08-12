@@ -1,0 +1,309 @@
+@font-face{
+    font-family: 'pacifico';
+    src: url('../assets/font/Pacifico.ttf')
+
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    position: relative;
+    overflow: hidden;
+}
+.sidenav {
+    position: absolute;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 100%;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding: 2rem;
+    font-size: 2rem;
+    gap: 5rem;
+    z-index: 100;
+    transform: translateY(-10%);
+}
+.sidenav div:nth-child(2){
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.sidenav a:hover{
+    text-decoration: underline;
+}
+.navbar{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 0;
+    /* background: grey; */
+}
+
+.navbarLinks{
+    /* background: red; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+}
+
+.navbarLinks a{
+    /* margin-right: 2rem; */
+    padding: 0.8vw;
+    font-weight: bold;
+}
+
+.navbarLinks a:hover{
+    text-decoration: underline;
+}
+.no-scroll {
+    overflow: hidden;
+}
+.hamburger{
+    display: none;
+
+}
+.content{
+    font-size: 8vw;
+    padding-top: 8rem;
+    text-align: center;
+    line-height: 1.1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+}
+
+.bold_text{
+    font-size: 3vw;
+    font-weight: bold;
+}
+
+.content h1{
+    font-family: 'pacifico';
+    font-size: 4vw;
+    color: #FE2E6C;
+}
+.content p{
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: -0.025em;
+    font-size: 7vw;
+}
+.content img{
+    margin: 0px 10px;
+    object-position: center;
+    object-fit: contain;
+    width: 11vw;
+}
+.content .subText{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.content .subText p{
+    font-weight: 600;
+    font-size: 21px;
+    color: #6E6E73;
+    line-height: 1;
+    letter-spacing: 0em;  
+}
+.content2{
+    /* font-size: 3vw; */
+    /*font-weight: bold; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5% 0% 5%;
+    gap: 3rem;
+}
+
+.content2 span{
+    font-family: pacifico;
+    color: #2E85FE;
+    font-weight: 100;
+}
+div[style*="padding: 0rem 0"] {
+    font-size: 1.4vw; 
+    font-weight: 600;
+    color: #1D1D1F;
+}
+.content2 .patter_container{
+    display: flex;
+    gap: 2vw;
+}
+
+.content2 .patter_container .card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    border-radius: 1rem;
+    text-align: center;
+}
+
+.content2 .patter_container p{
+    font-size: medium;
+    font-weight: bold;
+    padding: 1rem;
+    word-wrap: break-word;
+    max-width: 250px;
+}
+.content3{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5% 0% 5%;
+    gap: 1rem;
+}
+.content3 div:nth-child(3){
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+.content4{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5% 0% 5%;
+    gap: 1rem;
+    font-size: medium;
+    font-weight: 700;
+    font-size: 1.4vw;
+    letter-spacing: -0.025rem;
+    line-height: 1.2;
+
+}
+.content4 h1{
+    font-size: 3vw;
+    font-weight: bold;
+}
+.content4 span{
+    font-family: pacifico;
+    font-weight: normal;
+    color: #FE2E6C;
+    /* font-weight: 100; */
+}
+.content4 .image_container{
+    padding: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+}
+.content4 .image_container .arrow{
+    position: absolute;
+    right: 0;
+    transform: translateX(7vw);
+    width: 10vw;
+}
+
+@media (max-width: 768px) {
+    .bold_text{
+        font-size: 6vw;
+    }
+    .navbar .navbarLinks a{
+        margin-right: 1rem;
+        padding: 0.5rem;
+        display: none;
+    }
+    .hamburger{
+        display: block;
+    }
+    .container{
+        padding-left: 1.2rem;
+        padding-right: 1.2rem;
+    }
+    .content{
+        gap: 0.8rem;
+        padding-top: 2rem;
+    }
+    .content p{
+    font-size: 8.6vw;
+    line-height: normal;
+    }
+    .content .subText p{ 
+     font-size: 11px;
+    }
+    .content img{
+        margin: 0px 4px;
+        width: 60px;
+    }
+    .content h1{
+        font-size: 5vw;
+    }
+    .content2>div div{
+        padding: 0;
+   }
+    div[style*="padding: 0rem 0"] {
+        font-size: 2.5vw; 
+    }
+    .content2 .patter_container{
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .content2 .patter_container .card{
+        gap: 0px;
+    }
+    .content2 .patter_container .card p{
+        font-size: small;
+        padding: 0rem;
+        max-width: 150px;
+    }
+    .content2 .patter_container .card img{
+        /* max-height: 200px; */
+        max-width: 150px;
+        object-fit: contain;
+    }
+
+    .content3 div:nth-child(3){
+        gap: 4px;
+    }
+    .content4 h1{
+        font-size: 6vw;
+    }
+    .content4 P{
+        font-weight: 700;
+        font-size: 14px;
+    }
+    .content4 .image_container{
+        padding: 0rem 3rem;
+    }
+    .content4 .image_container .arrow{
+        transform: translateX(0.5vw);
+        /* width: 20vw; */
+    }
+}
+@media (max-width: 425px) {
+    .content p{
+        font-size: 8vw;
+    }
+    .content img{
+        width: 50px;
+    }
+    
+}

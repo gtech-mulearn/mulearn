@@ -1,93 +1,92 @@
 .LClandingPage {
-    position: relative;
-    overflow-x: hidden;
-}
-
-.joinCircle {
-    background: var(--blue);
-    border-radius: var(--borderRadius);
-    padding: 0.5rem 1rem;
-    font-size: 0.8rem;
-    margin-top: 1rem;
-    width: 6rem;
-    color: #fff;
-}
-
-.backgroundImage {
-    top: 0;
-    position: absolute;
-
-    z-index: -2;
-}
-
-.backgroundImage img {
-    width: 100vw;
-    height: 110vh;
-}
-
-.LClandingPageHero {
-    /* background-image: url(https://i.ibb.co/cCvB4r6/Learning-BG.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center; */
-    position: relative;
-    height: 100vh;
-    width: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+    margin: 10rem 0;
+    margin-bottom: 8rem;
+}
+
+.DonationHero {
+    width: 80vw;
+    min-height: 60vh;
+    display: flex;
+}
+.HeroLeft {
+    width: 50%;
+    background-color: white;
+    display: flex;
     flex-direction: column;
-    text-align: center;
     gap: 1rem;
-    padding-top: 5rem;
+    padding: 5px;
 }
-
-@media screen and (min-width: 800px) {
-        .LClandingPageHero {
-                height: 75vh;
-        }
+.HeroLeft h1 {
+    font-size: 4.4rem;
+    font-weight: bold;
+    line-height: 5rem;
 }
-
-.LClandingPageHero span {
+.HeroLeft h1:nth-child(2) {
+    background: linear-gradient(30deg, #6660f4, #af2ee6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.HeroLeft p {
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-top: 0.5rem;
+}
+.OrgContainer {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+}
+.OrgContainer img {
+    max-width: 120px;
+    max-height: 60px;
+}
+.HeroLeft .Stats {
+    display: flex;
+    gap: 2.8rem;
+}
+.HeroLeft .Stats div {
+    display: flex;
+    flex-direction: column;
+}
+.HeroLeft .Stats div h3 {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+.HeroLeft .Stats div h4 {
+    font-weight: 500;
+    font-size: 1.4rem;
+    text-align: center;
+}
+.HeroImgContainer {
+    width: 50%;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    padding-top: 2rem;
+}
+.HeroImgContainer img {
+    border-radius: 24px;
+    max-width: 600px;
+    height: 50vh;
+    object-fit: cover;
+    overflow: hidden;
+    box-shadow: 10px 10px 40px 5px #eff2f6, -10px -10px 40px 5px #eff2f6;
+}
+.MarqueeContainer {
+    background-color: var(--blue);
+    height: 65px;
+    width: 100vw;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    font-size: 3.5rem;
-    color: #000;
-}
-
-.LClandingPageHero span img {
-    position: relative;
-    top: 0.75rem;
-    height: 3rem;
-}
-
-.LClandingPageHero .dash {
-    position: absolute;
-    top: -50%;
-    width: 120%;
-    height: 100%;
-    border: 5px solid #accaf6;
-    border-style: dashed;
-    border-radius: 45%;
-}
-
-.LClandingPageHero .heroTitle b:nth-child(2) {
-    font-size: 4rem;
-    color: var(--blue);
-    position: relative;
-    top: -1rem;
-    background-image: linear-gradient(to right, #ddecff, #eaf3ff);
-    border-radius: 10%;
-    height: -1rem;
-    padding: 0rem 0.5rem;
-}
-
-.LClandingPageHero p {
-    width: 75%;
+    font-size: 2rem;
     font-weight: 600;
-    font-size: 1.1rem;
+    color: white;
+}
+
+.MarqueeContainer span {
+    color: black;
 }
 
 .DonationSection {
@@ -96,54 +95,148 @@
     display: flex;
     justify-content: center;
     margin-bottom: 6rem;
+    margin-top: 3rem;
 }
 
 .DonationFormElement {
     background: #fff;
-    box-shadow: -1.6px 6.4px 32px 3.2px rgba(0, 0, 0, 0.15);
+    box-shadow: 10px 10px 40px 5px #eff2f6, -10px 10px 40px 5px #eff2f6;
     width: 80%;
-    top: -25%;
-    padding: 1.5rem 3rem;
+    padding: 1.5rem 4rem;
     display: flex;
+    border-radius: 20px;
     gap: 2rem;
 }
 
 .DetailsContainer {
-    width: 100%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     padding: 1rem 0;
-    gap: 0.2rem;
-}
-
-.DetailsContainer h1,
-.DonationInputStyles {
-    margin-bottom: 0.7rem;
+    gap: 1rem;
 }
 
 .DetailsContainer label {
-    margin: 0.2rem 0.5rem;
+    position: relative;
+    top: 10px;
+    color: black;
+    font-size: 0.9rem;
+    font-weight: 700;
 }
 
-.DetailsContainer h1 {
-    font-weight: 600;
-    font-size: 1.7rem;
+.CheckOrgContainer {
+    display: flex;
+    align-items: center;
+}
+
+.Checkbox {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    vertical-align: middle;
+    margin-right: 2px;
+    transition: 0.2s;
+}
+
+.Checkbox:checked {
+    background-color: rgba(69, 110, 246, 0.16);
+    border-color: var(--blue);
+    transition: 0.2s;
+}
+
+.Checkbox:checked::after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 1px;
+    width: 5px;
+    height: 10px;
+    border: solid var(--blue);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    transition: 0.2s;
+}
+
+.OrgChecklabel{
+    font-size: 1rem;
+    color: black;
+    font-weight: 500;
+    top: 0;
+    margin-left: 5px;
+}
+
+.DonationInputStyles {
+    margin-bottom: 0.7rem;
+    height: 48px;
+    border-radius: 0.4rem;
+    max-width: 500px;
+    border: 1px solid #d5d4dc;
+    padding: 0.4rem 1rem;
+    transition: .2s;
+    transition: outline .05s;
+}
+
+.DonationInputStyles:hover{
+    border-color: #93b8fe;
+    background-color: #f5f8ff;
+}
+
+.DonationInputStyles:focus{
+    outline: 3px solid var(--blue);
+}
+
+.DonationRightSide{
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.AmountContainer {
+    display: flex;
+    flex-direction: column;
+    max-width: 468px;
+}
+
+.AmountContainer h1 {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.AmountContainer h4 {
+    text-align: center;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 0.5rem 0;
 }
 
 .DonateButtonContainer {
     display: flex;
-    justify-content: center;
+    justify-content:center;
+    align-items: center;
     gap: 1rem;
+    padding: 0.8rem 0;
+    flex-wrap: wrap;
 }
 
 .DonateButtonContainer button {
     background-color: #fff;
-    width: 100%;
-    color: var(--blue);
-    border: 2px solid var(--blue);
+    color: black;
+    font-weight: 600;
+    border: 3px solid var(--blue);
     border-radius: 0.5rem;
-    padding: 0.9rem 1.4rem;
-    margin-bottom: 1rem;
+    width: 6.5rem;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
 }
 
 .DonateButtonContainer button:hover {
@@ -155,61 +248,85 @@
     background-color: var(--blue);
     color: #fff;
 }
-
-.DonationInputStyles {
-    border-radius: 0.4rem;
-    border: 1.12px solid rgba(45, 191, 252, 0.25);
-    box-shadow: 0px 1.6px 6.4px 0px rgba(0, 0, 0, 0.1);
-    padding: 0.4rem 1rem;
-    width: 100%;
+.AmountField {
+    font-size: 1.5rem;
+    max-width:100%;
+    transition: .05s;
 }
 
-.AmountField {
-    font-size: 1.8rem;
-    font-weight: 500;
-    padding: 0.5rem 1rem;
+.AmountField:focus{
+    outline: 3px solid var(--blue);
 }
 
 .CurrencyContainer {
-    position: relative;
+    padding: 0.5rem 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .CurrencyContainer p {
-    position: absolute;
-    cursor: default;
-    font-weight: 200;
-    color: rgba(0, 0, 0, 0.5);
-    right: 1rem;
-    top: 20%;
+    font-weight: 700;
+    color: black;
+    font-size: 14px;
+    padding-bottom: .3rem;
 }
 
-.TermsContainer {
+.TermsContainer{
     display: flex;
-    align-items: center;
 }
 
-.TermsContainer input {
-    width: 1rem;
+.TermsContainer .Checkbox{
+    scale: .75;
+    top: -1px;
+    display: inline;
+    padding-right: 15px;
+    margin-right: 5px;
 }
 
-.TermsContainer label {
-    cursor: default;
-    font-size: 0.7rem;
-    color: rgba(0, 0, 0, 0.8);
+.TermsContainer label{
+    font-size: 14px;
+    color:#8B849B;
+    font-weight: 400;
+    line-height: 18px;
+    text-align: start;
+}
+
+.TermsContainer label a{
+    text-decoration: underline;
 }
 
 .SubmitButton {
     margin-top: 1rem;
     font-size: 1.4rem;
-    width: 60%;
-    align-self: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .SubmitButton button {
-    padding: 0.7rem 1rem;
+    padding: 8px 25px;
+    background-color: var(--blue);
+    color: white;
+    border-radius: 10px;
+    font-size: 1rem;
 }
 
 /* Refund Page */
+.RefundPage {
+    position: relative;
+    overflow-x: hidden;
+}
+
+.backgroundImage {
+    top: 0;
+    position: absolute;
+    z-index: -2;
+}
+
+.backgroundImage img {
+    width: 100vw;
+    height: 110vh;
+}
 
 .refundSection {
     display: flex;
@@ -266,9 +383,58 @@
         gap: 1rem;
     }
 
+    .DonationFormElement {
+        padding: 1.5rem 2rem;
+    }
+
     .SubmitButton {
         width: 100%;
         align-items: center;
+    }
+}
+@media only screen and (max-width: 820px) {
+    .LClandingPage {
+        margin-top: 6rem;
+        margin-bottom: 3rem;
+    }
+
+    .HeroImgContainer {
+        display: none;
+    }
+
+    .HeroLeft {
+        width: 100%;
+    }
+
+    .HeroLeft h1 {
+        text-align: center;
+    }
+
+    .HeroLeft p {
+        text-align: center;
+    }
+
+    .OrgContainer {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .HeroLeft .Stats {
+        justify-content: center;
+    }
+
+    .DetailsContainer{
+        width: 100%;
+    
+    }
+
+    .DonationInputStyles{
+        max-width: 600px;
+    }
+
+    .DonationRightSide{
+        width: 100%;
+        justify-content: center;
     }
 }
 
@@ -296,17 +462,11 @@
         top: -10%;
         width: 96%;
     }
-
-    .DonateButtonContainer {
-        /* flex-direction: column; */
-        align-items: center;
-        gap: 0.3rem;
+    .DonationRightSide{
+        justify-content: center;
     }
-    .DonateButtonContainer button {
-        width: 100%;
-        padding: 0.4rem 0.8rem;
-        margin-bottom: 0.6rem;
-        font-size: 0.8rem;
+    .DonateButtonContainer {
+        align-items: center;
     }
 
     .CurrencyContainer p,

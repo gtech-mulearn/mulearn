@@ -1,0 +1,116 @@
+/* General Styles */
+.wrapper h1 {
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+.course {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three cards per row */
+    gap: 2rem; /* Increased gap */
+    justify-items: center;
+}
+
+/* Course Card Styles */
+.containercard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+    margin: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    max-width: 300px; /* Increased max-width */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    font-family: Poppins, sans-serif;
+    gap: 1.5rem;
+}
+
+.containercard:hover {
+    transform: translateY(-5px);
+}
+
+/* Image Styles */
+.courseImage {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+/* Text Styles */
+.title {
+    font-weight: 500;
+    font-size: 24px;
+    margin-bottom: 0.5rem;
+}
+
+.desc {
+    color: #404d61;
+    font-size: 0.9rem;
+}
+
+.duration,
+.lessons {
+    color: #404d61;
+    opacity: 0.5;
+    font-weight: 500;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.cta {
+    background: #456ff6;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.cta:hover {
+    background: #3457d5;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 1300px) {
+    .course {
+        grid-template-columns: repeat(2, 1fr); /* Two cards per row */
+    }
+    .containercard {
+        width: 45vw;
+        height: auto; /* Adjust height to maintain aspect ratio */
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .wrapper h1 {
+        font-size: 2rem;
+    }
+    .course {
+        grid-template-columns: repeat(1, 1fr); /* One card per row */
+    }
+    .containercard {
+        width: 70vw;
+        height: auto; /* Adjust height to maintain aspect ratio */
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .course {
+        grid-template-columns: repeat(1, 1fr); /* One card per row */
+    }
+    .containercard {
+        width: 85vw;
+        height: auto; /* Adjust height to maintain aspect ratio */
+    }
+}
+
+.second_view_container {
+    margin-top: 3rem;
+    padding: 2rem;
+    background-color: #ffffff;
+}

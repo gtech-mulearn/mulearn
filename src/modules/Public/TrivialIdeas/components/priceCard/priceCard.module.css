@@ -1,0 +1,34 @@
+.price_card{
+    padding: 2rem 0rem;
+    background-color: #F5F5F7;
+    border-radius: 1rem;
+    width: 300px;
+}
+
+.price_card div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+}
+.price_card_header p{
+    color: #2E85FE;
+    font-size: 22px;
+    font-weight: bold;
+}
+.price_card_header_title{
+    /* font-size: 2vw; */
+    font-size: 24px;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .price_card_header_title{
+        font-size: 18px;
+    }
+    .price_card__header p{
+        font-size: 4vw;
+    }
+  }

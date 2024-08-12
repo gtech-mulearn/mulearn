@@ -14,7 +14,8 @@ import { fetchLocalStorage } from "@/MuLearnServices/common_functions";
 const DashboardRootLayout = (props: { component?: any }) => {
     const [connected, setConnected] = useState(false);
 
-    const Management: ManagementTypes[] = Object.values(managementTypes).slice(2);
+    const Management: ManagementTypes[] =
+        Object.values(managementTypes).slice(2);
     useEffect(() => {
         const userInfo = fetchLocalStorage<UserInfo>("userInfo");
         if (userInfo) {
@@ -65,6 +66,12 @@ const DashboardRootLayout = (props: { component?: any }) => {
             icon: <i className="fi fi-sr-building"></i>
         },
         {
+            url: "/dashboard/opengrad",
+            title: "OpenGrad",
+            hasView: true,
+            icon: <i className="fi fi-sr-building"></i>
+        },
+        {
             url: "/dashboard/refer",
             title: "Referrals",
             hasView: true,
@@ -105,13 +112,13 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     title: "Manage Organization",
                     hasView: true,
 
-                    roles: [roles.ADMIN, roles.FELLOW, roles.ASSOCIATE],
+                    roles: [roles.ADMIN, roles.FELLOW],
                     children: [
                         {
                             url: "/dashboard/affiliation",
                             title: "Affiliation",
                             hasView: true,
-                            roles: [roles.ADMIN, roles.FELLOW, roles.ASSOCIATE]
+                            roles: [roles.ADMIN, roles.FELLOW]
                         },
                         {
                             url: "/dashboard/organization-transfer",
@@ -233,7 +240,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     url: "/dashboard/channels",
                     title: "Channels",
                     hasView: true,
-                    roles: [roles.ADMIN, roles.FELLOW, roles.ASSOCIATE]
+                    roles: [roles.ADMIN, roles.FELLOW]
                 },
 
                 {

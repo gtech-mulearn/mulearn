@@ -91,7 +91,7 @@ export const dashboardRoutes = {
     getStudentLeaderBoard: "/api/v1/leaderboard/students/",
     getIgDetails: "/api/v1/dashboard/profile/ig-edit/",
     getSocials: "/api/v1/dashboard/profile/socials/",
-    postProfileImage: "api/v1/dashboard/user/profile/update/",
+    postProfileImage: "/api/v1/dashboard/user/profile/update/",
 
     zonalStudentDetails: "/api/v1/dashboard/zonal/student-details/",
     zonalStudentData: "/api/v1/dashboard/zonal/student-details/csv/",
@@ -181,6 +181,11 @@ export const dashboardRoutes = {
     getWadhwaniClientToken: "api/v1/integrations/wadhwani/auth-token/",
     getWadhwaniCourses: "api/v1/integrations/wadhwani/course-details/",
     getWadhwaniCourseLink: "api/v1/integrations/wadhwani/user-login/",
+
+    //OpenGrad
+    getOpenGradClientToken: "api/v1/integrations/OpenGrad/auth-token/",
+    getOpenGradCourses: "api/v1/integrations/OpenGrad/course-details/",
+    getOpenGradCourseLink: "api/v1/integrations/OpenGrad/user-login/"
 } as const;
 
 export const organizationRoutes = {
@@ -244,5 +249,5 @@ export const googleSheetRoutes = {
 
 export const donationRoutes = {
     order: "api/v1/donate/order/",
-    verify : "api/v1/donate/verify/",
-}
+    verify: "api/v1/donate/verify/"
+};

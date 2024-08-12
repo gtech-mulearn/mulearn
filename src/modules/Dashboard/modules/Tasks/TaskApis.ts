@@ -112,7 +112,7 @@ export const editTask = async (
     bonus_karma?: string
 ) => {
     try {
-        const formattedBonusTime = bonus_time
+        const formattedBonusTime = (bonus_time && bonus_time != "")
             ? new Date(bonus_time).toISOString() // Convert bonus_time to ISO format
             : null;
 
