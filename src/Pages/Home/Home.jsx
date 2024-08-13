@@ -40,7 +40,7 @@ const MuLiveCounter = () => {
   }, []);
 
   return (
-    <div className={styles.rightside}>
+    <div style={{}}>
       {counts && (
         <div className={styles.countcontainer}>
           <div className={styles.count}>
@@ -520,16 +520,27 @@ const Home = () => {
           <div
             className={styles.count_view}
             style={{
-              height: "100%",
+              ...(window.innerWidth >= 1024 && {
+                display: "flex",
+                flexDirection: "column",
+                alignContent: "center",
+                justifyContent: "center",
+                gap: "3rem",
+              }),
             }}
           >
             <div
               style={{
-                height: "100%", // Ensure the container takes full height of its parent
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "flex-start",
-                alignItems: "flex-start", // Align items to the start of the container\
+                ...(window.innerWidth >= 1024 && {
+                  height: "100%", // Ensure the container takes full height of its parent
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  alignItems: "center", // Align items to the start of the container
+                  width: "100%",
+                  padding: "1rem",
+                  gap: "3rem",
+                }),
               }}
               className={styles.left_side}
             >
