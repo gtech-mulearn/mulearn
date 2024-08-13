@@ -237,6 +237,13 @@ export const links = [
             link: "/buildforteam",
             foreign: false,
           },
+          {
+            name: "Wadhwani",
+            submenu: false,
+            sublinks: [],
+            link: "/wadhwani",
+            foreign: false,
+          },
         ],
       },
     ],
