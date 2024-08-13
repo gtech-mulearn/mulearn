@@ -24,11 +24,13 @@ const Footer = () => {
       <div className={styles.footer_container}>
         <div className={styles.first_section}>
           <div className={styles.fs_leftside}>
-            <img
-              src={MulearnWhite}
-              alt=""
-              className={styles.mulearn}
-            />
+            <a href="http://app.mulearn.org/dashboard">
+              <img
+                src={MulearnWhite}
+                alt=""
+                className={styles.mulearn}
+              />
+            </a>
 
             <div className={styles.links}>
               <a href="https://mulearn.org/careers">
