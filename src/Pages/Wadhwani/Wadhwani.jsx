@@ -12,7 +12,7 @@ import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 import leader from "./assets/Leader.gif";
 // import {  getData  } from "./services/api";
-import courseData from "./services/Data.json"
+import courseData from "./services/Data.json";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 const theme = createTheme({
   palette: {
@@ -55,7 +55,10 @@ const Wadhwani = () => {
                 on the soft skills of the person.
               </p>
               <p>Feel free to check out our courses!</p>
-              <a className={styles.buttonMuorange} href="https://app.mulearn.org/dashboard/wadhwani">
+              <a
+                className={styles.buttonMuorange}
+                href="https://app.mulearn.org/dashboard/wadhwani"
+              >
                 Explore Wadhwani
               </a>
             </div>
@@ -71,15 +74,13 @@ const Wadhwani = () => {
                   key={index}
                   sx={{
                     width: 400,
-                    height: 200,
+                    minHeight: 300,
                     border: "1px solid hsla(0, 0%, 100%, .18)",
                     borderRadius: "15px",
-                    boxShadow: "0 1px 12px 0 rgb(193 195 211 / 37%)",
+                    boxShadow: "0 1px 12px 0 rgb(193 195 211 / 87%)",
                     marginBottom: "1rem",
                     display: "flex",
                     justifyContent: "space-between",
-                    
-
                   }}
                 >
                   <CardContent>
@@ -87,7 +88,7 @@ const Wadhwani = () => {
                       {item.courseName}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      {item.description.substring(0, 120)}...
+                      {item.description}
                     </Typography>
                     <Typography variant="body4" color="text.secondary">
                       Duration: {item.CourseDuration} hrs
