@@ -7,7 +7,7 @@ export default function Navbar(){
 
     return(
         <nav className={styles.LClandingPageNav}>
-                <Link to="https://mulearn.org/"><img src={logo} alt="muLearn" /></Link>
+                <Link to="http://app.mulearn.org/dashboard"><img src={logo} alt="muLearn" /></Link>
                 <div className={styles.navLinks}>
                     <div>
                         <Link to="https://mulearn.org/">About</Link>
