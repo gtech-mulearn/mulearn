@@ -31,7 +31,7 @@ const MuLiveCounter = () => {
 
     socket.addEventListener("message", (event) => {
       setCounts(JSON.parse(event.data));
-      console.log("Message from server ", event.data);
+      //console.log("Message from server ", event.data);
     });
 
     socket.addEventListener("error", (event) => {
@@ -94,13 +94,13 @@ const MuLiveCounter = () => {
 
           <div className={styles.count}>
             <p className={styles.cvc_heading}>
-              <CountUp end={0} duration={5} />+
+              <CountUp end={counts.karma_pow_count.karma_count} duration={5} />+
             </p>
             <p className={styles.cvc_text}>Total Karma Mined</p>
           </div>
           <div className={styles.count}>
             <p className={styles.cvc_heading}>
-              <CountUp end={0} duration={5} />+
+              <CountUp end={counts.karma_pow_count.pow_count} duration={5} />+
             </p>
             <p className={styles.cvc_text}>Number of Proof of Works </p>
           </div>
