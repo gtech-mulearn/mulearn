@@ -64,7 +64,9 @@ const MuLiveCounter = () => {
                     <CountUp
                       end={
                         orgTypeCount.org_type === "Company"
-                          ? 200
+                          ? 213
+                          : orgTypeCount.org_type === "Community"
+                          ? 30
                           : orgTypeCount.org_count
                       }
                       duration={5}
@@ -94,7 +96,7 @@ const MuLiveCounter = () => {
 
           <div className={styles.count}>
             <p className={styles.cvc_heading}>
-              <CountUp end={counts.karma_pow_count.karma_count} duration={5} />+
+              <CountUp end={counts.karma_pow_count.karma_count} duration={5} />
             </p>
             <p className={styles.cvc_text}>Total Karma Mined</p>
           </div>
@@ -124,9 +126,10 @@ const MuLiveCounter = () => {
           </div>
           <div className={styles.count}>
             <p className={styles.cvc_heading}>
-              <CountUp end={20} duration={5} />
+              <CountUp end={1} duration={5} />
+              Cr+
             </p>
-            <p className={styles.cvc_text}>Lakhs Gig Works</p>
+            <p className={styles.cvc_text}>worth of Gig Works</p>
           </div>
 
           {counts.enablers_mentors_count
