@@ -31,7 +31,7 @@ export default function Menubar() {
                 <a href="#about">About Pathway</a>
             </div>
             <div className={styles.pre_rg}>
-                <a href="https://mulearn.org/r/ai-bootcamp">
+                <a href="https://mulearn.org/r/pathway-reg">
                     <img src={pre} alt="Pre-register" />
                     Apply Now
                 </a>

@@ -31,7 +31,7 @@ export default function mainpage() {
             </div>
             <div className={styles.Container_button}>
               <a
-                href="https://mulearn.org/r/ai-bootcamp"
+                href="https://mulearn.org/r/pathway-reg"
                 target="_blank"
                 rel="noopener noreferrer"
               >
