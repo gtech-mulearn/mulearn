@@ -11,6 +11,7 @@ import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 import Levels from "./Levels/Levels";
 import axios from "axios";
+import { CampusCard } from "./campus-card/CampusCard";
 
 const CampusChapters = () => {
   const [selectedZone, setSelectedZone] = useState("all");
@@ -197,25 +198,7 @@ const CampusChapters = () => {
                     (selectedZone === "all" &&
                       campus.district === selectedDistrict)
                   ) {
-                    return (
-                      <div className={styles.college}>
-                        <div className={styles.college_name}>{campus.name}</div>
-                        <div className={styles.college_district}>
-                          {campus.district}
-                        </div>
-                        <div className={styles.college_zone}>
-                          Zone: {campus.zone}
-                        </div>
-                        <div className={styles.college_lead}>
-                          Campus Lead: {campus.lead}
-                        </div>
-                        {campus.email && (
-                          <div className={styles.college_email}>
-                            Email Address: {campus.email}
-                          </div>
-                        )}
-                      </div>
-                    );
+                    return <CampusCard data={campus} />;
                   }
                   //return the campuses that match the selected zone and district
                   // else if (

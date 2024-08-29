@@ -8,7 +8,7 @@ import "./ArtOfTeaching.scss";
 import Faq from "react-faq-component";
 
 import fvimg from "./assets/fvimg.gif";
-import Guidlines from "./assets/Guidlines.pdf";
+import Guidlines from "./assets/Guidlines1.pdf";
 
 import MentorCard from "../../Components/MentorCard/MentorCard";
 
@@ -73,7 +73,9 @@ const ArtOfTeaching = () => {
     
   };
 
+  
 
+ 
   const data = {
     title: "Frequently Asked Questions",
     rows: [
@@ -202,43 +204,15 @@ const ArtOfTeaching = () => {
 
             <div className={styles.cards_container_desktop}>
               <Swiper
-                // pagination={true}
-                // navigation={true}
-                // modules={[Pagination, Navigation]}
+             
                 className="aswiper"
               >
                <SwiperSlide>
                 
-                 {/* <div className={styles.topic_card_android}>
-                    <div className={styles.topic_card}>
-                      <p className={styles.card_heading}>
-                        <span>Android Development with Kotlin</span> by Google.
-                      </p>
-                      <p className={styles.card_description}>
-                        If you choose Android Development as the content you
-                        would have to learn the Android Development with Kotlin
-                        and have to create a 3 minute video summary of the
-                        course.
-                      </p>
-                      <a
-                        href="https://developer.android.com/courses/android-basics-compose/course"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <button
-                          style={{ fontSize: "1rem" }}
-                          className={styles.detailsbtn}
-                          type="submit"
-                        >
-                          View Course
-                        </button>
-                      </a>
-                    </div>
-                  </div>*/}
 
                   <div className={styles.topic_card_android}>
                   <p className={styles.card_heading}>
-                     <span> Guidlines</span>
+                     <span>Guidelines</span>
                     </p>
                   <div style={timelineStyle}>
                   <div>
@@ -247,7 +221,7 @@ const ArtOfTeaching = () => {
       <div className=" pl-4" style={timelineItemStyle}>
         <div className=" pl-4" style={circleStyle}></div>
         <div className=" ml-4" style={lineStyle}></div>
-        <div style={contentStyle} ><p style={{fontSize:'17px'}}>Task 1 - Self introduction with welcome ticket.</p></div>
+        <div style={contentStyle} ><p style={{fontSize:'17px'}}>Task 1 - Self introduction.</p></div>
       </div>
       <div className=" pl-4" style={timelineItemStyle}>
         <div className=" pl-4" style={circleStyle}></div>
@@ -260,7 +234,7 @@ const ArtOfTeaching = () => {
       <div  className=" pl-4"style={timelineItemStyle}>
         <div className=" pl-4"style={circleStyle}></div>
         <div className="ml-4" style={lineStyle}></div>
-        <div style={contentStyle}><p style={{fontSize:'17px'}}>Task 1 - Detailed document submission of the designed course curriculam.</p></div>
+        <div style={contentStyle}><p style={{fontSize:'17px'}}>Task 1 - Detailed document submission of the designed course curriculum.</p></div>
         
       </div>
       <div className="mt-2">
@@ -273,11 +247,12 @@ const ArtOfTeaching = () => {
     </div>
                   </div>
                 </SwiperSlide>
-                
           
               </Swiper>
             </div>
 
+            
+            
             <div className={styles.cards_container_mobile} style={{marginTop:'45px',marginBottom:'30px'}}>
             <div className={styles.topic_card_android} style={{marginTop:'45px',marginBottom:'30px'}}>
                   <p className={styles.card_heading}>
@@ -318,11 +293,43 @@ const ArtOfTeaching = () => {
         </div>
     </div>
                   </div>
-
+                  <div className={`w-full max-w-md lg:max-w-2xl`}>
+                <iframe
+                  className={styles.yt_video}
+                  src="https://www.youtube.com/embed/r5izRx-4j68?si=L9gHSznyZTeCI3b3" 
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  loading="lazy"
+                ></iframe>
+              </div>
            
             </div>
           </div>
         </div>
+
+
+        <div className="hidden lg:flex  items-center justify-center lg:h-[500px] lg:mb-4">
+  <div className="w-full max-w-md lg:max-w-3xl xl:max-w-4xl 2xl:max-w-5xl">
+    <iframe
+
+      className="flex items-center justify-center mx-auto lg:w-[750px] h-56 lg:h-70 xl:h-96 rounded-lg"
+      src="https://www.youtube.com/embed/r5izRx-4j68?si=L9gHSznyZTeCI3b3"
+      title="YouTube video player"
+      frameborder="0"
+     
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+      loading="lazy"
+    ></iframe>
+  </div>
+</div>
+
+       
+       
+
+
 
         <div className={styles.fourth_view_container}>
           <div className={styles.fourth_view}>

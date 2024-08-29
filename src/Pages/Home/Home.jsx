@@ -31,7 +31,7 @@ const MuLiveCounter = () => {
 
     socket.addEventListener("message", (event) => {
       setCounts(JSON.parse(event.data));
-      console.log("Message from server ", event.data);
+      //console.log("Message from server ", event.data);
     });
 
     socket.addEventListener("error", (event) => {
@@ -40,7 +40,7 @@ const MuLiveCounter = () => {
   }, []);
 
   return (
-    <div className={styles.rightside}>
+    <div style={{}}>
       {counts && (
         <div className={styles.countcontainer}>
           <div className={styles.count}>
@@ -55,20 +55,31 @@ const MuLiveCounter = () => {
             </p>
             <p className={styles.cvc_text}>Learning Circles</p>
           </div>
-          {counts.org_type_counts
-            .sort((a, b) => b.org_count - a.org_count)
-            .map((orgTypeCount) => (
-              <div className={styles.count}>
-                <p className={styles.cvc_heading}>
-                  <CountUp end={orgTypeCount.org_count} duration={5} />+
-                </p>
-                <p className={styles.cvc_text}>
-                  {orgTypeCount.org_type.endsWith("y")
-                    ? orgTypeCount.org_type.slice(0, -1) + "ies"
-                    : orgTypeCount.org_type + "s"}
-                </p>
-              </div>
-            ))}
+          {counts &&
+            counts.org_type_counts
+              .sort((a, b) => b.org_count - a.org_count)
+              .map((orgTypeCount) => (
+                <div key={orgTypeCount.org_type} className={styles.count}>
+                  <p className={styles.cvc_heading}>
+                    <CountUp
+                      end={
+                        orgTypeCount.org_type === "Company"
+                          ? 213
+                          : orgTypeCount.org_type === "Community"
+                          ? 30
+                          : orgTypeCount.org_count
+                      }
+                      duration={5}
+                    />
+                    +
+                  </p>
+                  <p className={styles.cvc_text}>
+                    {orgTypeCount.org_type.endsWith("y")
+                      ? orgTypeCount.org_type.slice(0, -1) + "ies"
+                      : orgTypeCount.org_type + "s"}
+                  </p>
+                </div>
+              ))}
 
           <div className={styles.count}>
             <p className={styles.cvc_heading}>
@@ -82,6 +93,45 @@ const MuLiveCounter = () => {
             </p>
             <p className={styles.cvc_text}>Interest Groups</p>
           </div>
+
+          <div className={styles.count}>
+            <p className={styles.cvc_heading}>
+              <CountUp end={counts.karma_pow_count.karma_count} duration={5} />
+            </p>
+            <p className={styles.cvc_text}>Total Karma Mined</p>
+          </div>
+          <div className={styles.count}>
+            <p className={styles.cvc_heading}>
+              <CountUp end={counts.karma_pow_count.pow_count} duration={5} />+
+            </p>
+            <p className={styles.cvc_text}>Number of Proof of Works </p>
+          </div>
+          <div className={styles.count}>
+            <p className={styles.cvc_heading}>
+              <CountUp end={2000} duration={5} />+
+            </p>
+            <p className={styles.cvc_text}>Number of Internships</p>
+          </div>
+          <div className={styles.count}>
+            <p className={styles.cvc_heading}>
+              <CountUp end={1000} duration={5} />+
+            </p>
+            <p className={styles.cvc_text}>Jobs</p>
+          </div>
+          <div className={styles.count}>
+            <p className={styles.cvc_heading}>
+              <CountUp end={100} duration={5} />+
+            </p>
+            <p className={styles.cvc_text}>Products</p>
+          </div>
+          <div className={styles.count}>
+            <p className={styles.cvc_heading}>
+              <CountUp end={1} duration={5} />
+              Cr+
+            </p>
+            <p className={styles.cvc_text}>worth of Gig Works</p>
+          </div>
+
           {counts.enablers_mentors_count
             .sort((a, b) => b.role_count - a.role_count)
             .map((roleCount) => (
@@ -127,7 +177,11 @@ const Home = () => {
               >
                 <button className={styles.primary}>Join µLearn</button>
               </a>
-              <a rel="noopener noreferrer"  target="_blank" href="https://launchpadkerala.org/">
+              <a
+                rel="noopener noreferrer"
+                target="_blank"
+                href="https://launchpadkerala.org/"
+              >
                 <button className={styles.secondary}>Join Launchpad 🚀</button>
               </a>
             </div>
@@ -466,10 +520,34 @@ const Home = () => {
 
       <div className={styles.countviewmain_container}>
         <div className={styles.countview_container}>
-          <div className={styles.count_view}>
-            <div className={styles.left_side}>
+          <div
+            className={styles.count_view}
+            style={{
+              ...(window.innerWidth >= 1024 && {
+                display: "flex",
+                flexDirection: "column",
+                alignContent: "center",
+                justifyContent: "center",
+                gap: "3rem",
+              }),
+            }}
+          >
+            <div
+              style={{
+                ...(window.innerWidth >= 1024 && {
+                  height: "100%", // Ensure the container takes full height of its parent
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  alignItems: "center", // Align items to the start of the container
+                  width: "100%",
+                  padding: "1rem",
+                  gap: "3rem",
+                }),
+              }}
+              className={styles.left_side}
+            >
               <p className={styles.cv_heading}>
-                {" "}
                 The <span>Impact</span> of <span>µLearn.</span>
               </p>
               <p className={styles.cv_text}>
