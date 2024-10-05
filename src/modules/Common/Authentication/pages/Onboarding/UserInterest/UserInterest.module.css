@@ -1,0 +1,147 @@
+.popUp {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    backdrop-filter: blur(10px);
+    background-color: #00000014;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .box {
+        background-color: #fff;
+        border-radius: 20px;
+        padding: 40px 10px 10px;
+        min-height: 300px;
+        max-width: 700px;
+        position: relative;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        & img {
+            height: 30px;
+        }
+
+        & h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .subText {
+            font-size: 12px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .rolePageCards {
+            gap: 1.5rem;
+            z-index: 10;
+            cursor: pointer;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+            justify-content: center;
+        }
+
+        .rolePageCards .rolePageCard {
+            width: 215px;
+            height: 130px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0px 0px 17.65823px 0px rgba(0, 0, 0, 0.07);
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 10px;
+            position: relative;
+        }
+
+        .rolePageCards .rolePageCard:hover {
+            outline: 1.177px solid #456ff6;
+            transition: 1s ease;
+        }
+
+        .rolePageCards .active {
+            outline: 2px solid #456ff6;
+        }
+
+        .rolePageCard div {
+            display: flex;
+        }
+
+        @media (width<500px) {
+            .rolePageCards .rolePageCard {
+                width: 300px;
+            }
+        }
+
+        @media (width<300px) {
+            .rolePageCards .rolePageCard {
+                width: 200px;
+                font-size: 0.65rem;
+            }
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            transform: translate(-30%, -30%);
+            color: #ffffff;
+            background-color: #3e15d4;
+            border-radius: 50%;
+            padding: 2px;
+        }
+
+        .otherInterestInput {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* New styles for Others option */
+        .rolePageCards .rolePageCard.others {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rolePageCards .rolePageCard .othersTextBox {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .rolePageCards .rolePageCard.active .othersTextBox {
+            transform: translateY(0);
+        }
+
+        .rolePageCards .rolePageCard .otherInterestInput {
+            width: 90%;
+            padding: 8px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+    }
+}
