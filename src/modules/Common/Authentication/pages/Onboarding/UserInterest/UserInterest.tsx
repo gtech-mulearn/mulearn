@@ -32,10 +32,34 @@ export default function UserInterest() {
         { title: "Creative", value: "creative", checked: false },
         { title: "Others", value: "others", checked: false }
     ]);
+    const [endgoals, setEndgoals] = useState([
+        { title: "Job", value: "job", checked: false },
+        {
+            title: "Higher Education",
+            value: "higher_education",
+            checked: false
+        },
+        {
+            title: "Entrepreneurship",
+            value: "enterpreneurship",
+            checked: false
+        },
+        { title: "Gig Works", value: "gig", checked: false },
+        { title: "Others", value: "others", checked: false }
+    ]);
     const [otherInterest, setOtherInterest] = useState<string[]>([]);
+    const [otherEndgoal, setOtherEndgoal] = useState<string[]>([]);
     const [stepTwo, setStepTwo] = useState(false);
 
     const handleInterestChange = (value: any) => {
+        if (value === "others") {
+            if (
+                interests.filter(interest => interest.value === value)[0]
+                    .checked
+            ) {
+                setOtherInterest([]);
+            }
+        }
         setInterests(
             interests.map(interest =>
                 interest.value === value
@@ -44,40 +68,56 @@ export default function UserInterest() {
             )
         );
     };
-    const [communityAPI, setCommunityAPI] = useState([
-        { id: "aswanth", title: "oteha" }
-    ]);
 
-    const communityProps = {
-        name: "communities.id",
-        // onChange: (OnChangeValue: any) => {
-        //     formik.setFieldValue(
-        //         "communities",
-        //         OnChangeValue.map(
-        //             (
-        //                 value: any = {
-        //                     value: "",
-        //                     label: ""
-        //                 }
-        //             ) => value.value
-        //         )
-        //     );
-        // },
-        closeMenuOnSelect: false,
-        isMulti: true,
-        value: [],
-        options: toReactOptions(communityAPI)
+    const handleEndgoalChange = (value: any) => {
+        if (value === "others") {
+            if (
+                endgoals.filter(endgoal => endgoal.value === value)[0].checked
+            ) {
+                setOtherEndgoal([]);
+            }
+        }
+        setEndgoals(
+            endgoals.map(endgoal =>
+                endgoal.value === value
+                    ? { ...endgoal, checked: !endgoal.checked }
+                    : endgoal
+            )
+        );
     };
 
     const handleContinue = () => {
         const selectedInterests = interests
             .filter(interest => interest.checked)
-            .map(interest => interest.value);
-        console.log("Selected interests:", selectedInterests);
-        console.log("Other interest:", otherInterest);
+            .map(interest => interest);
+        if (selectedInterests.find(interest => interest.value === "others")) {
+            if (otherInterest.length === 0) {
+                return;
+            }
+        }
+        if (selectedInterests.length > 0 || otherInterest.length > 0) {
+            setStepTwo(true);
+        }
     };
 
-    const isAnythingSelected = interests.some(interest => interest.checked);
+    const handleSubmit = () => {
+        const selectedInterests = interests
+            .filter(interest => interest.checked)
+            .map(interest => interest);
+        const selectedEndgoals = endgoals
+            .filter(endgoal => endgoal.checked)
+            .map(endgoal => endgoal);
+        const data = {
+            choosen_interests: selectedInterests,
+            choosen_endgoals: selectedEndgoals,
+            other_interests: otherInterest,
+            other_endgoals: otherEndgoal
+        };
+        console.log("data", data);
+    };
+
+    const isInterestSelected = interests.some(interest => interest.checked);
+    const isEndgoalSelected = endgoals.some(endgoal => endgoal.checked);
 
     return stepTwo ? (
         <>
@@ -90,46 +130,67 @@ export default function UserInterest() {
                     <img src={muBrand} alt="mulearn" />
                     <h1>What describes you the most!</h1>
                     <p className={styles.subText}>
-                        Choose the role that best fits your profile.
+                        Choose one or goals you expect from µLearn.
                     </p>
-                    <div className={styles.endGoalPageCards}>
-                        {interests.map(interest => {
-                            let classname = `${styles.rolePageCard} ${
-                                interest.checked && styles.active
+                    <div className={styles.itemsContainer}>
+                        {endgoals.map(endgoal => {
+                            let classname = `${styles.itemsCard} ${
+                                endgoal.checked && styles.checked
                             }`;
                             return (
                                 <div
-                                    key={interest.value}
-                                    className={classname}
+                                    key={endgoal.value}
+                                    className={
+                                        classname +
+                                        " " +
+                                        (endgoal.value == "others"
+                                            ? styles.others
+                                            : "")
+                                    }
                                     onClick={() =>
-                                        handleInterestChange(interest.value)
+                                        handleEndgoalChange(endgoal.value)
                                     }
                                 >
-                                    {interest.checked && <CheckMark />}
-                                    <p>{interest.title}</p>
+                                    {endgoal.checked && <CheckMark />}
+                                    <p>{endgoal.title}</p>
+
+                                    {endgoal.value == "others" ? (
+                                        endgoals.find(
+                                            endgoal =>
+                                                endgoal.value === "others"
+                                        )?.checked && (
+                                            <div
+                                                onClick={e => {
+                                                    e.stopPropagation();
+                                                }}
+                                            >
+                                                <TagsInput
+                                                    value={otherEndgoal}
+                                                    onChange={setOtherEndgoal}
+                                                    name="other_endgoals"
+                                                    placeHolder="Specify your endgoals"
+                                                />
+                                            </div>
+                                        )
+                                    ) : (
+                                        <></>
+                                    )}
                                 </div>
                             );
                         })}
                     </div>
-                    <div className={styles.buttons}>
+
+                    {isEndgoalSelected && (
                         <PowerfulButton
                             type="submit"
+                            className={styles.continueButton}
                             style={{ marginTop: "10px" }}
                             isLoading={false}
-                            variant="secondary"
-                            onClick={() => setStepTwo(true)}
+                            onClick={handleSubmit}
                         >
-                            Skip
+                            Submit
                         </PowerfulButton>
-                        <PowerfulButton
-                            type="submit"
-                            style={{ marginTop: "10px" }}
-                            isLoading={false}
-                            onClick={() => setStepTwo(true)}
-                        >
-                            Continue
-                        </PowerfulButton>
-                    </div>
+                    )}
                 </div>
             </div>
         </>
@@ -146,9 +207,9 @@ export default function UserInterest() {
                     <p className={styles.subText}>
                         Choose one or more roles that best fit your profile.
                     </p>
-                    <div className={styles.interestSelectCards}>
+                    <div className={styles.itemsContainer}>
                         {interests.map(interest => {
-                            let classname = `${styles.interestSelectCard} ${
+                            let classname = `${styles.itemsCard} ${
                                 interest.checked && styles.active
                             }`;
                             return (
@@ -158,7 +219,7 @@ export default function UserInterest() {
                                         classname +
                                         " " +
                                         (interest.value == "others"
-                                            ? styles.interestOther
+                                            ? styles.others
                                             : "") +
                                         " " +
                                         (interest.checked ? styles.checked : "")
@@ -200,7 +261,7 @@ export default function UserInterest() {
                         })}
                     </div>
 
-                    {isAnythingSelected && (
+                    {isInterestSelected && (
                         <PowerfulButton
                             type="submit"
                             className={styles.continueButton}

@@ -38,7 +38,7 @@
             margin-bottom: 10px;
         }
 
-        .interestSelectCards {
+        .itemsContainer {
             gap: 1.5rem;
             z-index: 10;
             cursor: pointer;
@@ -46,8 +46,9 @@
             flex-wrap: wrap;
             padding: 20px;
             justify-content: center;
+            overflow: show;
 
-            .interestSelectCard {
+            .itemsCard {
                 width: 215px;
                 height: 130px;
                 border-radius: 10px;
@@ -63,7 +64,7 @@
                 position: relative;
                 transition: all 0.3s ease;
 
-                &.interestOther {
+                &.others {
                     &.checked {
                         display: flex;
                         width: calc(410px + 3rem);
@@ -81,14 +82,6 @@
                     background-color: #3e15d4;
                     border-radius: 50%;
                     padding: 2px;
-                }
-
-                .otherInterestInput {
-                    width: 100%;
-                    padding: 10px;
-                    margin-top: 10px;
-                    border: 1px solid #ccc;
-                    border-radius: 4px;
                 }
 
                 div {
