@@ -225,22 +225,22 @@ export default function AccountCreation() {
             userData.dob = dwmsData.dob;
         }
 
-        const isSuccess = await validate({
+        // const isSuccess = await validate({
+        //     userData: userData,
+        //     setIsSubmitting: setIsLoading
+        //     // toast: toast // Make sure to pass the toast parameter correctly
+        // });
+        submitUserData({
+            setIsLoading: setIsLoading,
             userData: userData,
-            setIsSubmitting: setIsLoading
-            // toast: toast // Make sure to pass the toast parameter correctly
+            // toast: toast,
+            navigate: navigate
         });
+        // if (isSuccess && selectedRole.toLowerCase() !== "other") {
+        //     navigate("/register/about", { state: userData });
+        // } else if (isSuccess && selectedRole.toLowerCase() === "other") {
 
-        if (isSuccess && selectedRole.toLowerCase() !== "other") {
-            navigate("/register/about", { state: userData });
-        } else if (isSuccess && selectedRole.toLowerCase() === "other") {
-            submitUserData({
-                setIsLoading: setIsLoading,
-                userData: userData,
-                // toast: toast,
-                navigate: navigate
-            });
-        }
+        // }
     };
     // console.log(selectedRole, role);
 
@@ -258,7 +258,7 @@ export default function AccountCreation() {
             >
                 {formik => (
                     <Form>
-                        {popUP && (
+                        {/* {popUP && (
                             <div className={styles.popUp}>
                                 <div className={styles.box}>
                                     <img src={muBrand} alt="mulearn" />
@@ -302,7 +302,7 @@ export default function AccountCreation() {
                                     </div>
                                 </div>
                             </div>
-                        )}
+                        )} */}
                         <div className={styles.accountCreationContainer}>
                             <div className={styles.accountCreationInputs}>
                                 <div className={styles.inputBox}>
@@ -631,10 +631,10 @@ export default function AccountCreation() {
                                     {selectedRole.toLowerCase() !== "other"
                                         ? isLoading
                                             ? "Validating..."
-                                            : "Next Step"
+                                            : "Register"
                                         : isLoading
-                                          ? "Validating..."
-                                          : "Submit"}
+                                        ? "Validating..."
+                                        : "Submit"}
                                 </PowerfulButton>
                             </div>
 

@@ -165,7 +165,7 @@ export const submitUserData = async ({
         const tokens = res.data.response;
         localStorage.setItem("accessToken", tokens.accessToken);
         localStorage.setItem("refreshToken", tokens.refreshToken);
-        getInfo(() => navigate("/dashboard/connect-discord"));
+        getInfo(() => navigate("/register/interests"));
     } catch (err: any) {
         setIsLoading(false);
         const messages = err.response.data.message.general[0];
