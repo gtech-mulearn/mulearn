@@ -47,6 +47,7 @@ import Donation from "./modules/Public/Donation/Donation";
 import Refund from "./modules/Public/Donation/pages/Refund";
 import DonationSuccess from "./modules/Public/Donation/pages/DonationSuccess";
 import OpenGrad from "./modules/Dashboard/modules/OpenGrad";
+import UserInterest from "./modules/Common/Authentication/pages/Onboarding/UserInterest/UserInterest";
 
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
@@ -291,7 +292,19 @@ function App() {
             element: <AuthRoutes />,
             children: [
                 { path: "register/:role", element: <AccountCreation /> },
-                { path: "register/", element: <AccountCreation /> },
+                {
+                    path: "register/",
+                    children: [
+                        {
+                            path: "",
+                            element: <AccountCreation />
+                        },
+                        {
+                            path: "interests",
+                            element: <UserInterest />
+                        }
+                    ]
+                },
                 { path: "login", element: <SignIn /> },
                 { path: "forgot-password", element: <ForgetPassword /> },
                 { path: "reset-password", element: <ResetPassword /> }

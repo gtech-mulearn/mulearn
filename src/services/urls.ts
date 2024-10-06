@@ -9,6 +9,8 @@ export const onboardingRoutes = {
     areaOfInterestList: "/api/v1/register/area-of-interest/list/",
     communityList: "/api/v1/register/community/list/",
     register: "/api/v1/register/",
+    interests: "/api/v1/register/interests/",
+    interestGroups: "/api/v1/dashboard/ig/list/",
     emailVerification: "/api/v1/register/email-verification/",
     // New Onboarding Routes
     createAccount: "/api/v1/register/new/",
@@ -17,7 +19,8 @@ export const onboardingRoutes = {
     departments: "/api/v1/register/department/list/",
     companies: "/api/v1/register/company/list/",
     validate: "/api/v1/register/validate/",
-    location: "/api/v1/register/location/?q=${param}"
+    location: "/api/v1/register/location/?q=${param}",
+    connectDiscord: "/api/v1/register/connect-discord/"
 } as const;
 
 export const authRoutes = {

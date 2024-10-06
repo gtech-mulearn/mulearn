@@ -15,6 +15,14 @@
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-tap-highlight-color: transparent;
 }
+.rti--container {
+    width: 250px;
+    max-height: 100px;
+    overflow: scroll;
+}
+.rti--container .rti--input {
+    width: 100%;
+}
 
 .css-13cymwt-control,
 .css-t3ipsp-control {

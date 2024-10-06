@@ -79,7 +79,7 @@ export default function CollegePage({
     ): boolean => {
         if (value === "Others") return true; // Always show "Others" option
         if (!string) return true;
-        return label.toLowerCase().startsWith(string.toLowerCase());
+        return label.toLowerCase().includes(string.toLowerCase());
     };
 
     useEffect(() => {
