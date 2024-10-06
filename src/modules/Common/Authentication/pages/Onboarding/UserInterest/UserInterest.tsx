@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import OnboardingHeader from "../../../components/OnboardingHeader/OnboardingHeader";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import styles from "./UserInterest.module.css";
 import muBrand from "/src/modules/Common/Authentication/assets/µLearn.png";
 import { TagsInput } from "react-tag-input-component";
-import { privateGateway } from "@/MuLearnServices/apiGateways";
+import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
 import { onboardingRoutes } from "@/MuLearnServices/urls";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import creative from "/src/modules/Common/Authentication/assets/interests/creative.webp";
-import maker from "/src/modules/Common/Authentication/assets/interests/makers.webp";
-import management from "/src/modules/Common/Authentication/assets/interests/management.webp";
-import software from "/src/modules/Common/Authentication/assets/interests/software.webp";
-import others from "/src/modules/Common/Authentication/assets/interests/others.webp";
+import creative from "/src/modules/Common/Authentication/assets/interests/creative.svg";
+import maker from "/src/modules/Common/Authentication/assets/interests/makers.svg";
+import management from "/src/modules/Common/Authentication/assets/interests/management.svg";
+import software from "/src/modules/Common/Authentication/assets/interests/software.svg";
+import others from "/src/modules/Common/Authentication/assets/interests/others.svg";
 
 const CheckMark = () => (
     <svg
@@ -59,7 +59,26 @@ export default function UserInterest() {
     const [otherInterest, setOtherInterest] = useState<string[]>([]);
     const [otherEndgoal, setOtherEndgoal] = useState<string[]>([]);
     const [stepTwo, setStepTwo] = useState(false);
+    const [interestGroups, setInterestGroups] = useState<{}>({});
     const navigate = useNavigate();
+
+    useEffect(() => {
+        publicGateway
+            .get(onboardingRoutes.interestGroups)
+            .then(res => {
+                var data: [] = res.data?.response?.interestGroup ?? [];
+                var interestGroupsData = {};
+                for (let interest of interests) {
+                    (interestGroupsData as any)[interest.value] = data.filter(
+                        (group: any) => group?.category == interest.value
+                    );
+                }
+                setInterestGroups(interestGroupsData);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }, []);
 
     const handleInterestChange = (value: any) => {
         if (value === "others") {
@@ -253,15 +272,45 @@ export default function UserInterest() {
                                     }
                                 >
                                     {interest.checked && <CheckMark />}
-                                    <img
-                                        className={styles.itemImage}
-                                        src={interest.img}
-                                        alt=""
-                                    />
-                                    <p className={styles.title}>
-                                        {interest.title}
-                                    </p>
-
+                                    <div className={styles.content}>
+                                        <img
+                                            className={styles.itemImage}
+                                            src={interest.img}
+                                            alt=""
+                                        />
+                                        <p className={styles.title}>
+                                            {interest.title}
+                                        </p>
+                                    </div>
+                                    <div
+                                        className={styles.infoButton}
+                                        onClick={e => {
+                                            e.stopPropagation();
+                                        }}
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="16"
+                                            height="16"
+                                            fill="currentColor"
+                                            viewBox="0 0 16 16"
+                                        >
+                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                                        </svg>
+                                    </div>
+                                    <div className={styles.interestInfo}>
+                                        <h4>This category includes:</h4>
+                                        <ul>
+                                            {(interestGroups as any)[
+                                                interest.value
+                                            ]?.map((group: any) => (
+                                                <li key={group.id}>
+                                                    {group.name}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
                                     {interest.value == "others" ? (
                                         interests.find(
                                             interest =>
