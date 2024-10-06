@@ -9,6 +9,7 @@ export const onboardingRoutes = {
     areaOfInterestList: "/api/v1/register/area-of-interest/list/",
     communityList: "/api/v1/register/community/list/",
     register: "/api/v1/register/",
+    interests: "/api/v1/register/interests/",
     emailVerification: "/api/v1/register/email-verification/",
     // New Onboarding Routes
     createAccount: "/api/v1/register/new/",

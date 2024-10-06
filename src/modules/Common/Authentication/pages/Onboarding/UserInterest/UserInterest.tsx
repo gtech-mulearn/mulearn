@@ -1,14 +1,13 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import OnboardingTemplate from "../../../components/OnboardingTeamplate/OnboardingTemplate";
 import OnboardingHeader from "../../../components/OnboardingHeader/OnboardingHeader";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import styles from "./UserInterest.module.css";
 import muBrand from "/src/modules/Common/Authentication/assets/µLearn.png";
-import Select from "react-select";
-import { toReactOptions } from "../../../../../Dashboard/utils/common";
-import { Tab } from "@chakra-ui/react";
 import { TagsInput } from "react-tag-input-component";
+import { privateGateway } from "@/MuLearnServices/apiGateways";
+import { onboardingRoutes } from "@/MuLearnServices/urls";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const CheckMark = () => (
     <svg
@@ -27,7 +26,7 @@ const CheckMark = () => (
 export default function UserInterest() {
     const [interests, setInterests] = useState([
         { title: "Software", value: "software", checked: false },
-        { title: "Makers", value: "makers", checked: false },
+        { title: "Maker", value: "maker", checked: false },
         { title: "Management", value: "management", checked: false },
         { title: "Creative", value: "creative", checked: false },
         { title: "Others", value: "others", checked: false }
@@ -41,15 +40,16 @@ export default function UserInterest() {
         },
         {
             title: "Entrepreneurship",
-            value: "enterpreneurship",
+            value: "entrepreneurship",
             checked: false
         },
-        { title: "Gig Works", value: "gig", checked: false },
+        { title: "Gig Works", value: "gig_work", checked: false },
         { title: "Others", value: "others", checked: false }
     ]);
     const [otherInterest, setOtherInterest] = useState<string[]>([]);
     const [otherEndgoal, setOtherEndgoal] = useState<string[]>([]);
     const [stepTwo, setStepTwo] = useState(false);
+    const navigate = useNavigate();
 
     const handleInterestChange = (value: any) => {
         if (value === "others") {
@@ -108,12 +108,26 @@ export default function UserInterest() {
             .filter(endgoal => endgoal.checked)
             .map(endgoal => endgoal);
         const data = {
-            choosen_interests: selectedInterests,
-            choosen_endgoals: selectedEndgoals,
+            choosen_interests: selectedInterests.map(
+                interest => interest.value
+            ),
+            choosen_endgoals: selectedEndgoals.map(endgoal => endgoal.value),
             other_interests: otherInterest,
             other_endgoals: otherEndgoal
         };
-        console.log("data", data);
+        try {
+            privateGateway
+                .post(onboardingRoutes.interests, data)
+                .then(res => {
+                    toast.success(res.data?.message.general[0]);
+                    navigate("/dashboard/connect-discord");
+                })
+                .catch(err => {
+                    toast.error(err.response?.data.message.general[0]);
+                });
+        } catch (err) {
+            toast.error("Unexpected Error occured");
+        }
     };
 
     const isInterestSelected = interests.some(interest => interest.checked);

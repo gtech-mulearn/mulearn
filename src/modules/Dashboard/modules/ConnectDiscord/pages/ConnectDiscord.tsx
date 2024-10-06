@@ -8,7 +8,7 @@ import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { FaInstagram } from "react-icons/fa6";
 import toast from "react-hot-toast";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const ConnectDiscord = () => {
     const [muid, setMuid] = useState("");
@@ -16,6 +16,7 @@ const ConnectDiscord = () => {
     const [searchParams, _] = useSearchParams();
     const token = searchParams.get("code");
     const [discordStatus, setDiscordStatus] = useState("connecting");
+    const navigate = useNavigate();
     useEffect(() => {
         if (firstFetch.current) {
             if (
@@ -35,13 +36,17 @@ const ConnectDiscord = () => {
             connectDiscord(token).then(res => {
                 if (res) {
                     setDiscordStatus("connected");
+                    navigate("/dashboard/profile");
+                    toast.success(
+                        "You will be added to our discord server shortly"
+                    );
                     setTimeout(() => {
                         var a = document.createElement("a");
                         a.href =
                             "https://discord.gg/gtech-mulearn-771670169691881483";
                         a.target = "_blank";
                         a.click();
-                    }, 2000);
+                    }, 5000);
                 } else {
                     setDiscordStatus("failed");
                 }
@@ -81,7 +86,10 @@ const ConnectDiscord = () => {
                                             {muid}
                                         </PowerfulButton>
                                         <a
-                                            href="https://discord.com/oauth2/authorize?client_id=1167506141966774345&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A5173%2Fdashboard%2Fconnect-discord%2F&scope=guilds.join"
+                                            href={
+                                                import.meta.env
+                                                    .VITE_DISCORD_AUTH_URL
+                                            }
                                             // target="_blank"
                                             rel="noopener noreferrer"
                                         >
