@@ -28,12 +28,13 @@
         }
 
         & h1 {
-            font-size: 1.5rem;
+            font-size: 2rem;
             font-weight: 600;
         }
 
         .subText {
-            font-size: 12px;
+            margin-top: 10px;
+            font-size: 1rem;
             font-weight: 500;
             margin-bottom: 10px;
         }
@@ -49,8 +50,8 @@
             overflow: show;
 
             .itemsCard {
-                width: 215px;
-                height: 130px;
+                min-width: 215px;
+                min-height: 130px;
                 border-radius: 10px;
                 background-color: #fff;
                 box-shadow: 0px 0px 17.65823px 0px rgba(0, 0, 0, 0.07);
@@ -59,7 +60,6 @@
                 flex-direction: column;
                 text-align: center;
                 justify-content: center;
-                gap: 1rem;
                 padding: 10px;
                 position: relative;
                 transition: all 0.3s ease;
@@ -69,7 +69,10 @@
                         display: flex;
                         width: calc(410px + 3rem);
                         justify-content: center;
-                        flex-direction: column;
+                        flex-direction: column; 
+                        overflow: visible;
+                        flex-direction: row;
+                        gap: 1rem;
                     }
                 }
 
@@ -79,7 +82,7 @@
                     left: 0px;
                     transform: translate(-30%, -30%);
                     color: #ffffff;
-                    background-color: #3e15d4;
+                    background-color: #456FF6;
                     border-radius: 50%;
                     padding: 2px;
                 }
@@ -129,17 +132,39 @@
             .active {
                 outline: 2px solid #456ff6;
             }
+            .itemImage{
+                margin-top: 1rem;
+                object-fit: cover;
+                height: 100px;
+                width: 100px;
+                -webkit-user-drag: none;
+                
+            }
+            .title{
+                margin-top: 0.5rem;
+                font-weight: bold;
+            }
         }
 
         @media (width<500px) {
             .interestSelectCards .interestSelectCard {
-                width: 300px;
+                max-width: 300px;
+            }
+            .itemsContainer {
+                .itemsCard{
+                max-width: 200px;
+                &.others {
+                    &.checked {
+                        flex-direction: column;
+                    }
+                }
+                }
             }
         }
 
         @media (width<300px) {
             .interestSelectCards .interestSelectCard {
-                width: 200px;
+                max-width: 200px;
                 font-size: 0.65rem;
             }
         }

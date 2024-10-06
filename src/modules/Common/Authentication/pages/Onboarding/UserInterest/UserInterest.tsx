@@ -8,6 +8,11 @@ import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { onboardingRoutes } from "@/MuLearnServices/urls";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import creative from "/src/modules/Common/Authentication/assets/interests/creative.webp";
+import maker from "/src/modules/Common/Authentication/assets/interests/makers.webp";
+import management from "/src/modules/Common/Authentication/assets/interests/management.webp";
+import software from "/src/modules/Common/Authentication/assets/interests/software.webp";
+import others from "/src/modules/Common/Authentication/assets/interests/others.webp";
 
 const CheckMark = () => (
     <svg
@@ -25,11 +30,16 @@ const CheckMark = () => (
 
 export default function UserInterest() {
     const [interests, setInterests] = useState([
-        { title: "Software", value: "software", checked: false },
-        { title: "Maker", value: "maker", checked: false },
-        { title: "Management", value: "management", checked: false },
-        { title: "Creative", value: "creative", checked: false },
-        { title: "Others", value: "others", checked: false }
+        { title: "Software", value: "software", img: software, checked: false },
+        { title: "Maker", value: "maker", img: maker, checked: false },
+        {
+            title: "Management",
+            value: "management",
+            img: management,
+            checked: false
+        },
+        { title: "Creative", value: "creative", img: creative, checked: false },
+        { title: "Others", value: "others", img: others, checked: false }
     ]);
     const [endgoals, setEndgoals] = useState([
         { title: "Job", value: "job", checked: false },
@@ -217,9 +227,9 @@ export default function UserInterest() {
             <div className={styles.popUp}>
                 <div className={styles.box}>
                     <img src={muBrand} alt="mulearn" />
-                    <h1>What describes you the most!</h1>
+                    <h1>Your dynamic area of interest! </h1>
                     <p className={styles.subText}>
-                        Choose one or more roles that best fit your profile.
+                        Please select your interested area
                     </p>
                     <div className={styles.itemsContainer}>
                         {interests.map(interest => {
@@ -243,7 +253,14 @@ export default function UserInterest() {
                                     }
                                 >
                                     {interest.checked && <CheckMark />}
-                                    <p>{interest.title}</p>
+                                    <img
+                                        className={styles.itemImage}
+                                        src={interest.img}
+                                        alt=""
+                                    />
+                                    <p className={styles.title}>
+                                        {interest.title}
+                                    </p>
 
                                     {interest.value == "others" ? (
                                         interests.find(
