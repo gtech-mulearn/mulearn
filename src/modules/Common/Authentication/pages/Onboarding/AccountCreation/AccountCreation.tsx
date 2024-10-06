@@ -3,30 +3,19 @@ import { HiEye, HiEyeSlash } from "react-icons/hi2";
 
 import OnboardingTemplate from "../../../components/OnboardingTeamplate/OnboardingTemplate";
 import OnboardingHeader from "../../../components/OnboardingHeader/OnboardingHeader";
-import {
-    getDWMSDetails,
-    getRoles,
-    validate
-} from "../../../services/newOnboardingApis";
+import { getDWMSDetails } from "../../../services/newOnboardingApis";
 import { Form, Formik } from "formik";
 import * as z from "yup";
 import { FormikTextInputWithoutLabel as SimpleInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
-// import { useToast } from "@chakra-ui/react";
 import { useNavigate, useParams } from "react-router-dom";
-import Select from "react-select";
 import makeAnimated from "react-select/animated";
-import { getCommunities } from "../../../services/onboardingApis";
 import { BiSupport } from "react-icons/bi";
 import { isDev } from "@/MuLearnServices/common_functions";
-import roleOptions from "../RolePage/data/roleOptions";
-import muBrand from "/src/modules/Common/Authentication/assets/µLearn.png";
 import { submitUserData } from "../../../services/newOnboardingApis";
 import toast from "react-hot-toast";
-
-const animatedComponents = makeAnimated();
 
 type DWMSData = {
     email: string;
@@ -77,29 +66,29 @@ const scheme = z.object({
 
 export default function AccountCreation() {
     let { role } = useParams();
-    const [popUP, setPopUp] = useState(role ? false : true);
+    // const [popUP, setPopUp] = useState(role ? false : true);
     // const toast = useToast();
     const navigate = useNavigate();
-    const [roles, setRoles] = useState([{ id: "", title: "" }]);
+    // const [roles, setRoles] = useState([{ id: "", title: "" }]);
     const urlParams = new URLSearchParams(window.location.search);
     const param = urlParams.get("param");
     const referralId = urlParams.get("referral_id");
-    const [selectedRoleId, setSelectedRoleId] = useState<string>("");
-    const [selectedRole, setSelectedRole] = useState<string>("");
+    // const [selectedRoleId, setSelectedRoleId] = useState<string>("");
+    // const [selectedRole, setSelectedRole] = useState<string>("");
 
     //ref to community selector for resetting - temporary fix
-    const community_select_ref = useRef<any>();
+    // const community_select_ref = useRef<any>();
 
     const [isLoading, setIsLoading] = useState(false);
     const [isVisible, setVisible] = useState(false);
-    const [isVisibleC, setVisibleC] = useState(false);
+    // const [isVisibleC, setVisibleC] = useState(false);
     const [dwmsData, setDWMSData] = useState<DWMSData>();
 
     const [isTncChecked, setTncChecked] = useState(false);
 
-    const [communitiesList, setCommunitiesList] = useState([
-        { id: "", title: "" }
-    ]);
+    // const [communitiesList, setCommunitiesList] = useState([
+    //     { id: "", title: "" }
+    // ]);
     const [initialValues, setInitialValues] = useState({
         email: "",
         fullName: "",
@@ -117,19 +106,6 @@ export default function AccountCreation() {
     useEffect(() => {
         if (isLoading) return;
         setIsLoading(true);
-        getCommunities({
-            setCommunityAPI: setCommunitiesList,
-            setIsLoading: setIsLoading
-        });
-        getRoles().then((res: any) => {
-            setRoles(res);
-            setIsLoading(false);
-            setSelectedRoleId(
-                res.find((role: any) => role.title.toLowerCase() === role)
-                    ?.id || ""
-            );
-            // setSelectedRole(role);
-        });
         if (param) {
             getDWMSDetails(param, (data: any) => {
                 setDWMSData({
@@ -204,14 +180,6 @@ export default function AccountCreation() {
 
         if (values.communities) {
             userData.communities = values.communities;
-        }
-
-        if (role) {
-            userData.role = roles.find(e => e.title.toLowerCase() === role)?.id;
-        }
-
-        if (selectedRoleId) {
-            userData.role = selectedRoleId;
         }
 
         if (param) {
@@ -628,13 +596,7 @@ export default function AccountCreation() {
                                     style={{ marginTop: "10px" }}
                                     isLoading={isLoading}
                                 >
-                                    {selectedRole.toLowerCase() !== "other"
-                                        ? isLoading
-                                            ? "Validating..."
-                                            : "Register"
-                                        : isLoading
-                                        ? "Validating..."
-                                        : "Submit"}
+                                    {isLoading ? "Validating..." : "Submit"}
                                 </PowerfulButton>
                             </div>
 

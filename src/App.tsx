@@ -48,7 +48,6 @@ import Refund from "./modules/Public/Donation/pages/Refund";
 import DonationSuccess from "./modules/Public/Donation/pages/DonationSuccess";
 import OpenGrad from "./modules/Dashboard/modules/OpenGrad";
 import UserInterest from "./modules/Common/Authentication/pages/Onboarding/UserInterest/UserInterest";
-import UserEndgoal from "./modules/Common/Authentication/pages/Onboarding/UserEndgoals/UserEndgoals";
 
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
