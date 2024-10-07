@@ -1,8 +1,9 @@
 import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
 import styles from "../../utils/modalForm.module.css";
 import toast from "react-hot-toast";
-import { customReactSelectStyles } from "../../utils/common";
 import { createInterestGroups, editInterestGroups, getIGDetails } from "./apis";
+import ReactSelect from "react-select";
+import styles2 from "./InterestGroupFrom.module.css";
 
 type Props = { id: string; isEditMode: boolean };
 
@@ -11,8 +12,19 @@ const IntrestGroupForm = forwardRef(
         const [data, setData] = useState<IGData>({
             name: "",
             icon: "",
-            code: ""
+            code: "",
+            category: "others"
         });
+        const interestGroup = [
+            { label: "Software", value: "software" },
+            { label: "Maker", value: "maker" },
+            {
+                label: "Management",
+                value: "management"
+            },
+            { label: "Creative", value: "creative" },
+            { label: "Others", value: "others" }
+        ];
 
         const [errors, setErrors] = useState<OrgFormErrors>({});
 
@@ -23,7 +35,8 @@ const IntrestGroupForm = forwardRef(
                     setData({
                         name: data.name,
                         icon: data.icon,
-                        code: data.code
+                        code: data.code,
+                        category: data.category
                     });
                 });
             }
@@ -142,6 +155,23 @@ const IntrestGroupForm = forwardRef(
                             <div style={{ color: "red" }}>{errors.icon}</div>
                         )}
                     </div>
+                    <ReactSelect
+                        required={true}
+                        className={styles2.inputBox}
+                        options={interestGroup}
+                        onChange={e => {
+                            setData(prevData => ({
+                                ...prevData,
+                                category: e?.value as string
+                            }));
+                        }}
+                        value={
+                            interestGroup.filter(e => {
+                                console.log(e.value, data.category);
+                                return e.value === data.category;
+                            })[0]
+                        }
+                    />
                 </form>
             </div>
         );
