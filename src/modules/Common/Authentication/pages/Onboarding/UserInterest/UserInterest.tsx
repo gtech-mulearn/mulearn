@@ -209,6 +209,18 @@ export default function UserInterest() {
                                             >
                                                 <TagsInput
                                                     value={otherEndgoal}
+                                                    onBlur={(e: any) => {
+                                                        if (
+                                                            e.target.value
+                                                                .length > 0
+                                                        ) {
+                                                            setOtherEndgoal([
+                                                                ...otherEndgoal,
+                                                                e.target.value
+                                                            ]);
+                                                            e.target.value = "";
+                                                        }
+                                                    }}
                                                     onChange={setOtherEndgoal}
                                                     name="other_endgoals"
                                                     placeHolder="Specify your endgoals"
@@ -324,6 +336,23 @@ export default function UserInterest() {
                                                 >
                                                     <TagsInput
                                                         value={otherInterest}
+                                                        onBlur={(e: any) => {
+                                                            if (
+                                                                e.target.value
+                                                                    .length > 0
+                                                            ) {
+                                                                setOtherInterest(
+                                                                    [
+                                                                        ...otherInterest,
+                                                                        e.target
+                                                                            .value
+                                                                    ]
+                                                                );
+                                                                e.target.value =
+                                                                    "";
+                                                            }
+                                                        }}
+                                                        separators={[","]}
                                                         onChange={
                                                             setOtherInterest
                                                         }
