@@ -6,10 +6,6 @@ import {
     Navigate
 } from "react-router-dom";
 import AuthRoutes from "./components/AuthRoutes";
-import Onboarding from "./modules/Common/Authentication/pages/Onboarding";
-import Login from "./modules/Common/Authentication/pages/Login";
-import ForgotPassword from "./modules/Common/Authentication/pages/ForgotPassword";
-
 import PrivateRoutes from "./components/PrivateRoutes";
 import DashboardRootLayout from "./modules/Dashboard/layouts/DashboardRootLayout";
 import NotFound from "./components/NotFound";
@@ -298,17 +294,18 @@ function App() {
                         {
                             path: "",
                             element: <AccountCreation />
-                        },
-                        {
-                            path: "interests",
-                            element: <UserInterest />
                         }
                     ]
                 },
+
                 { path: "login", element: <SignIn /> },
                 { path: "forgot-password", element: <ForgetPassword /> },
                 { path: "reset-password", element: <ResetPassword /> }
             ]
+        },
+        {
+            path: "/register/interests",
+            element: <UserInterest />
         },
         {
             path: "/signin",

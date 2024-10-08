@@ -259,7 +259,7 @@ export const registerUser = (
                 "refreshToken",
                 response.data.response.refreshToken
             );
-            getInfo(() => {
+            getInfo(navigate, () => {
                 navigate("/dashboard/connect-discord");
                 setShowSubmitLoader(false);
             });
