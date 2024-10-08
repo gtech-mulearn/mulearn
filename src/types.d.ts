@@ -4,27 +4,29 @@ type UseStateFunc<T> = React.Dispatch<React.SetStateAction<T>>;
 type FC<T> = React.FC<T>;
 
 type Role =
-    (typeof import("./services/types").roles)[keyof typeof import("./services/types").roles];
+    typeof import("./services/types").roles[keyof typeof import("./services/types").roles];
 
-type ManagementTypes = (typeof import('./services/types').managementTypes)[keyof typeof import('./services/types').managementTypes]
+type ManagementTypes =
+    typeof import("./services/types").managementTypes[keyof typeof import("./services/types").managementTypes];
 
 type UserInfo = {
-    muid: string,
-    full_name: string,
-    email: string,
-    mobile: string,
-    gender: null,
-    dob: null,
-    active: boolean,
-    exist_in_guild: boolean,
-    joined: string,
-    roles: Role[],
-    dynamic_type?: ManagementTypes[],
-    cipher?: string,
-    profile_pic?: string,
-}
+    muid: string;
+    full_name: string;
+    email: string;
+    mobile: string;
+    gender: null;
+    dob: null;
+    active: boolean;
+    exist_in_guild: boolean;
+    joined: string;
+    roles: Role[];
+    dynamic_type?: ManagementTypes[];
+    cipher?: string;
+    profile_pic?: string;
+    interest_selected: string | null;
+};
 
-type ColOrder = { column: string, Label: string, isSortable: boolean }
+type ColOrder = { column: string; Label: string; isSortable: boolean };
 
 // just pass json structure type as parameters
 type APIResponse<R = {}, M = {}[]> = {
