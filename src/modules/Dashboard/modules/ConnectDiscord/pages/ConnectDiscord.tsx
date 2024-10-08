@@ -25,7 +25,7 @@ const ConnectDiscord = () => {
             ) {
                 setMuid(JSON.parse(localStorage.getItem("userInfo")!).mu_id);
             } else {
-                getInfo(setMuid);
+                getInfo(navigate, setMuid);
             }
         }
         firstFetch.current = false;

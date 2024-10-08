@@ -1,5 +1,7 @@
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
+import toast from "react-hot-toast";
+import { NavigateFunction } from "react-router-dom";
 
 type muid = UseStateFunc<string>;
 export const connectDiscord = async (code: string) => {
@@ -21,7 +23,11 @@ export const connectDiscord = async (code: string) => {
         return false;
     }
 };
-export const getInfo = (setMuid?: muid, onComplete?: Function) => {
+export const getInfo = (
+    navigate: NavigateFunction,
+    setMuid?: muid,
+    onComplete?: Function
+) => {
     privateGateway
         .get(dashboardRoutes.getInfo)
         .then((response: APIResponse<UserInfo>) => {
@@ -29,6 +35,10 @@ export const getInfo = (setMuid?: muid, onComplete?: Function) => {
                 "userInfo",
                 JSON.stringify(response.data.response)
             );
+            if (response.data.response?.interest_selected) {
+                toast.error(response.data.response?.interest_selected);
+                navigate("/register/interests");
+            }
             if (setMuid) setMuid(response.data.response.muid);
             if (onComplete) onComplete();
         })
