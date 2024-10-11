@@ -12,6 +12,7 @@ import {
 } from "../../../../../Common/Authentication/services/newOnboardingApis";
 import ReactSelect, { SingleValue } from "react-select";
 import { useLocation, useNavigate } from "react-router-dom";
+import { selectOrganization } from "../../settingsApis";
 
 // Define the Option type for ReactSelect
 type Option = {
@@ -61,7 +62,9 @@ export default function CollegePage({}: {}) {
     const [roles, setRoles] = useState([{ id: "", title: "" }]);
 
     const [selectedCollege, setSelectedCollege] = useState<Option | null>(null);
-    const [selectedDepartment, setSelectedDepartment] = useState<Option | null>(null);
+    const [selectedDepartment, setSelectedDepartment] = useState<Option | null>(
+        null
+    );
 
     const getRoleTitle = (id: string) => {
         const slice = roles.filter(val => val.id === id);
@@ -94,34 +97,19 @@ export default function CollegePage({}: {}) {
 
     const onSubmit = async (values: any) => {
         const newUserData: any = {
-            user: {
-                full_name: userData.user.full_name,
-                email: userData.user.email,
-                password: userData.user.password,
-                district: userData.district
-            },
-            organization: {
-                ...(values.department !== "Others" && {
-                    department: values.department
-                }),
-                year_of_graduation: values.graduationYear,
-                organizations: [
-                    ...(values.college !== "Others" ? [values.college] : []),
-                    ...userData.communities
-                ],
-                verified: true
-            }
+            organization: values.college,
+            department: values.department
         };
 
-        if (userData.referral)
-            newUserData["referral"] = { muid: userData.referral.muid };
+        // if (userData.referral)
+        //     newUserData["referral"] = { muid: userData.referral.muid };
 
-        if (userData.role === "Enabler")
-            delete newUserData.organization.year_of_graduation;
+        // if (userData.role === "Enabler")
+        //     delete newUserData.organization.year_of_graduation;
 
-        console.log(newUserData);
+        // console.log(newUserData);
 
-        submitUserData({
+        selectOrganization({
             setIsLoading: setIsLoading,
             userData: newUserData,
             navigate: navigate
@@ -159,7 +147,10 @@ export default function CollegePage({}: {}) {
                                 onChange={(newValue: SingleValue<Option>) => {
                                     if (newValue) {
                                         setSelectedCollege(newValue);
-                                        formik.setFieldValue("college", newValue.value);
+                                        formik.setFieldValue(
+                                            "college",
+                                            newValue.value
+                                        );
                                     } else {
                                         setSelectedCollege(null);
                                         formik.setFieldValue("college", "");
@@ -189,7 +180,10 @@ export default function CollegePage({}: {}) {
                                 onChange={(newValue: SingleValue<Option>) => {
                                     if (newValue) {
                                         setSelectedDepartment(newValue);
-                                        formik.setFieldValue("department", newValue.value);
+                                        formik.setFieldValue(
+                                            "department",
+                                            newValue.value
+                                        );
                                     } else {
                                         setSelectedDepartment(null);
                                         formik.setFieldValue("department", "");
