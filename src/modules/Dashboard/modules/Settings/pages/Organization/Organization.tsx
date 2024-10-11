@@ -10,8 +10,14 @@ import {
     getRoles,
     submitUserData
 } from "../../../../../Common/Authentication/services/newOnboardingApis";
-import ReactSelect from "react-select";
+import ReactSelect, { SingleValue } from "react-select";
 import { useLocation, useNavigate } from "react-router-dom";
+
+// Define the Option type for ReactSelect
+type Option = {
+    value: string;
+    label: string;
+};
 
 const inputObject = {
     college: "College Name",
@@ -54,14 +60,8 @@ export default function CollegePage({}: {}) {
     const [departments, setDepartments] = useState([{ id: "", title: "" }]);
     const [roles, setRoles] = useState([{ id: "", title: "" }]);
 
-    const [selectedCollege, setSelectedCollege] = useState({
-        id: "",
-        title: ""
-    });
-    const [selectedDepartment, setSelectedDepartment] = useState({
-        id: "",
-        title: ""
-    });
+    const [selectedCollege, setSelectedCollege] = useState<Option | null>(null);
+    const [selectedDepartment, setSelectedDepartment] = useState<Option | null>(null);
 
     const getRoleTitle = (id: string) => {
         const slice = roles.filter(val => val.id === id);
@@ -69,12 +69,12 @@ export default function CollegePage({}: {}) {
     };
 
     const CustomFilter = (
-        { label, value }: { label: string; value: string },
-        string: string
+        { label, value }: Option,
+        searchString: string
     ): boolean => {
         if (value === "Others") return true;
-        if (!string) return true;
-        return label.toLowerCase().includes(string.toLowerCase());
+        if (!searchString) return true;
+        return label.toLowerCase().includes(searchString.toLowerCase());
     };
 
     useEffect(() => {
@@ -145,23 +145,25 @@ export default function CollegePage({}: {}) {
                         <div className={styles.inputBox}>
                             <ReactSelect
                                 options={[
-                                    {
-                                        value: "Others",
-                                        label: "Others"
-                                    },
+                                    { value: "Others", label: "Others" },
                                     ...colleges.map(college => ({
-                                        value: college.id,
+                                        value: String(college.id), // Ensure ID is string
                                         label: college.title
                                     }))
                                 ]}
                                 name="college"
                                 placeholder="College"
-                                value={selectedCollege.title}
+                                value={selectedCollege}
                                 filterOption={CustomFilter}
                                 isDisabled={isloading}
-                                onChange={(e: any) => {
-                                    setSelectedCollege(e);
-                                    formik.setFieldValue("college", e.value);
+                                onChange={(newValue: SingleValue<Option>) => {
+                                    if (newValue) {
+                                        setSelectedCollege(newValue);
+                                        formik.setFieldValue("college", newValue.value);
+                                    } else {
+                                        setSelectedCollege(null);
+                                        formik.setFieldValue("college", "");
+                                    }
                                 }}
                             />
                         </div>
@@ -173,23 +175,25 @@ export default function CollegePage({}: {}) {
                         <div className={styles.inputBox}>
                             <ReactSelect
                                 options={[
-                                    {
-                                        value: "Others",
-                                        label: "Others"
-                                    },
+                                    { value: "Others", label: "Others" },
                                     ...departments.map(department => ({
-                                        value: department.id,
+                                        value: String(department.id), // Ensure ID is string
                                         label: department.title
                                     }))
                                 ]}
                                 name="department"
                                 placeholder="Department"
-                                value={selectedDepartment.title}
+                                value={selectedDepartment}
                                 isDisabled={isloading}
                                 filterOption={CustomFilter}
-                                onChange={(e: any) => {
-                                    setSelectedDepartment(e);
-                                    formik.setFieldValue("department", e.value);
+                                onChange={(newValue: SingleValue<Option>) => {
+                                    if (newValue) {
+                                        setSelectedDepartment(newValue);
+                                        formik.setFieldValue("department", newValue.value);
+                                    } else {
+                                        setSelectedDepartment(null);
+                                        formik.setFieldValue("department", "");
+                                    }
                                 }}
                             />
                         </div>
