@@ -54,16 +54,15 @@ const SideNavBarBody = ({
                     .filter(
                         button =>
                             button.hasView &&
-                            ((!button.roles ||
+                            (!button.roles ||
                                 button.roles?.some(role =>
                                     userInfo?.roles?.includes(role)
+                                ) ||
+                                button.dynamicType?.some(type =>
+                                    userInfo?.dynamic_type?.includes(
+                                        type as ManagementTypes
+                                    )
                                 ))
-                                ||
-                                (
-                                    button.dynamicType?.some(type =>
-                                        userInfo?.dynamic_type?.includes(type as ManagementTypes)
-                                    ))
-                            )
                     )
                     .map((button, i) =>
                         button.children ? (
@@ -87,12 +86,12 @@ const SideNavBarBody = ({
                                                     userInfo?.roles?.includes(
                                                         role
                                                     )
-                                                )
-                                                ||
-                                                (
-                                                    button.dynamicType?.some(type =>
-                                                        userInfo?.dynamic_type?.includes(type as ManagementTypes)
-                                                    )))
+                                                ) ||
+                                                button.dynamicType?.some(type =>
+                                                    userInfo?.dynamic_type?.includes(
+                                                        type as ManagementTypes
+                                                    )
+                                                ))
                                     )
                                     .map((button, i) =>
                                         button.children ? (
@@ -110,7 +109,7 @@ const SideNavBarBody = ({
                                                 }
                                                 display={
                                                     level2dropDownDisplay ===
-                                                        button.title
+                                                    button.title
                                                         ? "max-content"
                                                         : "0"
                                                 }
@@ -124,12 +123,13 @@ const SideNavBarBody = ({
                                                                         userInfo?.roles?.includes(
                                                                             role
                                                                         )
-                                                                )
-                                                                ||
-                                                                (
-                                                                    button.dynamicType?.some(type =>
-                                                                        userInfo?.dynamic_type?.includes(type as ManagementTypes)
-                                                                    )))
+                                                                ) ||
+                                                                button.dynamicType?.some(
+                                                                    type =>
+                                                                        userInfo?.dynamic_type?.includes(
+                                                                            type as ManagementTypes
+                                                                        )
+                                                                ))
                                                     )
                                                     .map((button, i) => (
                                                         <MuButton
@@ -191,7 +191,7 @@ const SideNavBarBody = ({
                 <MuButton
                     text="Account Setting"
                     icon={<MuSettings />}
-                    onClick={() => navigate("/dashboard/settings/account")}
+                    onClick={() => navigate("/dashboard/settings")}
                     style={{
                         color: "#9297AA",
                         backgroundColor: "#fff"
