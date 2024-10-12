@@ -191,6 +191,46 @@
     font-size: 18px;
     font-weight: 600;
 }
+
+.input_switch {
+    width: calc(100% - 20px);
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin: 10px;
+    .label {
+        font-size: 15px;
+    }
+}
+
+.input_field {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 10px;
+    label.label {
+        display: block;
+        width: 100%;
+        text-align: left;
+        margin: 0 0 10px 0;
+    }
+    textarea {
+        width: 100%;
+        background-color: rgba(238, 242, 255, 1);
+        min-height: 130px;
+        border-radius: 10px;
+        padding: 10px;
+    }
+    .error_message {
+        color: rgb(246, 45, 45);
+        font-size: 12px !important;
+        margin-top: 10px;
+        text-align: start;
+    }
+}
 .ReportWrapper .DetailSection .SectionTwo textarea {
     width: 100%;
     background-color: rgba(238, 242, 255, 1);
@@ -366,6 +406,7 @@
 }
 .HistoryDataWrapper .Headings {
     width: 38%;
+    text-align: left;
 }
 .HistoryDataWrapper .detailedSection {
     width: 60%;
@@ -703,6 +744,9 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 .ScheduleOn {
     text-align: center;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--grey);
 }
 
 .ScheduleOn b {
@@ -744,7 +788,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     flex-wrap: wrap;
 }
 
-.dateandtime input[type="time"] {
+.dateandtime input[type="datetime-local"] {
     padding: 0px 10px;
     border-radius: 6px;
     width: 47%;
@@ -1125,3 +1169,178 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     text-align: left;
     color: #1d1d1d;
 }
+
+.ContainerWrapper .ContentWrapper .TopContainer .sectionOne {
+    .meetups {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        .meetup {
+            background: #fff;
+            padding: 10px;
+            width: 100%;
+            border-radius: 10px;
+            .meetupStatusBar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 10px;
+                width: 100%;
+                .date {
+                    font-size: 15px;
+                    font-weight: 800;
+                    display: flex;
+                    align-items: end;
+                    gap: 5px;
+                    justify-content: start;
+
+                    span {
+                        width: 20px;
+                        height: 20px;
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        svg {
+                            width: 15px;
+                            height: 15px;
+                        }
+                    }
+                }
+                .status {
+                    font-size: 12px;
+                    font-weight: 600;
+                    &.ongoing {
+                        color: var(--green);
+                    }
+                    &.upcoming {
+                        color: var(--blue);
+                    }
+                }
+            }
+            .meetupDetails {
+                display: flex;
+                justify-content: space-between;
+                align-items: start;
+                flex-direction: column;
+                gap: 10px;
+                background: #22222205;
+                padding: 20px;
+                margin: 20px 10px;
+                border-radius: 5px;
+                .title {
+                    font-size: 18px;
+                    font-weight: 800;
+                }
+                .agenda {
+                    font-size: 15px;
+                    font-weight: 600;
+                    color: #1d1d1d;
+                }
+                .venue {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    align-items: start;
+                    .venueHead {
+                        font-size: 15px;
+                        font-weight: 800;
+                        color: #1d1d1d;
+                    }
+                    .actions {
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                        justify-content: end;
+                    }
+                    .meetupVenue {
+                        margin: 10px 0;
+                        padding: 10px 10px;
+                        background: #fff;
+                        border-radius: 5px;
+                        display: flex;
+                        align-items: center;
+                        gap: 5px;
+                        width: 100%;
+                        flex-direction: column;
+
+                        .head {
+                            font-size: 15px;
+                            font-weight: 900;
+                            border-bottom: 1px solid #1d1d1d;
+                            color: #1d1d1d;
+                        }
+                        .venueLink {
+                            font-size: 15px;
+                            font-weight: 600;
+                            color: var(--blue);
+                            background: #dddddd90;
+                            padding: 2px 10px;
+                            border-radius: 5px;
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.inputBox input,
+.inputBox select {
+    border: none;
+    background: rgba(239, 241, 249, 0.6);
+    border-radius: 6px;
+    padding: 10px;
+    outline: none;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.imageBox {
+    position: relative;
+
+    div {
+        color: #456ff6;
+        position: absolute;
+        top: 0;
+        display: flex;
+        align-items: center;
+        right: 5%;
+        height: 110%;
+
+        &:active {
+            transform: scale(0.9);
+        }
+    }
+}
+
+.imageBox input::file-selector-button {
+    background-color: rgb(69, 111, 246);
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.25rem;
+}
+
+.label {
+    font-weight: 600;
+    margin-top: 5px;
+    color: var(--black);
+    text-align: left;
+}
+
+.powerfulButton:hover {
+    color: hsl(var(--primary-btn-color));
+}
+
+.powerfulButton {
+    height: 50px;
+}
+
+/* @media (max-width: 1500px) {
+    .edit_profile_container {
+        left: unset;
+    }
+} */

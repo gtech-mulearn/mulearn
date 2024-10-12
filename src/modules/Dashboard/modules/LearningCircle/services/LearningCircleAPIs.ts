@@ -24,6 +24,109 @@ export const getUserLearningCircles = async (
     }
 };
 
+export const joinMeetup = async (meetId: string) => {
+    try {
+        const response = await privateGateway.post(
+            dynamicRoute(dashboardRoutes.joinMeetup, meetId)
+        );
+        const message: any = response?.data;
+        toast.success(message.message?.general[0] ?? "Failed to join meetup");
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        toast.error(
+            ((error?.response?.data as any).message?.general ?? [
+                "Failed to join meetup"
+            ])[0]
+        );
+        if (error?.response) {
+            throw error;
+        }
+        toast.error("Failed to join meetup");
+    }
+};
+
+export const interestedMeetup = async (
+    meetId: string,
+    undo: boolean = false
+) => {
+    try {
+        if (undo) {
+            const response = await privateGateway.delete(
+                dynamicRoute(dashboardRoutes.interestedMeetup, meetId)
+            );
+            const message: any = response?.data;
+            toast.success(
+                message.message?.general[0] ?? "Failed to undo interest"
+            );
+            return;
+        }
+        const response = await privateGateway.post(
+            dynamicRoute(dashboardRoutes.interestedMeetup, meetId)
+        );
+        const message: any = response?.data;
+        toast.success(message.message?.general[0] ?? "Failed to show interest");
+    } catch (err: unknown) {
+        console.log(err);
+        const error = err as AxiosError;
+        toast.error(
+            ((error?.response?.data as any).message?.general ?? [
+                "Failed to show interest"
+            ])[0]
+        );
+        if (error?.response) {
+            throw error;
+        }
+        toast.error("Failed to show interest");
+    }
+};
+
+export const getMeetupInfo = async (
+    setMeetup:
+        | UseStateFunc<LcMeetupInfo[] | undefined>
+        | UseStateFunc<LcMeetupDetailInfo | undefined>,
+    meetId: string
+) => {
+    try {
+        console.log(meetId);
+        const response = await privateGateway.get(
+            dynamicRoute(dashboardRoutes.getMeetupInfo, meetId)
+        );
+        console.log(response);
+        const message: any = response?.data;
+        setMeetup(message.response);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            throw error;
+        }
+    }
+};
+export const getMeetups = async (
+    setMeetup:
+        | UseStateFunc<LcMeetupInfo[] | undefined>
+        | UseStateFunc<LcMeetupInfo | undefined>,
+    meetId: string | undefined = undefined
+) => {
+    try {
+        console.log(meetId);
+        const response = await privateGateway.get(dashboardRoutes.getMeetups, {
+            params: meetId
+                ? {
+                      meet_id: meetId
+                  }
+                : {}
+        });
+        console.log(response);
+        const message: any = response?.data;
+        setMeetup(message.response);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            throw error;
+        }
+    }
+};
+
 export const getUserOrg = (setOrg: {
     (value: SetStateAction<string | null>): void;
     (arg0: any): void;
@@ -235,6 +338,36 @@ export const updateLcNote = async (data: LcNote) => {
     }
 };
 
+export const getLcMeetups = async (id: string | undefined) => {
+    try {
+        const response = await privateGateway.get(
+            dynamicRoute(lcRoutes.getLcMeetups, id as string)
+        );
+        const message: any = response?.data;
+        return message.response;
+    } catch (err) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            throw error;
+        }
+    }
+};
+
+export const createMeetup = async (data: LcMeetup, id: string) => {
+    try {
+        const response = await privateGateway.post(
+            dynamicRoute(lcRoutes.createMeet, id as string),
+            data
+        );
+        const message: any = response?.data;
+        return message;
+    } catch (err) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            throw error;
+        }
+    }
+};
 export const setLCMeetTime = async (
     data: LcMeetSchedule,
     id: string | undefined

@@ -1,3 +1,5 @@
+import { joinMeetup } from "src/modules/Dashboard/modules/LearningCircle/services/LearningCircleAPIs";
+
 export const onboardingRoutes = {
     countryList: "/api/v1/register/country/list/",
     stateList: "/api/v1/register/state/list/",
@@ -126,6 +128,10 @@ export const dashboardRoutes = {
     lc: "/api/v1/dashboard/lc/",
     searchLearningCircleWithCircleCode: "/api/v1/dashboard/lc/list-all/",
     getCampusLearningCircles: "/api/v1/dashboard/lc/",
+    getMeetups: "/api/v1/dashboard/lc/meets/list/",
+    getMeetupInfo: "/api/v1/dashboard/lc/meets/info/${meetId}/",
+    joinMeetup: "/api/v1/dashboard/lc/meets/join/${meetId}/",
+    interestedMeetup: "/api/v1/dashboard/lc/meets/interested/${meetId}/",
     getLearningCirclesLead: "/api/v1/dashboard/lc/lead/",
     createLearningCircle: "/api/v1/dashboard/lc/create/",
     listLearningCircle: "/api/v1/dashboard/lc/list-all/",

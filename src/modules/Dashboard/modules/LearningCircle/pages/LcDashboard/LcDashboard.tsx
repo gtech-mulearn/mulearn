@@ -9,7 +9,6 @@ import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { comingSoon } from "../../../../utils/common";
 import LcTeam from "./components/LcTeam";
 import LcHome from "./components/LcHome";
-import LcProgress from "./components/LcProgress";
 
 const LcDashboard = () => {
     const [lc, setLc] = useState<LcDetail>();
@@ -19,7 +18,8 @@ const LcDashboard = () => {
         isHistory: false,
         isTeam: false,
         isSchedule: false,
-        reRender: false
+        reRender: false,
+        isCreateMeeting: false
     });
     const [tab, setTab] = useState<"Dashboard">("Dashboard");
 
@@ -39,7 +39,7 @@ const LcDashboard = () => {
 
     useEffect(() => {
         handleFetchDetails();
-    }, [temp.isSchedule, temp.isTeam, temp.reRender]);
+    }, [temp.isTeam, temp.reRender]);
 
     return temp.loading ? (
         <MuLoader />
