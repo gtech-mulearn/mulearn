@@ -45,6 +45,8 @@ import DonationSuccess from "./modules/Public/Donation/pages/DonationSuccess";
 import OpenGrad from "./modules/Dashboard/modules/OpenGrad";
 import UserInterest from "./modules/Common/Authentication/pages/Onboarding/UserInterest/UserInterest";
 import LcMeetupIfo from "./modules/Dashboard/modules/LearningCircle/pages/Meetup/LcMeetup";
+import OrganizationSetting from "./modules/Dashboard/modules/Settings/pages/Organization/Organization";
+import SettingsHome from "./modules/Dashboard/modules/Settings/pages/Settings/SettingsHome";
 
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
@@ -736,6 +738,14 @@ function App() {
                             path: "settings",
                             element: <Settings />,
                             children: [
+                                {
+                                    path: "",
+                                    element: <SettingsHome />
+                                },
+                                {
+                                    path: "organization",
+                                    element: <OrganizationSetting />
+                                },
                                 {
                                     path: "account",
                                     element: <Account />
