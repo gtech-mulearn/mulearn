@@ -45,6 +45,7 @@ interface LcDashboardTempData {
     isTeam: boolean;
     isSchedule: boolean;
     reRender: boolean;
+    isCreateMeeting: boolean;
 }
 
 interface LcMeetSchedule {
@@ -53,6 +54,35 @@ interface LcMeetSchedule {
     day: string;
 }
 
+interface LcMeetup {
+    title: string;
+    location: string;
+    meet_time: string;
+    meet_place: string;
+    agenda: string;
+    need_pre_requirements: boolean;
+    pre_requirements: string | null;
+    is_public: boolean;
+    limit_attendees: boolean;
+    max_attendees: number;
+}
+
+type LcMeetupInfo = LcMeetup & {
+    id: string;
+    is_started: boolean;
+    is_report_submitted: boolean;
+    meet_code: string | null;
+    image: string | null;
+};
+
+type LcMeetupDetailInfo = LcMeetupInfo & {
+    is_interested: boolean;
+    joined_at: string | null;
+    total_interested: number;
+    total_joined: number;
+    lc_members: number;
+    is_lc_member: boolean;
+};
 interface LcNote {
     note: string;
     id: string | undefined;
@@ -62,13 +92,6 @@ interface ChecklistItem {
     id: number;
     text: string;
     isChecked: boolean;
-}
-
-interface LcReport {
-    agenda: string;
-    attendees: string[];
-    day: string;
-    meet_time: string;
 }
 
 interface LcPastReports {

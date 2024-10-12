@@ -1,24 +1,30 @@
 import styles from "./LearningCircle.module.css";
 import imageTop from "../assets/images/LC2.webp";
-import imageBottom from "../assets/images/LC3.webp";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { BsChevronRight } from "react-icons/bs";
-import { getUserLearningCircles } from "../services/LearningCircleAPIs";
+import {
+    getUserLearningCircles,
+    joinMeetup
+} from "../services/LearningCircleAPIs";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
+import YourLc from "./LcDashboard/components/YourLc";
+import LcMeetups from "./LcDashboard/components/LcMeetups";
+import MuModal from "@/MuLearnComponents/MuModal/MuModal";
+import toast from "react-hot-toast";
 
 const LearningCircleLandingPage = () => {
     const navigate = useNavigate();
     const [userCircleList, setUserCircleList] = useState<LcType[]>();
     const [isLoading, setIsLoading] = useState(true);
-
+    const [curpage, setCurPage] = useState(0);
+    const [meetingCodeModalOpen, setMeetingCodeModalOpen] = useState(false);
     useEffect(() => {
         getUserLearningCircles(setUserCircleList).then(() => {
             setIsLoading(false);
         });
     }, []);
-
+    const [meetupCode, setMeetupCode] = useState("");
     const handleJoin = () => {
         navigate("/dashboard/learning-circle/find-circle");
     };
@@ -27,8 +33,46 @@ const LearningCircleLandingPage = () => {
         navigate("/dashboard/learning-circle/create-circle");
     };
 
+    const joinMeet = () => {
+        if (meetupCode.length !== 6) {
+            toast.error("Invalid meetup code");
+            return;
+        }
+        joinMeetup(meetupCode);
+        setMeetingCodeModalOpen(false);
+    };
+
+    const handleJoinMeetup = () => {
+        setMeetingCodeModalOpen(true);
+    };
     return (
         <>
+            <MuModal
+                isOpen={meetingCodeModalOpen}
+                onClose={() => {
+                    setMeetingCodeModalOpen(false);
+                }}
+                title={"Enter Meeting Code"}
+                type={"success"}
+                onDone={joinMeet}
+            >
+                <div className={styles.inputBox}>
+                    <input
+                        name="title"
+                        required
+                        value={meetupCode}
+                        placeholder="Enter meetup code"
+                        maxLength={6}
+                        onChange={(e: any) => {
+                            setMeetupCode(e.target.value.toUpperCase());
+                        }}
+                    />
+                </div>
+                <p className={styles.modalinfo}>
+                    Enter the 6 digit code provided by the meetup organizer to
+                    join the meetup and earn karma points.
+                </p>
+            </MuModal>
             {isLoading ? (
                 <div className={styles.loader_container}>
                     <MuLoader />
@@ -50,6 +94,11 @@ const LearningCircleLandingPage = () => {
                                 }
                             >
                                 <PowerfulButton
+                                    children="Create"
+                                    variant="outline"
+                                    onClick={handleCreate}
+                                />
+                                <PowerfulButton
                                     children="Join"
                                     style={{
                                         paddingLeft: "2rem",
@@ -58,113 +107,41 @@ const LearningCircleLandingPage = () => {
                                     onClick={handleJoin}
                                 />
                                 <PowerfulButton
-                                    children="Create"
-                                    variant="outline"
-                                    onClick={handleCreate}
+                                    children="Join Meetup"
+                                    variant="primary"
+                                    onClick={handleJoinMeetup}
                                 />
                             </div>
                         </div>
                     </div>
-
-                    <div className={styles.learningCircleLandingPageMiddle}>
-                        <ul
-                            className={
-                                styles.learningCircleLandingPageAccordion
-                            }
-                        >
-                            {userCircleList && userCircleList.length > 0 ? (
-                                <>
-                                    <b>Your learning circles</b>
-                                    {userCircleList?.map((circle, pos) => (
-                                        <div key={pos}>
-                                            <li
-                                                className={
-                                                    styles.learningCircleLandingPageMainList
-                                                }
-                                                onClick={() => {
-                                                    navigate(
-                                                        `/dashboard/learning-circle/dashboard/${circle.id}`
-                                                    );
-                                                }}
-                                            >
-                                                <input
-                                                    className={
-                                                        styles.learningCircleLandingPageExpandBtn
-                                                    }
-                                                    type="radio"
-                                                    name="accordion"
-                                                    id={circle.name}
-                                                />
-                                                <label
-                                                    htmlFor={circle.name}
-                                                    className={
-                                                        styles.learningCircleLandingPageLevel
-                                                    }
-                                                >
-                                                    <div>
-                                                        <p
-                                                            className={
-                                                                styles.learningCircleLandingPagePara
-                                                            }
-                                                        >
-                                                            {`${pos + 1}.`}
-                                                        </p>
-                                                        <p
-                                                            className={
-                                                                styles.learningCircleLandingPagePara
-                                                            }
-                                                        >
-                                                            {circle.name}
-                                                        </p>
-                                                    </div>
-                                                    <div>
-                                                        <p
-                                                            className={
-                                                                styles.learningCircleLandingPagePara
-                                                            }
-                                                        >
-                                                            {circle.ig}
-                                                        </p>
-                                                        <PowerfulButton
-                                                            style={{
-                                                                height: "2rem",
-                                                                width: "fit-content",
-                                                                padding: "10px"
-                                                            }}
-                                                            onClick={() => {
-                                                                navigate(
-                                                                    `/dashboard/learning-circle/dashboard/${circle.id}`
-                                                                );
-                                                            }}
-                                                        >
-                                                            <BsChevronRight />
-                                                        </PowerfulButton>
-                                                    </div>
-                                                </label>
-                                            </li>
-                                        </div>
-                                    ))}
-                                </>
-                            ) : (
-                                <div
-                                    className={
-                                        styles.learningCircleLandingPageMiddle
-                                    }
-                                >
-                                    <img
-                                        src={imageBottom}
-                                        alt="You haven't joined any circles yet"
-                                        loading="eager"
-                                        className={styles.desaturate}
-                                    />
-                                    <b>Nothing yet!</b>
-                                    <p>
-                                        You haven't joined any learning circles
-                                        yet.
-                                    </p>
-                                </div>
-                            )}
-                        </ul>
+                    <div className={styles.content}>
+                        <div className={styles.SwitchNav}>
+                            <button
+                                className={
+                                    styles.items +
+                                    " " +
+                                    (curpage == 0 ? styles.active : "")
+                                }
+                                onClick={() => setCurPage(0)}
+                            >
+                                Your Learning Circles
+                            </button>
+                            <button
+                                className={
+                                    styles.items +
+                                    " " +
+                                    (curpage == 1 ? styles.active : "")
+                                }
+                                onClick={() => setCurPage(1)}
+                            >
+                                Meetups
+                            </button>
+                        </div>
+                        {curpage === 0 ? (
+                            <YourLc userCircleList={userCircleList ?? []} />
+                        ) : (
+                            <LcMeetups />
+                        )}
                     </div>
                 </div>
             )}

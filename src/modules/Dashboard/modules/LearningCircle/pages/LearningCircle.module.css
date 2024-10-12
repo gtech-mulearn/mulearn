@@ -29,6 +29,7 @@
 }
 
 .learningCircleLandingPageMiddle {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1262,5 +1263,71 @@
     & p {
         color: #5570f2;
         transform: scaleX(-1);
+    }
+}
+.SwitchNav {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    .items {
+        padding: 8px 20px;
+        background-color: #f3f3f4;
+        color: black;
+        font-weight: 600;
+        border-radius: 15px;
+        &.active {
+            background-color: white;
+            border-radius: 15px 15px 0px 0px;
+        }
+    }
+    .plusItem {
+        border-left: 2px solid #8b8e92;
+        color: black;
+        font-size: 25px;
+        padding: 0px;
+        height: fit-content;
+        padding-left: 10px;
+        line-height: 1;
+    }
+}
+
+.ContentWrapper {
+    width: 100%;
+    padding: 30px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: start;
+}
+.inputBox {
+    background: #fff;
+    margin: 0px 10px;
+    input {
+        width: 100%;
+        background-color: rgba(238, 242, 255, 1);
+        border: none;
+        border-radius: 10px;
+        padding: 10px;
+    }
+}
+.modalinfo {
+    margin: 10px;
+    color: #22222290;
+    font-size: 15px;
+}
+.meetupGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    .meetupCard {
+        background: #fdfdfd;
+        color: #222;
+        padding: 20px;
+        box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.05);
+        border-radius: 10px;
+    }
+    @media screen and (max-width: 768px) {
+        grid-template-columns: 1fr;
     }
 }

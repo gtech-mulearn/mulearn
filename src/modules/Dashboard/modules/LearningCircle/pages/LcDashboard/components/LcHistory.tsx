@@ -1,86 +1,106 @@
 import styles from "../LcDashboard.module.css";
-import { LcAttendees } from "./LcAttendees";
-import { useEffect, useState } from "react";
-import { getLCMeetingReport } from "../../../services/LearningCircleAPIs";
-import { convertDateToDayAndMonthAndYear } from "../../../../../utils/common";
+import {
+    interestedMeetup,
+    joinMeetup
+} from "../../../services/LearningCircleAPIs";
+import { convertToFormatedDate } from "../../../../../utils/common";
 import {
     convert24to12,
     extract24hTimeFromDateTime,
     getDayOfWeek
 } from "../../../services/utils";
-import { useParams } from "react-router-dom";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 
 type Props = {
     id: string | undefined;
-    lc: LcDetail | undefined;
+    lc: LcMeetupDetailInfo | undefined;
 };
 
 const LcHistory = (props: Props) => {
-    const [data, setData] = useState<LcHistory>();
-    const { id } = useParams();
-
-    useEffect(() => {
-        getLCMeetingReport(props.id, id).then(res => {
-            setData(res);
-        });
-    }, []);
-
+    console.log(props.lc);
+    const handleInterested = (e: any) => {
+        e.preventDefault();
+        if (props.lc?.is_lc_member) {
+            joinMeetup(props.lc?.id ?? "");
+            return;
+        }
+        interestedMeetup(props.lc?.id ?? "", props.lc?.is_interested);
+    };
     return (
         <div className={styles.HistoryDataWrapper}>
-            {data ? (
+            {props.lc ? (
                 <>
                     <div className={styles.SectionTop}>
                         <div className={styles.Headings}>
                             <div>
-                                <h1>
-                                    {convertDateToDayAndMonthAndYear(
-                                        data?.meet_time
-                                    )}
-                                </h1>
-                                <p>{getDayOfWeek(data?.meet_time)}</p>
+                                <h1>{props.lc?.title}</h1>
+                                <p>{getDayOfWeek(props.lc?.meet_time)}</p>
                             </div>
                             <div>
                                 {
                                     <p>
-                                        Venuesdf:{" "}
-                                        {data.meet_place ||
+                                        Venue:{" "}
+                                        {props.lc.meet_place ||
                                             props.lc?.meet_place}
                                     </p>
                                 }
                                 <p>
                                     Time:{" "}
-                                    {convert24to12(
-                                        extract24hTimeFromDateTime(
-                                            data.meet_time
-                                        )
-                                    )}
+                                    {convertToFormatedDate(props.lc.meet_time) +
+                                        " " +
+                                        convert24to12(
+                                            extract24hTimeFromDateTime(
+                                                props.lc.meet_time
+                                            )
+                                        )}
                                 </p>
+                                {props.lc.is_lc_member && (
+                                    <>
+                                        <p>Meet Code: {props.lc.meet_code}</p>
+                                        <p>
+                                            Total interests:
+                                            {" " + props.lc.total_interested}
+                                        </p>
+                                        <p>
+                                            Total joinees:
+                                            {" " + props.lc.total_joined}
+                                        </p>
+                                    </>
+                                )}
                             </div>
                         </div>
                         <div className={styles.detailedSection}>
                             <h2>Agenda</h2>
-                            <p>{data.agenda}</p>
+                            <p>{props.lc.agenda}</p>
                         </div>
                     </div>
                     <div className={styles.SectionBottom}>
-                        <div className={styles.Headings}>
-                            <h2>Attendees</h2>
-                            {Array.isArray(data.attendees_details) &&
-                                data.attendees_details.map(attendee => (
-                                    <div>
-                                        <LcAttendees
-                                            name={attendee.fullname}
-                                            image={attendee.profile_pic}
-                                            isSelected={false}
-                                        />
-                                    </div>
-                                ))}
-                        </div>
-                        <div className={styles.detailedSection}>
-                            <img src={data.image} alt="" />
-                        </div>
+                        {props.lc.image ? (
+                            <div className={styles.detailedSection}>
+                                <img src={props.lc.image ?? ""} alt="" />
+                            </div>
+                        ) : null}
                     </div>
+                    <PowerfulButton
+                        onClick={handleInterested}
+                        variant={
+                            props.lc.joined_at || props.lc.is_interested
+                                ? "outline"
+                                : "primary"
+                        }
+                        disabled={props.lc.joined_at != null}
+                    >
+                        {props.lc.is_lc_member
+                            ? props.lc.is_started
+                                ? "Join"
+                                : "Join & Start meetup"
+                            : props.lc.joined_at
+                            ? "Joined"
+                            : props.lc.is_interested
+                            ? "Undo Interest"
+                            : "I'm Interested Join"}
+                    </PowerfulButton>
                 </>
             ) : (
                 <div
