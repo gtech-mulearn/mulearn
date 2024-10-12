@@ -44,6 +44,7 @@ import Refund from "./modules/Public/Donation/pages/Refund";
 import DonationSuccess from "./modules/Public/Donation/pages/DonationSuccess";
 import OpenGrad from "./modules/Dashboard/modules/OpenGrad";
 import UserInterest from "./modules/Common/Authentication/pages/Onboarding/UserInterest/UserInterest";
+import LcMeetupIfo from "./modules/Dashboard/modules/LearningCircle/pages/Meetup/LcMeetup";
 
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
@@ -692,6 +693,10 @@ function App() {
                         {
                             path: "learning-circle",
                             element: <LearningCircleLandingPage />
+                        },
+                        {
+                            path: "learning-circle/meetup/:id",
+                            element: <LcMeetupIfo />
                         },
                         {
                             path: "learning-circle/details/:id",

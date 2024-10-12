@@ -12,27 +12,8 @@ type Props = {
 };
 
 const LcReport = (props: Props) => {
-    const [formData, setFormData] = useState<LcReport>({
-        day: "",
-        meet_time: "",
-        agenda: "",
-        attendees: []
-    });
+    const [reportText, setReportText] = useState<string>("");
     const [uploadedImage, setUploadedImage] = useState<File | null>(null);
-
-    useEffect(() => {
-        const now = new Date();
-        const hours = now.getHours().toString().padStart(2, "0");
-        const minutes = now.getMinutes().toString().padStart(2, "0");
-        const year = now.getFullYear().toString();
-        const month = (now.getMonth() + 1).toString().padStart(2, "0");
-        const day = now.getDate().toString().padStart(2, "0");
-        setFormData(prevState => ({
-            ...prevState,
-            day: `${year}-${month}-${day}`,
-            meet_time: `${hours}:${minutes}:00`
-        }));
-    }, []);
 
     const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files && event.target.files[0];
@@ -41,61 +22,15 @@ const LcReport = (props: Props) => {
         }
     };
 
-    const handleMemberClick = (memberId: string) => {
-        setFormData(prevState => {
-            // Check if the attendee is already in the list
-            const isAlreadySelected = prevState.attendees.includes(memberId);
-
-            // If already selected, remove them; otherwise, add them
-            const updatedAttendees = isAlreadySelected
-                ? prevState.attendees.filter(id => id !== memberId) // Remove the attendee
-                : [...prevState.attendees, memberId]; // Add the attendee
-
-            return {
-                ...prevState,
-                attendees: updatedAttendees
-            };
-        });
-    };
-
-    const validateForm = (state: LcReport) => {
-        let errors: { [key: string]: string } = {};
-        if (!state.day) {
-            errors.day = "Date is required";
-        }
-        if (!state.meet_time) {
-            errors.time = "Time is required";
-        }
-        if (!state.agenda.trim()) {
-            errors.agenda = "Agenda is required";
-        }
-        if (state.attendees.length === 0) {
-            errors.attendees = "At least one attendee is required";
-        }
-        if (!uploadedImage) {
-            errors.image = "Image is required";
-        } else {
-            const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
-            if (!allowedTypes.includes(uploadedImage.type)) {
-                errors.image =
-                    "Invalid image type. Please upload a JPEG, PNG, or GIF.";
-            }
-        }
-        {
-            Object.keys(errors).length > 0
-                ? toast.error(Object.values(errors).join("\n"))
-                : null;
-        }
-        return Object.keys(errors).length > 0 ? false : true;
-    };
-
     const handleSubmit = (event: any) => {
         event.preventDefault();
-        if (validateForm(formData)) {
+        if (!uploadedImage) {
+            toast.error("Please upload an image");
+            return;
+        }
+        if (reportText.length > 0) {
             const data = new FormData();
-            data.append("agenda", formData.agenda);
-            data.append("attendees", formData.attendees.join(","));
-            data.append("time", formData.meet_time);
+            data.append("report_text", reportText);
             if (uploadedImage) {
                 data.append("images", uploadedImage);
             }
@@ -122,10 +57,21 @@ const LcReport = (props: Props) => {
                                 }
                             </b>
                         );
-
-                    return <b>Failed to report meeting!</b>;
+                    return error?.response?.data?.message ? (
+                        <b>
+                            {
+                                (error?.response?.data?.message?.general ?? [
+                                    "Failed to report meeting"
+                                ])[0]
+                            }
+                        </b>
+                    ) : (
+                        <b>Failed to report meeting!</b>
+                    );
                 }
             });
+        } else {
+            toast.error("Please fill the notes");
         }
     };
 
@@ -136,7 +82,7 @@ const LcReport = (props: Props) => {
     return (
         <div className={styles.ReportWrapper}>
             <div className={styles.DetailSection}>
-                <div className={styles.Sectionone}>
+                {/* <div className={styles.Sectionone}>
                     <div>
                         <label>Date:</label>
                         <input
@@ -169,40 +115,14 @@ const LcReport = (props: Props) => {
                             }
                         />
                     </div>
-                </div>
+                </div> */}
                 <div className={styles.SectionTwo}>
-                    <p>Agenda</p>
+                    <p>What happened on the meet? *</p>
                     <textarea
-                        placeholder="Type your agenda here..."
-                        value={formData.agenda}
-                        onChange={e =>
-                            setFormData(prevState => ({
-                                ...prevState,
-                                agenda: e.target.value
-                            }))
-                        }
+                        placeholder="Type here..."
+                        value={reportText}
+                        onChange={e => setReportText(e.target.value)}
                     ></textarea>
-                </div>
-                <div className={styles.SectionThree}>
-                    <p>Attendees</p>
-                    <div>
-                        {props.lc?.members.map(member => (
-                            <div
-                                key={member.id}
-                                className={styles.participantsContainer}
-                                onClick={() => handleMemberClick(member.id)}
-                            >
-                                <LcAttendees
-                                    name={member.username}
-                                    image={member.profile_pic}
-                                    isSelected={formData.attendees.includes(
-                                        member.id
-                                    )}
-                                />
-                            </div>
-                        ))}
-                        {/* <button>+</button> */}
-                    </div>
                 </div>
             </div>
             <div className={styles.UploadSection}>
