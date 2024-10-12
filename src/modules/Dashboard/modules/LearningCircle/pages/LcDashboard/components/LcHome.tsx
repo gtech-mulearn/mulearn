@@ -1,15 +1,13 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import styles from "../LcDashboard.module.css";
-import { EditLogo, RightArrow } from "../../../assets/svg";
+import { CalenderIcon, EditLogo, RightArrow } from "../../../assets/svg";
 import LcReport from "./LcReport";
-import LcHistory from "./LcHistory";
-import LcSchedule from "./LcSchedule";
-import {
-    convertDateToDayAndMonthAndYear,
-    convertToFormatedDate
-} from "../../../../../utils/common";
-import { getNextMeetingDate } from "../utils/LcNextMeet";
-import LcCheckList from "./LcCheckList";
+import { convertToFormatedDate } from "../../../../../utils/common";
+import LcMeetCreate from "./LcMeetCreate";
+import { getLcMeetups } from "../../../services/LearningCircleAPIs";
+import toast from "react-hot-toast";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
+import { useNavigate } from "react-router-dom";
 import {
     convert24to12,
     extract24hTimeFromDateTime
@@ -23,13 +21,22 @@ type Props = {
 };
 
 const LcHome = (props: Props) => {
-    const nextMeet = getNextMeetingDate(
-        props.lc?.day || [],
-        props.lc?.meet_time === null ? "00:00" : String(props.lc?.meet_time)
-    );
-
-    const [selectedMeeting, setSelectedMeeting] = useState("");
-
+    const [meetups, setMeetups] = useState<LcMeetupInfo[]>([]);
+    const [pastMeetups, setPastMeetups] = useState<LcMeetupInfo[]>([]);
+    const [selectedMeeting, setSelectedMeeting] = useState<string>("");
+    useEffect(() => {
+        getLcMeetups(props.id ?? "").then(res => {
+            if (res) {
+                if (res.hasError) {
+                    toast.error(res.message.general[0]);
+                } else {
+                    setMeetups(res.meetups);
+                    setPastMeetups(res.past);
+                }
+            }
+        });
+    }, [props.lc]);
+    const navigate = useNavigate();
     return (
         <div className={styles.ContainerWrapper}>
             <div className={styles.SwitchNav}>
@@ -40,8 +47,8 @@ const LcHome = (props: Props) => {
                             ...props.temp,
                             isReport: false,
                             isHistory: false,
-                            isTeam: false,
-                            isSchedule: false
+                            isTeam: false
+                            // isSchedule: false
                         })
                     }
                 >
@@ -59,7 +66,245 @@ const LcHome = (props: Props) => {
                     Team
                 </button>
             </div>
-            {props.temp.isReport ? (
+            <div className={styles.ContentWrapper}>
+                <div className={styles.TopContainer}>
+                    <div className={styles.sectionOne}>
+                        {props.temp.isReport ? (
+                            <LcReport
+                                setTemp={props.setTemp}
+                                id={selectedMeeting}
+                                lc={props.lc}
+                            />
+                        ) : props.temp.isCreateMeeting ? (
+                            <LcMeetCreate
+                                setTemp={props.setTemp}
+                                lc={props.lc}
+                                id={props.id}
+                            />
+                        ) : (
+                            <>
+                                <div className={styles.meetups}>
+                                    {meetups.length > 0 ? (
+                                        meetups.map(meetup => (
+                                            <div className={styles.meetup}>
+                                                <div
+                                                    className={
+                                                        styles.meetupStatusBar
+                                                    }
+                                                >
+                                                    <div
+                                                        className={styles.date}
+                                                    >
+                                                        <span>
+                                                            <CalenderIcon />
+                                                        </span>
+                                                        {convertToFormatedDate(
+                                                            meetup.meet_time
+                                                        )}
+                                                    </div>
+                                                    <div
+                                                        className={
+                                                            styles.status +
+                                                            " " +
+                                                            (meetup.is_started
+                                                                ? styles.ongoing
+                                                                : styles.upcoming)
+                                                        }
+                                                    >
+                                                        {meetup.is_started
+                                                            ? "Ongoing"
+                                                            : "Upcoming"}
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    className={
+                                                        styles.meetupDetails
+                                                    }
+                                                >
+                                                    <h1
+                                                        className={styles.title}
+                                                    >
+                                                        {meetup.title}
+                                                    </h1>
+                                                    <p
+                                                        className={
+                                                            styles.agenda
+                                                        }
+                                                    >
+                                                        {meetup.agenda}
+                                                    </p>
+                                                    <div
+                                                        className={styles.venue}
+                                                    >
+                                                        <h2
+                                                            className={
+                                                                styles.venueHead
+                                                            }
+                                                        >
+                                                            Venue Details
+                                                        </h2>
+                                                        <div
+                                                            className={
+                                                                styles.meetupVenue
+                                                            }
+                                                        >
+                                                            <div>
+                                                                <span>
+                                                                    {
+                                                                        meetup.meet_place
+                                                                    }
+                                                                </span>
+                                                            </div>
+                                                            <a
+                                                                className={
+                                                                    styles.venueLink
+                                                                }
+                                                                href={
+                                                                    meetup.location
+                                                                }
+                                                            >
+                                                                {
+                                                                    meetup.location
+                                                                }
+                                                            </a>
+                                                        </div>
+                                                        <div
+                                                            className={
+                                                                styles.actions
+                                                            }
+                                                        >
+                                                            <PowerfulButton
+                                                                variant="outline"
+                                                                onClick={() => {
+                                                                    props.setTemp(
+                                                                        prev => ({
+                                                                            ...prev,
+                                                                            isReport:
+                                                                                true
+                                                                        })
+                                                                    );
+                                                                    setSelectedMeeting(
+                                                                        meetup.id
+                                                                    );
+                                                                }}
+                                                            >
+                                                                Submit Report
+                                                            </PowerfulButton>
+                                                            <PowerfulButton
+                                                                onClick={() => {
+                                                                    navigate(
+                                                                        "/dashboard/learning-circle/meetup/" +
+                                                                            meetup.id
+                                                                    );
+                                                                }}
+                                                            >
+                                                                More Info
+                                                            </PowerfulButton>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))
+                                    ) : (
+                                        <>
+                                            <div>
+                                                <p className={styles.message}>
+                                                    Next meeting not scheduled.
+                                                    <br />
+                                                    Kindly schedule a meeting.
+                                                </p>
+                                            </div>
+                                            <button
+                                                onClick={() => {
+                                                    props.setTemp(prev => ({
+                                                        ...prev,
+                                                        isCreateMeeting: true
+                                                    }));
+                                                }}
+                                            >
+                                                <EditLogo />
+                                            </button>
+                                        </>
+                                    )}
+                                </div>
+
+                                {/* <div className={styles.secondDiv}>
+                                <div>
+                                    {props.lc?.meet_place && (
+                                        <p>Venue: {props.lc?.meet_place}</p>
+                                    )}
+                                    {props.lc?.meet_time && (
+                                        <p>Time: {nextMeet?.formattedTime}</p>
+                                    )}
+                                </div>
+                                {props.lc?.meet_time && (
+                                    <button
+                                        onClick={() => {
+                                            props.setTemp(prev => ({
+                                                ...prev,
+                                                isReport: true
+                                            }));
+                                        }}
+                                    >
+                                        Report
+                                    </button>
+                                )}
+                            </div> */}
+                            </>
+                        )}
+                    </div>
+                    <div className={styles.BottomContainer}>
+                        {props.lc?.previous_meetings &&
+                            props.lc?.previous_meetings.length > 0 && (
+                                <p>Your past meetings</p>
+                            )}
+                        <div>
+                            {pastMeetups.map((report, index) => (
+                                <div
+                                    className={styles.HistoryDivWrapper}
+                                    onClick={() => {
+                                        navigate(
+                                            "/dashboard/learning-circle/meetup/" +
+                                                report.id
+                                        );
+                                    }}
+                                >
+                                    <div>
+                                        <p>{index + 1}.</p>
+                                        <p>
+                                            {convertToFormatedDate(
+                                                report.meet_time
+                                            )}
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p
+                                            style={{
+                                                color: "rgba(69, 111, 246, 1)",
+                                                fontWeight: 400,
+                                                fontSize: "14px"
+                                            }}
+                                        >
+                                            {convertToFormatedDate(
+                                                report.meet_time
+                                            )}{" "}
+                                            {convert24to12(
+                                                extract24hTimeFromDateTime(
+                                                    report.meet_time
+                                                )
+                                            )}
+                                        </p>
+                                        <button>
+                                            <RightArrow />
+                                        </button>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/* {props.temp.isReport ? (
                 <LcReport setTemp={props.setTemp} id={props.id} lc={props.lc} />
             ) : props.temp.isHistory ? (
                 <LcHistory id={selectedMeeting} lc={props.lc} />
@@ -67,8 +312,8 @@ const LcHome = (props: Props) => {
                 <div className={styles.ContentWrapper}>
                     <div className={styles.TopContainer}>
                         <div className={styles.sectionOne}>
-                            {props.temp.isSchedule ? (
-                                <LcSchedule
+                            {props.temp.isCreateMeeting ? (
+                                <LcMeetCreate
                                     setTemp={props.setTemp}
                                     lc={props.lc}
                                     id={props.id}
@@ -77,8 +322,8 @@ const LcHome = (props: Props) => {
                                 <>
                                     <div className={styles.divOne}>
                                         {nextMeet &&
-                                            props.lc?.meet_place &&
-                                            props.lc?.meet_time ? (
+                                        props.lc?.meet_place &&
+                                        props.lc?.meet_time ? (
                                             <div>
                                                 <p>Next meeting on</p>
                                                 <h1>
@@ -103,7 +348,7 @@ const LcHome = (props: Props) => {
                                             onClick={() => {
                                                 props.setTemp(prev => ({
                                                     ...prev,
-                                                    isSchedule: true
+                                                    isCreateMeeting: true
                                                 }));
                                             }}
                                         >
@@ -125,16 +370,18 @@ const LcHome = (props: Props) => {
                                                 </p>
                                             )}
                                         </div>
-                                        {props.lc?.meet_time && (<button
-                                            onClick={() => {
-                                                props.setTemp(prev => ({
-                                                    ...prev,
-                                                    isReport: true
-                                                }));
-                                            }}
-                                        >
-                                            Report
-                                        </button>)}
+                                        {props.lc?.meet_time && (
+                                            <button
+                                                onClick={() => {
+                                                    props.setTemp(prev => ({
+                                                        ...prev,
+                                                        isReport: true
+                                                    }));
+                                                }}
+                                            >
+                                                Report
+                                            </button>
+                                        )}
                                     </div>
                                 </>
                             )}
@@ -151,52 +398,11 @@ const LcHome = (props: Props) => {
                                 <p>Your past meetings</p>
                             )}
                         <div>
-                            {props.lc?.previous_meetings.map(
-                                (report, index) => (
-                                    <div
-                                        className={styles.HistoryDivWrapper}
-                                        onClick={() => {
-                                            props.setTemp({
-                                                ...props.temp,
-                                                isReport: false,
-                                                isHistory: true
-                                            });
-                                            setSelectedMeeting(report.id);
-                                        }}
-                                    >
-                                        <div>
-                                            <p>{index + 1}.</p>
-                                            <p>
-                                                {convertToFormatedDate(
-                                                    report.meet_time
-                                                )}
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p
-                                                style={{
-                                                    color: "rgba(69, 111, 246, 1)",
-                                                    fontWeight: 400,
-                                                    fontSize: "14px"
-                                                }}
-                                            >
-                                                {convert24to12(
-                                                    extract24hTimeFromDateTime(
-                                                        report.meet_time
-                                                    )
-                                                )}
-                                            </p>
-                                            <button>
-                                                <RightArrow />
-                                            </button>
-                                        </div>
-                                    </div>
-                                )
-                            )}
+                            
                         </div>
                     </div>
                 </div>
-            )}
+            )} */}
         </div>
     );
 };
