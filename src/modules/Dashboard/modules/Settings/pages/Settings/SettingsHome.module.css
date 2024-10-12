@@ -1,26 +1,61 @@
+/* Container Styling */
 .container {
     display: flex;
-    justify-content: space-around;
-    padding: 20px;
+    justify-content: space-between; /* Better layout distribution */
+    padding: 30px; /* Increased padding for more space */
+    gap: 20px; /* Adds space between the columns */
+    background-color: #f8f9fa; /* Light background for better contrast */
+    border-radius: 10px; /* Rounded container edges */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
+/* Column Styling */
 .column {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 15px; /* Adds space between items in the column */
+    flex: 1; /* Ensures columns are equally spaced */
 }
 
+/* Button Styling */
 .button {
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 15px 25px; /* Increased padding for larger buttons */
+    font-size: 18px; /* Larger font for better readability */
     cursor: pointer;
     background-color: #007bff;
     color: white;
     border: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    border-radius: 8px; /* Slightly more rounded for modern look */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Add smooth hover effect */
 }
 
+/* Hover Effect for Buttons */
 .button:hover {
     background-color: #0056b3;
+    transform: scale(1.05); /* Slightly increases size on hover */
+}
+
+/* Increased Button Size for Reset Password and Select College */
+#reset-password-btn,
+#select-college-btn {
+    padding: 20px 40px; /* Increase the button size */
+    font-size: 20px; /* Make the text larger */
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stack columns on smaller screens */
+        padding: 20px;
+    }
+    
+    .button {
+        width: 100%; /* Make buttons full width on smaller screens */
+    }
+    
+    #reset-password-btn,
+    #select-college-btn {
+        padding: 15px 35px; /* Adjust button size for mobile */
+    }
 }
