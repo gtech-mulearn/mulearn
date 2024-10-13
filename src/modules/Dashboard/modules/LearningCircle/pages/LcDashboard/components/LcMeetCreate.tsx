@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { createRef, Dispatch, SetStateAction, useRef, useState } from "react";
 import styles from "../LcDashboard.module.css";
 import toast from "react-hot-toast";
 import {
@@ -7,6 +7,7 @@ import {
 } from "../../../services/LearningCircleAPIs";
 import { useFormik } from "formik";
 import { Switch } from "@chakra-ui/react";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 
 type Props = {
     setTemp: Dispatch<SetStateAction<LcDashboardTempData>>;
@@ -15,6 +16,9 @@ type Props = {
 };
 
 const LcMeetCreate = (props: Props) => {
+    const [tasks, setTasks] = useState<string[]>([]);
+    const taskInputRef = createRef<HTMLInputElement>();
+    const [isLoading, setIsLoading] = useState(false);
     const formik = useFormik({
         initialValues: {
             title: "",
@@ -26,12 +30,18 @@ const LcMeetCreate = (props: Props) => {
             pre_requirements: null,
             is_public: true,
             limit_attendees: false,
-            max_attendees: -1
+            max_attendees: -1,
+            is_online: false
         },
         onSubmit: values => {
-            createMeetup(values, props.id ?? "")
+            if (tasks.length === 0) {
+                toast.error("Please add tasks");
+                return;
+            }
+            setIsLoading(true);
+            createMeetup({ ...values, tasks: tasks }, props.id ?? "")
                 .then(res => {
-                    console.log(res);
+                    setIsLoading(false);
                     if (res) {
                         if (res.hasError) {
                             toast.error(res.message.general[0]);
@@ -41,6 +51,7 @@ const LcMeetCreate = (props: Props) => {
                     }
                 })
                 .catch(err => {
+                    setIsLoading(false);
                     toast.error("Failed to create meetup");
                 });
 
@@ -112,7 +123,7 @@ const LcMeetCreate = (props: Props) => {
                         </div>
                     </div>
                     <div className={styles.input_field}>
-                        <label className={styles.label}>Agenda *</label>
+                        <label className={styles.label}>Description *</label>
                         <div className={styles.inputBox}>
                             <textarea
                                 name="agenda"
@@ -130,15 +141,121 @@ const LcMeetCreate = (props: Props) => {
                         </div>
                     </div>
                     <div className={styles.input_field}>
+                        <label className={styles.label}>Add Tasks *</label>
+                        <div className={styles.addedTasks}>
+                            {tasks.map((task, index) => (
+                                <div key={index} className={styles.task}>
+                                    <div>
+                                        <span>{index + 1}.</span>
+                                        <p>{task}</p>
+                                    </div>
+                                    <button
+                                        onClick={e => {
+                                            e.preventDefault();
+                                            setTasks(
+                                                tasks.filter(
+                                                    (_, i) => i !== index
+                                                )
+                                            );
+                                        }}
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="16"
+                                            height="16"
+                                            fill="currentColor"
+                                            viewBox="0 0 16 16"
+                                        >
+                                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            ))}
+                        </div>
+                        <div className={styles.inputBox}>
+                            <div className={styles.tasks}>
+                                <input
+                                    name="tasks"
+                                    ref={taskInputRef}
+                                    placeholder="Add tasks"
+                                    maxLength={100}
+                                    onChange={e => {
+                                        e.preventDefault();
+                                        if (
+                                            e.currentTarget.value.endsWith("\n")
+                                        ) {
+                                            setTasks([
+                                                ...tasks,
+                                                e.currentTarget.value.slice(
+                                                    0,
+                                                    -1
+                                                )
+                                            ]);
+                                            e.currentTarget.value = "";
+                                        }
+                                    }}
+                                />
+                                <button
+                                    onClick={e => {
+                                        e.preventDefault();
+                                        if (taskInputRef.current?.value)
+                                            setTasks([
+                                                ...tasks,
+                                                taskInputRef.current?.value
+                                            ]);
+                                        taskInputRef.current!.value = "";
+                                    }}
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="16"
+                                        height="16"
+                                        fill="currentColor"
+                                        viewBox="0 0 16 16"
+                                    >
+                                        <path
+                                            fill-rule="evenodd"
+                                            d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"
+                                        />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles.input_switch}>
                         <label className={styles.label}>
-                            Meetup Location Link (Maps, Meet...) *
+                            Is online meetup?
+                        </label>
+                        <Switch
+                            size="md"
+                            isChecked={formik.values.is_online}
+                            onChange={e => {
+                                formik.setFieldValue(
+                                    "is_online",
+                                    e.target.checked
+                                );
+                            }}
+                        />
+                    </div>
+                    <div className={styles.input_field}>
+                        <label className={styles.label}>
+                            {formik.values.is_online
+                                ? "Online meet link"
+                                : "Meetup Location Link"}
+                            *
                         </label>
                         <div className={styles.inputBox}>
                             <input
                                 name="location"
                                 required
                                 value={formik.values.location}
-                                placeholder="Meetup location or link"
+                                placeholder={
+                                    "Enter Link " +
+                                    (formik.values.is_online
+                                        ? " (eg: https://meet.google.com/abc-xyz)"
+                                        : " (eg: https://maps.google.com/abc-xyz)")
+                                }
                                 onBlur={formik.handleBlur}
                                 onChange={formik.handleChange}
                             />
@@ -245,9 +362,9 @@ const LcMeetCreate = (props: Props) => {
                             </div>
                         </div>
                     )}
-                    <div className={styles.Bottom}>
-                        <button className={styles.BtnBtn}>Create Meetup</button>
-                    </div>
+                    <PowerfulButton isLoading={isLoading}>
+                        Create Meetup
+                    </PowerfulButton>
                 </form>
             </div>
         </>

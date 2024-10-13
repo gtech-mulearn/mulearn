@@ -72,8 +72,8 @@ export default function Rolepage() {
 
         submitUserData({
             setIsLoading: setIsLoading,
-            userData: newUserData,
-            navigate: navigate
+            userData: newUserData
+            // navigate: navigate # want to handle this if this page is used in other places
         });
     };
 

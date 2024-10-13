@@ -48,10 +48,6 @@ const scheme = z.object({
 
 export default function CollegePage() {
     const navigate = useNavigate();
-
-    const location = useLocation();
-    let userData: any = location.state as Object;
-
     const [isloading, setIsLoading] = useState(true);
     const [colleges, setColleges] = useState([{ id: "", title: "" }]);
     const [departments, setDepartments] = useState([{ id: "", title: "" }]);
@@ -65,6 +61,8 @@ export default function CollegePage() {
         id: "",
         title: ""
     });
+
+    const ruri = window.location.href.split("=")[1];
 
     const CustomFilter = (
         { label, value }: { label: string; value: string },
@@ -93,14 +91,26 @@ export default function CollegePage() {
         selectOrganization({
             setIsLoading: setIsLoading,
             userData: {
-                organization: values.organization,
-                department: values.department,
+                organization:
+                    values.organization == "Others"
+                        ? null
+                        : values.organization,
+                department:
+                    values.department == "Others" ? null : values.department,
                 graduation_year:
                     values.graduationYear == null || values.graduationYear != ""
                         ? values.graduationYear
-                        : null
-            },
-            navigate: navigate
+                        : null,
+                is_student: isCollege
+            }
+        }).then(res => {
+            if (res) {
+                if (ruri) {
+                    navigate(`/${ruri}`);
+                } else {
+                    navigate("/dashboard/connect-discord");
+                }
+            }
         });
     };
     // console.log(userData);
@@ -260,9 +270,13 @@ export default function CollegePage() {
                                         variant="outline"
                                         onClick={e => {
                                             e.preventDefault();
-                                            navigate(
-                                                "/dashboard/connect-discord"
-                                            );
+                                            if (ruri) {
+                                                navigate(`/${ruri}`);
+                                            } else {
+                                                navigate(
+                                                    "/dashboard/connect-discord"
+                                                );
+                                            }
                                         }}
                                     >
                                         Skip

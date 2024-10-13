@@ -65,6 +65,7 @@ export default function UserInterest() {
     const [stepTwo, setStepTwo] = useState(false);
     const [interestGroups, setInterestGroups] = useState<InterestGroups>({});
     const navigate = useNavigate();
+    const ruri = window.location.href.split("=")[1];
 
     useEffect(() => {
         const fetchInterestGroups = async () => {
@@ -153,7 +154,11 @@ export default function UserInterest() {
                 data
             );
             toast.success(res.data?.message.general[0]);
-            navigate("/register/organization");
+            navigate(
+                ruri
+                    ? `/register/organization/?ruri=${ruri}`
+                    : "/register/organization"
+            );
         } catch (err: any) {
             toast.error(
                 err.response?.data.message.general[0] ||
@@ -275,9 +280,15 @@ export default function UserInterest() {
             <div className={styles.popUp}>
                 <div className={styles.box}>
                     <img src={muBrand} alt="mulearn" />
-                    <h1>{stepTwo ? "What do you expect by MuLearning " : "What describes you the most!"}</h1>
+                    <h1>
+                        {stepTwo
+                            ? "What do you expect by MuLearning "
+                            : "What describes you the most!"}
+                    </h1>
                     <p className={styles.subText}>
-                        {stepTwo ? "Pick your goal." : "Please select your interested area"}
+                        {stepTwo
+                            ? "Pick your goal."
+                            : "Please select your interested area"}
                     </p>
 
                     {stepTwo
@@ -292,7 +303,7 @@ export default function UserInterest() {
                             isLoading={false}
                             onClick={stepTwo ? handleSubmit : handleContinue}
                         >
-                            {stepTwo ? "Submit" : "Continue"}
+                            Continue
                         </PowerfulButton>
                     )}
                 </div>

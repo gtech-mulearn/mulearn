@@ -356,6 +356,17 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+
+    .title {
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #ddddddf8;
+        text-align: left;
+        width: fit-content;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ddddddf8;
+    }
 }
 
 .loading {
@@ -414,23 +425,31 @@
     flex-wrap: wrap;
     gap: 5px;
 }
-.Headings .meetupTags {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
-
-    .meetupInfoTag {
-        display: flex;
-        gap: 10px;
-        align-items: center;
-        justify-content: start;
-        padding: 5px 10px;
-        background-color: white;
-        color: #456ff6;
-        border: 1px dashed #456ff6;
+.Headings {
+    .info {
+        padding: 10px;
+        background: #dddddd50;
         border-radius: 10px;
-        margin: 5px;
+        margin: 10px 0;
+    }
+    .meetupTags {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+
+        .meetupInfoTag {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: start;
+            padding: 5px 10px;
+            background-color: white;
+            color: #456ff6;
+            border: 1px dashed #456ff6;
+            border-radius: 10px;
+            margin: 5px;
+        }
     }
 }
 
@@ -439,10 +458,38 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
-.HistoryDataWrapper .SectionBottom .detailedSection img {
-    height: 280px;
-    width: 460px;
-    object-fit: cover;
+.detailedSection {
+    .tasks {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        width: 100%;
+        color: black;
+        .task {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: start;
+            gap: 10px;
+            align-items: center;
+            padding: 10px;
+            background-color: rgba(238, 242, 255, 1);
+            border-radius: 10px;
+            font-size: 15px;
+            span {
+                font-size: 17px;
+                font-weight: 900;
+                padding-right: 10px;
+                border-right: 1px solid #dddddd;
+            }
+        }
+    }
+    .HistoryDataWrapper .SectionBottom .detailedSection img {
+        height: 280px;
+        width: 460px;
+        object-fit: cover;
+    }
 }
 @media screen and (max-width: 1000px) {
     .HistoryDataWrapper .Headings,
@@ -1248,6 +1295,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
                 padding: 20px;
                 margin: 20px 10px;
                 border-radius: 5px;
+                text-align: left;
                 .title {
                     font-size: 18px;
                     font-weight: 800;
@@ -1360,6 +1408,64 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     height: 50px;
 }
 
+.input_field {
+    .inputBox {
+        .tasks {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            button {
+                height: fit-content;
+                padding: 12px;
+                background: var(--blue);
+                border-radius: 10px;
+                color: #fff;
+            }
+        }
+    }
+    .addedTasks {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+
+        .task {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            font-size: 13px;
+            align-items: center;
+            padding: 10px;
+            background: #dddddd50;
+            border-radius: 10px;
+            justify-content: center;
+            div {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                width: 100%;
+                gap: 10px;
+                span {
+                    font-size: 15px;
+                    font-weight: 900;
+                }
+                p {
+                    font-size: 15px !important;
+                    font-weight: 500;
+                }
+            }
+        }
+        .taskAdd {
+            background: var(--blue);
+            height: fit-content;
+            padding: 12px;
+            border-radius: 10px;
+            color: #fff;
+        }
+    }
+}
 /* @media (max-width: 1500px) {
     .edit_profile_container {
         left: unset;

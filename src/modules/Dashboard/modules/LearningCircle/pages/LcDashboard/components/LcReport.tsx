@@ -2,7 +2,10 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import styles from "../LcDashboard.module.css";
 import UploadImage from "../../../assets/images/uploadIcon.svg";
 import { LcAttendees } from "./LcAttendees";
-import { reportMeeting } from "../../../services/LearningCircleAPIs";
+import {
+    getMeetupAttendees,
+    reportMeeting
+} from "../../../services/LearningCircleAPIs";
 import toast from "react-hot-toast";
 
 type Props = {
@@ -14,13 +17,23 @@ type Props = {
 const LcReport = (props: Props) => {
     const [reportText, setReportText] = useState<string>("");
     const [uploadedImage, setUploadedImage] = useState<File | null>(null);
-
+    const [attendees, setAttendees] = useState<LcAttendees[]>([]);
     const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files && event.target.files[0];
+
         if (file) {
             setUploadedImage(file);
         }
     };
+    useEffect(() => {
+        getMeetupAttendees(props.id ?? "")
+            .then(res => {
+                setAttendees(res);
+            })
+            .catch(err => {
+                toast.error("Failed to fetch attendees");
+            });
+    }, []);
 
     const handleSubmit = (event: any) => {
         event.preventDefault();
@@ -117,12 +130,27 @@ const LcReport = (props: Props) => {
                     </div>
                 </div> */}
                 <div className={styles.SectionTwo}>
-                    <p>What happened on the meet? *</p>
+                    <p>Brief description *</p>
                     <textarea
                         placeholder="Type here..."
                         value={reportText}
                         onChange={e => setReportText(e.target.value)}
                     ></textarea>
+                </div>
+                <div className={styles.SectionThree}>
+                    <p>Attendees List</p>
+                    <div
+                        className={styles.attendees}
+                        style={{ display: "flex", gap: 10, flexWrap: "wrap" }}
+                    >
+                        {attendees.map(attendee => (
+                            <LcAttendees
+                                name={attendee.fullname}
+                                image={attendee.profile_pic}
+                                isSelected={false}
+                            />
+                        ))}
+                    </div>
                 </div>
             </div>
             <div className={styles.UploadSection}>
