@@ -16,11 +16,11 @@ const IntrestGroupForm = forwardRef(
             category: "others"
         });
         const interestGroup = [
-            { label: "Software", value: "software" },
-            { label: "Maker", value: "maker" },
+            { label: "Coder", value: "coder" },
+            { label: "Hardware", value: "hardware" },
             {
-                label: "Management",
-                value: "management"
+                label: "Manager",
+                value: "manager"
             },
             { label: "Creative", value: "creative" },
             { label: "Others", value: "others" }
