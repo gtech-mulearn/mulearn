@@ -23,18 +23,19 @@ const CheckMark = () => (
 );
 
 const INITIAL_INTERESTS = [
-    { title: "Software", value: "software", img: software, checked: false },
-    { title: "Maker", value: "maker", img: maker, checked: false },
-    { title: "Management", value: "management", img: management, checked: false },
+    { title: "Coder", value: "coder", img: software, checked: false },
+    { title: "Hardware", value: "hardware", img: maker, checked: false },
+    { title: "Manager", value: "manager", img: management, checked: false },
     { title: "Creative", value: "creative", img: creative, checked: false },
     { title: "Others", value: "others", img: others, checked: false }
 ];
 
 const INITIAL_ENDGOALS = [
     { title: "Job", value: "job", checked: false },
-    { title: "Higher Education", value: "higher_education", checked: false },
+    { title: "Research & Development", value: "r&d", checked: false },
     { title: "Entrepreneurship", value: "entrepreneurship", checked: false },
     { title: "Gig Works", value: "gig_work", checked: false },
+    { title: "Higher Education", value: "higher_education", checked: false },
     { title: "Others", value: "others", checked: false }
 ];
 
@@ -201,9 +202,9 @@ export default function UserInterest() {
             <div className={styles.popUp}>
                 <div className={styles.box}>
                     <img src={muBrand} alt="mulearn" />
-                    <h1>{stepTwo ? "What describes you the most!" : "Your dynamic area of interest!"}</h1>
+                    <h1>{stepTwo ? "What do you expect by MuLearning " : "What describes you the most!"}</h1>
                     <p className={styles.subText}>
-                        {stepTwo ? "Choose one or goals you expect from µLearn." : "Please select your interested area"}
+                        {stepTwo ? "Pick your goal." : "Please select your interested area"}
                     </p>
                     
                     {stepTwo ? renderItems(endgoals, false) : renderItems(interests, true)}
