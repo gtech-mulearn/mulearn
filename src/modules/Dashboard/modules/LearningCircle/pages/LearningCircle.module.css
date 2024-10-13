@@ -165,6 +165,9 @@
     .learningCircleLandingPageLevel div {
         font-size: 0.8rem;
     }
+    .learningCircleLandingPage .learningCircleLandingPageButton button {
+        font-size: 15px;
+    }
 }
 
 @media (width<=820px) {
