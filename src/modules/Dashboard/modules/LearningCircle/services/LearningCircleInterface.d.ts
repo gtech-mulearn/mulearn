@@ -65,6 +65,8 @@ interface LcMeetup {
     is_public: boolean;
     limit_attendees: boolean;
     max_attendees: number;
+    tasks: string[];
+    is_online: boolean;
 }
 
 type LcMeetupInfo = LcMeetup & {
