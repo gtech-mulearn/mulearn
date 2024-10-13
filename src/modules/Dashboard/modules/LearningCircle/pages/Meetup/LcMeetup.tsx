@@ -3,6 +3,7 @@ import LcHistory from "../LcDashboard/components/LcHistory";
 import { useEffect, useState } from "react";
 import { getMeetupInfo } from "../../services/LearningCircleAPIs";
 import toast from "react-hot-toast";
+import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
 export default function LcMeetupIfo() {
     const params = useParams();
@@ -16,5 +17,9 @@ export default function LcMeetupIfo() {
                 toast.error("Failed to fetch data");
             });
     }, []);
-    return data ? <LcHistory id={data.id} lc={data} /> : <>Loading</>;
+    return data ? (
+        <LcHistory id={data.id} lc={data} setLc={setData} />
+    ) : (
+        <MuLoader />
+    );
 }

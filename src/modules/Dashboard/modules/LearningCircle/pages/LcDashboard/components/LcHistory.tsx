@@ -16,6 +16,7 @@ import toast from "react-hot-toast";
 type Props = {
     id: string | undefined;
     lc: LcMeetupDetailInfo | undefined;
+    setLc: UseStateFunc<LcMeetupDetailInfo | undefined>;
 };
 
 const LcHistory = (props: Props) => {
@@ -23,10 +24,22 @@ const LcHistory = (props: Props) => {
     const handleInterested = (e: any) => {
         e.preventDefault();
         if (props.lc?.is_lc_member) {
-            joinMeetup(props.lc?.id ?? "");
+            joinMeetup(props.lc?.id ?? "").then(res => {
+                props.setLc({
+                    ...props.lc,
+                    joined_at: new Date().toISOString()
+                } as any);
+            });
             return;
         }
-        interestedMeetup(props.lc?.id ?? "", props.lc?.is_interested);
+        interestedMeetup(props.lc?.id ?? "", props.lc?.is_interested).then(
+            res => {
+                props.setLc({
+                    ...props.lc,
+                    is_interested: !props.lc?.is_interested
+                } as any);
+            }
+        );
     };
     return (
         <div className={styles.HistoryDataWrapper}>

@@ -147,12 +147,10 @@ export const getCompanies = async ({
 
 export const submitUserData = async ({
     setIsLoading,
-    userData,
-    navigate
+    userData
 }: {
     setIsLoading: Dispatch<SetStateAction<boolean>>;
     userData: Object;
-    navigate: NavigateFunction;
 }) => {
     console.log("UserData", userData);
     try {
@@ -164,13 +162,14 @@ export const submitUserData = async ({
         const tokens = res.data.response;
         localStorage.setItem("accessToken", tokens.accessToken);
         localStorage.setItem("refreshToken", tokens.refreshToken);
-        navigate("/register/interests");
+        return true;
     } catch (err: any) {
         setIsLoading(false);
         const messages = err.response.data.message.general[0];
         showToasts({
             messages: messages
         });
+        return false;
     }
 };
 

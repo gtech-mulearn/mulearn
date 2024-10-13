@@ -153,7 +153,13 @@ export default function SignIn() {
                                     </PowerfulButton>
                                 </div>
                                 <div className={styles.noAccount}>
-                                    <a href="/register">
+                                    <a
+                                        href={
+                                            ruri
+                                                ? `/register/?ruri=${ruri}`
+                                                : "/register"
+                                        }
+                                    >
                                         Don't have an account? Sign up
                                     </a>
                                 </div>
