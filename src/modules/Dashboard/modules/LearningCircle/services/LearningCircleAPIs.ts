@@ -338,6 +338,22 @@ export const updateLcNote = async (data: LcNote) => {
     }
 };
 
+export const getMeetupAttendees = async (id: string | undefined) => {
+    try {
+        console.log(dynamicRoute(lcRoutes.getLcAttendees, id as string));
+        const response = await privateGateway.get(
+            dynamicRoute(lcRoutes.getLcAttendees, id as string)
+        );
+        const message: any = response?.data;
+        return message.response;
+    } catch (err) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            throw error;
+        }
+    }
+};
+
 export const getLcMeetups = async (id: string | undefined) => {
     try {
         const response = await privateGateway.get(
