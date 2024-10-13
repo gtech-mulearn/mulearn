@@ -6,28 +6,30 @@ import { FormikTextInputWithoutLabel as SimpleInput } from "@/MuLearnComponents/
 import { useEffect, useState } from "react";
 import {
     getColleges,
-    getDepartments,
-    getRoles,
-    submitUserData
+    getCompanies,
+    getDepartments
 } from "../../../services/newOnboardingApis";
 import ReactSelect from "react-select";
 import { useLocation, useNavigate } from "react-router-dom";
+import OnboardingTemplate from "../../../components/OnboardingTeamplate/OnboardingTemplate";
+import OnboardingHeader from "../../../components/OnboardingHeader/OnboardingHeader";
+import { Switch } from "@chakra-ui/react";
+import { selectOrganization } from "../../../services/onboardingApis";
 
 const inputObject = {
-    college: "College Name",
+    organization: "Organization",
     department: "Department",
     graduationYear: "Graduation Year"
 };
 
 const scheme = z.object({
-    college: z
+    organization: z
         .string()
-        .required(`${inputObject.college} is Required`)
-        .min(3, `${inputObject.college} must be at least 3 characters`)
-        .max(100, `${inputObject.college} must be at most 100 characters`),
+        .required(`${inputObject.organization} is Required`)
+        .min(3, `${inputObject.organization} must be at least 3 characters`)
+        .max(100, `${inputObject.organization} must be at most 100 characters`),
     department: z
         .string()
-        .required(`${inputObject.department} is Required`)
         .min(2, `${inputObject.department} must be at least 2 characters`)
         .max(100, `${inputObject.department} must be at most 100 characters`),
     graduationYear: z
@@ -44,11 +46,7 @@ const scheme = z.object({
         })
 });
 
-export default function CollegePage({
-    selectedRole
-}: {
-    selectedRole: string;
-}) {
+export default function CollegePage() {
     const navigate = useNavigate();
 
     const location = useLocation();
@@ -57,9 +55,9 @@ export default function CollegePage({
     const [isloading, setIsLoading] = useState(true);
     const [colleges, setColleges] = useState([{ id: "", title: "" }]);
     const [departments, setDepartments] = useState([{ id: "", title: "" }]);
-    const [roles, setRoles] = useState([{ id: "", title: "" }]);
-
-    const [selectedCollege, setSelectedCollege] = useState({
+    const [isCollege, setIsCollege] = useState(true);
+    const [companies, setCompanies] = useState([{ id: "", title: "" }]);
+    const [selectedOrganization, setSelectedOrganization] = useState({
         id: "",
         title: ""
     });
@@ -67,11 +65,6 @@ export default function CollegePage({
         id: "",
         title: ""
     });
-
-    const getRoleTitle = (id: string) => {
-        const slice = roles.filter(val => val.id === id);
-        if (slice[0]) return slice[0].title;
-    };
 
     const CustomFilter = (
         { label, value }: { label: string; value: string },
@@ -83,194 +76,211 @@ export default function CollegePage({
     };
 
     useEffect(() => {
-        if (userData === undefined || userData === null) {
-            navigate("/register", { replace: true });
-        } else {
-            getColleges({
-                setIsLoading: setIsLoading,
-                setColleges: setColleges
-            });
-            getDepartments({
-                setIsLoading: setIsLoading,
-                setDepartments: setDepartments
-            });
-            getRoles().then((res: any) => {
-                setRoles(res);
-                setIsLoading(false);
-            });
-        }
-    }, []);
-
-    // useEffect(() => {
-    //     setSelectedRole(
-    //         roles.find((role: any) => role.id === userData.role)?.title || ""
-    //     );
-    // }, [userData, roles]);
-    const onSubmit = async (values: any) => {
-        const newUserData: any = {
-            user: {
-                full_name: userData.user.full_name,
-                // mobile: userData.user.mobile,
-                email: userData.user.email,
-                password: userData.user.password,
-                district: userData.district
-            },
-            organization: {
-                ...(values.department !== "Others" && {
-                    department: values.department
-                }),
-                year_of_graduation: values.graduationYear,
-                organizations: [
-                    ...(values.college !== "Others" ? [values.college] : []),
-                    ...userData.communities
-                ],
-                verified: true
-            }
-        };
-
-        if (selectedRole) newUserData.user["role"] = selectedRole;
-
-        if (userData.referral)
-            newUserData["referral"] = { muid: userData.referral.muid };
-
-        if (userData.param) {
-            newUserData["integration"] = userData.integration;
-        }
-
-        if (userData.role === "Enabler")
-            delete newUserData.organization.year_of_graduation;
-
-        if (userData.gender) {
-            newUserData.user["gender"] = userData.gender;
-        }
-
-        if (userData.dob) {
-            newUserData.user["dob"] = userData.dob;
-        }
-        console.log(newUserData);
-
-        submitUserData({
+        getColleges({
             setIsLoading: setIsLoading,
-            userData: newUserData,
+            setColleges: setColleges
+        });
+        getDepartments({
+            setIsLoading: setIsLoading,
+            setDepartments: setDepartments
+        });
+        getCompanies({
+            setIsLoading: setIsLoading,
+            setCompanies: setCompanies
+        });
+    }, []);
+    const onSubmit = async (values: any) => {
+        selectOrganization({
+            setIsLoading: setIsLoading,
+            userData: {
+                organization: values.organization,
+                department: values.department,
+                graduation_year:
+                    values.graduationYear == null || values.graduationYear != ""
+                        ? values.graduationYear
+                        : null
+            },
             navigate: navigate
         });
     };
     // console.log(userData);
     return (
-        <Formik
-            initialValues={Object.fromEntries(
-                Object.keys(inputObject).map(key => [key, ""])
-            )}
-            validationSchema={scheme}
-            onSubmit={(value, action) => onSubmit(value)}
-        >
-            {formik => (
-                <div>
-                    <div className={styles.wrapper}>
-                        <Form onSubmit={formik.handleSubmit}>
-                            <h5 className={styles.text}>
-                                Please enter your college details
-                            </h5>
-                            <div className={styles.inputBox}>
-                                <ReactSelect
-                                    options={
-                                        [
-                                            {
-                                                value: "Others",
-                                                label: "Others"
-                                            },
-                                            ...colleges.map(college => ({
-                                                value: college.id,
-                                                label: college.title
-                                            }))
-                                        ] as any
-                                    }
-                                    name="college"
-                                    placeholder="College"
-                                    value={selectedCollege.title}
-                                    filterOption={CustomFilter}
-                                    isDisabled={isloading}
-                                    onChange={(e: any) => {
-                                        setSelectedCollege(e);
-                                        formik.setFieldValue(
-                                            "college",
-                                            e.value
-                                        );
-                                        inputObject.college = e.value;
-                                    }}
-                                />
-                            </div>
-                            {formik.touched.college &&
-                                formik.errors.college && (
-                                    <span className={styles.errorsSpan}>
-                                        {formik.errors.college}
-                                    </span>
-                                )}
-                            <div className={styles.inputBox}>
-                                <ReactSelect
-                                    options={
-                                        [
-                                            {
-                                                value: "Others",
-                                                label: "Others"
-                                            },
-                                            ...departments.map(department => ({
-                                                value: department.id,
-                                                label: department.title
-                                            }))
-                                        ] as any
-                                    }
-                                    name="department"
-                                    placeholder="Department"
-                                    value={selectedDepartment.title}
-                                    isDisabled={isloading}
-                                    filterOption={CustomFilter}
-                                    onChange={(e: any) => {
-                                        setSelectedDepartment(e);
-                                        formik.setFieldValue(
-                                            "department",
-                                            e.value
-                                        );
-                                        inputObject.department = e.value;
-                                    }}
-                                />
-                            </div>
-                            {formik.touched.department &&
-                                formik.errors.department && (
-                                    <span className={styles.errorsSpan}>
-                                        {formik.errors.department}
-                                    </span>
-                                )}
-                            {getRoleTitle(selectedRole) === "Student" && (
-                                <div className={styles.inputBox}>
-                                    <SimpleInput
-                                        value={formik.values.graduationYear}
-                                        name="graduationYear"
-                                        type="number"
-                                        placeholder="Graduation Year"
-                                        disabled={isloading}
+        <OnboardingTemplate>
+            <OnboardingHeader
+                title="Organization Details"
+                desc="Please Select your organization details"
+            />
+            <Formik
+                initialValues={Object.fromEntries(
+                    Object.keys(inputObject).map(key => [key, ""])
+                )}
+                validationSchema={scheme}
+                onSubmit={(value, action) => onSubmit(value)}
+            >
+                {formik => (
+                    <div>
+                        <div className={styles.wrapper}>
+                            <Form onSubmit={formik.handleSubmit}>
+                                <h5 className={styles.text}>
+                                    Please enter your organization details
+                                </h5>
+                                <div className={styles.input_field}>
+                                    Not a college ?{" "}
+                                    <Switch
+                                        checked={isCollege}
+                                        onChange={e => {
+                                            setIsCollege(!isCollege);
+                                        }}
                                     />
-                                    {formik.touched.graduationYear &&
-                                        formik.errors.graduationYear && (
-                                            <span className={styles.errorsSpan}>
-                                                {formik.errors.graduationYear}
-                                            </span>
-                                        )}
                                 </div>
-                            )}
+                                <div className={styles.inputBox}>
+                                    <ReactSelect
+                                        options={
+                                            [
+                                                {
+                                                    value: "Others",
+                                                    label: "Others"
+                                                },
+                                                ...(isCollege
+                                                    ? colleges.map(college => ({
+                                                          value: college.id,
+                                                          label: college.title
+                                                      }))
+                                                    : companies.map(
+                                                          company => ({
+                                                              value: company.id,
+                                                              label: company.title
+                                                          })
+                                                      ))
+                                            ] as any
+                                        }
+                                        name="organization"
+                                        placeholder={
+                                            isCollege
+                                                ? "College"
+                                                : "Organization"
+                                        }
+                                        value={selectedOrganization.title}
+                                        filterOption={CustomFilter}
+                                        isDisabled={isloading}
+                                        onChange={(e: any) => {
+                                            setSelectedOrganization(e);
+                                            formik.setFieldValue(
+                                                "organization",
+                                                e.value
+                                            );
+                                            inputObject.organization = e.value;
+                                        }}
+                                    />
+                                </div>
+                                {formik.touched.college &&
+                                    formik.errors.college && (
+                                        <span className={styles.errorsSpan}>
+                                            {formik.errors.college}
+                                        </span>
+                                    )}
+                                {isCollege ? (
+                                    <>
+                                        <div className={styles.inputBox}>
+                                            <ReactSelect
+                                                options={
+                                                    [
+                                                        {
+                                                            value: "Others",
+                                                            label: "Others"
+                                                        },
+                                                        ...departments.map(
+                                                            department => ({
+                                                                value: department.id,
+                                                                label: department.title
+                                                            })
+                                                        )
+                                                    ] as any
+                                                }
+                                                name="department"
+                                                className={styles.inputBox}
+                                                placeholder="Department"
+                                                value={selectedDepartment.title}
+                                                isDisabled={isloading}
+                                                filterOption={CustomFilter}
+                                                onChange={(e: any) => {
+                                                    setSelectedDepartment(e);
+                                                    formik.setFieldValue(
+                                                        "department",
+                                                        e.value
+                                                    );
+                                                    inputObject.department =
+                                                        e.value;
+                                                }}
+                                            />
+                                        </div>
+                                        {formik.touched.department &&
+                                            formik.errors.department && (
+                                                <span
+                                                    className={
+                                                        styles.errorsSpan
+                                                    }
+                                                >
+                                                    {formik.errors.department}
+                                                </span>
+                                            )}
+                                        <div className={styles.inputBox}>
+                                            <SimpleInput
+                                                value={
+                                                    formik.values.graduationYear
+                                                }
+                                                name="graduationYear"
+                                                type="number"
+                                                placeholder="Graduation Year"
+                                                disabled={isloading}
+                                            />
+                                            {formik.touched.graduationYear &&
+                                                formik.errors
+                                                    .graduationYear && (
+                                                    <span
+                                                        className={
+                                                            styles.errorsSpan
+                                                        }
+                                                    >
+                                                        {
+                                                            formik.errors
+                                                                .graduationYear
+                                                        }
+                                                    </span>
+                                                )}
+                                        </div>
+                                    </>
+                                ) : (
+                                    <></>
+                                )}
 
-                            <div className={styles.submit}>
-                                <PowerfulButton
-                                    type="submit"
-                                    isLoading={isloading}
-                                >
-                                    {isloading ? "Please wait..." : "Submit"}
-                                </PowerfulButton>
-                            </div>
-                        </Form>
+                                <div className={styles.submit}>
+                                    <PowerfulButton
+                                        style={{ color: "var(--blue)" }}
+                                        variant="outline"
+                                        onClick={e => {
+                                            e.preventDefault();
+                                            navigate(
+                                                "/dashboard/connect-discord"
+                                            );
+                                        }}
+                                    >
+                                        Skip
+                                    </PowerfulButton>
+                                    <PowerfulButton
+                                        type="submit"
+                                        isLoading={isloading}
+                                    >
+                                        {isloading
+                                            ? "Please wait..."
+                                            : "Submit"}
+                                    </PowerfulButton>
+                                </div>
+                            </Form>
+                        </div>
                     </div>
-                </div>
-            )}
-        </Formik>
+                )}
+            </Formik>
+        </OnboardingTemplate>
     );
 }

@@ -4,6 +4,8 @@ import { NavigateFunction } from "react-router-dom";
 import { useFormik } from "formik";
 import { getInfo } from "../../../Dashboard/modules/ConnectDiscord/services/apis";
 import { Dispatch, SetStateAction } from "react";
+import { privateGateway } from "@/MuLearnServices/apiGateways";
+import toast from "react-hot-toast";
 
 // Define the type of MyValues
 type NN = { name: string; id: string };
@@ -232,6 +234,33 @@ export const getCommunities = ({
                 errorHandler(error.response.status, error.response.data.status);
         });
     setIsLoading && setIsLoading(false);
+};
+
+export const selectOrganization = async ({
+    setIsLoading,
+    userData,
+    navigate
+}: {
+    setIsLoading: Dispatch<SetStateAction<boolean>>;
+    userData: Object;
+    navigate: NavigateFunction;
+}) => {
+    try {
+        setIsLoading(true);
+        const res = await privateGateway.post(
+            "/api/v1/dashboard/user/organization/",
+            userData
+        );
+        if (res.status == 200 && !res.data.hasError) {
+            toast.success(res.data.message.general[0]);
+            navigate("/dashboard/connect-discord");
+        } else {
+            toast.error("Organization selection failed.");
+        }
+        setIsLoading(false);
+    } catch (err: any) {
+        toast.error("Unable to select organization.");
+    }
 };
 
 // POST request for registration

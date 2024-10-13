@@ -17,8 +17,16 @@ import software from "/src/modules/Common/Authentication/assets/interests/softwa
 import others from "/src/modules/Common/Authentication/assets/interests/others.svg";
 
 const CheckMark = () => (
-    <svg className={styles.checkmark} viewBox="0 0 24 24" width="24" height="24">
-        <path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+    <svg
+        className={styles.checkmark}
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+    >
+        <path
+            fill="currentColor"
+            d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+        />
     </svg>
 );
 
@@ -61,17 +69,25 @@ export default function UserInterest() {
     useEffect(() => {
         const fetchInterestGroups = async () => {
             try {
-                const res = await publicGateway.get(onboardingRoutes.interestGroups);
-                const data: InterestGroup[] = res.data?.response?.interestGroup ?? [];
-                
-                const interestGroupsData = interests.reduce((acc, interest) => ({
-                    ...acc,
-                    [interest.value]: data.filter(group => group.category === interest.value)
-                }), {});
-                
+                const res = await publicGateway.get(
+                    onboardingRoutes.interestGroups
+                );
+                const data: InterestGroup[] =
+                    res.data?.response?.interestGroup ?? [];
+
+                const interestGroupsData = interests.reduce(
+                    (acc, interest) => ({
+                        ...acc,
+                        [interest.value]: data.filter(
+                            group => group.category === interest.value
+                        )
+                    }),
+                    {}
+                );
+
                 setInterestGroups(interestGroupsData);
             } catch (err) {
-                console.error('Failed to fetch interest groups:', err);
+                console.error("Failed to fetch interest groups:", err);
             }
         };
 
@@ -81,24 +97,34 @@ export default function UserInterest() {
     const handleChange = useCallback((value: string, isInterest: boolean) => {
         const setter = isInterest ? setInterests : setEndgoals;
         const otherSetter = isInterest ? setOtherInterest : setOtherEndgoal;
-        
-        
-        setter((prev:any) => {
-            const newItems = prev.map((item:any) =>
-                item.value === value ? { ...item, checked: !item.checked } : item
+
+        setter((prev: any) => {
+            const newItems = prev.map((item: any) =>
+                item.value === value
+                    ? { ...item, checked: !item.checked }
+                    : item
             );
-            
-            if (value === "others" && newItems.find((item:any) => item.value === "others")?.checked === false) {
+
+            if (
+                value === "others" &&
+                newItems.find((item: any) => item.value === "others")
+                    ?.checked === false
+            ) {
                 otherSetter([]);
             }
-            
+
             return newItems;
         });
     }, []);
 
     const handleContinue = useCallback(() => {
-        const selectedInterests = interests.filter(interest => interest.checked);
-        if (selectedInterests.some(i => i.value === "others") && otherInterest.length === 0) {
+        const selectedInterests = interests.filter(
+            interest => interest.checked
+        );
+        if (
+            selectedInterests.some(i => i.value === "others") &&
+            otherInterest.length === 0
+        ) {
             return;
         }
         if (selectedInterests.length > 0 || otherInterest.length > 0) {
@@ -107,9 +133,13 @@ export default function UserInterest() {
     }, [interests, otherInterest]);
 
     const handleSubmit = useCallback(async () => {
-        const selectedInterests = interests.filter(i => i.checked).map(i => i.value);
-        const selectedEndgoals = endgoals.filter(e => e.checked).map(e => e.value);
-        
+        const selectedInterests = interests
+            .filter(i => i.checked)
+            .map(i => i.value);
+        const selectedEndgoals = endgoals
+            .filter(e => e.checked)
+            .map(e => e.value);
+
         const data = {
             choosen_interests: selectedInterests,
             choosen_endgoals: selectedEndgoals,
@@ -118,80 +148,123 @@ export default function UserInterest() {
         };
 
         try {
-            const res = await privateGateway.post(onboardingRoutes.interests, data);
+            const res = await privateGateway.post(
+                onboardingRoutes.interests,
+                data
+            );
             toast.success(res.data?.message.general[0]);
-            navigate("/dashboard/connect-discord");
+            navigate("/register/organization");
         } catch (err: any) {
-            toast.error(err.response?.data.message.general[0] || "Unexpected Error occurred");
+            toast.error(
+                err.response?.data.message.general[0] ||
+                    "Unexpected Error occurred"
+            );
         }
     }, [interests, endgoals, otherInterest, otherEndgoal, navigate]);
 
     const isInterestSelected = interests.some(interest => interest.checked);
     const isEndgoalSelected = endgoals.some(endgoal => endgoal.checked);
 
-    const renderItems = useCallback((items: typeof interests | typeof endgoals, isInterest: boolean) => (
-        <div className={styles.itemsContainer}>
-            {items.map(item => {
-                const isOthers = item.value === "others";
-                const isChecked = item.checked;
-                const otherItems = isInterest ? otherInterest : otherEndgoal;
-                const setOtherItems = isInterest ? setOtherInterest : setOtherEndgoal;
+    const renderItems = useCallback(
+        (items: typeof interests | typeof endgoals, isInterest: boolean) => (
+            <div className={styles.itemsContainer}>
+                {items.map(item => {
+                    const isOthers = item.value === "others";
+                    const isChecked = item.checked;
+                    const otherItems = isInterest
+                        ? otherInterest
+                        : otherEndgoal;
+                    const setOtherItems = isInterest
+                        ? setOtherInterest
+                        : setOtherEndgoal;
 
-                return (
-                    <div
-                        key={item.value}
-                        className={`${styles.itemsCard} ${isChecked ? styles.checked : ''} ${isOthers ? styles.others : ''}`}
-                        onClick={() => handleChange(item.value, isInterest)}
-                    >
-                        {isChecked && <CheckMark />}
-                        {isInterest ? (
-                            <div className={styles.content}>
-                                <img className={styles.itemImage} src={(item as any).img} alt="" />
-                                <p className={styles.title}>{item.title}</p>
-                            </div>
-                        ) : (
-                            <p>{item.title}</p>
-                        )}
-                        {isInterest && (
-                            <>
-                                <div className={styles.infoButton} onClick={e => e.stopPropagation()}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-                                        <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
-                                    </svg>
+                    return (
+                        <div
+                            key={item.value}
+                            className={`${styles.itemsCard} ${
+                                isChecked ? styles.checked : ""
+                            } ${isOthers ? styles.others : ""}`}
+                            onClick={() => handleChange(item.value, isInterest)}
+                        >
+                            {isChecked && <CheckMark />}
+                            {isInterest ? (
+                                <div className={styles.content}>
+                                    <img
+                                        className={styles.itemImage}
+                                        src={(item as any).img}
+                                        alt=""
+                                    />
+                                    <p className={styles.title}>{item.title}</p>
                                 </div>
-                                <div className={styles.interestInfo}>
-                                    <h4>This category includes:</h4>
-                                    <ul>
-                                        {interestGroups[item.value]?.map((group: InterestGroup) => (
-                                            <li key={group.id}>{group.name}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </>
-                        )}
-                        {isOthers && isChecked && (
-                            <div onClick={e => e.stopPropagation()}>
-                                <TagsInput
-                                    value={otherItems}
-                                    onBlur={(e: any) => {
-                                        if (e.target.value.length > 0) {
-                                            setOtherItems([...otherItems, e.target.value]);
-                                            e.target.value = "";
+                            ) : (
+                                <p>{item.title}</p>
+                            )}
+                            {isInterest && (
+                                <>
+                                    <div
+                                        className={styles.infoButton}
+                                        onClick={e => e.stopPropagation()}
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="16"
+                                            height="16"
+                                            fill="currentColor"
+                                            viewBox="0 0 16 16"
+                                        >
+                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                                        </svg>
+                                    </div>
+                                    <div className={styles.interestInfo}>
+                                        <h4>This category includes:</h4>
+                                        <ul>
+                                            {interestGroups[item.value]?.map(
+                                                (group: InterestGroup) => (
+                                                    <li key={group.id}>
+                                                        {group.name}
+                                                    </li>
+                                                )
+                                            )}
+                                        </ul>
+                                    </div>
+                                </>
+                            )}
+                            {isOthers && isChecked && (
+                                <div onClick={e => e.stopPropagation()}>
+                                    <TagsInput
+                                        value={otherItems}
+                                        onBlur={(e: any) => {
+                                            if (e.target.value.length > 0) {
+                                                setOtherItems([
+                                                    ...otherItems,
+                                                    e.target.value
+                                                ]);
+                                                e.target.value = "";
+                                            }
+                                        }}
+                                        onChange={setOtherItems}
+                                        name={`other_${
+                                            isInterest
+                                                ? "interests"
+                                                : "endgoals"
+                                        }`}
+                                        placeHolder={`Specify your ${
+                                            isInterest ? "interest" : "endgoal"
+                                        }`}
+                                        separators={
+                                            isInterest ? [","] : undefined
                                         }
-                                    }}
-                                    onChange={setOtherItems}
-                                    name={`other_${isInterest ? 'interests' : 'endgoals'}`}
-                                    placeHolder={`Specify your ${isInterest ? 'interest' : 'endgoal'}`}
-                                    separators={isInterest ? [","] : undefined}
-                                />
-                            </div>
-                        )}
-                    </div>
-                );
-            })}
-        </div>
-    ), [handleChange, interestGroups, otherInterest, otherEndgoal]);
+                                    />
+                                </div>
+                            )}
+                        </div>
+                    );
+                })}
+            </div>
+        ),
+        [handleChange, interestGroups, otherInterest, otherEndgoal]
+    );
 
     return (
         <>
@@ -206,8 +279,10 @@ export default function UserInterest() {
                     <p className={styles.subText}>
                         {stepTwo ? "Pick your goal." : "Please select your interested area"}
                     </p>
-                    
-                    {stepTwo ? renderItems(endgoals, false) : renderItems(interests, true)}
+
+                    {stepTwo
+                        ? renderItems(endgoals, false)
+                        : renderItems(interests, true)}
 
                     {(stepTwo ? isEndgoalSelected : isInterestSelected) && (
                         <PowerfulButton

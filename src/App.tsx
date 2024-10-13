@@ -311,6 +311,10 @@ function App() {
             element: <UserInterest />
         },
         {
+            path: "/register/organization",
+            element: <CollegePage />
+        },
+        {
             path: "/signin",
             element: <SignIn />
         },
