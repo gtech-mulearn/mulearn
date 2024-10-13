@@ -120,7 +120,7 @@ export default function Rolepage() {
                     </div> */}
                 {nextPage &&
                     (nextPage === "select-college" ? (
-                        <CollegePage selectedRole={selectedRoleId} />
+                        <CollegePage />
                     ) : (
                         <CompanyPage selectedRole={selectedRoleId} />
                     ))}
