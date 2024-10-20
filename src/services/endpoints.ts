@@ -20,7 +20,8 @@ export const lcRoutes = {
     createMeet: "/api/v1/dashboard/lc/${LcID}/meet/create/",
     getLcMeetups: "/api/v1/dashboard/lc/${LcID}/meet/list/",
     getLcAttendees: "/api/v1/dashboard/lc/meets/attendees/${meetId}/",
-    getDetailsUpdateNote: "/api/v1/dashboard/lc/${LcID}/details/"
+    getDetailsUpdateNote: "/api/v1/dashboard/lc/${LcID}/details/",
+    verifyList: "/api/v1/dashboard/lc/meets/verify-list/"
 };
 
 export const taskTypeRoutes = {

@@ -130,8 +130,13 @@ export const dashboardRoutes = {
     getCampusLearningCircles: "/api/v1/dashboard/lc/",
     getMeetups: "/api/v1/dashboard/lc/meets/list/",
     getMeetupInfo: "/api/v1/dashboard/lc/meets/info/${meetId}/",
+    submitAttendeeReport:
+        "/api/v1/dashboard/lc/meets/attendee-report/${meetId}/",
+    submitAttendeeTaskImage:
+        "/api/v1/dashboard/lc/meets/attendee-report/${meetId}/${taskId}/",
     joinMeetup: "/api/v1/dashboard/lc/meets/join/${meetId}/",
     interestedMeetup: "/api/v1/dashboard/lc/meets/interested/${meetId}/",
+    verifyMeetup: "/api/v1/dashboard/lc/meets/verify/${meetId}/",
     getLearningCirclesLead: "/api/v1/dashboard/lc/lead/",
     createLearningCircle: "/api/v1/dashboard/lc/create/",
     listLearningCircle: "/api/v1/dashboard/lc/list-all/",

@@ -1,12 +1,15 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import styles from "../LcDashboard.module.css";
 import UploadImage from "../../../assets/images/uploadIcon.svg";
-import { LcAttendees } from "./LcAttendees";
 import {
     getMeetupAttendees,
     reportMeeting
 } from "../../../services/LearningCircleAPIs";
 import toast from "react-hot-toast";
+import StarRatings from "react-star-ratings";
+import { BiDownArrow } from "react-icons/bi";
+import { BsEye } from "react-icons/bs";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 
 type Props = {
     setTemp: Dispatch<SetStateAction<LcDashboardTempData>>;
@@ -18,6 +21,12 @@ const LcReport = (props: Props) => {
     const [reportText, setReportText] = useState<string>("");
     const [uploadedImage, setUploadedImage] = useState<File | null>(null);
     const [attendees, setAttendees] = useState<LcAttendees[]>([]);
+    const [attendeeRating, setAttendeeRating] = useState<{
+        [user_id: string]: number;
+    }>({});
+    const [attendeeDetailsExpanded, setAttendeeDetailsExpanded] = useState<{
+        [user_id: string]: boolean;
+    }>({});
     const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files && event.target.files[0];
 
@@ -47,7 +56,20 @@ const LcReport = (props: Props) => {
             if (uploadedImage) {
                 data.append("images", uploadedImage);
             }
-
+            var ratings = {};
+            for (var attendee of attendees) {
+                if (!attendeeRating[attendee.attendee_id]) {
+                    toast.error("Please rate all attendees");
+                    return;
+                } else {
+                    ratings = {
+                        ...ratings,
+                        [attendee.attendee_id]:
+                            attendeeRating[attendee.attendee_id]
+                    };
+                }
+            }
+            data.append("ratings", JSON.stringify(ratings));
             toast.promise(reportMeeting(props.id, data), {
                 loading: "Reporting...",
                 success: response => {
@@ -87,7 +109,12 @@ const LcReport = (props: Props) => {
             toast.error("Please fill the notes");
         }
     };
-
+    const changeRating = (attendee_id: string, newRating: number): void => {
+        setAttendeeRating(prevState => ({
+            ...prevState,
+            [attendee_id]: newRating
+        }));
+    };
     const handleRemoveImage = () => {
         setUploadedImage(null);
     };
@@ -95,40 +122,6 @@ const LcReport = (props: Props) => {
     return (
         <div className={styles.ReportWrapper}>
             <div className={styles.DetailSection}>
-                {/* <div className={styles.Sectionone}>
-                    <div>
-                        <label>Date:</label>
-                        <input
-                            type="date"
-                            disabled
-                            className={styles.datePicker}
-                            value={formData.day}
-                            onChange={e =>
-                                setFormData(prevState => ({
-                                    ...prevState,
-                                    day: e.target.value
-                                }))
-                            }
-                            style={{
-                                backgroundColor: "#f0f0f0",
-                                color: "lightgrey"
-                            }}
-                        />
-                    </div>
-                    <div>
-                        <label>Time:</label>
-                        <input
-                            type="time"
-                            value={formData.meet_time}
-                            onChange={e =>
-                                setFormData(prevState => ({
-                                    ...prevState,
-                                    meet_time: e.target.value + ":00"
-                                }))
-                            }
-                        />
-                    </div>
-                </div> */}
                 <div className={styles.SectionTwo}>
                     <p>Brief description *</p>
                     <textarea
@@ -139,16 +132,105 @@ const LcReport = (props: Props) => {
                 </div>
                 <div className={styles.SectionThree}>
                     <p>Attendees List</p>
-                    <div
-                        className={styles.attendees}
-                        style={{ display: "flex", gap: 10, flexWrap: "wrap" }}
-                    >
+                    <div className={styles.attendees}>
                         {attendees.map(attendee => (
-                            <LcAttendees
-                                name={attendee.fullname}
-                                image={attendee.profile_pic}
-                                isSelected={false}
-                            />
+                            <div
+                                className={styles.attendee}
+                                key={attendee.attendee_id}
+                                onClick={() => {
+                                    setAttendeeDetailsExpanded(prevState => ({
+                                        ...prevState,
+                                        [attendee.attendee_id]:
+                                            !prevState?.[attendee.attendee_id]
+                                    }));
+                                }}
+                            >
+                                <div className={styles.ratingHeading}>
+                                    <span className={styles.fullname}>
+                                        <BiDownArrow /> {attendee.fullname}
+                                    </span>
+                                    <div className={styles.rating}>
+                                        <StarRatings
+                                            rating={
+                                                attendeeRating[
+                                                    attendee.attendee_id
+                                                ]
+                                            }
+                                            starRatedColor="gold"
+                                            changeRating={rating => {
+                                                changeRating(
+                                                    attendee.attendee_id,
+                                                    rating
+                                                );
+                                            }}
+                                            numberOfStars={5}
+                                            name="rating"
+                                            starDimension="15px"
+                                            starSpacing="1px"
+                                        />
+                                    </div>
+                                </div>
+                                <div
+                                    className={
+                                        styles.proof +
+                                        " " +
+                                        (attendeeDetailsExpanded[
+                                            attendee.attendee_id ?? ""
+                                        ]
+                                            ? styles.active
+                                            : "")
+                                    }
+                                >
+                                    <h4>Report</h4>
+                                    <p className={styles.reportText}>
+                                        {attendee.report}
+                                    </p>
+                                    <h4>Tasks Completed</h4>
+                                    {attendee.proof_of_work.map(
+                                        (task, index) => (
+                                            <div
+                                                key={index}
+                                                className={styles.task}
+                                            >
+                                                <div
+                                                    className={styles.taskTitle}
+                                                >
+                                                    <span>{index + 1} | </span>
+                                                    {task.title}
+                                                </div>
+                                                <div className={styles.action}>
+                                                    <PowerfulButton
+                                                        style={{
+                                                            fontSize: "15px",
+                                                            padding: "0.4rem"
+                                                        }}
+                                                        onClick={() => {
+                                                            if (task.is_image) {
+                                                                window.open(
+                                                                    import.meta
+                                                                        .env
+                                                                        .VITE_BACKEND_URL +
+                                                                        (task.image_url ??
+                                                                            "404"),
+                                                                    "_blank"
+                                                                );
+                                                            } else {
+                                                                window.open(
+                                                                    task.proof_url ??
+                                                                        "",
+                                                                    "_blank"
+                                                                );
+                                                            }
+                                                        }}
+                                                    >
+                                                        <BsEye />
+                                                    </PowerfulButton>
+                                                </div>
+                                            </div>
+                                        )
+                                    )}
+                                </div>
+                            </div>
                         ))}
                     </div>
                 </div>

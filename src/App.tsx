@@ -47,6 +47,8 @@ import UserInterest from "./modules/Common/Authentication/pages/Onboarding/UserI
 import LcMeetupIfo from "./modules/Dashboard/modules/LearningCircle/pages/Meetup/LcMeetup";
 import OrganizationSetting from "./modules/Dashboard/modules/Settings/pages/Organization/Organization";
 import SettingsHome from "./modules/Dashboard/modules/Settings/pages/Settings/SettingsHome";
+import LcReportAttendee from "./modules/Dashboard/modules/LearningCircle/pages/LcDashboard/components/LcAttendeeReport";
+import LcAdmin from "./modules/Dashboard/modules/LearningCircle/pages/LcAdmin/LcAdmin";
 
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
@@ -362,6 +364,15 @@ function App() {
                                         managementTypes.INTEREST_GROUP
                                     ]}
                                     children={<InterestGroup />}
+                                />
+                            )
+                        },
+                        {
+                            path: "lc-meetup-verification",
+                            element: (
+                                <AuthChecker
+                                    roles={[roles.ADMIN, roles.FELLOW]}
+                                    children={<LcAdmin />}
                                 />
                             )
                         },
@@ -703,6 +714,10 @@ function App() {
                         {
                             path: "learning-circle/meetup/:id",
                             element: <LcMeetupIfo />
+                        },
+                        {
+                            path: "learning-circle/meetup/:id/attendee-report",
+                            element: <LcReportAttendee />
                         },
                         {
                             path: "learning-circle/details/:id",

@@ -53,7 +53,14 @@ interface LcMeetSchedule {
     meet_place: string;
     day: string;
 }
-
+type LcTask = {
+    id: string | undefined;
+    title: string;
+    is_completed: boolean;
+    is_image: boolean;
+    image_url: string | null;
+    proof_url: string | null;
+};
 interface LcMeetup {
     title: string;
     location: string;
@@ -65,7 +72,7 @@ interface LcMeetup {
     is_public: boolean;
     limit_attendees: boolean;
     max_attendees: number;
-    tasks: string[];
+    tasks: LcTask[];
     is_online: boolean;
 }
 
@@ -78,12 +85,14 @@ type LcMeetupInfo = LcMeetup & {
 };
 
 type LcMeetupDetailInfo = LcMeetupInfo & {
+    tasks: LcTask[];
     is_interested: boolean;
     joined_at: string | null;
     total_interested: number;
     total_joined: number;
     lc_members: number;
     is_lc_member: boolean;
+    is_attendee_report_submitted: boolean;
 };
 interface LcNote {
     note: string;
@@ -116,6 +125,10 @@ interface LcHistory {
 }
 
 interface LcAttendees {
+    attendee_id: string;
     fullname: string;
     profile_pic: string;
+    title: string;
+    report: string;
+    proof_of_work: LcTask[];
 }
