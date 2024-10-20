@@ -12,6 +12,7 @@ import YourLc from "./LcDashboard/components/YourLc";
 import LcMeetups from "./LcDashboard/components/LcMeetups";
 import MuModal from "@/MuLearnComponents/MuModal/MuModal";
 import toast from "react-hot-toast";
+import YourMeetups from "./LcDashboard/components/YourMeetups";
 
 const LearningCircleLandingPage = () => {
     const navigate = useNavigate();
@@ -136,11 +137,25 @@ const LearningCircleLandingPage = () => {
                             >
                                 Meetups
                             </button>
+                            <button
+                                className={
+                                    styles.items +
+                                    " " +
+                                    (curpage == 2 ? styles.active : "")
+                                }
+                                onClick={() => setCurPage(2)}
+                            >
+                                Your Meetups
+                            </button>
                         </div>
                         {curpage === 0 ? (
                             <YourLc userCircleList={userCircleList ?? []} />
+                        ) : curpage === 1 ? (
+                            <LcMeetups user_id={null} />
                         ) : (
-                            <LcMeetups />
+                            <YourMeetups
+                                user_id={localStorage.getItem("userId")}
+                            />
                         )}
                     </div>
                 </div>

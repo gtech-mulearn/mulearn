@@ -23,6 +23,7 @@ type Props = {
 const LcHome = (props: Props) => {
     const [meetups, setMeetups] = useState<LcMeetupInfo[]>([]);
     const [pastMeetups, setPastMeetups] = useState<LcMeetupInfo[]>([]);
+    const [reportPending, setReportPending] = useState<LcMeetupInfo[]>([]);
     const [selectedMeeting, setSelectedMeeting] = useState<string>("");
     useEffect(() => {
         getLcMeetups(props.id ?? "").then(res => {
@@ -32,6 +33,7 @@ const LcHome = (props: Props) => {
                 } else {
                     setMeetups(res.meetups);
                     setPastMeetups(res.past);
+                    setReportPending(res.report_pending);
                 }
             }
         });
@@ -257,55 +259,124 @@ const LcHome = (props: Props) => {
                     {!props.temp.isSchedule &&
                     !props.temp.isTeam &&
                     !props.temp.isReport ? (
-                        <div className={styles.BottomContainer}>
-                            {props.lc?.previous_meetings &&
-                                props.lc?.previous_meetings.length > 0 && (
-                                    <p>Your past meetings</p>
-                                )}
-                            <div>
-                                {pastMeetups.map((report, index) => (
-                                    <div
-                                        className={styles.HistoryDivWrapper}
-                                        onClick={() => {
-                                            navigate(
-                                                "/dashboard/learning-circle/meetup/" +
-                                                    report.id
-                                            );
-                                        }}
-                                    >
-                                        <div>
-                                            <p>{index + 1}.</p>
-                                            <p>
-                                                {convertToFormatedDate(
-                                                    report.meet_time
-                                                )}
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <p
-                                                style={{
-                                                    color: "rgba(69, 111, 246, 1)",
-                                                    fontWeight: 400,
-                                                    fontSize: "14px"
-                                                }}
+                        <>
+                            {(reportPending ?? []).length > 0 ? (
+                                <div className={styles.BottomContainer}>
+                                    <p>Pending Report Submissions</p>
+                                    <div>
+                                        {reportPending.map((report, index) => (
+                                            <div
+                                                className={
+                                                    styles.HistoryDivWrapper
+                                                }
                                             >
-                                                {convertToFormatedDate(
-                                                    report.meet_time
-                                                )}{" "}
-                                                {convert24to12(
-                                                    extract24hTimeFromDateTime(
-                                                        report.meet_time
-                                                    )
-                                                )}
-                                            </p>
-                                            <button>
-                                                <RightArrow />
-                                            </button>
-                                        </div>
+                                                <div>
+                                                    <p>{index + 1}.</p>
+                                                    <p>
+                                                        {convertToFormatedDate(
+                                                            report.meet_time
+                                                        )}
+                                                    </p>
+                                                </div>
+                                                <div>
+                                                    <p
+                                                        style={{
+                                                            color: "rgba(69, 111, 246, 1)",
+                                                            fontWeight: 400,
+                                                            fontSize: "14px"
+                                                        }}
+                                                    >
+                                                        {convertToFormatedDate(
+                                                            report.meet_time
+                                                        )}{" "}
+                                                        {convert24to12(
+                                                            extract24hTimeFromDateTime(
+                                                                report.meet_time
+                                                            )
+                                                        )}
+                                                    </p>
+                                                    <button>
+                                                        <PowerfulButton
+                                                            style={{
+                                                                fontSize:
+                                                                    "10px",
+                                                                padding:
+                                                                    "0.4rem"
+                                                            }}
+                                                            onClick={() => {
+                                                                props.setTemp(
+                                                                    prev => ({
+                                                                        ...prev,
+                                                                        isReport:
+                                                                            true
+                                                                    })
+                                                                );
+                                                                setSelectedMeeting(
+                                                                    report.id
+                                                                );
+                                                            }}
+                                                        >
+                                                            Submit Report
+                                                        </PowerfulButton>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        ))}
                                     </div>
-                                ))}
+                                </div>
+                            ) : (
+                                <></>
+                            )}
+                            <div className={styles.BottomContainer}>
+                                {props.lc?.previous_meetings &&
+                                    props.lc?.previous_meetings.length > 0 && (
+                                        <p>Your past meetings</p>
+                                    )}
+                                <div>
+                                    {pastMeetups.map((report, index) => (
+                                        <div
+                                            className={styles.HistoryDivWrapper}
+                                            onClick={() => {
+                                                navigate(
+                                                    "/dashboard/learning-circle/meetup/" +
+                                                        report.id
+                                                );
+                                            }}
+                                        >
+                                            <div>
+                                                <p>{index + 1}.</p>
+                                                <p>
+                                                    {convertToFormatedDate(
+                                                        report.meet_time
+                                                    )}
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <p
+                                                    style={{
+                                                        color: "rgba(69, 111, 246, 1)",
+                                                        fontWeight: 400,
+                                                        fontSize: "14px"
+                                                    }}
+                                                >
+                                                    {convertToFormatedDate(
+                                                        report.meet_time
+                                                    )}{" "}
+                                                    {convert24to12(
+                                                        extract24hTimeFromDateTime(
+                                                            report.meet_time
+                                                        )
+                                                    )}
+                                                </p>
+                                                <button>
+                                                    <RightArrow />
+                                                </button>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
-                        </div>
+                        </>
                     ) : (
                         <></>
                     )}

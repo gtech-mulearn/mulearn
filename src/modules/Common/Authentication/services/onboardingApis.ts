@@ -238,12 +238,10 @@ export const getCommunities = ({
 
 export const selectOrganization = async ({
     setIsLoading,
-    userData,
-    navigate
+    userData
 }: {
     setIsLoading: Dispatch<SetStateAction<boolean>>;
     userData: Object;
-    navigate: NavigateFunction;
 }) => {
     try {
         setIsLoading(true);
@@ -253,7 +251,7 @@ export const selectOrganization = async ({
         );
         if (res.status == 200 && !res.data.hasError) {
             toast.success(res.data.message.general[0]);
-            navigate("/dashboard/connect-discord");
+            return true;
         } else {
             toast.error("Organization selection failed.");
         }
@@ -261,6 +259,7 @@ export const selectOrganization = async ({
     } catch (err: any) {
         toast.error("Unable to select organization.");
     }
+    return false;
 };
 
 // POST request for registration

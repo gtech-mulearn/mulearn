@@ -173,8 +173,14 @@ const DashboardRootLayout = (props: { component?: any }) => {
                     url: "/dashboard/interest-groups",
                     title: "Interest Groups",
                     hasView: true,
-                    roles: [roles.ADMIN]
+                    roles: [roles.ADMIN, roles.FELLOW]
                     // icon: <i className="fi fi-sr-books"></i>
+                },
+                {
+                    url: "/dashboard/lc-meetup-verification",
+                    title: "LC Meetup Verification",
+                    hasView: true,
+                    roles: [roles.ADMIN]
                 },
                 {
                     url: "/dashboard/college-levels",

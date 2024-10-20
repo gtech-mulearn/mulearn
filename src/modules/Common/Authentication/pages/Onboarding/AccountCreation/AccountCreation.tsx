@@ -66,29 +66,17 @@ const scheme = z.object({
 
 export default function AccountCreation() {
     let { role } = useParams();
-    // const [popUP, setPopUp] = useState(role ? false : true);
-    // const toast = useToast();
     const navigate = useNavigate();
-    // const [roles, setRoles] = useState([{ id: "", title: "" }]);
     const urlParams = new URLSearchParams(window.location.search);
     const param = urlParams.get("param");
     const referralId = urlParams.get("referral_id");
-    // const [selectedRoleId, setSelectedRoleId] = useState<string>("");
-    // const [selectedRole, setSelectedRole] = useState<string>("");
-
-    //ref to community selector for resetting - temporary fix
-    // const community_select_ref = useRef<any>();
 
     const [isLoading, setIsLoading] = useState(false);
     const [isVisible, setVisible] = useState(false);
-    // const [isVisibleC, setVisibleC] = useState(false);
     const [dwmsData, setDWMSData] = useState<DWMSData>();
 
     const [isTncChecked, setTncChecked] = useState(false);
 
-    // const [communitiesList, setCommunitiesList] = useState([
-    //     { id: "", title: "" }
-    // ]);
     const [initialValues, setInitialValues] = useState({
         email: "",
         fullName: "",
@@ -97,6 +85,7 @@ export default function AccountCreation() {
         muid: "",
         communities: []
     });
+    const ruri = window.location.href.split("=")[1];
 
     role =
         role === "student" || role === "mentor" || role === "enabler"
@@ -131,16 +120,12 @@ export default function AccountCreation() {
 
         setIsLoading(false);
     }, []);
-    // console.log(roles.find(e => e.title.toLowerCase() === role)?.id);
 
     const onsubmit = async (values: any, actions: any) => {
         if (!isTncChecked) {
             toast.error("Please accept the terms and conditions");
             return;
         }
-
-        // console.log(values);
-
         const userData: {
             user: {
                 full_name: any;
@@ -164,22 +149,8 @@ export default function AccountCreation() {
             }
         };
 
-        // if (values.lastName) {
-        //     userData.user.last_name = values.lastName;
-        // }
-
-        if (values.muid) {
-            userData.referral = { muid: values.muid };
-        } else if (referralId) {
-            userData.referral = { muid: referralId };
-        }
-
         if (dwmsData && dwmsData.gender) {
             userData.gender = dwmsData.gender;
-        }
-
-        if (values.communities) {
-            userData.communities = values.communities;
         }
 
         if (param) {
@@ -193,24 +164,19 @@ export default function AccountCreation() {
             userData.dob = dwmsData.dob;
         }
 
-        // const isSuccess = await validate({
-        //     userData: userData,
-        //     setIsSubmitting: setIsLoading
-        //     // toast: toast // Make sure to pass the toast parameter correctly
-        // });
         submitUserData({
             setIsLoading: setIsLoading,
-            userData: userData,
-            // toast: toast,
-            navigate: navigate
+            userData: userData
+        }).then(res => {
+            if (res) {
+                navigate(
+                    ruri
+                        ? `/register/interests/?ruri=${ruri}`
+                        : "/register/interests"
+                );
+            }
         });
-        // if (isSuccess && selectedRole.toLowerCase() !== "other") {
-        //     navigate("/register/about", { state: userData });
-        // } else if (isSuccess && selectedRole.toLowerCase() === "other") {
-
-        // }
     };
-    // console.log(selectedRole, role);
 
     return (
         <OnboardingTemplate>
@@ -226,51 +192,6 @@ export default function AccountCreation() {
             >
                 {formik => (
                     <Form>
-                        {/* {popUP && (
-                            <div className={styles.popUp}>
-                                <div className={styles.box}>
-                                    <img src={muBrand} alt="mulearn" />
-                                    <h1>What describes you the most!</h1>
-                                    <p className={styles.subText}>
-                                        Choose the role that best fits your
-                                        profile.
-                                    </p>
-                                    <div className={styles.rolePageCards}>
-                                        {roleOptions.map((roleOption: any) => {
-                                            let classname = `${
-                                                styles.rolePageCard
-                                            } ${
-                                                selectedRole ===
-                                                    roleOption.value &&
-                                                styles.active
-                                            }`;
-                                            return (
-                                                <div
-                                                    className={classname}
-                                                    onClick={() => {
-                                                        let rolId = roles.find(
-                                                            role =>
-                                                                role.title ===
-                                                                roleOption.value
-                                                        )?.id;
-                                                        setSelectedRoleId(
-                                                            rolId || ""
-                                                        );
-                                                        setSelectedRole(
-                                                            roleOption.value
-                                                        );
-                                                        setPopUp(false);
-                                                    }}
-                                                >
-                                                    {roleOption.icon}
-                                                    <p>{roleOption.title}</p>
-                                                </div>
-                                            );
-                                        })}
-                                    </div>
-                                </div>
-                            </div>
-                        )} */}
                         <div className={styles.accountCreationContainer}>
                             <div className={styles.accountCreationInputs}>
                                 <div className={styles.inputBox}>
@@ -359,196 +280,7 @@ export default function AccountCreation() {
                                             )}
                                         </button>
                                     </div>
-                                    {/* <div className={styles.inputBox}>
-                                        <SimpleInput
-                                            name={"lastName"}
-                                            onChange={formik.handleChange}
-                                            type="text"
-                                            value={
-                                                formik.values.lastName ||
-                                                dwmsData?.lastName
-                                            }
-                                            placeholder="Last Name"
-                                            disabled={
-                                                isLoading || dwmsData?.lastName
-                                                    ? true
-                                                    : false
-                                            }
-                                            style={
-                                                dwmsData?.lastName
-                                                    ? {
-                                                          backgroundColor:
-                                                              "#f7f7f7"
-                                                      }
-                                                    : {
-                                                          backgroundColor:
-                                                              "#F5F7FB"
-                                                      }
-                                            }
-                                        />
-                                    </div> */}
                                 </div>
-
-                                {/* <div className={styles.col_2}>
-                                    <select
-                                        style={{
-                                            width: "15%",
-                                            height: "40px",
-                                            borderRadius: "5px",
-                                            textAlign: "center",
-                                            backgroundColor: "#F5F7FB"
-                                        }}
-                                        name="countryCode"
-                                    >
-                                        <option value="+91" selected>
-                                            +91
-                                        </option>
-                                    </select>
-                                    <div className={styles.inputBox}>
-                                        <SimpleInput
-                                            name={"phoneNumber"}
-                                            value={
-                                                formik.values.phoneNumber ||
-                                                dwmsData?.phoneNumber
-                                            }
-                                            onChange={formik.handleChange}
-                                            type="number"
-                                            placeholder="Phone Number"
-                                            required
-                                            disabled={
-                                                isLoading ||
-                                                dwmsData?.phoneNumber
-                                                    ? true
-                                                    : false
-                                            }
-                                            style={
-                                                dwmsData?.phoneNumber
-                                                    ? {
-                                                          backgroundColor:
-                                                              "#f7f7f7"
-                                                      }
-                                                    : {
-                                                          backgroundColor:
-                                                              "#F5F7FB"
-                                                      }
-                                            }
-                                        />
-                                    </div>
-                                </div> */}
-                                {/* <div className={styles.col_2}>
-                                    <div
-                                        className={
-                                            styles.accountCreationPassword
-                                        }
-                                    >
-                                        <div className={styles.inputBox}>
-                                            <SimpleInput
-                                                name={"password"}
-                                                value={formik.values.password}
-                                                onChange={formik.handleChange}
-                                                type={
-                                                    isVisible
-                                                        ? "text"
-                                                        : "password"
-                                                }
-                                                placeholder="Password"
-                                                required
-                                                disabled={isLoading}
-                                            />
-                                        </div>
-
-                                        <button
-                                            type="button"
-                                            onClick={() => setVisible(e => !e)}
-                                        >
-                                            {isVisible ? (
-                                                <HiEye size={26} />
-                                            ) : (
-                                                <HiEyeSlash size={26} />
-                                            )}
-                                        </button>
-                                    </div>
-                                    <div
-                                        className={
-                                            styles.accountCreationPassword
-                                        }
-                                    >
-                                        <div className={styles.inputBox}>
-                                            <SimpleInput
-                                                name={"confirmPassword"}
-                                                value={
-                                                    formik.values
-                                                        .confirmPassword
-                                                }
-                                                onChange={formik.handleChange}
-                                                type={
-                                                    isVisibleC
-                                                        ? "text"
-                                                        : "password"
-                                                }
-                                                placeholder="Confirm Password"
-                                                required
-                                                disabled={isLoading}
-                                            />
-                                        </div>
-                                        <button
-                                            type="button"
-                                            onClick={() => setVisibleC(e => !e)}
-                                        >
-                                            {isVisibleC ? (
-                                                <HiEye size={26} />
-                                            ) : (
-                                                <HiEyeSlash size={26} />
-                                            )}
-                                        </button>
-                                    </div>
-                                </div> */}
-                                {/* <div>
-                                    <Select
-                                        name="community.id"
-                                        ref={community_select_ref}
-                                        placeholder="Select Communities you're part of"
-                                        onChange={OnChangeValue => {
-                                            console.log(OnChangeValue);
-                                            const ids = OnChangeValue.map(
-                                                (e: any) => e.value
-                                            );
-                                            formik.setFieldValue(
-                                                "communities",
-                                                ids
-                                            );
-                                        }}
-                                        closeMenuOnSelect={false}
-                                        components={animatedComponents}
-                                        isClearable
-                                        defaultValue={
-                                            param
-                                                ? {
-                                                      value: "ebb42790-571e-4d9e-b65e-d367faad5746",
-                                                      label: "KKEM"
-                                                  }
-                                                : null
-                                        }
-                                        isMulti
-                                        options={communitiesList.map(
-                                            company => {
-                                                return {
-                                                    value: company.id,
-                                                    label: company.title
-                                                };
-                                            }
-                                        )}
-                                    />
-                                </div>
-                                <div className={styles.inputBox}>
-                                    <SimpleInput
-                                        name={"muid"}
-                                        value={formik.values.muid}
-                                        type="text"
-                                        placeholder="Referral MuID (Optional)"
-                                        disabled={isLoading}
-                                    />
-                                </div> */}
 
                                 <div className={styles.tnc}>
                                     <input
@@ -596,7 +328,7 @@ export default function AccountCreation() {
                                     style={{ marginTop: "10px" }}
                                     isLoading={isLoading}
                                 >
-                                    {isLoading ? "Validating..." : "Submit"}
+                                    {isLoading ? "Validating..." : "Register"}
                                 </PowerfulButton>
                             </div>
 
@@ -604,7 +336,15 @@ export default function AccountCreation() {
                                 <div>
                                     <p>
                                         Already have an account?{" "}
-                                        <a href="/login">Sign In</a>
+                                        <a
+                                            href={
+                                                ruri
+                                                    ? `/login?ruri=${ruri}`
+                                                    : "/login"
+                                            }
+                                        >
+                                            Sign In
+                                        </a>
                                     </p>
                                 </div>
                             </div>

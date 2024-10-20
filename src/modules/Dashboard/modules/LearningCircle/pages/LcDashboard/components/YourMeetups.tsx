@@ -12,11 +12,12 @@ import {
     extract24hTimeFromDateTime
 } from "../../../services/utils";
 
-const LcMeetups = ({ user_id }: { user_id: string | null }) => {
+const YourMeetups = ({ user_id }: { user_id: string | null }) => {
     const navigate = useNavigate();
     const [meetups, setMeetups] = useState<LcMeetupInfo[]>();
     useEffect(() => {
-        getMeetups(setMeetups, undefined, user_id ? user_id : undefined)
+        console.log(user_id);
+        getMeetups(setMeetups, undefined, "user")
             .then(() => {})
             .catch(error => {
                 console.log(error);
@@ -66,9 +67,6 @@ const LcMeetups = ({ user_id }: { user_id: string | null }) => {
                                                 "..."}
                                         </p>
                                         <div className={styles.buttons}>
-                                            {/* <a href={meetup.location}>
-                                                Meetup Link
-                                            </a> */}
                                             <PowerfulButton
                                                 style={{
                                                     paddingLeft: "1rem",
@@ -107,4 +105,4 @@ const LcMeetups = ({ user_id }: { user_id: string | null }) => {
     );
 };
 
-export default LcMeetups;
+export default YourMeetups;
