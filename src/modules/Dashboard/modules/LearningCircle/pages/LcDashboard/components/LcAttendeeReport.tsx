@@ -81,7 +81,7 @@ const LcReportAttendee = () => {
             formData.append("report", reportText);
             if (submitedTasks.length === 0) {
                 toast.error(
-                    "Hmmm, please submit proof of work for atleast one task you have done."
+                    "Please submit proof of work for atleast one task you have done."
                 );
                 return;
             }
