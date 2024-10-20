@@ -1,4 +1,4 @@
-import { AxiosError } from "axios";
+import axios, { AxiosError } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { SetStateAction } from "react";
@@ -101,21 +101,80 @@ export const getMeetupInfo = async (
         }
     }
 };
+
+export const submitAttendeeTaskImage = async (
+    meetId: string,
+    taskId: string,
+    formData: FormData
+) => {
+    try {
+        const response = await privateGateway.post(
+            dynamicRoute(
+                dashboardRoutes.submitAttendeeTaskImage,
+                meetId,
+                taskId
+            ),
+            formData,
+            {
+                headers: {
+                    "content-type": "multipart/form-data"
+                }
+            }
+        );
+        console.log(response);
+        const message: any = response?.data?.message?.general[0];
+        toast.success(message);
+        return true;
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if ((error?.response?.data as any)?.message?.general[0]) {
+            toast.error((error?.response?.data as any)?.message?.general[0]);
+        }
+        console.log(error);
+        return false;
+    }
+};
+
+export const submitAttendeeReport = async (
+    meetId: string,
+    formData: FormData
+) => {
+    try {
+        console.log(meetId);
+        const response = await privateGateway.post(
+            dynamicRoute(dashboardRoutes.submitAttendeeReport, meetId),
+            formData
+        );
+        console.log(response);
+        const message: any = response?.data;
+        toast.success(message.message?.general[0] ?? "Failed to submit report");
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        toast.error((error?.response?.data as any)?.message?.general[0]);
+        if (error?.response) {
+            throw error;
+        }
+    }
+};
 export const getMeetups = async (
     setMeetup:
         | UseStateFunc<LcMeetupInfo[] | undefined>
         | UseStateFunc<LcMeetupInfo | undefined>,
-    meetId: string | undefined = undefined
+    meetId: string | undefined = undefined,
+    userId: string | undefined = undefined
 ) => {
     try {
         console.log(meetId);
-        const response = await privateGateway.get(dashboardRoutes.getMeetups, {
-            params: meetId
-                ? {
-                      meet_id: meetId
-                  }
-                : {}
-        });
+        const response = await privateGateway.get(
+            dashboardRoutes.getMeetups + (userId ? userId : ""),
+            {
+                params: meetId
+                    ? {
+                          meet_id: meetId
+                      }
+                    : {}
+            }
+        );
         console.log(response);
         const message: any = response?.data;
         setMeetup(message.response);
@@ -400,6 +459,38 @@ export const setLCMeetTime = async (
         if (error?.response) {
             throw error;
         }
+    }
+};
+
+export const getVerifiableMeetups = async () => {
+    try {
+        const response = await privateGateway.get(lcRoutes.verifyList);
+        const message: any = response?.data;
+        return message.response;
+    } catch (err) {
+        const error = err as AxiosError;
+        toast.error("Failed to get list of meetups.");
+        if (error?.response) {
+            throw error;
+        }
+    }
+};
+
+export const fetchURLQRCode = async (setBlob: any, target_url: string) => {
+    try {
+        const url = `https://quickchart.io/qr?text=${target_url}&centerImageUrl=https://avatars.githubusercontent.com/u/98015594?s=88&v=4`;
+        const response = await axios
+            .get(url, {
+                responseType: "arraybuffer"
+            })
+            .then(response => {
+                const blob = new Blob([response.data], {
+                    type: "image/png"
+                });
+                setBlob(URL.createObjectURL(blob));
+            });
+    } catch (error) {
+        console.error(error);
     }
 };
 

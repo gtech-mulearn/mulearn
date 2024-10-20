@@ -133,10 +133,11 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
+    flex-direction: column;
     width: 100%;
     background-color: white;
     padding: 5%;
-    gap: 10px;
+    gap: 20px;
     height: 100%;
 }
 .ReportWrapper .DetailSection {
@@ -146,6 +147,86 @@
     justify-content: space-between;
     gap: 20px;
     width: 65%;
+
+    .tasks {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        h4 {
+            text-align: start;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        p {
+            font-size: 15px;
+            text-align: start;
+            font-weight: 400;
+            color: #3d5c9b;
+            margin-bottom: 10px;
+        }
+        .task {
+            width: 100%;
+            background: #fff;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+            border-radius: 10px;
+            padding: 10px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: center;
+            .taskTitle {
+                font-size: 18px;
+                font-weight: 600;
+                gap: 10px;
+                display: flex;
+                align-items: center;
+            }
+            .taskPow {
+                display: none;
+                width: 100%;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                .choosenFile {
+                    display: none;
+                    align-items: center;
+                    gap: 10px;
+                    &.active {
+                        display: flex;
+                    }
+                    .file {
+                        font-size: 15px;
+                        font-weight: 600;
+                        color: #456ff6;
+                        display: flex;
+                        align-items: center;
+                        gap: 5px;
+                        .icon {
+                            font-size: 20px;
+                        }
+                    }
+                    .delete {
+                        color: red;
+                        font-size: 15px;
+                        font-weight: 600;
+                        cursor: pointer;
+                    }
+                }
+                &.active {
+                    display: flex;
+                }
+                .input {
+                    width: 100%;
+                    clip-path: none;
+                    padding: 20px 10px;
+                    border-radius: 5px;
+                }
+            }
+        }
+    }
 }
 .ReportWrapper .DetailSection .Sectionone {
     display: flex;
@@ -242,6 +323,77 @@
     width: 100%;
     gap: 10px;
     align-items: flex-start;
+
+    .attendees {
+        width: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        .attendee {
+            width: 100%;
+            display: flex;
+            gap: 10px;
+            padding: 15px;
+            background-color: rgba(238, 242, 255, 1);
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 10px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            h4 {
+                font-size: 13px;
+                font-weight: 700;
+            }
+            .ratingHeading {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .fullname {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                }
+                .rating {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: #456ff6;
+                }
+            }
+            .proof {
+                display: none;
+                flex-direction: column;
+                align-items: start;
+                width: 100%;
+                background: #fff;
+                padding: 10px;
+                border-radius: 10px;
+                &.active {
+                    display: flex;
+                }
+                .reportText {
+                    font-size: 13px;
+                    color: #22222290;
+                }
+                .task {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    gap: 10px;
+                    align-items: center;
+                    padding: 10px;
+                    background: #fff;
+                    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+                    border-radius: 5px;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
 }
 .ReportWrapper .DetailSection .SectionThree > p {
     color: black;
@@ -416,6 +568,21 @@
 .HistoryDataWrapper .Headings {
     width: 43%;
     text-align: left;
+    .qrcode {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 10px;
+        gap: 10px;
+        img {
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+        }
+    }
 }
 .HistoryDataWrapper .detailedSection {
     width: 55%;
@@ -434,11 +601,12 @@
     }
     .meetupTags {
         display: flex;
-        flex-direction: row;
+        flex-direction: row !important;
         flex-wrap: wrap;
         width: 100%;
 
         .meetupInfoTag {
+            font-size: 13px;
             display: flex;
             gap: 10px;
             align-items: center;

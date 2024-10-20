@@ -16,7 +16,7 @@ type Props = {
 };
 
 const LcMeetCreate = (props: Props) => {
-    const [tasks, setTasks] = useState<string[]>([]);
+    const [tasks, setTasks] = useState<LcTask[]>([]);
     const taskInputRef = createRef<HTMLInputElement>();
     const [isLoading, setIsLoading] = useState(false);
     const formik = useFormik({
@@ -147,7 +147,7 @@ const LcMeetCreate = (props: Props) => {
                                 <div key={index} className={styles.task}>
                                     <div>
                                         <span>{index + 1}.</span>
-                                        <p>{task}</p>
+                                        <p>{task.title}</p>
                                     </div>
                                     <button
                                         onClick={e => {
@@ -187,10 +187,12 @@ const LcMeetCreate = (props: Props) => {
                                         ) {
                                             setTasks([
                                                 ...tasks,
-                                                e.currentTarget.value.slice(
-                                                    0,
-                                                    -1
-                                                )
+                                                {
+                                                    title: e.currentTarget.value.slice(
+                                                        0,
+                                                        -1
+                                                    )
+                                                } as any
                                             ]);
                                             e.currentTarget.value = "";
                                         }
@@ -202,7 +204,10 @@ const LcMeetCreate = (props: Props) => {
                                         if (taskInputRef.current?.value)
                                             setTasks([
                                                 ...tasks,
-                                                taskInputRef.current?.value
+                                                {
+                                                    title: taskInputRef.current
+                                                        ?.value
+                                                } as any
                                             ]);
                                         taskInputRef.current!.value = "";
                                     }}
@@ -284,7 +289,7 @@ const LcMeetCreate = (props: Props) => {
                     </div>
                     <div className={styles.input_switch}>
                         <label className={styles.label}>
-                            Need any pre requirements?
+                            Need any prerequisites?
                         </label>
                         <Switch
                             size="md"
@@ -300,7 +305,7 @@ const LcMeetCreate = (props: Props) => {
                     {formik.values.need_pre_requirements && (
                         <div className={styles.input_field}>
                             <label className={styles.label}>
-                                Pre Requirements *
+                                Prerequisites *
                             </label>
                             <div className={styles.inputBox}>
                                 <textarea

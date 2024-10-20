@@ -1362,11 +1362,13 @@
             gap: 10px;
             padding: 10px 0;
             .tag {
-                padding: 5px 10px;
+                display: flex;
+                align-items: center;
+                padding: 5px;
                 border: 1px dashed #5570f2;
                 border-radius: 10px;
                 color: #222;
-                font-size: 15px;
+                font-size: 10px;
             }
         }
     }

@@ -1,5 +1,6 @@
 import styles from "../LcDashboard.module.css";
 import {
+    fetchURLQRCode,
     interestedMeetup,
     joinMeetup
 } from "../../../services/LearningCircleAPIs";
@@ -12,6 +13,8 @@ import {
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import toast from "react-hot-toast";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 type Props = {
     id: string | undefined;
@@ -20,10 +23,33 @@ type Props = {
 };
 
 const LcHistory = (props: Props) => {
-    console.log(props.lc);
+    const navigate = useNavigate();
+    const [blob, setBlob] = useState<any>(null);
+    const [meetupCode, setMeetupCode] = useState<string>("");
+    const [query, setQuery] = useSearchParams();
+    useEffect(() => {
+        fetchURLQRCode(
+            setBlob,
+            (window.location.href ?? "unknown") +
+                "/?code=" +
+                props.lc?.meet_code
+        );
+    }, [props.id]);
+
+    useEffect(() => {
+        if (query.get("code")) {
+            const code = query.get("code");
+            if (code) {
+                setMeetupCode(code);
+            }
+        }
+    }, [query]);
     const handleInterested = (e: any) => {
         e.preventDefault();
-        if (props.lc?.is_lc_member) {
+        if (
+            (props.lc?.is_lc_member || (props.lc?.is_started && meetupCode)) &&
+            !props.lc?.joined_at
+        ) {
             joinMeetup(props.lc?.id ?? "").then(res => {
                 props.setLc({
                     ...props.lc,
@@ -82,8 +108,10 @@ const LcHistory = (props: Props) => {
                                             className={styles.meetupInfoTag}
                                             onClick={() => {
                                                 navigator.clipboard.writeText(
-                                                    window.location.href ??
-                                                        "NOTCOPIED"
+                                                    (window.location.href ??
+                                                        "NOTCOPIED") +
+                                                        "/?code=" +
+                                                        props.lc?.meet_code
                                                 );
                                                 toast.success("Link Copied");
                                             }}
@@ -110,6 +138,18 @@ const LcHistory = (props: Props) => {
                                         </p>
                                     </div>
                                 )}
+                                {props.lc.is_started &&
+                                props.lc.is_lc_member ? (
+                                    <div className={styles.qrcode}>
+                                        <img src={blob} alt="" />
+                                        <h4>
+                                            Share this QR Code for joining the
+                                            meet.
+                                        </h4>
+                                    </div>
+                                ) : (
+                                    <></>
+                                )}
                                 {
                                     <p className={styles.info}>
                                         Venue:{" "}
@@ -132,12 +172,20 @@ const LcHistory = (props: Props) => {
                         <div className={styles.detailedSection}>
                             <h2>Agenda</h2>
                             <p>{props.lc.agenda}</p>
+                            {props.lc.pre_requirements ? (
+                                <>
+                                    <h2>Prerequisites</h2>
+                                    <p>{props.lc.pre_requirements}</p>
+                                </>
+                            ) : (
+                                <></>
+                            )}
                             <h2>Tasks</h2>
                             <div className={styles.tasks}>
                                 {props.lc.tasks.map((task, index) => (
                                     <div className={styles.task}>
                                         <span>{index + 1}</span>
-                                        {task}
+                                        {task.title}
                                     </div>
                                 ))}
                             </div>
@@ -150,6 +198,23 @@ const LcHistory = (props: Props) => {
                             </div>
                         ) : null}
                     </div>
+                    {props.lc.joined_at ? (
+                        <PowerfulButton
+                            disabled={props.lc.is_attendee_report_submitted}
+                            onClick={e => {
+                                e.preventDefault();
+                                navigate(
+                                    "/dashboard/learning-circle/meetup/" +
+                                        props.lc?.id +
+                                        "/attendee-report"
+                                );
+                            }}
+                        >
+                            {props.lc.is_attendee_report_submitted
+                                ? "Report Submitted"
+                                : "Submit Report"}
+                        </PowerfulButton>
+                    ) : null}
                     <PowerfulButton
                         onClick={handleInterested}
                         variant={
@@ -159,14 +224,16 @@ const LcHistory = (props: Props) => {
                         }
                         disabled={props.lc.joined_at != null}
                     >
-                        {props.lc.is_lc_member
-                            ? props.lc.is_started
-                                ? "Join"
-                                : "Join & Start meetup"
-                            : props.lc.joined_at
+                        {props.lc.joined_at
                             ? "Joined"
+                            : props.lc.is_started
+                            ? props.lc.is_lc_member || meetupCode
+                                ? "Join"
+                                : "I'm Interested to Join"
+                            : props.lc.is_lc_member
+                            ? "Join & Start Meetup"
                             : props.lc.is_interested
-                            ? "Undo Interest"
+                            ? "Undo Interested"
                             : "I'm Interested Join"}
                     </PowerfulButton>
                 </>

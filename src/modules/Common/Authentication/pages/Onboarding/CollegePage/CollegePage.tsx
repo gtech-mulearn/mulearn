@@ -113,7 +113,6 @@ export default function CollegePage() {
             }
         });
     };
-    // console.log(userData);
     return (
         <OnboardingTemplate>
             <OnboardingHeader

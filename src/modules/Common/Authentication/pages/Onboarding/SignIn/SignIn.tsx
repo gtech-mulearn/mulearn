@@ -43,8 +43,6 @@ export default function SignIn() {
     });
 
     const onSubmit = (values: any) => {
-        console.log(values);
-
         if (!otpForm) {
             login(
                 values.emailOrMuId,
