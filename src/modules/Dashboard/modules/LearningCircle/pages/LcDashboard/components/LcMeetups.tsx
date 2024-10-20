@@ -11,18 +11,37 @@ import {
     convert24to12,
     extract24hTimeFromDateTime
 } from "../../../services/utils";
+import Select from "react-select";
 
 const LcMeetups = ({ user_id }: { user_id: string | null }) => {
     const navigate = useNavigate();
     const [meetups, setMeetups] = useState<LcMeetupInfo[]>();
+    const [selectedCategory, setSelectedCategories] = useState<{
+        label: string;
+        value: string;
+    }>();
     useEffect(() => {
-        getMeetups(setMeetups, undefined, user_id ? user_id : undefined)
+        getMeetups(
+            setMeetups,
+            undefined,
+            user_id ? user_id : undefined,
+            selectedCategory?.value == "all"
+                ? undefined
+                : selectedCategory?.value
+        )
             .then(() => {})
             .catch(error => {
                 console.log(error);
                 toast.error("Failed to fetch meetups");
             });
-    }, [user_id]);
+    }, [user_id, selectedCategory]);
+    const categories = [
+        { label: "All Categories", value: "all" },
+        { label: "Coder", value: "coder" },
+        { label: "Hardware", value: "hardware" },
+        { label: "Manager", value: "manager" },
+        { label: "Creative", value: "creative" }
+    ];
 
     return (
         <div className={styles.ContentWrapper}>
@@ -31,6 +50,21 @@ const LcMeetups = ({ user_id }: { user_id: string | null }) => {
                     {meetups && meetups.length > 0 ? (
                         <>
                             <b>Meetups</b>
+                            <Select
+                                placeholder="Category"
+                                options={categories}
+                                value={
+                                    categories.filter(
+                                        cate =>
+                                            cate.value ===
+                                            selectedCategory?.value
+                                    )[0]
+                                }
+                                onChange={val => {
+                                    setSelectedCategories(val as any);
+                                }}
+                                isLoading={false}
+                            />
                             <div className={styles.meetupGrid}>
                                 {meetups.map((meetup, pos) => (
                                     <div

@@ -161,7 +161,8 @@ export const getMeetups = async (
         | UseStateFunc<LcMeetupInfo[] | undefined>
         | UseStateFunc<LcMeetupInfo | undefined>,
     meetId: string | undefined = undefined,
-    userId: string | undefined = undefined
+    userId: string | undefined = undefined,
+    category: string | undefined = undefined
 ) => {
     try {
         console.log(meetId);
@@ -171,6 +172,10 @@ export const getMeetups = async (
                 params: meetId
                     ? {
                           meet_id: meetId
+                      }
+                    : category
+                    ? {
+                          category: category
                       }
                     : {}
             }
