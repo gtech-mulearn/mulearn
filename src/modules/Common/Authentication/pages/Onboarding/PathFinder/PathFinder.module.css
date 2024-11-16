@@ -1,0 +1,136 @@
+/* PathFinder.module.css */
+
+/* Container styling */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Heading styles */
+  h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Question box styling */
+  .question-box {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .question-no {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  h4 {
+    font-size: 1.25rem;
+    margin-top: 20px;
+  }
+  
+  /* Options table styling */
+  .options-table {
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .options-table td {
+    padding: 10px 0;
+    font-size: 1rem;
+  }
+  
+  input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  
+  /* Button container and button styles */
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  /* General button styling */
+  button {
+    padding: 20px 40px; /* Larger padding for big rectangular buttons */
+    font-size: 1.5rem; /* Larger font size for better readability */
+    border: none;
+    border-radius: 10px; /* Rounded corners for rectangular buttons */
+    cursor: pointer;
+    width: 45%; /* Set width for a rectangular shape */
+    transition: background-color 0.3s ease;
+    text-align: center; /* Center the text inside the button */
+  }
+  
+  /* Prev button styling */
+  button.prev {
+    background-color: #ddd;
+    color: #333;
+  }
+  
+  button.prev:hover {
+    background-color: #ccc; /* Slightly darker grey on hover */
+  }
+  
+  /* Next button styling */
+  button.next {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  button.next:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  
+  /* Result box styling */
+  .result-box {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Bold text in results */
+  .bold-text {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #007bff;
+  }
+  
+  /* Result heading styling */
+  .result-heading {
+    margin-top: 20px;
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  /* Horizontal rule styling */
+  hr {
+    margin: 20px 0;
+    border-top: 2px solid #007bff;
+  }
+  
+  /* Strong text for scores */
+  strong {
+    font-weight: bold;
+  }
+  
+  /* Styling for score values */
+  span {
+    font-size: 1.25rem;
+    margin-left: 10px;
+    color: #333;
+  }
+  
