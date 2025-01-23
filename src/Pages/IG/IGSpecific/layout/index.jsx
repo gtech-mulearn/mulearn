@@ -25,6 +25,28 @@ const InterestGroupDetails = () => {
   const { id } = useParams();
   const [data, setData] = useState(null);
   const [images, setImages] = useState([]);
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const container = document.querySelector('.maincontent');
+      const menu = document.querySelector('.contentsmenu');
+      const containerHeight = container.scrollHeight;
+      const scrollPosition = window.scrollY + window.innerHeight;
+
+      // Check if the user has scrolled to the bottom of the container
+      if (scrollPosition >= containerHeight) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+   
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     const loadData = () => {
@@ -88,19 +110,19 @@ const InterestGroupDetails = () => {
     loadData();
   }, [id]);
 
+
   return (
     <div className=" flex flex-col overflow-hidden w-screen">
       <Navbar />
       <div
-      className={`${styles.roboto_font} lg:grid grid-cols-[18rem_1fr] bg-[rgba(255,255,255,1)]`}
-    >
-      <div className="fixed top-20 left-0 h-full w-64">
-        <ContentsMenu data={data} />
+        className={`${styles.roboto_font} lg:grid grid-cols-[18rem_1fr] bg-[rgba(255,255,255,1)] mb-9`}>
+        <aside className={`fixed top-20 left-0 h-full overflow-hidden transition-transform duration-200 ease-in-out ${isSticky ? 'absolute' : ''}`}>
+          <ContentsMenu data={data} />
+        </aside>
+        <div className="col-start-2 w-full overflow-hidden maincontent">
+          <InterestGroupLandingPage data={data} id={id} images={images} />
+        </div>
       </div>
-      <div className="col-start-2 w-full overflow-hidden">
-        <InterestGroupLandingPage data={data} id={id} images={images} />
-      </div>
-    </div>
       <Footer />
     </div>
   );
