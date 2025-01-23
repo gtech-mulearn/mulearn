@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, Navigate } from "react-router-dom";
 import RoadMapTimeline from "./components/RoadMapTImeline";
 import Navbar from "../../../Components/Navbar/Navbar";
@@ -9,6 +9,11 @@ export default function InterestGroupRoadmapPage() {
   const location = useLocation();
   const { roadMapData, activeCard, interestGroupName } = location.state || {};
   const [currentCard, setCurrentCard] = useState(activeCard);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
 
   function handleSetCurrentCard(card) {
     setCurrentCard(card);

@@ -249,7 +249,7 @@ export const gamedev = {
       level: "Level 6",
       cards: [
         {
-          title: "UI/UX Design",
+          title: "UIUX Design",
           data: {
             description:
               "A game isn’t just about visuals and mechanics—it’s about crafting an experience that players navigate effortlessly. UI/UX design ensures interfaces are intuitive, functional, and immersive. In this phase, you’ll learn to create game menus, HUDs, and interactive elements using Unreal Engine’s UMG Editor. You’ll focus on designing clear layouts, responsive elements, and accessible features like colorblind-friendly palettes and readable fonts. By understanding player psychology, you’ll create seamless flows and consistent feedback that enhance gameplay. Mastering UI/UX design makes your game polished and enjoyable, turning complex systems into an intuitive, engaging experience for players.",
