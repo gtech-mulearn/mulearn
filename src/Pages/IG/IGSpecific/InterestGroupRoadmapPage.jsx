@@ -5,7 +5,7 @@ import Navbar from "../../../Components/Navbar/Navbar";
 import Footer from "../../../Components/Footer/Footer";
 import { Heart } from "lucide-react";
 
-export default function InterestGroupRoadmap() {
+export default function InterestGroupRoadmapPage() {
   const location = useLocation();
   const { roadMapData, activeCard, interestGroupName } = location.state || {};
   const [currentCard, setCurrentCard] = useState(activeCard);

@@ -10,11 +10,12 @@ export const datascience = {
     },
   },
   communityPartners: null,
-  prerequisites: {
-    skills: ["Python", "SQL", "Basic Statistics", "Excel Functions"],
-    description:
-      "To start with advanced data analytics, you need some basic skills. First, you should know Python, a programming language used for working with data. Second, learning SQL helps you manage and access data stored in databases. Third, understanding basic statistics will help you analyze data and find patterns. Finally, knowing how to use Excel functions will make it easier to organize and work with data. These basics are important before moving to advanced topics.",
-  },
+  prerequisites: [
+    "Know Python, a programming language used for working with data.",
+    "Learn SQL to manage and access data stored in databases.",
+    "Understand basic statistics to analyze data and find patterns.",
+    "Know how to use Excel functions to organize and work with data.",
+  ],
   roadMap: [
     {
       level: "Level 4",
@@ -158,9 +159,7 @@ export const datascience = {
               {
                 title:
                   "Challenge 1: Create a table listing key product metrics",
-                resources: [
-                  "",
-                ],
+                resources: [""],
                 description:
                   "Research and Define: Dive into each of these product metrics to fully understand their definitions, formulas, and why they are crucial to product management.\n\nWrite About Them: Write a blog or report discussing these metrics in detail, explaining how each one affects decision-making and product optimization.\n\nPublish on Medium: Share your findings and insights by publishing the article on Medium.",
               },
@@ -181,7 +180,6 @@ export const datascience = {
       hasLinkedin: true,
       role: "Backend Developer @Gtech µLearn",
       imageUrl: "/assets/IG/Data Science/Mentors/Arjun M S.jpg",
-
     },
   ],
   interestGroupLeads: {
@@ -248,7 +246,7 @@ export const datascience = {
       link: "https://www.linkedin.com/in/kirkdborne/",
     },
   ],
-  
+
   blogsToFollow: [
     {
       name: "Towards Data Science",
@@ -258,13 +256,13 @@ export const datascience = {
       name: "Data Science Central",
       link: "https://www.datasciencecentral.com/",
     },
-  
+
     {
       name: "KD Nuggets",
       link: "https://www.kdnuggets.com/",
     },
   ],
-  
+
   topKeywords: [
     "Data Cleaning",
     "Machine Learning",

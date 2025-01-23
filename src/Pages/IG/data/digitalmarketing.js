@@ -24,15 +24,21 @@ export const digitalMarketing = {
     },
     {
       name: "Kerala Knowledge Economy Mission",
-      image: "/assets/IG/Digital Marketing/Community Partners/Kerala Knowledge Economy Mission.png"
-    }
+      image:
+        "/assets/IG/Digital Marketing/Community Partners/Kerala Knowledge Economy Mission.png",
+    },
   ],
 
-  prerequisites: {
-    description:
-      "To start with digital marketing, it’s essential to have basic knowledge and skills like familiarity with internet browsing, Google Docs, and social media platforms. You'll also need access to tools like Canva, Google Analytics, and a reliable internet connection for content creation, SEO, and email automation. Having active social media accounts and experience with design tools will also be beneficial in crafting impactful campaigns.",
-  },
-
+  prerequisites: [
+    "Familiarity with internet browsing, Google Docs, Sheets, and Presentations.",
+    "Basic written communication skills for captions, emails, and blogs.",
+    "Understanding hashtags, engagement metrics, and social media platforms.",
+    "Experience with design tools like Canva or Microsoft PowerPoint.",
+    "Google Account for tools like Google Analytics and Keyword Planner.",
+    "Active social media accounts (Instagram, LinkedIn, or YouTube).",
+    "Tools like Canva, Mailchimp, HubSpot, CapCut, and Ubersuggest.",
+    "Reliable internet and a laptop/PC for tasks like content creation, SEO, and email automation.",
+  ],
   roadMap: [
     {
       level: "Level 4",
@@ -120,7 +126,7 @@ export const digitalMarketing = {
               },
 
               {
-                title: "Backlink Strategy & Outreach (150 Karma Points)",
+                title: "Backlink Strategy & Outreach",
                 description:
                   "Develop a backlink strategy by identifying high-authority, niche-relevant websites for link-building. Conduct outreach to health, wellbeing, and medical-related blogs, forums, and directories to gain high-quality backlinks. Begin by identifying 10-15 relevant health and wellness websites with a high domain authority (DA). Contact webmasters for guest posting opportunities, collaborations, or mentions, and submit the website to niche-specific directories. Leverage broken link-building opportunities to gain backlinks. Once you've completed your report, post it in the #digital-marketing channel with the hashtag #cl-dm-offpage-1 to earn 150 karma points.",
                 resources: [
@@ -131,7 +137,7 @@ export const digitalMarketing = {
                 ],
               },
               {
-                title: "Social Media Presence & Engagement (100 Karma Points)",
+                title: "Social Media Presence & Engagement",
                 description:
                   "Ensure the business is properly listed in UK-based local directories and platforms (Google My Business, Yelp, etc.) with consistent NAP (Name, Address, Phone) details. Start by creating or optimizing the Google My Business profile for better local ranking, and submit the website to 5-10 local business directories. Ensure NAP details are consistent across all platforms and optimize the GMB profile by adding relevant keywords, business hours, and images. Once you've completed your report, post it in the #digital-marketing channel with the hashtag #cl-dm-offpage-2 to earn 100 karma points.",
                 resources: [
@@ -140,7 +146,7 @@ export const digitalMarketing = {
                 ],
               },
               {
-                title: "Local SEO & Citation Building (50 Karma Points)",
+                title: "Local SEO & Citation Building",
                 description:
                   "Build social media presence on platforms relevant to the health and wellness industry. Create and optimize profiles on platforms like Facebook, Instagram, and Pinterest, and share blog posts, health tips, and success stories to drive engagement. Use hashtags and social listening tools to target relevant audiences and engage with followers by responding to comments and messages. Once you've completed your report, post it in the #digital-marketing channel with the hashtag #cl-dm-offpage-3 to earn 50 karma points.",
                 resources: [
@@ -150,7 +156,7 @@ export const digitalMarketing = {
                 ],
               },
               {
-                title: "Influencer Marketing & Collaboration (100 Karma)",
+                title: "Influencer Marketing & Collaboration",
                 description:
                   "Partner with health and wellness influencers, bloggers, and YouTubers to promote the website and build backlinks. Identify 5-7 influencers in the health and wellness niche and reach out for product reviews, shoutouts, or guest blogging opportunities. Track the performance of influencer collaborations and once you've completed your report, post it in the #digital-marketing channel with the hashtag #cl-dm-offpage-4 to earn 100 karma points.",
                 resources: [
@@ -160,7 +166,7 @@ export const digitalMarketing = {
                 ],
               },
               {
-                title: "Content Syndication and PR (70 Karma)",
+                title: "Content Syndication and PR",
                 description:
                   "Distribute high-quality content through syndication platforms and press release distribution services to get more exposure and backlinks. Create a press release about the brand and website's mission, and submit content to syndication platforms like Medium and LinkedIn. Reach out to health-related news sites and blogs for potential features or interviews. Once you've completed your report, post it in the #digital-marketing channel with the hashtag #cl-dm-offpage-5 to earn 70 karma points.",
                 resources: [
@@ -170,7 +176,7 @@ export const digitalMarketing = {
                 ],
               },
               {
-                title: "Forum Posting and QA Participation (60 karma)",
+                title: "Forum Posting and QA Participation",
                 description:
                   "Engage with health and wellbeing communities by answering questions and contributing to discussions on forums like Reddit, Quora, and niche-specific health forums. Identify relevant subreddits, Quora questions, and health forums, then provide helpful, informative answers with a backlink to relevant site content. Participate regularly to establish authority in the niche. Once you've completed your report, post it in the #digital-marketing channel with the hashtag #cl-dm-offpage-6 to earn 60 karma points.",
                 resources: [
@@ -180,7 +186,7 @@ export const digitalMarketing = {
                 ],
               },
               {
-                title: "Content Promotion via Email Outreach (70 karma)",
+                title: "Content Promotion via Email Outreach",
                 description:
                   "Promote the website’s blog posts and resources by conducting targeted email outreach to individuals, businesses, and organizations in the health and wellness niche. Build a list of 50-100 health and wellness contacts for email outreach, and promote blog posts, product launches, or partnership opportunities. Personalize each email for better response rates. Once you've completed your report, post it in the #digital-marketing channel with the hashtag #cl-dm-offpage-7 to earn 70 karma points.",
                 resources: ["https://mailchimp.com", "https://hunter.io"],
@@ -210,7 +216,7 @@ export const digitalMarketing = {
             ],
             challenges: [
               {
-                title: "Google Ads Certification (700 Karma Points)",
+                title: "Google Ads Certification",
                 description:
                   "Step 1: Visit the page: https://skillshop.docebosaas.com/learn/public/catalog/view/1. Step 2: Create a profile and start the course. Step 3: After completing all lessons, post the screenshot of the certificate in the digital-marketing channel with the hashtag #cl-dm-google-ads to earn 700 karma points.",
                 resources: [
@@ -218,7 +224,7 @@ export const digitalMarketing = {
                 ],
               },
               {
-                title: "Data Analytics and Reporting (400 Karma Points)",
+                title: "Data Analytics and Reporting",
                 description:
                   "Create a Data-Driven Marketing Dashboard: Choose a marketing platform (Google Analytics or Data Studio) to track performance metrics. Set up KPIs: traffic, bounce rate, conversion rate, and ROI. Use GA4 to analyze user behavior and define audience segments. Create a dashboard that visually showcases trends and insights. Submit your dashboard link in #digital-marketing with the hashtag #cl-dm-analytics to earn 400 karma points!",
                 resources: [
@@ -228,7 +234,7 @@ export const digitalMarketing = {
                 ],
               },
               {
-                title: "Content Marketing Mastery (500 Karma Points)",
+                title: "Content Marketing Mastery",
                 description:
                   "Publish a High-Value Blog Post: Research trending keywords using Ahrefs or SEMrush. Write a 1,000-word blog post optimized for SEO. Include engaging visuals like infographics and videos. Publish the post and promote it via email marketing and social media. Share the published post link in #digital-marketing with the hashtag #cl-dm-content to earn 500 karma points!",
                 resources: [
@@ -240,7 +246,7 @@ export const digitalMarketing = {
               },
               {
                 title:
-                  "Affiliate Marketing and Partnerships (400 Karma Points)",
+                  "Affiliate Marketing and Partnerships",
                 description:
                   "Build an Affiliate Outreach Strategy: Identify 10 potential affiliate partners in your niche. Draft a compelling outreach email or pitch. Create an affiliate page on your website with terms and tracking links. Monitor affiliate-generated leads and sales using an analytics tool. Share results in #digital-marketing with the hashtag #cl-dm-affiliate to earn 400 karma points!",
                 resources: [
@@ -274,73 +280,72 @@ export const digitalMarketing = {
             ],
             challenges: [
               {
-                "title": "Affiliate Marketing and Partnerships",
-                "description": "Build a Comprehensive Social Media Strategy\n\nSteps:\n\nResearch a brand's current social media presence and performance. \nDevelop a detailed strategy with clear goals (e.g., awareness, engagement, conversions). \nInclude content ideas, a posting schedule, and platform-specific tactics. \nDeliverables: A complete social media strategy document.\n\nShare the strategy document in #digital-marketing with the hashtag #cl-dm-strategy to earn 500 karma points! ",
-                "resources": [
+                title: "Affiliate Marketing and Partnerships",
+                description:
+                  "Build a Comprehensive Social Media Strategy\n\nSteps:\n\nResearch a brand's current social media presence and performance. \nDevelop a detailed strategy with clear goals (e.g., awareness, engagement, conversions). \nInclude content ideas, a posting schedule, and platform-specific tactics. \nDeliverables: A complete social media strategy document.\n\nShare the strategy document in #digital-marketing with the hashtag #cl-dm-strategy to earn 500 karma points! ",
+                resources: [
                   "https://trello.com",
                   "https://www.notion.so",
-                  "https://www.google.com/docs"
-                ]
+                  "https://www.google.com/docs",
+                ],
               },
               {
-                "title": "Brand Identity",
-                "description": "Create a brand identity for a fictitious company or product by designing key branding assets such as a logo, color palette, and typography. Use Canva or Figma to develop these assets and showcase them as part of the brand’s visual identity.\n\nSteps:\n\nChoose a Brand Name and Concept:\n\nSelect a name for the brand or product you want to create.\nDevelop a brief concept or story behind the brand (e.g., target audience, industry, and key values). This will guide your design choices.\nCreate a Logo Design:\n\nUse Canva or Figma to design a simple, memorable logo for the brand.\nEnsure the logo is scalable and works well in both large and small formats.\nExperiment with different typography, shapes, and colors that reflect the brand's personality.\nChoose a Color Palette:\n\nSelect 3-5 primary brand colors that align with the brand’s personality and target audience.\nCreate a cohesive color scheme that works across various design materials.\nDefine Brand Typography:\n\nChoose 2-3 fonts for headings, subheadings, and body text that fit the brand’s tone (e.g., professional, playful, minimalist).\nCreate Additional Branding Assets (Optional):\n\nDesign any additional branding materials such as business cards, social media profile images, or a website header.\nProvide Proof of Work:\n\nUpload the final designs (logo, color palette, typography) to a shared folder or Google Drive.\nDeliverables:\n\nLogo design (in PNG/SVG format).\nColor palette with hex codes.\nTypography style guide (font names and usage recommendations).\nCanva/Figma file link to the designs.\n\nUpload the designs to a shared folder and share the Canva/Figma file link.",
-                "resources": [
-                  "https://www.canva.com",
-                  "https://www.figma.com"
-                ]
+                title: "Brand Identity",
+                description:
+                  "Create a brand identity for a fictitious company or product by designing key branding assets such as a logo, color palette, and typography. Use Canva or Figma to develop these assets and showcase them as part of the brand’s visual identity.\n\nSteps:\n\nChoose a Brand Name and Concept:\n\nSelect a name for the brand or product you want to create.\nDevelop a brief concept or story behind the brand (e.g., target audience, industry, and key values). This will guide your design choices.\nCreate a Logo Design:\n\nUse Canva or Figma to design a simple, memorable logo for the brand.\nEnsure the logo is scalable and works well in both large and small formats.\nExperiment with different typography, shapes, and colors that reflect the brand's personality.\nChoose a Color Palette:\n\nSelect 3-5 primary brand colors that align with the brand’s personality and target audience.\nCreate a cohesive color scheme that works across various design materials.\nDefine Brand Typography:\n\nChoose 2-3 fonts for headings, subheadings, and body text that fit the brand’s tone (e.g., professional, playful, minimalist).\nCreate Additional Branding Assets (Optional):\n\nDesign any additional branding materials such as business cards, social media profile images, or a website header.\nProvide Proof of Work:\n\nUpload the final designs (logo, color palette, typography) to a shared folder or Google Drive.\nDeliverables:\n\nLogo design (in PNG/SVG format).\nColor palette with hex codes.\nTypography style guide (font names and usage recommendations).\nCanva/Figma file link to the designs.\n\nUpload the designs to a shared folder and share the Canva/Figma file link.",
+                resources: ["https://www.canva.com", "https://www.figma.com"],
               },
               {
-                "title": "SM Poster Design",
-                "description": "Design eye-catching and engaging social media posters for a campaign using Canva or Figma. The posters should align with the brand's message, be visually appealing, and ready for sharing on social media platforms.\n\nSteps:\n\nChoose a Campaign Theme or Topic:\n\nSelect a theme or campaign for the social media posters (e.g., product promotion, seasonal sale, brand awareness).\nEnsure the theme aligns with the brand's tone and message.\nDesign Posters Using Canva/Figma:\n\nCreate 3-5 unique and high-quality posters.\nEach poster should be optimized for the platform you are targeting (e.g., Instagram post, Facebook ad, etc.).\nIncorporate brand colors, fonts, and logos to maintain consistency with the brand identity.\nEnsure the posters are visually engaging, using elements like images, icons, and text in a balanced layout.\nExport the Posters:\n\nDownload the posters in high resolution (preferably in PNG or JPEG format) for web use.\nDeliverables:\n\n3-5 designed posters in PNG/JPEG format.\nCanva/Figma file link to the designs.\n\nUpload the final posters and share the Canva/Figma file link.",
-                "resources": [
-                  "https://www.canva.com",
-                  "https://www.figma.com"
-                ]
+                title: "SM Poster Design",
+                description:
+                  "Design eye-catching and engaging social media posters for a campaign using Canva or Figma. The posters should align with the brand's message, be visually appealing, and ready for sharing on social media platforms.\n\nSteps:\n\nChoose a Campaign Theme or Topic:\n\nSelect a theme or campaign for the social media posters (e.g., product promotion, seasonal sale, brand awareness).\nEnsure the theme aligns with the brand's tone and message.\nDesign Posters Using Canva/Figma:\n\nCreate 3-5 unique and high-quality posters.\nEach poster should be optimized for the platform you are targeting (e.g., Instagram post, Facebook ad, etc.).\nIncorporate brand colors, fonts, and logos to maintain consistency with the brand identity.\nEnsure the posters are visually engaging, using elements like images, icons, and text in a balanced layout.\nExport the Posters:\n\nDownload the posters in high resolution (preferably in PNG or JPEG format) for web use.\nDeliverables:\n\n3-5 designed posters in PNG/JPEG format.\nCanva/Figma file link to the designs.\n\nUpload the final posters and share the Canva/Figma file link.",
+                resources: ["https://www.canva.com", "https://www.figma.com"],
               },
               {
-                "title": "Platform-Specific Content Creation",
-                "description": "Design Platform-Specific Content for Two Social Media Platforms\n\nSteps:\n\nChoose two platforms (e.g., Instagram and LinkedIn). \nCreate 3 unique posts tailored to each platform’s audience and style. \nPost or schedule the content and track engagement. \nDeliverables:\n\n6 unique posts (3 per platform), Engagement metrics (likes, comments, shares).\n\nShare screenshots and engagement insights in #digital-marketing with the hashtag #cl-dm-platform to earn 400 karma points! ",
-                "resources": [
+                title: "Platform-Specific Content Creation",
+                description:
+                  "Design Platform-Specific Content for Two Social Media Platforms\n\nSteps:\n\nChoose two platforms (e.g., Instagram and LinkedIn). \nCreate 3 unique posts tailored to each platform’s audience and style. \nPost or schedule the content and track engagement. \nDeliverables:\n\n6 unique posts (3 per platform), Engagement metrics (likes, comments, shares).\n\nShare screenshots and engagement insights in #digital-marketing with the hashtag #cl-dm-platform to earn 400 karma points! ",
+                resources: [
                   "https://www.canva.com",
                   "https://buffer.com",
-                  "https://www.meta.com/creator-studio"
-                ]
+                  "https://www.meta.com/creator-studio",
+                ],
               },
               {
-                "title": "SM Trends Report",
-                "description": "Compile a Report on Current Social Media Trends\n\nSteps:\n\nResearch and identify 5 relevant social media trends. \nHighlight how each trend can impact a niche or business. \nCreate a professional report summarizing your findings. \nDeliverables:\n\nA social media trends report.\n\nShare your report in #digital-marketing with the hashtag #cl-dm-trends to earn 400 karma points! ",
-                "resources": [
+                title: "SM Trends Report",
+                description:
+                  "Compile a Report on Current Social Media Trends\n\nSteps:\n\nResearch and identify 5 relevant social media trends. \nHighlight how each trend can impact a niche or business. \nCreate a professional report summarizing your findings. \nDeliverables:\n\nA social media trends report.\n\nShare your report in #digital-marketing with the hashtag #cl-dm-trends to earn 400 karma points! ",
+                resources: [
                   "https://explodingtopics.com",
                   "https://trends.google.com",
-                  "https://buzzsumo.com"
-                ]
+                  "https://buzzsumo.com",
+                ],
               },
               {
-                "title": "SM Contest Planning",
-                "description": "Design a Social Media Contest\n\nSteps:\n\nCreate a contest concept with defined goals, rules, and prizes. 🏆\nDesign engaging visuals and copy for the contest announcement. 🎨\nDeliverables:\n\nContest plan (goal, rules, prizes), Supporting visuals and copy.\n\nShare your contest plan in #digital-marketing with the hashtag #cl-dm-contest to earn 500 karma points! 🎉",
-                "resources": [
+                title: "SM Contest Planning",
+                description:
+                  "Design a Social Media Contest\n\nSteps:\n\nCreate a contest concept with defined goals, rules, and prizes. 🏆\nDesign engaging visuals and copy for the contest announcement. 🎨\nDeliverables:\n\nContest plan (goal, rules, prizes), Supporting visuals and copy.\n\nShare your contest plan in #digital-marketing with the hashtag #cl-dm-contest to earn 500 karma points! 🎉",
+                resources: [
                   "https://www.canva.com",
                   "https://www.figma.com",
-                  "https://gleam.io"
-                ]
+                  "https://gleam.io",
+                ],
               },
               {
-                "title": "Hashtag Research and Optimization",
-                "description": "Conduct Hashtag Research for a Niche\n\nSteps:\n\nChoose a niche and analyze trending hashtags. \nCreate a categorized list of 30 hashtags (e.g., high-volume, niche-specific, branded). \nDeliverables:\n\nA categorized list of 30 optimized hashtags.\n\nShare the list in #digital-marketing with the hashtag #cl-dm-hashtags to earn 300 karma points! ",
-                "resources": [
-                  "https://hashtagify.me",
-                  "https://keyhole.co"
-                ]
+                title: "Hashtag Research and Optimization",
+                description:
+                  "Conduct Hashtag Research for a Niche\n\nSteps:\n\nChoose a niche and analyze trending hashtags. \nCreate a categorized list of 30 hashtags (e.g., high-volume, niche-specific, branded). \nDeliverables:\n\nA categorized list of 30 optimized hashtags.\n\nShare the list in #digital-marketing with the hashtag #cl-dm-hashtags to earn 300 karma points! ",
+                resources: ["https://hashtagify.me", "https://keyhole.co"],
               },
               {
-                "title": "Engagement Boosting Campaign",
-                "description": "Plan and Execute an Engagement Campaign\n\nSteps:\n\nDesign a campaign that encourages audience participation (e.g., polls, challenges, Q&A). \nPost the campaign and monitor engagement for a week. \nDeliverables:\n\nCampaign post(s), Engagement metrics (likes, comments, shares).\n\nShare your campaign details and engagement metrics in #digital-marketing with the hashtag #cl-dm-engagement to earn 500 karma points! ",
-                "resources": [
+                title: "Engagement Boosting Campaign",
+                description:
+                  "Plan and Execute an Engagement Campaign\n\nSteps:\n\nDesign a campaign that encourages audience participation (e.g., polls, challenges, Q&A). \nPost the campaign and monitor engagement for a week. \nDeliverables:\n\nCampaign post(s), Engagement metrics (likes, comments, shares).\n\nShare your campaign details and engagement metrics in #digital-marketing with the hashtag #cl-dm-engagement to earn 500 karma points! ",
+                resources: [
                   "https://www.instagram.com/stories",
                   "https://www.linkedin.com/polls",
-                  "https://www.facebook.com/qna"
-                ]
+                  "https://www.facebook.com/qna",
+                ],
               },
             ],
           },

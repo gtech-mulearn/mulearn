@@ -237,11 +237,16 @@ export const iot = {
       image: "/assets/IG/IoT/Community Partners/arduino.jpg",
     },
   ],
-  prerequisites: {
-    description:
-      "Regardless of your experience level, getting started with IoT requires mastering some essential skills. Begin by understanding the fundamentals, including sensors, actuators, microcontrollers like Arduino and Raspberry Pi, and power systems, along with learning basic circuit design and component interfacing. Next, develop programming skills in C/C++ for microcontroller programming and explore Python for data analysis and IoT scripting. Familiarize yourself with IoT protocols such as MQTT, HTTP, CoAP, and LoRaWAN, and get comfortable using cloud platforms like AWS IoT Core and Google IoT Cloud. As you build your knowledge, start small with mini projects, such as creating a smart home temperature monitor using an ESP8266 module and a DHT11 sensor. Additionally, while optional, honing marketing and presentation skills will help you communicate your IoT solutions effectively to diverse audiences.",
-  },
-
+  prerequisites: [
+    "Master the Basics: Understand sensors, actuators, microcontrollers (like Arduino and Raspberry Pi), and power systems.",
+    "Learn basic circuit design and component interfacing.",
+    "Programming Skills: Learn C/C++ for microcontroller programming.",
+    "Explore Python for data analysis and IoT scripting.",
+    "Understand IoT Protocols: Explore protocols like MQTT, HTTP, CoAP, and LoRaWAN.",
+    "Familiarize yourself with cloud platforms such as AWS IoT Core and Google IoT Cloud.",
+    "Build Mini Projects: Start small, for example, create a smart home temperature monitor using an ESP8266 module and a DHT11 sensor.",
+    "Marketing and Presentation Skills (optional but valuable): Learn to communicate your IoT solutions effectively to diverse audiences.",
+  ],
   mentors: [
     {
       name: "Nizamudeen",

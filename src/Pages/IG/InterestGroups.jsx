@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
-import { InfiniteImageSlider } from "./Ig2/components/InfiniteImageSlider";
+import { InfiniteImageSlider } from "./IGSpecific/components/InfiniteImageSlider";
 import { Users, BookOpen, Calendar, Share2, TrendingUp, Network, Award, GitMerge, Code, Paintbrush, Cpu, Briefcase } from 'lucide-react';
 
 import fvimg from "./assets/fvimg.png";

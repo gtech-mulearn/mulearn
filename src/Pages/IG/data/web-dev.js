@@ -56,11 +56,19 @@ export const webdev = {
       image: "/assets/IG/Web Development/Community Partners/Alokin.jpg",
     },
   ],
-  prerequisites: {
-    description:
-      "To get started, you should have basic computer skills and a foundational understanding of the internet. Knowledge of HTML (HyperText Markup Language) and CSS (Cascading Style Sheets) is essential, along with a basic understanding of JavaScript. Familiarity with version control systems like Git and browser developer tools is important for debugging and collaboration. You should also be comfortable with responsive web design principles, which ensure websites work well on different devices. A basic grasp of graphic design principles is useful for creating visually appealing interfaces. Additionally, knowledge of web hosting, deployment, and web accessibility practices will help ensure your websites are accessible and functional.",
-  },
-
+  prerequisites: [
+    "Basic Computer Skills",
+    "Basic Knowledge of the Internet",
+    "HTML (HyperText Markup Language)",
+    "CSS (Cascading Style Sheets)",
+    "Basic JavaScript",
+    "Version Control (Git)",
+    "Browser Developer Tools",
+    "Responsive Web Design",
+    "Basic Graphic Design Principles",
+    "Basic Knowledge of Web Hosting and Deployment",
+    "Basic Knowledge of Web Accessibility",
+  ],
   roadMap: [
     {
       level: "Level 4",
@@ -212,7 +220,7 @@ export const webdev = {
           title: "React - The UI Library",
           data: {
             description:
-              "React - The UI Library: A JavaScript library for building user interfaces. Created by Facebook, now maintained by both Facebook and the community. Uses component-based architecture. Enables building dynamic, single-page applications (SPAs). Core Fundamentals: Components and Props, State Management, Virtual DOM, JSX Syntax, Hooks, Component Lifecycle, Event Handling, Conditional Rendering. Key Concepts: Component Architecture: Functional Components, Class Components (legacy), Component Composition, Higher-Order Components (HOCs). React Hooks: useState, useEffect, useContext, useRef, useReducer, Custom Hooks, Rules of Hooks. Advanced Topics: State Management Solutions: Context API, Redux, Zustand, Recoil. Performance Optimization: Memoization, Code Splitting, Lazy Loading, useMemo and useCallback. Routing: React Router, Navigation, Route Protection. Testing: Jest, React Testing Library, Component Testing, Integration Testing. Common Features & Patterns: Form Handling, Data Fetching, Authentication, Error Boundaries, Controlled vs Uncontrolled Components, Render Props, Component Composition, Code Splitting. Development Tools: Create React App, Vite, Next.js, React DevTools, ESLint, Prettier. Best Practices: Component Organization, State Management Patterns, Performance Optimization, Security Considerations, Accessibility (a11y), Code Splitting Strategies. Learning Path: Master JavaScript fundamentals, Learn React basics and JSX, Understand components and props, Master hooks and state management, Study routing and data fetching, Learn testing and debugging, Explore advanced patterns, Practice with real projects. Ecosystem & Tools: Build Tools (Webpack, Vite), State Management (Redux, Context API), Routing (React Router), Forms (Formik, React Hook Form), UI Libraries (Material-UI, Chakra UI), Testing (Jest, React Testing Library), Meta Frameworks (Next.js, Remix).",
+              "React - The UI Library: A JavaScript library for building user interfaces. Created by Facebook and now maintained by both Facebook and the community. Uses component-based architecture to enable building dynamic, single-page applications (SPAs). Core Fundamentals: Components and Props, State Management, Virtual DOM, JSX Syntax, Hooks, Component Lifecycle, Event Handling, Conditional Rendering. Key Concepts: Component Architecture: Functional Components, Class Components (legacy), Component Composition, Higher-Order Components (HOCs). React Hooks: useState, useEffect, useContext, useRef, useReducer, Custom Hooks, Rules of Hooks. Advanced Topics: State Management Solutions: Context API, Redux, Zustand, Recoil. Performance Optimization: Memoization, Code Splitting, Lazy Loading, useMemo and useCallback. Routing: React Router, Navigation, Route Protection. Testing: Jest, React Testing Library, Component Testing, Integration Testing. Common Features & Patterns: Form Handling, Data Fetching, Authentication, Error Boundaries, Controlled vs Uncontrolled Components, Render Props, Component Composition, Code Splitting. Development Tools: Create React App, Vite, Next.js, React DevTools, ESLint, Prettier. Best Practices: Component Organization, State Management Patterns, Performance Optimization, Security Considerations, Accessibility (a11y), Code Splitting Strategies. Learning Path: Master JavaScript fundamentals, Learn React basics and JSX, Understand components and props, Master hooks and state management, Study routing and data fetching, Learn testing and debugging, Explore advanced patterns, Practice with real projects. Ecosystem & Tools: Build Tools (Webpack, Vite), State Management (Redux, Context API), Routing (React Router), Forms (Formik, React Hook Form), UI Libraries (Material-UI, Chakra UI), Testing (Jest, React Testing Library), Meta Frameworks (Next.js, Remix).",
             whatYouWillLearn: [
               "Introduction to React and its ecosystem",
               "Core React concepts and JSX",
@@ -284,13 +292,13 @@ export const webdev = {
 
             challenges: [
               {
-                title: "Real-Time Chat Application (800 Karma Points)",
+                title: "Real-Time Chat Application",
                 resources: [],
                 description:
                   "Key Features: - User authentication system - WebSocket implementation with Socket.io - Multiple chat room functionality - Message storage and history - Real-time online status tracking Technical Stack: - Angular (Frontend) - Node.js & Socket.io (Backend) - Firebase/MongoDB (Database) - Angular Material (UI)",
               },
               {
-                title: "E-Commerce Dashboard (700 Karma Points)",
+                title: "E-Commerce Dashboard",
                 resources: [],
                 description:
                   "Key Features: - Product management with CRUD operations - Detailed product listings and views - Advanced search and filtering - Inventory tracking system - Order management Technical Stack: - Angular (Frontend) - RESTful API integration - Bootstrap/Angular Material (UI) - NgRx (State Management)",
@@ -312,7 +320,7 @@ export const webdev = {
           title: "Svelte - The Compiler Framework",
           data: {
             description:
-              "Svelte - The Compiler Framework: A radical approach to building user interfaces. Compiles components to vanilla JavaScript at build time. No virtual DOM, minimal runtime overhead. Created by Rich Harris, now maintained by Vercel. Core Fundamentals: Component Structure, Reactivity, Props, Stores, Bindings, Events, Transitions, Animations, Lifecycle. Key Concepts: Component Architecture: Single File Components, Scoped Styling, Component Logic, Props and Events, Slots and Templates. Reactivity System: Reactive Declarations, Reactive Statements, Derived Stores, Auto-Subscriptions, Two-way Binding. Advanced Topics: State Management: Svelte Stores, Context API, Custom Stores, Writable/Readable Stores. Performance: Zero-Runtime Virtual DOM, Compile-time Optimization, Bundle Size Optimization, Code Splitting. Routing: SvelteKit, Page-based Routing, Dynamic Routes, Loading Data. Animation: Built-in Transitions, Custom Animations, Motion Library, Spring Animations. Common Features & Patterns: Forms & Inputs: Form Binding, Input Validation, Custom Form Controls, Event Handling. HTTP Client: Fetch API Integration, Loading States, Error Handling, API Integration. CSS Features: Scoped Styles, Global Styles, CSS Variables, Style Directives. Development Tools: SvelteKit, Vite Integration, VS Code Extensions, DevTools, TypeScript Support, ESLint/Prettier. Best Practices: Component Organization, State Management, Performance Optimization, Accessibility, Code Splitting, Testing Strategies. Learning Path: Learn JavaScript fundamentals, Understand Svelte syntax, Master component basics, Study reactivity system, Learn SvelteKit, Practice state management, Explore animations, Build real projects. Ecosystem & Tools: Build Tools: Vite, Rollup, SvelteKit. UI Libraries: Carbon Components, Svelte Material UI, Tailwind. Testing: Vitest, Playwright, Jest. Development: VS Code, WebStorm, Svelte Language Tools.",
+              "Svelte - The Compiler Framework: A radical approach to building user interfaces. It compiles components to vanilla JavaScript at build time, with no virtual DOM and minimal runtime overhead. Created by Rich Harris and now maintained by Vercel. Core Fundamentals: Component Structure, Reactivity, Props, Stores, Bindings, Events, Transitions, Animations, Lifecycle. Key Concepts: Component Architecture: Single File Components, Scoped Styling, Component Logic, Props and Events, Slots and Templates. Reactivity System: Reactive Declarations, Reactive Statements, Derived Stores, Auto-Subscriptions, Two-way Binding. Advanced Topics: State Management: Svelte Stores, Context API, Custom Stores, Writable/Readable Stores. Performance: Zero-Runtime Virtual DOM, Compile-time Optimization, Bundle Size Optimization, Code Splitting. Routing: SvelteKit, Page-based Routing, Dynamic Routes, Loading Data. Animation: Built-in Transitions, Custom Animations, Motion Library, Spring Animations. Common Features & Patterns: Forms & Inputs: Form Binding, Input Validation, Custom Form Controls, Event Handling. HTTP Client: Fetch API Integration, Loading States, Error Handling, API Integration. CSS Features: Scoped Styles, Global Styles, CSS Variables, Style Directives. Development Tools: SvelteKit, Vite Integration, VS Code Extensions, DevTools, TypeScript Support, ESLint/Prettier. Best Practices: Component Organization, State Management, Performance Optimization, Accessibility, Code Splitting, Testing Strategies. Learning Path: Learn JavaScript fundamentals, understand Svelte syntax, master component basics, study the reactivity system, learn SvelteKit, practice state management, explore animations, and build real projects. Ecosystem & Tools: Build Tools: Vite, Rollup, SvelteKit. UI Libraries: Carbon Components, Svelte Material UI, Tailwind. Testing: Vitest, Playwright, Jest. Development: VS Code, WebStorm, Svelte Language Tools.",
             whatYouWillLearn: [
               "Introduction to Svelte and its ecosystem",
               "Core Svelte concepts and reactivity system",
@@ -323,13 +331,13 @@ export const webdev = {
             ],
             challenges: [
               {
-                title: "Weather Dashboard with Svelte (600 Karma Points)",
+                title: "Weather Dashboard with Svelte",
                 resources: [],
                 description:
                   "Build a responsive weather dashboard using Svelte with the following features: - Search functionality for cities. - Display current weather (temperature, conditions, humidity, wind speed). - Provide a 5-day weather forecast. - Implement a responsive design for all devices. - Integrate the OpenWeatherMap API. - Use Svelte/SvelteKit, Fetch API, and a CSS Framework (e.g., Tailwind/Bootstrap). Share your hosted GitHub repository with the hashtag #cl-svelte-weather.",
               },
               {
-                title: "To-Do List Application with Svelte (500 Karma Points)",
+                title: "To-Do List Application with Svelte",
                 resources: [],
                 description:
                   "Develop a to-do list application with the following features: - Add, edit, delete, and mark tasks as completed. - Filter tasks by All, Completed, and Pending. - Ensure persistent storage using LocalStorage or IndexedDB. - Bonus: Include dark mode and drag-and-drop task reordering. - Use Svelte Stores for state management. Share your hosted GitHub repository with the hashtag #cl-svelte-todo.",
@@ -410,7 +418,7 @@ export const webdev = {
 
       {
         name: "Maanas M S",
-        imageUrl: "/assets/IG/Web Development/IG Leads/Aravind Krishna.jpg",
+        imageUrl: "/assets/IG/Web Development/IG Leads/Maanas MS.jpg",
         role: "Marian Engineering College",
         linkedin: "https://www.linkedin.com/in/maanasms/",
         hasLinkedin: true,

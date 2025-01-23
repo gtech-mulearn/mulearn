@@ -2,7 +2,7 @@ export const arVr = {
   title: "AR/VR",
   introduction: {
     description:
-      '"AR/VR is reshaping the way we interact with the digital world." Are you interested in learning how to create immersive experiences that blend the virtual and physical worlds? Join our “AR/VR Development” Interest Group to explore and collaborate with peers on creating augmented and virtual reality applications.',
+      'AR/VR is reshaping the way we interact with the digital world." Are you interested in learning how to create immersive experiences that blend the virtual and physical worlds? Join our “AR/VR Development” Interest Group to explore and collaborate with peers on creating augmented and virtual reality applications.',
     downloadLink: "foundation deck",
     schedules: {
       officeHours: "TBA", // Replace with actual office hours
@@ -17,10 +17,13 @@ export const arVr = {
     }, // Replace with actual partner details
   ],
 
-  prerequisites: {
-    description:
-      "AR/VR development requires a basic understanding of programming and 3D modeling. Familiarity with platforms like Unity or Unreal Engine, and languages such as C# (for Unity) or C++ (for Unreal Engine), is highly recommended. An understanding of spatial computing, graphics rendering, and interaction design is crucial. Basic knowledge of computer vision and ARKit/ARCore will also be beneficial.",
-  },
+  prerequisites: [
+    "Basic understanding of programming and 3D modeling.",
+    "Familiarity with platforms like Unity or Unreal Engine.",
+    "Knowledge of languages such as C# (for Unity) or C++ (for Unreal Engine).",
+    "Understanding of spatial computing, graphics rendering, and interaction design.",
+    "Basic knowledge of computer vision and ARKit/ARCore."
+  ],
 
   roadMap: [
     {

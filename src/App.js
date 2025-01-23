@@ -55,8 +55,8 @@ import EnablersPage from "./Pages/EnablersPage/EnablersPage";
 import In50Hours from "./Pages/In50Hours/In50Hours";
 import Manifesto from "./Pages/Manifesto/Manifesto";
 import InterestGroups from "./Pages/IG/InterestGroups";
-import InterestGroupDetails from "./Pages/IG/Ig2/layout";
-import InterestGroupRoadmap from "./Pages/IG/Ig2/InterestGroupRoadmap";
+import InterestGroupDetails from "./Pages/IG/IGSpecific/layout";
+import InterestGroupRoadmapPage from "./Pages/IG/IGSpecific/InterestGroupRoadmapPage";
 
 function App() {
   const [redirects, setRedirects] = useState([]);
@@ -132,8 +132,8 @@ function App() {
             <Route path="/manifesto" element={<Manifesto />} />
             <Route path="/interestgroups" element={<InterestGroups />} />
             <Route path="/interestgroups/:id" element={<InterestGroupDetails />} />
-            <Route path="/interestgroups/:id/roadmap" element={<InterestGroupRoadmap />} />
-            <Route path="interestgroups/:id/roadmap/:title" element={<InterestGroupRoadmap />} />
+            <Route path="/interestgroups/:id/roadmap" element={<InterestGroupRoadmapPage />} />
+            <Route path="interestgroups/:id/roadmap/:title" element={<InterestGroupRoadmapPage />} />
 
             <Route path="/team">
               <Route path="" element={<Teams />} />

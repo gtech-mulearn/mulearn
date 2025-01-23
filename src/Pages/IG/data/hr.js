@@ -13,10 +13,10 @@ export const hr = {
 
   communityPartners: null,
 
-  prerequisites: {
-    description:
-      "No prior experience is necessary, though a basic understanding of management principles, communication skills, and organizational behavior is recommended. Familiarity with HR functions like talent acquisition, performance management, and employee relations is a plus.",
-  },
+  prerequisites: [
+    "No prior experience is necessary, though a basic understanding of management principles, communication skills, and organizational behavior is recommended.",
+    "Familiarity with HR functions like talent acquisition, performance management, and employee relations is a plus."
+  ],
 
   roadMap: [
     {

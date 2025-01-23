@@ -13,10 +13,12 @@ export const productManagement = {
   
   
     communityPartners: null,
-    prerequisites: {
-      description:
-        "To begin learning product management, it’s essential to build a few foundational skills. Start by developing empathy for users, which will help you understand their needs and pain points. Cultivate problem-solving abilities to identify challenges and think critically about solutions. Strengthen your communication skills to effectively convey ideas and collaborate with others. Lastly, focus on teamwork, as product management often involves working with diverse groups, including designers, developers, and stakeholders.",
-    },
+    prerequisites: [
+      "Develop empathy for users to understand their needs and pain points.",
+      "Cultivate problem-solving abilities to identify challenges and think critically about solutions.",
+      "Strengthen communication skills to effectively convey ideas and collaborate with others.",
+      "Focus on teamwork, as product management often involves working with designers, developers, and stakeholders."
+    ],
     roadMap: [
       {
         level: "Level 4",
@@ -27,9 +29,9 @@ export const productManagement = {
               description:
                 "Product managers are responsible for guiding the success of a product by balancing customer needs, business goals, and technical feasibility. They define product vision, align it with business strategy, and ensure cross-functional teams collaborate effectively.",
               whatYouWillLearn: [
-                "1.Fundamentals of product management: Product management involves overseeing the entire lifecycle of a product, from conception to development, launch, and beyond. It requires balancing business objectives, user needs, and technical capabilities to create valuable products. Product managers work on product strategy, roadmaps, and coordinating cross-functional teams to ensure successful product delivery.",
-                "2. Essential skills needed for a product manager: Core skills include market research, communication, problem-solving, strategic thinking, and leadership. Each of these helps PMs to make informed decisions, navigate challenges, and lead teams effectively.",
-                "3.The product manager's role in the organization: Product managers are responsible for guiding the success of a product by balancing customer needs, business goals, and technical feasibility. They define product vision, align it with business strategy, and ensure cross-functional teams collaborate effectively.",
+                "Fundamentals of product management: Product management involves overseeing the entire lifecycle of a product, from conception to development, launch, and beyond. It requires balancing business objectives, user needs, and technical capabilities to create valuable products. Product managers work on product strategy, roadmaps, and coordinating cross-functional teams to ensure successful product delivery.",
+                "Essential skills needed for a product manager: Core skills include market research, communication, problem-solving, strategic thinking, and leadership. Each of these helps PMs to make informed decisions, navigate challenges, and lead teams effectively.",
+                "The product manager's role in the organization: Product managers are responsible for guiding the success of a product by balancing customer needs, business goals, and technical feasibility. They define product vision, align it with business strategy, and ensure cross-functional teams collaborate effectively.",
               ],
               challenges: [
                 {
@@ -53,9 +55,9 @@ export const productManagement = {
               description:
                 "In this phase, SWOT (Strengths, Weaknesses, Opportunities, Threats) analysis helps define a product's strategic positioning. It guides decisions on where the product can excel (strengths), areas for improvement (weaknesses), new markets or user needs it can serve (opportunities), and external challenges (threats) that might hinder growth.",
               whatYouWillLearn: [
-                "1.Developing a product strategy:Developing a product strategy is a critical step in product management. It involves defining a long-term vision and plan that outlines how the product will achieve its goals and deliver value to both customers and the business.",
-                "2.Importance of product-market fit:Product-market fit is crucial for a product’s success as it determines whether a product meets the specific needs and demands of its target market. Achieving product-market fit means that customers find value in a product, driving demand and satisfaction. This alignment is often the difference between sustainable growth and stagnation, as it shows that the product genuinely solves a problem or fills a gap in the market.​",
-                "3.Understanding market trends:Understanding market trends is crucial for product managers and businesses, as it provides insights into shifts in consumer preferences, technological advancements, and competitive dynamics.",
+                "Developing a product strategy:Developing a product strategy is a critical step in product management. It involves defining a long-term vision and plan that outlines how the product will achieve its goals and deliver value to both customers and the business.",
+                "Importance of product-market fit:Product-market fit is crucial for a product’s success as it determines whether a product meets the specific needs and demands of its target market. Achieving product-market fit means that customers find value in a product, driving demand and satisfaction. This alignment is often the difference between sustainable growth and stagnation, as it shows that the product genuinely solves a problem or fills a gap in the market.​",
+                "Understanding market trends:Understanding market trends is crucial for product managers and businesses, as it provides insights into shifts in consumer preferences, technological advancements, and competitive dynamics.",
               ],
               challenges: [
                 {
@@ -90,11 +92,11 @@ export const productManagement = {
               description:
                 "The product development process is a cyclical approach where a product is built, tested, and refined in multiple iterations. Each cycle incorporates user feedback and performance insights, leading to continuous improvement and faster delivery of a polished product that meets user expectations.",
               whatYouWillLearn: [
-                "1. Agile product development: Agile product development is a flexible and iterative approach that emphasizes collaboration, customer feedback, and rapid prototyping. It allows teams to adapt quickly to changes by breaking the development process into small, manageable sprints or iterations. This ensures continuous delivery of value and aligns the product closely with user needs.",
-                "2. Designing for your target audience: Designing for your target audience involves understanding their needs, preferences, and behaviors to create user-centric products. This process includes conducting research, creating personas, and focusing on user experience (UX) to ensure the product solves their problems effectively and enhances satisfaction.",
-                "3. Iterative product development process: The iterative product development process is a cyclical approach where a product is built, tested, and refined in multiple iterations. Each cycle incorporates user feedback and performance insights, leading to continuous improvement and faster delivery of a polished product that meets user expectations.",
-                "4. Understanding customer journey: Understanding the customer journey maps out the entire experience a customer has with a product or service. This includes identifying touchpoints, pain points, and opportunities for improvement, allowing businesses to optimize their offerings for better engagement and satisfaction.",
-                "5. Customer surveys: Customer surveys collect quantitative data through structured questionnaires to measure customer satisfaction, preferences, and expectations. They are a scalable way to gather feedback and identify trends across a larger audience.",
+                "Agile product development: Agile product development is a flexible and iterative approach that emphasizes collaboration, customer feedback, and rapid prototyping. It allows teams to adapt quickly to changes by breaking the development process into small, manageable sprints or iterations. This ensures continuous delivery of value and aligns the product closely with user needs.",
+                "Designing for your target audience: Designing for your target audience involves understanding their needs, preferences, and behaviors to create user-centric products. This process includes conducting research, creating personas, and focusing on user experience (UX) to ensure the product solves their problems effectively and enhances satisfaction.",
+                "Iterative product development process: The iterative product development process is a cyclical approach where a product is built, tested, and refined in multiple iterations. Each cycle incorporates user feedback and performance insights, leading to continuous improvement and faster delivery of a polished product that meets user expectations.",
+                "Understanding customer journey: Understanding the customer journey maps out the entire experience a customer has with a product or service. This includes identifying touchpoints, pain points, and opportunities for improvement, allowing businesses to optimize their offerings for better engagement and satisfaction.",
+                "Customer surveys: Customer surveys collect quantitative data through structured questionnaires to measure customer satisfaction, preferences, and expectations. They are a scalable way to gather feedback and identify trends across a larger audience.",
               ],
               challenges: [
                 {
@@ -136,7 +138,7 @@ export const productManagement = {
               description:
                 "Define metrics to measure the product’s performance and the success of the strategy. These could include customer acquisition cost (CAC), lifetime value (LTV), user engagement, and NPS (Net Promoter Score).",
               whatYouWillLearn: [
-                "1.Important product metrics to track:Key Product Metrics and Their Importance",
+                "Important product metrics to track:Key Product Metrics and Their Importance",
                 "Churn Rate",
                 "Definition: Churn rate measures the percentage of customers who stop using the product or service during a specific period. It indicates how well a product retains its customers.",
                 "Formula: Churn Rate = (Customers lost during a period / Customers at the start of the period) x 100",
@@ -153,8 +155,8 @@ export const productManagement = {
                 "Definition: MAU tracks the number of unique users who engage with the product within a given month.",
                 "Formula: MAU = Total number of unique users within a month",
                 "Why It Matters: MAU is a critical metric for tracking user engagement and product popularity. A growing MAU shows that the product is engaging and retaining its users, while a stagnant or declining MAU may indicate issues with user retention or product appeal.",
-                "2.Analyzing product metrics:Analyzing product metrics involves identifying patterns, evaluating trends, and linking them to business objectives. Start by collecting accurate data, segmenting users, and comparing metrics like retention or churn over time. Tools like dashboards and visualizations can help make data actionable, enabling teams to make data-driven decisions for product improvements.",
-                "3.Regular review of user behavior:Regularly reviewing user behavior ensures a deeper understanding of how customers interact with a product. Analyzing session durations, feature usage, and common pain points allows teams to identify areas for optimization, refine UX, and align product features with user expectations.",
+                "Analyzing product metrics:Analyzing product metrics involves identifying patterns, evaluating trends, and linking them to business objectives. Start by collecting accurate data, segmenting users, and comparing metrics like retention or churn over time. Tools like dashboards and visualizations can help make data actionable, enabling teams to make data-driven decisions for product improvements.",
+                "Regular review of user behavior:Regularly reviewing user behavior ensures a deeper understanding of how customers interact with a product. Analyzing session durations, feature usage, and common pain points allows teams to identify areas for optimization, refine UX, and align product features with user expectations.",
               ],
               challenges: [
                 {

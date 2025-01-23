@@ -1,19 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 
 export const InfiniteImageSlider = ({ images, speed = 10, height = 200 }) => {
-  const [isMobile, setIsMobile] = useState(false);
- 
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 900 && images.length > 2);
-    };
-   
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, [images]);
-
-  const shouldScroll = isMobile || images.length > 7;
+  const shouldScroll = images.length > 2;
  
   const { containerRef, translateX } = useInfiniteScroll(
     speed,
@@ -24,7 +12,7 @@ export const InfiniteImageSlider = ({ images, speed = 10, height = 200 }) => {
 
   // Create three sets of images for smooth infinite scrolling
   const displayImages = shouldScroll
-    ? [...images, ...images, ...images]
+    ? Array(50).fill(images).flat()
     : images;
 
   return (
@@ -43,7 +31,7 @@ export const InfiniteImageSlider = ({ images, speed = 10, height = 200 }) => {
             <img
               src={src}
               alt={`Slide ${index + 1}`}
-              className="object-contain h-full"
+              className="object-contain h-full max-w-[300px]"
               loading="lazy"
             />
           </div>
@@ -66,18 +54,16 @@ const useInfiniteScroll = (speed, imageWidth, shouldScroll, imageCount) => {
 
     const animate = () => {
       currentTranslate -= speed;
-      
+     
       // Reset position when we've scrolled one full set of images
       if (Math.abs(currentTranslate) >= totalWidth) {
         currentTranslate = 0;
       }
-
       setTranslateX(currentTranslate);
       animationRef.current = requestAnimationFrame(animate);
     };
 
     animationRef.current = requestAnimationFrame(animate);
-
     return () => {
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);

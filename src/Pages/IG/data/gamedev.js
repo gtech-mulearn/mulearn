@@ -372,7 +372,7 @@ export const gamedev = {
         {
           title: "Portfolio and Community Engagement",
           data: {
-            description: "This is a description of the course",
+            description: "Your journey as a game developer extends beyond creating games—it involves showcasing your work and engaging with a community of like-minded individuals. Portfolio Creation is essential to highlight your best work, including interactive demos, 3D environments, and mechanics. An interactive 3D portfolio using platforms like Unreal Engine or Three.js offers an immersive experience. Community Engagement, through platforms like Discord, Reddit, and Unreal Engine forums, is crucial for collaboration, learning, and networking. Participating in game jams, hackathons, and maintaining a professional presence on LinkedIn and ArtStation further enhances your career opportunities. Engaging with the community by mentoring, collaborating on open-source projects, and contributing to the ecosystem will establish your reputation as a skilled, approachable developer. By focusing on Portfolio and Community Engagement, you’ll open doors to professional opportunities and become an active contributor to the game development world.",
             whatYouWillLearn: ["Portfolio Development", "Community Engagement"],
 
             challenges: [
@@ -422,10 +422,13 @@ export const gamedev = {
         "/assets/IG/Game Development/Community Partners/AnimationXpress.jpeg",
     },
   ],
-  prerequisites: {
-    description:
-      "To get started in game development, it's important to have basic computer skills, such as installing software and managing files or folders. Familiarity with programming concepts like variables, loops, and functions is helpful, with C++ knowledge being a plus but not mandatory. A basic understanding of 3D math, including vectors and transformations, is useful for working with 3D objects. Additionally, an awareness of fundamental game design principles, such as level layout and gameplay mechanics, provides a solid foundation for creating engaging games.advanced topics.",
-  },
+  prerequisites: [
+    "Basic computer skills, such as installing software and managing files or folders.",
+    "Familiarity with programming concepts, including variables, loops, and functions.",
+    "Knowledge of C++ is a plus but not mandatory.",
+    "Basic understanding of 3D math, such as vectors and transformations, for working with 3D objects.",
+    "Awareness of fundamental game design principles, including level layout and gameplay mechanics.",
+  ],
   learningPath: {
     embedUrl: "https://roadmap.sh/r/unreal-engine-5-game-developer-19rqf",
   },
@@ -444,7 +447,7 @@ export const gamedev = {
     },
     {
       name: "Jobin Joseph",
-      role: " Norian Games",
+      role: "Co founder and CFO @ Norian Games",
       linkedin: "https://www.linkedin.com/in/jobin-joseph-8b0aa4265/",
       imageUrl: "/assets/IG/Game Development/Mentors/Jobin.png",
     },

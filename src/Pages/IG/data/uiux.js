@@ -17,10 +17,11 @@ export const uiuxDesign = {
       image: "/assets/IG/UI-UX/Community Partners/UXSHOTS.jpg",
     },
   ],
-  prerequisites: {
-    description:
-      "To begin your journey into UI/UX design, it’s essential to build a foundation of basic skills. Start by learning wireframing and prototyping using tools like Figma which help you visualize and test design concepts. A strong grasp of basic graphic design principles, such as alignment, contrast, and typography, is also crucial. Additionally, understanding how to conduct user research and gather feedback will allow you to refine your designs and ensure they meet user needs effectively.",
-  },
+  prerequisites: [
+    "Learn wireframing and prototyping using tools like Figma to visualize and test design concepts.",
+    "Develop a strong grasp of basic graphic design principles, such as alignment, contrast, and typography.",
+    "Understand how to conduct user research and gather feedback to refine designs and meet user needs effectively."
+  ],
   roadMap: [
     {
       level: "Level 4",

@@ -3,80 +3,111 @@ export const cybersecurity = {
   introduction: {
     description:
       "Curious about protecting the digital world? The Cybersecurity Interest Group by GTech μLearn delves into securing data and networks from potential threats. This group provides essential knowledge on staying safe online, ideal for those passionate about keeping cyberspace secure.",
-    downloadLink: "https://mulearnfoundation.notion.site/11e59e69b1bf804c8fe3fd2acbca4258?pvs=25",
+    downloadLink:
+      "https://mulearnfoundation.notion.site/11e59e69b1bf804c8fe3fd2acbca4258?pvs=25",
     schedules: {
       officeHours: "Monday 7:30 PM @ Discord Lobby",
       thinkTankMeeting: "First Wednesday 7:00 PM @ Google Meet",
     },
   },
 
-  communityPartners:[
-    { name: "Beagle Security", image: "/assets/IG/Cyber Security/Community Partners/Beagle Security.jpg" },
-    { name: "Zilicon technologies", image: "/assets/IG/Cyber Security/Community Partners/Zilicon technologies.png" },
+  communityPartners: [
+    {
+      name: "Beagle Security",
+      image: "/assets/IG/Cyber Security/Community Partners/Beagle Security.jpg",
+    },
+    {
+      name: "Zilicon technologies",
+      image:
+        "/assets/IG/Cyber Security/Community Partners/Zilicon technologies.png",
+    },
   ],
-  prerequisites: {
-    description:
-      "Cybersecurity requires a basic understanding of computer systems, operating systems (especially Linux and Windows), and networking concepts like IP addresses and protocols. Familiarity with programming (Python, Bash) and web technologies (HTML, JavaScript) is beneficial. Key concepts include encryption, authentication, and common threats like malware and phishing. Hands-on experience with tools like Wireshark, Nmap, and vulnerability scanners is essential. Problem-solving skills and a continuous learning mindset are critical to keeping up with evolving cyber threats.",
-  },
+  prerequisites: [
+    "Cybersecurity requires a basic understanding of computer systems.",
+    "Knowledge of operating systems, especially Linux and Windows, is crucial.",
+    "Understanding networking concepts like IP addresses and protocols is essential.",
+    "Familiarity with programming languages such as Python and Bash is beneficial.",
+    "Web technologies like HTML and JavaScript are helpful in cybersecurity.",
+    "Key concepts include encryption, authentication, and common threats like malware and phishing.",
+    "Hands-on experience with tools like Wireshark, Nmap, and vulnerability scanners is essential.",
+    "Problem-solving skills are critical for addressing cyber challenges.",
+    "A continuous learning mindset is necessary to keep up with evolving cyber threats.",
+  ],
   roadMap: [
     {
       level: "Level 4",
       cards: [
         {
-          title: "Understanding the Role",
+          title: "Fundamental IT Skills for CyberSecurity",
           data: {
             description:
-              "Product managers are responsible for guiding the success of a product by balancing customer needs, business goals, and technical feasibility. They define product vision, align it with business strategy, and ensure cross-functional teams collaborate effectively.",
+              "Computer networking is the process of connecting two or more computing devices to enable the transmission and exchange of information and resources. It allows devices to communicate, share data, and access resources like files, printers, and internet connections. The basics of networking involve key components such as nodes, links, switches, routers, and protocols. Nodes are network connection points that can receive, send, create, or store data, while links are the physical or wireless connections between nodes. Switches connect network devices and manage node-to-node communication, while routers send data packets between networks. Protocols are sets of rules governing data transmission between devices and are essential for building and maintaining networks. Networking can be categorized into different types such as local area networks (LANs), wide area networks (WANs), and cloud networks, each with its own characteristics and uses. Network security is essential for protecting data and devices from cyber threats and includes features such as firewalls, encryption, and access controls to prevent unauthorized access. Networking enables the efficient exchange of data, supports various applications, enhances productivity, and improves security. Operating systems (OS) manage computer hardware and provide a platform for applications to run. They handle functions like memory management, task processing, device control, and file management. Examples include Windows, macOS, Linux, and Unix, each offering different features suited for specific user needs. Linux, an open-source, Unix-like OS, is known for its stability, security, and flexibility, and it is commonly used in servers and embedded systems. macOS, developed by Apple Inc., is a user-friendly OS with a Unix-based architecture, while Windows is a widely-used OS supporting a vast range of software and hardware, offering features like multitasking and regular updates. Cybersecurity principles are built on the CIA triad: confidentiality, integrity, and availability, and are reinforced by governance, protection, detection, and response strategies. Risk management and regular assessments are necessary to identify vulnerabilities. Security architecture follows principles like economy of mechanism, least privilege, and separation of duties. Training users on best practices and continuously reviewing security measures are essential for maintaining a robust security posture. Types of security include red teams, which simulate attacks to find vulnerabilities, blue teams, which defend against attacks, and purple teams, a hybrid of both. Defensive security involves proactive measures like risk assessment, implementing strong protocols, monitoring for threats, and preparing incident response plans. Offensive security focuses on identifying vulnerabilities through red teaming, penetration testing, and ethical hacking. IoT penetration testing simulates attacks on IoT devices and networks to identify weaknesses, ensuring the security of interconnected systems. It identifies vulnerabilities in network services, interfaces, update mechanisms, and more, using tools like Nmap, Metasploit, and Burp Suite. Regular penetration testing helps organizations stay ahead of evolving threats, maintain client trust, and secure IoT devices.",
             whatYouWillLearn: [
-              "1.Fundamentals of product management: Product management involves overseeing the entire lifecycle of a product, from conception to development, launch, and beyond. It requires balancing business objectives, user needs, and technical capabilities to create valuable products. Product managers work on product strategy, roadmaps, and coordinating cross-functional teams to ensure successful product delivery.",
-              "2. Essential skills needed for a product manager: Core skills include market research, communication, problem-solving, strategic thinking, and leadership. Each of these helps PMs to make informed decisions, navigate challenges, and lead teams effectively.",
-              "3.The product manager's role in the organization: Product managers are responsible for guiding the success of a product by balancing customer needs, business goals, and technical feasibility. They define product vision, align it with business strategy, and ensure cross-functional teams collaborate effectively.",
+              "Understanding computer networking fundamentals: Learn how devices communicate over networks, including key components like nodes, links, switches, routers, and protocols. Gain insights into LANs, WANs, cloud networks, and network security measures to safeguard data and devices.",
+              "Overview of operating systems: Explore the functions and features of different operating systems, including Linux, macOS, and Windows. Understand how OS manage hardware, memory, tasks, and devices, with a focus on the unique characteristics of each platform.",
+              "Core principles of cybersecurity: Understand the CIA triad (confidentiality, integrity, availability) and risk management strategies to protect against cyber threats. Learn about governance, security architecture, and the importance of regular security assessments and training.",
+              "Defensive and offensive security techniques: Learn about red, blue, and purple teams and how they contribute to cybersecurity efforts. Understand defensive measures like risk assessment, threat monitoring, and incident response, and offensive practices like penetration testing and ethical hacking.",
+              "IoT penetration testing: Understand the challenges of securing IoT devices and networks. Learn the tools and techniques used in IoT penetration testing to identify vulnerabilities and ensure interconnected systems remain secure.",
             ],
             challenges: [
               {
-                title: "Challenge 1: Fundamentals of product management",
+                title: "TryHackMe Introduction",
                 resources: [
-                  "https://www.udemy.com/course/product-management-a/",
+                  "https://tryhackme.com/room/hello",
+                  "https://tryhackme.com/room/openvpn",
                 ],
                 description:
-                  'In this task, you will gain a fundamental understanding of Product Management through the Udemy course "Introduction to Product Management". You\'ll learn about the responsibilities and roles of a product manager and explore various opportunities in Product Management.\n\nAfter completing this course, post the screenshot of the tasks in the Gtech Mulearn Discord server ⁠product-management channel using the hashtag #cl-product-intro to avail 400 karma points.',
+                  "In this task, you are asked to complete all the tasks provided in the TryHackMe rooms till you get 100% completion status. Visit the following TryHackme rooms: Hello Room and OpenVPN Room.\n\nNOTE: Here's a sample screenshot: https://drive.google.com/file/d/1mTzfFvvkZR5FHtk9LRI2uZPt7p-673kO/view?usp=sharing\n\nAfter completing all the tasks, share your public profile URL in the ⁠cyber-security channel using the hashtag #cl-cybersec-thmhello to avail 20 karma points.",
+              },
+              {
+                title: "Principles of Security",
+                resources: ["https://tryhackme.com/room/principlesofsecurity"],
+                description:
+                  "In this task, you should demonstrate your understanding of security principles by completing all the tasks in the TryHackMe room 'Principles of Security' till you get 100% completion status.\n\nAfter completing the task, share your public profile URL in the ⁠cyber-security channel using the hashtag #cl-cybersec-principlesofsecurity to avail karma points.",
+              },
+              {
+                title: "Write a Blog",
+                resources: ["https://medium.com/"],
+                description:
+                  "In this task, you should share your knowledge and insights on hacking, virtual machines, Linux, and networking by creating a blog with a minimum of 500 words, providing all the necessary information like explanations, examples, and any important insight.\n\nNOTE: You can post your blog on any platform (Medium, Hashnode, WordPress, etc.). Suggested Platform: https://medium.com/\n\nAfter completing this task, share your blog URL in the ⁠cyber-security channel using the hashtag #cl-cybersec-bloghackingintro to avail 100 karma points.",
+              },
+              {
+                title: "Task 4: Introduction to Offensive Security",
+                resources: [
+                  "https://tryhackme.com/room/introtooffensivesecurity",
+                ],
+                description:
+                  "In this task, you should demonstrate your understanding of offensive security concepts by completing all the tasks in the TryHackMe room 'Introduction to Offensive Security', ensuring you get 100% completion status.\n\nAfter completing the task, share your public profile URL in the ⁠cyber-security channel using the hashtag #cl-cybersec-thmintrotooffensivesecurity to avail 20 karma points.",
+              },
+              {
+                title: "Cisco Networking Basics",
+                resources: [
+                  "https://skillsforall.com/course/networking-basics?courseLang=en-US",
+                ],
+                description:
+                  "In this task, you have to obtain the Cisco Networking Basics badge by completing all the lessons and requirements in the 'Networking Basics' course provided by Skillsforall.\n\nAfter completing the course, share your badge in the ⁠cyber-security channel using the hashtag #cl-cybersec-cisconetworkingbasics to avail 800 karma points.",
+              },
+              {
+                title: "IoT PenTesting",
+                resources: ["https://tryhackme.com/room/iotintro"],
+                description:
+                  "In this task, you have to showcase your skills in IoT (Internet of Things) PenTesting by completing all the tasks in the TryHackMe room 'IoT Pentesting' till you get a 100% completion status.\n\nAfter completing the task, share your public profile URL in the ⁠cyber-security channel using the hashtag #cl-cybersec-thmintroiotpentesting to avail 20 karma points.",
+              },
+              {
+                title: "Cisco Packet Tracer",
+                resources: [
+                  "https://skillsforall.com/exam/introduction-packet-tracer?courseLang=en-US",
+                  "https://skillsforall.com/course/getting-started-cisco-packet-tracer?courseLang=en-US",
+                  "https://skillsforall.com/course/exploring-networking-cisco-packet-tracer?courseLang=en-US",
+                  "https://skillsforall.com/course/exploring-iot-cisco-packet-tracer?courseLang=en-US",
+                ],
+                description:
+                  "In this task, you are required to complete 4 different SkillsForAll courses on 'Introduction to Packet Tracer', 'Getting Started with Cisco Packet Tracer', 'Exploring Networking', and 'Exploring IoT' and earn badges by completing all the lessons and tasks provided.\n\nAfter completing these courses, share your badge in the ⁠cyber-security channel using the hashtag #cl-cybersec-ciscopackettracer to avail 1200 karma points.",
               },
             ],
           },
-          resources: 1,
-          proofOfWork: 1,
-          rating: 0,
-          hasGift: false,
-        },
-        {
-          title: "Product Strategy",
-          data: {
-            description:
-              "In this phase, SWOT (Strengths, Weaknesses, Opportunities, Threats) analysis helps define a product's strategic positioning. It guides decisions on where the product can excel (strengths), areas for improvement (weaknesses), new markets or user needs it can serve (opportunities), and external challenges (threats) that might hinder growth.",
-            whatYouWillLearn: [
-              "1.Developing a product strategy:Developing a product strategy is a critical step in product management. It involves defining a long-term vision and plan that outlines how the product will achieve its goals and deliver value to both customers and the business.",
-              "2.Importance of product-market fit:Product-market fit is crucial for a product’s success as it determines whether a product meets the specific needs and demands of its target market. Achieving product-market fit means that customers find value in a product, driving demand and satisfaction. This alignment is often the difference between sustainable growth and stagnation, as it shows that the product genuinely solves a problem or fills a gap in the market.​",
-              "3.Understanding market trends:Understanding market trends is crucial for product managers and businesses, as it provides insights into shifts in consumer preferences, technological advancements, and competitive dynamics.",
-            ],
-            challenges: [
-              {
-                title: "Challenge 1: SWOT Analysis",
-                resources: ["https://youtu.be/mR9eICQJLXA?si=otvDfvtjlkdphHVh"],
-                description:
-                  "A SWOT analysis is a strategic planning tool that helps individuals or organizations assess their current position and develop strategies for growth. It stands for Strengths, Weaknesses, Opportunities, and Threats\n\nIn this task, you will gain a comprehensive understanding of SWOT Analysis by watching the provided video on the SWOT Analysis of Starbucks. After understanding the concept, prepare a SWOT Analysis, identifying its strengths, weaknesses, opportunities, and threats, for one of the following product companies: Boat Audio Devices, TATA Motors EV, or Xiaomi MI India.",
-              },
-              {
-                title: "Challenge 2: Market Research",
-                resources: [
-                  "https://blog.logrocket.com/product-management/what-is-market-analysis-definition-examples-template/",
-                ],
-                description:
-                  "Conducting a Competitor Analysis\n\nIdentify Key Competitors: Research and select 3–5 competitors for your product. Include both direct competitors (similar products) and indirect competitors (alternative solutions). For example, if analyzing Spotify, key competitors might include Apple Music, YouTube Music, and Amazon Music.\n\nAnalyze Product Features and Pricing: Compare competitors’ features, pricing models, and unique selling points (USPs). For Spotify, you could note its personalized playlists, podcast integration, and ad-free premium plan. Highlight standout features like YouTube Music’s free streaming or Amazon Music’s integration with Prime Membership to identify gaps or advantages.\n\nRead Customer Reviews: Dive into reviews from platforms like App Store, Play Store, or social media. For example, users may praise Spotify’s discoverability features but criticize limited offline downloads in the free version. These insights reveal strengths to enhance and weaknesses to address in your product.",
-              },
-            ],
-          },
-          resources: 1,
-          proofOfWork: 1,
+          resources: 11,
+          proofOfWork: 7,
           rating: 0,
           hasGift: false,
         },
@@ -86,91 +117,204 @@ export const cybersecurity = {
       level: "Level 5",
       cards: [
         {
-          title: "Product Development Process",
+          title: "Networking Knowledge",
           data: {
             description:
-              "The product development process is a cyclical approach where a product is built, tested, and refined in multiple iterations. Each cycle incorporates user feedback and performance insights, leading to continuous improvement and faster delivery of a polished product that meets user expectations.",
+              "This section covers essential networking concepts, protocols, and security practices to equip you with the knowledge needed to manage, secure, and analyze networks effectively. From understanding SSL/TLS to learning about common protocols, ports, and web application security, this level provides a deep dive into the technologies that power modern networks.",
             whatYouWillLearn: [
-              "1. Agile product development: Agile product development is a flexible and iterative approach that emphasizes collaboration, customer feedback, and rapid prototyping. It allows teams to adapt quickly to changes by breaking the development process into small, manageable sprints or iterations. This ensures continuous delivery of value and aligns the product closely with user needs.",
-              "2. Designing for your target audience: Designing for your target audience involves understanding their needs, preferences, and behaviors to create user-centric products. This process includes conducting research, creating personas, and focusing on user experience (UX) to ensure the product solves their problems effectively and enhances satisfaction.",
-              "3. Iterative product development process: The iterative product development process is a cyclical approach where a product is built, tested, and refined in multiple iterations. Each cycle incorporates user feedback and performance insights, leading to continuous improvement and faster delivery of a polished product that meets user expectations.",
-              "4. Understanding customer journey: Understanding the customer journey maps out the entire experience a customer has with a product or service. This includes identifying touchpoints, pain points, and opportunities for improvement, allowing businesses to optimize their offerings for better engagement and satisfaction.",
-              "5. Customer surveys: Customer surveys collect quantitative data through structured questionnaires to measure customer satisfaction, preferences, and expectations. They are a scalable way to gather feedback and identify trends across a larger audience.",
+              "SSL vs TLS: Learn about Secure Sockets Layer (SSL) and Transport Layer Security (TLS), two cryptographic protocols used to secure internet communications. SSL has been deprecated, and TLS is the preferred, secure protocol for encrypting data in transit.",
+              "Common Protocols and their Uses: Study the fundamental networking protocols such as TCP/IP, HTTP/HTTPS, FTP/SFTP, and DNS, and how they are used in data transmission, web browsing, file transfer, and more.",
+              "OSI Model: Understand the seven layers of the Open Systems Interconnection (OSI) Model, which defines how data communication occurs across a network from physical transmission to application-level interactions.",
+              "Common Ports and their Uses: Get familiar with essential network ports like 80 (HTTP), 443 (HTTPS), and 22 (SSH), and learn how they facilitate communication for different network services and protocols.",
+              "Web Application Security: Explore the practices and protocols to secure web applications from threats like SQL injection, cross-site scripting (XSS), and cross-site request forgery (CSRF). Focus on secure development lifecycle (SDL), input validation, encryption, and monitoring.",
+              "Nessus: Learn how Nessus, a vulnerability scanning tool, helps cybersecurity professionals identify and manage security weaknesses in networks and systems, including its features such as predictive prioritization, dynamic plugin database, and compliance checks.",
+              "BurpSuite: Understand the comprehensive capabilities of BurpSuite for web application security testing, including its various tools for proxying, scanning, intercepting requests, and identifying vulnerabilities in web applications.",
+              "Threat Intelligence Tools: Dive into the tools used for gathering, analyzing, and disseminating threat intelligence, including ActorTrackr, AIEngine, Analyze, and others, which help organizations stay ahead of cyber threats and improve their security posture.",
+              "Nmap: Explore the functionalities of Nmap, a network scanning tool that is widely used for discovering network hosts, scanning for open ports, detecting services, and performing vulnerability assessments.",
             ],
             challenges: [
               {
-                title: "Challenge 1: Create a basic Agile sprint plan",
-                resources: ["https://scrumguides.org/"],
-                description:
-                  "Research Agile Fundamentals: Start by understanding the core principles of Agile methodology—flexibility, iterative progress, and customer collaboration. Explore frameworks like Scrum, which organizes work into sprints, and concepts like user stories to capture product requirements.\n\nMock Product Idea: Choose a product idea to implement Agile practices. For instance, develop a task management app aimed at simplifying daily to-dos for students.\n\nDefine User Stories: Write user stories based on customer needs. Example: “As a student, I want to create task lists quickly so that I can organize my assignments better.” Ensure stories are clear, actionable, and customer-focused.\n\nCreate a Sprint Plan: Divide work into 2-week sprints. For the first sprint, focus on basic UI development and task creation functionality. In the second sprint, add editing features, task reminders, and basic data storage.",
-              },
-              {
-                title: "Challenge 2: Conduct a persona creation exercise",
+                title: "Web Application Security",
                 resources: [
-                  "https://www.coursera.org/learn/foundations-user-experience-design",
+                  "https://tryhackme.com/room/introwebapplicationsecurity",
                 ],
                 description:
-                  "Step 1: Define the Hypothetical App\nChoose a mock app to base your research on. For example, consider an app for budget tracking for students that simplifies financial management through intuitive design and gamified saving goals.\n\nStep 2: Research Target Audience\nIdentify the audience likely to benefit from the app. For this example, the target audience could be college students aged 18–25, who are digitally savvy but face challenges managing personal finances.\n\nStep 3: Create a Persona\nDevelop a user persona that includes:\nDemographics: Age, gender, education level, income range. Example: Maria, 20, a college student earning a part-time income.\nBehaviors: Daily app usage, tech comfort, spending habits. Example: Uses budgeting apps occasionally, prefers gamified tools.\nPain Points: Financial stress, lack of budgeting knowledge, inconsistent savings. Example: Struggles to keep track of monthly expenses.",
+                  "In this task, you have to demonstrate your proficiency in web application security by completing all the tasks in the TryHackMe room 'Intro to Web Application Security' and ensure you get 100% completion status. After completing the task, share your public profile URL in the ⁠cyber-security channel using the hashtag #cl-cybersec-thmwebapplicationsecurity to avail 20 karma points.",
               },
               {
-                title: "Challenge 3: Product Development",
-                resources: ["http://designkit.org/"],
+                title: "Nmap Mastery",
+                resources: ["https://tryhackme.com/room/furthernmap"],
                 description:
-                  "Step 1: Pick a Simple Product Idea\nChoose a basic product idea to demonstrate the iterative process. For instance, a habit-tracking mobile app designed to help users track and improve daily routines.\n\nStep 2: Follow the Iterative Process\nIdeation: Brainstorm key features such as habit creation, progress tracking, and reminders. Define the primary goal: to make habit tracking simple and engaging.\n\nPrototyping: Create a low-fidelity wireframe showcasing the app’s main screens (e.g., dashboard, add habit, progress graph). Tools like Figma or Balsamiq can be used for visual representation.\n\nTesting: Share the prototype with 5–10 potential users for feedback. Focus on usability, design clarity, and feature priorities.\n\nRefining: Address feedback such as making habit creation faster or improving UI visibility for progress graphs.\n\nStep 3: Second Iteration\nBased on feedback, refine the prototype and add enhancements. For instance, include a streak feature to motivate users and simplify navigation by grouping habits into categories.",
+                  "In this task, you have to demonstrate your expertise in using Nmap by completing all the tasks in the TryHackMe room 'Further Nmap' and make sure to get a 100% completion status. After completing the task, share your public profile URL in the ⁠cyber-security channel using the hashtag #cl-cybersec-thmnmap to avail 200 karma points.",
               },
               {
-                title: "Challenge 4: Map a customer journey",
-                resources: [""],
+                title: "Google Dorking Proficiency",
+                resources: ["https://tryhackme.com/room/googledorking"],
                 description:
-                  "Step 1: Awareness\nThe journey begins when a potential customer becomes aware of a book they might want to purchase. This could be through social media ads, book reviews, or recommendations from friends. For example, an ad on Facebook might prompt the user to explore a new bestseller.\n\nStep 2: Consideration\nOnce the customer is aware of the book, they might search for more information online. They may read customer reviews, check ratings on platforms like Amazon, or explore online bookstores to compare prices. They consider factors like price, availability, and the reputation of the seller.\n\nStep 3: Decision\nAfter considering options, the customer makes the decision to buy. They may add the book to their shopping cart and proceed to checkout. At this stage, they are focused on the user experience—whether the site is easy to navigate, and whether payment methods are clear and secure.\n\nStep 4: Purchase\nThe...",
+                  "In this task, you have to showcase your expertise in Google Dorking by successfully completing all the tasks in the TryHackMe room 'Google Dorking' and get a 100% completion status. After completing the task, share your public profile URL in the ⁠cyber-security channel using the hashtag #cl-cybersec-googledorking to avail 100 karma points.",
+              },
+              {
+                title: "Threat Intelligence & Tools Mastery",
+                resources: ["https://tryhackme.com/room/threatinteltools"],
+                description:
+                  "In this task, you have to demonstrate your proficiency in threat intelligence tools by successfully completing all the tasks in the TryHackMe room 'Threat Intelligence Tools' and make sure to get a 100% completion status. After completing the task, share your public profile URL in the ⁠cyber-security channel using the hashtag #cl-cybersec-thmthreatintelligencetools to avail 100 karma points.",
+              },
+              {
+                title: "Shodan.io",
+                resources: ["https://tryhackme.com/room/shodan"],
+                description:
+                  "In this task, you have to showcase your proficiency in using Shodan.io by successfully completing all the tasks in the TryHackMe room 'Shodan' and make sure to get a 100% completion status. After completing the task, share your public profile URL in the ⁠cyber-security channel using the hashtag #cl-cybersec-thmshodan to avail 100 karma points.",
+              },
+              {
+                title: "Burp Suite Mastery",
+                resources: [
+                  "https://tryhackme.com/room/burpsuitebasics",
+                  "https://tryhackme.com/room/burpsuiterepeater",
+                ],
+                description:
+                  "In this task, you have to demonstrate your proficiency in using Burp Suite by successfully completing all the tasks in the TryHackMe rooms 'Burp Suite Basics' and 'Burp Suite Repeater' making sure you get a 100% completion status for both rooms. After completing the task, share your public profile URL in the ⁠cyber-security channel using the hashtag #cl-cybersec-burpsuite to avail 400 karma points.",
+              },
+              {
+                title: "Nessus",
+                resources: ["https://tryhackme.com/room/rpnessusredux"],
+                description:
+                  "In this task, you have to showcase your proficiency in using Nessus by successfully completing all the tasks in the TryHackMe room 'RP: Nessus Redux', and get a 100% completion status. After completing the task, share your public profile URL in the ⁠cyber-security channel using the hashtag #cl-cybersec-thmnessus to avail 100 karma points.",
+              },
+              {
+                title: "SQLMap",
+                resources: ["https://tryhackme.com/room/sqlmap"],
+                description:
+                  "In this task, you have to demonstrate your proficiency in using SQLMap by successfully completing all the tasks in the TryHackMe room 'SQLMap', and get a 100% completion status. After completing the task, share your public profile URL in the ⁠cyber-security channel using the hashtag #cl-cybersec-sqlmap to avail 100 karma points.",
+              },
+              {
+                title: "Hydra Proficiency",
+                resources: ["https://tryhackme.com/room/hydra"],
+                description:
+                  "In this task, you have to showcase your proficiency in using Hydra by successfully completing all the tasks in the TryHackMe room 'Hydra' ensuring a 100% completion status. After completing the task, share your public profile URL in the ⁠cyber-security channel using the hashtag #cl-cybersec-thmhydra to avail 50 karma points.",
+              },
+              {
+                title: "Metasploit Introduction",
+                resources: ["https://tryhackme.com/room/metasploitintro"],
+                description:
+                  "In this task, you have to familiarize yourself with Metasploit by successfully completing all the tasks in the TryHackMe room 'Metasploit Intro' and get a 100% completion status. After completing the task, share your public profile URL in the ⁠cyber-security channel using the hashtag #cl-cybersec-thmmetasploit to avail 50 karma points.",
+              },
+              {
+                title: "Digital Forensics Introduction",
+                resources: ["https://tryhackme.com/room/introdigitalforensics"],
+                description:
+                  "In this task, you have to gain insight into the field of digital forensics by successfully completing all the tasks in the TryHackMe room 'Intro to Digital Forensics' and make sure you get a 100% completion status. After completing the task, share your public profile URL in the ⁠cyber-security channel using the hashtag #cl-cybersec-thmintrodigitalforensics to avail 50 karma points.",
+              },
+              {
+                title: "Cryptography Introduction",
+                resources: ["https://tryhackme.com/room/cryptographyintro"],
+                description:
+                  "In this task, you have to get acquainted with the fundamentals of cryptography by successfully completing all the tasks in the TryHackMe room 'Introduction to Cryptography' and get a 100% completion status. After completing the task, share your public profile URL in the ⁠cyber-security channel using the hashtag #cl-cybersec-introcryptography to avail 200 karma points.",
+              },
+              {
+                title: "Malware Introductory",
+                resources: ["https://tryhackme.com/room/malmalintroductory"],
+                description:
+                  "In this task, you have to gain foundational knowledge about malware by successfully completing all the tasks in the TryHackMe room 'Malware Introductory' and ensure you get a 100% completion status. After completing the task, share your public profile URL in the ⁠cyber-security channel using the hashtag #cl-cybersec-thmmalwareintroductory to avail 100 karma points.",
+              },
+              {
+                title: "Android Hacking",
+                resources: ["https://tryhackme.com/room/androidhacking101"],
+                description:
+                  "In this task, you have to dive into Android hacking basics by successfully completing all the tasks in the TryHackMe room 'Android Hacking 101' and get a 100% completion status. After completing the task, share your public profile URL in the ⁠cyber-security channel using the hashtag #cl-cybersec-thmintroandroidhacking101 to avail 50 karma points.",
+              },
+              {
+                title: "Bash Script Port Scanning",
+                resources: [],
+                description:
+                  "In this task, you have to develop a Bash script for port scanning to a GitHub repository. After completing the task, share the hosted GitHub repository URL in the ⁠cyber-security channel using the hashtag #cl-cybersec-bashscriptportscanning to avail 200 karma points.",
               },
             ],
           },
-          resources: 1,
-          proofOfWork: 1,
+          resources: 15,
+          proofOfWork: 15,
           rating: 0,
           hasGift: false,
         },
+      ],
+    },
+    {
+      level: "Level 6",
+      cards: [
         {
-          title: "Using Product Metrics",
+          title: "Security Skills and Knowledges",
           data: {
             description:
-              "Define metrics to measure the product’s performance and the success of the strategy. These could include customer acquisition cost (CAC), lifetime value (LTV), user engagement, and NPS (Net Promoter Score).",
+              "Understand Common Hacking Tools: Tools like Nmap, Nessus, Metasploit, Wireshark, and Aircrack-ng used for network exploration, security auditing, and penetration testing require ethical use. Learn more: https://www.eccouncil.org/cybersecurity-exchange/ethical-hacking/best-ethical-hacking-tools/ https://www.youtube.com/watch?v=4WqymtvuWZQ | CIA Triad: Confidentiality, Integrity, and Availability are key principles of information security, ensuring data is secure, accurate, and accessible. Learn more: https://www.fortinet.com/resources/cyberglossary/cia-triad https://www.youtube.com/watch?v=SBcDGb9l6yo | Basics of Forensics: Cyber forensics involves collecting, preserving, analyzing, and reporting digital evidence to investigate and prosecute cybercrimes. Learn more: https://www.splunk.com/en_us/blog/learn/cyber-forensics.html https://www.youtube.com/watch?v=UtDWApdO8Zk | Threat Hunting: Proactively searching for hidden threats using human intuition, threat intelligence, and data analysis to detect and mitigate threats. Learn more: https://www.ibm.com/topics/threat-hunting https://www.youtube.com/watch?v=VNp35Uw_bSM | Web-Based Attacks and OWASP 10: Highlights risks like injection flaws, XSS, and broken authentication to guide secure web development. Learn more: https://owasp.org/www-project-top-ten/ https://youtube.com/playlist?list=PLyqga7AXMtPOguwtCCXGZUKvd2CDCmUgQ | Blue Team vs Red Team vs Purple Team: Blue (defense) protects systems, Red (offense) tests defenses, Purple bridges both for collaboration and security. Learn more: https://www.checkpoint.com/cyber-hub/cyber-security/what-is-a-blue-team/ https://www.ibm.com/think/topics/red-teaming https://www.crowdstrike.com/cybersecurity-101/purple-teaming/",
             whatYouWillLearn: [
-              "1.Important product metrics to track:Key Product Metrics and Their Importance",
-              "Churn Rate",
-              "Definition: Churn rate measures the percentage of customers who stop using the product or service during a specific period. It indicates how well a product retains its customers.",
-              "Formula: Churn Rate = (Customers lost during a period / Customers at the start of the period) x 100",
-              "Why It Matters: A high churn rate signals issues with customer satisfaction or product value, indicating areas for improvement. Monitoring churn helps identify retention problems and the effectiveness of customer engagement strategies.",
-              "Customer Lifetime Value (CLV)",
-              "Definition: CLV represents the total revenue a business can expect from a customer over the entire duration of their relationship.",
-              "Formula: CLV = (Average Value of a Sale) x (Number of Transactions) x (Customer Retention Period)",
-              "Why It Matters: CLV helps businesses understand how much a customer is worth in the long term. A higher CLV indicates that the business has a loyal customer base, which leads to more sustainable revenue.",
-              "Net Promoter Score (NPS)",
-              "Definition: NPS is a metric used to measure customer loyalty and satisfaction based on the likelihood of customers recommending the product to others.",
-              "Formula: NPS = % Promoters - % Detractors",
-              "Why It Matters: NPS gauges the overall customer experience and satisfaction. A high NPS suggests strong customer loyalty, which can drive growth through word-of-mouth referrals. It also highlights areas where customer experience needs improvement.",
-              "Monthly Active Users (MAU)",
-              "Definition: MAU tracks the number of unique users who engage with the product within a given month.",
-              "Formula: MAU = Total number of unique users within a month",
-              "Why It Matters: MAU is a critical metric for tracking user engagement and product popularity. A growing MAU shows that the product is engaging and retaining its users, while a stagnant or declining MAU may indicate issues with user retention or product appeal.",
-              "2.Analyzing product metrics:Analyzing product metrics involves identifying patterns, evaluating trends, and linking them to business objectives. Start by collecting accurate data, segmenting users, and comparing metrics like retention or churn over time. Tools like dashboards and visualizations can help make data actionable, enabling teams to make data-driven decisions for product improvements.",
-              "3.Regular review of user behavior:Regularly reviewing user behavior ensures a deeper understanding of how customers interact with a product. Analyzing session durations, feature usage, and common pain points allows teams to identify areas for optimization, refine UX, and align product features with user expectations.",
+              "Understand Common Hacking Tools: Tools like Nmap, Nessus, Metasploit, Wireshark, and Aircrack-ng used for network exploration, security auditing, and penetration testing require ethical use. Learn more: https://www.eccouncil.org/cybersecurity-exchange/ethical-hacking/best-ethical-hacking-tools/ https://www.youtube.com/watch?v=4WqymtvuWZQ",
+              "CIA Triad: Confidentiality, Integrity, and Availability are key principles of information security, ensuring data is secure, accurate, and accessible. Learn more: https://www.fortinet.com/resources/cyberglossary/cia-triad https://www.youtube.com/watch?v=SBcDGb9l6yo",
+              "Basics of Forensics: Cyber forensics involves collecting, preserving, analyzing, and reporting digital evidence to investigate and prosecute cybercrimes. Learn more: https://www.splunk.com/en_us/blog/learn/cyber-forensics.html https://www.youtube.com/watch?v=UtDWApdO8Zk",
+              "Threat Hunting: Proactively searching for hidden threats using human intuition, threat intelligence, and data analysis to detect and mitigate threats. Learn more: https://www.ibm.com/topics/threat-hunting https://www.youtube.com/watch?v=VNp35Uw_bSM",
+              "Web-Based Attacks and OWASP 10: Highlights risks like injection flaws, XSS, and broken authentication to guide secure web development. Learn more: https://owasp.org/www-project-top-ten/ https://youtube.com/playlist?list=PLyqga7AXMtPOguwtCCXGZUKvd2CDCmUgQ",
+              "Blue Team vs Red Team vs Purple Team: Blue (defense) protects systems, Red (offense) tests defenses, Purple bridges both for collaboration and security. Learn more: https://www.checkpoint.com/cyber-hub/cyber-security/what-is-a-blue-team/ https://www.ibm.com/think/topics/red-teaming https://www.crowdstrike.com/cybersecurity-101/purple-teaming",
             ],
             challenges: [
               {
-                title:
-                  "Challenge 1: Create a table listing key product metrics",
+                title: "DVWA Vulnerability Analysis Report",
                 resources: [
-                  "",
+                  "https://www.vulnhub.com/entry/damn-vulnerable-web-application-dvwa-107,43/",
+                  "https://cybereaon.com/wp-content/uploads/2021/05/sample_report_web.pdf",
                 ],
                 description:
-                  "Research and Define: Dive into each of these product metrics to fully understand their definitions, formulas, and why they are crucial to product management.\n\nWrite About Them: Write a blog or report discussing these metrics in detail, explaining how each one affects decision-making and product optimization.\n\nPublish on Medium: Share your findings and insights by publishing the article on Medium.",
+                  "In this task, you have to create a report detailing the exploitation of every vulnerability in the Damn Vulnerable Web Application (DVWA). Check out the provided links. NOTE: Make sure you follow the format of the sample report and submit it in PDF format. After completing this task, upload the report PDF in the ⁠cyber-security channel using the hashtag #cl-cybersec-dvwa to avail 400 karma points.",
+              },
+              {
+                title: "OWASP Juice Shop",
+                resources: ["https://tryhackme.com/room/owaspjuiceshop"],
+                description:
+                  "In this task, you have to demonstrate your expertise in web application security by successfully completing all the tasks in the TryHackMe room 'OWASP Juice Shop' and make sure you get a 100% completion status. After completing the task, share your public profile URL in the ⁠cyber-security channel using the hashtag #cl-cybersec-owaspjuiceshop to avail 400 karma points.",
+              },
+              {
+                title: "OWASP Top 10 Proficiency",
+                resources: ["https://tryhackme.com/room/owasptop10"],
+                description:
+                  "In this task, you have to demonstrate your expertise in the OWASP Top 10 vulnerabilities by successfully completing the Tryhackme room 'OWASP Top 10' and getting a 100% completion status. After completing the task, share your public profile URL in the ⁠cyber-security channel using the hashtag #cl-cybersec-owasptop10 to avail 800 karma points.",
+              },
+              {
+                title: "Task 4: VulnHub Web Machine Challenge",
+                resources: [
+                  "https://www.vulnhub.com/entry/web-machine-n7,756/",
+                ],
+                description:
+                  "In this task, you have to compromise the given VulnHub machine by exploiting vulnerabilities, conducting a thorough penetration test, and creating a detailed write-up on its vulnerabilities, exploitation techniques, and any tools used. NOTE: Make sure to submit the write-up in PDF format. After completing the task, share the PDF write-up in the ⁠cyber-security channel using the hashtag #cl-cybersec-webmachine to avail 800 karma points.",
+              },
+              {
+                title: "VulnHub WebSploit Challenge",
+                resources: [
+                  "https://www.vulnhub.com/entry/websploit2018-1,253/",
+                ],
+                description:
+                  "In this task, you have to compromise the given VulnHub machine by exploiting vulnerabilities, conducting penetration tests, and creating a detailed write-up on the vulnerabilities, exploitation techniques, and any tools used. NOTE: Make sure to submit the write-up in PDF format. After completing the task, share the PDF write-up in the ⁠cyber-security channel using the hashtag #cl-cybersec-websploit to avail 800 karma points.",
+              },
+              {
+                title: "VulnHub OWASP Broken Web Application Challenge",
+                resources: [
+                  "https://www.vulnhub.com/entry/owasp-broken-web-applications-project-12,46/",
+                ],
+                description:
+                  "In this task, you have to compromise the given VulnHub machine 'OWASP Broken Web Applications Project' by exploiting vulnerabilities, conducting penetration tests, and creating a detailed write-up on the vulnerabilities, exploitation techniques, and any tools used. NOTE: Make sure to submit the write-up in PDF format. After completing the task, share the PDF write-up in the ⁠cyber-security channel using the hashtag #cl-cybersec-owaspbrokenwebapp to avail 800 karma points.",
+              },
+              {
+                title: "CSRF Vulnerability Crawler and Research",
+                resources: [],
+                description:
+                  "In this task, you have to conduct research on CSRF (Cross-Site Request Forgery) Middleware and Protections, create a crawler and develop an HTML form Proof of Concept (PoC). Research CSRF Middleware and Protections, develop a crawler to scan web applications for CSRF vulnerabilities, create a PoC HTML page demonstrating the vulnerability, and upload your code to a GitHub repository. After completing this task, share the hosted GitHub repository URL in the ⁠cyber-security channel using the hashtag #cl-cybersec-crawler to avail 800 karma points.",
+              },
+              {
+                title: "WAF Evasion for XSS - Python Script",
+                resources: [],
+                description:
+                  "In this task, you have to study and research Web Application Firewalls (WAFs) and their character-based filters for XSS (Cross-Site Scripting) and create a small Python script that can evade these filters. Research WAF mechanisms, develop a Python script to generate XSS payloads that evade character-based filters, test against a sample web application, document findings, and upload to a GitHub repository. After completing this task, share the hosted GitHub repository URL in the ⁠cyber-security channel using the hashtag #cl-cybersec-pysxss to avail 800 karma points.",
               },
             ],
           },
-          resources: 1,
-          proofOfWork: 1,
+          resources: 7,
+          proofOfWork: 8,
           rating: 0,
           hasGift: false,
         },
