@@ -409,7 +409,7 @@ export const webdev = {
   interestGroupLeads: {
     leads: [
       {
-        name: "Janu Krishna",
+        name: "JanuKrishna A S",
         imageUrl: "/assets/IG/Web Development/IG Leads/Janukrishna AS.jpg",
         role: "Marian Engineering College",
         linkedin: "https://www.linkedin.com/in/janukrishna-a-s-4ba8301b2",
