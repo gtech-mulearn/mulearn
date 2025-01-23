@@ -32,12 +32,7 @@ export const iot = {
                 description:
                   " IoT and Digital Transformation Task Explore the transformative potential of IoT by completing the Introduction to IoT course. This task will help you understand how IoT is driving digital transformation across various industries and expanding career opportunities in the future.",
               },
-              {
-                title: "Install Unreal Engine 5 ond explore the interface",
-                resources: [],
-                description:
-                  "Download and install Unreal Engine 5 on your system. Once installed, explore the interface to familiarize yourself with key components like the viewport, content browser, outliner, and details panel. This task will help you understand the basic layout and functionality of the engine, preparing you for future projects. After completing take a screenshot of the opening interface screen of unreal engine with the project name as your name. Once done, submit the screenshot in the #Game-Dev channel using the hashtag #cl-game-dev-unreal to earn 200 Karma Points.",
-              },
+              
             ],
           },
           resources: 1,
@@ -249,14 +244,14 @@ export const iot = {
   ],
   mentors: [
     {
-      name: "Nizamudeen",
-      role: "Founder & CEO @ TILTLABS",
+      name: "Nizamudeen Yooncekutty",
+      role: "Software Developer @ UST",
       linkedin: "https://www.linkedin.com/in/nizamudeen-yooncekutty-406181339/",
       imageUrl: "/assets/IG/IoT/Mentors/Nizamudeen.jpg",
     },
     {
       name: "Rajeevan A B",
-      role: "Founder & CEO-Banzan Studios",
+      role: "Embedded system Developer @ Elsys Intelligent Devices",
       linkedin: "https://www.linkedin.com/in/rajeevan-a-b-4a2196181/",
       imageUrl: "/assets/IG/IoT/Mentors/Rajeevan.jpg",
     },
