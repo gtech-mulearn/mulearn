@@ -26,7 +26,7 @@ const categories = [
       "Game Development",
       "Web Development",
       "Data Science",
-      "Cybersecurity",
+      "Cyber Security",
       "Artificial Intelligence",
       "Cloud and DevOps",
     ],
@@ -43,7 +43,7 @@ const categories = [
     name: "Creative",
     description: "Unleash your creativity and design skills.",
     icon: Paintbrush,
-    active: ["UIUX", "ARVR"],
+    active: ["UI UX", "AR VR"],
     comingSoon: [
       "CAD",
       "Film Making",
