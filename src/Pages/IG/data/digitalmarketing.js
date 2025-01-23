@@ -191,10 +191,98 @@ export const digitalMarketing = {
                   "Promote the website’s blog posts and resources by conducting targeted email outreach to individuals, businesses, and organizations in the health and wellness niche. Build a list of 50-100 health and wellness contacts for email outreach, and promote blog posts, product launches, or partnership opportunities. Personalize each email for better response rates. Once you've completed your report, post it in the #digital-marketing channel with the hashtag #cl-dm-offpage-7 to earn 70 karma points.",
                 resources: ["https://mailchimp.com", "https://hunter.io"],
               },
+              {
+                title: "Optimize Google My Business (GMB)",
+                description:
+                  'Set up and optimize a Google My Business profile to boost local search visibility.\n\nSteps:\n\n1. Search for or Create a GMB Listing\nLook up the business on Google My Business.\nIf no listing exists, create a new one.\n2. Add Complete Business Details\nInclude Name, Address, Phone (NAP), business description, operating hours, and high-quality images.\n3. Publish a Post\nHighlight an event, offer, or promotion using the "Add Post" feature.\n4. Verify the Listing\nComplete the verification process through the postcard, phone, or email options.\n\nTools:\n\nLocalViking\n\nDeliverables:\n\nVerified GMB profile screenshots.\nScreenshot of the published post.\n\nSubmission:\nOnce you\'ve completed your task, post it in the #digital-marketing channel with the hashtag #cl-dm-local-1 to earn 200 karma points! 🎉🔥',
+                resources: [
+                  "https://www.google.com/business/",
+                  "https://localviking.com",
+                ],
+              },
+              {
+                title: "Ensure NAP Consistency",
+                description:
+                  "1. Identify Local Directories\nChoose 5-10 directories (e.g., Yelp, Yellow Pages, etc.) relevant to your location and niche.\n2. Check Existing NAP Details\nReview the business's Name, Address, and Phone (NAP) in each directory.\n3. Update Inconsistent Details\nMake corrections for any inaccurate or outdated information.\n4. Document Changes\nTake screenshots before and after updating NAP details for proof.\n\nTools:\n\nAhrefs, BrightLocal, WhiteSpark\n\nDeliverables:\n\nList of directories reviewed.\nScreenshots of updates.\n\nSubmission:\nOnce you've completed your task, post it in the #digital-marketing channel with the hashtag #cl-dm-local-2 to earn 150 karma points! 🎉🔥",
+                resources: [
+                  "https://www.brightlocal.com",
+                  "https://whitespark.ca",
+                ],
+              },
+              {
+                title: "Create Location-Based Content",
+                description:
+                  "Develop content that targets and engages local audiences.\n\nSteps:\n\n1. Research Local Topics\nUse Google Trends or Ahrefs to find trending topics relevant to your city or region.\n2. Draft a Blog Post\nWrite a blog targeting a location-based keyword (e.g., “Top Cafes in [City Name]”).\n3. Optimize for SEO\nAdd internal links to relevant pages and external links to high-authority sites.\nUse location-specific keywords in the title, headings, and body text.\n4. Finalize and Publish\nEnsure the content is engaging, grammatically correct, and visually appealing.\n\nTools:\n\nAhrefs, SemRush, SurferSEO\n\nDeliverables:\n\nPublished blog post or draft link.\nKeyword research and SEO optimization documentation.\n\nSubmission:\nOnce you've completed your task, post it in the #digital-marketing channel with the hashtag #cl-dm-local-3 to earn 250 karma points! 🎉🔥",
+                resources: [
+                  "https://trends.google.com",
+                  "https://ahrefs.com",
+                  "https://www.semrush.com",
+                ],
+              },
+              {
+                title: "Generate and Respond to Reviews",
+                description:
+                  "Build credibility by generating and professionally responding to reviews.\n\nSteps:\n\n1. Generate a Google Review Link\nUse a Google Review Link Generator to create a shareable link for customers.\n2. Share the Link\nPromote the link via social media or email campaigns.\n3. Respond to Reviews\nRespond to at least 5 reviews (positive or negative) in a professional tone.\n\nTools:\n\nGoogle Review Link Generator\n\nDeliverables:\n\nReview link and proof of social sharing.\nScreenshots of review responses.\n\nSubmission:\nOnce you've completed your task, post it in the #digital-marketing channel with the hashtag #cl-dm-local-4 to earn 100 karma points! 🎉🔥",
+                resources: [
+                  "https://support.google.com/business/answer/7035772",
+                ],
+              },
+              {
+                title: "Add Local Schema Markup",
+                description:
+                  "Enhance search engine visibility with structured data.\n\nSteps:\n\n1. Generate Schema Markup\nUse Google’s Structured Data Markup Helper to create local business schema.\n2. Integrate the Markup\nAdd the schema code to the website's HTML.\n3. Test the Markup\nValidate the code using Google’s Rich Results Test to ensure accuracy.\n\nTools:\n\nGoogle Structured Data Markup Helper\n\nDeliverables:\n\nLocal schema markup code snippet.\nScreenshot of successful test results.\n\nSubmission:\nOnce you've completed your task, post it in the #digital-marketing channel with the hashtag #cl-dm-local-5 to earn 150 karma points! 🎉🔥",
+                resources: [
+                  "https://search.google.com/structured-data/testing-tool",
+                ],
+              },
+              {
+                title: "Optimize Google My Business (GMB)",
+                description:
+                  'Set up and optimize a Google My Business profile to boost local search visibility.\n\nSteps:\n\n1. Search for or Create a GMB Listing\nLook up the business on Google My Business.\nIf no listing exists, create a new one.\n2. Add Complete Business Details\nInclude Name, Address, Phone (NAP), business description, operating hours, and high-quality images.\n3. Publish a Post\nHighlight an event, offer, or promotion using the "Add Post" feature.\n4. Verify the Listing\nComplete the verification process through the postcard, phone, or email options.\n\nTools:\n\nLocalViking\n\nDeliverables:\n\nVerified GMB profile screenshots.\nScreenshot of the published post.\n\nSubmission:\nOnce you\'ve completed your task, post it in the #digital-marketing channel with the hashtag #cl-dm-local-1 to earn 200 karma points! 🎉🔥',
+                resources: [
+                  "https://www.google.com/business/",
+                  "https://localviking.com",
+                ],
+              },
+              {
+                title: "Ensure NAP Consistency",
+                description:
+                  "1. Identify Local Directories\nChoose 5-10 directories (e.g., Yelp, Yellow Pages, etc.) relevant to your location and niche.\n2. Check Existing NAP Details\nReview the business's Name, Address, and Phone (NAP) in each directory.\n3. Update Inconsistent Details\nMake corrections for any inaccurate or outdated information.\n4. Document Changes\nTake screenshots before and after updating NAP details for proof.\n\nTools:\n\nAhrefs, BrightLocal, WhiteSpark\n\nDeliverables:\n\nList of directories reviewed.\nScreenshots of updates.\n\nSubmission:\nOnce you've completed your task, post it in the #digital-marketing channel with the hashtag #cl-dm-local-2 to earn 150 karma points! 🎉🔥",
+                resources: [
+                  "https://www.brightlocal.com",
+                  "https://whitespark.ca",
+                ],
+              },
+              {
+                title: "Create Location-Based Content",
+                description:
+                  "Develop content that targets and engages local audiences.\n\nSteps:\n\n1. Research Local Topics\nUse Google Trends or Ahrefs to find trending topics relevant to your city or region.\n2. Draft a Blog Post\nWrite a blog targeting a location-based keyword (e.g., “Top Cafes in [City Name]”).\n3. Optimize for SEO\nAdd internal links to relevant pages and external links to high-authority sites.\nUse location-specific keywords in the title, headings, and body text.\n4. Finalize and Publish\nEnsure the content is engaging, grammatically correct, and visually appealing.\n\nTools:\n\nAhrefs, SemRush, SurferSEO\n\nDeliverables:\n\nPublished blog post or draft link.\nKeyword research and SEO optimization documentation.\n\nSubmission:\nOnce you've completed your task, post it in the #digital-marketing channel with the hashtag #cl-dm-local-3 to earn 250 karma points! 🎉🔥",
+                resources: [
+                  "https://trends.google.com",
+                  "https://ahrefs.com",
+                  "https://www.semrush.com",
+                ],
+              },
+              {
+                title: "Generate and Respond to Reviews",
+                description:
+                  "Build credibility by generating and professionally responding to reviews.\n\nSteps:\n\n1. Generate a Google Review Link\nUse a Google Review Link Generator to create a shareable link for customers.\n2. Share the Link\nPromote the link via social media or email campaigns.\n3. Respond to Reviews\nRespond to at least 5 reviews (positive or negative) in a professional tone.\n\nTools:\n\nGoogle Review Link Generator\n\nDeliverables:\n\nReview link and proof of social sharing.\nScreenshots of review responses.\n\nSubmission:\nOnce you've completed your task, post it in the #digital-marketing channel with the hashtag #cl-dm-local-4 to earn 100 karma points! 🎉🔥",
+                resources: [
+                  "https://support.google.com/business/answer/7035772",
+                ],
+              },
+              {
+                title: "Add Local Schema Markup",
+                description:
+                  "Enhance search engine visibility with structured data.\n\nSteps:\n\n1. Generate Schema Markup\nUse Google’s Structured Data Markup Helper to create local business schema.\n2. Integrate the Markup\nAdd the schema code to the website's HTML.\n3. Test the Markup\nValidate the code using Google’s Rich Results Test to ensure accuracy.\n\nTools:\n\nGoogle Structured Data Markup Helper\n\nDeliverables:\n\nLocal schema markup code snippet.\nScreenshot of successful test results.\n\nSubmission:\nOnce you've completed your task, post it in the #digital-marketing channel with the hashtag #cl-dm-local-5 to earn 150 karma points! 🎉🔥",
+                resources: [
+                  "https://search.google.com/structured-data/testing-tool",
+                ],
+              },
             ],
           },
-          resources: 1,
-          proofOfWork: 1,
+          resources: 48,
+          proofOfWork: 18,
           rating: 0,
           hasGift: false,
         },
@@ -245,8 +333,7 @@ export const digitalMarketing = {
                 ],
               },
               {
-                title:
-                  "Affiliate Marketing and Partnerships",
+                title: "Affiliate Marketing and Partnerships",
                 description:
                   "Build an Affiliate Outreach Strategy: Identify 10 potential affiliate partners in your niche. Draft a compelling outreach email or pitch. Create an affiliate page on your website with terms and tracking links. Monitor affiliate-generated leads and sales using an analytics tool. Share results in #digital-marketing with the hashtag #cl-dm-affiliate to earn 400 karma points!",
                 resources: [
@@ -257,8 +344,8 @@ export const digitalMarketing = {
               },
             ],
           },
-          resources: 1,
-          proofOfWork: 1,
+          resources: 11,
+          proofOfWork: 4,
           rating: 0,
           hasGift: false,
         },
@@ -349,8 +436,8 @@ export const digitalMarketing = {
               },
             ],
           },
-          resources: 1,
-          proofOfWork: 1,
+          resources: 21,
+          proofOfWork: 8,
           rating: 0,
           hasGift: false,
         },
