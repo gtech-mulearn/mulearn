@@ -30,7 +30,6 @@ const InterestGroupDetails = () => {
   useEffect(() => {
     const handleScroll = () => {
       const container = document.querySelector('.maincontent');
-      const menu = document.querySelector('.contentsmenu');
       const containerHeight = container.scrollHeight;
       const scrollPosition = window.scrollY + window.innerHeight;
 
