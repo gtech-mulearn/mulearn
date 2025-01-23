@@ -48,13 +48,13 @@ const InterestGroupDetails = () => {
         case "artificial-intelligence":
           selectedData = ai;
           break;
-        case "cybersecurity":
+        case "cyber-security":
           selectedData = cybersecurity;
           break;
-        case "uiux":
+        case "ui-ux":
           selectedData = uiuxDesign;
           break;
-        case "arvr":
+        case "ar-vr":
           selectedData = arVr;
           break;
         case "human-resources":
