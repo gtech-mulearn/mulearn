@@ -7,12 +7,14 @@ function Timeline({ timelineData, igName }) {
   const navigate = useNavigate();
 
   const handleCardClick = (card) => {
-    navigate(`roadmap/${card.title.toLowerCase().replace(/\s+/g, '-')}`, {
-      state: { roadMapData: timelineData, activeCard: card, interestGroupName: igName  }
+    navigate(`roadmap/${card.title.toLowerCase().replace(/\s+/g, "-")}`, {
+      state: {
+        roadMapData: timelineData,
+        activeCard: card,
+        interestGroupName: igName,
+      },
     });
   };
-
- 
 
   return (
     <div className="max-w-4xl mx-auto py-8 px-4">
@@ -38,16 +40,13 @@ function Timeline({ timelineData, igName }) {
                 level.cards.length === 1
                   ? "grid-cols-1 place-items-center"
                   : level.cards.length === 2
-                  ? "md:grid-cols-2  place-items-center"
-                  : "grid-cols-1 md:grid-cols-3"
-              }`}
-              >
-              
+                  ? "sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 place-items-center"
+                  : "sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center"
+              }`}>
               {level.cards.map((card, cardIndex) => (
                 <motion.div
                   key={card.title}
                   onClick={() => handleCardClick(card)}
-             
                   initial={{ opacity: 0, x: cardIndex % 2 === 0 ? -20 : 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.2 + 0.4 + cardIndex * 0.2 }}>

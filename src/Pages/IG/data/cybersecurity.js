@@ -354,7 +354,7 @@ export const cybersecurity = {
       {
         name: "Aswin Krishna",
         linkedin: "https://www.linkedin.com/in/aswinkrishna07",
-        institution: "College of Engineering Trivandrum",
+        institution: "Security Engineer @ KMart",
         imageUrl: "/assets/IG/Cyber Security/IG lead/Aswin Krishna.jpg",
       },
       {

@@ -459,7 +459,7 @@ export const gamedev = {
       {
         name: "Sabal Krishna S",
         institution:
-          "St.Thomas Institute of Science and Technology, Trivandrum",
+          "St.Thomas Institute for Science and Technology, Trivandrum",
         linkedin: "https://www.linkedin.com/in/sabal-krishna-s-29b758298/",
         imageUrl: "/assets/IG/Game Development/IG Lead/image.jpg",
       },

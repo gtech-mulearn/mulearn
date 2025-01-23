@@ -228,7 +228,7 @@ export default function InterestGroupLandingPage({ data, id, images }) {
             cleared and help you along your journey. Join in for our office
             hours and get all your doubts cleared.
           </p>
-          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-2 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {data.mentors?.map((mentor) => (
               <ProfileCard key={mentor.name} {...mentor} />
             ))}

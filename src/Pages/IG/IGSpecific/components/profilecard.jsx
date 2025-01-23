@@ -10,7 +10,7 @@ export function ProfileCard({
   institution,
 }) {
   return (
-    <div className="flex items-center gap-3 p-6 rounded-xl bg-white shadow-md justify-between w-80 md:w-96">
+    <div className="flex items-center gap-3 p-6 rounded-xl bg-white shadow-md justify-between w-full md:w-80">
       <div className="flex items-start flex-col gap-3 space-y-8">
         <div className="relative">
           {imageUrl ? (

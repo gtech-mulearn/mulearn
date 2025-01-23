@@ -360,9 +360,21 @@ export const digitalMarketing = {
   mentors: [
     {
       name: "Jijosh A T",
-      role: "Managing Partner @TechHazel Media",
+      role: "Managing Partner @ TechHazel Media",
       linkedin: "https://www.linkedin.com/in/jijosh-at-a70b1b77/",
       imageUrl: "/assets/IG/Digital Marketing/Mentors/Jijosh At.jpg",
+    },
+    {
+      name: "Renju R",
+      role: "Digital Marketing Direction @ FAYA Corporation",
+      linkedin: "https://www.linkedin.com/in/renju-r-407a1a62/",
+      imageUrl: "/assets/IG/Digital Marketing/Mentors/Renju.jpg",
+    },
+    {
+      name: "Deepraj R",
+      role: "Senior Growth Marketer Consultant @ UprootSecurity",
+      linkedin: "https://www.linkedin.com/in/deeprajr/",
+      imageUrl: "/assets/IG/Digital Marketing/Mentors/Deepraj R.jpg",
     },
   ],
 
@@ -380,7 +392,13 @@ export const digitalMarketing = {
         name: "KH Arjun",
         institution: "Marian Engineering College",
         linkedin: "https://www.linkedin.com/in/k-h-arjun-310913206/",
-        imageUrl: "/assets/IG/Digital Marketing/IG Lead/K H Arjun.JPG",
+        imageUrl: "/assets/IG/Digital Marketing/IG Lead/KH Arjun.JPG",
+      },
+      {
+        name: "Devadathan D R",
+        institution: "St. Thomas Institute of Science and Technology",
+        linkedin: "https://www.linkedin.com/in/devadathandr",
+        imageUrl: "/assets/IG/Digital Marketing/IG Lead/Devadathan R.jpg",
       },
     ],
   },
