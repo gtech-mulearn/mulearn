@@ -6,8 +6,8 @@ export const hr = {
     downloadLink:
       "https://mulearnfoundation.notion.site/11e59e69b1bf80dcb994c2ba100c04d5?pvs=25",
     schedules: {
-      officeHours: "Wednesday 8:00PM", // Replace with actual office hours
-      thinkTankMeeting: "3rd Wednesday 8:30PM", // Replace with actual meeting time
+      officeHours: "Wednesday 8:00PM",
+      thinkTankMeeting: "3rd Wednesday 8:30PM",
     },
   },
 
@@ -15,7 +15,7 @@ export const hr = {
 
   prerequisites: [
     "No prior experience is necessary, though a basic understanding of management principles, communication skills, and organizational behavior is recommended.",
-    "Familiarity with HR functions like talent acquisition, performance management, and employee relations is a plus."
+    "Familiarity with HR functions like talent acquisition, performance management, and employee relations is a plus.",
   ],
 
   roadMap: [
