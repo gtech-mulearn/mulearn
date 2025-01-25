@@ -20,7 +20,7 @@
 
 .title {
   font-size: 48px;
-  color: #ff6b00;
+  color: #f78c40;
   margin-bottom: 24px;
   font-weight: bold;
 }
@@ -46,7 +46,7 @@
 }
 
 .primaryButton {
-  background-color: #ff6b00;
+  background-color: #f78c40;
   color: white;
   border: none;
   padding: 12px 24px;
@@ -156,7 +156,7 @@
 
 .learningTitle {
   font-size: 24px;
-  color: #ff6b00;
+  color: #f78c40;
   margin-bottom: 30px;
 }
 
@@ -191,13 +191,13 @@
 }
 
 .activeCard {
-  border: 2px solid #ff6b00;
+  border: 2px solid #f78c40;
   opacity: 1;
   transform: scale(1);
 }
 
 .cardTitle {
-  color: #ff6b00;
+  color: #f78c40;
   font-size: 18px;
   margin-bottom: 8px;
 }
@@ -229,7 +229,7 @@
 }
 
 .joinNowButton {
-  background-color: #ff6b00;
+  background-color: #f78c40;
   color: white;
   border: none;
   padding: 6px 12px;
@@ -242,7 +242,7 @@
 
 .carouselButton {
   position: absolute;
-  background: #ff6b00;
+  background: #f78c40;
   color: white;
   border: none;
   width: 36px;

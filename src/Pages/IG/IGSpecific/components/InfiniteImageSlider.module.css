@@ -1,0 +1,16 @@
+.container {
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .slider {
+    display: flex;
+    transition: transform 0.1s linear;
+  }
+  
+  .imageWrapper {
+    flex-shrink: 0;
+    margin-right: 20px; /* Add margin between images */
+  }
+  
+  
