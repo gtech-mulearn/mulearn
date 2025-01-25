@@ -12,6 +12,7 @@ import Timeline from "./components/Timeline";
 import { InfiniteImageSlider } from "./components/InfiniteImageSlider";
 import styles from "../InterestGroups.module.css";
 
+
 export default function InterestGroupLandingPage({ data, id, images }) {
   const [isMobile, setIsMobile] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -56,7 +57,7 @@ export default function InterestGroupLandingPage({ data, id, images }) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  if (!data) return <div>Loading...</div>;
+  // if (!data) return <div><NotFound/></div>;
 
   return (
     <div

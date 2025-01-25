@@ -20,32 +20,37 @@ import { entrepreneurship } from "../../data/entrepreneurship";
 
 import { iot } from "../../data/IoT";
 import InterestGroupLandingPage from "../InterestGroupLandingPage";
+import NotFound from "../../../404/NotFound";
 
 const InterestGroupDetails = () => {
   const { id } = useParams();
   const [data, setData] = useState(null);
   const [images, setImages] = useState([]);
   const [isSticky, setIsSticky] = useState(false);
+  const [isLoading, setIsLoading] = useState();
 
   useEffect(() => {
     const handleScroll = () => {
       const container = document.querySelector('.maincontent');
-      const containerHeight = container.scrollHeight;
-      const scrollPosition = window.scrollY + window.innerHeight;
-
-      // Check if the user has scrolled to the bottom of the container
-      if (scrollPosition >= containerHeight) {
-        setIsSticky(true);
-      } else {
-        setIsSticky(false);
+      
+      // Only proceed if container exists
+      if (container) {
+        const containerHeight = container.scrollHeight;
+        const scrollPosition = window.scrollY + window.innerHeight;
+  
+        // Check if the user has scrolled to the bottom of the container
+        if (scrollPosition >= containerHeight) {
+          setIsSticky(true);
+        } else {
+          setIsSticky(false);
+        }
       }
     };
-
+  
     window.addEventListener('scroll', handleScroll);
-
-   
+    
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     const loadData = () => {
@@ -105,9 +110,13 @@ const InterestGroupDetails = () => {
         setImages([]);
       }
     };
-
+    if(!data){
+      setIsLoading(true);
+    }
     loadData();
-  }, [id]);
+  }, [id, data]);
+
+  if (!data) return <div><NotFound isLoaded={isLoading}/></div>;
 
 
   return (
