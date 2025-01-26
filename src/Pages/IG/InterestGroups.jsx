@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
 import { InfiniteImageSlider } from "./IGSpecific/components/InfiniteImageSlider";
-import { Users, BookOpen, Calendar, Share2, TrendingUp, Network, Award, GitMerge, Code, Paintbrush, Cpu, Briefcase } from 'lucide-react';
+import {
+  Users,
+  BookOpen,
+  Calendar,
+  Share2,
+  TrendingUp,
+  Network,
+  Award,
+  GitMerge,
+  Code,
+  Paintbrush,
+  Cpu,
+  Briefcase,
+} from "lucide-react";
 
 import fvimg from "./assets/fvimg.png";
+import fetchOfficeHours from "./services/fetchOfficeHours";
+import OfficeHourCard from "./components/OfficeHourCard";
 
 const features = [
   { icon: Users, title: "Focused Learning Communities" },
@@ -101,13 +116,27 @@ const images = [
 ];
 
 const InterestGroups = () => {
+  const [officeHours, setOfficeHours] = useState([]);
+
   const scrollToCategories = () => {
-    document.getElementById("categories")?.scrollIntoView({ behavior: "smooth" });
+    document
+      .getElementById("categories")
+      ?.scrollIntoView({ behavior: "smooth" });
   };
 
   const openRequestForm = () => {
     window.open("https://airtable.com/shriAaNO6q4cQzKKl");
   };
+
+  useEffect(() => {
+    fetchOfficeHours()
+      .then((data) => {
+        setOfficeHours(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching office hours data:", error);
+      });
+  }, [officeHours]);
 
   return (
     <>
@@ -129,15 +158,13 @@ const InterestGroups = () => {
               <button
                 type="button"
                 className="bg-orange-400 text-white px-6 py-3 rounded-md hover:bg-orange-500 transition-colors"
-                onClick={scrollToCategories}
-              >
+                onClick={scrollToCategories}>
                 Discover More
               </button>
               <button
                 type="button"
                 className="bg-white border border-orange-400 text-orange-400 px-6 py-3 rounded-md hover:bg-orange-50 transition-colors"
-                onClick={openRequestForm}
-              >
+                onClick={openRequestForm}>
                 Request Interest Group
               </button>
             </div>
@@ -152,7 +179,9 @@ const InterestGroups = () => {
         </div>
 
         <div className="mb-16">
-          <h3 className="text-2xl font-bold text-center mb-8">Community Partners</h3>
+          <h3 className="text-2xl font-bold text-center mb-8">
+            Community Partners
+          </h3>
           <div className="w-full overflow-hidden">
             <InfiniteImageSlider images={images} speed={1} height={200} />
           </div>
@@ -162,13 +191,33 @@ const InterestGroups = () => {
           <h2 className="text-3xl font-bold text-center mb-12">Key Features</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {features.map((feature, index) => (
-              <div key={index} className="flex flex-col items-center text-center">
+              <div
+                key={index}
+                className="flex flex-col items-center text-center">
                 <feature.icon className="w-12 h-12 text-orange-400 mb-4" />
                 <h3 className="text-lg font-semibold">{feature.title}</h3>
               </div>
             ))}
           </div>
         </section>
+        {officeHours.length > 0 && (
+          <section id="office-hours" className="mb-16">
+            <h2 className="text-3xl font-bold text-center mb-5">
+              Office Hours
+            </h2>
+            <p className="text-center mx-auto max-w-2xl mb-12">
+              Office hours are a great way to get help with your projects, ask
+              questions, or just chat with our mentors. Join us and get your
+              queries solved!
+            </p>
+
+            <div className="grid sm:grid-cols-1 md:grid:2 lg:grid-cols-3 gap-6">
+              {officeHours?.map((officeHour, index) => (
+                <OfficeHourCard key={index} {...officeHour} />
+              ))}
+            </div>
+          </section>
+        )}
 
         <section id="categories">
           <h2 className="text-3xl font-bold text-center mb-5">
@@ -176,9 +225,9 @@ const InterestGroups = () => {
           </h2>
           <p className="text-center mx-auto max-w-2xl mb-12">
             Learning things for which you are curious is interesting, right?
-            What about learning the same thing along with a group of
-            like-minded peers and mentors, Much more interesting, right? Join
-            in Now and Start Learning!
+            What about learning the same thing along with a group of like-minded
+            peers and mentors, Much more interesting, right? Join in Now and
+            Start Learning!
           </p>
           <div className="grid gap-6">
             {categories.map((category, index) => (
@@ -192,13 +241,13 @@ const InterestGroups = () => {
                   {category.active.map((group, idx) => (
                     <div
                       key={idx}
-                      className="bg-gray-50 rounded-lg p-4 shadow hover:shadow-md transition duration-300"
-                    >
+                      className="bg-gray-50 rounded-lg p-4 shadow hover:shadow-md transition duration-300">
                       <h4 className="font-semibold mb-2">{group}</h4>
                       <a
-                        href={`/interestgroups/${group.toLowerCase().replace(/\s+/g, "-")}`}
-                        className="text-sm text-orange-400 hover:text-orange-500"
-                      >
+                        href={`/interestgroups/${group
+                          .toLowerCase()
+                          .replace(/\s+/g, "-")}`}
+                        className="text-sm text-orange-400 hover:text-orange-500">
                         View Group →
                       </a>
                     </div>
@@ -215,4 +264,3 @@ const InterestGroups = () => {
 };
 
 export default InterestGroups;
-
