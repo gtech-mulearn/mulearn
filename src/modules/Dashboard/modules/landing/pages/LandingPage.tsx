@@ -244,7 +244,7 @@ const MuLearnLanding = () => {
             </button>
             <button
               className={styles.downloadBtn}
-              onClick={() => navigate("/dashboard/learning-paths")}
+              onClick={() => navigate("/dashboard/learning-path")}
             >
               Explore Learning Paths
             </button>

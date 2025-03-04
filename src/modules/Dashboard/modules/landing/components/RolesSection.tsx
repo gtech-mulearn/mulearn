@@ -39,33 +39,33 @@ const rolesContent: RolesContent = {
   partner: [
     {
       id: 1,
-      name: 'Resource Sharing',
+      name: 'Leverage Resources & Expertise',
       description:
-        'Provide your tools, platforms, and expertise for free while tapping into pre-trained talent. Save onboarding time and scale your projects efficiently.',
+        'Share your tools, platforms, and industry expertise at no cost while accessing a highly skilled, pre-trained talent pool. Minimize onboarding time, streamline workflow integration, and scale projects efficiently through seamless collaboration.',
       image:
       '/assets/roles_images/Podcast_Social.png',
     },
     {
       id: 2,
-      name: 'Product Launch',
+      name: 'Product Introduction',
       description:
-        'Introduce your products directly to a community of curious, tech-savvy developers, accelerating your market reach and user feedback.',
+        'Launch your products directly to a community of tech-savvy developers and early adopters. Boost brand awareness, accelerate product adoption, and gather real-time user insights for continuous improvement.',
       image:
       '/assets/roles_images/Creative_Writing.png',
     },
     {
       id: 3,
-      name: 'Talent Recruitment',
+      name: 'Talent Acquisition',
       description:
-        'Hire pre-trained, motivated developers who are ready to contribute from day one—reducing training costs and speeding up project delivery.',
+        'Hire top-tier, job-ready developers with proven skills, reducing training costs and expediting project execution. Gain access to a dynamic talent pipeline that meets industry demands and ensures faster onboarding.',
       image:
       '/assets/roles_images/Business_Woman.png',
     },
     {
       id: 4,
-      name: 'Brand Engagement',
+      name: 'Brand Presence',
       description:
-      'Enhance your brand reputation by actively participating in a free learning community and nurturing long-term relationships with future innovators.',
+      'Elevate your brand reputation by engaging with a vibrant learning ecosystem. Build lasting relationships with future industry leaders while positioning your company as an innovator in the tech community.',
       image:
       '/assets/roles_images/Online_Support.png',
     },
@@ -75,67 +75,67 @@ const rolesContent: RolesContent = {
       id: 1,
       name: 'Skill Development',
       description:
-        'Gain hands-on experience with real-world projects and training modules to build a strong technical foundation.',
+        'Gain practical experience through hands-on projects and industry-relevant training. Build a strong technical foundation with real-world applications that enhance your expertise.',
       image:
-        'https://img.freepik.com/free-vector/online-education-concept-illustration_114360-5364.jpg',
+        '/assets/roles_images/skill-development.svg',
     },
     {
       id: 2,
-      name: 'Career Opportunities',
+      name: 'Career Growth & Job Opportunities',
       description:
-        'Connect with top companies, secure internships, and explore job opportunities with partners looking for fresh talent.',
+        'Connect with top companies, land internships, and explore high-impact job opportunities. Get noticed by hiring partners actively seeking fresh, skilled talent.',
       image:
-        'https://img.freepik.com/free-vector/learning-online-concept-illustration_114360-5258.jpg',
+        '/assets/roles_images/career-growth.svg',
     },
     {
       id: 3,
-      name: 'Collaborative Learning',
+      name: 'Collaborative Learning Experience',
       description:
-        'Engage with peers and experts in a collaborative environment that fosters growth, innovation, and lifelong learning.',
+        'Learn alongside peers and industry experts in an interactive, knowledge-sharing environment. Develop critical problem-solving skills while staying ahead with the latest tech trends.',
       image:
-        '/assets/roles_images/trendy.png',
+        '/assets/roles_images/learning.svg',
       },
       {
         id: 4,
-        name: 'Verifiable Credits',
+        name: 'Recognized Certifications & Skill Validation',
         description:
-        'Earn certifications and gain recognition for your skills, making your profile stand out in the competitive job market.',
+        'Earn industry-recognized certifications and verifiable credentials that enhance your professional profile. Stand out in a competitive job market with proof of your expertise.',
         image:
-        '/assets/roles_images/ideo-call.png',
+        '/assets/roles_images/certifications.svg',
       },
     ],
     community: [
       {
         id: 1,
-        name: 'Networking',
+        name: 'Expand Your Network & Build Connections',
         description:
-        'Connect with like-minded individuals and professionals to expand your network and foster future collaborations.',
+        'Engage with a vibrant community of like-minded individuals and industry professionals. Grow your network, discover collaboration opportunities, and build lasting relationships that drive career success.',
         image:
-        '/assets/roles_images/ideo-call.png',
+        '/assets/roles_images/networking.svg',
       },
       {
         id: 2,
-        name: 'Knowledge Sharing',
+        name: 'Knowledge Sharing & Industry Insights',
         description:
-        'Exchange ideas, best practices, and innovative solutions to drive collective growth and industry evolution.',
+        'Exchange ideas, best practices, and innovative solutions with experts and peers. Stay updated on the latest trends, emerging technologies, and industry advancements.',
         image:
-        '/assets/roles_images/cartoon-teacher.png',
+        '/assets/roles_images/knowledgesharing.svg',
       },
       {
         id: 3,
-        name: 'Collaborative Projects',
+        name: 'Collaborative Projects & Real-World Impact',
         description:
-        'Work together on meaningful projects that impact the tech ecosystem while learning and growing as a community.',
+        'Join forces with community members to work on impactful projects that shape the tech ecosystem. Gain hands-on experience, enhance problem-solving skills, and contribute to meaningful innovations.',
         image:
-        'https://img.freepik.com/free-vector/people-community-concept-illustration_114360-622.jpg',
+        '/assets/roles_images/collaboration.svg',
       },
       {
         id: 4,
-        name: 'Mentorship & Guidance',
+        name: 'Mentorship & Career Guidance',
         description:
-        'Provide and receive mentorship that inspires personal and professional development throughout the community.',
+        'Access mentorship from industry leaders while also giving back by guiding others. Gain valuable insights, career advice, and professional support to accelerate personal and professional growth.',
         image:
-        '/assets/roles_images/3d-cartoon-handsome.png',
+        '/assets/roles_images/mentorship.svg',
     },
   ],
   enabler: [
