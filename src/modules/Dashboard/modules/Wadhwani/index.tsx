@@ -101,16 +101,30 @@ function stringSlice(inputString: string): string {
     return inputString.substring(0, 200);
 }
 
-        const CourseCard: React.FC<CourseCardProps> = ({ title, desc, duration, rootId }) => {
+    const CourseCard: React.FC<CourseCardProps> = ({ title, desc, duration, rootId }) => {
+        const [isExpanded, setIsExpanded] = useState(false);
+        const truncatedDesc = desc.length > 100 ? desc.slice(0, 100) + "..." : desc;
+
         return (
             <div className={styles.containercard}>
                 <div className={styles.details}>
                     <p className={styles.title}>{title}</p>
-                    <p className={styles.desc}>{desc}</p>
-                    <p className={styles.duration}>{duration}hrs</p>
+                    <p className={styles.desc}>
+                        {isExpanded ? desc : truncatedDesc}
+                        {desc.length > 100 && (
+                            <span
+                                className={styles.readMore}
+                                onClick={() => setIsExpanded(!isExpanded)}
+                                style={{ color: "gray", cursor: "pointer", marginLeft: "5px" }}
+                            >
+                                {isExpanded ? "Read Less" : "Read More"}
+                            </span>
+                        )}
+                    </p>
+                    <p className={styles.duration}>Duration: {duration}hrs</p>
                 </div>
                 <div onClick={() => handleCourseSelection(rootId)} className={styles.cta}>
-                    Checkout Courses
+                    Enroll
                 </div>
             </div>
         );

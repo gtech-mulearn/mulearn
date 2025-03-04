@@ -1,0 +1,99 @@
+.GroupCard {
+    /* Layout & Spacing */
+    display: flex;
+    flex-direction: column;
+    width: 280px; /* Adjust as desired */
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    text-decoration: none;
+  
+    /* Visual Appearance */
+    background-color: #fff; /* or #111 for a dark variant */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  
+    /* You can do a dark variant if you want a black card like in the example */
+    /* background-color: #0f0f0f; color: #fff; */
+  }
+  
+  .GroupCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  }
+  
+  /* Image Section */
+  .GroupImageWrapper {
+    position: relative;
+    width: 10%;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    overflow: hidden;
+    background: #f9f9f9; /* fallback background if no image */
+  }
+  
+  .GroupImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .GroupOverlay {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+
+  .Icon{
+    background-color: #456ff6;
+    width: 20%;
+    height: max-content;
+    color: white;
+    margin-left: 20px;
+  }
+  
+  /* Participant Badge */
+  .GroupParticipantsBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background-color: rgba(0, 0, 0, 0.65);
+    color: #fff;
+    font-size: 0.8rem;
+    padding: 4px 8px;
+    border-radius: 9999px;
+  }
+  
+  .GroupParticipantsIcon {
+    width: 16px;
+    height: 16px;
+  }
+  
+  /* Details Section */
+  .GroupDetails {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    /* If using a dark background for the card, use color: #fff; */
+  }
+  
+  .GroupCategory {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #666; /* or #aaa for dark background */
+    background-color: #f2f2f2;
+    padding: 4px 8px;
+    border-radius: 8px;
+  }
+  
+  .GroupTitle {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #111; /* or #fff for dark background */
+  }
+  

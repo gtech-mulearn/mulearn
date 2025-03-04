@@ -1,0 +1,412 @@
+/* Container styles */
+.container {
+    width: 100%;
+}
+
+.leaderboard {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Header styles */
+.header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headerLeft {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a202c;
+    margin: 0;
+}
+
+.subtitle {
+    color: #4a5568;
+    margin: 0.5rem 0 0;
+}
+
+.headerActions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+/* Button styles */
+.buttonPrimary {
+    background: #f97316;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.buttonPrimary:hover {
+    background: #ea580c;
+}
+
+.buttonOutline {
+    background: transparent;
+    border: 1px solid #e2e8f0;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    color: #4a5568;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.buttonOutline:hover {
+    border-color: #cbd5e0;
+    background: #f7fafc;
+}
+
+.buttonSecondary {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.buttonSecondary:hover {
+    background: #2563eb;
+}
+
+/* Filter bar styles */
+.filterBar {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.filterTabs {
+    display: flex;
+    gap: 2rem;
+}
+
+.filterTab {
+    background: none;
+    border: none;
+    color: #4a5568;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0.5rem 0;
+    position: relative;
+}
+
+.filterTab.active {
+    color: #3b82f6;
+}
+
+.filterTab.active::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #3b82f6;
+}
+
+.select {
+    padding: 0.5rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.375rem;
+    background: white;
+    min-width: 150px;
+}
+
+/* Top players section */
+.topPlayersSection {
+    background: linear-gradient(to bottom, #f0f9ff, white);
+    padding: 2rem 1.5rem;
+}
+
+.topPlayers {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.topPlayer {
+    text-align: center;
+}
+
+.first .avatar {
+    width: 100px;
+    height: 100px;
+}
+
+.second .avatar,
+.third .avatar {
+    width: 80px;
+    height: 80px;
+}
+
+.avatar {
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.avatarWrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.trophy {
+    position: absolute;
+    bottom: -8px;
+    right: -8px;
+    width: 24px;
+    height: 24px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+}
+
+.playerName {
+    margin: 0.5rem 0;
+    font-weight: 600;
+    color: #1a202c;
+}
+
+.playerPoints {
+    color: #4a5568;
+    margin: 0;
+}
+
+.paginationControls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.paginationControls label {
+    font-size: 14px;
+    color: #555;
+}
+
+.select {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: white;
+    cursor: pointer;
+}
+
+.paginationButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.buttonSecondary {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.buttonSecondary:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.buttonSecondary:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+/* Table styles */
+.tableWrapper {
+    overflow-y: auto;
+    overflow-x: auto;
+    width: 100%;
+    max-height: 600px; /* Set a max height to enable scrolling */
+    position: relative;
+}
+
+.table {
+    width: 100%;
+    border-collapse: separate; /* Changed from collapse to separate for sticky header */
+    border-spacing: 0;
+    table-layout: auto;
+    color: black;
+}
+
+.table th,
+.table td {
+    text-align: left;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid #e2e8f0;
+    white-space: nowrap;
+}
+
+.tableHead {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: white; /* Ensure the header is opaque */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
+}
+
+.tableHead th {
+    background: white; /* Ensure each header cell is opaque */
+    border-bottom: 2px solid #e2e8f0; /* Make header border more prominent */
+}
+
+.nameCell {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    white-space: nowrap;
+}
+
+.tableAvatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+/* Badge styles */
+.badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.gold {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.silver {
+    background: #f1f5f9;
+    color: #475569;
+}
+
+.diamond {
+    background: #e0f2fe;
+    color: #0369a1;
+}
+
+.filterActions {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    .container {
+        margin-top: 0rem;
+    }
+
+    .headerActions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .filterBar {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .buttonSecondary {
+        font-size: 0.7rem;
+    }
+
+    .filterTabs {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .filterActions {
+        width: 100%;
+        font-size: 0.7rem;
+        display: flex;
+        gap: 1rem;
+    }
+
+    .select {
+        flex: 1;
+    }
+
+    .topPlayers {
+        gap: 1rem;
+    }
+}
+
+
+@media (hover: hover) {
+    .tableWrapper {
+        scrollbar-width: thin;
+        scrollbar-color: #cbd5e0 #f7fafc;
+    }
+    
+    .tableWrapper::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    
+    .tableWrapper::-webkit-scrollbar-track {
+        background: #f7fafc;
+    }
+    
+    .tableWrapper::-webkit-scrollbar-thumb {
+        background-color: #cbd5e0;
+        border-radius: 4px;
+    }
+}
+
+.pageWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}   

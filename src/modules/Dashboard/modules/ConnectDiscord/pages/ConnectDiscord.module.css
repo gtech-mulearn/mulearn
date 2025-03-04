@@ -15,6 +15,7 @@
     justify-content: space-evenly;
     background: #fff;
     /* border: 1px solid #dde2e5; */
+    min-height: 250px;
     border-radius: 20px;
     overflow: hidden;
     font-weight: 500;

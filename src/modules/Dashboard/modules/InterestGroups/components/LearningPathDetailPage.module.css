@@ -1,0 +1,172 @@
+/* src/components/LearningPathDetailPage.module.css */
+.container {
+  
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .header h1 {
+    color: #1E90FF; /* Blue instead of orange */
+    font-size: 24px;
+  }
+  
+  .header p {
+    color: #666;
+    font-size: 16px;
+  }
+  
+  .content {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .description,
+  .whatYouWillLearn,
+  .challenges {
+    margin-bottom: 20px;
+  }
+  
+  .description h2,
+  .whatYouWillLearn h2,
+  .challenges h2 {
+    color: #1E90FF; /* Blue */
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .description p {
+    line-height: 1.6;
+    color: #333;
+  }
+  
+  .whatYouWillLearn ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    color: #333;
+  }
+  
+  .whatYouWillLearn li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+  
+  .challenges {
+    color: #333;
+  }
+  
+  .challenge {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+  }
+  
+  .challenge h3 {
+    color: #1E90FF; /* Blue */
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .challenge p {
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  
+  .challenge h4 {
+    color: #1E90FF; /* Blue */
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .challenge ul {
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+  
+  .challenge li {
+    margin-bottom: 5px;
+    line-height: 1.6;
+  }
+  
+  .challenge a {
+    color: #1E90FF; /* Blue */
+    text-decoration: underline;
+  }
+  
+  .challenge a:hover {
+    color: #4169E1; /* Darker blue on hover */
+  }
+  
+  .stats {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    color: #333;
+  }
+  
+  .stats p {
+    margin: 5px 0;
+    font-size: 14px;
+  }
+  
+  .backButton {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #1E90FF; /* Blue */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  .backButton:hover {
+    background-color: #4169E1; /* Darker blue */
+  }
+  
+  .notFound {
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+    padding: 20px;
+  }
+
+
+  .resourceTag {
+    background-color: #ffb6c1; /* Default color for the first tag or fallback */
+    padding: clamp(4px, 0.5vw, 6px) clamp(8px, 1vw, 12px);
+    border-radius: 16px;
+    font-size: clamp(0.625rem, 1vw, 12px);
+    color: #333333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+  
+  /* Cycle through colors for each .resourceTag using nth-child with a pattern */
+  .resourceTag:nth-child(3n+1) {
+    background-color: #ffb6c1; /* Pink (e.g., 1st, 4th, 7th, etc.) */
+    color: #333333;
+  }
+  
+  .resourceTag:nth-child(3n+2) {
+    background-color: #90ee90; /* Light green (e.g., 2nd, 5th, 8th, etc.) */
+    color: #333333;
+  }
+  
+  .resourceTag:nth-child(3n+3) {
+    background-color: #87cefa; /* Light blue (e.g., 3rd, 6th, 9th, etc.) */
+    color: #333333;
+  }

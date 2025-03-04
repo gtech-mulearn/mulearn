@@ -1,0 +1,584 @@
+/* Existing styles from your provided CSS, unchanged for continuity */
+.pageContainer {
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+}
+
+.BannerContent {
+  text-align: left;
+}
+
+.BannerTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  color: #4B5563;
+}
+
+.BannerSubtitle {
+  font-size: 0.95rem;
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem 0;
+}
+
+.searchContainer {
+  position: relative;
+  display: flex;
+  gap: 0.625rem;
+  align-items: center;
+  width: 100%;
+  margin: 0.625rem auto 0.5rem auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #aaa;
+  font-size: 1.125rem;
+  z-index: 1;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.625rem 0.625rem 0.625rem 2.25rem;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  outline: none;
+  border-radius: 1.25rem;
+  color: black !important;
+  background-color: white;
+  caret-color: black;
+  flex-grow: 1;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.searchTypeButtons {
+  display: flex;
+  justify-content: start;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.875rem;
+  padding: 0;
+}
+
+.searchTypeButton {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 1.25rem;
+  background-color: #f5f5f5;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.searchTypeButton.active {
+  background-color: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+}
+
+.searchTypeButton:hover:not(.active) {
+  background-color: #e5e7eb;
+}
+
+.userGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1rem;
+  padding: 0 1rem;
+}
+
+.noResultsText {
+  text-align: center;
+  color: #666;
+  padding: 2rem;
+}
+
+.asideContainer {
+  height: 800px;
+}
+
+.profileContainer {
+  background: white;
+  height: 100%;
+}
+
+.profileHeader {
+  position: relative;
+  height: 150px;
+  background: url("../../Profile/assets/images/profile_banner.webp");
+  border-radius: 0 0 20px 20px;
+}
+
+.memberSince {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: white;
+  font-size: 0.875rem;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.profileImageContainer {
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 4px solid white;
+  overflow: hidden;
+  background: white;
+}
+
+.profileImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profileVerifiedBadge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #4CAF50;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+}
+
+.profileInfo {
+  margin-top: 60px;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.profileName {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.profileUsername {
+  color: #666;
+  margin-bottom: 0px;
+}
+
+.profileCollegeName {
+  color: #666;
+  margin-bottom: 16px;
+}
+
+.connectBtn {
+  background-color: #3b82f6;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 16px;
+  position: absolute;
+  bottom: -50px;
+  left: 5%;
+}
+
+.connectBtn:hover {
+  background-color: #2563eb;
+}
+
+.profileLevel {
+  color: #3b82f6;
+  font-weight: 500;
+  margin-bottom: 32px;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
+
+.statsCard {
+  background: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+}
+
+.statsLabel {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin-bottom: 8px;
+}
+
+.statsValue {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* New classes for campus details in AsideDetails */
+
+/* Container for the aside content */
+.container {
+  max-width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.wrapper {
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+}
+
+.header {
+  margin-bottom: 1.5rem;
+}
+
+.titleSection {
+  text-align: left;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #4B5563;
+  margin-bottom: 0.5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.cardWithBorder {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.cardHover {
+  background: white;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease;
+}
+
+.cardHover:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.cardTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #4B5563;
+}
+
+.iconButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  color: #3b82f6;
+}
+
+.iconButton:hover {
+  color: #2563eb;
+}
+
+.dialogOverlay {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  inset: 0;
+}
+
+.dialogContent {
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 500px;
+  max-height: 85vh;
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+.dialogTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #4B5563;
+}
+
+.dialogBody {
+  margin-bottom: 1rem;
+}
+
+.gradeRequirement {
+  margin-bottom: 1rem;
+}
+
+.gradeDisplay {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.gradeText {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #4B5563;
+}
+
+.requirementsList {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  color: #666;
+}
+
+.requirementsList li {
+  margin-bottom: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.dialogCloseButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  color: #666;
+}
+
+.dialogCloseButton:hover {
+  color: #111827;
+}
+
+.gradeDisplay {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.statsValue {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.statsLabel {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.leadershipSection {
+  margin-bottom: 1.5rem;
+}
+
+.leadershipTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #4B5563;
+  margin-bottom: 1rem;
+}
+
+.leadershipGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.leaderCard {
+  background: white;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.leaderIcon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 0.5rem;
+}
+
+.leaderName {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #4B5563;
+  margin-bottom: 0.25rem;
+}
+
+.leaderRole {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.graphs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.graphContainer {
+  background: white;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .container {
+      padding: 0.5rem;
+  }
+
+  .wrapper {
+      padding: 0.75rem;
+  }
+
+  .grid {
+      grid-template-columns: 1fr;
+  }
+
+  .graphs {
+      grid-template-columns: 1fr;
+  }
+
+  .leaderCard {
+      padding: 0.75rem;
+  }
+
+  .leaderIcon {
+      width: 40px;
+      height: 40px;
+  }
+
+  .title {
+      font-size: 1.25rem;
+  }
+
+  .cardTitle {
+      font-size: 0.875rem;
+  }
+
+  .statsValue {
+      font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+      padding: 0.25rem;
+  }
+
+  .wrapper {
+      padding: 0.5rem;
+  }
+
+  .title {
+      font-size: 1rem;
+  }
+
+  .cardTitle {
+      font-size: 0.75rem;
+  }
+
+  .statsValue {
+      font-size: 0.875rem;
+  }
+
+  .leaderIcon {
+      width: 30px;
+      height: 30px;
+  }
+
+  .leaderName {
+      font-size: 0.875rem;
+  }
+
+  .leaderRole {
+      font-size: 0.75rem;
+  }
+}
+
+.graphs {
+  width: 100%;
+  padding: 15px 0px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.graphs .graphContainer {
+  background-color: var(--White);
+  width: 100%;
+  height: 350px;
+  padding: 20px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+}
+
+.graphs .graphContainer h2 {
+  all: revert;
+  margin: 0;
+  color: var(--Black);
+}
+
+@media (max-width: 1200px) {
+  .graphs .graphContainer {
+      width: 100%;
+  }
+}

@@ -1,0 +1,624 @@
+.pageContainer {
+  padding: clamp(8px, 2vw, 24px);
+  background-color: #ffffff;
+  color: #1a1a1a;
+  border-radius: clamp(8px, 1vw, 12px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+.tabs {
+  display: flex;
+  gap: clamp(8px, 1vw, 16px);
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: clamp(8px, 1vw, 24px);
+  padding-bottom: clamp(4px, 1vw, 8px);
+  overflow-x: auto;
+  white-space: nowrap;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Position the aside from the right side of the window as an overlay */
+.asideDetails {
+  position: fixed;
+  top: 0;
+  right: -300px; /* Start off-screen to the right */
+  width: 300px; /* Adjust width as needed */
+  height: 100vh;
+  background: white;
+  z-index: 1000;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: right 0.3s ease-in-out;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.asideDetails.open {
+  right: 0; /* Slide in to be visible on the right side of the window */
+}
+
+/* Optional: Style the close button */
+.asideDetails .closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: clamp(6px, 1vw, 10px) clamp(10px, 1.5vw, 16px);
+  background-color: #456ff6;
+  color: white;
+  border: none;
+  border-radius: clamp(4px, 0.5vw, 6px);
+  font-size: clamp(0.75rem, 1vw, 0.85rem);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.asideDetails .closeButton:hover {
+  background-color: #3458d6;
+  transform: scale(1.02);
+}
+
+/* Ensure the aside doesn’t overlap with other content on smaller screens */
+@media screen and (max-width: 768px) {
+  .asideDetails {
+    width: 100%; /* Full width on mobile */
+    right: -100%; /* Start fully off-screen on mobile */
+  }
+
+  .asideDetails.open {
+    right: 0; /* Slide in fully on mobile */
+  }
+}
+
+.tabButton {
+  background: none;
+  border: none;
+  font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+  font-weight: 500;
+  padding: clamp(6px, 1vw, 10px) clamp(8px, 1vw, 16px);
+  cursor: pointer;
+  color: #666666;
+  transition: color 0.3s ease, border-bottom 0.2s ease;
+  border-radius: clamp(2px, 0.5vw, 4px) clamp(2px, 0.5vw, 4px) 0 0;
+  white-space: nowrap;
+}
+
+.tabButton:hover {
+  color: #456ff6;
+}
+
+.activeTab {
+  border-bottom: 3px solid #456ff6;
+  color: #456ff6;
+  font-weight: 600;
+}
+
+.tabContentContainer {
+  margin-bottom: clamp(8px, 1vw, 24px);
+  padding: clamp(8px, 2vw, 20px);
+  background-color: #fafafa;
+  border-radius: clamp(6px, 1vw, 8px);
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.tabContent {
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  line-height: 1.6;
+  color: #333333;
+  word-wrap: break-word;
+}
+
+.tabContent.about {
+  text-align: left;
+  padding: clamp(8px, 2vw, 24px);
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border-radius: clamp(6px, 1vw, 10px);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.tabContent.about p {
+  font-size: clamp(0.75rem, 1vw, 0.9rem);
+  font-weight: 400;
+  color: #2c2c2c;
+  margin-bottom: clamp(8px, 1vw, 24px);
+  line-height: 1.8;
+  max-width: clamp(300px, 70vw, 800px);
+}
+
+.tabContent.about h3 {
+  /* font-size: clamp(1.25rem, 2vw, 1.75rem); */
+  font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: clamp(12px, 1vw, 28px);
+  position: relative;
+  padding-bottom: clamp(4px, 0.5vw, 8px);
+}
+
+.tabContent.about h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: clamp(30px, 5vw, 60px);
+  height: clamp(1px, 0.3vw, 3px);
+  background-color: #456ff6;
+  border-radius: clamp(1px, 0.2vw, 2px);
+}
+
+.careerPath {
+  background-color: #ffffff;
+  border-radius: clamp(6px, 1vw, 8px);
+  padding: clamp(8px, 1.5vw, 20px);
+  font-size: clamp(0.75rem, 1vw, 0.9rem);
+  margin-bottom: clamp(8px, 1vw, 20px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-left: 4px solid #456ff6;
+  width: 22%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.careerPath:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.careerPath h4 {
+  font-size: clamp(0.85rem, 1.2vw, 1.1rem);
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 clamp(6px, 0.5vw, 12px);
+}
+
+.careerPath p {
+  font-size: clamp(0.75rem, 1vw, 0.95rem);
+  font-size: clamp(0.75rem, 1vw, 0.9rem);
+  color: #555555;
+  margin: 0 0 clamp(6px, 0.5vw, 16px);
+  line-height: 1.6;
+}
+
+.careerPath ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.careerPath li {
+  font-size: clamp(0.75rem, 1vw, 0.9rem);
+  color: #666666;
+  padding: clamp(4px, 0.5vw, 8px) 0 clamp(4px, 0.5vw, 8px) clamp(8px, 1vw, 20px);
+  position: relative;
+}
+
+.careerPath li::before {
+  content: "✔";
+  color: #456ff6;
+  font-size: clamp(0.75rem, 1vw, 0.9rem);
+  position: absolute;
+  left: clamp(4px, 0.5vw, 8px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.cardsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(clamp(200px, 20vw, 260px), 1fr));
+  gap: clamp(8px, 1vw, 20px);
+  padding: clamp(4px, 0.5vw, 10px) 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.learningPathCard {
+  background-color: #ffffff;
+  border-radius: clamp(6px, 1vw, 10px);
+  padding: clamp(8px, 1.5vw, 20px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  text-align: left;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid #f0f0f0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.learningPathCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+}
+
+.learningPathCard h3 {
+  font-size: clamp(0.875rem, 1.5vw, 1.1rem);
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 clamp(4px, 0.5vw, 10px);
+}
+
+.learningPathCard p {
+  font-size: clamp(0.75rem, 1vw, 0.85rem);
+  font-weight: 400;
+  color: #666666;
+  margin: 0 0 clamp(4px, 0.5vw, 16px);
+  line-height: 1.4;
+}
+
+.startButton {
+  background-color: #456ff6;
+  color: #ffffff;
+  border: none;
+  padding: clamp(6px, 1vw, 10px) clamp(10px, 1.5vw, 20px);
+  border-radius: clamp(4px, 0.5vw, 6px);
+  margin-top: clamp(4px, 0.5vw, 8px);
+  font-size: clamp(0.75rem, 1vw, 0.85rem);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: auto;
+  max-width: 100%;
+}
+
+.startButton:hover {
+  background-color: #3458d6;
+  transform: scale(1.02);
+}
+
+.eventCard {
+  background-color: #ffffff;
+  border-radius: clamp(6px, 1vw, 10px);
+  padding: clamp(8px, 1.5vw, 20px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  text-align: left;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid #f0f0f0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.eventCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+}
+
+.eventCard img {
+  width: 100%;
+  height: clamp(100px, 15vw, 160px);
+  object-fit: cover;
+  border-radius: clamp(6px, 1vw, 8px);
+  margin-bottom: clamp(4px, 0.5vw, 12px);
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.eventCard h3 {
+  font-size: clamp(0.875rem, 1.5vw, 1.1rem);
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 clamp(4px, 0.5vw, 10px);
+}
+
+.eventCard p {
+  font-size: clamp(0.75rem, 1vw, 0.85rem);
+  font-weight: 400;
+  color: #666666;
+  margin: 0 0 clamp(4px, 0.5vw, 8px);
+}
+
+.eventCard a {
+  display: inline-block;
+  font-size: clamp(0.75rem, 1vw, 0.85rem);
+  color: #456ff6;
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: clamp(4px, 0.5vw, 8px);
+  transition: color 0.3s ease;
+  word-wrap: break-word;
+}
+
+.eventCard a:hover {
+  color: #3458d6;
+  text-decoration: underline;
+}
+
+.prerequisitesList {
+  list-style-type: disc;
+  padding-left: clamp(10px, 2vw, 20px);
+  margin-top: clamp(4px, 0.5vw, 10px);
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.prerequisiteItem {
+  margin-bottom: clamp(4px, 0.5vw, 8px);
+  font-size: clamp(0.75rem, 1vw, 0.9rem);
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.blogsAndPeople {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 2vw, 30px);
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 1vw, 15px);
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.blogsContainer,
+.peopleContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(200px, 20vw, 250px), 1fr));
+  gap: clamp(8px, 1vw, 20px);
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.blogCard,
+.personCard {
+  background-color: #ffffff;
+  border-radius: clamp(8px, 1vw, 12px);
+  padding: clamp(12px, 2vw, 15px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.blogCard:hover,
+.personCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.blogCard {
+  border-left: 4px solid #456ff6;
+}
+
+.personCard {
+  border-left: 4px solid #10b981;
+}
+
+.blogCard h4,
+.personCard h4 {
+  margin: 0 0 clamp(6px, 0.5vw, 10px);
+  font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+  color: #1a1a1a;
+  font-weight: 600;
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+.blogLink,
+.personLink {
+  display: inline-block;
+  margin-top: clamp(6px, 0.5vw, 8px);
+  padding: clamp(6px, 1vw, 10px) clamp(12px, 2vw, 16px);
+  background-color: #456ff6;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: clamp(4px, 0.5vw, 6px);
+  font-size: clamp(0.75rem, 1vw, 0.875rem);
+  font-weight: 500;
+  width: auto;
+  max-width: 100%;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.blogLink:hover,
+.personLink:hover {
+  background-color: #3458d6;
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+@media screen and (max-width: 480px) {
+  .tabs {
+    gap: 4px;
+    padding-bottom: 2px;
+  }
+
+  .tabButton {
+    padding: 4px 8px;
+    font-size: 0.75rem;
+  }
+
+  .tabContentContainer {
+    padding: 4px;
+  }
+
+  .cardsContainer {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 4px;
+  }
+
+  .learningPathCard,
+  .eventCard {
+    padding: 6px;
+  }
+
+  .eventCard img {
+    height: 80px;
+  }
+
+  .prerequisitesList {
+    padding-left: 8px;
+  }
+
+  .blogsContainer,
+  .peopleContainer {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 4px;
+  }
+
+  .blogCard,
+  .personCard {
+    padding: 6px;
+    border-radius: 6px;
+  }
+
+  .blogCard h4,
+  .personCard h4 {
+    font-size: 0.75rem;
+    margin-bottom: 4px;
+  }
+
+  .blogLink,
+  .personLink {
+    padding: 4px 8px;
+    font-size: 0.625rem;
+    margin-top: 4px;
+    border-radius: 3px;
+  }
+
+  .careerPath {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .tabs {
+    gap: 12px;
+    padding-bottom: 6px;
+  }
+
+  .tabButton {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  .tabContentContainer {
+    padding: 12px;
+  }
+
+  .cardsContainer {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+  }
+
+  .learningPathCard,
+  .eventCard {
+    padding: 12px;
+  }
+
+  .eventCard img {
+    height: 140px;
+  }
+
+  .prerequisitesList {
+    padding-left: 16px;
+  }
+
+  .blogsContainer,
+  .peopleContainer {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+  }
+
+  .blogCard,
+  .personCard {
+    padding: 12px;
+    border-radius: 8px;
+  }
+
+  .blogCard h4,
+  .personCard h4 {
+    font-size: 1rem;
+    margin-bottom: 6px;
+  }
+
+  .blogLink,
+  .personLink {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    margin-top: 6px;
+    border-radius: 4px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .tabs {
+    gap: 16px;
+    padding-bottom: 8px;
+  }
+
+  .tabButton {
+    padding: 10px 16px;
+    font-size: 1rem;
+  }
+
+  .tabContentContainer {
+    padding: 20px;
+  }
+
+  .cardsContainer {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .learningPathCard,
+  .eventCard {
+    padding: 20px;
+  }
+
+  .eventCard img {
+    height: 160px;
+  }
+
+  .prerequisitesList {
+    padding-left: 20px;
+  }
+
+  .blogsContainer,
+  .peopleContainer {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  .blogCard,
+  .personCard {
+    padding: 15px;
+    border-radius: 12px;
+  }
+
+  .blogCard h4,
+  .personCard h4 {
+    font-size: 1.125rem;
+    margin-bottom: 10px;
+  }
+
+  .blogLink,
+  .personLink {
+    padding: 10px 16px;
+    font-size: 0.875rem;
+    margin-top: 8px;
+    border-radius: 6px;
+  }
+}

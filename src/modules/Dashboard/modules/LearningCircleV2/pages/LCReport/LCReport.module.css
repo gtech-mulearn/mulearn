@@ -1,0 +1,224 @@
+.popup {
+    position: fixed;
+    backdrop-filter: blur(5px) contrast(100%);
+    -webkit-backdrop-filter: blur(5px) contrast(100%);
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 50;
+    display: flex;
+    transition: 0.3s ease;
+    /* transform: scale(0); */
+    flex-direction: column;
+    align-items: center;
+
+    .container {
+        background: #fff;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        border-radius: 10px;
+        width: 50%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+        gap: 20px;
+        h1 {
+            color: #000;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        p {
+            width: 100%;
+            background: #eef2ff;
+            text-align: left;
+            padding: 10px;
+            border-radius: 10px;
+            color: #000;
+        }
+        a {
+            width: 100%;
+            background: #eef2ff;
+            text-align: left;
+            padding: 10px;
+            border-radius: 10px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .buttons {
+            width: 100%;
+            button {
+                width: 100%;
+                margin-top: 20px;
+            }
+        }
+    }
+}
+.lcReport {
+    width: 95%;
+
+    .backLink {
+        display: flex;
+        align-items: center;
+        background-color: white;
+        padding: 0.5rem 1rem;
+        margin-bottom: 10px;
+        width: fit-content;
+        color: #5d5d5d;
+        text-decoration: none;
+        cursor: pointer;
+        border-radius: 10px;
+    }
+    .container {
+        padding: 20px;
+        background: #fff;
+        border-radius: 10px;
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+        align-items: start;
+        text-align: start;
+        width: 100%;
+        h1 {
+            color: #000;
+            font-weight: 500;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        h2 {
+            margin-top: 10px;
+            color: #000;
+            font-size: 17px;
+        }
+        textarea {
+            height: 100px;
+            width: 70%;
+            padding: 10px;
+            background: #eef2ff;
+            padding: 10px;
+            border-radius: 10px;
+            color: #333;
+        }
+        .info {
+            color: #777;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+        .attendees {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+
+            .attendee {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+                background: #eef2ff;
+                padding: 15px 20px;
+                border-radius: 10px;
+                .content {
+                    display: flex;
+                    gap: 20px;
+                    align-items: center;
+
+                    .counter {
+                        color: #000;
+                        font-weight: 600;
+                    }
+                    .profile {
+                        height: 30px;
+                        width: 30px;
+                        border-radius: 50%;
+                    }
+                }
+                .noreport {
+                    color: rgb(255, 113, 113);
+                    font-size: 13px;
+                    font-weight: 600;
+                }
+                .buttons {
+                    display: flex;
+                    gap: 20px;
+                    span {
+                        display: flex;
+                        padding: 1px;
+                        border-radius: 50%;
+                        border: 1px solid #22222290;
+                        cursor: pointer;
+                        font-size: 30px;
+                        width: 35px;
+                        height: 35px;
+                        align-items: center;
+                        justify-content: center;
+                        &.accepted,
+                        &.rejected {
+                            font-size: 15px !important;
+                            border: none;
+                            width: auto;
+                            gap: 5px;
+
+                            &:hover {
+                                background: none;
+                            }
+                        }
+                        &.accepted {
+                            color: rgb(0, 210, 0);
+                        }
+                        &.rejected {
+                            font-size: 12px;
+                            color: red;
+                        }
+                        &:hover {
+                            background: #b9c9ff;
+                        }
+                        &.view {
+                            font-size: 20px;
+                        }
+                        &.accept {
+                            color: rgb(0, 210, 0);
+                        }
+                        &.reject {
+                            color: red;
+                        }
+                        &.disabled {
+                            cursor: not-allowed;
+                            color: grey;
+                        }
+                    }
+                }
+            }
+        }
+        .bottom {
+            width: 100%;
+            display: flex;
+            justify-content: end;
+            .button {
+                margin-top: 20px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .lcReport {
+        width: 100%;
+        .container {
+            textarea {
+                width: 100%;
+            }
+        }
+    }
+    .popup {
+        .container {
+            width: 90%;
+        }
+    }
+}

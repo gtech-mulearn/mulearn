@@ -1,0 +1,199 @@
+.userCard {
+    border: none;
+    border-radius: 12px;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    cursor: pointer;
+    width: 100%;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-top: #3b82f6 4px solid;
+}
+
+
+.userCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.userDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    justify-content: start;
+    align-items: start;
+}
+
+.userHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-bottom: 0.5rem;
+    text-align: left;
+    width: 100%;
+}
+
+.userName {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #1e293b; /* Dark slate for contrast */
+    background: linear-gradient(to right, #1e40af, #3b82f6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.gradeSection {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 6px 12px;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.userRole {
+    font-size: 14px;
+    font-weight: 500;
+    color: #475569; /* Slate gray */
+    margin-top: 0;
+}
+
+.userKarma {
+    font-size: 14px;
+    font-weight: 500;
+    color: #059669; /* Emerald green */
+    margin-bottom: 8px;
+    margin-top: 0;
+    background: rgba(236, 252, 203, 0.5); /* Light green background */
+    padding: 4px 10px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.leadership {
+    display: flex;
+    gap: 6px;
+    font-size: 14px;
+    margin-top: 0;
+    padding: 4px 0;
+    color: #475569;
+}
+
+.leaderLabel {
+    font-weight: 600;
+    color: #1e40af; /* Indigo */
+}
+
+.leaderName {
+    color: #334155; /* Darker slate */
+    font-weight: 400;
+}
+
+.iconButton {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    padding: 6px;
+    cursor: pointer;
+    color: #64748b;
+    border-radius: 50%;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.iconButton:hover {
+    color: #3b82f6; /* Blue */
+    background-color: rgba(59, 130, 246, 0.1);
+}
+
+.dialogOverlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 999;
+}
+
+.dialogContent {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+    border-radius: 12px;
+    padding: 20px;
+    width: 95vw;
+    max-width: 520px;
+    max-height: 85vh;
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.dialogTitle {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #1e293b;
+    text-align: center;
+}
+
+.dialogBody {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.dialogCloseButton {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: #64748b;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 50%;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.dialogCloseButton:hover {
+    color: #ef4444; /* Red */
+    background-color: rgba(239, 68, 68, 0.1);
+}
+
+.gradeRequirement {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.gradeDisplay {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.gradeText {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 600;
+    color: #1e40af; /* Indigo */
+}
+
+.requirementsList {
+    list-style: disc;
+    padding-left: 1.5rem;
+    color: #475569;
+    font-size: clamp(0.75rem, 1.8vw, 0.875rem);
+}

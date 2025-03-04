@@ -1,0 +1,106 @@
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    margin-left: 30px ;
+    width: 50%;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .arrow {
+    font-size: 20px;
+    color: gray;
+    cursor: pointer;
+  }
+  
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .courseItem {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .image {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+  }
+  
+  .courseInfo {
+    flex: 1;
+  }
+  
+  .courseTitle {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #222;
+    text-align: left;
+    width: max-content;
+
+  }
+  
+  .progress {
+    margin-top: 5px;
+  }
+  
+  .progressText {
+    font-size: 14px;
+    color: gray;
+  }
+  
+  .progressBar {
+    height: 5px;
+    background: #eee;
+    border-radius: 5px;
+    margin-top: 3px;
+    position: relative;
+    width: 100px;
+  }
+  
+  .progressFill {
+    height: 100%;
+    background: #f6a623;
+    border-radius: 5px;
+  }
+  
+  .completed {
+    color: #28a745;
+    font-weight: bold;
+  }
+  
+  .upcomingDetails {
+    font-size: 14px;
+    color: gray;
+    margin-top: 5px;
+  }
+  
+  .duration {
+    font-weight: bold;
+    color: #6b46c1;
+  }
+  
+  .date {
+    display: block;
+    font-size: 12px;
+    color: #888;
+  }
+  

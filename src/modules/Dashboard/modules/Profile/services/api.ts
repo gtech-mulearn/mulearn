@@ -16,6 +16,7 @@ export const getUserProfile = (
     privateGateway
         .get(dashboardRoutes.getUserProfile)
         .then(response => {
+            console.log(response.data.response,'data')
             setAPILoadStatus(response.data.statusCode);
             setUserProfile(response.data.response);
             setProfileStatus(response.data.response.is_public);

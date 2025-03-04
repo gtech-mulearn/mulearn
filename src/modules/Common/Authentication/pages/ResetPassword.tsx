@@ -20,7 +20,6 @@ const ResetPassword = (props: Props) => {
     useEffect(() => {
         const paramToken = searchParams.get("token");
         setToken(paramToken as string);
-        console.log(token);
         if (token.length > 0 && muid.length === 0) {
             getMuid(token, navigate, setMuID);
         }

@@ -153,8 +153,8 @@ export default function CompanyPage({
         // console.log(newUserData);
         submitUserData({
             setIsLoading: setIsLoading,
-            userData: newUserData,
-            navigate: navigate
+            userData: newUserData
+            // navigate: navigate
         });
     };
 

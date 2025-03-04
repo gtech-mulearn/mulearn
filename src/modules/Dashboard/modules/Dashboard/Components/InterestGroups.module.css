@@ -1,0 +1,113 @@
+.container {
+    padding: 16px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    width: 100%;
+  }
+  
+  .header {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .groupItem {
+    position: relative;
+    overflow: hidden;
+    padding: 12px 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  /* Create a pseudo-element that will act as the animated background */
+  .groupItem::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: #456ff6;
+    transition: width 0.3s ease;
+    z-index: 0;
+  }
+
+  .IgTitleContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .IgTitleContainer button{
+    font-size: 0.75rem;
+    color: #456ff6;
+    cursor: pointer;
+  }
+  
+  /* On hover, expand the pseudo-element to fill the entire card */
+  .groupItem:hover::before {
+    width: 100%;
+  }
+  
+  /* Also add the upward transform and box-shadow on hover */
+  .groupItem:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    color: white !important;
+  }
+  
+  /* Ensure that all direct children appear above the pseudo-element */
+  .groupItem * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .groupItem:hover * {
+    color: white !important;
+  }
+  
+  
+  .groupImage {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 12px;
+  }
+  
+  .groupTitle {
+    flex: 1;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .arrowLink {
+    text-decoration: none;
+    color: #456ff6;
+  }
+  
+  .arrowIcon {
+    font-size: 1rem;
+  }
+
+  /* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .container {
+    margin: 18px 0;
+  }
+}
+
+  

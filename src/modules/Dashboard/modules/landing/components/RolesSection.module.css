@@ -1,0 +1,99 @@
+.rolesSection {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin: 0;
+  font-weight: 800;
+}
+
+@media (max-width: 540px) {
+  .header h1 {
+    font-size: 8vw;
+  }
+}
+
+.header h6 {
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 10px;
+}
+
+.navBar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.navBar ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+.navItem {
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 10px 15px;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.navItem:hover {
+  color: #333;
+}
+
+.active {
+  font-weight: bold;
+  border-bottom: 2px solid #000;
+}
+
+.roleContent {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.roleItem {
+  background: #f8f8f8;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  padding: 20px;
+  transition: transform 0.3s ease;
+}
+
+.roleItem:hover {
+  transform: translateY(-5px);
+}
+
+.roleImage {
+  width: 100%;
+  min-height: 220px;
+  margin-bottom: 10px;
+}
+
+.roleTitle {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+  margin-bottom: 0.5rem;
+}
+
+.roleDesc {
+  font-size: 0.85rem;
+  font-weight: 400;
+  text-align: justify;
+}

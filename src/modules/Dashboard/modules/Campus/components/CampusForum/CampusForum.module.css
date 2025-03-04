@@ -1,0 +1,388 @@
+/* Container for the entire page */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+    background-color: #ffffff;
+  }
+  
+  /* Navigation Menu */
+  .navMenu {
+    display: flex;
+    gap: 24px;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 24px;
+  }
+  
+  .navButton {
+    font-size: 16px;
+    color: #9ca3af;
+    padding-bottom: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .navButtonActive {
+    font-size: 16px;
+    color: #3b82f6;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #3b82f6;
+    font-weight: 500;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .contentArea {
+    overflow: hidden; /* Prevents content from spilling during transition */
+  }
+  
+  /* Transition Wrapper for smooth height and fade */
+  .transitionWrapper {
+    transition: max-height 0.5s ease, opacity 0.3s ease; /* Smooth height and fade */
+    opacity: 1;
+    overflow: hidden; /* Ensures content doesn’t show outside during collapse */
+  }
+  
+  /* When content is changing, fade out slightly then back in */
+  .transitionWrapper[data-changing] {
+    opacity: 0.5;
+  }
+  
+  /* Content Area */
+  .contentArea {
+    overflow: hidden;
+  }
+  
+  /* Section Content */
+  .sectionContent {
+    padding: 0;
+    text-align: left;
+    height: auto;
+  }
+  
+  .sectionContent h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 16px;
+  }
+  
+  .sectionContent p {
+    font-size: 16px;
+    color: #4b5563;
+  }
+  
+  /* Forum Section Specific Styles */
+  .postCreation {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    background-color: #f3f4f6;
+    border-radius: 12px;
+    margin-bottom: 4px;
+  }
+  
+  .postUserAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+  .postInput {
+    flex: 1;
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    color: #6b7280;
+    outline: none;
+  }
+  
+  .postActions {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 16px;
+    margin-bottom: 24px;
+  }
+  
+  .actionButton {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #9ca3af;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .actionIcon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  /* Post Container */
+  .postContainer {
+    margin-top: 24px;
+    border-top: 1px solid #e5e7eb;
+    padding-top: 24px;
+  }
+  
+  .postHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+  }
+  
+  .postHeaderLeft {
+    display: flex;
+    gap: 12px;
+  }
+  
+  .postAvatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+  }
+  
+  .postInfo {
+    font-size: 14px;
+    color: #6b7280;
+  }
+  
+  .postNameRow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .postName {
+    font-size: 16px;
+    font-weight: 500;
+    color: #1f2937;
+  }
+  
+  .followButton {
+    font-size: 14px;
+    color: #3b82f6;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .postTime {
+    font-size: 14px;
+    color: #6b7280;
+  }
+  
+  .postMoreButton {
+    padding: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .postMoreIcon {
+    width: 24px;
+    height: 24px;
+    color: #9ca3af;
+  }
+  
+  .postText {
+    font-size: 16px;
+    color: #4b5563;
+    line-height: 1.5;
+  }
+  
+  /* Sidebar */
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  /* Sidebar Sections */
+  .sidebarSection {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  
+  .sidebarTitle {
+    font-size: 16px;
+    font-weight: 500;
+    color: #6b7280;
+    margin-bottom: 16px;
+  }
+  
+  .sidebarList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .sidebarItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .sidebarItemLeft {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .sidebarItemText {
+    font-size: 16px;
+    color: #374151;
+  }
+  
+  /* Notification Badge */
+  .notificationBadge {
+    background-color: #ef4444;
+    color: #fff;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 9999px;
+  }
+  
+  /* Friends List */
+  .friendsList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .friendItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .friendItemLeft {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .friendAvatarContainer {
+    position: relative;
+  }
+  
+  .friendAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+  .friendOnlineIndicator {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    background-color: #10b981;
+    border: 2px solid #fff;
+    border-radius: 50%;
+  }
+  
+  .friendInfo {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .friendNameRow {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .friendName {
+    font-size: 16px;
+    font-weight: 500;
+    color: #374151;
+  }
+  
+  .verifiedIcon {
+    width: 16px;
+    height: 16px;
+    color: #3b82f6;
+  }
+  
+  .friendUsername {
+    font-size: 14px;
+    color: #6b7280;
+  }
+  
+  .friendMessageButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .friendMessageIcon {
+    width: 20px;
+    height: 20px;
+    color: #9ca3af;
+  }
+  
+  /* Community Icons (Sidebar) */
+  .communityIconBox {
+    width: 40px;
+    height: 40px;
+    background-color: #3b82f6;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .communityIconBoxDark {
+    width: 40px;
+    height: 40px;
+    background-color: #374151;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .communityIcon {
+    width: 24px;
+    height: 24px;
+    color: #3b82f6;
+  }
+  
+  .communityIconAndroid {
+    width: 24px;
+    height: 24px;
+    color: #10b981;
+  }
+  
+  .communityIconDesktop {
+    width: 24px;
+    height: 24px;
+    color: #6b7280;
+  }
+  
+  .communityIconRi {
+    width: 24px;
+    height: 24px;
+    color: #60a5fa;
+  }
+  
+  .communityIconSchool {
+    width: 24px;
+    height: 24px;
+    color: #3b82f6;
+  }
+  
+  /* Additional styles for Sidebar sections (Friends, etc.) can be added as needed */
+  

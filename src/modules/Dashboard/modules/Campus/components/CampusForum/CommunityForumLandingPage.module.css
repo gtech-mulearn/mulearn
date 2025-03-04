@@ -1,0 +1,512 @@
+/* Main Container */
+.container {
+    padding: 24px;
+    background-color: #ffffff;
+    min-width: 100%;
+  }
+  
+  /* Grid Layout */
+  .mainGrid {
+    display: grid;
+    grid-template-columns: 75% 25%;
+    gap: 24px;
+  }
+  
+  /* Main Content (Forum Area) */
+  .mainContent {
+    /* Additional styling if needed */
+  }
+  
+  .forumCard {
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 24px;
+  }
+  
+  /* Banner */
+  .bannerWrapper {
+    position: relative;
+    margin-bottom: 24px;
+  }
+  
+  .bannerImage {
+    width: 100%;
+    height: 192px;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+  
+  .bannerOverlay {
+    position: absolute;
+    left: 24px;
+    bottom: -34px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .bannerLogo {
+    width: 64px;
+    height: 64px;
+    background-color: #3B82F6;
+    border-radius: 16px;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  
+  .bannerMemberInfo {
+    color: #6B7280;
+    margin-top: 2rem;
+    font-size: 0.75rem;
+  }
+  
+  .bellButton {
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    padding: 8px;
+    background-color: #fff;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    cursor: pointer;
+  }
+  
+  .bellIcon {
+    width: 20px;
+    height: 20px;
+    color: #6B7280;
+  }
+  
+  /* Forum Info */
+  .communityInfo {
+    margin-bottom: 0.5rem;
+  }
+  
+  
+  .sidebarBanner img{
+    border-radius: 20px;
+    height: auto;
+    width: 300px;
+  }
+  
+  .sidebarBanner{
+    display: flex;
+    justify-content: center;
+  }
+  
+  .sidebar{
+    display: flex;
+    justify-content: center;
+  
+  }
+  
+  .forumTitle {
+    font-size: 1.5rem;
+    margin-top: 3rem;
+    font-weight: 800;
+    text-align: left;
+    color: #1F2937;
+  }
+  
+  .forumSubInfo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #6B7280;
+  }
+  
+  /* Member Avatars */
+  .memberSection {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+  
+  .avatarGroup {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .avatarStack {
+    display: flex;
+    margin-left: -8px;
+  }
+  
+  .avatarImage {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+  }
+  
+  .memberText {
+    font-size: 14px;
+    color: #6B7280;
+  }
+  
+  .moreButton {
+    padding: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .moreIcon {
+    width: 24px;
+    height: 24px;
+    color: #9CA3AF;
+  }
+  
+  /* Navigation Menu */
+  .navMenu {
+    display: flex;
+    gap: 32px;
+    border-bottom: 1px solid #E5E7EB;
+    margin-bottom: 24px;
+  }
+  
+  .navButton {
+    font-size: 16px;
+    color: #9CA3AF;
+    padding-bottom: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .navButtonActive {
+    font-size: 16px;
+    color: #3B82F6;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #3B82F6;
+    font-weight: 500;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Post Creation */
+  .postCreation {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    background-color: #F3F4F6;
+    border-radius: 12px;
+    margin-bottom: 24px;
+  }
+  
+  .postUserAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+  .postInput {
+    flex: 1;
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    color: #6B7280;
+    outline: none;
+  }
+  
+  /* Post Actions */
+  .postActions {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 16px;
+    margin-bottom: 24px;
+  }
+  
+  .actionButton {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #9CA3AF;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .actionIcon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  /* Post Container */
+  .postContainer {
+    margin-top: 24px;
+    border-top: 1px solid #E5E7EB;
+    padding-top: 24px;
+  }
+  
+  .postHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+  }
+  
+  .postHeaderLeft {
+    display: flex;
+    gap: 12px;
+  }
+  
+  .postAvatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+  }
+  
+  .postInfo {
+    font-size: 14px;
+    color: #6B7280;
+  }
+  
+  .postNameRow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .postName {
+    font-size: 16px;
+    font-weight: 500;
+    color: #1F2937;
+  }
+  
+  .followButton {
+    font-size: 14px;
+    color: #3B82F6;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .postTime {
+    font-size: 14px;
+    color: #6B7280;
+  }
+  
+  .postMoreButton {
+    padding: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .postMoreIcon {
+    width: 24px;
+    height: 24px;
+    color: #9CA3AF;
+  }
+  
+  .postText {
+    font-size: 16px;
+    color: #4B5563;
+    line-height: 1.5;
+  }
+  
+  /* Sidebar */
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  /* Sidebar Sections */
+  .sidebarSection {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    position: sticky;
+  }
+  
+  .sidebarTitle {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #6B7280;
+    margin-bottom: 16px;
+    text-align: left;
+  }
+  
+  .sidebarList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .sidebarItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .sidebarItemLeft {
+    display: flex;
+    align-items: center;
+    font-size: 0.5rem;
+    gap: 12px;
+  }
+  
+  .sidebarItemText {
+    font-size: 0.8rem;
+    color: #374151;
+  }
+  
+  /* Notification Badge */
+  .notificationBadge {
+    background-color: #EF4444;
+    color: #fff;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 9999px;
+  }
+  
+  /* Friends List */
+  .friendsList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .friendItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .friendItemLeft {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .friendAvatarContainer {
+    position: relative;
+  }
+  
+  .friendAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+  .friendOnlineIndicator {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    background-color: #10B981;
+    border: 2px solid #fff;
+    border-radius: 50%;
+  }
+  
+  .friendInfo {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .friendNameRow {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .friendName {
+    font-size: 16px;
+    font-weight: 500;
+    color: #374151;
+  }
+  
+  .verifiedIcon {
+    width: 16px;
+    height: 16px;
+    color: #3B82F6;
+  }
+  
+  .friendUsername {
+    font-size: 14px;
+    color: #6B7280;
+  }
+  
+  .friendMessageButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .friendMessageIcon {
+    width: 20px;
+    height: 20px;
+    color: #9CA3AF;
+  }
+  
+  /* Community Icons (Sidebar) */
+  .communityIconBox {
+    width: 40px;
+    height: 40px;
+    background-color: #3B82F6;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .communityIconBoxDark {
+    width: 40px;
+    height: 40px;
+    background-color: #374151;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .communityIcon {
+    width: 24px;
+    height: 24px;
+    color: #3B82F6;
+  }
+  
+  .communityIconAndroid {
+    width: 24px;
+    height: 24px;
+    color: #10B981;
+  }
+  
+  .communityIconDesktop {
+    width: 24px;
+    height: 24px;
+    color: #6B7280;
+  }
+  
+  .communityIconRi {
+    width: 24px;
+    height: 24px;
+    color: #60A5FA;
+  }
+  
+  .communityIconSchool {
+    width: 24px;
+    height: 24px;
+    color: #3B82F6;
+  }
+  

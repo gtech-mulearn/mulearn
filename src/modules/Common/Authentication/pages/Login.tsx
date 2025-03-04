@@ -110,6 +110,11 @@ const Login = () => {
                                     Don't have an account? Sign up
                                 </a>
                             </span>
+                            <span className={styles.register}>
+                                <a href="/register">
+                                    Home Page
+                                </a>
+                            </span>
                         </form>
                     </div>
                 ) : null}
@@ -215,6 +220,12 @@ const Login = () => {
                                 {" "}
                                 <a href="/register">
                                     Don't have an account? Sign up
+                                </a>
+                            </span>
+                            <span className={styles.register}>
+                                {" "}
+                                <a href="/register">
+                                    Go To Home Page
                                 </a>
                             </span>
                         </form>

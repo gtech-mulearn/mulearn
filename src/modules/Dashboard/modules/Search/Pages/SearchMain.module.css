@@ -1,0 +1,48 @@
+.searchMain {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+  }
+  
+  .tabs {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgb(21, 21, 21);
+    border-radius: 9999px;
+    padding: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    z-index: 10;
+  }
+  
+  .tabList {
+    display: flex;
+    gap: 0.5rem;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .tabItem {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    color: #4b5563;
+    transition: all 0.3s ease;
+    border-radius: 9999px;
+  }
+  
+  .tabItem:hover {
+    background-color: #f3f4f6;
+  }
+  
+  .active {
+    color: white;
+    background-color: #2563eb;
+  }
+  
+  .tabContent {
+    padding: 1rem;
+    padding-bottom: 80px; /* Add space for the floating tab bar */
+  }

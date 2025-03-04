@@ -1,270 +1,285 @@
-.campus_student_list_container {
-    width: 95%;
-    /* padding: 20px 30px; */
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-evenly;
-    background: white;
-    border: 1px solid #dde2e5;
-    border-radius: 20px;
-
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-    /* box shadow is temporary change when bg is changed from white to new design */
-}
-
-.campus_student_list_container .content {
+.container {
     width: 100%;
-    padding: 40px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.campus_student_list_container .content .sec1 {
-    text-align: left;
-    width: 75%;
-}
-
-.campus_student_list_container .content .sec1 .campus_code {
-    background-color: #cfdef3;
-    border-radius: 10px;
-    padding: 5px 31px;
-    width: fit-content;
-    font-weight: 600;
-}
-
-/* .campus_student_list_container .content .sec1 .clg_name {
-    max-width: 65%;
-} */
-.campus_student_list_container .content .sec1 .sec_clg {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.campus_student_list_container .content .sec1 h1 {
-    font-size: xx-large;
-    /* max-width: 60%; */
-    font-weight: 600;
-}
-
-.campus_student_list_container .content .sec1 .campus_lead {
-    color: var(--black);
-}
-
-.campus_student_list_container .content .sec1 .details_card {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
-.campus_student_list_container .content .sec1 .details_card .card_one {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    width: 50%;
-}
-
-.campus_student_list_container .content .sec1 .details_card .card {
-    width: 230px;
-    border-radius: 10px;
-    /* padding: 3px 30px; */
-    text-align: center;
-    font-weight: 900;
-}
-
-/* .campus_student_list_container .content .sec1 .details_card .card:nth-child(1) {
-    color: white;
-    background: #456FF6;
-} */
-.campus_student_list_container .card p {
-    font-weight: 500;
-}
-
-.campus_student_list_container .card h1 {
-    font-size: 40px !important;
-    color: var(--black);
-}
-.campus_student_list_container .card span {
-    font-size: 10px;
-    color: grey;
-}
-
-.campus_student_list_container .campus_lead_card {
-    display: flex;
-    flex-direction: column;
-    flex: auto;
-    align-items: center;
-    color: var(--black);
-}
-
-.campus_student_list_container .campus_lead_card h2 {
-    font-size: 20px;
-}
-
-.campus_student_list_container .campus_lead_card img {
-    width: 40px;
-}
-
-.campus_student_list_container .content .sec2 {
-    background-color: #eef2ff;
     border-radius: 12px;
-    justify-content: center;
+    background-color: #F8FAFC;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.header {
+    display: flex;
     align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.titleSection {
     display: flex;
     flex-direction: column;
-    height: 200px;
-    width: 200px;
+    gap: 0.5rem;
 }
 
-.campus_student_list_container .content .sec2 .clg_rank {
-    font-size: 100px;
-    color: var(--Primary);
+.title {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: bold;
+    color: #0066FF;
+}
+
+.grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+    margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.card {
+    background: white;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.cardWithBorder {
+    composes: card;
+    border-left: 4px solid #0066FF;
+}
+
+.cardHover {
+    composes: card;
+    transition: border-left 0.2s ease;
+}
+
+.cardHover:hover {
+    border-left: 4px solid #0066FF;
+}
+
+.cardHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.cardTitle {
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
+    font-weight: 500;
+    color: #0066FF;
+}
+
+.iconButton {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: #64748B;
+    border-radius: 50%;
+}
+
+.iconButton:hover {
+    color: #0066FF;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.gradeDisplay {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.gradeText {
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    font-weight: bold;
+    color: #111827;
+}
+
+.statsValue {
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    font-weight: bold;
+    color: #111827;
+    margin-bottom: 0.25rem;
+}
+
+.statsLabel {
+    font-size: clamp(0.625rem, 1.5vw, 0.75rem);
+    color: #64748B;
+}
+
+.leadershipSection {
+    composes: card;
+    margin-top: 1.5rem;
+}
+
+.leadershipTitle {
+    color: #0066FF;
+    font-size: clamp(1rem, 2.5vw, 1.125rem);
     font-weight: 600;
-    line-height: 70px;
+    margin-bottom: 1rem;
 }
 
-.campus_student_list_container .content .sec2 .clg_rank_overlay {
-    width: 170px;
-    color: var(--black);
-    font-weight: 600;
-    font-size: 40px;
-    /* text-align: center; */
+.leadershipGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
-.campus_student_list_container .sec2 .clg_zone {
-    color: grey;
-    line-height: 10px;
-}
-
-.campus_student_list_container .content .sec2 h2 {
-    font-size: xx-large;
-    font-weight: 600;
-}
-
-/* responsive page */
-
-/* @media (max-width: 1420px) {
-    .campus_student_list_container .content .sec1 .clg_name {
-        max-width: 75%;
+@media (min-width: 768px) {
+    .leadershipGrid {
+        flex-direction: row;
+        justify-content: space-between;
     }
 }
 
-@media (max-width: 1300px) {
-    .campus_student_list_container .content .sec1 .clg_name {
-        max-width: 85%;
-    }
-} */
-
-@media (max-width: 1350px) {
-    .campus_student_list_container .content .sec1 .details_card {
-        gap: 10px;
-    }
-
-    .campus_student_list_container .content .sec1 .details_card .card {
-        width: 165px;
-        padding: 0px 12px;
-        font-size: 17px;
-        font-weight: 800;
-    }
+.leaderCard {
+    background-color: #F8FAFC;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s ease;
+    flex: 1;
 }
 
-@media (max-width: 1155px) {
-    .campus_student_list_container .content .sec1 .details_card .card {
-        width: 140px;
-        padding: 2px 0px;
-        font-size: 15px;
-        font-weight: 800;
-    }
-
-    /* .campus_student_list_container .content .sec1 .details_card .card h1 {
-        font-size: 25px;
-    } */
+.leaderCard:hover {
+    background-color: rgba(0, 102, 255, 0.05);
 }
 
-@media (max-width: 1035px) {
-    .campus_student_list_container .content {
-        flex-direction: column;
-    }
-
-    .campus_student_list_container .content .sec1 {
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-    }
-
-    .campus_student_list_container .content .sec1 .clg_name {
-        max-width: 100%;
-    }
-
-    .campus_student_list_container .content .sec1 .details_card {
-        justify-content: center;
-    }
-
-    .campus_student_list_container .content .sec2 {
-        margin-top: 0.7rem;
-        text-align: center;
-    }
-    .campus_student_list_container .content .sec1 .details_card .card_one {
-        width: 100%;
-    }
-}
-@media (max-width: 300px) {
-    .campus_student_list_container .content .sec1 .details_card .card_one {
-        width: 80%;
-    }
-    .campus_student_list_container .content .sec1 .sec_clg {
-        width: 90%;
-    }
+.leaderIcon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 0.5rem;
 }
 
-.loader_container {
+.leaderName {
+    font-weight: 500;
+    color: #111827;
+    margin-bottom: 0.25rem;
+    font-size: clamp(0.875rem, 2vw, 1rem);
+}
+
+.leaderRole {
+    font-size: clamp(0.75rem, 1.8vw, 0.875rem);
+    color: #64748B;
+}
+
+.dialogOverlay {
     position: fixed;
-    width: 100vw;
-    height: 100dvh;
-    top: 0;
-    left: 0;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.dialogContent {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    width: 95vw;
+    max-width: 500px;
+    max-height: 85vh;
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dialogTitle {
+    font-size: clamp(1rem, 2.5vw, 1.125rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #111827;
+}
+
+.dialogBody {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    gap: 1rem;
+}
+
+.dialogCloseButton {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: #64748B;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 50%;
+}
+
+.dialogCloseButton:hover {
+    color: #111827;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.gradeRequirement {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.gradeDisplay {
+    display: flex;
     align-items: center;
-    z-index: 200;
-    transition: all 0.5s ease-in;
+    gap: 0.5rem;
+}
+
+.gradeText {
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    font-weight: bold;
+    color: #111827;
+}
+
+.requirementsList {
+    list-style: disc;
+    padding-left: 1.25rem;
+    color: #64748B;
+    font-size: clamp(0.75rem, 1.8vw, 0.875rem);
 }
 
 .graphs {
-    width: 95%;
+    width: 100%;
     padding: 15px 0px;
-
     display: flex;
     gap: 15px;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
-.graphs .container {
+.graphs .graphContainer {
     background-color: var(--White);
     width: 49%;
     height: 350px;
     padding: 20px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-    /* box shadow is temporary change when bg is changed from white to new design */
     border-radius: 20px;
 }
 
-.graphs .container h2 {
+.graphs .graphContainer h2 {
     all: revert;
     margin: 0;
     color: var(--Black);
 }
 
 @media (max-width: 1200px) {
-    .graphs .container {
+    .graphs .graphContainer {
         width: 100%;
     }
 }
@@ -308,10 +323,25 @@
 }
 
 .checkbox {
+    cursor: pointer;
 }
 
 .btnContainer {
     display: flex;
     justify-content: end;
     width: 95%;
+}
+
+.loader_container {
+    position: fixed;
+    width: 100vw;
+    height: 100dvh;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+    transition: all 0.5s ease-in;
 }

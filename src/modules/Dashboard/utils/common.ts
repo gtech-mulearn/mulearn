@@ -147,8 +147,8 @@ export const customReactSelectStyles = {
         backgroundColor: state.isSelected
             ? "rgba(184, 196, 234, 0.29)"
             : state.isFocused
-              ? "lightgray"
-              : null
+            ? "lightgray"
+            : null
     }),
     loadingIndicator: (base: any, state: any) => ({
         ...base,
@@ -162,3 +162,23 @@ export const comingSoon = () => {
         icon: "⌛"
     });
 };
+
+export const getLocalDateTimeObject = (utcDateString: string) => {
+    const utcDate = new Date(utcDateString);
+    const localYear = utcDate.getFullYear();
+    const localMonth = utcDate.getMonth();
+    const localDay = utcDate.getDate();
+    const localHour = utcDate.getHours();
+    const localMinute = utcDate.getMinutes();
+    return new Date(localYear, localMonth, localDay, localHour, localMinute);
+};
+
+export function getLocalDateTimeFormatted(utcDateString: string) {
+    var utc = new Date(utcDateString);
+    const localYear = utc.getFullYear();
+    const localMonth = String(utc.getMonth() + 1).padStart(2, "0"); // Month is zero-indexed, so add 1
+    const localDay = String(utc.getDate()).padStart(2, "0");
+    const localHour = String(utc.getHours()).padStart(2, "0");
+    const localMinute = String(utc.getMinutes()).padStart(2, "0");
+    return `${localYear}-${localMonth}-${localDay}T${localHour}:${localMinute}`;
+}

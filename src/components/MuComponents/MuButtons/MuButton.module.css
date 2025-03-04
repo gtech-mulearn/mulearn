@@ -13,12 +13,12 @@
     border-radius: 8px;
     flex-direction: row;
     align-items: center;
-    margin-bottom: 16px;
-    font-size: 15px;
+    margin-bottom: 10px;
+    font-size: 14px;
     text-align: left;
     cursor: pointer;
     transition: 0.3s ease-in-out;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: normal;
     color: var(--lightGray);
 }
@@ -27,6 +27,12 @@
 }
 /* .btn_light {
     color: #456ff6;
+} */
+
+/* .navbar_buttons{
+    color: rgb(109, 0, 0);
+    background-color: #a9c8f3;
+    width: 170px;
 } */
 
 .btn_loader {
@@ -55,11 +61,11 @@
 .btn .btn_icon,
 .btn_light .btn_icon,
 .dropdown_btn .btn_icon {
-    margin-right: 20px;
+    margin-right: 8px;
     padding: 0;
     margin-bottom: 0;
     width: 20px;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 /* dropdown button style */

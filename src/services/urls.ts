@@ -1,3 +1,17 @@
+import { get } from "http";
+import {
+    getMeetupInfo,
+    joinMeetup,
+    submitAttendeeReport
+} from "src/modules/Dashboard/modules/LearningCircle/services/LearningCircleAPIs";
+import {
+    createLearningCircle,
+    getCreatedLearningCircles,
+    getLcReportInfo,
+    getLearningCircleInfo,
+    scheduleMeetup
+} from "src/modules/Dashboard/modules/LearningCircleV2/services/LearningCircleAPIs";
+
 export const onboardingRoutes = {
     countryList: "/api/v1/register/country/list/",
     stateList: "/api/v1/register/state/list/",
@@ -9,6 +23,8 @@ export const onboardingRoutes = {
     areaOfInterestList: "/api/v1/register/area-of-interest/list/",
     communityList: "/api/v1/register/community/list/",
     register: "/api/v1/register/",
+    interests: "/api/v1/register/interests/",
+    interestGroups: "/api/v1/dashboard/ig/list/",
     emailVerification: "/api/v1/register/email-verification/",
     // New Onboarding Routes
     createAccount: "/api/v1/register/new/",
@@ -17,7 +33,8 @@ export const onboardingRoutes = {
     departments: "/api/v1/register/department/list/",
     companies: "/api/v1/register/company/list/",
     validate: "/api/v1/register/validate/",
-    location: "/api/v1/register/location/?q=${param}"
+    location: "/api/v1/register/location/?q=${param}",
+    connectDiscord: "/api/v1/register/connect-discord/"
 } as const;
 
 export const authRoutes = {
@@ -30,6 +47,18 @@ export const NotificationRoutes = {
     getNotification: "/api/v1/notification/list/",
     deleteNotification: "api/v1/notification/delete/id/",
     deleteAllNotification: "api/v1/notification/delete/all/"
+};
+export const learningCircleRoutes = {
+    createLearningCircle: "/api/v1/dashboard/learningcircle/create/",
+    scheduleMeetup: "/api/v1/dashboard/learningcircle/meeting/create/",
+    getLearningCircleInfo: "/api/v1/dashboard/learningcircle/info/",
+    getCreatedLearningCircles: "/api/v1/dashboard/learningcircle/list/",
+    getMeetupInfo: "/api/v1/dashboard/learningcircle/meeting/info/",
+    submitAttendeeReport:
+        "/api/v1/dashboard/learningcircle/meeting/attendee-report/",
+    getMeetups: "/api/v1/dashboard/learningcircle/meeting/list/",
+    joinMeetup: "/api/v1/dashboard/learningcircle/meeting/join/",
+    getLcReportInfo: "/api/v1/dashboard/learningcircle/meeting/report/"
 };
 export const dashboardRoutes = {
     forgetPassword: "/api/v1/dashboard/user/forgot-password/",
@@ -58,10 +87,14 @@ export const dashboardRoutes = {
     getTaskTypes: "/api/v1/dashboard/task/task-types/",
     setAlumniStatus: "/api/v1/dashboard/campus/change-student-type/",
     getTaskTemplate: "/api/v1/dashboard/task/base-template/",
+    getUserList: "/api/v1/dashboard/user/search/",
+    getCollegeList: "/api/v1/dashboard/organisation/institutes/college/",
+    getSchoolList: "/api/v1/dashboard/organisation/institutes/school/",
 
     getKarmaVoucher: "/api/v1/dashboard/karma-voucher/",
     getKarmaVoucherList: "api/v1/dashboard/karma-voucher/import/",
     getKarmaVoucherTemplate: "api/v1/dashboard/karma-voucher/base-template/",
+    getKarmaFeed: "/api/v1/dashboard/profile/karma-feed/",
 
     getChannels: "/api/v1/dashboard/channels/",
     createChannel: "/api/v1/dashboard/channels/",
@@ -89,6 +122,9 @@ export const dashboardRoutes = {
     getPublicUserLog: "/api/v1/dashboard/profile/user-log/${muid}/",
     getUserSuggestion: "/api/v1/dashboard/profile/user-suggestion/",
     getStudentLeaderBoard: "/api/v1/leaderboard/students/",
+    getMonthlyStudentLeaderBoard: "/api/v1/leaderboard/students-monthly/",
+    getCollegeLeaderBoard: "/api/v1/leaderboard/colleges/",
+    getCollegeMonthlyLeaderBoard: "/api/v1/leaderboard/colleges-monthly/",
     getIgDetails: "/api/v1/dashboard/profile/ig-edit/",
     getSocials: "/api/v1/dashboard/profile/socials/",
     postProfileImage: "/api/v1/dashboard/user/profile/update/",
@@ -123,6 +159,15 @@ export const dashboardRoutes = {
     lc: "/api/v1/dashboard/lc/",
     searchLearningCircleWithCircleCode: "/api/v1/dashboard/lc/list-all/",
     getCampusLearningCircles: "/api/v1/dashboard/lc/",
+    getMeetups: "/api/v1/dashboard/lc/meets/list/",
+    getMeetupInfo: "/api/v1/dashboard/lc/meets/info/${meetId}/",
+    submitAttendeeReport:
+        "/api/v1/dashboard/lc/meets/attendee-report/${meetId}/",
+    submitAttendeeTaskImage:
+        "/api/v1/dashboard/lc/meets/attendee-report/${meetId}/${taskId}/",
+    joinMeetup: "/api/v1/dashboard/lc/meets/join/${meetId}/",
+    interestedMeetup: "/api/v1/dashboard/lc/meets/interested/${meetId}/",
+    verifyMeetup: "/api/v1/dashboard/lc/meets/verify/${meetId}/",
     getLearningCirclesLead: "/api/v1/dashboard/lc/lead/",
     createLearningCircle: "/api/v1/dashboard/lc/create/",
     listLearningCircle: "/api/v1/dashboard/lc/list-all/",
@@ -206,6 +251,7 @@ export const organizationRoutes = {
     putUpdateOrganization: "/api/v1/dashboard/organisation/institutes/edit/",
     deleteOrgnaization: "/api/v1/dashboard/organisation/institutes/delete/",
     postGetInfo: "/api/v1/dashboard/organisation/institutes/info/",
+    getUnverifiedOrganizations: "/api/v1/dashboard/organisation/verify/list/",
     getOrgCsv: (org_type: string) =>
         `/api/v1/dashboard/organisation/institutes/${org_type}/csv/`,
 

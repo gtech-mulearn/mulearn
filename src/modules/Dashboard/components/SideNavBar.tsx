@@ -4,6 +4,7 @@ import styles from "./SideNavBar.module.css";
 
 import MulearnBrand from "../assets/MulearnBrand";
 import SideNavBarBody from "./SideNavBarBody";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
     sidebarButtons: {
@@ -27,6 +28,8 @@ const SideNavBar = ({ sidebarButtons }: Props) => {
     const [sideNavDisplay, setSideNavDisplay] = useState(
         window.innerWidth > 830 ? "flex" : "none"
     );
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const handleResize = () =>
@@ -85,10 +88,10 @@ const SideNavBar = ({ sidebarButtons }: Props) => {
             <div
                 id="side_nav"
                 className={styles.side_nav_bar_container}
-                style={{ display: `${sideNavDisplay}` }}
+                style={{ display: `${sideNavDisplay}` , marginLeft: "20px"}}
             >
                 <div className={styles.side_nav_bar}>
-                    <div className={styles.mulearn_brand}>
+                    <div className={styles.mulearn_brand} onClick={()=> navigate("/")}>
                         <MulearnBrand />
                     </div>
                     <SideNavBarBody

@@ -1,0 +1,347 @@
+.container {
+  width: 100%;
+  border-radius: 12px;
+  background-color: #F8FAFC;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.titleSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.title {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: bold;
+  color: #0066FF;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .grid {
+      grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+      grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.card {
+  background: white;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.cardWithBorder {
+  composes: card;
+  border-left: 4px solid #0066FF;
+}
+
+.cardHover {
+  composes: card;
+  transition: border-left 0.2s ease;
+}
+
+.cardHover:hover {
+  border-left: 4px solid #0066FF;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.cardTitle {
+  font-size: clamp(0.75rem, 2vw, 0.875rem);
+  font-weight: 500;
+  color: #0066FF;
+}
+
+.iconButton {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: #64748B;
+  border-radius: 50%;
+}
+
+.iconButton:hover {
+  color: #0066FF;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.gradeDisplay {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.gradeText {
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  font-weight: bold;
+  color: #111827;
+}
+
+.statsValue {
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  font-weight: bold;
+  color: #111827;
+  margin-bottom: 0.25rem;
+}
+
+.statsLabel {
+  font-size: clamp(0.625rem, 1.5vw, 0.75rem);
+  color: #64748B;
+}
+
+.leadershipSection {
+  composes: card;
+  margin-top: 1.5rem;
+}
+
+.leadershipTitle {
+  color: #0066FF;
+  font-size: clamp(1rem, 2.5vw, 1.125rem);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.leadershipGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .leadershipGrid {
+      flex-direction: row;
+      justify-content: space-between;
+  }
+}
+
+.leaderCard {
+  background-color: #F8FAFC;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s ease;
+  flex: 1;
+}
+
+.leaderCard:hover {
+  background-color: rgba(0, 102, 255, 0.05);
+}
+
+.leaderIcon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 0.5rem;
+}
+
+.leaderName {
+  font-weight: 500;
+  color: #111827;
+  margin-bottom: 0.25rem;
+  font-size: clamp(0.875rem, 2vw, 1rem);
+}
+
+.leaderRole {
+  font-size: clamp(0.75rem, 1.8vw, 0.875rem);
+  color: #64748B;
+}
+
+.dialogOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.dialogContent {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  width: 95vw;
+  max-width: 500px;
+  max-height: 85vh;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dialogTitle {
+  font-size: clamp(1rem, 2.5vw, 1.125rem);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #111827;
+}
+
+.dialogBody {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dialogCloseButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: #64748B;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 50%;
+}
+
+.dialogCloseButton:hover {
+  color: #111827;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.gradeRequirement {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.gradeDisplay {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.gradeText {
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  font-weight: bold;
+  color: #111827;
+}
+
+.requirementsList {
+  list-style: disc;
+  padding-left: 1.25rem;
+  color: #64748B;
+  font-size: clamp(0.75rem, 1.8vw, 0.875rem);
+}
+
+.graphs {
+  width: 100%;
+  padding: 15px 0px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.graphs .graphContainer {
+  background-color: var(--White);
+  width: 49%;
+  height: 350px;
+  padding: 20px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+}
+
+.graphs .graphContainer h2 {
+  all: revert;
+  margin: 0;
+  color: var(--Black);
+}
+
+@media (max-width: 1200px) {
+  .graphs .graphContainer {
+      width: 100%;
+  }
+}
+
+.no_org {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.no_org_heading {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.no_org_tagline {
+  font-size: 1rem;
+  max-width: 25rem;
+  text-align: center;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.no_org_button {
+  padding: 1rem 0.75rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  background-color: #0077b6;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.no_org_button:hover {
+  background-color: #0077b6;
+}
+
+.checkbox {
+  cursor: pointer;
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: end;
+  width: 95%;
+}
+
+.loader_container {
+  position: fixed;
+  width: 100vw;
+  height: 100dvh;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+  transition: all 0.5s ease-in;
+}

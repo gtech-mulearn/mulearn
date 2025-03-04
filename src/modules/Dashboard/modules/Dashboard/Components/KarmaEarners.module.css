@@ -1,0 +1,100 @@
+.container {
+    padding: 16px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    width: 100%;
+  }
+    
+  .header {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 16px;
+    text-align: left;
+  }
+    
+  .earnersList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0 8px;
+  }
+    
+  .earnerItem {
+    padding: 12px 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    cursor: pointer;
+    font-size: clamp(0.8rem, 2vw, 1rem);
+
+  }
+    
+  .earnerTitle {
+    font-size: 0.7rem;
+    font-weight: bold;
+    margin-bottom: 4px;
+    color: #222;
+  }
+    
+  .earnerDetails {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 12px;
+    flex-wrap: wrap;
+    text-align: left;
+  }
+    
+  .earnerName {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #333;
+  }
+    
+  .currentKarma {
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: #456ff6;
+  }
+    
+  .earnedYesterday {
+    font-size: 0.75rem;
+    color: green;
+  }
+    
+  .streakDays {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ff4500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+    
+  .fireIcon {
+    font-size: 1rem;
+  }
+  
+  /* New classes for distinct background colors */
+  .studentCard {
+    background-color: #e0f7fa; /* Light blue */
+  }
+  
+  .collegeCard {
+    background-color: #e8f5e9; /* Light green */
+  }
+  
+  .streakCard {
+    background-color: #fff3e0; /* Light orange */
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      margin: 0;
+    }
+  }
+  

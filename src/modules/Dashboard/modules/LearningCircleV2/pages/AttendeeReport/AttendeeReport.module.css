@@ -1,0 +1,69 @@
+.attendeeReport {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+
+    .backLink {
+        display: none;
+        align-items: center;
+        background-color: white;
+        padding: 0.5rem 1rem;
+        width: fit-content;
+        color: #5d5d5d;
+        text-decoration: none;
+        cursor: pointer;
+        border-radius: 10px;
+    }
+
+    .header {
+        width: 100%;
+        padding: 20px;
+        border-radius: 10px;
+        background: #fff;
+
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            text-align: start;
+        }
+    }
+
+    .report {
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 20px;
+        label {
+            color: #000;
+            font-weight: 450;
+        }
+        textarea {
+            height: 200px;
+        }
+
+        textarea,
+        input {
+            width: 70%;
+            padding: 10px;
+            background: #eef2ff;
+            padding: 10px;
+            border-radius: 10px;
+            color: #333;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .attendeeReport {
+        .report {
+            textarea,
+            input {
+                width: 100%;
+            }
+        }
+    }
+}

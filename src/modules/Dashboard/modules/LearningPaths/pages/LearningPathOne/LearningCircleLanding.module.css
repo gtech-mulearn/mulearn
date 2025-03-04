@@ -1,0 +1,464 @@
+/*
+! Learning Circle common css
+*/
+.learningCircleLandingPage,
+.LearningCircleDetailsContent,
+.FindCircleContent,
+.LearningCircleCreateContent {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/*
+* ******************************************************************************************
+
+! Learning Circle Landing Page
+*/
+
+.learningCircleLandingPage .headContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--White);
+    gap: 1rem;
+    border-radius: var(--borderRadius);
+    box-shadow: var(--boxShadow);
+}
+
+.learningCircleLandingPageMiddle {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.learningCircleLandingPageMiddle b {
+    font-size: 1.5rem;
+    color: #494752;
+    font-weight: 600;
+    width: fit-content !important;
+}
+
+.learningCircleLandingPageMiddle p {
+    font-size: 1rem;
+    color: #a0a0a0;
+    font-weight: 500;
+    width: fit-content !important;
+    margin-top: 0;
+}
+
+.learningCircleLandingPage img,
+.learningCircleLandingPageMiddle img {
+    width: 35%;
+}
+
+.desaturate {
+    filter: saturate(0);
+    opacity: 0.5;
+}
+
+.learningCircleLandingPageDesc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 0;
+    color: #000;
+}
+
+.learningCircleLandingPageDesc h1 {
+    font-size: 2.5rem;
+    color: var(--blue);
+    font-weight: bold;
+}
+
+.learningCircleLandingPageDesc b {
+    font-weight: 600;
+    width: 80%;
+}
+
+.learningCircleLandingPage .learningCircleLandingPageButton {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.learningCircleLandingPageAccordion {
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    list-style: none;
+    border-radius: 0.5rem;
+}
+
+.learningCircleLandingPageLevel {
+    background-color: var(--White);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
+}
+
+.learningCircleLandingPageLevel div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.learningCircleLandingPagePara {
+    display: flex;
+    word-break: keep-all;
+    width: fit-content;
+}
+
+.learningCircleLandingPageExpandBtn {
+    display: none;
+}
+
+.learningCircleLandingPageExpandBtn:checked + .learningCircleLandingPageLevel,
+.learningCircleLandingPageExpandBtn:checked
+    + .learningCircleLandingPageLevel
+    div
+    p {
+    background: var(--blue);
+    color: white;
+}
+
+/* .learningCircleLandingPageExpandBtn:checked + .learningCircleLandingPageLevel{
+    border: 1px solid var(--blue);
+} */
+
+.learningCircleLandingPageExpandBtn:checked
+    + .learningCircleLandingPageLevel
+    .learningCircleLandingPageBtn {
+    background: var(--White);
+    color: var(--blue);
+}
+
+/* No learning circles case */
+.learningCircleLandingPageMiddle {
+    display: flex;
+    align-items: center;
+}
+.joinCodeInput {
+    width: 70%;
+    margin: 10px;
+    padding: 0.5rem;
+    border: 1px solid #d1d1d1;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    margin-right: 1rem;
+    color: #000;
+}
+.joinInfo {
+    color: #515151;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    display: block;
+    padding: 20px;
+}
+.learningCircleLandingPage .middleContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem;
+    color: #1a1a1a;
+  }
+  
+  .formGroup {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+
+  .submitButton{
+    background-color: #007bff;
+    padding: 1rem;
+    color: white;
+    border-radius: 10px;
+  }
+
+  .submitButton2{
+    border: 1px solid #007bff;
+    padding: 1rem;
+    border-radius: 10px;
+  }
+  
+  .input,
+  .textarea {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+  
+  .radioGroup {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .radioCard {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .radioCard:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .active {
+    border-color: #007bff;
+    background-color: #e7f1ff;
+  }
+  
+
+@media (width<1060px) {
+    .learningCircleLandingPageDesc h1 {
+        font-size: 1.65rem;
+    }
+
+    .learningCircleLandingPageDesc b {
+        font-size: 0.6rem;
+    }
+
+    .learningCircleLandingPageLevel div {
+        font-size: 0.8rem;
+    }
+    .learningCircleLandingPage .learningCircleLandingPageButton button {
+        font-size: 15px;
+    }
+}
+
+@media (width<=820px) {
+    .learningCircleLandingPage {
+        padding: 0.5rem;
+    }
+
+    .learningCircleLandingPage .headContent {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 0rem;
+    }
+
+    .learningCircleLandingPage img,
+    .learningCircleLandingPageMiddle img {
+        width: 100%;
+    }
+
+    .learningCircleLandingPageLevel {
+        padding: 1rem;
+    }
+
+    .learningCircleLandingPageBtn {
+        width: 2rem;
+    }
+}
+
+@media (width<620px) {
+    .learningCircleLandingPageMiddle p {
+        font-size: 0.65rem;
+        margin-right: 0.5rem;
+    }
+    .learningCircleLandingPage .learningCircleLandingPageButton {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .learningCircleLandingPage .middleContainer {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column-reverse;
+        gap: 10px;
+        button {
+            width: 100%;
+        }
+    }
+}
+
+@media (width<350px) {
+    .learningCircleLandingPageDesc h1 {
+        font-size: 1.2rem;
+    }
+
+    .learningCircleLandingPage .learningCircleLandingPageButton {
+        gap: 0.5rem;
+        margin-top: 0rem;
+    }
+
+    .learningCircleLandingPageMiddle p {
+        font-size: 0.5rem;
+    }
+}
+
+/* css for dropdown and your learning circle */
+
+.cardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: start;
+}
+.card div:nth-child(1) {
+    display: flex;
+    width: 100%;
+    justify-content: end;
+}
+.card div:nth-child(1) span {
+    padding: 0rem 1rem;
+    border-radius: 01rem;
+    border: 2px dotted #2d5bf7;
+    font-size: small;
+}
+.card {
+    background-color: #f7f9fc;
+    border-radius: 1rem;
+    padding: 20px;
+
+    width: 480px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: start;
+}
+
+.title {
+    font-size: 28px;
+    text-align: left;
+    font-weight: bold;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+.location {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    color: #6e6e6e;
+    text-align: left;
+    gap: 6px;
+}
+
+.icon {
+    font-size: 12px;
+    color: #6e6e6e;
+}
+
+.details {
+    display: flex;
+    gap: 10px;
+    font-size: 12px;
+}
+
+.date,
+.duration {
+    padding: 4px 8px;
+    border: 3px dotted #a6c1ed;
+    border-radius: 0.8rem;
+    color: #2d5bf7;
+}
+
+.karmaPoints {
+    padding: 4px 8px;
+    border: 3px dotted #67b36d;
+    border-radius: 0.8rem;
+    color: #67b36d;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 12px;
+}
+
+.bookmarkIcon {
+    font-size: 18px;
+    color: #2d5bf7;
+    cursor: pointer;
+}
+
+.joinButton {
+    background-color: rgba(69, 111, 246, 1);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 3px 8px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    transition: background-color 0.3s;
+    text-transform: capitalize;
+
+    &:disabled {
+        background-color: #d1d1d1;
+        cursor: not-allowed;
+
+        &:hover {
+            background-color: #d1d1d1;
+        }
+    }
+}
+
+.joinButton:hover {
+    background-color: #1f47b2;
+}
+
+@media screen and (max-width: 1920px) {
+    .cardContainer {
+        justify-content: start;
+    }
+    .card {
+        width: calc(33% - 20px);
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    .card {
+        width: calc(50% - 20px);
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .card {
+        width: 100%;
+    }
+    .location {
+        font-size: 15px;
+    }
+}

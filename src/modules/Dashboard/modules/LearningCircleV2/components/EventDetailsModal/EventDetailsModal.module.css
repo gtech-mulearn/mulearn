@@ -1,0 +1,56 @@
+.eventDetails {
+    padding: 16px;
+  }
+  
+  .eventDetails h3 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+  }
+  
+  .eventDetails p {
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+    color: #333;
+  }
+  
+  .joiningUrlSection {
+    margin-top: 12px;
+  }
+  
+  .urlContainer {
+    display: flex;
+    gap: 8px;
+    margin-top: 4px;
+    justify-content: center;
+  }
+  
+  .copyButton {
+    background-color: #456ff6;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+  }
+  
+  .copyButton:hover {
+    background-color: #3457d5;
+  }
+  
+  /* Animation Keyframes and Class */
+  @keyframes modalEnter {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .modalAnimation {
+    animation: modalEnter 0.3s ease-out;
+  }
+  

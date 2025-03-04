@@ -1,0 +1,1033 @@
+/* Container for the entire page */
+.container {
+  max-width: 100%; /* Changed to 100% for full responsiveness */
+  width: 1200px; /* Maintains a max width but scales down */
+  margin: 0 auto;
+  padding: 1.5rem;
+  background-color: #ffffff;
+}
+
+.navMenu {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping by default for flexibility */
+  gap: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 1.5rem;
+}
+
+.navButton {
+  font-size: 1rem;
+  color: #9ca3af;
+  padding-bottom: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.navButtonActive {
+  font-size: 1rem;
+  color: #3b82f6;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #3b82f6;
+  font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Content Area */
+.contentArea {
+  overflow: hidden;
+}
+
+/* Transition Wrapper for smooth height and fade */
+.transitionWrapper {
+  transition: max-height 0.5s ease, opacity 0.3s ease;
+  opacity: 1;
+  overflow: hidden;
+}
+
+.transitionWrapper[data-changing] {
+  opacity: 0.5;
+}
+
+/* Section Content */
+.sectionContent {
+  padding: 0;
+  text-align: left;
+  height: auto;
+}
+
+.sectionContent h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.sectionContent p {
+  font-size: 1rem;
+  color: #4b5563;
+}
+
+/* Forum Section Specific Styles */
+.postCreation {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #f3f4f6;
+  border-radius: 12px;
+  margin-bottom: 0.25rem;
+}
+
+.postUserAvatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  flex-shrink: 0; /* Prevent shrinking on small screens */
+}
+
+.postInput {
+  flex: 1;
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  color: #6b7280;
+  outline: none;
+}
+
+.postActions {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #9ca3af;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.actionIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Post Container */
+.postContainer {
+  margin-top: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 1.5rem;
+}
+
+.postHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.postHeaderLeft {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.postAvatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.postInfo {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.postNameRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.postName {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.followButton {
+  font-size: 0.875rem;
+  color: #3b82f6;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.postTime {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.postMoreButton {
+  padding: 0.25rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.postMoreIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #9ca3af;
+}
+
+.postText {
+  font-size: 1rem;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+/* Sidebar */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Sidebar Sections */
+.sidebarSection {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.sidebarTitle {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #6b7280;
+  margin-bottom: 1rem;
+}
+
+.sidebarList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sidebarItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebarItemLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.sidebarItemText {
+  font-size: 1rem;
+  color: #374151;
+}
+
+/* Notification Badge */
+.notificationBadge {
+  background-color: #ef4444;
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+}
+
+/* Friends List */
+.friendsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.friendItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.friendItemLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.friendAvatarContainer {
+  position: relative;
+}
+
+.friendAvatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.friendOnlineIndicator {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0.75rem;
+  height: 0.75rem;
+  background-color: #10b981;
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
+
+.friendInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.friendNameRow {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.friendName {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.verifiedIcon {
+  width: 1rem;
+  height: 1rem;
+  color: #3b82f6;
+}
+
+.friendUsername {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.friendMessageButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.friendMessageIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #9ca3af;
+}
+
+/* Community Icons (Sidebar) */
+.communityIconBox {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: #3b82f6;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.communityIconBoxDark {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: #374151;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.communityIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #3b82f6;
+}
+
+.communityIconAndroid {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #10b981;
+}
+
+.communityIconDesktop {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #6b7280;
+}
+
+.communityIconRi {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #60a5fa;
+}
+
+.communityIconSchool {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #3b82f6;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 1024px) {
+  /* Smaller Desktops and Tablets */
+  .container {
+    padding: 1.25rem;
+  }
+
+  .navMenu {
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .sectionContent h2 {
+    font-size: 1.375rem;
+  }
+
+  .postCreation {
+    padding: 0.875rem;
+  }
+
+  .postUserAvatar {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .postAvatar {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .sidebar {
+    gap: 1.25rem;
+  }
+
+  .friendAvatar {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .communityIconBox,
+  .communityIconBoxDark {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* Tablets and Larger Mobiles */
+  .container {
+    padding: 1rem;
+  }
+
+  .navMenu {
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .navButton,
+  .navButtonActive {
+    font-size: 0.875rem;
+    padding-bottom: 0.25rem;
+  }
+
+  .sectionContent h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .sectionContent p {
+    font-size: 0.875rem;
+  }
+
+  .postCreation {
+    gap: 0.75rem;
+    padding: 0.75rem;
+  }
+
+  .postUserAvatar {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .postInput {
+    font-size: 0.875rem;
+  }
+
+  .postActions {
+    padding: 0 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .actionIcon {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .postContainer {
+    margin-top: 1rem;
+    padding-top: 1rem;
+  }
+
+  .postHeader {
+    margin-bottom: 0.75rem;
+  }
+
+  .postHeaderLeft {
+    gap: 0.5rem;
+  }
+
+  .postAvatar {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .postInfo,
+  .postTime,
+  .followButton {
+    font-size: 0.75rem;
+  }
+
+  .postName {
+    font-size: 0.875rem;
+  }
+
+  .postMoreIcon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .postText {
+    font-size: 0.875rem;
+  }
+
+  .sidebar {
+    gap: 1rem;
+  }
+
+  .sidebarSection {
+    padding: 0.75rem;
+  }
+
+  .sidebarTitle {
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .sidebarList {
+    gap: 0.75rem;
+  }
+
+  .sidebarItemLeft {
+    gap: 0.5rem;
+  }
+
+  .sidebarItemText {
+    font-size: 0.875rem;
+  }
+
+  .notificationBadge {
+    font-size: 0.625rem;
+    padding: 0.2rem 0.4rem;
+  }
+
+  .friendsList {
+    gap: 0.75rem;
+  }
+
+  .friendItemLeft {
+    gap: 0.5rem;
+  }
+
+  .friendAvatar {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .friendOnlineIndicator {
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+
+  .friendName {
+    font-size: 0.875rem;
+  }
+
+  .friendUsername {
+    font-size: 0.75rem;
+  }
+
+  .friendMessageIcon {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .communityIconBox,
+  .communityIconBoxDark {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
+  }
+
+  .communityIcon,
+  .communityIconAndroid,
+  .communityIconDesktop,
+  .communityIconRi,
+  .communityIconSchool {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* Small Mobiles */
+  .container {
+    padding: 0.75rem;
+  }
+
+  .navMenu {
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    justify-content: center; /* Center items on small screens */
+  }
+
+  .navButton,
+  .navButtonActive {
+    font-size: 0.75rem;
+  }
+
+  .sectionContent h2 {
+    font-size: 1rem;
+  }
+
+  .sectionContent p {
+    font-size: 0.75rem;
+  }
+
+  .postCreation {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.5rem;
+  }
+
+  .postUserAvatar {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .postInput {
+    font-size: 0.75rem;
+    width: 100%;
+  }
+
+  .postActions {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .actionButton {
+    justify-content: flex-start; /* Align icons left when stacked */
+  }
+
+  .actionIcon {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+
+  .postContainer {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+  }
+
+  .postHeader {
+    flex-direction: column; /* Stack header items */
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .postAvatar {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .postInfo,
+  .postTime,
+  .followButton {
+    font-size: 0.625rem;
+  }
+
+  .postName {
+    font-size: 0.75rem;
+  }
+
+  .postMoreIcon {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .postText {
+    font-size: 0.75rem;
+  }
+
+  .sidebar {
+    gap: 0.75rem;
+  }
+
+  .sidebarSection {
+    padding: 0.5rem;
+  }
+
+  .sidebarTitle {
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .sidebarList {
+    gap: 0.5rem;
+  }
+
+  .sidebarItemLeft {
+    gap: 0.375rem;
+  }
+
+  .sidebarItemText {
+    font-size: 0.75rem;
+  }
+
+  .notificationBadge {
+    font-size: 0.5rem;
+    padding: 0.15rem 0.3rem;
+  }
+
+  .friendsList {
+    gap: 0.5rem;
+  }
+
+  .friendItemLeft {
+    gap: 0.375rem;
+  }
+
+  .friendAvatar {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .friendOnlineIndicator {
+    width: 0.375rem;
+    height: 0.375rem;
+  }
+
+  .friendName {
+    font-size: 0.75rem;
+  }
+
+  .friendUsername {
+    font-size: 0.625rem;
+  }
+
+  .friendMessageIcon {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+
+  .communityIconBox,
+  .communityIconBoxDark {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 0.875rem;
+  }
+
+  .communityIcon,
+  .communityIconAndroid,
+  .communityIconDesktop,
+  .communityIconRi,
+  .communityIconSchool {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  /* Very Small Screens */
+  .container {
+    padding: 0.5rem;
+  }
+
+  .navMenu {
+    gap: 0.5rem;
+  }
+
+  .navButton,
+  .navButtonActive {
+    font-size: 0.625rem;
+  }
+
+  .sectionContent h2 {
+    font-size: 0.875rem;
+  }
+
+  .sectionContent p {
+    font-size: 0.625rem;
+  }
+
+  .postUserAvatar {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .postInput {
+    font-size: 0.625rem;
+  }
+
+  .actionIcon {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+
+  .postAvatar {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .friendAvatar {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  
+}
+
+@media screen and (min-width: 1200px) {
+  /* Large Desktop */
+  .container {
+    padding: 2rem;
+  }
+
+  .navMenu {
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .navButton,
+  .navButtonActive {
+    font-size: 1.125rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .sectionContent h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .sectionContent p {
+    font-size: 1.125rem;
+  }
+
+  .postCreation {
+    gap: 1.25rem;
+    padding: 1.25rem;
+  }
+
+  .postUserAvatar {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .postInput {
+    font-size: 1.125rem;
+  }
+
+  .postActions {
+    padding: 0 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .actionIcon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .postContainer {
+    margin-top: 2rem;
+    padding-top: 2rem;
+  }
+
+  .postHeader {
+    margin-bottom: 1.25rem;
+  }
+
+  .postAvatar {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  .postInfo,
+  .postTime,
+  .followButton {
+    font-size: 1rem;
+  }
+
+  .postName {
+    font-size: 1.125rem;
+  }
+
+  .postMoreIcon {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .postText {
+    font-size: 1.125rem;
+  }
+
+  .sidebar {
+    gap: 2rem;
+  }
+
+  .sidebarSection {
+    padding: 1.25rem;
+  }
+
+  .sidebarTitle {
+    font-size: 1.125rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .sidebarList {
+    gap: 1.25rem;
+  }
+
+  .sidebarItemText {
+    font-size: 1.125rem;
+  }
+
+  .notificationBadge {
+    font-size: 0.875rem;
+  }
+
+  .friendsList {
+    gap: 1.25rem;
+  }
+
+  .friendAvatar {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .friendOnlineIndicator {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .friendName {
+    font-size: 1.125rem;
+  }
+
+  .friendUsername {
+    font-size: 1rem;
+  }
+
+  .friendMessageIcon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .communityIconBox,
+  .communityIconBoxDark {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.5rem;
+  }
+
+  .communityIcon,
+  .communityIconAndroid,
+  .communityIconDesktop,
+  .communityIconRi,
+  .communityIconSchool {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  /* Ultra-Wide Screens */
+  .container {
+    max-width: 1400px; /* Increased for ultra-wide screens */
+    padding: 2.5rem;
+  }
+
+  .navMenu {
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .navButton,
+  .navButtonActive {
+    font-size: 1.25rem;
+  }
+
+  .sectionContent h2 {
+    font-size: 2rem;
+  }
+
+  .sectionContent p {
+    font-size: 1.25rem;
+  }
+
+  .postUserAvatar {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  .postInput {
+    font-size: 1.25rem;
+  }
+
+  .postAvatar {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .postName {
+    font-size: 1.25rem;
+  }
+
+  .postText {
+    font-size: 1.25rem;
+  }
+
+  .friendAvatar {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  .friendName {
+    font-size: 1.25rem;
+  }
+
+  .communityIconBox,
+  .communityIconBoxDark {
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 1.75rem;
+  }
+}

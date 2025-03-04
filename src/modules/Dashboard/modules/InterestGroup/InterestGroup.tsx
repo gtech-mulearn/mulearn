@@ -5,23 +5,20 @@ import THead from "@/MuLearnComponents/Table/THead";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import { deleteInterestGroups, getInterestGroups } from "./apis";
 import { useNavigate } from "react-router-dom";
-import {
-    MuButton,
-    PowerfulButton
-} from "@/MuLearnComponents/MuButtons/MuButton";
+import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import styles from "./InterestGroup.module.css";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { Blank } from "@/MuLearnComponents/Table/Blank";
-import CreateOrUpdateModal from "./CreateOrUpdateModal";
 import MuModal from "@/MuLearnComponents/MuModal/MuModal";
 import InterestGroupForm from "./InterestGroupForm";
+import { Label } from "recharts";
 
-interface IgDetails {
-    igName: string;
-    igCode: string;
-    igIcon: string;
-}
+// interface IgDetails {
+//     igName: string;
+//     igCode: string;
+//     igIcon: string;
+// }
 
 export type modalTypes = "edit" | "create" | null;
 
@@ -38,6 +35,7 @@ function InterestGroup() {
     const columnOrder = [
         { column: "name", Label: "Name", isSortable: true },
         { column: "members", Label: "Members", isSortable: true },
+        { column: "category", Label: "Category", isSortable: true },
         { column: "updated_at", Label: "Updated On", isSortable: true },
         { column: "updated_by", Label: "Updated By", isSortable: true },
         { column: "created_by", Label: "Created By", isSortable: true },

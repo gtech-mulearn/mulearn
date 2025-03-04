@@ -1,0 +1,586 @@
+.container {
+  padding: clamp(8px, 2vw, 24px);
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(8px, 2vw, 24px);
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.mainContent {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.sidebar {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+@media screen and (min-width: 768px) {
+  .mainGrid {
+    grid-template-columns: 75% 25%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .mainGrid {
+    grid-template-columns: 75% 25%;
+  }
+}
+
+.forumCard {
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: clamp(8px, 2vw, 24px);
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.forumCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.bannerWrapper {
+  position: relative;
+  margin-bottom: clamp(8px, 2vw, 24px);
+  width: 100%;
+}
+
+.bannerImage {
+  width: 100%;
+  height: clamp(100px, 20vw, 192px);
+  object-fit: cover;
+  border-radius: 12px;
+  aspect-ratio: 16 / 9;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.bannerOverlay {
+  position: absolute;
+  left: clamp(8px, 2vw, 24px);
+  bottom: -20px;
+  display: flex;
+  align-items: center;
+  gap: clamp(4px, 1vw, 16px);
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.bannerLogo {
+  width: clamp(32px, 8vw, 64px);
+  height: clamp(32px, 8vw, 64px);
+  background-color: #3b82f6;
+  border-radius: 16px;
+  color: #fff;
+  font-size: clamp(0.4rem, 0.5vw, 0.9rem);
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+.bannerLogo:hover {
+  transform: scale(1.05);
+}
+
+.bannerMemberInfo {
+  color: #6b7280;
+  font-size: clamp(0.5rem, 1vw, 0.75rem);
+}
+
+.bellButton {
+  position: absolute;
+  right: clamp(8px, 2vw, 24px);
+  top: clamp(8px, 2vw, 24px);
+  padding: clamp(4px, 1vw, 8px);
+  background-color: #fff;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.bellButton:hover {
+  background-color: #f3f4f6;
+}
+
+.bellIcon {
+  width: clamp(12px, 2vw, 20px);
+  height: clamp(12px, 2vw, 20px);
+  color: #6b7280;
+}
+
+.communityInfo {
+  margin-bottom: clamp(4px, 1vw, 16px);
+  margin-top: 1rem;
+}
+
+.forumTitle {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  margin-top: clamp(8px, 2vw, 24px);
+  font-weight: 800;
+  text-align: left;
+  color: #1f2937;
+}
+
+.forumSubInfo {
+  display: flex;
+  align-items: center;
+  gap: clamp(2px, 1vw, 8px);
+  font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+  color: #6b7280;
+  flex-wrap: wrap;
+}
+
+.memberSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: clamp(8px, 2vw, 24px);
+  flex-wrap: wrap;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.avatarGroup {
+  display: flex;
+  align-items: center;
+  gap: clamp(2px, 1vw, 8px);
+}
+
+.avatarStack {
+  display: flex;
+  margin-left: -clamp(2px, 1vw, 8px);
+}
+
+.avatarImage {
+  width: clamp(20px, 4vw, 32px);
+  height: clamp(20px, 4vw, 32px);
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+
+.memberText {
+  font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+  color: #6b7280;
+}
+
+.moreButton {
+  padding: clamp(2px, 1vw, 8px);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.moreIcon {
+  width: clamp(16px, 3vw, 24px);
+  height: clamp(16px, 3vw, 24px);
+  color: #9ca3af;
+  transition: transform 0.3s ease;
+}
+
+.moreButton:hover .moreIcon {
+  transform: rotate(90deg);
+}
+
+.navMenu {
+  display: flex;
+  gap: clamp(8px, 2vw, 32px);
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: clamp(8px, 2vw, 24px);
+  overflow-x: auto;
+  padding-bottom: clamp(4px, 1vw, 16px);
+  width: 100%;
+  max-width: 100%;
+}
+
+.navButton {
+  font-size: clamp(0.75rem, 1.5vw, 1rem);
+  color: #9ca3af;
+  padding-bottom: clamp(2px, 1vw, 8px);
+  background: none;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+.navButton:hover,
+.navButtonActive {
+  color: #3b82f6;
+}
+
+.navButtonActive {
+  border-bottom: 2px solid #3b82f6;
+  font-weight: 500;
+}
+
+.sidebarSection {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: clamp(8px, 2vw, 16px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  position: static;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+@media screen and (min-width: 1024px) {
+  .sidebarSection {
+    position: sticky;
+    top: clamp(16px, 2vw, 24px);
+  }
+}
+
+.sidebarTitle {
+  font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+  font-weight: 600;
+  color: #6b7280;
+  margin-bottom: clamp(4px, 1vw, 16px);
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.sidebarBanner {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.sidebarBanner img {
+  border-radius: 20px;
+  width: 100%;
+  height: auto;
+  max-width: 300px;
+}
+
+.officeHoursCard {
+  margin-top: 30px;
+
+  background-color: #456ff6;
+  color: #f7f7f7;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  width: 90%;
+  max-width: 90%;
+  /* overflow-x: hidden; */
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  margin-right: 1rem;
+}
+
+.officeHoursCard:hover {
+  transform: translateY(-2px);
+}
+
+.officeHoursCard h3 {
+  font-size: clamp(0.625rem, 1.5vw, 0.85rem);
+  margin-bottom: 0.7rem;
+}
+
+.officeHoursCardTiming {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* margin-top: clamp(4px, 1vw, 16px); */
+  flex-wrap: wrap;
+  gap: clamp(4px, 1vw, 16px);
+  width: 100%;
+  overflow-x: hidden;
+  /* margin-bottom: 2rem; */
+}
+
+.officeHoursCardTiming p {
+  font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+  font-weight: 700;
+}
+
+.officeHoursButton {
+  background-color: #fff;
+  color: #456ff6;
+  border: none;
+  padding: clamp(4px, 1vw, 8px) clamp(8px, 2vw, 16px);
+  border-radius: 4px;
+  cursor: pointer;
+  /* margin-top: clamp(4px, 1vw, 16px); */
+  font-size: clamp(0.625rem, 1.5vw, 0.8rem);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  width: auto;
+  max-width: 100%;
+}
+
+.officeHoursButton:hover {
+  background-color: #e5e7eb;
+  transform: scale(1.05);
+}
+
+@media screen and (max-width: 480px) {
+  .bannerOverlay {
+    flex-direction: column;
+    align-items: flex-start;
+    bottom: -15px;
+    padding: 0 8px;
+  }
+
+  .forumSubInfo {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .memberSection {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .navMenu {
+    justify-content: flex-start;
+    padding-left: 8px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .bannerImage {
+    height: clamp(180px, 20vw, 220px);
+  }
+
+  .forumTitle {
+    font-size: clamp(1.5rem, 2vw, 1.75rem);
+  }
+  .communityIcon {
+    width: clamp(32px, 8vw, 64px);
+    height: clamp(32px, 8vw, 64px);
+  }
+}
+
+.sidebarSection {
+  background-color: #fff;
+  border-radius: 12px;
+  /* padding: clamp(8px, 2vw, 16px); */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  position: static;
+  width: 90%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+@media screen and (min-width: 1024px) {
+  .sidebarSection {
+    position: sticky;
+    top: clamp(16px, 2vw, 24px);
+  }
+}
+
+.sidebarTitle {
+  font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+  font-weight: 600;
+  color: #6b7280;
+  margin-bottom: clamp(4px, 1vw, 16px);
+  text-align: center;
+  word-wrap: break-word;
+}
+
+/* Position the aside from the right side of the viewport as an overlay */
+.asideDetails {
+  position: fixed;
+  top: 0;
+  right: -300px; /* Start off-screen to the right */
+  width: 300px; /* Adjust width as needed */
+  height: 100vh;
+  background: white;
+  z-index: 1000;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: right 0.3s ease-in-out;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.asideDetails.open {
+  right: 0; /* Slide in to be visible on the right side of the viewport */
+}
+
+/* Optional: Style the close button */
+.asideDetails .closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: clamp(6px, 1vw, 10px) clamp(10px, 1.5vw, 16px);
+  background-color: #456ff6;
+  color: white;
+  border: none;
+  border-radius: clamp(4px, 0.5vw, 6px);
+  font-size: clamp(0.75rem, 1vw, 0.85rem);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.asideDetails .closeButton:hover {
+  background-color: #3458d6;
+  transform: scale(1.02);
+}
+
+/* Ensure the aside adapts to smaller screens */
+@media screen and (max-width: 768px) {
+  .asideDetails {
+    width: 100%; /* Full width on mobile */
+    right: -100%; /* Start fully off-screen on mobile */
+  }
+
+  .asideDetails.open {
+    right: 0; /* Slide in fully on mobile */
+  }
+}
+
+.sidebarList {
+  display: flex;
+  flex-direction: column;
+  
+  gap: clamp(4px, 1vw, 16px);
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.sidebarItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 100%;
+  padding: clamp(4px, 1vw, 8px);
+  overflow-x: hidden;
+}
+
+.sidebarItemLeft {
+  display: flex;
+  align-items: center;
+  gap: clamp(4px, 1vw, 12px);
+  width: 100%;
+  overflow-x: hidden;
+  flex-wrap: wrap;
+}
+
+.communityIcon {
+  /* width: clamp(24px, 5vw, 40px);
+  height: clamp(24px, 5vw, 40px); */
+  object-fit: contain;
+  border-radius: 8px;
+  /* max-width: 100%; */
+  width: 200px !important;
+  height: 50px !important;
+
+  overflow-x: hidden;
+}
+
+.sidebarItemText {
+  font-size: clamp(0.625rem, 1.5vw, 0.8rem);
+  color: #374151;
+  word-wrap: break-word;
+  max-width: calc(100% - 40px);
+}
+
+@media screen and (max-width: 480px) {
+  .sidebarList {
+    gap: 2px;
+  }
+
+  .sidebarItem {
+    padding: 2px;
+  }
+
+  .sidebarItemLeft {
+    gap: 2px;
+  }
+
+  .communityIcon {
+    width: clamp(20px, 5vw, 24px);
+    height: clamp(20px, 5vw, 24px);
+  }
+
+  .sidebarItemText {
+    font-size: clamp(0.5rem, 1.5vw, 0.625rem);
+    max-width: calc(100% - 30px);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .sidebarList {
+    gap: clamp(8px, 1vw, 16px);
+  }
+
+  .sidebarItem {
+    padding: clamp(6px, 1vw, 8px);
+  }
+
+  .sidebarItemLeft {
+    gap: clamp(8px, 1vw, 12px);
+  }
+
+  .communityIcon {
+    width: clamp(32px, 5vw, 40px);
+    height: clamp(32px, 5vw, 40px);
+  }
+
+  .sidebarItemText {
+    font-size: clamp(0.7rem, 1.5vw, 0.8rem);
+    max-width: calc(100% - 40px);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .sidebarList {
+    gap: clamp(12px, 1vw, 16px);
+  }
+
+  .sidebarItem {
+    padding: clamp(8px, 1vw, 8px);
+  }
+
+  .sidebarItemLeft {
+    gap: clamp(12px, 1vw, 12px);
+  }
+
+  .communityIcon {
+    width: clamp(40px, 5vw, 40px);
+    height: clamp(40px, 5vw, 40px);
+  }
+
+  .sidebarItemText {
+    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+    max-width: calc(100% - 40px);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .bannerLogo {
+    font-size: clamp(0.9rem, 0.8vw, 0.9rem);
+  }
+
+  .forumSubInfo {
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+  }
+}

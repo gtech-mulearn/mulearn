@@ -1,6 +1,7 @@
 .wrapper h1 {
   font-weight: bold;
-  font-size: 3rem;
+  font-size: 1.5rem;
+  color: #404d61;
 }
 
 .course {
@@ -8,9 +9,8 @@
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 1rem; /* Combines row-gap and column-gap */
   justify-items: center;
+  color: #404d61;
 }
-
-
 
 
 .cardHeading{
@@ -54,7 +54,7 @@
 
 
 .second_view_container {
-  margin-top: 3rem;
+  margin-top: 1rem;
   padding: 2rem;
   background-color: #ffffff;
 }
@@ -66,19 +66,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   padding: 2rem;
   border-radius: 10px;
   gap: 1.5rem;
-
   box-shadow: 1px 1px 45px -5px rgb(0 0 0 / 8%);
   -webkit-box-shadow: 1px 1px 45px -5px rgb(0 0 0 / 8%);
   -moz-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
 }
 
 .title {
-  font-weight: 500;
-  font-size: 30px;
+  font-weight: 700;
+  font-size: 1.2rem;
   margin-bottom: 0.5rem;
 }
 

@@ -1,0 +1,255 @@
+.userCard {
+  border: none;
+  border-radius: 16px;
+  padding: clamp(12px, 2vw, 15px);
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row;
+  gap: clamp(12px, 2vw, 15px);
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.userCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.userImage {
+  width: clamp(60px, 10vw, 100px);
+  height: clamp(60px, 10vw, 100px);
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #fff;
+  position: relative;
+  margin-bottom: 0;
+}
+
+.userImage::after {
+  content: attr(data-karma);
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: clamp(24px, 4vw, 32px);
+  height: clamp(24px, 4vw, 32px);
+  background-color: #ff8c00;
+  color: #fff;
+  border-radius: 50%;
+  font-size: clamp(0.75rem, 1.5vw, 1rem);
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.userDetails {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 1vw, 8px);
+  flex: 1;
+  justify-content: center;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.userHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 0;
+  text-align: left;
+  width: 100%;
+}
+
+.userName {
+  font-size: clamp(1rem, 2vw, 18px);
+  font-weight: 600;
+  color: #000;
+  margin-bottom: clamp(2px, 0.5vw, 5px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.userMUID {
+  font-size: clamp(0.75rem, 1.5vw, 14px);
+  color: #888;
+  margin-bottom: clamp(2px, 0.5vw, 5px);
+  margin-top: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.userRole {
+  font-size: clamp(0.75rem, 1.5vw, 14px);
+  color: #888;
+  margin-bottom: clamp(2px, 0.5vw, 5px);
+  margin-top: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.userKarma {
+  display: none;
+}
+
+.interestGroups {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(4px, 1vw, 5px);
+  margin-bottom: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.interestTag {
+  background-color: #ffb6c1;
+  padding: clamp(4px, 0.5vw, 6px) clamp(8px, 1vw, 12px);
+  border-radius: 16px;
+  font-size: clamp(0.625rem, 1vw, 12px);
+  color: #333333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.interestTag:nth-child(2) {
+  background-color: #90ee90;
+  color: #333333;
+}
+
+.interestTag:nth-child(3) {
+  background-color: #87cefa;
+  color: #333333;
+}
+
+.noInterestTag {
+  background-color: #f0f0f0;
+  padding: clamp(4px, 0.5vw, 6px) clamp(8px, 1vw, 12px);
+  border-radius: 16px;
+  font-size: clamp(0.625rem, 1vw, 12px);
+  color: #666;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+@media screen and (max-width: 480px) {
+  .userCard {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: clamp(8px, 2vw, 12px);
+    gap: clamp(8px, 1vw, 12px);
+  }
+
+  .userImage {
+    width: clamp(50px, 10vw, 60px);
+    height: clamp(50px, 10vw, 60px);
+  }
+
+  .userImage::after {
+    width: clamp(20px, 4vw, 24px);
+    height: clamp(20px, 4vw, 24px);
+    font-size: clamp(0.625rem, 1.5vw, 0.75rem);
+  }
+
+  .userName {
+    font-size: clamp(0.875rem, 2vw, 1rem);
+  }
+
+  .userMUID, .userRole {
+    font-size: clamp(0.625rem, 1.5vw, 0.75rem);
+  }
+
+  .interestGroups {
+    gap: clamp(2px, 0.5vw, 4px);
+  }
+
+  .interestTag, .noInterestTag {
+    padding: clamp(2px, 0.5vw, 4px) clamp(6px, 1vw, 8px);
+    font-size: clamp(0.5rem, 1vw, 0.625rem);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .userCard {
+    padding: clamp(12px, 2vw, 15px);
+    gap: clamp(12px, 2vw, 15px);
+  }
+
+  .userImage {
+    width: clamp(80px, 10vw, 100px);
+    height: clamp(80px, 10vw, 100px);
+  }
+
+  .userImage::after {
+    width: clamp(24px, 4vw, 32px);
+    height: clamp(24px, 4vw, 32px);
+    font-size: clamp(0.75rem, 1.5vw, 1rem);
+  }
+
+  .userName {
+    font-size: clamp(1rem, 2vw, 18px);
+  }
+
+  .userMUID, .userRole {
+    font-size: clamp(0.75rem, 1.5vw, 14px);
+  }
+
+  .interestGroups {
+    gap: clamp(4px, 1vw, 5px);
+  }
+
+  .interestTag, .noInterestTag {
+    padding: clamp(4px, 0.5vw, 6px) clamp(8px, 1vw, 12px);
+    font-size: clamp(0.625rem, 1vw, 12px);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .userCard {
+    padding: clamp(15px, 2vw, 15px);
+    gap: clamp(15px, 2vw, 15px);
+  }
+
+  .userImage {
+    width: clamp(100px, 10vw, 100px);
+    height: clamp(100px, 10vw, 100px);
+  }
+
+  .userImage::after {
+    width: clamp(32px, 4vw, 32px);
+    height: clamp(32px, 4vw, 32px);
+    font-size: clamp(1rem, 1.5vw, 1rem);
+  }
+
+  .userName {
+    font-size: clamp(18px, 2vw, 18px);
+  }
+
+  .userMUID, .userRole {
+    font-size: clamp(14px, 1.5vw, 14px);
+  }
+
+  .interestGroups {
+    gap: clamp(5px, 1vw, 5px);
+  }
+
+  .interestTag, .noInterestTag {
+    padding: clamp(6px, 0.5vw, 6px) clamp(12px, 1vw, 12px);
+    font-size: clamp(12px, 1vw, 12px);
+  }
+}

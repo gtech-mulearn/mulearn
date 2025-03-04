@@ -284,7 +284,7 @@ const ProfileV2 = (props: Props) => {
                 >
                     Mu Voyage
                 </li>{" "}
-                <li
+                {/* <li
                     onClick={() => setProfileList("projects")}
                     className={
                         profileList === "projects"
@@ -293,7 +293,7 @@ const ProfileV2 = (props: Props) => {
                     }
                 >
                     Projects
-                </li>
+                </li> */}
             </div>
 
             {profileList === "basic-details" ? (

@@ -1,0 +1,277 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(8px, 2vw, 25px);
+  background-color: #f5f7fa;
+  overflow-x: hidden;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(16px, 2vw, 24px);
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+@media (min-width: 768px) {
+  .wrapper {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .wrapper {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.welcomeSection {
+  background-color: #456ff6;
+  color: #ffffff;
+  padding: clamp(12px, 2vw, 20px);
+  border-radius: clamp(8px, 1vw, 12px);
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: clamp(16px, 2vw, 24px);
+  overflow-x: hidden;
+}
+
+@media (max-width: 767px) {
+  .welcomeSection {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: clamp(8px, 2vw, 12px);
+    gap: clamp(12px, 2vw, 16px);
+  }
+}
+
+.welcomeText {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: flex-start;
+  margin-left: 0;
+  width: 100%;
+  max-width: 100%;
+  text-wrap: balance;
+}
+
+.welcomeTitle {
+  font-size: clamp(1.2rem, 3vw, 2.5rem);
+  font-weight: 700;
+  text-align: left;
+  color: #ffffff;
+  margin-bottom: clamp(4px, 1vw, 8px);
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+.welcomeTitle span {
+  color: #ffffff;
+}
+
+.welcomeMessage {
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  text-align: left;
+  color: #ffffff;
+  margin-bottom: clamp(8px, 1vw, 12px);
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+.buttons {
+  display: flex;
+  justify-content: start;
+  font-size: clamp(0.7rem, 1.5vw, 0.8rem);
+  margin-top: clamp(8px, 1vw, 12px);
+  gap: clamp(4px, 1vw, 8px);
+  width: 100%;
+  max-width: 100%;
+  flex-wrap: wrap;
+}
+
+
+.button {
+  background-color: #ffffff;
+  color: #000000;
+  padding: clamp(6px, 1vw, 10px) clamp(12px, 2vw, 16px);
+  border-radius: clamp(8px, 1vw, 12px);
+  min-width: clamp(80px, 10vw, 100px);
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.button:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.02);
+}
+
+.button2 {
+  background-color: transparent;
+  color: #ffffff;
+  padding: clamp(6px, 1vw, 10px) clamp(12px, 2vw, 16px);
+  border-radius: clamp(8px, 1vw, 12px);
+  min-width: clamp(80px, 10vw, 100px);
+  border: 1px solid #ffffff;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button2:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.02);
+}
+
+.slider {
+  margin-left: 0;
+  width: 100%;
+  max-width: 100%;
+  height: max-content;
+  background-color: transparent;
+  padding: clamp(8px, 2vw, 16px);
+  border-radius: clamp(8px, 1vw, 12px);
+  overflow-x: hidden;
+}
+
+.happeningTitle {
+  color: #000000;
+  margin-bottom: clamp(8px, 1vw, 16px);
+  font-weight: 600;
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  text-align: left;
+}
+
+.happeningCardsContainer {
+  margin-top: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.rightWrapper {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: clamp(16px, 2vw, 24px);
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+@media (min-width: 768px) {
+  .rightWrapper {
+    width: auto;
+  }
+}
+
+.dashboardImage {
+  height: clamp(200px, 25vw, 260px);
+  padding: clamp(8px, 1vw, 20px) 0;
+  margin: clamp(8px, 1vw, 10px) 0;
+  max-width: 100%;
+  max-height: clamp(300px, 30vw, 400px);
+  margin-right: 0;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.dashboardImage:hover {
+  transform: scale(1.02);
+}
+
+@media (max-width: 480px) {
+  .welcomeTitle {
+    font-size: clamp(1rem, 3vw, 1.25rem);
+  }
+/* 
+  .welcomeText{
+    align-items: center;
+  } */
+
+  .welcomeTitle{
+    text-align: center;
+  }
+
+  .welcomeMessage {
+    font-size: clamp(0.7rem, 2vw, 0.8rem);
+    text-align: center;
+  }
+
+  .buttons {
+    gap: clamp(2px, 1vw, 4px);
+    justify-content: center;
+  }
+
+  .button, .button2 {
+    padding: clamp(4px, 1vw, 8px);
+    font-size: clamp(0.625rem, 1.5vw, 0.75rem);
+    min-width: clamp(60px, 10vw, 80px);
+  }
+
+  .happeningTitle {
+    font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+  }
+
+  .dashboardImage {
+    height: clamp(150px, 25vw, 200px);
+    max-height: clamp(200px, 30vw, 300px);
+  }
+  .welcomeText{
+    align-items: center;
+  }
+}
+
+@media (min-width: 768px) {
+  .welcomeTitle {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    text-align: center;
+    
+  }
+
+  .welcomeMessage {
+    font-size: clamp(0.9rem, 2vw, 1rem);
+  }
+
+  .dashboardImage {
+    height: clamp(200px, 25vw, 256px);
+    max-height: clamp(300px, 30vw, 400px);
+  }
+
+  .happeningTitle {
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .welcomeTitle {
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    text-align: left;
+  }
+
+  .welcomeMessage {
+    font-size: clamp(1rem, 2vw, 1rem);
+  }
+
+  .dashboardImage {
+    height: clamp(260px, 25vw, 260px);
+    max-height: clamp(400px, 30vw, 400px);
+  }
+
+  .happeningTitle {
+    font-size: clamp(1rem, 1.5vw, 1rem);
+  }
+}

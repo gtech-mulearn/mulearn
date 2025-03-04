@@ -8,6 +8,7 @@ type Props = {
     handleNextClick?: () => void;
     currentPage: number;
     totalPages: number;
+    options? : number[];
     margin?: string;
     onSearchText?: (data: string) => void;
     onPerPageNumber?: (data: number) => void;
@@ -58,7 +59,7 @@ const Pagination = (props: Props) => {
                         />
                     </div>
                     <ShowPerPage
-                        options={[5, 10, 20, 50, 100]}
+                        options={props.options ? props.options : [5, 10, 20, 50, 100]}
                         selectedOption={props.perPage}
                         onOptionChange={handleOptionChange}
                     />

@@ -43,8 +43,6 @@ export default function SignIn() {
     });
 
     const onSubmit = (values: any) => {
-        console.log(values);
-
         if (!otpForm) {
             login(
                 values.emailOrMuId,
@@ -153,9 +151,22 @@ export default function SignIn() {
                                     </PowerfulButton>
                                 </div>
                                 <div className={styles.noAccount}>
-                                    <a href="/register">
+                                    <a
+                                        // href={
+                                        //     ruri
+                                        //         ? `/register/?ruri=${ruri}`
+                                        //         : "/register"
+                                        // }
+                                        href={
+
+                                            "/register"
+                                        }
+                                    >
                                         Don't have an account? Sign up
                                     </a>
+                                </div>
+                                <div className={styles.noAccount} onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
+                                    Homepage
                                 </div>
                             </Form>
                         </div>

@@ -1,3 +1,5 @@
+import { createMeetup } from "src/modules/Dashboard/modules/LearningCircle/services/LearningCircleAPIs";
+
 export const dynamicRoute = (route: string, ...args: string[]) => {
     let replacedRoute = route;
     args.forEach(arg => {
@@ -9,13 +11,17 @@ export const dynamicRoute = (route: string, ...args: string[]) => {
 };
 
 export const lcRoutes = {
-    createReport: "/api/v1/dashboard/lc/${LcID}/report/create/",
+    createReport: "/api/v1/dashboard/lc/meets/report/${meetId}/",
     getReport: "/api/v1/dashboard/lc/${LcID}/report/${ReportID}/show/",
     transferLead: "/api/v1/dashboard/lc/${LcID}/lead-transfer/${MemberID}/",
     approveRejectRemoveUser:
         "/api/v1/dashboard/lc/${LcID}/user-accept-reject/${MemberID}/",
     scheduleMeet: "/api/v1/dashboard/lc/${LcID}/schedule-meet/",
-    getDetailsUpdateNote: "/api/v1/dashboard/lc/${LcID}/details/"
+    createMeet: "/api/v1/dashboard/lc/${LcID}/meet/create/",
+    getLcMeetups: "/api/v1/dashboard/lc/${LcID}/meet/list/",
+    getLcAttendees: "/api/v1/dashboard/lc/meets/attendees/${meetId}/",
+    getDetailsUpdateNote: "/api/v1/dashboard/lc/${LcID}/details/",
+    verifyList: "/api/v1/dashboard/lc/meets/verify-list/"
 };
 
 export const taskTypeRoutes = {

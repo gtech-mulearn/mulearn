@@ -1,0 +1,25 @@
+.sidebarBannerSlider {
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+  overflow: hidden;
+}
+
+.sliderImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 5px;
+}
+  
+  .swiperSlide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .sliderImage:hover {
+    transform: scale(1.05);
+  }
+  

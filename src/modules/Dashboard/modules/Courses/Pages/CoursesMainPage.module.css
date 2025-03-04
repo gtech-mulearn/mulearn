@@ -1,0 +1,114 @@
+.container {
+    width: 100%;
+    margin: 0 auto;
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .pageTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: left;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .pageSubtitle {
+    text-align: left;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 30px;
+  }
+  
+  .cardContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 15px;
+    justify-content: center;
+    gap: 20px;
+  }
+
+.card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    width: 450px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+  }
+  
+  .cardHeader {
+    margin-bottom: 15px;
+  }
+  
+  .cardHeader h2 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .creatorInfo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .creatorRole {
+    color: #666;
+    font-size: 0.9rem;
+  }
+  
+  .companyLogos {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .companyLogo {
+    background-color: #f0f0f0;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+  }
+  
+  .description {
+    color: #666;
+    margin-bottom: 15px;
+  }
+  
+  .peersJoined {
+    margin-bottom: 15px;
+    color: #666;
+  }
+  
+  .dateInfo {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    color: #666;
+  }
+  
+  .seatsRemaining {
+    color: #ff6b6b;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  .viewDetailsButton {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .viewDetailsButton:hover {
+    background-color: #357abd;
+  }

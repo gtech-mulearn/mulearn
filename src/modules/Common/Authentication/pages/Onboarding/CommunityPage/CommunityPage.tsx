@@ -9,7 +9,7 @@ import { Form, Formik } from "formik";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
-import styles from "../AccountCreation/AccountCreation.module.css";
+import styles from "../../../components/AccountCreation/AccountCreationComponent.module.css";
 import { FormikTextInputWithoutLabel as SimpleInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 
 export default function CommunityPage() {

@@ -1,0 +1,180 @@
+/* Base styles for all screen sizes */
+.container {
+  margin: 1rem; /* Use relative units for flexibility */
+  padding: 1rem; /* Consistent padding in rem */
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box; /* Ensures padding doesn’t increase width */
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: clamp(1rem, 4vw, 1.25rem); /* Scales between 1rem and 1.25rem based on viewport */
+  font-weight: bold;
+  color: #333;
+}
+
+.arrow {
+  font-size: clamp(1.25rem, 5vw, 1.5rem); /* Scales arrow size */
+  color: #888;
+  cursor: pointer;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem; /* Reduced gap for smaller screens */
+}
+
+.circleItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 0.75rem 1rem; /* Adjusted padding */
+  cursor: pointer;
+  text-align: left;
+  border-radius: 8px;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.circleItem:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.circleInfo {
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* Allows info to take available space */
+}
+
+.circleTitle {
+  font-size: clamp(0.875rem, 3vw, 1rem); /* Scales title */
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+  color: #222;
+}
+
+.circleDescription {
+  font-size: clamp(0.75rem, 2.5vw, 0.875rem); /* Scales description */
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.circleDetails {
+  font-size: clamp(0.625rem, 2vw, 0.75rem); /* Scales details */
+  color: #444;
+  margin-bottom: 0.5rem;
+}
+
+.createdBy {
+  margin-right: 0.75rem;
+}
+
+.happeningTime {
+  font-style: italic;
+}
+
+.tagsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem; /* Reduced gap for smaller screens */
+}
+
+.tag {
+  font-size: clamp(0.625rem, 2vw, 0.75rem); /* Scales tag text */
+  color: #fff;
+  padding: 0.125rem 0.375rem;
+  border-radius: 4px;
+}
+
+.ctaButton {
+  background-color: #456ff6;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  white-space: nowrap; /* Prevents text wrapping */
+}
+
+.ctaButton:hover {
+  background-color: #3457d5;
+}
+
+/* Responsive adjustments with media queries */
+
+/* Small screens (mobile, up to 600px) */
+@media (max-width: 600px) {
+  .container {
+    margin: 0.5rem;
+    padding: 0.75rem;
+  }
+
+  .circleItem {
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start;
+    padding: 0.5rem;
+  }
+
+  .ctaButton {
+    margin-top: 0.5rem;
+    width: 100%; /* Full-width button on mobile */
+    text-align: center;
+  }
+
+  .circleDetails {
+    display: flex;
+    flex-direction: column; /* Stack createdBy and happeningTime */
+    gap: 0.25rem;
+  }
+
+  .createdBy {
+    margin-right: 0; /* Reset margin in column layout */
+  }
+}
+
+/* Medium screens (tablet, 600px - 900px) */
+@media (min-width: 601px) and (max-width: 900px) {
+  .container {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .circleItem {
+    flex-direction: row; /* Keep horizontal layout */
+    padding: 0.75rem;
+  }
+
+  .ctaButton {
+    width: auto; /* Reset to auto width */
+  }
+
+  .list {
+    gap: 0.875rem; /* Slightly larger gap for tablets */
+  }
+}
+
+/* Large screens (desktop, above 900px) */
+@media (min-width: 901px) {
+  .container {
+    max-width: 1200px; /* Cap width for large screens */
+    margin: 1.25rem auto; /* Center with auto margins */
+  }
+
+  .list {
+    gap: 1rem; /* Larger gap for better spacing */
+  }
+
+  .circleItem {
+    padding: 1rem 1.25rem; /* More padding for comfort */
+  }
+}
