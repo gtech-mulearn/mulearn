@@ -13,7 +13,7 @@ interface LearningPathCardProps {
 const LearningPathCard: React.FC<LearningPathCardProps> = ({ id, level, card, onSelect }) => {
   const handleCardClick = () => {
     // Log the id to debug
-    console.log('Navigating with ID:', id);
+    // console.log('Navigating with ID:', id);
     // Call the onSelect callback instead of navigating
     onSelect(level, card);
   };

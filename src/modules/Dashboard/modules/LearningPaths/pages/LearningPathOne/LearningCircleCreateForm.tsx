@@ -1,26 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./LearningCircleLanding.module.css";
 import { createLearningCircle, scheduleMeetup } from "../../../LearningCircleV2/services/LearningCircleAPIs";
 import { useNavigate } from "react-router-dom";
 import ReactSelect from "react-select";
 import { getInterests } from "../../../ManageUsers/apis";
+import { useUserStore } from "/src/ZustandProvider";
 
 
 const LearningCircleCreateForm = ({ setIsCreateModalOpen, onSuccess }: { setIsCreateModalOpen: (type: boolean) => void, onSuccess: () => void }) => {
     const [title, setTitle] = useState('');
     const [ig, setIg] = useState('');
+    const [interestOptions, setInterestOptions] = useState<InterestOption[]>([]);
     const [description, setDescription] = useState('');
     const [meetingType, setMeetingType] = useState('online'); // default selection
     const [meetLink, setMeetLink] = useState('');
     const [location, setLocation] = useState('');
     const [time, setTime] = useState('');
+    const org = useUserStore((state) => state.userProfile.college_id || "028b4fb3-6b24-46ac-b26a-092889c5c44f");
+
 
     const navigate = useNavigate();
 
 
+
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e && e.preventDefault();
-        
+
         // var lcId: string | boolean = '';
         const data = {
             title,
@@ -29,8 +34,8 @@ const LearningCircleCreateForm = ({ setIsCreateModalOpen, onSuccess }: { setIsCr
             meetLink,
             location,
             time,
-            org: import.meta.env.VITE_ORG_ID,
-            ig: import.meta.env.VITE_IG_ID,
+            org,
+            ig,
             is_recurring: false,
             recurrence_type: "weekly",
             recurrence: 1,
@@ -46,21 +51,28 @@ const LearningCircleCreateForm = ({ setIsCreateModalOpen, onSuccess }: { setIsCr
                         //     `/dashboard/learningcircle/dashboard/${params.circle_id}`
                         // );
                     }
-                    onSuccess(); 
+                    onSuccess();
                 });
             }
         });
         setIsCreateModalOpen(false);
     };
 
-    const getOptions = () => {
-        getInterests().then((data) => {
-            return data.map(ig => ({
-                label: ig.name,
-                value: ig.id
-            }))
-        })
-    }
+    type InterestOption = {
+        label: string;
+        value: string;
+    };
+
+
+    const getOptions = async () => {
+        return await getInterests();
+    };
+
+
+    useEffect(() => {
+        getOptions().then(setInterestOptions); // Fetch and set the options
+    }, []);
+
 
 
     return (
@@ -79,33 +91,6 @@ const LearningCircleCreateForm = ({ setIsCreateModalOpen, onSuccess }: { setIsCr
                 />
             </div>
 
-            {/* Title Field */}
-            {/* <div className={styles.formGroup}>
-                <label htmlFor="title">Learning Circle</label>
-                <input
-                    id="lc"
-                    type="select"
-                    placeholder="What are you going to learn?"
-                    value={title}
-                    onChange={(e) => setIg(e.target.value)}
-                    className={styles.input}
-                    required
-                />
-            </div> */}
-            {/* <ReactSelect
-                                        // onInputChange={e => {
-                                        //     setIg(e);
-                                        // }}
-                                        options={getOptions()}
-                                        name="organization"
-                                        placeholder="Select Category"
-                                        // filterOption={CustomFilter}
-                                        // isDisabled={isloading}
-                                        onChange={(e: string) => {
-                                            setIg(e);
-                                        }}
-                                    /> */}
-
             {/* Description Field */}
             <div className={styles.formGroup}>
                 <label htmlFor="description">Description</label>
@@ -116,6 +101,17 @@ const LearningCircleCreateForm = ({ setIsCreateModalOpen, onSuccess }: { setIsCr
                     onChange={(e) => setDescription(e.target.value)}
                     className={styles.textarea}
                     required
+                />
+            </div>
+
+            {/* Interest Group Dropdown */}
+            <div className={styles.formGroup}>
+                <label htmlFor="interestGroup">Interest Group</label>
+                <ReactSelect
+                    options={interestOptions}
+                    name="interestGroup"
+                    placeholder="Select Interest Group"
+                    onChange={(selectedOption) => setIg(selectedOption?.value || '')}
                 />
             </div>
 
@@ -179,11 +175,14 @@ const LearningCircleCreateForm = ({ setIsCreateModalOpen, onSuccess }: { setIsCr
                     required
                 />
             </div>
+
+            {/* Buttons */}
             <div>
-                <button type="button" onClick={() => setIsCreateModalOpen(false)} className={styles.submitButton2} style={{marginRight: "1rem"}}>Cancel</button>
+                <button type="button" onClick={() => setIsCreateModalOpen(false)} className={styles.submitButton2} style={{ marginRight: "1rem" }}>Cancel</button>
                 <button type="submit" className={styles.submitButton}>Submit</button>
             </div>
         </form>
+
     )
 }
 

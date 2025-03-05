@@ -20,7 +20,7 @@ export const getDepartments = async ({
     setTotalPages?: Dispatch<SetStateAction<number>>;
     sortBy?: string;
 }) => {
-    console.log("getDepartments - page", page);
+    // console.log("getDepartments - page", page);
 
     setIsLoading(true);
     try {

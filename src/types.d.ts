@@ -12,6 +12,7 @@ type ManagementTypes =
 type UserInfo = {
     muid: string;
     full_name: string;
+    first_name?: string;
     email: string;
     mobile: string;
     gender: null;

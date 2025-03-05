@@ -55,7 +55,7 @@ export default function PathFinderComponent({
         if (currentQuestionIndex + 1 < questions.length) {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
         } else {
-            console.log("getRecommendedPathways", getRecommendedPathways());
+            // console.log("getRecommendedPathways", getRecommendedPathways());
             onContinue(getRecommendedPathways());
         }
     };
@@ -86,7 +86,7 @@ export default function PathFinderComponent({
 
     const getRecommendedPathways = () => {
         const pathways = [];
-        if (scores.A > 2) pathways.push("hardware");
+        if (scores.A > 2) pathways.push("maker");
         if (scores.B > 2) pathways.push("coder");
         if (scores.C > 2) pathways.push("creative");
         // if (scores.D > 2) pathways.push("others"); // Removed "others" recommendation

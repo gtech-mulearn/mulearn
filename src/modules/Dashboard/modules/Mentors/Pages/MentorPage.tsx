@@ -295,7 +295,7 @@ const MentorSearchPage: React.FC = () => {
       <Suspense fallback={<MuLoader />}>
         <MentorList search={searchTerm} searchType={searchType} onSelect={handleMentorSelect} />
       </Suspense>
-      <AsideDetails isOpen={isAsideOpen} handleClose={handleAsideClose}>
+      {/* <AsideDetails isOpen={isAsideOpen} handleClose={handleAsideClose}>
         {selectedMentor && (
           <div className={styles.profileContainer}>
             <div className={styles.profileHeader}>
@@ -341,7 +341,7 @@ const MentorSearchPage: React.FC = () => {
             </div>
           </div>
         )}
-      </AsideDetails>
+      </AsideDetails> */}
     </div>
   );
 };

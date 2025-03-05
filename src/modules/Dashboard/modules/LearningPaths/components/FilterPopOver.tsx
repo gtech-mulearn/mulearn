@@ -5,7 +5,7 @@ import styles from '../pages/LearningPathOne/LearningPathOne.module.css'
 
 interface FilterState {
   sortBy: 'relevance' | 'latest' | 'mostEnrolled';
-  category: 'creative' | 'software' | 'hardware' | 'management' | 'all';
+  category: 'creative' | 'software' | 'maker' | 'management' | 'all';
 }
 
 interface FilterPopoverProps {
@@ -83,10 +83,10 @@ const FilterPopover = ({ onFilterChange }: FilterPopoverProps) => {
                 Software
               </button>
               <button
-                className={`filter-option ${filters.category === 'hardware' ? 'active' : ''}`}
-                onClick={() => handleFilterChange('category', 'hardware')}
+                className={`filter-option ${filters.category === 'maker' ? 'active' : ''}`}
+                onClick={() => handleFilterChange('category', 'maker')}
               >
-                Hardware
+                Maker
               </button>
               <button
                 className={`filter-option ${filters.category === 'management' ? 'active' : ''}`}

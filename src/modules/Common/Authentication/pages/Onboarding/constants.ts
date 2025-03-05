@@ -6,7 +6,7 @@ import others from "/src/modules/Common/Authentication/assets/interests/others.s
 
 export const INITIAL_INTERESTS = [
     { title: "Coder", value: "coder", img: software, checked: false },
-    { title: "Hardware", value: "hardware", img: maker, checked: false },
+    { title: "Maker", value: "maker", img: maker, checked: false },
     { title: "Manager", value: "manager", img: management, checked: false },
     { title: "Creative", value: "creative", img: creative, checked: false },
     { title: "Others", value: "others", img: others, checked: false }

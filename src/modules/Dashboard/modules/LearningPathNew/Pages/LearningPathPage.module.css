@@ -49,7 +49,7 @@
 /* Lock styling: gray out and disable interaction */
 .locked {
   opacity: 0.5;
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 .lockedCard {
@@ -101,7 +101,7 @@
   position: relative;
   display: flex;
   justify-content: center;
-  gap: 16px;
+  /* gap: 16px; */
   background-color: #ffffff;
   margin-bottom: 24px;
   width: fit-content;

@@ -36,7 +36,7 @@ type Endgoal = {
 // ];
 const ALL_PATHWAYS: Pathway[] = [
   { title: "Coder", value: "coder", img: software },
-  { title: "Hardware", value: "hardware", img: maker },
+  { title: "Maker", value: "maker", img: maker },
   { title: "Manager", value: "manager", img: management },
   { title: "Creative", value: "creative", img: creative },
 ];
@@ -60,7 +60,7 @@ const INITIAL_ENDGOALS: Endgoal[] = [
 export default function PathFinder() {
   const [pathways, setPathways] = useState<string[]>([]);
   const [stepTwo, setStepTwo] = useState(false);
-  const [recommendedPathways, setRecommendedPathways] = useState<string[]>(["Hardware"]); // Default recommended pathways
+  const [recommendedPathways, setRecommendedPathways] = useState<string[]>(["Maker"]); // Default recommended pathways
   const [endgoals, setEndgoals] = useState<Endgoal[]>(INITIAL_ENDGOALS);
   // const [otherEndgoal, setOtherEndgoal] = useState<string[]>([]);
   const navigate = useNavigate();

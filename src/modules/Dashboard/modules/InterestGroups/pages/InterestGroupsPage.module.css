@@ -11,14 +11,15 @@
 }
 
 .BannerContent {
-  text-align: left;
+  text-align: left ;
 }
 
 .BannerTitle {
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 0.4rem;
-  color: #4B5563
+  color: #4B5563;
+  text-align: left;
 }
 
 .BannerSubtitle {

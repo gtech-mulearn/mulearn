@@ -25,7 +25,7 @@ interface Option {
 const INITIAL_INTERESTS = [
     { label: "All Categories", value: "all" },
     { label: "Coder", value: "coder" },
-    { label: "Hardware", value: "hardware" },
+    { label: "Maker", value: "maker" },
     { label: "Manager", value: "manager" },
     { label: "Creative", value: "creative" }
 ];
@@ -107,13 +107,14 @@ const LearningCircleLanding = () => {
             ) : (
                 <div className={styles.learningCircleLandingPage}>
                     <div className={styles.middleContainer}>
-                        <SelectTab
+                        {/* <SelectTab
                             placeholder={"Select Role"}
                             options={INITIAL_INTERESTS}
                             styles={customReactSelectStyles}
                             value={selectedCategory}
                             onChange={selectionChange}
-                        />
+                        /> */}
+                        <div></div>
                         <div>
                             <PowerfulButton
                                 children="Create"

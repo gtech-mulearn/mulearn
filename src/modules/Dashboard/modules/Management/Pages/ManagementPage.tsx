@@ -6,54 +6,76 @@ import { useNavigate } from 'react-router-dom';
 const subcategories = [
   {
     icon: '👤',
-    title: 'User Management: Manage Users',
+    title: 'Manage Users',
     description: 'Add, edit, and delete user accounts.',
     path: "management/user-management/manage-users"
   },
   {
     icon: '🔐',
-    title: 'User Management: Role Verification',
+    title: 'Role Verification',
     description: 'Verify and assign roles to users.',
     path: "management/user-management/user-role-verification"
   },
   {
     icon: '🛡️',
-    title: 'User Management: Manage Roles',
+    title: 'Manage Roles',
     description: 'Create and configure user role permissions.',
     path: "management/manage-roles"
   },
+  {
 
+    icon: '👤',
+    title: 'Tasks',
+    description: 'Add, edit, and delete user accounts.',
+    path: "tasks"
+  },
+  {
+    icon: '🔐',
+    title: 'Task Create',
+    description: 'Verify and create tasks based on ig.',
+    path: "tasks/create"
+  },
+  {
+    icon: '🛡️',
+    title: 'Task Type',
+    description: 'Manage Task Type',
+    path: "task-type"
+  },
+  {
 
-
-
+    icon: '✅',
+    title: 'Tasks bulk-import',
+    description: 'Bulk-import tasks.',
+    path: "tasks/bulk-import"
+  },
 
   {
     icon: '🔗',
-    title: 'Organization: Affiliation',
+    title: 'Organization Affiliation',
     description: 'Manage user affiliations with organizations.',
     path: "management/organization/affiliation"
   },
   {
     icon: '🔄',
-    title: 'Organization: Transfer',
+    title: 'Organization Transfer',
     description: 'Handle ownership transfers between organizations.',
     path: "management/organization/organization-transfer"
   },
   {
     icon: '🏢',
-    title: 'Organization: Departments',
+    title: 'Organization Departments',
     description: 'Manage organizational departments and structure.',
     path: "management/organization/manage-departments"
   },
   {
     icon: '🏛️',
-    title: 'Organization: Organizations',
+    title: 'Organization',
     description: 'Create and manage organization profiles.',
     path: "management/organization/organizations"
   },
   {
     icon: '✅',
-    title: 'Organization: Verification',
+    title: 'Organization Verification',
     description: 'Verify legitimacy of registered organizations.',
     path: "management/verify-organizations"
   },

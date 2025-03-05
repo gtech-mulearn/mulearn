@@ -315,7 +315,7 @@ const CampusStudentList = (props: Props) => {
                                 </div>
 
                                 <div className={styles.grid}>
-                                    <div className={styles.cardWithBorder}>
+                                    {/* <div className={styles.cardWithBorder}>
                                         <div className={styles.cardHeader}>
                                             <h3 className={styles.cardTitle}>Campus Grade</h3>
                                             <Dialog.Root>
@@ -360,7 +360,7 @@ const CampusStudentList = (props: Props) => {
                                             {getGradeIcon("N/A")}
                                             <span className={styles.gradeText}>Grade N/A</span>
                                         </div>
-                                    </div>
+                                    </div> */}
 
                                     <div className={styles.cardHover}>
                                         <div className={styles.cardHeader}>

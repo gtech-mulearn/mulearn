@@ -12,7 +12,7 @@ import { useUserStore } from "/src/ZustandProvider";
 // Move static data outside component to prevent recreation
 const DOMAIN_IMAGES = {
   coder: "https://via.placeholder.com/50?text=UIUX",
-  hardware: "https://via.placeholder.com/50?text=Video",
+  maker: "https://via.placeholder.com/50?text=Video",
   manager: "https://via.placeholder.com/50?text=Comics",
   creative: "https://via.placeholder.com/50?text=Writing",
   others: "https://via.placeholder.com/50?text=Others",
@@ -125,8 +125,13 @@ interface ApiInterestGroup {
 const DashboardPage = () => {
   const navigate = useNavigate();
   const [interestGroups, setInterestGroups] = useState<InterestGroup[]>([]);
-//   const userName = fetchLocalStorage<UserInfo>("userInfo")?.full_name || "";
-  const userName = useUserStore((state) => state.userProfile.first_name);
+  //   const userName = fetchLocalStorage<UserInfo>("userInfo")?.full_name || "";
+  let userName = useUserStore((state) => state.userProfile.full_name.split(" ")[0]);
+  if(!userName){
+    const storedUserInfo = localStorage.getItem("userInfo");
+    userName = storedUserInfo ? JSON.parse(storedUserInfo)?.full_name.split(" ")?.[0] : null;
+  }
+  console.log(userName,'userName')
   const [karmaFeed, setKarmaFeed] = useState<KarmaFeedItem[]>([]);
   const userDomains: string[] =
     fetchLocalStorage<UserInfo>("userInfo")?.user_domains || [];
@@ -172,7 +177,7 @@ const DashboardPage = () => {
           console.error("Failed to fetch karma feed");
           return;
         }
-        console.log("Karma feed fetched successfully");
+        // console.log("Karma feed fetched successfully");
         setKarmaFeed(response);
         console.log(response)
       } catch (error) {
@@ -182,7 +187,7 @@ const DashboardPage = () => {
     fetchKarmaFeed()
   }, []);
 
-  
+
 
 
 
@@ -209,7 +214,6 @@ const DashboardPage = () => {
     src: "/assets/landing/others.png",
     alt: "General illustration",
   };
-
   const { src, alt } = imageMap[userDomains[0]] || defaultImage;
 
   return (
@@ -222,8 +226,7 @@ const DashboardPage = () => {
                 Welcome back <span>{userName}</span> 👋
               </h1>
               <p className={styles.welcomeMessage}>
-                You have grown 240% from past week, Keep it up and improve your
-                progress
+              This dashboard is being updated. Expect improvements and possible bugs. Thanks for your patience!
               </p>
               <div className={styles.buttons}>
                 <button
@@ -240,6 +243,14 @@ const DashboardPage = () => {
                 >
                   Join Learning
                 </button>
+                <button
+                  className={styles.button2}
+                  onClick={() => window.open("https://api.whatsapp.com/send?phone=+919188684115&text=Hello,%20I%20want%20to%20report%20a%20bug.", "_blank")}
+                  aria-label="Report Issues"
+                >
+                  Report Issues
+                </button>
+
               </div>
             </div>
             <div>
@@ -262,10 +273,10 @@ const DashboardPage = () => {
             </div>
           </section>
           {karmaFeed.length > 1 && karmaFeed[0].user && karmaFeed[1].user && (
-          <KarmaEarners
-            highestStudent={karmaFeed[0]}
-            highestCollege={karmaFeed[1]}
-          />)}
+            <KarmaEarners
+              highestStudent={karmaFeed[0]}
+              highestCollege={karmaFeed[1]}
+            />)}
           <InterestGroups title={userDomains[0]} groups={interestGroups} />
         </aside>
       </div>

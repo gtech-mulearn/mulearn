@@ -27,7 +27,7 @@ const IGActionSection = ({ data }: { data: InterestGroupData }) => {
   const { id } = useParams<{ id: string }>(); // Get the interest group ID from URL
 
   // Log the id to debug
-  console.log('Current Interest Group ID:', id);
+  // console.log('Current Interest Group ID:', id);
 
   const handleUserSelect = (cardData: CardData) => {
     setSelectedUser(cardData);

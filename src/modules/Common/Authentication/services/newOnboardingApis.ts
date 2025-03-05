@@ -24,7 +24,7 @@ export const validate = async ({
     } catch (err: any) {
         setIsSubmitting(false);
         const messages = err.response.data.message.general[0];
-        console.log("validate - messages", messages);
+        // console.log("validate - messages", messages);
         showToasts({
             messages: messages
         });
@@ -42,7 +42,7 @@ export const createAccount = async ({
     navigate: NavigateFunction;
 }) => {
     setIsSubmitting(true);
-    console.log("UserData", userData);
+    // console.log("UserData", userData);
 
     try {
         const response = await publicGateway.post(
@@ -71,7 +71,7 @@ export const getRoles = () => {
             const roles = response.data.response.roles;
             resolve(roles);
         } catch (err) {
-            console.log("getRoles Error", err);
+            // console.log("getRoles Error", err);
             reject(err);
         }
     });
@@ -86,7 +86,7 @@ export const getInterestGroups = () => {
             const interestGroups = response.data.response.aois;
             resolve(interestGroups);
         } catch (err) {
-            console.log("getInterestGroups Error", err);
+            // console.log("getInterestGroups Error", err);
             reject(err);
         }
     });
@@ -105,7 +105,7 @@ export const getColleges = async ({
         setColleges(colleges);
         setIsLoading(false);
     } catch (err: any) {
-        console.log("getColleges Error", err);
+        // console.log("getColleges Error", err);
     }
 };
 
@@ -123,7 +123,7 @@ export const getDepartments = async ({
         setDepartments(departments);
         setIsLoading(false);
     } catch (err: any) {
-        console.log("getColleges Error", err);
+        // console.log("getColleges Error", err);
     }
 };
 
@@ -141,7 +141,7 @@ export const getCompanies = async ({
         setCompanies(companies);
         setIsLoading(false);
     } catch (err: any) {
-        console.log("getCompanies Error", err);
+        // console.log("getCompanies Error", err);
     }
 };
 
@@ -152,7 +152,7 @@ export const submitUserData = async ({
     setIsLoading: Dispatch<SetStateAction<boolean>>;
     userData: Object;
 }) => {
-    console.log("UserData", userData);
+    // console.log("UserData", userData);
     try {
         setIsLoading(true);
         const res = await privateGateway.post(

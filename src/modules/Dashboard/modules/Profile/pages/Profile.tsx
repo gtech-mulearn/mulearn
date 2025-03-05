@@ -40,6 +40,7 @@ const Profile = () => {
     const [userProfile, setUserProfile] = useState({
         full_name: "",
         college_code: "",
+        college_id: "",
         interest_groups: [{ name: "", karma: 0 }],
         karma_distribution: [{ task_type: "", karma: 0 }],
         gender: "",

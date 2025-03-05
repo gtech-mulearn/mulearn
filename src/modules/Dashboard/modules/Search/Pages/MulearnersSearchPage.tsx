@@ -78,6 +78,7 @@ const UserList: React.FC<{
           perPage: 9,
         });
         const newUsers = response.data;
+        
 
         let filtered: User[] = newUsers;
         if (searchType === "college" && searchTerm) {
@@ -156,6 +157,7 @@ const UserList: React.FC<{
   const displayUsers =
     searchType === "name" || !search ? allUsers : filteredUsers;
 
+
   return (
     <div>
       <div className={styles.userGrid}>
@@ -197,15 +199,23 @@ const MuLearnersSearchPage: React.FC = () => {
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [isAsideOpen, setIsAsideOpen] = useState<boolean>(false);
 
+
+
+
   const handleUserSelect = (user: User) => {
     setSelectedUser(user);
     setIsAsideOpen(true);
+    console.log(selectedUser, "selected user")
   };
+
+
 
   const handleAsideClose = () => {
     setIsAsideOpen(false);
     setSelectedUser(null);
   };
+
+
 
   return (
     <div className={styles.pageContainer}>
@@ -269,17 +279,38 @@ const MuLearnersSearchPage: React.FC = () => {
                   className={styles.profileImage}
                 />
               </div>
-              <div className={styles.memberSince}>Member since 2023</div>
-              <button className={styles.connectBtn}>Connect</button>
+              {/* <div className={styles.memberSince}>Member since 2023</div>
+              <button className={styles.connectBtn}>Connect</button> */}
             </div>
 
             <div className={styles.profileInfo}>
               <h2 className={styles.profileName}>{selectedUser.full_name}</h2>
               <p className={styles.profileUsername}>{selectedUser.muid}</p>
               <p className={styles.profileCollegeName}>
-                {selectedUser.organizations.find((org) => org.org_type === "College")?.title}
+                {selectedUser.organizations.find((org) => org.org_type === "College")?.title || "No college specified"}
               </p>
-              <p className={styles.profileLevel}>LEVEL 5</p>
+              {/* Added Interest Groups */}
+              {selectedUser.interest_groups.length > 0 && (
+                <div className={styles.interestGroups}>
+                  <p className={styles.sectionTitle}>Interest Groups:</p>
+                  <ul>
+                    {selectedUser.interest_groups.map((group) => (
+                      <li key={group.id}>{group.name}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {/* Added All Organizations */}
+              {selectedUser.organizations.length > 0 && (
+                <div className={styles.organizations}>
+                  <p className={styles.sectionTitle}>Organizations:</p>
+                  <ul>
+                    {selectedUser.organizations.map((org) => (
+                      <li key={org.id}>{`${org.title} (${org.org_type})`}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
 
             <div className={styles.statsGrid}>
@@ -288,7 +319,8 @@ const MuLearnersSearchPage: React.FC = () => {
                 <p className={styles.statsLabel}>Karma</p>
                 <p className={styles.statsValue}>{selectedUser.karma}</p>
               </div>
-              <div className={styles.statsCard}>
+              {/* Keep other stats cards as they were */}
+              {/* <div className={styles.statsCard}>
                 <AvgKarma />
                 <p className={styles.statsLabel}>Avg.Karma/Month</p>
                 <p className={styles.statsValue}>1.156K</p>
@@ -302,7 +334,7 @@ const MuLearnersSearchPage: React.FC = () => {
                 <Rank />
                 <p className={styles.statsLabel}>Percentile</p>
                 <p className={styles.statsValue}>0.29</p>
-              </div>
+              </div> */}
             </div>
           </div>
         )}

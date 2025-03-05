@@ -65,7 +65,7 @@ const KarmaVoucherBulkImport = () => {
                         // navigate("/dashboard/karma-voucher");
                     }}
                     onError={err => {
-                        console.log(err);
+                        // console.log(err);
                         setUploadResponse(err);
                         // navigate("/dashboard/karma-voucher");
                     }}

@@ -70,6 +70,7 @@ export const getUsers = async ({
     });
 
     const responseData = response.data;
+    console.log(responseData, "users search");
 
     if (responseData.hasError) {
       throw new Error(

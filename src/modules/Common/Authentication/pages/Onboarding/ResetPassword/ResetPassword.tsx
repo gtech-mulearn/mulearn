@@ -37,7 +37,7 @@ const ResetPassword = () => {
     });
 
     const onSubmit = async (values: any) => {
-        console.log(values);
+        // console.log(values);
         resetPassword(token, values.password, navigate);
     };
 

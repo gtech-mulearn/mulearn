@@ -12,6 +12,7 @@ import { fetchLocalStorage } from "@/MuLearnServices/common_functions";
 import { IoIosRocket } from "react-icons/io";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
+import { useUserStore } from "/src/ZustandProvider";
 
 
 
@@ -28,39 +29,61 @@ declare global {
 
 const DashboardRootLayout = (props: { component?: any }) => {
     const navigate = useNavigate();
-    const [connected, setConnected] = useState(false);
-    const [isLoading, setIsLoading] = useState(true); 
     const Management: ManagementTypes[] = Object.values(managementTypes).slice(2);
+    const { setUserInfo, updateUserInfo } = useUserStore();
+  const [isLoading, setIsLoading] = useState(true);
+  const [connected, setConnected] = useState(false);
 
     useEffect(() => {
-    const initializeUserInfo = async () => {
-        try {
+        const initializeUserInfo = async () => {
+          try {
             const response = await privateGateway.get(dashboardRoutes.getInfo);
-            const userInfo = response.data.response; 
-            localStorage.setItem("userInfo", JSON.stringify(userInfo));
             
-            if (userInfo) {
-              
-                setConnected(userInfo.exist_in_guild ?? false);
-
-              
-                if (
-                    !userInfo.user_domains?.length ||
-                    !userInfo.user_endgoals?.length
-                ) {
-                    navigate("/register/pathfinder?ruri=/dashboard/home");
-                }
+            if (!response || !response.data) {
+              throw new Error('Invalid API response');
             }
-        } catch (err) {
+    
+            const userInfo: UserInfo = response.data.response;
+    
+            if (!userInfo || typeof userInfo !== 'object') {
+              throw new Error('Invalid userInfo data');
+            }
+    
+            setUserInfo({...userInfo, first_name: userInfo.full_name.split(" ")[0]});
+            localStorage.setItem("userInfo", JSON.stringify(userInfo)); 
+    
+            if ('exist_in_guild' in userInfo) {
+              setConnected(userInfo.exist_in_guild ?? false);
+            }
+    
+            const hasDomains = Array.isArray(userInfo.user_domains) && userInfo.user_domains.length > 0;
+            const hasEndgoals = Array.isArray(userInfo.user_endgoals) && userInfo.user_endgoals.length > 0;
+    
+            if (!hasDomains || !hasEndgoals) {
+              navigate("/register/pathfinder?ruri=/dashboard/home");
+              return; 
+            }
+    
+          } catch (err) {
             console.error("Failed to fetch user info:", err);
-        } finally {
+            useUserStore.getState().resetUserInfo();
+          } finally {
             setIsLoading(false);
-        }
-    };
-
-    initializeUserInfo();
-}, [navigate]);
-   
+          }
+        };
+    
+        let isMounted = true;
+        const fetchData = async () => {
+          if (isMounted) {
+            await initializeUserInfo();
+          }
+        };
+    
+        fetchData();
+        return () => {
+          isMounted = false;
+        };
+      }, [navigate, setUserInfo]);
 
 
     const buttons = [
@@ -132,21 +155,21 @@ const DashboardRootLayout = (props: { component?: any }) => {
             hasView: true,
             roles: [roles.CAMPUS_LEAD, roles.LEAD_ENABLER, roles.ADMIN],
             icon: <i className="fi fi-sr-book-arrow-right"></i>
-        },
-        {
-            url: "/dashboard/zonal-dashboard",
-            title: "Zonal Dashboard",
-            hasView: true,
-            roles: [roles.ZONAL_CAMPUS_LEAD, roles.ADMIN],
-            icon: <i className="fi fi-sr-marker"></i>
-        },
-        {
-            url: "/dashboard/district-dashboard",
-            title: "District Dashboard",
-            hasView: true,
-            roles: [roles.DISTRICT_CAMPUS_LEAD, roles.ADMIN],
-            icon: <i className="fi fi-sr-map-marker"></i>
-        }
+        },    
+        // {
+        //     url: "/dashboard/zonal-dashboard",
+        //     title: "Zonal Dashboard",
+        //     hasView: true,
+        //     roles: [roles.ZONAL_CAMPUS_LEAD, roles.ADMIN],
+        //     icon: <i className="fi fi-sr-marker"></i>
+        // },
+        // {
+        //     url: "/dashboard/district-dashboard",
+        //     title: "District Dashboard",
+        //     hasView: true,
+        //     roles: [roles.DISTRICT_CAMPUS_LEAD, roles.ADMIN],
+        //     icon: <i className="fi fi-sr-map-marker"></i>
+        // }
     ];
 
     if (isLoading) {
@@ -157,7 +180,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
         <div className={styles.full_page}>
             <SideNavBar sidebarButtons={buttons} />
             <div className={styles.right_side}>
-                <TopNavBar />
+                <TopNavBar setUserInfo={setUserInfo}  />
                 <div className={styles.main_content}>
                     <Suspense fallback={<MuLoader />}>
                         <Outlet />

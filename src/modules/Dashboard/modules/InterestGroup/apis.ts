@@ -1,6 +1,6 @@
 import { AxiosError } from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
-import { dashboardRoutes } from "@/MuLearnServices/urls";
+import { dashboardRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
 import toast from "react-hot-toast";
 
 export const getInterestGroups = async (
@@ -28,6 +28,32 @@ export const getInterestGroups = async (
         if (setTotalPages)
             setTotalPages(interestGroups.response.pagination.totalPages);
         setIsLoading(false);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+    }
+};
+
+export const getInterestGroupsList = async (
+    setData: UseStateFunc<any>,
+    setIsLoading?: UseStateFunc<boolean>,
+    page?: number,
+    selectedValue?: number,
+    search?: string,
+    sortID?: string
+) => {
+    setIsLoading && setIsLoading(true);
+    try {
+        const response = await privateGateway.get(onboardingRoutes.interestGroups, {
+            params: {
+                perPage: selectedValue,
+                pageIndex: page,
+                search: search,
+                sortBy: sortID
+            }
+        });
+        const interestGroups: any = response?.data?.response.interestGroup;
+        setData(interestGroups);
+        setIsLoading && setIsLoading(false);
     } catch (err: unknown) {
         const error = err as AxiosError;
     }

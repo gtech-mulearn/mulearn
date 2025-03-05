@@ -38,7 +38,7 @@ const LcMeetups = ({ user_id }: { user_id: string | null }) => {
     const categories = [
         { label: "All Categories", value: "all" },
         { label: "Coder", value: "coder" },
-        { label: "Hardware", value: "hardware" },
+        { label: "Maker", value: "maker" },
         { label: "Manager", value: "manager" },
         { label: "Creative", value: "creative" }
     ];

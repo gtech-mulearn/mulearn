@@ -70,7 +70,8 @@ export const login = (
               // Update Zustand store with new user profile data
               useUserStore.getState().setUserProfile({
                 ...response.data.response,
-                first_name: response.data.response.full_name.split(" ")[0]
+                first_name: response.data.response.full_name.split(" ")[0],
+                college_id: response.data.response.college_id,
               });
               
   

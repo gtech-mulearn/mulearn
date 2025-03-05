@@ -298,7 +298,7 @@ export const registerUser = (
     setShowSubmitLoader: UseStateFunc<boolean>
 ) => {
     setShowSubmitLoader(true);
-    console.log(userData);
+    // console.log(userData);
     publicGateway
         .post(onboardingRoutes.register, userData)
         .then((response: APIResponse<AllTokens>) => {

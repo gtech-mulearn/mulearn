@@ -35,9 +35,13 @@ export interface UserProfile {
 
 interface UserStore {
   userProfile: UserProfile;
+  userInfo: UserInfo; 
   setUserProfile: (profile: UserProfile) => void;
+  setUserInfo: (info: UserInfo) => void;
   updateUserProfile: (updates: Partial<UserProfile>) => void;
+  updateUserInfo: (updates: Partial<UserInfo>) => void;
   resetUserProfile: () => void;
+  resetUserInfo: () => void;
 }
 
 const initialUserProfile: UserProfile = {
@@ -61,20 +65,45 @@ const initialUserProfile: UserProfile = {
   roles: [],
 };
 
+const initialUserInfo: UserInfo = {
+  muid: "",
+  full_name: "",
+  email: "",
+  mobile: "",
+  gender: null,
+  dob: null,
+  active: false,
+  interest_selected: "",
+  joined: "",
+  exist_in_guild: false,
+  roles: [],
+  dynamic_type: [],
+  profile_pic: "",
+  user_domains: [],
+  user_endgoals: [],
+};
+
 export const useUserStore = create<UserStore>(
   //@ts-ignore
   persist(
     (set) => ({
       userProfile: initialUserProfile,
+      userInfo: initialUserInfo,
       setUserProfile: (profile: UserProfile) => set({ userProfile: profile }),
+      setUserInfo: (info: UserInfo) => set({ userInfo: info }),
       updateUserProfile: (updates: Partial<UserProfile>) =>
         set((state) => ({
           userProfile: { ...state.userProfile, ...updates },
         })),
+      updateUserInfo: (updates: Partial<UserInfo>) =>
+        set((state) => ({
+          userInfo: { ...state.userInfo, ...updates },
+        })),
       resetUserProfile: () => set({ userProfile: initialUserProfile }),
+      resetUserInfo: () => set({ userInfo: initialUserInfo }),
     }),
     {
-      name: "userStore", // key for localStorage
+      name: "userStore",
       //@ts-ignore
       getStorage: () => localStorage,
     }

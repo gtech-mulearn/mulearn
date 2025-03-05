@@ -364,7 +364,7 @@ const CampusSearchPage: React.FC = () => {
                 <CampusList search={searchTerm} searchType={searchType} onSelect={handleCampusSelect} />
             </Suspense>
 
-            <AsideDetails isOpen={isAsideOpen} handleClose={handleAsideClose}>
+            {/* <AsideDetails isOpen={isAsideOpen} handleClose={handleAsideClose}>
                 {isLoadingDetails ? (
                     <MuLoader />
                 ) : error || !detailedCampus ? (
@@ -383,52 +383,6 @@ const CampusSearchPage: React.FC = () => {
                             </div>
 
                             <div className={styles.grid}>
-                                {/* <div className={styles.cardWithBorder}>
-                                    <div className={styles.cardHeader}>
-                                        <h3 className={styles.cardTitle}>Campus Grade</h3>
-                                        <Dialog.Root>
-                                            <Dialog.Trigger asChild>
-                                                <button className={styles.iconButton}>
-                                                    <Info size={16} />
-                                                    <span className="sr-only">Grade requirements</span>
-                                                </button>
-                                            </Dialog.Trigger>
-                                            <Dialog.Portal>
-                                                <Dialog.Overlay className={styles.dialogOverlay} />
-                                                <Dialog.Content className={styles.dialogContent}>
-                                                    <Dialog.Title className={styles.dialogTitle}>
-                                                        Grade Requirements
-                                                    </Dialog.Title>
-                                                    <div className={styles.dialogBody}>
-                                                        {gradeRequirements.map((req) => (
-                                                            <div key={req.grade} className={styles.gradeRequirement}>
-                                                                <div className={styles.gradeDisplay}>
-                                                                    {getGradeIcon(req.grade)}
-                                                                    <h3 className={styles.gradeText}>Grade {req.grade}</h3>
-                                                                </div>
-                                                                <ul className={styles.requirementsList}>
-                                                                    {req.requirements.map((requirement, index) => (
-                                                                        <li key={index}>{requirement}</li>
-                                                                    ))}
-                                                                </ul>
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                    <Dialog.Close asChild>
-                                                        <button className={styles.dialogCloseButton}>
-                                                            <X size={16} />
-                                                            <span className="sr-only">Close</span>
-                                                        </button>
-                                                    </Dialog.Close>
-                                                </Dialog.Content>
-                                            </Dialog.Portal>
-                                        </Dialog.Root>
-                                    </div>
-                                    <div className={styles.gradeDisplay}>
-                                        {getGradeIcon(getGradeFromLevel(detailedCampus.campus_level))}
-                                        <span className={styles.gradeText}>Grade {getGradeFromLevel(detailedCampus.campus_level)}</span>
-                                    </div>
-                                </div> */}
                                 
 
                                 <div className={styles.cardHover}>
@@ -498,27 +452,11 @@ const CampusSearchPage: React.FC = () => {
                                     </div>
                                 </div>
 
-                            {/* <div className={styles.graphs}>
-                                <div className={styles.graphContainer}>
-                                    <h2>Weekly Karma Insights</h2>
-                                    <BarChart
-                                        data={barData}
-                                        ylabel="Karma"
-                                        addOptions={{
-                                            legend: { position: "none" },
-                                            colors: ["#91ABFF"],
-                                        }}
-                                    />
-                                </div>
-                                <div className={styles.graphContainer}>
-                                    <h2>Student Statistics</h2>
-                                    <BarChart data={pieData} />
-                                </div>
-                            </div> */}
+                            
                         </div>
                     </div>
                 )}
-            </AsideDetails>
+        </AsideDetails> */}
         </div>
     );
 };

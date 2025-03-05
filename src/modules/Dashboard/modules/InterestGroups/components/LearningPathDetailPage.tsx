@@ -16,8 +16,11 @@ const LearningPathDetailPage: React.FC<LearningPathDetailPageProps> = ({ level, 
   return (
     <div className={styles.container}>
       <div className={styles.header}>
+          <button className={styles.backButton} onClick={onBack}>
+        Back to Learning Paths
+      </button>
         <h1>{card.title}</h1>
-        <p>Level: {level}</p>
+        <p>{level}</p>
       </div>
       <div className={styles.content}>
         <section className={styles.description}>
@@ -65,9 +68,6 @@ const LearningPathDetailPage: React.FC<LearningPathDetailPageProps> = ({ level, 
           {/* {card.hasGift && <p>Gift Available!</p>} */}
         </div>
       </div>
-      <button className={styles.backButton} onClick={onBack}>
-        Back to Learning Paths
-      </button>
     </div>
   );
 };

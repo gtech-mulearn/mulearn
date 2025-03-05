@@ -106,8 +106,14 @@ const MuLearnLanding = () => {
         <li onClick={() => navigate("/dashboard/mentors")}>Mentorship</li>
         <li onClick={() => navigate("/dashboard/learning-paths")}>Learning Paths</li>
         <li onClick={() => navigate("/dashboard/learningcircle")}>Learning Circles</li>
-        <li onClick={() => navigate("/")}>Why μLearn</li>
-        <li onClick={() => navigate("/")}>How to Collaborate</li>
+        <li> <a href="https://www.youtube.com/watch?v=qEILjuB7oPk&feature=youtu.be" target="_blank" rel="noopener noreferrer">
+        Why μLearn
+    </a></li>
+    <li>
+    <a href="https://mulearn.org" target="_blank" rel="noopener noreferrer">
+        Visit the Old Site
+    </a>
+</li>
       </>
     );
   }
@@ -605,25 +611,25 @@ const MuLearnLanding = () => {
           <div className={styles.footerSection}>
             <h3>Quick Links</h3>
             <ul>
-              <li><a href="#">Career Labs</a></li>
-              <li><a href="#">Blog</a></li>
-              <li><a href="#">Interest Groups</a></li>
+              <li><a href="https://mulearn.org/careers">Career Labs</a></li>
+              <li><a href="https://gtechmulearn.medium.com/">Blog</a></li>
+              <li><a href="https://mulearn.org/privacypolicy">Interest Groups</a></li>
             </ul>
           </div>
           <div className={styles.footerSection}>
             <h3>Legal</h3>
             <ul>
-              <li><a href="#">Terms and Conditions</a></li>
+              <li><a href="https://mulearn.org/termsandconditions">Terms and Conditions</a></li>
               <li><a href="#">Privacy Policy</a></li>
             </ul>
           </div>
           <div className={styles.footerSection}>
             <h3>Follow Us</h3>
             <div className={styles.socialIcons}>
-              <a href="#"><FaLinkedin /></a>
-              <a href="#"><FaInstagram /></a>
-              <a href="#"><FaYoutube /></a>
-              <a href="#"><FaFacebook /></a>
+              <a href="http://www.linkedin.com/company/gtechmulearn/"><FaLinkedin /></a>
+              <a href="https://www.instagram.com/mulearn.official/"><FaInstagram /></a>
+              <a href="https://www.youtube.com/c/mulearn"><FaYoutube /></a>
+              <a href="http://www.facebook.com/gtechmulearn"><FaFacebook /></a>
             </div>
           </div>
           <div className={styles.footerSection}>

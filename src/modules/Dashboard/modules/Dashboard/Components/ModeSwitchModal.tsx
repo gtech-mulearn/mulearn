@@ -21,9 +21,9 @@ const modes = [
       "IoT",
       "Robotics",
       "Civil",
-      "Mechanical",
-      "Electrical",
-      "Automotive"
+      // "Mechanical",
+      // "Electrical",
+      // "Automotive"
     ],
   },
   {

@@ -51,7 +51,7 @@ export default function CommunityPage() {
             userData: userData,
             setIsSubmitting: setIsLoading
         });
-        console.log(isSuccess);
+        // console.log(isSuccess);
 
         isSuccess
             ? navigate("/register/select-role", { state: userData })
@@ -92,7 +92,7 @@ export default function CommunityPage() {
                                             if (data) {
                                                 // Use a type assertion to specify the correct type
                                                 const id = (data as any).value;
-                                                console.log(id);
+                                                // console.log(id);
                                                 formik.setFieldValue(
                                                     "district",
                                                     id
