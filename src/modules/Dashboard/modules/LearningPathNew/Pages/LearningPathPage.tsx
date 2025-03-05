@@ -6,6 +6,7 @@ import levelsDataUIUX from "../modules/LevelsDataUIUX";
 import CardCarousel from "../modules/CardCarousal";
 import IGSelector from "../../InterestGroups/components/IGSelection/IGSelector";
 import { getUserLog, getUserProfile } from "../../Profile/services/api";
+import { SiDiscord } from "react-icons/si";
 
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
@@ -242,7 +243,7 @@ const IGHashtagMap = [
 
 
 const LearningPathPage: React.FC = () => {
-  const { userProfile, setUserProfile } = useUserStore();
+  const { userProfile, userInfo, setUserProfile } = useUserStore();
   const [activeTab, setActiveTab] = useState<"startLearning" | "becomeExpert">("startLearning");
   const [basicLevelData, setBasicLevelData] = useState<any[]>([]);
   const [intermediateLevelData, setIntermediateLevelData] = useState<any[]>([]);
@@ -328,6 +329,11 @@ const LearningPathPage: React.FC = () => {
     setSelectedData(null);
   };
 
+  const handleDiscordRedirect = () => {
+    window.location.href = import.meta.env.VITE_DISCORD_AUTH_URL;
+};
+
+
   // Determine which levels to render based on active tab
   const levelsToRender = activeTab === "startLearning" ? basicLevelData : intermediateLevelData;
 
@@ -367,13 +373,11 @@ const LearningPathPage: React.FC = () => {
       )}
 
       {/* ✅ LEVEL 0: Connect Discord */}
-      {activeTab === "startLearning" && !userProfile && (
+      {activeTab === "startLearning" && !userInfo.exist_in_guild && (
         <div className={styles.levelSection}>
           <h2>Level 0</h2>
           <h4 className={styles.levelSubtitle}>Connect to our Discord server to start your journey!</h4>
-          <button className={styles.connectDiscordButton} onClick={() => window.open("https://discord.com", "_blank")}>
-            Connect Discord
-          </button>
+          <TaskCard card={{title: 'Connect Discord', icon: <SiDiscord/>, desc: 'Connect discord and join the guild to start learning', ig: '', skills: ['Basics']}} onClickCTA={() => handleOpenOffCanvas(handleDiscordRedirect)} />
         </div>
       )}
 
