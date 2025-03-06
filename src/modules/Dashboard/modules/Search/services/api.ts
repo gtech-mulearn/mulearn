@@ -70,7 +70,6 @@ export const getUsers = async ({
     });
 
     const responseData = response.data;
-    console.log(responseData, "users search");
 
     if (responseData.hasError) {
       throw new Error(
@@ -81,7 +80,6 @@ export const getUsers = async ({
     if (!responseData.response?.data || !responseData.response?.pagination) {
       throw new Error('Invalid response format from server');
     }
-    console.log(responseData.response);
 
     return responseData.response;
   } catch (error) {

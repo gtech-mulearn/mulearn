@@ -87,11 +87,9 @@ export const getMeetupInfo = async (
     meetId: string
 ) => {
     try {
-        console.log(meetId);
         const response = await privateGateway.get(
             dynamicRoute(dashboardRoutes.getMeetupInfo, meetId)
         );
-        console.log(response);
         const message: any = response?.data;
         setMeetup(message.response);
     } catch (err: unknown) {
@@ -121,7 +119,6 @@ export const submitAttendeeTaskImage = async (
                 }
             }
         );
-        console.log(response);
         const message: any = response?.data?.message?.general[0];
         toast.success(message);
         return true;
@@ -130,7 +127,6 @@ export const submitAttendeeTaskImage = async (
         if ((error?.response?.data as any)?.message?.general[0]) {
             toast.error((error?.response?.data as any)?.message?.general[0]);
         }
-        console.log(error);
         return false;
     }
 };
@@ -140,12 +136,10 @@ export const submitAttendeeReport = async (
     formData: FormData
 ) => {
     try {
-        console.log(meetId);
         const response = await privateGateway.post(
             dynamicRoute(dashboardRoutes.submitAttendeeReport, meetId),
             formData
         );
-        console.log(response);
         const message: any = response?.data;
         toast.success(message.message?.general[0] ?? "Failed to submit report");
     } catch (err: unknown) {
@@ -165,7 +159,6 @@ export const getMeetups = async (
     category: string | undefined = undefined
 ) => {
     try {
-        console.log(meetId);
         const response = await privateGateway.get(
             dashboardRoutes.getMeetups + (userId ? userId : ""),
             {
@@ -180,7 +173,6 @@ export const getMeetups = async (
                     : {}
             }
         );
-        console.log(response);
         const message: any = response?.data;
         setMeetup(message.response);
     } catch (err: unknown) {
@@ -404,7 +396,6 @@ export const updateLcNote = async (data: LcNote) => {
 
 export const getMeetupAttendees = async (id: string | undefined) => {
     try {
-        console.log(dynamicRoute(lcRoutes.getLcAttendees, id as string));
         const response = await privateGateway.get(
             dynamicRoute(lcRoutes.getLcAttendees, id as string)
         );

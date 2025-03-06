@@ -14,7 +14,6 @@ export const selectOrganization = async ({
     userData: Object;
     navigate: NavigateFunction;
 }) => {
-    console.log("UserData", userData);
     try {
         setIsLoading(true);
         const res = await privateGateway.post(

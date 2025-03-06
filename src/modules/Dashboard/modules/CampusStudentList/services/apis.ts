@@ -154,7 +154,6 @@ export const getCSV = async (
 ) => {
     try {
         const res = await privateGateway.get(dashboardRoutes.getStudentsList);
-        console.log(res);
         const blob = new Blob([res.data], { type: "text/csv" });
         setCSVFile(blob);
     } catch (err: any) {

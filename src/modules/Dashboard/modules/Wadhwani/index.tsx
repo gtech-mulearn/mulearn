@@ -87,7 +87,6 @@ const Wadhwani: React.FC = () => {
 
 function getRootIdByTitle(titleToSearch: string): string  {
     const course = data.find(course => course.courseName === titleToSearch);
-    console.log(course?.courseName + titleToSearch)
     return course ? course.courseRootId : "null";
 }
 function stringSlice(inputString: string): string {

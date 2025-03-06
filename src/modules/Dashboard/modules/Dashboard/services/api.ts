@@ -45,7 +45,6 @@ export interface KarmaFeedItem {
 export async function getDomainBasedInterestGroups(domain: string): Promise<ApiInterestGroup[]> {
     try {
         const response = await publicGateway.get(onboardingRoutes.interestGroups);
-        console.log("IG Response data:", response);
         if (response && response.data && response.data.response && response.data.response.interestGroup) {
             const interestGroups = response.data.response.interestGroup
                 .filter((group: { category: string }) => group.category === domain)
@@ -53,7 +52,6 @@ export async function getDomainBasedInterestGroups(domain: string): Promise<ApiI
             
             return interestGroups; 
         }
-        console.log("No valid interest groups found in response");
         return []; 
     } catch (error) {
         console.error("Failed to fetch interest groups:", error);
@@ -65,7 +63,6 @@ export async function getKarmaFeed(): Promise<KarmaFeedItem[]> {
     try {
         const response = await publicGateway.get<APIKarmaFeedResponse>(dashboardRoutes.getKarmaFeed);
         if (response && response.data) {
-            console.log("Response data:", response);
 
             // Transform the nested response into an array of KarmaFeedItem
             const karmaFeed: KarmaFeedItem[] = [
@@ -83,7 +80,6 @@ export async function getKarmaFeed(): Promise<KarmaFeedItem[]> {
             ];
             return karmaFeed;
         }
-        // console.log("No valid karma feed found in response");
         return [];
     } catch (error) {
         console.error("Failed to fetch karma feed:", error);

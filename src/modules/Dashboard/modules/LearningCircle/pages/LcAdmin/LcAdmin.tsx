@@ -17,7 +17,6 @@ const LcAdmin = () => {
     useEffect(() => {
         setIsLoading(true);
         getVerifiableMeetups().then(res => {
-            console.log(res);
             setData(res);
             setIsLoading(false);
         });

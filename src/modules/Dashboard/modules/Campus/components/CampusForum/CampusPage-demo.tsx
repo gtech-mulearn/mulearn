@@ -73,7 +73,7 @@ const CampusDetails: React.FC = () => {
         false
     );
     const errHandler = (err: any) => {
-        console.log(err);
+        toast.error(err.message);
     };
 
     const firstFetch = useRef(true);
@@ -87,50 +87,49 @@ const CampusDetails: React.FC = () => {
 
     };
 
-    useEffect(() => {
-        if (firstFetch.current) {
-            getCSV(setCSVFile, (msg) => console.log(msg));
-            getStudentDetails(
-                setStudentData,
-                1,
-                perPage,
-                setTotalPages,
-                "",
-                "",
-                setNoOrg
-            );
-            getCampusDetails(setCampusData);
-            // (async () => {
-            //     let weeklyKarma = await getWeeklyKarma(errHandler);
-            //     let formatedData = weeklyKarma.map((item: any) => [
-            //         convertDateToDayAndMonth(item[0]),
-            //         item[1],
-            //     ]);
+    // useEffect(() => {
+    //     if (firstFetch.current) {
+    //         getCSV(setCSVFile, (msg) => console.log(msg));
+    //         getStudentDetails(
+    //             setStudentData,
+    //             1,
+    //             perPage,
+    //             setTotalPages,
+    //             "",
+    //             "",
+    //             setNoOrg
+    //         );
+    //         getCampusDetails(setCampusData);
+    //         // (async () => {
+    //         //     let weeklyKarma = await getWeeklyKarma(errHandler);
+    //         //     let formatedData = weeklyKarma.map((item: any) => [
+    //         //         convertDateToDayAndMonth(item[0]),
+    //         //         item[1],
+    //         //     ]);
 
-            //     setBarData([["", "Karma"]].concat(formatedData));
-            //     setPieData(
-            //         [["Level", "UsersPerLevel"]].concat(
-            //             await getStudentLevel(errHandler)
-            //         )
-            //     );
-            // })();
-        }
+    //         //     setBarData([["", "Karma"]].concat(formatedData));
+    //         //     setPieData(
+    //         //         [["Level", "UsersPerLevel"]].concat(
+    //         //             await getStudentLevel(errHandler)
+    //         //         )
+    //         //     );
+    //         // })();
+    //     }
 
-        if (!currModal) {
-            getStudentDetails(
-                setStudentData,
-                1,
-                perPage,
-                setTotalPages,
-                "",
-                "",
-                setNoOrg
-            );
-        }
-        firstFetch.current = false;
-    }, [currModal]);
+    //     if (!currModal) {
+    //         getStudentDetails(
+    //             setStudentData,
+    //             1,
+    //             perPage,
+    //             setTotalPages,
+    //             "",
+    //             "",
+    //             setNoOrg
+    //         );
+    //     }
+    //     firstFetch.current = false;
+    // }, [currModal]);
 
-    console.log("Campus Data:", campusData);
 
     useEffect(() => {
         const fetchCampusData = async () => {
@@ -138,7 +137,6 @@ const CampusDetails: React.FC = () => {
                 // Fetch campus details
                 const campusResponse = await privateGateway.get(`/api/v1/dashboard/campus/${org_id}`);
                 const campus = campusResponse.data.response;
-                console.log("Campus data:", campus);
 
                 // Fetch weekly karma (not used in UI yet, but fetched for potential future use)
                 const weeklyKarmaResponse = await privateGateway.get(`/api/v1/dashboard/campus/weekly-karma/${org_id}`);
@@ -164,7 +162,6 @@ const CampusDetails: React.FC = () => {
                 });
 
                 setBarData([["", "Karma"]].concat(formatedData));
-                console.log("Weekly karma:", weeklyKarma);
 
                 setCampusData({
                     college_name: campus.college_name || "Unknown College",

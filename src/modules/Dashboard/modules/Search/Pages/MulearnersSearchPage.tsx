@@ -206,8 +206,7 @@ const MuLearnersSearchPage: React.FC = () => {
 
   const handleUserSelect = (user: User) => {
     setSelectedUser(user);
-    console.log("Selected user:", user);
-    // window.open(`/profile/${user.muid}`, "_blank");
+    window.open(`/profile/${user.muid}`, "_blank");
 };
 
 

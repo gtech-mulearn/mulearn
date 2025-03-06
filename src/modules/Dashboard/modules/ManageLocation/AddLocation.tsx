@@ -84,7 +84,6 @@ const AddLocation = () => {
                             .required("Required")
                     })}
                     onSubmit={values => {
-                        console.log(values.ItemName);
                         handleSubmitAdd(values);
                     }}
                 >

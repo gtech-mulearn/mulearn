@@ -14,7 +14,6 @@ type Props = {
 };
 
 const CollegeLevelsEdit = (props: Props) => {
-    console.log(props.org_id);
     return (
         <Formik
             enableReinitialize={true}

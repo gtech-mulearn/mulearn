@@ -183,7 +183,6 @@ function CollegeLevels() {
     }, []);
 
     const delayedRefetch = () => {
-        console.log("refetch");
         setTimeout(
             () =>
                 getCollegeLevels(

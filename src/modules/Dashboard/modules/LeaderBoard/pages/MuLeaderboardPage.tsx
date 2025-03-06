@@ -68,7 +68,6 @@ const MuLeaderboardPage = () => {
         }
 
         if (campusMonthlyResponse?.data?.response) {
-          console.log("campus monthly response", campusMonthlyResponse.data);
           setCampusMonthlyLeaderBoard(
             campusMonthlyResponse.data.response.map((campus: { code: string; total_karma: number }) => ({
               name: campus.code,
@@ -87,8 +86,6 @@ const MuLeaderboardPage = () => {
     fetchData();
   }, []);
 
-  // console.log("leaderboard data", studentLeaderboardData, campusLeaderboardData);
-  console.log("monthly leaderboard data", monthlyStudentLeaderBoard, monthlyCampusLeaderboard);
 
   return (
     <div className={styles.pageWrapper}>

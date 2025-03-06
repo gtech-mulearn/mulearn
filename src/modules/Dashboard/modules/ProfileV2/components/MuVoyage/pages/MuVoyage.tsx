@@ -45,7 +45,6 @@ const MuVoyage = (props: Props) => {
             : "100";
     }
 
-    console.log(props.userLevelData);
     return (
         <>
             {userLevelTrack && (

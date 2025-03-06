@@ -22,7 +22,6 @@ const IGSelector = (props: Props) => {
     useEffect(() => {
         setIg(props.igs)
         props.setSelectedIg(props.igs[0]);
-        console.log(props.selectedIg,'hi')
 
     }, [props.igs]);
 

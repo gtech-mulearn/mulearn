@@ -34,7 +34,6 @@ export const getDepartments = async ({
         });
         const departments: any = response?.data.response.data;
         const pagination: any = response?.data.response.pagination;
-        console.log("getDepartments - data", departments.response);
         setDepartments(departments);
         setTotalPages && setTotalPages(pagination.totalPages);
     } catch (err: unknown) {
@@ -50,7 +49,6 @@ export const createDepartment = async (title: string) => {
             { title: title }
         );
         const message = response?.data.message.general[0];
-        console.log("createDepartment - data", message);
         toast.success(message);
     } catch (err: unknown) {
         console.log(err);
@@ -59,7 +57,6 @@ export const createDepartment = async (title: string) => {
 };
 
 export const updateDepartment = async (id: string, title: string) => {
-    console.log("updateDepartment - id", id);
     try {
         const response = await privateGateway.put(
             `${dashboardRoutes.editDepartment}${id}/`,
@@ -81,7 +78,6 @@ export const deleteDepartment = async (id: string) => {
             `${dashboardRoutes.deleteDepartment}${id}/`
         );
         const departments: any = response?.data;
-        console.log("deleteDepartment - data", departments.response);
     } catch (err: unknown) {
         console.log(err);
     }

@@ -292,7 +292,6 @@ const LearningPathPage: React.FC = () => {
           ? IGHashtagMap.filter(ig => ig.id === selectedIg.id)
           : IGHashtagMap;
 
-        console.log(filteredIGHashtagMap, 'filteredIGHashtagMap', levels);
         const data = await getIGLevelTasks(levels, filteredIGHashtagMap);
         setIntermediateLevelData(data);
       } catch (error) {

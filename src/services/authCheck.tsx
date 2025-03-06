@@ -39,7 +39,6 @@ function SecureAuthRoutes() {
         toastTitle,
         toastDescription
     }): JSX.Element => {
-        console.log("redirectPath:", redirectPath); // Log the redirectPath
         if (hasRoleNoFetch(roles, dynamicType)) {
             return children;
         } else {

@@ -26,7 +26,6 @@ const ProofOfWorkModal = ({
 
   const onDrop = useCallback(async (acceptedFiles: File[]) => {
     const selectedFile = acceptedFiles[0];
-    console.log(selectedFile,'selectedFile')
     if (selectedFile) {
       setFile(selectedFile);
       // Create preview for image files
@@ -57,7 +56,6 @@ const ProofOfWorkModal = ({
   });
 
 const handleUpload = async (fileToUpload: File) => {
-  console.log('triggered')
   try {
     setIsUploading(true);
 

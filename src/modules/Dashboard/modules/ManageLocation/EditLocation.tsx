@@ -98,7 +98,6 @@ const EditLocation = () => {
                             .required("Required")
                     })}
                     onSubmit={values => {
-                        console.log(values.ItemName);
                         handleSubmitEdit(values);
                     }}
                 >

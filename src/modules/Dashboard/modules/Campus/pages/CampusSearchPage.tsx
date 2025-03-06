@@ -264,7 +264,6 @@ const CampusSearchPage: React.FC = () => {
     //         setBarData([["", "Karma"]].concat(weeklyKarmaData));
     //         setPieData([["Level", "Students"]].concat(studentLevelData));
 
-    //         console.log("Detailed campus data:", detailedCampus); 
     //     } catch (err) {
     //         console.error("Failed to fetch detailed campus data:", err);
     //         toast.error("Failed to load campus details");
@@ -274,7 +273,6 @@ const CampusSearchPage: React.FC = () => {
     //     }
     // };
 
-    // console.log(barData, pieData);
     // useEffect(() => {
     //     if (selectedCampus) {
     //         fetchDetailedCampusData(selectedCampus.id);

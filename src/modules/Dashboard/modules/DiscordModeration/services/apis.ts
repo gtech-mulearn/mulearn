@@ -10,7 +10,6 @@ export const getTaskList = async (
     sortID?: string,
     setIsLoading?: UseStateFunc<boolean>,
 ) => {
-    console.log(sortID);
     
     setIsLoading && setIsLoading(true);
     privateGateway
@@ -28,7 +27,6 @@ export const getTaskList = async (
                 pagination: { totalPages: number };
             }>
         ) => {
-            console.log(response.data);
             
             const updatedTaskData= response.data.response.data
             setTaskData(updatedTaskData);

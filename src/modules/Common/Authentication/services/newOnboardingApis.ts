@@ -24,7 +24,6 @@ export const validate = async ({
     } catch (err: any) {
         setIsSubmitting(false);
         const messages = err.response.data.message.general[0];
-        // console.log("validate - messages", messages);
         showToasts({
             messages: messages
         });
@@ -42,7 +41,6 @@ export const createAccount = async ({
     navigate: NavigateFunction;
 }) => {
     setIsSubmitting(true);
-    // console.log("UserData", userData);
 
     try {
         const response = await publicGateway.post(
@@ -71,7 +69,6 @@ export const getRoles = () => {
             const roles = response.data.response.roles;
             resolve(roles);
         } catch (err) {
-            // console.log("getRoles Error", err);
             reject(err);
         }
     });
@@ -86,7 +83,6 @@ export const getInterestGroups = () => {
             const interestGroups = response.data.response.aois;
             resolve(interestGroups);
         } catch (err) {
-            // console.log("getInterestGroups Error", err);
             reject(err);
         }
     });

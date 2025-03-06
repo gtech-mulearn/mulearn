@@ -452,7 +452,6 @@ export const getLocations = async (
                 console.log("success");
             } else {
                 setIsApiCalled(false);
-                console.log(response.data.response);
                 setLocationData(response.data.response);
             }
         })

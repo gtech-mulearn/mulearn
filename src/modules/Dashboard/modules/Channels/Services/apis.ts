@@ -66,7 +66,6 @@ export const getChannels = async (
     } catch (err) {
         setLoading && setLoading(false);
         const error = err as AxiosError;
-        console.log(error);
         if (error?.response) {
             if (errorHandler) errorHandler();
             else console.log(error.response);

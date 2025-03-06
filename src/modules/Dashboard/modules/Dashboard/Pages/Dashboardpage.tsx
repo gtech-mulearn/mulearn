@@ -131,7 +131,6 @@ const DashboardPage = () => {
   if(!userName){
     userName = storedUserInfo ? storedUserInfo?.full_name.split(" ")?.[0] : null;
   }
-  console.log(userName,'userName')
   const [karmaFeed, setKarmaFeed] = useState<KarmaFeedItem[]>([]);
   const userDomains: string[] =
     fetchLocalStorage<UserInfo>("userInfo")?.user_domains || [];
@@ -179,7 +178,6 @@ const DashboardPage = () => {
         }
         // console.log("Karma feed fetched successfully");
         setKarmaFeed(response);
-        console.log(response)
       } catch (error) {
         console.error("Failed to fetch karma feed:", error);
       }

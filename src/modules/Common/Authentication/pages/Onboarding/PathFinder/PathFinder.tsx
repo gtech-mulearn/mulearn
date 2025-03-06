@@ -68,7 +68,6 @@ export default function PathFinder() {
       const newEndgoals = prev.map((item) =>
         item.value === value ? { ...item, checked: !item.checked } : item
       );
-      console.log("Updated endgoals:", newEndgoals);
       return newEndgoals;
     });
   }, []);
@@ -116,9 +115,7 @@ export default function PathFinder() {
             ? recommendedPathways.includes(item.value)
             : (item as Endgoal).checked;
 
-          console.log(`${isInterest ? "Pathway" : "Endgoal"} ${item.value} isChecked:`, isChecked);
           const className = `${styles.itemsCard} ${isChecked ? styles.checked : ""}`;
-          console.log("Applied className:", className);
 
           return (
             <div

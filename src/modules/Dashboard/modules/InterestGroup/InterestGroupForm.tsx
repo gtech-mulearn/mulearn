@@ -167,7 +167,6 @@ const IntrestGroupForm = forwardRef(
                         }}
                         value={
                             interestGroup.filter(e => {
-                                console.log(e.value, data.category);
                                 return e.value === data.category;
                             })[0]
                         }

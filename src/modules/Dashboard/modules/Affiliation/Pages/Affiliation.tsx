@@ -165,7 +165,6 @@ const Affiliation = () => {
 
     const handleEdit = (id: string | number | boolean) => {
         formik.setFieldValue("id", id);
-        console.log(id);
         formik.setFieldValue(
             "title",
             affiliationData.filter(item => item?.id === id)[0].title

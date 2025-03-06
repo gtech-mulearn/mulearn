@@ -68,7 +68,6 @@ export default function Rolepage() {
         }
         if (userData.referral)
             newUserData["referral"] = { muid: userData.referral.muid };
-        console.log(newUserData);
 
         submitUserData({
             setIsLoading: setIsLoading,

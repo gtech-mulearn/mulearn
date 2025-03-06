@@ -49,7 +49,6 @@ export const postCountryData = async (countryName: string) => {
             })
             .then(({ data }) => data.response)
             .then(({ data }) => {
-                console.log(data);
             });
     } catch (err: any) {
         if (err?.response) {
