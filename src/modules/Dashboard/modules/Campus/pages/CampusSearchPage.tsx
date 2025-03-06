@@ -15,6 +15,7 @@ import CEIcon from "../assets/images/CampusEnablerIcon.png";
 import toast from "react-hot-toast";
 import { BarChart } from "../../CampusStudentList/Components/Graphs";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
+import { useNavigate } from "react-router-dom";
 
 interface Campus {
     id: string;
@@ -209,12 +210,13 @@ const CampusSearchPage: React.FC = () => {
     const [barData, setBarData] = useState<string[][] | null>(null);
     const [pieData, setPieData] = useState<string[][] | null>(null);
     const [isLoadingDetails, setIsLoadingDetails] = useState(false);
+    const navigate = useNavigate()
     
 
     const handleCampusSelect = (campus: Campus) => {
         setSelectedCampus(campus);
         
-        setIsAsideOpen(true);
+        navigate("/dashboard/campus/" + campus.id);
     };
 
     const handleAsideClose = () => {
@@ -225,59 +227,59 @@ const CampusSearchPage: React.FC = () => {
         setPieData(null);
     };
 
-    const fetchDetailedCampusData = async (orgId: string) => {
-        setIsLoadingDetails(true);
-        try {
-            const campusResponse = await privateGateway.get(`/api/v1/dashboard/campus/${orgId}`);
+    // const fetchDetailedCampusData = async (orgId: string) => {
+    //     setIsLoadingDetails(true);
+    //     try {
+    //         const campusResponse = await privateGateway.get(`/api/v1/dashboard/campus/${orgId}`);
             
-            const campus = campusResponse.data.response;
+    //         const campus = campusResponse.data.response;
 
-            const weeklyKarmaResponse = await privateGateway.get(`/api/v1/dashboard/campus/weekly-karma/${orgId}`);
-            const weeklyKarma = weeklyKarmaResponse.data.response; 
-            const weeklyKarmaData = Object.entries(weeklyKarma)
-                .filter(([key]) => key !== "college_name")
-                .map(([date, karma]) => [convertDateToDayAndMonth(date), String(karma ?? 0)]);
+    //         const weeklyKarmaResponse = await privateGateway.get(`/api/v1/dashboard/campus/weekly-karma/${orgId}`);
+    //         const weeklyKarma = weeklyKarmaResponse.data.response; 
+    //         const weeklyKarmaData = Object.entries(weeklyKarma)
+    //             .filter(([key]) => key !== "college_name")
+    //             .map(([date, karma]) => [convertDateToDayAndMonth(date), String(karma ?? 0)]);
 
-            const studentLevelResponse = await privateGateway.get(`/api/v1/dashboard/campus/student-level/${orgId}`);
-            const studentLevel = studentLevelResponse.data.response; 
-            const studentLevelData = studentLevel.map((item: { students: number; level: number }) => [
-                `Level ${item.level}`,
-                String(item.students),
-            ]);
+    //         const studentLevelResponse = await privateGateway.get(`/api/v1/dashboard/campus/student-level/${orgId}`);
+    //         const studentLevel = studentLevelResponse.data.response; 
+    //         const studentLevelData = studentLevel.map((item: { students: number; level: number }) => [
+    //             `Level ${item.level}`,
+    //             String(item.students),
+    //         ]);
 
-            setDetailedCampus({
-                college_name: campus.college_name || "Unknown College",
-                campus_code: campus.campus_code || "N/A",
-                campus_zone: campus.campus_zone || "N/A",
-                campus_level: campus.campus_level || 0,
-                total_karma: campus.total_karma || 0,
-                total_members: campus.total_members || 0,
-                active_members: campus.active_members || 0,
-                rank: campus.rank || 0,
-                lead: {
-                    campus_lead: campus.lead?.campus_lead,
-                    enabler: campus.lead?.enabler,
-                },
-            });
-            setBarData([["", "Karma"]].concat(weeklyKarmaData));
-            setPieData([["Level", "Students"]].concat(studentLevelData));
+    //         setDetailedCampus({
+    //             college_name: campus.college_name || "Unknown College",
+    //             campus_code: campus.campus_code || "N/A",
+    //             campus_zone: campus.campus_zone || "N/A",
+    //             campus_level: campus.campus_level || 0,
+    //             total_karma: campus.total_karma || 0,
+    //             total_members: campus.total_members || 0,
+    //             active_members: campus.active_members || 0,
+    //             rank: campus.rank || 0,
+    //             lead: {
+    //                 campus_lead: campus.lead?.campus_lead,
+    //                 enabler: campus.lead?.enabler,
+    //             },
+    //         });
+    //         setBarData([["", "Karma"]].concat(weeklyKarmaData));
+    //         setPieData([["Level", "Students"]].concat(studentLevelData));
 
-            console.log("Detailed campus data:", detailedCampus); 
-        } catch (err) {
-            console.error("Failed to fetch detailed campus data:", err);
-            toast.error("Failed to load campus details");
-            setError("Failed to load campus details");
-        } finally {
-            setIsLoadingDetails(false);
-        }
-    };
+    //         console.log("Detailed campus data:", detailedCampus); 
+    //     } catch (err) {
+    //         console.error("Failed to fetch detailed campus data:", err);
+    //         toast.error("Failed to load campus details");
+    //         setError("Failed to load campus details");
+    //     } finally {
+    //         setIsLoadingDetails(false);
+    //     }
+    // };
 
-    console.log(barData, pieData);
-    useEffect(() => {
-        if (selectedCampus) {
-            fetchDetailedCampusData(selectedCampus.id);
-        }
-    }, [selectedCampus]);
+    // console.log(barData, pieData);
+    // useEffect(() => {
+    //     if (selectedCampus) {
+    //         fetchDetailedCampusData(selectedCampus.id);
+    //     }
+    // }, [selectedCampus]);
 
     const getGradeIcon = (grade: "A" | "B" | "C" | "N/A"): JSX.Element | null => {
         switch (grade) {

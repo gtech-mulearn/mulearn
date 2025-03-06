@@ -98,7 +98,7 @@ const LearningCirclesSection: React.FC = () => {
                     {/* Example: meetup.tags?.map(tag => <span key={tag}>{tag}</span>) */}
                   </div>
                 </div>
-                <button className={styles.ctaButton}>Join</button>
+                <button className={styles.ctaButton}>View</button>
               </div>
             ))}
           </div>

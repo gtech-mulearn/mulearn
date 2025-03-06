@@ -4,61 +4,51 @@ import { TopPlayers } from "./top-players";
 import { LeaderboardTable } from "./leaderboard-table";
 import { FilterBar } from "./filter-bar";
 import styles from "../pages/leaderboard.module.css";
-import { FilterBarCategories } from "./filter-categories";
-
 
 interface LeaderboardEntry {
   name: string;
-  avatar: string;
-  monthly: number;
-  yearly: number;
-  overall: number;
+  monthly?: number;
+  overall?: number;
   category?: string;
 }
 
 interface LeaderboardProps {
-  data: LeaderboardEntry[];
-  filterOptions?: ("monthly" | "yearly" | "overall")[];
-  leaderBoardOptions?: { label: string; value: string }[];
+  leaderboards: {
+    student: {
+      overall: LeaderboardEntry[];
+      monthly: LeaderboardEntry[];
+    };
+    campus: {
+      overall: LeaderboardEntry[];
+      monthly: LeaderboardEntry[];
+    };
+  };
+  filterOptions?: ("monthly" | "overall")[];
   categoryOptions?: { label: string; value: string }[];
-  defaultFilter?: "monthly" | "yearly" | "overall";
+  defaultFilter?: "monthly" | "overall";
   defaultCategory?: string;
   topPlayerCount?: number;
 }
 
 export default function Leaderboard({
-  data = [], 
-  filterOptions = ["monthly", "yearly", "overall"],
-  leaderBoardOptions = [
-    { label: "Main", value: "all" },
-    { label: "Launchpad", value: "student" },
-    { label: "YIP", value: "mentor" },
-    { label: "Talent Accelerator", value: "campus" },
-  ],
+  leaderboards,
+  filterOptions = ["monthly", "overall"],
   categoryOptions = [
-    { label: "All Categories", value: "all" },
     { label: "Student", value: "student" },
-    { label: "Mentor", value: "mentor" },
     { label: "Campus", value: "campus" },
   ],
   defaultFilter = "monthly",
-  defaultCategory = "all",
+  defaultCategory = "student",
   topPlayerCount = 3,
 }: LeaderboardProps) {
-  const [activeFilter, setActiveFilter] = useState<"monthly" | "yearly" | "overall">(defaultFilter);
-  const [activeCategory, setActiveCategory] = useState<string>(defaultCategory);
+  const [activeFilter, setActiveFilter] = useState<"monthly" | "overall">(defaultFilter);
+  const [activeCategory, setActiveCategory] = useState<"student" | "campus">(defaultCategory as "student" | "campus");
 
+  // Select the current leaderboard based on active category and filter
+  const currentLeaderboard = leaderboards[activeCategory]?.[activeFilter] || [];
 
-  const filteredByCategory = Array.isArray(data)
-    ? activeCategory === "all"
-      ? data
-      : data.filter((entry) => entry.category === activeCategory)
-    : [];
-
-
-  const sortedData = [...filteredByCategory].sort((a, b) => b[activeFilter] - a[activeFilter]);
-  const topPlayers = sortedData.slice(0, topPlayerCount);
-  const remainingPlayers = sortedData.slice(topPlayerCount);
+  const topPlayers = currentLeaderboard.slice(0, topPlayerCount);
+  const remainingPlayers = currentLeaderboard.slice(topPlayerCount);
 
   return (
     <div className={styles.container}>
@@ -69,7 +59,6 @@ export default function Leaderboard({
           activeCategory={activeCategory}
           setActiveCategory={setActiveCategory}
           filterOptions={filterOptions}
-          programOptions={leaderBoardOptions}
           categoryOptions={categoryOptions}
         />
         <TopPlayers topPlayers={topPlayers} activeFilter={activeFilter} />

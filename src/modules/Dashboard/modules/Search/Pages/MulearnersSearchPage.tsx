@@ -3,15 +3,11 @@ import styles from "./MuLearnersSearchPage.module.css";
 import { FiSearch } from "react-icons/fi";
 import profileImage from "../assets/ProfileImages/10496279.jpg";
 import userImage2 from "../assets/ProfileImages/11475206.jpg";
-import dpm from "../../Profile/assets/images/dpm.webp";
 import debounce from "lodash/debounce";
 import { getUsers } from "../services/api";
-import AsideDetails from "../../../components/AsideDetails";
-import Karma from "../../ProfileV2/assets/svg/Karma";
-import AvgKarma from "../../ProfileV2/assets/svg/AvgKarma";
-import Rank from "../../ProfileV2/assets/svg/Rank";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import UserCard from "../../../components/UserCard";
+import { useNavigate } from "react-router-dom";
 
 interface User {
   full_name: string;
@@ -67,6 +63,7 @@ const UserList: React.FC<{
   const [isFetching, setIsFetching] = useState<boolean>(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
+  const navigate = useNavigate();
 
   const fetchUsers = useCallback(
     async (searchTerm: string, pageNum: number) => {
@@ -163,18 +160,18 @@ const UserList: React.FC<{
       <div className={styles.userGrid}>
         {displayUsers.length > 0 ? (
           displayUsers.map((user, index) => (
-            <UserCard
-              key={`${user.muid}-${index}`}
-              data={{
-                name: user.full_name.trim() || "Unknown User",
-                muid: user.muid,
-                interest_groups: user.interest_groups,
-                organizations: user.organizations,
-                profile_pic: user.profile_pic || (index % 2 === 0 ? profileImage : userImage2),
-                karma: user.karma,
-              }}
-              onSelect={() => onSelect(user)}
-            />
+              <UserCard
+                key={`${user.muid}-${index}`}
+                data={{
+                  name: user.full_name.trim() || "Unknown User",
+                  muid: user.muid,
+                  interest_groups: user.interest_groups,
+                  organizations: user.organizations,
+                  profile_pic: user.profile_pic || (index % 2 === 0 ? profileImage : userImage2),
+                  karma: user.karma,
+                }}
+                onSelect={() => onSelect(user)}
+              />
           ))
         ) : (
           !isFetching && (
@@ -192,28 +189,26 @@ const UserList: React.FC<{
   );
 };
 
+interface User {
+  full_name: string;
+  muid: string;
+  interest_groups: { id: string; name: string }[];
+  organizations: { id: string; title: string; code: string; org_type: string }[];
+  profile_pic: string | null;
+  karma: string;
+}
+
 const MuLearnersSearchPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [searchType, setSearchType] = useState<"name" | "college" | "interest">("name");
   const [error, setError] = useState<string | null>(null);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
-  const [isAsideOpen, setIsAsideOpen] = useState<boolean>(false);
-
-
-
 
   const handleUserSelect = (user: User) => {
     setSelectedUser(user);
-    setIsAsideOpen(true);
-    console.log(selectedUser, "selected user")
-  };
-
-
-
-  const handleAsideClose = () => {
-    setIsAsideOpen(false);
-    setSelectedUser(null);
-  };
+    console.log("Selected user:", user);
+    // window.open(`/profile/${user.muid}`, "_blank");
+};
 
 
 
@@ -230,7 +225,6 @@ const MuLearnersSearchPage: React.FC = () => {
       </div>
 
       <div className={styles.searchContainer}>
-        
         <FiSearch className={styles.searchIcon} />
         <input
           type="text"
@@ -239,7 +233,6 @@ const MuLearnersSearchPage: React.FC = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-
       </div>
       <div className={styles.searchTypeButtons}>
         <button
@@ -268,79 +261,10 @@ const MuLearnersSearchPage: React.FC = () => {
         <UserList search={searchTerm} searchType={searchType} onSelect={handleUserSelect} />
       </Suspense>
 
-      <AsideDetails isOpen={isAsideOpen} handleClose={handleAsideClose}>
-        {selectedUser && (
-          <div className={styles.profileContainer}>
-            <div className={styles.profileHeader}>
-              <div className={styles.profileImageContainer}>
-                <img
-                  src={selectedUser.profile_pic || dpm}
-                  alt={selectedUser.full_name}
-                  className={styles.profileImage}
-                />
-              </div>
-              {/* <div className={styles.memberSince}>Member since 2023</div>
-              <button className={styles.connectBtn}>Connect</button> */}
-            </div>
-
-            <div className={styles.profileInfo}>
-              <h2 className={styles.profileName}>{selectedUser.full_name}</h2>
-              <p className={styles.profileUsername}>{selectedUser.muid}</p>
-              <p className={styles.profileCollegeName}>
-                {selectedUser.organizations.find((org) => org.org_type === "College")?.title || "No college specified"}
-              </p>
-              {/* Added Interest Groups */}
-              {selectedUser.interest_groups.length > 0 && (
-                <div className={styles.interestGroups}>
-                  <p className={styles.sectionTitle}>Interest Groups:</p>
-                  <ul>
-                    {selectedUser.interest_groups.map((group) => (
-                      <li key={group.id}>{group.name}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-              {/* Added All Organizations */}
-              {selectedUser.organizations.length > 0 && (
-                <div className={styles.organizations}>
-                  <p className={styles.sectionTitle}>Organizations:</p>
-                  <ul>
-                    {selectedUser.organizations.map((org) => (
-                      <li key={org.id}>{`${org.title} (${org.org_type})`}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
-
-            <div className={styles.statsGrid}>
-              <div className={styles.statsCard}>
-                <Karma />
-                <p className={styles.statsLabel}>Karma</p>
-                <p className={styles.statsValue}>{selectedUser.karma}</p>
-              </div>
-              {/* Keep other stats cards as they were */}
-              {/* <div className={styles.statsCard}>
-                <AvgKarma />
-                <p className={styles.statsLabel}>Avg.Karma/Month</p>
-                <p className={styles.statsValue}>1.156K</p>
-              </div>
-              <div className={styles.statsCard}>
-                <Rank />
-                <p className={styles.statsLabel}>Rank</p>
-                <p className={styles.statsValue}>1</p>
-              </div>
-              <div className={styles.statsCard}>
-                <Rank />
-                <p className={styles.statsLabel}>Percentile</p>
-                <p className={styles.statsValue}>0.29</p>
-              </div> */}
-            </div>
-          </div>
-        )}
-      </AsideDetails>
+      
     </div>
   );
 };
+
 
 export default MuLearnersSearchPage;

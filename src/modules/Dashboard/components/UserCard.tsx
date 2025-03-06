@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./UserCard.module.css";
+import { FiLinkedin } from "react-icons/fi";
 
 interface CardData {
   id?: number | string;
@@ -12,6 +13,7 @@ interface CardData {
   profile_pic?: string | null; // Regular users
   image?: string; // Mentors and think tank members (alias for profile_pic)
   karma?: string; // Specific to regular users
+  linkedin?: string;
 }
 
 interface UserCardProps {
@@ -49,33 +51,37 @@ const UserCard: React.FC<UserCardProps> = ({ data, onSelect }) => {
   return (
     <div className={styles.userCard} onClick={() => onSelect(data)}>
       <img
-        src={data.profile_pic || data.image || "/placeholder.svg"}
+        src={data.profile_pic || data.image || "/assets/dpm.webp"}
         alt={data.name}
         className={styles.userImage}
         onError={(e) => {
-          (e.target as HTMLImageElement).src = "/placeholder.svg";
+          (e.target as HTMLImageElement).src = "/assets/dpm.webp";
         }}
       />
       <div className={styles.userDetails}>
         <div className={styles.userHeader}>
+          {data.linkedin && <a href
+            ={data.linkedin} target="_blank" rel="noreferrer" className={styles.userLinkedin}><FiLinkedin /></a>}
+
           <h2 className={styles.userName}>{data.name.trim() || "Unknown"}</h2>
           {isRegularUser && data.muid && <h3 className={styles.userMUID}>{data.muid}</h3>}
+          {data.role && <h3 className={styles.userRole}>{data.role}</h3>}
+
           {/* <h3 className={styles.userRole}>{getPrimaryOrganization()}</h3> */}
-          {isRegularUser && data.karma && (
+          {data.karma && (
             <p className={styles.userKarma}>Karma: {formatKarma(data.karma)}</p>
           )}
         </div>
-        <div className={styles.interestGroups}>
-          {getInterests().length > 0 ? (
-            getInterests().map((item, index) => (
+        {data.interest_groups && data.interest_groups.length > 0 && (
+          <div className={styles.interestGroups}>
+            {getInterests().map((item, index) => (
               <span key={index} className={styles.interestTag}>
                 {item}
               </span>
-            ))
-          ) : (
-            <span className={styles.noInterestTag}>{noInterestsText}</span>
-          )}
-        </div>
+            ))}
+          </div>
+        )}
+
       </div>
     </div>
   );

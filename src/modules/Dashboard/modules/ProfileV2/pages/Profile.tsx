@@ -15,8 +15,6 @@ import BasicDetails from "../components/BasicDetails/pages/BasicDetails";
 import KarmaHistory from "../components/KarmaHistory/KarmaHistory";
 import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
 import { Projects } from "../components/Projects/Projects";
-// import { PieChart } from "../components/Piechart/PieChart";
-import Rocket from "../assets/svg/Rocket";
 import ProfileHeader from "../components/ProfileHeader/ProfileHeader";
 import Example from "../components/CircularProgressChart/CircularProgressChart";
 
@@ -26,7 +24,11 @@ interface CircleSection {
     percentage: number;
     color?: string;
 }
-const ProfileV2 = (props: Props) => {
+
+interface ProfileProps {
+    id?: string; // Optional prop for modal usage
+  }
+const ProfileV2 = ({ id: propId }: {id:string}) => {
     // const circleSections: CircleSection[] = [
     //     { label: "hod", percentage: 40, color: "#456FF6" },
     //     { label: "hod", percentage: 0, color: "#4566F6" },
@@ -35,7 +37,9 @@ const ProfileV2 = (props: Props) => {
     //     { label: "hod", percentage: 0, color: "#456FF6" }
     // ];
 
-    const { id } = useParams<{ id: string }>();
+    const { id: paramId } = useParams<{ id: string }>(); // Get id from URL params
+  const id = propId || paramId;
+    
     const [APILoadStatus, setAPILoadStatus] = useState(0);
     const [socials, setSocials] = useState([]);
     const [profileList, setProfileList] = useState("basic-details");
@@ -250,7 +254,7 @@ const ProfileV2 = (props: Props) => {
                     </div>
                 </div>
 
-                {window.innerWidth > 1290 ? <Rocket /> : <></>}
+                {/* {window.innerWidth > 1290 ? <Rocket /> : <></>} */}
             </div>
 
             <div className={styles.profileList}>

@@ -245,10 +245,13 @@
 }
 
 @media (max-width: 768px) {
+  .pageContainer {
+    padding: 0px;
+  }
   .searchContainer {
     flex-wrap: wrap;
     gap: 0.5rem;
-    padding: 0 0.5rem;
+    /* padding: 0 0.5rem; */
     max-width: calc(100% - 1rem);
   }
 
@@ -266,6 +269,7 @@
   .searchTypeButtons {
     gap: 0.375rem;
     padding: 0 0.5rem;
+    margin-top: 10px;
   }
 
   .searchTypeButton {

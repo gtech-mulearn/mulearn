@@ -41,7 +41,7 @@ const campusLeaderboardData = [
 const MembersSection = ({campusId}:{campusId:string}) => {
   return (
     <div className={styles.sectionContent}>
-      <Leaderboard
+      {/* <Leaderboard
         data={[...leaderboardData, ...campusLeaderboardData]}
         filterOptions={["monthly", "yearly", "overall"]}
         categoryOptions={[
@@ -53,7 +53,7 @@ const MembersSection = ({campusId}:{campusId:string}) => {
         defaultFilter="monthly"
         defaultCategory="all"
         topPlayerCount={3}
-      />
+      /> */}
     </div>
   );
 };

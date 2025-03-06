@@ -18,5 +18,6 @@ export const INITIAL_ENDGOALS = [
     { title: "Entrepreneurship", value: "entrepreneurship", checked: false },
     { title: "Gig Works", value: "gig_work", checked: false },
     { title: "Higher Education", value: "higher_education", checked: false },
+    { title: "Social Impact", value: "social_impact", checked: false },
     { title: "Others", value: "others", checked: false }
 ];

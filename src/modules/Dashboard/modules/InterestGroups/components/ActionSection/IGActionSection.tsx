@@ -180,15 +180,20 @@ const IGActionSection = ({ data }: { data: InterestGroupData }) => {
               />
             ) : (
               <div className={styles.cardsContainer}>
-                {data.tabs.learningPaths?.map((path: LearningPath) => (
-                  <LearningPathCard
-                    key={path.level}
-                    id={id || ''}
-                    level={path.level}
-                    card={path.cards[0]}
-                    onSelect={handlePathSelect} // Pass the selection handler
-                  />
-                ))}
+                {!data.tabs.learningPaths ? (
+                  <p>No learning paths available.</p>
+                ) : (
+                  data.tabs.learningPaths?.map((path: LearningPath) => (
+                    <LearningPathCard
+                      key={path.level}
+                      id={id || ''}
+                      level={path.level}
+                      card={path.cards[0]}
+                      onSelect={handlePathSelect} // Pass the selection handler
+                    />
+                  ))
+                )}
+                
               </div>
             )}
           </>

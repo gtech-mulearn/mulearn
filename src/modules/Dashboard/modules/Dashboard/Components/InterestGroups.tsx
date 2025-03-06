@@ -44,16 +44,16 @@ const InterestGroups: React.FC<InterestGroupsProps> = ({ title, groups }) => {
   const navigate = useNavigate();
   return (
     <div className={styles.container}>
+      <div className={styles.IgTitleContainer}>
+        <h3 className={styles.header}>Interest groups in {title}</h3>
+        <button onClick={()=> navigate('/dashboard/interestgroups')}>Show more &gt; </button>
+      </div>
       {
         isLoading && 
         <div>
             <MuLoader />
           </div>
       }
-      <div className={styles.IgTitleContainer}>
-        <h3 className={styles.header}>Interest groups in {title}</h3>
-        <button onClick={()=> navigate('/dashboard/interestgroups')}>Show more &gt; </button>
-      </div>
       <div className={styles.list}>
         {currentIgs.map((group, index) => (
           <div key={index} className={styles.groupItem} onClick={() => navigate(`/dashboard/interestgroups/${group.id}`)}>

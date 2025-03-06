@@ -12,6 +12,7 @@ import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
 import { useUserStore } from "/src/ZustandProvider";
 import { getFilteredUserTasks, getIGLevelTasks } from "../services/api";
+import ConnectDiscord from "../../ConnectDiscord/pages/ConnectDiscord";
 
 const dummyUserProfile = {
   full_name: "John Doe",
@@ -377,7 +378,10 @@ const LearningPathPage: React.FC = () => {
         <div className={styles.levelSection}>
           <h2>Level 0</h2>
           <h4 className={styles.levelSubtitle}>Connect to our Discord server to start your journey!</h4>
-          <TaskCard card={{title: 'Connect Discord', icon: <SiDiscord/>, desc: 'Connect discord and join the guild to start learning', ig: '', skills: ['Basics']}} onClickCTA={() => handleOpenOffCanvas(handleDiscordRedirect)} />
+          {/* <button className={styles.connectDiscordButton} onClick={() => window.open("https://discord.com/invite/Jt7sv3chZP", "_blank")}>
+            Connect Discord
+          </button> */}
+          <ConnectDiscord/>
         </div>
       )}
 

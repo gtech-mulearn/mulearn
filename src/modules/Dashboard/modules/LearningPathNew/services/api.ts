@@ -15,6 +15,7 @@ interface Task {
     hashtag: string;
     completed: boolean;
     karma: number;
+    ig?: string;
 }
 
 interface Level {

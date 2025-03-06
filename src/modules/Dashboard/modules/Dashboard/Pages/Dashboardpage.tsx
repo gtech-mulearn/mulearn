@@ -127,9 +127,9 @@ const DashboardPage = () => {
   const [interestGroups, setInterestGroups] = useState<InterestGroup[]>([]);
   //   const userName = fetchLocalStorage<UserInfo>("userInfo")?.full_name || "";
   let userName = useUserStore((state) => state.userProfile.full_name.split(" ")[0]);
+  const storedUserInfo = JSON.parse(localStorage.getItem("userInfo") ?? "{}");
   if(!userName){
-    const storedUserInfo = localStorage.getItem("userInfo");
-    userName = storedUserInfo ? JSON.parse(storedUserInfo)?.full_name.split(" ")?.[0] : null;
+    userName = storedUserInfo ? storedUserInfo?.full_name.split(" ")?.[0] : null;
   }
   console.log(userName,'userName')
   const [karmaFeed, setKarmaFeed] = useState<KarmaFeedItem[]>([]);
@@ -223,7 +223,7 @@ const DashboardPage = () => {
           <section className={styles.welcomeSection}>
             <div className={styles.welcomeText}>
               <h1 className={styles.welcomeTitle}>
-                Welcome back <span>{userName}</span> 👋
+                {!storedUserInfo.exist_in_guild ? 'Welcome' : 'Welcome back'} <span>{userName}</span> 👋
               </h1>
               <p className={styles.welcomeMessage}>
               This dashboard is being updated. Expect improvements and possible bugs. Thanks for your patience!

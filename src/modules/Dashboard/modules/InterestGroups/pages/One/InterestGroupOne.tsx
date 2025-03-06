@@ -7,22 +7,72 @@ import IGActionSection from '../../components/ActionSection/IGActionSection';
 import { InterestGroupData, interestGroups } from '../../data/interestGroups';
 import ComingSoonPage from '/src/modules/Common/Authentication/pages/ComingSoon';
 
-const memberAvatars = [
-  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=40&h=40&q=80",
-  "https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=40&h=40&q=80",
-  "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=40&h=40&q=80",
-  "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=40&h=40&q=80",
-  "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&q=80",
-];
 
 const interestGroupsObject = Object.fromEntries(
   interestGroups.map(group => [group.id, group])
 );
 
 const CommunityForum = () => {
+
   const { id } = useParams();
 
   const groupData = useMemo(() => (id ? interestGroupsObject[id] : null), [id]);
+
+  const handleAddToCalendar = (eventName: string, dayTimeString: string, durationMinutes = 60) => {
+    const [dayName, timeString] = dayTimeString.split(" ");
+  
+    // Map days of the week to their index (Sunday = 0, Monday = 1, ..., Saturday = 6)
+    const daysMap: { [key: string]: number } = {
+      Sunday: 0, Monday: 1, Tuesday: 2, Wednesday: 3,
+      Thursday: 4, Friday: 5, Saturday: 6
+    };
+  
+    const targetDay = daysMap[dayName];
+    if (targetDay === undefined) {
+      console.error("Invalid day name:", dayName);
+      return;
+    }
+  
+    // ✅ Convert timeString (e.g., "8:30PM") to 24-hour format
+    const timeMatch = timeString.match(/(\d+):(\d+)(AM|PM)/);
+    if (!timeMatch) {
+      console.error("Invalid time format:", timeString);
+      return;
+    }
+  
+    let [_, hour, minute, period] = timeMatch;
+    let hours = parseInt(hour, 10);
+    let minutes = parseInt(minute, 10);
+  
+    if (period === "PM" && hours !== 12) hours += 12;
+    if (period === "AM" && hours === 12) hours = 0;
+  
+    // Get next occurrence of the given weekday
+    const now = new Date();
+    let eventDate = new Date(now);
+    eventDate.setDate(now.getDate() + ((targetDay + 7 - now.getDay()) % 7));
+    eventDate.setHours(hours, minutes, 0, 0);
+  
+    // Calculate end time (default duration = 60 minutes)
+    let endDate = new Date(eventDate.getTime() + durationMinutes * 60000);
+  
+    // Convert to Google Calendar format (YYYYMMDDTHHmmssZ)
+    const formatGoogleDate = (date: Date) => date.toISOString().replace(/-|:|\.\d+/g, "");
+  
+    const startGoogleDate = formatGoogleDate(eventDate);
+    const endGoogleDate = formatGoogleDate(endDate);
+  
+    // Google Calendar Event URL
+    const googleCalendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventName)}&dates=${startGoogleDate}/${endGoogleDate}`;
+  
+    // Open Google Calendar in a new tab
+    window.open(googleCalendarUrl, "_blank", "noopener,noreferrer");
+  };
+  
+  
+  
+
+  
 
   if (!groupData) {
     return <div className='w-full h-full flex justify-center items-center'><ComingSoonPage /></div>;
@@ -92,19 +142,22 @@ const CommunityForum = () => {
               <SidebarBannerSlider events={groupData.tabs.events || []} />
             </div>
           </div>
+          {groupData.officeHours !== "TBA" && (
+
           <div className={styles.officeHoursCard}>
             <h3>Office Hours Timings</h3>
             <div className={styles.officeHoursCardTiming}>
               <p>{groupData.officeHours}</p>
               <button
                 className={styles.officeHoursButton}
-                onClick={() => window.location.href = "https://discord.gg/yourchannel"}
+                onClick={() => handleAddToCalendar(`${groupData.title} Office Hours`, groupData.officeHours, 60)}
                 aria-label="Join office hours"
               >
                 Add to calendar
               </button>
             </div>
           </div>
+          )}
           {/* <div className={styles.sidebarSection}>
             <h2 className={styles.sidebarTitle}>Partner Companies</h2>
             <div className={styles.sidebarList}>
@@ -118,7 +171,7 @@ const CommunityForum = () => {
               ))}
             </div>
           </div> */}
-
+          {groupData.communityPartners && groupData.communityPartners.length > 0 && (
           <div className={styles.sidebarSection}>
             <h2 className={styles.sidebarTitle}>Community Partners</h2>
             <div className={styles.sidebarList}>
@@ -131,7 +184,7 @@ const CommunityForum = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </div>)}
         </div>
       </div>
     </div>

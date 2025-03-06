@@ -442,7 +442,6 @@ function App() {
                         { path: "learning-path", element: <LearningPathPage/> },
                         { path: "learning-path/:id", element: <LearningPathPage/> },
                         { path: "profile", element: <Profile /> },
-                        { path: "profileV2", element: <ProfileV2 /> },
                         { path: "muverse", element: <ComingSoonPage /> },
                         { path: "interestgroups", element: <ComingSoonPage /> },
                         { path: "management", element: <ManagementPage /> },

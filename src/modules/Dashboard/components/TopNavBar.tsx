@@ -154,8 +154,8 @@ const TopNavBar: React.FC<TopNavBarProps> = ({ setUserInfo }) => {
                                     {userInfo?.user_domains?.[0]?.toUpperCase() || ""}
                                 </span>
                             </div>
-                            {/* <div className="cursor-pointer" onClick={() => navigate("/dashboard/leaderboard")}> */}
-                            <div >
+                            <div className="cursor-pointer" onClick={() => navigate("/dashboard/leaderboard")}>
+                            {/* <div > */}
 
                                 <GameProgressBar levelData={userLevelData} />
                             </div>

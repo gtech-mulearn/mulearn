@@ -1,12 +1,11 @@
 import styles from "../pages/leaderboard.module.css";
 
 interface FilterBarProps {
-  activeFilter: "monthly" | "yearly" | "overall";
-  setActiveFilter: (filter: "monthly" | "yearly" | "overall") => void;
-  activeCategory: string;
-  setActiveCategory: (category: string) => void;
-  filterOptions: ("monthly" | "yearly" | "overall")[];
-  programOptions: { label: string; value: string }[];
+  activeFilter: "monthly" | "overall";
+  setActiveFilter: (filter: "monthly" | "overall") => void;
+  activeCategory: "student" | "campus";
+  setActiveCategory: (category: "student" | "campus") => void;
+  filterOptions: ("monthly" | "overall")[];
   categoryOptions: { label: string; value: string }[];
 }
 
@@ -15,7 +14,6 @@ export function FilterBar({
   setActiveFilter,
   activeCategory,
   setActiveCategory,
-  programOptions,
   filterOptions,
   categoryOptions,
 }: FilterBarProps) {
@@ -38,18 +36,7 @@ export function FilterBar({
         <select
           className={styles.select}
           value={activeCategory}
-          onChange={(e) => setActiveCategory(e.target.value)}
-        >
-          {programOptions.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-        <select
-          className={styles.select}
-          value={activeCategory}
-          onChange={(e) => setActiveCategory(e.target.value)}
+          onChange={(e) => setActiveCategory(e.target.value as "student" | "campus")}
         >
           {categoryOptions.map((option) => (
             <option key={option.value} value={option.value}>
@@ -57,9 +44,6 @@ export function FilterBar({
             </option>
           ))}
         </select>
-        <button type="button" className={styles.buttonSecondary}>
-          Show My Place
-        </button>
       </div>
     </div>
   );

@@ -3,15 +3,9 @@ import styles from "./MentorPage.module.css";
 import { FiSearch } from "react-icons/fi";
 import profileImage from "../assets/ProfileImages/10496279.jpg";
 import userImage2 from "../assets/ProfileImages/11475206.jpg";
-
-import dpm from "../../Profile/assets/images/dpm.webp";
 import debounce from "lodash/debounce";
-import Karma from "../../ProfileV2/assets/svg/Karma";
-import AvgKarma from "../../ProfileV2/assets/svg/AvgKarma";
-import Rank from "../../ProfileV2/assets/svg/Rank";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { getUsers } from "../../Search/services/api";
-import AsideDetails from "../../../components/AsideDetails";
 import UserCard from "../../../components/UserCard";
 
 interface User {
@@ -191,6 +185,7 @@ const MentorList: React.FC<{
                   .map((org) => `${org.title} (${org.org_type})`)
                   .join(", ") || "Unknown Role",
                 expertise: user.interest_groups.map((ig) => ig.name),
+                karma: user.karma,
                 image: user.profile_pic || (index % 2 === 0 ? profileImage : userImage2),
               }}
               onSelect={() => onSelect(user)}
@@ -216,19 +211,13 @@ const MentorSearchPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [searchType, setSearchType] = useState<"name" | "college" | "expertise" | "enabler" | "mentor">("name");
   const [error, setError] = useState<string | null>(null);
-  const [selectedMentor, setSelectedMentor] = useState<User | null>(null);
-  const [isAsideOpen, setIsAsideOpen] = useState<boolean>(false);
-
-  const handleMentorSelect = (mentor: User) => {
-    setSelectedMentor(mentor);
-    setIsAsideOpen(true);
-  };
-
-  const handleAsideClose = () => {
-    setIsAsideOpen(false);
-    setSelectedMentor(null);
-  };
-
+  const [selectedUser, setSelectedUser] = useState<User | null>(null);
+ 
+   const handleUserSelect = (user: User) => {
+     setSelectedUser(user);
+     window.open(`/profile/${user.muid}`, "_blank");
+   };
+ 
   const getDisplayOrganization = (user: User) => {
     const hasCompany = user.organizations.some(org => org.org_type === "Company");
     if (hasCompany) {
@@ -293,7 +282,7 @@ const MentorSearchPage: React.FC = () => {
       </div>
       {error && <p className={styles.errorText}>{error}</p>}
       <Suspense fallback={<MuLoader />}>
-        <MentorList search={searchTerm} searchType={searchType} onSelect={handleMentorSelect} />
+        <MentorList search={searchTerm} searchType={searchType} onSelect={handleUserSelect} />
       </Suspense>
       {/* <AsideDetails isOpen={isAsideOpen} handleClose={handleAsideClose}>
         {selectedMentor && (

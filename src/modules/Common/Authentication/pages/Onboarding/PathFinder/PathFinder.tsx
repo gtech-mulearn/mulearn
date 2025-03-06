@@ -6,10 +6,8 @@ import software from "../../../assets/interests/software.svg";
 import maker from "../../../assets/interests/makers.svg";
 import management from "../../../assets/interests/management.svg";
 import creative from "../../../assets/interests/creative.svg";
-// import others from "../../../assets/interests/others.svg";
 import OnboardingTemplate from "../../../components/OnboardingTeamplate/OnboardingTemplate";
 import { IoCheckmarkSharp } from "react-icons/io5";
-// import { TagsInput } from "react-tag-input-component"; // Ensure this is installed
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { onboardingRoutes } from "@/MuLearnServices/urls";
 import { useNavigate } from "react-router-dom";
@@ -27,13 +25,6 @@ type Endgoal = {
   checked: boolean;
 };
 
-// const ALL_PATHWAYS: Pathway[] = [
-//   { title: "Coder", value: "coder", img: software },
-//   { title: "Hardware", value: "hardware", img: maker },
-//   { title: "Manager", value: "manager", img: management },
-//   { title: "Creative", value: "creative", img: creative },
-//   // { title: "Others", value: "others", img: others },
-// ];
 const ALL_PATHWAYS: Pathway[] = [
   { title: "Coder", value: "coder", img: software },
   { title: "Maker", value: "maker", img: maker },
@@ -41,59 +32,46 @@ const ALL_PATHWAYS: Pathway[] = [
   { title: "Creative", value: "creative", img: creative },
 ];
 
-// const INITIAL_ENDGOALS: Endgoal[] = [
-//   { title: "Job", value: "job", checked: false },
-//   { title: "Research & Development", value: "r&d", checked: false },
-//   { title: "Entrepreneurship", value: "entrepreneurship", checked: false },
-//   { title: "Gig Works", value: "gig_work", checked: false },
-//   { title: "Higher Education", value: "higher_education", checked: false },
-//   // { title: "Others", value: "others", checked: false },
-// ];
 const INITIAL_ENDGOALS: Endgoal[] = [
   { title: "Job", value: "job", checked: false },
   { title: "Research & Development", value: "r&d", checked: false },
   { title: "Entrepreneurship", value: "entrepreneurship", checked: false },
   { title: "Gig Works", value: "gig_work", checked: false },
   { title: "Higher Education", value: "higher_education", checked: false },
+  { title: "Social Impact", value: "social_impact", checked: false },
 ];
 
 export default function PathFinder() {
   const [pathways, setPathways] = useState<string[]>([]);
   const [stepTwo, setStepTwo] = useState(false);
-  const [recommendedPathways, setRecommendedPathways] = useState<string[]>(["Maker"]); // Default recommended pathways
+  const [recommendedPathways, setRecommendedPathways] = useState<string[]>(["Maker"]);
   const [endgoals, setEndgoals] = useState<Endgoal[]>(INITIAL_ENDGOALS);
-  // const [otherEndgoal, setOtherEndgoal] = useState<string[]>([]);
   const navigate = useNavigate();
 
   const onSubmit = (data: string[]) => {
     if (data && data.length > 0) {
-      setPathways(data); // This will set the recommended pathways from the questionnaire
-      setRecommendedPathways(data); // Initialize recommended pathways with the questionnaire results
+      setPathways(data);
+      setRecommendedPathways(data);
     } else {
       toast.error("Please try again");
     }
   };
 
   const handlePathwaySelect = (pathway: string) => {
-    setRecommendedPathways((prev) => {
-      if (prev.includes(pathway)) {
-        return prev.filter((p) => p !== pathway);
-      } else {
-        return [...prev, pathway];
-      }
-    });
+    setRecommendedPathways((prev) =>
+      prev.includes(pathway) ? prev.filter((p) => p !== pathway) : [...prev, pathway]
+    );
   };
 
   const handleEndgoalChange = useCallback((value: string) => {
-    setEndgoals((prev) =>
-      prev.map((item) =>
+    setEndgoals((prev) => {
+      const newEndgoals = prev.map((item) =>
         item.value === value ? { ...item, checked: !item.checked } : item
-      )
-    );
-    // if (value === "others" && !endgoals.find((item) => item.value === "others" && item.checked)) {
-    //   setOtherEndgoal([]);
-    // }
-  }, [endgoals]);
+      );
+      console.log("Updated endgoals:", newEndgoals);
+      return newEndgoals;
+    });
+  }, []);
 
   const handleContinueToEndgoals = () => {
     if (recommendedPathways.length > 0) {
@@ -104,13 +82,13 @@ export default function PathFinder() {
   };
 
   const handleSubmit = useCallback(async () => {
-    const selectedPathways = recommendedPathways; // Equivalent to choosen_interests
+    const selectedPathways = recommendedPathways;
     const selectedEndgoals = endgoals.filter((e) => e.checked).map((e) => e.value);
     const data = {
       choosen_interests: selectedPathways,
       choosen_endgoals: selectedEndgoals,
-      other_interests: [], // Send empty array to keep API working
-      other_endgoals: []  // Send empty array to keep API working
+      other_interests: [],
+      other_endgoals: [],
     };
 
     try {
@@ -121,7 +99,7 @@ export default function PathFinder() {
         await privateGateway.post(`${onboardingRoutes.register}select-endgoals/`, { endgoals: selectedEndgoals });
       }
       toast.success("Pathways and endgoals saved successfully");
-      navigate("/dashboard/home"); 
+      navigate("/dashboard/home");
     } catch (err: any) {
       console.error("Failed to submit pathways and endgoals:", err);
       toast.error(err.response?.data?.message?.general[0] || "Unexpected Error occurred");
@@ -134,30 +112,37 @@ export default function PathFinder() {
     (items: Pathway[] | Endgoal[], isInterest: boolean) => (
       <div className={styles.itemsContainer}>
         {items.map((item) => {
-          // const isOthers = item.value === "others";
-          const isChecked = isInterest ? recommendedPathways.includes(item.value) : (item as Endgoal).checked;
-          // const otherItems = isInterest ? [] : otherEndgoal;
-          // const setOtherItems = isInterest ? () => {} : setOtherEndgoal;
+          const isChecked = isInterest
+            ? recommendedPathways.includes(item.value)
+            : (item as Endgoal).checked;
+
+          console.log(`${isInterest ? "Pathway" : "Endgoal"} ${item.value} isChecked:`, isChecked);
+          const className = `${styles.itemsCard} ${isChecked ? styles.checked : ""}`;
+          console.log("Applied className:", className);
 
           return (
             <div
               key={item.value}
-              className={`${styles.itemsCard} ${isChecked ? styles.checked : ""}`}
-              onClick={() => (isInterest ? handlePathwaySelect(item.value) : handleEndgoalChange(item.value))}
+              className={className}
+              onClick={() =>
+                isInterest ? handlePathwaySelect(item.value) : handleEndgoalChange(item.value)
+              }
             >
               {isInterest ? (
                 <div className={styles.content}>
-                  <img className={styles.itemImage} src={(item as Pathway).img} alt={(item as Pathway).title} />
+                  <img
+                    className={styles.itemImage}
+                    src={(item as Pathway).img}
+                    alt={(item as Pathway).title}
+                  />
                   <p className={styles.title}>{(item as Pathway).title}</p>
                 </div>
               ) : (
-                <div className={styles.content}> 
+                <div className={styles.content}>
                   <p className={styles.title}>{(item as Endgoal).title}</p>
                 </div>
               )}
-              {isChecked && (
-                <IoCheckmarkSharp className={styles.checkmark} />
-              )}
+              {isChecked && <IoCheckmarkSharp className={styles.checkmark} />}
               {isInterest && (
                 <div className={styles.infoButton} onClick={(e) => e.stopPropagation()}>
                   <svg
@@ -180,29 +165,12 @@ export default function PathFinder() {
                   </div>
                 </div>
               )}
-              {/* {isOthers && isChecked && !isInterest && (
-                <div onClick={(e) => e.stopPropagation()}>
-                  <TagsInput
-                    value={otherItems}
-                    onBlur={(e: any) => {
-                      if (e.target.value.length > 0) {
-                        setOtherItems([...otherItems, e.target.value]);
-                        e.target.value = "";
-                      }
-                    }}
-                    onChange={setOtherItems}
-                    name="other_endgoals"
-                    placeHolder="Specify your endgoal"
-                    separators={[","]}
-                  />
-                </div>
-              )} */}
             </div>
           );
         })}
       </div>
     ),
-    [handlePathwaySelect, handleEndgoalChange, recommendedPathways, endgoals]
+    [recommendedPathways, endgoals, handlePathwaySelect, handleEndgoalChange]
   );
 
   if (pathways.length === 0) {
@@ -213,12 +181,14 @@ export default function PathFinder() {
     <OnboardingTemplate>
       <div className={styles.popUp}>
         <div className={styles.box}>
-          <img src="/src/modules/Common/Authentication/assets/µLearn.webp" alt="µLearn" /> 
+          <img src="/src/modules/Common/Authentication/assets/µLearn.png" alt="µLearn" />
           <h1>{stepTwo ? "What do you expect by MuLearning" : "Based on Your Questionnaire Responses"}</h1>
           <p className={styles.subText}>
-            {stepTwo ? "Pick your goal." : "These pathways are recommended for you. Adjust or select additional areas as needed."}
+            {stepTwo
+              ? "Pick your goal."
+              : "These pathways are recommended for you. Adjust or select additional areas as needed."}
           </p>
-          {stepTwo ? renderItems(INITIAL_ENDGOALS, false) : renderItems(ALL_PATHWAYS, true)}
+          {stepTwo ? renderItems(endgoals, false) : renderItems(ALL_PATHWAYS, true)} {/* Changed to endgoals */}
           {(stepTwo ? isEndgoalSelected : recommendedPathways.length > 0) && (
             <div className={styles.actionButtons}>
               {!stepTwo && (

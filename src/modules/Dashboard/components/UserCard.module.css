@@ -65,6 +65,7 @@
   margin-bottom: 0;
   text-align: left;
   width: 100%;
+  position: relative;
 }
 
 .userName {
@@ -99,9 +100,22 @@
   text-overflow: ellipsis;
   max-width: 100%;
 }
+.userLinkedin{
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 30px;
+  font-size: larger;
+  height: 30px;
+  border-radius: 20%;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+
+}
 
 .userKarma {
-  display: none;
+  display: block;
 }
 
 .interestGroups {

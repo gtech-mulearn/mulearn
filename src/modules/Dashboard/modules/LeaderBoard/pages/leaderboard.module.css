@@ -201,6 +201,7 @@
 .playerName {
     margin: 0.5rem 0;
     font-weight: 600;
+    font-size: clamp(1rem, 2vw, 1.25rem);
     color: #1a202c;
 }
 
@@ -297,6 +298,7 @@
 .nameCell {
     display: flex;
     align-items: center;
+    justify-items: center;
     gap: 0.75rem;
     white-space: nowrap;
 }

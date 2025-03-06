@@ -75,18 +75,18 @@ export const EventCard = ({
             meet_link: joiningUrl,
           })}
         >
-          Join Now
+          View
         </button>
 
         {/* Joined People */}
-        <div className={styles.joinedPeople}>
+        {/* <div className={styles.joinedPeople}>
           <div className={styles.avatars}>
             {[...Array(3)].map((_, i) => (
               <div key={i} className={styles.avatar} />
             ))}
           </div>
           <span>{joinedPeople} people you might know have joined</span>
-        </div>
+        </div> */}
       </div>
     </div>
   );

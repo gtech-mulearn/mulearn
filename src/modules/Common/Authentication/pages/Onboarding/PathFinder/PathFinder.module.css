@@ -1,263 +1,269 @@
 .popUp {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: #ffffff14;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 40px 10px 10px;
+  min-height: 300px;
+  max-width: 700px;
+  position: relative;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+img {
+  margin-bottom: 20px;
+}
+
+.subText {
+  margin-top: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.itemsContainer {
+  gap: 1.5rem;
+  z-index: 10;
+  cursor: pointer;
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+  overflow: show;
+}
+
+.itemsContainer .itemsCard {
+  min-width: 200px;
+  min-height: 40vh;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0px 0px 17.65823px 0px rgba(0, 0, 0, 0.07);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  padding: 10px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.itemsContainer .itemsCard.checked {
+  border: 2px solid #456ff6; /* Moved .checked inside .itemsCard */
+}
+
+.itemsContainer .itemsCard .infoButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #456ff6;
+  z-index: 11;
+}
+
+.itemsContainer .itemsCard .infoButton:hover + .interestInfo {
+  display: flex;
+}
+
+.itemsContainer .itemsCard .interestInfo {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  color: #22222290;
+  font-size: 10px;
+  background: #ffffff;
+  border: 1px solid #456ef694;
+  padding: 10px;
+  border-radius: 10px;
+  z-index: 10;
+  flex-direction: column;
+  justify-content: start;
+  gap: 10px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.itemsContainer .itemsCard .interestInfo:hover {
+  display: flex;
+}
+
+.itemsContainer .itemsCard .interestInfo h4 {
+  font-weight: 800;
+  text-align: start;
+}
+
+.itemsContainer .itemsCard .interestInfo ul {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+}
+
+.itemsContainer .itemsCard .interestInfo ul li {
+  text-align: start;
+  width: auto;
+  display: inline-block;
+  padding: 3px;
+  background: #22222210;
+  margin: 1px;
+  border-radius: 5px;
+  color: black;
+}
+
+.itemsContainer .itemsCard .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+}
+
+.itemsContainer .itemsCard .content p {
+  transform: translateY(-90%);
+}
+
+.itemsContainer .itemsCard .checkmark {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  transform: translate(-30%, -30%);
+  color: #ffffff;
+  background-color: #456ff6;
+  border-radius: 50%;
+  padding: 2px;
+  z-index: 12;
+}
+
+.itemsContainer .itemsCard div {
+  display: flex;
+}
+
+.itemsContainer .itemsCard:hover {
+  outline: 1.177px solid #456ff6;
+  transition: 0.5s ease;
+}
+
+.itemsContainer .itemsCard .itemImage {
+  margin-top: 1rem;
+  object-fit: cover;
+  height: 140px;
+  width: 140px;
+  -webkit-user-drag: none;
+}
+
+.itemsContainer .itemsCard .title {
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
+
+.actionButtons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  width: 100%;
+  gap: 10px;
+}
+
+.tryAgainButton {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.tryAgainButton:hover {
+  background-color: #0056b3;
+}
+
+.continueButton {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.continueButton:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .itemsContainer {
+    flex-wrap: wrap;
+  }
+
+  .itemsContainer .itemsCard {
+    width: 300px;
+    min-height: 20vh;
+    flex-direction: column;
+  }
+
+  .itemsContainer .itemsCard .itemImage {
+    height: 100px;
+    width: 100px;
+  }
+
+  .itemsContainer .itemsCard .title {
+    font-size: 1.4rem;
+  }
+
+  .actionButtons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .tryAgainButton,
+  .continueButton {
     width: 100%;
-    background-color: #ffffff14;
-    z-index: 100;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
   }
-  
-  .box {
-    background-color: #fff;
-    border-radius: 20px;
-    padding: 40px 10px 10px;
-    min-height: 300px;
-    max-width: 700px;
-    position: relative;
-    z-index: 100;
-    display: flex;
-    align-items: center;
+}
+
+@media (width < 500px) {
+  .popUp {
+    bottom: unset;
+  }
+
+  .itemsContainer {
+    flex-wrap: wrap;
+  }
+
+  .itemsContainer .itemsCard {
+    width: 300px;
+    min-height: 20vh;
     flex-direction: column;
   }
-    h1 {
-      text-align: center;
-      font-size: 2rem;
-      font-weight: 600;
-    }
-  
-    img {
-      /* height: 30px; */
-      margin-bottom: 20px;
-    }
-  
-    .subText {
-      margin-top: 10px;
-      font-size: 1rem;
-      font-weight: 500;
-      margin-bottom: 10px;
-      text-align: center;
-    }
-  
-    .itemsContainer {
-      gap: 1.5rem;
-      z-index: 10;
-      cursor: pointer;
-      display: flex;
-      padding: 20px;
-      justify-content: center;
-      overflow: show;
-    }
-  
-    .itemsCard {
-      min-width: 200px;
-      min-height: 40vh;
-      border-radius: 10px;
-      background-color: #fff;
-      box-shadow: 0px 0px 17.65823px 0px rgba(0, 0, 0, 0.07);
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      text-align: center;
-      justify-content: center;
-      padding: 10px;
-      position: relative;
-      transition: all 0.3s ease;
-  
-      &:hover {
-        outline: 1.177px solid #456ff6;
-        transition: 0.5s ease;
-      }
-  
-      .content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100px;
-  
-        p {
-          transform: translateY(-90%);
-        }
-      }
-  
-      .checkmark {
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        transform: translate(-30%, -30%);
-        color: #ffffff;
-        background-color: #456ff6;
-        border-radius: 50%;
-        padding: 2px;
-        z-index: 12;
-      }
-  
-      .infoButton {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        padding: 5px;
-        border-radius: 50%;
-        cursor: pointer;
-        color: #456ff6;
-        z-index: 11;
-  
-        &:hover + .interestInfo {
-          display: flex;
-        }
-      }
-  
-      .interestInfo {
-        display: none;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        color: #22222290;
-        font-size: 10px;
-        background: #ffffff;
-        border: 1px solid #456ef694;
-        padding: 10px;
-        border-radius: 10px;
-        z-index: 10;
-        flex-direction: column;
-        justify-content: start;
-        gap: 10px;
-        overflow-x: hidden;
-        overflow-y: scroll;
-  
-        h4 {
-          font-weight: 800;
-          text-align: start;
-        }
-  
-        ul {
-          display: flex;
-          flex-wrap: wrap;
-          padding: 0;
-          margin: 0;
-  
-          li {
-            text-align: start;
-            width: auto;
-            display: inline-block;
-            padding: 3px;
-            background: #22222210;
-            margin: 1px;
-            border-radius: 5px;
-            color: black;
-          }
-        }
-      }
-  
-      .itemImage {
-        margin-top: 1rem;
-        object-fit: cover;
-        height: 140px;
-        width: 140px;
-        -webkit-user-drag: none;
-      }
-  
-      .title {
-        margin-top: 0.5rem;
-        font-weight: bold;
-        font-size: 1rem;
-        color: #1c1c1c;
-      }
-    }
-  
-    .itemsCard.checked {
-      border: 2px solid #456ff6;
-    }
-  
-    .actionButtons {
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
-      width: 100%;
-      gap: 10px;
-    }
-  
-    .tryAgainButton {
-      background-color: #007bff;
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: background-color 0.3s;
-    }
-  
-    .tryAgainButton:hover {
-      background-color: #0056b3;
-    }
-  
-    .continueButton {
-      background-color: #007bff;
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: background-color 0.3s;
-    }
-  
-    .continueButton:hover {
-      background-color: #0056b3;
-    }
-  
-    @media (max-width: 768px) {
-      .itemsContainer {
-        flex-wrap: wrap;
-      }
-  
-      .itemsCard {
-        width: 300px;
-        min-height: 20vh;
-        flex-direction: column;
-      }
-  
-      .itemImage {
-        height: 100px;
-        width: 100px;
-      }
-  
-      .title {
-        font-size: 1.4rem;
-      }
-  
-      .actionButtons {
-        flex-direction: column;
-        gap: 10px;
-      }
-  
-      .tryAgainButton,
-      .continueButton {
-        width: 100%;
-      }
-    }
-  
-    @media (width < 500px) {
-      .popUp {
-        bottom: unset;
-      }
-  
-      .itemsContainer {
-        flex-wrap: wrap;
-      }
-  
-      .itemsCard {
-        width: 300px;
-        min-height: 20vh;
-        flex-direction: column;
-      }
-    }
+}

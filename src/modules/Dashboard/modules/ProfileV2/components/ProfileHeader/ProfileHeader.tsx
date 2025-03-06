@@ -76,7 +76,7 @@ const ProfileHeader = ({
           </p>
           <div className={styles.socials}>
             {Object.entries(socials).map(([key, value]) => {
-              return (
+              return value && (
                 <a
                   href={socialMediaUrlMappings[key] + value}
                   target="_blank"
@@ -129,19 +129,19 @@ const ProfileHeader = ({
               <p>Avg.Karma</p>
               <p>
                 {parseInt(userProfile.karma) / monthDifference > 1000 &&
-                monthDifference !== 0
+                  monthDifference !== 0
                   ? (
-                      parseInt(userProfile.karma) /
-                      monthDifference /
-                      1000
-                    ).toPrecision(4) + "K"
+                    parseInt(userProfile.karma) /
+                    monthDifference /
+                    1000
+                  ).toPrecision(4) + "K"
                   : isNaN(parseInt(userProfile.karma) / monthDifference)
-                  ? "0"
-                  : monthDifference === 0
-                  ? "0"
-                  : (parseInt(userProfile.karma) / monthDifference).toPrecision(
-                      3
-                    )}
+                    ? "0"
+                    : monthDifference === 0
+                      ? "0"
+                      : (parseInt(userProfile.karma) / monthDifference).toPrecision(
+                        3
+                      )}
               </p>
             </div>
           </div>

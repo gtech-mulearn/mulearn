@@ -24,7 +24,7 @@
 .connect_discord_container .content {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     gap: 0.5rem;
     margin-top: 1rem;
 }
@@ -38,19 +38,22 @@
     display: flex;
     justify-content: center;
     gap: 12px;
-    align-items: center;
+    align-items: start;
     flex-wrap: wrap;
     margin: 1rem;
+    margin-left: 0;
 }
 
 .content_tagline {
     max-width: 30rem;
+    
 }
 
 @media (min-width: 35rem) {
     .fb_image {
         max-width: 30rem;
     }
+    
 }
 
 /* onboarding flow */
@@ -203,6 +206,13 @@
     .onboarding_flow_container {
         padding: 0 0.5rem;
     }
+    .connect_discord_container .content {
+        align-items: center;
+    }
+    .content_tagline {
+        text-align: center;
+        
+    }
 
     .connect_discord_container h1 {
         font-size: 25px;
@@ -260,6 +270,9 @@
 
     .connect_discord_container p {
         font-size: 9px;
+    }
+    .connect_discord_container .content {
+        align-items: center;
     }
 
     .onboarding_flow_container .content .onboarding_flow .lines div .p {

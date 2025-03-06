@@ -125,8 +125,8 @@ export const interestGroups: InterestGroupData[] = [
     memberCount: 2300,
     memberSince: "July 2022",
     isPublic: true,
-    officeHours: "Every Tuesday 7:30pm",
-    thinkTankMeeting: "Saturdays 8:00pm",
+    officeHours: "Tuesday 7:30PM",
+    thinkTankMeeting: "Saturdays 8:00PM",
     interestGroupLeads: {
       description:
         "Interest group leads manage the activities and events within interest groups and serve as a point of contact for students interested in getting involved. Students can connect with these leads to learn about opportunities within their interests.",
@@ -595,7 +595,7 @@ export const interestGroups: InterestGroupData[] = [
     memberCount: 4200,
     memberSince: "March 2021",
     isPublic: true,
-    officeHours: "Wednesday 9:00 PM",
+    officeHours: "Wednesday 9:00PM",
     thinkTankMeeting: "Friday 7:00 PM @ Google Meet",
     interestGroupLeads: {
       description:
@@ -1087,7 +1087,7 @@ export const interestGroups: InterestGroupData[] = [
     memberCount: 3000,
     memberSince: "September 2020",
     isPublic: true,
-    officeHours: "Monday 7:30 PM",
+    officeHours: "Monday 7:30PM",
     thinkTankMeeting: "First Wednesday 7:00 PM @ Google Meet",
     interestGroupLeads: {
       description:
@@ -1097,21 +1097,21 @@ export const interestGroups: InterestGroupData[] = [
           name: "Dany Koshy P",
           institution: "College of Engineering Pathanapuram",
           linkedin: "https://www.linkedin.com/in/dany-koshy-p-a79328232/",
-          image: "/assets/IG/Cyber Security/IG lead/Dany Koshy.webp",
+          image: "/assets/IG/Cyber Security/IG Lead/Dany Koshy.webp",
           expertise: ["Ethical Hacking", "Network Security"],
         },
         {
           name: "Aswin Krishna",
           institution: "Security Engineer @ KMart",
           linkedin: "https://www.linkedin.com/in/aswinkrishna07",
-          image: "/assets/IG/Cyber Security/IG lead/Aswin Krishna.webp",
+          image: "/assets/IG/Cyber Security/IG Lead/Aswin Krishna.webp",
           expertise: ["Security Research", "Incident Response"],
         },
         {
           name: "Geo Mathew Joseph",
           institution: "Marian Engineering College",
           linkedin: "https://www.linkedin.com/in/geomathewjoseph",
-          image: "/assets/IG/Cyber Security/IG lead/Geo Mathew.webp",
+          image: "/assets/IG/Cyber Security/IG Lead/Geo Mathew.webp",
           expertise: ["Penetration Testing", "Security Analysis"],
         },
       ],
@@ -1585,7 +1585,7 @@ export const interestGroups: InterestGroupData[] = [
     memberCount: 2500,
     memberSince: "January 2022",
     isPublic: true,
-    officeHours: "Friday 8:30",
+    officeHours: "Friday 8:30PM",
     thinkTankMeeting: "2nd Saturday 8:30 PM @ Google Meet",
     interestGroupLeads: {
       description:
@@ -3337,7 +3337,7 @@ export const interestGroups: InterestGroupData[] = [
     memberCount: 1800, // Placeholder value; adjust as needed
     memberSince: "January 2023", // Placeholder; adjust as needed
     isPublic: true,
-    officeHours: "Monday 8:30 PM",
+    officeHours: "Monday 8:30PM",
     thinkTankMeeting: "2nd Friday 6:30 PM @ Google Meet",
     interestGroupLeads: {
       description:
@@ -3503,7 +3503,7 @@ export const interestGroups: InterestGroupData[] = [
     memberCount: 1057, 
     memberSince: "March 2023", // Placeholder; adjust as needed
     isPublic: true,
-    officeHours: "Wednesday 7PM @ Gathering Field",
+    officeHours: "Wednesday 7PM",
     thinkTankMeeting: "Thursday 6:00 PM @ Google Meet",
     interestGroupLeads: {
       description:
@@ -3645,7 +3645,7 @@ export const interestGroups: InterestGroupData[] = [
           name: "Muhammed Iqbal P B",
           role: "Cloud Architect @Codeace Leading AWS UG, CNCG & Grafana Kochi, µlearn Alumni",
           linkedin: "https://www.linkedin.com/in/iqbalpb/",
-          image: "/assets/IG/DevOps/Mentors/Muhammed Iqbal.webp",
+          image: "/assets/IG/Devops/Mentors/Muhammed Iqbal.webp",
           expertise: [],
         },
       ],
@@ -3690,7 +3690,7 @@ export const interestGroups: InterestGroupData[] = [
           name: "Adarsh Madhusoodanan",
           institution: "College of Engineering Trikaripur",
           linkedin: "https://www.linkedin.com/in/adarshmadhusoodananp/",
-          image: "/assets/IG/Product Management/IG Lead/Adarsh Madhusoodanan.webp",
+          image: "/assets/IG/Product Management/IG lead/Adarsh Madhusoodanan.webp",
           expertise: ["Product Strategy", "UX Design"],
         },
       ],
@@ -3963,7 +3963,7 @@ export const interestGroups: InterestGroupData[] = [
         {
           id: "m-011",
           name: "Angel",
-          role: "Role", // Placeholder role; update with actual role if available
+          role: "", // Placeholder role; update with actual role if available
           linkedin: "", // Empty as provided; update if available
           image: "/assets/IG/Product Management/Mentors/Angel.webp",
           expertise: [], // Add if available

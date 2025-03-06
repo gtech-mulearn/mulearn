@@ -51,7 +51,10 @@ const ModeSwitchModal: React.FC<ModeSwitchModalProps> = ({
   onClose,
   onSubmit,
 }) => {
-  const [selectedMode, setSelectedMode] = useState<string | null>(null);
+  const storedUserInfo = localStorage.getItem("userInfo");
+  const currentMode = storedUserInfo ? JSON.parse(storedUserInfo) : null;
+
+  const [selectedMode, setSelectedMode] = useState<string | null>(currentMode.user_domains?.[0]);
 
   const handleCardClick = (modeId: string) => {
     setSelectedMode((prev) => (prev === modeId ? null : modeId));

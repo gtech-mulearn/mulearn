@@ -89,7 +89,7 @@ export default function PathFinderComponent({
         if (scores.A > 2) pathways.push("maker");
         if (scores.B > 2) pathways.push("coder");
         if (scores.C > 2) pathways.push("creative");
-        // if (scores.D > 2) pathways.push("others"); // Removed "others" recommendation
+        if (scores.D > 2) pathways.push("manager");
         return pathways;
     };
 

@@ -21,9 +21,9 @@ const ConnectDiscord = () => {
         if (firstFetch.current) {
             if (
                 localStorage.getItem("userInfo") &&
-                JSON.parse(localStorage.getItem("userInfo")!).mu_id
+                JSON.parse(localStorage.getItem("userInfo")!).muid
             ) {
-                setMuid(JSON.parse(localStorage.getItem("userInfo")!).mu_id);
+                setMuid(JSON.parse(localStorage.getItem("userInfo")!).muid);
             } else {
                 getInfo(navigate, setMuid);
             }
@@ -65,12 +65,10 @@ const ConnectDiscord = () => {
                                     <h1>Join Discord using your µid</h1>
                                     <p className={styles.content_tagline}>
                                         To join our discord server you need to
-                                        connect your account with discord. To do
-                                        so you need to copy your µid and paste
-                                        it in the discord server.
+                                        connect your account with discord.
                                     </p>
                                     <div className={styles.muid_and_btn}>
-                                        <PowerfulButton
+                                        {/* <PowerfulButton
                                             variant="secondary"
                                             onClick={() => {
                                                 navigator.clipboard.writeText(
@@ -84,7 +82,7 @@ const ConnectDiscord = () => {
                                         >
                                             <MdContentCopy />
                                             {muid}
-                                        </PowerfulButton>
+                                        </PowerfulButton> */}
                                         <a
                                             href={
                                                 import.meta.env
@@ -98,7 +96,7 @@ const ConnectDiscord = () => {
                                                 Join Discord
                                             </PowerfulButton>
                                         </a>
-                                        <a
+                                        {/* <a
                                             href="https://www.instagram.com/mulearn.official/"
                                             target="_blank"
                                             rel="noopener noreferrer"
@@ -108,7 +106,7 @@ const ConnectDiscord = () => {
                                             <p style={{ marginLeft: "0.3rem" }}>
                                                 Follow Us
                                             </p>
-                                        </a>
+                                        </a> */}
                                     </div>
                                 </div>
                                 <img

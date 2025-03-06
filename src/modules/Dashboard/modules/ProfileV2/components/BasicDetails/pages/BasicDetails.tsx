@@ -64,13 +64,13 @@ const BasicDetails = (props: Props) => {
                     })
                 ) : (
                     <p>
-                        No Interest Groups to Selected, You need you reach Level
+                        No Interest Groups to Selected, reach Level
                         4 to Select
                     </p>
                 )}
-                <div className={styles.edit_ig_btn}>
+                {/* <div className={styles.edit_ig_btn}>
                     <i className="fi fi-sr-pencil"></i>
-                </div>
+                </div> */}
             </div>
             {/*  <div className={styles.card}>
                             UX/UI Design

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Trophy, Users, Info, Medal, X } from "lucide-react";
 import { useParams } from "react-router-dom";
@@ -10,18 +10,17 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { convertDateToDayAndMonth } from "/src/modules/Dashboard/utils/common";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
+import { BarChart } from "../../../CampusStudentList/Components/Graphs";
+import {
+    getCSV,
+    getCampusDetails,
+    getStudentDetails,
+    getStudentLevel,
+    getWeeklyKarma,
+    setAlumniStatus,
+    CampusDataSet as CampusDetailsType,
+} from "../../../CampusStudentList/services/apis";
 
-interface Campus {
-    college_name: string;
-    campus_code: string;
-    campus_zone: string;
-    campus_level: number;
-    total_karma: number;
-    total_members: number;
-    active_members: number;
-    rank: number;
-    lead: { campus_lead: string; enabler: string };
-}
 
 interface GradeRequirement {
     grade: "A" | "B" | "C";
@@ -45,16 +44,93 @@ const gradeRequirements: GradeRequirement[] = [
 
 const CampusDetails: React.FC = () => {
     const { org_id } = useParams<{ org_id: string }>();
-    const [campusData, setCampusData] = useState<Campus | null>(null);
+
+    const [campusData, setCampusData] = useState<CampusDetailsType>({
+        college_name: "",
+        campus_code: "",
+        campus_lead: "",
+        campus_zone: "",
+        total_karma: "0",
+        total_members: "0",
+        active_members: "0",
+        rank: "0",
+        lead: {
+            campus_lead: "",
+            enabler: "",
+        },
+    });
+
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const [studentData, setStudentData] = useState<any[]>([]);
+    const [CSVBlob, setCSVFile] = useState<Blob | null>();
+    const [barData, setBarData] = useState<any[]>([]); // Weekly Karma
+    const [pieData, setPieData] = useState<any[]>([]); // Student Level
+    const [totalPages, setTotalPages] = useState<number>(0);
+    const [noOrg, setNoOrg] = useState<boolean>(false);
+    const [perPage] = useState<number>(10);
+    const [currModal, setCurrModal] = useState<boolean>(
+        false
+    );
+    const errHandler = (err: any) => {
+        console.log(err);
+    };
+
+    const firstFetch = useRef(true);
+
 
     const getGradeFromLevel = (level: number): "A" | "B" | "C" | "N/A" => {
         if (level >= 4) return "A";
         if (level >= 3) return "B";
         if (level >= 2) return "C";
         return "N/A";
+
     };
+
+    useEffect(() => {
+        if (firstFetch.current) {
+            getCSV(setCSVFile, (msg) => console.log(msg));
+            getStudentDetails(
+                setStudentData,
+                1,
+                perPage,
+                setTotalPages,
+                "",
+                "",
+                setNoOrg
+            );
+            getCampusDetails(setCampusData);
+            // (async () => {
+            //     let weeklyKarma = await getWeeklyKarma(errHandler);
+            //     let formatedData = weeklyKarma.map((item: any) => [
+            //         convertDateToDayAndMonth(item[0]),
+            //         item[1],
+            //     ]);
+
+            //     setBarData([["", "Karma"]].concat(formatedData));
+            //     setPieData(
+            //         [["Level", "UsersPerLevel"]].concat(
+            //             await getStudentLevel(errHandler)
+            //         )
+            //     );
+            // })();
+        }
+
+        if (!currModal) {
+            getStudentDetails(
+                setStudentData,
+                1,
+                perPage,
+                setTotalPages,
+                "",
+                "",
+                setNoOrg
+            );
+        }
+        firstFetch.current = false;
+    }, [currModal]);
+
+    console.log("Campus Data:", campusData);
 
     useEffect(() => {
         const fetchCampusData = async () => {
@@ -62,22 +138,41 @@ const CampusDetails: React.FC = () => {
                 // Fetch campus details
                 const campusResponse = await privateGateway.get(`/api/v1/dashboard/campus/${org_id}`);
                 const campus = campusResponse.data.response;
+                console.log("Campus data:", campus);
 
                 // Fetch weekly karma (not used in UI yet, but fetched for potential future use)
                 const weeklyKarmaResponse = await privateGateway.get(`/api/v1/dashboard/campus/weekly-karma/${org_id}`);
                 const weeklyKarma = weeklyKarmaResponse.data.response;
+                let formatedData:any = [];
 
-                // Fetch student level data (not used in UI yet, but fetched for completeness)
-                const studentLevelResponse = await axios.get(`/api/v1/dashboard/campus/student-level/${org_id}`);
-                const studentLevel = studentLevelResponse.data.response;
+                // Skip the college_name field and process only the date entries
+                Object.entries(weeklyKarma).forEach(([key, value]) => {
+                    // Check if the key is a date (not college_name)
+                    if (key !== "college_name") {
+                        formatedData.push([
+                            convertDateToDayAndMonth(key),
+                            value === null ? 0 : value,
+                        ]);
+                    }
+                });
+
+                // Sort the data by date if needed
+                formatedData.sort((a: [string, number], b: [string, number]) => {
+                    // Assuming convertDateToDayAndMonth preserves sort order
+                    // If not, you may need different logic here
+                    return a[0].localeCompare(b[0]);
+                });
+
+                setBarData([["", "Karma"]].concat(formatedData));
+                console.log("Weekly karma:", weeklyKarma);
 
                 setCampusData({
                     college_name: campus.college_name || "Unknown College",
                     campus_code: campus.campus_code || "N/A",
+                    campus_lead: campus.lead?.campus_lead || "Not Assigned",
                     campus_zone: campus.campus_zone || "N/A",
-                    campus_level: campus.campus_level || 0,
                     total_karma: campus.total_karma || 0,
-                    total_members: campus.total_members || 0,
+                    total_members: campus.total_members?.toString() || "0",
                     active_members: campus.active_members || 0,
                     rank: campus.rank || 0,
                     lead: {
@@ -128,7 +223,7 @@ const CampusDetails: React.FC = () => {
         );
     }
 
-    const grade = getGradeFromLevel(campusData.campus_level);
+    // const grade = getGradeFromLevel(campusData.campus_level);
 
     return (
         <div className={styles.container}>
@@ -142,7 +237,7 @@ const CampusDetails: React.FC = () => {
                 </div>
 
                 <div className={styles.grid}>
-                    <div className={styles.cardWithBorder}>
+                    {/* <div className={styles.cardWithBorder}>
                         <div className={styles.cardHeader}>
                             <h3 className={styles.cardTitle}>Campus Grade</h3>
                             <Dialog.Root>
@@ -187,7 +282,7 @@ const CampusDetails: React.FC = () => {
                             {getGradeIcon(grade)}
                             <span className={styles.gradeText}>Grade {grade}</span>
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className={styles.cardHover}>
                         <div className={styles.cardHeader}>
@@ -216,8 +311,7 @@ const CampusDetails: React.FC = () => {
                         <p className={styles.statsLabel}>Among all campuses</p>
                     </div>
                 </div>
-
-                <div className={styles.leadershipSection}>
+                {/* <div className={styles.leadershipSection}>
                     <h3 className={styles.leadershipTitle}>Campus Leadership</h3>
                     <div className={styles.leadershipGrid}>
                         <div className={styles.leaderCard}>
@@ -237,6 +331,23 @@ const CampusDetails: React.FC = () => {
                             </div>
                         )}
                     </div>
+                </div> */}
+                <div className={styles.graphs}>
+                    <div className={styles.graphContainer}>
+                        <h2>Weekly Karma Insights</h2>
+                        <BarChart
+                            data={barData}
+                            ylabel="Karma"
+                            addOptions={{
+                                legend: { position: "none" },
+                                colors: ["#91ABFF"],
+                            }}
+                        />
+                    </div>
+                    {/* <div className={styles.graphContainer}>
+                        <h2>Student Statistics</h2>
+                        <BarChart data={pieData} />
+                    </div> */}
                 </div>
             </div>
         </div>
