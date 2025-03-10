@@ -122,6 +122,8 @@
     width: 100%;
     position: relative;
     text-align: center;
+    overflow-y: auto;
+    max-height: 80vh;
 }
 
 .modalContent h2{
