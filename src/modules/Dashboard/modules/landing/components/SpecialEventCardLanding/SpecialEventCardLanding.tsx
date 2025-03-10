@@ -104,7 +104,6 @@ const SpecialEventCardLanding: React.FC<{ specialevent: SpecialEvent }> = ({
             <Modal isOpen={isOpen} onClose={onClose} size="lg">
                 <ModalOverlay backdropFilter="blur(4px)" />
                 <ModalContent borderRadius="lg" overflow="hidden">
-                    {/* Event Image Banner */}
                     <Box position="relative" height="200px" overflow="hidden">
                         <Box
                             bgImage={`url(${
@@ -186,15 +185,12 @@ const SpecialEventCardLanding: React.FC<{ specialevent: SpecialEvent }> = ({
                         )}
                     </Box>
 
-                    {/* Modal Body */}
                     <ModalBody pt={6}>
                         <VStack align="start" spacing={6}>
-                            {/* Description */}
                             <Text color="gray.700">
                                 {specialevent.description}
                             </Text>
 
-                            {/* Event Details */}
                             <Box
                                 bg="gray.50"
                                 p={4}
@@ -215,14 +211,12 @@ const SpecialEventCardLanding: React.FC<{ specialevent: SpecialEvent }> = ({
                                             </Text>
                                         </HStack>
                                     )}
-                                    {/* Always show time */}
                                     <HStack>
                                         <Icon as={FiClock} color="#007bff" />
                                         <Text>
                                             {specialevent.time || "10:00 AM"}
                                         </Text>
                                     </HStack>
-                                    {/* Always show location */}
                                     <HStack>
                                         <Icon
                                             as={FaMapMarkerAlt}
@@ -235,7 +229,6 @@ const SpecialEventCardLanding: React.FC<{ specialevent: SpecialEvent }> = ({
                                 </VStack>
                             </Box>
 
-                            {/* Tags */}
                             {specialevent.tags &&
                                 specialevent.tags.length > 0 && (
                                     <Box w="full">
@@ -263,7 +256,6 @@ const SpecialEventCardLanding: React.FC<{ specialevent: SpecialEvent }> = ({
                                     </Box>
                                 )}
 
-                            {/* Participants */}
                             {specialevent.participants && (
                                 <Box w="full">
                                     <HStack mb={2}>
@@ -277,41 +269,53 @@ const SpecialEventCardLanding: React.FC<{ specialevent: SpecialEvent }> = ({
                                             attending
                                         </Text>
                                     </HStack>
-                                    <HStack spacing={-2}>
-                                        <Avatar
-                                            size="sm"
-                                            name="User 1"
-                                            bg="blue.500"
-                                        />
-                                        <Avatar
-                                            size="sm"
-                                            name="User 2"
-                                            bg="green.500"
-                                        />
-                                        <Avatar
-                                            size="sm"
-                                            name="User 3"
-                                            bg="purple.500"
-                                        />
-                                        <Avatar
-                                            size="sm"
-                                            name="User 4"
-                                            bg="pink.500"
-                                        />
+                                    <Flex align="center">
+                                        <HStack spacing={1} mr={3}>
+                                            <Avatar
+                                                size="sm"
+                                                name="User 1"
+                                                bg="blue.500"
+                                                borderWidth="2px"
+                                                borderColor="white"
+                                            />
+                                            <Avatar
+                                                size="sm"
+                                                name="User 2"
+                                                bg="green.500"
+                                                ml="-3"
+                                                borderWidth="2px"
+                                                borderColor="white"
+                                            />
+                                            <Avatar
+                                                size="sm"
+                                                name="User 3"
+                                                bg="purple.500"
+                                                ml="-3"
+                                                borderWidth="2px"
+                                                borderColor="white"
+                                            />
+                                            <Avatar
+                                                size="sm"
+                                                name="User 4"
+                                                bg="pink.500"
+                                                ml="-3"
+                                                borderWidth="2px"
+                                                borderColor="white"
+                                            />
+                                        </HStack>
                                         <Text
                                             fontSize="sm"
-                                            ml={2}
                                             color="gray.600"
+                                            fontWeight="medium"
                                         >
                                             Join 127 others
                                         </Text>
-                                    </HStack>
+                                    </Flex>
                                 </Box>
                             )}
                         </VStack>
                     </ModalBody>
 
-                    {/* Modal Footer */}
                     <ModalFooter
                         bg="gray.50"
                         borderTop="1px solid"
