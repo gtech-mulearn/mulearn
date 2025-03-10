@@ -1,9 +1,8 @@
-/* Existing styles from your provided CSS, unchanged for continuity */
 .pageContainer {
   max-width: 100%;
   width: 100%;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 0.5rem; /* Reduced padding for smaller screens */
   box-sizing: border-box;
 }
 
@@ -56,7 +55,7 @@
   width: 100%;
   padding: 0.625rem 0.625rem 0.625rem 2.25rem;
   border: 1px solid #ccc;
-  font-size: 1rem;
+  font-size: clamp(0.875rem, 2.5vw, 1rem); /* Responsive font size */
   outline: none;
   border-radius: 1.25rem;
   color: black !important;
@@ -81,7 +80,7 @@
   border: 1px solid #ccc;
   border-radius: 1.25rem;
   background-color: #f5f5f5;
-  font-size: 0.875rem;
+  font-size: clamp(0.75rem, 2vw, 0.875rem); /* Responsive font size */
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -98,9 +97,13 @@
 
 .userGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  /* Adjust the minmax to be more flexible on smaller screens */
+  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
   gap: 1rem;
-  padding: 0 1rem;
+  /* Center the grid on the page */
+  justify-content: center;
+  /* Adjust padding for smaller screens */
+  padding: 0 0.5rem;
 }
 
 .noResultsText {
@@ -517,6 +520,39 @@
   .statsValue {
       font-size: 1rem;
   }
+
+  .userGrid {
+    grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
+    gap: 0.75rem;
+    padding: 0 0.25rem;
+  }
+
+  .userCard {
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .userName {
+    font-size: clamp(14px, 4vw, 18px);
+  }
+
+  .badges {
+    font-size: clamp(0.5rem, 1.5vw, 10px);
+    padding: 4px 8px;
+  }
+
+  .searchContainer {
+    margin: 0.5rem auto;
+  }
+
+  .searchInput {
+    padding: 0.5rem 0.5rem 0.5rem 2rem;
+  }
+
+  .searchIcon {
+    left: 0.75rem;
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -551,6 +587,48 @@
 
   .leaderRole {
       font-size: 0.75rem;
+  }
+
+  .userGrid {
+    grid-template-columns: 1fr; /* Single column for very small screens */
+    gap: 0.5rem;
+    padding: 0 0.25rem;
+  }
+
+  .userCard {
+    padding: 10px;
+    gap: 6px;
+  }
+
+  .userName {
+    font-size: clamp(12px, 3.5vw, 16px);
+  }
+
+  .badges {
+    font-size: clamp(0.5rem, 1.5vw, 8px);
+    padding: 3px 6px;
+  }
+
+  .searchTypeButtons {
+    gap: 0.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .searchTypeButton {
+    padding: 0.4rem 0.8rem;
+    font-size: clamp(0.625rem, 1.8vw, 0.75rem);
+  }
+
+  .BannerTitle {
+    font-size: 1.25rem;
+  }
+
+  .BannerSubtitle {
+    font-size: 0.875rem;
+  }
+
+  .graphs .graphContainer {
+      width: 100%;
   }
 }
 

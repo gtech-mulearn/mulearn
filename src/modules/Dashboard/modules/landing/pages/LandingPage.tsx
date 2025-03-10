@@ -14,6 +14,7 @@ import top100coders from "../../SpecialEvents/assets/top-100.webp";
 import launchpad from "../../SpecialEvents/assets/launchpad.webp";
 import trivialideas from "../../SpecialEvents/assets/trivialideas.webp";
 import SpecialEventCardLanding from "../components/SpecialEventCardLanding/SpecialEventCardLanding";
+import illustration from "../assets/illustration.webp"
 
 // Data remains the same
 const data = [
@@ -102,18 +103,16 @@ const MuLearnLanding = () => {
   function NavLinks() {
     return (
       <>
-        <li onClick={() => navigate("/dashboard/home")}>Home</li>
-        <li onClick={() => navigate("/dashboard/mentors")}>Mentorship</li>
-        <li onClick={() => navigate("/dashboard/learning-paths")}>Learning Paths</li>
-        <li onClick={() => navigate("/dashboard/learningcircle")}>Learning Circles</li>
-        <li> <a href="https://www.youtube.com/watch?v=qEILjuB7oPk&feature=youtu.be" target="_blank" rel="noopener noreferrer">
-        Why μLearn
-    </a></li>
-    <li>
-    <a href="https://mulearn.org" target="_blank" rel="noopener noreferrer">
-        Visit the Old Site
-    </a>
-</li>
+        <li className="cursor-pointer" onClick={() => navigate("/")}>Home</li>
+        <li className="cursor-pointer" onClick={() => navigate("/dashboard/search?activetab=mentors")}>Mentorship</li>
+        <li className="cursor-pointer" onClick={() => navigate("/dashboard/mujourney")}>Learning Paths</li>
+        <li className="cursor-pointer" onClick={() => navigate("/dashboard/learningcircle")}>Learning Circles</li>
+        <li className="cursor-pointer" onClick={() => window.open("https://www.youtube.com/watch?v=qEILjuB7oPk&feature=youtu.be", "_blank")}>
+          Why μLearn
+        </li>
+        <li className="cursor-pointer" onClick={() => window.open("https://mulearn.org", "_blank")}>
+          Visit the Old Site
+        </li>
       </>
     );
   }
@@ -194,7 +193,10 @@ const MuLearnLanding = () => {
             className={styles.hamburger}
             onClick={() => setIsMenuOpen(true)}
           >
-            ☰
+            <div></div>
+            <div></div>
+            <div></div>
+
           </div>
         </div>
       </motion.nav>
@@ -250,10 +252,19 @@ const MuLearnLanding = () => {
             </button>
             <button
               className={styles.downloadBtn}
-              onClick={() => navigate("/dashboard/learning-path")}
+              onClick={() => navigate("/dashboard/mujourney")}
             >
               Explore Learning Paths
             </button>
+          </motion.div>
+          <motion.div
+            className={styles.heroImage}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={textVariant}
+          >
+            <img src={illustration} alt="Illustration" />
           </motion.div>
         </div>
 
@@ -484,7 +495,7 @@ const MuLearnLanding = () => {
       >
         <motion.div className={styles.oppurtunitiesTitle} variants={fadeInUp}>
           <h1>At The End Of a μLearners Journey</h1>
-          <h6>They are offered</h6>
+          <h6>You are offered</h6>
         </motion.div>
         <motion.div
           className={styles.oppurtunities}
@@ -497,7 +508,7 @@ const MuLearnLanding = () => {
               icon: (
                 <img
                   src={"https://www.propeers.in/images/rafiki.svg"}
-                  width={"120px"}
+                  width={"400px"}
                   alt="Job"
                 />
               ),
@@ -508,7 +519,7 @@ const MuLearnLanding = () => {
               icon: (
                 <img
                   src={"https://www.propeers.in/images/Mentors-cuate.svg"}
-                  width={"90px"}
+                  width={"400px"}
                   alt="Freelance"
                 />
               ),
@@ -519,7 +530,7 @@ const MuLearnLanding = () => {
               icon: (
                 <img
                   src={"https://www.propeers.in/images/cuate.svg"}
-                  width={"90px"}
+                  width={"400px"}
                   alt="Research"
                 />
               ),
@@ -530,7 +541,7 @@ const MuLearnLanding = () => {
               icon: (
                 <img
                   src={"/assets/landing/College Project Concept Illustration.png"}
-                  width={"90px"}
+                  width={"400px"}
                   alt="Entrepreneurship"
                 />
               ),
@@ -572,7 +583,6 @@ const MuLearnLanding = () => {
         </motion.div>
       </motion.section>
 
-      {/* Community Section */}
       <motion.section
         className={`${styles.leftRightGrid} ${styles.leftRightGridCustom}`}
         variants={fadeInUp}
@@ -585,7 +595,7 @@ const MuLearnLanding = () => {
             Learn and Grow <span className={styles.highlight}>Together</span> as a{" "}
             <span className={styles.highlight}>Community</span>
           </h1>
-          <h6>
+          <h6 className={styles.communityDescription}>
             Are you ready to learn, grow, and upskill yourself to the next level? Come, be a part of the community, and let’s start learning in a new, better way. Call your friends as well because things are going to change once you experience it, and it is more effective when done in a group.
           </h6>
           <button>
@@ -595,7 +605,7 @@ const MuLearnLanding = () => {
           </button>
         </motion.div>
         <motion.div variants={fadeInUp} className={styles.joinCommunity}>
-          <img src="https://mulearn.org/assets/home/join.webp" alt="Join community" width="400px" />
+          <img src="https://mulearn.org/assets/home/join.webp" alt="Join community" width="350px" />
         </motion.div>
       </motion.section>
 

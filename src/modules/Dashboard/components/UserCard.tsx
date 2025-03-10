@@ -60,12 +60,14 @@ const UserCard: React.FC<UserCardProps> = ({ data, onSelect }) => {
       />
       <div className={styles.userDetails}>
         <div className={styles.userHeader}>
-          {data.linkedin && <a href
-            ={data.linkedin} target="_blank" rel="noreferrer" className={styles.userLinkedin}><FiLinkedin /></a>}
+          <div className="flex flex-col">
 
           <h2 className={styles.userName}>{data.name.trim() || "Unknown"}</h2>
-          {isRegularUser && data.muid && <h3 className={styles.userMUID}>{data.muid}</h3>}
           {data.role && <h3 className={styles.userRole}>{data.role}</h3>}
+          {data.linkedin && <a href={data.linkedin} target="_blank" rel="noreferrer" className={styles.userLinkedin}><FiLinkedin /></a>}
+
+          </div>
+          {isRegularUser && data.muid && <h3 className={styles.userMUID}>{data.muid}</h3>}
 
           {/* <h3 className={styles.userRole}>{getPrimaryOrganization()}</h3> */}
           {data.karma && (

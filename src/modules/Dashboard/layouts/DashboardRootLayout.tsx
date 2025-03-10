@@ -4,7 +4,7 @@ import SideNavBar from "../components/SideNavBar";
 import TopNavBar from "../components/TopNavBar";
 import { Suspense, useEffect, useState } from "react";
 import { FaUserFriends } from "react-icons/fa";
-import { FaMagnifyingGlass, FaMapLocationDot, FaWandMagicSparkles } from "react-icons/fa6";
+import { FaMagnifyingGlass, FaMapLocationDot,FaHouse } from "react-icons/fa6";
 import { IoGlobeOutline } from "react-icons/io5";
 import { roles, managementTypes } from "@/MuLearnServices/types";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
@@ -12,7 +12,7 @@ import { fetchLocalStorage } from "@/MuLearnServices/common_functions";
 import { IoIosRocket } from "react-icons/io";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
-import { useUserStore } from "/src/ZustandProvider";
+import { UserProfile, useUserStore } from "/src/ZustandProvider";
 
 
 
@@ -30,15 +30,30 @@ declare global {
 const DashboardRootLayout = (props: { component?: any }) => {
     const navigate = useNavigate();
     const Management: ManagementTypes[] = Object.values(managementTypes).slice(2);
-    const { setUserInfo, updateUserInfo } = useUserStore();
+    const { setUserInfo, updateUserInfo, userProfile, setUserProfile } = useUserStore();
   const [isLoading, setIsLoading] = useState(true);
   const [connected, setConnected] = useState(false);
+
+  useEffect(() => {
+    const intializeUserProfile = async () => {
+      const response = await privateGateway.get(dashboardRoutes.getUserProfile);
+      if (!response || !response.data) {
+        throw new Error('Invalid API response');
+      }
+      const userProfile: UserProfile = response.data.response;
+      if (!userProfile || typeof userProfile !== 'object') {
+        throw new Error('Invalid userProfile data');
+      }
+      setUserProfile(userProfile);
+      
+    }
+    intializeUserProfile();
+  }, []);
 
     useEffect(() => {
         const initializeUserInfo = async () => {
           try {
-            const response = await privateGateway.get(dashboardRoutes.getInfo);
-            
+            const response = await privateGateway.get(dashboardRoutes.getInfo);            
             if (!response || !response.data) {
               throw new Error('Invalid API response');
             }
@@ -91,11 +106,11 @@ const DashboardRootLayout = (props: { component?: any }) => {
             url: "/dashboard/home",
             title: "Home",
             hasView: true,
-            icon: <i className="fi fi-sr-clipboard-user"></i>
+            icon: <FaHouse />
         },
         {
-            url: "/dashboard/learning-path",
-            title: "Learning Paths",
+            url: "/dashboard/mujourney",
+            title: "µJourney",
             hasView: true,
             icon: <FaMapLocationDot />
         },
@@ -129,12 +144,12 @@ const DashboardRootLayout = (props: { component?: any }) => {
             hasView: true,
             icon: <i className="fi fi-sr-building"></i>
         },
-        {
-            url: "/dashboard/muVerse",
-            title: "μVerse",
-            hasView: true,
-            icon: <IoIosRocket />
-        },
+        // {
+        //     url: "/dashboard/muVerse",
+        //     title: "μVerse",
+        //     hasView: true,
+        //     icon: <IoIosRocket />
+        // },
         // {
         //     url: "/dashboard/profile",
         //     title: "Profile",
@@ -173,7 +188,10 @@ const DashboardRootLayout = (props: { component?: any }) => {
     ];
 
     if (isLoading) {
-        return <MuLoader />;
+      
+        return <div className={styles.loader}>
+          <MuLoader />
+          </div>
     }
 
     return (

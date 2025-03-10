@@ -5,6 +5,26 @@
   max-width: 1440px;
   margin: 0 auto;
   overflow-x: hidden;
+  position: relative;
+}
+
+
+.backButton{
+  /* background-color: #456ff6; */
+  color: #3e3e3e;
+  border: none;
+  padding: clamp(4px, 1vw, 8px) clamp(8px, 2vw, 16px);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: clamp(0.625rem, 1.5vw, 0.8rem);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  width: auto;
+  font-size: 2rem;
+  max-width: 100%;
+  position: absolute;
+  top: 0rem;
+  left: .1rem;
+
 }
 
 .mainGrid {
@@ -19,18 +39,29 @@
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
+
+
 }
+
+
 
 .sidebar {
   width: 100%;
   max-width: 100%;
+  padding: 0 clamp(8px, 2vw, 24px);
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  justify-content: start;
 }
 
 @media screen and (min-width: 768px) {
   .mainGrid {
     grid-template-columns: 75% 25%;
   }
+ 
 }
 
 @media screen and (min-width: 1024px) {
@@ -48,12 +79,11 @@
   max-width: 100%;
   overflow-x: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
 }
 
-.forumCard:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
+
+
 
 .bannerWrapper {
   position: relative;
@@ -146,7 +176,7 @@
   display: flex;
   align-items: center;
   gap: clamp(2px, 1vw, 8px);
-  font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+  font-size: clamp(0.825rem, 1.5vw, 1rem);
   color: #6b7280;
   flex-wrap: wrap;
 }
@@ -277,8 +307,8 @@
 }
 
 .officeHoursCard {
-  margin-top: 30px;
-
+  /* margin-top: 30px; */
+  margin: 30px auto;
   background-color: #456ff6;
   color: #f7f7f7;
   border-radius: 8px;
@@ -345,6 +375,10 @@
     bottom: -15px;
     padding: 0 8px;
   }
+  .backButton{
+    visibility: hidden;
+   
+   }
 
   .forumSubInfo {
     flex-direction: column;
@@ -450,6 +484,10 @@
     width: 100%; /* Full width on mobile */
     right: -100%; /* Start fully off-screen on mobile */
   }
+  .backButton{
+    visibility: hidden;
+   
+   }
 
   .asideDetails.open {
     right: 0; /* Slide in fully on mobile */
@@ -459,8 +497,10 @@
 .sidebarList {
   display: flex;
   flex-direction: column;
-  
-  gap: clamp(4px, 1vw, 16px);
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  /* gap: clamp(4px, 1vw, 16px); */
   width: 100%;
   overflow-x: hidden;
 }
@@ -489,6 +529,7 @@
   height: clamp(24px, 5vw, 40px); */
   object-fit: contain;
   border-radius: 8px;
+  margin: 0 auto;
   /* max-width: 100%; */
   width: 200px !important;
   height: 50px !important;
@@ -526,6 +567,7 @@
     max-width: calc(100% - 30px);
   }
 }
+
 
 @media screen and (min-width: 768px) {
   .sidebarList {

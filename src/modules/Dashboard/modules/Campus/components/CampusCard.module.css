@@ -197,3 +197,27 @@
     color: #475569;
     font-size: clamp(0.75rem, 1.8vw, 0.875rem);
 }
+
+
+
+.badges {
+    background-color: #ffb6c1;
+    padding: clamp(4px, 0.5vw, 6px) clamp(8px, 1vw, 12px);
+    border-radius: 16px;
+    font-size: clamp(0.625rem, 1vw, 12px);
+    color: #333333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+  
+  .badges:nth-child(2) {
+    background-color: #90ee90;
+    color: #333333;
+  }
+  
+  .badges:nth-child(3) {
+    background-color: #87cefa;
+    color: #333333;
+  }

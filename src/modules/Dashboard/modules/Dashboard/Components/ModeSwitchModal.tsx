@@ -15,16 +15,7 @@ const modes = [
   {
     id: "maker",
     label: "Maker",
-    subdomains: [
-      "Industrial",
-      "Hardware",
-      "IoT",
-      "Robotics",
-      "Civil",
-      // "Mechanical",
-      // "Electrical",
-      // "Automotive"
-    ],
+    subdomains: ["Industrial", "Hardware", "IoT", "Robotics", "Civil"],
   },
   {
     id: "manager",
@@ -54,7 +45,9 @@ const ModeSwitchModal: React.FC<ModeSwitchModalProps> = ({
   const storedUserInfo = localStorage.getItem("userInfo");
   const currentMode = storedUserInfo ? JSON.parse(storedUserInfo) : null;
 
-  const [selectedMode, setSelectedMode] = useState<string | null>(currentMode.user_domains?.[0]);
+  const [selectedMode, setSelectedMode] = useState<string | null>(
+    currentMode?.user_domains?.[0] || null
+  );
 
   const handleCardClick = (modeId: string) => {
     setSelectedMode((prev) => (prev === modeId ? null : modeId));
@@ -71,7 +64,14 @@ const ModeSwitchModal: React.FC<ModeSwitchModalProps> = ({
   return (
     <div className={styles.modalOverlay} onClick={onClose}>
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+        {/* Close Button (X) */}
+       
+
         <h2 className={styles.modalTitle}>Choose Your Path</h2>
+        <button className={styles.closeButton} onClick={onClose}>
+          ✕
+        </button>
+
         <div className={styles.cardsGrid}>
           {modes.map((mode) => (
             <div
@@ -99,6 +99,7 @@ const ModeSwitchModal: React.FC<ModeSwitchModalProps> = ({
             </div>
           ))}
         </div>
+
         {selectedMode && (
           <button className={styles.submitButton} onClick={handleSubmit}>
             Submit

@@ -305,6 +305,65 @@ export const scheduleMeetup = async (
     }
 };
 
+export const editScheduleMeetup = async (
+    params: LCMeetCreate
+): Promise<boolean> => {
+    try {
+        const response = await privateGateway.post(
+            learningCircleRoutes.editScheduledMeetup + params.meetId,
+            params
+        );
+        if (response.status === 200) {
+            toast.success(
+                [
+                    response.data?.message?.general ??
+                        "Meetup Edited successfully"
+                ][0]
+            );
+            return true;
+        }
+        toast.error(
+            (response.data?.message?.general ?? [
+                "Unable to edit meetup."
+            ])[0]
+        );
+        return false;
+    } catch (err) {
+        const error = err as AxiosError;
+        console.log(error);
+        return false;
+    }
+};
+
+export const deleteScheduleMeetup = async (
+    params: {meetId: string}
+): Promise<boolean> => {
+    try {
+        const response = await privateGateway.post(
+            learningCircleRoutes.deleteScheduledMeetup + params.meetId,
+        );
+        if (response.status === 200) {
+            toast.success(
+                [
+                    response.data?.message?.general ??
+                        "Meetup Deleted successfully"
+                ][0]
+            );
+            return true;
+        }
+        toast.error(
+            (response.data?.message?.general ?? [
+                "Unable to delete meetup."
+            ])[0]
+        );
+        return false;
+    } catch (err) {
+        const error = err as AxiosError;
+        console.log(error);
+        return false;
+    }
+};
+
 export const getInterestGroups = async () => {
     try {
         const response = (await privateGateway.get(dashboardRoutes.getCampusIg))

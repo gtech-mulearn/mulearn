@@ -88,7 +88,7 @@ const SideNavBar = ({ sidebarButtons }: Props) => {
             <div
                 id="side_nav"
                 className={styles.side_nav_bar_container}
-                style={{ display: `${sideNavDisplay}` , marginLeft: "20px"}}
+                style={{ display: `${sideNavDisplay}` , marginLeft: "0px"}}
             >
                 <div className={styles.side_nav_bar}>
                     <div className={styles.mulearn_brand} onClick={()=> navigate("/")}>

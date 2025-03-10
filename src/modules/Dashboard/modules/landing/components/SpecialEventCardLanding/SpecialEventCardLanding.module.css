@@ -109,6 +109,7 @@
     background: rgba(0, 0, 0, 0.7);
     display: flex;
     justify-content: center;
+    color: #333;
     align-items: center;
     z-index: 1000;
 }

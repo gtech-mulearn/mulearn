@@ -122,6 +122,10 @@ const CampusCard: React.FC<CampusCardProps> = ({ data, onSelect }) => {
                             </Dialog.Portal>
                         </Dialog.Root>
                     </div>)}
+                   <div className="flex gap-3 flex-wrap !mb-3" >
+                    <p className={styles.badges}><span>{data.district}</span> </p>
+                    <p className={styles.badges}><span>{data.state}</span> </p>
+                   </div>
                     <p className={styles.userKarma}><span><FaUserGroup/></span><span>{formatKarma(data.userCount)} Students</span> </p>
                     {data.lead && (
                         <div className={styles.leadership}>

@@ -51,6 +51,8 @@ export const NotificationRoutes = {
 export const learningCircleRoutes = {
     createLearningCircle: "/api/v1/dashboard/learningcircle/create/",
     scheduleMeetup: "/api/v1/dashboard/learningcircle/meeting/create/",
+    editScheduledMeetup: "/api/v1/dashboard/learningcircle/meeting/edit/",
+    deleteScheduledMeetup: "/api/v1/dashboard/learningcircle/meeting/delete/",
     getLearningCircleInfo: "/api/v1/dashboard/learningcircle/info/",
     getCreatedLearningCircles: "/api/v1/dashboard/learningcircle/list/",
     getMeetupInfo: "/api/v1/dashboard/learningcircle/meeting/info/",

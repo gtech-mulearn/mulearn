@@ -135,7 +135,7 @@ const Profile = () => {
                     id
                         ? window.innerWidth < 500
                             ? { width: "100%", padding: "20px 10px 50px" }
-                            : { width: "100%", padding: "50px" }
+                            : { width: "100%", padding: "10px" }
                         : {}
                 }
                 className={styles.rightDash}

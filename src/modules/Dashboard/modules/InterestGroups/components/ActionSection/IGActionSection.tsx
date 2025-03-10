@@ -158,7 +158,7 @@ const IGActionSection = ({ data }: { data: InterestGroupData }) => {
                 </ul>
               </div>
               <h3>Opportunities</h3>
-              <div className="flex flex-wrap justify-between">
+              <div className="flex flex-col ">
                 {data.tabs.about.opportunities.map((opportunity) => (
                   <div key={opportunity.title} className={styles.careerPath}>
                     <h4>{opportunity.title}</h4>

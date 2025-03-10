@@ -9,10 +9,6 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  align-items: center;
 }
 
 .header {
@@ -20,7 +16,6 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 1.5rem;
-  
 }
 
 .titleSection {
@@ -33,7 +28,6 @@
   font-size: clamp(1.5rem, 4vw, 2rem);
   font-weight: bold;
   color: #0066FF;
-  text-align: left;
 }
 
 .grid {
@@ -45,7 +39,7 @@
 
 @media (min-width: 768px) {
   .grid {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(1, 1fr);
   }
 }
 
@@ -265,13 +259,15 @@
   padding: 15px 0px;
   display: flex;
   gap: 15px;
-  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .graphs .graphContainer {
   background-color: var(--White);
-  width: 49%;
+  width: 100%;
   height: 350px;
+  padding: 20px;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
   border-radius: 20px;
 }

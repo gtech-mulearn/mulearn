@@ -37,6 +37,57 @@
   .copyButton:hover {
     background-color: #3457d5;
   }
+
+  .buttonContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+  }
+  
+  .editButton {
+    width: 100%;
+    margin: 10px;
+    background-color: #ffa500;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+  
+  .editButton:hover {
+    background-color: #e69500;
+  }
+  
+  .deleteButton {
+    width: 100%;
+    margin: 10px;
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+
+  .doneButton {
+    width: 100%;
+    margin: 10px;
+    background-color:#3457d5;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+  
+  .deleteButton:hover {
+    background-color: #c9302c;
+  }
+  
   
   /* Animation Keyframes and Class */
   @keyframes modalEnter {

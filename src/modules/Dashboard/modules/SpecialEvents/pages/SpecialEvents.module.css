@@ -2,8 +2,11 @@
     max-width: 100%;
     width: 100%;
     margin: 0 auto;
-    padding: 0 1.5rem;
+    min-height: 80vh;
+    padding: 2rem 1rem;
     box-sizing: border-box;
+    background-color: #F8FAFC;
+    text-align: left;
 }
 
 .specialEventsHeading {
@@ -66,6 +69,7 @@
   .BannerTitle {
     font-size: 1.5rem;
     font-weight: 700;
+    text-align: left;
     margin-bottom: 0.4rem;
     color: #4B5563
   }

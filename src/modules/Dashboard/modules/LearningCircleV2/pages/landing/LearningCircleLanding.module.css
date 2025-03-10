@@ -10,8 +10,29 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    background-color: #F8FAFC;
+    min-height: 100vh;
+    padding: 2rem 1.5rem;
 }
-
+.Banner {
+    margin-left: 2rem;
+  }
+  
+  .BannerContent {
+    text-align: left ;
+  }
+  
+  .BannerTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    color: #4B5563;
+    text-align: left;
+  }
+  
+  .BannerSubtitle {
+    font-size: 0.95rem;
+  }
 /*
 * ******************************************************************************************
 

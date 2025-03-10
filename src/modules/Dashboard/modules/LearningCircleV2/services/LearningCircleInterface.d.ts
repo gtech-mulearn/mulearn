@@ -13,6 +13,7 @@ interface LearningCircleCreate {
 }
 
 interface LCMeetCreate {
+    meetId?: string;
     circle_id: string;
     description: string;
     coord_x: number;
@@ -65,7 +66,12 @@ interface LearningCircleInfoBasic {
 }
 
 export interface CircleMeetupInfo {
+    description: string;
     id: string;
+    ig_name: string;
+    description?: string;
+    created_by: string;
+    ig_id: string
     title: string;
     is_report_needed: boolean;
     report_description: string;

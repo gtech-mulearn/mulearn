@@ -30,15 +30,15 @@ function InterestGroupsPage() {
   ];
 
   const imageUrls = [
-    "/assets/IG/uiux.webp",
-    "/assets/IG/webdev.webp",
-    "/assets/IG/cyber.webp",
-    "/assets/IG/digitalmarketing.webp",
-    "/assets/IG/gamedev.webp",
-    "/assets/IG/cloud.webp",
-    "/assets/IG/productmanagement.webp",
+    { title: "UI/UX Interest Group", image: "/assets/IG/Cover/1.png" },
+    { title: "Web Development", image: "/assets/IG/Cover/2.png" },
+    { title: "Cybersecurity", image: "/assets/IG/Cover/3.png" },
+    { title: "Digital Marketing", image: "/assets/IG/Cover/4.png" },
+    { title: "Game Development", image: "/assets/IG/Cover/5.png" },
+    { title: "Cloud and DevOps", image: "/assets/IG/Cover/6.png" },
+    { title: "Product Management", image: "/assets/IG/Cover/7.png" }
   ];
-
+  
 
   useEffect(() => {
     if (firstFetch.current) {
@@ -58,7 +58,6 @@ function InterestGroupsPage() {
   );
 
 
-  // Filter groups based on search and category
   const filteredGroups = mappedData.filter(group => {
     const matchesSearch = group.title?.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = selectedCategory === 'all' || group.category === selectedCategory;
@@ -146,10 +145,12 @@ function InterestGroupsPage() {
                   const randomImageUrl = imageUrls[randomIndex];
                   return (
                     <img
-                      src={group.title === "UI/UX Interest Group" ? imageUrls[0] : group.title === "Web Development" ? imageUrls[1] : group.title === "Cybersecurity" ? imageUrls[2] : group.title === "Digital Marketing" ? imageUrls[3] : group.title === "Game Development" ? imageUrls[4] : group.title === "Cloud and DevOps" ? imageUrls[5] : imageUrls[6]}
-                      alt="Random"
-                      className={styles.GroupImage}
-                    />
+                    src={
+                      imageUrls.find(img => img.title === group.title)?.image ||
+                      imageUrls[6].image
+                    }
+                    alt={group.title}
+                  />
                   );
                 })()
               )}

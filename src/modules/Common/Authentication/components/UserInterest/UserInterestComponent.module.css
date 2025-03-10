@@ -11,16 +11,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow-y: auto;
 
     .box {
         background-color: #fff;
         border-radius: 20px;
         padding: 40px 10px 10px;
-        min-height: 300px;
-        max-width: 700px;
+        max-height: 100vh;
+        max-width: 100%;
         position: relative;
         z-index: 100;
         display: flex;
+        overflow-y: auto;
         align-items: center;
         flex-direction: column;
         h1 {
@@ -47,14 +49,14 @@
             z-index: 10;
             cursor: pointer;
             display: flex;
-            /* flex-wrap: wrap; */
+            flex-wrap: wrap;
             padding: 20px;
             justify-content: center;
             overflow: show;
 
             .itemsCard {
                 min-width: 200px;
-                min-height: 40vh;
+                min-height: 30vh;
                 border-radius: 10px;
                 background-color: #fff;
                 box-shadow: 0px 0px 17.65823px 0px rgba(0, 0, 0, 0.07);

@@ -33,13 +33,13 @@ const useMeetups = (category: string, limit: number = 6) => {
       }
     };
     fetchMeetups();
-  }, [category, limit]); 
+  }, [category, limit]);
 
   return { meetups, isLoading };
 };
 
 const LearningCirclesSection: React.FC = () => {
-  const { meetups, isLoading } = useMeetups("all"); 
+  const { meetups, isLoading } = useMeetups("all");
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedMeetup, setSelectedMeetup] = useState<CircleMeetupInfo | undefined>(undefined);
@@ -51,7 +51,19 @@ const LearningCirclesSection: React.FC = () => {
 
   const handleNavigate = useCallback(() => {
     navigate("/dashboard/learningcircle");
-  }, [navigate]); 
+  }, [navigate]);
+
+  const handleEdit = (meetup: CircleMeetupInfo) => {
+    console.log("Editing event:", meetup);
+    // Implement navigation to an edit page or open an edit form
+  };
+
+  const handleDelete = (meetupId: string) => {
+    if (window.confirm("Are you sure you want to delete this event?")) {
+      console.log("Deleting event with ID:", meetupId);
+      // Implement delete API call here
+    }
+  };
 
   return (
     <>
@@ -59,6 +71,8 @@ const LearningCirclesSection: React.FC = () => {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         meetup={selectedMeetup}
+        onEdit={handleEdit}
+        onDelete={handleDelete}
       />
 
       <div className={styles.container}>

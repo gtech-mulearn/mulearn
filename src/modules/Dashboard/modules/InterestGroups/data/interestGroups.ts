@@ -121,7 +121,7 @@ export const interestGroups: InterestGroupData[] = [
     description:
       "Welcome to the UI/UX Interest Group! We’re a vibrant community of designers, researchers, and enthusiasts passionate about crafting intuitive and beautiful digital experiences.",
     bannerImage:
-      "/assets/IG/uiux.webp",
+    "/assets/IG/Cover/1.png",
     memberCount: 2300,
     memberSince: "July 2022",
     isPublic: true,
@@ -590,7 +590,7 @@ export const interestGroups: InterestGroupData[] = [
     description:
       "Ever wondered how web applications are built? Everything seems complex until you learn the basics. μLearn Foundation's Web Development Interest Group is designed to help you develop and refine your skills, bringing together people eager to explore emerging web technologies.",
     bannerImage:
-    "/assets/IG/webdev.webp",
+    "/assets/IG/Cover/2.png",
 
     memberCount: 4200,
     memberSince: "March 2021",
@@ -1082,7 +1082,7 @@ export const interestGroups: InterestGroupData[] = [
     description:
       "Curious about protecting the digital world? The Cybersecurity Interest Group by GTech μLearn delves into securing data and networks from potential threats. This group provides essential knowledge on staying safe online, ideal for those passionate about keeping cyberspace secure.",
     bannerImage:
-    "/assets/IG/cyber.webp",
+    "/assets/IG/Cover/3.png",
 
     memberCount: 3000,
     memberSince: "September 2020",
@@ -1580,7 +1580,7 @@ export const interestGroups: InterestGroupData[] = [
     description:
       "Passionate about creating immersive experiences in gaming? The Game Development Interest Group is your gateway to learning about designing, programming, and storytelling in the world of games. Whether you're into creating captivating visuals, coding mechanics, or crafting narratives, join us to level up your game development skills.",
     bannerImage:
-    "/assets/IG/gamedev.webp",
+    "/assets/IG/Cover/4.png",
 
     memberCount: 2500,
     memberSince: "January 2022",
@@ -2394,7 +2394,7 @@ export const interestGroups: InterestGroupData[] = [
     description:
       "Curious about what makes great organizations thrive? The Human Resources Interest Group is your ultimate platform to uncover the secrets of people management, leadership development, and organizational success. Discover how HR shapes careers, drives innovation, and builds strong workplace cultures. Whether you're aspiring to lead teams, influence business decisions, or create impactful employee experiences, this is your chance to dive into the world of HR and unlock limitless career potential. Join us and start building a future where you make a difference.",
     bannerImage:
-      "https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=3540&auto=format&fit=crop",
+    "/assets/IG/Cover/2.png",
     memberCount: 1400,
     memberSince: "August 2020",
     isPublic: true,
@@ -2721,7 +2721,7 @@ export const interestGroups: InterestGroupData[] = [
     description:
       "Excited to explore the dynamic world of digital marketing? The Digital Marketing Interest Group empowers you with practical and theoretical knowledge, covering SEO, email marketing, social media management, and analytics. This group is perfect for anyone passionate about creating impactful campaigns and analyzing audience behaviour.",
     bannerImage:
-    "/assets/IG/digitalmarketing.webp",
+    "/assets/IG/Cover/5.png",
     memberCount: 2700,
     memberSince: "November 2021",
     isPublic: true,
@@ -3333,7 +3333,7 @@ export const interestGroups: InterestGroupData[] = [
     description:
       "Excited about uncovering insights from data? The Data Science Interest Group offers an opportunity to explore big data, machine learning, and predictive analysis, perfect for anyone interested in data-driven decision-making. Join us to understand how data can reveal patterns, trends, and solutions.",
     bannerImage:
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=3540&auto=format&fit=crop", // Placeholder image related to data science
+    "/assets/IG/Cover/2.png",
     memberCount: 1800, // Placeholder value; adjust as needed
     memberSince: "January 2023", // Placeholder; adjust as needed
     isPublic: true,
@@ -3499,7 +3499,7 @@ export const interestGroups: InterestGroupData[] = [
     description:
       "Wonder how applications are deployed and managed in the cloud? Cloud computing and DevOps are the backbone of modern IT infrastructure, ensuring that software is delivered faster, more efficiently, and with higher reliability. The Cloud Computing & DevOps Interest Group at GTech μLearn is here to equip you with the skills needed to master cloud platforms, automation tools, and continuous integration/continuous deployment (CI/CD) practices. Join us to explore, learn, and collaborate on real-world projects, and dive into the future of cloud-native technologies.",
     bannerImage:
-    "/assets/IG/cloud.webp", // Placeholder image related to cloud/devops
+    "/assets/IG/Cover/6.png",
     memberCount: 1057, 
     memberSince: "March 2023", // Placeholder; adjust as needed
     isPublic: true,
@@ -3676,7 +3676,7 @@ export const interestGroups: InterestGroupData[] = [
     description:
       "Product Management is deciding what to build next”. Are you interested in learning to build the right product and the product right? Join our “Product Management” Interest Group to learn and collaborate with peers.",
     bannerImage:
-      "/assets/IG/productmanagement.webp", // Placeholder image related to product management
+    "/assets/IG/Cover/7.png",
     memberCount: 2199, // Placeholder value; adjust as needed
     memberSince: "March 2023", // Placeholder; adjust as needed
     isPublic: true,

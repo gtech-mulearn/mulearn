@@ -8,6 +8,11 @@ import { CircleMeetupInfo } from '../../../LearningCircleV2/services/LearningCir
 interface EventCardProps {
   id: string
   title: string;
+  description: string,
+  // ig: string,
+  ig_id: string,
+  ig_name: string,
+  created_by: string,
   institution: string;
   location: string;
   date: string;
@@ -26,6 +31,10 @@ export const EventCard = ({
   // institution,
   id,
   location,
+  description,
+  created_by,
+  ig_id,
+  ig_name,
   date,
   time,
   venue,
@@ -36,6 +45,7 @@ export const EventCard = ({
   imageUrl,
   isDisabled = false
 }: EventCardProps) => {
+
   return (
     <div className={styles.card}>
       <div className={styles.content}>
@@ -62,7 +72,11 @@ export const EventCard = ({
             id,
             title,
             meet_place: location,
-            meet_time: date,
+            description,
+            created_by, 
+            ig_id,
+            ig_name,
+            meet_time: time,
             is_report_needed: false,
             report_description: "",
             coord_x: 0,

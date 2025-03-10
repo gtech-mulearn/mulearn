@@ -1,33 +1,35 @@
 import { useEffect, useState } from "react";
 import styles from "./LearningCircleLanding.module.css";
-import { createLearningCircle, scheduleMeetup } from "../../../LearningCircleV2/services/LearningCircleAPIs";
+import { createLearningCircle, editScheduleMeetup, scheduleMeetup } from "../../../LearningCircleV2/services/LearningCircleAPIs";
 import { useNavigate } from "react-router-dom";
 import ReactSelect from "react-select";
 import { getInterests } from "../../../ManageUsers/apis";
 import { useUserStore } from "/src/ZustandProvider";
+import { CircleMeetupInfo } from "../../../LearningCircleV2/services/LearningCircleInterface";
 
 
-const LearningCircleCreateForm = ({ setIsCreateModalOpen, onSuccess }: { setIsCreateModalOpen: (type: boolean) => void, onSuccess: () => void }) => {
-    const [title, setTitle] = useState('');
-    const [ig, setIg] = useState('');
+const LearningCircleCreateForm = ({ setIsCreateModalOpen, onSuccess, meetUp }: { setIsCreateModalOpen: (type: boolean) => void, onSuccess: () => void, meetUp?: CircleMeetupInfo }) => {
+    const [title, setTitle] = useState(meetUp?.title || '');
+    const [ig, setIg] = useState(meetUp?.ig_id || '');
     const [interestOptions, setInterestOptions] = useState<InterestOption[]>([]);
-    const [description, setDescription] = useState('');
-    const [meetingType, setMeetingType] = useState('online'); // default selection
-    const [meetLink, setMeetLink] = useState('');
-    const [location, setLocation] = useState('');
-    const [time, setTime] = useState('');
+    const [description, setDescription] = useState(meetUp?.description || '');
+    const [meetingType, setMeetingType] = useState(meetUp?.meet_link ? 'online' : 'offline');
+    const [meetLink, setMeetLink] = useState(meetUp?.meet_link);
+    const [location, setLocation] = useState(meetUp?.meet_place);
+    const [time, setTime] = useState(
+        new Date(meetUp?.meet_time || new Date())
+            .toISOString()
+            .slice(0, 16)
+    );
     const org = useUserStore((state) => state.userProfile.college_id || "028b4fb3-6b24-46ac-b26a-092889c5c44f");
-
-
     const navigate = useNavigate();
-
-
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e && e.preventDefault();
 
         // var lcId: string | boolean = '';
         const data = {
+            ...(meetUp && meetUp.id ? { meetId: meetUp.id } : {}),
             title,
             description,
             meetingType,
@@ -40,21 +42,29 @@ const LearningCircleCreateForm = ({ setIsCreateModalOpen, onSuccess }: { setIsCr
             recurrence_type: "weekly",
             recurrence: 1,
         }
-        createLearningCircle(data).then(status => {
-            // setIsLoading(false);
-            if (status) {
-                scheduleMeetup({ circle_id: status as string, title: data.title, description: data.description, meet_place: data.location || "Google Meet", meet_time: data.time, duration: 4, mode: data.location ? "offline" : "online", coord_x: 0, coord_y: 0, is_report_needed: false, report_description: '', meet_link: data.meetLink || "https://meet.google.com" }).then(status => {
-                    // setIsLoading(false);
-                    if (status) {
-                        // onSuccess();
-                        // navigate(
-                        //     `/dashboard/learningcircle/dashboard/${params.circle_id}`
-                        // );
-                    }
-                    onSuccess();
-                });
-            }
-        });
+
+        if (meetUp?.id) {
+            // eslint-disable-next-line no-restricted-globals
+            editScheduleMeetup({ meetId: data.meetId, circle_id: status as string, title: data.title, description: data.description, meet_place: data.location || "Google Meet", meet_time: data.time || '', duration: 4, mode: data.location ? "offline" : "online", coord_x: 0, coord_y: 0, is_report_needed: false, report_description: '', meet_link: data.meetLink || "https://meet.google.com", })
+        }
+        else {
+            createLearningCircle(data).then(status => {
+                // setIsLoading(false);
+                if (status) {
+                    scheduleMeetup({ circle_id: status as string, title: data.title, description: data.description, meet_place: data.location || "Google Meet", meet_time: data.time || '', duration: 4, mode: data.location ? "offline" : "online", coord_x: 0, coord_y: 0, is_report_needed: false, report_description: '', meet_link: data.meetLink || "https://meet.google.com" }).then(status => {
+                        // setIsLoading(false);
+                        if (status) {
+                            // onSuccess();
+                            // navigate(
+                            //     `/dashboard/learningcircle/dashboard/${params.circle_id}`
+                            // );
+                        }
+                        onSuccess();
+                    });
+                }
+            });
+        }
+
         setIsCreateModalOpen(false);
     };
 
@@ -73,7 +83,7 @@ const LearningCircleCreateForm = ({ setIsCreateModalOpen, onSuccess }: { setIsCr
         getOptions().then(setInterestOptions); // Fetch and set the options
     }, []);
 
-
+    console.log(time, 'time')
 
     return (
         <form className={styles.form} onSubmit={handleSubmit}>
@@ -111,8 +121,16 @@ const LearningCircleCreateForm = ({ setIsCreateModalOpen, onSuccess }: { setIsCr
                     options={interestOptions}
                     name="interestGroup"
                     placeholder="Select Interest Group"
+                    value={interestOptions.find((option) => option.value === ig)}
                     onChange={(selectedOption) => setIg(selectedOption?.value || '')}
+                    isDisabled={meetUp?.ig_id ? true : false}
                 />
+                {meetUp?.ig_id && (
+                    <div className="helper-text" style={{ color: "red", marginTop: "4px", fontSize: '0.85rem' }}>
+                        {'Interest Group Cannot be modified'}
+                    </div>
+                )}
+
             </div>
 
             {/* Online/Offline Selection */}
@@ -142,7 +160,7 @@ const LearningCircleCreateForm = ({ setIsCreateModalOpen, onSuccess }: { setIsCr
                         id="meetLink"
                         type="url"
                         placeholder="Enter meeting link"
-                        value={meetLink}
+                        value={meetLink || ''}
                         onChange={(e) => setMeetLink(e.target.value)}
                         className={styles.input}
                         required

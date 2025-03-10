@@ -5,16 +5,7 @@ import debounce from "lodash/debounce";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import CampusCard from "../components/CampusCard";
 import { getCampuses } from "../services/api";
-import AsideDetails from "../../../components/AsideDetails"; // Assuming this is your reusable AsideDetails component
-import * as Dialog from "@radix-ui/react-dialog";
-import { Trophy, Users, Info, Medal, X } from "lucide-react";
-import axios from "axios"; // Switched back to axios for debugging, but keep privateGateway if needed
-import { convertDateToDayAndMonth } from "/src/modules/Dashboard/utils/common";
-import CLIcon from "../assets/images/CampusLeadIcon.svg";
-import CEIcon from "../assets/images/CampusEnablerIcon.png";
-import toast from "react-hot-toast";
-import { BarChart } from "../../CampusStudentList/Components/Graphs";
-import { privateGateway } from "@/MuLearnServices/apiGateways";
+import { Trophy} from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 interface Campus {
@@ -164,6 +155,7 @@ const CampusList: React.FC<{
             ? allCampuses
             : filteredCampuses;
 
+    console.log(displayCampuses);
     return (
         <div>
             <div className={styles.userGrid}>

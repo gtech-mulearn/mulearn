@@ -7,6 +7,7 @@ import SelectTab from "react-select";
 import { useNavigate } from "react-router-dom";
 import {
     createLearningCircle,
+    deleteScheduleMeetup,
     getMeetups,
     scheduleMeetup,
 } from "../../services/LearningCircleAPIs";
@@ -44,6 +45,7 @@ const LearningCircleLanding = () => {
     const handleModalOpen = (event: CircleMeetupInfo) => {
         setSelectedMeetup(event)
         setIsModalOpen(true)
+        console.log(selectedMeetup,'selectedMeetup')
     }
 
     useEffect(() => {
@@ -84,21 +86,39 @@ const LearningCircleLanding = () => {
         setIsCreateModalOpen(false);
     };
 
+    const handleModalClose = () => {
+        setSelectedMeetup(undefined)
+        setIsModalOpen(false)
+    }
+
+    const handleEdit = (meetup: CircleMeetupInfo) => {
+        setIsCreateModalOpen(true);
+      };
+      
+      const handleDelete = (meetupId: string) => {
+        if (window.confirm("Are you sure you want to delete this event?")) {
+          console.log("Deleting event with ID:", meetupId);
+          deleteScheduleMeetup({meetId: meetupId})
+        }
+      };
+
     return (
         <>
             <EventDetailsModal
                 isOpen={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
+                onClose={handleModalClose}
                 meetup={selectedMeetup}
+                onEdit={handleEdit}
+                onDelete={handleDelete}
             />
             <MuModal
                 type="success"
-                onClose={() => setIsCreateModalOpen(false)}
+                onClose={handleModalClose}
                 title="Create Learning Circle"
                 isOpen={isCreateModalOpen}
                 showButton={false}
             >
-                <LearningCircleCreateForm setIsCreateModalOpen={setIsCreateModalOpen} onSuccess={handleUpdateLC} />
+                <LearningCircleCreateForm setIsCreateModalOpen={setIsCreateModalOpen} onSuccess={handleUpdateLC} meetUp={selectedMeetup}/>
             </MuModal>
             {isLoading ? (
                 <div className={styles.loader_container}>
@@ -106,6 +126,12 @@ const LearningCircleLanding = () => {
                 </div>
             ) : (
                 <div className={styles.learningCircleLandingPage}>
+                    <div className={styles.Banner}>
+                        <div className={styles.BannerContent}>
+                            <h1 className={styles.BannerTitle}>Discover Learning Circles</h1>
+                            <p className={styles.BannerSubtitle}>Join circles that share your interests and upgrade your skills.</p>
+                        </div>
+                    </div>
                     <div className={styles.middleContainer}>
                         {/* <SelectTab
                             placeholder={"Select Role"}
@@ -149,22 +175,32 @@ const LearningCircleLanding = () => {
                         </div>
                     ) : (
                         <div className={styles.cardContainer}>
-                            {meetups.map((event, index) => (
-                                <EventCard
-                                    id={event.id}
-                                    title={event.title}
-                                    institution={"abc"}
-                                    setIsModalOpen={handleModalOpen}
-                                    location={event.meet_place}
-                                    date={event.meet_time}
-                                    time={event.meet_time}
-                                    venue={event.meet_place}
-                                    joiningUrl={event.meet_link}
-                                    karmaPoints={event.duration}
-                                    joinedPeople={Number(event.attendee) || 10}
-                                    imageUrl="https://img.freepik.com/free-vector/people-studying-learning-room_74855-6615.jpg?t=st=1738405617~exp=1738409217~hmac=7d528d88304c4f919c3c258289bbce219d623170f0c85eff4b9cf1f348a2c1c4&w=2000"
-                                />
-                            ))}
+                            {meetups.map((event, index) => 
+                            {
+                                return (
+                                    <EventCard
+                                        id={event.id}
+                                        title={event.title}
+                                        institution={"abc"}
+                                        // ig={event.ig_name || ''}
+                                        ig_name={event.ig_name}
+                                        ig_id={event.ig_id}
+                                        description={event.description || ''}
+                                        created_by={event.created_by}
+                                        setIsModalOpen={handleModalOpen}
+                                        location={event.meet_place}
+                                        date={event.meet_time}
+                                        time={event.meet_time}
+                                        venue={event.meet_place}
+                                        joiningUrl={event.meet_link}
+                                        karmaPoints={event.duration}
+                                        joinedPeople={Number(event.attendee) || 10}
+                                        imageUrl="https://img.freepik.com/free-vector/people-studying-learning-room_74855-6615.jpg?t=st=1738405617~exp=1738409217~hmac=7d528d88304c4f919c3c258289bbce219d623170f0c85eff4b9cf1f348a2c1c4&w=2000"
+                                    />
+
+                                )
+                            }
+                            )}
                         </div>
                     )}
                 </div>

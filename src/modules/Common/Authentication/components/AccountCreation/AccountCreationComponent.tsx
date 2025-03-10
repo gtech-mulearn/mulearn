@@ -227,7 +227,7 @@ export default function AccountCreationComponent({
                                         onChange={() => setTncChecked(e => !e)}
                                     />
                                     <p>
-                                        I agree to the{" "}
+                                    I confirm that I am 13 years old or older and agree to the{" "}
                                         <a
                                             href="http://mulearn.org/termsandconditions"
                                             target="_blank"

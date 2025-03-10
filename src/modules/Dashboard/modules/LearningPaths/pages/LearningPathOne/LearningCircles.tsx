@@ -56,6 +56,11 @@ const LearningCircles = () => {
         setIsModalOpen(true)
     }
 
+    const handleModalClose = () => {
+        setSelectedMeetup(undefined)
+        setIsModalOpen(false)
+    }
+
     const handleJoin = () => {
         joinMeetup(selectedMeetup?.id ?? "", meetCode).then(res => {
             setIsModalOpen(false);
@@ -114,7 +119,7 @@ const LearningCircles = () => {
             <MuModal
                 type="success"
                 // onDone={handleSubmit}
-                onClose={() => setIsCreateModalOpen(false)}
+                onClose={handleModalClose}
                 title="Create Learning Circle"
                 isOpen={isCreateModalOpen}
                 showButton={false}

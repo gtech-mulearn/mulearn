@@ -11,6 +11,8 @@ import { IoCheckmarkSharp } from "react-icons/io5";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { onboardingRoutes } from "@/MuLearnServices/urls";
 import { useNavigate } from "react-router-dom";
+import mu from "/src/modules/Common/Authentication/assets/µLearn.png";
+
 
 // Define types for interests and endgoals
 type Pathway = {
@@ -178,7 +180,7 @@ export default function PathFinder() {
     <OnboardingTemplate>
       <div className={styles.popUp}>
         <div className={styles.box}>
-          <img src="/src/modules/Common/Authentication/assets/µLearn.png" alt="µLearn" />
+          <img src={mu} alt="mulearn logo" className={styles.mu} />
           <h1>{stepTwo ? "What do you expect by MuLearning" : "Based on Your Questionnaire Responses"}</h1>
           <p className={styles.subText}>
             {stepTwo

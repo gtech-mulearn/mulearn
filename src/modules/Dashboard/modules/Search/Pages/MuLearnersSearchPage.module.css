@@ -112,6 +112,11 @@
   height: 800px;
 }
 
+.BannerDisclaimer{
+  color: #4B5563;
+  font-size: 0.85rem;
+}
+
 .profileContainer {
   background: white;
   height: 100%;

@@ -164,7 +164,7 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   border-left: 4px solid #456ff6;
-  width: 22%;
+  width: 100%;
   max-width: 100%;
   overflow-x: hidden;
 }

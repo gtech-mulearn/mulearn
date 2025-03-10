@@ -62,7 +62,7 @@ const ConnectDiscord = () => {
                         <div className={styles.connectDiscord}>
                             <div className={styles.connect_discord_container}>
                                 <div className={styles.content}>
-                                    <h1>Join Discord using your µid</h1>
+                                    <h1>Join Community using your µid</h1>
                                     <p className={styles.content_tagline}>
                                         To join our discord server you need to
                                         connect your account with discord.
@@ -93,7 +93,7 @@ const ConnectDiscord = () => {
                                         >
                                             <PowerfulButton>
                                                 <BsDiscord />
-                                                Join Discord
+                                                Join Community
                                             </PowerfulButton>
                                         </a>
                                         {/* <a

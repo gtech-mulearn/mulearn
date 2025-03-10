@@ -32,8 +32,9 @@ h1 {
   font-weight: 600;
 }
 
-img {
+.mu {
   margin-bottom: 20px;
+  max-width: 150px;
 }
 
 .subText {
@@ -71,7 +72,7 @@ img {
 }
 
 .itemsContainer .itemsCard.checked {
-  border: 2px solid #456ff6; /* Moved .checked inside .itemsCard */
+  border: 2px solid #456ff6; 
 }
 
 .itemsContainer .itemsCard .infoButton {

@@ -405,28 +405,28 @@ function App() {
                 {
                     path: "learning-paths/:id",
                     element: (
-                        <LearningPathOne/>
+                        <LearningPathOne />
                     )
                 },
                 {
                     path: "learningcircle",
                     element: <LearningCircleLanding />
                 },
-                {path: "search", element: <SearchMain />},
-                { path: "mulearners", element: <MuLearnersSearchPage/>},
-                { path: "mentors", element: <MentorSearchPage/> },
-                {path: "campus", element: <CampusSearchPage/>},
-                {path: "campus/:org_id", element: <CampusDetails/>},
+                { path: "search", element: <SearchMain /> },
+                { path: "mulearners", element: <MuLearnersSearchPage /> },
+                { path: "mentors", element: <MentorSearchPage /> },
+                { path: "campus", element: <CampusSearchPage /> },
+                { path: "campus/:org_id", element: <CampusDetails /> },
                 { path: "interestgroups", element: <InterestGroupsPage /> },
                 { path: "interestgroups/:id", element: <InterestGroupOne /> },
                 // {path: "interestgroups/:id/learning-path", element: <LearningPathDetailPage />},
                 { path: "special-events", element: <SpecialEvents /> },
-                {path: "leaderboard", element: <MuLeaderboardPage />},
+                { path: "leaderboard", element: <MuLeaderboardPage /> },
                 { path: "bootcamps", element: <ComingSoonPage /> },
                 { path: "learningCircles", element: <ComingSoonPage /> },
                 { path: "courses", element: <CoursesMainPage /> },
 
-                {path: "map", element: <Mappage />},
+                { path: "map", element: <Mappage /> },
 
             ]
         },
@@ -438,9 +438,9 @@ function App() {
                     path: "/dashboard",
                     element: <DashboardRootLayout />,
                     children: [
-                        { path: "home", element: <Dashboardpage/> },
-                        { path: "learning-path", element: <LearningPathPage/> },
-                        { path: "learning-path/:id", element: <LearningPathPage/> },
+                        { path: "home", element: <Dashboardpage /> },
+                        { path: "mujourney", element: <LearningPathPage /> },
+                        { path: "learning-path/:id", element: <LearningPathPage /> },
                         { path: "profile", element: <Profile /> },
                         { path: "muverse", element: <ComingSoonPage /> },
                         { path: "interestgroups", element: <ComingSoonPage /> },
@@ -975,7 +975,8 @@ function App() {
         // },
         {
             path: "/profile/:id",
-            element: <Profile />
+            element: <DashboardRootLayout />,
+            children: [{ index: true, element: <Profile /> }]
         },
         {
             path: "/learning-circle",

@@ -243,7 +243,7 @@ const DashboardPage = () => {
                 </button>
                 <button
                   className={styles.button2}
-                  onClick={() => window.open("https://api.whatsapp.com/send?phone=+919188684115&text=Hello,%20I%20want%20to%20report%20a%20bug.", "_blank")}
+                  onClick={() => window.open("https://app.formbricks.com/s/cm7ztbf2d0000l70365noohib", "_blank")}
                   aria-label="Report Issues"
                 >
                   Report Issues

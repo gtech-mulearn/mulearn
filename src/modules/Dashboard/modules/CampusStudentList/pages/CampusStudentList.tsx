@@ -103,36 +103,36 @@ const CampusStudentList = (props: Props) => {
         toast.error(err);
     };
 
-    // const columnOrder: {
-    //     isSortable: boolean;
-    //     column: string;
-    //     Label: string;
-    //     wrap?: (data: string | ReactElement, id: string) => ReactJSXElement;
-    // }[] = [
-    //     { column: "fullname", Label: "Name", isSortable: true },
-    //     { column: "karma", Label: "Karma", isSortable: true },
-    //     { column: "level", Label: "Level", isSortable: true },
-    //     { column: "rank", Label: "Rank", isSortable: false },
-    //     { column: "muid", Label: "MuId", isSortable: true },
-    //     { column: "email", Label: "Email", isSortable: true },
-    //     { column: "mobile", Label: "Mobile", isSortable: true },
-    //     { column: "join_date", Label: "Join Date", isSortable: true },
-    //     {
-    //         column: "is_alumni",
-    //         Label: "Alumni",
-    //         isSortable: true,
-    //         wrap: (data, id) => {
-    //             return (
-    //                 <AlumniCheckBox
-    //                     checked={data === "true" ? true : false}
-    //                     id={id}
-    //                     setCurrBox={setCurrBox}
-    //                     setCurrModal={setCurrModal}
-    //                 />
-    //             );
-    //         },
-    //     },
-    // ];
+    const columnOrder: {
+        isSortable: boolean;
+        column: string;
+        Label: string;
+        wrap?: (data: string | ReactElement, id: string) => ReactJSXElement;
+    }[] = [
+        { column: "muid", Label: "MuId", isSortable: true },
+        // { column: "fullname", Label: "Name", isSortable: true },
+        { column: "karma", Label: "Karma", isSortable: true },
+        { column: "level", Label: "Level", isSortable: true },
+        { column: "rank", Label: "Rank", isSortable: false },
+        { column: "email", Label: "Email", isSortable: true },
+        // { column: "mobile", Label: "Mobile", isSortable: true },
+        { column: "join_date", Label: "Join Date", isSortable: true },
+        {
+            column: "is_alumni",
+            Label: "Alumni",
+            isSortable: true,
+            wrap: (data, id) => {
+                return (
+                    <AlumniCheckBox
+                        checked={data === "true" ? true : false}
+                        id={id}
+                        setCurrBox={setCurrBox}
+                        setCurrModal={setCurrModal}
+                    />
+                );
+            },
+        },
+    ];
 
     const firstFetch = useRef(true);
     const handleNextClick = () => {
@@ -438,16 +438,16 @@ const CampusStudentList = (props: Props) => {
                                     </div>
                                 </div>
 
-                                {/* <div className={styles.btnContainer}>
+                                <div className={styles.btnContainer}>
                                     <PowerfulButton onClick={() => {}}>
                                         <AiOutlineDownload />
                                         <a href={CSVBlob ? URL.createObjectURL(CSVBlob) : ""} download>
                                             Download
                                         </a>
                                     </PowerfulButton>
-                                </div> */}
+                                </div>
 
-                                {/* {studentData && (
+                                {studentData && (
                                     <>
                                         <TableTop
                                             onSearchText={handleSearch}
@@ -475,7 +475,7 @@ const CampusStudentList = (props: Props) => {
                                             />
                                         </Table>
                                     </>
-                                )} */}
+                                )}
                             </div>
                         </div>
                     )}
@@ -485,27 +485,27 @@ const CampusStudentList = (props: Props) => {
     );
 };
 
-// type checkbox_T = {
-//     checked: boolean;
-//     id: string;
-//     setCurrModal: (isOpen: boolean) => void;
-//     setCurrBox: (data: { id: string; value: boolean }) => void;
-// };
+type checkbox_T = {
+    checked: boolean;
+    id: string;
+    setCurrModal: (isOpen: boolean) => void;
+    setCurrBox: (data: { id: string; value: boolean }) => void;
+};
 
-// function AlumniCheckBox(props: checkbox_T) {
-//     const handleChange = async (e: ChangeEvent<HTMLInputElement>) => {
-//         props.setCurrBox({ id: props.id, value: e.target.checked });
-//         props.setCurrModal(true);
-//     };
+function AlumniCheckBox(props: checkbox_T) {
+    const handleChange = async (e: ChangeEvent<HTMLInputElement>) => {
+        props.setCurrBox({ id: props.id, value: e.target.checked });
+        props.setCurrModal(true);
+    };
 
-//     return (
-//         <input
-//             type="checkbox"
-//             checked={props.checked}
-//             className={styles.checkbox}
-//             onChange={handleChange}
-//         />
-//     );
-// }
+    return (
+        <input
+            type="checkbox"
+            checked={props.checked}
+            className={styles.checkbox}
+            onChange={handleChange}
+        />
+    );
+}
 
 export default CampusStudentList;

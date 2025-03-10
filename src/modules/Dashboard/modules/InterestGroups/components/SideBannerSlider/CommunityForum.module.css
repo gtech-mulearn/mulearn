@@ -11,15 +11,16 @@
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 5px;
+  transition: transform 0.3s ease-in-out; /* Smooth transition */
+  cursor: pointer;
 }
-  
-  .swiperSlide {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .sliderImage:hover {
-    transform: scale(1.05);
-  }
-  
+
+.swiperSlide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sliderImage:hover {
+  transform: scale(1.05);
+}
