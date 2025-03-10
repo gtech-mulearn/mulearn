@@ -82,11 +82,12 @@
 }
 
 .icon {
-    color: #3182ce;
+    color: #007bff;
+    min-width: 16px;
 }
 
 .readMoreButton {
-    background: linear-gradient(135deg, #3182ce 0%, #2b6cb0 100%);
+    background: #007bff;
     color: white;
     border: none;
     border-radius: 8px;
@@ -103,7 +104,8 @@
 }
 
 .readMoreButton:hover {
-    box-shadow: 0 6px 15px rgba(49, 130, 206, 0.4);
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.4);
+    background: #0069d9;
 }
 
 .statusBadge {
@@ -163,5 +165,9 @@
     .statusBadge {
         font-size: 0.7rem;
         padding: 0.2rem 0.6rem;
+    }
+
+    .detailItem {
+        font-size: 0.8rem;
     }
 }

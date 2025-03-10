@@ -208,31 +208,30 @@ const SpecialEventCardLanding: React.FC<{ specialevent: SpecialEvent }> = ({
                                         <HStack>
                                             <Icon
                                                 as={FiCalendar}
-                                                color="blue.500"
+                                                color="#007bff"
                                             />
                                             <Text fontWeight="medium">
                                                 {specialevent.date}
                                             </Text>
                                         </HStack>
                                     )}
-                                    {specialevent.time && (
-                                        <HStack>
-                                            <Icon
-                                                as={FiClock}
-                                                color="blue.500"
-                                            />
-                                            <Text>{specialevent.time}</Text>
-                                        </HStack>
-                                    )}
-                                    {specialevent.location && (
-                                        <HStack>
-                                            <Icon
-                                                as={FaMapMarkerAlt}
-                                                color="blue.500"
-                                            />
-                                            <Text>{specialevent.location}</Text>
-                                        </HStack>
-                                    )}
+                                    {/* Always show time */}
+                                    <HStack>
+                                        <Icon as={FiClock} color="#007bff" />
+                                        <Text>
+                                            {specialevent.time || "10:00 AM"}
+                                        </Text>
+                                    </HStack>
+                                    {/* Always show location */}
+                                    <HStack>
+                                        <Icon
+                                            as={FaMapMarkerAlt}
+                                            color="#007bff"
+                                        />
+                                        <Text>
+                                            {specialevent.location || "mulearn"}
+                                        </Text>
+                                    </HStack>
                                 </VStack>
                             </Box>
 
@@ -319,17 +318,19 @@ const SpecialEventCardLanding: React.FC<{ specialevent: SpecialEvent }> = ({
                         borderColor="gray.200"
                     >
                         <Button
-                            colorScheme="blue"
+                            bg="#007bff"
+                            color="white"
+                            _hover={{
+                                bg: "#0069d9",
+                                transform: "translateY(-2px)",
+                                boxShadow: "md"
+                            }}
                             width="full"
                             borderRadius="md"
                             onClick={() =>
                                 window.open(specialevent.link, "_blank")
                             }
                             leftIcon={<FiExternalLink />}
-                            _hover={{
-                                transform: "translateY(-2px)",
-                                boxShadow: "md"
-                            }}
                             transition="all 0.2s"
                         >
                             Register for Event
