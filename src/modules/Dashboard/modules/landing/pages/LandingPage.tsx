@@ -252,7 +252,7 @@ const MuLearnLanding = () => {
             </button>
             <button
               className={styles.downloadBtn}
-              onClick={() => navigate("/dashboard/learning-paths")}
+              onClick={() => navigate("/dashboard/mujourney")}
             >
               Explore Learning Paths
             </button>
@@ -319,18 +319,6 @@ const MuLearnLanding = () => {
               style={{ backgroundColor: feature.bgColor }}
               variants={fadeInUp}
               custom={i}
-              onClick={() => {
-                if (feature.title === "Interest Groups") {
-                  navigate("/dashboard/interestgroups");
-                } else if (feature.title === "Roadmaps") {
-                  navigate("/dashboard/mujourney");
-                } else if (feature.title === "Mentors") {
-                  navigate("/dashboard/search?activetab=mentors");
-                }
-                 else {
-                  navigate("/dashboard/learning-paths");
-                }
-              }}
             >
               <div>
                 <h3>{feature.title}</h3>
