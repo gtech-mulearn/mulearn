@@ -52,12 +52,12 @@ const DashboardRootLayout = (props: { component?: any }) => {
             dynamicType: [managementTypes.HACKATHON],
             icon: <i className="fi fi-sr-head-side-thinking"></i>
         },
-        {
-            url: "/dashboard/learning-circle",
-            title: "Learning Circle",
-            hasView: true,
-            icon: <i className="fi fi-sr-books"></i>
-        },
+        // {
+        //     url: "/dashboard/learning-circle",
+        //     title: "Learning Circle",
+        //     hasView: true,
+        //     icon: <i className="fi fi-sr-books"></i>
+        // },
         {
             url: "/dashboard/wadhwani",
             title: "Wadhwani",
