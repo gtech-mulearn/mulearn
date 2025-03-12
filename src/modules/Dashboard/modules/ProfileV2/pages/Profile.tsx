@@ -288,7 +288,7 @@ const ProfileV2 = ({ id: propId }: {id:string}) => {
                 >
                     Mu Voyage
                 </li>{" "}
-                {/* <li
+                <li
                     onClick={() => setProfileList("projects")}
                     className={
                         profileList === "projects"
@@ -297,7 +297,7 @@ const ProfileV2 = ({ id: propId }: {id:string}) => {
                     }
                 >
                     Projects
-                </li> */}
+                </li>
             </div>
 
             {profileList === "basic-details" ? (

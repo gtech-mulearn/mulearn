@@ -192,7 +192,7 @@
     }
 }
 
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1240px) {
     .roles_karma_dist_container {
         gap: 30px;
         background: transparent;

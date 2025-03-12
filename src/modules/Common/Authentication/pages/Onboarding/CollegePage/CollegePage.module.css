@@ -8,22 +8,6 @@
 }
 .wrapper form {
     width: 20rem;
-    /* background: rgba(238, 242, 255, 1);
-    border-radius: 10px;
-    padding: 20px; */
-}
-.input_field {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    /* background: #eaeaea; */
-    background: #dddddd30;
-    font-size: 14px;
-    border-radius: 10px;
-    margin-top: 20px;
-    color: rgb(86, 86, 255);
-    font-weight: 600;
 }
 .inputBox {
     width: 100%;
@@ -48,8 +32,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
-    gap: 10px;
 }
 .submit button {
     width: 100%;
@@ -61,12 +43,4 @@
 .errorsSpan {
     color: red;
     font-size: small;
-}
-
-.skipButton {
-    color: var(--blue) !important;
-
-    &:hover {
-        color: #fff !important;
-    }
 }

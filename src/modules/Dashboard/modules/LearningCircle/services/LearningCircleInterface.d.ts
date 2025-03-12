@@ -45,7 +45,6 @@ interface LcDashboardTempData {
     isTeam: boolean;
     isSchedule: boolean;
     reRender: boolean;
-    isCreateMeeting: boolean;
 }
 
 interface LcMeetSchedule {
@@ -53,47 +52,7 @@ interface LcMeetSchedule {
     meet_place: string;
     day: string;
 }
-type LcTask = {
-    id: string | undefined;
-    title: string;
-    is_completed: boolean;
-    is_image: boolean;
-    image_url: string | null;
-    proof_url: string | null;
-};
-interface LcMeetup {
-    title: string;
-    location: string;
-    meet_time: string;
-    meet_place: string;
-    agenda: string;
-    need_pre_requirements: boolean;
-    pre_requirements: string | null;
-    is_public: boolean;
-    limit_attendees: boolean;
-    max_attendees: number;
-    tasks: LcTask[];
-    is_online: boolean;
-}
 
-type LcMeetupInfo = LcMeetup & {
-    id: string;
-    is_started: boolean;
-    is_report_submitted: boolean;
-    meet_code: string | null;
-    image: string | null;
-};
-
-type LcMeetupDetailInfo = LcMeetupInfo & {
-    tasks: LcTask[];
-    is_interested: boolean;
-    joined_at: string | null;
-    total_interested: number;
-    total_joined: number;
-    lc_members: number;
-    is_lc_member: boolean;
-    is_attendee_report_submitted: boolean;
-};
 interface LcNote {
     note: string;
     id: string | undefined;
@@ -103,6 +62,13 @@ interface ChecklistItem {
     id: number;
     text: string;
     isChecked: boolean;
+}
+
+interface LcReport {
+    agenda: string;
+    attendees: string[];
+    day: string;
+    meet_time: string;
 }
 
 interface LcPastReports {
@@ -125,10 +91,6 @@ interface LcHistory {
 }
 
 interface LcAttendees {
-    attendee_id: string;
     fullname: string;
     profile_pic: string;
-    title: string;
-    report: string;
-    proof_of_work: LcTask[];
 }

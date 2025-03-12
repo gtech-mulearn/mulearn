@@ -1,15 +1,9 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import styles from "../LcDashboard.module.css";
 import UploadImage from "../../../assets/images/uploadIcon.svg";
-import {
-    getMeetupAttendees,
-    reportMeeting
-} from "../../../services/LearningCircleAPIs";
+import { LcAttendees } from "./LcAttendees";
+import { reportMeeting } from "../../../services/LearningCircleAPIs";
 import toast from "react-hot-toast";
-import StarRatings from "react-star-ratings";
-import { BiDownArrow } from "react-icons/bi";
-import { BsEye } from "react-icons/bs";
-import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 
 type Props = {
     setTemp: Dispatch<SetStateAction<LcDashboardTempData>>;
@@ -18,58 +12,94 @@ type Props = {
 };
 
 const LcReport = (props: Props) => {
-    const [reportText, setReportText] = useState<string>("");
+    const [formData, setFormData] = useState<LcReport>({
+        day: "",
+        meet_time: "",
+        agenda: "",
+        attendees: []
+    });
     const [uploadedImage, setUploadedImage] = useState<File | null>(null);
-    const [attendees, setAttendees] = useState<LcAttendees[]>([]);
-    const [attendeeRating, setAttendeeRating] = useState<{
-        [user_id: string]: number;
-    }>({});
-    const [attendeeDetailsExpanded, setAttendeeDetailsExpanded] = useState<{
-        [user_id: string]: boolean;
-    }>({});
+
+    useEffect(() => {
+        const now = new Date();
+        const hours = now.getHours().toString().padStart(2, "0");
+        const minutes = now.getMinutes().toString().padStart(2, "0");
+        const year = now.getFullYear().toString();
+        const month = (now.getMonth() + 1).toString().padStart(2, "0");
+        const day = now.getDate().toString().padStart(2, "0");
+        setFormData(prevState => ({
+            ...prevState,
+            day: `${year}-${month}-${day}`,
+            meet_time: `${hours}:${minutes}:00`
+        }));
+    }, []);
+
     const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files && event.target.files[0];
-
         if (file) {
             setUploadedImage(file);
         }
     };
-    useEffect(() => {
-        getMeetupAttendees(props.id ?? "")
-            .then(res => {
-                setAttendees(res);
-            })
-            .catch(err => {
-                toast.error("Failed to fetch attendees");
-            });
-    }, []);
+
+    const handleMemberClick = (memberId: string) => {
+        setFormData(prevState => {
+            // Check if the attendee is already in the list
+            const isAlreadySelected = prevState.attendees.includes(memberId);
+
+            // If already selected, remove them; otherwise, add them
+            const updatedAttendees = isAlreadySelected
+                ? prevState.attendees.filter(id => id !== memberId) // Remove the attendee
+                : [...prevState.attendees, memberId]; // Add the attendee
+
+            return {
+                ...prevState,
+                attendees: updatedAttendees
+            };
+        });
+    };
+
+    const validateForm = (state: LcReport) => {
+        let errors: { [key: string]: string } = {};
+        if (!state.day) {
+            errors.day = "Date is required";
+        }
+        if (!state.meet_time) {
+            errors.time = "Time is required";
+        }
+        if (!state.agenda.trim()) {
+            errors.agenda = "Agenda is required";
+        }
+        if (state.attendees.length === 0) {
+            errors.attendees = "At least one attendee is required";
+        }
+        if (!uploadedImage) {
+            errors.image = "Image is required";
+        } else {
+            const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
+            if (!allowedTypes.includes(uploadedImage.type)) {
+                errors.image =
+                    "Invalid image type. Please upload a JPEG, PNG, or GIF.";
+            }
+        }
+        {
+            Object.keys(errors).length > 0
+                ? toast.error(Object.values(errors).join("\n"))
+                : null;
+        }
+        return Object.keys(errors).length > 0 ? false : true;
+    };
 
     const handleSubmit = (event: any) => {
         event.preventDefault();
-        if (!uploadedImage) {
-            toast.error("Please upload an image");
-            return;
-        }
-        if (reportText.length > 0) {
+        if (validateForm(formData)) {
             const data = new FormData();
-            data.append("report_text", reportText);
+            data.append("agenda", formData.agenda);
+            data.append("attendees", formData.attendees.join(","));
+            data.append("time", formData.meet_time);
             if (uploadedImage) {
                 data.append("images", uploadedImage);
             }
-            var ratings = {};
-            for (var attendee of attendees) {
-                if (!attendeeRating[attendee.attendee_id]) {
-                    toast.error("Please rate all attendees");
-                    return;
-                } else {
-                    ratings = {
-                        ...ratings,
-                        [attendee.attendee_id]:
-                            attendeeRating[attendee.attendee_id]
-                    };
-                }
-            }
-            data.append("ratings", JSON.stringify(ratings));
+
             toast.promise(reportMeeting(props.id, data), {
                 loading: "Reporting...",
                 success: response => {
@@ -92,29 +122,13 @@ const LcReport = (props: Props) => {
                                 }
                             </b>
                         );
-                    return error?.response?.data?.message ? (
-                        <b>
-                            {
-                                (error?.response?.data?.message?.general ?? [
-                                    "Failed to report meeting"
-                                ])[0]
-                            }
-                        </b>
-                    ) : (
-                        <b>Failed to report meeting!</b>
-                    );
+
+                    return <b>Failed to report meeting!</b>;
                 }
             });
-        } else {
-            toast.error("Please fill the notes");
         }
     };
-    const changeRating = (attendee_id: string, newRating: number): void => {
-        setAttendeeRating(prevState => ({
-            ...prevState,
-            [attendee_id]: newRating
-        }));
-    };
+
     const handleRemoveImage = () => {
         setUploadedImage(null);
     };
@@ -122,116 +136,72 @@ const LcReport = (props: Props) => {
     return (
         <div className={styles.ReportWrapper}>
             <div className={styles.DetailSection}>
+                <div className={styles.Sectionone}>
+                    <div>
+                        <label>Date:</label>
+                        <input
+                            type="date"
+                            disabled
+                            className={styles.datePicker}
+                            value={formData.day}
+                            onChange={e =>
+                                setFormData(prevState => ({
+                                    ...prevState,
+                                    day: e.target.value
+                                }))
+                            }
+                            style={{
+                                backgroundColor: "#f0f0f0",
+                                color: "lightgrey"
+                            }}
+                        />
+                    </div>
+                    <div>
+                        <label>Time:</label>
+                        <input
+                            type="time"
+                            value={formData.meet_time}
+                            onChange={e =>
+                                setFormData(prevState => ({
+                                    ...prevState,
+                                    meet_time: e.target.value + ":00"
+                                }))
+                            }
+                        />
+                    </div>
+                </div>
                 <div className={styles.SectionTwo}>
-                    <p>Brief description *</p>
+                    <p>Agenda</p>
                     <textarea
-                        placeholder="Type here..."
-                        value={reportText}
-                        onChange={e => setReportText(e.target.value)}
+                        placeholder="Type your agenda here..."
+                        value={formData.agenda}
+                        onChange={e =>
+                            setFormData(prevState => ({
+                                ...prevState,
+                                agenda: e.target.value
+                            }))
+                        }
                     ></textarea>
                 </div>
                 <div className={styles.SectionThree}>
-                    <p>Attendees List</p>
-                    <div className={styles.attendees}>
-                        {attendees.map(attendee => (
+                    <p>Attendees</p>
+                    <div>
+                        {props.lc?.members.map(member => (
                             <div
-                                className={styles.attendee}
-                                key={attendee.attendee_id}
-                                onClick={() => {
-                                    setAttendeeDetailsExpanded(prevState => ({
-                                        ...prevState,
-                                        [attendee.attendee_id]:
-                                            !prevState?.[attendee.attendee_id]
-                                    }));
-                                }}
+                                key={member.id}
+                                className={styles.participantsContainer}
+                                onClick={() => handleMemberClick(member.id)}
                             >
-                                <div className={styles.ratingHeading}>
-                                    <span className={styles.fullname}>
-                                        <BiDownArrow /> {attendee.fullname}
-                                    </span>
-                                    <div className={styles.rating}>
-                                        <StarRatings
-                                            rating={
-                                                attendeeRating[
-                                                    attendee.attendee_id
-                                                ]
-                                            }
-                                            starRatedColor="gold"
-                                            changeRating={rating => {
-                                                changeRating(
-                                                    attendee.attendee_id,
-                                                    rating
-                                                );
-                                            }}
-                                            numberOfStars={5}
-                                            name="rating"
-                                            starDimension="15px"
-                                            starSpacing="1px"
-                                        />
-                                    </div>
-                                </div>
-                                <div
-                                    className={
-                                        styles.proof +
-                                        " " +
-                                        (attendeeDetailsExpanded[
-                                            attendee.attendee_id ?? ""
-                                        ]
-                                            ? styles.active
-                                            : "")
-                                    }
-                                >
-                                    <h4>Report</h4>
-                                    <p className={styles.reportText}>
-                                        {attendee.report}
-                                    </p>
-                                    <h4>Tasks Completed</h4>
-                                    {attendee.proof_of_work.map(
-                                        (task, index) => (
-                                            <div
-                                                key={index}
-                                                className={styles.task}
-                                            >
-                                                <div
-                                                    className={styles.taskTitle}
-                                                >
-                                                    <span>{index + 1} | </span>
-                                                    {task.title}
-                                                </div>
-                                                <div className={styles.action}>
-                                                    <PowerfulButton
-                                                        style={{
-                                                            fontSize: "15px",
-                                                            padding: "0.4rem"
-                                                        }}
-                                                        onClick={() => {
-                                                            if (task.is_image) {
-                                                                window.open(
-                                                                    import.meta
-                                                                        .env
-                                                                        .VITE_BACKEND_URL +
-                                                                        (task.image_url ??
-                                                                            "404"),
-                                                                    "_blank"
-                                                                );
-                                                            } else {
-                                                                window.open(
-                                                                    task.proof_url ??
-                                                                        "",
-                                                                    "_blank"
-                                                                );
-                                                            }
-                                                        }}
-                                                    >
-                                                        <BsEye />
-                                                    </PowerfulButton>
-                                                </div>
-                                            </div>
-                                        )
+                                <LcAttendees
+                                    name={member.username}
+                                    image={member.profile_pic}
+                                    isSelected={formData.attendees.includes(
+                                        member.id
                                     )}
-                                </div>
+                                />
                             </div>
                         ))}
+                        {/* <button>+</button> */}
                     </div>
                 </div>
             </div>

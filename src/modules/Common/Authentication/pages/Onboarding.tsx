@@ -433,6 +433,7 @@ const Onboarding = (props: Props) => {
                 setDefaultCommunity([
                     { value: foundCommunity.id, label: foundCommunity.title }
                 ]);
+                console.log(defaultCommunity);
             }
         }
     }, [communityAPI]);
@@ -1064,6 +1065,9 @@ const Onboarding = (props: Props) => {
                                                             : null
                                                     }
                                                     onChange={OnChangeValue => {
+                                                        console.log(
+                                                            OnChangeValue
+                                                        );
                                                         formik.setFieldValue(
                                                             "community",
                                                             OnChangeValue.map(

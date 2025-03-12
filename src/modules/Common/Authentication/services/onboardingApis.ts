@@ -4,8 +4,6 @@ import { NavigateFunction } from "react-router-dom";
 import { useFormik } from "formik";
 import { getInfo } from "../../../Dashboard/modules/ConnectDiscord/services/apis";
 import { Dispatch, SetStateAction } from "react";
-import { privateGateway } from "@/MuLearnServices/apiGateways";
-import toast from "react-hot-toast";
 
 // Define the type of MyValues
 type NN = { name: string; id: string };
@@ -236,57 +234,6 @@ export const getCommunities = ({
     setIsLoading && setIsLoading(false);
 };
 
-export const createNewOrganization = async ({
-    setIsLoading,
-    org_data
-}: {
-    setIsLoading: Dispatch<SetStateAction<boolean>>;
-    org_data: Object;
-}) => {
-    try {
-        setIsLoading(true);
-        const res = await privateGateway.post(
-            "/api/v1/register/organization/create/",
-            org_data
-        );
-        if (res.status == 200 && !res.data.hasError) {
-            toast.success(res.data.message.general[0]);
-            return true;
-        } else {
-            toast.error("Organization selection failed.");
-        }
-        setIsLoading(false);
-    } catch (err: any) {
-        toast.error("Unable to select organization.");
-    }
-    return false;
-};
-export const selectOrganization = async ({
-    setIsLoading,
-    userData
-}: {
-    setIsLoading: Dispatch<SetStateAction<boolean>>;
-    userData: Object;
-}) => {
-    try {
-        setIsLoading(true);
-        const res = await privateGateway.post(
-            "/api/v1/dashboard/user/organization/",
-            userData
-        );
-        if (res.status == 200 && !res.data.hasError) {
-            toast.success(res.data.message.general[0]);
-            return true;
-        } else {
-            toast.error("Organization selection failed.");
-        }
-        setIsLoading(false);
-    } catch (err: any) {
-        toast.error("Unable to select organization.");
-    }
-    return false;
-};
-
 // POST request for registration
 export const registerUser = (
     setFormSuccess: FormSuccess,
@@ -312,8 +259,8 @@ export const registerUser = (
                 "refreshToken",
                 response.data.response.refreshToken
             );
-            getInfo(navigate, () => {
-                navigate("/dashboard/home");
+            getInfo(() => {
+                navigate("/dashboard/connect-discord");
                 setShowSubmitLoader(false);
             });
         })

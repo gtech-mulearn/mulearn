@@ -242,7 +242,7 @@ const LandingPage = () => {
                     </div>
                     <button
                         onClick={() => {
-                            navigate("/dashboard/home");
+                            navigate("/dashboard/connect-discord");
                         }}
                     >
                         Join Us

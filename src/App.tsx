@@ -6,6 +6,10 @@ import {
     Navigate
 } from "react-router-dom";
 import AuthRoutes from "./components/AuthRoutes";
+import Onboarding from "./modules/Common/Authentication/pages/Onboarding";
+import Login from "./modules/Common/Authentication/pages/Login";
+import ForgotPassword from "./modules/Common/Authentication/pages/ForgotPassword";
+
 import PrivateRoutes from "./components/PrivateRoutes";
 import DashboardRootLayout from "./modules/Dashboard/layouts/DashboardRootLayout";
 import NotFound from "./components/NotFound";
@@ -17,8 +21,10 @@ import { CampusStudentList, ConnectDiscord } from "./modules/Dashboard/modules";
 
 import LandingPage from "./modules/Public/LearningCircles/pages/LandingPage";
 import ProfileV2 from "./modules/Dashboard/modules/ProfileV2/pages/Profile";
+import AccountCreation from "./modules/Common/Authentication/pages/Onboarding/AccountCreation/AccountCreation";
 import Rolepage from "./modules/Common/Authentication/pages/Onboarding/RolePage/RolePage";
 import CollegePage from "./modules/Common/Authentication/pages/Onboarding/CollegePage/CollegePage";
+import CompanyPage from "./modules/Common/Authentication/pages/Onboarding/CompanyPage/CompanyPage";
 import SignIn from "./modules/Common/Authentication/pages/Onboarding/SignIn/SignIn";
 
 import ErrorLog from "./modules/Dashboard/modules/ErrorLog/ErrorLog";
@@ -40,67 +46,6 @@ import Analytics from "./modules/Dashboard/modules/UrlShortener/Pages/Analytics"
 import Donation from "./modules/Public/Donation/Donation";
 import Refund from "./modules/Public/Donation/pages/Refund";
 import DonationSuccess from "./modules/Public/Donation/pages/DonationSuccess";
-import OpenGrad from "./modules/Dashboard/modules/OpenGrad";
-import LcMeetupIfo from "./modules/Dashboard/modules/LearningCircle/pages/Meetup/LcMeetup";
-import OrganizationSetting from "./modules/Dashboard/modules/Settings/pages/Organization/Organization";
-import SettingsHome from "./modules/Dashboard/modules/Settings/pages/Settings/SettingsHome";
-import LcReportAttendee from "./modules/Dashboard/modules/LearningCircle/pages/LcDashboard/components/LcAttendeeReport";
-import LcAdmin from "./modules/Dashboard/modules/LearningCircle/pages/LcAdmin/LcAdmin";
-import VerifyOrganizations from "./modules/Dashboard/modules/VerifyOrganizations/VerifyOrganizations";
-import CreateLC from "./modules/Dashboard/modules/LearningCircleV2/pages/CreateLC/CreateLC";
-import LearningCircleLanding from "./modules/Dashboard/modules/LearningCircleV2/pages/landing/LearningCircleLanding";
-import CreateLCMeetup from "./modules/Dashboard/modules/LearningCircleV2/pages/CreateLCMeetup/CreateLCMeetup";
-import DashboardLC from "./modules/Dashboard/modules/LearningCircleV2/pages/dashboard/DashboardLC";
-import YourLC from "./modules/Dashboard/modules/LearningCircleV2/pages/YourLC/YourLC";
-import MoreInfoLC from "./modules/Dashboard/modules/LearningCircleV2/pages/moreInfoLC/MoreInfoLC";
-import AttendeeReport from "./modules/Dashboard/modules/LearningCircleV2/pages/AttendeeReport/AttendeeReport";
-import LCReport from "./modules/Dashboard/modules/LearningCircleV2/pages/LCReport/LCReport";
-import UserInterest from "./modules/Common/Authentication/pages/Onboarding/UserInterest/UserInterest";
-import PathFinder from "./modules/Common/Authentication/pages/Onboarding/PathFinder/PathFinder";
-import RegisterPage from "./modules/Common/Authentication/pages/Onboarding/Register/Register";
-import LearningPaths from "./modules/Dashboard/modules/LearningPaths/pages/LearningPaths";
-import LearningPathOne from "./modules/Dashboard/modules/LearningPaths/pages/LearningPathOne/LearningPathOne";
-import ComingSoonPage from "./modules/Common/Authentication/pages/ComingSoon";
-import MuLearnLanding from "./modules/Dashboard/modules/landing/pages/LandingPage";
-import CoursesMainPage from "./modules/Dashboard/modules/Courses/Pages/CoursesMainPage";
-import ManagementPage from "./modules/Dashboard/modules/Management/Pages/ManagementPage";
-import ManageUsersPage from "./modules/Dashboard/modules/ManageUsers/ManageUsers";
-import UserRoleVerificationPage from "./modules/Dashboard/modules/UserRoleVerification/UserRoleVerification";
-import AffiliationPage from "./modules/Dashboard/modules/Affiliation/Pages/Affiliation";
-import OrganizationTransferPage from "./modules/Dashboard/modules/OrganizationTransfer/components/organizationTransfer";
-import ManageDepartmentsPage from "./modules/Dashboard/modules/Departments/Departments";
-import OrganizationsPage from "./modules/Dashboard/modules/Organizations/Organizations";
-import LCMeetupVerificationPage from "./modules/Dashboard/modules/LearningCircle/pages/Meetup/LcMeetup";
-import VerifyOrganizationsPage from "./modules/Dashboard/modules/VerifyOrganizations/VerifyOrganizations";
-import CollegeLevelsPage from "./modules/Dashboard/modules/CollegeLevels/CollegeLevels";
-import KarmaVoucherPage from "./modules/Dashboard/modules/KarmaVoucher/KarmaVoucher";
-import ErrorLogPage from "./modules/Dashboard/modules/ErrorLog/ErrorLog";
-import DynamicTypePage from "./modules/Dashboard/modules/DynamicType/DynamicType";
-import ManageRolesPage from "./modules/Dashboard/modules/ManageRoles/ManageRoles";
-import ManageLocationsPage from "./modules/Dashboard/modules/ManageLocation/ManageLocation";
-import ChannelsPage from "./modules/Dashboard/modules/Channels/Pages/Channels";
-import URLShortenerPage from "./modules/Dashboard/modules/UrlShortener/Pages/UrlShortener";
-import DiscordModerationPage from "./modules/Dashboard/modules/DiscordModeration/DiscordModeration";
-
-import MentorSearchPage from "./modules/Dashboard/modules/Mentors/Pages/MentorPage";
-import InterestGroupsPage from "./modules/Dashboard/modules/InterestGroups/pages/InterestGroupsPage";
-import InterestGroupOne from "./modules/Dashboard/modules/InterestGroups/pages/One/InterestGroupOne";
-import SpecialEvents from "./modules/Dashboard/modules/SpecialEvents/pages/SpecialEvents";
-import Leaderboard from "./modules/Dashboard/modules/LeaderBoard/components/Leaderboard";
-import CampusPage from "./modules/Dashboard/modules/Campus/components/CampusForum/CampusPage-demo";
-import MuLeaderboardPage from "./modules/Dashboard/modules/LeaderBoard/pages/MuLeaderboardPage";
-import CampusSearchPage from "./modules/Dashboard/modules/Campus/pages/CampusSearchPage";
-import MuLearnersSearchPage from "./modules/Dashboard/modules/Search/Pages/MulearnersSearchPage";
-import CampusForumPage from "./modules/Dashboard/modules/Campus/components/CampusForum/CampusForumPage";
-import CampusForumLandingPage from "./modules/Dashboard/modules/Campus/components/CampusForum/CampusForumLanding";
-import Dashboardpage from "./modules/Dashboard/modules/Dashboard/Pages/Dashboardpage";
-import LevelMap from "./modules/Dashboard/modules/Map/Pages/Map";
-import Dashboard from "./modules/Dashboard/modules/Map/Pages/DashBoard";
-import LearningPathPage from "./modules/Dashboard/modules/LearningPathNew/Pages/LearningPathPage";
-import SearchMain from "./modules/Dashboard/modules/Search/Pages/SearchMain";
-import Mappage from "./modules/Dashboard/modules/ProgressBar/pages/MapPage";
-import CampusDetails from "./modules/Dashboard/modules/Campus/components/CampusForum/CampusPage-demo";
-import LearningPathDetailPage from "./modules/Dashboard/modules/InterestGroups/components/LearningPathDetailPage";
 
 const Profile = lazy(
     () => import("./modules/Dashboard/modules/Profile/pages/Profile")
@@ -296,17 +241,13 @@ const ConnectedDevices = lazy(
 );
 const Wadhwani = lazy(() => import("./modules/Dashboard/modules/Wadhwani"));
 
-const Trivial = lazy(
-    () => import("./modules/Public/TrivialIdeas/modules/trivial")
-);
-
 function App() {
     const AuthChecker = SecureAuthRoutes();
     const router = createBrowserRouter([
         // Add redirect from '/' to '/login'
         {
             path: "/",
-            element: <MuLearnLanding />
+            element: <Navigate to="/login" replace />
         },
         {
             path: "*",
@@ -337,52 +278,15 @@ function App() {
             element: <Refund />
         },
         {
-            path: "trivial-ideas",
-            element: <Trivial />
-        },
-        { path: "register/:role", element: <RegisterPage /> },
-        {
-            path: "register/",
+            path: "/",
+            element: <AuthRoutes />,
             children: [
-                {
-                    path: "",
-                    element: <RegisterPage />
-                }
+                { path: "register/:role", element: <AccountCreation /> },
+                { path: "register/", element: <AccountCreation /> },
+                { path: "login", element: <SignIn /> },
+                { path: "forgot-password", element: <ForgetPassword /> },
+                { path: "reset-password", element: <ResetPassword /> }
             ]
-        },
-        { path: "login", element: <SignIn /> },
-        { path: "forgot-password", element: <ForgetPassword /> },
-        { path: "reset-password", element: <ResetPassword /> },
-        // {
-        //     path: "/",
-        //     element: <AuthRoutes />,
-        //     children: [
-        //         { path: "register/:role", element: <RegisterPage /> },
-        //         {
-        //             path: "register/",
-        //             children: [
-        //                 {
-        //                     path: "",
-        //                     element: <RegisterPage />
-        //                 }
-        //             ]
-        //         },
-        //         { path: "login", element: <SignIn /> },
-        //         { path: "forgot-password", element: <ForgetPassword /> },
-        //         { path: "reset-password", element: <ResetPassword /> }
-        //     ]
-        // },
-        {
-            path: "/register/interests",
-            element: <UserInterest />
-        },
-        {
-            path: "/register/organization",
-            element: <CollegePage />
-        },
-        {
-            path: "/register/pathfinder",
-            element: <PathFinder />
         },
         {
             path: "/signin",
@@ -398,39 +302,6 @@ function App() {
         },
         // { path: "register/select-community", element: <CommunityPage /> },
         {
-            path: "/dashboard",
-            element: <DashboardRootLayout />,
-            children: [
-                { path: "learning-paths", element: <LearningPaths /> },
-                {
-                    path: "learning-paths/:id",
-                    element: (
-                        <LearningPathOne />
-                    )
-                },
-                {
-                    path: "learningcircle",
-                    element: <LearningCircleLanding />
-                },
-                { path: "search", element: <SearchMain /> },
-                { path: "mulearners", element: <MuLearnersSearchPage /> },
-                { path: "mentors", element: <MentorSearchPage /> },
-                { path: "campus", element: <CampusSearchPage /> },
-                { path: "campus/:org_id", element: <CampusDetails /> },
-                { path: "interestgroups", element: <InterestGroupsPage /> },
-                { path: "interestgroups/:id", element: <InterestGroupOne /> },
-                // {path: "interestgroups/:id/learning-path", element: <LearningPathDetailPage />},
-                { path: "special-events", element: <SpecialEvents /> },
-                { path: "leaderboard", element: <MuLeaderboardPage /> },
-                { path: "bootcamps", element: <ComingSoonPage /> },
-                { path: "learningCircles", element: <ComingSoonPage /> },
-                { path: "courses", element: <CoursesMainPage /> },
-
-                { path: "map", element: <Mappage /> },
-
-            ]
-        },
-        {
             path: "/",
             element: <PrivateRoutes />,
             children: [
@@ -438,35 +309,8 @@ function App() {
                     path: "/dashboard",
                     element: <DashboardRootLayout />,
                     children: [
-                        { path: "home", element: <Dashboardpage /> },
-                        { path: "mujourney", element: <LearningPathPage /> },
-                        { path: "learning-path/:id", element: <LearningPathPage /> },
                         { path: "profile", element: <Profile /> },
-                        { path: "muverse", element: <ComingSoonPage /> },
-                        { path: "interestgroups", element: <ComingSoonPage /> },
-                        { path: "management", element: <ManagementPage /> },
-                        { path: "management/user-management/manage-users", element: <ManageUsersPage /> },
-                        { path: "management/user-management/user-role-verification", element: <UserRoleVerificationPage /> },
-                        { path: "management/organization/affiliation", element: <AffiliationPage /> },
-                        { path: "management/organization/organization-transfer", element: <OrganizationTransferPage /> },
-                        { path: "management/organization/manage-departments", element: <ManageDepartmentsPage /> },
-                        { path: "management/organization/organizations", element: <OrganizationsPage /> },
-                        // { path: "management/task-management", element: <TaskManagementPage /> },
-                        // { path: "management/task-management/tasks", element: <TasksPage /> },
-                        // { path: "management/task-management/task-type", element: <TaskTypePage /> },
-                        // { path: "management/task-management/events", element: <EventsPage /> },
-                        { path: "management/interest-groups", element: <InterestGroupsPage /> },
-                        { path: "management/lc-meetup-verification", element: <LCMeetupVerificationPage /> },
-                        { path: "management/verify-organizations", element: <VerifyOrganizationsPage /> },
-                        { path: "management/college-levels", element: <CollegeLevelsPage /> },
-                        { path: "management/karma-voucher", element: <KarmaVoucherPage /> },
-                        { path: "management/error-log", element: <ErrorLogPage /> },
-                        { path: "management/dynamic-type", element: <DynamicTypePage /> },
-                        { path: "management/manage-roles", element: <ManageRolesPage /> },
-                        { path: "management/manage-locations", element: <ManageLocationsPage /> },
-                        { path: "management/channels", element: <ChannelsPage /> },
-                        { path: "management/url-shortener", element: <URLShortenerPage /> },
-                        { path: "management/discord-moderation", element: <DiscordModerationPage /> },
+                        { path: "profileV2", element: <ProfileV2 /> },
                         {
                             path: "connect-discord",
                             element: <ConnectDiscord />
@@ -474,10 +318,6 @@ function App() {
                         {
                             path: "wadhwani",
                             element: <Wadhwani />
-                        },
-                        {
-                            path: "opengrad",
-                            element: <OpenGrad />
                         },
                         {
                             path: "refer",
@@ -492,24 +332,6 @@ function App() {
                                         managementTypes.INTEREST_GROUP
                                     ]}
                                     children={<InterestGroup />}
-                                />
-                            )
-                        },
-                        {
-                            path: "lc-meetup-verification",
-                            element: (
-                                <AuthChecker
-                                    roles={[roles.ADMIN, roles.FELLOW]}
-                                    children={<LcAdmin />}
-                                />
-                            )
-                        },
-                        {
-                            path: "verify-organizations",
-                            element: (
-                                <AuthChecker
-                                    roles={[roles.ADMIN, roles.FELLOW]}
-                                    children={<VerifyOrganizations />}
                                 />
                             )
                         },
@@ -595,9 +417,6 @@ function App() {
                                 />
                             )
                         },
-
-
-
                         {
                             path: "district-dashboard",
                             element: (
@@ -767,12 +586,6 @@ function App() {
                                 />
                             )
                         },
-                        // {
-                        //     path: "learning-paths",
-                        //     element: (
-                        //         <LearningPaths />
-                        //     )
-                        // },
                         {
                             path: "hackathon/edit/:id",
                             element: (
@@ -853,62 +666,26 @@ function App() {
                                 />
                             )
                         },
-                        // {
-                        //     path: "learning-circle",
-                        //     element: <LearningCircleLandingPage />
-                        // },
                         {
-                            path: "learningcircle/your-circles",
-                            element: <YourLC />
+                            path: "learning-circle",
+                            element: <LearningCircleLandingPage />
                         },
                         {
-                            path: "learningcircle/dashboard/:id",
-                            element: <DashboardLC />
+                            path: "learning-circle/details/:id",
+                            element: <LearningCircle />
                         },
                         {
-                            path: "learningcircle/create",
-                            element: <CreateLC />
+                            path: "learning-circle/dashboard/:id",
+                            element: <LcDashboard />
                         },
                         {
-                            path: "learningcircle/meetup/:id",
-                            element: <MoreInfoLC />
+                            path: "learning-circle/find-circle",
+                            element: <FindCircle />
                         },
                         {
-                            path: "learningcircle/attendee-report/:meet_id",
-                            element: <AttendeeReport />
+                            path: "learning-circle/create-circle",
+                            element: <LearningCircleCreate />
                         },
-                        {
-                            path: "learningcircle/report/:meet_id",
-                            element: <LCReport />
-                        },
-                        {
-                            path: "learningcircle/create-meetup/:circle_id",
-                            element: <CreateLCMeetup />
-                        },
-                        // {
-                        //     path: "learning-circle/meetup/:id",
-                        //     element: <LcMeetupIfo />
-                        // },
-                        // {
-                        //     path: "learning-circle/meetup/:id/attendee-report",
-                        //     element: <LcReportAttendee />
-                        // },
-                        // {
-                        //     path: "learning-circle/details/:id",
-                        //     element: <LearningCircle />
-                        // },
-                        // {
-                        //     path: "learning-circle/dashboard/:id",
-                        //     element: <LcDashboard />
-                        // },
-                        // {
-                        //     path: "learning-circle/find-circle",
-                        //     element: <FindCircle />
-                        // },
-                        // {
-                        //     path: "learning-circle/create-circle",
-                        //     element: <LearningCircleCreate />
-                        // },
                         {
                             path: "organization-transfer",
                             element: (
@@ -931,14 +708,6 @@ function App() {
                             path: "settings",
                             element: <Settings />,
                             children: [
-                                {
-                                    path: "",
-                                    element: <SettingsHome />
-                                },
-                                {
-                                    path: "organization",
-                                    element: <OrganizationSetting />
-                                },
                                 {
                                     path: "account",
                                     element: <Account />
@@ -975,8 +744,7 @@ function App() {
         // },
         {
             path: "/profile/:id",
-            element: <DashboardRootLayout />,
-            children: [{ index: true, element: <Profile /> }]
+            element: <Profile />
         },
         {
             path: "/learning-circle",

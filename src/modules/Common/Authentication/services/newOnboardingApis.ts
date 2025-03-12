@@ -4,6 +4,7 @@ import { KKEMRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
 
 import { Dispatch, SetStateAction } from "react";
 import { NavigateFunction } from "react-router-dom";
+import { bool, boolean } from "yup";
 import { getInfo } from "../../../Dashboard/modules/ConnectDiscord/services/apis";
 import { DWMSDetails } from "./onboardingApis";
 import toast from "react-hot-toast";
@@ -50,7 +51,7 @@ export const createAccount = async ({
         const tokens = response.data.response;
         localStorage.setItem("accessToken", tokens.accessToken);
         localStorage.setItem("refreshToken", tokens.refreshToken);
-        getInfo(navigate, () => {
+        getInfo(() => {
             navigate("/role");
         });
     } catch (err: any) {
@@ -143,10 +144,12 @@ export const getCompanies = async ({
 
 export const submitUserData = async ({
     setIsLoading,
-    userData
+    userData,
+    navigate
 }: {
     setIsLoading: Dispatch<SetStateAction<boolean>>;
     userData: Object;
+    navigate: NavigateFunction;
 }) => {
     // console.log("UserData", userData);
     try {
@@ -158,14 +161,13 @@ export const submitUserData = async ({
         const tokens = res.data.response;
         localStorage.setItem("accessToken", tokens.accessToken);
         localStorage.setItem("refreshToken", tokens.refreshToken);
-        return true;
+        getInfo(() => navigate("/dashboard/connect-discord"));
     } catch (err: any) {
         setIsLoading(false);
-        const messages = err.message;
+        const messages = err.response.data.message.general[0];
         showToasts({
             messages: messages
         });
-        return false;
     }
 };
 

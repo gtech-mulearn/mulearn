@@ -3,7 +3,7 @@ import { dashboardRoutes } from "@/MuLearnServices/urls";
 
 import { AxiosError } from "axios";
 
-export type CampusDataSet = {
+type CampusDataSet = {
     college_name: string;
     campus_lead: string;
     campus_code: string;

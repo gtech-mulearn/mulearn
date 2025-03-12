@@ -9,9 +9,8 @@ interface ModalProps {
     title: string;
     children: ReactNode;
     type: "error" | "success";
-    onDone?: any;
+    onDone: any;
     body?: string;
-    showButton?: Boolean;
 }
 
 const MuModal: FC<ModalProps> = ({
@@ -21,8 +20,7 @@ const MuModal: FC<ModalProps> = ({
     children,
     type,
     onDone,
-    body,
-    showButton = true
+    body
 }) => {
     if (!isOpen) {
         return null;
@@ -48,27 +46,22 @@ const MuModal: FC<ModalProps> = ({
                 {title && <h1 className={styles.modalTitle}>{title}</h1>}
                 {body && <p className={styles.modalText}>{body}</p>}
                 <div className={styles.modalBody}>{children}</div>
-                {
-                    showButton && (
-                        <div className={styles.btn_container}>
-                            <button
-                                type="button"
-                                className={styles.btn_cancel}
-                                onClick={onClose}
-                            >
-                                Cancel
-                            </button>
-                            <button
-                                type="submit"
-                                onClick={onDone} // Use the onDone prop here
-                                className={styles.btn_submit}
-                            >
-                                Done
-                            </button>
-                        </div>
-
-                    )
-                }
+                <div className={styles.btn_container}>
+                    <button
+                        type="button"
+                        className={styles.btn_cancel}
+                        onClick={onClose}
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        type="submit"
+                        onClick={onDone} // Use the onDone prop here
+                        className={styles.btn_submit}
+                    >
+                        Done
+                    </button>
+                </div>
             </div>
         </div>
     );

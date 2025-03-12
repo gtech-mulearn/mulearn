@@ -19,7 +19,7 @@ export default function Navbar(){
                     </div>
                     <button
                         onClick={() => {
-                            navigate("/dashboard/home");
+                            navigate("/dashboard/connect-discord");
                         }}
                     >
                         Join Us

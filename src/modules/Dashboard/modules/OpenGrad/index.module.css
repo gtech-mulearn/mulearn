@@ -1,14 +1,7 @@
 /* General Styles */
-.wrapper{
-    border-top: 0.3px solid gray;
-
-}
-
 .wrapper h1 {
-    font-weight: 700;
-    font-size: 1.8rem;
-    color: #404d61;
-    margin-top: 1rem;
+    font-weight: bold;
+    font-size: 3rem;
 }
 
 .course {

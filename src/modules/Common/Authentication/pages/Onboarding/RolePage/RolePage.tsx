@@ -71,8 +71,8 @@ export default function Rolepage() {
 
         submitUserData({
             setIsLoading: setIsLoading,
-            userData: newUserData
-            // navigate: navigate # want to handle this if this page is used in other places
+            userData: newUserData,
+            navigate: navigate
         });
     };
 
@@ -119,7 +119,7 @@ export default function Rolepage() {
                     </div> */}
                 {nextPage &&
                     (nextPage === "select-college" ? (
-                        <CollegePage />
+                        <CollegePage selectedRole={selectedRoleId} />
                     ) : (
                         <CompanyPage selectedRole={selectedRoleId} />
                     ))}

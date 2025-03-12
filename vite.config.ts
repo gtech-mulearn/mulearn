@@ -5,17 +5,15 @@ import path from "path";
 import viteCompression from "vite-plugin-compression";
 // import eslint from 'vite-plugin-eslint'
 
-import tailwindcss from '@tailwindcss/vite'
-
 export default defineConfig({
-    // css: {
-    //     postcss: {
-    //         plugins: [postcssNesting]
-    //     }
-    // },
+    css: {
+        postcss: {
+            plugins: [postcssNesting]
+        }
+    },
     // this will throw errors in build, so fix them before uncommenting
     // plugins: [eslint(), react(), viteCompression()],
-    plugins: [react(), viteCompression(), tailwindcss(),],
+    plugins: [react(), viteCompression()],
     resolve: {
         alias: {
             "@/MuLearnComponents": `${path.resolve(
