@@ -43,17 +43,17 @@ export const getInterestGroupsList = async (
 ) => {
     setIsLoading && setIsLoading(true);
     try {
-        const response = await privateGateway.get(onboardingRoutes.interestGroups, {
-            params: {
-                perPage: selectedValue,
-                pageIndex: page,
-                search: search,
-                sortBy: sortID
-            }
-        });
-        const interestGroups: any = response?.data?.response.interestGroup;
-        setData(interestGroups);
-        setIsLoading && setIsLoading(false);
+        // const response = await privateGateway.get(onboardingRoutes.interestGroups, {
+        //     params: {
+        //         perPage: selectedValue,
+        //         pageIndex: page,
+        //         search: search,
+        //         sortBy: sortID
+        //     }
+        // });
+        // const interestGroups: any = response?.data?.response.interestGroup;
+        // setData(interestGroups);
+        // setIsLoading && setIsLoading(false);
     } catch (err: unknown) {
         const error = err as AxiosError;
     }

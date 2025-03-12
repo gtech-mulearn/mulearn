@@ -312,11 +312,11 @@ export const getUserIGFormattedTasks = async (
         await Promise.all(
             usersIgids.map(async (usersIgid) => {
                 try {
-                    const response: AxiosResponse<IgTaskApiResponse> = await privateGateway.get(
-                        dashboardRoutes.getUserIgTasks,
-                        { params: { ig_id: usersIgid, perPage: 1000 } }
-                    );
-                    taskObject[usersIgid] = response.data.response.data || []; // Correctly access the data property
+                    // const response: AxiosResponse<IgTaskApiResponse> = await privateGateway.get(
+                    //     // dashboardRoutes.getUserIgTasks,
+                    //     { params: { ig_id: usersIgid, perPage: 1000 } }
+                    // );
+                    // taskObject[usersIgid] = response.data.response.data || []; // Correctly access the data property
                 } catch (error) {
                     console.error(`Error fetching tasks for IG ID ${usersIgid}:`, error);
                     taskObject[usersIgid] = [];

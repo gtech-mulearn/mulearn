@@ -1,5 +1,5 @@
 import "./App.css";
-import { lazy } from "react";
+import React, { lazy } from "react";
 import {
     RouterProvider,
     createBrowserRouter,
@@ -310,7 +310,7 @@ function App() {
                     element: <DashboardRootLayout />,
                     children: [
                         { path: "profile", element: <Profile /> },
-                        { path: "profileV2", element: <ProfileV2 /> },
+                        // { path: "profileV2", element: <ProfileV2 /> },
                         {
                             path: "connect-discord",
                             element: <ConnectDiscord />
