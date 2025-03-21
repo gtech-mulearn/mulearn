@@ -9,13 +9,15 @@ import { MuButtonLight } from "@/MuLearnComponents/MuButtons/MuButton";
 import MuLogOut from "../assets/svg/MuLogOut";
 import toast from "react-hot-toast";
 import GameProgressBar from "../modules/ProgressBar/components/GameProgressBar";
-import { getPublicUserLevels, getUserLevels } from "../modules/Profile/services/api";
+import {
+    getPublicUserLevels,
+    getUserLevels
+} from "../modules/Profile/services/api";
 import ModeSwitchModal from "../modules/Dashboard/Components/ModeSwitchModal";
 import { selectDomainCategory } from "../modules/Dashboard/Api/ModeSwitchApi";
 import { dashboardRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { useUserStore } from "/src/ZustandProvider";
-
 
 interface TopNavBarProps {
     setUserInfo: (userInfo: UserInfo) => void;
@@ -29,30 +31,39 @@ const TopNavBar: React.FC<TopNavBarProps> = ({ setUserInfo }) => {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState("");
     const [switchDomainModal, setSwitchDomainModal] = useState(false);
-    const [userInfo, setLocalUserInfo] = useState<UserInfo | null>(null); 
-    const userLevel = useUserStore((state) => state.userProfile.level);
+    const [userInfo, setLocalUserInfo] = useState<UserInfo | null>(null);
+    const userLevel = useUserStore(state => state.userProfile.level);
 
-    let userName = useUserStore((state) => state.userProfile.full_name.split(" ")[0]);
-    if(!userName){
+    let userName = useUserStore(
+        state => state.userProfile.full_name.split(" ")[0]
+    );
+    if (!userName) {
         const storedUserInfo = localStorage.getItem("userInfo");
-        userName = storedUserInfo ? JSON.parse(storedUserInfo)?.full_name.split(" ")?.[0] : null;
-      }
+        userName = storedUserInfo
+            ? JSON.parse(storedUserInfo)?.full_name.split(" ")?.[0]
+            : null;
+    }
     const profilePic = userInfo?.profile_pic || null;
 
     useEffect(() => {
         const fetchUserInfo = async () => {
             try {
-                const response = await privateGateway.get(dashboardRoutes.getInfo);
+                const response = await privateGateway.get(
+                    dashboardRoutes.getInfo
+                );
                 const fetchedUserInfo = response.data.response;
                 setLocalUserInfo(fetchedUserInfo);
                 setUserInfo(fetchedUserInfo);
-                localStorage.setItem("userInfo", JSON.stringify(fetchedUserInfo));
+                localStorage.setItem(
+                    "userInfo",
+                    JSON.stringify(fetchedUserInfo)
+                );
             } catch (err) {
                 console.error("Failed to fetch user info:", err);
                 const storedUserInfo = fetchLocalStorage<UserInfo>("userInfo");
                 if (storedUserInfo) {
                     setLocalUserInfo(storedUserInfo);
-                    setUserInfo(storedUserInfo); 
+                    setUserInfo(storedUserInfo);
                 }
             }
         };
@@ -88,7 +99,12 @@ const TopNavBar: React.FC<TopNavBarProps> = ({ setUserInfo }) => {
     const handleClickOutside = useCallback((event: MouseEvent) => {
         const div = document.getElementById("user_settings");
         const profile = document.getElementById("profile");
-        if (div && profile && !div.contains(event.target as Node) && !profile.contains(event.target as Node)) {
+        if (
+            div &&
+            profile &&
+            !div.contains(event.target as Node) &&
+            !profile.contains(event.target as Node)
+        ) {
             setUserSettings(false);
         }
     }, []);
@@ -110,16 +126,16 @@ const TopNavBar: React.FC<TopNavBarProps> = ({ setUserInfo }) => {
                 `${onboardingRoutes.register}select-domains/`,
                 { domains: [data] }
             );
-    
+
             selectDomainCategory({ domains: [data] });
-    
+
             const response = await privateGateway.get(dashboardRoutes.getInfo);
             const updatedUserInfo = response.data.response;
-    
+
             localStorage.setItem("userInfo", JSON.stringify(updatedUserInfo));
             setLocalUserInfo(updatedUserInfo);
             setUserInfo(updatedUserInfo); // Update store with new user info
-    
+
             toast.success("Domain updated successfully!");
         } catch (error) {
             console.error("Failed to update domain on server:", error);
@@ -134,54 +150,97 @@ const TopNavBar: React.FC<TopNavBarProps> = ({ setUserInfo }) => {
             <div id="top_nav" className={styles.top_nav}>
                 <div className={styles.nav}>
                     <div className={styles.nav_items}>
-                        <b className={styles.greetings}><i>Hello</i>, <b>{userName}</b> 👋</b>
+                        <b className={styles.greetings}>
+                            <i>Hello</i>, <b>{userName}</b> 👋
+                        </b>
                         <div className={styles.mulearn_brand2}></div>
                         <div className={styles.menu}>
                             {refreshToken && userInfo?.user_domains && (
-                            <div className={styles.modeContainer}>
-                                <span className={styles.modeText}>Mode</span>
-                                <span
-                                    className={styles.userDomain}
-                                    onClick={() => setSwitchDomainModal(true)}
+                                <div
+                                    className={styles.modeContainer}
+                                    data-tour="mode-selector"
                                 >
-                                    {userInfo?.user_domains?.[0]?.toUpperCase() || ""}
-                                </span>
-                            </div>)}
-                            <div className="cursor-pointer" onClick={() => navigate("/dashboard/leaderboard")}>
-                    {refreshToken &&(
-
-                                <GameProgressBar levelData={userLevelData} userLevel={userLevel} />
-                    )}
+                                    <span className={styles.modeText}>
+                                        Mode
+                                    </span>
+                                    <span
+                                        className={styles.userDomain}
+                                        onClick={() =>
+                                            setSwitchDomainModal(true)
+                                        }
+                                    >
+                                        {userInfo?.user_domains?.[0]?.toUpperCase() ||
+                                            ""}
+                                    </span>
+                                </div>
+                            )}
+                            <div
+                                className="cursor-pointer"
+                                data-tour="progress-bar"
+                                onClick={() =>
+                                    navigate("/dashboard/leaderboard")
+                                }
+                            >
+                                {refreshToken && (
+                                    <GameProgressBar
+                                        levelData={userLevelData}
+                                        userLevel={userLevel}
+                                    />
+                                )}
                             </div>
                             {refreshToken && (
                                 <div id="profile" className={styles.profile}>
                                     <img
-                                        onClick={() => setUserSettings(!userSettings)}
+                                        onClick={() =>
+                                            setUserSettings(!userSettings)
+                                        }
                                         src={profilePic || dpm}
                                         alt=""
-                                        style={{marginBottom: '0'}}
+                                        style={{ marginBottom: "0" }}
                                     />
                                 </div>
                             )}
                             {userSettings && (
-                                <div id="user_settings" className={styles.user_settings}>
+                                <div
+                                    id="user_settings"
+                                    className={styles.user_settings}
+                                >
                                     <MuButtonLight
                                         text="Profile"
-                                        icon={<i className="fi fi-sr-clipboard-user"></i>}
-                                        style={{ backgroundColor: "#fff", color: "gray", marginBottom: "0px", minWidth: "0px", padding: "0px" }}
+                                        icon={
+                                            <i className="fi fi-sr-clipboard-user"></i>
+                                        }
+                                        style={{
+                                            backgroundColor: "#fff",
+                                            color: "gray",
+                                            marginBottom: "0px",
+                                            minWidth: "0px",
+                                            padding: "0px"
+                                        }}
                                         onClick={() => {
-                                            navigate('/dashboard/profile');
-                                            setUserSettings(!userSettings)
+                                            navigate("/dashboard/profile");
+                                            setUserSettings(!userSettings);
                                         }}
                                     />
                                     <MuButtonLight
                                         text="Log Out"
                                         icon={<MuLogOut />}
-                                        style={{ backgroundColor: "#fff", color: "#FF7676", marginBottom: "0px", minWidth: "0px", padding: "0px" }}
+                                        style={{
+                                            backgroundColor: "#fff",
+                                            color: "#FF7676",
+                                            marginBottom: "0px",
+                                            minWidth: "0px",
+                                            padding: "0px"
+                                        }}
                                         onClick={() => {
                                             localStorage.clear();
-                                            toast.error("Logged Out, Redirecting to login page.");
-                                            setTimeout(() => window.location.reload(), 900);
+                                            toast.error(
+                                                "Logged Out, Redirecting to login page."
+                                            );
+                                            setTimeout(
+                                                () => window.location.reload(),
+                                                900
+                                            );
                                         }}
                                     />
                                 </div>
@@ -189,7 +248,13 @@ const TopNavBar: React.FC<TopNavBarProps> = ({ setUserInfo }) => {
                             {!refreshToken && (
                                 <MuButtonLight
                                     text="LogIn"
-                                    style={{ backgroundColor: "#2563EB", color: "white", minWidth: "0", width: "90px", marginRight: "2rem" }}
+                                    style={{
+                                        backgroundColor: "#2563EB",
+                                        color: "white",
+                                        minWidth: "0",
+                                        width: "90px",
+                                        marginRight: "2rem"
+                                    }}
                                     onClick={() => navigate("/login")}
                                 />
                             )}
@@ -203,7 +268,7 @@ const TopNavBar: React.FC<TopNavBarProps> = ({ setUserInfo }) => {
                     isOpen={switchDomainModal}
                     onClose={() => {
                         setTimeout(() => {
-                            setSwitchDomainModal(false)
+                            setSwitchDomainModal(false);
                         }, 300);
                     }}
                     onSubmit={handleOnSubmit}

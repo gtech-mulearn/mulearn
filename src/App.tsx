@@ -302,6 +302,8 @@ const Trivial = lazy(
     () => import("./modules/Public/TrivialIdeas/modules/trivial")
 );
 
+import { JoyrideProvider } from "./components/Tour";
+
 function App() {
     const AuthChecker = SecureAuthRoutes();
     const router = createBrowserRouter([
@@ -406,9 +408,7 @@ function App() {
                 { path: "learning-paths", element: <LearningPaths /> },
                 {
                     path: "learning-paths/:id",
-                    element: (
-                        <LearningPathOne />
-                    )
+                    element: <LearningPathOne />
                 },
                 {
                     path: "learningcircle",
@@ -428,8 +428,7 @@ function App() {
                 { path: "learningCircles", element: <ComingSoonPage /> },
                 { path: "courses", element: <CoursesMainPage /> },
 
-                { path: "map", element: <Mappage /> },
-
+                { path: "map", element: <Mappage /> }
             ]
         },
         {
@@ -442,34 +441,197 @@ function App() {
                     children: [
                         { path: "home", element: <Dashboardpage /> },
                         { path: "mujourney", element: <LearningPathPage /> },
-                        { path: "learning-path/:id", element: <LearningPathPage /> },
+                        {
+                            path: "learning-path/:id",
+                            element: <LearningPathPage />
+                        },
                         { path: "profile", element: <Profile /> },
                         { path: "muverse", element: <ComingSoonPage /> },
                         { path: "interestgroups", element: <ComingSoonPage /> },
-                        { path: "management", element: <AuthChecker roles={[roles.ADMIN]} children={<ManagementPage />} /> },
-                        { path: "management/manage-achievements", element: <AuthChecker roles={[roles.ADMIN]} children={<ManageAchievements />} /> },
-                        { path: "management/user-management/manage-users", element: <AuthChecker roles={[roles.ADMIN]} children={<ManageUsersPage />} /> },
-                        { path: "management/user-management/user-role-verification", element: <AuthChecker roles={[roles.ADMIN]} children={<UserRoleVerificationPage />} /> },
-                        { path: "management/organization/affiliation", element: <AuthChecker roles={[roles.ADMIN]} children={<AffiliationPage />} /> },
-                        { path: "management/organization/organization-transfer", element: <AuthChecker roles={[roles.ADMIN]} children={<OrganizationTransferPage />} /> },
-                        { path: "management/organization/manage-departments", element: <AuthChecker roles={[roles.ADMIN]} children={<ManageDepartmentsPage />} /> },
-                        { path: "management/organization/organizations", element: <AuthChecker roles={[roles.ADMIN]} children={<OrganizationsPage />} /> },
+                        {
+                            path: "management",
+                            element: (
+                                <AuthChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<ManagementPage />}
+                                />
+                            )
+                        },
+                        {
+                            path: "management/manage-achievements",
+                            element: (
+                                <AuthChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<ManageAchievements />}
+                                />
+                            )
+                        },
+                        {
+                            path: "management/user-management/manage-users",
+                            element: (
+                                <AuthChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<ManageUsersPage />}
+                                />
+                            )
+                        },
+                        {
+                            path: "management/user-management/user-role-verification",
+                            element: (
+                                <AuthChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<UserRoleVerificationPage />}
+                                />
+                            )
+                        },
+                        {
+                            path: "management/organization/affiliation",
+                            element: (
+                                <AuthChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<AffiliationPage />}
+                                />
+                            )
+                        },
+                        {
+                            path: "management/organization/organization-transfer",
+                            element: (
+                                <AuthChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<OrganizationTransferPage />}
+                                />
+                            )
+                        },
+                        {
+                            path: "management/organization/manage-departments",
+                            element: (
+                                <AuthChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<ManageDepartmentsPage />}
+                                />
+                            )
+                        },
+                        {
+                            path: "management/organization/organizations",
+                            element: (
+                                <AuthChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<OrganizationsPage />}
+                                />
+                            )
+                        },
                         // { path: "management/task-management", element: <AuthChecker roles={[roles.ADMIN]} children={ <TaskManagementPage />} /> },
                         // { path: "management/task-management/tasks", element: <AuthChecker roles={[roles.ADMIN]} children={ <TasksPage />} /> },
                         // { path: "management/task-management/task-type", element: <AuthChecker roles={[roles.ADMIN]} children={ <TaskTypePage />} /> },
                         // { path: "management/task-management/events", element: <AuthChecker roles={[roles.ADMIN]} children={ <EventsPage />} /> },
-                        { path: "management/interest-groups", element: <AuthChecker roles={[roles.ADMIN]} children={<InterestGroupsPage />} /> },
-                        { path: "management/lc-meetup-verification", element: <AuthChecker roles={[roles.ADMIN]} children={<LCMeetupVerificationPage />} /> },
-                        { path: "management/verify-organizations", element: <AuthChecker roles={[roles.ADMIN]} children={<VerifyOrganizationsPage />} /> },
-                        { path: "management/college-levels", element: <AuthChecker roles={[roles.ADMIN]} children={<CollegeLevelsPage />} /> },
-                        { path: "management/karma-voucher", element: <AuthChecker roles={[roles.ADMIN]} children={<KarmaVoucherPage />} /> },
-                        { path: "management/error-log", element: <AuthChecker roles={[roles.ADMIN]} children={<ErrorLogPage />} /> },
-                        { path: "management/dynamic-type", element: <AuthChecker roles={[roles.ADMIN]} children={<DynamicTypePage />} /> },
-                        { path: "management/manage-roles", element: <AuthChecker roles={[roles.ADMIN]} children={<ManageRolesPage />} /> },
-                        { path: "management/manage-locations", element: <AuthChecker roles={[roles.ADMIN]} children={<ManageLocationsPage />} /> },
-                        { path: "management/channels", element: <AuthChecker roles={[roles.ADMIN]} children={<ChannelsPage />} /> },
-                        { path: "/dashboard/url-shortener", element: <AuthChecker roles={[roles.ADMIN, roles.ASSOCIATE]} children={<URLShortenerPage />} /> },
-                        { path: "management/discord-moderation", element: <AuthChecker roles={[roles.ADMIN]} children={<DiscordModerationPage />} /> },
+                        {
+                            path: "management/interest-groups",
+                            element: (
+                                <AuthChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<InterestGroupsPage />}
+                                />
+                            )
+                        },
+                        {
+                            path: "management/lc-meetup-verification",
+                            element: (
+                                <AuthChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<LCMeetupVerificationPage />}
+                                />
+                            )
+                        },
+                        {
+                            path: "management/verify-organizations",
+                            element: (
+                                <AuthChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<VerifyOrganizationsPage />}
+                                />
+                            )
+                        },
+                        {
+                            path: "management/college-levels",
+                            element: (
+                                <AuthChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<CollegeLevelsPage />}
+                                />
+                            )
+                        },
+                        {
+                            path: "management/karma-voucher",
+                            element: (
+                                <AuthChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<KarmaVoucherPage />}
+                                />
+                            )
+                        },
+                        {
+                            path: "management/error-log",
+                            element: (
+                                <AuthChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<ErrorLogPage />}
+                                />
+                            )
+                        },
+                        {
+                            path: "management/dynamic-type",
+                            element: (
+                                <AuthChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<DynamicTypePage />}
+                                />
+                            )
+                        },
+                        {
+                            path: "management/manage-roles",
+                            element: (
+                                <AuthChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<ManageRolesPage />}
+                                />
+                            )
+                        },
+                        {
+                            path: "management/manage-locations",
+                            element: (
+                                <AuthChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<ManageLocationsPage />}
+                                />
+                            )
+                        },
+                        {
+                            path: "management/channels",
+                            element: (
+                                <AuthChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<ChannelsPage />}
+                                />
+                            )
+                        },
+                        {
+                            path: "/dashboard/url-shortener",
+                            element: (
+                                <AuthChecker
+                                    roles={[roles.ADMIN, roles.ASSOCIATE]}
+                                    children={<URLShortenerPage />}
+                                />
+                            )
+                        },
+                        {
+                            path: "management/discord-moderation",
+                            element: (
+                                <AuthChecker
+                                    roles={[roles.ADMIN]}
+                                    children={<DiscordModerationPage />}
+                                />
+                            )
+                        },
 
                         {
                             path: "connect-discord",
@@ -599,8 +761,6 @@ function App() {
                                 />
                             )
                         },
-
-
 
                         {
                             path: "district-dashboard",
@@ -1001,10 +1161,10 @@ function App() {
     ]);
 
     return (
-        <>
+        <JoyrideProvider>
             <RouterProvider router={router} />
             <Toaster position="bottom-center" reverseOrder={true} />
-        </>
+        </JoyrideProvider>
     );
 }
 
