@@ -180,9 +180,9 @@ const Home = () => {
               <a
                 rel="noopener noreferrer"
                 target="_blank"
-                href="https://launchpadkerala.org/"
+                href="https://permute.mulearn.org"
               >
-                <button className={styles.secondary}>Join Launchpad 🚀</button>
+                <button className={styles.secondary}>Join Permute </button>
               </a>
             </div>
             {/* <div className={styles.buttons}>
