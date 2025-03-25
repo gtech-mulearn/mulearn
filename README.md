@@ -6,7 +6,7 @@
 
 # µLearn Website
 
-This repository contains the the source code files for the µLearn Landing Page. Kindly read through the following to get a hold on the naming and contributions standards
+This repository contains the the source code files for the µLearn Landing Page. Kindly read through the following to get a hold on the naming and contributions standards 
 
 The central repository holds four main branches with two branches having infinte lifetime(dev-server & production)
 
