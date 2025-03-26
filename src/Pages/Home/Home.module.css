@@ -106,11 +106,19 @@ a {
   font-size: 0.9rem;
   border-radius: 5px;
   background-color: #ffffff;
-  color: #ad46ff;
+  color: #f78c40;
   /* color: #5C9AE5; */
   padding: 0.6rem 2rem;
-  border: 2px solid #ad46ff;
+  border: 2px solid #f59d5e;
   /* border: 2px solid #5C9AE5; */
+}
+
+.secondaryPermute:hover {
+  background-color: #ad46ff;
+  /* background-color: #5C9AE5; */
+  color: white;
+  border: #ad46ff 2px solid;
+  transition: all 0.3s ease;
 }
 
 @media only screen and (min-width: 1000px) {
