@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import toast from "react-hot-toast";
 import styles from "./index.module.css";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
@@ -39,39 +39,45 @@ const Wadhwani: React.FC = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [sheet, setSheet] = useState<WadhwaniSheetResponse[]>([]);
 
+    const fetchData = useCallback(async () => {
+        try {
+            setIsLoading(true);
+            // Fetch token and courses in parallel
+            const [tokenResponse, coursesResponse] = await Promise.all([
+                getWadhwaniClientToken(),
+                axios.get("https://opensheet.elk.sh/1LEvZozIVVquXjSvtptQcjiU0_WFaxVuEYBCYyCdsCtY/sheet")
+            ]);
+
+            if (tokenResponse.error) {
+                toast.error(tokenResponse.error);
+                return;
+            }
+
+            if (tokenResponse.response) {
+                setClientToken(tokenResponse.response.access_token);
+                const { response: courses, error } = await getWadhwaniCourses(
+                    tokenResponse.response.access_token
+                );
+                
+                if (error) {
+                    toast.error(error);
+                } else if (courses) {
+                    setData(courses);
+                }
+            }
+
+            setSheet(coursesResponse.data);
+        } catch (error) {
+            console.error(error);
+            toast.error("Failed to load courses. Please try again later.");
+        } finally {
+            setIsLoading(false);
+        }
+    }, []);
 
     useEffect(() => {
         fetchData();
-    }, []);
-
-    const fetchData = async () => {
-        const { response, error } = await getWadhwaniClientToken();
-        if (error) {
-            toast.error(error);
-        } else if (response) {
-            setClientToken(response.access_token);
-            const { response: courses, error } = await getWadhwaniCourses(
-                response.access_token
-            );
-            if (error) {
-                toast.error(error);
-            } else if (courses) {
-                try {
-                    setIsLoading(true);
-                    const response = await axios.get(
-                        "https://opensheet.elk.sh/1LEvZozIVVquXjSvtptQcjiU0_WFaxVuEYBCYyCdsCtY/sheet"
-                    );
-                    setSheet(response.data);
-                } catch (error) {
-                    console.log(error);
-                } finally {
-                    setIsLoading(false);
-                }
-                setData(courses);
-            }
-            setIsLoading(false)
-        }
-    };
+    }, [fetchData]);
 
     const handleCourseSelection = async (courseRootId: string) => {
         const { response, error } = await getWadhwaniCourseLink(clientToken, courseRootId);

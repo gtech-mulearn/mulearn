@@ -1,6 +1,7 @@
 import { publicGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
 import toast from "react-hot-toast";
+import KarmaCache from './karmaCache';
 
 interface ApiInterestGroup {
     id: string;
@@ -60,11 +61,16 @@ export async function getDomainBasedInterestGroups(domain: string): Promise<ApiI
 }
 
 export async function getKarmaFeed(): Promise<KarmaFeedItem[]> {
+    const karmaCache = KarmaCache.getInstance();
+    const cachedData = karmaCache.getCache();
+    
+    if (cachedData) {
+        return cachedData;
+    }
+
     try {
         const response = await publicGateway.get<APIKarmaFeedResponse>(dashboardRoutes.getKarmaFeed);
         if (response && response.data) {
-
-            // Transform the nested response into an array of KarmaFeedItem
             const karmaFeed: KarmaFeedItem[] = [
                 {
                     karma: response.data.response.top_user.karma,
@@ -78,6 +84,9 @@ export async function getKarmaFeed(): Promise<KarmaFeedItem[]> {
                     type: "college",
                 },
             ];
+            
+            // Cache the karma feed data
+            karmaCache.setCache(karmaFeed);
             return karmaFeed;
         }
         return [];

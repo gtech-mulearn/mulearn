@@ -3,6 +3,27 @@ import axios from "axios";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes, organizationRoutes } from "@/MuLearnServices/urls";
 
+// Add debounce utility
+const debounce = <T extends (...args: any[]) => any>(
+    func: T,
+    wait: number
+): ((...args: Parameters<T>) => void) => {
+    let timeout: NodeJS.Timeout;
+    return (...args: Parameters<T>) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func(...args), wait);
+    };
+};
+
+// Cache for dashboard data
+const dashboardCache = new Map<string, {
+    data: any[];
+    totalPages: number;
+    timestamp: number;
+}>();
+
+const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+
 export const getzonaldashboard = async (
     activeTab: string,
     setData: any,
@@ -13,57 +34,40 @@ export const getzonaldashboard = async (
     sortID?: string
 ) => {
     try {
-        if (activeTab === "Student management") {
-            await privateGateway
-                .get(dashboardRoutes.zonalStudentDetails, {
-                    params: {
-                        perPage: selectedValue,
-                        pageIndex: page,
-                        search: search,
-                        sortBy: sortID
-                    }
-                })
-                .then(
-                    (
-                        response: APIResponse<{
-                            data: any[];
-                            pagination: { totalPages: number };
-                        }>
-                    ) => {
-                        return response.data;
-                    }
-                )
-                .then(data => {
-                    setData(data.response.data);
-                    setTotalPages(data.response.pagination.totalPages);
-                });
-        } else if (activeTab === "Campus management") {
-            await privateGateway
-                .get(dashboardRoutes.zonalCampusDetails, {
-                    params: {
-                        perPage: selectedValue,
-                        pageIndex: page,
-                        search: search,
-                        sortBy: sortID
-                    }
-                })
-                .then(
-                    (
-                        response: APIResponse<{
-                            data: any[];
-                            pagination: { totalPages: number };
-                        }>
-                    ) => {
-                        return response.data;
-                    }
-                )
-                .then(data => {
-                    setData(data.response.data);
-                    setTotalPages(data.response.pagination.totalPages);
-                });
-        } else {
-            alert("error to Load Data");
+        const cacheKey = `${activeTab}-${page}-${selectedValue}-${search}-${sortID}`;
+        const cachedData = dashboardCache.get(cacheKey);
+        
+        // Return cached data if available and not expired
+        if (cachedData && Date.now() - cachedData.timestamp < CACHE_DURATION) {
+            setData(cachedData.data);
+            if (setTotalPages) setTotalPages(cachedData.totalPages);
+            return;
         }
+
+        const endpoint = activeTab === "Student management" 
+            ? dashboardRoutes.zonalStudentDetails 
+            : dashboardRoutes.zonalCampusDetails;
+
+        const response = await privateGateway.get(endpoint, {
+            params: {
+                perPage: selectedValue,
+                pageIndex: page,
+                search: search,
+                sortBy: sortID
+            }
+        });
+
+        const data = response.data.response;
+        
+        // Cache the new data
+        dashboardCache.set(cacheKey, {
+            data: data.data,
+            totalPages: data.pagination.totalPages,
+            timestamp: Date.now()
+        });
+
+        setData(data.data);
+        if (setTotalPages) setTotalPages(data.pagination.totalPages);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -71,6 +75,9 @@ export const getzonaldashboard = async (
         }
     }
 };
+
+// Debounced version of getzonaldashboard
+export const debouncedGetZonalDashboard = debounce(getzonaldashboard, 300);
 
 interface CountryProps {
     id: string;
@@ -105,23 +112,27 @@ export const getAffiliation = async (setAffiliationData: any) => {
         }
     }
 };
+
+// Add cache for location data
+const locationCache = {
+    countries: null as CountryProps[] | null,
+    states: new Map<string, CountryProps[]>(),
+    zones: new Map<string, CountryProps[]>(),
+    districts: new Map<string, CountryProps[]>()
+};
+
 export const getCountry = async (setCountryData: any) => {
     try {
-        await privateGateway
-            .get(organizationRoutes.getLocation + "/countries/")
-            .then(
-                (
-                    response: APIResponse<{
-                        data: { countries: CountryProps[] };
-                    }>
-                ) => {
-                    return response.data;
-                }
-            )
-            .then(data => {
-                const countries = data.response.data;
-                setCountryData(countries);
-            });
+        // Return cached data if available
+        if (locationCache.countries) {
+            setCountryData(locationCache.countries);
+            return;
+        }
+
+        const response = await privateGateway.get(organizationRoutes.getLocation + "/countries/");
+        const countries = response.data.response.data;
+        locationCache.countries = countries;
+        setCountryData(countries);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -132,19 +143,17 @@ export const getCountry = async (setCountryData: any) => {
 
 export const getStates = async (country: string, setStatesData: any) => {
     try {
-        await privateGateway
-            .get(`${organizationRoutes.getLocation}/${country}/states`)
-            .then(
-                (
-                    response: APIResponse<{ data: { states: CountryProps[] } }>
-                ) => {
-                    return response.data;
-                }
-            )
-            .then(data => {
-                const states = data.response.data.states;
-                setStatesData(states);
-            });
+        // Return cached data if available
+        const cacheKey = country;
+        if (locationCache.states.has(cacheKey)) {
+            setStatesData(locationCache.states.get(cacheKey));
+            return;
+        }
+
+        const response = await privateGateway.get(`${organizationRoutes.getLocation}/${country}/states`);
+        const states = response.data.response.data.states;
+        locationCache.states.set(cacheKey, states);
+        setStatesData(states);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -153,25 +162,19 @@ export const getStates = async (country: string, setStatesData: any) => {
     }
 };
 
-export const getZones = async (
-    country: string,
-    state: string,
-    setZonesData: any
-) => {
+export const getZones = async (country: string, state: string, setZonesData: any) => {
     try {
-        await privateGateway
-            .get(`${organizationRoutes.getLocation}/${country}/${state}/zone`)
-            .then(
-                (
-                    response: APIResponse<{ data: { states: CountryProps[] } }>
-                ) => {
-                    return response.data;
-                }
-            )
-            .then(data => {
-                const states = data.response.data.states;
-                setZonesData(states);
-            });
+        // Return cached data if available
+        const cacheKey = `${country}-${state}`;
+        if (locationCache.zones.has(cacheKey)) {
+            setZonesData(locationCache.zones.get(cacheKey));
+            return;
+        }
+
+        const response = await privateGateway.get(`${organizationRoutes.getLocation}/${country}/${state}/zone`);
+        const zones = response.data.response.data.states;
+        locationCache.zones.set(cacheKey, zones);
+        setZonesData(zones);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {
@@ -180,28 +183,21 @@ export const getZones = async (
     }
 };
 
-export const getDistricts = async (
-    country: string,
-    state: string,
-    zone: string,
-    setDistrictsData: any
-) => {
+export const getDistricts = async (country: string, state: string, zone: string, setDistrictsData: any) => {
     try {
-        await privateGateway
-            .get(
-                `${organizationRoutes.getLocation}/${country}/${state}/${zone}/district`
-            )
-            .then(
-                (
-                    response: APIResponse<{ data: { states: CountryProps[] } }>
-                ) => {
-                    return response.data;
-                }
-            )
-            .then(data => {
-                const districts = data.response.data.states;
-                setDistrictsData(districts);
-            });
+        // Return cached data if available
+        const cacheKey = `${country}-${state}-${zone}`;
+        if (locationCache.districts.has(cacheKey)) {
+            setDistrictsData(locationCache.districts.get(cacheKey));
+            return;
+        }
+
+        const response = await privateGateway.get(
+            `${organizationRoutes.getLocation}/${country}/${state}/${zone}/district`
+        );
+        const districts = response.data.response.data.states;
+        locationCache.districts.set(cacheKey, districts);
+        setDistrictsData(districts);
     } catch (err: unknown) {
         const error = err as AxiosError;
         if (error?.response) {

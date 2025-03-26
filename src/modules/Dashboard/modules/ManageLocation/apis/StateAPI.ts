@@ -3,6 +3,15 @@ import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { ManageLocationsRoutes } from "@/MuLearnServices/urls";
 import toast from "react-hot-toast";
 
+// Cache for state data
+const stateCache = new Map<string, {
+    data: any[];
+    totalPages: number;
+    timestamp: number;
+}>();
+
+const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+
 //*WORKING✅
 export const getStateData = async (
     setData?: UseStateFunc<any>,
@@ -14,6 +23,17 @@ export const getStateData = async (
     sortID?: string
 ) => {
     try {
+        const cacheKey = `${country}-${perPage}-${page}-${search}-${sortID}`;
+        const cachedData = stateCache.get(cacheKey);
+        
+        // Return cached data if available and not expired
+        if (cachedData && Date.now() - cachedData.timestamp < CACHE_DURATION) {
+            if (setTotalPages) setTotalPages(cachedData.totalPages);
+            if (setData) setData(cachedData.data);
+            else return cachedData.data;
+            return;
+        }
+
         const data = (
             await privateGateway.get(
                 ManageLocationsRoutes.getStateData.replace(
@@ -30,6 +50,13 @@ export const getStateData = async (
                 }
             )
         ).data.response;
+
+        // Cache the new data
+        stateCache.set(cacheKey, {
+            data: data.data,
+            totalPages: data.pagination.totalPages,
+            timestamp: Date.now()
+        });
 
         if (setTotalPages) setTotalPages(data.pagination.totalPages);
         if (setData) setData(data.data);

@@ -28,11 +28,13 @@
     margin: 12px;
     border: 1px solid #ccc;
     border-radius: 8px;
-    max-width: 300px; /* Increased max-width */
+    width: 300px;
+    min-height: 400px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out;
     font-family: Poppins, sans-serif;
-    gap: 1.5rem;
+    gap: 1rem;
+    box-sizing: border-box;
 }
 
 .containercard:hover {
@@ -40,18 +42,70 @@
 }
 
 /* Image Styles */
+.imageContainer {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+}
+
+.imagePlaceholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
 .courseImage {
     width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 16px;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.courseImage.loaded {
+    opacity: 1;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
 }
 
 /* Text Styles */
 .title {
     font-weight: 500;
-    font-size: 24px;
+    font-size: 20px;
     margin-bottom: 0.5rem;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 1.3;
+    max-height: 2.6em;
+    text-align: center;
+}
+
+.details {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
 }
 
 .desc {
@@ -62,20 +116,28 @@
 .duration,
 .lessons {
     color: #404d61;
-    opacity: 0.5;
+    opacity: 0.7;
     font-weight: 500;
-    margin-top: 0.5rem;
     font-size: 0.9rem;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
 }
 
 .cta {
+    width: 100%;
+    max-width: 200px;
     background: #456ff6;
     color: white;
-    padding: 0.5rem 1rem;
+    padding: 0.75rem 1rem;
     border-radius: 5px;
     cursor: pointer;
     border: none;
     transition: background-color 0.3s ease-in-out;
+    font-size: 1rem;
+    text-align: center;
 }
 
 .cta:hover {
@@ -85,24 +147,27 @@
 /* Responsive Styles */
 @media screen and (max-width: 1300px) {
     .course {
-        grid-template-columns: repeat(2, 1fr); /* Two cards per row */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
     }
     .containercard {
-        width: 45vw;
-        height: auto; /* Adjust height to maintain aspect ratio */
+        width: 100%;
+        max-width: 350px;
+        margin: 0;
     }
 }
 
 @media screen and (max-width: 700px) {
-    .wrapper h1 {
-        font-size: 2rem;
-    }
     .course {
-        grid-template-columns: repeat(1, 1fr); /* One card per row */
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
     .containercard {
-        width: 70vw;
-        height: auto; /* Adjust height to maintain aspect ratio */
+        width: 100%;
+        max-width: 400px;
+    }
+    .title {
+        font-size: 18px;
     }
 }
 

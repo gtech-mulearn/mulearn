@@ -2,7 +2,7 @@ import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import THead from "@/MuLearnComponents/Table/THead";
 import Table from "@/MuLearnComponents/Table/Table";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { BarChart, ColumnChart } from "../CampusStudentList/Components/Graphs";
 import { getdistrictdashboard, getStudentLevels, getTopCampus } from "./apis";
 import { columnsCampus, columnsStudent } from "./THeaders";
@@ -11,6 +11,7 @@ import TableTopTab from "./TableTopTab";
 import styles from "./DistrictDashboard.module.css"; // Updated import
 import { Blank } from "@/MuLearnComponents/Table/Blank";
 import toast from "react-hot-toast";
+import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
 function DistrictDashboard() {
     const [data, setData] = useState<any[]>([]);
@@ -20,8 +21,7 @@ function DistrictDashboard() {
     const [columns, setColumns] = useState(columnsStudent);
     const [activeTab, setActiveTab] = useState("Student management");
     const [sort, setSort] = useState("");
-
-    const firstFetch = useRef(true);
+    const [isLoading, setIsLoading] = useState(false);
 
     // Graph data
     const [colData, setColData] = useState<string[][] | null>(null);
@@ -32,38 +32,68 @@ function DistrictDashboard() {
         toast.error(err);
     };
 
-    useEffect(() => {
-        if (firstFetch.current) {
-            getdistrictdashboard(
+    // Memoize the fetch functions
+    const fetchDashboardData = useCallback(async () => {
+        setIsLoading(true);
+        try {
+            await getdistrictdashboard(
                 activeTab,
                 setData,
-                1,
+                currentPage,
                 perPage,
                 setTotalPages,
                 "",
-                ""
+                sort
             );
-
-            (async () => {
-                setBarData(await getTopCampus(errHandler));
-                setColData(
-                    [
-                        ["Levels", "Level 1", "Level 2", "Level 3", "Level 4"]
-                    ].concat(await getStudentLevels(errHandler))
-                );
-            })();
+        } catch (error) {
+            errHandler(error);
+        } finally {
+            setIsLoading(false);
         }
-        firstFetch.current = false;
+    }, [activeTab, currentPage, perPage, sort]);
+
+    const fetchGraphData = useCallback(async () => {
+        try {
+            const [topCampus, studentLevels] = await Promise.all([
+                getTopCampus(errHandler),
+                getStudentLevels(errHandler)
+            ]);
+            setBarData(topCampus);
+            setColData([
+                ["Levels", "Level 1", "Level 2", "Level 3", "Level 4"]
+            ].concat(studentLevels));
+        } catch (error) {
+            errHandler(error);
+        }
     }, []);
 
+    // Initial data fetch
+    useEffect(() => {
+        fetchDashboardData();
+        fetchGraphData();
+    }, []);
+
+    // Handle tab changes
+    useEffect(() => {
+        setCurrentPage(1);
+        fetchDashboardData();
+    }, [activeTab]);
+
+    // Handle pagination changes
+    useEffect(() => {
+        fetchDashboardData();
+    }, [currentPage, perPage, sort]);
+
     const handleNextClick = () => {
-        const nextPage = currentPage + 1;
-        setCurrentPage(nextPage);
+        if (currentPage < totalPages) {
+            setCurrentPage(prev => prev + 1);
+        }
     };
 
     const handlePreviousClick = () => {
-        const prevPage = currentPage - 1;
-        setCurrentPage(prevPage);
+        if (currentPage > 1) {
+            setCurrentPage(prev => prev - 1);
+        }
     };
 
     const handleSearch = (search: string) => {
@@ -75,7 +105,7 @@ function DistrictDashboard() {
             perPage,
             setTotalPages,
             search,
-            ""
+            sort
         );
     };
 
@@ -84,48 +114,13 @@ function DistrictDashboard() {
         setPerPage(selectedValue);
     };
 
-    const handleTabClick = (tab: string) => {
-        if (tab === "Student management") {
-            setColumns(columnsStudent);
-            getdistrictdashboard(
-                tab,
-                setData,
-                1,
-                perPage,
-                setTotalPages,
-                "",
-                ""
-            );
-        } else if (tab === "Campus management") {
-            setColumns(columnsCampus);
-            getdistrictdashboard(
-                tab,
-                setData,
-                1,
-                perPage,
-                setTotalPages,
-                "",
-                ""
-            );
-        } else {
-            alert("Error to load Table Headers");
-        }
-        setCurrentPage(1);
+    const handleTabChange = (tab: string) => {
         setActiveTab(tab);
+        setColumns(tab === "Student management" ? columnsStudent : columnsCampus);
     };
 
-    const handleIconClick = (column: string) => {
-        if (column === "total_karma") {
-            column = "karma"; // Temp fix
-        }
-        if (column === "fullname") {
-            column = "first_name"; // Temp fix
-        }
-        if (sort === column) {
-            setSort(`-${column}`);
-        } else {
-            setSort(column);
-        }
+    const handleSort = (sortID: string) => {
+        setSort(sortID);
     };
 
     const CSV = (tabname: string) => {
@@ -143,25 +138,38 @@ function DistrictDashboard() {
         }
     };
 
-    useEffect(() => {
-        getdistrictdashboard(
-            activeTab,
-            setData,
-            currentPage,
-            perPage,
-            setTotalPages,
-            "",
-            sort
-        );
-    }, [sort, currentPage, perPage]);
-
     return (
-        <>
-          <TableTopTab
-                active={activeTab}
-                onTabClick={handleTabClick}
-                tabletopTab={["Student management", "Campus management"]}
+        <div className={styles.container}>
+            <TableTopTab activeTab={activeTab} onTabChange={handleTabChange} />
+            <TableTop
+                onSearchText={handleSearch}
+                onPerPageNumber={handlePerPageNumber}
+                onSort={handleSort}
             />
+            {isLoading ? (
+                <div className={styles.loadingContainer}>
+                    <MuLoader />
+                </div>
+            ) : (
+                <>
+                    <Table
+                        rows={data}
+                        page={currentPage}
+                        perPage={perPage}
+                        columns={columns}
+                        isCSV={true}
+                    />
+                    <Pagination
+                        currentPage={currentPage}
+                        totalPages={totalPages}
+                        margin="10px 0"
+                        handleNextClick={handleNextClick}
+                        handlePreviousClick={handlePreviousClick}
+                        perPage={perPage}
+                        setPerPage={setPerPage}
+                    />
+                </>
+            )}
             <div className={styles.graphs}>
                 <div className={styles.graph_container}>
                     <h2>Top 3 Campus</h2>
@@ -212,7 +220,7 @@ function DistrictDashboard() {
                     >
                         <THead
                             columnOrder={columns}
-                            onIconClick={handleIconClick}
+                            onIconClick={handleSort}
                         />
                         <Pagination
                             currentPage={currentPage}
@@ -227,7 +235,7 @@ function DistrictDashboard() {
                     </Table>
                 </>
             )}
-        </>
+        </div>
     );
 }
 

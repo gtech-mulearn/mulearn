@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import SidebarBannerSlider, { Event } from "../../InterestGroups/components/SideBannerSlider/SideBannerSlider";
 import InterestGroups from "../Components/InterestGroups";
@@ -31,6 +31,7 @@ const DashboardPage = () => {
   const [interestGroups, setInterestGroups] = useState<InterestGroup[]>([]);
   const [events, setEvents] = useState<Event[]>([]);
   const [karmaFeed, setKarmaFeed] = useState<KarmaFeedItem[]>([]);
+  const karmaFeedFetched = useRef(false);
   let userName = useUserStore((state) => state.userProfile.full_name.split(" ")[0]);
   const storedUserInfo = JSON.parse(localStorage.getItem("userInfo") ?? "{}");
   const userDomains: string[] = fetchLocalStorage<UserInfo>("userInfo")?.user_domains || [];
@@ -71,10 +72,12 @@ const DashboardPage = () => {
 
   useEffect(() => {
     async function fetchKarmaFeed() {
+      if (karmaFeedFetched.current) return;
       try {
         const response = await getKarmaFeed();
         if (!response) return;
         setKarmaFeed(response);
+        karmaFeedFetched.current = true;
       } catch (error) {
         console.error("Failed to fetch karma feed:", error);
       }
