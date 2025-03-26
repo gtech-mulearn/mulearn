@@ -182,7 +182,7 @@ const Home = () => {
                 target="_blank"
                 href="https://permute.mulearn.org"
               >
-                <button className={styles.secondary}>Join Permute </button>
+                <button className={styles.secondaryPermute}>Join Permute </button>
               </a>
             </div>
             {/* <div className={styles.buttons}>
