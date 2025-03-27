@@ -23,8 +23,8 @@ interface LCMeetCreate {
     title: string;
     is_report_needed: boolean;
     report_description: string;
-    meet_place: string;
-    meet_link: string;
+    meet_place?: string;
+    meet_link?: string;
     mode: string
 }
 
@@ -38,8 +38,8 @@ interface LCMeetup {
     report_description: string;
     coord_x: number;
     coord_y: number;
-    meet_place: string;
-    meet_time: string;
+    meet_place?: string;
+    meet_time?: string;
     duration: number;
     is_started: boolean;
     is_ended: boolean;
