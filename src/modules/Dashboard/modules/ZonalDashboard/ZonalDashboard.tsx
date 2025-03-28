@@ -7,12 +7,13 @@ import { useNavigate } from "react-router-dom";
 import { getzonaldashboard, getTopDistrict, getStudentLevels } from "./apis";
 import { columnsStudent, columnsCampus } from "./THeaders";
 import TableTopTab from "./TableTopTab";
-import "./ZonalDashboard.css";
+import styles from "./ZonalDashboard.module.css"; // Updated import
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { BarChart, ColumnChart } from "../CampusStudentList/Components/Graphs";
 import graphStyles from "../CampusStudentList/pages/CampusStudentList.module.css";
 import { Blank } from "@/MuLearnComponents/Table/Blank";
 import toast from "react-hot-toast";
+
 
 function ZonalDashboard() {
     const [data, setData] = useState<Data[]>([]);
@@ -27,7 +28,6 @@ function ZonalDashboard() {
     const [isCreate, setIsCreate] = useState(false);
     const [isEdit, setIsEdit] = useState(false);
 
-    //graph data
     const [colData, setColData] = useState<string[][] | null>(null);
     const [barData, setBarData] = useState<string[][] | null>(null);
 
@@ -60,16 +60,15 @@ function ZonalDashboard() {
         }
         firstFetch.current = false;
     }, []);
+
     const handleNextClick = () => {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
-        // getzonaldashboard(activeTab, setData, nextPage, perPage);
     };
 
     const handlePreviousClick = () => {
         const prevPage = currentPage - 1;
         setCurrentPage(prevPage);
-        // getzonaldashboard(activeTab, setData, prevPage, perPage);
     };
 
     const handleSearch = (search: string) => {
@@ -107,10 +106,10 @@ function ZonalDashboard() {
 
     const handleIconClick = (column: string) => {
         if (column === "total_karma") {
-            column = "karma"; //temp fix
+            column = "karma";
         }
         if (column === "fullname") {
-            column = "first_name"; //temp fix
+            column = "first_name";
         }
         if (sort === column) {
             setSort(`-${column}`);
@@ -145,6 +144,7 @@ function ZonalDashboard() {
             return dashboardRoutes.zonalCampusData;
         }
     };
+
     return (
         <>
             <TableTopTab
@@ -152,8 +152,8 @@ function ZonalDashboard() {
                 onTabClick={handleTabClick}
                 tabletopTab={["Student management", "Campus management"]}
             />
-            <div className={graphStyles.graphs}>
-                <div className={graphStyles.container}>
+            <div className={styles.graphs}>
+                <div className={styles.graph_container}>
                     <h2>Top 3 Districts</h2>
                     <BarChart
                         data={barData}
@@ -164,7 +164,7 @@ function ZonalDashboard() {
                         }}
                     />
                 </div>
-                <div className={graphStyles.container}>
+                <div className={styles.graph_container}>
                     <h2>Student Level Stats</h2>
                     <ColumnChart
                         data={colData}

@@ -11,6 +11,7 @@ import {
     getLearningCircleInfo,
     scheduleMeetup
 } from "src/modules/Dashboard/modules/LearningCircleV2/services/LearningCircleAPIs";
+import { getConnectedUsers } from "../modules/Dashboard/modules/Profile/services/api";
 
 export const onboardingRoutes = {
     countryList: "/api/v1/register/country/list/",
@@ -60,7 +61,8 @@ export const learningCircleRoutes = {
         "/api/v1/dashboard/learningcircle/meeting/attendee-report/",
     getMeetups: "/api/v1/dashboard/learningcircle/meeting/list/",
     joinMeetup: "/api/v1/dashboard/learningcircle/meeting/join/",
-    getLcReportInfo: "/api/v1/dashboard/learningcircle/meeting/report/"
+    getLcReportInfo: "/api/v1/dashboard/learningcircle/meeting/report/",
+    confirmRSVP: "/api/v1/dashboard/learningcircle/meeting/rsvp/"
 };
 export const dashboardRoutes = {
     forgetPassword: "/api/v1/dashboard/user/forgot-password/",
@@ -131,6 +133,9 @@ export const dashboardRoutes = {
     getSocials: "/api/v1/dashboard/profile/socials/",
     postProfileImage: "/api/v1/dashboard/user/profile/update/",
     getUserIgTasks: "/api/v1/dashboard/task/list/",
+    getUserPreferences: "/api/v1/dashboard/user/preferences",
+    updateUserPreferences: "/api/v1/dashboard/user/preferences",
+    getUserLevelFeed: "/api/v1/dashboard/profile/user-level-feed/",
 
     zonalStudentDetails: "/api/v1/dashboard/zonal/student-details/",
     zonalStudentData: "/api/v1/dashboard/zonal/student-details/csv/",
@@ -300,3 +305,17 @@ export const donationRoutes = {
     order: "api/v1/donate/order/",
     verify: "api/v1/donate/verify/"
 };
+
+
+export const qseverseRoutes = {
+    issueVerifiableCredentials: "api/issue_vc_app",
+    getAllConnectedUsers: "api/app/connected-users",
+    getConnectedUsers: "api/app/connected-users/search",
+    getCredentials: "api/user/credentials",
+    getAchievements: "api/v1/dashboard/achievement/list/",
+    createAchievements: "api/v1/dashboard/achievement/create/",
+    updateAchievements: "api/v1/dashboard/achievement/update/",
+    deleteAchievements: "api/v1/dashboard/achievement/delete/",
+    getUserAchievements: "api/v1/dashboard/achievement/list/user/",
+    updateVCURL: "api/v1/dashboard/achievement/issue-vc/"
+}

@@ -135,3 +135,30 @@ privateGateway.interceptors.response.use(
         return Promise.reject(error);
     }
 );
+
+export const qSeversePrivateGateway = axios.create({
+    baseURL: import.meta.env.VITE_QSEVERSE_URL as string,
+    headers: {
+        "Content-Type": "application/json",
+    },
+});
+
+
+qSeversePrivateGateway.interceptors.request.use(
+    (config) => {
+        config.headers["Authorization"] = `ApiKey ${import.meta.env.VITE_QSEVERSE_API_KEY}`;
+        return config;
+    },
+    (error) => Promise.reject(error)
+);
+
+qSeversePrivateGateway.interceptors.response.use(
+    (response: AxiosResponse) => response,
+    (error) => {
+        if (error.response?.data) {
+            console.error("API error:", error.response.data);
+            return Promise.reject(error.response.data);
+        }
+        return Promise.reject(error);
+    }
+);

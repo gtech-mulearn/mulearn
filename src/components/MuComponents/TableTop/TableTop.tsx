@@ -10,6 +10,11 @@ type Props = {
     onSearchText?: (data: string) => void;
     onPerPageNumber?: (data: number) => void;
     CSV?: string;
+    extraButtons?: { // Add this new optional prop
+        text: string;
+        onClick: () => void;
+        style?: React.CSSProperties;
+    }[];
 };
 
 const TableTop = (props: Props) => {
@@ -34,6 +39,19 @@ const TableTop = (props: Props) => {
                 <div className={styles.container}>
                     <div className={styles.body}>
                         <SearchBar onSearch={handleData} />
+                        {props.extraButtons && (
+                            <div className="extra-buttons">
+                                {props.extraButtons.map((button, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={button.onClick}
+                                        style={button.style}
+                                    >
+                                        {button.text}
+                                    </button>
+                                ))}
+                            </div>
+                        )}
                         {props.CSV && (
                             <PowerfulButton
                                 onClick={() => handleClick()}

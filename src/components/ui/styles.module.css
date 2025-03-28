@@ -1,0 +1,314 @@
+/* Label */
+.label {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+/* Badge */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 9999px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.badge.default {
+    background-color: #f3f4f6;
+    color: #1f2937;
+}
+
+.badge.primary {
+    background-color: #dbeafe;
+    color: #1e40af;
+}
+
+.badge.secondary {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.badge.outline {
+    border: 1px solid #d1d5db;
+    color: #1f2937;
+}
+
+/* Button */
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    padding: 8px 16px;
+}
+
+.button.default {
+    background-color: #3b82f6;
+    color: #ffffff;
+}
+
+.button.outline {
+    border: 1px solid #d1d5db;
+    background-color: transparent;
+    color: #1f2937;
+}
+
+.button.ghost {
+    background-color: transparent;
+    color: #1f2937;
+}
+
+.button.destructive {
+    background-color: #ef4444;
+    color: #ffffff;
+}
+
+/* Dialog Overlay */
+.dialogOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    z-index: 999;
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.dialogContent {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95);
+    background: white;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh; /* Added max-height */
+    overflow-y: auto; /* Enables vertical scrolling when content overflows */
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    z-index: 1000;
+    opacity: 0;
+    animation: scaleIn 0.3s forwards;
+}
+
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* Dialog Close Button */
+.dialogClose {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.dialogCloseIcon {
+    width: 24px;
+    height: 24px;
+    color: #555;
+}
+
+/* Dialog Header */
+.dialogHeader {
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.dialogTitle {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1f2937;
+}
+
+.dialogDescription {
+    font-size: 14px;
+    color: #6b7280;
+    margin-top: 8px;
+}
+
+/* Dialog Footer */
+.dialogFooter {
+    margin-top: 16px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+
+/* Select Trigger */
+.selectTrigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    width: 100%;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background-color: white;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.selectTrigger:focus {
+    border-color: #2563eb;
+    outline: none;
+}
+
+/* Select Content (Dropdown) */
+.selectContent {
+    background-color: white;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 8px 0;
+    z-index: 1000;
+    position: absolute;
+    width: 100%;
+    overflow-y: auto;
+    max-height: 200px;
+}
+
+/* Select Items */
+.selectItem {
+    padding: 10px 12px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.selectItem:hover {
+    background-color: #f3f4f6;
+}
+
+/* Ensure check icon only appears on selected items */
+.selectCheck {
+    display: none;
+}
+
+.selectItem[data-state="checked"] .selectCheck {
+    display: block;
+    margin-left: auto;
+}
+  
+
+/* Sheet */
+.sheetOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.sheetContent {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 75%;
+    background: #ffffff;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+}
+
+.sheetClose {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    cursor: pointer;
+}
+
+/* Switch */
+.switch {
+    width: 44px;
+    height: 24px;
+    background: #d1d5db;
+    border-radius: 12px;
+    position: relative;
+    transition: background 0.3s;
+}
+
+.switch[data-state="checked"] {
+    background: #2563eb;
+}
+
+.switchThumb {
+    width: 20px;
+    height: 20px;
+    background: #ffffff;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s;
+}
+
+.switch[data-state="checked"] .switchThumb {
+    transform: translateX(20px);
+}
+
+/* Textarea */
+.textarea {
+    width: 100%;
+    min-height: 80px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 14px;
+}
+
+.textarea:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 5px rgba(37, 99, 235, 0.3);
+    outline: none;
+}
+
+/* Input Field Styles */
+.input {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #374151;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 5px rgba(37, 99, 235, 0.3);
+    outline: none;
+}
+
+.input::placeholder {
+    color: #9ca3af;
+}
+
+.input:disabled {
+    background-color: #f3f4f6;
+    cursor: not-allowed;
+    opacity: 0.6;
+}

@@ -44,65 +44,61 @@ export const login = (
     navigate: NavigateFunction,
     setIsLoading: (value: boolean) => void,
     redirectPath: string
-  ) => {
+) => {
     setIsLoading(true);
     publicGateway
-      .post(authRoutes.login, { emailOrMuid, password })
-      .then((response: any) => {
-        if (response.data.hasError === false) {
-          localStorage.setItem(
-            "accessToken",
-            response.data.response.accessToken
-          );
-          localStorage.setItem(
-            "refreshToken",
-            response.data.response.refreshToken
-          );
-          toast.success("Login Successful");
-          privateGateway
-            .get(dashboardRoutes.getInfo)
-            .then((response: any) => {
-              // Save to local storage
-              localStorage.setItem(
-                "userInfo",
-                JSON.stringify(response.data.response)
-              );
-              // Update Zustand store with new user profile data
-              useUserStore.getState().setUserProfile({
-                ...response.data.response,
-                first_name: response.data.response.full_name.split(" ")[0],
-                college_id: response.data.response.college_id,
-              });
-              
-  
-              // Optionally update user log or refresh roles
-              // refreshRoles();
-              if (response.data.response.exist_in_guild) {
-                navigate("/dashboard/home");
-              } else {
-                if (redirectPath) {
-                  navigate(`/${redirectPath}`);
-                } else {
-                  navigate("/dashboard/home");
-                }
-              }
-            })
-            .catch((error) => {
-              console.log(error);
-              setIsLoading(false);
-            });
-        }
-      })
-      .catch((error) => {
-        setIsLoading(false);
-        if (error.response?.data) {
-          toast.error(error.response.data.message.general[0]);
-        } else {
-          toast.error("Something went wrong");
-        }
-      });
-  };
-
+        .post(authRoutes.login, { emailOrMuid, password })
+        .then((response: any) => {
+            if (response.data.hasError === false) {
+                localStorage.setItem(
+                    "accessToken",
+                    response.data.response.accessToken
+                );
+                localStorage.setItem(
+                    "refreshToken",
+                    response.data.response.refreshToken
+                );
+                toast.success("Login Successful");
+                privateGateway
+                    .get(dashboardRoutes.getInfo)
+                    .then(async (response: any) => {
+                        localStorage.setItem(
+                            "userInfo",
+                            JSON.stringify(response.data.response)
+                        );
+                        await privateGateway.get(dashboardRoutes.getUserProfile).then(response => {
+                            useUserStore.setState((prev) => ({
+                                ...prev,
+                                userProfile: {
+                                    ...response.data.response,
+                                    first_name: response.data.response.full_name.split(" ")[0],
+                                    college_id: response.data.response.college_id,
+                                },
+                            }));
+                        });
+                        if (redirectPath) {
+                            navigate(`/${redirectPath}`);
+                        } else if (response.data.response.exist_in_guild) {
+                            navigate("/dashboard/home");
+                        } else {
+                            navigate("/dashboard/home"); 
+                        }
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                        setIsLoading(false);
+                    });
+            }
+        })
+        .catch((error) => {
+            setIsLoading(false);
+            if (error.response?.data) {
+                toast.error(error.response.data.message.general[0]);
+            } else {
+                toast.error("Something went wrong");
+            }
+        });
+};
 export const getMuid = (
     token: string,
     navigate: NavigateFunction,
@@ -198,7 +194,6 @@ export const otpVerification = (
     publicGateway
         .post(authRoutes.login, { emailOrMuid, otp })
         .then((response: authRoutesLoginRes) => {
-            //console.log(response.data);
             localStorage.setItem(
                 "accessToken",
                 response.data.response.accessToken
@@ -207,27 +202,25 @@ export const otpVerification = (
                 "refreshToken",
                 response.data.response.refreshToken
             );
-            if (response.data.hasError == false) {
+            if (response.data.hasError === false) {
                 setOtpVerifyLoading(false);
                 toast.success("OTP verified, you will be redirected shortly");
             }
             privateGateway
                 .get(dashboardRoutes.getInfo)
                 .then((response: authGetUserInfo) => {
-                    //console.log(response);
                     localStorage.setItem(
                         "userInfo",
                         JSON.stringify(response.data.response)
                     );
                     refreshRoles();
-                    if (response.data.response.exist_in_guild) {
+
+                    if (redirectPath) {
+                        navigate(`/${redirectPath}`);
+                    } else if (response.data.response.exist_in_guild) {
                         navigate("/dashboard/profile");
                     } else {
-                        if (redirectPath) {
-                            navigate(`/${redirectPath}`);
-                        } else {
-                            navigate("/dashboard/home");
-                        }
+                        navigate("/dashboard/home"); 
                     }
                 })
                 .catch(error => {

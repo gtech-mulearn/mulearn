@@ -19,6 +19,25 @@
     gap: 12px;
     padding: 0 8px;
   }
+
+  .earnerParts {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+    word-break: break-word;
+  }
+
+  .earnerPartConnector {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    width: 100%;
+  }
     
   .earnerItem {
     padding: 12px 16px;
@@ -30,28 +49,32 @@
     text-align: left;
     cursor: pointer;
     font-size: clamp(0.8rem, 2vw, 1rem);
-
   }
     
   .earnerTitle {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     font-weight: bold;
     margin-bottom: 4px;
     color: #222;
+    width: 100%;
   }
     
   .earnerDetails {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: start;
-    gap: 12px;
+    gap: 6px;
     flex-wrap: wrap;
     text-align: left;
+    width: 100%;
   }
     
   .earnerName {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 600;
+    flex-direction: column;
+    align-items: flex-start;
     color: #333;
   }
     
@@ -64,6 +87,27 @@
   .earnedYesterday {
     font-size: 0.75rem;
     color: green;
+  }
+
+  .earnerProfile {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    filter: drop-shadow(0px 0px 1px rgb(200, 200, 200));
+  }
+
+  @media (min-width: 830px) and (max-width: 1130px) {
+    .earnerParts {
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+    .earnerPartConnector {
+      text-align: center;
+    }
+    .earnerProfile {
+      width: 60px;
+      height: 60px;
+    }
   }
     
   .streakDays {

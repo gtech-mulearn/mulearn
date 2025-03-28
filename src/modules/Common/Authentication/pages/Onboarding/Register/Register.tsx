@@ -1,11 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { submitUserData } from "../../../services/newOnboardingApis";
-import toast from "react-hot-toast";
 import AccountCreationComponent from "../../../components/AccountCreation/AccountCreationComponent";
-import { fetchLocalStorage } from "@/MuLearnServices/common_functions";
-import { dashboardRoutes } from "@/MuLearnServices/urls";
-import { privateGateway } from "@/MuLearnServices/apiGateways";
 
 export default function RegisterPage() {
     const navigate = useNavigate();
@@ -25,8 +21,6 @@ export default function RegisterPage() {
             }
         });
     };
-
-  
 
     return (
         <AccountCreationComponent

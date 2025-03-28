@@ -5,16 +5,22 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import styles from './CommunityForum.module.css';
 
-interface Event {
+export interface Event {
   id: string;
   title: string;
+  description:string;
   link: string;
   venue: string;
-  eventType: "Online" | "Offline";
+  eventType: string;
   date: string;
   time: string;
-  image: string;
+  poster: string;
+  igBased?: boolean;
+  ig?: string;
+  status: string;
+
 }
+
 
 interface SidebarBannerSliderProps {
   events?: Event[];
@@ -31,7 +37,13 @@ const SidebarBannerSlider: React.FC<SidebarBannerSliderProps> = ({ events }) => 
       >
         {events?.map((event) => (
           <SwiperSlide key={event.id} className={styles.swiperSlide}>
-            <img src={event.image} alt={event.title} className={styles.sliderImage} />
+            <div className={styles.imageWrapper}>
+              <img src={event.poster} alt={event.title} className={styles.sliderImage} loading='lazy'/>
+              {event.link&&(
+              <a href={event.link} className={styles.knowMoreButton}>
+                Know More
+              </a>)}
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>

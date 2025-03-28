@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./ModeSwitchModal.module.css";
 
 const modes = [
@@ -25,10 +25,10 @@ const modes = [
 ];
 
 const imageMap: { [key: string]: { src: string; alt: string } } = {
-  coder: { src: "/assets/landing/coder2.png", alt: "Coding illustration" },
-  maker: { src: "/assets/landing/maker.png", alt: "Maker illustration" },
-  creative: { src: "/assets/landing/creative.png", alt: "Designer illustration" },
-  manager: { src: "/assets/landing/manager.png", alt: "Manager illustration" },
+  coder: { src: "/assets/landing/coder2.webp", alt: "Coding illustration" },
+  maker: { src: "/assets/landing/maker.webp", alt: "Maker illustration" },
+  creative: { src: "/assets/landing/creative.webp", alt: "Designer illustration" },
+  manager: { src: "/assets/landing/manager.webp", alt: "Manager illustration" },
 };
 
 interface ModeSwitchModalProps {
@@ -49,8 +49,15 @@ const ModeSwitchModal: React.FC<ModeSwitchModalProps> = ({
     currentMode?.user_domains?.[0] || null
   );
 
+  const [animate, setAnimate] = useState(false);
+
+  function onCloseAnimate() {
+    setAnimate(true);
+    onClose()
+  }
+
   const handleCardClick = (modeId: string) => {
-    setSelectedMode((prev) => (prev === modeId ? null : modeId));
+    setSelectedMode(modeId);
   };
 
   const handleSubmit = () => {
@@ -62,13 +69,13 @@ const ModeSwitchModal: React.FC<ModeSwitchModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className={styles.modalOverlay} onClick={onClose}>
-      <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+    <div className={styles.modalOverlay} onClick={onCloseAnimate}>
+      <div className={`${styles.modalContent} ${animate ? styles.modalContentClose : ""}`} onClick={(e) => e.stopPropagation()}>
         {/* Close Button (X) */}
        
 
         <h2 className={styles.modalTitle}>Choose Your Path</h2>
-        <button className={styles.closeButton} onClick={onClose}>
+        <button className={styles.closeButton} onClick={onCloseAnimate}>
           ✕
         </button>
 
@@ -86,16 +93,14 @@ const ModeSwitchModal: React.FC<ModeSwitchModalProps> = ({
                 alt={imageMap[mode.id].alt}
                 className={styles.cardImage}
               />
-              <div className={styles.cardLabel}>{mode.label}</div>
-              {selectedMode === mode.id && (
-                <ul className={styles.subdomainsList}>
+              <div className={`${styles.cardLabel} ${selectedMode === mode.id ? styles.cardLabelActive : ''}`}>{mode.label}</div>
+                <ul className={`${styles.subdomainsList} ${selectedMode === mode.id ? styles.subdomainsListActive : ''}`}>
                   {mode.subdomains.map((sub) => (
                     <li key={sub} className={styles.subdomainItem}>
                       {sub}
                     </li>
                   ))}
                 </ul>
-              )}
             </div>
           ))}
         </div>

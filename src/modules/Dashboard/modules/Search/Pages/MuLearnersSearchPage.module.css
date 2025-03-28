@@ -35,8 +35,8 @@
   display: flex;
   gap: 0.625rem;
   align-items: center;
-  width: 100%;
-  margin: 0.625rem auto 0.5rem auto;
+  width: 80%;
+  margin: 0.625rem 0 0.8rem 0;
   padding: 0;
   box-sizing: border-box;
 }
@@ -99,7 +99,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 1rem;
-  padding: 0 1rem;
+  margin-top: 1rem;
+  padding: 0;
 }
 
 .noResultsText {
@@ -287,7 +288,7 @@
   .searchContainer {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
-    max-width: calc(100% - 1rem);
+    width: 100%;
   }
 
   .searchInput {

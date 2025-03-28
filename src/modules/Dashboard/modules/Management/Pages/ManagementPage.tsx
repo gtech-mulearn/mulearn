@@ -8,7 +8,7 @@ const subcategories = [
     icon: '👤',
     title: 'Manage Users',
     description: 'Add, edit, and delete user accounts.',
-    path: "management/user-management/manage-users"
+    path: "management/user-management/manage-users",
   },
   {
     icon: '🔐',
@@ -21,6 +21,12 @@ const subcategories = [
     title: 'Manage Roles',
     description: 'Create and configure user role permissions.',
     path: "management/manage-roles"
+  },
+  {
+    icon: '🏆',
+    title: 'Manage Achievements',
+    description: 'Create, edit, and configure user achievements.',
+    path: "management/manage-achievements"
   },
   {
 
@@ -87,7 +93,7 @@ const subcategories = [
     icon: '👥',
     title: 'Community: Interest Groups',
     description: 'Manage user interest groups and categories.',
-    path: "management/interest-groups"
+    path: "management/manage-interest-groups"
   },
   {
     icon: '🤝',
@@ -142,12 +148,12 @@ const subcategories = [
     description: 'Configure dynamic content types.',
     path: "management/dynamic-type"
   },
-  {
-    icon: '🔗',
-    title: 'System: URL Shortener',
-    description: 'Create and manage shortened URLs.',
-    path: "management/url-shortener"
-  }
+  // {
+  //   icon: '🔗',
+  //   title: 'System: URL Shortener',
+  //   description: 'Create and manage shortened URLs.',
+  //   path: "management/url-shortener"
+  // }
 ];
 
 const ManagementPage: React.FC = () => {

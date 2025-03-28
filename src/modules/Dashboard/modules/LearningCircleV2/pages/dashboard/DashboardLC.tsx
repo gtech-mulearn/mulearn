@@ -46,7 +46,7 @@ export default function DashboardLC() {
                                     <h1 className={styles.date}>
                                         {convertDateToDayAndMonthAndYear(
                                             getLocalDateTimeFormatted(
-                                                circleInfo.next_meetup.meet_time
+                                                circleInfo.next_meetup.meet_time as string
                                             ).split("T")[0]
                                         )}
                                     </h1>
@@ -112,7 +112,7 @@ export default function DashboardLC() {
                                         Time:
                                         {
                                             getLocalDateTimeFormatted(
-                                                circleInfo.next_meetup.meet_time
+                                                circleInfo.next_meetup.meet_time as string
                                             ).split("T")[1]
                                         }
                                     </span>
@@ -189,7 +189,7 @@ export default function DashboardLC() {
                                         <div className={styles.info}>
                                             <h1 className={styles.date}>
                                                 {convertDateToDayAndMonthAndYear(
-                                                    meetup.meet_time.split(
+                                                    (meetup.meet_time as string).split(
                                                         "T"
                                                     )[0]
                                                 )}

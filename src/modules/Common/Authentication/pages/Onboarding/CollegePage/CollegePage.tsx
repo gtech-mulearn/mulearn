@@ -103,7 +103,18 @@ export default function CollegePage() {
             });
         }
     }, [isCollege]);
-    const onSubmit = async (values: any) => {
+    const onSubmit = async (values: any, formikHelpers: any) => {
+        // Mark all fields as touched to trigger validation
+        formikHelpers.setTouched({
+            organization: true,
+            department: true,
+            graduationYear: true
+        });
+        
+        if (!values.organization) {
+            return;
+        }
+        
         if (createOrganizationTitle) {
             createNewOrganization({
                 setIsLoading: setIsLoading,
@@ -204,7 +215,7 @@ export default function CollegePage() {
                     Object.keys(inputObject).map(key => [key, ""])
                 )}
                 validationSchema={scheme}
-                onSubmit={(value, action) => onSubmit(value)}
+                onSubmit={(value, action) => onSubmit(value, action)}
             >
                 {formik => (
                     <div>
@@ -241,6 +252,12 @@ export default function CollegePage() {
                                         }}
                                     />
                                 </div>
+                                {formik.touched.organization &&
+                                    formik.errors.organization && (
+                                        <span className={styles.errorsSpan}>
+                                            {formik.errors.organization}
+                                        </span>
+                                    )}
                                 {formik.touched.college &&
                                     formik.errors.college && (
                                         <span className={styles.errorsSpan}>
@@ -365,7 +382,7 @@ export default function CollegePage() {
                                         isLoading={isloading}
                                     >
                                         {isloading
-                                            ? "Please wait..."
+                                            ? (<div className="flex items-center justify-center !text-sm">Please wait</div>)
                                             : "Submit"}
                                     </PowerfulButton>
                                 </div>

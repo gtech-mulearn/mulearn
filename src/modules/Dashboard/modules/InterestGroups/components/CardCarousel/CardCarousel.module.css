@@ -1,0 +1,45 @@
+.carouselWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: visible; /* Allow arrows to be visible */
+  width: 100%;
+  /* Optional: add a background to visualize the wrapper */
+  /* background-color: rgba(0, 255, 0, 0.1); */
+}
+
+.carouselContainer {
+  overflow-x: auto;
+  display: flex;
+  gap: 16px;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.carouselContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.leftArrow, .rightArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10; 
+  background-color: #fff; /* temporary background to see it */
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* Adjust these values as needed */
+.leftArrow {
+  left: -20px; /* Increase negative value if needed */
+}
+.rightArrow {
+  right: -20px;
+}

@@ -1,0 +1,100 @@
+/* Create Learning Circle Form */
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+    text-align: left;
+    color: rgb(34, 34, 34);
+}
+
+.formGrid {
+    display: grid;
+    gap: 16px;
+}
+
+.formField {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.textarea {
+    min-height: 100px;
+    border: 1px solid #d1d5db;
+    padding: 8px;
+    border-radius: 6px;
+    resize: vertical;
+}
+
+.helperText {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.switchContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.switchLabel {
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Dialog Footer */
+.dialogFooter {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+
+/* Toggle Switch */
+.toggleWrapper {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    background: #f8fafc;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px;
+    margin-top: 4px;
+    z-index: 0;
+}
+
+.toggleSlider {
+    position: absolute;
+    width: 50%;
+    height: calc(100% - 8px);
+    background: #3b82f6;
+    border-radius: 6px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
+}
+
+.toggleSlider.online {
+    transform: translateX(calc(100% - 0px));
+}
+
+.toggleOption {
+    z-index: 1;
+    flex: 1;
+    text-align: center;
+    color: #64748b;
+    font-size: 14px;
+    font-weight: 500;
+    user-select: none;
+    transition: color 0.3s ease;
+}
+
+.active {
+    color: #ffffff;
+}

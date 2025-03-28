@@ -180,3 +180,37 @@
     border-radius: 10px;
     margin-bottom: 1rem;
 }
+
+.interestTag {
+    background-color: #ffb6c1;
+    padding: clamp(4px, 0.5vw, 6px) clamp(8px, 1vw, 12px);
+    border-radius: 16px;
+    font-size: clamp(0.625rem, 1vw, 12px);
+    color: #333333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+  
+  .interestTag:nth-child(2) {
+    background-color: #90ee90;
+    color: #333333;
+  }
+  
+  .interestTag:nth-child(3) {
+    background-color: #87cefa;
+    color: #333333;
+  }
+  
+  .noInterestTag {
+    background-color: #f0f0f0;
+    padding: clamp(4px, 0.5vw, 6px) clamp(8px, 1vw, 12px);
+    border-radius: 16px;
+    font-size: clamp(0.625rem, 1vw, 12px);
+    color: #666;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }

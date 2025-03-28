@@ -43,7 +43,7 @@ const rolesContent: RolesContent = {
       description:
         'Share your tools, platforms, and industry expertise at no cost while accessing a highly skilled, pre-trained talent pool. Minimize onboarding time, streamline workflow integration, and scale projects efficiently through seamless collaboration.',
       image:
-      '/assets/roles_images/Podcast_Social.png',
+      '/assets/landing/expertise.webp',
     },
     {
       id: 2,
@@ -51,7 +51,7 @@ const rolesContent: RolesContent = {
       description:
         'Launch your products directly to a community of tech-savvy developers and early adopters. Boost brand awareness, accelerate product adoption, and gather real-time user insights for continuous improvement.',
       image:
-      '/assets/roles_images/Creative_Writing.png',
+      '/assets/landing/product introduction.webp',
     },
     {
       id: 3,
@@ -59,7 +59,7 @@ const rolesContent: RolesContent = {
       description:
         'Hire top-tier, job-ready developers with proven skills, reducing training costs and expediting project execution. Gain access to a dynamic talent pipeline that meets industry demands and ensures faster onboarding.',
       image:
-      '/assets/roles_images/Business_Woman.png',
+      '/assets/landing/talent.webp',
     },
     {
       id: 4,
@@ -67,7 +67,7 @@ const rolesContent: RolesContent = {
       description:
       'Elevate your brand reputation by engaging with a vibrant learning ecosystem. Build lasting relationships with future industry leaders while positioning your company as an innovator in the tech community.',
       image:
-      '/assets/roles_images/Online_Support.png',
+      '/assets/landing/brand.webp',
     },
   ],
   learner: [

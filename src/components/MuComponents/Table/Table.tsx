@@ -63,6 +63,8 @@ type TableProps = {
     modalDeleteHeading?: string;
     modalDeleteContent?: string;
     modalTypeContent?: string;
+    // Add the customCellRender prop
+    customCellRender?: (column: string, row: Data) => ReactElement | null;
 };
 
 /* 
@@ -160,9 +162,6 @@ const Table: FC<TableProps> = (props: TableProps) => {
 
     const startIndex = (props.page - 1) * props.perPage;
 
-    // To change MuLoading Component
-
-    //props.rows?.map((rowData, index)=>{console.log(rowData['title'])})
     return (
         <>
             {props?.rows?.map((rowData, index) => {
@@ -188,30 +187,38 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                 <tr key={index}>
                                     <td className={styles.td}>
                                         {startIndex + index + 1}
-                                    </td>{" "}
-                                    {props.columnOrder.map(column => (
-                                        <td
-                                            className={`${styles.td} ${
-                                                column.column === "long_url"
-                                                    ? styles["url_wrap"]
-                                                    : ""
-                                            }`}
-                                            key={column.column}
-                                        >
-                                            {column.wrap
-                                                ? column.wrap(
-                                                      convertToTableData(
-                                                          rowData[column.column]
-                                                      ),
-                                                      rowData["id"] as string,
-                                                      rowData
-                                                  )
-                                                : convertToTableData(
-                                                      rowData[column.column]
-                                                  )}
-                                            {}
-                                        </td>
-                                    ))}
+                                    </td>
+                                    {props.columnOrder.map(column => {
+                                        // Check if customCellRender exists and returns something for this column
+                                        const customRendered = props.customCellRender 
+                                            ? props.customCellRender(column.column, rowData)
+                                            : null;
+                                        
+                                        return (
+                                            <td
+                                                className={`${styles.td} ${
+                                                    column.column === "long_url"
+                                                        ? styles["url_wrap"]
+                                                        : ""
+                                                }`}
+                                                key={column.column}
+                                            >
+                                                {customRendered || (
+                                                    column.wrap
+                                                        ? column.wrap(
+                                                            convertToTableData(
+                                                                rowData[column.column]
+                                                            ),
+                                                            rowData["id"] as string,
+                                                            rowData
+                                                        )
+                                                        : convertToTableData(
+                                                            rowData[column.column]
+                                                        )
+                                                )}
+                                            </td>
+                                        );
+                                    })}
                                     {props.id &&
                                         props.id.map((column, columnIndex) => (
                                             <td
@@ -327,26 +334,6 @@ const Table: FC<TableProps> = (props: TableProps) => {
                                                             </p>
                                                         </div>
                                                     </MuModal>
-                                                    {/* {isVerifyOpen[index] && (
-                                                        <Modal
-                                                            setIsOpen={() =>
-                                                                toggleModal(
-                                                                    index,
-                                                                    ModalType[0]
-                                                                )
-                                                            }
-                                                            id={rowData[column]}
-                                                            heading={
-                                                                props.modalVerifyHeading
-                                                            }
-                                                            content={
-                                                                props.modalVerifyContent
-                                                            }
-                                                            click={
-                                                                props.onVerifyClick
-                                                            }
-                                                        />
-                                                    )} */}
                                                     {props.onDeleteClick && (
                                                         <button
                                                             onClick={() =>

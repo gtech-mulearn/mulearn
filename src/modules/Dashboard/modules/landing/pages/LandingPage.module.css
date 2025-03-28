@@ -2,9 +2,38 @@
 
 .landingContainer {
   font-family: Arial, sans-serif;
-  padding: 1rem 12rem;
+  /* padding: 1rem 12rem; */
+  padding: 1rem 0rem;
   text-align: center;
   text-wrap: balanced;
+}
+
+.landingPaddingContainerTextCenter {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.landingPaddingContainerTextCenter h1 {
+  font-size: 3rem;
+  text-align: left;
+  max-width: 35rem;
+  font-weight: 800;
+  line-height: normal;
+}
+
+.landingPaddingContainerCustom {
+  padding-top: 8rem !important;
+  /* background: #f1f2f7; */
+  background: linear-gradient(#ffff 0%, #f1f2f7 30%,  #dce0f4 100%);
+}
+
+.landingPaddingContainer {
+  padding: 0rem 12rem;
+  width: 100%;
 }
 
 .navbar {
@@ -15,8 +44,8 @@
   padding: 1rem 0;
 }
 
-.joinCommunity{
- display: flex;
+.joinCommunity {
+  display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -36,6 +65,15 @@
   font-weight: 600;
 }
 
+.navLinks li {
+  transition: all 0.25s linear;
+}
+
+.navLinks li:hover {
+  transform: scale(1.05);
+  color: black;
+}
+
 .navButtons button {
   margin-left: 10px;
 }
@@ -52,17 +90,27 @@
 .featuresGrid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 20px;
-  margin-top: 30px;
+  gap: 0px;
+  margin-top: 50px;
 }
 
 .featureCard {
   padding: 15px;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.featuresGrid .featureCard:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.featuresGrid .featureCard:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .joinBtn,
@@ -92,8 +140,17 @@
 .heroSection {
   display: flex;
   flex-direction: column;
-  padding: 8rem 0rem;
+  /* padding: 8rem 0rem; */
   align-items: center;
+}
+
+.heroSection h1 {
+  margin-top: 50px;
+}
+
+.heroSection h1 span {
+  color: #007bff;
+  font-weight: bold;
 }
 
 .heroLeft {
@@ -107,7 +164,7 @@
 }
 
 .heroLeft h1 {
-  font-size: 3.1rem;
+  font-size: 3.5rem;
   font-weight: 800;
   text-align: center;
   max-width: 700px;
@@ -169,6 +226,14 @@
   font-size: 0.9rem;
 }
 
+.heroDescription {
+  font-weight: 400;
+  max-width: 800px;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+}
+
 .ctaButtons {
   margin-top: 1rem;
   display: flex;
@@ -188,10 +253,10 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.featureCard:hover {
+/* .featureCard:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-}
+} */
 
 .featureCard h3 {
   font-size: 1.1rem;
@@ -205,11 +270,16 @@
   text-align: center;
 }
 
+.mulearnTopPad{
+  padding-top: 3rem;
+}
+
 .leftRightGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-top: 20px;
   gap: 20px;
+  padding: 3rem 0rem;
 }
 
 .leftRightGridCustom {
@@ -237,12 +307,13 @@
   margin-top: 20px;
 }
 
-.storyTitle p {
-  font-size: 1rem;
+.storyTitle h6 {
+  font-weight: 400;
+  margin-bottom: 4rem;
+  max-width: 800px;
   text-align: left;
-  max-width: 35rem;
-  font-weight: 500;
-  color: gray;
+  font-size: 1.2rem;
+  color: #666;
   margin: 16px 0px;
   margin-bottom: 32px;
 }
@@ -251,7 +322,7 @@
   display: flex;
   flex-direction: column;
   justify-items: center;
-  padding: 10rem 0rem;
+  padding: 6rem 0rem;
   align-items: center;
 }
 
@@ -280,7 +351,7 @@
   display: flex;
   flex-direction: column;
   justify-items: center;
-  padding-top: 10rem;
+  padding-top: 3rem;
   align-items: center;
 }
 
@@ -296,12 +367,13 @@
 }
 
 .specialEventsSection .specialEvents h6 {
-  font-size: 1rem;
   font-weight: 400;
-  color: gray;
   margin-bottom: 4rem;
   max-width: 800px;
   text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 10px;
 }
 
 .specialEventsSection .specialEvents .specialEventsCards {
@@ -317,6 +389,10 @@
     flex-direction: column;
     gap: 2rem;
   }
+}
+
+.comparisonGridSection {
+  padding-bottom: 0px;
 }
 
 .camparison {
@@ -351,6 +427,7 @@
     box-shadow: inset 0px 0px 10px 2px rgba(0, 255, 182, 0.5),
       0px 0px 5px 2px rgba(0, 255, 135, 0.3);
   }
+
   100% {
     background: rgba(255, 255, 255, 1);
     box-shadow: inset 0px 0px 10px 2px rgba(0, 255, 182, 0.5),
@@ -381,29 +458,49 @@
   max-width: 800px;
 }
 
+.camparison table tr th:nth-child(odd) {
+  text-align: right;
+  padding-right: 1rem;
+}
+
+.camparison table tr th:nth-child(even) {
+  text-align: left;
+  padding-left: 1rem;
+}
+
+.camparison table tr td:nth-child(odd) {
+  text-align: right;
+  padding-right: 2rem;
+}
+
+.camparison table tr td:nth-child(even) {
+  text-align: left;
+  padding-left: 2rem;
+}
+
 .cards {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 3rem 2rem; /* Increased padding for larger cards */
+  padding: 3rem 2rem;
+  /* Increased padding for larger cards */
   background-color: #f7f7f7;
-  border-right: 0.2px solid gray;
+  /* border-right: 0.2px solid gray; */
   transition: background 0.5s ease, box-shadow 0.3s ease;
   cursor: pointer;
-  min-height: 250px; /* Increased minimum height */
+  min-height: 250px;
+  /* Increased minimum height */
 }
 
-.cards:hover {
+/* .cards:hover {
   background-color: #e2e2e3;
-}
+} */
 
-.cards:last-child {
-  border-right: 0;
-}
 
 .cards h6 {
-  font-size: 1.6rem; /* Increased font size */
+  font-size: 1.6rem;
+  /* Increased font size */
   margin-top: 1.5rem;
   font-weight: 600;
   text-align: center;
@@ -411,7 +508,8 @@
 
 .cards span img {
   width: 100%;
-  max-width: 150px; /* Increased max width for images */
+  max-width: 150px;
+  /* Increased max width for images */
   height: auto;
 }
 
@@ -421,17 +519,27 @@
 }
 
 .oppurtunitiesTitle h6 {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #007bff;
+  font-weight: 400;
+  margin-bottom: 4rem;
+  max-width: 800px;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 10px;
 }
 
 .oppurtunities {
   display: grid;
-  grid-template-columns: repeat(4, minmax(15rem, 2fr));
+  grid-template-columns: repeat(5, minmax(15rem, 2fr));
   margin-top: 1rem;
-  gap: 2rem; /* Increased gap for better spacing */
+  gap: 2rem;
+  /* Increased gap for better spacing */
   justify-content: center;
+  border: none;
+}
+
+.oppurtunities span img {
+  height: 100px;
 }
 
 .community h1 {
@@ -444,9 +552,13 @@
 }
 
 .community h6 {
-  font-size: 1rem;
-  max-width: 40rem;
+  font-weight: 400;
+  margin-bottom: 4rem;
+  max-width: 800px;
   text-align: left;
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 10px;
 }
 
 .community {
@@ -469,14 +581,18 @@
 .impact {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   gap: 30px;
 }
 
-.impact p {
-  max-width: 50rem;
-  text-align: left;
-  font-weight: 500;
+.impact h6 {
+  font-weight: 400;
+  margin-bottom: 4rem;
+  max-width: 800px;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 10px;
 }
 
 .impact h1 {
@@ -491,7 +607,7 @@
   display: grid;
   padding: 2rem 10rem;
   grid-template-columns: repeat(4, minmax(15rem, 2fr));
-  gap: 1.5rem;
+  /* gap: 1.5rem; */
 }
 
 .dataCard {
@@ -500,6 +616,20 @@
   justify-content: center;
   align-items: center;
   padding: 1rem;
+  border-right: 1px solid #ccc;
+  /* Only right and bottom borders */
+  border-bottom: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Remove right border for last column */
+.dataCard:nth-child(4n) {
+  border-right: none;
+}
+
+/* Remove bottom border for last row */
+.dataCard:nth-last-child(-n + 4) {
+  border-bottom: none;
 }
 
 .dataCard h1 {
@@ -573,6 +703,7 @@
   flex-direction: column;
   cursor: pointer;
   gap: 5px;
+  margin: 25px;
 }
 
 .hamburger div {
@@ -594,7 +725,11 @@
 /* Responsive Design */
 @media (max-width: 1400px) {
   .landingContainer {
-    padding: 1rem 10rem;
+    padding: 1rem 0px;
+  }
+
+  .landingPaddingContainer {
+    padding: 0rem 10rem;
   }
 
   .navLinks {
@@ -605,10 +740,23 @@
     font-size: 0.8rem;
   }
 
-
-
   .dataGrid {
     grid-template-columns: repeat(3, minmax(15rem, 2fr));
+  }
+
+  .dataCard,
+  .dataCard:nth-child(4n),
+  .dataCard:nth-last-child(-n + 4) {
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .dataCard:nth-child(3n) {
+    border-right: none;
+  }
+
+  .dataCard:nth-last-child(-n + 3) {
+    border-bottom: none;
   }
 
   .dataGrid .dataCard h1 {
@@ -630,7 +778,11 @@
 
 @media (max-width: 1150px) {
   .landingContainer {
-    padding: 1rem 8rem;
+    padding: 1rem 0rem;
+  }
+
+  .landingPaddingContainer {
+    padding: 0rem 8rem;
   }
 
   .navLinks {
@@ -651,7 +803,7 @@
   }
 
   .oppurtunities {
-    grid-template-columns: repeat(2, minmax(20rem, 2fr));
+    grid-template-columns: repeat(3, minmax(15rem, 2fr));
   }
 
   .cards {
@@ -674,7 +826,8 @@
   }
 
   .navLinks {
-    display: none; /* Hide desktop nav links on smaller screens */
+    display: none;
+    /* Hide desktop nav links on smaller screens */
   }
 
   .mobileNavLinks li {
@@ -723,7 +876,12 @@
   }
 
   .landingContainer {
-    padding: 1rem 5rem;
+    padding: 1rem 0rem;
+  }
+
+
+  .landingPaddingContainer {
+    padding: 0rem 5rem;
   }
 
   .navbar {
@@ -740,8 +898,8 @@
     margin-top: 0;
   }
 
-  .heroSection {
-    padding: 4rem 0;
+  .landingPaddingContainerCustom {
+    padding-top: 4rem !important;
   }
 
   .heroLeft h1 {
@@ -762,7 +920,7 @@
 
   .oppurtunities {
     grid-template-columns: 1fr;
-    grid-template-columns: repeat(2, minmax(20rem, 1fr));
+    grid-template-columns: repeat(3, minmax(15rem, 1fr));
 
   }
 
@@ -782,7 +940,11 @@
 
 @media (max-width: 768px) {
   .landingContainer {
-    padding: 1rem 2rem;
+    padding: 1rem 0rem;
+  }
+
+  .landingPaddingContainer {
+    padding: 0rem 2rem;
   }
 
   .heroLeft h1 {
@@ -829,13 +991,19 @@
   }
 
   .cards span img {
-    max-width: 100px;
+    height: auto;
+    width: 170px;
+    max-width: 170px;
   }
 
   .impact {
     flex-direction: column;
     align-items: center;
     gap: 20px;
+  }
+
+  .impact h6 {
+    margin-top: 0px;
   }
 
   .impact h1 {
@@ -851,6 +1019,21 @@
   .dataGrid {
     grid-template-columns: repeat(2, minmax(15rem, 2fr));
     padding: 1rem;
+  }
+
+  .dataCard,
+  .dataCard:nth-child(3n),
+  .dataCard:nth-last-child(-n + 3) {
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .dataCard:nth-child(2n) {
+    border-right: none;
+  }
+
+  .dataCard:nth-last-child(-n + 2) {
+    border-bottom: none;
   }
 
   .dataCard h1 {
@@ -869,8 +1052,14 @@
 
 @media (max-width: 480px) {
   .landingContainer {
-    padding: 1rem 1rem;
+    padding: 1rem 0rem;
   }
+
+
+  .landingPaddingContainer {
+    padding: 0rem 1rem;
+  }
+
   .leftRightGrid {
     grid-template-columns: 1fr;
     align-items: center;
@@ -943,6 +1132,11 @@
     text-align: center;
   }
 
+  .landingPaddingContainerTextCenter h1 {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
   .storyTitle p {
     font-size: 1rem;
   }
@@ -974,8 +1168,11 @@
     font-size: 0.9rem;
   }
 
-  .cards span img {
-    max-width: 80px;
+  .cards span img,
+  .cards span {
+    height: auto;
+    width: 160px;
+    max-width: 160px;
   }
 
   .impact h1 {
@@ -1032,13 +1229,16 @@
 .iframeContainer {
   width: 100%;
   height: 100%;
-  aspect-ratio: 16/9; /* Maintains aspect ratio for responsiveness */
+  aspect-ratio: 16/9;
+  /* Maintains aspect ratio for responsiveness */
   overflow: hidden;
-  border: none; /* Remove default iframe border */
+  border: none;
+  /* Remove default iframe border */
 }
 
 .iframeContainer iframe {
   width: 100%;
   height: 100%;
-  border: none; /* Ensure no border on the iframe itself */
+  border: none;
+  /* Ensure no border on the iframe itself */
 }

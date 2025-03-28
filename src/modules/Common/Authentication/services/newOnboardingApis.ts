@@ -1,12 +1,12 @@
 import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
 import { showToasts } from "@/MuLearnServices/common_functions";
-import { KKEMRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
-
 import { Dispatch, SetStateAction } from "react";
 import { NavigateFunction } from "react-router-dom";
 import { getInfo } from "../../../Dashboard/modules/ConnectDiscord/services/apis";
 import { DWMSDetails } from "./onboardingApis";
 import toast from "react-hot-toast";
+import { useUserStore } from "/src/ZustandProvider";
+import { dashboardRoutes, KKEMRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
 
 export const validate = async ({
     userData,
@@ -148,7 +148,7 @@ export const submitUserData = async ({
     setIsLoading: Dispatch<SetStateAction<boolean>>;
     userData: Object;
 }) => {
-    // console.log("UserData", userData);
+    console.log("UserData", userData);
     try {
         setIsLoading(true);
         const res = await privateGateway.post(
@@ -158,6 +158,28 @@ export const submitUserData = async ({
         const tokens = res.data.response;
         localStorage.setItem("accessToken", tokens.accessToken);
         localStorage.setItem("refreshToken", tokens.refreshToken);
+        privateGateway
+            .get(dashboardRoutes.getInfo)
+            .then(async (response: any) => {
+                localStorage.setItem(
+                    "userInfo",
+                    JSON.stringify(response.data.response)
+                );
+                useUserStore.setState((prev) => ({
+                    ...prev,
+                    userInfo: response.data.response,
+                }));
+                await privateGateway.get(dashboardRoutes.getUserProfile).then(response => {
+                    useUserStore.setState((prev) => ({
+                        ...prev,
+                        userProfile: {
+                            ...response.data.response,
+                            first_name: response.data.response.full_name.split(" ")[0],
+                            college_id: response.data.response.college_id,
+                        },
+                    }));
+                });
+            });
         return true;
     } catch (err: any) {
         setIsLoading(false);

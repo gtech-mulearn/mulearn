@@ -70,7 +70,12 @@ export default function MoreInfoLC() {
                 if (res) {
                     setMeetup({
                         ...meetup,
-                        attendee: null
+                        attendee: {
+                            name: '',
+                            is_joined: true,
+                            is_lc_approved: false,
+                            is_report_submitted: false
+                        }
                     });
                 }
             });
@@ -82,6 +87,7 @@ export default function MoreInfoLC() {
                 setMeetup({
                     ...meetup,
                     attendee: {
+                        name: '',
                         is_joined: true,
                         is_lc_approved: false,
                         is_report_submitted: false

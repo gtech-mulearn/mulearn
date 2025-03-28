@@ -1,5 +1,5 @@
 // src/components/IGActionSection.tsx
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './IGActionSection.module.css';
 import { InterestGroupData, CardData, LearningPath } from '../../data/interestGroups';
 import Karma from '../../../Profile/assets/svg/Karma';
@@ -10,6 +10,11 @@ import { useNavigate, useParams } from 'react-router-dom';
 import LearningPathCard from '../LearningPathCard';
 import LearningPathDetailPage from '../LearningPathDetailPage'; // Import the detail page component
 import AsideDetails from '/src/modules/Dashboard/components/AsideDetails';
+import { publicGateway } from '@/MuLearnServices/apiGateways';
+import { dashboardRoutes } from '@/MuLearnServices/urls';
+
+import { fetchAndFormatIGTasks } from '../../services/api';
+import { FormattedLevel, Card } from '../../../LearningPathNew/services/api';
 
 const IGActionSection = ({ data }: { data: InterestGroupData }) => {
   const tabNames = [
@@ -23,11 +28,40 @@ const IGActionSection = ({ data }: { data: InterestGroupData }) => {
   const [selectedPath, setSelectedPath] = useState<{ level: string; card: LearningPath['cards'][0] } | null>(null); // State for selected learning path
   const [selectedUser, setSelectedUser] = useState<CardData | null>(null); // State for selected user (for aside)
   const [isAsideOpen, setIsAsideOpen] = useState(false); // State for aside visibility
+  const [formattedTasks, setFormattedTasks] = useState<FormattedLevel[]>([]); // New state for tasks
+  const [loadingTasks, setLoadingTasks] = useState<boolean>(false); // Loading state for tasks
+  const [taskError, setTaskError] = useState<string | null>(null);
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>(); // Get the interest group ID from URL
 
   // Log the id to debug
   // console.log('Current Interest Group ID:', id);
+
+  useEffect(() => {
+    async function loadTasks() {
+      if (!id) {
+        setTaskError('No Interest Group ID provided');
+        return;
+      }
+
+      setLoadingTasks(true);
+      setTaskError(null);
+
+      try {
+        const tasks = await fetchAndFormatIGTasks(id);
+        setFormattedTasks(tasks);
+      } catch (err) {
+        console.error('Error fetching tasks:', err);
+        setTaskError('Failed to load tasks');
+      } finally {
+        setLoadingTasks(false);
+      }
+    }
+
+    loadTasks();
+  }, [id]);
+
+  
 
   const handleUserSelect = (cardData: CardData) => {
     setSelectedUser(cardData);
@@ -44,7 +78,7 @@ const IGActionSection = ({ data }: { data: InterestGroupData }) => {
   };
 
   const handleBackToPaths = () => {
-    setSelectedPath(null); // Go back to showing cards
+    setSelectedPath(null); 
   };
 
   const renderAsideContent = (user: CardData) => {
@@ -75,7 +109,6 @@ const IGActionSection = ({ data }: { data: InterestGroupData }) => {
               className={styles.profileImage}
             />
           </div>
-          {/* <div className={styles.memberSince}>Member since 2023</div> */}
           <button className={styles.connectBtn} onClick={handleAsideClose}>
             Close
           </button>
@@ -140,8 +173,11 @@ const IGActionSection = ({ data }: { data: InterestGroupData }) => {
             <p>
               Explore our resources here:{' '}
               <a
+              target='_blank'
+              rel='noopener noreferrer'
+              href={data.tabs.about.foundationDeck}
                 className="!text-blue-600 cursor-pointer"
-                onClick={() => navigate(data.tabs.about.foundationDeck)}
+                // onClick={() => (window.location.href = data.tabs.about.foundationDeck)}
               >
                 foundation deck
               </a>
@@ -169,35 +205,42 @@ const IGActionSection = ({ data }: { data: InterestGroupData }) => {
             </div>
           </div>
         );
-      case "Learning Paths":
-        return (
-          <>
-            {selectedPath ? (
-              <LearningPathDetailPage
-                level={selectedPath.level}
-                card={selectedPath.card}
-                onBack={handleBackToPaths} // Pass a callback to go back
-              />
-            ) : (
-              <div className={styles.cardsContainer}>
-                {!data.tabs.learningPaths ? (
-                  <p>No learning paths available.</p>
-                ) : (
-                  data.tabs.learningPaths?.map((path: LearningPath) => (
-                    <LearningPathCard
-                      key={path.level}
-                      id={id || ''}
-                      level={path.level}
-                      card={path.cards[0]}
-                      onSelect={handlePathSelect} // Pass the selection handler
-                    />
-                  ))
-                )}
-                
-              </div>
-            )}
-          </>
-        );
+        case "Learning Paths":
+          return (
+            <>
+              {selectedPath ? (
+                <LearningPathDetailPage
+                  level={selectedPath.level}
+                  card={selectedPath.card}
+                  onBack={handleBackToPaths}
+                  formattedTasks={formattedTasks} 
+                />
+              ) : (
+                <div className={styles.cardsContainer}>
+                  {!data.tabs.learningPaths ? (
+                    <p>No learning paths available.</p>
+                  ) : (
+                    data.tabs.learningPaths?.map((path: LearningPath, index) => (
+                      <div key={path.level} className={styles.pathContainer}>
+                        <div className={styles.levelHeading}>{path.level}</div>
+                        <div className={styles.cardsContainer}>
+                          {path.cards.map((card, index) => (
+                            <LearningPathCard
+                              key={`${path.level}-${index}`}
+                              id={id || ""}
+                              level={path.level}
+                              card={card}
+                              onSelect={handlePathSelect}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    ))
+                  )}
+                </div>
+              )}
+            </>
+          );
       case "IG Leads":
         return (
           <div className={styles.cardsContainer}>

@@ -1,0 +1,205 @@
+.formOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    backdrop-filter: blur(4px); 
+  }
+  
+  .formContent {
+    position: relative;
+    width: 100%;
+    max-width: 48rem;
+    border-radius: 4px;
+    background-color: white;
+    overflow: hidden;
+  }
+  
+  .formHeader {
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+  }
+  
+  .formTitle {
+    color: white;
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+  
+  .closeButton {
+    width: 2rem;
+    height: 2rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .closeButton:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+  
+  .closeIcon {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: white;
+  }
+  
+  .form {
+    padding: 1.5rem;
+  }
+  
+  .formGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  
+  .formColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+  }
+  
+  .input,
+  .select,
+  .textarea {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+  }
+  
+  .input:focus,
+  .select:focus,
+  .textarea:focus {
+    outline: none;
+    ring: 2px solid #000;
+  }
+  
+  .colorInputGroup {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .colorPicker {
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .colorInput {
+    flex: 1;
+  }
+  
+  .randomColorButton {
+    padding: 0.5rem;
+    background-color: #f3f4f6;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .randomColorButton:hover {
+    background-color: #e5e7eb;
+  }
+  
+  .refreshIcon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  
+  .preview {
+    height: 6rem;
+    border-radius: 0.375rem;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .previewSvg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0.3;
+  }
+  
+  .previewLetter {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 1rem;
+    font-size: 5rem;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.2);
+  }
+  
+  .formActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  
+  .cancelButton,
+  .saveButton {
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cancelButton {
+    background-color: #f3f4f6;
+    color: #374151;
+  }
+  
+  .cancelButton:hover {
+    background-color: #e5e7eb;
+  }
+  
+  .saveButton {
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .saveButton:hover {
+    background-color: #333;
+  }
+  
+  .checkIcon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  
+  @media (max-width: 640px) {
+    .formGrid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  

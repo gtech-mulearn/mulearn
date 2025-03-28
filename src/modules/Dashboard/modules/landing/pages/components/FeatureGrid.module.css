@@ -1,0 +1,111 @@
+.featuresGrid {
+    display: flex;
+    width: 100%;
+    margin-top: 50px;
+    overflow: hidden;
+    position: relative;
+}
+
+.featuresGrid .featureCard:not(:last-child) {
+    border-right: 0px;
+}
+
+.featureCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 1rem;
+    overflow: hidden;
+    height: 280px;
+    transition: width 0.3s ease, background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid #EEE;
+}
+
+.featureCard:hover {
+    z-index: 10;
+}
+
+.featureCard:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.featureCard:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.featureCard h3 {
+    margin-bottom: 0.5rem;
+    transition: font-size 0.3s ease;
+}
+
+.featureCard p {
+    margin: 0;
+    transition: font-size 0.3s ease;
+}
+
+.featureCard img {
+    max-width: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+@media (max-width: 1320px) {
+    .featuresGrid {
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .featureCard {
+        width: calc(33% - 30px) !important;
+        border: 2px solid #EEE !important;
+    }
+}
+
+/* Media query for tablets */
+@media (max-width: 1024px) {
+    .featuresGrid {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .featureCard {
+        width: calc(50% - 20px) !important;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+    }
+
+    .featureCard:first-child,
+    .featureCard:last-child {
+        border-radius: 10px;
+    }
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    .featuresGrid {
+        flex-direction: column;
+    }
+
+    .featureCard {
+        width: 100% !important;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+    }
+
+    .featureCard:first-child,
+    .featureCard:last-child {
+        border-radius: 10px;
+    }
+}

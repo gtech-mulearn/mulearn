@@ -2,7 +2,8 @@ import styles from "./SignIn.module.css";
 import google from "../../../assets/google.png";
 import OnboardingTemplate from "../../../components/OnboardingTeamplate/OnboardingTemplate";
 import OnboardingHeader from "../../../components/OnboardingHeader/OnboardingHeader";
-
+import { HiEye } from "react-icons/hi";
+import { HiEyeSlash } from "react-icons/hi2";
 import { Form, Formik } from "formik";
 import * as z from "yup";
 import { FormikTextInputWithoutLabel as SimpleInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
@@ -28,6 +29,7 @@ export default function SignIn() {
     let ruri = window.location.href.split("=")[1];
 
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible, setIsVisible] = useState(false);
     const [otpForm, setOtpForm] = useState(false);
     const [didOtpSent, setDidOtpSent] = useState(false);
 
@@ -103,14 +105,30 @@ export default function SignIn() {
                                     />
                                 </div>
                                 {!otpForm ? (
-                                    <div className={styles.inputBox}>
-                                        <SimpleInput
-                                            value={formik.values.password}
-                                            name="password"
-                                            placeholder="Password"
-                                            type="password"
-                                            disabled={isLoading}
-                                        />
+                                    <div className={styles.passwordInput}>
+                                        <div className={styles.inputBox}>
+                                            <SimpleInput
+                                                value={formik.values.password}
+                                                name="password"
+                                                placeholder="Password"
+                                                type={
+                                                    isVisible
+                                                        ? "text"
+                                                        : "password"
+                                                }
+                                                disabled={isLoading}
+                                            />
+                                        </div>
+                                        <button
+                                            type="button"
+                                            onClick={() => setIsVisible(e => !e)}
+                                        >
+                                            {isVisible ? (
+                                                <HiEye size={26} />
+                                            ) : (
+                                                <HiEyeSlash size={26} />
+                                            )}
+                                        </button>
                                     </div>
                                 ) : (
                                     didOtpSent && (

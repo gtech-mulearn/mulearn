@@ -34,5 +34,5 @@ type RegisterRequestDataType = {
 
 interface Question {
     question: string;
-    options: { text: string; category: string }[];
+    options: { text: string; category: string, highlight: string }[];
 }

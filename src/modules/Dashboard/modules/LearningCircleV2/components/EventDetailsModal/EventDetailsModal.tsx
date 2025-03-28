@@ -3,13 +3,16 @@ import MuModal from "@/MuLearnComponents/MuModal/MuModal";
 import styles from "./EventDetailsModal.module.css";
 import { CircleMeetupInfo } from "../../services/LearningCircleInterface";
 import { useUserStore } from "/src/ZustandProvider";
+import { deleteMeeting, submitRSVP } from "../../services/LearningCircleAPIs";
+import toast from "react-hot-toast";
 
 interface EventDetailsModalProps {
   isOpen: boolean;
   onClose: () => void;
   meetup?: CircleMeetupInfo;
-  onEdit: (meetup: CircleMeetupInfo) => void;  // ✅ Edit function
-  onDelete: (meetupId: string) => void;        // ✅ Delete function
+  onEdit: (meetup: CircleMeetupInfo) => void; // ✅ Edit function
+  onDelete: (meetupId: string) => void; // ✅ Delete function
+  onCloseRefresh: () => void
 }
 
 const EventDetailsModal: React.FC<EventDetailsModalProps> = ({
@@ -17,12 +20,47 @@ const EventDetailsModal: React.FC<EventDetailsModalProps> = ({
   onClose,
   meetup,
   onEdit,
-  onDelete
+  onDelete,
+  onCloseRefresh
 }) => {
   const { userInfo } = useUserStore();
   const currentUser = userInfo.full_name;
 
   if (!meetup) return null;
+
+  const handleConfirmRSVP = (learningCircleId: string) => {
+    if (learningCircleId) {
+      submitRSVP(learningCircleId).then(status => {
+        if (status) {
+          toast.success("RSVP confirmed successfully!", {
+            id: "RSVP-success"
+          });
+        } else {
+          toast.error("Failed to confirm RSVP. Please try again.");
+        }
+      });
+    }
+  };
+
+
+  const handleDelete = async (learningCircleId: string) => {
+    if (!learningCircleId) return;
+
+    const confirmDelete = window.confirm(
+        "Are you sure you want to delete this Learning Circle?"
+    );
+
+    if (!confirmDelete) return;
+
+    try {
+        await deleteMeeting(learningCircleId);
+        onCloseRefresh();
+    } catch (error) {
+        console.error("Error deleting Learning Circle:", error);
+        toast.error("An unexpected error occurred. Please try again.");
+    }
+};
+
 
   return (
     <MuModal
@@ -41,16 +79,19 @@ const EventDetailsModal: React.FC<EventDetailsModalProps> = ({
         {meetup.meet_time && (
           <>
             <p>
-              <strong>Date:</strong> {new Date(meetup.meet_time).toLocaleDateString()}
+              <strong>Date:</strong>{" "}
+              {new Date(meetup.meet_time).toLocaleDateString()}
             </p>
             <p>
-              <strong>Time:</strong> {new Date(meetup.meet_time).toLocaleTimeString()}
+              <strong>Time:</strong>{" "}
+              {new Date(meetup.meet_time).toLocaleTimeString()}
             </p>
           </>
         )}
-        {meetup.attendee && (
+        {meetup.attendees && (
           <p>
-            <strong>Attendees:</strong> {Number(meetup.attendee) || 10}
+            <strong>Attendees:</strong>{" "}
+            {Number(meetup.attendees.length) || 10}
           </p>
         )}
         {meetup.meet_place === "Google Meet" && meetup.meet_link && (
@@ -70,7 +111,9 @@ const EventDetailsModal: React.FC<EventDetailsModalProps> = ({
               <button
                 className={styles.copyButton}
                 onClick={() => {
-                  navigator.clipboard.writeText(meetup.meet_link || "");
+                  navigator.clipboard.writeText(
+                    meetup.meet_link || ""
+                  );
                   alert("URL copied to clipboard!");
                 }}
               >
@@ -93,9 +136,30 @@ const EventDetailsModal: React.FC<EventDetailsModalProps> = ({
               </>
             )
           } */}
-          <button className={styles.doneButton} onClick={onClose}>
-            Done
-          </button>
+          {currentUser === meetup?.created_by ? (
+            <>
+            
+            <button className={styles.doneButton} onClick={onClose}>
+              Done
+            </button>
+
+            <button className={styles.deleteButton} onClick={()=> {
+              handleDelete(meetup?.id)
+            }}>
+              Delete
+            </button>
+            
+            </>
+          ) : (
+            <button
+              className={styles.doneButton}
+              onClick={() => {
+                handleConfirmRSVP(meetup?.id);
+              }}
+            >
+              Confirm RSVP
+            </button>
+          )}
         </div>
       </div>
     </MuModal>

@@ -5,13 +5,12 @@ import IGSelector from "../../InterestGroups/components/IGSelection/IGSelector";
 import { getUserLog, getUserProfile } from "../../Profile/services/api";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { useUserStore } from "/src/ZustandProvider";
-import { FormattedLevel, getFilteredUserTasks, getUserIGFormattedTasks,  } from "../services/api";
+import { FormattedLevel, getFilteredUserTasks, getUserIGFormattedTasks, } from "../services/api";
 import ConnectDiscord from "../../ConnectDiscord/pages/ConnectDiscord";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { isEqual } from 'lodash';
 import toast from "react-hot-toast";
-
 
 interface OffCanvasProps {
   isOpen: boolean;
@@ -19,7 +18,7 @@ interface OffCanvasProps {
   data: any;
 }
 
-const OffCanvas: React.FC<OffCanvasProps> = ({ isOpen, onClose, data }) => {
+export const OffCanvas: React.FC<OffCanvasProps> = ({ isOpen, onClose, data }) => {
   const offCanvasClass = isOpen
     ? `${styles.offCanvas} ${styles.offCanvasOpen}`
     : styles.offCanvas;
@@ -35,6 +34,19 @@ const OffCanvas: React.FC<OffCanvasProps> = ({ isOpen, onClose, data }) => {
         <button className={styles.closeButton} onClick={onClose}>
           Close
         </button>
+
+        {data.locked &&
+
+          <div className={styles.locked}>
+
+            <div>Locked</div>
+
+            <p>Please unlock level {Number(data.level) - 1} to unlock </p>
+
+          </div>
+
+
+        }
 
         {isSpecialLevel ? (
           <div className={styles.offCanvasSection}>
@@ -122,7 +134,8 @@ const OffCanvas: React.FC<OffCanvasProps> = ({ isOpen, onClose, data }) => {
             </div>
 
             <div className={styles.offCanvasSection}>
-              <button className={styles.proofOfWorkButton}><a href={data.discord_link} target="_blank"> Submit proof of work</a></button>
+              
+              {data.hashtag === "#ge-self-intro" ? <button className={styles.proofOfWorkButton}><a href="https://discord.com/channels/832894680290809354/771680366590689330" target="_blank"> Submit self introduction</a></button> : <button className={styles.proofOfWorkButton}><a href={data.discord_link} target="_blank"> Submit proof of work</a></button>}
             </div>
           </>
         )}
@@ -132,11 +145,12 @@ const OffCanvas: React.FC<OffCanvasProps> = ({ isOpen, onClose, data }) => {
 };
 
 interface TaskCardProps {
-  card: any;
-  onClickCTA: () => void;
+  card?: any;
+  onClickCTA: (card: any) => void;
+  custom?: Boolean
 }
 
-const TaskCard: React.FC<TaskCardProps> = ({ card, onClickCTA }) => {
+export const TaskCard: React.FC<TaskCardProps> = ({ card, onClickCTA, custom }) => {
   const skillColors = [
     "#FFB6C1",
     "#87CEFA",
@@ -147,18 +161,18 @@ const TaskCard: React.FC<TaskCardProps> = ({ card, onClickCTA }) => {
   ];
 
   return (
-    <div className={`${styles.card} ${card.completed ? styles.completedCard : ""}`}>
+    <div className={`${styles.card} ${card.completed ? styles.completedCard : ""}`} style={custom ? { minHeight: 'auto' } : {}}>
       <div className={styles.cardContent}>
-        <div className={styles.cardIcon}>
+        {!custom && <div className={styles.cardIcon}>
           {card.completed ? (
             <i className="fi fi-rr-check-circle" style={{ color: "#28a745" }}></i>
           ) : (
             card.icon || <i className="fi fi-rr-circle"></i>
           )}
-        </div>
-        <div className={styles.cardTitle}>{card.title}</div>
-        <div className={styles.cardDesc}>{card.desc}</div>
-        <div className={styles.cardIg}>
+        </div>}
+        <div className={styles.cardTitle} style={custom ? { textAlign: "left" } : {}}>{card.title}</div>
+        <div className={styles.cardDesc} style={custom ? { textAlign: "left" } : {}}>{card.desc}</div>
+        <div className={styles.cardIg} style={custom ? { textAlign: "left" } : {}}>
           <strong>IG:</strong> {card.ig}
         </div>
         <div className={styles.cardSkills}>
@@ -176,7 +190,9 @@ const TaskCard: React.FC<TaskCardProps> = ({ card, onClickCTA }) => {
           ))}
         </div>
       </div>
-      <button className={styles.viewButton} onClick={onClickCTA}>
+      <button className={styles.viewButton} onClick={() => {
+        onClickCTA(card);
+      }}>
         View
       </button>
     </div>
@@ -235,183 +251,194 @@ const LearningPathPage: React.FC = () => {
   const userIGs = useUserStore((state) => state.userProfile.interest_groups || []);
   const userIGIDs = React.useMemo(() => userIGs.map((ig) => ig.id), [userIGs]);
 
+  const [filter, setFilter] = useState<"all" | "completed" | "incomplete">("all");
+
   const fetchUserIGs = useCallback(async () => {
+    if (userProfile && "interest_groups" in userProfile) {
+      const userIGsData = (userProfile as { interest_groups: any[] }).interest_groups || [];
+      return;
+    }
     setIsLoading(true);
     let userIGsData = useUserStore.getState().userProfile.interest_groups || [];
     const currentLevel = Number(useUserStore.getState().userProfile.level?.replace("lvl", "")) || 0;
 
     try {
-        if (currentLevel < 4) {
-            userIGsData = []; 
-            setIsLoading(false);
-            return userIGsData;
-        } else if (!userIGsData.length) {
-            const response = await privateGateway.get(dashboardRoutes.getUserProfile);
-            console.log("Fetched user profile response:", response.data);
-            setUserProfile(response.data.response);
-            userIGsData = response.data.response.interest_groups || [];
-            if (!userIGsData.length) {
-                console.error("User has no interest groups");
-            }
-        }
-    } catch (error) {
-        console.error("Failed to refetch user profile:", error);
+      if (currentLevel < 4) {
         userIGsData = [];
-    } finally {
         setIsLoading(false);
+        return userIGsData;
+
+      }else if(userProfile as { interest_groups: any[] }){
+        userIGsData = (userProfile as { interest_groups: any[] }).interest_groups || [];
+        return;
+      }
+      //  else if (!userIGsData.length) {
+      //   const response = await privateGateway.get(dashboardRoutes.getUserProfile);
+      //   console.log("Fetched user profile response:", response.data);
+      //   setUserProfile(response.data.response);
+      //   userIGsData = response.data.response.interest_groups || [];
+      //   if (!userIGsData.length) {
+      //     console.error("User has no interest groups");
+      //   }
+      // }
+    } catch (error) {
+      console.error("Failed to refetch user profile:", error);
+      userIGsData = [];
+    } finally {
+      setIsLoading(false);
     }
 
     return userIGsData;
-}, [setUserProfile]);
+  }, []);
 
   const unlockedLevel = Number(userProfile.level?.replace("lvl", "")) || 0;
 
   const fetchIntermediateTasks = useCallback(async () => {
     setIsLoading(true);
-    const currentLevel = unlockedLevel; 
+    const currentLevel = unlockedLevel;
 
     if (currentLevel < 4 || !userIGIDs.length) {
-        setIntermediateLevelData([{
-            level: 4,
-            title: "Level 4",
-            subtitle: "You need to reach Level 4 to access these tasks and join Interest Groups",
-            cards: [],
-            progress: { 
-                level: 4, 
-                completedTasks: 0, 
-                totalTasks: 0, 
-                requiredKarma: 0, 
-                earnedKarma: 0 
-            },
-            isUnlocked: false
-        }]);
-        setIsLoading(false);
-        return;
+      setIntermediateLevelData([{
+        level: 4,
+        title: "Level 4",
+        subtitle: "You need to reach Level 4 to access these tasks and join Interest Groups",
+        cards: [],
+        progress: {
+          level: 4,
+          completedTasks: 0,
+          totalTasks: 0,
+          requiredKarma: 0,
+          earnedKarma: 0
+        },
+        isUnlocked: false
+      }]);
+      setIsLoading(false);
+      return;
     }
     if (unlockedLevel >= 4 && userIGIDs.length === 0) {
       toast.error("You need to join an interest group to access these tasks");
-      setIntermediateLevelData([]); 
+      setIntermediateLevelData([]);
       setIsLoading(false);
       return;
-  }
+    }
 
     try {
-        const response = await getUserIGFormattedTasks(userIGIDs, unlockedLevel);
-        let processedLevels: FormattedLevel[] = [];
+      const response = await getUserIGFormattedTasks(userIGIDs, unlockedLevel);
+      let processedLevels: FormattedLevel[] = [];
 
-        if (selectedIg.id) {
-            processedLevels = response[selectedIg.id] || [];
-        } else {
-            const levelMap: Record<number, FormattedLevel> = {
-                4: {
-                    level: 4,
-                    title: "Level 4",
-                    subtitle: "Level 4 Tasks",
-                    cards: [],
-                    progress: { level: 4, completedTasks: 0, totalTasks: 0, requiredKarma: 0, earnedKarma: 0 },
-                    isUnlocked: 4 <= unlockedLevel,
-                },
-                5: {
-                    level: 5,
-                    title: "Level 5",
-                    subtitle: "Level 5 Tasks",
-                    cards: [],
-                    progress: { level: 5, completedTasks: 0, totalTasks: 0, requiredKarma: 0, earnedKarma: 0 },
-                    isUnlocked: 5 <= unlockedLevel,
-                },
-                6: {
-                    level: 6,
-                    title: "Level 6",
-                    subtitle: "Level 6 Tasks",
-                    cards: [],
-                    progress: { level: 6, completedTasks: 0, totalTasks: 0, requiredKarma: 0, earnedKarma: 0 },
-                    isUnlocked: 6 <= unlockedLevel,
-                },
-                7: {
-                    level: 7,
-                    title: "Level 7",
-                    subtitle: "Level 7 Tasks",
-                    cards: [],
-                    progress: { level: 7, completedTasks: 0, totalTasks: 0, requiredKarma: 0, earnedKarma: 0 },
-                    isUnlocked: 7 <= unlockedLevel,
-                },
-            };
+      if (selectedIg.id) {
+        processedLevels = response[selectedIg.id] || [];
+      } else {
+        const levelMap: Record<number, FormattedLevel> = {
+          4: {
+            level: 4,
+            title: "Level 4",
+            subtitle: "Level 4 Tasks",
+            cards: [],
+            progress: { level: 4, completedTasks: 0, totalTasks: 0, requiredKarma: 0, earnedKarma: 0 },
+            isUnlocked: 4 <= unlockedLevel,
+          },
+          5: {
+            level: 5,
+            title: "Level 5",
+            subtitle: "Level 5 Tasks",
+            cards: [],
+            progress: { level: 5, completedTasks: 0, totalTasks: 0, requiredKarma: 0, earnedKarma: 0 },
+            isUnlocked: 5 <= unlockedLevel,
+          },
+          6: {
+            level: 6,
+            title: "Level 6",
+            subtitle: "Level 6 Tasks",
+            cards: [],
+            progress: { level: 6, completedTasks: 0, totalTasks: 0, requiredKarma: 0, earnedKarma: 0 },
+            isUnlocked: 6 <= unlockedLevel,
+          },
+          7: {
+            level: 7,
+            title: "Level 7",
+            subtitle: "Level 7 Tasks",
+            cards: [],
+            progress: { level: 7, completedTasks: 0, totalTasks: 0, requiredKarma: 0, earnedKarma: 0 },
+            isUnlocked: 7 <= unlockedLevel,
+          },
+        };
 
-            Object.values(response).forEach((igLevels) => {
-                igLevels.forEach((level) => {
-                    if (levelMap[level.level]) {
-                        levelMap[level.level].cards = [...levelMap[level.level].cards, ...level.cards];
-                        levelMap[level.level].progress.totalTasks = levelMap[level.level].cards.length;
-                        levelMap[level.level].progress.completedTasks = levelMap[level.level].cards.filter(
-                            (card) => card.completed
-                        ).length;
-                        levelMap[level.level].progress.earnedKarma = levelMap[level.level].cards
-                            .filter((card) => card.completed)
-                            .reduce((sum, card) => sum + (card.karma || 0), 0);
-                    }
-                });
-            });
+        Object.values(response).forEach((igLevels) => {
+          igLevels.forEach((level) => {
+            if (levelMap[level.level]) {
+              levelMap[level.level].cards = [...levelMap[level.level].cards, ...level.cards];
+              levelMap[level.level].progress.totalTasks = levelMap[level.level].cards.length;
+              levelMap[level.level].progress.completedTasks = levelMap[level.level].cards.filter(
+                (card) => card.completed
+              ).length;
+              levelMap[level.level].progress.earnedKarma = levelMap[level.level].cards
+                .filter((card) => card.completed)
+                .reduce((sum, card) => sum + (card.karma || 0), 0);
+            }
+          });
+        });
 
-            processedLevels = Object.values(levelMap)
-                .filter((level) => level.cards.length > 0)
-                .sort((a, b) => a.level - b.level);
-        }
+        processedLevels = Object.values(levelMap)
+          .filter((level) => level.cards.length > 0)
+          .sort((a, b) => a.level - b.level);
+      }
 
-        setIntermediateLevelData(processedLevels);
+      setIntermediateLevelData(processedLevels);
     } catch (error) {
-        console.error("Error fetching intermediate tasks:", error);
-        setIntermediateLevelData([]);
+      console.error("Error fetching intermediate tasks:", error);
+      setIntermediateLevelData([]);
     } finally {
-        setIsLoading(false);
+      setIsLoading(false);
     }
-}, [userIGIDs, selectedIg, unlockedLevel]);
+  }, [userIGIDs, selectedIg, unlockedLevel]);
 
   useEffect(() => {
     fetchIntermediateTasks();
   }, [fetchIntermediateTasks]);
 
- 
 
-useEffect(() => {
-  setIsLoading(true);
-  const fetchBasicLevels = async () => {
-    try {
-      const response = await getFilteredUserTasks(HASHTAGSLEVL1TO3);
-      const newData = response.map((level) => ({
-        ...level,
-        isUnlocked: level.level <= unlockedLevel,
-      }));
 
-      setBasicLevelData((prev) => {
-        if (!prev) return newData;
-
-        const prevCompleted = prev.map((level) => ({
-          id: level.level,
-          completed: level.cards?.map((card) => card.completed) || [],
+  useEffect(() => {
+    setIsLoading(true);
+    const fetchBasicLevels = async () => {
+      try {
+        const response = await getFilteredUserTasks(HASHTAGSLEVL1TO3);
+        const newData = response.map((level) => ({
+          ...level,
+          isUnlocked: level.level <= unlockedLevel,
         }));
-        const newCompleted = newData.map((level) => ({
-          id: level.level,
-          completed: level.cards?.map((card) => card.completed) || [],
-        }));
-        return isEqual(prevCompleted, newCompleted) ? prev : newData;
-      });
-    } catch (error) {
-      console.error("Error fetching basic levels:", error);
-      setBasicLevelData([]);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-  fetchBasicLevels();
-}, [unlockedLevel]);
+
+        setBasicLevelData((prev) => {
+          if (!prev) return newData;
+
+          const prevCompleted = prev.map((level) => ({
+            id: level.level,
+            completed: level.cards?.map((card) => card.completed) || [],
+          }));
+          const newCompleted = newData.map((level) => ({
+            id: level.level,
+            completed: level.cards?.map((card) => card.completed) || [],
+          }));
+          return isEqual(prevCompleted, newCompleted) ? prev : newData;
+        });
+      } catch (error) {
+        console.error("Error fetching basic levels:", error);
+        setBasicLevelData([]);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchBasicLevels();
+  }, []);
 
   useEffect(() => {
     setIsLoading(true);
     const fetchUserData = async () => {
       try {
         await Promise.all([
-          getUserProfile(setUserProfile, () => {}, () => {}),
-          getUserLog(setUserLog),
+          // getUserProfile(setUserProfile, () => { }, () => { }),
+          // getUserLog(setUserLog),
           fetchUserIGs(), // Fetch IG data here
         ]);
       } catch (error) {
@@ -421,7 +448,7 @@ useEffect(() => {
       }
     };
     fetchUserData();
-  }, [setUserProfile, fetchUserIGs]);
+  }, []);
 
   useEffect(() => {
     const activeElement = tabRefs.current[activeTab];
@@ -433,8 +460,14 @@ useEffect(() => {
     }
   }, [activeTab]);
 
-  const handleOpenOffCanvas = (data: any) => {
-    setSelectedData(data);
+  const handleOpenOffCanvas = (data: any, level: any, unlocked: any) => {
+    const isLocked = level > unlocked;
+    if (isLocked) {
+      setSelectedData({ ...data, locked: true, level: level });
+    }
+    else {
+      setSelectedData(data);
+    }
     setOffCanvasOpen(true);
   };
 
@@ -449,24 +482,53 @@ useEffect(() => {
     return <MuLoader />;
   }
 
+  const filteredLevels = levelsToRender.map((level) => ({
+    ...level,
+    cards: level.cards.filter((card) => {
+      if (filter === "all") return true;
+      if (filter === "completed") return card.completed;
+      if (filter === "incomplete") return !card.completed;
+      return true;
+    }),
+  }));
+
   return (
     <div className={styles.container}>
       <div className={styles.topBar}>
-        <div className={styles.indicator} style={{ left: indicatorStyle.left, width: indicatorStyle.width }} />
-        <button
-          ref={(el) => (tabRefs.current.startLearning = el)}
-          className={`${styles.topBarButton} ${activeTab === "startLearning" ? styles.activeTab : ""}`}
-          onClick={() => setActiveTab("startLearning")}
-        >
-          Start Journey
-        </button>
-        <button
-          ref={(el) => (tabRefs.current.becomeExpert = el)}
-          className={`${styles.topBarButton} ${activeTab === "becomeExpert" ? styles.activeTab : ""}`}
-          onClick={() => setActiveTab("becomeExpert")}
-        >
-          Become Expert
-        </button>
+        {unlockedLevel >= 4 ?
+          <div className={styles.topBarPart}>
+            <div className={styles.indicator} style={{ left: indicatorStyle.left, width: indicatorStyle.width }} />
+            <button
+              ref={(el) => (tabRefs.current.startLearning = el)}
+              className={`${styles.topBarButton} ${activeTab === "startLearning" ? styles.activeTab : ""}`}
+              onClick={() => setActiveTab("startLearning")}
+            >
+              Start Journey
+            </button>
+            <button
+              ref={(el) => (tabRefs.current.becomeExpert = el)}
+              className={`${styles.topBarButton} ${activeTab === "becomeExpert" ? styles.activeTab : ""}`}
+              onClick={() => setActiveTab("becomeExpert")}
+            >
+              Become Expert
+            </button>
+          </div> : <div></div>
+        }
+        {(
+          <div className={styles.filterContainer}>
+            <label htmlFor="filter">Filter by:</label>
+            <select
+              id="filter"
+              value={filter}
+              onChange={(e) => setFilter(e.target.value as "all" | "completed" | "incomplete")}
+              className={styles.filterSelect}
+            >
+              <option value="all">All</option>
+              <option value="completed">Completed</option>
+              <option value="incomplete">Incomplete</option>
+            </select>
+          </div>
+        )}
       </div>
 
       {activeTab === "becomeExpert" && (
@@ -492,28 +554,34 @@ useEffect(() => {
       )}
 
       {isLoading ? (
-        <div >
-        <MuLoader />
+        <div>
+          <MuLoader />
         </div>
-      ) : levelsToRender.length > 0 && (
-        levelsToRender.map((level) => {
-          const isLocked = level.level > unlockedLevel;
+      ) : filteredLevels.length > 0 ? (
+        filteredLevels.map((level) => {
+          // const isLocked = level.level > unlockedLevel;
           return (
             <div key={level.level} className={styles.levelSection}>
               <h2>Level {level.level}</h2>
               <h4 className={styles.levelSubtitle}>{level.subtitle}</h4>
-              {isLocked && (
+              {/* {isLocked && (
                 <div className={styles.unlockTaskSection}>
                   <p className={styles.lockedText}>Complete Level {level.level - 1} to unlock</p>
                   {level.leveller && (
                     <button onClick={() => handleOpenOffCanvas(level.leveller)}>Unlock now</button>
                   )}
                 </div>
-              )}
-              <div className={`${styles.cardsContainer} ${isLocked ? styles.locked : ""}`}>
+              )} */}
+              <div className={`${styles.cardsContainer}`}>
                 {level.cards && level.cards.length > 0 && (
                   <CardCarousel>
                     {level.cards.map((card: any) => (
+                      <div key={card.id}>
+                        <TaskCard card={card} onClickCTA={() => handleOpenOffCanvas(card, level.level, unlockedLevel)} />
+                      </div>
+                    ))}
+
+                    { /* level.cards.map((card: any) => (
                       <div key={card.id} className={isLocked ? styles.lockedCard : ""}>
                         {isLocked && (
                           <div className={styles.lockedRibbon}>
@@ -522,17 +590,17 @@ useEffect(() => {
                         )}
                         <TaskCard card={card} onClickCTA={() => handleOpenOffCanvas(card)} />
                       </div>
-                    ))}
+                    )) */}
                   </CardCarousel>
                 )}
               </div>
             </div>
           );
         })
-      )}
-      {levelsToRender.length === 0 && (
+      ) : (
         <div className="text-center">No tasks available</div>
       )}
+
 
       <OffCanvas isOpen={offCanvasOpen} onClose={handleCloseOffCanvas} data={selectedData} />
     </div>

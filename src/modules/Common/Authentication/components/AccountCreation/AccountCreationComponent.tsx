@@ -26,15 +26,15 @@ const scheme = z.object({
         .max(100, `Full Name must be at most 100 characters`),
     ...(isDev()
         ? {
-              password: z.string().required(`Password is Required`)
-          }
+            password: z.string().required(`Password is Required`)
+        }
         : {
-              password: z
-                  .string()
-                  .required(`Password is Required`)
-                  .min(8, `Password must be at least 8 characters`)
-                  .max(100, `Password must be at most 100 characters`)
-          })
+            password: z
+                .string()
+                .required(`Password is Required`)
+                .min(8, `Password must be at least 8 characters`)
+                .max(100, `Password must be at most 100 characters`)
+        })
 });
 
 export default function AccountCreationComponent({
@@ -58,8 +58,9 @@ export default function AccountCreationComponent({
         password: ""
     });
     const [dwmsData, setDWMSData] = useState<DWMSData>();
-    const [isVisible, setVisible] = useState(false);
+    const [isVisible, setIsVisible] = useState(false);
     const [isTncChecked, setTncChecked] = useState(false);
+    const [isPrivacyChecked, setPrivacyChecked] = useState(false);
 
     const onSubmit = (values: any) => {
         if (!isTncChecked) {
@@ -174,13 +175,13 @@ export default function AccountCreationComponent({
                                             style={
                                                 dwmsData?.fullName
                                                     ? {
-                                                          backgroundColor:
-                                                              "#f7f7f7"
-                                                      }
+                                                        backgroundColor:
+                                                            "#f7f7f7"
+                                                    }
                                                     : {
-                                                          backgroundColor:
-                                                              "#F5F7FB"
-                                                      }
+                                                        backgroundColor:
+                                                            "#F5F7FB"
+                                                    }
                                             }
                                         />
                                     </div>
@@ -204,10 +205,9 @@ export default function AccountCreationComponent({
                                                 disabled={isLoading}
                                             />
                                         </div>
-
                                         <button
                                             type="button"
-                                            onClick={() => setVisible(e => !e)}
+                                            onClick={() => setIsVisible(e => !e)}
                                         >
                                             {isVisible ? (
                                                 <HiEye size={26} />
@@ -219,32 +219,29 @@ export default function AccountCreationComponent({
                                 </div>
 
                                 <div className={styles.tnc}>
-                                    <input
-                                        type="checkbox"
-                                        name="tnc"
-                                        className={styles.tncCheckbox}
-                                        checked={isTncChecked}
-                                        onChange={() => setTncChecked(e => !e)}
-                                    />
-                                    <p>
-                                    I confirm that I am 13 years old or older and agree to the{" "}
-                                        <a
-                                            href="http://mulearn.org/termsandconditions"
-                                            target="_blank"
-                                            rel="noreferrer"
-                                        >
-                                            Terms & Conditions
-                                        </a>
-                                        {" and "}
-                                        <a
-                                            href="http://mulearn.org/privacypolicy"
-                                            target="_blank"
-                                            rel="noreferrer"
-                                        >
-                                            Privacy Policy
-                                        </a>
+                                            <input
+                                                type="checkbox"
+                                                name="tnc"
+                                                className={styles.tncCheckbox}
+                                                checked={isTncChecked}
+                                                onChange={() => setTncChecked(e => !e)}
+                                                id="tncCheckbox"
+                                            />
+                                            <label htmlFor="tncCheckbox">
+                                                I agree to the{" "}
+                                                <a
+                                                    href="http://mulearn.org/termsandconditions"
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                >
+                                                    Terms & Conditions
+                                                </a>
+                                            </label>
+                                        </div>
+                                    <p className={styles.tncInfo}>
+                                        By checking this box, you also confirm that you are 13 years old or older.
                                     </p>
-                                </div>
+
                                 <div className={styles.supportContainer}>
                                     <BiSupport size={20} />
                                     <a

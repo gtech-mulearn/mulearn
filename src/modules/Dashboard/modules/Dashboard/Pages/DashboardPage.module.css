@@ -143,6 +143,7 @@
   height: max-content;
   background-color: transparent;
   padding: clamp(8px, 2vw, 16px);
+  padding-top: 0;
   border-radius: clamp(8px, 1vw, 12px);
   overflow-x: hidden;
 }

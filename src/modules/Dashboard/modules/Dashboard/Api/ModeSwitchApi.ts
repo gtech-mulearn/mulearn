@@ -9,8 +9,6 @@ export const selectDomainCategory = async (data: { domains: string[] }) => {
             onboardingRoutes.register + 'select-domains',
             data
         );
-
-        toast.success("Domain Changes Successfully");
         const message: any = response?.data;
     } catch (err: unknown) {
         const error = err as AxiosError;

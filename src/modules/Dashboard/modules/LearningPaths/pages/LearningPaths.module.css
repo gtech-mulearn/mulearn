@@ -636,15 +636,15 @@ input[type="file"]::file-selector-button:hover {
 }
 
 .viewDetailsBtn {
-    background: #edf2f7;
+    background: blue;
     padding: 8px;
     text-align: center;
     font-size: 0.875rem;
     font-weight: 600;
     border-radius: 20px;
     cursor: pointer;
-    color: #5b5b5b;
-    transition: background 0.2s;
+    color: white;
+    transition: all 0.3s ease;
 }
 
 .learners {
@@ -652,7 +652,9 @@ input[type="file"]::file-selector-button:hover {
 }
 
 .viewDetailsBtn:hover {
-    background: #e2e8f0;
+    background: #0000cc;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
 }
 
 

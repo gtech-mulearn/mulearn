@@ -28,6 +28,10 @@ interface LeaderboardProps {
   defaultFilter?: "monthly" | "overall";
   defaultCategory?: string;
   topPlayerCount?: number;
+  activeFilter: "monthly" | "overall";
+  setActiveFilter: (filter: "monthly" | "overall") => void;
+  activeCategory: "student" | "campus";
+  setActiveCategory: (category: "student" | "campus") => void;
 }
 
 export default function Leaderboard({
@@ -40,10 +44,11 @@ export default function Leaderboard({
   defaultFilter = "monthly",
   defaultCategory = "student",
   topPlayerCount = 3,
+  activeFilter,
+  setActiveFilter,
+  activeCategory,
+  setActiveCategory,
 }: LeaderboardProps) {
-  const [activeFilter, setActiveFilter] = useState<"monthly" | "overall">(defaultFilter);
-  const [activeCategory, setActiveCategory] = useState<"student" | "campus">(defaultCategory as "student" | "campus");
-
   // Select the current leaderboard based on active category and filter
   const currentLeaderboard = leaderboards[activeCategory]?.[activeFilter] || [];
 
@@ -54,9 +59,9 @@ export default function Leaderboard({
     <div className={styles.container}>
       <div className={styles.leaderboard}>
         <FilterBar
-          activeFilter={activeFilter}
+          activeFilter={activeFilter || defaultFilter}
           setActiveFilter={setActiveFilter}
-          activeCategory={activeCategory}
+          activeCategory={activeCategory || defaultCategory}
           setActiveCategory={setActiveCategory}
           filterOptions={filterOptions}
           categoryOptions={categoryOptions}

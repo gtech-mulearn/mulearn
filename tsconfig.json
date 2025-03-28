@@ -18,9 +18,11 @@
 
         "baseUrl": ".",
         "paths": {
+            "@/*": ["src/*"], 
+            "@/modules/*": ["src/modules/*"], 
             "@/MuLearnComponents/*": ["src/components/MuComponents/*"],
             "@/MuLearnServices/*": ["src/services/*"],
-            "/src/*": ["src/*"]
+            "/src/*": ["src/*"],
         }
     },
     "include": ["src", "src/**/*"],

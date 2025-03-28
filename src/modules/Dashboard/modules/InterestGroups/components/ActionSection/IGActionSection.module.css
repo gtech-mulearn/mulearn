@@ -22,12 +22,11 @@
   max-width: 100%;
 }
 
-/* Position the aside from the right side of the window as an overlay */
 .asideDetails {
   position: fixed;
   top: 0;
-  right: -300px; /* Start off-screen to the right */
-  width: 300px; /* Adjust width as needed */
+  right: -300px; 
+  width: 300px; 
   height: 100vh;
   background: white;
   z-index: 1000;
@@ -212,10 +211,23 @@
   transform: translateY(-50%);
 }
 
-.cardsContainer {
+.pathContainer{
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.cardsContainer {
+  display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
@@ -621,3 +633,5 @@
     border-radius: 6px;
   }
 }
+
+

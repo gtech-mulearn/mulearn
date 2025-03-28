@@ -7,8 +7,8 @@ import toast from "react-hot-toast";
 import { BiChevronRight, BiRightArrow, BiRocket } from "react-icons/bi";
 import { originalQuestions } from "./questions";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
-import quizImg from "../../assets/quiz.png";
-import exploreImg from "../../assets/explore.png";
+
+import { ArrowUpRight } from "lucide-react";
 
 const shuffleQuestions = (questions: Question[]): Question[] => {
     const shuffled = [...questions];
@@ -16,6 +16,15 @@ const shuffleQuestions = (questions: Question[]): Question[] => {
         const j = Math.floor(Math.random() * (i + 1));
         [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
     }
+
+    // Shuffle options within each question
+    shuffled.forEach(question => {
+        for (let i = question.options.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [question.options[i], question.options[j]] = [question.options[j], question.options[i]];
+        }
+    });
+
     return shuffled;
 };
 
@@ -55,8 +64,8 @@ export default function PathFinderComponent({
         if (currentQuestionIndex + 1 < questions.length) {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
         } else {
-            // console.log("getRecommendedPathways", getRecommendedPathways());
-            onContinue(getRecommendedPathways());
+            // Pass the updated scores directly instead of using the state
+            onContinue(getRecommendedPathways(updatedScores));
         }
     };
 
@@ -73,9 +82,9 @@ export default function PathFinderComponent({
             ];
             if (updatedOptions.includes(category)) {
                 const index = updatedOptions.indexOf(category);
-                updatedOptions.splice(index, 1); // Remove category
+                updatedOptions.splice(index, 1); 
             } else {
-                updatedOptions.push(category); // Add category
+                updatedOptions.push(category);
             }
             return {
                 ...prevSelectedOptions,
@@ -84,14 +93,39 @@ export default function PathFinderComponent({
         });
     };
 
-    const getRecommendedPathways = () => {
-        const pathways = [];
-        if (scores.A > 2) pathways.push("maker");
-        if (scores.B > 2) pathways.push("coder");
-        if (scores.C > 2) pathways.push("creative");
-        if (scores.D > 2) pathways.push("manager");
-        return pathways;
+    // Update the getRecommendedPathways function to accept an optional scores parameter
+    const getRecommendedPathways = (customScores?: typeof scores) => {
+        // Use provided scores or fall back to state scores
+        const currentScores = customScores || scores;
+        
+        const pathwaysWithScores = [
+            { pathway: "maker", score: currentScores.A },
+            { pathway: "coder", score: currentScores.B },
+            { pathway: "creative", score: currentScores.C },
+            { pathway: "manager", score: currentScores.D }
+        ];
+    
+        console.log("Pathways with scores:", pathwaysWithScores);
+        console.log("Scores:", currentScores);
+    
+        // Check if all scores are zero
+        const allZero = pathwaysWithScores.every(pathway => pathway.score === 0);
+        if (allZero) {
+            toast.error("Select atleast one option to get recommendations.");
+            return []; 
+        }
+    
+        pathwaysWithScores.sort((a, b) => b.score - a.score); // Sort in descending order
+    
+        const maxScore = pathwaysWithScores[0].score;
+    
+        const recommendedPathways = pathwaysWithScores
+            .filter(pathway => pathway.score === maxScore)
+            .map(pathway => pathway.pathway);
+    
+        return recommendedPathways;
     };
+
 
     return (
         <OnboardingTemplate>
@@ -111,7 +145,7 @@ export default function PathFinderComponent({
                                 }
                             >
                                 <img
-                                    src={"/assets/dashboard/illustrations/learner.png"}
+                                    src={"/assets/dashboard/illustrations/learner.webp"}
                                     alt="Explore"
                                 // className={styles.boxImage}
                                 />
@@ -126,7 +160,7 @@ export default function PathFinderComponent({
                                 onClick={() => setCurrentQuestionIndex(0)}
                             >
                                 <img
-                                    src={"/assets/dashboard/illustrations/expert.png"}
+                                    src={"/assets/dashboard/illustrations/expert.webp"}
                                     alt="Quiz"
                                 // className={styles.boxImage}
                                 />
@@ -143,11 +177,11 @@ export default function PathFinderComponent({
 
                 ) : (
                     <div className={styles.questionBox}>
-                            <div>
-                                {questions[currentQuestionIndex] && (
-                        <div className={styles.questionBoxContainer}>
-                            <img src="/assets/dashboard/illustrations/expert.png" alt="" />
-                                    <div>
+                        <div>
+                            {questions[currentQuestionIndex] && (
+                                <div className={styles.questionBoxContainer}>
+                                    <img src="/assets/dashboard/illustrations/expert.webp" alt="" />
+                                    <div className={styles.questionBoxContent}>
                                         <span className={styles.status}>
                                             Question {currentQuestionIndex + 1} of{" "}
                                             {questions.length}
@@ -189,6 +223,12 @@ export default function PathFinderComponent({
                                                         }
                                                     >
                                                         <td>
+                                                            <div className={styles.highlightContainer}>
+                                                                <div className={styles.highlight}>
+                                                                    <ArrowUpRight width={15}/>
+                                                                    {option.highlight}
+                                                                </div>
+                                                            </div>
                                                             <Checkbox
                                                                 className={
                                                                     styles.checkbox
@@ -247,8 +287,8 @@ export default function PathFinderComponent({
                                         </div>
                                     </div>
                                 </div>
-                                )}
-                            </div>
+                            )}
+                        </div>
                     </div>
                 )}
             </div>

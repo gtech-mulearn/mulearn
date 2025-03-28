@@ -19,7 +19,7 @@ export const fetchLocalStorage = <T>(key: string) => {
 
 export const showToasts = ({ messages }: { messages: any }) => {
     Object.entries(messages).forEach(([fieldName, errorMessage]) => {
-        if (Array.isArray(errorMessage)) {
+        if (Array.isArray(errorMessage) && errorMessage.length !== 0) {
             toast.error(errorMessage?.join(", ") || "");
         } else if (typeof errorMessage === "object" && errorMessage !== null) {
             Object.entries(errorMessage).forEach(([key, value]) => {

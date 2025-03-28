@@ -12,6 +12,62 @@
     gap: 10px;
 }
 
+.taginputcontainer {
+    width: 100%;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    background-color: #f3f3f4;
+
+    color: black;
+  }
+  
+  .taginputwrapper {
+    display: flex;
+    align-items: center;
+ 
+  }
+  
+  .taginputwrapper:focus-within {
+    border-color: #2684ff;
+    box-shadow: 0 0 0 1px #2684ff;
+  }
+  
+  .tagchip {
+    display: flex;
+    align-items: center;
+    background-color: #e8f0fe;
+    border-radius: 16px;
+    padding: 0 8px;
+    margin-right: 4px;
+    height: 24px;
+    font-size: 14px;
+    color: #1a73e8;
+  }
+  
+  .removetagbutton {
+    background: none;
+    border: none;
+    color: #5f6368;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    margin-left: 4px;
+    padding: 0 2px;
+  }
+  
+  .removetagbutton:hover {
+    color: #d93025;
+  }
+  
+  .taginputfield {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 4px 0;
+    font-size: 14px;
+    min-width: 60px;
+  }
+
 .formHeader {
     text-align: left;
     display: flex;
@@ -26,6 +82,23 @@
     padding: 10px;
     width: 300px;
     color: black;
+}
+
+.inputContainer > label {
+    border-radius: 8px;
+    background-color: #f3f3f4;
+    padding: 10px;
+    width: 300px;
+    color: black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.inputContainer > label > label{
+    margin-bottom: 0px;
 }
 
 /* .inputContainer input::placeholder {
@@ -109,4 +182,54 @@
     .CheckBoxWrapperSet .toggle .toggleTrack {
         border-radius: 0;
     }
+}
+
+.fileUploadContainer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
+
+.fileUploadButton {
+    padding: 8px 16px;
+    background-color: #4a5568;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.fileUploadButton:hover {
+    background-color: #2d3748;
+}
+
+.fileName {
+    color: #718096;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+
+.iconPreview {
+    margin-top: 8px;
+    width: 60px;
+    height: 60px;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iconPreview img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 }

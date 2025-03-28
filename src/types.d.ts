@@ -29,7 +29,7 @@ type UserInfo = {
     user_endgoals: string[];
 };
 
-type User ={
+type User = {
     full_name: string;
     muid: string;
     interest_groups: { id: string; name: string }[];
@@ -56,7 +56,7 @@ type SpecialEvent = {
     image: string;
     link: string;
     isExpired?: boolean
-    isComingSoon? :boolean
+    isComingSoon?: boolean
     isLive: boolean
 }
 
@@ -90,8 +90,29 @@ type AllTokens = {
     refreshToken: string;
 };
 
-// help me to fill this type (usefull in future)
+// help me to fill this type (useful in future)
 type General =
     | "Invalid muid or email"
     | "Signature verification failed"
     | "Token Expired or Invalid";
+
+type SubjectInfo= {
+    type: "Badge" | "Certificate" | "Recognition";
+    full_name: string;
+    did: string;
+}
+
+type CredentialInfo ={
+    course_name: string;
+    tags: string[];
+
+}
+
+type Achievement ={
+    id: number;
+    subject_info: SubjectInfo;
+    credential_info: CredentialInfo;
+    template_id: string;
+    buttonText: string;
+    icon: string;
+}

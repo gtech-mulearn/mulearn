@@ -41,8 +41,9 @@
         top: 10px;
         width: 24px;
         z-index: 10;
-        background-color: #f5f7fb;
+        background-color: transparent;
         color: #d9d9d9;
+        cursor: pointer;
 
         &:active {
             color: #456ff6;
