@@ -77,37 +77,15 @@ export const searchCoordinates = async (
 export const joinMeetup = async (
     meetId: string,
     meetCode: string | null = null
-): Promise<boolean> => {
+): Promise<APIResponse> => {
     try {
         const response = await privateGateway.post(
             learningCircleRoutes.joinMeetup + meetId,
             { meet_code: meetCode }
         );
-        if (response.status === 200) {
-
-            toast.success(
-                [
-                    response.data.message?.general ??
-                    "Joined learning circle successfully"
-                ][0]
-            );
-            return true;
-        }
-        toast.error(
-            (response.data?.message?.general ?? [
-                "Unable to join learning circle."
-            ])[0]
-        );
-        return false;
+        return response;
     } catch (err) {
-        const error = err as AxiosError;
-        console.log(error);
-        toast.error(
-            ((error as any)?.message?.general ?? [
-                "Unable to join learning circle."
-            ])[0]
-        );
-        return false;
+        throw err;
     }
 };
 
