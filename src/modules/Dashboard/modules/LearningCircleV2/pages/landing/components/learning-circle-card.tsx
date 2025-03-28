@@ -17,6 +17,7 @@ import { fetchURLQRCode } from "@/modules/Dashboard/modules/LearningCircle/servi
 import { joinMeetup } from "../../../services/LearningCircleAPIs";
 import { VisuallyHidden } from "@chakra-ui/react";
 import { IDetectedBarcode, Scanner } from '@yudiel/react-qr-scanner';
+import { AxiosError } from "axios";
 
 interface Member {
   id: string;
@@ -29,6 +30,7 @@ interface LearningCircleCardProps {
   description?: string;
   created_by_id?: string;
   ig_name: string;
+  ig?: string;
   imageUrl?: string;
   meet_code?: string;
   mode: string;
@@ -41,6 +43,7 @@ interface LearningCircleCardProps {
   is_rsvp: boolean;
   members?: Member[];
   open: boolean;
+  created_by: string;
   setOpen: (value: boolean) => void;
   onClose: () => void;
   handleDelete: (meetUpId: string) => void;
@@ -67,6 +70,7 @@ export function LearningCircleCard({
   title,
   description,
   ig_name,
+  ig,
   mode,
   attendees = [],
   meet_place,
@@ -81,6 +85,7 @@ export function LearningCircleCard({
   setOpen,
   handleDelete,
   handleEdit,
+  created_by,
   created_by_id,
   members = [],
   onClose,
@@ -112,9 +117,6 @@ export function LearningCircleCard({
     );
   }, [meet_code]);
 
-
-  console.log(data)
-
   const currentLoggedInUser = useUserStore((state) => state.userProfile.id);
   const isCreator = created_by_id === currentLoggedInUser;
 
@@ -138,20 +140,18 @@ export function LearningCircleCard({
       toast.error("The meeting hasn't started yet. Please wait until the scheduled time.");
       return;
     }
-
-    if (joiningCodeInput === meet_code) {
-      try {
-        const success = await joinMeetup(id, meet_code);
-        if (success) {
-          setIsJoined(true);
-          setShowJoinInput(false);
-        }
-      } catch (e) {
-        console.error('Failed to join meetup:', e, id);
-        toast.error('Failed to join. Please try again.');
+    try {
+      const response = await joinMeetup(id, joiningCodeInput);
+      setIsJoined(true);
+      setShowJoinInput(false);
+      toast.success("Successfully joined the learning circle");
+    } catch (err: any) {
+      console.error('Failed to join meetup:', err, id);
+      if (err?.message?.general) {
+        toast.error(err.message?.general[0]);
+      } else {
+        toast.error("Failed to join learning circle");
       }
-    } else {
-      toast.error('Invalid joining code. Please contact the meeting owner for assistance');
     }
   };
 
@@ -204,7 +204,7 @@ export function LearningCircleCard({
               <p className={styles.cardDescription}>{description}</p>
 
               <div className={styles.badgeContainer}>
-                <Badge variant="secondary" className={styles.categoryBadge}>{ig_name}</Badge>
+                <Badge variant="secondary" className={styles.categoryBadge}>{ig}</Badge>
                 <Badge variant="outline" className={styles.onlineBadge}>
                   {mode === 'online' ? <><Wifi className={styles.onlineIcon} /><span>Online</span></>
                     : <><WifiOff className={styles.offlineIcon} /><span>Offline</span></>}
@@ -246,20 +246,20 @@ export function LearningCircleCard({
                   <span>{(new Date(meet_time).toLocaleString("en-IN", { hour12: true })).toUpperCase()}</span>
                 </Badge>
                 {is_rsvp && (
-                <Badge className={styles.onlineBadge}>
-                  <CheckCircle className={styles.icon} />
-                  RSVP Confirmed
-                </Badge>
-              )}
+                  <Badge className={styles.onlineBadge}>
+                    <CheckCircle className={styles.icon} />
+                    RSVP Confirmed
+                  </Badge>
+                )}
               </div>
 
               {/* Attendees Section */}
-              <div className={styles.attendeesContainer}>
+              {/* <div className={styles.attendeesContainer}>
                 <p className={styles.attendeesLabel}>Attendees:</p>
                 <p className={styles.attendeesNames}>
                   {formatAttendeesDisplay(attendees || [])}
                 </p>
-              </div>
+              </div> */}
 
               {isCreator && (
                 <>

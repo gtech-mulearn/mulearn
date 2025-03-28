@@ -70,6 +70,7 @@ export interface CircleMeetupInfo {
     circle_id: string;
     id: string;
     ig_name: string;
+    ig?: string;
     description?: string;
     created_by: string;
     ig_id: string
