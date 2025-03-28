@@ -7,10 +7,8 @@ import { BarChart, ColumnChart } from "../CampusStudentList/Components/Graphs";
 import { getdistrictdashboard, getStudentLevels, getTopCampus } from "./apis";
 import { columnsCampus, columnsStudent } from "./THeaders";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
-import "./Organizations.css";
-import "./DistricDashboard.scss";
 import TableTopTab from "./TableTopTab";
-import graphStyles from "../CampusStudentList/pages/CampusStudentList.module.css";
+import styles from "./DistrictDashboard.module.css"; // Updated import
 import { Blank } from "@/MuLearnComponents/Table/Blank";
 import toast from "react-hot-toast";
 
@@ -25,7 +23,7 @@ function DistrictDashboard() {
 
     const firstFetch = useRef(true);
 
-    //graph data
+    // Graph data
     const [colData, setColData] = useState<string[][] | null>(null);
     const [barData, setBarData] = useState<string[][] | null>(null);
 
@@ -118,10 +116,10 @@ function DistrictDashboard() {
 
     const handleIconClick = (column: string) => {
         if (column === "total_karma") {
-            column = "karma"; //temp fix
+            column = "karma"; // Temp fix
         }
         if (column === "fullname") {
-            column = "first_name"; //temp fix
+            column = "first_name"; // Temp fix
         }
         if (sort === column) {
             setSort(`-${column}`);
@@ -159,9 +157,13 @@ function DistrictDashboard() {
 
     return (
         <>
-            <TableTopTab active={activeTab} onTabClick={handleTabClick} />
-            <div className={graphStyles.graphs}>
-                <div className={graphStyles.container}>
+          <TableTopTab
+                active={activeTab}
+                onTabClick={handleTabClick}
+                tabletopTab={["Student management", "Campus management"]}
+            />
+            <div className={styles.graphs}>
+                <div className={styles.graph_container}>
                     <h2>Top 3 Campus</h2>
                     <BarChart
                         data={barData}
@@ -172,7 +174,7 @@ function DistrictDashboard() {
                         }}
                     />
                 </div>
-                <div className={graphStyles.container}>
+                <div className={styles.graph_container}>
                     <h2>Student Level Stats</h2>
                     <ColumnChart
                         data={colData}

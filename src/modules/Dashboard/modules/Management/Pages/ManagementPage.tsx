@@ -93,7 +93,7 @@ const subcategories = [
     icon: '👥',
     title: 'Community: Interest Groups',
     description: 'Manage user interest groups and categories.',
-    path: "management/interest-groups"
+    path: "management/manage-interest-groups"
   },
   {
     icon: '🤝',

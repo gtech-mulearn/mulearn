@@ -99,15 +99,13 @@ type General =
 type SubjectInfo= {
     type: "Badge" | "Certificate" | "Recognition";
     full_name: string;
-    email: string;
     did: string;
 }
 
 type CredentialInfo ={
-    // course_name: string;
-    // quiz_name: string;
+    course_name: string;
     tags: string[];
-    description: string;
+
 }
 
 type Achievement ={

@@ -8,10 +8,14 @@ import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { HiEye } from "react-icons/hi";
+import { HiEyeSlash } from "react-icons/hi2";
 import Modal from "@/MuLearnComponents/Modal/Modal";
 
 const Account = () => {
     const scheme = Yup.object({
+        currentPassword: Yup.string()
+            .required("Current password is required"),
         password: Yup.string()
             .required("Password is required")
             .min(8, "Password should be at least 8 characters"),
@@ -21,19 +25,47 @@ const Account = () => {
     });
 
     const naviage = useNavigate();
-    const [isOpen, setIsOpen] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const [statusMessage, setStatusMessage] = useState({ type: "", message: "" });
 
-    const onSubmit = (values: any) => {
+    const onSubmit = (values: any, formikHelpers: any) => {
+        setIsLoading(true);
+        setStatusMessage({ type: "", message: "" });
+
         privateGateway
             .post(dashboardRoutes.changePassword, {
+                current_password: values.currentPassword,
                 password: values.password
             })
             .then(response => {
-                toast.success(response.data.message.general[0]);
-                naviage("/dashboard/profile");
+                setIsLoading(false);
+                const successMessage = response.data.message?.general && response.data.message.general.length > 0
+                    ? response.data.message.general[0]
+                    : "Password changed successfully!";
+
+                setStatusMessage({
+                    type: "success",
+                    message: successMessage
+                });
+
+                toast.success(successMessage);
+                formikHelpers.resetForm();
+                setTimeout(() => {
+                    naviage("/dashboard/profile");
+                }, 2000);
             })
             .catch(error => {
-                toast.error(error.response.data.message.general[0]);
+                setIsLoading(false);
+
+                let errorMessage = error.message?.general && error.message?.general.length > 0
+                ? error.message?.general[0]
+                : "Can't change password. Please try again.";
+
+                setStatusMessage({
+                    type: "error",
+                    message: errorMessage
+                });
+                toast.error(errorMessage);
             });
     };
 
@@ -51,9 +83,9 @@ const Account = () => {
             });
     };
 
-    const [showOrHidePassword, setShowOrHidePassword] = useState("password");
-    const [showOrHideConfirmPassword, setShowOrHideConfirmPassword] =
-        useState("password");
+    const [showOrHidePassword1, setShowOrHidePassword1] = useState(false);
+    const [showOrHidePassword2, setShowOrHidePassword2] = useState(false);
+    useState("password");
 
     return (
         <div className={styles.mainContainer}>
@@ -64,18 +96,19 @@ const Account = () => {
                             Change Password
                         </p>
                         <p className={styles.changePasswordContainerTagline}>
-                            Enter in a new password, and confirm it to change.
+                            Enter your current password, then a new password, and confirm it to change.
                         </p>
                     </div>
 
                     <div className={styles.changePasswordInputContainer}>
                         <Formik
                             initialValues={{
+                                currentPassword: "",
                                 password: "",
                                 confirmPassword: ""
                             }}
                             validationSchema={scheme}
-                            onSubmit={onSubmit}
+                            onSubmit={(values, formikHelpers) => onSubmit(values, formikHelpers)}
                         >
                             {formik => (
                                 <div>
@@ -84,11 +117,11 @@ const Account = () => {
                                             <div className={styles.inputBox}>
                                                 <SimpleInput
                                                     value={
-                                                        formik.values.password
+                                                        formik.values.currentPassword
                                                     }
-                                                    name="password"
-                                                    placeholder="Password"
-                                                    type={showOrHidePassword}
+                                                    name="currentPassword"
+                                                    placeholder="Current Password"
+                                                    type="password"
                                                     onChange={
                                                         formik.handleChange
                                                     }
@@ -96,66 +129,86 @@ const Account = () => {
                                                         marginTop: "10px"
                                                     }}
                                                 />
-                                                <span
-                                                    className={styles.eye}
-                                                    onClick={() => {
-                                                        setShowOrHidePassword(
-                                                            showOrHidePassword ===
-                                                                "password"
+                                                <div className={styles.passwordInput}>
+                                                    <SimpleInput
+                                                        value={
+                                                            formik.values.password
+                                                        }
+                                                        name="password"
+                                                        placeholder="New Password"
+                                                        type={
+                                                            showOrHidePassword1
                                                                 ? "text"
                                                                 : "password"
-                                                        );
-                                                    }}
-                                                >
-                                                    <i
-                                                        className={`fa fa-eye${
-                                                            showOrHidePassword ===
-                                                            "password"
-                                                                ? "-slash"
-                                                                : ""
-                                                        }`}
+                                                        }
+                                                        onChange={
+                                                            formik.handleChange
+                                                        }
+                                                        style={{
+                                                            marginTop: "10px"
+                                                        }}
                                                     />
-                                                </span>
-                                                <SimpleInput
-                                                    value={
-                                                        formik.values
-                                                            .confirmPassword
-                                                    }
-                                                    name="confirmPassword"
-                                                    placeholder="Confirm Password"
-                                                    type={
-                                                        showOrHideConfirmPassword
-                                                    }
-                                                    onChange={
-                                                        formik.handleChange
-                                                    }
-                                                    style={{
-                                                        marginTop: "10px"
-                                                    }}
-                                                />
-                                                <span
-                                                    className={styles.eye}
-                                                    onClick={() => {
-                                                        setShowOrHideConfirmPassword(
-                                                            showOrHideConfirmPassword ===
-                                                                "password"
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => setShowOrHidePassword1(e => !e)}
+                                                    >
+                                                        {showOrHidePassword1 ? (
+                                                            <HiEye size={20} />
+                                                        ) : (
+                                                            <HiEyeSlash size={20} />
+                                                        )}
+                                                    </button>
+                                                </div>
+                                                <div className={styles.passwordInput}>
+                                                    <SimpleInput
+                                                        value={
+                                                            formik.values
+                                                                .confirmPassword
+                                                        }
+                                                        name="confirmPassword"
+                                                        placeholder="Confirm New Password"
+                                                        type={
+                                                            showOrHidePassword2
                                                                 ? "text"
                                                                 : "password"
-                                                        );
-                                                    }}
-                                                >
-                                                    <i
-                                                        className={`fa fa-eye${
-                                                            showOrHideConfirmPassword ===
-                                                            "password"
-                                                                ? "-slash"
-                                                                : ""
-                                                        }`}
+                                                        }
+                                                        onChange={
+                                                            formik.handleChange
+                                                        }
+                                                        style={{
+                                                            marginTop: "10px"
+                                                        }}
                                                     />
-                                                </span>
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => setShowOrHidePassword2(e => !e)}
+                                                    >
+                                                        {showOrHidePassword2 ? (
+                                                            <HiEye size={20} />
+                                                        ) : (
+                                                            <HiEyeSlash size={20} />
+                                                        )}
+                                                    </button>
+                                                </div>
                                                 <div className={styles.submit}>
-                                                    <PowerfulButton type="submit">
-                                                        Change Password
+                                                    {statusMessage.message && (
+                                                        <div
+                                                            className={styles.statusMessage}
+                                                            style={{
+                                                                color: statusMessage.type === 'success' ? 'green' : 'red',
+                                                                marginBottom: '10px',
+                                                                fontSize: '14px',
+                                                                fontWeight: 'bold'
+                                                            }}
+                                                        >
+                                                            {statusMessage.message}
+                                                        </div>
+                                                    )}
+                                                    <PowerfulButton
+                                                        type="submit"
+                                                        isLoading={isLoading}
+                                                    >
+                                                        {isLoading ? "Please wait..." : "Change Password"}
                                                     </PowerfulButton>
                                                 </div>
                                             </div>
@@ -167,7 +220,7 @@ const Account = () => {
                     </div>
                 </div>
                 <br />
-                {isOpen && (
+                {/* {isOpen && (
                     <Modal
                         setIsOpen={setIsOpen}
                         id={"Leave"}
@@ -198,7 +251,7 @@ const Account = () => {
                             Delete Account
                         </PowerfulButton>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     );

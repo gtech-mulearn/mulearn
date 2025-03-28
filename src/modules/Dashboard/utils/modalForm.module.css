@@ -12,6 +12,62 @@
     gap: 10px;
 }
 
+.taginputcontainer {
+    width: 100%;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    background-color: #f3f3f4;
+
+    color: black;
+  }
+  
+  .taginputwrapper {
+    display: flex;
+    align-items: center;
+ 
+  }
+  
+  .taginputwrapper:focus-within {
+    border-color: #2684ff;
+    box-shadow: 0 0 0 1px #2684ff;
+  }
+  
+  .tagchip {
+    display: flex;
+    align-items: center;
+    background-color: #e8f0fe;
+    border-radius: 16px;
+    padding: 0 8px;
+    margin-right: 4px;
+    height: 24px;
+    font-size: 14px;
+    color: #1a73e8;
+  }
+  
+  .removetagbutton {
+    background: none;
+    border: none;
+    color: #5f6368;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    margin-left: 4px;
+    padding: 0 2px;
+  }
+  
+  .removetagbutton:hover {
+    color: #d93025;
+  }
+  
+  .taginputfield {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 4px 0;
+    font-size: 14px;
+    min-width: 60px;
+  }
+
 .formHeader {
     text-align: left;
     display: flex;

@@ -173,8 +173,11 @@ const IGActionSection = ({ data }: { data: InterestGroupData }) => {
             <p>
               Explore our resources here:{' '}
               <a
+              target='_blank'
+              rel='noopener noreferrer'
+              href={data.tabs.about.foundationDeck}
                 className="!text-blue-600 cursor-pointer"
-                onClick={() => navigate(data.tabs.about.foundationDeck)}
+                // onClick={() => (window.location.href = data.tabs.about.foundationDeck)}
               >
                 foundation deck
               </a>

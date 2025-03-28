@@ -315,11 +315,7 @@ export const editUsers = async (id: string, data: any) => {
         const message: any = response?.data;
         return message;
     } catch (err: unknown) {
-        const error = err as APIError;
-        let errorMessage = "Some Error Occurred..";
-        if (error?.response?.data?.message) {
-            throw error;
-        }
+        throw err;
     }
 };
 

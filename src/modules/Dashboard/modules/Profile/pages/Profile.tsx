@@ -4,6 +4,7 @@ import dpm from "../assets/images/dpm.webp";
 import Karma, { KarmaWhite } from "../assets/svg/Karma";
 import MulearnBrand from "../assets/svg/MulearnBrand";
 import Rank from "../assets/svg/Rank";
+import emptyAchievements from "../assets/images/empty achievements.webp"
 import { PieChart } from "../components/Piechart/PieChart";
 import {
 
@@ -13,10 +14,13 @@ import {
     getPublicUserLog,
     getPublicUserProfile,
     getQSCredentials,
+    getUserAchievements,
     getUserLevels,
     getUserLog,
+    getUserPreferences,
     getUserProfile,
-    putIsPublic
+    putIsPublic,
+    updateUserPreferences
 } from "../services/api";
 import styles from "./Profile.module.css";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
@@ -31,171 +35,14 @@ import Socials from "../components/Socials/pages/Socials";
 import ShareProfilePopUp from "../components/ShareProfilePopUp/pages/ShareProfilePopUp";
 import HelmetMetaTags from "../components/HelmetMetaTags/HelmetMetaTags";
 import { isDev } from "@/MuLearnServices/common_functions";
-import { SimpleGrid, Switch } from "@chakra-ui/react";
+import { Img, SimpleGrid, Switch } from "@chakra-ui/react";
 import AchievementCard from "../components/Achievements/AchievementCard";
 import { useUserStore } from "/src/ZustandProvider";
 import { getAchievements } from "../../ManageAchievements/services/api";
 import { AchievementData } from "../../ManageAchievements/ManageAchievementsInterface";
+import AchievementCardOne from "../components/Achievements/AchievementCardOne";
+import toast from "react-hot-toast";
 
-
-const achievements = [
-    
-    {
-        id: 1,
-        subject_info: {
-            type: "Badge",
-        },
-        credential_info: {
-            course_name: "Top 100 Coders",
-            description: "Ranked among the top 100 coders in the community. Keep pushing forward!",
-            "completed_date": "2024-04-23", 
-
-        },
-        template_id: "bbd38679-c114-423c-be83-4f2854f33026",
-        buttonText: "Issue Credentials",
-        icon: "👨‍💻",
-    },
-    {
-        id: 2,
-        subject_info: {
-            type: "Badge",
-        },
-        credential_info: {
-            course_name: "Bug Bounty Hunter",
-            tags: ["Security", "Bug Bounty", "Ethical Hacking"],
-            description: "Successfully identified and fixed critical bugs. Security matters!",
-        },
-        template_id: "5adfde9e-7278-4a60-8972-ff270b74a69d",
-        buttonText: "Claim Reward",
-        icon: "🔍",
-    },
-    {
-        id: 3,
-        subject_info: {
-            type: "Badge",
-        },
-        credential_info: {
-            course_name: "Open Source Contributor",
-            tags: ["Open Source", "Collaboration", "Development"],
-            description: "Contributed to open-source projects and made the tech world better!",
-        },
-        template_id: "5adfde9e-7278-4a60-8972-ff270b74a69d",
-        buttonText: "Get Verified",
-        icon: "🌍",
-    },
-    {
-        id: 4,
-        subject_info: {
-            type: "Certificate",
-        },
-        credential_info: {
-            course_name: "AI Innovator",
-            tags: ["Artificial Intelligence", "Machine Learning", "Innovation"],
-            description: "Built innovative AI models that solve real-world problems.",
-        },
-        template_id: "5adfde9e-7278-4a60-8972-ff270b74a69d",
-        buttonText: "Issue Certificate",
-        icon: "🤖",
-    },
-    {
-        id: 5,
-        subject_info: {
-            type: "Badge",
-        },
-        credential_info: {
-            course_name: "Hackathon Winner",
-            tags: ["Hackathon", "Innovation", "Teamwork"],
-            description: "Won a coding hackathon by building a groundbreaking solution.",
-        },
-        template_id: "5adfde9e-7278-4a60-8972-ff270b74a69d",
-        buttonText: "Show Badge",
-        icon: "🏆",
-    },
-    {
-        id: 6,
-        subject_info: {
-            type: "Badge",
-        },
-        credential_info: {
-            course_name: "Cloud Expert",
-            tags: ["Cloud Computing", "AWS", "GCP"],
-            description: "Mastered cloud computing concepts and deployments on AWS & GCP.",
-        },
-        template_id: "5adfde9e-7278-4a60-8972-ff270b74a69d",
-        buttonText: "Verify Skills",
-        icon: "☁️",
-    },
-    {
-        id: 7,
-        subject_info: {
-            type: "Badge",
-        },
-        credential_info: {
-            course_name: "Cybersecurity Enthusiast",
-            tags: ["Cybersecurity", "Ethical Hacking", "Security"],
-            description: "Excelled in cybersecurity and ethical hacking challenges.",
-        },
-        template_id: "5adfde9e-7278-4a60-8972-ff270b74a69d",
-        buttonText: "Claim Badge",
-        icon: "🛡️",
-    },
-    {
-        id: 8,
-        subject_info: {
-            type: "Certificate",
-        },
-        credential_info: {
-            course_name: "Full-Stack Developer",
-            tags: ["Full-Stack", "Web Development", "React", "Node.js"],
-            description: "Developed full-stack applications with modern frameworks.",
-        },
-        template_id: "5adfde9e-7278-4a60-8972-ff270b74a69d",
-        buttonText: "Issue Credentials",
-        icon: "💻",
-    },
-    {
-        id: 9,
-        subject_info: {
-            type: "Certificate",
-        },
-        credential_info: {
-            course_name: "Data Science Guru",
-            tags: ["Data Science", "Analytics", "Machine Learning"],
-            description: "Analyzed and visualized large datasets to gain insights.",
-        },
-        template_id: "5adfde9e-7278-4a60-8972-ff270b74a69d",
-        buttonText: "Get Verified",
-        icon: "📊",
-    },
-    {
-        id: 10,
-        subject_info: {
-            type: "Recognition",
-        },
-        credential_info: {
-            course_name: "Community Leader",
-            tags: ["Community", "Leadership", "Networking"],
-            description: "Organized and led tech meetups to foster a developer community.",
-        },
-        template_id: "5adfde9e-7278-4a60-8972-ff270b74a69d",
-        buttonText: "Claim Recognition",
-        icon: "👥",
-    },
-    {
-        id: 11,
-        subject_info: {
-            type: "Badge",
-        },
-        credential_info: {
-            course_name: "Level 4 Achievement",
-            tags: ["μLearn", "Level 4", "Achievement"],
-            description: "Successfully reached Level 4 in μLearn, demonstrating consistent learning and skill growth.",
-        },
-        template_id: "5adfde9e-7278-4a60-8972-ff270b74a69d",
-        buttonText: "Issue Level 4 Badge",
-        icon: "🎖️",
-    },
-];
 
 
 
@@ -203,20 +50,16 @@ const achievements = [
 const Profile = () => {
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
-
-
-    const key = 'email';
-    const value = useUserStore(state => state.userInfo.email);
-    const [userDID, setUserDID] = useState<string | null>(null);
-
-
+    const key = 'muid';
+    const [value, setValue] = useState<string>();
+    const [userDID, setUserDID] = useState<string>();
     const [isLoading, setIsLoading] = useState(false);
-
     const [achievements, setAchievements] = useState<AchievementData[]>([]);
     const [APILoadStatus, setAPILoadStatus] = useState(0);
     const [profileList, setProfileList] = useState("basic-details");
     const [popUP, setPopUP] = useState(false);
     const [editPopUp, setEditPopUp] = useState(false);
+    const [fromUserSearch, setFromUserSearch] = useState(false);
     const [achievementModalOpen, setAchievementModalOpen] = useState(false);
     const [userProfile, setUserProfile] = useState({
         full_name: "",
@@ -287,19 +130,77 @@ const Profile = () => {
         }, 1000);
     };
 
-    const fetchAchievements = async () => {
-            try {
-                const achievements = await getAchievements();
-                if (achievements) {
-                    setAchievements(achievements);
-                } 
-            } catch (error) {
-                console.error("Error fetching achievements:", error);
-            } finally {
-                setIsLoading(false);
+    const [userPreferences, setUserPreferences] = useState<any>(null);
+    const [preferencesLoading, setPreferencesLoading] = useState(false);
+
+    // Add a new useEffect to fetch user preferences
+    useEffect(() => {
+        const fetchUserPreferences = async () => {
+            if (!id) { // Only fetch preferences for the current user, not when viewing other profiles
+                setPreferencesLoading(true);
+                try {
+                    const preferences = await getUserPreferences();
+                    setUserPreferences(preferences);
+                } catch (error) {
+                    console.error("Error fetching user preferences:", error);
+                    toast.error("Failed to load user preferences");
+                } finally {
+                    setPreferencesLoading(false);
+                }
             }
         };
-    
+
+        fetchUserPreferences();
+    }, [id]);
+
+
+
+    useEffect(() => {
+        const initializeProfileData = async () => {
+            setAchievements([])
+
+            let newValue = "";
+            if (id) {
+                newValue = id;
+                setFromUserSearch(true);
+            } else {
+                newValue = useUserStore.getState().userInfo.muid;
+            }
+            setValue(newValue);
+
+            if (newValue) {
+                try {
+                    const connectedUsersResponse = await getConnectedUsers(key, newValue);
+                    if (connectedUsersResponse) {
+                        setUserDID(connectedUsersResponse);
+                    }
+                } catch (error) {
+                    console.error("Error fetching connected users:", error);
+                    // toast.error("Failed to fetch connected users.");
+                }
+            } else {
+                console.warn("Value is not available for fetchConnectedUsers");
+            }
+
+            // Step 3: Fetch achievements (only if value is available)
+            if (newValue) {
+                setIsLoading(true);
+                try {
+                    const achievements = await getUserAchievements(newValue);
+                    setAchievements(achievements);
+                } catch (error) {
+                    console.error("Error fetching achievements:", error);
+                    // toast.error("Failed to fetch achievements.");
+                } finally {
+                    setIsLoading(false);
+                }
+            } else {
+                toast.error("Error fetching muid for achievements.");
+            }
+        };
+
+        initializeProfileData();
+    }, [id, key]); // Dependencies: id (for value) and key (for fetchConnectedUsers)
 
     useEffect(() => {
         if (firstFetch.current) {
@@ -311,7 +212,7 @@ const Profile = () => {
                 );
                 getUserLog(setUserLog);
                 getUserLevels(setUserLevelData);
-                fetchAchievements();
+
             } else {
                 getPublicUserProfile(setUserProfile, setAPILoadStatus, id);
                 getPublicUserLog(setUserLog, id);
@@ -321,53 +222,30 @@ const Profile = () => {
         firstFetch.current = false;
         setProfileStatus(userProfile.is_public);
     }, [id, userProfile.is_public]);
-    // console.log(userLevelData);
 
     const handleAchievementModal = () => {
         setAchievementModalOpen(!achievementModalOpen);
     }
 
-
     // useEffect(() => {
-    //     async function fetchConnectedUsers() {
+    //     const fetchConnectedUsers = async () => {
+    //         if (!value) {
+    //             console.warn("Value is not available yet for fetchConnectedUsers");
+    //             return;
+    //         }
     //         try {
     //             const response = await getConnectedUsers(key, value);
     //             if (response) {
     //                 setUserDID(response);
     //             }
     //         } catch (error) {
-    //             console.error(error);
-                
+    //             console.error("Error fetching connected users:", error);
+    //             toast.error("Failed to fetch connected users.");
     //         }
-    //     }
-    //     fetchConnectedUsers();
-    // }, []);
+    //     };
 
-    // useEffect(() => {
-    //    async function fetchCredentials() {
-    //     try {
-    //         const response = await getQSCredentials();
-    //         console.log("credentials", response);
-    //     } catch (error) {
-    //         console.error(error);
-            
-    //     }
-    //    }
-    //      fetchCredentials();
-    // }, [])
-
-    // useEffect(() => {
-    //     async function fetchConnectedUsers() {
-    //      try {
-    //          const response = await getAllConnectedUsers();
-    //          console.log("credentials", response);
-    //      } catch (error) {
-    //          console.error(error);
-    //      }
-    //     }
     //     fetchConnectedUsers();
-    //  }, [])
-    
+    // }, [value, key]);
 
     return (
         <>
@@ -752,23 +630,30 @@ const Profile = () => {
                                         <div className="bg-white rounded-xl w-full !p-4 ">
                                             <h2 className="!mb-8">Eligible Achievements</h2>
 
+                                            {achievements.length === 0 && (
+                                                <div className="text-center flex flex-col items-center justify-center text-gray-500">
+                                                    <Img src={emptyAchievements} alt="No achievements" w={400} h={400} />
+                                                    <p>No achievements available for you at the moment. Keep learning.</p>
+
+                                                </div>
+                                            )}
+
                                             <SimpleGrid
                                                 columns={[1, 2, 3]}
                                                 spacing={6}
                                                 justifyContent="center"  // Centers items horizontally
                                                 alignItems="center"      // Centers items vertically
                                             >
-                                                {/* {achievements.map((achievement) => (
-                                                    <AchievementCard
-                                                    key={achievement.id}
-                                                    id={achievement.id}
-                                                    subject_info={achievement.subject_info}
-                                                    credential_info={achievement.credential_info}
-                                                    template_id={achievement.template_id}
-                                                    buttonText={achievement.buttonText}
-                                                    icon={achievement.icon}
-                                                />
-                                                ))} */}
+                                                {achievements.map((achievement) => (
+                                                    <AchievementCardOne
+                                                        key={achievement.id}
+                                                        achievement={achievement}
+                                                        userDID={userDID}
+                                                        muid={value}
+                                                        usersName={userProfile.full_name}
+                                                        fromUserSearch={fromUserSearch}
+                                                    />
+                                                ))}
                                             </SimpleGrid>
                                         </div>
                                     ) : null}
@@ -777,21 +662,84 @@ const Profile = () => {
 
                                 <div className={styles.notification}>
                                     <div className={styles.existing_roles}>
-                                        <div className={styles.head + " " + styles.profileStatus}>
-                                            <h2>Switch to public profile</h2>
-                                            <div className={styles.option}>
-                                                <Switch
-                                                    isChecked={profileStatus}
-                                                    onChange={e => {
-                                                        setProfileStatus(
-                                                            e.target.checked
-                                                        );
-                                                        putIsPublic(e.target.checked);
-                                                    }}
-                                                />
-                                            </div>
+                                        {!id && (
+                                            <div className={styles.head + " " + styles.profileSettingsContainer}>
+                                                <h2>Profile Settings</h2>
+                                                <div className={styles.head + " " + styles.profileStatus}>
+                                                    <h4>Switch to public profile</h4>
+                                                    <div className={styles.option}>
+                                                        <Switch
+                                                            isChecked={profileStatus}
+                                                            onChange={e => {
+                                                                setProfileStatus(e.target.checked);
+                                                                putIsPublic(e.target.checked);
+                                                            }}
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div className={styles.head + " " + styles.profileStatus}>
+                                                    <h4>Open to work</h4>
+                                                    <div className={styles.option}>
+                                                        <Switch
+                                                            isChecked={userPreferences?.interested_in_work || false}
+                                                            onChange={async (e) => {
+                                                                try {
+                                                                    // Create new preferences object with updated value
+                                                                    const updatedPreferences = {
+                                                                        ...userPreferences,
+                                                                        interested_in_work: e.target.checked
+                                                                    };
 
-                                        </div>
+                                                                    // Update locally first for immediate UI feedback
+                                                                    setUserPreferences(updatedPreferences);
+
+                                                                    // Call API to update on server
+                                                                    await updateUserPreferences(updatedPreferences);
+                                                                    toast.success("Work preference updated");
+                                                                } catch (error) {
+                                                                    console.error("Error updating work preference:", error);
+                                                                    // Revert to previous state if API call fails
+                                                                    setUserPreferences(userPreferences);
+                                                                    toast.error("Failed to update work preference");
+                                                                }
+                                                            }}
+                                                            isDisabled={preferencesLoading}
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div className={styles.head + " " + styles.profileStatus}>
+                                                    <h4>Open to gigs</h4>
+                                                    <div className={styles.option}>
+                                                        <Switch
+                                                            isChecked={userPreferences?.interested_in_gig_work || false}
+                                                            onChange={async (e) => {
+                                                                try {
+                                                                    // Create new preferences object with updated value
+                                                                    const updatedPreferences = {
+                                                                        ...userPreferences,
+                                                                        interested_in_gig_work: e.target.checked
+                                                                    };
+
+                                                                    // Update locally first for immediate UI feedback
+                                                                    setUserPreferences(updatedPreferences);
+
+                                                                    // Call API to update on server
+                                                                    await updateUserPreferences(updatedPreferences);
+                                                                    toast.success("Gig preference updated successfully");
+                                                                } catch (error) {
+                                                                    console.error("Error updating gig preference:", error);
+                                                                    // Revert to previous state if API call fails
+                                                                    setUserPreferences(userPreferences);
+                                                                    toast.error("Failed to update gig preference");
+                                                                }
+                                                            }}
+                                                            isDisabled={preferencesLoading}
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )}
+                                        
                                         <div className={styles.head}>
                                             <Socials />
                                         </div>

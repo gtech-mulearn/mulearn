@@ -68,26 +68,26 @@ export const EventCard = ({
         <button
           className={`${styles.joinButton} ${isDisabled ? styles.disabled : ''}`}
           disabled={isDisabled}
-          onClick={()=> setIsModalOpen && setIsModalOpen({
-            id,
-            title,
-            meet_place: location,
-            description,
-            created_by, 
-            ig_id,
-            ig_name,
-            meet_time: time,
-            is_report_needed: false,
-            report_description: "",
-            coord_x: 0,
-            coord_y: 0,
-            duration: karmaPoints,
-            is_approved: false,
-            is_started: false,
-            is_ended: false,
-            attendee: null,
-            meet_link: joiningUrl,
-          })}
+          // onClick={()=> setIsModalOpen && setIsModalOpen({
+          //   id,
+          //   title,
+          //   meet_place: location,
+          //   description,
+          //   created_by, 
+          //   ig_id,
+          //   ig_name,
+          //   meet_time: time,
+          //   is_report_needed: false,
+          //   report_description: "",
+          //   coord_x: 0,
+          //   coord_y: 0,
+          //   duration: karmaPoints,
+          //   is_approved: false,
+          //   is_started: false,
+          //   is_ended: false,
+          //   attendee: null,
+          //   meet_link: joiningUrl,
+          // })}
         >
           View
         </button>

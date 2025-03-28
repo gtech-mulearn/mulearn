@@ -39,10 +39,17 @@
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
-
-
 }
 
+.joinCommunityButton{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.joinCommunityButton button{
+  margin-bottom: 1rem;
+}
 
 
 .sidebar {
@@ -352,6 +359,10 @@
 .officeHoursButton {
   background-color: #fff;
   color: #456ff6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(4px, 1vw, 16px);
   border: none;
   padding: clamp(4px, 1vw, 8px) clamp(8px, 2vw, 16px);
   border-radius: 4px;

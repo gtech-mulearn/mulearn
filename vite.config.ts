@@ -18,6 +18,8 @@ export default defineConfig({
     plugins: [react(), viteCompression(), tailwindcss(),],
     resolve: {
         alias: {
+            "@/modules": path.resolve(__dirname, "./src/modules"), 
+            "@/components": path.resolve(__dirname, "./src/components"),
             "@/MuLearnComponents": `${path.resolve(
                 __dirname,
                 "./src/components/MuComponents"

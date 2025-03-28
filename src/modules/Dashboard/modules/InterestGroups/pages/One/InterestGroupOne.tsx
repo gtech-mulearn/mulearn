@@ -1,12 +1,12 @@
 import React, { useMemo } from 'react';
-import { useParams } from 'react-router-dom';
-import { Bell, MoreHorizontal } from 'lucide-react';
+import { useNavigate, useParams } from 'react-router-dom';
 import styles from './InterestGroupOne.module.css';
 import SidebarBannerSlider from '../../components/SideBannerSlider/SideBannerSlider';
 import IGActionSection from '../../components/ActionSection/IGActionSection';
-import { InterestGroupData, interestGroups } from '../../data/interestGroups';
+import { interestGroups } from '../../data/interestGroups';
 import ComingSoonPage from '/src/modules/Common/Authentication/pages/ComingSoon';
 import { FiArrowLeft } from 'react-icons/fi';
+import { BsCalendar2, BsDiscord } from 'react-icons/bs';
 
 
 const interestGroupsObject = Object.fromEntries(
@@ -18,62 +18,63 @@ const CommunityForum = () => {
   const { id } = useParams();
 
   const groupData = useMemo(() => (id ? interestGroupsObject[id] : null), [id]);
+  const navigate = useNavigate();
 
   const handleAddToCalendar = (eventName: string, dayTimeString: string, durationMinutes = 60) => {
     const [dayName, timeString] = dayTimeString.split(" ");
-  
+
     // Map days of the week to their index (Sunday = 0, Monday = 1, ..., Saturday = 6)
     const daysMap: { [key: string]: number } = {
       Sunday: 0, Monday: 1, Tuesday: 2, Wednesday: 3,
       Thursday: 4, Friday: 5, Saturday: 6
     };
-  
+
     const targetDay = daysMap[dayName];
     if (targetDay === undefined) {
       console.error("Invalid day name:", dayName);
       return;
     }
-  
+
     // ✅ Convert timeString (e.g., "8:30PM") to 24-hour format
     const timeMatch = timeString.match(/(\d+):(\d+)(AM|PM)/);
     if (!timeMatch) {
       console.error("Invalid time format:", timeString);
       return;
     }
-  
+
     let [_, hour, minute, period] = timeMatch;
     let hours = parseInt(hour, 10);
     let minutes = parseInt(minute, 10);
-  
+
     if (period === "PM" && hours !== 12) hours += 12;
     if (period === "AM" && hours === 12) hours = 0;
-  
+
     // Get next occurrence of the given weekday
     const now = new Date();
     let eventDate = new Date(now);
     eventDate.setDate(now.getDate() + ((targetDay + 7 - now.getDay()) % 7));
     eventDate.setHours(hours, minutes, 0, 0);
-  
+
     // Calculate end time (default duration = 60 minutes)
     let endDate = new Date(eventDate.getTime() + durationMinutes * 60000);
-  
+
     // Convert to Google Calendar format (YYYYMMDDTHHmmssZ)
     const formatGoogleDate = (date: Date) => date.toISOString().replace(/-|:|\.\d+/g, "");
-  
+
     const startGoogleDate = formatGoogleDate(eventDate);
     const endGoogleDate = formatGoogleDate(endDate);
-  
+
     // Google Calendar Event URL
     const googleCalendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventName)}&dates=${startGoogleDate}/${endGoogleDate}`;
-  
+
     // Open Google Calendar in a new tab
     window.open(googleCalendarUrl, "_blank", "noopener,noreferrer");
   };
-  
-  
-  
 
-  
+
+
+
+
 
   if (!groupData) {
     return <div className='w-full h-full flex justify-center items-center'><ComingSoonPage /></div>;
@@ -84,7 +85,7 @@ const CommunityForum = () => {
       <div className={styles.mainGrid}>
         <div className={styles.mainContent}>
           <div className={styles.forumCard}>
-        <button className={styles.backButton} onClick={() => window.history.back()}> <FiArrowLeft/> </button>
+            <button className={styles.backButton} onClick={() => window.history.back()}> <FiArrowLeft /> </button>
             <div className={styles.bannerWrapper}>
               <img
                 src={groupData.bannerImage}
@@ -105,11 +106,11 @@ const CommunityForum = () => {
               <h1 className={styles.forumTitle}>{groupData.title}</h1>
               <div className={styles.forumSubInfo}>
                 {/* <span><span></span>{groupData.isPublic ? "Public" : "Private"} Community</span> */}
-              
+
                 <span><span>• </span>{(groupData.memberCount / 1000).toFixed(1)}k members</span>
-                
+
                 <span> <span>• </span>Office Hours: {groupData.officeHours}</span>
-               
+
                 {/* <span> <span>•</span>Think Tank Meeting: {groupData.thinkTankMeeting}</span> */}
               </div>
             </div>
@@ -138,28 +139,46 @@ const CommunityForum = () => {
         </div>
 
         <div className={styles.sidebar}>
-          <div className={styles.sidebarSection}>
+          {/* <div className={styles.sidebarSection}>
             <h2 className={styles.sidebarTitle}>Happening Now</h2>
             <div className={styles.sidebarBanner}>
               <SidebarBannerSlider events={groupData.tabs.events || []} />
             </div>
-          </div>
+          </div> 
+          */}
           {groupData.officeHours !== "TBA" && (
 
-          <div className={styles.officeHoursCard}>
+            <div className={styles.officeHoursCard}>
+              <h3>Office Hours Timings</h3>
+              <div className={styles.officeHoursCardTiming}>
+                <p>{groupData.officeHours}</p>
+                <div className={styles.joinCommunityButton}>
+                  <button
+                    className={styles.officeHoursButton}
+                    onClick={() => handleAddToCalendar(`${groupData.title} Office Hours`, groupData.officeHours, 60)}
+                    aria-label="Join office hours"
+                  >
+                    <BsCalendar2 /> Add to calendar
+                  </button>
+                  <button
+                    className={styles.officeHoursButton}
+                    onClick={() => window.open("https://discord.com/invite/gtech-mulearn-771670169691881483", "_blank")}
+                    aria-label="Join Community"
+                  >
+                    <BsDiscord /> Join Community
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          )}
+          {/* <div className={styles.officeHoursCard}>
             <h3>Office Hours Timings</h3>
             <div className={styles.officeHoursCardTiming}>
               <p>{groupData.officeHours}</p>
-              <button
-                className={styles.officeHoursButton}
-                onClick={() => handleAddToCalendar(`${groupData.title} Office Hours`, groupData.officeHours, 60)}
-                aria-label="Join office hours"
-              >
-                Add to calendar
-              </button>
+             
             </div>
-          </div>
-          )}
+          </div> */}
           {/* <div className={styles.sidebarSection}>
             <h2 className={styles.sidebarTitle}>Partner Companies</h2>
             <div className={styles.sidebarList}>
@@ -174,19 +193,19 @@ const CommunityForum = () => {
             </div>
           </div> */}
           {groupData.communityPartners && groupData.communityPartners.length > 0 && (
-          <div className={styles.sidebarSection}>
-            <h2 className={styles.sidebarTitle}>Community Partners</h2>
-            <div className={styles.sidebarList}>
-              {groupData.communityPartners?.map((partner) => (
-                <div key={partner.id} className={styles.sidebarItem}>
-                  <div className={styles.sidebarItemLeft}>
-                    <img src={partner.image} alt={partner.title} className={styles.communityIcon} />
-                    {/* <span className={styles.sidebarItemText}>{partner.title}</span> */}
+            <div className={styles.sidebarSection}>
+              <h2 className={styles.sidebarTitle}>Community Partners</h2>
+              <div className={styles.sidebarList}>
+                {groupData.communityPartners?.map((partner) => (
+                  <div key={partner.id} className={styles.sidebarItem}>
+                    <div className={styles.sidebarItemLeft}>
+                      <img src={partner.image} alt={partner.title} className={styles.communityIcon} />
+                      {/* <span className={styles.sidebarItemText}>{partner.title}</span> */}
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          </div>)}
+                ))}
+              </div>
+            </div>)}
         </div>
       </div>
     </div>

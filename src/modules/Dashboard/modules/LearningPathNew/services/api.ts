@@ -125,24 +125,102 @@ function calculateLevelProgress(levels: Level[]): LevelProgress[] {
     });
 }
 
-async function fetchUserLevels(): Promise<ApiResponse> {
-    try {
-        const response: AxiosResponse<ApiResponse> = await privateGateway.get(dashboardRoutes.getUserLevels);
-        return response.data;
-    } catch (error) {
-        console.error("Error fetching user levels:", error);
-        throw error as ApiError;
+// Modify fetchUserLevels to be a cached function
+class ApiCache {
+    private static instance: ApiCache;
+    private userLevelsCache: ApiResponse | null = null;
+    private igTasksCache: Record<string, Task[]> = {};
+    private lastFetchTime: Record<string, number> = {};
+    private CACHE_DURATION = 5 * 60 * 1000; // 5 minutes cache duration
+
+    private constructor() {}
+
+    public static getInstance(): ApiCache {
+        if (!ApiCache.instance) {
+            ApiCache.instance = new ApiCache();
+        }
+        return ApiCache.instance;
+    }
+
+    public async getUserLevels(): Promise<ApiResponse> {
+        const now = Date.now();
+        
+        // Check if cache exists and is fresh
+        if (this.userLevelsCache && now - (this.lastFetchTime['userLevels'] || 0) < this.CACHE_DURATION) {
+            return this.userLevelsCache;
+        }
+
+        try {
+            const response: AxiosResponse<ApiResponse> = await privateGateway.get(dashboardRoutes.getUserLevels);
+            this.userLevelsCache = response.data;
+            this.lastFetchTime['userLevels'] = now;
+            return response.data;
+        } catch (error) {
+            console.error("Error fetching user levels:", error);
+            throw error as ApiError;
+        }
+    }
+
+    public async getIgTasks(usersIgid: string): Promise<Task[]> {
+        const now = Date.now();
+        
+        // Check if cache exists and is fresh for this IG ID
+        if (
+            this.igTasksCache[usersIgid] && 
+            now - (this.lastFetchTime[`igTasks_${usersIgid}`] || 0) < this.CACHE_DURATION
+        ) {
+            return this.igTasksCache[usersIgid];
+        }
+
+        try {
+            const response: AxiosResponse<IgTaskApiResponse> = await privateGateway.get(
+                dashboardRoutes.getUserIgTasks,
+                { params: { ig_id: usersIgid, perPage: 1000 } }
+            );
+            
+            const tasks = response.data.response.data || [];
+            this.igTasksCache[usersIgid] = tasks;
+            this.lastFetchTime[`igTasks_${usersIgid}`] = now;
+            
+            return tasks;
+        } catch (error) {
+            console.error(`Error fetching tasks for IG ID ${usersIgid}:`, error);
+            return [];
+        }
+    }
+
+    // Method to clear specific or all caches
+    public clearCache(type?: 'userLevels' | 'igTasks', key?: string) {
+        if (type === 'userLevels') {
+            this.userLevelsCache = null;
+            delete this.lastFetchTime['userLevels'];
+        } else if (type === 'igTasks' && key) {
+            delete this.igTasksCache[key];
+            delete this.lastFetchTime[`igTasks_${key}`];
+        } else {
+            this.userLevelsCache = null;
+            this.igTasksCache = {};
+            this.lastFetchTime = {};
+        }
     }
 }
 
-export async function formatTasksData(apiResponse: ApiResponse, userLevel: string): Promise<FormattedLevel[]> {
-    const userLevelsData = await fetchUserLevels();
+// Utility function to create hashtag completed map
+function createHashtagCompletedMap(userLevelsData: ApiResponse): Record<string, boolean> {
     const hashtagCompletedMap: Record<string, boolean> = {};
     userLevelsData.response.forEach((level) => {
         level.tasks.forEach((task) => {
             hashtagCompletedMap[task.hashtag] = task.completed;
         });
     });
+    return hashtagCompletedMap;
+}
+
+
+export async function formatTasksData(apiResponse: ApiResponse, userLevel: string): Promise<FormattedLevel[]> {
+    const apiCache = ApiCache.getInstance();
+    const userLevelsData = await apiCache.getUserLevels();
+    const hashtagCompletedMap = createHashtagCompletedMap(userLevelsData);
 
     const levelProgress = calculateLevelProgress(apiResponse.response);
     const currentLevelNum = parseInt(userLevel.replace("Level ", "")) || 1;
@@ -183,6 +261,8 @@ export async function formatTasksData(apiResponse: ApiResponse, userLevel: strin
         };
     });
 }
+
+
 
 export async function getUserTasks(userLevel: string): Promise<FormattedLevel[]> {
     try {
@@ -235,13 +315,9 @@ export async function formatIGTasksDataTest(
     userLevel: number,
     includeLevelNull: boolean = false
 ): Promise<FormattedLevel[]> {
-    const userLevelsData = await fetchUserLevels();
-    const hashtagCompletedMap: Record<string, boolean> = {};
-    userLevelsData.response.forEach((level) => {
-        level.tasks.forEach((task) => {
-            hashtagCompletedMap[task.hashtag] = task.completed;
-        });
-    });
+    const apiCache = ApiCache.getInstance();
+    const userLevelsData = await apiCache.getUserLevels();
+    const hashtagCompletedMap = createHashtagCompletedMap(userLevelsData);
 
     const levels: Record<number, Card[]> = {};
 
@@ -274,7 +350,7 @@ export async function formatIGTasksDataTest(
                 prerequisites: ["Basic knowledge"],
                 resources: task.discord_link ? [task.discord_link] : [],
                 completed: hashtagCompletedMap[task.hashtag] || false,
-                karma: task.karma, // Store karma for progress calculation
+                karma: task.karma,
             };
 
             const effectiveLevel = levelNum === null ? 0 : levelNum;
@@ -301,41 +377,32 @@ export async function formatIGTasksDataTest(
     }));
 }
 
-export const getUserIGFormattedTasks = async (
+export async function getUserIGFormattedTasks(
     usersIgids: string[],
     userLevel: number,
     includeLevelNull: boolean = false
-): Promise<Record<string, FormattedLevel[]>> => {
-    try {
-        const taskObject: Record<string, Task[]> = {};
+): Promise<Record<string, FormattedLevel[]>> {
+    const apiCache = ApiCache.getInstance();
+    const userLevelsData = await apiCache.getUserLevels();
+    const hashtagCompletedMap = createHashtagCompletedMap(userLevelsData);
 
-        await Promise.all(
-            usersIgids.map(async (usersIgid) => {
-                try {
-                    const response: AxiosResponse<IgTaskApiResponse> = await privateGateway.get(
-                        dashboardRoutes.getUserIgTasks,
-                        { params: { ig_id: usersIgid, perPage: 1000 } }
-                    );
-                    taskObject[usersIgid] = response.data.response.data || []; // Correctly access the data property
-                } catch (error) {
-                    console.error(`Error fetching tasks for IG ID ${usersIgid}:`, error);
-                    taskObject[usersIgid] = [];
-                }
-            })
+    const taskObject: Record<string, Task[]> = {};
+
+    // Fetch tasks for all IG IDs concurrently using cache
+    await Promise.all(
+        usersIgids.map(async (usersIgid) => {
+            taskObject[usersIgid] = await apiCache.getIgTasks(usersIgid);
+        })
+    );
+
+    const formattedTasks: Record<string, FormattedLevel[]> = {};
+    for (const igId of Object.keys(taskObject)) {
+        formattedTasks[igId] = await formatIGTasksDataTest(
+            { [igId]: taskObject[igId] }, 
+            userLevel, 
+            includeLevelNull
         );
-
-
-        const formattedTasks: Record<string, FormattedLevel[]> = {};
-        for (const igId of Object.keys(taskObject)) {
-            formattedTasks[igId] = await formatIGTasksDataTest({ [igId]: taskObject[igId] }, userLevel, includeLevelNull);
-        }
-
-        console.log(formattedTasks, "formatted-tasks");
-        return formattedTasks;
-    } catch (error) {
-        console.error(error);
-        throw error as ApiError;
     }
-};
 
-
+    return formattedTasks;
+}

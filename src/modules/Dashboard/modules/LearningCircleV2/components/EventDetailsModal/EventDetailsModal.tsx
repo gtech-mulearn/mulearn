@@ -88,10 +88,10 @@ const EventDetailsModal: React.FC<EventDetailsModalProps> = ({
             </p>
           </>
         )}
-        {meetup.attendee && (
+        {meetup.attendees && (
           <p>
             <strong>Attendees:</strong>{" "}
-            {Number(meetup.attendee) || 10}
+            {Number(meetup.attendees.length) || 10}
           </p>
         )}
         {meetup.meet_place === "Google Meet" && meetup.meet_link && (

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Search, Users, ChevronLeft, ChevronRight, Users2 } from 'lucide-react';
 import styles from './InterestGroupsPage.module.css';
 import { useNavigate } from 'react-router-dom';
-import { FiArrowLeft } from 'react-icons/fi';
+import { FiArrowLeft, FiUsers } from 'react-icons/fi';
 import { getInterestGroups, getInterestGroupsList } from '../../InterestGroup/apis';
 import MuLoader from '@/MuLearnComponents/MuLoader/MuLoader';
 import {InterestGroupData, interestGroups} from "../data/interestGroups"; 
@@ -30,13 +30,14 @@ function InterestGroupsPage() {
   ];
 
   const imageUrls = [
-    { title: "UI/UX Interest Group", image: "/assets/IG/Cover/1.png" },
-    { title: "Web Development", image: "/assets/IG/Cover/2.png" },
-    { title: "Cybersecurity", image: "/assets/IG/Cover/3.png" },
-    { title: "Digital Marketing", image: "/assets/IG/Cover/4.png" },
-    { title: "Game Development", image: "/assets/IG/Cover/5.png" },
-    { title: "Cloud and DevOps", image: "/assets/IG/Cover/6.png" },
-    { title: "Product Management", image: "/assets/IG/Cover/7.png" }
+    { title: "UI/UX Interest Group", image: "/assets/IG/Cover/1.webp" },
+    { title: "Web Development", image: "/assets/IG/Cover/2.webp" },
+    { title: "Cybersecurity", image: "/assets/IG/Cover/3.webp" },
+    { title: "Digital Marketing", image: "/assets/IG/Cover/4.webp" },
+    { title: "Game Development", image: "/assets/IG/Cover/5.webp" },
+    { title: "Cloud and DevOps", image: "/assets/IG/Cover/6.webp" },
+    { title: "Product Management", image: "/assets/IG/Cover/7.webp" },
+    {title: "Internet Of Things (IOT) And Robotics", image: "/assets/IG/Cover/8.webp"}
   ];
   
 
@@ -133,6 +134,7 @@ function InterestGroupsPage() {
             onClick={() => navigate(`/dashboard/interestgroups/${group.id}`)}
           >
             <div className={styles.GroupImageWrapper}>
+              
               {group.image ? (
                 <img
                   src={group.image}
@@ -154,12 +156,7 @@ function InterestGroupsPage() {
                   );
                 })()
               )}
-              <div className={styles.GroupOverlay}>
-                <span className={styles.GroupParticipantsBadge}>
-                  <Users2 className={styles.GroupParticipantsIcon} />
-                  {group.memberCount} 
-                </span>
-              </div>
+              
             </div>
             <div className={styles.GroupDetails}>
               {group.category && <span className={styles.GroupCategory}>
@@ -167,6 +164,12 @@ function InterestGroupsPage() {
                 </span>}
             
               <h3 className={styles.GroupTitle}>{group.title}</h3>
+              <div className={styles.GroupOverlay}>
+                <span className={styles.GroupParticipantsBadge}>
+                  <FiUsers className={styles.GroupParticipantsIcon} />
+                  {group.memberCount} members
+                </span>
+              </div>
             </div>
           </div>
           ))}

@@ -97,10 +97,10 @@ const UserForm = forwardRef(
                             ...selectData,
                             selectedCommunity: data.organizations
                                 ? data.organizations
-                                      .filter(
-                                          org => org.org_type === "Community"
-                                      )
-                                      .map(org => org.org)
+                                    .filter(
+                                        org => org.org_type === "Community"
+                                    )
+                                    .map(org => org.org)
                                 : [],
                             selectedInterestGroups: data.interest_groups
                                 ? data.interest_groups
@@ -164,9 +164,8 @@ const UserForm = forwardRef(
             if (!value.trim()) {
                 setErrors(prevErrors => ({
                     ...prevErrors,
-                    [name]: `${
-                        name.charAt(0).toUpperCase() + name.slice(1)
-                    } is required`
+                    [name]: `${name.charAt(0).toUpperCase() + name.slice(1)
+                        } is required`
                 }));
             } else {
                 setErrors(prevErrors => ({ ...prevErrors, [name]: undefined }));
@@ -252,7 +251,7 @@ const UserForm = forwardRef(
             );
         }, [locationData]);
 
-        useEffect(() => {}, [selectData.roles]);
+        useEffect(() => { }, [selectData.roles]);
 
         useEffect(() => {
             if (!isApiCalled) {
@@ -307,7 +306,7 @@ const UserForm = forwardRef(
             for (const key in updatedData) {
                 if (
                     updatedData[key as keyof typeof updatedData] ===
-                        undefined ||
+                    undefined ||
                     updatedData[key as keyof typeof updatedData] === null ||
                     updatedData[key as keyof typeof updatedData] === "" ||
                     updatedData[key as keyof typeof updatedData] === "undefined"
@@ -324,16 +323,22 @@ const UserForm = forwardRef(
                     isValid = false;
                     setErrors(prevErrors => ({
                         ...prevErrors,
-                        [key]: `${
-                            key.charAt(0).toUpperCase() + key.slice(1)
-                        } is required`
+                        [key]: `${key.charAt(0).toUpperCase() + key.slice(1)
+                            } is required`
                     }));
                     toast.error(`Error: ${key} is required`);
                 }
             }
 
             if (isValid) {
-                toast.promise(editUsers(props.id, updatedData), {
+                toast.promise(new Promise((resolve, reject) => {
+                    editUsers(props.id, updatedData).then(res => {
+                        props.closeModal();
+                        resolve(<b>User edited</b>);
+                    }).catch(err => {
+                        reject(<b>Failed to edit user</b>);
+                    });
+                }), {
                     loading: "Saving...",
                     success: () => {
                         props.closeModal();
@@ -386,7 +391,7 @@ const UserForm = forwardRef(
                                 placeholder="Mobile"
                                 value={data.mobile}
                                 onChange={handleChange}
-                                
+
                             />
                             {errors.mobile && (
                                 <div style={{ color: "red" }}>
@@ -401,7 +406,7 @@ const UserForm = forwardRef(
                                 placeholder="DiscordId"
                                 value={data.discord_id as string}
                                 onChange={handleChange}
-                                // onBlur={handleBlur}
+                            // onBlur={handleBlur}
                             />
                             {errors.discord_id && (
                                 <div style={{ color: "red" }}>
@@ -563,7 +568,7 @@ const UserForm = forwardRef(
                                         }
                                     }));
                                 }}
-                                // value={selectedIg}
+                            // value={selectedIg}
                             />
                             {/* {selectData.blurStatus.interestGroups &&
                             !selectData.selectedInterestGroups && (

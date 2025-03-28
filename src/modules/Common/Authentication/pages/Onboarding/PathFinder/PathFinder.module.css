@@ -79,15 +79,23 @@ h1 {
   position: absolute;
   top: 10px;
   right: 10px;
-  padding: 5px;
+  padding: 8px;
   border-radius: 50%;
   cursor: pointer;
   color: #456ff6;
-  z-index: 11;
+  z-index: 20;
+  background: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.itemsContainer .itemsCard .infoButton:hover + .interestInfo {
-  display: flex;
+.itemsContainer .itemsCard .infoButton:hover {
+  background: #456ff6;
+  color: white;
+  transform: scale(1.1);
 }
 
 .itemsContainer .itemsCard .interestInfo {
@@ -97,18 +105,23 @@ h1 {
   height: 100%;
   top: 0;
   left: 0;
-  color: #22222290;
-  font-size: 10px;
+  color: #222222;
+  font-size: 12px;
   background: #ffffff;
-  border: 1px solid #456ef694;
-  padding: 10px;
+  border: 1px solid #456ff6;
+  padding: 15px;
   border-radius: 10px;
-  z-index: 10;
+  z-index: 15;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
   gap: 10px;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.itemsContainer .itemsCard .infoButton:hover + .interestInfo {
+  display: flex;
 }
 
 .itemsContainer .itemsCard .interestInfo:hover {
@@ -116,8 +129,11 @@ h1 {
 }
 
 .itemsContainer .itemsCard .interestInfo h4 {
-  font-weight: 800;
+  font-weight: 600;
   text-align: start;
+  color: #456ff6;
+  margin-bottom: 8px;
+  font-size: 14px;
 }
 
 .itemsContainer .itemsCard .interestInfo ul {
@@ -125,17 +141,25 @@ h1 {
   flex-wrap: wrap;
   padding: 0;
   margin: 0;
+  gap: 5px;
 }
 
 .itemsContainer .itemsCard .interestInfo ul li {
   text-align: start;
   width: auto;
   display: inline-block;
-  padding: 3px;
-  background: #22222210;
-  margin: 1px;
-  border-radius: 5px;
-  color: black;
+  padding: 4px 8px;
+  background: #f0f4ff;
+  border-radius: 4px;
+  color: #456ff6;
+  font-size: 11px;
+  border: 1px solid #456ff6;
+  transition: all 0.2s ease;
+}
+
+.itemsContainer .itemsCard .interestInfo ul li:hover {
+  background: #456ff6;
+  color: white;
 }
 
 .itemsContainer .itemsCard .content {

@@ -14,6 +14,7 @@ import { AchievementData } from "./ManageAchievementsInterface";
 
 function ManageAchievements() {
     const [data, setData] = useState<AchievementData[]>([]);
+    const [selectedAchievement, setSelectedAchievement] = useState<AchievementData | null>(null);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [perPage, setPerPage] = useState(20);
@@ -34,18 +35,24 @@ function ManageAchievements() {
         vcToken: false,
         tags: [],
         type: "",
-        icon: ""
+        icon: "",
+        template_id: "" 
     });
 
     const columnOrder = [
         { column: "icon", Label: "Icon", isSortable: false },
-        { column: "title", Label: "Title", isSortable: true },
+        { column: "name", Label: "Title", isSortable: true },
         { column: "levelBased", Label: "Level Based", isSortable: true },
         { column: "description", Label: "Description", isSortable: false },
         { column: "vcToken", Label: "VC Token", isSortable: true },
         { column: "tags", Label: "Tags", isSortable: false },
         { column: "type", Label: "Type", isSortable: true },
-        { column: "created_at", Label: "Created On", isSortable: true }
+        { column: "created_at", Label: "Created On", isSortable: true },
+        { column: "updated_at", Label: "Updated On", isSortable: true },
+        { column: "updated_by", Label: "Updated By", isSortable: false },
+        { column: "created_by", Label: "Created By", isSortable: false },
+        { column: "level_id", Label: "Level ID", isSortable: true },
+        { column: "template_id", Label: "Template ID", isSortable: true } 
     ];
 
     const fetchAchievements = async () => {
@@ -53,14 +60,20 @@ function ManageAchievements() {
         try {
             const achievements = await getAchievements();
             if (achievements) {
-                // Transform API data to match table structure
                 const transformedData = achievements.map(achievement => ({
                     ...achievement,
+                    id: achievement.id,
+                    name: achievement.name,
+                    title: achievement.name || "",  // Ensure title is set
                     levelBased: achievement.level_based ?? false,
-                    vcToken: achievement.has_vc ?? false
+                    level_based: achievement.level_based ?? false,  // Keep both for consistency
+                    vcToken: achievement.has_vc ?? false,
+                    has_vc: achievement.has_vc ?? false,  // Keep both for consistency
+                    template_id: achievement.template_id || "",
+                    level_id: achievement.level_id || ""  // Ensure level_id is included
                 }));
                 setData(transformedData);
-                setTotalPages(Math.ceil(transformedData.length / perPage)); // Client-side pagination
+                setTotalPages(Math.ceil(transformedData.length / perPage));
             } else {
                 setData([]);
                 setTotalPages(1);
@@ -74,12 +87,14 @@ function ManageAchievements() {
         }
     };
 
+
     useEffect(() => {
         if (firstFetch.current) {
             fetchAchievements();
         }
         firstFetch.current = false;
-    }, []);
+    }, [selectedAchievement]);
+
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -90,8 +105,8 @@ function ManageAchievements() {
             [name]: type === "checkbox"
                 ? (e.target as HTMLInputElement).checked
                 : name === "tags"
-                ? value.split(",").map(tag => tag.trim())
-                : value
+                    ? value.split(",").map(tag => tag.trim())
+                    : value
         } as AchievementData));
     };
 
@@ -113,37 +128,52 @@ function ManageAchievements() {
             fetchAchievements();
         } else {
             const filteredData = data.filter(item =>
-                item.title.toLowerCase().includes(search.toLowerCase()) ||
-                item.description.toLowerCase().includes(search.toLowerCase())
+                (item.title?.toLowerCase() ?? "").includes(search.toLowerCase()) ||
+                item.description.toLowerCase().includes(search.toLowerCase()) ||
+                item.template_id?.toLowerCase().includes(search.toLowerCase())
             );
             setData(filteredData);
             setTotalPages(Math.ceil(filteredData.length / perPage));
         }
     };
 
-    const handleEdit = (id: string | number | boolean) => {
-        setId(id as string);
-        setIsEditModalOpen(true);
+
+    const handleEdit = (id: string | Number | Boolean) => {
+        const achievement = data.find((item) => item.id === id); 
+        if (achievement) {
+            // Make sure all necessary fields are properly prepared
+            const preparedAchievement = {
+                ...achievement,
+                title: achievement.name || achievement.title || "",
+                level_based: achievement.level_based ?? achievement.levelBased ?? false,
+                has_vc: achievement.has_vc ?? achievement.vcToken ?? false,
+                level_id: achievement.level_id || ""  // Ensure level_id is included
+            };
+            setSelectedAchievement(preparedAchievement);
+            setIsEditModalOpen(true); 
+        }
     };
 
+
+    const handleAchievementUpdated = async (updatedAchievement: AchievementData) => {
+        setIsLoading(true); 
+        await fetchAchievements(); 
+        setIsEditModalOpen(false); 
+    };
+    
     const handleDelete = async (id: string | undefined) => {
         if (id) {
             try {
-                // Call the API to delete the achievement
                 await deleteAchievements(id);
-
-                // Update local state by filtering out the deleted achievement
                 setData(prev => {
                     const newData = prev.filter(item => item.id !== id);
                     setTotalPages(Math.ceil(newData.length / perPage));
                     return newData;
                 });
-
-                // Optional: Navigate or stay on the page
                 navigate("/dashboard/management/manage-achievements");
             } catch (error) {
                 console.error("Delete failed, refetching achievements:", error);
-                await fetchAchievements(); // Refetch to sync with server state
+                await fetchAchievements();
             }
         }
     };
@@ -175,6 +205,11 @@ function ManageAchievements() {
 
     const handleCreateSubmit = () => {
         CreateAchievementFormRef.current?.handleSubmitExternally();
+
+    };
+
+    const handleEditSubmit = () => {
+        AchievementFormRef.current?.handleSubmitExternally();
     };
 
     const handleAchievementCreated = (newAchievement: AchievementData) => {
@@ -202,12 +237,16 @@ function ManageAchievements() {
                 type="success"
                 body="Enter the details of the achievement."
                 onDone={() => AchievementFormRef.current?.handleSubmitExternally()}
+
             >
-                <AchievementForm
-                    ref={AchievementFormRef}
-                    id={id}
-                    closeModal={() => setIsEditModalOpen(false)}
-                />
+                {selectedAchievement && (
+                    <AchievementForm
+                        ref={AchievementFormRef}
+                        achievement={selectedAchievement}
+                        onsuccess={handleAchievementUpdated}
+                        closeModal={() => setIsEditModalOpen(false)}
+                    />
+                )}
             </MuModal>
             <MuModal
                 isOpen={isCreateModalOpen}
@@ -251,6 +290,18 @@ function ManageAchievements() {
                                 ) : (
                                     <span style={{ fontSize: "24px" }}>{row.icon}</span>
                                 )}
+                            </div>
+                        );
+                    }
+                    if (column === "level_id") {
+                        return <div>{row.level_id || (row.levelBased ? "Not set" : "-")}</div>;
+                    }
+                    if (column === "tags") {
+                        return (
+                            <div>
+                                {Array.isArray(row.tags) && row.tags.length > 0
+                                    ? row.tags.join(", ")
+                                    : "-"}
                             </div>
                         );
                     }

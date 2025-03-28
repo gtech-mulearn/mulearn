@@ -10,7 +10,7 @@
     justify-content: space-evenly;
     align-items: center;
     cursor: pointer;
-    z-index: 110;
+    z-index: 500;
     flex-direction: column;
 }
 
@@ -91,6 +91,11 @@
 .modeContainer button {
     font-size: 0.8rem;
     margin-top: 10px;
+    transition: color 0.3s ease;
+}
+
+.modeContainer button:hover {
+    color: #456ff6;
 }
 
 .loader{
@@ -110,7 +115,11 @@
     margin-left: 6px;
     cursor: pointer;
     border-radius: 32px;
+    transition: background-color 0.3s ease;
+}
 
+.userDomain:hover {
+    background-color: #0056b3;
 }
 
 .side_nav_bar_container .side_nav_bar .side_nav_bar_items .bottomButtons {

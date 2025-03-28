@@ -121,7 +121,7 @@ export const interestGroups: InterestGroupData[] = [
     description:
       "Welcome to the UI/UX Interest Group! We’re a vibrant community of designers, researchers, and enthusiasts passionate about crafting intuitive and beautiful digital experiences.",
     bannerImage:
-    "/assets/IG/Cover/1.png",
+    "/assets/IG/Cover/1.webp",
     memberCount: 2300,
     memberSince: "July 2022",
     isPublic: true,
@@ -346,7 +346,7 @@ export const interestGroups: InterestGroupData[] = [
                         "https://www.coursera.org/lecture/start-ux-design-process/create-problem-statements-NC282",
                       ],
                       description:
-                        "In this task, you are required to prepare a problem statement based on research, user needs, and business goals and design a solution that meets the needs. Follow the template given below.\n\nNOTE: Ensure that you define the problem, and provide solutions to the basic questions (What, Why, When, Who, Where).\n\nAfter completing this task, share the PDF or Word File in the ⁠ui-ux channel using the hashtag #cl-findaproblem to avail 100 karma points.",
+                        "In this task, you are required to prepare a problem statement based on research, user needs, and business goals and design a solution that meets the needs. Follow the template given below. NOTE: Ensure that you define the problem, and provide solutions to the basic questions (What, Why, When, Who, Where). After completing this task, share the PDF or Word File in the ⁠ui-ux channel using the hashtag #cl-findaproblem to avail 100 karma points.",
                     },
                     {
                       title: "Figma Basics",
@@ -590,7 +590,7 @@ export const interestGroups: InterestGroupData[] = [
     description:
       "Ever wondered how web applications are built? Everything seems complex until you learn the basics. μLearn Foundation's Web Development Interest Group is designed to help you develop and refine your skills, bringing together people eager to explore emerging web technologies.",
     bannerImage:
-    "/assets/IG/Cover/2.png",
+    "/assets/IG/Cover/2.webp",
 
     memberCount: 4200,
     memberSince: "March 2021",
@@ -758,254 +758,239 @@ export const interestGroups: InterestGroupData[] = [
       ],
       learningPaths: [
         {
-          level: "Level 4",
-          cards: [
+          "level": "Level 4",
+          "cards": [
             {
-              title: "HTML & CSS",
-              data: {
-                description:
-                  "HTML provides the structure of webpages using elements like `<div>`, `<p>`, and `<header>` for content organization and semantic meaning. CSS styles these elements, controlling appearance, layout, and responsiveness with selectors, the box model, Flexbox, Grid, and media queries.",
-                whatYouWillLearn: [
-                  "HTML structure and elements",
-                  "CSS Box Model and layouts",
-                  "Flexbox and Grid for responsive designs",
-                  "CSS styling (colors, fonts, animations)",
-                  "Mobile-friendly design with media queries",
-                  "Web layout best practices",
+              "title": "HTML & CSS",
+              "data": {
+                "description": "HTML & CSS: The Foundation of Web Development HTML is the backbone of every webpage, structuring content with elements like headings, links, and forms. It ensures accessibility and organization, laying the groundwork for user experience. CSS brings design to life, controlling colors, layouts, and animations to create visually engaging and responsive websites. Mastering both involves learning structure, styling, layout techniques, and responsive design—practicing with real projects will solidify your skills.",
+                "whatYouWillLearn": [
+                  "Introduction to web development"
                 ],
-                challenges: [
+                "challenges": [
                   {
-                    title: "Cat Photo App",
-                    resources: [],
-                    description: "Build a simple website displaying cat photos using HTML, images, and basic CSS for responsiveness.",
+                    "title": "Fundamental CSS Comprehension",
+                    "resources": [
+                      "https://learn.mulearn.org/challenge/intro-to-html"
+                    ],
+                    "description": "In this course, you'll learn the most common HTML tags by building your own cat photo app. Checkout https://learn.mulearn.org/challenge/intro-to-html. Submission: After completing the course, share your FreeCodeCamp profile URL in ⁠task-dropbox channel with hashtag #ge-intro-to-html to avail 200 karma points."
                   },
                   {
-                    title: "Format Letter Online",
-                    resources: [],
-                    description: "Create HTML templates for letters with clean CSS styling for a professional look.",
+                    "title": "Typesetting a Community School Homepage",
+                    "resources": [],
+                    "description": "In this course, you are required to apply your understanding of text styling by improving readability, navigation, and text aesthetics on a community school’s homepage. Submission: After completing your task, share the hosted GitHub repository URL in the ⁠web-development channel using the hashtag #cl-web-communityhomepage to avail 400 karma points."
                   },
                   {
-                    title: "Master Building Block",
-                    resources: [],
-                    description: "Design reusable CSS components (e.g., buttons, menus) with responsive design principles.",
+                    "title": "Web Forms - Working with User Data",
+                    "resources": [
+                      "https://developer.mozilla.org/en-US/docs/Learn/Forms"
+                    ],
+                    "description": "In this course, you are required to create a functional web form to practice HTML5 input types, styling, and validation. Use proper HTML structure, add various input elements, style them for a better user experience, and validate input before submission using client or server-side scripting. Check out: https://developer.mozilla.org/en-US/docs/Learn/Forms. Submission: After completing your task, share the hosted GitHub repository URL in the ⁠web-development channel using the hashtag #cl-web-forms to avail 800 karma points."
                   },
                   {
-                    title: "Redesign Website",
-                    resources: [],
-                    description: "Revamp a website using HTML and CSS, focusing on modern design and accessibility.",
+                    "title": "Structuring Planet Data",
+                    "resources": [
+                      "https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables"
+                    ],
+                    "description": "In this course, you are required to create a visually appealing and organized table of data on planets in our solar system using HTML. Check out: https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables. Submission: After completing your task, share the hosted GitHub repository URL in the ⁠web-development channel using the hashtag #cl-web-structuredplanetdata to avail 400 karma points."
                   },
                   {
-                    title: "Style Biography",
-                    resources: [],
-                    description: "Design engaging biography templates with CSS typography and layouts.",
+                    "title": "Styling a Biography Page",
+                    "resources": [
+                      "https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps"
+                    ],
+                    "description": "In this course, you will create a Biography page using HTML and styling it with CSS. Check out: https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps. Submission: After completing your task, share the hosted GitHub repository URL in the ⁠web-development channel using the hashtag #cl-web-biographypage to avail 200 karma points."
                   },
                   {
-                    title: "Embed Experience",
-                    resources: [],
-                    description: "Enhance webpages with multimedia (images, videos, audio), ensuring usability and accessibility.",
+                    "title": "Fundamental Layout Comprehension",
+                    "resources": [
+                      "https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout"
+                    ],
+                    "description": "In this course, you are required to test your knowledge of basic CSS layout by developing a simple webpage layout using a variety of techniques. Check out: https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout. Submission: After completing your task, share the hosted GitHub repository URL in the ⁠web-development channel using the hashtag #cl-web-layoutcomprehension to avail 400 karma points."
                   },
                   {
-                    title: "Style Word",
-                    resources: [],
-                    description: "Experiment with creative CSS typography for headings and text styles.",
+                    "title": "Marking up a Letter",
+                    "resources": [
+                      "https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Marking_up_a_letter"
+                    ],
+                    "description": "In this course, you’re required to markup a letter from a research fellow responding to a prospective Ph.D. student’s university application for later posting on the university website. Check out https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Marking_up_a_letter. Submission: After completing your task, share the hosted GitHub repository URL in the ⁠web-development channel using the hashtag #cl-web-markingupaletter to avail 200 karma points."
                   },
                   {
-                    title: "Perfect Form",
-                    resources: [],
-                    description: "Build accessible, user-friendly forms with modern CSS styling.",
-                  },
-                  {
-                    title: "Tables",
-                    resources: [],
-                    description: "Design responsive, clear HTML tables with CSS for effective data presentation.",
-                  },
-                  {
-                    title: "Layouts",
-                    resources: [],
-                    description: "Master Flexbox and Grid for responsive, flexible website layouts.",
-                  },
-                ],
+                    "title": "Mozilla Splash Page",
+                    "resources": [
+                      "https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding"
+                    ],
+                    "description": "In this course, you will have to apply what you learned in the modules provided to add images and videos to a funky splash page about Mozilla. Check out: https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding. Submission: After completing your task, share the hosted GitHub repository URL in the ⁠web-development channel using the hashtag #cl-web-splashpage to avail 200 karma points."
+                  }
+                ]
               },
-              resources: 0,
-              proofOfWork: 10,
-              rating: 0,
-              hasGift: true,
-            },
-          ],
+              "resources": 7,
+              "proofOfWork": 8,
+              "rating": 0,
+              "hasGift": true
+            }
+          ]
         },
         {
-          level: "Level 5",
-          cards: [
+          "level": "Level 5",
+          "cards": [
             {
-              title: "JavaScript - The Behavior and Interactivity",
-              data: {
-                description:
-                  "JavaScript adds interactivity to web pages, running in browsers to modify HTML/CSS, handle events, and communicate with servers. It covers variables, functions, objects, DOM manipulation, event handling, promises, async/await, and modern ES6+ features for dynamic applications.",
-                whatYouWillLearn: [
-                  "JavaScript basics and use cases",
-                  "Core fundamentals (variables, functions, objects)",
-                  "DOM manipulation and events",
-                  "Asynchronous programming (Promises, async/await)",
-                  "Modern ES6+ features",
-                  "Popular frameworks (React, Vue, Angular)",
+              "title": "JavaScript - The Behavior and Interactivity",
+              "data": {
+                "description": "JavaScript – Bringing Webpages to Life If HTML provides structure and CSS adds style, JavaScript powers interactivity, making webpages dynamic and engaging. It enables user interactions, real-time updates, and data fetching, forming the core of modern web applications. Mastering JavaScript unlocks the ability to build seamless and interactive experiences on the web. JavaScript fundamentals start with variables, functions, and control flow, leading to DOM manipulation, event handling, and asynchronous programming. With ES6+ features, API integration, and modern frameworks like React, JavaScript evolves into a powerful tool for building full-scale applications. By learning core concepts and applying them in real projects, you can create fast, interactive, and scalable web solutions.",
+                "whatYouWillLearn": [
+                  "Introduction to javascript and its different use cases"
                 ],
-                challenges: [
+                "challenges": [
                   {
-                    title: "Story Generator Project",
-                    resources: [],
-                    description: "Build an interactive storytelling app using JavaScript for user input, logic, and DOM updates.",
+                    "title": "Story Generator Project",
+                    "resources": [
+                      "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps"
+                    ],
+                    "description": "Focuses on interactive storytelling using JavaScript. Teaches core concepts like user input handling, conditional logic, and DOM manipulation. Combines HTML/CSS for presentation with JavaScript for dynamic content. Great for learning functions, variables, and basic program flow. Check out: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps. Submission: After completing your task, share the hosted GitHub repository URL in the ⁠web-development channel using the hashtag #cl-web-sillystorygenerator to avail 200 karma points."
                   },
                   {
-                    title: "Building Blocks Project",
-                    resources: [],
-                    description: "Create reusable JavaScript components for forms and UI, focusing on modularity and events.",
+                    "title": "Image Gallery",
+                    "resources": [
+                      "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks"
+                    ],
+                    "description": "In this course, you have to build a JavaScript-powered Image Gallery website to test your knowledge of loops, functions, conditionals, events, and fundamental building blocks of JavaScript. Check out: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks. Submission: After completing your task, share the hosted GitHub repository URL in the ⁠web-development channel using the hashtag #cl-web-imagegallery to avail 800 karma points."
                   },
                   {
-                    title: "Objects Project",
-                    resources: [],
-                    description: "Explore JavaScript objects, classes, and ES6+ features for data modeling and manipulation.",
+                    "title": "Adding Features to Our Bouncing Balls Demo",
+                    "resources": [
+                      "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects"
+                    ],
+                    "description": "In this course, you are required to utilize your creativity and coding skills to enhance the bouncing balls demo from the previous article by adding new and innovative features to it. Check out: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects. Submission: After completing your task, share the hosted GitHub repository URL in the ⁠web-development channel using the hashtag #cl-web-bouncingballs to avail 800 karma points."
                   },
                   {
-                    title: "Asynchronous Programming Project",
-                    resources: [],
-                    description: "Handle concurrent operations with callbacks, promises, and async/await, including API integration.",
+                    "title": "Sequencing Animations",
+                    "resources": [
+                      "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous"
+                    ],
+                    "description": "In this course, you are required to utilize your creativity and coding skills to enhance the bouncing balls demo from the previous article by adding new and innovative features to it. Check out: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous. Submission: After completing your task, share the hosted GitHub repository URL in the ⁠web-development channel using the hashtag #cl-web-sequenceanimations to avail 800 karma points."
                   },
                   {
-                    title: "Client-Side Web APIs Project",
-                    resources: [],
-                    description: "Use browser APIs (e.g., geolocation, storage) for real-world application features and error handling.",
-                  },
-                ],
+                    "title": "Client-side Web API",
+                    "resources": [
+                      "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs"
+                    ],
+                    "description": "In this course, you are required to create a web application utilizing different web APIs that retrieve data from a third-party API and enable user interaction as well as implement client-side storage to retain user data and preferences. Check out: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs. Submission: After completing your task, share the hosted GitHub repository URL in the ⁠web-development channel using the hashtag #cl-web-clientsidewebapi to avail 800 Karma points."
+                  }
+                ]
               },
-              resources: 0,
-              proofOfWork: 5,
-              rating: 0,
-              hasGift: true,
-            },
-          ],
+              "resources": 5,
+              "proofOfWork": 5,
+              "rating": 0,
+              "hasGift": true
+            }
+          ]
         },
         {
-          level: "Level 6",
-          cards: [
+          "level": "Level 6",
+          "cards": [
             {
-              title: "React - The UI Library",
-              data: {
-                description:
-                  "React is a JavaScript library for building dynamic UIs with component-based architecture, virtual DOM, and JSX. It covers components, props, state, hooks, routing, testing, and performance optimization for single-page applications (SPAs).",
-                whatYouWillLearn: [
-                  "React basics and ecosystem",
-                  "JSX and core concepts",
-                  "State management with hooks",
-                  "Component design and composition",
-                  "Routing and navigation",
-                  "Testing and performance optimization",
+              "title": "React - The UI Library",
+              "data": {
+                "description": "React – The UI Library for Modern Web Development React simplifies frontend development with its component-based approach, enabling the creation of dynamic and interactive user interfaces. Built by Facebook and backed by a vast community, it offers flexibility, efficiency, and scalability for web applications. At its core, React uses reusable components, state management, and the Virtual DOM for optimized rendering. Key concepts include JSX syntax, hooks for managing component logic, and React Router for navigation. Advanced topics like performance optimization, state management libraries, and server-side rendering with Next.js enhance React’s capabilities. Mastering React involves learning these fundamentals, exploring best practices, and applying skills through real projects.",
+                "whatYouWillLearn": [
+                  "Introduction to react and its different uses"
                 ],
-                challenges: [
+                "challenges": [
                   {
-                    title: "YouTube Clone",
-                    resources: [],
-                    description: "Build a video playback app with search, user interactions, API integration, and responsive design.",
+                    "title": "YouTube Clone using React",
+                    "resources": [
+                      "https://www.youtube.com/watch?v=FHTbsZEJspU"
+                    ],
+                    "description": "In this task, you are required to build a YouTube clone using React.js and style it using Material UI. Check out: https://www.youtube.com/watch?v=FHTbsZEJspU. Submission: After completing this task, share the hosted GitHub repository URL in the ⁠web-development channel using the hashtag #cl-react-youtube to avail 400 karma points."
                   },
                   {
-                    title: "Portfolio Website",
-                    resources: [],
-                    description: "Create a personal portfolio with dynamic content, interactive UI, and responsive routing.",
+                    "title": "Personal Portfolio",
+                    "resources": [
+                      "https://www.freecodecamp.org/news/build-portfolio-website-react/"
+                    ],
+                    "description": "In this task, you have to create a static site using React.js, showcasing your skills, projects, and resume, and turn it into an appealing personal portfolio. Check out: https://www.freecodecamp.org/news/build-portfolio-website-react/. Submission: After completing this task, share the hosted GitHub repository URL in the ⁠web-development channel using the hashtag #cl-react-portfolio to avail 200 karma points."
                   },
                   {
-                    title: "Movie App",
-                    resources: [],
-                    description: "Develop a movie search app with filtering, pagination, favorites, and API integration.",
+                    "title": "Building a Movie Listing Application",
+                    "resources": [
+                      "https://www.youtube.com/watch?v=b9eMGE7QtTk"
+                    ],
+                    "description": "In this task, you are required to generate a movie listing application, as in a search library using the Open Source Library OMBD. Check out: https://www.youtube.com/watch?v=b9eMGE7QtTk. Submission: After completing this task, share the hosted GitHub repository URL in the ⁠web-development channel using the hashtag #cl-react-movieapp to avail 400 karma points."
                   },
                   {
-                    title: "Budget App",
-                    resources: [],
-                    description: "Build an income/expense tracker with analytics, goals, and real-time calculations.",
+                    "title": "Building a Budgeting Application",
+                    "resources": [
+                      "https://www.youtube.com/playlist?list=PL4cUxeGkcC9iNnY07bh_UPaRIQZcJfARY"
+                    ],
+                    "description": "In this task, you are required to create a responsive React.js application designed for budget management, that has forms and helps you keep track of your financial expenditures. Check out: https://www.youtube.com/playlist?list=PL4cUxeGkcC9iNnY07bh_UPaRIQZcJfARY. Submission: After completing this task, share the hosted GitHub repository URL in the ⁠web-development channel using the hashtag #cl-react-budgetapp to avail 400 karma points."
                   },
                   {
-                    title: "Chat Application",
-                    resources: [],
-                    description: "Create a real-time chat app with Firebase, authentication, and message notifications.",
+                    "title": "Chat Room Application",
+                    "resources": [
+                      "https://www.youtube.com/watch?v=0gLr-pBIPhI"
+                    ],
+                    "description": "In this task, you are required to create a fully functional Chat application using React.js and Firebase that allows multiple chat rooms for people to communicate in. Check out: https://www.youtube.com/watch?v=0gLr-pBIPhI. Submission: After completing this task, share the hosted GitHub repository URL in the ⁠web-development channel using the hashtag #cl-react-chatapp to avail 800 karma points."
                   },
                   {
-                    title: "Todo List",
-                    resources: [],
-                    description: "Design a task management app with CRUD, filtering, local storage, and state management.",
-                  },
-                ],
+                    "title": "To-Do List",
+                    "resources": [
+                      "https://www.youtube.com/watch?v=Rh3tobg7hEo"
+                    ],
+                    "description": "In this task, you have to create a simple interactive To-Do List using React.js, with basic functionalities such as adding, deleting, and marking tasks as done. Check out: https://www.youtube.com/watch?v=Rh3tobg7hEo. Submission: After completing this task, share the hosted GitHub repository URL in the ⁠web-development channel using the hashtag #cl-react-todo to avail 200 karma points."
+                  }
+                ]
               },
-              resources: 0,
-              proofOfWork: 6,
-              rating: 0,
-              hasGift: true,
+              "resources": 6,
+              "proofOfWork": 6,
+              "rating": 0,
+              "hasGift": true
             },
             {
-              title: "Angular - The Full Framework",
-              data: {
-                description:
-                  "Angular is a TypeScript-based framework for building large-scale web apps, offering components, dependency injection, modules, and RxJS. It includes routing, testing, performance optimization, and tools like Angular CLI for enterprise applications.",
-                whatYouWillLearn: [
-                  "Angular basics and ecosystem",
-                  "TypeScript and core concepts",
-                  "State management with RxJS",
-                  "Component lifecycle and architecture",
-                  "Routing and navigation",
-                  "Testing and performance optimization",
+              "title": "Angular - The Full Framework",
+              "data": {
+                "description": "Angular – The Full-Stack Framework for Scalable Web Applications Angular is a TypeScript-based framework developed by Google, designed for building large-scale, maintainable, and high-performance web applications. Unlike libraries like React, Angular is a complete framework with built-in solutions for components, routing, state management, and dependency injection. Its structured architecture makes it ideal for enterprise applications and dynamic web platforms. At its core, Angular follows a component-driven approach with TypeScript integration for better maintainability. Key concepts include components and templates, dependency injection for efficient resource management, and the Angular CLI for rapid development. Advanced features like RxJS for reactive programming, lazy loading for performance optimization, and robust state management tools like NgRx enhance Angular’s capabilities. By mastering Angular’s fundamentals and best practices, developers can build scalable, secure, and efficient web applications.",
+                "whatYouWillLearn": [
+                  "Different aspects in angular"
                 ],
-                challenges: [
+                "challenges": [
                   {
-                    title: "Real-Time Chat Application",
-                    resources: [],
-                    description: "Build a chat app with authentication, WebSocket, multiple rooms, and real-time updates using Angular and Firebase.",
-                  },
-                  {
-                    title: "E-Commerce Dashboard",
-                    resources: [],
-                    description: "Create an e-commerce dashboard with product CRUD, search, inventory tracking, and order management using Angular and NgRx.",
-                  },
-                  {
-                    title: "Common Skills Development",
-                    resources: [],
-                    description: "Practice Angular architecture, real-time data, state management, authentication, and responsive design.",
-                  },
-                ],
+                    "title": "Real-Time Chat Application with Angular",
+                    "resources": [
+                      "https://www.youtube.com/watch?v=8SRhekaJ5iI"
+                    ],
+                    "description": "In this task, you are required to develop a real-time chat application using Angular that allows users to send and receive messages instantly. Implement the following key features: - User Authentication with sign-up and login - Real-Time Messaging using WebSockets - Multiple Chat Rooms - Message History storage - Online Status Indicators. Required Technologies: - Angular for front-end - Node.js with Socket.io - Firebase or MongoDB - Angular Material for UI. Check out: https://www.youtube.com/watch?v=8SRhekaJ5iI. Submission: After completing your task, share the hosted GitHub repository URL in the ⁠web-development channel using the hashtag #cl-angular-chat to avail 800 karma points."
+                  }
+                ]
               },
-              resources: 0,
-              proofOfWork: 3,
-              rating: 0,
-              hasGift: true,
+              "resources": 1,
+              "proofOfWork": 1,
+              "rating": 0,
+              "hasGift": true
             },
             {
-              title: "Svelte - The Compiler Framework",
-              data: {
-                description:
-                  "Svelte compiles components to vanilla JavaScript at build time, minimizing runtime overhead with no virtual DOM. It focuses on reactivity, stores, animations, and SvelteKit for routing, ideal for performant, lightweight UIs.",
-                whatYouWillLearn: [
-                  "Svelte basics and ecosystem",
-                  "Reactivity and core concepts",
-                  "State management with stores",
-                  "Performance and routing with SvelteKit",
-                  "Animations and transitions",
-                  "Real-world project building",
+              "title": "Svelte - The Compiler Framework",
+              "data": {
+                "description": "Svelte – The Compiler-Based UI Framework Svelte is a modern JavaScript framework that compiles components into optimized JavaScript at build time, eliminating the need for a virtual DOM. This results in faster performance, smaller bundle sizes, and minimal runtime overhead. Created by Rich Harris and maintained by Vercel, Svelte is known for its simplicity and efficiency. With a component-based architecture, Svelte encapsulates HTML, CSS, and JavaScript in a single .svelte file. Its built-in reactivity system updates the DOM automatically without complex state management. Key features include props, stores, bindings, and built-in animations. SvelteKit extends Svelte with file-based routing, SSR, and API handling. It offers optimized performance with zero-runtime reactivity, lazy loading, and code splitting. By streamlining UI development, Svelte provides a lightweight and powerful alternative to traditional frameworks.",
+                "whatYouWillLearn": [
+                  "Uses of Svelt and its cases"
                 ],
-                challenges: [
+                "challenges": [
                   {
-                    title: "Weather Dashboard with Svelte",
-                    resources: [],
-                    description: "Build a responsive weather app with search, current/forecast data, and OpenWeatherMap API integration using SvelteKit.",
-                  },
-                  {
-                    title: "To-Do List Application with Svelte",
-                    resources: [],
-                    description: "Develop a to-do app with task management, filtering, local storage, and optional dark mode using Svelte stores.",
-                  },
-                ],
+                    "title": "Weather Dashboard with Svelte",
+                    "resources": [
+                      "https://www.youtube.com/watch?v=E9HxrW5yivs&t=1s"
+                    ],
+                    "description": "In this task, you will create a responsive weather dashboard application using Svelte that displays real-time weather information for various locations. Required Features: - Search functionality for cities - Current weather display (temperature, conditions, humidity, wind speed) - 5-day weather forecast - Responsive design for all devices - Integration with OpenWeatherMap API. Technologies: - Svelte/SvelteKit - Fetch API - CSS Framework (Tailwind/Bootstrap). Check out: https://www.youtube.com/watch?v=E9HxrW5yivs&t=1s. Submission: After completing your task, share the hosted GitHub repository URL using the hashtag #cl-svelte-weather to avail 600 karma points."
+                  }
+                ]
               },
-              resources: 0,
-              proofOfWork: 2,
-              rating: 0,
-              hasGift: true,
-            },
-          ],
+              "resources": 1,
+              "proofOfWork": 1,
+              "rating": 0,
+              "hasGift": true
+            }
+          ]
         },
       ],
       thinkTank: [
@@ -1082,7 +1067,7 @@ export const interestGroups: InterestGroupData[] = [
     description:
       "Curious about protecting the digital world? The Cybersecurity Interest Group by GTech μLearn delves into securing data and networks from potential threats. This group provides essential knowledge on staying safe online, ideal for those passionate about keeping cyberspace secure.",
     bannerImage:
-    "/assets/IG/Cover/3.png",
+    "/assets/IG/Cover/3.webp",
 
     memberCount: 3000,
     memberSince: "September 2020",
@@ -1234,7 +1219,7 @@ export const interestGroups: InterestGroupData[] = [
               title: "Fundamental IT Skills for CyberSecurity",
               data: {
                 description:
-                  "Computer networking is the process of connecting two or more computing devices to enable the transmission and exchange of information and resources. It allows devices to communicate, share data, and access resources like files, printers, and internet connections. The basics of networking involve key components such as nodes, links, switches, routers, and protocols. Nodes are network connection points that can receive, send, create, or store data, while links are the physical or wireless connections between nodes. Switches connect network devices and manage node-to-node communication, while routers send data packets between networks. Protocols are sets of rules governing data transmission between devices and are essential for building and maintaining networks. Networking can be categorized into different types such as local area networks (LANs), wide area networks (WANs), and cloud networks, each with its own characteristics and uses. Network security is essential for protecting data and devices from cyber threats and includes features such as firewalls, encryption, and access controls to prevent unauthorized access. Networking enables the efficient exchange of data, supports various applications, enhances productivity, and improves security. Operating systems (OS) manage computer hardware and provide a platform for applications to run. They handle functions like memory management, task processing, device control, and file management. Examples include Windows, macOS, Linux, and Unix, each offering different features suited for specific user needs. Linux, an open-source, Unix-like OS, is known for its stability, security, and flexibility, and it is commonly used in servers and embedded systems. macOS, developed by Apple Inc., is a user-friendly OS with a Unix-based architecture, while Windows is a widely-used OS supporting a vast range of software and hardware, offering features like multitasking and regular updates. Cybersecurity principles are built on the CIA triad: confidentiality, integrity, and availability, and are reinforced by governance, protection, detection, and response strategies. Risk management and regular assessments are necessary to identify vulnerabilities. Security architecture follows principles like economy of mechanism, least privilege, and separation of duties. Training users on best practices and continuously reviewing security measures are essential for maintaining a robust security posture. Types of security include red teams, which simulate attacks to find vulnerabilities, blue teams, which defend against attacks, and purple teams, a hybrid of both. Defensive security involves proactive measures like risk assessment, implementing strong protocols, monitoring for threats, and preparing incident response plans. Offensive security focuses on identifying vulnerabilities through red teaming, penetration testing, and ethical hacking. IoT penetration testing simulates attacks on IoT devices and networks to identify weaknesses, ensuring the security of interconnected systems. It identifies vulnerabilities in network services, interfaces, update mechanisms, and more, using tools like Nmap, Metasploit, and Burp Suite. Regular penetration testing helps organizations stay ahead of evolving threats, maintain client trust, and secure IoT devices.",
+                  "Computer networking connects devices to share information and resources, using components like nodes, links, switches, routers, and protocols to enable communication and data exchange. Switches manage device connections within a network, while routers direct data between networks, and protocols ensure accurate transmission across types like LANs, WANs, and cloud networks. Network security, including firewalls and encryption, protects against cyber threats, enhancing data safety. Networking boosts efficiency, communication, and productivity by supporting applications like email and file sharing, while offering improved security and resource accessibility.",
                 whatYouWillLearn: [
                   "Understanding computer networking fundamentals: Learn how devices communicate over networks, including key components like nodes, links, switches, routers, and protocols. Gain insights into LANs, WANs, cloud networks, and network security measures to safeguard data and devices.",
                   "Overview of operating systems: Explore the functions and features of different operating systems, including Linux, macOS, and Windows. Understand how OS manage hardware, memory, tasks, and devices, with a focus on the unique characteristics of each platform.",
@@ -1250,19 +1235,19 @@ export const interestGroups: InterestGroupData[] = [
                       "https://tryhackme.com/room/openvpn",
                     ],
                     description:
-                      "In this task, you are asked to complete all the tasks provided in the TryHackMe rooms till you get 100% completion status. Visit the following TryHackme rooms: Hello Room and OpenVPN Room.\n\nNOTE: Here's a sample screenshot: https://drive.google.com/file/d/1mTzfFvvkZR5FHtk9LRI2uZPt7p-673kO/view?usp=sharing\n\nAfter completing all the tasks, share your public profile URL in the ⁠cyber-security channel using the hashtag #cl-cybersec-thmhello to avail 20 karma points.",
+                      "In this task, you are asked to complete all the tasks provided in the TryHackMe rooms till you get 100% completion status. Visit the following TryHackme rooms: Hello Room and OpenVPN Room. NOTE: Here's a sample screenshot: https://drive.google.com/file/d/1mTzfFvvkZR5FHtk9LRI2uZPt7p-673kO/view?usp=sharing After completing all the tasks, share your public profile URL in the ⁠cyber-security channel using the hashtag #cl-cybersec-thmhello to avail 20 karma points.",
                   },
                   {
                     title: "Principles of Security",
                     resources: ["https://tryhackme.com/room/principlesofsecurity"],
                     description:
-                      "In this task, you should demonstrate your understanding of security principles by completing all the tasks in the TryHackMe room 'Principles of Security' till you get 100% completion status.\n\nAfter completing the task, share your public profile URL in the ⁠cyber-security channel using the hashtag #cl-cybersec-principlesofsecurity to avail karma points.",
+                      "In this task, you should demonstrate your understanding of security principles by completing all the tasks in the TryHackMe room 'Principles of Security' till you get 100% completion status. After completing the task, share your public profile URL in the ⁠cyber-security channel using the hashtag #cl-cybersec-principlesofsecurity to avail karma points.",
                   },
                   {
                     title: "Write a Blog",
                     resources: ["https://medium.com/"],
                     description:
-                      "In this task, you should share your knowledge and insights on hacking, virtual machines, Linux, and networking by creating a blog with a minimum of 500 words, providing all the necessary information like explanations, examples, and any important insight.\n\nNOTE: You can post your blog on any platform (Medium, Hashnode, WordPress, etc.). Suggested Platform: https://medium.com/\n\nAfter completing this task, share your blog URL in the ⁠cyber-security channel using the hashtag #cl-cybersec-bloghackingintro to avail 100 karma points.",
+                      "In this task, you should share your knowledge and insights on hacking, virtual machines, Linux, and networking by creating a blog with a minimum of 500 words, providing all the necessary information like explanations, examples, and any important insight. NOTE: You can post your blog on any platform (Medium, Hashnode, WordPress, etc.). Suggested Platform: https://medium.com/ After completing this task, share your blog URL in the ⁠cyber-security channel using the hashtag #cl-cybersec-bloghackingintro to avail 100 karma points.",
                   },
                   {
                     title: "Task 4: Introduction to Offensive Security",
@@ -1270,7 +1255,7 @@ export const interestGroups: InterestGroupData[] = [
                       "https://tryhackme.com/room/introtooffensivesecurity",
                     ],
                     description:
-                      "In this task, you should demonstrate your understanding of offensive security concepts by completing all the tasks in the TryHackMe room 'Introduction to Offensive Security', ensuring you get 100% completion status.\n\nAfter completing the task, share your public profile URL in the ⁠cyber-security channel using the hashtag #cl-cybersec-thmintrotooffensivesecurity to avail 20 karma points.",
+                      "In this task, you should demonstrate your understanding of offensive security concepts by completing all the tasks in the TryHackMe room 'Introduction to Offensive Security', ensuring you get 100% completion status. After completing the task, share your public profile URL in the ⁠cyber-security channel using the hashtag #cl-cybersec-thmintrotooffensivesecurity to avail 20 karma points.",
                   },
                   {
                     title: "Cisco Networking Basics",
@@ -1278,13 +1263,13 @@ export const interestGroups: InterestGroupData[] = [
                       "https://skillsforall.com/course/networking-basics?courseLang=en-US",
                     ],
                     description:
-                      "In this task, you have to obtain the Cisco Networking Basics badge by completing all the lessons and requirements in the 'Networking Basics' course provided by Skillsforall.\n\nAfter completing the course, share your badge in the ⁠cyber-security channel using the hashtag #cl-cybersec-cisconetworkingbasics to avail 800 karma points.",
+                      "In this task, you have to obtain the Cisco Networking Basics badge by completing all the lessons and requirements in the 'Networking Basics' course provided by Skillsforall. After completing the course, share your badge in the ⁠cyber-security channel using the hashtag #cl-cybersec-cisconetworkingbasics to avail 800 karma points.",
                   },
                   {
                     title: "IoT PenTesting",
                     resources: ["https://tryhackme.com/room/iotintro"],
                     description:
-                      "In this task, you have to showcase your skills in IoT (Internet of Things) PenTesting by completing all the tasks in the TryHackMe room 'IoT Pentesting' till you get a 100% completion status.\n\nAfter completing the task, share your public profile URL in the ⁠cyber-security channel using the hashtag #cl-cybersec-thmintroiotpentesting to avail 20 karma points.",
+                      "In this task, you have to showcase your skills in IoT (Internet of Things) PenTesting by completing all the tasks in the TryHackMe room 'IoT Pentesting' till you get a 100% completion status. After completing the task, share your public profile URL in the ⁠cyber-security channel using the hashtag #cl-cybersec-thmintroiotpentesting to avail 20 karma points.",
                   },
                   {
                     title: "Cisco Packet Tracer",
@@ -1295,7 +1280,7 @@ export const interestGroups: InterestGroupData[] = [
                       "https://skillsforall.com/course/exploring-iot-cisco-packet-tracer?courseLang=en-US",
                     ],
                     description:
-                      "In this task, you are required to complete 4 different SkillsForAll courses on 'Introduction to Packet Tracer', 'Getting Started with Cisco Packet Tracer', 'Exploring Networking', and 'Exploring IoT' and earn badges by completing all the lessons and tasks provided.\n\nAfter completing these courses, share your badge in the ⁠cyber-security channel using the hashtag #cl-cybersec-ciscopackettracer to avail 1200 karma points.",
+                      "In this task, you are required to complete 4 different SkillsForAll courses on 'Introduction to Packet Tracer', 'Getting Started with Cisco Packet Tracer', 'Exploring Networking', and 'Exploring IoT' and earn badges by completing all the lessons and tasks provided. After completing these courses, share your badge in the ⁠cyber-security channel using the hashtag #cl-cybersec-ciscopackettracer to avail 1200 karma points.",
                   },
                 ],
               },
@@ -1313,7 +1298,7 @@ export const interestGroups: InterestGroupData[] = [
               title: "Networking Knowledge",
               data: {
                 description:
-                  "This section covers essential networking concepts, protocols, and security practices to equip you with the knowledge needed to manage, secure, and analyze networks effectively. From understanding SSL/TLS to learning about common protocols, ports, and web application security, this level provides a deep dive into the technologies that power modern networks.",
+                  "SSL and TLS are cryptographic protocols for secure web communication, but SSL is deprecated due to vulnerabilities, while TLS remains widely used. Networking protocols like TCP/IP, HTTP, FTP, and SSH are essential for internet communication and cybersecurity. The OSI model outlines seven layers of network communication, from physical transmission to application services. Common ports, such as 80 for HTTP and 443 for HTTPS, play a crucial role in network security and firewall configuration. Web application security involves practices like secure coding, authentication, encryption, and vulnerability testing to prevent threats like SQL injection and XSS. Tools like Nessus and Burp Suite help identify vulnerabilities and test web applications for security weaknesses. Threat intelligence tools provide real-time insights into cyber threats, aiding in proactive security measures. Nmap and Metasploit are powerful tools for network scanning and penetration testing, widely used in cybersecurity.",
                 whatYouWillLearn: [
                   "SSL vs TLS: Learn about Secure Sockets Layer (SSL) and Transport Layer Security (TLS), two cryptographic protocols used to secure internet communications. SSL has been deprecated, and TLS is the preferred, secure protocol for encrypting data in transit.",
                   "Common Protocols and their Uses: Study the fundamental networking protocols such as TCP/IP, HTTP/HTTPS, FTP/SFTP, and DNS, and how they are used in data transmission, web browsing, file transfer, and more.",
@@ -1437,7 +1422,7 @@ export const interestGroups: InterestGroupData[] = [
               title: "Security Skills and Knowledges",
               data: {
                 description:
-                  "Understand Common Hacking Tools: Tools like Nmap, Nessus, Metasploit, Wireshark, and Aircrack-ng used for network exploration, security auditing, and penetration testing require ethical use. Learn more: https://www.eccouncil.org/cybersecurity-exchange/ethical-hacking/best-ethical-hacking-tools/ https://www.youtube.com/watch?v=4WqymtvuWZQ | CIA Triad: Confidentiality, Integrity, and Availability are key principles of information security, ensuring data is secure, accurate, and accessible. Learn more: https://www.fortinet.com/resources/cyberglossary/cia-triad https://www.youtube.com/watch?v=SBcDGb9l6yo | Basics of Forensics: Cyber forensics involves collecting, preserving, analyzing, and reporting digital evidence to investigate and prosecute cybercrimes. Learn more: https://www.splunk.com/en_us/blog/learn/cyber-forensics.html https://www.youtube.com/watch?v=UtDWApdO8Zk | Threat Hunting: Proactively searching for hidden threats using human intuition, threat intelligence, and data analysis to detect and mitigate threats. Learn more: https://www.ibm.com/topics/threat-hunting https://www.youtube.com/watch?v=VNp35Uw_bSM | Web-Based Attacks and OWASP 10: Highlights risks like injection flaws, XSS, and broken authentication to guide secure web development. Learn more: https://owasp.org/www-project-top-ten/ https://youtube.com/playlist?list=PLyqga7AXMtPOguwtCCXGZUKvd2CDCmUgQ | Blue Team vs Red Team vs Purple Team: Blue (defense) protects systems, Red (offense) tests defenses, Purple bridges both for collaboration and security. Learn more: https://www.checkpoint.com/cyber-hub/cyber-security/what-is-a-blue-team/ https://www.ibm.com/think/topics/red-teaming https://www.crowdstrike.com/cybersecurity-101/purple-teaming/",
+                  "Common hacking tools like Nmap, Nessus, and Metasploit are vital for security auditing and penetration testing but require ethical use to avoid misuse. The CIA Triad—Confidentiality, Integrity, Availability—guides information security policies to safeguard data effectively. Cyber forensics collects and analyzes digital evidence using tools like EnCase, while threat hunting proactively identifies hidden threats through data analysis and intelligence. The OWASP Top 10 lists key web vulnerabilities, such as injection flaws and XSS, to enhance application security. Blue Team defends, Red Team attacks, and Purple Team collaborates to strengthen an organization’s cybersecurity posture.",
                 whatYouWillLearn: [
                   "Understand Common Hacking Tools: Tools like Nmap, Nessus, Metasploit, Wireshark, and Aircrack-ng used for network exploration, security auditing, and penetration testing require ethical use. Learn more: https://www.eccouncil.org/cybersecurity-exchange/ethical-hacking/best-ethical-hacking-tools/ https://www.youtube.com/watch?v=4WqymtvuWZQ",
                   "CIA Triad: Confidentiality, Integrity, and Availability are key principles of information security, ensuring data is secure, accurate, and accessible. Learn more: https://www.fortinet.com/resources/cyberglossary/cia-triad https://www.youtube.com/watch?v=SBcDGb9l6yo",
@@ -1580,13 +1565,13 @@ export const interestGroups: InterestGroupData[] = [
     description:
       "Passionate about creating immersive experiences in gaming? The Game Development Interest Group is your gateway to learning about designing, programming, and storytelling in the world of games. Whether you're into creating captivating visuals, coding mechanics, or crafting narratives, join us to level up your game development skills.",
     bannerImage:
-    "/assets/IG/Cover/4.png",
+    "/assets/IG/Cover/5.webp",
 
     memberCount: 2500,
     memberSince: "January 2022",
     isPublic: true,
     officeHours: "Friday 8:30PM",
-    thinkTankMeeting: "2nd Saturday 8:30 PM @ Google Meet",
+    thinkTankMeeting: "2nd Saturday 8: 30PM @ Google Meet",
     interestGroupLeads: {
       description:
         "Interest group leads manage the activities and events within interest groups and serve as a point of contact for students interested in getting involved. Students can connect with these leads to learn about opportunities within their interests",
@@ -1826,7 +1811,7 @@ export const interestGroups: InterestGroupData[] = [
                       "https://youtu.be/HNfpKFER2hI?si=z3RgbjvHKIqo9Mxs",
                     ],
                     description:
-                      "Write a simple C++ script in Unreal Engine 5 to implement an in-game action, such as making the player jump, interact with objects, or trigger a special effect. Focus on creating the core functionality using Unreal's C++ framework and ensure the script interacts properly with the game’s mechanics. This task will help you get hands-on experience with Unreal Engine’s C++ coding environment and improve your programming skills for game development.\n\nWrite a simple C++ script in Unreal Engine to implement an in-game action, such as triggering a jump, opening a door, or interacting with an object. Focus on the basic functionality and ensure the script works as intended within the game.\n\nOnce completed, upload your project to GitHub, including a README file that describes the script and the action it performs.\n\nSubmit the GitHub repository link in the #Game-Dev channel using the hashtag #cl-game-dev-cplusplus to earn 300 Karma Points.",
+                      "Write a simple C++ script in Unreal Engine 5 to implement an in-game action, such as making the player jump, interact with objects, or trigger a special effect. Focus on creating the core functionality using Unreal's C++ framework and ensure the script interacts properly with the game’s mechanics. This task will help you get hands-on experience with Unreal Engine’s C++ coding environment and improve your programming skills for game development. Write a simple C++ script in Unreal Engine to implement an in-game action, such as triggering a jump, opening a door, or interacting with an object. Focus on the basic functionality and ensure the script works as intended within the game. Once completed, upload your project to GitHub, including a README file that describes the script and the action it performs. Submit the GitHub repository link in the #Game-Dev channel using the hashtag #cl-game-dev-cplusplus to earn 300 Karma Points.",
                   },
                   {
                     title: "Create a complex interaction using Blueprints",
@@ -1835,7 +1820,7 @@ export const interestGroups: InterestGroupData[] = [
                       "https://www.youtube.com/watch?v=Xw9QEMFInYU",
                     ],
                     description:
-                      "Design and implement a complex interaction using Unreal Engine’s Blueprints. Create systems such as a multi-step puzzle, a dynamic object that responds to multiple triggers, or an event sequence that combines animations and logic. Focus on creating seamless interactions that enhance gameplay and challenge the player. This task will deepen your understanding of Unreal's visual scripting system and help you create more engaging and intricate gameplay mechanics.\n\nCreate a complex in-game interaction using Unreal Engine’s Blueprints. This could involve multiple triggers, animations, or interactions that depend on player actions, such as a puzzle system, a dynamic object that reacts to player input, or a more advanced event sequence.\n\nOnce completed, upload your project to GitHub, including a README file that explains the interactions you’ve created and how they function.\n\nSubmit the GitHub repository link in the #Game-Dev channel using the hashtag #cl-game-dev-complexblueprint to earn 300 Karma Points.",
+                      "Design and implement a complex interaction using Unreal Engine’s Blueprints. Create systems such as a multi-step puzzle, a dynamic object that responds to multiple triggers, or an event sequence that combines animations and logic. Focus on creating seamless interactions that enhance gameplay and challenge the player. This task will deepen your understanding of Unreal's visual scripting system and help you create more engaging and intricate gameplay mechanics. Create a complex in-game interaction using Unreal Engine’s Blueprints. This could involve multiple triggers, animations, or interactions that depend on player actions, such as a puzzle system, a dynamic object that reacts to player input, or a more advanced event sequence. Once completed, upload your project to GitHub, including a README file that explains the interactions you’ve created and how they function. Submit the GitHub repository link in the #Game-Dev channel using the hashtag #cl-game-dev-complexblueprint to earn 300 Karma Points.",
                   },
                   {
                     title: "Implement basic player movement and interaction",
@@ -1844,7 +1829,7 @@ export const interestGroups: InterestGroupData[] = [
                       "https://youtu.be/Z9zEEY7dGaM?si=gNllnL1I6569gklH",
                     ],
                     description:
-                      "Set up basic player movement and interaction mechanics in Unreal Engine 5. Enable core movements like walking, running, and jumping by configuring input controls. Add simple player interactions such as picking up objects, pressing buttons, or opening doors using Blueprints or C++ scripting. This task will introduce you to handling character input and interaction systems, essential for creating engaging gameplay.\n\nImplement basic player movement and interaction in Unreal Engine using either Blueprints or C++. Set up standard player controls such as walking, running, jumping, and interacting with objects (e.g., picking up items, opening doors).\n\nOnce completed, upload your project to GitHub, including a README file that explains the movement mechanics and interactions you’ve implemented.\n\nSubmit the GitHub repository link in the #Game-Dev channel using the hashtag #cl-game-dev-playermovement to earn 350 Karma Points.",
+                      "Set up basic player movement and interaction mechanics in Unreal Engine 5. Enable core movements like walking, running, and jumping by configuring input controls. Add simple player interactions such as picking up objects, pressing buttons, or opening doors using Blueprints or C++ scripting. This task will introduce you to handling character input and interaction systems, essential for creating engaging gameplay. Implement basic player movement and interaction in Unreal Engine using either Blueprints or C++. Set up standard player controls such as walking, running, jumping, and interacting with objects (e.g., picking up items, opening doors). Once completed, upload your project to GitHub, including a README file that explains the movement mechanics and interactions you’ve implemented. Submit the GitHub repository link in the #Game-Dev channel using the hashtag #cl-game-dev-playermovement to earn 350 Karma Points.",
                   },
                 ],
               },
@@ -1873,7 +1858,7 @@ export const interestGroups: InterestGroupData[] = [
                       "https://www.youtube.com/watch?v=0ISnxjlLfx0",
                     ],
                     description:
-                      "Import a 3D model into Unreal Engine 5 to use within your project. Ensure the model is properly textured, scaled, and positioned in the scene. Verify that all materials, animations (if any), and collisions are functioning correctly. This task will familiarize you with the process of bringing external assets into Unreal Engine for use in game environments.\n\nImport a 3D model into Unreal Engine. The model should include textures and materials where applicable. Once imported, ensure the model is correctly placed in the scene and functions as expected.\n\nOnce completed, upload your project to GitHub, including a README file that describes the 3D model, the software used to create it, and any adjustments made in Unreal Engine.\n\nSubmit the GitHub repository link in the #Game-Dev channel using the hashtag #cl-game-dev-3dmodel to earn 250 Karma Points.",
+                      "Import a 3D model into Unreal Engine 5 to use within your project. Ensure the model is properly textured, scaled, and positioned in the scene. Verify that all materials, animations (if any), and collisions are functioning correctly. This task will familiarize you with the process of bringing external assets into Unreal Engine for use in game environments. Import a 3D model into Unreal Engine. The model should include textures and materials where applicable. Once imported, ensure the model is correctly placed in the scene and functions as expected. Once completed, upload your project to GitHub, including a README file that describes the 3D model, the software used to create it, and any adjustments made in Unreal Engine. Submit the GitHub repository link in the #Game-Dev channel using the hashtag #cl-game-dev-3dmodel to earn 250 Karma Points.",
                   },
                   {
                     title: "Add simple animations to a character",
@@ -1882,7 +1867,7 @@ export const interestGroups: InterestGroupData[] = [
                       "https://www.youtube.com/watch?v=WUXvq6At6pE",
                     ],
                     description:
-                      "Add simple animations to a character in Unreal Engine 5 using the Animation Blueprint system. Implement basic actions such as idle, walking, running, or jumping. Set up state transitions to ensure the animations play smoothly based on player input. This task will help you understand how to create lifelike movement and enhance the character’s presence in the game.\n\nAdd basic animations to a character in Unreal Engine, such as walking, running, and jumping. Use Unreal’s Animation Blueprint system to set up the character's animation states and transitions based on player input.\n\nOnce completed, upload your project to GitHub, including a README file that describes the animations added and how they are triggered within the game.\n\nSubmit the GitHub repository link in the #Game-Dev channel using the hashtag #cl-game-dev-characteranimations to earn 300 Karma Points.",
+                      "Add simple animations to a character in Unreal Engine 5 using the Animation Blueprint system. Implement basic actions such as idle, walking, running, or jumping. Set up state transitions to ensure the animations play smoothly based on player input. This task will help you understand how to create lifelike movement and enhance the character’s presence in the game. Add basic animations to a character in Unreal Engine, such as walking, running, and jumping. Use Unreal’s Animation Blueprint system to set up the character's animation states and transitions based on player input. Once completed, upload your project to GitHub, including a README file that describes the animations added and how they are triggered within the game. Submit the GitHub repository link in the #Game-Dev channel using the hashtag #cl-game-dev-characteranimations to earn 300 Karma Points.",
                   },
                   {
                     title: "Set up a skeletal mesh for a character model",
@@ -1892,7 +1877,7 @@ export const interestGroups: InterestGroupData[] = [
                       "https://www.youtube.com/watch?v=X4X-_ZdZgew&list=WL&index=20",
                     ],
                     description:
-                      "Set up a skeletal mesh for a character model in Unreal Engine 5. Import the model with its skeleton and rigging, ensuring proper integration for animations and movement. Test the skeletal mesh to verify that it deforms correctly during animations. This task will help you understand the essentials of working with character models and preparing them for animation.\n\nSet up a skeletal mesh for a character model in Unreal Engine. Import your character model with its skeleton and rigging, ensuring that it is properly linked to the skeletal structure for animation. Configure the mesh to work with the animation system and verify that it moves correctly within the engine.\n\nOnce completed, upload your project to GitHub, including a README file that explains the skeletal mesh setup, the tools used for rigging, and any adjustments made in Unreal Engine.\n\nSubmit the GitHub repository link in the #Game-Dev channel using the hashtag #cl-game-dev-skeletalmesh to earn 350 Karma Points.",
+                      "Set up a skeletal mesh for a character model in Unreal Engine 5. Import the model with its skeleton and rigging, ensuring proper integration for animations and movement. Test the skeletal mesh to verify that it deforms correctly during animations. This task will help you understand the essentials of working with character models and preparing them for animation. Set up a skeletal mesh for a character model in Unreal Engine. Import your character model with its skeleton and rigging, ensuring that it is properly linked to the skeletal structure for animation. Configure the mesh to work with the animation system and verify that it moves correctly within the engine. Once completed, upload your project to GitHub, including a README file that explains the skeletal mesh setup, the tools used for rigging, and any adjustments made in Unreal Engine. Submit the GitHub repository link in the #Game-Dev channel using the hashtag #cl-game-dev-skeletalmesh to earn 350 Karma Points.",
                   },
                 ],
               },
@@ -1970,7 +1955,7 @@ export const interestGroups: InterestGroupData[] = [
                       "https://www.youtube.com/watch?v=zWI-36fIoDQ&list=WL&index=14",
                     ],
                     description:
-                      "Design and implement a basic game menu in Unreal Engine 5. Include essential features such as a start button, options menu, and quit functionality. Use the UMG (Unreal Motion Graphics) system to create the menu interface and configure interactions using Blueprints. Ensure smooth navigation between menu screens. This task will introduce you to UI design and functionality within Unreal Engine.\n\nDesign and implement a basic game menu in Unreal Engine, including features like a main menu, start button, options, and quit functionality. Use Blueprints or C++ to create the menu structure and set up interactions, such as transitioning between menus and adjusting simple settings (e.g., volume, graphics quality).\n\nOnce completed, upload your project to GitHub, including a README file that explains the menu layout, the interactions implemented, and the functionality of each button.\n\nSubmit the GitHub repository link in the #Game-Dev channel using the hashtag #cl-game-dev-gamemenu to earn 250 Karma Points.",
+                      "Design and implement a basic game menu in Unreal Engine 5. Include essential features such as a start button, options menu, and quit functionality. Use the UMG (Unreal Motion Graphics) system to create the menu interface and configure interactions using Blueprints. Ensure smooth navigation between menu screens. This task will introduce you to UI design and functionality within Unreal Engine. Design and implement a basic game menu in Unreal Engine, including features like a main menu, start button, options, and quit functionality. Use Blueprints or C++ to create the menu structure and set up interactions, such as transitioning between menus and adjusting simple settings (e.g., volume, graphics quality). Once completed, upload your project to GitHub, including a README file that explains the menu layout, the interactions implemented, and the functionality of each button. Submit the GitHub repository link in the #Game-Dev channel using the hashtag #cl-game-dev-gamemenu to earn 250 Karma Points.",
                   },
                   {
                     title: "Displaying Player Health or Score in the UI",
@@ -1979,7 +1964,7 @@ export const interestGroups: InterestGroupData[] = [
                       "https://www.youtube.com/watch?v=2YEZpSrdHfk&list=WL&index=11",
                     ],
                     description:
-                      "Implement a system to display player health or score on the screen in Unreal Engine 5. Use UMG (Unreal Motion Graphics) to create UI elements like a health bar or score counter that updates in real-time as the player progresses. Customize the display for clarity and aesthetics. This task will help you understand how to integrate essential gameplay data into the user interface, enhancing player experience.\n\nImplement a system to display the player’s health or score on the screen in Unreal Engine. Use Blueprints or C++ to create a UI element (e.g., a health bar or score counter) that updates in real-time as the player progresses through the game.\n\nOnce completed, upload your project to GitHub, including a README file that explains the implementation of the health or score display, how it updates, and any relevant UI setup.\n\nSubmit the GitHub repository link in the #Game-Dev channel using the hashtag #cl-game-dev-playerscore to earn 250 Karma Points.",
+                      "Implement a system to display player health or score on the screen in Unreal Engine 5. Use UMG (Unreal Motion Graphics) to create UI elements like a health bar or score counter that updates in real-time as the player progresses. Customize the display for clarity and aesthetics. This task will help you understand how to integrate essential gameplay data into the user interface, enhancing player experience. Implement a system to display the player’s health or score on the screen in Unreal Engine. Use Blueprints or C++ to create a UI element (e.g., a health bar or score counter) that updates in real-time as the player progresses through the game. Once completed, upload your project to GitHub, including a README file that explains the implementation of the health or score display, how it updates, and any relevant UI setup. Submit the GitHub repository link in the #Game-Dev channel using the hashtag #cl-game-dev-playerscore to earn 250 Karma Points.",
                   },
                 ],
               },
@@ -2008,7 +1993,7 @@ export const interestGroups: InterestGroupData[] = [
                       "https://www.youtube.com/watch?v=u3jlkKlzPiQ&list=WL&index=8",
                     ],
                     description:
-                      "Optimize assets (such as textures, models, and sounds) and scripts in Unreal Engine 5 to improve game performance. Simplify meshes, reduce texture sizes, and optimize code to ensure smooth gameplay. Use Unreal's profiling tools to identify and address performance bottlenecks. This task will help you understand how to maintain high performance while ensuring visual and gameplay quality.\n\nOptimize game assets (textures, models, audio, etc.) and scripts in Unreal Engine to improve performance. Focus on reducing file sizes, simplifying meshes, and improving texture compression. For scripts, optimize code for efficiency, reduce unnecessary calculations, and ensure smooth execution.\n\nOnce completed, upload your project to GitHub, including a README file that describes the optimization techniques applied and the improvements in performance.\n\nSubmit the GitHub repository link in the #Game-Dev channel using the hashtag #cl-game-dev-optimization to earn 300 Karma Points.",
+                      "Optimize assets (such as textures, models, and sounds) and scripts in Unreal Engine 5 to improve game performance. Simplify meshes, reduce texture sizes, and optimize code to ensure smooth gameplay. Use Unreal's profiling tools to identify and address performance bottlenecks. This task will help you understand how to maintain high performance while ensuring visual and gameplay quality. Optimize game assets (textures, models, audio, etc.) and scripts in Unreal Engine to improve performance. Focus on reducing file sizes, simplifying meshes, and improving texture compression. For scripts, optimize code for efficiency, reduce unnecessary calculations, and ensure smooth execution. Once completed, upload your project to GitHub, including a README file that describes the optimization techniques applied and the improvements in performance. Submit the GitHub repository link in the #Game-Dev channel using the hashtag #cl-game-dev-optimization to earn 300 Karma Points.",
                   },
                   {
                     title: "Use debugging tools to identify and fix issues",
@@ -2017,7 +2002,7 @@ export const interestGroups: InterestGroupData[] = [
                       "https://www.youtube.com/watch?v=lflqdan_isw&list=WL&index=6",
                     ],
                     description:
-                      "Use Unreal Engine’s debugging tools (such as the Blueprint Debugger, Visual Studio Debugger, and Profiler) to identify and resolve issues in your game project. Focus on solving common problems like performance drops, gameplay bugs, or logic errors. Document the issues you encounter and the steps you take to fix them. This task will enhance your troubleshooting skills and help ensure a smoother game development process.\n\nUse Unreal Engine’s debugging tools (such as the Blueprint Debugger, Visual Studio Debugger, and Profiler) to identify and fix issues within your game project. Focus on solving common problems like performance bottlenecks, gameplay bugs, or errors in logic. Document the issues you encountered and how you resolved them.\n\nOnce completed, upload your project to GitHub, including a README file that explains the debugging process, the tools used, and the fixes applied.\n\nSubmit the GitHub repository link in the #Game-Dev channel using the hashtag #cl-game-dev-debugging to earn 250 Karma Points.",
+                      "Use Unreal Engine’s debugging tools (such as the Blueprint Debugger, Visual Studio Debugger, and Profiler) to identify and resolve issues in your game project. Focus on solving common problems like performance drops, gameplay bugs, or logic errors. Document the issues you encounter and the steps you take to fix them. This task will enhance your troubleshooting skills and help ensure a smoother game development process. Use Unreal Engine’s debugging tools (such as the Blueprint Debugger, Visual Studio Debugger, and Profiler) to identify and fix issues within your game project. Focus on solving common problems like performance bottlenecks, gameplay bugs, or errors in logic. Document the issues you encountered and how you resolved them. Once completed, upload your project to GitHub, including a README file that explains the debugging process, the tools used, and the fixes applied. Submit the GitHub repository link in the #Game-Dev channel using the hashtag #cl-game-dev-debugging to earn 250 Karma Points.",
                   },
                 ],
               },
@@ -2044,7 +2029,7 @@ export const interestGroups: InterestGroupData[] = [
                       "https://www.youtube.com/watch?v=YY7XWz_q-qo&list=WL&index=5",
                     ],
                     description:
-                      "Conduct playtesting of your game with a group of players and gather their feedback on aspects like gameplay mechanics, difficulty, and user experience. Analyze the feedback and make adjustments to improve the overall game. This task will help you understand how player feedback can refine your design and enhance the player experience.\n\nConduct playtesting for your game project, either with a small group of peers or through an online community. Gather valuable feedback on gameplay mechanics, difficulty, and overall experience. Make adjustments based on the feedback received to improve the game.\n\nProof of Work Submission Options:\n\nPlaytesting Video: Record a video of the playtesting session, showing feedback from players, and include any changes made based on their input.\n\nSubmission Medium: YouTube (unlisted link), Google Drive, or any video hosting platform.\n\nFeedback Summary Report: Collect feedback in the form of a report or a Google Form. Include the main points raised by testers, and outline any changes you made in response to the feedback.\n\nSubmission Medium: Google Doc or PDF.\n\nSurvey Results: If you used an online survey (e.g., Google Forms) to collect feedback, submit the survey link with an explanation of how the feedback influenced changes in your project.\n\nSubmission Medium: Google Forms link.\n\nOnce completed, submit the chosen/preferred proof of work in the #Game-Dev channel using the hashtag #cl-game-dev-playtesting to earn 250 Karma Points.",
+                      "Conduct playtesting of your game with a group of players and gather their feedback on aspects like gameplay mechanics, difficulty, and user experience. Analyze the feedback and make adjustments to improve the overall game. This task will help you understand how player feedback can refine your design and enhance the player experience. Conduct playtesting for your game project, either with a small group of peers or through an online community. Gather valuable feedback on gameplay mechanics, difficulty, and overall experience. Make adjustments based on the feedback received to improve the game. Proof of Work Submission Options: Playtesting Video: Record a video of the playtesting session, showing feedback from players, and include any changes made based on their input. Submission Medium: YouTube (unlisted link), Google Drive, or any video hosting platform. Feedback Summary Report: Collect feedback in the form of a report or a Google Form. Include the main points raised by testers, and outline any changes you made in response to the feedback. Submission Medium: Google Doc or PDF. Survey Results: If you used an online survey (e.g., Google Forms) to collect feedback, submit the survey link with an explanation of how the feedback influenced changes in your project. Submission Medium: Google Forms link. Once completed, submit the chosen/preferred proof of work in the #Game-Dev channel using the hashtag #cl-game-dev-playtesting to earn 250 Karma Points.",
                   },
                   {
                     title: "Package the game for PC and test the build",
@@ -2054,7 +2039,7 @@ export const interestGroups: InterestGroupData[] = [
                       "https://www.youtube.com/watch?v=JOMrVMwGBso&list=WL&index=2",
                     ],
                     description:
-                      "Package your game for PC using Unreal Engine 5’s packaging tools. Ensure that all assets are included and the game runs smoothly on a standard PC setup. Test the build for performance, functionality, and potential bugs. This task will help you prepare the game for distribution while ensuring it’s optimized for the PC platform.\n\nPackage your game for PC using Unreal Engine’s packaging tools. Ensure that the build is optimized and runs smoothly on a standard PC. Test the packaged game on your machine to ensure there are no critical issues such as crashes, performance drops, or missing assets.\n\nPlayable Build Link: Upload the packaged game to a file hosting platform like Google Drive, Dropbox, or Itch.io. Share the link to the playable build and include a description of any issues you encountered and resolved.\n\nSubmission Medium: Google Drive, Dropbox, or Itch.io link.\n\nOnce completed, submit the link in the #Game-Dev channel using the hashtag #cl-game-dev-pcbuild to earn 300 Karma Points.",
+                      "Package your game for PC using Unreal Engine 5’s packaging tools. Ensure that all assets are included and the game runs smoothly on a standard PC setup. Test the build for performance, functionality, and potential bugs. This task will help you prepare the game for distribution while ensuring it’s optimized for the PC platform. Package your game for PC using Unreal Engine’s packaging tools. Ensure that the build is optimized and runs smoothly on a standard PC. Test the packaged game on your machine to ensure there are no critical issues such as crashes, performance drops, or missing assets. Playable Build Link: Upload the packaged game to a file hosting platform like Google Drive, Dropbox, or Itch.io. Share the link to the playable build and include a description of any issues you encountered and resolved. Submission Medium: Google Drive, Dropbox, or Itch.io link. Once completed, submit the link in the #Game-Dev channel using the hashtag #cl-game-dev-pcbuild to earn 300 Karma Points.",
                   },
                   {
                     title: "Prepare the game for submission to a digital platform",
@@ -2062,7 +2047,7 @@ export const interestGroups: InterestGroupData[] = [
                       "https://www.youtube.com/watch?v=KQkG2KElVxo&list=WL&index=1",
                     ],
                     description:
-                      "Prepare your game for submission to a digital platform like Steam, Itch.io, or Epic Games Store. This includes creating necessary metadata (e.g., descriptions, screenshots, system requirements), packaging the final build, and ensuring your game complies with platform guidelines. This task will help you understand the submission process and ensure your game is ready for distribution on digital platforms.\n\nPrepare your game for submission to a digital platform (such as Steam, Itch.io, or Epic Games Store). This involves finalizing the game’s assets, creating platform-specific metadata (e.g., descriptions, screenshots, system requirements), ensuring the game complies with platform guidelines, and testing the submission process.\n\nProof of Work Submission Options:\n\nSubmission Documentation: Provide a detailed document outlining the steps you took to prepare the game for submission, including metadata creation, asset preparation, and platform compliance.\n\nSubmission Medium: Google Doc or PDF.\n\nSubmission Confirmation: If possible, submit a screenshot or confirmation of your submission to the platform (e.g., Steamworks, Itch.io developer dashboard).\n\nSubmission Medium: Screenshot or link to submission confirmation.\n\nPlatform Page Link: If the game is live on a platform (like Itch.io or Steam), provide the link to the game page along with a brief description of the submission process.\n\nSubmission Medium: Link to the game page on the platform.\n\nOnce completed, submit the chosen/preferred proof of work in the #Game-Dev channel using the hashtag #cl-game-dev-submission to earn 300 Karma Points.",
+                      "Prepare your game for submission to a digital platform like Steam, Itch.io, or Epic Games Store. This includes creating necessary metadata (e.g., descriptions, screenshots, system requirements), packaging the final build, and ensuring your game complies with platform guidelines. This task will help you understand the submission process and ensure your game is ready for distribution on digital platforms. Prepare your game for submission to a digital platform (such as Steam, Itch.io, or Epic Games Store). This involves finalizing the game’s assets, creating platform-specific metadata (e.g., descriptions, screenshots, system requirements), ensuring the game complies with platform guidelines, and testing the submission process. Proof of Work Submission Options: Submission Documentation: Provide a detailed document outlining the steps you took to prepare the game for submission, including metadata creation, asset preparation, and platform compliance. Submission Medium: Google Doc or PDF. Submission Confirmation: If possible, submit a screenshot or confirmation of your submission to the platform (e.g., Steamworks, Itch.io developer dashboard). Submission Medium: Screenshot or link to submission confirmation. Platform Page Link: If the game is live on a platform (like Itch.io or Steam), provide the link to the game page along with a brief description of the submission process. Submission Medium: Link to the game page on the platform. Once completed, submit the chosen/preferred proof of work in the #Game-Dev channel using the hashtag #cl-game-dev-submission to earn 300 Karma Points.",
                   },
                 ],
               },
@@ -2082,13 +2067,13 @@ export const interestGroups: InterestGroupData[] = [
                     title: "Create a portfolio showcasing your projects",
                     resources: [],
                     description:
-                      "Create a portfolio to showcase your game development projects. Include project descriptions, images, videos, or playable builds to highlight your skills and accomplishments. The portfolio can be a personal website, PDF, or a digital presentation. This task will help you organize and present your work in a professional way, making it easier to share with potential employers or collaborators.\n\nCreate a professional portfolio that showcases your game development projects. Include detailed descriptions, images, videos, and playable builds to highlight your work. The portfolio can be a personal website, PDF, or digital presentation that clearly communicates your skills and achievements.\n\nOnce completed, create a link to your portfolio and provide it for review.\n\nSubmit the link to your portfolio in the #Game-Dev channel using the hashtag #cl-game-dev-portfolio to earn 250 Karma Points.",
+                      "Create a portfolio to showcase your game development projects. Include project descriptions, images, videos, or playable builds to highlight your skills and accomplishments. The portfolio can be a personal website, PDF, or a digital presentation. This task will help you organize and present your work in a professional way, making it easier to share with potential employers or collaborators. Create a professional portfolio that showcases your game development projects. Include detailed descriptions, images, videos, and playable builds to highlight your work. The portfolio can be a personal website, PDF, or digital presentation that clearly communicates your skills and achievements. Once completed, create a link to your portfolio and provide it for review. Submit the link to your portfolio in the #Game-Dev channel using the hashtag #cl-game-dev-portfolio to earn 250 Karma Points.",
                   },
                   {
                     title: "Share your work and connect with other developers",
                     resources: [],
                     description:
-                      "Share your game development projects with the community by posting on platforms like GitHub, LinkedIn, or Twitter. Engage with other developers to receive feedback, share ideas, and expand your network. This task will help you build a professional presence and connect with like-minded individuals in the game development community.\n\nShare your game development work and connect with other developers through platforms such as GitHub, LinkedIn, or Twitter. Post a summary of your latest project, including images, videos, or playable builds, and engage with the community to receive feedback, share ideas, and expand your network.\n\nOnce completed, create a link to your post or profile and provide it for review.\n\nSubmit the link in the #Game-Dev channel using the hashtag #cl-game-dev-connect to earn 200 Karma Points.",
+                      "Share your game development projects with the community by posting on platforms like GitHub, LinkedIn, or Twitter. Engage with other developers to receive feedback, share ideas, and expand your network. This task will help you build a professional presence and connect with like-minded individuals in the game development community. Share your game development work and connect with other developers through platforms such as GitHub, LinkedIn, or Twitter. Post a summary of your latest project, including images, videos, or playable builds, and engage with the community to receive feedback, share ideas, and expand your network. Once completed, create a link to your post or profile and provide it for review. Submit the link in the #Game-Dev channel using the hashtag #cl-game-dev-connect to earn 200 Karma Points.",
                   },
                 ],
               },
@@ -2178,214 +2163,483 @@ export const interestGroups: InterestGroupData[] = [
     ],
   },
 //iot interest group
-// {
-//   level: "Level 4",
-//   cards: [
-//     {
-//       title: "Understanding IOT",
-//       data: {
-//         description:
-//           "The Internet of Things (IoT) refers to a system of interconnected devices that communicate and share data over the internet, enabling smarter automation, real-time decision-making, and innovation across industries. These devices ranging from smart home gadgets and wearable technology to industrial sensors and environmental monitors are equipped with sensors to collect data and actuators to perform actions. IoT systems rely on connectivity through protocols like Wi-Fi, Bluetooth, or cellular networks, processing data locally via edge computing or in the cloud.",
-//         whatYouWillLearn: [
-//           "Learners will gain a comprehensive understanding of the fundamentals of IoT, including its basics, architecture, significance, key components, diverse applications, and the importance of security in IoT systems.",
-//         ],
-//         challenges: [
-//           {
-//             title: "Introduction Course",
-//             resources: [
-//               "https://www.netacad.com/courses/introduction-iot?courseLang=en-US",
-//             ],
-//             description:
-//               " IoT and Digital Transformation Task Explore the transformative potential of IoT by completing the Introduction to IoT course. This task will help you understand how IoT is driving digital transformation across various industries and expanding career opportunities in the future.",
-//           },
-          
-//         ],
-//       },
-//       resources: 1,
-//       proofOfWork: 2,
-//       rating: 0,
-//       hasGift: true,
-//     },
-//     {
-//       title: "Programming for IOT",
-//       data: {
-//         description:
-//           "Programming in the Internet of Things (IoT) involves creating software to manage and control devices, sensors, and networks that communicate seamlessly to perform tasks and make intelligent decisions. IoT programming spans a wide range of applications, from home automation to industrial systems, healthcare, and smart cities.",
-//         whatYouWillLearn: [
-//           "Python has become a dominant language for IoT programming due to its simplicity, versatility, and extensive library ecosystem. It is particularly well-suited for prototyping, high-level applications, and interfacing with cloud platforms.",
-//           "C is a foundational language in IoT programming, particularly for embedded systems, due to its low-level access to hardware, efficient memory usage, and speed. It is often used to develop firmware and real-time applications for microcontrollers and other resource-constrained devices.",
-//         ],
-//         challenges: [
-//           {
-//             title: "Simulate Temperature Monitoring System",
-//             resources: [],
-//             description:
-//               "In this task, create a C program that simulates a temperature monitoring system. The program should: \n1)Read temperature values (simulated input) at regular intervals. \n2)Display a warning message if the temperature crosses a specific threshold. \n3)Log all temperature readings to a file. \nRequirements: Use fscanf and fprintf for file handling",
-//           },
-//           {
-//             title: "Simulate Blinking LED with PWM",
-//             resources: [],
-//             description:
-//               "In this task, write a C program to simulate an LED blinking using Pulse Width Modulation (PWM). The program should: \n1)Print 'LED ON' and 'LED OFF' based on the duty cycle. \n2)Allow the user to input the desired frequency and duty cycle. \n3)Use a loop to generate the PWM signal for 10 seconds. \nRequirements:Use sleep or delay functions to simulate timing. Implement input validation for frequency and duty cycle.",
-//           },
-//         ],
-//       },
-//       resources: 0,
-//       proofOfWork: 2,
-//       rating: 0,
-//       hasGift: true,
-//     },
-//     {
-//       title: "Basics of Electronics",
-//       data: {
-//         description:
-//           "Electronics are crucial for enabling IoT devices to function by connecting hardware with software. Core components include sensors, actuators, microcontrollers, and communication modules. Microcontrollers like ESP32 and Arduino process data, while sensors gather environmental information and actuators perform actions. Communication modules (e.g., Wi-Fi, Bluetooth) allow devices to connect and exchange data. Together, these elements form the foundation of low-power, efficient IoT systems used across industries.",
-//         whatYouWillLearn: [
-//           "Learners will develop a foundational understanding of electronics, including an introduction to actuators, microcontrollers, wireless communication, sensors, and power sources.",
-//         ],
-//         challenges: [
-//           {
-//             title: "Make a PPT on Basics of Electronics",
-//             resources: [],
-//             description:
-//               "Explore the fundamentals of electronics by creating a detailed PowerPoint presentation. This task will help you understand key electronic components and their functions, which are foundational for various applications in the digital world.",
-//           },
-//         ],
-//       },
-//       resources: 0,
-//       proofOfWork: 1,
-//       rating: 0,
-//       hasGift: true,
-//     },
-//     {
-//       title: "Sensors and Actuators",
-//       data: {
-//         description:
-//           "In the Internet of Things (IoT), sensors and actuators play critical roles in bridging the gap between the physical and digital worlds. They enable devices to perceive and interact with their environment, making IoT systems smarter and more responsive.",
-//         whatYouWillLearn: [
-//           "Learners will acquire knowledge about the various types of sensors used in IoT systems, the different types of actuators utilized in IoT applications, and the fundamentals of wireless sensor networks that enable seamless data collection and communication.",
-//         ],
-//         challenges: [
-//           {
-//             title: "Make a PPT on Sensors and Actuators",
-//             resources: [],
-//             description:
-//               "Dive into the fundamentals of sensors and actuators by creating a detailed PowerPoint presentation.This task will enhance your understanding of how these components enable interaction between the digital and physical worlds.",
-//           },
-//         ],
-//       },
-//       resources: 0,
-//       proofOfWork: 1,
-//       rating: 0,
-//       hasGift: true,
-//     },
-//   ],
-// },
-// {
-//   level: "Level 5",
-//   cards: [
-//     {
-//       title: "Hardware for IOT",
-//       data: {
-//         description:
-//           "The Internet of Things (IoT) is an interconnected network of devices that collect, process, and exchange data. The hardware in IoT devices is essential for their functionality, encompassing microcontrollers, connectivity options, sensors, actuators, and power management. This section explores key hardware platforms for IoT, including Arduino, Raspberry Pi, other hardware options, IoT hardware design, embedded systems, and power management.",
-//         whatYouWillLearn: [
-//           "Learners will gain knowledge of IoT hardware platforms, including an introduction to Arduino, Raspberry Pi, and other essential IoT hardware systems.",
-//         ],
-//         challenges: [
-//           {
-//             title: "Basic Projects Using Arduino",
-//             resources: [
-//               "https://www.youtube.com/watch?v=c5btoce--ZU",
-//               "https://youtu.be/CvqHkXeXN3M",
-//               "https://youtu.be/0Lhgd8PQmn0",
-//               "https://www.youtube.com/watch?v=dJJAQxyryoQ",
-//               "https://www.youtube.com/watch?v=DzNZdEH916I",
-//               "https://www.youtube.com/watch?v=hNmacZoweqY",
-//             ],
-//             description:
-//               "Explore the world of Arduino by completing up to 6 basic Arduino-based projects . This course will introduce you to the basics of Arduino and teach you how to build and program your own Arduino-based projects. You'll learn about the Arduino hardware, the Arduino software, and the Arduino programming language.",
-//           },
-//           {
-//             title: "Self Projects",
-//             resources: [],
-//             description:
-//               "In this task, you will build Arduino projects and showcase your work. You can either simulate the projects using WokWi or create a physical project to demonstrate. This will enhance your understanding of Arduino and its practical applications in electronics. 1. You must design a simple security system that sounds an alarm when any motion is detected. Use Arduino, Passive Infrared (PIR) Sensor, Buzzer, and LED indicators. 2. You are required to build an automatic lighting system that turns on in the dark and off in bright conditions using Arduino, a light-dependent resistor (LDR), and an LED (or LED strip)",
-//           },
-//           {
-//             title: "Basic Projects Using Raspberry Pi",
-//             resources: [
-//               "https://youtu.be/e9WXf-wRTNg",
-//               "https://youtu.be/zE1J8F9U_jc?list=PLQFhP0-TLBMeUHHpPNt1UH2YA8mIua-Ag",
-//             ],
-//             description:
-//               "In this task, you will complete 2 basic Raspberry Pi-based projects using a simulator like WokWi. This will help you understand the fundamentals of Raspberry Pi and its applications in electronics and IoT systems.",
-//           },
-//         ],
-//       },
-//       resources: 8,
-//       proofOfWork: 3,
-//       rating: 0,
-//       hasGift: true,
-//     },
-//   ],
-// },
-// {
-//   level: "Level 6",
-//   cards: [
-//     {
-//       title: "Network Protocols for IOT",
-//       data: {
-//         description:
-//           "The Internet of Things (IoT) ecosystem relies on a wide array of network protocols to facilitate seamless communication between devices. These protocols enable data exchange, ensuring connectivity, reliability, and security. Here’s an in-depth look at the primary protocols used in IoT communication.",
-//         whatYouWillLearn: [
-//           "Learners will gain an understanding of the basics of TCP/IP, the role of Bluetooth in IoT, and key communication protocols such as MQTT, Zigbee, Z-Wave, and LoRaWAN, which enable seamless connectivity in IoT systems.",
-//         ],
-//         challenges: [
-//           {
-//             title: "Bluetooth Controlled LED",
-//             resources: [],
-//             description:
-//               "Explore the world of Arduino and Bluetooth by completing a project that controls an LED using a Bluetooth module.",
-//           },
-//         ],
-//       },
-//       resources: 0,
-//       proofOfWork: 1,
-//       rating: 0,
-//       hasGift: true,
-//     },
-//     {
-//       title: "Cloud Platforms used in IOT",
-//       data: {
-//         description:
-//           "Cloud platforms in IoT are services that provide infrastructure, tools, and frameworks to connect IoT devices, manage their data, and enable smart decision-making. They bridge the gap between IoT hardware (sensors, actuators, and devices) and applications by offering scalable computing and storage solutions.",
-
-//         whatYouWillLearn: [
-//           "Learners will gain knowledge of IoT development platforms, including an introduction to Blynk and the Arduino IoT Cloud, enabling them to design, monitor, and manage IoT projects effectively.",
-//         ],
-//         challenges: [
-//           {
-//             title: "Home Automation",
-//             resources: [],
-//             description:
-//               "In this challenge, you have to design a Home Automation System using an ESP32 microcontroller.",
-//           },
-//           {
-//             title: "Gas Leakage Warning System",
-//             resources: [],
-//             description:
-//               "In this challenge, you have to design a Gas Leakage Warning System using a microcontroller.",
-//           },
-//         ],
-//       },
-//       resources: 0,
-//       proofOfWork: 2,
-//       rating: 0,
-//       hasGift: true,
-//     },
-//   ],
-// },
+{
+  "id": "d379d82b-e116-4b67-8128-670916e6bb42",
+  "title": "Internet Of Things (IOT) And Robotics",
+  "description": "Imagine a world where devices communicate seamlessly, revolutionizing industries and everyday life. The Internet of Things (IoT) bridges the physical and digital realms, enabling innovations in smart homes, healthcare, manufacturing, and more. The IoT Interest Group is your gateway to exploring this transformative technology, mastering its tools, and collaborating with like-minded innovators.",
+  "bannerImage": "/assets/IG/Cover/8.webp",
+  "memberCount": 1800,
+  "memberSince": "August 2021",
+  "isPublic": true,
+  "officeHours": "Sunday 7:30PM @Discord Lobby",
+  "thinkTankMeeting": "1st Saturday 7:00 PM @Google Meet",
+  "interestGroupLeads": {
+    "description": "Interest group leads manage the activities and events within interest groups and serve as a point of contact for students interested in getting involved. Students can connect with these leads to learn about opportunities within their interests",
+    "leads": [
+      {
+        "name": "Vaishnav RS",
+        "institution": "Marian Engineering College",
+        "linkedin": "http://linkedin.com/in/vaishnav-rs-9079a8164/",
+        "image": "/assets/IG/IoT/Leads/vaishnav.webp",
+        "expertise": ["Embedded Systems", "IoT Prototyping"]
+      },
+      {
+        "name": "Akhilesh A S",
+        "institution": "Trinity College of Engineering",
+        "linkedin": "https://www.linkedin.com/in/akhilesh-a-s-90abbb293/",
+        "image": "/assets/IG/IoT/Leads/Akhilesh.webp",
+        "expertise": ["Embedded Systems", "IoT Prototyping"]
+      }
+    ]
+  },
+  "peopleToFollow": [
+    { "name": "Dr. Mazlan Abbas", "link": "https://www.linkedin.com/in/mazlan?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BZANm3syKSpWPzCEkBX32bA%3D%3D" },
+    { "name": "Stacey Higginbotham", "link": "https://www.linkedin.com/in/staceyhigginbotham" },
+    { "name": "Daniel Elizalde", "link": "https://www.linkedin.com/in/danielelizalde?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B%2FGvF8xq3RQqhVm9QniGKUQ%3D%3D" },
+    { "name": "Borja Gómez Zarceño", "link": "https://www.linkedin.com/in/borja-g%C3%B3mez-zarce%C3%B1o-7574674b?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bcju9Hl%2BWSquCf2s1tahdlw%3D%3D" }
+  ],
+  "blogsToFollow": [
+    { "name": "IoT for All", "link": "https://www.iotforall.com/" },
+    { "name": "Hackster.io", "link": "https://www.hackster.io/" },
+    { "name": "Arduino Blog", "link": "https://blog.arduino.cc/" }
+  ],
+  "topKeywords": [
+    "IoT",
+    "Internet of Things",
+    "sensors",
+    "MQTT",
+    "Arduino",
+    "Raspberry Pi",
+    "LoRaWAN",
+    "cloud computing",
+    "smart devices",
+    "IoT security",
+    "edge computing",
+    "IoT trends in 2024"
+  ],
+  "prerequisites": [
+    "Master the Basics: Understand sensors, actuators, microcontrollers (like Arduino and Raspberry Pi), and power systems.",
+    "Learn basic circuit design and component interfacing.",
+    "Programming Skills: Learn C/C++ for microcontroller programming.",
+    "Explore Python for data analysis and IoT scripting.",
+    "Understand IoT Protocols: Explore protocols like MQTT, HTTP, CoAP, and LoRaWAN.",
+    "Familiarize yourself with cloud platforms such as AWS IoT Core and Google IoT Cloud.",
+    "Build Mini Projects: Start small, for example, create a smart home temperature monitor using an ESP8266 module and a DHT11 sensor.",
+    "Marketing and Presentation Skills (optional but valuable): Learn to communicate your IoT solutions effectively to diverse audiences."
+  ],
+  "tabs": {
+    "about": {
+      "foundationDeck": "https://mulearnfoundation.notion.site/11e59e69b1bf804cb2f0ddce810b0ada?pvs=25",
+      "description": "Imagine a world where devices communicate seamlessly, revolutionizing industries and everyday life. The Internet of Things (IoT) bridges the physical and digital realms, enabling innovations in smart homes, healthcare, manufacturing, and more. The IoT Interest Group is your gateway to exploring this transformative technology, mastering its tools, and collaborating with like-minded innovators.",
+      "opportunities": [
+        {
+          "title": "IoT Developer",
+          "description": "Create and deploy IoT applications."
+        },
+        {
+          "title": "Embedded Systems Engineer",
+          "description": "Design hardware and firmware for IoT devices."
+        },
+        {
+          "title": "IoT Data Analyst",
+          "description": "Analyze data from connected devices to extract insights."
+        },
+        {
+          "title": "IoT Architect",
+          "description": "Plan and design scalable IoT infrastructures."
+        },
+        {
+          "title": "Cloud Integration Specialist",
+          "description": "Connect IoT devices to cloud systems."
+        }
+      ]
+    },
+    "forum": { "placeholder": "Forum discussions will be displayed here." },
+    "members": [
+      {
+        "id": 1,
+        "name": "Priya Sharma",
+        "muid": "priya789",
+        "profile_pic": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=40&h=40&q=80",
+        "karma": "1500",
+        "interest_groups": [
+          { "id": "a8f2d9c1-3e5b-4f12-9a7e-5c8d2b1e4f9a", "name": "Internet of Things Interest Group" }
+        ],
+        "organizations": [
+          { "id": "org-6", "title": "Tech University", "code": "TU01", "org_type": "College" }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Amit Patel",
+        "muid": "amit456",
+        "profile_pic": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=40&h=40&q=80",
+        "karma": "1100",
+        "interest_groups": [
+          { "id": "a8f2d9c1-3e5b-4f12-9a7e-5c8d2b1e4f9a", "name": "Internet of Things Interest Group" }
+        ],
+        "organizations": [
+          { "id": "org-7", "title": "Engineering Academy", "code": "EA01", "org_type": "College" }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Sara Khan",
+        "muid": "sara123",
+        "profile_pic": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=40&h=40&q=80",
+        "karma": "2000",
+        "interest_groups": [
+          { "id": "a8f2d9c1-3e5b-4f12-9a7e-5c8d2b1e4f9a", "name": "Internet of Things Interest Group" }
+        ],
+        "organizations": [
+          { "id": "org-8", "title": "IoT Institute", "code": "IOT01", "org_type": "College" }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Vikram Singh",
+        "muid": "vikram101",
+        "profile_pic": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=40&h=40&q=80",
+        "karma": "900",
+        "interest_groups": [
+          { "id": "a8f2d9c1-3e5b-4f12-9a7e-5c8d2b1e4f9a", "name": "Internet of Things Interest Group" }
+        ],
+        "organizations": [
+          { "id": "org-9", "title": "Tech College", "code": "TC01", "org_type": "College" }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Neha Gupta",
+        "muid": "neha202",
+        "profile_pic": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&q=80",
+        "karma": "1700",
+        "interest_groups": [
+          { "id": "a8f2d9c1-3e5b-4f12-9a7e-5c8d2b1e4f9a", "name": "Internet of Things Interest Group" }
+        ],
+        "organizations": [
+          { "id": "org-10", "title": "Innovation Hub", "code": "IH01", "org_type": "College" }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "id": "evt-006",
+        "title": "IoT Hackathon 2025",
+        "link": "https://iotcommunity.com/events/hackathon",
+        "venue": "Online via Discord",
+        "eventType": "Online",
+        "date": "March 20, 2025",
+        "time": "10:00 - 18:00 GMT",
+        "image": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800"
+      },
+      {
+        "id": "evt-007",
+        "title": "Smart Cities Workshop",
+        "link": "https://iotcommunity.com/events/smart-cities",
+        "venue": "Bangalore Tech Park",
+        "eventType": "Offline",
+        "date": "April 15, 2025",
+        "time": "09:00 - 13:00 IST",
+        "image": "/assets/interestgroup_assets/IoTWorkshop1.webp"
+      },
+      {
+        "id": "evt-008",
+        "title": "IoT Security Webinar",
+        "link": "https://iotcommunity.com/events/security-webinar",
+        "venue": "Online via Zoom",
+        "eventType": "Online",
+        "date": "May 10, 2025",
+        "time": "14:00 - 15:30 GMT",
+        "image": "/assets/interestgroup_assets/IoTWorkshop2.webp"
+      },
+      {
+        "id": "evt-009",
+        "title": "Edge Computing Summit",
+        "link": "https://iotcommunity.com/events/edge-computing",
+        "venue": "Mumbai Convention Center",
+        "eventType": "Offline",
+        "date": "June 25, 2025",
+        "time": "10:00 - 16:00 IST",
+        "image": "/assets/interestgroup_assets/IoTWorkshop3.webp"
+      },
+      {
+        "id": "evt-010",
+        "title": "IoT Prototyping Bootcamp",
+        "link": "https://iotcommunity.com/events/prototyping-bootcamp",
+        "venue": "Online via Google Meet",
+        "eventType": "Online",
+        "date": "July 18, 2025",
+        "time": "13:00 - 16:00 GMT",
+        "image": "/assets/interestgroup_assets/IoTWorkshop1.webp"
+      }
+    ],
+    "learningPaths": [
+      {
+        "level": "Level 4",
+        "cards": [
+          {
+            "title": "Understanding IOT",
+            "data": {
+              "description": "The Internet of Things (IoT) refers to a system of interconnected devices that communicate and share data over the internet, enabling smarter automation, real-time decision-making, and innovation across industries. These devices ranging from smart home gadgets and wearable technology to industrial sensors and environmental monitors are equipped with sensors to collect data and actuators to perform actions. IoT systems rely on connectivity through protocols like Wi-Fi, Bluetooth, or cellular networks, processing data locally via edge computing or in the cloud.",
+              "whatYouWillLearn": [
+                "Learners will gain a comprehensive understanding of the fundamentals of IoT, including its basics, architecture, significance, key components, diverse applications, and the importance of security in IoT systems."
+              ],
+              "challenges": [
+                {
+                  "title": "Introduction Course",
+                  "resources": [
+                    "https://www.netacad.com/courses/introduction-iot?courseLang=en-US"
+                  ],
+                  "description": "IoT and Digital Transformation Task Explore the transformative potential of IoT by completing the Introduction to IoT course. This task will help you understand how IoT is driving digital transformation across various industries and expanding career opportunities in the future. After completing this task, Post your certificate in the internet-of-things-and-robotics channel using the hashtag #cl-iot-cisco to avail 200 karma points."
+                }
+              ]
+            },
+            "resources": 1,
+            "proofOfWork": 2,
+            "rating": 0,
+            "hasGift": true
+          },
+          {
+            "title": "Programming for IOT",
+            "data": {
+              "description": "Programming in the Internet of Things (IoT) involves creating software to manage and control devices, sensors, and networks that communicate seamlessly to perform tasks and make intelligent decisions. IoT programming spans a wide range of applications, from home automation to industrial systems, healthcare, and smart cities.",
+              "whatYouWillLearn": [
+                "Python in IoT: Python has become a dominant language for IoT programming due to its simplicity, versatility, and extensive library ecosystem. It is particularly well-suited for prototyping, high-level applications, and interfacing with cloud platforms.",
+                "C in IoT: C is a foundational language in IoT programming, particularly for embedded systems, due to its low-level access to hardware, efficient memory usage, and speed. It is often used to develop firmware and real-time applications for microcontrollers and other resource-constrained devices."
+              ],
+              "challenges": [
+                {
+                  "title": "Simulate Temperature Monitoring System",
+                  "resources": [
+                    "https://www.youtube.com/watch?v=8jMr94B8iN0"
+                  ],
+                  "description": "Enhance your IoT programming skills by creating a C program that simulates a temperature monitoring system. Your program should read temperature values at regular intervals, display warnings if the temperature exceeds a threshold, and log readings to a file using fscanf and fprintf. Submit your code and output screenshots in the #internet-of-things-and-robotics channel with the hashtag #cl-temp-monitor(c) to earn 200 Karma Points."
+                },
+                {
+                  "title": "Simulate Blinking LED with PWM",
+                  "resources": [],
+                  "description": "Write a C program to simulate LED blinking using Pulse Width Modulation (PWM). The program should print \"LED ON\" and \"LED OFF\" based on the duty cycle, allow user input for frequency and duty cycle, and generate a PWM signal for 10 seconds. Use sleep or delay functions for timing and implement input validation. Submit your code and output screenshots in the #internet-of-things-and-robotics channel with the hashtag #cl-led-simulate(c) to earn 200 Karma Points."
+                }
+              ]
+            },
+            "resources": 1,
+            "proofOfWork": 2,
+            "rating": 0,
+            "hasGift": true
+          },
+          {
+            "title": "Basics of Electronics",
+            "data": {
+              "description": "Electronics are crucial for enabling IoT devices to function by connecting hardware with software. Core components include sensors, actuators, microcontrollers, and communication modules. Microcontrollers like ESP32 and Arduino process data, while sensors gather environmental information and actuators perform actions. Communication modules (e.g., Wi-Fi, Bluetooth) allow devices to connect and exchange data. Together, these elements form the foundation of low-power, efficient IoT systems used across industries.",
+              "whatYouWillLearn": [
+                "Learners will develop a foundational understanding of electronics, including an introduction to actuators, microcontrollers, wireless communication, sensors, and power sources."
+              ],
+              "challenges": [
+                {
+                  "title": "Basics of Electronics",
+                  "resources": [
+                    "https://www.youtube.com/watch?v=r-X9coYTOV4&list=PLah6faXAgguOeMUIxS22ZU4w5nDvCl5gs",
+                    "https://www.intuz.com/blog/actuators-in-iot-guide",
+                    "https://youtu.be/Kg0LYcQV8Uk?si=UvXcMqWfx-v99KJT"
+                  ],
+                  "description": "Gain a strong foundation in IoT by understanding key electronic components such as circuits, resistors, capacitors, actuators, microcontrollers, wireless communication, sensors, and power sources. Create a detailed PowerPoint presentation covering these concepts and upload it to SlideShare. Share the SlideShare link in the #internet-of-things-and-robotics channel with the hashtag #cl-iot-BOEppt to earn 100 Karma Points!"
+                }
+              ]
+            },
+            "resources": 3,
+            "proofOfWork": 1,
+            "rating": 0,
+            "hasGift": true
+          },
+          {
+            "title": "Sensors and Actuators",
+            "data": {
+              "description": "In the Internet of Things (IoT), sensors and actuators play critical roles in bridging the gap between the physical and digital worlds. They enable devices to perceive and interact with their environment, making IoT systems smarter and more responsive.",
+              "whatYouWillLearn": [
+                "Learners will acquire knowledge about the various types of sensors used in IoT systems, the different types of actuators utilized in IoT applications, and the fundamentals of wireless sensor networks that enable seamless data collection and communication."
+              ],
+              "challenges": [
+                {
+                  "title": "Basics of Sensors, Actuators, and WSN",
+                  "resources": [
+                    "https://www.geeksforgeeks.org/sensors-in-internet-of-thingsiot/",
+                    "https://robocraze.com/blogs/post/types-of-sensors-in-iot",
+                    "https://www.geeksforgeeks.org/wireless-sensor-network-wsn/",
+                    "https://youtu.be/aGTmve5T2KA"
+                  ],
+                  "description": "Understand the role of sensors and actuators in IoT, including their types, working principles, and applications. Learn about Wireless Sensor Networks (WSN) and their importance in IoT communication. Create a PowerPoint presentation covering these topics and upload it to SlideShare. Share the SlideShare link in the #internet-of-things-and-robotics channel with the hashtag #cl-iot-SAppt to earn 100 Karma Points."
+                }
+              ]
+            },
+            "resources": 4,
+            "proofOfWork": 1,
+            "rating": 0,
+            "hasGift": true
+          }
+        ]
+      },
+      {
+        "level": "Level 5",
+        "cards": [
+          {
+            "title": "Hardware for IOT",
+            "data": {
+              "description": "The Internet of Things (IoT) is an interconnected network of devices that collect, process, and exchange data. The hardware in IoT devices is essential for their functionality, encompassing microcontrollers, connectivity options, sensors, actuators, and power management. This section explores key hardware platforms for IoT, including Arduino, Raspberry Pi, other hardware options, IoT hardware design, embedded systems, and power management.",
+              "whatYouWillLearn": [
+                "Learners will gain knowledge of IoT hardware platforms, including an introduction to Arduino, Raspberry Pi, and other essential IoT hardware systems."
+              ],
+              "challenges": [
+                {
+                  "title": "Basic Projects Using Arduino",
+                  "resources": [
+                    "https://youtu.be/BLrHTHUjPuw",
+                    "https://youtu.be/e9WXf-wRTNg",
+                    "https://youtu.be/CvqHkXeXN3M",
+                    "https://www.youtube.com/watch?v=0Lhgd8PQmn0",
+                    "https://www.youtube.com/watch?v=dJJAQxyryoQ",
+                    "https://youtu.be/C_pWNQ6H9EE?si=RyMyx_oNPVYBmQEb",
+                    "https://www.youtube.com/watch?v=hNmacZoweqY"
+                  ],
+                  "description": "Complete up to 6 Arduino projects, earning 85 Karma Points per project (max 510 points). Start by watching this https://youtu.be/BLrHTHUjPuw tutorial to understand Arduino basics. Projects: 1. Blink an LED 2. LCD Display 3. Ultrasonic Distance Meter 4. Humidity Detector 5. Servo Motor Control 6. PIR Motion Detection. Submission: For WokWi Simulations: Share the project URL. For Hands-On Projects: Share a working video. Post in #internet-of-things-and-robotics with the relevant hashtag: Blink an LED – #cl-iot-arduinoprojects1.1, LCD Display – #cl-iot-arduinoprojects1.2, Ultrasonic Distance Meter – #cl-iot-arduinoprojects1.3, Humidity Detector – #cl-iot-arduinoprojects1.4, Servo Motor Control – #cl-iot-arduinoprojects1.5, PIR Motion Detection – #cl-iot-arduinoprojects1.6. Earn up to 510 Karma Points."
+                },
+                {
+                  "title": "Build Your Own Arduino Projects",
+                  "resources": [],
+                  "description": "Create two Arduino-based projects (simulation or hands-on) and earn 300 Karma Points per project (max 600 points). This task will enhance your practical understanding of Arduino. Projects: Security System with Motion Detection – Use a PIR sensor, buzzer, and LED to trigger an alarm when motion is detected. Automatic Lighting System – Use an LDR and LED to turn lights on in the dark and off in bright conditions. Submission: WokWi Simulations: Share the project URL. Hands-On Projects: Share a working video. Post in #internet-of-things-and-robotics with the relevant hashtag: #cl-iot-arduinoprojects2.1 (Security System), #cl-iot-arduinoprojects2.2 (Lighting System). Earn up to 600 Karma Points."
+                },
+                {
+                  "title": "Basic Projects Using Raspberry Pi",
+                  "resources": [
+                    "https://youtu.be/dkhpc1pn-8s?list=PLLSegLrePWgLzBgQqDJvgZ4ewbpCnuare",
+                    "https://youtu.be/e9WXf-wRTNg?si=Q2dX4jO2xB1Pi-BM",
+                    "https://www.youtube.com/watch?v=zE1J8F9U_jc&list=PLQFhP0-TLBMeUHHpPNt1UH2YA8mIua-Ag"
+                  ],
+                  "description": "Start by watching Basics of Raspberry Pi https://youtu.be/dkhpc1pn-8s?list=PLLSegLrePWgLzBgQqDJvgZ4ewbpCnuare to understand the fundamentals before diving into the projects. Complete two Raspberry Pi projects using WokWi and earn 250 Karma Points per project (max 500 points). Projects: Ultrasonic Sensor with Raspberry Pi – Measure distances using an ultrasonic sensor. LED Blinking & LDR Sensor – Control an LED and interface an LDR sensor. Submission: WokWi Simulations: Share the project URL. Post in #internet-of-things-and-robotics with the relevant hashtag: #cl-iot-BasicRpi1 (Ultrasonic Sensor), #cl-iot-BasicRpi1.2 (LED & LDR). Earn up to 500 Karma Points."
+                },
+                {
+                  "title": "Exploring IoT with NodeMCU 8266 & ESP32",
+                  "resources": [
+                    "https://randomnerdtutorials.com/getting-started-with-esp8266-wifi-transceiver-review/",
+                    "https://youtu.be/YN522_npNqs",
+                    "https://www.circuitschools.com/what-is-esp32-how-it-works-and-what-you-can-do-with-esp32/",
+                    "https://www.youtube.com/watch?v=AitCKcyjHuQ&t=105s"
+                  ],
+                  "description": "Before wrapping up Level 5, dive into NodeMCU 8266 and ESP32, the key microcontrollers for WiFi-enabled IoT projects. These devices enable data sharing, remote control, and seamless connectivity with minimal coding. Master their capabilities with these resources. Unlock their full potential and elevate your IoT projects."
+                }
+              ]
+            },
+            "resources": 14,
+            "proofOfWork": 4,
+            "rating": 0,
+            "hasGift": true
+          }
+        ]
+      },
+      {
+        "level": "Level 6",
+        "cards": [
+          {
+            "title": "Network Protocols for IOT",
+            "data": {
+              "description": "The Internet of Things (IoT) ecosystem relies on a wide array of network protocols to facilitate seamless communication between devices. These protocols enable data exchange, ensuring connectivity, reliability, and security. Here’s an in-depth look at the primary protocols used in IoT communication.",
+              "whatYouWillLearn": [
+                "Learners will gain an understanding of the basics of TCP/IP, the role of Bluetooth in IoT, and key communication protocols such as MQTT, Zigbee, Z-Wave, and LoRaWAN, which enable seamless connectivity in IoT systems."
+              ],
+              "challenges": [
+                {
+                  "title": "Bluetooth Controlled LED Project",
+                  "resources": [
+                    "https://www.youtube.com/watch?v=2QGgEk20RXM",
+                    "https://www.geeksforgeeks.org/bluetooth/",
+                    "https://www.youtube.com/watch?v=NXlyo0goBrU",
+                    "https://www.youtube.com/watch?v=irq66O8NdvA",
+                    "https://www.youtube.com/watch?v=c1st5cVRRzo&t=86s",
+                    "https://www.youtube.com/watch?v=cH46z4ElJ6o",
+                    "https://www.youtube.com/watch?v=Qd7kMGaQ5vI"
+                  ],
+                  "description": "Advance your IoT expertise by developing a Bluetooth-controlled LED system using an Arduino board and a Bluetooth module (HC-05/HC-06). Before starting, review key concepts such as TCP/IP, Bluetooth, MQTT, Zigbee, and LoRaWAN to build a strong foundation. The project requires establishing a Bluetooth connection with a mobile device to send commands (\"ON\"/\"OFF\") for LED control. You can complete this task either by simulating the project using WokWi or a similar simulator or by physically building it with Arduino components. For submission, share the WokWi project URL for simulations or upload a video demonstration for physical builds. Post your submission in the #internet-of-things-and-robotics channel using the hashtag #cl-iot-bluetooth. A successful submission will earn 200 Karma Points."
+                }
+              ]
+            },
+            "resources": 7,
+            "proofOfWork": 1,
+            "rating": 0,
+            "hasGift": true
+          },
+          {
+            "title": "Cloud Platforms used in IOT",
+            "data": {
+              "description": "Cloud platforms in IoT are services that provide infrastructure, tools, and frameworks to connect IoT devices, manage their data, and enable smart decision-making. They bridge the gap between IoT hardware (sensors, actuators, and devices) and applications by offering scalable computing and storage solutions.",
+              "whatYouWillLearn": [
+                "Learners will gain knowledge of IoT development platforms, including an introduction to Blynk and the Arduino IoT Cloud, enabling them to design, monitor, and manage IoT projects effectively."
+              ],
+              "challenges": [
+                {
+                  "title": "Home Automation",
+                  "resources": [
+                    "https://www.youtube.com/watch?v=YULg0IoqoZM",
+                    "https://www.youtube.com/watch?v=qQGM5oBKAZc"
+                  ],
+                  "description": "In this challenge, design a Home Automation System using an ESP32 microcontroller. Before starting, review the Blynk Tutorial - https://www.youtube.com/watch?v=YULg0IoqoZM and Azure Tutorial - https://www.youtube.com/watch?v=qQGM5oBKAZc to understand the key concepts. The system should connect to a Wi-Fi network and allow users to control appliances such as LEDs or a relay module through a web interface, smartphone app, or cloud platform like Blynk, Firebase, or MQTT. It must include device control for turning appliances on and off, status monitoring to display the state of connected devices, and optional automation features like scheduling or event-based triggers (e.g., turning on lights at sunset). Additionally, logging device state changes to the serial monitor and integrating a dashboard for performance visualization can be included. For submission, simulated projects should be uploaded with a WokWi or similar simulation URL, while physical projects require a working video demonstration. Results should be shared in the #internet-of-things-and-robotics channel using the hashtag #cl-home-automation, with successful submissions earning 500 Karma Points."
+                },
+                {
+                  "title": "Gas Leakage Warning System",
+                  "resources": [],
+                  "description": "Design a Gas Leakage Warning System using a microcontroller to detect and alert hazardous gas levels. The system should use an MQ-5/MQ-6 gas sensor to monitor gas concentrations and trigger a buzzer if the levels exceed a predefined threshold. It should include a visual warning system with a green LED for normal conditions and a red LED for high gas levels. The gas levels should be displayed on an LCD or serial monitor, and a reset button should be implemented to stop the buzzer and clear alerts after resolving the issue. Additionally, integrate a Wi-Fi module (ESP32 or ESP8266) to send notifications to a smartphone. For submission, simulated projects must be uploaded with a WokWi or similar simulation URL, while physical projects require a working video demonstration. Share your results in the #internet-of-things-and-robotics channel using the hashtag #cl-gas-warning, with successful submissions earning 600 Karma Points."
+                }
+              ]
+            },
+            "resources": 2,
+            "proofOfWork": 2,
+            "rating": 0,
+            "hasGift": true
+          }
+        ]
+      }
+    ],
+    "mentors": [
+      {
+        "id": "m-002",
+        "name": "Nizamudeen Yooncekutty",
+        "role": "Software Developer @ UST",
+        "linkedin": "https://www.linkedin.com/in/nizamudeen-yooncekutty-406181339/",
+        "image": "/assets/IG/IoT/Mentors/Nizamudeen.webp",
+        "expertise": ["IoT Development", "Cloud Integration"]
+      },
+      {
+        "id": "m-003",
+        "name": "Rajeevan A B",
+        "role": "Embedded system Developer @ Elsys Intelligent Devices",
+        "linkedin": "https://www.linkedin.com/in/rajeevan-a-b-4a2196181/",
+        "image": "/assets/IG/IoT/Mentors/Rajeevan.webp",
+        "expertise": ["Embedded Systems", "IoT Hardware"]
+      }
+    ]
+  },
+  "communityPartners": [
+    {
+      "id": "cp-002",
+      "title": "Veda IIT",
+      "image": "/assets/IG/IoT/Community Partners/Veda IIT.jpg",
+      "link": ""
+    },
+    {
+      "id": "cp-003",
+      "title": "Arduino",
+      "image": "/assets/IG/IoT/Community Partners/arduino.jpg",
+      "link": ""
+    }
+  ],
+  "partnerCompanies": [
+    {
+      "id": "pc-002",
+      "title": "Tokoh Design Studio",
+      "image": "https://www.svgrepo.com/show/452202/figma.svg",
+      "link": "https://tokohstudio.com"
+    }
+  ]
+},
 
   // Human Resources Interest Group
   {
@@ -2524,119 +2778,110 @@ export const interestGroups: InterestGroupData[] = [
       ],
       learningPaths: [
         {
-      level: "Level 4",
-      cards: [
-        {
-          title: "HR Fundamentals",
-          data: {
-            description:
-              "HR Fundamentals provides a foundational understanding of Human Resource Management (HRM), essential for building a successful career in people management. This course covers key HR functions such as recruitment, onboarding, employee engagement, performance management, compliance, and workforce development. Participants will learn the core principles of creating a positive workplace culture, managing talent effectively, and aligning HR practices with organizational goals. Ideal for aspiring HR professionals and managers, this program equips learners with practical skills to navigate real-world HR challenges and contribute to business success.",
-            whatYouWillLearn: ["Role of HR in an organization"],
-            challenges: [
-              {
-                title: "Define the role of HR in an Organisation",
-                resources: [],
-                description:
-                  "Explore the critical role Human Resources (HR) plays in organizations by understanding its functions and applying HR practices to solve a real-world organizational challenge. This task will help you think strategically about workforce management and its impact on organizational success.  ",
+          "level": "Level 4",
+          "cards": [
+            {
+              "title": "HR Fundamentals",
+              "data": {
+                "description": "HR Fundamentals provides a foundational understanding of Human Resource Management (HRM), essential for building a successful career in people management. This course covers key HR functions such as recruitment, onboarding, employee engagement, performance management, compliance, and workforce development. Participants will learn the core principles of creating a positive workplace culture, managing talent effectively, and aligning HR practices with organizational goals. Ideal for aspiring HR professionals and managers, this program equips learners with practical skills to navigate real-world HR challenges and contribute to business success.",
+                "whatYouWillLearn": [
+                  "Role of HR in an organisation"
+                ],
+                "challenges": [
+                  {
+                    "title": "Define the Role of HR in an Organisation",
+                    "resources": [],
+                    "description": "The Role of HR in an Organization: Real-World Application Task Explore the critical role Human Resources (HR) plays in organizations by understanding its functions and applying HR practices to solve a real-world organizational challenge. This task will help you think strategically about workforce management and its impact on organizational success. Karma Points: 200 Hashtag: #cl-mgmt-hr"
+                  }
+                ]
               },
-            ],
-          },
-          resources: 0,
-          proofOfWork: 1,
-          rating: 0,
-          hasGift: true,
-        },
-      ],
-    },
-    {
-      level: "Level 5",
-      cards: [
-        {
-          title: "Talent Acquisition",
-          data: {
-            description:
-              "Think talent acquisition is just posting job ads and picking resumes? Think again! Talent Acquisition is the art of finding the right people for the right roles at the right time. It’s not just about filling vacancies; it’s about shaping a company's future by bringing in rockstar performers who align with its goals and culture. In this session, we'll dive into how to identify top talent, craft irresistible job offers, and create a hiring process that's both effective and engaging. You'll also explore modern recruitment strategies, from leveraging social media to making data-driven decisions. Because let's face it — finding great talent is like finding a diamond in the rough, and we’re here to teach you how to shine as a Talent Acquisition pro!",
-            whatYouWillLearn: [
-              "Strategic Workforce Planning,Employer Branding & Recruitment Marketing",
-            ],
-            challenges: [
-              {
-                title:
-                  "Create a workforce plan for your current or a hypothetical organization",
-                resources: ["https://youtu.be/mR9eICQJLXA?si=otvDfvtjlkdphHVh"],
-                description:
-                  "Develop a strategic workforce plan for your current organization or a hypothetical one. The workforce plan should identify current talent gaps, future hiring needs, and strategies to align workforce management with organizational goals. This task will help you think proactively about workforce planning and how it drives long-term business success",
-              },
-              {
-                title:
-                  "Create an onboarding checklist for new hires that includes key activities and milestones during their first 90 days.",
-                resources: [],
-                description:
-                  "Develop a comprehensive onboarding checklist for new hires that outlines key activities and milestones during their first 90 days in the organization. This task will help you think critically about the onboarding process and how it contributes to employee engagement, productivity, and retention.",
-              },
-            ],
-          },
-          resources: 1,
-          proofOfWork: 2,
-          rating: 0,
-          hasGift: true,
+              "resources": 0,
+              "proofOfWork": 1,
+              "rating": 0,
+              "hasGift": true
+            }
+          ]
         },
         {
-          title: "HR Policy and Procedures",
-          data: {
-            description:
-              "An organization without clear policies is like a ship without a compass — destined for chaos! HR Policies and Procedures are the backbone of a well-structured workplace, ensuring that everyone is on the same page when it comes to company values, rules, and expectations. In this session, you'll learn how to craft practical HR policies that cover everything from employee conduct and attendance to leave management and workplace safety. We’ll also explore procedures that help maintain consistency, fairness, and legal compliance, making your organization a great place to work. Master the art of creating policies that are more than just paperwork — they’re the playbook for a thriving, productive, and happy workforce! ",
-            whatYouWillLearn: ["Policy Familiarization and Comparison"],
-            challenges: [
-              {
-                title:
-                  "Obtain HR policy documents from two different organizations (or hypothetical ones) and compare them on key points like leave policy, code of conduct, and performance management.",
-                resources: [],
-                description:
-                  "Develop a content calendar for your company’s social media channels focused on showcasing your employer brand. The calendar should include key themes such as employee stories, company culture, and behind-the-scenes content to highlight what makes your organization a great place to work. This task will help you think strategically about employer branding and how to engage potential candidates and employees through social media.",
+          "level": "Level 5",
+          "cards": [
+            {
+              "title": "Talent Acquisition",
+              "data": {
+                "description": "Think talent acquisition is just posting job ads and picking resumes? Think again! Talent Acquisition is the art of finding the right people for the right roles at the right time. It’s not just about filling vacancies; it’s about shaping a company's future by bringing in rockstar performers who align with its goals and culture. In this session, we'll dive into how to identify top talent, craft irresistible job offers, and create a hiring process that's both effective and engaging. You'll also explore modern recruitment strategies, from leveraging social media to making data-driven decisions. Because let's face it — finding great talent is like finding a diamond in the rough, and we’re here to teach you how to shine as a Talent Acquisition pro!",
+                "whatYouWillLearn": [
+                  "Strategic Workforce Planning, Employer Branding & Recruitment Marketing"
+                ],
+                "challenges": [
+                  {
+                    "title": "Create a Workforce Plan for Your Current or a Hypothetical Organization",
+                    "resources": [],
+                    "description": "Create a workforce plan for your current or a hypothetical organization, outlining current talent gaps, future hiring needs, and the alignment with business goals. Develop a strategic workforce plan for your current organization or a hypothetical one. The workforce plan should identify current talent gaps, future hiring needs, and strategies to align workforce management with organizational goals. This task will help you think proactively about workforce planning and how it drives long-term business success. Karma Points: 500 Hashtag: #cl-mgmt-strategic"
+                  },
+                  {
+                    "title": "Create an Onboarding Checklist for New Hires",
+                    "resources": [],
+                    "description": "Develop a comprehensive onboarding checklist for new hires that outlines key activities and milestones during their first 90 days in the organization. This task will help you think critically about the onboarding process and how it contributes to employee engagement, productivity, and retention. Karma Points: 500 Hashtag: #cl-mgmt-onboarding"
+                  }
+                ]
               },
-            ],
-          },
-          resources: 0,
-          proofOfWork: 1,
-          rating: 0,
-          hasGift: true,
+              "resources": 0,
+              "proofOfWork": 2,
+              "rating": 0,
+              "hasGift": true
+            },
+            {
+              "title": "HR Policy and Procedure",
+              "data": {
+                "description": "An organization without clear policies is like a ship without a compass — destined for chaos! HR Policies and Procedures are the backbone of a well-structured workplace, ensuring that everyone is on the same page when it comes to company values, rules, and expectations. In this session, you'll learn how to craft practical HR policies that cover everything from employee conduct and attendance to leave management and workplace safety. We’ll also explore procedures that help maintain consistency, fairness, and legal compliance, making your organization a great place to work. Master the art of creating policies that are more than just paperwork — they’re the playbook for a thriving, productive, and happy workforce!",
+                "whatYouWillLearn": [
+                  "Policy Familiarization and Comparison"
+                ],
+                "challenges": [
+                  {
+                    "title": "Compare HR Policy Documents from Two Organizations",
+                    "resources": [],
+                    "description": "Obtain HR policy documents from two different organizations (or hypothetical ones) and compare them on key points like leave policy, code of conduct, and performance management. Develop a content calendar for your company’s social media channels focused on showcasing your employer brand. The calendar should include key themes such as employee stories, company culture, and behind-the-scenes content to highlight what makes your organization a great place to work. This task will help you think strategically about employer branding and how to engage potential candidates and employees through social media. Karma Points: 500 Hashtag: #cl-mgmt-policy"
+                  }
+                ]
+              },
+              "resources": 0,
+              "proofOfWork": 1,
+              "rating": 0,
+              "hasGift": true
+            }
+          ]
         },
-      ],
-    },
-    {
-      level: "Level 6",
-      cards: [
         {
-          title: "Employee Engagement and Organizational Success",
-          data: {
-            description:
-              "A company's greatest asset isn’t its products or services — it’s its people! But what keeps employees motivated, inspired, and performing at their best? The secret lies in Employee Engagement. This session dives into strategies to create a workplace where employees feel valued, connected, and driven to contribute their best. From fostering a positive work culture to recognizing achievements and promoting growth, you’ll discover how engaged employees can boost productivity, innovation, and long-term success. After all, happy employees lead to happy customers — and that’s the recipe for organizational success. Let’s learn how to turn your workforce into your biggest competitive advantage!",
-            whatYouWillLearn: [" Compensation and Benefits Management"],
-            challenges: [
-              {
-                title:
-                  "Analyze a Pay Structure, Create a sample pay structure for three job roles and explain how it aligns with industry standards.",
-                resources: [],
-                description:
-                  "Create a sample pay structure for three job roles within an organization. Analyze how the pay structure aligns with industry standards and discuss the factors considered in determining the compensation for each role. This task will help you understand the importance of fair and competitive pay in attracting and retaining top talent.",
+          "level": "Level 6",
+          "cards": [
+            {
+              "title": "Employee Engagement and Organizational Success",
+              "data": {
+                "description": "A company's greatest asset isn’t its products or services — it’s its people! But what keeps employees motivated, inspired, and performing at their best? The secret lies in Employee Engagement. This session dives into strategies to create a workplace where employees feel valued, connected, and driven to contribute their best. From fostering a positive work culture to recognizing achievements and promoting growth, you’ll discover how engaged employees can boost productivity, innovation, and long-term success. After all, happy employees lead to happy customers — and that’s the recipe for organizational success. Let’s learn how to turn your workforce into your biggest competitive advantage!",
+                "whatYouWillLearn": [
+                  "Compensation and Benefits Management"
+                ],
+                "challenges": [
+                  {
+                    "title": "Analyze a Pay Structure, Create a Sample Pay Structure for Three Job Roles",
+                    "resources": [],
+                    "description": "Create a sample pay structure for three job roles within an organization. Analyze how the pay structure aligns with industry standards and discuss the factors considered in determining the compensation for each role. This task will help you understand the importance of fair and competitive pay in attracting and retaining top talent. Karma Points: 700 Hashtag: #cl-mgmt-pay"
+                  },
+                  {
+                    "title": "Create a Pay Scale for Entry-Level, Mid-Level, and Senior-Level Roles",
+                    "resources": [],
+                    "description": "In this task, you will explore how to create an appropriate and competitive pay scale for different roles within an organization. This will involve understanding the key factors that influence compensation and applying them to develop a pay structure for a hypothetical company. Karma Points: 700 Hashtag: #cl-mgmt-comp"
+                  }
+                ]
               },
-              {
-                title:
-                  "Create a pay scale for entry-level, mid-level, and senior-level roles in a hypothetical company.",
-                resources: [],
-                description:
-                  "In this task, you will explore how to create an appropriate and competitive pay scale for different roles within an organization. This will involve understanding the key factors that influence compensation and applying them to develop a pay structure for a hypothetical company.",
-              },
-            ],
-          },
-          resources: 0,
-          proofOfWork: 2,
-          rating: 0,
-          hasGift: true,
+              "resources": 0,
+              "proofOfWork": 2,
+              "rating": 0,
+              "hasGift": true
+            }
+          ]
         },
-      ],
-    },
       ],
       thinkTank: [
         {
@@ -2721,7 +2966,7 @@ export const interestGroups: InterestGroupData[] = [
     description:
       "Excited to explore the dynamic world of digital marketing? The Digital Marketing Interest Group empowers you with practical and theoretical knowledge, covering SEO, email marketing, social media management, and analytics. This group is perfect for anyone passionate about creating impactful campaigns and analyzing audience behaviour.",
     bannerImage:
-    "/assets/IG/Cover/5.png",
+    "/assets/IG/Cover/4.webp",
     memberCount: 2700,
     memberSince: "November 2021",
     isPublic: true,
@@ -2875,7 +3120,7 @@ export const interestGroups: InterestGroupData[] = [
                   {
                     title: "Google’s Fundamentals of Digital Marketing course",
                     description:
-                      "Step 1: Visit the page: https://skillshop.exceedlms.com/student/collection/648385-digital-marketing\nStep 2: Create a profile and start the course.\nStep 3: After completing all lessons, post the screenshot of the certificate in the digital-marketing channel with the hashtag #cl-dm-fundamentals to earn 400 karma points.",
+                      "Step 1: Visit the page: https://skillshop.exceedlms.com/student/collection/648385-digital-marketing Step 2: Create a profile and start the course. Step 3: After completing all lessons, post the screenshot of the certificate in the digital-marketing channel with the hashtag #cl-dm-fundamentals to earn 400 karma points.",
                     resources: [
                       "https://skillshop.exceedlms.com/student/collection/648385-digital-marketing",
                     ],
@@ -2883,7 +3128,7 @@ export const interestGroups: InterestGroupData[] = [
                   {
                     title: "Practical Experience in Digital Marketing",
                     description:
-                      "This exercise will help you gain hands-on experience in keyword research, audience segmentation, and understanding customer intent—key skills for any digital marketer.\nStep 1: Understand the scenario as a newly recruited Digital Marketer for an organization that focuses on the following solutions:\n- Digital Marketing Courses (Primary Keyword)\n- Software Training Institutes (Primary Keyword)\n- Gyms in Kazhakootam (Primary Keyword)\n\nStep 2: Conduct research and prepare a detailed report that includes:\n- Understanding Search Patterns & Intent: Analyze what users are searching for and their motivations.\n- Finding Related Keywords: Use tools to identify relevant long-tail and associated keywords.\n- Identifying Segments: Determine and classify the customer segments interested in each solution.\n- Motivations & Interests: Explore the reasons behind searches, including pain points and interests.\n\nStep 3: Refer to the following tools for Keyword Research:\n- Wordstream Free Keyword Tool: https://www.wordstream.com/keywords\n- Backlinko Keyword Tool: https://backlinko.com/tools/keyword\n- Wordtracker: https://www.wordtracker.com/\n\nStep 4: Once you've completed your report, post it in the digital-marketing channel with the hashtag #cl-dm-practexpto to earn 100 karma points.",
+                      "This exercise will help you gain hands-on experience in keyword research, audience segmentation, and understanding customer intent—key skills for any digital marketer. Step 1: Understand the scenario as a newly recruited Digital Marketer for an organization that focuses on the following solutions: - Digital Marketing Courses (Primary Keyword) - Software Training Institutes (Primary Keyword) - Gyms in Kazhakootam (Primary Keyword) Step 2: Conduct research and prepare a detailed report that includes: - Understanding Search Patterns & Intent: Analyze what users are searching for and their motivations. - Finding Related Keywords: Use tools to identify relevant long-tail and associated keywords. - Identifying Segments: Determine and classify the customer segments interested in each solution. - Motivations & Interests: Explore the reasons behind searches, including pain points and interests. Step 3: Refer to the following tools for Keyword Research: - Wordstream Free Keyword Tool: https://www.wordstream.com/keywords - Backlinko Keyword Tool: https://backlinko.com/tools/keyword - Wordtracker: https://www.wordtracker.com/ Step 4: Once you've completed your report, post it in the digital-marketing channel with the hashtag #cl-dm-practexpto to earn 100 karma points.",
                     resources: [
                       "https://www.wordstream.com/keywords",
                       "https://backlinko.com/tools/keyword",
@@ -2893,7 +3138,7 @@ export const interestGroups: InterestGroupData[] = [
                   {
                     title: "Competitive Research Exercise",
                     description:
-                      "This exercise will help you understand the competitive environment and how to position the organization you're working for effectively.\nStep 1: Understand the scenario as a marketing specialist for the following organizations:\n- Udemy (Online Course Provider)\n- Mashupstack (Software Development/Training)\n- Tiger Gym (Fitness Center/Gym)\n- Lenskart (Eyewear Retailer)\n\nStep 2: Conduct competitive research and prepare a detailed report focusing on identifying direct competitors offering similar services. For each organization, shortlist 3-4 key competitors.\n\nStep 3: Prepare a Detailed Competitive Report. Include the following:\n- Competitive Landscape: Overview of the competitors' positioning within the market.\n- USP (Unique Selling Proposition): Key selling points or advantages each competitor claims to offer.\n- Pricing: Gather pricing details for each competitor’s products/services and compare them.\n- Customer Reviews: Research customer reviews on platforms like Google Reviews, Trustpilot, etc., and summarize the sentiment.\n- Offerings: Overview of the main products/services offered by each competitor and how they compare to the respective organizations.\n\nStep 4: Once you've completed your report, post it in the digital-marketing channel with the hashtag #cl-dm-competitive-audit to earn 100 karma points.",
+                      "This exercise will help you understand the competitive environment and how to position the organization you're working for effectively. Step 1: Understand the scenario as a marketing specialist for the following organizations: - Udemy (Online Course Provider) - Mashupstack (Software Development/Training) - Tiger Gym (Fitness Center/Gym) - Lenskart (Eyewear Retailer) Step 2: Conduct competitive research and prepare a detailed report focusing on identifying direct competitors offering similar services. For each organization, shortlist 3-4 key competitors. Step 3: Prepare a Detailed Competitive Report. Include the following: - Competitive Landscape: Overview of the competitors' positioning within the market. - USP (Unique Selling Proposition): Key selling points or advantages each competitor claims to offer. - Pricing: Gather pricing details for each competitor’s products/services and compare them. - Customer Reviews: Research customer reviews on platforms like Google Reviews, Trustpilot, etc., and summarize the sentiment. - Offerings: Overview of the main products/services offered by each competitor and how they compare to the respective organizations. Step 4: Once you've completed your report, post it in the digital-marketing channel with the hashtag #cl-dm-competitive-audit to earn 100 karma points.",
                     resources: [
                       "https://www.udemy.com",
                       "https://mashupstack.com",
@@ -3010,7 +3255,7 @@ export const interestGroups: InterestGroupData[] = [
                   {
                     title: "Optimize Google My Business (GMB)",
                     description:
-                      'Set up and optimize a Google My Business profile to boost local search visibility.\n\nSteps:\n\n1. Search for or Create a GMB Listing\nLook up the business on Google My Business.\nIf no listing exists, create a new one.\n2. Add Complete Business Details\nInclude Name, Address, Phone (NAP), business description, operating hours, and high-quality images.\n3. Publish a Post\nHighlight an event, offer, or promotion using the "Add Post" feature.\n4. Verify the Listing\nComplete the verification process through the postcard, phone, or email options.\n\nTools:\n\nLocalViking\n\nDeliverables:\n\nVerified GMB profile screenshots.\nScreenshot of the published post.\n\nSubmission:\nOnce you\'ve completed your task, post it in the #digital-marketing channel with the hashtag #cl-dm-local-1 to earn 200 karma points! 🎉🔥',
+                      'Set up and optimize a Google My Business profile to boost local search visibility. Steps: 1. Search for or Create a GMB Listing Look up the business on Google My Business. If no listing exists, create a new one. 2. Add Complete Business Details Include Name, Address, Phone (NAP), business description, operating hours, and high-quality images. 3. Publish a Post Highlight an event, offer, or promotion using the "Add Post" feature. 4. Verify the Listing Complete the verification process through the postcard, phone, or email options. Tools: LocalViking Deliverables: Verified GMB profile screenshots. Screenshot of the published post. Submission: Once you\'ve completed your task, post it in the #digital-marketing channel with the hashtag #cl-dm-local-1 to earn 200 karma points! 🎉🔥',
                     resources: [
                       "https://www.google.com/business/",
                       "https://localviking.com",
@@ -3019,7 +3264,7 @@ export const interestGroups: InterestGroupData[] = [
                   {
                     title: "Ensure NAP Consistency",
                     description:
-                      "1. Identify Local Directories\nChoose 5-10 directories (e.g., Yelp, Yellow Pages, etc.) relevant to your location and niche.\n2. Check Existing NAP Details\nReview the business's Name, Address, and Phone (NAP) in each directory.\n3. Update Inconsistent Details\nMake corrections for any inaccurate or outdated information.\n4. Document Changes\nTake screenshots before and after updating NAP details for proof.\n\nTools:\n\nAhrefs, BrightLocal, WhiteSpark\n\nDeliverables:\n\nList of directories reviewed.\nScreenshots of updates.\n\nSubmission:\nOnce you've completed your task, post it in the #digital-marketing channel with the hashtag #cl-dm-local-2 to earn 150 karma points! 🎉🔥",
+                      "1. Identify Local Directories Choose 5-10 directories (e.g., Yelp, Yellow Pages, etc.) relevant to your location and niche. 2. Check Existing NAP Details Review the business's Name, Address, and Phone (NAP) in each directory. 3. Update Inconsistent Details Make corrections for any inaccurate or outdated information. 4. Document Changes Take screenshots before and after updating NAP details for proof. Tools: Ahrefs, BrightLocal, WhiteSpark Deliverables: List of directories reviewed. Screenshots of updates. Submission: Once you've completed your task, post it in the #digital-marketing channel with the hashtag #cl-dm-local-2 to earn 150 karma points! 🎉🔥",
                     resources: [
                       "https://www.brightlocal.com",
                       "https://whitespark.ca",
@@ -3028,7 +3273,7 @@ export const interestGroups: InterestGroupData[] = [
                   {
                     title: "Create Location-Based Content",
                     description:
-                      "Develop content that targets and engages local audiences.\n\nSteps:\n\n1. Research Local Topics\nUse Google Trends or Ahrefs to find trending topics relevant to your city or region.\n2. Draft a Blog Post\nWrite a blog targeting a location-based keyword (e.g., “Top Cafes in [City Name]”).\n3. Optimize for SEO\nAdd internal links to relevant pages and external links to high-authority sites.\nUse location-specific keywords in the title, headings, and body text.\n4. Finalize and Publish\nEnsure the content is engaging, grammatically correct, and visually appealing.\n\nTools:\n\nAhrefs, SemRush, SurferSEO\n\nDeliverables:\n\nPublished blog post or draft link.\nKeyword research and SEO optimization documentation.\n\nSubmission:\nOnce you've completed your task, post it in the #digital-marketing channel with the hashtag #cl-dm-local-3 to earn 250 karma points! 🎉🔥",
+                      "Develop content that targets and engages local audiences. Steps: 1. Research Local Topics Use Google Trends or Ahrefs to find trending topics relevant to your city or region. 2. Draft a Blog Post Write a blog targeting a location-based keyword (e.g., “Top Cafes in [City Name]”). 3. Optimize for SEO Add internal links to relevant pages and external links to high-authority sites. Use location-specific keywords in the title, headings, and body text. 4. Finalize and Publish Ensure the content is engaging, grammatically correct, and visually appealing. Tools: Ahrefs, SemRush, SurferSEO Deliverables: Published blog post or draft link. Keyword research and SEO optimization documentation. Submission: Once you've completed your task, post it in the #digital-marketing channel with the hashtag #cl-dm-local-3 to earn 250 karma points! 🎉🔥",
                     resources: [
                       "https://trends.google.com",
                       "https://ahrefs.com",
@@ -3038,7 +3283,7 @@ export const interestGroups: InterestGroupData[] = [
                   {
                     title: "Generate and Respond to Reviews",
                     description:
-                      "Build credibility by generating and professionally responding to reviews.\n\nSteps:\n\n1. Generate a Google Review Link\nUse a Google Review Link Generator to create a shareable link for customers.\n2. Share the Link\nPromote the link via social media or email campaigns.\n3. Respond to Reviews\nRespond to at least 5 reviews (positive or negative) in a professional tone.\n\nTools:\n\nGoogle Review Link Generator\n\nDeliverables:\n\nReview link and proof of social sharing.\nScreenshots of review responses.\n\nSubmission:\nOnce you've completed your task, post it in the #digital-marketing channel with the hashtag #cl-dm-local-4 to earn 100 karma points! 🎉🔥",
+                      "Build credibility by generating and professionally responding to reviews. Steps: 1. Generate a Google Review Link Use a Google Review Link Generator to create a shareable link for customers. 2. Share the Link Promote the link via social media or email campaigns. 3. Respond to Reviews Respond to at least 5 reviews (positive or negative) in a professional tone. Tools: Google Review Link Generator Deliverables: Review link and proof of social sharing. Screenshots of review responses. Submission: Once you've completed your task, post it in the #digital-marketing channel with the hashtag #cl-dm-local-4 to earn 100 karma points! 🎉🔥",
                     resources: [
                       "https://support.google.com/business/answer/7035772",
                     ],
@@ -3046,7 +3291,7 @@ export const interestGroups: InterestGroupData[] = [
                   {
                     title: "Add Local Schema Markup",
                     description:
-                      "Enhance search engine visibility with structured data.\n\nSteps:\n\n1. Generate Schema Markup\nUse Google’s Structured Data Markup Helper to create local business schema.\n2. Integrate the Markup\nAdd the schema code to the website's HTML.\n3. Test the Markup\nValidate the code using Google’s Rich Results Test to ensure accuracy.\n\nTools:\n\nGoogle Structured Data Markup Helper\n\nDeliverables:\n\nLocal schema markup code snippet.\nScreenshot of successful test results.\n\nSubmission:\nOnce you've completed your task, post it in the #digital-marketing channel with the hashtag #cl-dm-local-5 to earn 150 karma points! 🎉🔥",
+                      "Enhance search engine visibility with structured data. Steps: 1. Generate Schema Markup Use Google’s Structured Data Markup Helper to create local business schema. 2. Integrate the Markup Add the schema code to the website's HTML. 3. Test the Markup Validate the code using Google’s Rich Results Test to ensure accuracy. Tools: Google Structured Data Markup Helper Deliverables: Local schema markup code snippet. Screenshot of successful test results. Submission: Once you've completed your task, post it in the #digital-marketing channel with the hashtag #cl-dm-local-5 to earn 150 karma points! 🎉🔥",
                     resources: [
                       "https://search.google.com/structured-data/testing-tool",
                     ],
@@ -3054,7 +3299,7 @@ export const interestGroups: InterestGroupData[] = [
                   {
                     title: "Optimize Google My Business (GMB)",
                     description:
-                      'Set up and optimize a Google My Business profile to boost local search visibility.\n\nSteps:\n\n1. Search for or Create a GMB Listing\nLook up the business on Google My Business.\nIf no listing exists, create a new one.\n2. Add Complete Business Details\nInclude Name, Address, Phone (NAP), business description, operating hours, and high-quality images.\n3. Publish a Post\nHighlight an event, offer, or promotion using the "Add Post" feature.\n4. Verify the Listing\nComplete the verification process through the postcard, phone, or email options.\n\nTools:\n\nLocalViking\n\nDeliverables:\n\nVerified GMB profile screenshots.\nScreenshot of the published post.\n\nSubmission:\nOnce you\'ve completed your task, post it in the #digital-marketing channel with the hashtag #cl-dm-local-1 to earn 200 karma points! 🎉🔥',
+                      'Set up and optimize a Google My Business profile to boost local search visibility. Steps: 1. Search for or Create a GMB Listing Look up the business on Google My Business. If no listing exists, create a new one. 2. Add Complete Business Details Include Name, Address, Phone (NAP), business description, operating hours, and high-quality images. 3. Publish a Post Highlight an event, offer, or promotion using the "Add Post" feature. 4. Verify the Listing Complete the verification process through the postcard, phone, or email options. Tools: LocalViking Deliverables: Verified GMB profile screenshots. Screenshot of the published post. Submission: Once you\'ve completed your task, post it in the #digital-marketing channel with the hashtag #cl-dm-local-1 to earn 200 karma points! 🎉🔥',
                     resources: [
                       "https://www.google.com/business/",
                       "https://localviking.com",
@@ -3063,7 +3308,7 @@ export const interestGroups: InterestGroupData[] = [
                   {
                     title: "Ensure NAP Consistency",
                     description:
-                      "1. Identify Local Directories\nChoose 5-10 directories (e.g., Yelp, Yellow Pages, etc.) relevant to your location and niche.\n2. Check Existing NAP Details\nReview the business's Name, Address, and Phone (NAP) in each directory.\n3. Update Inconsistent Details\nMake corrections for any inaccurate or outdated information.\n4. Document Changes\nTake screenshots before and after updating NAP details for proof.\n\nTools:\n\nAhrefs, BrightLocal, WhiteSpark\n\nDeliverables:\n\nList of directories reviewed.\nScreenshots of updates.\n\nSubmission:\nOnce you've completed your task, post it in the #digital-marketing channel with the hashtag #cl-dm-local-2 to earn 150 karma points! 🎉🔥",
+                      "1. Identify Local Directories Choose 5-10 directories (e.g., Yelp, Yellow Pages, etc.) relevant to your location and niche. 2. Check Existing NAP Details Review the business's Name, Address, and Phone (NAP) in each directory. 3. Update Inconsistent Details Make corrections for any inaccurate or outdated information. 4. Document Changes Take screenshots before and after updating NAP details for proof. Tools: Ahrefs, BrightLocal, WhiteSpark Deliverables: List of directories reviewed. Screenshots of updates. Submission: Once you've completed your task, post it in the #digital-marketing channel with the hashtag #cl-dm-local-2 to earn 150 karma points! 🎉🔥",
                     resources: [
                       "https://www.brightlocal.com",
                       "https://whitespark.ca",
@@ -3072,7 +3317,7 @@ export const interestGroups: InterestGroupData[] = [
                   {
                     title: "Create Location-Based Content",
                     description:
-                      "Develop content that targets and engages local audiences.\n\nSteps:\n\n1. Research Local Topics\nUse Google Trends or Ahrefs to find trending topics relevant to your city or region.\n2. Draft a Blog Post\nWrite a blog targeting a location-based keyword (e.g., “Top Cafes in [City Name]”).\n3. Optimize for SEO\nAdd internal links to relevant pages and external links to high-authority sites.\nUse location-specific keywords in the title, headings, and body text.\n4. Finalize and Publish\nEnsure the content is engaging, grammatically correct, and visually appealing.\n\nTools:\n\nAhrefs, SemRush, SurferSEO\n\nDeliverables:\n\nPublished blog post or draft link.\nKeyword research and SEO optimization documentation.\n\nSubmission:\nOnce you've completed your task, post it in the #digital-marketing channel with the hashtag #cl-dm-local-3 to earn 250 karma points! 🎉🔥",
+                      "Develop content that targets and engages local audiences. Steps: 1. Research Local Topics Use Google Trends or Ahrefs to find trending topics relevant to your city or region. 2. Draft a Blog Post Write a blog targeting a location-based keyword (e.g., “Top Cafes in [City Name]”). 3. Optimize for SEO Add internal links to relevant pages and external links to high-authority sites. Use location-specific keywords in the title, headings, and body text. 4. Finalize and Publish Ensure the content is engaging, grammatically correct, and visually appealing. Tools: Ahrefs, SemRush, SurferSEO Deliverables: Published blog post or draft link. Keyword research and SEO optimization documentation. Submission: Once you've completed your task, post it in the #digital-marketing channel with the hashtag #cl-dm-local-3 to earn 250 karma points! 🎉🔥",
                     resources: [
                       "https://trends.google.com",
                       "https://ahrefs.com",
@@ -3082,7 +3327,7 @@ export const interestGroups: InterestGroupData[] = [
                   {
                     title: "Generate and Respond to Reviews",
                     description:
-                      "Build credibility by generating and professionally responding to reviews.\n\nSteps:\n\n1. Generate a Google Review Link\nUse a Google Review Link Generator to create a shareable link for customers.\n2. Share the Link\nPromote the link via social media or email campaigns.\n3. Respond to Reviews\nRespond to at least 5 reviews (positive or negative) in a professional tone.\n\nTools:\n\nGoogle Review Link Generator\n\nDeliverables:\n\nReview link and proof of social sharing.\nScreenshots of review responses.\n\nSubmission:\nOnce you've completed your task, post it in the #digital-marketing channel with the hashtag #cl-dm-local-4 to earn 100 karma points! 🎉🔥",
+                      "Build credibility by generating and professionally responding to reviews. Steps: 1. Generate a Google Review Link Use a Google Review Link Generator to create a shareable link for customers. 2. Share the Link Promote the link via social media or email campaigns. 3. Respond to Reviews Respond to at least 5 reviews (positive or negative) in a professional tone. Tools: Google Review Link Generator Deliverables: Review link and proof of social sharing. Screenshots of review responses. Submission: Once you've completed your task, post it in the #digital-marketing channel with the hashtag #cl-dm-local-4 to earn 100 karma points! 🎉🔥",
                     resources: [
                       "https://support.google.com/business/answer/7035772",
                     ],
@@ -3090,7 +3335,7 @@ export const interestGroups: InterestGroupData[] = [
                   {
                     title: "Add Local Schema Markup",
                     description:
-                      "Enhance search engine visibility with structured data.\n\nSteps:\n\n1. Generate Schema Markup\nUse Google’s Structured Data Markup Helper to create local business schema.\n2. Integrate the Markup\nAdd the schema code to the website's HTML.\n3. Test the Markup\nValidate the code using Google’s Rich Results Test to ensure accuracy.\n\nTools:\n\nGoogle Structured Data Markup Helper\n\nDeliverables:\n\nLocal schema markup code snippet.\nScreenshot of successful test results.\n\nSubmission:\nOnce you've completed your task, post it in the #digital-marketing channel with the hashtag #cl-dm-local-5 to earn 150 karma points! 🎉🔥",
+                      "Enhance search engine visibility with structured data. Steps: 1. Generate Schema Markup Use Google’s Structured Data Markup Helper to create local business schema. 2. Integrate the Markup Add the schema code to the website's HTML. 3. Test the Markup Validate the code using Google’s Rich Results Test to ensure accuracy. Tools: Google Structured Data Markup Helper Deliverables: Local schema markup code snippet. Screenshot of successful test results. Submission: Once you've completed your task, post it in the #digital-marketing channel with the hashtag #cl-dm-local-5 to earn 150 karma points! 🎉🔥",
                     resources: [
                       "https://search.google.com/structured-data/testing-tool",
                     ],
@@ -3185,7 +3430,7 @@ export const interestGroups: InterestGroupData[] = [
                   {
                     title: "Affiliate Marketing and Partnerships",
                     description:
-                      "Build a Comprehensive Social Media Strategy\n\nSteps:\n\nResearch a brand's current social media presence and performance. \nDevelop a detailed strategy with clear goals (e.g., awareness, engagement, conversions). \nInclude content ideas, a posting schedule, and platform-specific tactics. \nDeliverables: A complete social media strategy document.\n\nShare the strategy document in #digital-marketing with the hashtag #cl-dm-strategy to earn 500 karma points! ",
+                      "Build a Comprehensive Social Media Strategy Steps: Research a brand's current social media presence and performance.  Develop a detailed strategy with clear goals (e.g., awareness, engagement, conversions).  Include content ideas, a posting schedule, and platform-specific tactics.  Deliverables: A complete social media strategy document. Share the strategy document in #digital-marketing with the hashtag #cl-dm-strategy to earn 500 karma points! ",
                     resources: [
                       "https://trello.com",
                       "https://www.notion.so",
@@ -3195,19 +3440,19 @@ export const interestGroups: InterestGroupData[] = [
                   {
                     title: "Brand Identity",
                     description:
-                      "Create a brand identity for a fictitious company or product by designing key branding assets such as a logo, color palette, and typography. Use Canva or Figma to develop these assets and showcase them as part of the brand’s visual identity.\n\nSteps:\n\nChoose a Brand Name and Concept:\n\nSelect a name for the brand or product you want to create.\nDevelop a brief concept or story behind the brand (e.g., target audience, industry, and key values). This will guide your design choices.\nCreate a Logo Design:\n\nUse Canva or Figma to design a simple, memorable logo for the brand.\nEnsure the logo is scalable and works well in both large and small formats.\nExperiment with different typography, shapes, and colors that reflect the brand's personality.\nChoose a Color Palette:\n\nSelect 3-5 primary brand colors that align with the brand’s personality and target audience.\nCreate a cohesive color scheme that works across various design materials.\nDefine Brand Typography:\n\nChoose 2-3 fonts for headings, subheadings, and body text that fit the brand’s tone (e.g., professional, playful, minimalist).\nCreate Additional Branding Assets (Optional):\n\nDesign any additional branding materials such as business cards, social media profile images, or a website header.\nProvide Proof of Work:\n\nUpload the final designs (logo, color palette, typography) to a shared folder or Google Drive.\nDeliverables:\n\nLogo design (in PNG/SVG format).\nColor palette with hex codes.\nTypography style guide (font names and usage recommendations).\nCanva/Figma file link to the designs.\n\nUpload the designs to a shared folder and share the Canva/Figma file link.",
+                      "Create a brand identity for a fictitious company or product by designing key branding assets such as a logo, color palette, and typography. Use Canva or Figma to develop these assets and showcase them as part of the brand’s visual identity. Steps: Choose a Brand Name and Concept: Select a name for the brand or product you want to create. Develop a brief concept or story behind the brand (e.g., target audience, industry, and key values). This will guide your design choices. Create a Logo Design: Use Canva or Figma to design a simple, memorable logo for the brand. Ensure the logo is scalable and works well in both large and small formats. Experiment with different typography, shapes, and colors that reflect the brand's personality. Choose a Color Palette: Select 3-5 primary brand colors that align with the brand’s personality and target audience. Create a cohesive color scheme that works across various design materials. Define Brand Typography: Choose 2-3 fonts for headings, subheadings, and body text that fit the brand’s tone (e.g., professional, playful, minimalist). Create Additional Branding Assets (Optional): Design any additional branding materials such as business cards, social media profile images, or a website header. Provide Proof of Work: Upload the final designs (logo, color palette, typography) to a shared folder or Google Drive. Deliverables: Logo design (in PNG/SVG format). Color palette with hex codes. Typography style guide (font names and usage recommendations). Canva/Figma file link to the designs. Upload the designs to a shared folder and share the Canva/Figma file link.",
                     resources: ["https://www.canva.com", "https://www.figma.com"],
                   },
                   {
                     title: "SM Poster Design",
                     description:
-                      "Design eye-catching and engaging social media posters for a campaign using Canva or Figma. The posters should align with the brand's message, be visually appealing, and ready for sharing on social media platforms.\n\nSteps:\n\nChoose a Campaign Theme or Topic:\n\nSelect a theme or campaign for the social media posters (e.g., product promotion, seasonal sale, brand awareness).\nEnsure the theme aligns with the brand's tone and message.\nDesign Posters Using Canva/Figma:\n\nCreate 3-5 unique and high-quality posters.\nEach poster should be optimized for the platform you are targeting (e.g., Instagram post, Facebook ad, etc.).\nIncorporate brand colors, fonts, and logos to maintain consistency with the brand identity.\nEnsure the posters are visually engaging, using elements like images, icons, and text in a balanced layout.\nExport the Posters:\n\nDownload the posters in high resolution (preferably in PNG or JPEG format) for web use.\nDeliverables:\n\n3-5 designed posters in PNG/JPEG format.\nCanva/Figma file link to the designs.\n\nUpload the final posters and share the Canva/Figma file link.",
+                      "Design eye-catching and engaging social media posters for a campaign using Canva or Figma. The posters should align with the brand's message, be visually appealing, and ready for sharing on social media platforms. Steps: Choose a Campaign Theme or Topic: Select a theme or campaign for the social media posters (e.g., product promotion, seasonal sale, brand awareness). Ensure the theme aligns with the brand's tone and message. Design Posters Using Canva/Figma: Create 3-5 unique and high-quality posters. Each poster should be optimized for the platform you are targeting (e.g., Instagram post, Facebook ad, etc.). Incorporate brand colors, fonts, and logos to maintain consistency with the brand identity. Ensure the posters are visually engaging, using elements like images, icons, and text in a balanced layout. Export the Posters: Download the posters in high resolution (preferably in PNG or JPEG format) for web use. Deliverables: 3-5 designed posters in PNG/JPEG format. Canva/Figma file link to the designs. Upload the final posters and share the Canva/Figma file link.",
                     resources: ["https://www.canva.com", "https://www.figma.com"],
                   },
                   {
                     title: "Platform-Specific Content Creation",
                     description:
-                      "Design Platform-Specific Content for Two Social Media Platforms\n\nSteps:\n\nChoose two platforms (e.g., Instagram and LinkedIn). \nCreate 3 unique posts tailored to each platform’s audience and style. \nPost or schedule the content and track engagement. \nDeliverables:\n\n6 unique posts (3 per platform), Engagement metrics (likes, comments, shares).\n\nShare screenshots and engagement insights in #digital-marketing with the hashtag #cl-dm-platform to earn 400 karma points! ",
+                      "Design Platform-Specific Content for Two Social Media Platforms Steps: Choose two platforms (e.g., Instagram and LinkedIn).  Create 3 unique posts tailored to each platform’s audience and style.  Post or schedule the content and track engagement.  Deliverables: 6 unique posts (3 per platform), Engagement metrics (likes, comments, shares). Share screenshots and engagement insights in #digital-marketing with the hashtag #cl-dm-platform to earn 400 karma points! ",
                     resources: [
                       "https://www.canva.com",
                       "https://buffer.com",
@@ -3217,7 +3462,7 @@ export const interestGroups: InterestGroupData[] = [
                   {
                     title: "SM Trends Report",
                     description:
-                      "Compile a Report on Current Social Media Trends\n\nSteps:\n\nResearch and identify 5 relevant social media trends. \nHighlight how each trend can impact a niche or business. \nCreate a professional report summarizing your findings. \nDeliverables:\n\nA social media trends report.\n\nShare your report in #digital-marketing with the hashtag #cl-dm-trends to earn 400 karma points! ",
+                      "Compile a Report on Current Social Media Trends Steps: Research and identify 5 relevant social media trends.  Highlight how each trend can impact a niche or business.  Create a professional report summarizing your findings.  Deliverables: A social media trends report. Share your report in #digital-marketing with the hashtag #cl-dm-trends to earn 400 karma points! ",
                     resources: [
                       "https://explodingtopics.com",
                       "https://trends.google.com",
@@ -3227,7 +3472,7 @@ export const interestGroups: InterestGroupData[] = [
                   {
                     title: "SM Contest Planning",
                     description:
-                      "Design a Social Media Contest\n\nSteps:\n\nCreate a contest concept with defined goals, rules, and prizes. 🏆\nDesign engaging visuals and copy for the contest announcement. 🎨\nDeliverables:\n\nContest plan (goal, rules, prizes), Supporting visuals and copy.\n\nShare your contest plan in #digital-marketing with the hashtag #cl-dm-contest to earn 500 karma points! 🎉",
+                      "Design a Social Media Contest Steps: Create a contest concept with defined goals, rules, and prizes. 🏆 Design engaging visuals and copy for the contest announcement. 🎨 Deliverables: Contest plan (goal, rules, prizes), Supporting visuals and copy. Share your contest plan in #digital-marketing with the hashtag #cl-dm-contest to earn 500 karma points! 🎉",
                     resources: [
                       "https://www.canva.com",
                       "https://www.figma.com",
@@ -3237,13 +3482,13 @@ export const interestGroups: InterestGroupData[] = [
                   {
                     title: "Hashtag Research and Optimization",
                     description:
-                      "Conduct Hashtag Research for a Niche\n\nSteps:\n\nChoose a niche and analyze trending hashtags. \nCreate a categorized list of 30 hashtags (e.g., high-volume, niche-specific, branded). \nDeliverables:\n\nA categorized list of 30 optimized hashtags.\n\nShare the list in #digital-marketing with the hashtag #cl-dm-hashtags to earn 300 karma points! ",
+                      "Conduct Hashtag Research for a Niche Steps: Choose a niche and analyze trending hashtags.  Create a categorized list of 30 hashtags (e.g., high-volume, niche-specific, branded).  Deliverables: A categorized list of 30 optimized hashtags. Share the list in #digital-marketing with the hashtag #cl-dm-hashtags to earn 300 karma points! ",
                     resources: ["https://hashtagify.me", "https://keyhole.co"],
                   },
                   {
                     title: "Engagement Boosting Campaign",
                     description:
-                      "Plan and Execute an Engagement Campaign\n\nSteps:\n\nDesign a campaign that encourages audience participation (e.g., polls, challenges, Q&A). \nPost the campaign and monitor engagement for a week. \nDeliverables:\n\nCampaign post(s), Engagement metrics (likes, comments, shares).\n\nShare your campaign details and engagement metrics in #digital-marketing with the hashtag #cl-dm-engagement to earn 500 karma points! ",
+                      "Plan and Execute an Engagement Campaign Steps: Design a campaign that encourages audience participation (e.g., polls, challenges, Q&A).  Post the campaign and monitor engagement for a week.  Deliverables: Campaign post(s), Engagement metrics (likes, comments, shares). Share your campaign details and engagement metrics in #digital-marketing with the hashtag #cl-dm-engagement to earn 500 karma points! ",
                     resources: [
                       "https://www.instagram.com/stories",
                       "https://www.linkedin.com/polls",
@@ -3338,7 +3583,7 @@ export const interestGroups: InterestGroupData[] = [
     memberSince: "January 2023", // Placeholder; adjust as needed
     isPublic: true,
     officeHours: "Monday 8:30PM",
-    thinkTankMeeting: "2nd Friday 6:30 PM @ Google Meet",
+    thinkTankMeeting: "2nd Friday 6: 30PM @ Google Meet",
     interestGroupLeads: {
       description:
         "Interest group leads manage the activities and events within interest groups and serve as a point of contact for students interested in getting involved. Students can connect with these leads to learn about opportunities within their interests.",
@@ -3499,12 +3744,12 @@ export const interestGroups: InterestGroupData[] = [
     description:
       "Wonder how applications are deployed and managed in the cloud? Cloud computing and DevOps are the backbone of modern IT infrastructure, ensuring that software is delivered faster, more efficiently, and with higher reliability. The Cloud Computing & DevOps Interest Group at GTech μLearn is here to equip you with the skills needed to master cloud platforms, automation tools, and continuous integration/continuous deployment (CI/CD) practices. Join us to explore, learn, and collaborate on real-world projects, and dive into the future of cloud-native technologies.",
     bannerImage:
-    "/assets/IG/Cover/6.png",
+    "/assets/IG/Cover/6.webp",
     memberCount: 1057, 
     memberSince: "March 2023", // Placeholder; adjust as needed
     isPublic: true,
-    officeHours: "Wednesday 7PM",
-    thinkTankMeeting: "Thursday 6:00 PM @ Google Meet",
+    officeHours: "Wednesday 7:00PM",
+    thinkTankMeeting: "Thursday 6:00PM @ Google Meet",
     interestGroupLeads: {
       description:
         "Interest group leads manage the activities and events within interest groups and serve as a point of contact for students interested in getting involved. Students can connect with these leads to learn about opportunities within their interests.",
@@ -3676,7 +3921,7 @@ export const interestGroups: InterestGroupData[] = [
     description:
       "Product Management is deciding what to build next”. Are you interested in learning to build the right product and the product right? Join our “Product Management” Interest Group to learn and collaborate with peers.",
     bannerImage:
-    "/assets/IG/Cover/7.png",
+    "/assets/IG/Cover/7.webp",
     memberCount: 2199, // Placeholder value; adjust as needed
     memberSince: "March 2023", // Placeholder; adjust as needed
     isPublic: true,
@@ -3792,161 +4037,138 @@ export const interestGroups: InterestGroupData[] = [
       ],
       learningPaths: [
         {
-          level: "Level 4",
-          cards: [
+          "level": "Level 4",
+          "cards": [
             {
-              title: "Understanding the Role",
-              data: {
-                description:
-                  "Product managers are responsible for guiding the success of a product by balancing customer needs, business goals, and technical feasibility. They define product vision, align it with business strategy, and ensure cross-functional teams collaborate effectively.",
-                whatYouWillLearn: [
-                  "Fundamentals of product management: Product management involves overseeing the entire lifecycle of a product, from conception to development, launch, and beyond. It requires balancing business objectives, user needs, and technical capabilities to create valuable products. Product managers work on product strategy, roadmaps, and coordinating cross-functional teams to ensure successful product delivery.",
-                  "Essential skills needed for a product manager: Core skills include market research, communication, problem-solving, strategic thinking, and leadership. Each of these helps PMs to make informed decisions, navigate challenges, and lead teams effectively.",
-                  "The product manager's role in the organization: Product managers are responsible for guiding the success of a product by balancing customer needs, business goals, and technical feasibility. They define product vision, align it with business strategy, and ensure cross-functional teams collaborate effectively.",
+              "title": "Understanding the Role",
+              "data": {
+                "description": "Product managers are responsible for guiding the success of a product by balancing customer needs, business goals, and technical feasibility. They define product vision, align it with business strategy, and ensure cross-functional teams collaborate effectively.",
+                "whatYouWillLearn": [
+                  "1. Fundamentals of product management: Product management involves overseeing the entire lifecycle of a product, from conception to development, launch, and beyond. It requires balancing business objectives, user needs, and technical capabilities to create valuable products. Product managers work on product strategy, roadmaps, and coordinating cross-functional teams to ensure successful product delivery.",
+                  "2. Essential skills needed for a product manager: Core skills include market research, communication, problem-solving, strategic thinking, and leadership. Each of these helps PMs to make informed decisions, navigate challenges, and lead teams effectively.",
+                  "3. The product manager's role in the organization: Product managers are responsible for guiding the success of a product by balancing customer needs, business goals, and technical feasibility. They define product vision, align it with business strategy, and ensure cross-functional teams collaborate effectively."
                 ],
-                challenges: [
+                "challenges": [
                   {
-                    title: "Fundamentals of product management",
-                    resources: [
-                      "https://www.udemy.com/course/product-management-a/",
+                    "title": "Fundamentals of Product Management",
+                    "resources": [
+                      "https://www.udemy.com/course/product-management-a/"
                     ],
-                    description:
-                      'In this task, you will gain a fundamental understanding of Product Management through the Udemy course "Introduction to Product Management". You\'ll learn about the responsibilities and roles of a product manager and explore various opportunities in Product Management.\n\nAfter completing this course, post the screenshot of the tasks in the Gtech Mulearn Discord server ⁠product-management channel using the hashtag #cl-product-intro to avail 400 karma points.',
-                  },
-                ],
+                    "description": "In this task, you will gain a fundamental understanding of Product Management through the Udemy course \"Introduction to Product Management\". You'll learn about the responsibilities and roles of a product manager and explore various opportunities in Product Management. After completing this course, post the screenshot of the tasks in the Gtech Mulearn Discord server ⁠product-management channel using the hashtag #cl-product-intro to avail 400 karma points."
+                  }
+                ]
               },
-              resources: 1,
-              proofOfWork: 1,
-              rating: 0,
-              hasGift: false,
+              "resources": 1,
+              "proofOfWork": 1,
+              "rating": 0,
+              "hasGift": false
             },
             {
-              title: "Product Strategy",
-              data: {
-                description:
-                  "In this phase, SWOT (Strengths, Weaknesses, Opportunities, Threats) analysis helps define a product's strategic positioning. It guides decisions on where the product can excel (strengths), areas for improvement (weaknesses), new markets or user needs it can serve (opportunities), and external challenges (threats) that might hinder growth.",
-                whatYouWillLearn: [
-                  "Developing a product strategy:Developing a product strategy is a critical step in product management. It involves defining a long-term vision and plan that outlines how the product will achieve its goals and deliver value to both customers and the business.",
-                  "Importance of product-market fit:Product-market fit is crucial for a product’s success as it determines whether a product meets the specific needs and demands of its target market. Achieving product-market fit means that customers find value in a product, driving demand and satisfaction. This alignment is often the difference between sustainable growth and stagnation, as it shows that the product genuinely solves a problem or fills a gap in the market.​",
-                  "Understanding market trends:Understanding market trends is crucial for product managers and businesses, as it provides insights into shifts in consumer preferences, technological advancements, and competitive dynamics.",
+              "title": "Product Strategy",
+              "data": {
+                "description": "In this phase, SWOT (Strengths, Weaknesses, Opportunities, Threats) analysis helps define a product's strategic positioning. It guides decisions on where the product can excel (strengths), areas for improvement (weaknesses), new markets or user needs it can serve (opportunities), and external challenges (threats) that might hinder growth.",
+                "whatYouWillLearn": [
+                  "1. Developing a product strategy: Developing a product strategy is a critical step in product management. It involves defining a long-term vision and plan that outlines how the product will achieve its goals and deliver value to both customers and the business. Conduct Market Research and Analysis Purpose: Use research to understand customer needs, market trends, and competitive landscape. Activities: Perform SWOT analysis, study competitor products, and identify gaps in the market. Outcome: Clear understanding of where your product can uniquely provide value",
+                  "2. Importance of product-market fit: Product-market fit is crucial for a product’s success as it determines whether a product meets the specific needs and demands of its target market. Achieving product-market fit means that customers find value in a product, driving demand and satisfaction. This alignment is often the difference between sustainable growth and stagnation, as it shows that the product genuinely solves a problem or fills a gap in the market. Without product-market fit, even well-designed products with extensive marketing efforts are unlikely to gain traction, as they may not align with customer needs or market demands. Moreover, product-market fit is the foundation for scaling a product effectively. Once a product resonates with its audience, it is more likely to retain customers, gain referrals, and attract further investment. Businesses that prioritize achieving this fit can make informed decisions about product development, positioning, and customer targeting, which enhances the likelihood of long-term success and reduces the risk of costly pivots. For startups, finding product-market fit is often seen as the most critical milestone before pursuing aggressive growth strategies",
+                  "3. Understanding market trends: Understanding market trends is crucial for product managers and businesses, as it provides insights into shifts in consumer preferences, technological advancements, and competitive dynamics. How to Stay Updated on Market Trends: Industry Reports: Resources like Statista, Gartner, and McKinsey provide in-depth reports on market trends across various sectors. Customer Feedback: Regularly collecting feedback and conducting surveys helps stay attuned to shifts in customer preferences. Social Listening: Monitoring discussions on social media and forums provides real-time insight into customer sentiments and emerging interests. Competitor Analysis: Tracking competitor activities and innovations helps spot trends they’re capitalizing on. Networking and Conferences: Engaging in industry events and networking with professionals can provide firsthand insight into emerging trends. Identifying New Opportunities Purpose: Market trends reveal emerging needs, preferences, and gaps, allowing businesses to identify areas for product innovation or expansion. Example: If a trend shows increased demand for eco-friendly products, a business could explore sustainable materials or greener production methods."
                 ],
-                challenges: [
+                "challenges": [
                   {
-                    title: "SWOT Analysis",
-                    resources: ["https://youtu.be/mR9eICQJLXA?si=otvDfvtjlkdphHVh"],
-                    description:
-                      "A SWOT analysis is a strategic planning tool that helps individuals or organizations assess their current position and develop strategies for growth. It stands for Strengths, Weaknesses, Opportunities, and Threats\n\nIn this task, you will gain a comprehensive understanding of SWOT Analysis by watching the provided video on the SWOT Analysis of Starbucks. After understanding the concept, prepare a SWOT Analysis, identifying its strengths, weaknesses, opportunities, and threats, for one of the following product companies: Boat Audio Devices, TATA Motors EV, or Xiaomi MI India.",
-                  },
-                  {
-                    title: "Market Research",
-                    resources: [
-                      "https://blog.logrocket.com/product-management/what-is-market-analysis-definition-examples-template/",
+                    "title": "SWOT Analysis",
+                    "resources": [
+                      "https://youtu.be/mR9eICQJLXA?si=otvDfvtjlkdphHVh"
                     ],
-                    description:
-                      "Conducting a Competitor Analysis\n\nIdentify Key Competitors: Research and select 3–5 competitors for your product. Include both direct competitors (similar products) and indirect competitors (alternative solutions). For example, if analyzing Spotify, key competitors might include Apple Music, YouTube Music, and Amazon Music.\n\nAnalyze Product Features and Pricing: Compare competitors’ features, pricing models, and unique selling points (USPs). For Spotify, you could note its personalized playlists, podcast integration, and ad-free premium plan. Highlight standout features like YouTube Music’s free streaming or Amazon Music’s integration with Prime Membership to identify gaps or advantages.\n\nRead Customer Reviews: Dive into reviews from platforms like App Store, Play Store, or social media. For example, users may praise Spotify’s discoverability features but criticize limited offline downloads in the free version. These insights reveal strengths to enhance and weaknesses to address in your product.",
+                    "description": "A SWOT analysis is a strategic planning tool that helps individuals or organizations assess their current position and develop strategies for growth. It stands for Strengths, Weaknesses, Opportunities, and Threats In this task, you will gain a comprehensive understanding of SWOT Analysis by watching the provided video on the SWOT Analysis of Starbucks. After understanding the concept, prepare a SWOT Analysis, identifying its strengths, weaknesses, opportunities, and threats, for one of the following product companies: Boat Audio Devices, TATA Motors EV, or Xiaomi MI India."
                   },
-                ],
+                  {
+                    "title": "Market Research",
+                    "resources": [
+                      "https://blog.logrocket.com/product-management/what-is-market-analysis-definition-examples-template/"
+                    ],
+                    "description": "Conducting a Competitor Analysis Identify Key Competitors: Research and select 3–5 competitors for your product. Include both direct competitors (similar products) and indirect competitors (alternative solutions). For example, if analyzing Spotify, key competitors might include Apple Music, YouTube Music, and Amazon Music. Analyze Product Features and Pricing: Compare competitors’ features, pricing models, and unique selling points (USPs). For Spotify, you could note its personalized playlists, podcast integration, and ad-free premium plan. Highlight standout features like YouTube Music’s free streaming or Amazon Music’s integration with Prime Membership to identify gaps or advantages. Read Customer Reviews: Dive into reviews from platforms like App Store, Play Store, or social media. For example, users may praise Spotify’s discoverability features but criticize limited offline downloads in the free version. These insights reveal strengths to enhance and weaknesses to address in your product."
+                  }
+                ]
               },
-              resources: 2,
-              proofOfWork: 2,
-              rating: 0,
-              hasGift: false,
-            },
-          ],
+              "resources": 2,
+              "proofOfWork": 2,
+              "rating": 0,
+              "hasGift": false
+            }
+          ]
         },
         {
-          level: "Level 5",
-          cards: [
+          "level": "Level 5",
+          "cards": [
             {
-              title: "Product Development Process",
-              data: {
-                description:
-                  "The product development process is a cyclical approach where a product is built, tested, and refined in multiple iterations. Each cycle incorporates user feedback and performance insights, leading to continuous improvement and faster delivery of a polished product that meets user expectations.",
-                whatYouWillLearn: [
-                  "Agile product development: Agile product development is a flexible and iterative approach that emphasizes collaboration, customer feedback, and rapid prototyping. It allows teams to adapt quickly to changes by breaking the development process into small, manageable sprints or iterations. This ensures continuous delivery of value and aligns the product closely with user needs.",
-                  "Designing for your target audience: Designing for your target audience involves understanding their needs, preferences, and behaviors to create user-centric products. This process includes conducting research, creating personas, and focusing on user experience (UX) to ensure the product solves their problems effectively and enhances satisfaction.",
-                  "Iterative product development process: The iterative product development process is a cyclical approach where a product is built, tested, and refined in multiple iterations. Each cycle incorporates user feedback and performance insights, leading to continuous improvement and faster delivery of a polished product that meets user expectations.",
-                  "Understanding customer journey: Understanding the customer journey maps out the entire experience a customer has with a product or service. This includes identifying touchpoints, pain points, and opportunities for improvement, allowing businesses to optimize their offerings for better engagement and satisfaction.",
-                  "Customer surveys: Customer surveys collect quantitative data through structured questionnaires to measure customer satisfaction, preferences, and expectations. They are a scalable way to gather feedback and identify trends across a larger audience.",
+              "title": "Product Development Process",
+              "data": {
+                "description": "The product development process is a cyclical approach where a product is built, tested, and refined in multiple iterations. Each cycle incorporates user feedback and performance insights, leading to continuous improvement and faster delivery of a polished product that meets user expectations.",
+                "whatYouWillLearn": [
+                  "1. Agile product development: Agile product development is a flexible and iterative approach that emphasizes collaboration, customer feedback, and rapid prototyping. It allows teams to adapt quickly to changes by breaking the development process into small, manageable sprints or iterations. This ensures continuous delivery of value and aligns the product closely with user needs.",
+                  "2. Designing for your target audience: Designing for your target audience involves understanding their needs, preferences, and behaviors to create user-centric products. This process includes conducting research, creating personas, and focusing on user experience (UX) to ensure the product solves their problems effectively and enhances satisfaction.",
+                  "3. Iterative product development process: The iterative product development process is a cyclical approach where a product is built, tested, and refined in multiple iterations. Each cycle incorporates user feedback and performance insights, leading to continuous improvement and faster delivery of a polished product that meets user expectations.",
+                  "4. Understanding customer journey: Understanding the customer journey maps out the entire experience a customer has with a product or service. This includes identifying touchpoints, pain points, and opportunities for improvement, allowing businesses to optimize their offerings for better engagement and satisfaction.",
+                  "5. Customer surveys: Customer surveys collect quantitative data through structured questionnaires to measure customer satisfaction, preferences, and expectations. They are a scalable way to gather feedback and identify trends across a larger audience."
                 ],
-                challenges: [
+                "challenges": [
                   {
-                    title: "Create a basic Agile sprint plan",
-                    resources: ["https://scrumguides.org/"],
-                    description:
-                      "Research Agile Fundamentals: Start by understanding the core principles of Agile methodology—flexibility, iterative progress, and customer collaboration. Explore frameworks like Scrum, which organizes work into sprints, and concepts like user stories to capture product requirements.\n\nMock Product Idea: Choose a product idea to implement Agile practices. For instance, develop a task management app aimed at simplifying daily to-dos for students.\n\nDefine User Stories: Write user stories based on customer needs. Example: “As a student, I want to create task lists quickly so that I can organize my assignments better.” Ensure stories are clear, actionable, and customer-focused.\n\nCreate a Sprint Plan: Divide work into 2-week sprints. For the first sprint, focus on basic UI development and task creation functionality. In the second sprint, add editing features, task reminders, and basic data storage.",
-                  },
-                  {
-                    title: "Conduct a persona creation exercise",
-                    resources: [
-                      "https://www.coursera.org/learn/foundations-user-experience-design",
+                    "title": "Create a Basic Agile Sprint Plan",
+                    "resources": [
+                      "https://scrumguides.org/"
                     ],
-                    description:
-                      "Step 1: Define the Hypothetical App\nChoose a mock app to base your research on. For example, consider an app for budget tracking for students that simplifies financial management through intuitive design and gamified saving goals.\n\nStep 2: Research Target Audience\nIdentify the audience likely to benefit from the app. For this example, the target audience could be college students aged 18–25, who are digitally savvy but face challenges managing personal finances.\n\nStep 3: Create a Persona\nDevelop a user persona that includes:\nDemographics: Age, gender, education level, income range. Example: Maria, 20, a college student earning a part-time income.\nBehaviors: Daily app usage, tech comfort, spending habits. Example: Uses budgeting apps occasionally, prefers gamified tools.\nPain Points: Financial stress, lack of budgeting knowledge, inconsistent savings. Example: Struggles to keep track of monthly expenses.",
+                    "description": "Research Agile Fundamentals: Start by understanding the core principles of Agile methodology—flexibility, iterative progress, and customer collaboration. Explore frameworks like Scrum, which organizes work into sprints, and concepts like user stories to capture product requirements.\n\nMock Product Idea: Choose a product idea to implement Agile practices. For instance, develop a task management app aimed at simplifying daily to-dos for students.\n\nDefine User Stories: Write user stories based on customer needs. Example: “As a student, I want to create task lists quickly so that I can organize my assignments better.” Ensure stories are clear, actionable, and customer-focused.\n\nCreate a Sprint Plan: Divide work into 2-week sprints. For the first sprint, focus on basic UI development and task creation functionality. In the second sprint, add editing features, task reminders, and basic data storage.\n\nExploring Agile Methodology\n\nResearch Agile Fundamentals: Start by understanding the core principles of Agile methodology—flexibility, iterative progress, and customer collaboration. Explore frameworks like Scrum, which organizes work into sprints, and concepts like user stories to capture product requirements.\n\nMock Product Idea: Choose a product idea to implement Agile practices. For instance, develop a task management app aimed at simplifying daily to-dos for students.\n\nDefine User Stories: Write user stories based on customer needs. Example: “As a student, I want to create task lists quickly so that I can organize my assignments better.” Ensure stories are clear, actionable, and customer-focused.\n\nCreate a Sprint Plan: Divide work into 2-week sprints. For the first sprint, focus on basic UI development and task creation functionality. In the second sprint, add editing features, task reminders, and basic data storage."
                   },
                   {
-                    title: "Product Development",
-                    resources: ["http://designkit.org/"],
-                    description:
-                      "Step 1: Pick a Simple Product Idea\nChoose a basic product idea to demonstrate the iterative process. For instance, a habit-tracking mobile app designed to help users track and improve daily routines.\n\nStep 2: Follow the Iterative Process\nIdeation: Brainstorm key features such as habit creation, progress tracking, and reminders. Define the primary goal: to make habit tracking simple and engaging.\n\nPrototyping: Create a low-fidelity wireframe showcasing the app’s main screens (e.g., dashboard, add habit, progress graph). Tools like Figma or Balsamiq can be used for visual representation.\n\nTesting: Share the prototype with 5–10 potential users for feedback. Focus on usability, design clarity, and feature priorities.\n\nRefining: Address feedback such as making habit creation faster or improving UI visibility for progress graphs.\n\nStep 3: Second Iteration\nBased on feedback, refine the prototype and add enhancements. For instance, include a streak feature to motivate users and simplify navigation by grouping habits into categories.",
+                    "title": "Conduct a Persona Creation Exercise",
+                    "resources": [
+                      "https://www.coursera.org/learn/foundations-user-experience-design"
+                    ],
+                    "description": "Step 1: Define the Hypothetical App\nChoose a mock app to base your research on. For example, consider an app for budget tracking for students that simplifies financial management through intuitive design and gamified saving goals.\n\nStep 2: Research Target Audience\nIdentify the audience likely to benefit from the app. For this example, the target audience could be college students aged 18–25, who are digitally savvy but face challenges managing personal finances.\n\nStep 3: Create a Persona\nDevelop a user persona that includes:\n\nDemographics: Age, gender, education level, income range. Example: Maria, 20, a college student earning a part-time income.\n\nBehaviors: Daily app usage, tech comfort, spending habits. Example: Uses budgeting apps occasionally, prefers gamified tools.\n\nPain Points: Financial stress, lack of budgeting knowledge, inconsistent savings. Example: Struggles to keep track of monthly expenses."
                   },
                   {
-                    title: "Map a customer journey",
-                    resources: [""],
-                    description:
-                      "Step 1: Awareness\nThe journey begins when a potential customer becomes aware of a book they might want to purchase. This could be through social media ads, book reviews, or recommendations from friends. For example, an ad on Facebook might prompt the user to explore a new bestseller.\n\nStep 2: Consideration\nOnce the customer is aware of the book, they might search for more information online. They may read customer reviews, check ratings on platforms like Amazon, or explore online bookstores to compare prices. They consider factors like price, availability, and the reputation of the seller.\n\nStep 3: Decision\nAfter considering options, the customer makes the decision to buy. They may add the book to their shopping cart and proceed to checkout. At this stage, they are focused on the user experience—whether the site is easy to navigate, and whether payment methods are clear and secure.\n\nStep 4: Purchase\nThe...",
+                    "title": "Product Development",
+                    "resources": [
+                      "http://designkit.org/"
+                    ],
+                    "description": "Step 1: Pick a Simple Product Idea\nChoose a basic product idea to demonstrate the iterative process. For instance, a habit-tracking mobile app designed to help users track and improve daily routines.\n\nStep 2: Follow the Iterative Process\n\nIdeation: Brainstorm key features such as habit creation, progress tracking, and reminders. Define the primary goal: to make habit tracking simple and engaging.\n\nPrototyping: Create a low-fidelity wireframe showcasing the app’s main screens (e.g., dashboard, add habit, progress graph). Tools like Figma or Balsamiq can be used for visual representation.\n\nTesting: Share the prototype with 5–10 potential users for feedback. Focus on usability, design clarity, and feature priorities.\n\nRefining: Address feedback such as making habit creation faster or improving UI visibility for progress graphs.\n\nStep 3: Second Iteration\nBased on feedback, refine the prototype and add enhancements. For instance, include a streak feature to motivate users and simplify navigation by grouping habits into categories."
                   },
-                ],
+                  {
+                    "title": "Map a Customer Journey",
+                    "resources": [
+                      "https://blog.hubspot.com/"
+                    ],
+                    "description": "Step 1: Awareness\nThe journey begins when a potential customer becomes aware of a book they might want to purchase. This could be through social media ads, book reviews, or recommendations from friends. For example, an ad on Facebook might prompt the user to explore a new bestseller.\n\nStep 2: Consideration\nOnce the customer is aware of the book, they might search for more information online. They may read customer reviews, check ratings on platforms like Amazon, or explore online bookstores to compare prices. They consider factors like price, availability, and the reputation of the seller.\n\nStep 3: Decision\nAfter considering options, the customer makes the decision to buy. They may add the book to their shopping cart and proceed to checkout. At this stage, they are focused on the user experience—whether the site is easy to navigate, and whether payment methods are clear and secure.\n\nStep 4: Purchase\nThe customer enters payment information, selects a delivery method, and completes the purchase. They receive an order confirmation email with delivery details. This phase is critical as it marks the final decision and the transaction's success.\n\nStep 5: Post-Purchase\nAfter purchasing, the customer may receive updates about their order shipment, or notifications if there are any delays. Once the book is delivered, they might share their experience via reviews or social media, influencing other potential buyers."
+                  }
+                ]
               },
-              resources: 3,
-              proofOfWork: 4,
-              rating: 0,
-              hasGift: false,
+              "resources": 4,
+              "proofOfWork": 4,
+              "rating": 0,
+              "hasGift": false
             },
             {
-              title: "Using Product Metrics",
-              data: {
-                description:
-                  "Define metrics to measure the product’s performance and the success of the strategy. These could include customer acquisition cost (CAC), lifetime value (LTV), user engagement, and NPS (Net Promoter Score).",
-                whatYouWillLearn: [
-                  "Important product metrics to track:Key Product Metrics and Their Importance",
-                  "Churn Rate",
-                  "Definition: Churn rate measures the percentage of customers who stop using the product or service during a specific period. It indicates how well a product retains its customers.",
-                  "Formula: Churn Rate = (Customers lost during a period / Customers at the start of the period) x 100",
-                  "Why It Matters: A high churn rate signals issues with customer satisfaction or product value, indicating areas for improvement. Monitoring churn helps identify retention problems and the effectiveness of customer engagement strategies.",
-                  "Customer Lifetime Value (CLV)",
-                  "Definition: CLV represents the total revenue a business can expect from a customer over the entire duration of their relationship.",
-                  "Formula: CLV = (Average Value of a Sale) x (Number of Transactions) x (Customer Retention Period)",
-                  "Why It Matters: CLV helps businesses understand how much a customer is worth in the long term. A higher CLV indicates that the business has a loyal customer base, which leads to more sustainable revenue.",
-                  "Net Promoter Score (NPS)",
-                  "Definition: NPS is a metric used to measure customer loyalty and satisfaction based on the likelihood of customers recommending the product to others.",
-                  "Formula: NPS = % Promoters - % Detractors",
-                  "Why It Matters: NPS gauges the overall customer experience and satisfaction. A high NPS suggests strong customer loyalty, which can drive growth through word-of-mouth referrals. It also highlights areas where customer experience needs improvement.",
-                  "Monthly Active Users (MAU)",
-                  "Definition: MAU tracks the number of unique users who engage with the product within a given month.",
-                  "Formula: MAU = Total number of unique users within a month",
-                  "Why It Matters: MAU is a critical metric for tracking user engagement and product popularity. A growing MAU shows that the product is engaging and retaining its users, while a stagnant or declining MAU may indicate issues with user retention or product appeal.",
-                  "Analyzing product metrics:Analyzing product metrics involves identifying patterns, evaluating trends, and linking them to business objectives. Start by collecting accurate data, segmenting users, and comparing metrics like retention or churn over time. Tools like dashboards and visualizations can help make data actionable, enabling teams to make data-driven decisions for product improvements.",
-                  "Regular review of user behavior:Regularly reviewing user behavior ensures a deeper understanding of how customers interact with a product. Analyzing session durations, feature usage, and common pain points allows teams to identify areas for optimization, refine UX, and align product features with user expectations.",
+              "title": "Using Product Metrics",
+              "data": {
+                "description": "Define metrics to measure the product’s performance and the success of the strategy. These could include customer acquisition cost (CAC), lifetime value (LTV), user engagement, and NPS (Net Promoter Score).",
+                "whatYouWillLearn": [
+                  "1. Important product metrics to track: Key Product Metrics and Their Importance\n\nChurn Rate\nDefinition: Churn rate measures the percentage of customers who stop using the product or service during a specific period. It indicates how well a product retains its customers.\nFormula: Churn Rate = (Customers lost during a period / Customers at the start of the period) x 100\nWhy It Matters: A high churn rate signals issues with customer satisfaction or product value, indicating areas for improvement. Monitoring churn helps identify retention problems and the effectiveness of customer engagement strategies.\n\nCustomer Lifetime Value (CLV)\nDefinition: CLV represents the total revenue a business can expect from a customer over the entire duration of their relationship.\nFormula: CLV = (Average Value of a Sale) x (Number of Transactions) x (Customer Retention Period)\nWhy It Matters: CLV helps businesses understand how much a customer is worth in the long term. A higher CLV indicates that the business has a loyal customer base, which leads to more sustainable revenue.\n\nNet Promoter Score (NPS)\nDefinition: NPS is a metric used to measure customer loyalty and satisfaction based on the likelihood of customers recommending the product to others.\nFormula: NPS = % Promoters - % Detractors\nWhy It Matters: NPS gauges the overall customer experience and satisfaction. A high NPS suggests strong customer loyalty, which can drive growth through word-of-mouth referrals. It also highlights areas where customer experience needs improvement.\n\nMonthly Active Users (MAU)\nDefinition: MAU tracks the number of unique users who engage with the product within a given month.\nFormula: MAU = Total number of unique users within a month\nWhy It Matters: MAU is a critical metric for tracking user engagement and product popularity. A growing MAU shows that the product is engaging and retaining its users, while a stagnant or declining MAU may indicate issues with user retention or product appeal.",
+                  "2. Analyzing product metrics: Analyzing product metrics involves identifying patterns, evaluating trends, and linking them to business objectives. Start by collecting accurate data, segmenting users, and comparing metrics like retention or churn over time. Tools like dashboards and visualizations can help make data actionable, enabling teams to make data-driven decisions for product improvements.",
+                  "3. Regular review of user behavior: Regularly reviewing user behavior ensures a deeper understanding of how customers interact with a product. Analyzing session durations, feature usage, and common pain points allows teams to identify areas for optimization, refine UX, and align product features with user expectations."
                 ],
-                challenges: [
+                "challenges": [
                   {
-                    title:
-                      "Create a table listing key product metrics",
-                    resources: [
-                      "",
-                    ],
-                    description:
-                      "Research and Define: Dive into each of these product metrics to fully understand their definitions, formulas, and why they are crucial to product management.\n\nWrite About Them: Write a blog or report discussing these metrics in detail, explaining how each one affects decision-making and product optimization.\n\nPublish on Medium: Share your findings and insights by publishing the article on Medium.",
-                  },
-                ],
+                    "title": "Create a Table Listing Key Product Metrics",
+                    "resources": [],
+                    "description": "Research and Define: Dive into each of these product metrics to fully understand their definitions, formulas, and why they are crucial to product management.\n\nWrite About Them: Write a blog or report discussing these metrics in detail, explaining how each one affects decision-making and product optimization.\n\nPublish on Medium: Share your findings and insights by publishing the article on Medium."
+                  }
+                ]
               },
-              resources: 0,
-              proofOfWork: 1,
-              rating: 0,
-              hasGift: false,
-            },
-          ],
+              "resources": 0,
+              "proofOfWork": 1,
+              "rating": 0,
+              "hasGift": false
+            }
+          ]
         },
       ],
       thinkTank: [
@@ -4369,7 +4591,7 @@ QA
 //   memberSince: "January 2022",
 //   isPublic: true,
 //   officeHours: "Thursday 9:00 PM", // Updated from markdown
-//   thinkTankMeeting: "2nd Wednesday 8:30 PM @ Google Meet", // Updated from markdown
+//   thinkTankMeeting: "2nd Wednesday 8: 30PM @ Google Meet", // Updated from markdown
 //   interestGroupLeads: {
 //     description:
 //       "Interest group leads manage the activities and events within interest groups and serve as a point of contact for students interested in getting involved. Students can connect with these leads to learn about opportunities within their interests.",

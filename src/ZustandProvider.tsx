@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { getKarmaFeed, KarmaFeedItem } from "@/modules/Dashboard/modules/Dashboard/services/api";
 
 export interface InterestGroup {
   id: string;
@@ -106,6 +107,45 @@ export const useUserStore = create<UserStore>(
       name: "userStore",
       //@ts-ignore
       getStorage: () => localStorage,
+    }
+  )
+);
+
+interface StatStore {
+  karmaFeed: KarmaFeedItem[] | null; // Store karmaFeed data
+  isKarmaFeedLoading: boolean; // Track loading state
+  fetchKarmaFeed: () => Promise<void>; // Function to fetch karmaFeed
+}
+
+export const useStatStore = create<StatStore>(
+  //@ts-ignore
+  persist(
+    (set) => ({
+      karmaFeed: null, // Initially null
+      isKarmaFeedLoading: false, // Initially not loading
+
+      // Fetch karma feed from the API and update the store
+      fetchKarmaFeed: async () => {
+        set({ isKarmaFeedLoading: true }); // Set loading to true
+        try {
+          const response = await getKarmaFeed(); // Fetch data from the API
+          if (response) {
+            set({ karmaFeed: response }); // Update the store with fetched data
+          } else {
+            set({ karmaFeed: [] }); // Fallback to an empty array
+          }
+        } catch (error) {
+          console.error("Failed to fetch karma feed:", error);
+          set({ karmaFeed: [] }); // Fallback to an empty array
+        } finally {
+          set({ isKarmaFeedLoading: false }); // Set loading to false
+        }
+      },
+    }),
+    {
+      name: "statStore", // Name of the persisted store
+      // @ts-ignore
+      getStorage: () => localStorage, // Use localStorage for persistence
     }
   )
 );

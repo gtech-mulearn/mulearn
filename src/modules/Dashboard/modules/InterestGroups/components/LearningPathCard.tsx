@@ -3,6 +3,7 @@ import React from 'react';
 import styles from './LearningPathCard.module.css';
 import { LearningPath } from '../data/interestGroups';
 import { FormattedLevel } from '../../LearningPathNew/services/api';
+import { FiArrowRight } from 'react-icons/fi';
 
 interface LearningPathCardProps {
   id: string;
@@ -22,7 +23,7 @@ const LearningPathCard: React.FC<LearningPathCardProps> = ({ id, level, card, on
         <div className={styles.cardHeader}>
           <h3>{card.title}</h3>
           <div className={styles.playButton}>
-            <span>▶</span>
+            <FiArrowRight/>
           </div>
         </div>
         <div className={styles.cardContent}>

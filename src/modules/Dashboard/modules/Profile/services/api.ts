@@ -3,6 +3,8 @@ import { privateGateway, publicGateway, qSeversePrivateGateway } from "@/MuLearn
 import { dashboardRoutes, qseverseRoutes } from "@/MuLearnServices/urls";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { AiOutlineConsoleSql } from "react-icons/ai";
+import { error, log } from "console";
 
 type userProfile = UseStateFunc<any>;
 type userLog = UseStateFunc<any>;
@@ -16,6 +18,20 @@ interface IssueVCRequest {
     send_email: boolean;
 }
 
+export interface Credential  {
+    id: string;
+    user_id: string;
+    display_name: string;
+    name: string;
+    created_at: string;
+    banner_image_url: string | null;
+    fields: Array<{ [key: string]: any }>;
+    tags: string[];
+    template_type: string;
+    template_data: string; // JSON string, needs parsing if used programmatically
+  };
+
+  
 export const getUserProfile = (
     setUserProfile: userProfile,
     setAPILoadStatus: APILoadStatus,
@@ -141,11 +157,10 @@ export const getAllConnectedUsers = async (): Promise<any> => {
     try {
         const response = await qSeversePrivateGateway.get(qseverseRoutes.getAllConnectedUsers, {
         });
-        console.log(response);
         return response;
     } catch (error: any) {
         console.error("Error fetching achievements:", error.response?.data || error.message);
-        toast.error("Failed to fetch achievements");
+        // toast.error("Failed to fetch achievements");
         throw new Error(error.response?.data?.message || "Failed to fetch achievements");
     }
 }
@@ -159,14 +174,16 @@ export const getConnectedUsers = async (
         const response = await qSeversePrivateGateway.get(qseverseRoutes.getConnectedUsers, {
             params: { key, value }
         });
+       if (response.data.matching_users.length === 0) {
+            return null;
+        }
         return response.data.matching_users[0].did;
     } catch (error: any) {
         console.error("Error fetching connected users:", error.response?.data || error.message);
-        toast.error("Failed to fetch connected users");
+        // toast.error("Failed to fetch connected users");
         throw new Error(error.response?.data?.message || "Failed to fetch connected users");
     }
 };
-
 
 
 export const getQSCredentials = async (): Promise<any> => {
@@ -177,5 +194,57 @@ export const getQSCredentials = async (): Promise<any> => {
         console.error("Error fetching QS credentials:", error.response?.data || error.message);
         toast.error("Failed to fetch QS credentials");
         throw new Error(error.response?.data?.message || "Failed to fetch QS credentials");
+    }
+}
+
+export const getUserAchievements = async (muid: string): Promise<any[]> => {
+    try {
+      const response = await publicGateway.get(qseverseRoutes.getUserAchievements + muid + "/");
+      return response?.data?.response ?? []; 
+    } catch (error: any) {
+      console.error("Error fetching achievements:", error.response?.data || error.message);
+    //   toast.error("Failed to fetch achievements");
+      throw new Error(error.response?.data?.message || "Failed to fetch achievements");
+    }
+  };
+
+
+export const updateVCURL = async (
+    achievementID: string,
+    vcURL: string
+    ): Promise<void> => {
+    try {
+        await privateGateway.post(qseverseRoutes.updateVCURL, {
+            achievement_id: achievementID,
+            vc_url: vcURL,
+        });
+    } catch (error: any) {
+        console.error("Error updating VC URL:", error.response?.data || error.message);
+        toast.error("Failed to update VC URL");
+        throw new Error(error.response?.data?.message || "Failed to update VC URL");
+    }
+};
+
+
+export const getUserPreferences = async (): Promise<any> => {
+    try {
+        const response = await privateGateway.get(dashboardRoutes.getUserPreferences);
+        console.log(response.data.response);
+        return response.data.response;
+    } catch (error: any) {
+        console.error("Error fetching user preferences:", error.response?.data || error.message);
+        toast.error("Failed to fetch user preferences");
+        throw new Error(error.response?.data?.message || "Failed to fetch user preferences");
+    }
+}
+
+
+export const updateUserPreferences = async (preferences: any): Promise<void> => {
+    try {
+        await privateGateway.patch(dashboardRoutes.updateUserPreferences, preferences);
+    } catch (error: any) {
+        console.error("Error updating user preferences:", error.response?.data || error.message);
+        toast.error("Failed to update user preferences");
+        throw new Error(error.response?.data?.message || "Failed to update user preferences");
     }
 }

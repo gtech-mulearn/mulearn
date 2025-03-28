@@ -303,7 +303,7 @@ const SearchContent:React.FC<SearchContentProps> = ({ searchType, setSearchType,
                 onChange={(e) => setSearchTerm(e.target.value)}
             />
         </div>
-        <div className={styles.searchTypeButtons}>
+        {/* <div className={styles.searchTypeButtons}>
             {["name", "code", "zone", "school", "college", "all"].map((type) => (
                 <button
                     key={type}
@@ -313,7 +313,7 @@ const SearchContent:React.FC<SearchContentProps> = ({ searchType, setSearchType,
                     {type.charAt(0).toUpperCase() + type.slice(1)}
                 </button>
             ))}
-        </div>
+        </div> */}
     </>
 );
 

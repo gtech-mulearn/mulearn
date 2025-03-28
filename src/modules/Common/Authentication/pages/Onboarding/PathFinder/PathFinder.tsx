@@ -9,10 +9,10 @@ import creative from "/assets/landing/creative.webp";
 import OnboardingTemplate from "../../../components/OnboardingTeamplate/OnboardingTemplate";
 import { IoCheckmarkSharp } from "react-icons/io5";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
-import { onboardingRoutes } from "@/MuLearnServices/urls";
+import { dashboardRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
 import { useNavigate } from "react-router-dom";
 import mu from "/src/modules/Common/Authentication/assets/µLearn.png";
-
+import { useUserStore } from "/src/ZustandProvider";
 
 // Define types for interests and endgoals
 type Pathway = {
@@ -43,7 +43,63 @@ const INITIAL_ENDGOALS: Endgoal[] = [
   { title: "Social Impact", value: "social_impact", checked: false },
 ];
 
+const PATHWAY_INFO = {
+  coder: {
+    title: "Coder",
+    includes: [
+      "Programming Languages",
+      "Web Development",
+      "Mobile App Development",
+      "Software Engineering",
+      "Database Management",
+      "Cloud Computing",
+      "DevOps & CI/CD",
+      "System Architecture"
+    ]
+  },
+  maker: {
+    title: "Maker",
+    includes: [
+      "Hardware Design",
+      "Electronics",
+      "3D Printing",
+      "Robotics",
+      "IoT Development",
+      "Prototyping",
+      "CAD/CAM",
+      "Product Design"
+    ]
+  },
+  manager: {
+    title: "Manager",
+    includes: [
+      "Project Management",
+      "Team Leadership",
+      "Business Strategy",
+      "Resource Planning",
+      "Risk Management",
+      "Agile Methodologies",
+      "Stakeholder Management",
+      "Process Optimization"
+    ]
+  },
+  creative: {
+    title: "Creative",
+    includes: [
+      "UI/UX Design",
+      "Graphic Design",
+      "Digital Marketing",
+      "Content Creation",
+      "Brand Strategy",
+      "Animation",
+      "Video Production",
+      "Social Media Management"
+    ]
+  }
+};
+
 export default function PathFinder() {
+  const { setUserInfo } = useUserStore();
   const [pathways, setPathways] = useState<string[]>([]);
   const [stepTwo, setStepTwo] = useState(false);
   const [recommendedPathways, setRecommendedPathways] = useState<string[]>(["Maker"]);
@@ -99,8 +155,19 @@ export default function PathFinder() {
       if (selectedEndgoals.length > 0) {
         await privateGateway.post(`${onboardingRoutes.register}select-endgoals/`, { endgoals: selectedEndgoals });
       }
-      toast.success("Pathways and endgoals saved successfully");
-      navigate("/dashboard/home");
+      privateGateway
+      .get(dashboardRoutes.getInfo)
+      .then(async (response: any) => {
+          localStorage.setItem(
+              "userInfo",
+              JSON.stringify(response.data.response)
+          );
+          setUserInfo(response.data.response);
+          toast.success("Pathways and endgoals saved successfully");
+          navigate("/dashboard/home");
+      }).catch((error) => {
+          toast.error("Something went wrong, please try again.");
+      });
     } catch (err: any) {
       console.error("Failed to submit pathways and endgoals:", err);
       toast.error(err.response?.data?.message?.general[0] || "Unexpected Error occurred");
@@ -143,26 +210,28 @@ export default function PathFinder() {
               )}
               {isChecked && <IoCheckmarkSharp className={styles.checkmark} />}
               {isInterest && (
-                <div className={styles.infoButton} onClick={(e) => e.stopPropagation()}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
-                  </svg>
+                <>
+                  <div className={styles.infoButton} onClick={(e) => e.stopPropagation()}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                    </svg>
+                  </div>
                   <div className={styles.interestInfo}>
-                    <h4>This category includes:</h4>
+                    <h4>{PATHWAY_INFO[item.value as keyof typeof PATHWAY_INFO].title} includes:</h4>
                     <ul>
-                      <li>Programming</li>
-                      <li>Web Development</li>
-                      <li>App Development</li>
+                      {PATHWAY_INFO[item.value as keyof typeof PATHWAY_INFO].includes.map((skill, index) => (
+                        <li key={index}>{skill}</li>
+                      ))}
                     </ul>
                   </div>
-                </div>
+                </>
               )}
             </div>
           );

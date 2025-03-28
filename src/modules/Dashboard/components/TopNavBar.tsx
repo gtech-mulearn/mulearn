@@ -1,89 +1,53 @@
-import React, { useEffect, useState, useMemo, useCallback } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import styles from "./SideNavBar.module.css";
-import { MdNotifications, MdNotificationAdd } from "react-icons/md";
 import { useNavigate, useParams } from "react-router-dom";
 import dpm from "../assets/images/dpm.webp";
-import { IoMdLogIn } from "react-icons/io";
-import { fetchLocalStorage } from "@/MuLearnServices/common_functions";
 import { MuButtonLight } from "@/MuLearnComponents/MuButtons/MuButton";
 import MuLogOut from "../assets/svg/MuLogOut";
 import toast from "react-hot-toast";
 import GameProgressBar from "../modules/ProgressBar/components/GameProgressBar";
-import { getPublicUserLevels, getUserLevels } from "../modules/Profile/services/api";
 import ModeSwitchModal from "../modules/Dashboard/Components/ModeSwitchModal";
 import { selectDomainCategory } from "../modules/Dashboard/Api/ModeSwitchApi";
 import { dashboardRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { useUserStore } from "/src/ZustandProvider";
 
-
 interface TopNavBarProps {
     setUserInfo: (userInfo: UserInfo) => void;
+    userInfo: UserInfo;
 }
 
-const TopNavBar: React.FC<TopNavBarProps> = ({ setUserInfo }) => {
+const TopNavBar: React.FC<TopNavBarProps> = ({ setUserInfo, userInfo }) => {
     const navigate = useNavigate();
     const { id } = useParams<{ id: string }>();
     const [userSettings, setUserSettings] = useState(false);
-    const [userLevelData, setUserLevelData] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState("");
     const [switchDomainModal, setSwitchDomainModal] = useState(false);
-    const [userInfo, setLocalUserInfo] = useState<UserInfo | null>(null); 
-    const userLevel = useUserStore((state) => state.userProfile.level);
 
     let userName = useUserStore((state) => state.userProfile.full_name.split(" ")[0]);
-    if(!userName){
+    if (!userName) {
         const storedUserInfo = localStorage.getItem("userInfo");
         userName = storedUserInfo ? JSON.parse(storedUserInfo)?.full_name.split(" ")?.[0] : null;
-      }
+    }
     const profilePic = userInfo?.profile_pic || null;
 
-    useEffect(() => {
-        const fetchUserInfo = async () => {
-            try {
-                const response = await privateGateway.get(dashboardRoutes.getInfo);
-                const fetchedUserInfo = response.data.response;
-                setLocalUserInfo(fetchedUserInfo);
-                setUserInfo(fetchedUserInfo);
-                localStorage.setItem("userInfo", JSON.stringify(fetchedUserInfo));
-            } catch (err) {
-                console.error("Failed to fetch user info:", err);
-                const storedUserInfo = fetchLocalStorage<UserInfo>("userInfo");
-                if (storedUserInfo) {
-                    setLocalUserInfo(storedUserInfo);
-                    setUserInfo(storedUserInfo); 
-                }
-            }
-        };
-
-        const storedUserInfo = fetchLocalStorage<UserInfo>("userInfo");
-        if (storedUserInfo) {
-            setLocalUserInfo(storedUserInfo);
-            setUserInfo(storedUserInfo);
-        } else {
-            fetchUserInfo();
-        }
-    }, [setUserInfo]);
-
-    useEffect(() => {
-        const fetchLevelData = async () => {
-            try {
-                setIsLoading(true);
-                if (userInfo?.muid) {
-                    await getPublicUserLevels(setUserLevelData, userInfo.muid);
-                } else {
-                    await getUserLevels(setUserLevelData);
-                }
-            } catch (err) {
-                console.error("Error fetching level data:", err);
-                setError("Failed to load level data");
-            } finally {
-                setIsLoading(false);
-            }
-        };
-        fetchLevelData();
-    }, [id]);
+    // useEffect(() => {
+    //     const fetchLevelData = async () => {
+    //         try {
+    //             setIsLoading(true);
+    //             if (userInfo?.muid) {
+    //                 await getPublicUserLevels(setUserLevelData, userInfo.muid);
+    //             } else {
+    //                 await getUserLevels(setUserLevelData);
+    //             }
+    //         } catch (err) {
+    //             console.error("Error fetching level data:", err);
+    //             setError("Failed to load level data");
+    //         } finally {
+    //             setIsLoading(false);
+    //         }
+    //     };
+    //     fetchLevelData();
+    // }, [id]);
 
     const handleClickOutside = useCallback((event: MouseEvent) => {
         const div = document.getElementById("user_settings");
@@ -105,28 +69,32 @@ const TopNavBar: React.FC<TopNavBarProps> = ({ setUserInfo }) => {
     const refreshToken = localStorage.getItem("refreshToken");
 
     const handleOnSubmit = async (data: string): Promise<void> => {
-        try {
-            await privateGateway.post(
-                `${onboardingRoutes.register}select-domains/`,
-                { domains: [data] }
-            );
-    
-            selectDomainCategory({ domains: [data] });
-    
-            const response = await privateGateway.get(dashboardRoutes.getInfo);
-            const updatedUserInfo = response.data.response;
-    
-            localStorage.setItem("userInfo", JSON.stringify(updatedUserInfo));
-            setLocalUserInfo(updatedUserInfo);
-            setUserInfo(updatedUserInfo); // Update store with new user info
-    
-            toast.success("Domain updated successfully!");
-        } catch (error) {
-            console.error("Failed to update domain on server:", error);
-            toast.error("Failed to update domain. Please try again.");
-        } finally {
-            window.location.reload();
-        }
+        const update = new Promise(async (resolve, reject) => {
+            try {
+                await privateGateway.post(
+                    `${onboardingRoutes.register}select-domains/`,
+                    { domains: [data] }
+                );
+                selectDomainCategory({ domains: [data] });
+                const response = await privateGateway.get(dashboardRoutes.getInfo);
+                const updatedUserInfo = response.data.response;
+                localStorage.setItem("userInfo", JSON.stringify(updatedUserInfo));
+                setUserInfo(updatedUserInfo);
+                resolve(true);
+            } catch (error) {
+                console.error("Failed to update domain on server:", error);
+                reject(error);
+            } finally {
+                setTimeout(() => {
+                    setSwitchDomainModal(false)
+                }, 500);
+            }
+        });
+        toast.promise(update, {
+            loading: "Updating domain...",
+            success: "Domain updated successfully!",
+            error: "Failed to update domain. Please try again.",
+        })
     };
 
     return (
@@ -138,20 +106,19 @@ const TopNavBar: React.FC<TopNavBarProps> = ({ setUserInfo }) => {
                         <div className={styles.mulearn_brand2}></div>
                         <div className={styles.menu}>
                             {refreshToken && userInfo?.user_domains && (
-                            <div className={styles.modeContainer}>
-                                <span className={styles.modeText}>Mode</span>
-                                <span
-                                    className={styles.userDomain}
-                                    onClick={() => setSwitchDomainModal(true)}
-                                >
-                                    {userInfo?.user_domains?.[0]?.toUpperCase() || ""}
-                                </span>
-                            </div>)}
-                            <div className="cursor-pointer" onClick={() => navigate("/dashboard/leaderboard")}>
-                    {refreshToken &&(
-
-                                <GameProgressBar levelData={userLevelData} userLevel={userLevel} />
-                    )}
+                                <div className={styles.modeContainer}>
+                                    {/* <span className={styles.modeText}>Mode</span> */}
+                                    <span
+                                        className={styles.userDomain}
+                                        onClick={() => setSwitchDomainModal(true)}
+                                    >
+                                        {userInfo?.user_domains?.[0]?.toUpperCase() || ""}
+                                    </span>
+                                </div>)}
+                            <div >
+                                {refreshToken && (
+                                    <GameProgressBar />
+                                )}
                             </div>
                             {refreshToken && (
                                 <div id="profile" className={styles.profile}>
@@ -159,7 +126,7 @@ const TopNavBar: React.FC<TopNavBarProps> = ({ setUserInfo }) => {
                                         onClick={() => setUserSettings(!userSettings)}
                                         src={profilePic || dpm}
                                         alt=""
-                                        style={{marginBottom: '0'}}
+                                        style={{ marginBottom: '0' }}
                                     />
                                 </div>
                             )}
@@ -178,10 +145,23 @@ const TopNavBar: React.FC<TopNavBarProps> = ({ setUserInfo }) => {
                                         text="Log Out"
                                         icon={<MuLogOut />}
                                         style={{ backgroundColor: "#fff", color: "#FF7676", marginBottom: "0px", minWidth: "0px", padding: "0px" }}
-                                        onClick={() => {
-                                            localStorage.clear();
-                                            toast.error("Logged Out, Redirecting to login page.");
-                                            setTimeout(() => window.location.reload(), 900);
+                                        onClick={async () => {
+                                            const logout = new Promise(async (resolve, reject) => {
+                                                try {
+                                                    localStorage.clear();
+                                                    useUserStore.getState().resetUserInfo();
+                                                    useUserStore.getState().resetUserProfile();
+                                                    await new Promise(() => setTimeout(() => window.location.reload(), 1000));
+                                                    resolve(true);
+                                                } catch (err) {
+                                                    reject(err);
+                                                }
+                                            });
+                                            await toast.promise(logout, {
+                                                loading: "Logging out...",
+                                                success: "Logged out successfully",
+                                                error: "Failed to logout"
+                                            });
                                         }}
                                     />
                                 </div>

@@ -9,19 +9,19 @@
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  padding: 16px;
+  padding: 8px; /* Reduced from 16px */
 }
 
 .modalContent {
   background-color: #fff;
-  border-radius: 12px;
-  padding: 24px;
-  max-width: 800px;
-  width: 95%;
+  border-radius: 8px; /* Reduced from 12px */
+  padding: 16px; /* Reduced from 24px */
+  max-width: 600px; /* Reduced from 800px */
+  width: 90%; /* Reduced from 95% */
   position: relative;
-  max-height: 90vh;
+  max-height: 90vh; /* Reduced from 90vh */
   overflow-y: auto;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Reduced from 4px 12px */
   transition: 0.3s ease;
   transform: scale(1);
 }
@@ -32,48 +32,47 @@
 
 .modalTitle {
   text-align: center;
-  font-size: 2rem;
-  margin-bottom: 24px;
+  font-size: 1.5rem; /* Reduced from 2rem */
+  margin-bottom: 16px; /* Reduced from 24px */
   color: #333;
 }
 
 .cardsGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  gap: 12px; 
 }
 
 .card {
   border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 16px;
+  border-radius: 6px;
+  padding: 12px; 
   cursor: pointer;
-  /* transition: transform 0.2s ease, box-shadow 0.2s ease; */
   text-align: center;
   position: relative;
+  height: 240px; 
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px); /* Reduced from -4px */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* Reduced from 4px 8px */
 }
 
 .cardImage {
   width: 100%;
-  max-height: 150px;
+  max-height: 70px; 
   object-fit: contain;
-  border-radius: 8px;
-  margin-bottom: 12px;
+  border-radius: 6px; /* Reduced from 8px */
+  margin-bottom: 8px; /* Reduced from 12px */
 }
 
 .closeButton {
   position: absolute;
-  top: 16px;
-  right: 16px;
-
+  top: 12px; /* Reduced from 16px */
+  right: 12px; /* Reduced from 16px */
   background: transparent;
   border: none;
-  font-size: 20px;
+  font-size: 16px; /* Reduced from 20px */
   cursor: pointer;
   color: #333;
   transition: color 0.2s ease-in-out;
@@ -83,11 +82,10 @@
   color: #ff4d4d;
 }
 
-
 .cardLabel {
-  font-size: 1.25rem;
+  font-size: .8rem; /* Reduced from 1.25rem */
   font-weight: bold;
-  margin-bottom: 8px;
+  margin-bottom: 6px; /* Reduced from 8px */
   color: #333;
 }
 
@@ -98,67 +96,63 @@
 .subdomainsList, .subdomainsListActive {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px; /* Reduced from 8px */
   margin: 0;
   padding: 0;
   list-style: none;
   justify-content: center;
 }
 
-.card{
-  height: 320px;
-}
-
-.card .subdomainsList{
+.card .subdomainsList {
   display: none;
 }
 
-.card > .cardLabel{
-  font-size: 40px;
+.card > .cardLabel {
+  font-size: 32px; /* Reduced from 40px */
   transition: all .5s ease;
 }
 
-.card:hover > .cardLabel{
-  font-size: 25px;
+.card:hover > .cardLabel {
+  font-size: 15px; /* Reduced from 25px */
 }
 
 .cardLabelActive {
-  font-size: 25px !important;
+  font-size: 15px !important; /* Reduced from 25px */
 }
 
-.card .subdomainsListActive{
+.card .subdomainsListActive {
   display: flex;
 }
 
-.card:hover > .subdomainsList{
+.card:hover > .subdomainsList {
   display: flex;
 }
 
 .subdomainItem {
-  font-size: 0.9rem;
-  padding: 4px 8px;
+  font-size: 0.65rem; /* Reduced from 0.9rem */
+  padding: 3px 6px; /* Reduced from 4px 8px */
   background-color: #f0f0f0;
-  border-radius: 4px;
+  border-radius: 3px; /* Reduced from 4px */
 }
 
 .selected {
   border-color: #456ff6;
-  box-shadow: 0 4px 12px rgba(69, 111, 246, 0.5);
+  box-shadow: 0 2px 8px rgba(69, 111, 246, 0.5); /* Reduced from 4px 12px */
 }
 
 .submitButton {
   display: block;
-  margin: 24px auto 0;
-  padding: 12px 24px;
+  margin: 16px auto 0; /* Reduced from 24px */
+  padding: 8px 16px; /* Reduced from 12px 24px */
   background-color: #456ff6;
   color: #fff;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px; /* Reduced from 8px */
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.875rem; /* Reduced from 1rem */
   transition: background-color 0.2s ease;
   width: 100%;
-  max-width: 300px;
+  max-width: 240px; /* Reduced from 300px */
 }
 
 .submitButton:hover {
@@ -168,116 +162,116 @@
 /* Large screens (desktops) */
 @media (min-width: 1200px) {
   .modalContent {
-    padding: 32px;
+    padding: 24px; /* Reduced from 32px */
   }
   
   .cardsGrid {
-    gap: 24px;
+    gap: 16px; /* Reduced from 24px */
   }
   
   .card {
-    padding: 20px;
+    padding: 16px; /* Reduced from 20px */
   }
   
   .cardImage {
-    max-height: 155px;
+    max-height: 130px; /* Reduced from 155px */
   }
 }
 
 /* Medium screens (tablets) */
 @media (max-width: 768px) {
   .modalTitle {
-    font-size: 1.75rem;
-    margin-bottom: 20px;
+    font-size: 1.25rem; /* Reduced from 1.75rem */
+    margin-bottom: 16px; /* Reduced from 20px */
   }
   
   .cardsGrid {
-    gap: 12px;
+    gap: 8px; /* Reduced from 12px */
   }
   
   .card {
-    padding: 12px;
+    padding: 8px; /* Reduced from 12px */
   }
   
   .cardImage {
-    max-height: 180px;
-    margin-bottom: 10px;
+    max-height: 140px; /* Reduced from 180px */
+    margin-bottom: 8px; /* Reduced from 10px */
   }
   
   .cardLabel {
-    font-size: 1.1rem;
-    margin-bottom: 6px;
+    font-size: 0.9rem; /* Reduced from 1.1rem */
+    margin-bottom: 4px; /* Reduced from 6px */
   }
   
   .subdomainsList, .subdomainsListActive {
-    gap: 6px;
+    gap: 4px; /* Reduced from 6px */
   }
   
   .subdomainItem {
-    font-size: 0.8rem;
-    padding: 3px 6px;
+    font-size: 0.7rem; /* Reduced from 0.8rem */
+    padding: 2px 4px; /* Reduced from 3px 6px */
   }
   
   .submitButton {
-    margin-top: 20px;
-    padding: 10px 20px;
+    margin-top: 16px; /* Reduced from 20px */
+    padding: 8px 16px; /* Reduced from 10px 20px */
   }
 }
 
 /* Small screens (mobile) */
 @media (max-width: 600px) {
   .modalContent {
-    padding: 16px;
+    padding: 12px; /* Reduced from 16px */
     width: 100%;
   }
   
   .modalTitle {
-    font-size: 1.5rem;
-    margin-bottom: 16px;
+    font-size: 1.25rem; /* Reduced from 1.5rem */
+    margin-bottom: 12px; /* Reduced from 16px */
   }
   
   .cardsGrid {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 8px; /* Reduced from 12px */
   }
   
   .cardLabel {
-    font-size: 1.1rem;
-    margin-bottom: 4px;
+    font-size: 0.9rem; /* Reduced from 1.1rem */
+    margin-bottom: 3px; /* Reduced from 4px */
   }
   
   .subdomainsList, .subdomainsListActive {
-    gap: 4px;
+    gap: 3px; /* Reduced from 4px */
   }
   
   .subdomainItem {
-    font-size: 0.7rem;
-    padding: 2px 5px;
+    font-size: 0.6rem; /* Reduced from 0.7rem */
+    padding: 2px 4px; /* Reduced from 2px 5px */
   }
   
   .submitButton {
-    margin-top: 16px;
-    padding: 10px 16px;
-    font-size: 0.9rem;
+    margin-top: 12px; /* Reduced from 16px */
+    padding: 8px 12px; /* Reduced from 10px 16px */
+    font-size: 0.8rem; /* Reduced from 0.9rem */
   }
 }
 
 /* Extra small screens */
 @media (max-width: 400px) {
   .modalTitle {
-    font-size: 1.25rem;
+    font-size: 1rem; /* Reduced from 1.25rem */
   }
   
   .cardImage {
-    max-height: 150px;
+    max-height: 120px; /* Reduced from 150px */
   }
   
   .cardLabel {
-    font-size: 1rem;
+    font-size: 0.875rem; /* Reduced from 1rem */
   }
   
   .subdomainItem {
-    font-size: 0.6rem;
-    padding: 2px 4px;
+    font-size: 0.55rem; /* Reduced from 0.6rem */
+    padding: 1px 3px; /* Reduced from 2px 4px */
   }
 }

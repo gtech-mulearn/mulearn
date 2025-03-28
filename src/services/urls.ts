@@ -133,6 +133,9 @@ export const dashboardRoutes = {
     getSocials: "/api/v1/dashboard/profile/socials/",
     postProfileImage: "/api/v1/dashboard/user/profile/update/",
     getUserIgTasks: "/api/v1/dashboard/task/list/",
+    getUserPreferences: "/api/v1/dashboard/user/preferences",
+    updateUserPreferences: "/api/v1/dashboard/user/preferences",
+    getUserLevelFeed: "/api/v1/dashboard/profile/user-level-feed/",
 
     zonalStudentDetails: "/api/v1/dashboard/zonal/student-details/",
     zonalStudentData: "/api/v1/dashboard/zonal/student-details/csv/",
@@ -305,13 +308,14 @@ export const donationRoutes = {
 
 
 export const qseverseRoutes = {
-    issueVerifiableCredentials: "api/qseverse/issue-vc",
+    issueVerifiableCredentials: "api/issue_vc_app",
     getAllConnectedUsers: "api/app/connected-users",
     getConnectedUsers: "api/app/connected-users/search",
     getCredentials: "api/user/credentials",
-
     getAchievements: "api/v1/dashboard/achievement/list/",
     createAchievements: "api/v1/dashboard/achievement/create/",
-    updateAchievements: "api/v1/integrations/qseverse/achievements",
+    updateAchievements: "api/v1/dashboard/achievement/update/",
     deleteAchievements: "api/v1/dashboard/achievement/delete/",
+    getUserAchievements: "api/v1/dashboard/achievement/list/user/",
+    updateVCURL: "api/v1/dashboard/achievement/issue-vc/"
 }

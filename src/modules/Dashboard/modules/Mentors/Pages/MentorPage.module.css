@@ -35,14 +35,12 @@
     display: flex;
     gap: 0.625rem;
     align-items: center;
-    width: 40%;
+    width: 80%;
     margin: 0.625rem 0 0.8rem 0; 
     padding: 0;
     box-sizing: border-box;
   }
 
-
-  
   .searchIcon {
     position: absolute;
     left: 1rem;

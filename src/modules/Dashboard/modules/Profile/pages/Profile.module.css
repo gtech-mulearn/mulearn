@@ -663,3 +663,10 @@
     justify-content: space-between;
     gap: 20px;  
 }
+
+.profileSettingsContainer{
+    display: flex;
+    flex-direction: column;
+    justify-items: flex-start;
+ 
+}

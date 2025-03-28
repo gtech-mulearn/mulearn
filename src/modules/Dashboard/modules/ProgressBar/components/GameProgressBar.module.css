@@ -1,4 +1,105 @@
+.container {
+  width: 100%;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  height: 2.25rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+  position: relative;
+}
+
 .iconContainer {
-    margin-right: -15px;
-    z-index: 100;
-  }
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(to right, #9333ea, #7e22ce, #6d28d9);
+  border: 2px solid white;
+  margin-right: -15px;
+  z-index: 100;
+}
+
+.iconContainer-large {
+  width: 3rem;
+  height: 3rem;
+}
+
+.image {
+  width: 2rem;
+  height: 2rem;
+  margin: 0;
+}
+
+.progressContainer {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+}
+
+.progressTitle {
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background-color: #3b82f6;
+  padding: 0.1rem 1.5rem;
+  border-top-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+.progressBar {
+  position: relative;
+  height: 1rem;
+  width: 6rem;
+  border-radius: 9999px 9999px 9999px 0;
+  overflow: hidden;
+  background: rgba(30, 41, 59, 0.8);
+  display: flex;
+  align-items: center;
+}
+
+.progressBarLarge {
+  height: 1.5rem;
+  width: 9rem;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: 9999px;
+  background: linear-gradient(to right, #facc15, #f97316, #ea580c);
+  transition: width 0.4s ease-out;
+}
+
+.progressText {
+  position: absolute;
+  inset: 0.125rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 0.75rem;
+  color: white;
+  font-weight: 500;
+  font-size: 0.75rem;
+}
+
+
+.completedBar {
+  background-color: #22c55e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.completedText {
+  color: white;
+  font-weight: 500;
+  font-size: 0.75rem;
+  text-align: center;
+}

@@ -57,7 +57,7 @@ const ModeSwitchModal: React.FC<ModeSwitchModalProps> = ({
   }
 
   const handleCardClick = (modeId: string) => {
-    setSelectedMode((prev) => (prev === modeId ? null : modeId));
+    setSelectedMode(modeId);
   };
 
   const handleSubmit = () => {

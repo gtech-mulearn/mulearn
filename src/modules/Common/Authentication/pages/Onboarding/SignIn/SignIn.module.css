@@ -31,6 +31,31 @@
     padding: 1rem;
 }
 
+.passwordInput {
+    width: 100%;
+    position: relative;
+
+    div {
+        width: 100%;
+    }
+
+    button {
+        all: unset;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        width: 24px;
+        z-index: 10;
+        background-color: transparent;
+        color: #d9d9d9;
+        cursor: pointer;
+
+        &:active {
+            color: #456ff6;
+        }
+    }
+}
+
 .forgot {
     margin-top: 2rem;
     font-size: small;

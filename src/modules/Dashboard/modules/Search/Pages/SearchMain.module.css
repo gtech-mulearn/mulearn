@@ -15,7 +15,7 @@
   top: 20px;
   left: 55%;
   transform: translateX(-50%); */
-  background-color: rgb(21, 21, 21);
+  background-color: #FFFFFF;
   border-radius: 9999px;
   padding: 0.5rem;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -47,8 +47,8 @@
   white-space: nowrap; 
 }
 
-.tabItem:hover {
-  background-color: #474747;
+.tabItem:not(.active):hover {
+  background-color: #EEEEEE;
 }
 
 .active {

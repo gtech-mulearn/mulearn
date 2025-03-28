@@ -135,17 +135,7 @@ const LearningCircleLanding = () => {
                             <h1 className={styles.BannerTitle}>Discover Learning Circles</h1>
                             <p className={styles.BannerSubtitle}>Join circles that share your interests and upgrade your skills.</p>
                         </div>
-                    </div>
-                    <div className={styles.middleContainer}>
-                        {/* <SelectTab
-                            placeholder={"Select Role"}
-                            options={INITIAL_INTERESTS}
-                            styles={customReactSelectStyles}
-                            value={selectedCategory}
-                            onChange={selectionChange}
-                        /> */}
-                        <div></div>
-                        <div>
+                        <div className={styles.BannerButton}>
                             <PowerfulButton
                                 children="Create"
                                 style={{
@@ -157,6 +147,16 @@ const LearningCircleLanding = () => {
                                 onClick={() => setIsCreateModalOpen(true)}
                             />
                         </div>
+                    </div>
+                    <div className={styles.middleContainer}>
+                        {/* <SelectTab
+                            placeholder={"Select Role"}
+                            options={INITIAL_INTERESTS}
+                            styles={customReactSelectStyles}
+                            value={selectedCategory}
+                            onChange={selectionChange}
+                        /> */}
+                        <div></div>
 
                     </div>
                     {meetups.length === 0 ? (
@@ -198,7 +198,7 @@ const LearningCircleLanding = () => {
                                         venue={event.meet_place}
                                         joiningUrl={event.meet_link}
                                         karmaPoints={event.duration}
-                                        joinedPeople={Number(event.attendee) || 10}
+                                        joinedPeople={Number(event.attendees) || 10}
                                         imageUrl="https://img.freepik.com/free-vector/people-studying-learning-room_74855-6615.jpg?t=st=1738405617~exp=1738409217~hmac=7d528d88304c4f919c3c258289bbce219d623170f0c85eff4b9cf1f348a2c1c4&w=2000"
                                     />
 

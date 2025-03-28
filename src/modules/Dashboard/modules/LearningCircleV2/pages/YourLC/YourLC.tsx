@@ -96,7 +96,7 @@ export default function YourLC() {
                                             <div className={styles.badge}>
                                                 {convertDateToDayAndMonthAndYear(
                                                     new Date(
-                                                        lc.next_meetup.meet_time
+                                                        lc.next_meetup.meet_time as string
                                                     )
                                                         .toISOString()
                                                         .split("T")[0]

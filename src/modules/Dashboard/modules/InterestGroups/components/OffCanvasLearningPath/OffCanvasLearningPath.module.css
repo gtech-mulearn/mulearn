@@ -1,0 +1,103 @@
+.offCanvas {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 350px;
+  height: 100%;
+  background-color: #f9f9f9;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  overflow-y: auto;
+  z-index: 9999;
+  color: #000;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.offCanvasOpen {
+  animation: slideInRight 0.3s ease-in-out forwards;
+}
+
+.offCanvasClosing {
+  animation: slideOutRight 0.3s ease-in-out forwards;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
+}
+
+.closeButton {
+  float: right;
+  margin-bottom: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+/* Off-canvas Section styling */
+.offCanvasSection {
+  padding: 12px;
+  margin-top: 10px;
+  margin-bottom: 16px;
+}
+
+.offCanvasSectionTitle {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.offCanvasSectionContent {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #333;
+}
+
+.filterContainer {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filterSelect {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: white;
+  cursor: pointer;
+}
+
+.proofOfWorkButton{
+  background-color: #456ff6;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 0.85rem;
+  color: white;
+  width: 100%;
+}

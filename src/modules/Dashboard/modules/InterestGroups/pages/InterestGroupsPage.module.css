@@ -169,17 +169,13 @@
   transition: filter 0.3s ease;
 }
 
-.GroupOverlay {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-}
+
 
 .GroupCategory {
   font-size: clamp(0.75rem, 1.5vw, 0.875rem);
   font-weight: 500;
   background-color: rgba(100, 118, 255, 0.3);
-  color: #0055ff;
+  color: black;
   padding: clamp(4px, 0.5vw, 6px) clamp(8px, 1vw, 12px);
   border-radius: 9999px;
   display: flex;
@@ -195,26 +191,29 @@
 }
 
 .GroupParticipantsBadge {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  width: clamp(24px, 4vw, 32px);
-  height: clamp(24px, 4vw, 32px);
-  background-color: #e5e7eb;
-  color: #4b5563;
   border-radius: 1rem;
-  font-size: clamp(0.75rem, 1vw, 1rem);
-  font-weight: bold;
+  font-size: clamp(0.75rem, 1vw, .75rem);
   display: flex;
-  align-items: center;
+  align-items: start;
   width: auto;
-  justify-content: center;
+  justify-content: start;
+  background-color: white;
+  border: 1px solid blue;
   padding: clamp(4px, 0.5vw, 6px) clamp(8px, 1vw, 12px);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 .GroupParticipantsIcon {
-  font-size: .4rem;
+  font-size: 1rem;
+  margin-right: 4px;
+}
+
+.GroupOverlay{
+  /* background-color: #ffb6c1; */
+  padding: 2px 0px;
+  width: fit-content;
+  border-radius: 500px;
+  color: #000;
+
 }
 
 .GroupDetails {

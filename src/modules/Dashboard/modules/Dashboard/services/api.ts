@@ -59,6 +59,20 @@ export async function getDomainBasedInterestGroups(domain: string): Promise<ApiI
     }
 }
 
+export async function getInterestGroups(): Promise<ApiInterestGroup[]> {
+    try {
+        const response = await publicGateway.get(onboardingRoutes.interestGroups);
+        if (response && response.data && response.data.response && response.data.response.interestGroup) {
+            return response.data.response.interestGroup; 
+        }
+        return []; 
+    } catch (error) {
+        console.error("Failed to fetch interest groups:", error);
+        return []; 
+    }
+}
+
+
 export async function getKarmaFeed(): Promise<KarmaFeedItem[]> {
     try {
         const response = await publicGateway.get<APIKarmaFeedResponse>(dashboardRoutes.getKarmaFeed);
@@ -83,7 +97,6 @@ export async function getKarmaFeed(): Promise<KarmaFeedItem[]> {
         return [];
     } catch (error) {
         console.error("Failed to fetch karma feed:", error);
-        toast.error("Failed to fetch karma feed");
         return [];
     }
 }

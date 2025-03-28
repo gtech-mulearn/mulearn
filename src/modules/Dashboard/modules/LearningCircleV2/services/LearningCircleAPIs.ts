@@ -84,9 +84,10 @@ export const joinMeetup = async (
             { meet_code: meetCode }
         );
         if (response.status === 200) {
+
             toast.success(
                 [
-                    response.data?.message?.general ??
+                    response.data.message?.general ??
                     "Joined learning circle successfully"
                 ][0]
             );
@@ -102,7 +103,7 @@ export const joinMeetup = async (
         const error = err as AxiosError;
         console.log(error);
         toast.error(
-            ((error.response as any)?.data?.message?.general ?? [
+            ((error as any)?.message?.general ?? [
                 "Unable to join learning circle."
             ])[0]
         );
@@ -195,7 +196,7 @@ export const submitAttendeeReport = async ({
 
 export const getMeetupInfo = async (
     meetId: string
-): Promise<LCMeetup | null> => {
+): Promise<CircleMeetupInfo | null> => {
     try {
         const response = await privateGateway.get(
             learningCircleRoutes.getMeetupInfo + meetId
@@ -309,8 +310,8 @@ export const editScheduleMeetup = async (
     params: LCMeetCreate
 ): Promise<boolean> => {
     try {
-        const response = await privateGateway.post(
-            learningCircleRoutes.editScheduledMeetup + params.meetId,
+        const response = await privateGateway.put(
+            learningCircleRoutes.editScheduledMeetup + params.meetId + '/',
             params
         );
         if (response.status === 200) {
@@ -339,7 +340,7 @@ export const deleteScheduleMeetup = async (
     params: { meetId: string }
 ): Promise<boolean> => {
     try {
-        const response = await privateGateway.post(
+        const response = await privateGateway.delete(
             learningCircleRoutes.deleteScheduledMeetup + params.meetId,
         );
         if (response.status === 200) {
