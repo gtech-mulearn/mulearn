@@ -31,6 +31,7 @@ interface LearningCircleCardProps {
   created_by_id?: string;
   ig_name: string;
   ig?: string;
+  attendees_count: number;
   imageUrl?: string;
   meet_code?: string;
   mode: string;
@@ -79,6 +80,7 @@ export function LearningCircleCard({
   imageUrl,
   meet_code,
   is_joined,
+  attendees_count,
   hasCompleted,
   is_rsvp,
   open,
@@ -196,10 +198,10 @@ export function LearningCircleCard({
             <CardContent className={styles.cardContent}>
               <h2 className={styles.cardTitle}>
                 {title}
-                <span className={styles.memberCount}>
+                {/* <span className={styles.memberCount}>
                   <Users className={styles.memberIcon} />
-                  <span>{attendees?.length} {attendees?.length === 1 ? 'member' : 'members'}</span>
-                </span>
+                  <span>{attendees_count}</span>
+                </span> */}
               </h2>
               <p className={styles.cardDescription}>{description}</p>
 
@@ -212,10 +214,10 @@ export function LearningCircleCard({
 
                 {/* <Sheet open={showMembersList} onOpenChange={setShowMembersList}> */}
                 {/* <SheetTrigger asChild> */}
-                <Badge variant="outline" className={styles.membersBadge}>
+                {/* <Badge variant="outline" className={styles.membersBadge}>
                   <Users className={styles.icon} />
-                  <span>{attendees?.length} {attendees?.length === 1 ? 'member' : 'members'}</span>
-                </Badge>
+                  <span>{attendees_count}</span>
+                </Badge> */}
                 {/* </SheetTrigger> */}
                 {/* <SheetContent>
                     <SheetHeader>

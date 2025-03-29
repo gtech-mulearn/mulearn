@@ -84,10 +84,10 @@ export default function LearningCircleLanding() {
     });
   }, [selectedCategory]);
 
+
   useEffect(() => {
     if (selectedCircle) {
       getMeetupInfo(selectedCircle as string).then(res => {
-        console.log(res);
         setSelectedMeetup(res as CircleMeetupInfo);
       });
     }
@@ -96,7 +96,6 @@ export default function LearningCircleLanding() {
   const handleModalOpen = (event: CircleMeetupInfo) => {
     setSelectedMeetup(event)
     setIsModalOpen(true)
-    console.log(selectedMeetup, 'selectedMeetup')
   }
 
   const handleEdit = (meetupId: string) => {
@@ -107,7 +106,6 @@ export default function LearningCircleLanding() {
 
   const handleDelete = async (meetupId: string) => {
     if (window.confirm("Are you sure you want to delete this event?")) {
-      console.log("Deleting event with ID:", meetupId);
       deleteScheduleMeetup({ meetId: meetupId }).then((data) => {
         if (data) {
           setisLoading(true);
@@ -279,7 +277,7 @@ export default function LearningCircleLanding() {
 
         <div className={styles.gridContainer}>
           {filteredCircles.map((circle) => {
-            return <LearningCircleListItem key={circle.id} {...circle} attendees_count={circle.attendees?.length || 1} onClick={() => handleClick(circle.id)} />
+            return <LearningCircleListItem key={circle.id} {...circle} attendees_count={circle.attendees_count} onClick={() => handleClick(circle.id)} />
           })}
         </div>
 
