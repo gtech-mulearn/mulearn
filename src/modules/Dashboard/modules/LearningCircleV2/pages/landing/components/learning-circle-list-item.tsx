@@ -21,6 +21,7 @@ interface LearningCircleListItemProps {
   is_rsvp?: boolean
   coord_x: number
   coord_y: number
+  is_started: boolean
   onClick: () => void
   onRSVPSuccess?: () => void
 }
@@ -37,6 +38,7 @@ export function LearningCircleListItem({
   is_rsvp,
   coord_x,
   coord_y,
+  is_started,
   onClick,
   onRSVPSuccess,
 }: LearningCircleListItemProps) {
@@ -119,7 +121,7 @@ export function LearningCircleListItem({
 
       <CardFooter className={styles.cardFooter}>
         <div className="flex gap-[4px]">
-          {!hasRSVPed && (
+          {!is_started && !hasRSVPed && (
             <Button
               className={styles.secondaryButton}
               variant="outline"

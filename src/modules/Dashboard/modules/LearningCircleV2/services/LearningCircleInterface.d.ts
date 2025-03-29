@@ -90,6 +90,7 @@ export interface CircleMeetupInfo {
     is_approved: boolean;
     is_started: boolean;
     is_ended: boolean;
+    is_joined?: boolean;
     attendee: CircleMeetingAttendee; 
     attendees: CircleMeetingAttendee[] | null; 
     meet_link: string;

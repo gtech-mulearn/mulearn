@@ -213,19 +213,30 @@ const AchievementCardOne: React.FC<AchievementCardOneProps> = ({
                                 <Text fontSize="sm" color="gray.600">
                                     Note: Your name ({usersName || "Unknown"}) and muid ({muid || "Not provided"}) will be shared when you issue this credential.
                                 </Text>
+                                <ul className="list-disc pl-5">
+                                    <li>
+                                        Goto Play Store or App Store and download the QSeverse app.
+                                    </li>
+                                    <li>
+                                       Login to your existing mulearn account.
+                                    </li>
+                                    <li>
+                                        Thats it! Your DID is linked to your account.
+                                    </li>
+                                </ul>
                               
-                                <Box>
+                                {/* <Box>
                                     <Text mb={2}>How to Link Your DID:</Text>
                                     <iframe
                                         width="100%"
                                         height="200"
-                                        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                                        src="https://www.youtube.com/embed/dw4w9WgXcQ"
                                         title="How to Link Your DID"
                                         frameBorder="0"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                         allowFullScreen
                                     />
-                                </Box>
+                                </Box> */}
                             </VStack>
                         ) : issuedCredential ? (
                             <VStack spacing={4} align="stretch">
@@ -324,10 +335,20 @@ const AchievementCardOne: React.FC<AchievementCardOneProps> = ({
                                     color="white"
                                     mr={3}
                                     as="a"
-                                    href="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                                    href="https://apps.apple.com/us/app/qs-passport/id6477819506"
                                     target="_blank"
                                 >
-                                    Link DID
+                                    Link DID(Appstore)
+                                </Button>
+                                <Button
+                                    bg="#007bff"
+                                    color="white"
+                                    mr={3}
+                                    as="a"
+                                    href="https://drive.google.com/file/d/1oWVTtzVqMtsUvJuwjRWXrgxObayxzSLN/view?usp=sharing"
+                                    target="_blank"
+                                >
+                                    Link DID(Playstore)
                                 </Button>
                                 <Button variant="ghost" onClick={onClose}>
                                     Cancel

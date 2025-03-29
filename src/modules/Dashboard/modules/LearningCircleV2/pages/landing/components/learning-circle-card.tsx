@@ -38,7 +38,7 @@ interface LearningCircleCardProps {
   meet_link: string;
   meet_time: string;
   attendees: CircleMeetingAttendee[] | null;
-  hasJoined?: boolean;
+  is_joined?: boolean;
   hasCompleted?: boolean;
   is_rsvp: boolean;
   members?: Member[];
@@ -78,8 +78,8 @@ export function LearningCircleCard({
   meet_time,
   imageUrl,
   meet_code,
-  hasJoined = false,
-  hasCompleted = false,
+  is_joined,
+  hasCompleted,
   is_rsvp,
   open,
   setOpen,
@@ -93,7 +93,7 @@ export function LearningCircleCard({
 }: LearningCircleCardProps) {
   const [showJoinInput, setShowJoinInput] = useState(false);
   const [joiningCodeInput, setJoiningCodeInput] = useState("");
-  const [isJoined, setIsJoined] = useState(hasJoined);
+  const [isJoined, setIsJoined] = useState(is_joined);
   const [isCompleted, setIsCompleted] = useState(hasCompleted);
   const [blob, setBlob] = useState('');
   const [showQrCode, setShowQrCode] = useState(false);
