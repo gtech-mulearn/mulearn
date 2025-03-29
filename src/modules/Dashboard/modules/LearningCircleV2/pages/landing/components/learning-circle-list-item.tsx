@@ -74,6 +74,7 @@ export function LearningCircleListItem({
     }
   };
 
+
   return (
     <Card className={styles.card}>
       <CardContent className={styles.cardContent}>
