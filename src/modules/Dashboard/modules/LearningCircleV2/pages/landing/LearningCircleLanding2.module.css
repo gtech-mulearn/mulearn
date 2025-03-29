@@ -89,9 +89,10 @@
 
 .searchContainer {
     position: relative;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     background-color: white;
-    flex: 1 1 100%;
+    width: 100%;
+    min-width: 200px; /* Prevent search from getting too small */
     display: flex;
     align-items: center;
     border-radius: 20px;
@@ -240,4 +241,69 @@
     border-radius: 4px;
     background: #fff;
     font-size: 0.9rem;
+}
+
+.filtersMainWrapper {
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.filtersWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+@media (min-width: 640px) {
+    .filtersWrapper {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .searchContainer {
+        flex: 1 1 65%;
+        margin-bottom: 0;
+    }
+
+    .filterItem {
+        flex: 1 1 auto;
+        max-width: calc(35% - 1rem); /* Limit width of filter items */
+    }
+}
+
+@media (min-width: 1024px) {
+    .filtersWrapper {
+        flex-wrap: nowrap;
+        gap: 1.5rem;
+    }
+
+    .searchContainer {
+        flex: 1 1 75%;
+    }
+
+    .filterItem {
+        flex: 0 1 auto;
+        width: auto;
+        max-width: 200px; /* Limit maximum width of filter items */
+    }
+}
+
+/* Update the existing filterItem styles */
+.filterItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0;
+    width: 100%;
+}
+
+/* Style for ReactSelect container */
+.filterItem > div {
+    width: 100%;
+    min-width: 200px;
 }

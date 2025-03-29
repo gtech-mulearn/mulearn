@@ -209,21 +209,20 @@ export default function LearningCircleLanding() {
           </div>
         </div>
 
-
-
         {/* New Filters Container */}
-        <div className={styles.filtersWrapper}>
-          <div className={styles.searchContainer}>
-            <Search className={styles.searchIcon} />
-            <Input
-              placeholder="Search by title, description or category..."
-              className={styles.searchInput}
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          </div>
-          <div className={styles.filterItem}>
-            {/* <select
+        {/* <div className={styles.filtersMainWrapper}> */}
+          <div className={styles.filtersWrapper}>
+            <div className={styles.searchContainer}>
+              <Search className={styles.searchIcon} />
+              <Input
+                placeholder="Search by title, description or category..."
+                className={styles.searchInput}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            </div>
+            <div className={styles.filterItem}>
+              {/* <select
                 value={selectedInterest ? selectedInterest.value : "all"}
                 onChange={(e) => {
                   const value = e.target.value;
@@ -241,36 +240,38 @@ export default function LearningCircleLanding() {
                   </option>
                 ))}
               </select> */}
-            <ReactSelect<Option, false>
-              options={interestOptions}
-              name="interestGroup"
-              placeholder="Select Interest Group"
-              value={selectedInterest}
-              onChange={(selectedOption) => setSelectedInterest(selectedOption)}
-            />
-
+              <ReactSelect<Option, false>
+                options={interestOptions}
+                name="interestGroup"
+                placeholder="Select Interest Group"
+                value={selectedInterest}
+                onChange={(selectedOption) => setSelectedInterest(selectedOption)}
+              />
+            </div>
+            {/* <div className={styles.filtersWrapper}>
+              <div className={styles.filterItem}>
+                <Label style={{ marginLeft: '4px' }} htmlFor="isOnline">
+                  Created By Me
+                </Label>
+                <Switch
+                  id="createdByMe"
+                  checked={createdByMe}
+                  onCheckedChange={(checked) => setCreatedByMe(checked)}
+                />
+              </div>
+              <div className={styles.filterItem}>
+                <Label style={{ marginLeft: '4px' }} htmlFor="showOld">
+                  Old Learning Circles
+                </Label>
+                <Switch
+                  id="showOld"
+                  checked={showOld}
+                  onCheckedChange={(checked) => setShowOld(checked)}
+                />
+              </div>
+            </div> */}
           </div>
-          <div className={styles.filterItem}>
-            <Switch
-              id="createdByMe"
-              checked={createdByMe}
-              onCheckedChange={(checked) => setCreatedByMe(checked)}
-            />
-            <Label style={{ marginLeft: '4px' }} htmlFor="isOnline">
-              Created By Me
-            </Label>
-          </div>
-          <div className={styles.filterItem}>
-            <Switch
-              id="showOld"
-              checked={showOld}
-              onCheckedChange={(checked) => setShowOld(checked)}
-            />
-            <Label style={{ marginLeft: '4px' }} htmlFor="showOld">
-              Old Learning Circles
-            </Label>
-          </div>
-        </div>
+        {/* </div> */}
 
         {/* End New Filters Container */}
 
