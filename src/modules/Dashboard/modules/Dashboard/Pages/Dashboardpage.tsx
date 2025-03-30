@@ -139,7 +139,7 @@ const DashboardPage = () => {
               <div className={styles.buttons}>
                 <motion.button
                   className={styles.button}
-                  onClick={handleStartLearning}
+                onClick={handleStartLearning}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -161,7 +161,7 @@ const DashboardPage = () => {
               loading="lazy"
               className={styles.dashboardImage}
               initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             />
           </motion.section>
