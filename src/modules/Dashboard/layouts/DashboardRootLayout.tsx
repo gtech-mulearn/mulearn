@@ -26,7 +26,7 @@ declare global {
 const DashboardRootLayout = (props: { component?: any }) => {
   const navigate = useNavigate();
   const Management: ManagementTypes[] = Object.values(managementTypes).slice(2);
-  const { setUserInfo, updateUserInfo, userProfile, setUserProfile, userInfo } = useUserStore();
+  const { setUserInfo, updateUserInfo, userProfile, updateUserProfile, setUserProfile, userInfo } = useUserStore();
   const [isLoading, setIsLoading] = useState(true);
   const [connected, setConnected] = useState(false);
 

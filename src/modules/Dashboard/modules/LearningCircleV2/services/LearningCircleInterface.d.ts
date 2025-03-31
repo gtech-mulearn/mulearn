@@ -72,6 +72,7 @@ export interface CircleMeetupInfo {
     ig_name: string;
     ig?: string;
     description?: string;
+
     created_by: string;
     ig_id: string
     title: string;
@@ -79,6 +80,9 @@ export interface CircleMeetupInfo {
     report_description: string;
     meet_link: string;
     mode: string;
+    isActive?: boolean;
+    isOver?: boolean;
+    isUpcoming?: boolean;
     meet_code: string;
     is_rsvp: boolean;
     attendees_count: number;
@@ -93,9 +97,10 @@ export interface CircleMeetupInfo {
     is_ended: boolean;
     is_joined?: boolean;
     attendee: CircleMeetingAttendee; 
-    attendees: CircleMeetingAttendee[] | null; 
+    attendees: CircleMeetingAttendee[] | null;
+    attendees_count: number;
     meet_link: string;
-​​}
+}
 
 interface CircleMeetingAttendee {
     name: string;
@@ -103,7 +108,7 @@ interface CircleMeetingAttendee {
     is_report_submitted: boolean;
     is_lc_approved: boolean;
     full_name?: string;
-    
+
 }
 
 interface LCReportInfo {

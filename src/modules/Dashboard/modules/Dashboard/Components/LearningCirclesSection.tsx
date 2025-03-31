@@ -12,6 +12,11 @@ import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import { CreateLearningCircleForm } from "../../LearningCircleV2/pages/landing/components/create-learning-circle-form";
 import MuLoader from "@/components/MuComponents/MuLoader/MuLoader";
+import { currentIgsData } from "./InterestGroups";
+
+interface LearningCircleProps {
+  domain: string;
+}
 
 const meetupCache: { [key: string]: CircleMeetupInfo[] } = {};
 
@@ -40,7 +45,7 @@ const useMeetups = (category: string, limit: number = 6) => {
   return { meetups, isLoading, refetch: fetchMeetups };
 };
 
-const LearningCirclesSection: React.FC = () => {
+const LearningCirclesSection: React.FC<LearningCircleProps> = ({ domain }) => {
   const { meetups, isLoading, refetch } = useMeetups("all");
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -102,7 +107,10 @@ const LearningCirclesSection: React.FC = () => {
           <div className={styles.loaderContainer}>
             <MuLoader />
           </div>
-        ) : meetups.length === 0 ? (
+        ) : meetups.filter(circle => {
+          const domainIds = currentIgsData[domain.toLowerCase()] || [];
+          return domainIds.includes(circle.ig_id);
+        }).length === 0 ? (
           <div className={styles.noLc}>
             <img src={EmptyImage} alt="No Learning Circle Found!" className={styles.emptyImage} />
             <div className={styles.content}>
@@ -117,17 +125,19 @@ const LearningCirclesSection: React.FC = () => {
           </div>
         ) : (
           <div className={styles.gridContainer}>
-            {meetups.map((circle) => (
+            {meetups.filter(circle => {
+              const domainIds = currentIgsData[domain.toLowerCase()] || [];
+              return domainIds.includes(circle.ig_id);
+            }).map((circle) => (
               <LearningCircleListItem
+                {...meetups.find((circle) => circle.id === selectedCircle)!}
                 key={circle.id}
                 {...circle}
-                attendees_count={circle.attendees?.length || 1}
                 onClick={() => handleClick(circle.id)}
               />
             ))}
           </div>
         )}
-
         {selectedCircle && (
           <LearningCircleCard
             {...meetups.find((circle) => circle.id === selectedCircle)!}
@@ -138,7 +148,6 @@ const LearningCirclesSection: React.FC = () => {
             handleEdit={handleEdit}
           />
         )}
-
         <Dialog open={showCreateForm} onOpenChange={setShowCreateForm}>
           <DialogOverlay />
           <DialogContent className={styles.dialogContent}>

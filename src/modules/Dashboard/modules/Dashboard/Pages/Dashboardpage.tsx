@@ -8,8 +8,7 @@ import LearningCirclesSection from "../Components/LearningCirclesSection";
 import styles from "./DashboardPage.module.css";
 import { fetchLocalStorage } from "@/MuLearnServices/common_functions";
 import { getDomainBasedInterestGroups, getInterestGroups, KarmaFeedItem } from "../services/api";
-import { useUserStore } from "/src/ZustandProvider";
-import { useStatStore } from "/src/ZustandProvider"; // Import the Zustand store
+import { useUserStore, useStatStore } from "/src/ZustandProvider";
 import axios from "axios";
 
 interface InterestGroup {
@@ -33,7 +32,7 @@ const DashboardPage = () => {
 
   // Access karmaFeed and fetchKarmaFeed from Zustand
   const { karmaFeed, isKarmaFeedLoading, fetchKarmaFeed } = useStatStore();
-
+  const { userProfile } = useUserStore();
   let userName = useUserStore((state) => state.userProfile.full_name.split(" ")[0]);
   const storedUserInfo = JSON.parse(localStorage.getItem("userInfo") ?? "{}");
   const userDomains: string[] = fetchLocalStorage<UserInfo>("userInfo")?.user_domains || [];
@@ -165,7 +164,7 @@ const DashboardPage = () => {
               transition={{ duration: 0.6 }}
             />
           </motion.section>
-          <LearningCirclesSection />
+          <LearningCirclesSection domain={userDomains[0]} />
         </motion.div>
 
         <motion.aside

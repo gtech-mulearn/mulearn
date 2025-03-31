@@ -33,6 +33,17 @@
   gap: 0.75rem; /* Reduced gap for smaller screens */
 }
 
+.createButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icon {
+  width: 1rem;
+  height: 1rem;
+}
+
 .circleItem {
   display: flex;
   align-items: center;

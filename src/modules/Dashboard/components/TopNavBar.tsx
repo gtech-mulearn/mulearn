@@ -10,7 +10,7 @@ import ModeSwitchModal from "../modules/Dashboard/Components/ModeSwitchModal";
 import { selectDomainCategory } from "../modules/Dashboard/Api/ModeSwitchApi";
 import { dashboardRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
-import { useUserStore } from "/src/ZustandProvider";
+import { UserProfile, useUserStore } from "/src/ZustandProvider";
 
 interface TopNavBarProps {
     setUserInfo: (userInfo: UserInfo) => void;
@@ -76,10 +76,14 @@ const TopNavBar: React.FC<TopNavBarProps> = ({ setUserInfo, userInfo }) => {
                     { domains: [data] }
                 );
                 selectDomainCategory({ domains: [data] });
-                const response = await privateGateway.get(dashboardRoutes.getInfo);
-                const updatedUserInfo = response.data.response;
+                const response_userinfo = await privateGateway.get(dashboardRoutes.getInfo);
+                // const response_userprofile = await privateGateway.get(dashboardRoutes.getUserProfile);
+
+                const updatedUserInfo = response_userinfo.data.response;
+                // const updatedUserProfile = response_userprofile.data.response;
                 localStorage.setItem("userInfo", JSON.stringify(updatedUserInfo));
                 setUserInfo(updatedUserInfo);
+                // setUserProfile(updatedUserProfile);
                 resolve(true);
             } catch (error) {
                 console.error("Failed to update domain on server:", error);
@@ -117,7 +121,9 @@ const TopNavBar: React.FC<TopNavBarProps> = ({ setUserInfo, userInfo }) => {
                                 </div>)}
                             <div >
                                 {refreshToken && (
-                                    <GameProgressBar />
+                                    <div className={styles.hideOnMobile}>
+                                        <GameProgressBar />
+                                    </div>
                                 )}
                             </div>
                             {refreshToken && (
