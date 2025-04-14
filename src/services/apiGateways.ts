@@ -1,13 +1,13 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { authRoutes } from "./urls";
-import toast, { Toast as ToastType } from "react-hot-toast"; // Adjusted import for clarity
+import toast, { toast as Toast, Toaster } from "react-hot-toast";
 import { fetchLocalStorage } from "./common_functions";
 
 export const publicGateway = axios.create({
     baseURL: import.meta.env.VITE_BACKEND_URL as string,
     headers: {
-        "Content-Type": "application/json",
-    },
+        "Content-Type": "application/json"
+    }
 });
 
 // <--- Comment below code before PR, this is for backend testing
@@ -22,116 +22,104 @@ export const publicGateway = axios.create({
 export const privateGateway = axios.create({
     baseURL: import.meta.env.VITE_BACKEND_URL as string,
     headers: {
-        "Content-Type": "application/json",
-    },
+        "Content-Type": "application/json"
+    }
 });
 
-// Request Interceptor: Add Authorization header with access token
+// Add a request interceptor
 privateGateway.interceptors.request.use(
-    (config) => {
+    function (config) {
         const accessToken = localStorage.getItem("accessToken");
         if (accessToken) {
             config.headers["Authorization"] = `Bearer ${accessToken}`;
         }
+
         return config;
     },
-    (error) => Promise.reject(error)
+    function (error) {
+        // Do something with request error
+        return Promise.reject(error);
+    }
 );
 
-// Request Interceptor: Ensure URL ends with a trailing slash
+// Request Interceptor: Ensure that the URL ends with a trailing slash
+// If the URL doesn't terminate with a slash, this interceptor appends one.
 privateGateway.interceptors.request.use(
-    (config) => {
-        if (config.url && !config.url.endsWith("/")) {
-            config.url += "/";
+    function (config) {
+        if (config.url) {
+            if (!config.url.endsWith("/")) {
+                config.url += "/";
+            }
         }
         return config;
     },
-    (error) => Promise.reject(error)
+    function (error) {
+        // Do something with request error
+        return Promise.reject(error);
+    }
 );
 
-let isRefreshing = false;
-let failedQueue: Array<{
-    resolve: (token: string) => void;
-    reject: (error: any) => void;
-}> = [];
-
-const processQueue = (error: any, token: string | null = null) => {
-    failedQueue.forEach((prom) => {
-        if (error) {
-            prom.reject(error);
-        } else if (token) {
-            prom.resolve(token);
-        }
-    });
-    failedQueue = [];
-};
-
+// Add a response interceptor
 privateGateway.interceptors.response.use(
-    (response: AxiosResponse) => response,
-    async (error) => {
-        const originalRequest = error.config;
-
-     
-        const isTokenExpired =
-            (error.response?.data?.statusCode === 1000 &&
-                error.response?.data?.message?.general?.includes("Token Expired or Invalid")) 
-        if (isTokenExpired && !originalRequest._retry) {
-            if (isRefreshing) {
-                // Queue the request while refreshing
-                return new Promise((resolve, reject) => {
-                    failedQueue.push({
-                        resolve: (token) => {
-                            originalRequest.headers["Authorization"] = `Bearer ${token}`;
-                            resolve(privateGateway(originalRequest));
-                        },
-                        reject,
-                    });
-                });
-            }
-
-            originalRequest._retry = true;
-            isRefreshing = true;
-
+    function (response) {
+        return response;
+    },
+    async function (error) {
+        // TODO: if error occurs and status isn't 1000 nothing will happen
+        //console.log(error.response,error.response?.data?.statusCode === 1000)
+        if (error.response?.data?.statusCode === 1000) {
+            // publicGatewayAuth
+            //console.log("inside",error.response,error.response?.data?.statusCode)
+            //console.log("refresh",fetchLocalStorage<AllTokens["refreshToken"]>("refreshToken"))
             try {
-                const refreshToken = localStorage.getItem("refreshToken");
-                if (!refreshToken) {
-                    throw new Error("No refresh token available");
-                }
-
-                const refreshResponse = await publicGateway.post(authRoutes.getAccessToken, {
-                    refreshToken,
+                const response = await publicGateway.post(
+                    authRoutes.getAccessToken,
+                    {
+                        refreshToken: localStorage.getItem("refreshToken") //fetchLocalStorage<AllTokens["refreshToken"]>("refreshToken")
+                    }
+                );
+                localStorage.setItem(
+                    "accessToken",
+                    response.data.response.accessToken
+                );
+                //console.log('new access token',response.data.response.accessToken)
+                // Retry the original request
+                const { config } = error;
+                config.headers["Authorization"] =
+                    `Bearer ${localStorage.getItem("accessToken")}`;
+                return await new Promise((resolve, reject) => {
+                    privateGateway
+                        .request(config)
+                        .then(response_1 => {
+                            resolve(response_1);
+                        })
+                        .catch(error_1 => {
+                            //console.log("error_1",error_1)
+                            reject(error_1);
+                        });
                 });
+            } catch (error_2) {
+                toast.error("Your session has expired. Please login again.");
 
-                const newAccessToken = refreshResponse.data.accessToken;
-                if (!newAccessToken) {
-                    throw new Error("No access token in refresh response");
-                }
-
-                localStorage.setItem("accessToken", newAccessToken);
-
-                privateGateway.defaults.headers["Authorization"] = `Bearer ${newAccessToken}`;
-                originalRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;
-
-                // Process any queued requests
-                processQueue(null, newAccessToken);
-                isRefreshing = false;
-
-                return privateGateway(originalRequest);
-            } catch (refreshError) {
-                processQueue(refreshError);
-                isRefreshing = false;
-
-                localStorage.clear();
-                toast.error("Session expired. Please log in again.");
-                window.location.href = "/login"; 
-                return Promise.reject(refreshError);
+                // Wait for 3 seconds
+                setTimeout(() => {
+                    //localStorage.clear();
+                    //window.location.href = "/login";
+                }, 3000);
+                return await Promise.reject(error_2);
             }
         }
+        //! This was causeing unwanted redirects during api testing please fix.
+        //! Spend 2 hours to figure out this was causing the issue.
+        // if (error.response?.status === 500) {
+        //     // publicGatewayAuth
+        //     //console.log("inside", error.response, error.response?.data?.statusCode)
+        //     //Toast.error("A server error has occurred. Please try again later.");
+        //     window.location.href = "/500";
+        // }
 
-        if (error.response?.data) {
-            console.error("API error:", error.response.data);
-            return Promise.reject(error.response.data);
-        }
+        // Any status codes that fall outside the range of 2xx cause this function to trigger
+        // Do something with response error
         return Promise.reject(error);
     }
 );

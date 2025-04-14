@@ -93,6 +93,11 @@ const LearningCirclesSection: React.FC<LearningCircleProps> = ({ domain }) => {
     setOpen(true);
   }, []);
 
+  if (!domain) {
+    // Return a simple loader or null while domain is not available
+    return <div className={styles.loaderContainer}><MuLoader /></div>;
+  }
+  
   return (
     <>
       <div className={styles.container}>
@@ -108,7 +113,8 @@ const LearningCirclesSection: React.FC<LearningCircleProps> = ({ domain }) => {
             <MuLoader />
           </div>
         ) : meetups.filter(circle => {
-          const domainIds = currentIgsData[domain.toLowerCase()] || [];
+          const domainKey = domain?.toLowerCase() || '';
+          const domainIds = currentIgsData[domainKey] || [];
           return domainIds.includes(circle.ig_id);
         }).length === 0 ? (
           <div className={styles.noLc}>

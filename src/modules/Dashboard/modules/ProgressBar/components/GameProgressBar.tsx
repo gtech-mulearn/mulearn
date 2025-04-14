@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { Img } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import style from "./GameProgressBar.module.css";
 import Level1 from "../../Profile/components/MuVoyage/assets/images/Level1.webp";
 import Level2 from "../../Profile/components/MuVoyage/assets/images/Level2.webp";
@@ -23,18 +23,18 @@ const ImageMap = [
 ];
 
 const LEVEL_REQUIREMENTS = {
-  1: 20,    // Level 1 → Level 2: 20 points
-  2: 200,   // Level 2 → Level 3: 200 points
-  3: 800,   // Level 3 → Level 4: 800 points
-  4: 1600,  // Level 4 → Level 5: 1600 points
-  5: 1600,  // Level 5 → Level 6: 1600 points
-  6: 1600,  // Level 6 → Level 7: 1600 points
-  7: 0      // Max level
+  1: 20,
+  2: 200,
+  3: 800,
+  4: 1600,
+  5: 1600,
+  6: 1600,
+  7: 0,
 };
 
 const CACHE_KEY = "mulearn_level_data";
 const CACHE_TIMESTAMP_KEY = "mulearn_level_data_timestamp";
-const CACHE_DURATION = 60 * 60 * 1000; // 1 hour in milliseconds
+const CACHE_DURATION = 60 * 60 * 1000;
 
 export default function GameProgressBar() {
   const [levelData, setLevelData] = useState<LevelFeedResponse | null>(null);
@@ -49,11 +49,11 @@ export default function GameProgressBar() {
     try {
       const cachedData = localStorage.getItem(CACHE_KEY);
       const timestamp = localStorage.getItem(CACHE_TIMESTAMP_KEY);
-      
+
       if (!cachedData || !timestamp) {
         return { data: null, isValid: false };
       }
-      
+
       const isValid = Date.now() - parseInt(timestamp) < CACHE_DURATION;
       return { data: JSON.parse(cachedData), isValid };
     } catch (error) {
@@ -65,16 +65,16 @@ export default function GameProgressBar() {
   useEffect(() => {
     const fetchLevelData = async () => {
       setIsLoading(true);
-      
+
       const { data: cachedData, isValid } = getLevelDataFromCache();
-      
+
       if (cachedData && isValid) {
         console.log("Using cached level data");
         setLevelData(cachedData);
         setIsLoading(false);
         return;
       }
-      
+
       try {
         console.log("Fetching fresh level data");
         const data = await getUserLevelFeed();
@@ -92,7 +92,21 @@ export default function GameProgressBar() {
     fetchLevelData();
   }, []);
 
-  if (isLoading || !levelData) {
+  // Calculate level-related variables before any returns
+  const currentLevel = levelData?.level_order ?? 1;
+  const levelRequirement = LEVEL_REQUIREMENTS[currentLevel as keyof typeof LEVEL_REQUIREMENTS] || 0;
+
+  // Memoize progress unconditionally
+  const progress = useMemo(() => {
+    if (!levelData || levelRequirement === 0) return 0;
+    return Math.min((levelData.user_karma / levelRequirement) * 100, 100);
+  }, [levelData, levelRequirement]);
+
+  // Calculate imageIndex and nextLevel
+  const imageIndex = Math.min(Math.max(currentLevel - 1, 0), 6);
+  const nextLevel = currentLevel + 1;
+
+  if (isLoading) {
     return (
       <div className={style.container}>
         <div className={style.wrapper}>
@@ -115,9 +129,6 @@ export default function GameProgressBar() {
     );
   }
 
-  const currentLevel = levelData.level_order;
-  const levelRequirement = LEVEL_REQUIREMENTS[currentLevel as keyof typeof LEVEL_REQUIREMENTS] || 0;
-  
   if (currentLevel === 7) {
     return (
       <div className={style.container}>
@@ -136,15 +147,6 @@ export default function GameProgressBar() {
     );
   }
 
-  const progress = Math.min(
-    (levelData.user_karma / levelRequirement) * 100, 
-    100
-  );
-  
-  const imageIndex = Math.min(Math.max(currentLevel - 1, 0), 6);
-
-  const nextLevel = currentLevel + 1;
-
   return (
     <div className={style.container}>
       <div className={style.wrapper}>
@@ -156,14 +158,18 @@ export default function GameProgressBar() {
             Level {currentLevel} → {nextLevel}
           </div>
           <div className={`${style.progressBar} ${style.progressBarLarge}`}>
-            <motion.div 
-              className={style.progressFill} 
-              initial={{ width: "0%" }} 
-              animate={{ width: `${progress}%` }} 
-              transition={{ duration: 0.4, ease: "easeOut" }} 
+            <motion.div
+              key={progress} // Reset animation only when progress changes
+              className={style.progressFill}
+              initial={{ width: "0%" }}
+              animate={{ width: `${progress}%` }}
+              transition={{
+                duration: 0.5,
+                ease: "easeOut",
+              }}
             />
             <div className={style.progressText}>
-              {levelData.user_karma}/{levelRequirement}
+              {levelData?.user_karma ?? 0}/{levelRequirement}
             </div>
           </div>
         </div>

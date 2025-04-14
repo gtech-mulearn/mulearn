@@ -110,81 +110,65 @@
 
 .topBar {
   width: 100%;
+  padding: 1rem 0;
   display: flex;
-  width: 100%;
-  flex-direction: row;
-  align-items: center;
   justify-content: space-between;
-}
-
-@media (max-width: 550px) {
-  .topBar {
-    flex-direction: column;
-  }
-}
-
-@media (max-width: 400px) {
-  .topBarPart .indicator{
-    min-width: 100px;
-  }
-  .topBarPart .topBarButton{
-    font-size: 15px;
-  }
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .topBarPart {
-  position: relative;
+  background-color: #FFFFFF;
+  border-radius: 9999px;
+  padding: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   display: flex;
   justify-content: center;
-  /* gap: 16px; */
-  background-color: #ffffff;
-  /* margin-bottom: 24px; */
   width: fit-content;
-  /* margin: auto; */
-  border-radius: 24px;
-  /* margin-bottom: 32px; */
+  position: relative;
+  gap: 1rem;
 }
 
 .topBarButton {
-  position: relative;
-  z-index: 1;
-  padding: 12px 12px;
-  border: none;
-  border-radius: 24px;
-  color: #333;
   cursor: pointer;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  color: #858e9b;
+  transition: all 0.3s ease;
+  border-radius: 9999px;
   font-size: 1rem;
-  transition: background-color 0.3s;
-  text-align:center;
+  white-space: nowrap;
+  border: none;
+  background: none;
 }
 
-.topBarButton:hover {
-  /* Optional hover effect */
-  /* background-color: #e0e0e0; */
-}
-
-/* 
-.disabledButton {
-  color: #666;
-  cursor: not-allowed;
-  opacity: 0.6;
-} */
-
-.indicator {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  min-width: 100px;
-  background-color: #456ff6;
-  border-radius: 24px;
-  transition: left 0.3s ease, width 0.3s ease;
-  z-index: 0;
+.topBarButton:not(.activeTab):hover {
+  background-color: #EEEEEE;
 }
 
 .activeTab {
   color: white;
-  text-align:center;
+  background-color: #2563eb;
+}
+
+@media (max-width: 610px) {
+  .topBar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .topBarButton {
+    padding: 0.4rem 0.9rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .topBarButton {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+  }
 }
 
 /* Card Container */
@@ -199,13 +183,13 @@
   font-weight: 500;
   border-radius: 12px;
   padding: 16px;
-  margin-top:18px;
+  margin-top: 18px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap:18px;
+  gap: 18px;
 }
 
 .pendingCard:hover {
@@ -334,12 +318,14 @@
 
 .completedCard .viewButton:hover {
   background-color: #0056b3;
-  
+
 }
-.pendingCard{
+
+.pendingCard {
   /* background-color: ; */
   /* opacity:50%; */
 }
+
 /* Special Card (for level 4) */
 .specialCardTitle {
   margin-bottom: 8px;
@@ -455,9 +441,9 @@
   cursor: pointer;
 }
 
-@media (max-width: 550px) {
+@media (max-width: 610px) {
   .filterContainer {
-    margin-top: 10px;
+    margin-top: 5px;
     margin-bottom: 20px;
   }
 }
@@ -472,6 +458,7 @@
   color: red;
   font-weight: bold;
   font-size: 20px;
+
   p {
     font-size: 16px;
   }

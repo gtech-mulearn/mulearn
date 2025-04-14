@@ -102,6 +102,7 @@
   width: 100%;
   max-width: 100%;
   flex-wrap: wrap;
+  padding-bottom: 1rem;
 }
 
 

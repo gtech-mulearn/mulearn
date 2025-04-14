@@ -30,9 +30,14 @@
 .mainGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: clamp(8px, 2vw, 24px);
   width: 100%;
   overflow-x: hidden;
+}
+
+@media screen and (min-width: 1085px) {
+  .mainGrid {
+    grid-template-columns: 70% 30%;
+  }
 }
 
 .mainContent {
@@ -45,6 +50,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-top: 1rem;
 }
 
 .joinCommunityButton button{
@@ -55,26 +61,13 @@
 .sidebar {
   width: 100%;
   max-width: 100%;
-  padding: 0 clamp(8px, 2vw, 24px);
+  /* padding: 0 clamp(8px, 2vw, 24px); */
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-items: center;
   justify-content: start;
-}
-
-@media screen and (min-width: 768px) {
-  .mainGrid {
-    grid-template-columns: 75% 25%;
-  }
- 
-}
-
-@media screen and (min-width: 1024px) {
-  .mainGrid {
-    grid-template-columns: 75% 25%;
-  }
 }
 
 .forumCard {
@@ -88,9 +81,6 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   
 }
-
-
-
 
 .bannerWrapper {
   position: relative;
@@ -314,8 +304,7 @@
 }
 
 .officeHoursCard {
-  /* margin-top: 30px; */
-  margin: 30px auto;
+  margin: 1.5rem auto;
   background-color: #456ff6;
   color: #f7f7f7;
   border-radius: 8px;
@@ -323,11 +312,8 @@
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
   width: 90%;
-  max-width: 90%;
-  /* overflow-x: hidden; */
-  margin-top: 2rem;
-  padding: 1rem 2rem;
-  margin-right: 1rem;
+  padding: 1rem;
+  overflow: hidden;
 }
 
 .officeHoursCard:hover {
@@ -335,48 +321,65 @@
 }
 
 .officeHoursCard h3 {
-  font-size: clamp(0.625rem, 1.5vw, 0.85rem);
+  font-size: clamp(0.75rem, 1.5vw, 1rem);
   margin-bottom: 0.7rem;
+  word-wrap: break-word;
 }
 
 .officeHoursCardTiming {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* margin-top: clamp(4px, 1vw, 16px); */
-  flex-wrap: wrap;
-  gap: clamp(4px, 1vw, 16px);
-  width: 100%;
-  overflow-x: hidden;
-  /* margin-bottom: 2rem; */
+  gap: 0.5rem;
+  margin-bottom: 1rem;
 }
 
-.officeHoursCardTiming p {
+.officeHours {
   font-size: clamp(0.7rem, 1.5vw, 0.9rem);
   font-weight: 700;
+  word-wrap: break-word;
+  
 }
 
 .officeHoursButton {
   background-color: #fff;
   color: #456ff6;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(4px, 1vw, 16px);
+  gap: 0.5rem;
   border: none;
-  padding: clamp(4px, 1vw, 8px) clamp(8px, 2vw, 16px);
+  padding: 0.5rem 1rem;
   border-radius: 4px;
   cursor: pointer;
-  /* margin-top: clamp(4px, 1vw, 16px); */
   font-size: clamp(0.625rem, 1.5vw, 0.8rem);
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  width: auto;
+  transition: all 0.3s ease;
+  min-width: 120px;
   max-width: 100%;
 }
 
-.officeHoursButton:hover {
-  background-color: #e5e7eb;
-  transform: scale(1.05);
+@media screen and (max-width: 480px) {
+  .officeHoursCard {
+    width: 95%;
+    padding: 0.75rem;
+    margin: 1rem auto;
+  }
+
+  .officeHoursCardTiming {
+    gap: 0.25rem;
+  }
+  
+  .officeHoursButton {
+    padding: 0.4rem 0.8rem;
+    min-width: 100px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .officeHoursCard {
+    width: 85%;
+    padding: 1.25rem;
+  }
 }
 
 @media screen and (max-width: 480px) {

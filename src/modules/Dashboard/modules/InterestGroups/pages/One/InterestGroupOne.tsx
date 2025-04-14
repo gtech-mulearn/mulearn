@@ -151,23 +151,26 @@ const CommunityForum = () => {
             <div className={styles.officeHoursCard}>
               <h3>Office Hours Timings</h3>
               <div className={styles.officeHoursCardTiming}>
-                <p>{groupData.officeHours}</p>
-                <div className={styles.joinCommunityButton}>
-                  <button
-                    className={styles.officeHoursButton}
-                    onClick={() => handleAddToCalendar(`${groupData.title} Office Hours`, groupData.officeHours, 60)}
-                    aria-label="Join office hours"
-                  >
-                    <BsCalendar2 /> Add to calendar
-                  </button>
-                  <button
-                    className={styles.officeHoursButton}
-                    onClick={() => window.open("https://discord.com/invite/gtech-mulearn-771670169691881483", "_blank")}
-                    aria-label="Join Community"
-                  >
-                    <BsDiscord /> Join Community
-                  </button>
+                <div>
+                  <p>{groupData.officeHours}</p>
+                  <div className={styles.joinCommunityButton}>
+                    <button
+                      className={styles.officeHoursButton}
+                      onClick={() => handleAddToCalendar(`${groupData.title} Office Hours`, groupData.officeHours, 60)}
+                      aria-label="Join office hours"
+                    >
+                      <BsCalendar2 /> Add to calendar
+                    </button>
+                    <button
+                      className={styles.officeHoursButton}
+                      onClick={() => window.open("https://discord.com/invite/gtech-mulearn-771670169691881483", "_blank")}
+                      aria-label="Join Community"
+                    >
+                      <BsDiscord /> Join Community
+                    </button>
+                  </div>
                 </div>
+
               </div>
             </div>
 

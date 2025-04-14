@@ -143,21 +143,10 @@ export default function LearningCircleLanding() {
     .filter((circle) => {
       const meetupTime = new Date(circle.meet_time);
       if (isNaN(meetupTime.getTime())) return false;
-      
-      const meetupEndTime = new Date(meetupTime.getTime() + (1 * 60 * 60 * 1000));
-      const currentTime = new Date();
-      
-      // Mark meeting as active if current time is between start and end time
-      circle.isActive = currentTime >= meetupTime && currentTime <= meetupEndTime;
-      
-      // Mark meeting as over if current time is past end time
-      circle.isOver = currentTime > meetupEndTime;
-      
-      // Mark meeting as upcoming if it hasn't started yet
-      circle.isUpcoming = currentTime < meetupTime;
-      
-      // Only show meetings that are either active or upcoming
-      return circle.isActive || circle.isUpcoming;
+      const twentyFourHoursAgo = new Date();
+      twentyFourHoursAgo.setHours(twentyFourHoursAgo.getHours() - 72); // Changed from 2 to 24
+      // If showOld is true, show circles that are already in the past; otherwise show upcoming ones
+      return showOld ? meetupTime < twentyFourHoursAgo : meetupTime >= twentyFourHoursAgo;
     })
     .sort((a, b) => {
       // First, sort circles created by the current user to the top
@@ -288,7 +277,7 @@ export default function LearningCircleLanding() {
 
         <div className={styles.gridContainer}>
           {filteredCircles.map((circle) => {
-            return <LearningCircleListItem key={circle.id} {...circle} onClick={() => handleClick(circle.id)} />
+            return <LearningCircleListItem key={circle.id} {...circle} attendees_count={circle.attendees_count} onClick={() => handleClick(circle.id)} />
           })}
         </div>
 

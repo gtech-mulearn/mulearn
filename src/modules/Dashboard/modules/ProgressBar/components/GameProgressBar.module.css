@@ -72,7 +72,8 @@
 
 .progressFill {
   height: 100%;
-  border-radius: 9999px;
+  border-radius: 9999px 9999px 9999px 0;
+
   background: linear-gradient(to right, #facc15, #f97316, #ea580c);
   transition: width 0.4s ease-out;
 }

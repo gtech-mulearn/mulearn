@@ -37,8 +37,8 @@ const DashboardPage = () => {
   const storedUserInfo = JSON.parse(localStorage.getItem("userInfo") ?? "{}");
   const userDomains: string[] = fetchLocalStorage<UserInfo>("userInfo")?.user_domains || [];
 
-  if (!userName) {
-    userName = storedUserInfo ? storedUserInfo?.full_name.split(" ")?.[0] : null;
+  if (!userName && storedUserInfo) {
+    userName = storedUserInfo ? storedUserInfo?.full_name?.split(" ")?.[0] : null;
   }
 
   useEffect(() => {
