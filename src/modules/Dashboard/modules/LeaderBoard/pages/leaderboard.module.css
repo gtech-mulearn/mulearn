@@ -259,18 +259,15 @@
 
 /* Table styles */
 .tableWrapper {
-    overflow-y: auto;
-    overflow-x: auto;
     width: 100%;
-    max-height: 600px; /* Set a max height to enable scrolling */
     position: relative;
 }
 
 .table {
     width: 100%;
-    border-collapse: separate; /* Changed from collapse to separate for sticky header */
+    border-collapse: separate;
     border-spacing: 0;
-    table-layout: auto;
+    table-layout: fixed;
     color: black;
 }
 
@@ -279,33 +276,49 @@
     text-align: left;
     padding: 1rem 1.25rem;
     border-bottom: 1px solid #e2e8f0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.table th:first-child,
+.table td:first-child {
+    width: 15%;
+}
+
+.table th:last-child,
+.table td:last-child {
+    width: 30%;
+}
+
+.table th:nth-child(2),
+.table td:nth-child(2) {
+    width: 55%;
 }
 
 .tableHead {
     position: sticky;
     top: 0;
     z-index: 10;
-    background: white; /* Ensure the header is opaque */
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
+    background: white;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .tableHead th {
-    background: white; /* Ensure each header cell is opaque */
-    border-bottom: 2px solid #e2e8f0; /* Make header border more prominent */
+    background: white;
+    border-bottom: 2px solid #e2e8f0;
 }
 
 .nameCell {
     display: flex;
     align-items: center;
-    justify-items: center;
     gap: 0.75rem;
-    white-space: nowrap;
 }
 
 .tableAvatar {
     width: 32px;
     height: 32px;
     border-radius: 50%;
+    flex-shrink: 0;
 }
 
 /* Badge styles */
@@ -381,8 +394,39 @@
     .topPlayers {
         gap: 1rem;
     }
+
+    .table th,
+    .table td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.875rem;
+    }
+    
+    .nameCell {
+        gap: 0.5rem;
+    }
+    
+    .tableAvatar {
+        width: 24px;
+        height: 24px;
+    }
 }
 
+@media (max-width: 480px) {
+    .table th:first-child,
+    .table td:first-child {
+        width: 20%;
+    }
+    
+    .table th:last-child,
+    .table td:last-child {
+        width: 35%;
+    }
+    
+    .table th:nth-child(2),
+    .table td:nth-child(2) {
+        width: 45%;
+    }
+}
 
 @media (hover: hover) {
     .tableWrapper {

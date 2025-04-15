@@ -22,7 +22,7 @@
   z-index: 10;
   display: flex;
   justify-content: center;
-  width: 90%;
+  width: fit-content;
   max-width: 350px; 
 }
 
@@ -58,52 +58,20 @@
 
 .tabContent {
   padding: 1rem;
-  padding-bottom: 80px; /* Space for the floating tab bar */
+  padding-bottom: 80px;
   width: 100%;
 }
 
 @media (max-width: 768px) {
-  .tabs {
-    bottom: 10px;
-    padding: 0.3rem;
-    width: 95%; 
-    left: 50%;
-  }
-
   .tabItem {
-    padding: 0.3rem 0.8rem; /* Reduce padding on mobile */
-    font-size: 0.9rem; /* Slightly smaller text */
-  }
-
-  .tabList {
-    gap: 0.3rem; /* Reduce gap between tabs */
-  }
-
-  .tabContent {
-    padding: 0.5rem; /* Reduce padding on mobile */
-    padding-bottom: 60px; /* Adjust for smaller screens */
+    padding: 0.4rem 0.9rem;
+    font-size: 0.9rem;
   }
 }
 
 @media (max-width: 480px) {
-  .tabs {
-    width: 100%; /* Full width on very small screens */
-    border-radius: 0; /* Remove rounded corners on smallest screens */
-    bottom: 0; /* Align to bottom edge */
-  }
-
   .tabItem {
-    padding: 0.2rem 0.6rem; /* Further reduce padding */
-    font-size: 0.8rem; /* Smaller text for very small screens */
-  }
-
-  .tabList {
-    gap: 0.2rem; /* Minimal gap */
-    justify-content: center; /* Center align on very small screens */
-  }
-
-  .tabContent {
-    padding: 0.3rem; /* Minimal padding */
-    padding-bottom: 50px; /* Adjust for tab bar height */
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
   }
 }

@@ -10,7 +10,7 @@ import ModeSwitchModal from "../modules/Dashboard/Components/ModeSwitchModal";
 import { selectDomainCategory } from "../modules/Dashboard/Api/ModeSwitchApi";
 import { dashboardRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
-import { useUserStore } from "/src/ZustandProvider";
+import { UserProfile, useUserStore } from "/src/ZustandProvider";
 
 interface TopNavBarProps {
     setUserInfo: (userInfo: UserInfo) => void;
@@ -23,11 +23,17 @@ const TopNavBar: React.FC<TopNavBarProps> = ({ setUserInfo, userInfo }) => {
     const [userSettings, setUserSettings] = useState(false);
     const [switchDomainModal, setSwitchDomainModal] = useState(false);
 
-    let userName = useUserStore((state) => state.userProfile.full_name.split(" ")[0]);
-    if (!userName) {
-        const storedUserInfo = localStorage.getItem("userInfo");
-        userName = storedUserInfo ? JSON.parse(storedUserInfo)?.full_name.split(" ")?.[0] : null;
-    }
+    const userProfile = useUserStore((state) => state.userProfile || {});
+    const userName = userProfile.full_name
+        ? userProfile.full_name.split(" ")[0]
+        : (() => {
+            const storedUserInfo = localStorage.getItem("userInfo");
+            return storedUserInfo
+                ? JSON.parse(storedUserInfo)?.full_name?.split(" ")?.[0] || "Guest"
+                : "Guest";
+        })();
+
+
     const profilePic = userInfo?.profile_pic || null;
 
     // useEffect(() => {
@@ -76,10 +82,14 @@ const TopNavBar: React.FC<TopNavBarProps> = ({ setUserInfo, userInfo }) => {
                     { domains: [data] }
                 );
                 selectDomainCategory({ domains: [data] });
-                const response = await privateGateway.get(dashboardRoutes.getInfo);
-                const updatedUserInfo = response.data.response;
+                const response_userinfo = await privateGateway.get(dashboardRoutes.getInfo);
+                // const response_userprofile = await privateGateway.get(dashboardRoutes.getUserProfile);
+
+                const updatedUserInfo = response_userinfo.data.response;
+                // const updatedUserProfile = response_userprofile.data.response;
                 localStorage.setItem("userInfo", JSON.stringify(updatedUserInfo));
                 setUserInfo(updatedUserInfo);
+                // setUserProfile(updatedUserProfile);
                 resolve(true);
             } catch (error) {
                 console.error("Failed to update domain on server:", error);
@@ -105,19 +115,21 @@ const TopNavBar: React.FC<TopNavBarProps> = ({ setUserInfo, userInfo }) => {
                         <b className={styles.greetings}><i>Hello</i>, <b>{userName}</b> 👋</b>
                         <div className={styles.mulearn_brand2}></div>
                         <div className={styles.menu}>
-                            {refreshToken && userInfo?.user_domains && (
+                            {refreshToken && userInfo?.user_domains?.length > 0 && (
                                 <div className={styles.modeContainer}>
-                                    {/* <span className={styles.modeText}>Mode</span> */}
                                     <span
                                         className={styles.userDomain}
                                         onClick={() => setSwitchDomainModal(true)}
                                     >
                                         {userInfo?.user_domains?.[0]?.toUpperCase() || ""}
                                     </span>
-                                </div>)}
+                                </div>
+                            )}
                             <div >
                                 {refreshToken && (
-                                    <GameProgressBar />
+                                    <div className={styles.hideOnMobile}>
+                                        <GameProgressBar />
+                                    </div>
                                 )}
                             </div>
                             {refreshToken && (

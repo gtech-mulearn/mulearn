@@ -1,7 +1,9 @@
 /* General Styles */
-.wrapper{
+.wrapper {
     border-top: 0.3px solid gray;
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .wrapper h1 {
@@ -113,6 +115,10 @@
     .containercard {
         width: 85vw;
         height: auto; /* Adjust height to maintain aspect ratio */
+        margin: 10px;
+    }
+    .second_view_container {
+        padding: 0 !important;
     }
 }
 

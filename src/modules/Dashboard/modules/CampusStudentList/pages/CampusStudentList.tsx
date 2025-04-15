@@ -372,7 +372,7 @@ const CampusStudentList = (props: Props) => {
                                                 ? (parseInt(campusData.total_karma) / 1000).toPrecision(4) + "K"
                                                 : parseInt(campusData.total_karma).toLocaleString()}
                                         </div>
-                                        <p className={styles.statsLabel}>Points earned this year</p>
+                                        <p className={styles.statsLabel}>Overall points earned</p>
                                     </div>
 
                                     <div className={styles.cardHover}>

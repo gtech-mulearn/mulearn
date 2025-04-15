@@ -83,7 +83,7 @@
 }
 
 .highlight {
-  color: #007bff;
+  color: var(--Primary);
   font-weight: bold;
 }
 
@@ -115,7 +115,7 @@
 
 .joinBtn,
 .loginBtn {
-  background-color: #007bff;
+  background-color: var(--Primary);
   color: rgb(255, 255, 255);
   border-radius: 20px;
   padding: 10px 20px;
@@ -126,7 +126,7 @@
 
 .joinBtn:hover,
 .loginBtn:hover {
-  background-color: #005ec3;
+  background-color: var(--Primary);
   transition: all 0.3s ease;
 
 }
@@ -149,7 +149,7 @@
 }
 
 .heroSection h1 span {
-  color: #007bff;
+  color: var(--Primary);
   font-weight: bold;
 }
 
@@ -345,6 +345,134 @@
   margin-bottom: 2rem;
   margin-top: 16px;
   text-align: center;
+}
+
+.countcontainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding: 0 1rem; /* Add padding for edge spacing */
+}
+
+.count {
+  margin: 0.5rem 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cvc_heading {
+  font-weight: 600;
+  color: var(--Primary);
+  font-family: "Noto Sans", sans-serif;
+  font-size: clamp(1.5rem, 5vw, 1.75rem); /* Responsive font size */
+  margin: 0;
+}
+
+.cvc_text {
+  font-size: clamp(0.9rem, 3vw, 1rem);
+  font-weight: 500;
+  margin-top: 0.25rem; /* Adjusted for better spacing */
+  font-family: "Poppins", sans-serif;
+  color: #303030;
+}
+
+/* Small screens (up to 599px, e.g., mobile phones) */
+@media only screen and (max-width: 599px) {
+  .countcontainer {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+
+    gap: 0.75rem;
+    padding: 0 0.5rem;
+  }
+
+  .count {
+    margin: 0.25rem 0;
+  }
+
+  .cvc_heading {
+    font-size: clamp(1.25rem, 4.5vw, 1.5rem);
+  }
+
+  .cvc_text {
+    font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+  }
+}
+
+/* Medium screens (600px to 767px, e.g., larger phones, small tablets) */
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+  .countcontainer {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 1rem;
+  }
+
+  .cvc_heading {
+    font-size: clamp(1.5rem, 4vw, 1.75rem);
+  }
+
+  .cvc_text {
+    font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+  }
+}
+
+/* Tablets (768px to 999px) */
+@media only screen and (min-width: 768px) and (max-width: 999px) {
+  .countcontainer {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns for tablets */
+    gap: 1.25rem;
+    padding: 0 1.5rem;
+  }
+
+  .cvc_heading {
+    font-size: clamp(1.75rem, 3.5vw, 2rem);
+  }
+
+  .cvc_text {
+    font-size: clamp(0.9rem, 2vw, 1rem);
+  }
+}
+
+/* Desktops and larger screens (1000px and up) */
+@media only screen and (min-width: 1000px) {
+  .countcontainer {
+    grid-template-columns: repeat(4, 1fr); /* 4 columns for desktops */
+    gap: 2rem;
+    margin-top: 2rem;
+    padding: 0 2rem;
+  }
+
+  .count {
+    margin: 0.75rem 0;
+  }
+
+  .cvc_heading {
+    font-size: clamp(2rem, 3vw, 2.5rem); /* Larger but capped */
+  }
+
+  .cvc_text {
+    font-size: clamp(1rem, 1.5vw, 1.1rem);
+  }
+}
+
+/* Extra-large screens (1400px and up) */
+@media only screen and (min-width: 1400px) {
+  .countcontainer {
+    grid-template-columns: repeat(5, 1fr); /* 5 columns for very large screens */
+    gap: 2.5rem;
+    max-width: 1600px; /* Prevent overly wide layouts */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cvc_heading {
+    font-size: clamp(2.25rem, 2.5vw, 2.75rem);
+  }
+
+  .cvc_text {
+    font-size: clamp(1.1rem, 1.5vw, 1.2rem);
+  }
 }
 
 .specialEventsSection {
@@ -570,7 +698,7 @@
 }
 
 .community button {
-  background-color: #007bff;
+  background-color: var(--Primary);
   padding: 1rem;
   color: white;
   margin-top: 1rem;

@@ -50,7 +50,7 @@ type SpecialEvent = {
     id: number;
     title: string;
     description: string;
-    date: string;
+    date?: string;
     recurrence?: string;
     participants?: number;
     image: string;

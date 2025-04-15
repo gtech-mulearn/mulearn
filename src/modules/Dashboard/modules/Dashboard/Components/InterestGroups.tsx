@@ -19,7 +19,7 @@ interface InterestGroupsProps {
 }
 
 
-const currentIgsData: Record<string, string[]> =
+export const currentIgsData: Record<string, string[]> =
 {
   creative: ["46fe1fb7-7b04-4ebe-837d-120bc16d0e0a",],
   maker: ["d379d82b-e116-4b67-8128-670916e6bb42"],

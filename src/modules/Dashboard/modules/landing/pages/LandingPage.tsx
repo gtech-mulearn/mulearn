@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import styles from "./LandingPage.module.css";
@@ -8,6 +8,7 @@ import { FaLinkedin, FaInstagram, FaYoutube, FaFacebook } from "react-icons/fa";
 import LearningPathCard from "../../LearningPaths/components/LearningPathCard";
 import MulearnBrand from "../../../assets/MulearnBrand";
 import RolesSection from "../components/RolesSection";
+import CountUp from "react-countup";
 
 // Images for the special events cards
 import top100coders from "../../SpecialEvents/assets/top-100.webp";
@@ -16,6 +17,16 @@ import trivialideas from "../../SpecialEvents/assets/trivialideas.webp";
 import SpecialEventCardLanding from "../components/SpecialEventCardLanding/SpecialEventCardLanding";
 import illustration from "../assets/illustration.webp"
 import FeatureGrid from "./components/FeatureGrid";
+
+
+/**
+ * @typedef {Object} Data
+ * @property {number} members
+ * @property {Array<{ org_type: string, org_count: number }>} org_type_counts
+ * @property {Array<{ role__title: string, role_count: number }>} enablers_mentors_count
+ * @property {number} ig_count
+ * @property {number} learning_circle_count
+ */
 
 // Data remains the same
 const data = [
@@ -94,6 +105,141 @@ const textVariant = {
     y: 0,
     transition: { delay: i * 0.1, duration: 0.5 },
   }),
+};
+
+const MuLiveCounter = () => {
+  /**
+   * @type {[Data, React.Dispatch<React.SetStateAction<Data>>]}
+   */
+
+  const [counts, setCounts] = useState<any | null>(null);
+
+  useEffect(() => {
+    const socket = new WebSocket(
+      "wss://mulearn.org/ws/v1/public/landing-stats/"
+    );
+
+    socket.addEventListener("message", (event) => {
+      setCounts(JSON.parse(event.data));
+      //console.log("Message from server ", event.data);
+    });
+
+    socket.addEventListener("error", (event) => {
+      console.error("WebSocket error: ", event);
+    });
+  }, []);
+
+  return (
+    <div style={{}}>
+      {counts && (
+        <div className={styles.countcontainer}>
+          <div className={styles.count}>
+            <p className={styles.cvc_heading}>
+              <CountUp end={counts.members} duration={5} />+
+            </p>
+            <p className={styles.cvc_text}>Members</p>
+          </div>
+          <div className={styles.count}>
+            <p className={styles.cvc_heading}>
+              <CountUp end={counts.learning_circle_count} duration={5} />+
+            </p>
+            <p className={styles.cvc_text}>Learning Circles</p>
+          </div>
+          {counts &&
+            counts.org_type_counts
+              //@ts-ignore
+              .sort((a, b) => b.org_count - a.org_count)
+              //@ts-ignore
+              .map((orgTypeCount) => (
+                <div key={orgTypeCount.org_type} className={styles.count}>
+                  <p className={styles.cvc_heading}>
+                    <CountUp
+                      end={
+                        orgTypeCount.org_type === "Company"
+                          ? 213
+                          : orgTypeCount.org_type === "Community"
+                            ? 30
+                            : orgTypeCount.org_count
+                      }
+                      duration={5}
+                    />
+                    +
+                  </p>
+                  <p className={styles.cvc_text}>
+                    {orgTypeCount.org_type.endsWith("y")
+                      ? orgTypeCount.org_type.slice(0, -1) + "ies"
+                      : orgTypeCount.org_type + "s"}
+                  </p>
+                </div>
+              ))}
+
+          <div className={styles.count}>
+            <p className={styles.cvc_heading}>
+              <CountUp end={200} duration={5} />+
+            </p>
+            <p className={styles.cvc_text}>Events</p>
+          </div>
+          <div className={styles.count}>
+            <p className={styles.cvc_heading}>
+              <CountUp end={counts.ig_count} duration={5} />+
+            </p>
+            <p className={styles.cvc_text}>Interest Groups</p>
+          </div>
+
+          <div className={styles.count}>
+            <p className={styles.cvc_heading}>
+              <CountUp end={counts.karma_pow_count.karma_count} duration={5} />
+            </p>
+            <p className={styles.cvc_text}>Total Karma Mined</p>
+          </div>
+          <div className={styles.count}>
+            <p className={styles.cvc_heading}>
+              <CountUp end={counts.karma_pow_count.pow_count} duration={5} />+
+            </p>
+            <p className={styles.cvc_text}>Number of Proof of Works </p>
+          </div>
+          <div className={styles.count}>
+            <p className={styles.cvc_heading}>
+              <CountUp end={2000} duration={5} />+
+            </p>
+            <p className={styles.cvc_text}>Number of Internships</p>
+          </div>
+          <div className={styles.count}>
+            <p className={styles.cvc_heading}>
+              <CountUp end={1000} duration={5} />+
+            </p>
+            <p className={styles.cvc_text}>Jobs</p>
+          </div>
+          <div className={styles.count}>
+            <p className={styles.cvc_heading}>
+              <CountUp end={100} duration={5} />+
+            </p>
+            <p className={styles.cvc_text}>Products</p>
+          </div>
+          <div className={styles.count}>
+            <p className={styles.cvc_heading}>
+              <CountUp end={1} duration={5} />
+              Cr+
+            </p>
+            <p className={styles.cvc_text}>worth of Gig Works</p>
+          </div>
+
+          {counts.enablers_mentors_count
+            //@ts-ignore
+            .sort((a, b) => b.role_count - a.role_count)
+            //@ts-ignore
+            .map((roleCount) => (
+              <div className={styles.count}>
+                <p className={styles.cvc_heading}>
+                  <CountUp end={roleCount.role_count} duration={5} />+
+                </p>
+                <p className={styles.cvc_text}>{roleCount.role__title}s</p>
+              </div>
+            ))}
+        </div>
+      )}
+    </div>
+  );
 };
 
 const MuLearnLanding = () => {
@@ -530,13 +676,14 @@ const MuLearnLanding = () => {
               Over the last year, we as a community have made an impact on a significant number of students, mentors, and facilitators, enabling them to gain more knowledge about the ecosystem of learning and upskill themselves.
             </h6>
           </motion.div>
-          <motion.div className={styles.dataGrid} variants={fadeInUp}>
-            {data.map((d, i) => (
+          <motion.div variants={fadeInUp}>
+            {/* {data.map((d, i) => (
               <motion.div className={styles.dataCard} key={i} variants={fadeInUp}>
                 <h1>{d.value}</h1>
                 <p>{d.label}</p>
               </motion.div>
-            ))}
+            ))} */}
+            <MuLiveCounter />
           </motion.div>
         </motion.section>
       </div>

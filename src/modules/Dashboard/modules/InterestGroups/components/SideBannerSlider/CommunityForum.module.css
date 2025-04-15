@@ -5,13 +5,19 @@
   overflow: hidden;
 }
 
+.imageWrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
 .sliderImage {
-  width: 250px;
-  height: 250px;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
   object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 5px;
-  transition: transform 0.3s ease-in-out; 
+  aspect-ratio: 1/1;
+  transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
 
@@ -21,20 +27,9 @@
   justify-content: center;
 }
 
-.sliderImage:hover {
-  transform: scale(1.05);
-}
-
-.imageWrapper {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-}
-
-.sliderImage {
-  width: 100%;
-  border-radius: 10px;
-  transition: opacity 0.3s ease-in-out;
+.imageWrapper:hover .sliderImage {
+  transform: scale(1.005);
+  opacity: 0.8;
 }
 
 .knowMoreButton {
@@ -54,8 +49,4 @@
 
 .imageWrapper:hover .knowMoreButton {
   opacity: 1;
-}
-
-.imageWrapper:hover .sliderImage {
-  opacity: 0.8;
 }

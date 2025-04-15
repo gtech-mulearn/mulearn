@@ -161,13 +161,34 @@ export const TaskCard: React.FC<TaskCardProps> = ({ card, onClickCTA, custom }) 
   ];
 
   return (
-    <div className={`${styles.card} ${card.completed ? styles.completedCard : ""}`} style={custom ? { minHeight: 'auto' } : {}}>
+    <div className={`${styles.card} ${card.completed ? styles.completedCard : styles.pendingCard}`} style={custom ? { minHeight: 'auto' } : {}} onClick={() => {
+      onClickCTA(card);
+    }}>
       <div className={styles.cardContent}>
         {!custom && <div className={styles.cardIcon}>
           {card.completed ? (
-            <i className="fi fi-rr-check-circle" style={{ color: "#28a745" }}></i>
+              <span
+              className={styles.skillPill}
+              style={{
+                backgroundColor: "#bbf7d0",
+                margin:0,
+                // opacity:"0.5"
+              }}
+            >
+              completed
+            </span>
           ) : (
-            card.icon || <i className="fi fi-rr-circle"></i>
+            <span
+              className={styles.skillPill}
+              style={{
+                color:"black",
+                backgroundColor: "#fde68a",
+                margin:0,
+                // opacity:"1"
+              }}
+            >
+              pending
+            </span>
           )}
         </div>}
         <div className={styles.cardTitle} style={custom ? { textAlign: "left" } : {}}>{card.title}</div>
@@ -182,7 +203,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ card, onClickCTA, custom }) 
               key={skill}
               className={styles.skillPill}
               style={{
-                backgroundColor: skillColors[index % skillColors.length],
+                backgroundColor: "#EEF2FF",
               }}
             >
               {skill}
@@ -326,7 +347,7 @@ const LearningPathPage: React.FC = () => {
       const response = await getUserIGFormattedTasks(userIGIDs, unlockedLevel);
       let processedLevels: FormattedLevel[] = [];
 
-      if (selectedIg.id) {
+      if (selectedIg.id) { 
         processedLevels = response[selectedIg.id] || [];
       } else {
         const levelMap: Record<number, FormattedLevel> = {
@@ -493,42 +514,43 @@ const LearningPathPage: React.FC = () => {
   }));
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} >
       <div className={styles.topBar}>
-        {unlockedLevel >= 4 ?
+        {unlockedLevel >= 4 ? (
           <div className={styles.topBarPart}>
-            <div className={styles.indicator} style={{ left: indicatorStyle.left, width: indicatorStyle.width }} />
             <button
-              ref={(el) => (tabRefs.current.startLearning = el)}
-              className={`${styles.topBarButton} ${activeTab === "startLearning" ? styles.activeTab : ""}`}
+              className={`${styles.topBarButton} ${
+                activeTab === "startLearning" ? styles.activeTab : ""
+              }`}
               onClick={() => setActiveTab("startLearning")}
             >
               Start Journey
             </button>
             <button
-              ref={(el) => (tabRefs.current.becomeExpert = el)}
-              className={`${styles.topBarButton} ${activeTab === "becomeExpert" ? styles.activeTab : ""}`}
+              className={`${styles.topBarButton} ${
+                activeTab === "becomeExpert" ? styles.activeTab : ""
+              }`}
               onClick={() => setActiveTab("becomeExpert")}
             >
               Become Expert
             </button>
-          </div> : <div></div>
-        }
-        {(
-          <div className={styles.filterContainer}>
-            <label htmlFor="filter">Filter by:</label>
-            <select
-              id="filter"
-              value={filter}
-              onChange={(e) => setFilter(e.target.value as "all" | "completed" | "incomplete")}
-              className={styles.filterSelect}
-            >
-              <option value="all">All</option>
-              <option value="completed">Completed</option>
-              <option value="incomplete">Incomplete</option>
-            </select>
           </div>
+        ) : (
+          <div></div>
         )}
+        <div className={styles.filterContainer}>
+          <label htmlFor="filter">Filter by:</label>  
+          <select
+            id="filter"
+            value={filter}
+            onChange={(e) => setFilter(e.target.value as "all" | "completed" | "incomplete")}
+            className={styles.filterSelect}
+          >
+            <option value="all">All</option>
+            <option value="completed">Completed</option>
+            <option value="incomplete">Incomplete</option>
+          </select>
+        </div>
       </div>
 
       {activeTab === "becomeExpert" && (

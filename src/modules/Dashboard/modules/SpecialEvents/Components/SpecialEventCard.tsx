@@ -95,7 +95,6 @@ const SpecialEventCard: React.FC<{ specialevent: SpecialEvent }> = ({ specialeve
                     <p className={styles.date}>{processedEvent.date}</p>
                 )}
                 </div>
-
                 <p className={`${styles.description} ${isHovered ? styles.fullText : ""}`}>
                     {isHovered ? specialevent.description : 
                         specialevent.description.length > 100 ? specialevent.description.slice(0, 100) + "..." : specialevent.description}
@@ -103,11 +102,6 @@ const SpecialEventCard: React.FC<{ specialevent: SpecialEvent }> = ({ specialeve
                         <span className={styles.readMore}> Read more</span>
                     )}
                 </p>
-
-                
-
-              
-
                 <button className={styles.cta}  onClick={() => window.open(processedEvent.link, "_blank", "noopener,noreferrer")} >
                     <span>Explore</span>
                     <svg className={styles.arrow} viewBox="0 0 24 24">
