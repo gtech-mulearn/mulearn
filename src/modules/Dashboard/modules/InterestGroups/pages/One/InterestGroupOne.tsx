@@ -107,11 +107,13 @@ const CommunityForum = () => {
               <div className={styles.forumSubInfo}>
                 {/* <span><span></span>{groupData.isPublic ? "Public" : "Private"} Community</span> */}
 
-                <span><span>• </span>{(groupData.memberCount / 1000).toFixed(1)}k members</span>
+                {/* <span><span>• </span>{(groupData.memberCount / 1000).toFixed(1)}k members</span> */}
 
                 <span> <span>• </span>Office Hours: {groupData.officeHours}</span>
+                {groupData.thinkTankMeeting && (
+                  <span> <span>• </span>Think Tank Meeting: {groupData.thinkTankMeeting}</span>
+                )}
 
-                {/* <span> <span>•</span>Think Tank Meeting: {groupData.thinkTankMeeting}</span> */}
               </div>
             </div>
 

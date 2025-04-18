@@ -67,7 +67,7 @@ export interface InterestGroupData {
   image?: string
   members?: string
   bannerImage: string;
-  memberCount: number;
+  memberCount?: number;
   memberSince: string;
   isPublic: boolean;
   prerequisites: string[];
@@ -121,8 +121,7 @@ export const interestGroups: InterestGroupData[] = [
     description:
       "Welcome to the UI/UX Interest Group! We’re a vibrant community of designers, researchers, and enthusiasts passionate about crafting intuitive and beautiful digital experiences.",
     bannerImage:
-    "/assets/IG/Cover/1.webp",
-    memberCount: 2300,
+      "/assets/IG/Cover/1.webp",
     memberSince: "July 2022",
     isPublic: true,
     officeHours: "Tuesday 7:30PM",
@@ -322,7 +321,7 @@ export const interestGroups: InterestGroupData[] = [
           image: "/assets/interestgroup_assets/Top100Desigers2.webp",
         },
       ],
-      learningPaths: 
+      learningPaths:
         [
           {
             level: "Level 4",
@@ -590,9 +589,9 @@ export const interestGroups: InterestGroupData[] = [
     description:
       "Ever wondered how web applications are built? Everything seems complex until you learn the basics. μLearn Foundation's Web Development Interest Group is designed to help you develop and refine your skills, bringing together people eager to explore emerging web technologies.",
     bannerImage:
-    "/assets/IG/Cover/2.webp",
+      "/assets/IG/Cover/2.webp",
 
-    memberCount: 4200,
+    
     memberSince: "March 2021",
     isPublic: true,
     officeHours: "Wednesday 9:00PM",
@@ -1067,9 +1066,9 @@ export const interestGroups: InterestGroupData[] = [
     description:
       "Curious about protecting the digital world? The Cybersecurity Interest Group by GTech μLearn delves into securing data and networks from potential threats. This group provides essential knowledge on staying safe online, ideal for those passionate about keeping cyberspace secure.",
     bannerImage:
-    "/assets/IG/Cover/3.webp",
+      "/assets/IG/Cover/3.webp",
 
-    memberCount: 3000,
+    
     memberSince: "September 2020",
     isPublic: true,
     officeHours: "Monday 7:30PM",
@@ -1078,6 +1077,13 @@ export const interestGroups: InterestGroupData[] = [
       description:
         "Cybersecurity Interest Group Leads oversee the activities and events within the cybersecurity community and act as the main point of contact for students eager to get involved. Students can reach out to these leads to explore opportunities in areas like ethical hacking, network defense, and security research, and stay informed about upcoming cybersecurity initiatives and events.",
       leads: [
+        {
+          name: "Krishna Rajeev",
+          institution: "Muthoot institute of technology and sciences",
+          linkedin: "https://www.linkedin.com/in/krishnarajeev4",
+          image: "/assets/IG/Cyber Security/IG Lead/Krishna Rajeev.webp",
+          expertise: ["Ethical Hacking", "Network Security"],
+        },
         {
           name: "Dany Koshy P",
           institution: "College of Engineering Pathanapuram",
@@ -1565,9 +1571,9 @@ export const interestGroups: InterestGroupData[] = [
     description:
       "Passionate about creating immersive experiences in gaming? The Game Development Interest Group is your gateway to learning about designing, programming, and storytelling in the world of games. Whether you're into creating captivating visuals, coding mechanics, or crafting narratives, join us to level up your game development skills.",
     bannerImage:
-    "/assets/IG/Cover/5.webp",
+      "/assets/IG/Cover/5.webp",
 
-    memberCount: 2500,
+  
     memberSince: "January 2022",
     isPublic: true,
     officeHours: "Friday 8:30PM",
@@ -1750,7 +1756,7 @@ export const interestGroups: InterestGroupData[] = [
                   "Lighting and Rendering/Post-Processing: Master lighting techniques, rendering settings, and post-processing effects to create dynamic, atmospheric visuals that enhance the gaming experience.",
                   "Blueprints for Interactivity: Explore Unreal Engine’s visual scripting system to implement interactivity, gameplay mechanics, and dynamic features without extensive coding.",
                 ],
-    
+
                 challenges: [
                   {
                     title: "Set up a simple project in Unreal Engine 5",
@@ -1802,7 +1808,7 @@ export const interestGroups: InterestGroupData[] = [
                   "Gameplay Mechanics Development: Explore the process of designing and implementing gameplay mechanics, from character controls to AI behavior, using both Blueprints and C++.",
                   "Event-Driven and Object-Oriented Programming: Master programming paradigms like event-driven and object-oriented approaches to create scalable and maintainable game logic.",
                 ],
-    
+
                 challenges: [
                   {
                     title: "Write a simple C++ script for an in-game action",
@@ -1849,7 +1855,7 @@ export const interestGroups: InterestGroupData[] = [
                   "Rigging and Skeletal Meshes: Understand how to rig 3D models with skeletons and use skeletal meshes to enable dynamic animations and interactions in your game.",
                   "Using Animation Blueprints: Dive into Unreal Engine’s Animation Blueprint system to integrate and control animations in gameplay, adding realism and interactivity to your creations.",
                 ],
-    
+
                 challenges: [
                   {
                     title: "Import a 3D model into Unreal Engine",
@@ -1946,7 +1952,7 @@ export const interestGroups: InterestGroupData[] = [
                   "Responsive and Accessible Design: Understand the principles of responsive design to ensure interfaces adapt to different screen sizes, while incorporating accessibility features for diverse player needs.",
                   "Player Feedback and Interaction: Master techniques for delivering clear feedback through UI animations, sound effects, and visual cues, creating a seamless and engaging player experience.",
                 ],
-    
+
                 challenges: [
                   {
                     title: "Design and implement a basic game menu",
@@ -2061,7 +2067,7 @@ export const interestGroups: InterestGroupData[] = [
               data: {
                 description: "Your journey as a game developer extends beyond creating games—it involves showcasing your work and engaging with a community of like-minded individuals. Portfolio Creation is essential to highlight your best work, including interactive demos, 3D environments, and mechanics. An interactive 3D portfolio using platforms like Unreal Engine or Three.js offers an immersive experience. Community Engagement, through platforms like Discord, Reddit, and Unreal Engine forums, is crucial for collaboration, learning, and networking. Participating in game jams, hackathons, and maintaining a professional presence on LinkedIn and ArtStation further enhances your career opportunities. Engaging with the community by mentoring, collaborating on open-source projects, and contributing to the ecosystem will establish your reputation as a skilled, approachable developer. By focusing on Portfolio and Community Engagement, you’ll open doors to professional opportunities and become an active contributor to the game development world.",
                 whatYouWillLearn: ["Portfolio Development", "Community Engagement"],
-    
+
                 challenges: [
                   {
                     title: "Create a portfolio showcasing your projects",
@@ -2162,484 +2168,484 @@ export const interestGroups: InterestGroupData[] = [
       },
     ],
   },
-//iot interest group
-{
-  "id": "d379d82b-e116-4b67-8128-670916e6bb42",
-  "title": "Internet Of Things (IOT) And Robotics",
-  "description": "Imagine a world where devices communicate seamlessly, revolutionizing industries and everyday life. The Internet of Things (IoT) bridges the physical and digital realms, enabling innovations in smart homes, healthcare, manufacturing, and more. The IoT Interest Group is your gateway to exploring this transformative technology, mastering its tools, and collaborating with like-minded innovators.",
-  "bannerImage": "/assets/IG/Cover/8.webp",
-  "memberCount": 1800,
-  "memberSince": "August 2021",
-  "isPublic": true,
-  "officeHours": "Sunday 7:30PM @Discord Lobby",
-  "thinkTankMeeting": "1st Saturday 7:00 PM @Google Meet",
-  "interestGroupLeads": {
-    "description": "Interest group leads manage the activities and events within interest groups and serve as a point of contact for students interested in getting involved. Students can connect with these leads to learn about opportunities within their interests",
-    "leads": [
-      {
-        "name": "Vaishnav RS",
-        "institution": "Marian Engineering College",
-        "linkedin": "http://linkedin.com/in/vaishnav-rs-9079a8164/",
-        "image": "/assets/IG/IoT/Leads/vaishnav.webp",
-        "expertise": ["Embedded Systems", "IoT Prototyping"]
-      },
-      {
-        "name": "Akhilesh A S",
-        "institution": "Trinity College of Engineering",
-        "linkedin": "https://www.linkedin.com/in/akhilesh-a-s-90abbb293/",
-        "image": "/assets/IG/IoT/Leads/Akhilesh.webp",
-        "expertise": ["Embedded Systems", "IoT Prototyping"]
-      }
-    ]
-  },
-  "peopleToFollow": [
-    { "name": "Dr. Mazlan Abbas", "link": "https://www.linkedin.com/in/mazlan?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BZANm3syKSpWPzCEkBX32bA%3D%3D" },
-    { "name": "Stacey Higginbotham", "link": "https://www.linkedin.com/in/staceyhigginbotham" },
-    { "name": "Daniel Elizalde", "link": "https://www.linkedin.com/in/danielelizalde?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B%2FGvF8xq3RQqhVm9QniGKUQ%3D%3D" },
-    { "name": "Borja Gómez Zarceño", "link": "https://www.linkedin.com/in/borja-g%C3%B3mez-zarce%C3%B1o-7574674b?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bcju9Hl%2BWSquCf2s1tahdlw%3D%3D" }
-  ],
-  "blogsToFollow": [
-    { "name": "IoT for All", "link": "https://www.iotforall.com/" },
-    { "name": "Hackster.io", "link": "https://www.hackster.io/" },
-    { "name": "Arduino Blog", "link": "https://blog.arduino.cc/" }
-  ],
-  "topKeywords": [
-    "IoT",
-    "Internet of Things",
-    "sensors",
-    "MQTT",
-    "Arduino",
-    "Raspberry Pi",
-    "LoRaWAN",
-    "cloud computing",
-    "smart devices",
-    "IoT security",
-    "edge computing",
-    "IoT trends in 2024"
-  ],
-  "prerequisites": [
-    "Master the Basics: Understand sensors, actuators, microcontrollers (like Arduino and Raspberry Pi), and power systems.",
-    "Learn basic circuit design and component interfacing.",
-    "Programming Skills: Learn C/C++ for microcontroller programming.",
-    "Explore Python for data analysis and IoT scripting.",
-    "Understand IoT Protocols: Explore protocols like MQTT, HTTP, CoAP, and LoRaWAN.",
-    "Familiarize yourself with cloud platforms such as AWS IoT Core and Google IoT Cloud.",
-    "Build Mini Projects: Start small, for example, create a smart home temperature monitor using an ESP8266 module and a DHT11 sensor.",
-    "Marketing and Presentation Skills (optional but valuable): Learn to communicate your IoT solutions effectively to diverse audiences."
-  ],
-  "tabs": {
-    "about": {
-      "foundationDeck": "https://mulearnfoundation.notion.site/11e59e69b1bf804cb2f0ddce810b0ada?pvs=25",
-      "description": "Imagine a world where devices communicate seamlessly, revolutionizing industries and everyday life. The Internet of Things (IoT) bridges the physical and digital realms, enabling innovations in smart homes, healthcare, manufacturing, and more. The IoT Interest Group is your gateway to exploring this transformative technology, mastering its tools, and collaborating with like-minded innovators.",
-      "opportunities": [
+  //iot interest group
+  {
+    "id": "d379d82b-e116-4b67-8128-670916e6bb42",
+    "title": "Internet Of Things (IOT) And Robotics",
+    "description": "Imagine a world where devices communicate seamlessly, revolutionizing industries and everyday life. The Internet of Things (IoT) bridges the physical and digital realms, enabling innovations in smart homes, healthcare, manufacturing, and more. The IoT Interest Group is your gateway to exploring this transformative technology, mastering its tools, and collaborating with like-minded innovators.",
+    "bannerImage": "/assets/IG/Cover/8.webp",
+    
+    "memberSince": "August 2021",
+    "isPublic": true,
+    "officeHours": "Sunday 7:30PM @Discord Lobby",
+    "thinkTankMeeting": "1st Saturday 7:00 PM @Google Meet",
+    "interestGroupLeads": {
+      "description": "Interest group leads manage the activities and events within interest groups and serve as a point of contact for students interested in getting involved. Students can connect with these leads to learn about opportunities within their interests",
+      "leads": [
         {
-          "title": "IoT Developer",
-          "description": "Create and deploy IoT applications."
+          "name": "Vaishnav RS",
+          "institution": "Marian Engineering College",
+          "linkedin": "http://linkedin.com/in/vaishnav-rs-9079a8164/",
+          "image": "/assets/IG/IoT/Leads/vaishnav.webp",
+          "expertise": ["Embedded Systems", "IoT Prototyping"]
         },
         {
-          "title": "Embedded Systems Engineer",
-          "description": "Design hardware and firmware for IoT devices."
-        },
-        {
-          "title": "IoT Data Analyst",
-          "description": "Analyze data from connected devices to extract insights."
-        },
-        {
-          "title": "IoT Architect",
-          "description": "Plan and design scalable IoT infrastructures."
-        },
-        {
-          "title": "Cloud Integration Specialist",
-          "description": "Connect IoT devices to cloud systems."
+          "name": "Akhilesh A S",
+          "institution": "Trinity College of Engineering",
+          "linkedin": "https://www.linkedin.com/in/akhilesh-a-s-90abbb293/",
+          "image": "/assets/IG/IoT/Leads/Akhilesh.webp",
+          "expertise": ["Embedded Systems", "IoT Prototyping"]
         }
       ]
     },
-    "forum": { "placeholder": "Forum discussions will be displayed here." },
-    "members": [
-      {
-        "id": 1,
-        "name": "Priya Sharma",
-        "muid": "priya789",
-        "profile_pic": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=40&h=40&q=80",
-        "karma": "1500",
-        "interest_groups": [
-          { "id": "a8f2d9c1-3e5b-4f12-9a7e-5c8d2b1e4f9a", "name": "Internet of Things Interest Group" }
-        ],
-        "organizations": [
-          { "id": "org-6", "title": "Tech University", "code": "TU01", "org_type": "College" }
-        ]
-      },
-      {
-        "id": 2,
-        "name": "Amit Patel",
-        "muid": "amit456",
-        "profile_pic": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=40&h=40&q=80",
-        "karma": "1100",
-        "interest_groups": [
-          { "id": "a8f2d9c1-3e5b-4f12-9a7e-5c8d2b1e4f9a", "name": "Internet of Things Interest Group" }
-        ],
-        "organizations": [
-          { "id": "org-7", "title": "Engineering Academy", "code": "EA01", "org_type": "College" }
-        ]
-      },
-      {
-        "id": 3,
-        "name": "Sara Khan",
-        "muid": "sara123",
-        "profile_pic": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=40&h=40&q=80",
-        "karma": "2000",
-        "interest_groups": [
-          { "id": "a8f2d9c1-3e5b-4f12-9a7e-5c8d2b1e4f9a", "name": "Internet of Things Interest Group" }
-        ],
-        "organizations": [
-          { "id": "org-8", "title": "IoT Institute", "code": "IOT01", "org_type": "College" }
-        ]
-      },
-      {
-        "id": 4,
-        "name": "Vikram Singh",
-        "muid": "vikram101",
-        "profile_pic": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=40&h=40&q=80",
-        "karma": "900",
-        "interest_groups": [
-          { "id": "a8f2d9c1-3e5b-4f12-9a7e-5c8d2b1e4f9a", "name": "Internet of Things Interest Group" }
-        ],
-        "organizations": [
-          { "id": "org-9", "title": "Tech College", "code": "TC01", "org_type": "College" }
-        ]
-      },
-      {
-        "id": 5,
-        "name": "Neha Gupta",
-        "muid": "neha202",
-        "profile_pic": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&q=80",
-        "karma": "1700",
-        "interest_groups": [
-          { "id": "a8f2d9c1-3e5b-4f12-9a7e-5c8d2b1e4f9a", "name": "Internet of Things Interest Group" }
-        ],
-        "organizations": [
-          { "id": "org-10", "title": "Innovation Hub", "code": "IH01", "org_type": "College" }
-        ]
-      }
+    "peopleToFollow": [
+      { "name": "Dr. Mazlan Abbas", "link": "https://www.linkedin.com/in/mazlan?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BZANm3syKSpWPzCEkBX32bA%3D%3D" },
+      { "name": "Stacey Higginbotham", "link": "https://www.linkedin.com/in/staceyhigginbotham" },
+      { "name": "Daniel Elizalde", "link": "https://www.linkedin.com/in/danielelizalde?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B%2FGvF8xq3RQqhVm9QniGKUQ%3D%3D" },
+      { "name": "Borja Gómez Zarceño", "link": "https://www.linkedin.com/in/borja-g%C3%B3mez-zarce%C3%B1o-7574674b?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bcju9Hl%2BWSquCf2s1tahdlw%3D%3D" }
     ],
-    "events": [
-      {
-        "id": "evt-006",
-        "title": "IoT Hackathon 2025",
-        "link": "https://iotcommunity.com/events/hackathon",
-        "venue": "Online via Discord",
-        "eventType": "Online",
-        "date": "March 20, 2025",
-        "time": "10:00 - 18:00 GMT",
-        "image": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800"
-      },
-      {
-        "id": "evt-007",
-        "title": "Smart Cities Workshop",
-        "link": "https://iotcommunity.com/events/smart-cities",
-        "venue": "Bangalore Tech Park",
-        "eventType": "Offline",
-        "date": "April 15, 2025",
-        "time": "09:00 - 13:00 IST",
-        "image": "/assets/interestgroup_assets/IoTWorkshop1.webp"
-      },
-      {
-        "id": "evt-008",
-        "title": "IoT Security Webinar",
-        "link": "https://iotcommunity.com/events/security-webinar",
-        "venue": "Online via Zoom",
-        "eventType": "Online",
-        "date": "May 10, 2025",
-        "time": "14:00 - 15:30 GMT",
-        "image": "/assets/interestgroup_assets/IoTWorkshop2.webp"
-      },
-      {
-        "id": "evt-009",
-        "title": "Edge Computing Summit",
-        "link": "https://iotcommunity.com/events/edge-computing",
-        "venue": "Mumbai Convention Center",
-        "eventType": "Offline",
-        "date": "June 25, 2025",
-        "time": "10:00 - 16:00 IST",
-        "image": "/assets/interestgroup_assets/IoTWorkshop3.webp"
-      },
-      {
-        "id": "evt-010",
-        "title": "IoT Prototyping Bootcamp",
-        "link": "https://iotcommunity.com/events/prototyping-bootcamp",
-        "venue": "Online via Google Meet",
-        "eventType": "Online",
-        "date": "July 18, 2025",
-        "time": "13:00 - 16:00 GMT",
-        "image": "/assets/interestgroup_assets/IoTWorkshop1.webp"
-      }
+    "blogsToFollow": [
+      { "name": "IoT for All", "link": "https://www.iotforall.com/" },
+      { "name": "Hackster.io", "link": "https://www.hackster.io/" },
+      { "name": "Arduino Blog", "link": "https://blog.arduino.cc/" }
     ],
-    "learningPaths": [
-      {
-        "level": "Level 4",
-        "cards": [
+    "topKeywords": [
+      "IoT",
+      "Internet of Things",
+      "sensors",
+      "MQTT",
+      "Arduino",
+      "Raspberry Pi",
+      "LoRaWAN",
+      "cloud computing",
+      "smart devices",
+      "IoT security",
+      "edge computing",
+      "IoT trends in 2024"
+    ],
+    "prerequisites": [
+      "Master the Basics: Understand sensors, actuators, microcontrollers (like Arduino and Raspberry Pi), and power systems.",
+      "Learn basic circuit design and component interfacing.",
+      "Programming Skills: Learn C/C++ for microcontroller programming.",
+      "Explore Python for data analysis and IoT scripting.",
+      "Understand IoT Protocols: Explore protocols like MQTT, HTTP, CoAP, and LoRaWAN.",
+      "Familiarize yourself with cloud platforms such as AWS IoT Core and Google IoT Cloud.",
+      "Build Mini Projects: Start small, for example, create a smart home temperature monitor using an ESP8266 module and a DHT11 sensor.",
+      "Marketing and Presentation Skills (optional but valuable): Learn to communicate your IoT solutions effectively to diverse audiences."
+    ],
+    "tabs": {
+      "about": {
+        "foundationDeck": "https://mulearnfoundation.notion.site/11e59e69b1bf804cb2f0ddce810b0ada?pvs=25",
+        "description": "Imagine a world where devices communicate seamlessly, revolutionizing industries and everyday life. The Internet of Things (IoT) bridges the physical and digital realms, enabling innovations in smart homes, healthcare, manufacturing, and more. The IoT Interest Group is your gateway to exploring this transformative technology, mastering its tools, and collaborating with like-minded innovators.",
+        "opportunities": [
           {
-            "title": "Understanding IOT",
-            "data": {
-              "description": "The Internet of Things (IoT) refers to a system of interconnected devices that communicate and share data over the internet, enabling smarter automation, real-time decision-making, and innovation across industries. These devices ranging from smart home gadgets and wearable technology to industrial sensors and environmental monitors are equipped with sensors to collect data and actuators to perform actions. IoT systems rely on connectivity through protocols like Wi-Fi, Bluetooth, or cellular networks, processing data locally via edge computing or in the cloud.",
-              "whatYouWillLearn": [
-                "Learners will gain a comprehensive understanding of the fundamentals of IoT, including its basics, architecture, significance, key components, diverse applications, and the importance of security in IoT systems."
-              ],
-              "challenges": [
-                {
-                  "title": "Introduction Course",
-                  "resources": [
-                    "https://www.netacad.com/courses/introduction-iot?courseLang=en-US"
-                  ],
-                  "description": "IoT and Digital Transformation Task Explore the transformative potential of IoT by completing the Introduction to IoT course. This task will help you understand how IoT is driving digital transformation across various industries and expanding career opportunities in the future. After completing this task, Post your certificate in the internet-of-things-and-robotics channel using the hashtag #cl-iot-cisco to avail 200 karma points."
-                }
-              ]
-            },
-            "resources": 1,
-            "proofOfWork": 2,
-            "rating": 0,
-            "hasGift": true
+            "title": "IoT Developer",
+            "description": "Create and deploy IoT applications."
           },
           {
-            "title": "Programming for IOT",
-            "data": {
-              "description": "Programming in the Internet of Things (IoT) involves creating software to manage and control devices, sensors, and networks that communicate seamlessly to perform tasks and make intelligent decisions. IoT programming spans a wide range of applications, from home automation to industrial systems, healthcare, and smart cities.",
-              "whatYouWillLearn": [
-                "Python in IoT: Python has become a dominant language for IoT programming due to its simplicity, versatility, and extensive library ecosystem. It is particularly well-suited for prototyping, high-level applications, and interfacing with cloud platforms.",
-                "C in IoT: C is a foundational language in IoT programming, particularly for embedded systems, due to its low-level access to hardware, efficient memory usage, and speed. It is often used to develop firmware and real-time applications for microcontrollers and other resource-constrained devices."
-              ],
-              "challenges": [
-                {
-                  "title": "Simulate Temperature Monitoring System",
-                  "resources": [
-                    "https://www.youtube.com/watch?v=8jMr94B8iN0"
-                  ],
-                  "description": "Enhance your IoT programming skills by creating a C program that simulates a temperature monitoring system. Your program should read temperature values at regular intervals, display warnings if the temperature exceeds a threshold, and log readings to a file using fscanf and fprintf. Submit your code and output screenshots in the #internet-of-things-and-robotics channel with the hashtag #cl-temp-monitor(c) to earn 200 Karma Points."
-                },
-                {
-                  "title": "Simulate Blinking LED with PWM",
-                  "resources": [],
-                  "description": "Write a C program to simulate LED blinking using Pulse Width Modulation (PWM). The program should print \"LED ON\" and \"LED OFF\" based on the duty cycle, allow user input for frequency and duty cycle, and generate a PWM signal for 10 seconds. Use sleep or delay functions for timing and implement input validation. Submit your code and output screenshots in the #internet-of-things-and-robotics channel with the hashtag #cl-led-simulate(c) to earn 200 Karma Points."
-                }
-              ]
-            },
-            "resources": 1,
-            "proofOfWork": 2,
-            "rating": 0,
-            "hasGift": true
+            "title": "Embedded Systems Engineer",
+            "description": "Design hardware and firmware for IoT devices."
           },
           {
-            "title": "Basics of Electronics",
-            "data": {
-              "description": "Electronics are crucial for enabling IoT devices to function by connecting hardware with software. Core components include sensors, actuators, microcontrollers, and communication modules. Microcontrollers like ESP32 and Arduino process data, while sensors gather environmental information and actuators perform actions. Communication modules (e.g., Wi-Fi, Bluetooth) allow devices to connect and exchange data. Together, these elements form the foundation of low-power, efficient IoT systems used across industries.",
-              "whatYouWillLearn": [
-                "Learners will develop a foundational understanding of electronics, including an introduction to actuators, microcontrollers, wireless communication, sensors, and power sources."
-              ],
-              "challenges": [
-                {
-                  "title": "Basics of Electronics",
-                  "resources": [
-                    "https://www.youtube.com/watch?v=r-X9coYTOV4&list=PLah6faXAgguOeMUIxS22ZU4w5nDvCl5gs",
-                    "https://www.intuz.com/blog/actuators-in-iot-guide",
-                    "https://youtu.be/Kg0LYcQV8Uk?si=UvXcMqWfx-v99KJT"
-                  ],
-                  "description": "Gain a strong foundation in IoT by understanding key electronic components such as circuits, resistors, capacitors, actuators, microcontrollers, wireless communication, sensors, and power sources. Create a detailed PowerPoint presentation covering these concepts and upload it to SlideShare. Share the SlideShare link in the #internet-of-things-and-robotics channel with the hashtag #cl-iot-BOEppt to earn 100 Karma Points!"
-                }
-              ]
-            },
-            "resources": 3,
-            "proofOfWork": 1,
-            "rating": 0,
-            "hasGift": true
+            "title": "IoT Data Analyst",
+            "description": "Analyze data from connected devices to extract insights."
           },
           {
-            "title": "Sensors and Actuators",
-            "data": {
-              "description": "In the Internet of Things (IoT), sensors and actuators play critical roles in bridging the gap between the physical and digital worlds. They enable devices to perceive and interact with their environment, making IoT systems smarter and more responsive.",
-              "whatYouWillLearn": [
-                "Learners will acquire knowledge about the various types of sensors used in IoT systems, the different types of actuators utilized in IoT applications, and the fundamentals of wireless sensor networks that enable seamless data collection and communication."
-              ],
-              "challenges": [
-                {
-                  "title": "Basics of Sensors, Actuators, and WSN",
-                  "resources": [
-                    "https://www.geeksforgeeks.org/sensors-in-internet-of-thingsiot/",
-                    "https://robocraze.com/blogs/post/types-of-sensors-in-iot",
-                    "https://www.geeksforgeeks.org/wireless-sensor-network-wsn/",
-                    "https://youtu.be/aGTmve5T2KA"
-                  ],
-                  "description": "Understand the role of sensors and actuators in IoT, including their types, working principles, and applications. Learn about Wireless Sensor Networks (WSN) and their importance in IoT communication. Create a PowerPoint presentation covering these topics and upload it to SlideShare. Share the SlideShare link in the #internet-of-things-and-robotics channel with the hashtag #cl-iot-SAppt to earn 100 Karma Points."
-                }
-              ]
-            },
-            "resources": 4,
-            "proofOfWork": 1,
-            "rating": 0,
-            "hasGift": true
+            "title": "IoT Architect",
+            "description": "Plan and design scalable IoT infrastructures."
+          },
+          {
+            "title": "Cloud Integration Specialist",
+            "description": "Connect IoT devices to cloud systems."
           }
         ]
       },
-      {
-        "level": "Level 5",
-        "cards": [
-          {
-            "title": "Hardware for IOT",
-            "data": {
-              "description": "The Internet of Things (IoT) is an interconnected network of devices that collect, process, and exchange data. The hardware in IoT devices is essential for their functionality, encompassing microcontrollers, connectivity options, sensors, actuators, and power management. This section explores key hardware platforms for IoT, including Arduino, Raspberry Pi, other hardware options, IoT hardware design, embedded systems, and power management.",
-              "whatYouWillLearn": [
-                "Learners will gain knowledge of IoT hardware platforms, including an introduction to Arduino, Raspberry Pi, and other essential IoT hardware systems."
-              ],
-              "challenges": [
-                {
-                  "title": "Basic Projects Using Arduino",
-                  "resources": [
-                    "https://youtu.be/BLrHTHUjPuw",
-                    "https://youtu.be/e9WXf-wRTNg",
-                    "https://youtu.be/CvqHkXeXN3M",
-                    "https://www.youtube.com/watch?v=0Lhgd8PQmn0",
-                    "https://www.youtube.com/watch?v=dJJAQxyryoQ",
-                    "https://youtu.be/C_pWNQ6H9EE?si=RyMyx_oNPVYBmQEb",
-                    "https://www.youtube.com/watch?v=hNmacZoweqY"
-                  ],
-                  "description": "Complete up to 6 Arduino projects, earning 85 Karma Points per project (max 510 points). Start by watching this https://youtu.be/BLrHTHUjPuw tutorial to understand Arduino basics. Projects: 1. Blink an LED 2. LCD Display 3. Ultrasonic Distance Meter 4. Humidity Detector 5. Servo Motor Control 6. PIR Motion Detection. Submission: For WokWi Simulations: Share the project URL. For Hands-On Projects: Share a working video. Post in #internet-of-things-and-robotics with the relevant hashtag: Blink an LED – #cl-iot-arduinoprojects1.1, LCD Display – #cl-iot-arduinoprojects1.2, Ultrasonic Distance Meter – #cl-iot-arduinoprojects1.3, Humidity Detector – #cl-iot-arduinoprojects1.4, Servo Motor Control – #cl-iot-arduinoprojects1.5, PIR Motion Detection – #cl-iot-arduinoprojects1.6. Earn up to 510 Karma Points."
-                },
-                {
-                  "title": "Build Your Own Arduino Projects",
-                  "resources": [],
-                  "description": "Create two Arduino-based projects (simulation or hands-on) and earn 300 Karma Points per project (max 600 points). This task will enhance your practical understanding of Arduino. Projects: Security System with Motion Detection – Use a PIR sensor, buzzer, and LED to trigger an alarm when motion is detected. Automatic Lighting System – Use an LDR and LED to turn lights on in the dark and off in bright conditions. Submission: WokWi Simulations: Share the project URL. Hands-On Projects: Share a working video. Post in #internet-of-things-and-robotics with the relevant hashtag: #cl-iot-arduinoprojects2.1 (Security System), #cl-iot-arduinoprojects2.2 (Lighting System). Earn up to 600 Karma Points."
-                },
-                {
-                  "title": "Basic Projects Using Raspberry Pi",
-                  "resources": [
-                    "https://youtu.be/dkhpc1pn-8s?list=PLLSegLrePWgLzBgQqDJvgZ4ewbpCnuare",
-                    "https://youtu.be/e9WXf-wRTNg?si=Q2dX4jO2xB1Pi-BM",
-                    "https://www.youtube.com/watch?v=zE1J8F9U_jc&list=PLQFhP0-TLBMeUHHpPNt1UH2YA8mIua-Ag"
-                  ],
-                  "description": "Start by watching Basics of Raspberry Pi https://youtu.be/dkhpc1pn-8s?list=PLLSegLrePWgLzBgQqDJvgZ4ewbpCnuare to understand the fundamentals before diving into the projects. Complete two Raspberry Pi projects using WokWi and earn 250 Karma Points per project (max 500 points). Projects: Ultrasonic Sensor with Raspberry Pi – Measure distances using an ultrasonic sensor. LED Blinking & LDR Sensor – Control an LED and interface an LDR sensor. Submission: WokWi Simulations: Share the project URL. Post in #internet-of-things-and-robotics with the relevant hashtag: #cl-iot-BasicRpi1 (Ultrasonic Sensor), #cl-iot-BasicRpi1.2 (LED & LDR). Earn up to 500 Karma Points."
-                },
-                {
-                  "title": "Exploring IoT with NodeMCU 8266 & ESP32",
-                  "resources": [
-                    "https://randomnerdtutorials.com/getting-started-with-esp8266-wifi-transceiver-review/",
-                    "https://youtu.be/YN522_npNqs",
-                    "https://www.circuitschools.com/what-is-esp32-how-it-works-and-what-you-can-do-with-esp32/",
-                    "https://www.youtube.com/watch?v=AitCKcyjHuQ&t=105s"
-                  ],
-                  "description": "Before wrapping up Level 5, dive into NodeMCU 8266 and ESP32, the key microcontrollers for WiFi-enabled IoT projects. These devices enable data sharing, remote control, and seamless connectivity with minimal coding. Master their capabilities with these resources. Unlock their full potential and elevate your IoT projects."
-                }
-              ]
+      "forum": { "placeholder": "Forum discussions will be displayed here." },
+      "members": [
+        {
+          "id": 1,
+          "name": "Priya Sharma",
+          "muid": "priya789",
+          "profile_pic": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=40&h=40&q=80",
+          "karma": "1500",
+          "interest_groups": [
+            { "id": "a8f2d9c1-3e5b-4f12-9a7e-5c8d2b1e4f9a", "name": "Internet of Things Interest Group" }
+          ],
+          "organizations": [
+            { "id": "org-6", "title": "Tech University", "code": "TU01", "org_type": "College" }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Amit Patel",
+          "muid": "amit456",
+          "profile_pic": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=40&h=40&q=80",
+          "karma": "1100",
+          "interest_groups": [
+            { "id": "a8f2d9c1-3e5b-4f12-9a7e-5c8d2b1e4f9a", "name": "Internet of Things Interest Group" }
+          ],
+          "organizations": [
+            { "id": "org-7", "title": "Engineering Academy", "code": "EA01", "org_type": "College" }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "Sara Khan",
+          "muid": "sara123",
+          "profile_pic": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=40&h=40&q=80",
+          "karma": "2000",
+          "interest_groups": [
+            { "id": "a8f2d9c1-3e5b-4f12-9a7e-5c8d2b1e4f9a", "name": "Internet of Things Interest Group" }
+          ],
+          "organizations": [
+            { "id": "org-8", "title": "IoT Institute", "code": "IOT01", "org_type": "College" }
+          ]
+        },
+        {
+          "id": 4,
+          "name": "Vikram Singh",
+          "muid": "vikram101",
+          "profile_pic": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=40&h=40&q=80",
+          "karma": "900",
+          "interest_groups": [
+            { "id": "a8f2d9c1-3e5b-4f12-9a7e-5c8d2b1e4f9a", "name": "Internet of Things Interest Group" }
+          ],
+          "organizations": [
+            { "id": "org-9", "title": "Tech College", "code": "TC01", "org_type": "College" }
+          ]
+        },
+        {
+          "id": 5,
+          "name": "Neha Gupta",
+          "muid": "neha202",
+          "profile_pic": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&q=80",
+          "karma": "1700",
+          "interest_groups": [
+            { "id": "a8f2d9c1-3e5b-4f12-9a7e-5c8d2b1e4f9a", "name": "Internet of Things Interest Group" }
+          ],
+          "organizations": [
+            { "id": "org-10", "title": "Innovation Hub", "code": "IH01", "org_type": "College" }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "id": "evt-006",
+          "title": "IoT Hackathon 2025",
+          "link": "https://iotcommunity.com/events/hackathon",
+          "venue": "Online via Discord",
+          "eventType": "Online",
+          "date": "March 20, 2025",
+          "time": "10:00 - 18:00 GMT",
+          "image": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800"
+        },
+        {
+          "id": "evt-007",
+          "title": "Smart Cities Workshop",
+          "link": "https://iotcommunity.com/events/smart-cities",
+          "venue": "Bangalore Tech Park",
+          "eventType": "Offline",
+          "date": "April 15, 2025",
+          "time": "09:00 - 13:00 IST",
+          "image": "/assets/interestgroup_assets/IoTWorkshop1.webp"
+        },
+        {
+          "id": "evt-008",
+          "title": "IoT Security Webinar",
+          "link": "https://iotcommunity.com/events/security-webinar",
+          "venue": "Online via Zoom",
+          "eventType": "Online",
+          "date": "May 10, 2025",
+          "time": "14:00 - 15:30 GMT",
+          "image": "/assets/interestgroup_assets/IoTWorkshop2.webp"
+        },
+        {
+          "id": "evt-009",
+          "title": "Edge Computing Summit",
+          "link": "https://iotcommunity.com/events/edge-computing",
+          "venue": "Mumbai Convention Center",
+          "eventType": "Offline",
+          "date": "June 25, 2025",
+          "time": "10:00 - 16:00 IST",
+          "image": "/assets/interestgroup_assets/IoTWorkshop3.webp"
+        },
+        {
+          "id": "evt-010",
+          "title": "IoT Prototyping Bootcamp",
+          "link": "https://iotcommunity.com/events/prototyping-bootcamp",
+          "venue": "Online via Google Meet",
+          "eventType": "Online",
+          "date": "July 18, 2025",
+          "time": "13:00 - 16:00 GMT",
+          "image": "/assets/interestgroup_assets/IoTWorkshop1.webp"
+        }
+      ],
+      "learningPaths": [
+        {
+          "level": "Level 4",
+          "cards": [
+            {
+              "title": "Understanding IOT",
+              "data": {
+                "description": "The Internet of Things (IoT) refers to a system of interconnected devices that communicate and share data over the internet, enabling smarter automation, real-time decision-making, and innovation across industries. These devices ranging from smart home gadgets and wearable technology to industrial sensors and environmental monitors are equipped with sensors to collect data and actuators to perform actions. IoT systems rely on connectivity through protocols like Wi-Fi, Bluetooth, or cellular networks, processing data locally via edge computing or in the cloud.",
+                "whatYouWillLearn": [
+                  "Learners will gain a comprehensive understanding of the fundamentals of IoT, including its basics, architecture, significance, key components, diverse applications, and the importance of security in IoT systems."
+                ],
+                "challenges": [
+                  {
+                    "title": "Introduction Course",
+                    "resources": [
+                      "https://www.netacad.com/courses/introduction-iot?courseLang=en-US"
+                    ],
+                    "description": "IoT and Digital Transformation Task Explore the transformative potential of IoT by completing the Introduction to IoT course. This task will help you understand how IoT is driving digital transformation across various industries and expanding career opportunities in the future. After completing this task, Post your certificate in the internet-of-things-and-robotics channel using the hashtag #cl-iot-cisco to avail 200 karma points."
+                  }
+                ]
+              },
+              "resources": 1,
+              "proofOfWork": 2,
+              "rating": 0,
+              "hasGift": true
             },
-            "resources": 14,
-            "proofOfWork": 4,
-            "rating": 0,
-            "hasGift": true
-          }
-        ]
+            {
+              "title": "Programming for IOT",
+              "data": {
+                "description": "Programming in the Internet of Things (IoT) involves creating software to manage and control devices, sensors, and networks that communicate seamlessly to perform tasks and make intelligent decisions. IoT programming spans a wide range of applications, from home automation to industrial systems, healthcare, and smart cities.",
+                "whatYouWillLearn": [
+                  "Python in IoT: Python has become a dominant language for IoT programming due to its simplicity, versatility, and extensive library ecosystem. It is particularly well-suited for prototyping, high-level applications, and interfacing with cloud platforms.",
+                  "C in IoT: C is a foundational language in IoT programming, particularly for embedded systems, due to its low-level access to hardware, efficient memory usage, and speed. It is often used to develop firmware and real-time applications for microcontrollers and other resource-constrained devices."
+                ],
+                "challenges": [
+                  {
+                    "title": "Simulate Temperature Monitoring System",
+                    "resources": [
+                      "https://www.youtube.com/watch?v=8jMr94B8iN0"
+                    ],
+                    "description": "Enhance your IoT programming skills by creating a C program that simulates a temperature monitoring system. Your program should read temperature values at regular intervals, display warnings if the temperature exceeds a threshold, and log readings to a file using fscanf and fprintf. Submit your code and output screenshots in the #internet-of-things-and-robotics channel with the hashtag #cl-temp-monitor(c) to earn 200 Karma Points."
+                  },
+                  {
+                    "title": "Simulate Blinking LED with PWM",
+                    "resources": [],
+                    "description": "Write a C program to simulate LED blinking using Pulse Width Modulation (PWM). The program should print \"LED ON\" and \"LED OFF\" based on the duty cycle, allow user input for frequency and duty cycle, and generate a PWM signal for 10 seconds. Use sleep or delay functions for timing and implement input validation. Submit your code and output screenshots in the #internet-of-things-and-robotics channel with the hashtag #cl-led-simulate(c) to earn 200 Karma Points."
+                  }
+                ]
+              },
+              "resources": 1,
+              "proofOfWork": 2,
+              "rating": 0,
+              "hasGift": true
+            },
+            {
+              "title": "Basics of Electronics",
+              "data": {
+                "description": "Electronics are crucial for enabling IoT devices to function by connecting hardware with software. Core components include sensors, actuators, microcontrollers, and communication modules. Microcontrollers like ESP32 and Arduino process data, while sensors gather environmental information and actuators perform actions. Communication modules (e.g., Wi-Fi, Bluetooth) allow devices to connect and exchange data. Together, these elements form the foundation of low-power, efficient IoT systems used across industries.",
+                "whatYouWillLearn": [
+                  "Learners will develop a foundational understanding of electronics, including an introduction to actuators, microcontrollers, wireless communication, sensors, and power sources."
+                ],
+                "challenges": [
+                  {
+                    "title": "Basics of Electronics",
+                    "resources": [
+                      "https://www.youtube.com/watch?v=r-X9coYTOV4&list=PLah6faXAgguOeMUIxS22ZU4w5nDvCl5gs",
+                      "https://www.intuz.com/blog/actuators-in-iot-guide",
+                      "https://youtu.be/Kg0LYcQV8Uk?si=UvXcMqWfx-v99KJT"
+                    ],
+                    "description": "Gain a strong foundation in IoT by understanding key electronic components such as circuits, resistors, capacitors, actuators, microcontrollers, wireless communication, sensors, and power sources. Create a detailed PowerPoint presentation covering these concepts and upload it to SlideShare. Share the SlideShare link in the #internet-of-things-and-robotics channel with the hashtag #cl-iot-BOEppt to earn 100 Karma Points!"
+                  }
+                ]
+              },
+              "resources": 3,
+              "proofOfWork": 1,
+              "rating": 0,
+              "hasGift": true
+            },
+            {
+              "title": "Sensors and Actuators",
+              "data": {
+                "description": "In the Internet of Things (IoT), sensors and actuators play critical roles in bridging the gap between the physical and digital worlds. They enable devices to perceive and interact with their environment, making IoT systems smarter and more responsive.",
+                "whatYouWillLearn": [
+                  "Learners will acquire knowledge about the various types of sensors used in IoT systems, the different types of actuators utilized in IoT applications, and the fundamentals of wireless sensor networks that enable seamless data collection and communication."
+                ],
+                "challenges": [
+                  {
+                    "title": "Basics of Sensors, Actuators, and WSN",
+                    "resources": [
+                      "https://www.geeksforgeeks.org/sensors-in-internet-of-thingsiot/",
+                      "https://robocraze.com/blogs/post/types-of-sensors-in-iot",
+                      "https://www.geeksforgeeks.org/wireless-sensor-network-wsn/",
+                      "https://youtu.be/aGTmve5T2KA"
+                    ],
+                    "description": "Understand the role of sensors and actuators in IoT, including their types, working principles, and applications. Learn about Wireless Sensor Networks (WSN) and their importance in IoT communication. Create a PowerPoint presentation covering these topics and upload it to SlideShare. Share the SlideShare link in the #internet-of-things-and-robotics channel with the hashtag #cl-iot-SAppt to earn 100 Karma Points."
+                  }
+                ]
+              },
+              "resources": 4,
+              "proofOfWork": 1,
+              "rating": 0,
+              "hasGift": true
+            }
+          ]
+        },
+        {
+          "level": "Level 5",
+          "cards": [
+            {
+              "title": "Hardware for IOT",
+              "data": {
+                "description": "The Internet of Things (IoT) is an interconnected network of devices that collect, process, and exchange data. The hardware in IoT devices is essential for their functionality, encompassing microcontrollers, connectivity options, sensors, actuators, and power management. This section explores key hardware platforms for IoT, including Arduino, Raspberry Pi, other hardware options, IoT hardware design, embedded systems, and power management.",
+                "whatYouWillLearn": [
+                  "Learners will gain knowledge of IoT hardware platforms, including an introduction to Arduino, Raspberry Pi, and other essential IoT hardware systems."
+                ],
+                "challenges": [
+                  {
+                    "title": "Basic Projects Using Arduino",
+                    "resources": [
+                      "https://youtu.be/BLrHTHUjPuw",
+                      "https://youtu.be/e9WXf-wRTNg",
+                      "https://youtu.be/CvqHkXeXN3M",
+                      "https://www.youtube.com/watch?v=0Lhgd8PQmn0",
+                      "https://www.youtube.com/watch?v=dJJAQxyryoQ",
+                      "https://youtu.be/C_pWNQ6H9EE?si=RyMyx_oNPVYBmQEb",
+                      "https://www.youtube.com/watch?v=hNmacZoweqY"
+                    ],
+                    "description": "Complete up to 6 Arduino projects, earning 85 Karma Points per project (max 510 points). Start by watching this https://youtu.be/BLrHTHUjPuw tutorial to understand Arduino basics. Projects: 1. Blink an LED 2. LCD Display 3. Ultrasonic Distance Meter 4. Humidity Detector 5. Servo Motor Control 6. PIR Motion Detection. Submission: For WokWi Simulations: Share the project URL. For Hands-On Projects: Share a working video. Post in #internet-of-things-and-robotics with the relevant hashtag: Blink an LED – #cl-iot-arduinoprojects1.1, LCD Display – #cl-iot-arduinoprojects1.2, Ultrasonic Distance Meter – #cl-iot-arduinoprojects1.3, Humidity Detector – #cl-iot-arduinoprojects1.4, Servo Motor Control – #cl-iot-arduinoprojects1.5, PIR Motion Detection – #cl-iot-arduinoprojects1.6. Earn up to 510 Karma Points."
+                  },
+                  {
+                    "title": "Build Your Own Arduino Projects",
+                    "resources": [],
+                    "description": "Create two Arduino-based projects (simulation or hands-on) and earn 300 Karma Points per project (max 600 points). This task will enhance your practical understanding of Arduino. Projects: Security System with Motion Detection – Use a PIR sensor, buzzer, and LED to trigger an alarm when motion is detected. Automatic Lighting System – Use an LDR and LED to turn lights on in the dark and off in bright conditions. Submission: WokWi Simulations: Share the project URL. Hands-On Projects: Share a working video. Post in #internet-of-things-and-robotics with the relevant hashtag: #cl-iot-arduinoprojects2.1 (Security System), #cl-iot-arduinoprojects2.2 (Lighting System). Earn up to 600 Karma Points."
+                  },
+                  {
+                    "title": "Basic Projects Using Raspberry Pi",
+                    "resources": [
+                      "https://youtu.be/dkhpc1pn-8s?list=PLLSegLrePWgLzBgQqDJvgZ4ewbpCnuare",
+                      "https://youtu.be/e9WXf-wRTNg?si=Q2dX4jO2xB1Pi-BM",
+                      "https://www.youtube.com/watch?v=zE1J8F9U_jc&list=PLQFhP0-TLBMeUHHpPNt1UH2YA8mIua-Ag"
+                    ],
+                    "description": "Start by watching Basics of Raspberry Pi https://youtu.be/dkhpc1pn-8s?list=PLLSegLrePWgLzBgQqDJvgZ4ewbpCnuare to understand the fundamentals before diving into the projects. Complete two Raspberry Pi projects using WokWi and earn 250 Karma Points per project (max 500 points). Projects: Ultrasonic Sensor with Raspberry Pi – Measure distances using an ultrasonic sensor. LED Blinking & LDR Sensor – Control an LED and interface an LDR sensor. Submission: WokWi Simulations: Share the project URL. Post in #internet-of-things-and-robotics with the relevant hashtag: #cl-iot-BasicRpi1 (Ultrasonic Sensor), #cl-iot-BasicRpi1.2 (LED & LDR). Earn up to 500 Karma Points."
+                  },
+                  {
+                    "title": "Exploring IoT with NodeMCU 8266 & ESP32",
+                    "resources": [
+                      "https://randomnerdtutorials.com/getting-started-with-esp8266-wifi-transceiver-review/",
+                      "https://youtu.be/YN522_npNqs",
+                      "https://www.circuitschools.com/what-is-esp32-how-it-works-and-what-you-can-do-with-esp32/",
+                      "https://www.youtube.com/watch?v=AitCKcyjHuQ&t=105s"
+                    ],
+                    "description": "Before wrapping up Level 5, dive into NodeMCU 8266 and ESP32, the key microcontrollers for WiFi-enabled IoT projects. These devices enable data sharing, remote control, and seamless connectivity with minimal coding. Master their capabilities with these resources. Unlock their full potential and elevate your IoT projects."
+                  }
+                ]
+              },
+              "resources": 14,
+              "proofOfWork": 4,
+              "rating": 0,
+              "hasGift": true
+            }
+          ]
+        },
+        {
+          "level": "Level 6",
+          "cards": [
+            {
+              "title": "Network Protocols for IOT",
+              "data": {
+                "description": "The Internet of Things (IoT) ecosystem relies on a wide array of network protocols to facilitate seamless communication between devices. These protocols enable data exchange, ensuring connectivity, reliability, and security. Here’s an in-depth look at the primary protocols used in IoT communication.",
+                "whatYouWillLearn": [
+                  "Learners will gain an understanding of the basics of TCP/IP, the role of Bluetooth in IoT, and key communication protocols such as MQTT, Zigbee, Z-Wave, and LoRaWAN, which enable seamless connectivity in IoT systems."
+                ],
+                "challenges": [
+                  {
+                    "title": "Bluetooth Controlled LED Project",
+                    "resources": [
+                      "https://www.youtube.com/watch?v=2QGgEk20RXM",
+                      "https://www.geeksforgeeks.org/bluetooth/",
+                      "https://www.youtube.com/watch?v=NXlyo0goBrU",
+                      "https://www.youtube.com/watch?v=irq66O8NdvA",
+                      "https://www.youtube.com/watch?v=c1st5cVRRzo&t=86s",
+                      "https://www.youtube.com/watch?v=cH46z4ElJ6o",
+                      "https://www.youtube.com/watch?v=Qd7kMGaQ5vI"
+                    ],
+                    "description": "Advance your IoT expertise by developing a Bluetooth-controlled LED system using an Arduino board and a Bluetooth module (HC-05/HC-06). Before starting, review key concepts such as TCP/IP, Bluetooth, MQTT, Zigbee, and LoRaWAN to build a strong foundation. The project requires establishing a Bluetooth connection with a mobile device to send commands (\"ON\"/\"OFF\") for LED control. You can complete this task either by simulating the project using WokWi or a similar simulator or by physically building it with Arduino components. For submission, share the WokWi project URL for simulations or upload a video demonstration for physical builds. Post your submission in the #internet-of-things-and-robotics channel using the hashtag #cl-iot-bluetooth. A successful submission will earn 200 Karma Points."
+                  }
+                ]
+              },
+              "resources": 7,
+              "proofOfWork": 1,
+              "rating": 0,
+              "hasGift": true
+            },
+            {
+              "title": "Cloud Platforms used in IOT",
+              "data": {
+                "description": "Cloud platforms in IoT are services that provide infrastructure, tools, and frameworks to connect IoT devices, manage their data, and enable smart decision-making. They bridge the gap between IoT hardware (sensors, actuators, and devices) and applications by offering scalable computing and storage solutions.",
+                "whatYouWillLearn": [
+                  "Learners will gain knowledge of IoT development platforms, including an introduction to Blynk and the Arduino IoT Cloud, enabling them to design, monitor, and manage IoT projects effectively."
+                ],
+                "challenges": [
+                  {
+                    "title": "Home Automation",
+                    "resources": [
+                      "https://www.youtube.com/watch?v=YULg0IoqoZM",
+                      "https://www.youtube.com/watch?v=qQGM5oBKAZc"
+                    ],
+                    "description": "In this challenge, design a Home Automation System using an ESP32 microcontroller. Before starting, review the Blynk Tutorial - https://www.youtube.com/watch?v=YULg0IoqoZM and Azure Tutorial - https://www.youtube.com/watch?v=qQGM5oBKAZc to understand the key concepts. The system should connect to a Wi-Fi network and allow users to control appliances such as LEDs or a relay module through a web interface, smartphone app, or cloud platform like Blynk, Firebase, or MQTT. It must include device control for turning appliances on and off, status monitoring to display the state of connected devices, and optional automation features like scheduling or event-based triggers (e.g., turning on lights at sunset). Additionally, logging device state changes to the serial monitor and integrating a dashboard for performance visualization can be included. For submission, simulated projects should be uploaded with a WokWi or similar simulation URL, while physical projects require a working video demonstration. Results should be shared in the #internet-of-things-and-robotics channel using the hashtag #cl-home-automation, with successful submissions earning 500 Karma Points."
+                  },
+                  {
+                    "title": "Gas Leakage Warning System",
+                    "resources": [],
+                    "description": "Design a Gas Leakage Warning System using a microcontroller to detect and alert hazardous gas levels. The system should use an MQ-5/MQ-6 gas sensor to monitor gas concentrations and trigger a buzzer if the levels exceed a predefined threshold. It should include a visual warning system with a green LED for normal conditions and a red LED for high gas levels. The gas levels should be displayed on an LCD or serial monitor, and a reset button should be implemented to stop the buzzer and clear alerts after resolving the issue. Additionally, integrate a Wi-Fi module (ESP32 or ESP8266) to send notifications to a smartphone. For submission, simulated projects must be uploaded with a WokWi or similar simulation URL, while physical projects require a working video demonstration. Share your results in the #internet-of-things-and-robotics channel using the hashtag #cl-gas-warning, with successful submissions earning 600 Karma Points."
+                  }
+                ]
+              },
+              "resources": 2,
+              "proofOfWork": 2,
+              "rating": 0,
+              "hasGift": true
+            }
+          ]
+        }
+      ],
+      "mentors": [
+        {
+          "id": "m-002",
+          "name": "Nizamudeen Yooncekutty",
+          "role": "Software Developer @ UST",
+          "linkedin": "https://www.linkedin.com/in/nizamudeen-yooncekutty-406181339/",
+          "image": "/assets/IG/IoT/Mentors/Nizamudeen.webp",
+          "expertise": ["IoT Development", "Cloud Integration"]
+        },
+        {
+          "id": "m-003",
+          "name": "Rajeevan A B",
+          "role": "Embedded system Developer @ Elsys Intelligent Devices",
+          "linkedin": "https://www.linkedin.com/in/rajeevan-a-b-4a2196181/",
+          "image": "/assets/IG/IoT/Mentors/Rajeevan.webp",
+          "expertise": ["Embedded Systems", "IoT Hardware"]
+        }
+      ]
+    },
+    "communityPartners": [
+      {
+        "id": "cp-002",
+        "title": "Veda IIT",
+        "image": "/assets/IG/IoT/Community Partners/Veda IIT.jpg",
+        "link": ""
       },
       {
-        "level": "Level 6",
-        "cards": [
-          {
-            "title": "Network Protocols for IOT",
-            "data": {
-              "description": "The Internet of Things (IoT) ecosystem relies on a wide array of network protocols to facilitate seamless communication between devices. These protocols enable data exchange, ensuring connectivity, reliability, and security. Here’s an in-depth look at the primary protocols used in IoT communication.",
-              "whatYouWillLearn": [
-                "Learners will gain an understanding of the basics of TCP/IP, the role of Bluetooth in IoT, and key communication protocols such as MQTT, Zigbee, Z-Wave, and LoRaWAN, which enable seamless connectivity in IoT systems."
-              ],
-              "challenges": [
-                {
-                  "title": "Bluetooth Controlled LED Project",
-                  "resources": [
-                    "https://www.youtube.com/watch?v=2QGgEk20RXM",
-                    "https://www.geeksforgeeks.org/bluetooth/",
-                    "https://www.youtube.com/watch?v=NXlyo0goBrU",
-                    "https://www.youtube.com/watch?v=irq66O8NdvA",
-                    "https://www.youtube.com/watch?v=c1st5cVRRzo&t=86s",
-                    "https://www.youtube.com/watch?v=cH46z4ElJ6o",
-                    "https://www.youtube.com/watch?v=Qd7kMGaQ5vI"
-                  ],
-                  "description": "Advance your IoT expertise by developing a Bluetooth-controlled LED system using an Arduino board and a Bluetooth module (HC-05/HC-06). Before starting, review key concepts such as TCP/IP, Bluetooth, MQTT, Zigbee, and LoRaWAN to build a strong foundation. The project requires establishing a Bluetooth connection with a mobile device to send commands (\"ON\"/\"OFF\") for LED control. You can complete this task either by simulating the project using WokWi or a similar simulator or by physically building it with Arduino components. For submission, share the WokWi project URL for simulations or upload a video demonstration for physical builds. Post your submission in the #internet-of-things-and-robotics channel using the hashtag #cl-iot-bluetooth. A successful submission will earn 200 Karma Points."
-                }
-              ]
-            },
-            "resources": 7,
-            "proofOfWork": 1,
-            "rating": 0,
-            "hasGift": true
-          },
-          {
-            "title": "Cloud Platforms used in IOT",
-            "data": {
-              "description": "Cloud platforms in IoT are services that provide infrastructure, tools, and frameworks to connect IoT devices, manage their data, and enable smart decision-making. They bridge the gap between IoT hardware (sensors, actuators, and devices) and applications by offering scalable computing and storage solutions.",
-              "whatYouWillLearn": [
-                "Learners will gain knowledge of IoT development platforms, including an introduction to Blynk and the Arduino IoT Cloud, enabling them to design, monitor, and manage IoT projects effectively."
-              ],
-              "challenges": [
-                {
-                  "title": "Home Automation",
-                  "resources": [
-                    "https://www.youtube.com/watch?v=YULg0IoqoZM",
-                    "https://www.youtube.com/watch?v=qQGM5oBKAZc"
-                  ],
-                  "description": "In this challenge, design a Home Automation System using an ESP32 microcontroller. Before starting, review the Blynk Tutorial - https://www.youtube.com/watch?v=YULg0IoqoZM and Azure Tutorial - https://www.youtube.com/watch?v=qQGM5oBKAZc to understand the key concepts. The system should connect to a Wi-Fi network and allow users to control appliances such as LEDs or a relay module through a web interface, smartphone app, or cloud platform like Blynk, Firebase, or MQTT. It must include device control for turning appliances on and off, status monitoring to display the state of connected devices, and optional automation features like scheduling or event-based triggers (e.g., turning on lights at sunset). Additionally, logging device state changes to the serial monitor and integrating a dashboard for performance visualization can be included. For submission, simulated projects should be uploaded with a WokWi or similar simulation URL, while physical projects require a working video demonstration. Results should be shared in the #internet-of-things-and-robotics channel using the hashtag #cl-home-automation, with successful submissions earning 500 Karma Points."
-                },
-                {
-                  "title": "Gas Leakage Warning System",
-                  "resources": [],
-                  "description": "Design a Gas Leakage Warning System using a microcontroller to detect and alert hazardous gas levels. The system should use an MQ-5/MQ-6 gas sensor to monitor gas concentrations and trigger a buzzer if the levels exceed a predefined threshold. It should include a visual warning system with a green LED for normal conditions and a red LED for high gas levels. The gas levels should be displayed on an LCD or serial monitor, and a reset button should be implemented to stop the buzzer and clear alerts after resolving the issue. Additionally, integrate a Wi-Fi module (ESP32 or ESP8266) to send notifications to a smartphone. For submission, simulated projects must be uploaded with a WokWi or similar simulation URL, while physical projects require a working video demonstration. Share your results in the #internet-of-things-and-robotics channel using the hashtag #cl-gas-warning, with successful submissions earning 600 Karma Points."
-                }
-              ]
-            },
-            "resources": 2,
-            "proofOfWork": 2,
-            "rating": 0,
-            "hasGift": true
-          }
-        ]
+        "id": "cp-003",
+        "title": "Arduino",
+        "image": "/assets/IG/IoT/Community Partners/arduino.jpg",
+        "link": ""
       }
     ],
-    "mentors": [
+    "partnerCompanies": [
       {
-        "id": "m-002",
-        "name": "Nizamudeen Yooncekutty",
-        "role": "Software Developer @ UST",
-        "linkedin": "https://www.linkedin.com/in/nizamudeen-yooncekutty-406181339/",
-        "image": "/assets/IG/IoT/Mentors/Nizamudeen.webp",
-        "expertise": ["IoT Development", "Cloud Integration"]
-      },
-      {
-        "id": "m-003",
-        "name": "Rajeevan A B",
-        "role": "Embedded system Developer @ Elsys Intelligent Devices",
-        "linkedin": "https://www.linkedin.com/in/rajeevan-a-b-4a2196181/",
-        "image": "/assets/IG/IoT/Mentors/Rajeevan.webp",
-        "expertise": ["Embedded Systems", "IoT Hardware"]
+        "id": "pc-002",
+        "title": "Tokoh Design Studio",
+        "image": "https://www.svgrepo.com/show/452202/figma.svg",
+        "link": "https://tokohstudio.com"
       }
     ]
   },
-  "communityPartners": [
-    {
-      "id": "cp-002",
-      "title": "Veda IIT",
-      "image": "/assets/IG/IoT/Community Partners/Veda IIT.jpg",
-      "link": ""
-    },
-    {
-      "id": "cp-003",
-      "title": "Arduino",
-      "image": "/assets/IG/IoT/Community Partners/arduino.jpg",
-      "link": ""
-    }
-  ],
-  "partnerCompanies": [
-    {
-      "id": "pc-002",
-      "title": "Tokoh Design Studio",
-      "image": "https://www.svgrepo.com/show/452202/figma.svg",
-      "link": "https://tokohstudio.com"
-    }
-  ]
-},
 
   // Human Resources Interest Group
   {
@@ -2648,8 +2654,7 @@ export const interestGroups: InterestGroupData[] = [
     description:
       "Curious about what makes great organizations thrive? The Human Resources Interest Group is your ultimate platform to uncover the secrets of people management, leadership development, and organizational success. Discover how HR shapes careers, drives innovation, and builds strong workplace cultures. Whether you're aspiring to lead teams, influence business decisions, or create impactful employee experiences, this is your chance to dive into the world of HR and unlock limitless career potential. Join us and start building a future where you make a difference.",
     bannerImage:
-    "/assets/IG/Cover/2.png",
-    memberCount: 1400,
+      "/assets/IG/Cover/2.png",
     memberSince: "August 2020",
     isPublic: true,
     officeHours: "Wednesday 8:00PM",
@@ -2966,8 +2971,7 @@ export const interestGroups: InterestGroupData[] = [
     description:
       "Excited to explore the dynamic world of digital marketing? The Digital Marketing Interest Group empowers you with practical and theoretical knowledge, covering SEO, email marketing, social media management, and analytics. This group is perfect for anyone passionate about creating impactful campaigns and analyzing audience behaviour.",
     bannerImage:
-    "/assets/IG/Cover/4.webp",
-    memberCount: 2700,
+      "/assets/IG/Cover/4.webp",
     memberSince: "November 2021",
     isPublic: true,
     officeHours: "Tuesday 8:30PM",
@@ -3163,7 +3167,7 @@ export const interestGroups: InterestGroupData[] = [
               data: {
                 description:
                   "This section dives deep into the advanced techniques of Search Engine Optimization, equipping you with the skills to optimize websites for maximum visibility. You'll explore strategies to enhance on-page content, build authoritative backlinks, improve technical site performance, and target local audiences effectively, ensuring comprehensive SEO implementation.",
-    
+
                 whatYouWillLearn: [
                   "By the end of this section, you will have a thorough understanding of advanced on-page and off-page SEO strategies, enabling you to enhance website content and build high-quality backlinks. You will learn to optimize website performance through technical SEO techniques, ensuring faster load times, mobile-friendliness, and improved search engine crawling. Additionally, you will develop skills to target local audiences effectively, improving visibility in local searches, and gain hands-on experience in executing comprehensive SEO campaigns to achieve better search engine rankings.",
                 ],
@@ -3185,7 +3189,7 @@ export const interestGroups: InterestGroupData[] = [
                       "https://www.cloudflare.com",
                     ],
                   },
-    
+
                   {
                     title: "Backlink Strategy & Outreach",
                     description:
@@ -3578,8 +3582,7 @@ export const interestGroups: InterestGroupData[] = [
     description:
       "Excited about uncovering insights from data? The Data Science Interest Group offers an opportunity to explore big data, machine learning, and predictive analysis, perfect for anyone interested in data-driven decision-making. Join us to understand how data can reveal patterns, trends, and solutions.",
     bannerImage:
-    "/assets/IG/Cover/2.png",
-    memberCount: 1800, // Placeholder value; adjust as needed
+      "/assets/IG/Cover/2.png",
     memberSince: "January 2023", // Placeholder; adjust as needed
     isPublic: true,
     officeHours: "Monday 8:30PM",
@@ -3737,15 +3740,14 @@ export const interestGroups: InterestGroupData[] = [
       },
     ],
   },
-//cloud and devops
+  //cloud and devops
   {
     id: "1719d19a-0206-4161-9c6f-0a7dba44d4e5", // Unique ID for Cloud and DevOps
     title: "Cloud and DevOps",
     description:
       "Wonder how applications are deployed and managed in the cloud? Cloud computing and DevOps are the backbone of modern IT infrastructure, ensuring that software is delivered faster, more efficiently, and with higher reliability. The Cloud Computing & DevOps Interest Group at GTech μLearn is here to equip you with the skills needed to master cloud platforms, automation tools, and continuous integration/continuous deployment (CI/CD) practices. Join us to explore, learn, and collaborate on real-world projects, and dive into the future of cloud-native technologies.",
     bannerImage:
-    "/assets/IG/Cover/6.webp",
-    memberCount: 1057, 
+      "/assets/IG/Cover/6.webp",
     memberSince: "March 2023", // Placeholder; adjust as needed
     isPublic: true,
     officeHours: "Wednesday 7:00PM",
@@ -3921,9 +3923,8 @@ export const interestGroups: InterestGroupData[] = [
     description:
       "Product Management is deciding what to build next”. Are you interested in learning to build the right product and the product right? Join our “Product Management” Interest Group to learn and collaborate with peers.",
     bannerImage:
-    "/assets/IG/Cover/7.webp",
-    memberCount: 2199, // Placeholder value; adjust as needed
-    memberSince: "March 2023", // Placeholder; adjust as needed
+      "/assets/IG/Cover/7.webp",
+    memberSince: "March 2023",
     isPublic: true,
     officeHours: "TBA",
     thinkTankMeeting: "TBA",
@@ -4203,6 +4204,259 @@ export const interestGroups: InterestGroupData[] = [
     ],
   },
 
+
+  //entrepreneurship
+  {
+    "id": "243a1bda-893c-4de3-b457-51e7cb517d83",
+    "title": "Entrepreneurship",
+    "description": "Ever dreamed of building your own startup? Join our \"Entrepreneurship\" Interest Group to spark that entrepreneurial fire in you and turn your ideas into real-world ventures. We'll dive into the art of innovation, problem-solving, and leadership, all while gearing up to shape the next wave of changemakers.",
+    "bannerImage": "/assets/IG/Cover/9.webp",
+    "memberSince": "April 2023",
+    "isPublic": true,
+    "officeHours": "Saturday 7:30PM",
+    "thinkTankMeeting": "2nd Wednesday 7:30PM",
+    "interestGroupLeads": {
+      "description": "Interest group leads manage the activities and events within interest groups and serve as a point of contact for students interested in getting involved. Students can connect with these leads to learn about opportunities within their interests.",
+      "leads": [
+        {
+          "name": "Jyothsna P Nair",
+          "institution": "Mar Baselios College of Engineering, Trivandrum",
+          "linkedin": "https://www.linkedin.com/in/jyothsna-p-nair-11b734273/",
+          "image": "/assets/IG/Entrepreneurship/Leads/Jyothsna P Nair.webp",
+          "expertise": ["Innovation", "Business Strategy"]
+        },
+        {
+          "name": "Salahudheen Thajudheen I",
+          "institution": "College of Engineering, Kottarakkara",
+          "linkedin": "https://www.linkedin.com/in/salahudheen--thajudheen-/",
+          "image": "/assets/IG/Entrepreneurship/Leads/Salahudheen Thajudheen.webp",
+          "expertise": ["Startup Development", "Market Research"]
+        }
+      ]
+    },
+    
+      
+    "prerequisites": [
+      "Cultivate a passion for innovation and problem-solving",
+      "Develop resilience and adaptability to navigate challenges",
+      "Build networking skills to connect with potential partners and investors",
+      "Strengthen business acumen and financial literacy"
+    ],
+    "peopleToFollow": [
+      { "name": "Steven Bartlett", "link": "https://www.youtube.com/@TheDiaryOfACEO" },
+      { "name": "Varun Mayya", "link": "https://www.youtube.com/@VarunMayya" },
+      { "name": "Felix Josemon", "link": "https://www.youtube.com/@FelixJosemonOfficial" }
+    ],
+    "blogsToFollow": [
+      { "name": "Seth's Blog", "link": "https://seths.blog/" },
+      { "name": "Gary Vaynerchuk's Blog", "link": "https://garyvaynerchuk.com/blog/" },
+      { "name": "Mixergy", "link": "https://mixergy.com/" },
+      { "name": "Smart Hustle", "link": "https://www.smart-hustle.com/" },
+      { "name": "Foundr", "link": "https://foundr.com/" }
+    ],
+    "topKeywords": [
+      "Startup Development",
+      "Business Model Canvas",
+      "Market Research",
+      "Funding Strategies",
+      "Pitch Development",
+      "MVP Creation",
+      "Growth Hacking",
+      "Venture Capital"
+    ],
+    "tabs": {
+      "about": {
+        "foundationDeck": "https://www.notion.so/Entrepreneurship-11e59e69b1bf80e9a377e7bda296f641?pvs=4",
+        "description": "The Entrepreneurship Interest Group connects enthusiasts eager to build their own startups and turn innovative ideas into real-world ventures.",
+        "opportunities": [
+          {
+            "title": "Startup Founder / Co-founder",
+            "description": "Build your own venture using the skills, network, and resources from the IG. Pitch your idea, create an MVP, and explore funding opportunities."
+          },
+          {
+            "title": "Product Manager",
+            "description": "Drive product strategy and development in startups or tech companies. Perfect for those who love solving problems, leading teams, and thinking big."
+          },
+          {
+            "title": "Business Development Executive / Growth Hacker",
+            "description": "Help startups grow by identifying new markets, customers, and partnerships. A great mix of marketing, sales, and innovation."
+          },
+          {
+            "title": "Innovation & Strategy Consultant",
+            "description": "Work with companies to design business models, launch new products, and stay ahead of the curve. Often hired by firms like Deloitte, Accenture, or boutique innovation consultancies."
+          },
+          {
+            "title": "Program Manager at Startup Incubators / Accelerators",
+            "description": "Manage incubation programs, mentor early-stage startups, and plan events like pitch days. Ideal for those who want to stay close to the startup ecosystem without starting their own company (yet!)."
+          }
+        ]
+      },
+      "forum": { "placeholder": "Discuss entrepreneurship strategies and startup ideas here." },
+      "members": [
+        {
+          "id": 28,
+          "name": "Alex Chen",
+          "muid": "alex234",
+          "profile_pic": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&q=80",
+          "karma": "980",
+          "interest_groups": [
+            { "id": "a8e29c15-6de4-5b43-ad63-1f4760c62920", "name": "Entrepreneurship Interest Group" }
+          ],
+          "organizations": [
+            {
+              "id": "org-28",
+              "title": "Business Innovation Academy",
+              "code": "BIA01",
+              "org_type": "College"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "id": "evt-022",
+          "title": "Startup Weekend 2025",
+          "link": "https://startupweekend.com/events/2025",
+          "venue": "Online via Zoom",
+          "eventType": "Online",
+          "date": "September 15, 2025",
+          "time": "09:00 - 18:00 GMT",
+          "image": "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=800"
+        }
+      ],
+      "learningPaths": [
+        {
+          "level": "Level 4",
+          "cards": [
+            {
+              "title": "Introduction to Entrepreneurship",
+              "data": {
+                "description": "The course introduces the foundational concepts of entrepreneurship, covering types of enterprises, marketing, planning, risk analysis, and funding.",
+                "whatYouWillLearn": [
+                  "Principles of entrepreneurship, business planning, customer identification, competition analysis, and risk mitigation."
+                ],
+                "challenges": [
+                  {
+                    "title": "Introduction to Entrepreneurship",
+                    "resources": [
+                      "https://app.mulearn.org/dashboard/wadhwani"
+                    ],
+                    "description": "Finish the 'Introduction to Entrepreneurship' course. Write a 200+ word LinkedIn post about your experience and share it using the hashtag #cl-entrp-intro to earn 250 karma points."
+                  }
+                ]
+              },
+              "resources": 1,
+              "proofOfWork": 1,
+              "rating": 0,
+              "hasGift": false
+            },
+            {
+              "title": "Start-up Mindset",
+              "data": {
+                "description": "This course focuses on building a resilient and visionary entrepreneurial mindset, fostering ownership, and integrating social and environmental values.",
+                "whatYouWillLearn": [
+                  "Building a resilient and visionary entrepreneurial mindset, fostering ownership, and integrating social and environmental values."
+                ],
+                "challenges": [
+                  {
+                    "title": "Start-up Mindset",
+                    "resources": [
+                      "https://app.mulearn.org/dashboard/wadhwani"
+                    ],
+                    "description": "Finish the 'Start-up Mindset' course. Write a 200+ word LinkedIn post about your experience and share it using the hashtag #cl-entrp-mindset to earn 250 karma points."
+                  }
+                ]
+              },
+              "resources": 1,
+              "proofOfWork": 1,
+              "rating": 0,
+              "hasGift": false
+            },
+            {
+              "title": "Customer Centricity",
+              "data": {
+                "description": "The course teaches customer engagement techniques, segmentation, and rapport-building while exploring tools like CRM for customer-focused business strategies.",
+                "whatYouWillLearn": [
+                  "Customer segmentation, rapport-building, CRM tool usage, and fostering a customer-centric mindset."
+                ],
+                "challenges": [
+                  {
+                    "title": "Customer Centricity",
+                    "resources": [
+                      "https://app.mulearn.org/dashboard/wadhwani"
+                    ],
+                    "description": "Finish the 'Customer Centricity' course. Write a 200+ word LinkedIn post about your experience and share it using the hashtag #cl-entrp-customer to earn 200 karma points."
+                  }
+                ]
+              },
+              "resources": 1,
+              "proofOfWork": 1,
+              "rating": 0,
+              "hasGift": false
+            },
+            {
+              "title": "Entrepreneurial Analysis",
+              "data": {
+                "description": "Evaluate the journey of a successful entrepreneur, identifying qualities, risks, and market opportunities they leveraged.",
+                "whatYouWillLearn": [
+                  "Entrepreneurial traits, opportunity recognition, risk analysis, and learning from challenges entrepreneurs face."
+                ],
+                "challenges": [
+                  {
+                    "title": "Entrepreneurial Analysis",
+                    "resources": [
+                      "Biographies, interviews, case studies"
+                    ],
+                    "description": "Choose an inspiring entrepreneur and research their journey. Prepare an 8-slide presentation covering key observations, risks, and lessons. Share it using the hashtag #cl-entrp-analysis to earn 250 karma points."
+                  }
+                ]
+              },
+              "resources": 1,
+              "proofOfWork": 1,
+              "rating": 0,
+              "hasGift": false
+            }
+          ]
+        }
+      ],
+      "thinkTank": [
+        {
+          "id": "tt-015",
+          "name": "Michael Roberts",
+          "role": "Founder, TechVentures",
+          "image": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=40&h=40&q=80",
+          "expertise": ["Startup Funding", "Business Strategy"]
+        }
+      ],
+      "mentors": [
+        {
+          "id": "m-022",
+          "name": "Arun JS",
+          "role": "Chief Impact Officer Mulearn, Founder Slate N Pencil, Nodal officer Catalyst IEDC and TBI, Assistant Professor Mar Baselios College of Engineering and Technology, Thiruvananthapuram",
+          "linkedin": "https://www.linkedin.com/in/mearunjs/",
+          "image": "/assets/IG/Entrepreneurship/Mentors/Arun JS.webp",
+          "expertise": ["Impact Entrepreneurship", "Educational Innovation"]
+        }
+      ]
+    },
+    "communityPartners": [
+      {
+        "id": "cp-005",
+        "title": "Udhyam Foundation",
+        "image": "/assets/IG/Entrepreneurship/Community Partners/Udhyam Logo.webp",
+        "link": "https://udhyam.org"
+      }
+    ],
+    "partnerCompanies": [
+      // {
+      //   "id": "pc-015",
+      //   "title": "StartupHub",
+      //   "image": "https://www.svgrepo.com/show/452045/business.svg",
+      //   "link": "https://startuphub.com"
+      // }
+    ]
+  }
+
 ];
 
 
@@ -4217,9 +4471,9 @@ export const dataScienceInterestGroupData = interestGroups[7]; //not in db
 export const cloudDevOpsInterestGroupData = interestGroups[8]; //id correct
 export const productManagementInterestGroupData = interestGroups[9]; //correct
 //to add
-/* 
+/*
 no or low code coming soon
-Entrepreneurship 
+Entrepreneurship
 AR VR MR
 AI
 Mobile Development coming soon
@@ -4234,165 +4488,6 @@ QA
    */
 
 //below are mockdata entirely except id
-
-// // Entrepreneurship Interest Group
-// export const entrepreneurshipInterestGroupData: InterestGroupData = {
-//   id: "243a1bda-893c-4de3-b457-51e7cb517d83", // Assigned from JSON for "Entrepreneurship"
-//   title: "Entrepreneurship",
-//   description:
-//     "Dream of starting your own venture? The Entrepreneurship Interest Group supports aspiring founders with skills in ideation, business planning, and execution. Join us to connect with like-minded innovators, learn from experienced entrepreneurs, and turn your ideas into successful businesses.",
-//   bannerImage:
-//     "https://images.unsplash.com/photo-1556740738-6b4a6d8b5b9b?q=80&w=3540&auto=format&fit=crop",
-//   memberCount: 17500,
-//   memberSince: "February 2022",
-//   isPublic: true,
-//   officeHours: "Monday 6:00 PM @ Discord",
-//   thinkTankMeeting: "1st Thursday 7:00 PM @ Zoom",
-//   interestGroupLeads: {
-//     description:
-//       "Interest group leads manage the activities and events within interest groups and serve as a point of contact for students interested in getting involved. Students can connect with these leads to learn about opportunities within their interests.",
-//     leads: [
-//       {
-//         name: "Rahul Menon",
-//         institution: "Business School",
-//         linkedin: "https://www.linkedin.com/in/rahul-menon",
-//         image: "/assets/IG/Entrepreneurship/IG Leads/RahulMenon.webp",
-//       },
-//     ],
-//   },
-//   prerequisites: [
-//     "Basic understanding of business concepts such as revenue, costs, and market needs.",
-//     "Interest in startups and willingness to take initiative.",
-//     "Strong communication skills for pitching ideas and networking.",
-//   ],
-//   peopleToFollow: [
-//     { name: "Elon Musk", link: "https://www.linkedin.com/in/elon-musk" },
-//     { name: "Sara Blakely", link: "https://www.linkedin.com/in/sarablakely27" },
-//     { name: "Gary Vaynerchuk", link: "https://www.linkedin.com/in/garyvaynerchuk" },
-//     { name: "Daymond John", link: "https://www.linkedin.com/in/daymondjohn" },
-//   ],
-//   blogsToFollow: [
-//     { name: "Entrepreneur", link: "https://www.entrepreneur.com" },
-//     { name: "Forbes Entrepreneurs", link: "https://www.forbes.com/entrepreneurs" },
-//     { name: "Inc.", link: "https://www.inc.com" },
-//   ],
-//   topKeywords: [
-//     "Startups",
-//     "Business Planning",
-//     "Pitching",
-//     "Funding",
-//     "Innovation",
-//     "Market Research",
-//     "Entrepreneurial Mindset",
-//     "Scaling",
-//   ],
-//   tabs: {
-//     about: {
-//       foundationDeck: "https://www.notion.so/Entrepreneurship",
-//       description:
-//         "The Entrepreneurship Interest Group is your launchpad to mastering the skills needed to start and grow a business. From ideation to execution, we provide resources, mentorship, and a community to help you succeed. Explore our resources to build your entrepreneurial journey.",
-//       opportunities: [
-//         {
-//           title: "Startup Founder",
-//           description: "Create and lead your own company from the ground up.",
-//         },
-//         {
-//           title: "Business Development Manager",
-//           description:
-//             "Drive growth strategies and partnerships for emerging ventures.",
-//         },
-//         {
-//           title: "Venture Analyst",
-//           description:
-//             "Evaluate startup opportunities for investment or collaboration.",
-//         },
-//       ],
-//     },
-//     forum: { placeholder: "Discuss startup ideas and strategies here." },
-//     members: [
-//       {
-//         id: 24,
-//         name: "Sneha Nair",
-//         muid: "sneha456",
-//         profile_pic:
-//           "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=40&h=40&q=80",
-//         karma: "950",
-//         interest_groups: [
-//           {
-//             id: "243a1bda-893c-4de3-b457-51e7cb517d83",
-//             name: "Entrepreneurship",
-//           },
-//         ],
-//         organizations: [
-//           {
-//             id: "org-25",
-//             title: "Biz Academy",
-//             code: "BA01",
-//             org_type: "College",
-//           },
-//         ],
-//       },
-//     ],
-//     events: [
-//       {
-//         id: "evt-017",
-//         title: "Startup Pitch Night 2025",
-//         link: "https://entrepreneurcommunity.com/events/pitch-night",
-//         venue: "Online via Zoom",
-//         eventType: "Online",
-//         date: "December 5, 2025",
-//         time: "18:00 - 20:00 GMT",
-//         image:
-//           "https://images.unsplash.com/photo-1556740738-6b4a6d8b5b9b?q=80&w=800",
-//       },
-//     ],
-//     learningPaths: [
-//       {
-//         id: "lp-012",
-//         title: "Entrepreneurship 101",
-//         description: "Learn the basics of starting a business.",
-//         link: "/learning-paths/entrepreneurship",
-//       },
-//     ],
-//     thinkTank: [
-//       {
-//         id: "tt-012",
-//         name: "Vikram Singh",
-//         role: "Startup Mentor, Y Combinator",
-//         image:
-//           "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=40&h=40&q=80",
-//         expertise: ["Business Strategy", "Funding"],
-//       },
-//     ],
-//     mentors: [
-//       {
-//         id: "m-013",
-//         name: "Anita Desai",
-//         role: "Entrepreneurship Coach",
-//         linkedin: "https://www.linkedin.com/in/anita-desai",
-//         image: "/assets/IG/Entrepreneurship/Mentors/AnitaDesai.webp",
-//         expertise: ["Startup Growth", "Pitch Development"],
-//       },
-//     ],
-//   },
-//   communityPartners: [
-//     {
-//       id: "cp-012",
-//       title: "Startup Hub",
-//       image: "/assets/IG/Entrepreneurship/CP/StartupHub.webp",
-//       link: "https://startuphub.org",
-//     },
-//   ],
-//   partnerCompanies: [
-//     {
-//       id: "pc-012",
-//       title: "VentureWorks",
-//       image: "https://www.svgrepo.com/show/452153/venture.svg",
-//       link: "https://ventureworks.com",
-//     },
-//   ],
-// };
-
 // // AR/VR/MR Interest Group from data from notion
 // export const arVrMrInterestGroupData: InterestGroupData = {
 //   id: "2de0ee0c-ddc3-4f02-bf93-b6bd2d0625c3", // Assigned from JSON for "Ar Vr Mr"
@@ -4401,7 +4496,6 @@ QA
 //     '"AR/VR is reshaping the way we interact with the digital world.” Are you interested in learning how to create immersive experiences that blend the virtual and physical worlds? Join our “AR/VR Development” Interest Group to explore and collaborate with peers on creating augmented and virtual reality applications.',
 //   bannerImage:
 //     "https://images.unsplash.com/photo-1593504049359-74330189a345?q=80&w=3540&auto=format&fit=crop",
-//   memberCount: 9800,
 //   memberSince: "June 2023",
 //   isPublic: true,
 //   officeHours: "TBA", // Updated from markdown (not specified)
@@ -4587,7 +4681,6 @@ QA
 //     "Fascinated by AI and machine learning? μLearn Foundation’s AI Interest Group provides the perfect space to dive into the potential of AI, from model training to advanced applications, and connect with others passionate about AI innovations.",
 //   bannerImage:
 //     "https://images.unsplash.com/photo-1555255707-c07966088b6b?q=80&w=3540&auto=format&fit=crop",
-//   memberCount: 25000,
 //   memberSince: "January 2022",
 //   isPublic: true,
 //   officeHours: "Thursday 9:00 PM", // Updated from markdown

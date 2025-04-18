@@ -5,6 +5,7 @@ import { FiLinkedin } from "react-icons/fi";
 interface CardData {
   id?: number | string;
   name: string;
+  institution?: string;
   muid?: string; // Specific to regular users
   role?: string; // Specific to mentors and think tank members
   interest_groups?: { id: string; name: string }[]; // Regular users
@@ -63,6 +64,7 @@ const UserCard: React.FC<UserCardProps> = ({ data, onSelect }) => {
           <div className="flex flex-col">
 
           <h2 className={styles.userName}>{data.name.trim() || "Unknown"}</h2>
+          {data.institution && <h3 className={styles.userRole}>{data.institution}</h3>}
           {data.role && <h3 className={styles.userRole}>{data.role}</h3>}
           {data.linkedin && <a href={data.linkedin} target="_blank" rel="noreferrer" className={styles.userLinkedin}><FiLinkedin /></a>}
 

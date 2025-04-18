@@ -37,7 +37,9 @@ function InterestGroupsPage() {
     { title: "Game Development", image: "/assets/IG/Cover/5.webp" },
     { title: "Cloud and DevOps", image: "/assets/IG/Cover/6.webp" },
     { title: "Product Management", image: "/assets/IG/Cover/7.webp" },
-    {title: "Internet Of Things (IOT) And Robotics", image: "/assets/IG/Cover/8.webp"}
+    {title: "Internet Of Things (IOT) And Robotics", image: "/assets/IG/Cover/8.webp"},
+    {title: "Entrepreneurship", image: "/assets/IG/Cover/9.webp"}
+
   ];
   
 
@@ -165,10 +167,10 @@ function InterestGroupsPage() {
             
               <h3 className={styles.GroupTitle}>{group.title}</h3>
               <div className={styles.GroupOverlay}>
-                <span className={styles.GroupParticipantsBadge}>
+                {/* <span className={styles.GroupParticipantsBadge}>
                   <FiUsers className={styles.GroupParticipantsIcon} />
                   {group.memberCount} members
-                </span>
+                </span> */}
               </div>
             </div>
           </div>

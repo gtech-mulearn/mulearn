@@ -175,7 +175,7 @@
 .card {
   width: 300px;
   /* Fixed width for consistency */
-  max-height: 320px;
+  height: 350px;
   /* Minimum height to avoid uneven cards */
   /* height: 100%; */
   background-color: #ffffff;

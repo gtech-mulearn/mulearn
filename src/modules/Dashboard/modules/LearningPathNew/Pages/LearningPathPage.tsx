@@ -118,6 +118,7 @@ export const OffCanvas: React.FC<OffCanvasProps> = ({ isOpen, onClose, data }) =
             </div>
 
             {/* Resources */}
+            {data.resources && data.resources.length > 0 && ( 
             <div className={styles.offCanvasSection}>
               <h3 className={styles.offCanvasSectionTitle}>Resources</h3>
               <div className={styles.offCanvasSectionContent}>
@@ -132,6 +133,7 @@ export const OffCanvas: React.FC<OffCanvasProps> = ({ isOpen, onClose, data }) =
                 </ul>
               </div>
             </div>
+            )}
 
             <div className={styles.offCanvasSection}>
               
