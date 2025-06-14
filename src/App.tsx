@@ -18,6 +18,8 @@ import LaunchPad from "./modules/Public/Launchpad/Launchpad";
 import Calendar from "./modules/Public/Calendar/Calendar";
 import EventsHome from "./modules/Public/Events/Events";
 import EnablersPage from "./modules/Public/EnablersPage/EnablersPage";
+import TermsAndCondition from "./modules/Public/Home/components/TermsandConditions/TermsandConditions";
+import PrivacyPolicy from "./modules/Public/Home/components/PrivacyPolicy/PrivacyPolicy";
 
 // Lazy-loaded components
 const ArtofTeaching = lazy(() => import("./modules/Public/ArtOfTeaching/ArtOfTeaching"));
@@ -192,6 +194,8 @@ function App() {
     // { path: "/signin", element: <SignIn /> },
     { path: "register/about", element: <Rolepage /> },
     { path: "team", element: <TeamsPage /> },
+    {path: "termsandconditions", element: <TermsAndCondition/>},
+    {path: "privacypolicy", element: <PrivacyPolicy/>},
     {
       path: "/dashboard",
       element: <DashboardRootLayout />,

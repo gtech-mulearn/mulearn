@@ -29,8 +29,8 @@ const Footer = () => {
         <div className={styles.footerSection}>
           <h3>Legal</h3>
           <ul>
-            <li><a href="https://mulearn.org/termsandconditions">Terms and Conditions</a></li>
-            <li><a href="https://mulearn.org/privacypolicy">Privacy Policy</a></li>
+            <li><a href="/termsandconditions">Terms and Conditions</a></li>
+            <li><a href="/privacypolicy">Privacy Policy</a></li>
           </ul>
         </div>
         <div className={styles.footerSection}>

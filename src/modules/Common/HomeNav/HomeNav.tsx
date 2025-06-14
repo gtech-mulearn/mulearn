@@ -98,7 +98,7 @@ const HomeNav: React.FC = () => {
         ],
         "Programs": [
           { label: "LAUNCHPAD", onClick: () => navigate("/launchpad") },
-          { label: "MUTATE", onClick: () => navigate("/mutate") },
+          // { label: "MUTATE", onClick: () => navigate("/mutate") },
           { label: "PERMUTE", onClick: () => open("https://permute.mulearn.org/") },
           { label: "TOP100SERIES", onClick: () => open("https://top100coders.com/") },
           { label: "Art of Teaching", onClick: () => navigate("/artofteaching") },
