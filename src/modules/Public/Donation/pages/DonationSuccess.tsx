@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useEffect,useState,useRef } from "react";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
+import Footer from "@/modules/Common/Footer/Footer";
+import Navbar from "@/modules/Common/HomeNav/HomeNav";
 import styles from "./DonationSuccess.module.css";
 import NotFound from "../../../../components/NotFound";
 import Receipt from "./receipt/Receipt";

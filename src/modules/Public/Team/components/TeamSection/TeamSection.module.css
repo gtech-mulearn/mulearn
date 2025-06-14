@@ -1,0 +1,64 @@
+.team_group {
+  margin: 5rem 2rem 0;
+}
+
+.team_title,
+.sub_team_title {
+  text-align: center;
+  font-weight: 600;
+  font-family: 'Poppins';
+}
+
+.team_title {
+  color: var(--Primary);
+  font-size: 2rem;
+}
+
+.team_desc {
+  max-width: 750px;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.3;
+}
+
+.sub_team_title {
+  font-size: 1.5rem;
+  margin-top: 3rem;
+}
+
+.members_list {
+  display: grid;
+  margin: 1rem auto 0;
+  max-width: 1300px;
+  row-gap: 1rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .team_title {
+    font-size: 2.5rem;
+  }
+
+  .sub_team_title {
+    font-size: 2rem;
+  }
+
+  .team_desc {
+    width: 70%;
+  }
+
+  .members_list {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2rem;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .team_desc {
+    width: 60%;
+  }
+
+  .members_list {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

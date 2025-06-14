@@ -3,7 +3,8 @@ import styles from "./SpecialEvents.module.css";
 import top100coders from ".././assets/top-100.webp";
 import launchpad from "../assets/launchpad.webp";
 import trivialideas from "../assets/trivialideas.webp";
-import SpecialEventCardLanding from "../../landing/components/SpecialEventCardLanding/SpecialEventCardLanding";
+import SpecialEventCardLanding from "../../../../Public/Home/components/SpecialEventCardLanding/SpecialEventCardLanding";
+import { Helmet } from "react-helmet";
 
 const SpecialEventsList: SpecialEvent[] = [
     {
@@ -44,27 +45,42 @@ const SpecialEventsList: SpecialEvent[] = [
 
 const SpecialEvents = () => {
     return (
-        <div className={styles.pageContainer}>
-            <div className={styles.Banner}>
-                <div className={styles.BannerContent}>
-                    <h1 className={styles.BannerTitle}>Special Events</h1>
-                    <p className={styles.BannerSubtitle}>
-                        Discover exclusive events designed to inspire
-                        innovation, enhance skills, and foster meaningful
-                        connections across technology, management, and
-                        creativity.
-                    </p>
+        <>
+            <Helmet>
+                <title>Special Events | µLearn</title>
+                <meta
+                    name="description"
+                    content="Discover exclusive events designed to inspire innovation, enhance skills, and foster meaningful connections across technology, management and creativity."
+                />
+                <meta property="og:title" content="Special Events | µLearn" />
+                <meta property="og:url" content="https://app.mulearn.org/dashboard/special-events" />
+                <meta
+                    property="og:description"
+                    content="Discover exclusive events designed to inspire innovation, enhance skills, and foster meaningful connections across technology, management and creativity."
+                />
+            </Helmet>
+            <div className={styles.pageContainer}>
+                <div className={styles.Banner}>
+                    <div className={styles.BannerContent}>
+                        <h1 className={styles.BannerTitle}>Special Events</h1>
+                        <p className={styles.BannerSubtitle}>
+                            Discover exclusive events designed to inspire
+                            innovation, enhance skills, and foster meaningful
+                            connections across technology, management, and
+                            creativity.
+                        </p>
+                    </div>
+                </div>
+                <div className={styles.eventsGrid}>
+                    {SpecialEventsList.map(specialevent => (
+                        <SpecialEventCardLanding
+                            key={specialevent.id}
+                            specialevent={specialevent}
+                        />
+                    ))}
                 </div>
             </div>
-            <div className={styles.eventsGrid}>
-                {SpecialEventsList.map(specialevent => (
-                    <SpecialEventCardLanding
-                        key={specialevent.id}
-                        specialevent={specialevent}
-                    />
-                ))}
-            </div>
-        </div>
+        </>
     );
 };
 

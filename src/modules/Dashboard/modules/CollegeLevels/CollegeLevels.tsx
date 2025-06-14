@@ -12,7 +12,6 @@ import Modal from "./components/Modal";
 import CollegeLevelsEdit from "./components/CollegeLevelsEdit";
 import CollegeLevelsCreate from "./components/CollegeLevelsCreate";
 import { deleteCollegeLevels, getCollegeLevels } from "./apis";
-import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 import toast from "react-hot-toast";
 
 function CollegeLevels() {
@@ -77,7 +76,7 @@ function CollegeLevels() {
             data: string | ReactElement,
             id: string,
             row: Data
-        ) => ReactJSXElement;
+        ) => ReactElement;
     }[] = [
         // { column: "id", Label: "ID", isSortable: true },
         { column: "org", Label: "College", isSortable: true },

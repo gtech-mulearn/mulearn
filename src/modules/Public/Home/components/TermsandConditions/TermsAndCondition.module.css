@@ -1,0 +1,23 @@
+.terms_container {
+  max-width: auto;
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+@media (max-width: 1000px) {
+  .terms_container {
+    margin: 3rem;
+  }
+}
+
+.tcheader {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 767px) {
+  .terms-of-service {
+    font-size: 14px;
+  }
+}

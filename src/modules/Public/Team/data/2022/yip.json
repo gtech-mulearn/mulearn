@@ -1,0 +1,906 @@
+[
+  {
+    "id": 1,
+    "name": "Akshaya Rajesh",
+    "domain": "",
+    "designation": "Program Manager",
+    "image": "assets/team/2023/yip/Akshaya Rajesh.webp",
+    "linkedin": "https://www.linkedin.com/in/akshaya-rajesh/"
+  },
+  {
+    "id": 2,
+    "name": "Muhammed Jaseel",
+    "domain": "Interest Group Management",
+    "designation": "Program Coordinator",
+    "image": "assets/team/2023/yip/Muhammed Jaseel.webp",
+    "linkedin": "https://www.linkedin.com/in/jaseelpmuhammed/"
+  },
+  {
+    "id": 3,
+    "name": "Bijoy Sijo",
+    "domain": "Delivery Management",
+    "designation": "Program Coordinator",
+    "image": "assets/team/2023/yip/Bijoy Sijo.webp",
+    "linkedin": "https://www.linkedin.com/in/bijoysijo/"
+  },
+  {
+    "id": 4,
+    "name": "Mohamed Faraz M S",
+    "domain": "Delivery Management",
+    "designation": "Program Coordinator",
+    "image": "assets/team/2023/yip/Mohamed Faraz M S.webp",
+    "linkedin": "https://www.linkedin.com/in/mohamed-faraz-m-s/"
+  },
+  {
+    "id": 5,
+    "name": "Rahul Nath R",
+    "domain": "Data, documentation & Finance",
+    "designation": "Program Coordinator",
+    "image": "assets/team/2023/yip/Rahul Nath R.webp",
+    "linkedin": "https://www.linkedin.com/in/rahul-nath-r-6b133429/"
+  },
+  {
+    "id": 6,
+    "name": "Daniel Peter",
+    "domain": "People Management",
+    "designation": "Program Coordinator",
+    "image": "assets/team/2023/yip/Daniel Peter.webp",
+    "linkedin": "https://www.linkedin.com/in/danielpeter2169/"
+  },
+  {
+    "id": 7,
+    "name": "Angel Rose",
+    "domain": "People Management",
+    "designation": "Program Associate",
+    "image": "assets/team/2023/yip/Angel Rose.webp",
+    "linkedin": "https://www.linkedin.com/in/angelrosetj/"
+  },
+  {
+    "id": 8,
+    "name": "Vinu Balagopal",
+    "domain": "Interest Group Management",
+    "designation": "Program Associate",
+    "image": "assets/team/2023/yip/Vinu Balagopal.webp",
+    "linkedin": "https://www.linkedin.com/in/vinubalagopalap/"
+  },
+  {
+    "id": 9,
+    "name": "Finu Muhammed Shaheem",
+    "domain": "Delivery Management",
+    "designation": "Program Associate",
+    "image": "assets/team/2023/yip/Finu Muhammed Shaheem.webp",
+    "linkedin": "https://www.linkedin.com/in/finushaheem/"
+  },
+  {
+    "id": 10,
+    "name": "K Thomas Mathew",
+    "domain": "Delivery Management",
+    "designation": "Program Associate",
+    "image": "assets/team/2023/yip/K Thomas Mathew.webp",
+    "linkedin": "https://www.linkedin.com/in/k-thomas-mathew/"
+  },
+  {
+    "id": 11,
+    "name": "Malavika G Venugopal",
+    "domain": "Data, documentation & Finance",
+    "designation": "Program Associate",
+    "image": "assets/team/2023/yip/Malavika G Venugopal.webp",
+    "linkedin": "https://www.linkedin.com/in/malavikavg"
+  },
+  {
+    "id": 12,
+    "name": "Albin Mathew",
+    "domain": "Interest Group Management",
+    "designation": "Program Associate",
+    "image": "assets/team/2023/yip/Albin Mathew.webp",
+    "linkedin": "https://www.linkedin.com/in/albin-mathews-joseph"
+  },
+  {
+    "id": 13,
+    "name": "Sreejith S",
+    "domain": "Interest Group Management",
+    "designation": "Program Associate",
+    "image": "assets/team/2023/yip/Sreejith S.webp",
+    "linkedin": "https://www.linkedin.com/in/sreejith-s-438839196/"
+  },
+  {
+    "id": 14,
+    "name": "Chaitanya Liz R.T",
+    "domain": "Interest Group Management",
+    "designation": "Program Associate",
+    "image": "assets/team/2023/yip/Chaitanya Liz R.T.webp",
+    "linkedin": "https://www.linkedin.com/in/lizchaitanya/"
+  },
+  {
+    "id": 15,
+    "name": "Aby VJ",
+    "domain": "Interest Group Management",
+    "designation": "Program Associate",
+    "image": "assets/team/2023/yip/Aby VJ.webp",
+    "linkedin": "https://www.linkedin.com/in/abyvj/"
+  },
+  {
+    "id": 16,
+    "name": "Aswin S Seshadri",
+    "domain": "Interest Group Management",
+    "designation": "Program Associate",
+    "image": "assets/team/2023/yip/Aswin S Seshadri.webp",
+    "linkedin": "https://www.linkedin.com/in/aswin-s-s/"
+  },
+  {
+    "id": 17,
+    "name": "Rhea Merin Thomas",
+    "domain": "Delivery Management",
+    "designation": "Program Associate",
+    "image": "assets/team/2023/yip/Rhea Merin Thomas.webp",
+    "linkedin": "https://www.linkedin.com/in/rheamerin/"
+  },
+  {
+    "id": 18,
+    "name": "Akshay Jose",
+    "domain": "Delivery Management",
+    "designation": "Program Associate",
+    "image": "assets/team/2023/yip/Akshay Jose.webp",
+    "linkedin": "https://www.linkedin.com/in/akshay-jose-700025124/"
+  },
+  {
+    "id": 19,
+    "name": "Savio Sabu",
+    "domain": "Delivery Management",
+    "designation": "Program Associate",
+    "image": "assets/team/2023/yip/Savio Sabu.webp",
+    "linkedin": "https://www.linkedin.com/in/savio-sabu-ab3718192/"
+  },
+  {
+    "id": 20,
+    "name": "Aswinkrishnan B",
+    "domain": "Delivery Management",
+    "designation": "Program Associate",
+    "image": "assets/team/2023/yip/Aswinkrishnan B.webp",
+    "linkedin": "https://www.linkedin.com/in/aswinkrishnanb/"
+  },
+  {
+    "id": 21,
+    "name": "Sandra Pramod",
+    "domain": "People Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Sandra Pramod.webp",
+    "linkedin": "https://www.linkedin.com/in/sandra-pramod-25270318a/"
+  },
+  {
+    "id": 22,
+    "name": "Godwin George U",
+    "domain": "People Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Godwin George U.webp",
+    "linkedin": "https://www.linkedin.com/in/godwin-george0805"
+  },
+  {
+    "id": 23,
+    "name": "Salman Faariz",
+    "domain": "People Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Salman Faariz.webp",
+    "linkedin": "https://www.linkedin.com/in/salman-faariz-37b892194/"
+  },
+  {
+    "id": 24,
+    "name": "Neenu Chacko",
+    "domain": "People Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Neenu Chacko.webp",
+    "linkedin": "https://www.linkedin.com/in/neenu-chacko/"
+  },
+  {
+    "id": 25,
+    "name": "Hisham Mohammad Hashir",
+    "domain": "People Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Hisham Mohammad Hashir.webp",
+    "linkedin": "https://www.linkedin.com/in/hisham-hashir-3760481b"
+  },
+  {
+    "id": 26,
+    "name": "Abhijith E S",
+    "domain": "People Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Abhijith E S.webp",
+    "linkedin": "https://www.linkedin.com/in/abhijithes/"
+  },
+  {
+    "id": 27,
+    "name": "Saieedha Mol",
+    "domain": "People Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Saieedha Mol.webp",
+    "linkedin": "https://www.linkedin.com/in/saieedha-mol-45932a246"
+  },
+  {
+    "id": 28,
+    "name": "Nouman N",
+    "domain": "People Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Nouman N.webp",
+    "linkedin": "https://www.linkedin.com/in/nouman-n-b310091bb/"
+  },
+  {
+    "id": 29,
+    "name": "Nimisha Varghese",
+    "domain": "People Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Nimisha Varghese.webp",
+    "linkedin": "https://www.linkedin.com/in/nimisha-varghese-6b189b194/"
+  },
+  {
+    "id": 30,
+    "name": "Donna Baburaj",
+    "domain": "People Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Donna Baburaj.webp",
+    "linkedin": "https://www.linkedin.com/in/donnababuraj/"
+  },
+  {
+    "id": 31,
+    "name": "Darshan S",
+    "domain": "People Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Darshan S.webp",
+    "linkedin": "https://www.linkedin.com/in/darshan-chaithram/"
+  },
+  {
+    "id": 32,
+    "name": "Sarayu Suresh",
+    "domain": "People Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Sarayu Suresh.webp",
+    "linkedin": "https://www.linkedin.com/in/sarayu-suresh/"
+  },
+  {
+    "id": 33,
+    "name": "Varsha Shaheen",
+    "domain": "People Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Varsha Shaheen.webp",
+    "linkedin": "https://www.linkedin.com/in/varsha-shaheen-a10295231/"
+  },
+  {
+    "id": 34,
+    "name": "Gopika Krishnakumar",
+    "domain": "People Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Gopika Krishnakumar.webp",
+    "linkedin": "https://www.linkedin.com/in/gopika-k/"
+  },
+  {
+    "id": 35,
+    "name": "Arjun Raj",
+    "domain": "People Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Arjun Raj.webp",
+    "linkedin": "https://www.linkedin.com/in/arjun-rtzr"
+  },
+  {
+    "id": 36,
+    "name": "Adil S",
+    "domain": "People Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Adil S.webp",
+    "linkedin": "https://www.linkedin.com/in/adilsp/"
+  },
+  {
+    "id": 37,
+    "name": "Aysha Shana",
+    "domain": "People Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Aysha Shana.webp",
+    "linkedin": "https://www.linkedin.com/in/ayishashanavm/"
+  },
+  {
+    "id": 38,
+    "name": "Hafis CP",
+    "domain": "People Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Hafis CP.webp",
+    "linkedin": "https://www.linkedin.com/in/hafiscp/"
+  },
+  {
+    "id": 39,
+    "name": "Rilna Rejinold",
+    "domain": "People Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Rilna Rejinold.webp",
+    "linkedin": "https://www.linkedin.com/in/rilnarejinold/"
+  },
+  {
+    "id": 40,
+    "name": "Anjana V",
+    "domain": "People Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Anjana V.webp",
+    "linkedin": "https://www.linkedin.com/in/anjana-v/"
+  },
+  {
+    "id": 41,
+    "name": "Mayoosha T",
+    "domain": "People Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Mayoosha T.webp",
+    "linkedin": "https://www.linkedin.com/in/mayooshat/"
+  },
+  {
+    "id": 42,
+    "name": "Adith V Mohan",
+    "domain": "People Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Adith V Mohan.webp",
+    "linkedin": "https://www.linkedin.com/in/adith-v-mohanan-zoul/"
+  },
+  {
+    "id": 43,
+    "name": "Guruprasad S",
+    "domain": "People Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Guruprasad S.webp",
+    "linkedin": "https://www.linkedin.com/in/guruprasadsunil/"
+  },
+  {
+    "id": 44,
+    "name": "Abdul Khader Abdul Kareem",
+    "domain": "People Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Abdul Khader Abdul Kareem.webp",
+    "linkedin": "https://www.linkedin.com/in/abdul-khader-abdul-kareem/"
+  },
+  {
+    "id": 45,
+    "name": "Hanna Niha",
+    "domain": "People Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Hanna Niha.webp",
+    "linkedin": "https://www.linkedin.com/in/hanna-niha-210903242"
+  },
+  {
+    "id": 46,
+    "name": "Akhil K John",
+    "domain": "People Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Akhil K John.webp",
+    "linkedin": "https://www.linkedin.com/in/akhil-k-john-344787228/"
+  },
+  {
+    "id": 47,
+    "name": "Ebin Varghese",
+    "domain": "People Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Ebin Varghese.webp",
+    "linkedin": "https://www.linkedin.com/in/ebin-varghese-67a6491b8/"
+  },
+  {
+    "id": 48,
+    "name": "M S Mohammed",
+    "domain": "People Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/M S Mohammed.webp",
+    "linkedin": "https://www.linkedin.com/in/suroordotme/"
+  },
+  {
+    "id": 49,
+    "name": "Diya Jose",
+    "domain": "People Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Diya Jose.webp",
+    "linkedin": "https://www.linkedin.com/in/diyajose/"
+  },
+  {
+    "id": 50,
+    "name": "Jeevan Joseph",
+    "domain": "People Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Jeevan Joseph.webp",
+    "linkedin": "https://www.linkedin.com/in/jeevan-joseph-1310/"
+  },
+  {
+    "id": 51,
+    "name": "Abhiram Venugopal",
+    "domain": "People Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Abhiram Venugopal.webp",
+    "linkedin": "https://www.linkedin.com/in/abhiram-venugopal-1a7868210"
+  },
+  {
+    "id": 52,
+    "name": "Joseph Mathai Pathil",
+    "domain": "People Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Joseph Mathai Pathil.webp",
+    "linkedin": "https://www.linkedin.com/in/joseph-mathai-pathil/"
+  },
+  {
+    "id": 53,
+    "name": "Mansoor Majeed",
+    "domain": "People Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Mansoor Majeed.webp",
+    "linkedin": "https://www.linkedin.com/in/mansoor-majeed/"
+  },
+  {
+    "id": 54,
+    "name": "Ardra Vinod",
+    "domain": "People Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Ardra Vinod.webp",
+    "linkedin": "https://www.linkedin.com/in/ardra-vinod/"
+  },
+  {
+    "id": 55,
+    "name": "Aldrin Andrew",
+    "domain": "Interest Group Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Aldrin Andrew.webp",
+    "linkedin": "https://www.linkedin.com/in/aldrinandrew"
+  },
+  {
+    "id": 56,
+    "name": "Jeena Joy",
+    "domain": "Interest Group Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Jeena Joy.webp",
+    "linkedin": "https://www.linkedin.com/in/jeena-joy-/"
+  },
+  {
+    "id": 57,
+    "name": "BS Adithya",
+    "domain": "Interest Group Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/BS Adithya.webp",
+    "linkedin": "https://www.linkedin.com/in/bs-adhithya/"
+  },
+  {
+    "id": 58,
+    "name": "Megha J K",
+    "domain": "Interest Group Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Megha J K.webp",
+    "linkedin": "https://www.linkedin.com/in/megha-j-k-6680a119b/"
+  },
+  {
+    "id": 59,
+    "name": "Salmanul faris c c",
+    "domain": "Interest Group Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Salmanul faris c c.webp",
+    "linkedin": "https://www.linkedin.com/in/salmanulfariscc/"
+  },
+  {
+    "id": 60,
+    "name": "Gowrishankar",
+    "domain": "Interest Group Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Gowrishankar.webp",
+    "linkedin": "https://www.linkedin.com/in/gowrishankar-v-v-0687241a7/"
+  },
+  {
+    "id": 61,
+    "name": "Swathi Shabu",
+    "domain": "Interest Group Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Swathi Shabu.webp",
+    "linkedin": "https://www.linkedin.com/in/swathishabu/"
+  },
+  {
+    "id": 62,
+    "name": "Akarsh S",
+    "domain": "Interest Group Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Akarsh S.webp",
+    "linkedin": "https://www.linkedin.com/in/akarsh-s-14497b227/"
+  },
+  {
+    "id": 63,
+    "name": "Prince Chandapillai",
+    "domain": "Interest Group Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Prince Chandapillai.webp",
+    "linkedin": "https://www.linkedin.com/in/prince-chandapillai-474393191/"
+  },
+  {
+    "id": 64,
+    "name": "Mathew Davis",
+    "domain": "Interest Group Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Mathew Davis.webp",
+    "linkedin": "https://www.linkedin.com/in/mathew-davis-855002211/"
+  },
+  {
+    "id": 65,
+    "name": "Don Mathew Roy",
+    "domain": "Interest Group Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Don Mathew Roy.webp",
+    "linkedin": "https://www.linkedin.com/in/don-mathew-roy-766641226/"
+  },
+  {
+    "id": 66,
+    "name": "Ibrahim T",
+    "domain": "Interest Group Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Ibrahim T.webp",
+    "linkedin": "https://www.linkedin.com/in/ibrahim-t-394a45203/"
+  },
+  {
+    "id": 67,
+    "name": "Nahyan Sharvin",
+    "domain": "Interest Group Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Nahyan Sharvin.webp",
+    "linkedin": "https://www.linkedin.com/in/nahyansharvin/"
+  },
+  {
+    "id": 68,
+    "name": "Sooraj.P",
+    "domain": "Interest Group Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Sooraj.P.webp",
+    "linkedin": "https://www.linkedin.com/in/soorajksd/"
+  },
+  {
+    "id": 69,
+    "name": "Mariya Merlin",
+    "domain": "Interest Group Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Mariya Merlin.webp",
+    "linkedin": "https://www.linkedin.com/in/mariya-merlin-255372227/"
+  },
+  {
+    "id": 70,
+    "name": "Adithya Praveen",
+    "domain": "Interest Group Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Adithya Praveen.webp",
+    "linkedin": "https://www.linkedin.com/in/adithya-31/"
+  },
+  {
+    "id": 71,
+    "name": "Merin Susan Jobson",
+    "domain": "Interest Group Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Merin Susan Jobson.webp",
+    "linkedin": "https://www.linkedin.com/in/merin-susan-jobson-91a80820a"
+  },
+  {
+    "id": 72,
+    "name": "Sonal Antony KT",
+    "domain": "Interest Group Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Sonal Antony KT.webp",
+    "linkedin": "https://www.linkedin.com/in/sonal-antony-698a86181/"
+  },
+  {
+    "id": 73,
+    "name": "Ansu Varghese",
+    "domain": "Interest Group Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Ansu Varghese.webp",
+    "linkedin": "https://www.linkedin.com/in/ansu-varghese-a659bb228/"
+  },
+  {
+    "id": 74,
+    "name": "Anjal Mohammed V",
+    "domain": "Interest Group Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Anjal Mohammed V.webp",
+    "linkedin": "https://www.linkedin.com/in/anjal-mohammed/"
+  },
+  {
+    "id": 75,
+    "name": "Salim Umer",
+    "domain": "Interest Group Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Salim Umer.webp",
+    "linkedin": "https://www.linkedin.com/in/salimumer/"
+  },
+  {
+    "id": 76,
+    "name": "Ayisha Rinsiya",
+    "domain": "Interest Group Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Ayisha Rinsiya.webp",
+    "linkedin": "https://www.linkedin.com/in/ayisharinsiya/"
+  },
+  {
+    "id": 77,
+    "name": "Melvin John Varghese",
+    "domain": "Interest Group Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Melvin John Varghese.webp",
+    "linkedin": "https://www.linkedin.com/in/melvin-john-74858b201/"
+  },
+  {
+    "id": 78,
+    "name": "Aaron K",
+    "domain": "Interest Group Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Aaron K.webp",
+    "linkedin": "https://www.linkedin.com/in/aaron-k-9779b6211/"
+  },
+  {
+    "id": 79,
+    "name": "Sera Mariam George",
+    "domain": "Interest Group Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Sera Mariam George.webp",
+    "linkedin": "https://www.linkedin.com/in/sera-george/"
+  },
+  {
+    "id": 80,
+    "name": "Parvathy S Thampi",
+    "domain": "Interest Group Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Parvathy S Thampi.webp",
+    "linkedin": "https://www.linkedin.com/in/parvathy-st/"
+  },
+  {
+    "id": 81,
+    "name": "Karthika Sankar U",
+    "domain": "Interest Group Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Karthika Sankar U.webp",
+    "linkedin": "https://www.linkedin.com/in/karthika-sankar"
+  },
+  {
+    "id": 82,
+    "name": "Amrutha Lakshmi S",
+    "domain": "Interest Group Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Amrutha Lakshmi S.webp",
+    "linkedin": "https://www.linkedin.com/in/amruthalakshmis/"
+  },
+  {
+    "id": 83,
+    "name": "Swathy Prasanna Kumar",
+    "domain": "Interest Group Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Swathy Prasanna Kumar.webp",
+    "linkedin": "https://www.linkedin.com/in/swathy-prasannakumar-358584222/"
+  },
+  {
+    "id": 84,
+    "name": "Devaprasad S",
+    "domain": "Delivery Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Devaprasad S.webp",
+    "linkedin": "https://www.linkedin.com/in/devaprasad-s/"
+  },
+  {
+    "id": 85,
+    "name": "Andria Rose Aureo",
+    "domain": "Delivery Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Andria Rose Aureo.webp",
+    "linkedin": "https://www.linkedin.com/in/andria-rose-aureo-29a296202/"
+  },
+  {
+    "id": 86,
+    "name": "N Sreelakshmi",
+    "domain": "Delivery Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/N Sreelakshmi.webp",
+    "linkedin": "https://www.linkedin.com/in/sreelakshmi-n-a3b440211/"
+  },
+  {
+    "id": 87,
+    "name": "C. Harikrishna Sharma",
+    "domain": "Delivery Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/C. Harikrishna Sharma.webp",
+    "linkedin": "https://www.linkedin.com/in/charisharma/"
+  },
+  {
+    "id": 88,
+    "name": "Aswin Asok",
+    "domain": "Delivery Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Aswin Asok.webp",
+    "linkedin": "https://www.linkedin.com/in/-aswinasok/"
+  },
+  {
+    "id": 89,
+    "name": "Athulya TA",
+    "domain": "Delivery Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Athulya TA.webp",
+    "linkedin": "https://www.linkedin.com/in/athulya-t-a-884b33212"
+  },
+  {
+    "id": 90,
+    "name": "R Sreelekshmi",
+    "domain": "Delivery Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/R Sreelekshmi.webp",
+    "linkedin": "https://www.linkedin.com/in/r-sreelekshmi/"
+  },
+  {
+    "id": 91,
+    "name": "Neeraj Menon",
+    "domain": "Delivery Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Neeraj Menon.webp",
+    "linkedin": "https://www.linkedin.com/in/neeraj-menon-8998aa16a/"
+  },
+  {
+    "id": 92,
+    "name": "Harikrishnan B",
+    "domain": "Delivery Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Harikrishnan B.webp",
+    "linkedin": "https://www.linkedin.com/in/thehariplr/"
+  },
+  {
+    "id": 93,
+    "name": "Moosa Fayez",
+    "domain": "Delivery Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Moosa Fayez.webp",
+    "linkedin": "https://www.linkedin.com/in/moosafayaz"
+  },
+  {
+    "id": 94,
+    "name": "Lekshmi Sharma",
+    "domain": "Delivery Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Lekshmi Sharma.webp",
+    "linkedin": "https://www.linkedin.com/in/lekshmi-sharma/"
+  },
+  {
+    "id": 95,
+    "name": "Nazeeya Azeem",
+    "domain": "Delivery Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Nazeeya Azeem.webp",
+    "linkedin": "https://www.linkedin.com/in/nazeeyaazeem/"
+  },
+  {
+    "id": 96,
+    "name": "P Sathya Narayan",
+    "domain": "Delivery Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/P Sathya Narayan.webp",
+    "linkedin": "https://www.linkedin.com/in/p-sathya-narayan/"
+  },
+  {
+    "id": 97,
+    "name": "Jomi Susan Mathew",
+    "domain": "Delivery Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Jomi Susan Mathew.webp",
+    "linkedin": "https://www.linkedin.com/in/jomi-susan-mathew/"
+  },
+  {
+    "id": 98,
+    "name": "Nidal Yoonus",
+    "domain": "Delivery Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Nidal Yoonus.webp",
+    "linkedin": "https://www.linkedin.com/in/nidal-yoonus-690480212/"
+  },
+  {
+    "id": 99,
+    "name": "Basith P",
+    "domain": "Delivery Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Basith P.webp",
+    "linkedin": "https://www.linkedin.com/in/basithp9/"
+  },
+  {
+    "id": 100,
+    "name": "Vishnu Prathap",
+    "domain": "Delivery Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Vishnu Prathap.webp",
+    "linkedin": "https://www.linkedin.com/in/vishnu-prathap-0b1986214/"
+  },
+  {
+    "id": 101,
+    "name": "Nikhil Jose",
+    "domain": "Delivery Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Nikhil Jose.webp",
+    "linkedin": "https://www.linkedin.com/in/nikiljos/"
+  },
+  {
+    "id": 102,
+    "name": "Arjun M S",
+    "domain": "Delivery Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Arjun M S.webp",
+    "linkedin": "https://www.linkedin.com/in/the-arjun-ms/"
+  },
+  {
+    "id": 103,
+    "name": "Aravind S",
+    "domain": "Delivery Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Aravind S.webp",
+    "linkedin": "https://www.linkedin.com/in/aravinds-arv/"
+  },
+  {
+    "id": 104,
+    "name": "Arnold Denzil",
+    "domain": "Delivery Management",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Arnold Denzil.webp",
+    "linkedin": "https://www.linkedin.com/in/arnold-denzil-b91013191/"
+  },
+  {
+    "id": 105,
+    "name": "Abina",
+    "domain": "Data, documentation & Finance",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Abina.webp",
+    "linkedin": "https://www.linkedin.com/in/abina-fathima-9a8796219/"
+  },
+  {
+    "id": 106,
+    "name": "Ashique H M",
+    "domain": "Data, documentation & Finance",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Ashique H M.webp",
+    "linkedin": "https://www.linkedin.com/in/ashique-hira"
+  },
+  {
+    "id": 107,
+    "name": "Muhammed Abdul Gafoor",
+    "domain": "Data, documentation & Finance",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Muhammed Abdul Gafoor.webp",
+    "linkedin": "https://www.linkedin.com/in/mohammed-abdul-gafoor-66396323b"
+  },
+  {
+    "id": 108,
+    "name": "Nija Parveen K",
+    "domain": "Data, documentation & Finance",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Nija Parveen K.webp",
+    "linkedin": "https://www.linkedin.com/in/nija-parveen-k-0568b9206/"
+  },
+  {
+    "id": 109,
+    "name": "Akash Santhosh",
+    "domain": "Discord Mangement",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Akash Santhosh.webp",
+    "linkedin": "https://www.linkedin.com/in/akashsanthosh/"
+  },
+  {
+    "id": 110,
+    "name": "Amritha GS",
+    "domain": "Discord Mangement",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Amritha GS.webp",
+    "linkedin": "https://www.linkedin.com/in/amritha-g-s-5200401b7/"
+  },
+  {
+    "id": 111,
+    "name": "Nihalurrahiyan",
+    "domain": "Discord Mangement",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Nihalurrahiyan.webp",
+    "linkedin": "https://www.linkedin.com/in/nihalurrahiyan/"
+  },
+  {
+    "id": 112,
+    "name": "Milan Deepak",
+    "domain": "Discord Mangement",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Milan Deepak.webp",
+    "linkedin": "assets/team/district/Milan Deepak.webp"
+  },
+  {
+    "id": 113,
+    "name": "Abin T Sunil",
+    "domain": "Discord Mangement",
+    "designation": "Intern",
+    "image": "assets/team/2023/yip/Abin T Sunil.webp",
+    "linkedin": "https://www.linkedin.com/in/abin-t-sunil/"
+  }
+]

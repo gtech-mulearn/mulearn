@@ -21,8 +21,8 @@ interface InterestGroupsProps {
 
 export const currentIgsData: Record<string, string[]> =
 {
-  creative: ["46fe1fb7-7b04-4ebe-837d-120bc16d0e0a",],
-  maker: ["d379d82b-e116-4b67-8128-670916e6bb42"],
+  creative: ["46fe1fb7-7b04-4ebe-837d-120bc16d0e0a", "2de0ee0c-ddc3-4f02-bf93-b6bd2d0625c3"],
+  maker: ["d379d82b-e116-4b67-8128-670916e6bb42", "2de0ee0c-ddc3-4f02-bf93-b6bd2d0625c3"],
   coder: ["9b8aaf7f-16a0-4a66-ae53-79b8c25e5faa", "3a74725e-a05a-418b-a275-39d68ad9a416", "1be43a3a-bcfb-4ef1-b77a-959b01bcb782", "85fdd535-08d2-4619-9da7-944e21365de9", "1719d19a-0206-4161-9c6f-0a7dba44d4e5"],
   manager: ["5bf2bdfe-5c22-48ab-9572-9e9836c70e79", "04d29c15-4de4-4b43-ad63-0f4760c62919"]
 }
@@ -35,7 +35,8 @@ const imageUrls = [
   { title: "Game Dev", image: "/assets/IG/Cover/5.webp" },
   { title: "Cloud And Devops", image: "/assets/IG/Cover/6.webp" },
   { title: "Product Management", image: "/assets/IG/Cover/7.webp" },
-  { title: "Internet Of Things (IOT) And Robotics", image: "/assets/IG/Cover/8.webp" }
+  { title: "Internet Of Things (IOT) And Robotics", image: "/assets/IG/Cover/8.webp" },
+  {title: "AR VR MR", image: "/assets/IG/Cover/10.webp" },
 ];
 
 

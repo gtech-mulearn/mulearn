@@ -1,12 +1,13 @@
-import Navbar from "../components/Navbar";
+import Navbar from "@/modules/Common/HomeNav/HomeNav";
 import titleFrame from "../assets/titleFrame.svg";
 import mU from "../assets/mU_pl.svg";
 import styles from "./KKEMLanding.module.css";
 import IGAbout from "../components/IGAbout";
 import IGSection from "../components/IGSection";
-import Footer from "../components/Footer";
+import Footer from "@/modules/Common/Footer/Footer";
 import igAssets from "../assets/IGS";
 import pastEventsAssets from "../assets/past_events";
+import { Helmet } from "react-helmet";
 
 export default function Landing() {
     const igCardData = [
@@ -129,28 +130,44 @@ export default function Landing() {
         }
     ];
     return (
-        <main className={styles.mainContainer}>
-            <Navbar />
-            <div style={{ position: "relative", height: "100%" }}>
-                <img
-                    src={titleFrame}
-                    alt="title frame"
-                    className={styles.title}
+        <>
+            <Helmet>
+                <title>KKEM | µLearn</title>
+                <meta
+                    name="description"
+                    content="Discover the Kerala Knowledge Economy Mission with µLearn — an initiative to empower talents, boost innovation and build a vibrant knowledge-driven economy."
                 />
-                <img src={mU} alt="mU" className={styles.mU} />
-            </div>
-            <IGAbout />
-            <IGSection cards={igCardData} />
-            <div id="events">
-                <IGSection
-                    cards={pastEventCardData}
-                    heading="Partnered Events"
-                    headerFlag={true}
-                    largeImg={true}
+                <meta property="og:title" content="KKEM | µLearn" />
+                <meta property="og:url" content="https://app.mulearn.org/kkem" />
+                <meta
+                    property="og:description"
+                    content="Discover the Kerala Knowledge Economy Mission with µLearn — an initiative to empower talents, boost innovation and build a vibrant knowledge-driven economy."
                 />
-            </div>
-            {/* <SkillExpress /> */}
-            <Footer />
-        </main>
+            </Helmet>
+            
+            <main className={styles.mainContainer}>
+                <Navbar />
+                <div style={{ position: "relative", height: "100%" }}>
+                    <img
+                        src={titleFrame}
+                        alt="title frame"
+                        className={styles.title}
+                    />
+                    <img src={mU} alt="mU" className={styles.mU} />
+                </div>
+                <IGAbout />
+                <IGSection cards={igCardData} />
+                <div id="events">
+                    <IGSection
+                        cards={pastEventCardData}
+                        heading="Partnered Events"
+                        headerFlag={true}
+                        largeImg={true}
+                    />
+                </div>
+                {/* <SkillExpress /> */}
+                <Footer />
+            </main>
+        </>
     );
 }

@@ -7,9 +7,9 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { HiOutlinePencil } from "react-icons/hi";
 import { ImCross } from "react-icons/im";
 
+
 import Modal from "../Modal/Modal";
 import MuLoader from "../MuLoader/MuLoader";
-import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 import MuModal from "../MuModal/MuModal";
 
 enum ModalType {
@@ -50,7 +50,7 @@ type TableProps = {
             data: string | ReactElement,
             id: string,
             row: Data
-        ) => ReactJSXElement;
+        ) => ReactElement;
     }[];
     id?: string[];
     onEditClick?: (column: string | number | boolean) => void;

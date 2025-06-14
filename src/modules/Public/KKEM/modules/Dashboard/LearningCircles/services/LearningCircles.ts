@@ -21,16 +21,18 @@ export const getHackDashboard = (setHackDashboard: HackDashboard) => {
 };
 export const getLCDashboard = (setLcCounts: ResponseType, date?: string) => {
     publicGateway
-        .get(PublicRoutes.getLcDashboard, {
-            params: {
-                date: date
-            }
-        })
+        .get(googleSheetRoutes.getLcData, {})
         .then(response => {
-            setLcCounts(response.data.response);
+            console.log("response", response);
+            setLcCounts({
+                lc_count: 2226,
+                total_enrollment: 5276,
+                circle_count_by_ig: response.data,
+                unique_users: 3009
+            });
         })
         .catch(error => {
-            console.error(error);
+            console.error("error", error);
         });
 };
 

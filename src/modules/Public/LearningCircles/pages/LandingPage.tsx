@@ -18,6 +18,8 @@ import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { joinCircle } from "../../../Dashboard/modules/LearningCircle/services/LearningCircleAPIs";
 import toast from "react-hot-toast";
 import Modal from "@/MuLearnComponents/Modal/Modal";
+import HomeNav from "@/modules/Common/HomeNav/HomeNav";
+import Footer from "@/modules/Common/Footer/Footer";
 
 interface Option {
     value: string;
@@ -229,26 +231,7 @@ const LandingPage = () => {
 
     return (
         <div className={styles.LClandingPage}>
-            <nav className={styles.LClandingPageNav}>
-                <img src="https://i.ibb.co/vY786NX/image.png" alt="muLearn" />
-                <div className={styles.navLinks}>
-                    <div>
-                        <Link to="https://mulearn.org/">About</Link>
-                        <Link to="https://mulearn.org/events/">Programs</Link>
-                        <Link to="https://learn.mulearn.org/">
-                            Interest Group
-                        </Link>
-                        <Link to="https://mulearn.org/careers">Careers</Link>
-                    </div>
-                    <button
-                        onClick={() => {
-                            navigate("/dashboard/home");
-                        }}
-                    >
-                        Join Us
-                    </button>
-                </div>
-            </nav>
+            <HomeNav />
 
             <div className={styles.LClandingPageHero}>
                 <div className={styles.dash}></div>
@@ -400,6 +383,7 @@ const LandingPage = () => {
                     </div>
                 )}
             </div>
+            <Footer />
         </div>
     );
 };

@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Fayis Mohammed",
+    "position": "React.js Developer",
+    "image": "assets/team/2023/community/Fayis Mohammed.webp",
+    "linkedin": "https://www.linkedin.com/in/abhijithes/"
+  },
+  {
+    "name": "Arjun A G",
+    "position": "Django Developer",
+    "image": "assets/team/2023/community/Arjun A G.webp",
+    "linkedin": "https://www.linkedin.com/in/abhijithes/"
+  },
+  {
+    "name": "Amjed Saleel K",
+    "position": "Devops Engineer",
+    "image": "assets/team/2023/community/Amjed Saleel K.webp",
+    "linkedin": "https://www.linkedin.com/in/amjedsaleelk/"
+  }
+]

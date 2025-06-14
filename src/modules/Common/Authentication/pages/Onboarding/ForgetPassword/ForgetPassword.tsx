@@ -9,6 +9,7 @@ import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { forgetPassword } from "../../../services/apis";
 import styles from "./ForgetPassword.module.css";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet";
 
 const ForgetPassword = () => {
     const [showLoader, setShowLoader] = useState(false);
@@ -32,6 +33,19 @@ const ForgetPassword = () => {
 
     return (
         <>
+        <Helmet>
+        <title>Forgot Password | µLearn</title>
+                <meta
+                    name="description"
+                    content="Reset your µLearn account password."
+                />
+                <meta property="og:title" content="Forgot Password | µLearn" />
+                <meta property="og:url" content="https://app.mulearn.org/forgot-password" />
+                <meta
+                    property="og:description"
+                    content="Reset your µLearn account password."
+                />
+        </Helmet>
             <OnboardingTemplate>
                 <OnboardingHeader
                     title={"Forgot Password"}

@@ -20,7 +20,6 @@ import styles from "./CampusStudentList.module.css";
 import CLIcon from "../assets/images/CampusLeadIcon.svg";
 import CEIcon from "../../LearningCircle/assets/images/Lead icon.svg";
 import { convertDateToDayAndMonth } from "../../../utils/common";
-import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 import Modal from "@/MuLearnComponents/Modal/Modal";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { AiOutlineDownload } from "react-icons/ai";
@@ -107,7 +106,7 @@ const CampusStudentList = (props: Props) => {
         isSortable: boolean;
         column: string;
         Label: string;
-        wrap?: (data: string | ReactElement, id: string) => ReactJSXElement;
+        wrap?: (data: string | ReactElement, id: string) => ReactElement;
     }[] = [
         { column: "muid", Label: "MuId", isSortable: true },
         // { column: "fullname", Label: "Name", isSortable: true },

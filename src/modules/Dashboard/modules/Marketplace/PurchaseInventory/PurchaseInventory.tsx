@@ -8,7 +8,6 @@ import THead from "@/MuLearnComponents/Table/THead";
 import Table from "@/MuLearnComponents/Table/Table";
 import TableTop from "@/MuLearnComponents/TableTop/TableTop";
 import { Blank } from "@/MuLearnComponents/Table/Blank";
-import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 import { BsCardImage } from "react-icons/bs";
 
 type Props = {};
@@ -32,7 +31,7 @@ const PurchaseInventory = (props: Props) => {
         isSortable: boolean;
         column: string;
         Label: string;
-        wrap?: (data: string | ReactElement, id: string) => ReactJSXElement;
+        wrap?: (data: string | ReactElement, id: string) => ReactElement;
     };
 
     const columnOrder: ColOrderType[] = [

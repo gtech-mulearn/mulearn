@@ -1,20 +1,21 @@
 import styles from "../pages/leaderboard.module.css";
-import studentFirst from "../assets/first.webp"
-import studentSecond from "../assets/second.webp"
-import studentThird from "../assets/third.webp"
-import campusFirst from "../assets/campusFirst.webp"
-import campusSecond from "../assets/campusSecond.webp"
-import campusThird from "../assets/campusThird.webp"
-
+import studentFirst from "../assets/first.webp";
+import studentSecond from "../assets/second.webp";
+import studentThird from "../assets/third.webp";
+import campusFirst from "../assets/campusFirst.webp";
+import campusSecond from "../assets/campusSecond.webp";
+import campusThird from "../assets/campusThird.webp";
 
 interface TopPlayersProps {
   topPlayers: {
     name: string;
     monthly?: number;
     overall?: number;
+    campus?: number;
+    zonal?: number;
     category?: string;
   }[];
-  activeFilter: "monthly" | "overall";
+  activeFilter: "monthly" | "overall" | "campus" | "zonal";
 }
 
 export function TopPlayers({ topPlayers, activeFilter }: TopPlayersProps) {
@@ -35,9 +36,26 @@ export function TopPlayers({ topPlayers, activeFilter }: TopPlayersProps) {
             >
               <div className={styles.avatarWrapper}>
                 {category === "student" && (
-                  <img src={position === "first" ? studentFirst : position === "second" ? studentSecond : studentThird} alt="" className={styles.avatar} />)}
-                   {category === "campus" && (
-                  <img src={position === "first" ? campusFirst : position === "second" ? campusSecond : campusThird} alt="" className={styles.avatar} />)}
+                  <img
+                    src={position === "first" ? studentFirst : position === "second" ? studentSecond : studentThird}
+                    alt=""
+                    className={styles.avatar}
+                  />
+                )}
+                {(category === "campus" || (category === "wadhwani" && activeFilter === "campus")) && (
+                  <img
+                    src={position === "first" ? campusFirst : position === "second" ? campusSecond : campusThird}
+                    alt=""
+                    className={styles.avatar}
+                  />
+                )}
+                {category === "wadhwani" && activeFilter === "zonal" && (
+                  <img
+                    src={position === "first" ? campusFirst : position === "second" ? campusSecond : campusThird}
+                    alt=""
+                    className={styles.avatar}
+                  />
+                )}
                 <div className={`${styles.trophy} ${styles[`trophy${position}`]}`}>🏆</div>
               </div>
               <h3 className={styles.playerName}>{player.name}</h3>

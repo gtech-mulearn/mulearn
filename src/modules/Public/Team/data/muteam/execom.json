@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "Deepu S Nath",
+    "position": "Managing Director Faya",
+    "image": "assets/team/muteam/execom/Deepu S Nath.webp",
+    "linkedin": "https://linkedin.com/in/deepusnath"
+  },
+  {
+    "id": 2,
+    "name": "Anoop Ambika",
+    "position": "CEO, KSUM",
+    "image": "assets/team/muteam/execom/Anoop Ambika.webp",
+    "linkedin": "https://linkedin.com/in/anoopambika"
+  },
+  {
+    "id": 3,
+    "name": "Dinesh Thambi",
+    "position": "Vice President, TCS",
+    "image": "assets/team/muteam/execom/Dinesh Thampi.webp",
+    "linkedin": "https://www.linkedin.com/in/dineshthampi/"
+  },
+  {
+    "id": 4,
+    "name": "Karthik Kalathil",
+    "position": "Co-Founder, Wattlecorp Cybersecurity",
+    "image": "assets/team/muteam/execom/Karthik Kalathil.webp",
+    "linkedin": "https://linkedin.com/in/kalathil-karthik"
+  },
+  {
+    "id": 5,
+    "name": "Rejah Rahim",
+    "position": "Founder, Beagle Security",
+    "image": "assets/team/muteam/execom/Rejah Rehim.webp",
+    "linkedin": "https://www.linkedin.com/in/rejah/"
+  },
+  {
+    "id": 6,
+    "name": "Suhail V P",
+    "position": "CEO, Nucore",
+    "image": "assets/team/muteam/execom/Suhail V P.webp",
+    "linkedin": "https://www.linkedin.com/in/suhail-vp-25807613/"
+  },
+  {
+    "id": 7,
+    "name": "Tina James",
+    "position": "CEO Revyrie Global",
+    "image": "assets/team/muteam/execom/Tina James.webp",
+    "linkedin": "https://in.linkedin.com/in/tinaajames"
+  },
+  {
+    "id": 8,
+    "name": "Dr. Bijoy A Jose",
+    "position": "Associate Professor CUSAT",
+    "image": "assets/team/muteam/execom/Dr. Bijoy A Jose.webp",
+    "linkedin": "https://www.linkedin.com/in/bijoyjose"
+  }
+]

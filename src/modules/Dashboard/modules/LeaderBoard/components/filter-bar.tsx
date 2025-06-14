@@ -1,11 +1,11 @@
 import styles from "../pages/leaderboard.module.css";
 
 interface FilterBarProps {
-  activeFilter: "monthly" | "overall";
-  setActiveFilter: (filter: "monthly" | "overall") => void;
-  activeCategory: "student" | "campus";
-  setActiveCategory: (category: "student" | "campus") => void;
-  filterOptions: ("monthly" | "overall")[];
+  activeFilter: "monthly" | "overall" | "campus" | "zonal";
+  setActiveFilter: (filter: "monthly" | "overall" | "campus" | "zonal") => void;
+  activeCategory: "student" | "campus" | "wadhwani";
+  setActiveCategory: (category: "student" | "campus" | "wadhwani") => void;
+  filterOptions: ("monthly" | "overall" | "campus" | "zonal")[];
   categoryOptions: { label: string; value: string }[];
 }
 
@@ -36,7 +36,7 @@ export function FilterBar({
         <select
           className={styles.select}
           value={activeCategory}
-          onChange={(e) => setActiveCategory(e.target.value as "student" | "campus")}
+          onChange={(e) => setActiveCategory(e.target.value as "student" | "campus" | "wadhwani")}
         >
           {categoryOptions.map((option) => (
             <option key={option.value} value={option.value}>

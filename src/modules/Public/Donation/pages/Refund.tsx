@@ -1,12 +1,12 @@
 import styles from "../Donation.module.css";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
+import Footer from "@/modules/Common/Footer/Footer";
+import HomeNav from "@/modules/Common/HomeNav/HomeNav";
 import RefundPage from "../components/RefundText";
 
 const Refund = () => {
     return (
         <div className={styles.RefundPage}>
-            <Navbar />
+            <HomeNav />
             <div className={styles.backgroundImage}>
                 <img
                     src="https://i.ibb.co/cCvB4r6/Learning-BG.png"

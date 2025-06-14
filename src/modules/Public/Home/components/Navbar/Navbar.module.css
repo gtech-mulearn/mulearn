@@ -1,0 +1,184 @@
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: relative;
+	padding: 3rem 12rem;
+	width: 100%;
+}
+
+.logo {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+/* Hamburger Menu for Mobile */
+.hamburger {
+	display: none;
+	flex-direction: column;
+	cursor: pointer;
+	gap: 5px;
+	margin: 25px;
+}
+
+.hamburger div {
+	width: 30px;
+	height: 4px;
+	background-color: #333;
+	border-radius: 5px;
+}
+
+.navLinks {
+	list-style: none;
+	display: flex;
+	gap: 15px;
+	font-size: 0.9rem;
+	font-weight: 600;
+}
+
+.navLinks li {
+	transition: all 0.25s linear;
+}
+
+.navLinks li:hover {
+	transform: scale(1.05);
+	color: black;
+}
+
+.navButtons button {
+	margin-left: 10px;
+}
+
+.mobileNavLinks {
+	display: flex;
+	list-style: none;
+	transition: right 0.3s ease-in-out;
+	padding: 0;
+	margin: 0;
+	right: 0;
+}
+
+.loginBtn {
+	background-color: var(--Primary);
+	color: rgb(255, 255, 255);
+	border-radius: 20px;
+	padding: 10px 20px;
+	font-weight: 700;
+	font-size: 0.9rem;
+}
+
+.loginBtn:hover {
+	background-color: var(--Primary);
+	transition: all 0.3s ease;
+
+}
+
+@media (max-width: 1400px) {
+	.navbar {
+		padding: 0rem 10rem;
+	}
+
+	.navLinks {
+		font-size: 0.8rem;
+	}
+
+	.navButtons .loginBtn {
+		font-size: 0.8rem;
+	}
+}
+
+@media (max-width: 1150px) {
+	.navbar {
+		padding: 0rem 8rem;
+	}
+
+	.navLinks {
+		font-size: 0.7rem;
+	}
+
+	.navButtons .loginBtn {
+		font-size: 0.7rem;
+		padding: 8px 15px;
+	}
+}
+
+@media (max-width: 1024px) {
+	.navbar {
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0rem 5rem;
+	}
+
+	.navButtons {
+		margin-top: 0;
+	}
+
+	.hamburger {
+		display: flex;
+	}
+
+	.navLinks {
+		display: none;
+		/* Hide desktop nav links on smaller screens */
+	}
+
+	.mobileNavLinks li {
+		font-size: 1.2rem;
+		color: #333;
+		cursor: pointer;
+		padding: 0.5rem 1rem;
+		border-radius: 5px;
+		transition: background-color 0.3s ease, transform 0.3s ease;
+	}
+
+	.mobileNavLinks li:hover {
+		background-color: #f0f0f0;
+		transform: translateX(10px);
+	}
+
+	.mobileNavLinks {
+		flex-direction: column;
+		background-color: white;
+		position: fixed;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		padding: 2rem;
+		z-index: 1000;
+		overflow-y: auto;
+		transition: right 0.3s ease-in-out;
+		padding-top: 70px;
+		right: -100%;
+	}
+
+	.mobileNavLinks.sh {
+		right: 0;
+	}
+
+	.mobileNavLinks .closeBtn {
+		position: absolute;
+		top: 1rem;
+		right: 2rem;
+		font-size: 30px;
+		background: none;
+		border: none;
+		cursor: pointer;
+		color: black;
+		z-index: 1001;
+	}
+}
+
+@media (max-width: 480px) {
+	.navbar {
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.navButtons {
+		margin-top: 1rem;
+		display: hidden;
+		visibility: hidden;
+	}
+}

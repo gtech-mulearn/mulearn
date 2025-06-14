@@ -1,0 +1,173 @@
+.programProject{
+    margin: 2rem 0;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    gap: 1.5rem;
+}
+
+.programProject h1{
+    color: #9765FF;
+    font-family: Inter;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 62.4px;
+    letter-spacing: -2.88px;
+    background-image: url('../../assests/Underline.webp');
+    background-repeat: no-repeat;
+    background-position: 155px 52px;
+}
+
+.programProject h1 span{
+    color: #FF7D40;
+    text-align: center;
+}
+
+.programProjectGrid{
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2,1fr);
+  margin: 1rem;
+}
+
+.programProjectGridCard{
+    width: 400px;
+    height: fit-content;
+    padding-bottom: 40px;
+    border-radius: 2rem;
+    background: #fff;
+    box-shadow: 0px 10px 60px 0px rgba(38, 45, 118, 0.08);
+}
+.programProjectGridCard .programProjectGridCardImg{
+    border-radius: 2rem 2rem 0 0;
+    width: 400px;
+}
+
+.programProjectEnablers,
+.programProjectEnablers div,
+.programProjectGridContent div{
+    display: flex;
+}
+.programProjectEnablers{
+    width: fit-content;
+    padding: 5px 10px;
+    gap: 5px;
+    border-radius: 40px;
+    background: #FAFAFA;
+    position: relative;
+    top: -20px;
+    left: 20px;
+    align-items: center;
+}
+.programProjectEnablers div img{
+    position: relative;
+    z-index: 5;
+}
+.programProjectEnablers div img:nth-child(2){
+    left: -10px;
+    z-index: 4;
+}
+.programProjectEnablers div img:nth-child(3){
+    left: -20px;
+    z-index: 3;
+}
+.programProjectEnablers div img:nth-child(4){
+    left: -30px;
+    z-index: 2;
+}
+.programProjectGridCard p{
+    color: #263238;
+    font-family: Raleway;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    padding-right: 10px;
+}
+.programProjectGridCard .programProjectGridContent p{
+    color: var(--grey-grey-2, #4D4D4D);
+    font-family: Raleway;
+    font-size: 15px;
+    font-weight: 400;
+    text-align: left;
+    margin: 0 1rem;
+}
+
+.programProjectGridCard .programProjectGridContent p:nth-child(1) {
+    color: var(--primary-primary-3, #777795);
+    font-family: Raleway;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    justify-content: start;
+    margin: 0 1rem;
+    text-align: left;
+}
+
+.programProjectGridCard .programProjectGridContent h2{
+    color: #9765FF;
+    font-family: Raleway;
+    font-size: 16px;
+    font-weight: 800;
+    text-align: left;
+    margin:.8rem;
+}
+
+.programProjectGridContent div {
+    justify-content: space-around;
+    width: 100%;
+    margin: 1rem 0 0 0;
+}
+
+.programProjectGridContent div h3{
+    color: #FF7D40;
+    font-family: Inter;
+    font-size: 16.681px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.programProjectGridContent div h3 span{
+    color: var(--Black, #978787);
+    font-family: Inter;
+    font-size: 14.828px;
+    font-style: normal;
+    font-weight: 400;
+    text-decoration: line-through;
+}
+
+.programProjectGridContent div button{
+    background: #9765FF;
+    border-radius: 5px;
+    color: #FFF;
+    font-size: 16px;
+    font-family: Raleway;
+    padding: 10px 20px;
+}
+
+@media (width<950px) {
+    .programProjectGrid{
+        gap: 2rem;
+        grid-template-columns: repeat(1,1fr);
+    }
+}
+
+@media (width<650px){
+    .programProject h1{
+        font-size: 30px;
+        letter-spacing: -2.88px;
+        background-image: url('../../assests/Underline.webp');
+        background-repeat: no-repeat;
+        background-position: 80px 45px;
+        background-size: 150px;
+    }
+}
+
+@media (width<650px){
+    .programProjectGridCard{
+        width: 300px;
+    }
+    .programProjectGridCard .programProjectGridCardImg{
+        width: 300px;
+    }
+}

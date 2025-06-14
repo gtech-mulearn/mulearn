@@ -206,6 +206,10 @@ export const dashboardRoutes = {
     collegeLevels: "api/v1/dashboard/college/",
     collegeLevlesDelete: "api/v1/dashboard/college/delete/",
 
+    //wadhwani leaderboard
+    "getWadhwaniCollegeLeaderBoard": "api/v1/leaderboard/wadhwani-college/",
+    "getWadhwaniZonalLeaderBoard": "api/v1/leaderboard/wadhwani-zonal/",
+
     //Dyanmic Type
     dtGetRoles: "api/v1/dashboard/dynamic-management/roles/",
     dtGetTypes: "api/v1/dashboard/dynamic-management/types/",
@@ -295,6 +299,8 @@ export const PublicRoutes = {
 } as const;
 
 export const googleSheetRoutes = {
+    getLcData:
+        "https://opensheet.elk.sh/1jzmjBxINQrrIf2dNke4EsGwmI9zmAOCrvFwBqG12RIs/Sheet1",
     getHackathonData:
         "https://opensheet.elk.sh/1w2Ax918fkkumNiCJ42tc5T9fJeidVGL9_9B-2j7klDM/Sheet1/",
     getHackathonDashboardData:

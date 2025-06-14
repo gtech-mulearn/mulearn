@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC, JSX, useEffect } from "react";
 import { Navigate, redirect } from "react-router-dom";
 import { fetchLocalStorage } from "./common_functions";
 import toast from "react-hot-toast";

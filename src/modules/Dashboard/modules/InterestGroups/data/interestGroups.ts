@@ -591,7 +591,7 @@ export const interestGroups: InterestGroupData[] = [
     bannerImage:
       "/assets/IG/Cover/2.webp",
 
-    
+
     memberSince: "March 2021",
     isPublic: true,
     officeHours: "Wednesday 9:00PM",
@@ -1068,7 +1068,7 @@ export const interestGroups: InterestGroupData[] = [
     bannerImage:
       "/assets/IG/Cover/3.webp",
 
-    
+
     memberSince: "September 2020",
     isPublic: true,
     officeHours: "Monday 7:30PM",
@@ -1573,7 +1573,7 @@ export const interestGroups: InterestGroupData[] = [
     bannerImage:
       "/assets/IG/Cover/5.webp",
 
-  
+
     memberSince: "January 2022",
     isPublic: true,
     officeHours: "Friday 8:30PM",
@@ -2174,7 +2174,7 @@ export const interestGroups: InterestGroupData[] = [
     "title": "Internet Of Things (IOT) And Robotics",
     "description": "Imagine a world where devices communicate seamlessly, revolutionizing industries and everyday life. The Internet of Things (IoT) bridges the physical and digital realms, enabling innovations in smart homes, healthcare, manufacturing, and more. The IoT Interest Group is your gateway to exploring this transformative technology, mastering its tools, and collaborating with like-minded innovators.",
     "bannerImage": "/assets/IG/Cover/8.webp",
-    
+
     "memberSince": "August 2021",
     "isPublic": true,
     "officeHours": "Sunday 7:30PM @Discord Lobby",
@@ -4234,8 +4234,8 @@ export const interestGroups: InterestGroupData[] = [
         }
       ]
     },
-    
-      
+
+
     "prerequisites": [
       "Cultivate a passion for innovation and problem-solving",
       "Develop resilience and adaptability to navigate challenges",
@@ -4455,6 +4455,328 @@ export const interestGroups: InterestGroupData[] = [
       //   "link": "https://startuphub.com"
       // }
     ]
+  },
+  {
+    id: "2de0ee0c-ddc3-4f02-bf93-b6bd2d0625c3", // Assigned from JSON for "Ar Vr Mr"
+    title: "AR/VR",
+    description:
+      '"AR/VR is reshaping the way we interact with the digital world.” Are you interested in learning how to create immersive experiences that blend the virtual and physical worlds? Join our “AR/VR Development” Interest Group to explore and collaborate with peers on creating augmented and virtual reality applications.',
+    bannerImage:
+      "/assets/IG/Cover/10.webp", // Updated from markdown
+    memberSince: "June 2023",
+    isPublic: true,
+    officeHours: "TBA", // Updated from markdown (not specified)
+    thinkTankMeeting: "TBA", // Updated from markdown (not specified)
+    interestGroupLeads: {
+      description:
+        "Interest group leads manage the activities and events within interest groups and serve as a point of contact for students interested in getting involved. Students can connect with these leads to learn about opportunities in AR/VR development.",
+      leads: [
+        {
+          name: "Dev Nandan S",
+          institution: "St. Thomas Institute for Science & Technology",
+          linkedin: "http://www.linkedin.com/in/dev-nandan-426861253",
+          image: "/assets/IG/ARVR/IG Leads/Dev Nandan S.webp", // Updated image path assumption
+        },
+      ],
+    },
+    prerequisites: [
+      "Basic understanding of 3D modeling concepts and tools (e.g., Unity, Unreal Engine).",
+      "Interest in immersive technologies and their applications.",
+      "Familiarity with programming basics (e.g., C# for Unity) is a plus but not required.",
+    ],
+    peopleToFollow: [
+      { name: "Tony Parisi", link: "https://x.com/auradeluxe" },
+      { name: "Charlie Fink", link: "https://www.linkedin.com/in/charliefinkvr/" },
+      { name: "Valem", link: "https://www.youtube.com/c/ValemVR" },
+      { name: "Kent Bye", link: "https://www.linkedin.com/in/kentbye/" },
+    ],
+    blogsToFollow: [
+      { name: "Upload VR", link: "https://uploadvr.com/" },
+      { name: "Road to VR", link: "https://www.roadtovr.com/" },
+      { name: "ARPost", link: "https://arpost.co/" },
+    ],
+    topKeywords: [
+      "AR Development",
+      "VR Development",
+      "Unity",
+      "Unreal Engine",
+      "3D Modeling",
+      "Augmented Reality",
+      "Virtual Reality",
+      "Mixed Reality",
+      "Interaction Design",
+      "XR Development",
+      "Spatial Computing",
+      "Immersive Media",
+      "Reality Capture",
+      "Immersive Learning",
+    ],
+    tabs: {
+      about: {
+        foundationDeck: "https://www.notion.so/ARVR", // Placeholder; update with actual link if provided
+        description:
+          "The AR/VR Development Interest Group is your gateway to mastering the art of creating immersive experiences. Whether you're interested in gaming, education, or enterprise applications, we provide resources and a community to help you innovate with AR, VR, and MR technologies.",
+        opportunities: [
+          {
+            title: "AR/VR Developer",
+            description: "Design and implement AR/VR applications and experiences.",
+          },
+          {
+            title: "3D Artist",
+            description: "Create 3D models and assets for immersive environments.",
+          },
+          {
+            title: "Technical Artist",
+            description:
+              "Bridge the gap between 3D design and technical development for AR/VR.",
+          },
+          {
+            title: "Interaction Designer",
+            description:
+              "Develop intuitive and engaging user interactions for AR/VR applications.",
+          },
+          {
+            title: "AR/VR Product Manager",
+            description:
+              "Oversee the lifecycle of AR/VR products and align them with user needs and business goals.",
+          },
+          {
+            title: "XR Researcher",
+            description:
+              "Focus on innovating and optimizing AR/VR technologies and experiences.",
+          },
+        ],
+      },
+      forum: { placeholder: "Discuss AR/VR/MR projects and ideas here." },
+      members: [
+        {
+          id: 25,
+          name: "Maya Rao",
+          muid: "maya789",
+          profile_pic:
+            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=40&h=40&q=80",
+          karma: "700",
+          interest_groups: [
+            {
+              id: "2de0ee0c-ddc3-4f02-bf93-b6bd2d0625c3",
+              name: "AR/VR/MR",
+            },
+          ],
+          organizations: [
+            {
+              id: "org-26",
+              title: "VR Academy",
+              code: "VRA01",
+              org_type: "College",
+            },
+          ],
+        },
+      ],
+      events: [
+        {
+          id: "evt-018",
+          title: "AR/VR Innovation Summit 2025",
+          link: "https://arvrcommunity.com/events/summit",
+          venue: "Online via Zoom",
+          eventType: "Online",
+          date: "January 15, 2026",
+          time: "13:00 - 16:00 GMT",
+          image:
+            "https://images.unsplash.com/photo-1593504049359-74330189a345?q=80&w=800",
+        },
+      ],
+      learningPaths: [
+        {
+          "level": "Level 4",
+          "cards": [
+            {
+              "title": "Foundational Understanding Part 1",
+              "data": {
+                "description": "This topic introduces the foundational concepts of Augmented Reality (AR), Virtual Reality (VR), Mixed Reality (MR), and Extended Reality (XR), examining their unique characteristics and differences. By exploring these technologies, students will gain insights into how each one functions and contributes to creating interactive, immersive experiences.",
+                "whatYouWillLearn": [
+                  "Foundation knowledge on AR, VR, MR, and XR technologies and their differences.",
+                  "Understanding how these technologies contribute to interactive and immersive experiences."
+                ],
+                "challenges": [
+                  {
+                    "title": "AR, VR, MR, and XR: Real-World Application Task",
+                    "resources": [
+                      "https://medium.com/@ajayverma23/understanding-ar-and-vr-transforming-our-world-with-immersive-technology-8d530aeff236"
+                    ],
+                    "description": "Explore the transformative potential of AR, VR, MR, and XR by understanding their differences and applying them to solve a real-world problem. This task will help you think critically about these technologies and their impact on everyday challenges. After completing this task, share the PDF or Word file in the #ar-vr channel using the hashtag #cl-arvr-realworld to avail 200 karma points."
+                  }
+                ]
+              },
+              "resources": 1,
+              "proofOfWork": 1,
+              "rating": 0,
+              "hasGift": false
+            },
+            {
+              "title": "Foundational Understanding Part 2",
+              "data": {
+                "description": "This topic introduces the foundational concepts of how Augmented Reality (AR), Virtual Reality (VR), Mixed Reality (MR), and Extended Reality (XR) hardware works and how it is built or developed. Learners will understand the types of hardware and their limitations.",
+                "whatYouWillLearn": [
+                  "Foundation knowledge on the hardware of AR, VR, MR, and XR technologies.",
+                  "Understanding the types of hardware and their limitations in creating immersive experiences."
+                ],
+                "challenges": [
+                  {
+                    "title": "AR/VR Hardware: Understanding the Components and Functionality",
+                    "resources": [
+                      "https://www.youtube.com/watch?v=CoQyhIWNSK8"
+                    ],
+                    "description": "Delve into the core components of AR and VR hardware to explore how these elements work together to create immersive experiences. This challenge will help you understand the functionality of key hardware elements, the differences between AR and VR systems, and their role in enabling interactive environments. After completing this task, share the PDF or Word file in the #ar-vr channel using the hashtag #cl-arvr-hardware to avail 600 karma points."
+                  }
+                ]
+              },
+              "resources": 1,
+              "proofOfWork": 1,
+              "rating": 0,
+              "hasGift": false
+            },
+            {
+              "title": "Analytical Understanding",
+              "data": {
+                "description": "This topic explores the practical applications of AR, VR, MR, and XR across industries such as healthcare, education, entertainment, and manufacturing, showcasing their potential to solve real-world problems. Learners will examine the transformative power of these technologies in revolutionizing workflows, improving user experiences, and opening new opportunities for innovation.",
+                "whatYouWillLearn": [
+                  "Knowledge of real-world applications of AR, VR, MR, and XR across various industries.",
+                  "Skills to analyze, design, and enhance immersive experiences for practical use cases."
+                ],
+                "challenges": [
+                  {
+                    "title": "AR/VR Game Analysis and Improvement Presentation Task",
+                    "resources": [],
+                    "description": "Explore the world of AR/VR gaming by analyzing an existing AR/VR game, evaluating its strengths and weaknesses, and proposing three suggestions for its improvement. This task will help you understand how immersive technologies can enhance user experience and how to optimize them for better performance. After completing this task, share the PDF or presentation file in the #ar-vr channel using the hashtag #cl-arvr-gameanalysis to avail 200 karma points."
+                  }
+                ]
+              },
+              "resources": 0,
+              "proofOfWork": 1,
+              "rating": 0,
+              "hasGift": false
+            }
+          ]
+        },
+        {
+          "level": "Level 5",
+          "cards": [
+            {
+              "title": "3D Objects and C# Programming",
+              "data": {
+                "description": "This topic introduces learners to the basics of Blender, focusing on essential 3D object handling skills such as navigation, object manipulation, rendering, and applying materials. These skills are crucial for creating 3D models and environments for AR/VR applications. Additionally, it explores key programming concepts in C#, including loops, methods, and classes, enabling learners to write structured, efficient, and maintainable code for interactive AR/VR experiences. These skills connect 3D modeling and programming to create engaging virtual environments.",
+                "whatYouWillLearn": [
+                  "Master the fundamentals of Blender for creating and manipulating 3D objects for AR/VR.",
+                  "Understand key C# programming concepts like loops, methods, and classes.",
+                  "Develop skills to create interactive and immersive AR/VR applications.",
+                  "Design realistic and engaging virtual environments using 3D modeling and programming."
+                ],
+                "challenges": [
+                  {
+                    "title": "Understand the Basics of Blender (Handling 3D Objects)",
+                    "resources": [
+                      "https://youtu.be/B0J27sf9N1Y?si=zfAlttOU1wmLjgZp"
+                    ],
+                    "description": "Explore the fundamentals of Blender, a powerful tool for creating 3D models and animations. Focus on handling 3D objects, including basic navigation, manipulation, and transformation in a 3D environment. This foundational skill is crucial for game development, animation, and AR/VR content creation. After completing this task, share the Blender file or a screenshot in the #ar-vr channel using the hashtag #cl-arvr-blenderbasics to avail 600 karma points."
+                  },
+                  {
+                    "title": "Learn C# Programming Task",
+                    "resources": [
+                      "https://www.learncs.org/",
+                      "https://dotnetfiddle.net/"
+                    ],
+                    "description": "Enhance your programming skills by learning the fundamentals of C# through hands-on practice. This task helps you understand key programming concepts and apply them in solving real-world problems. After completing this task, share the code file or a screenshot of your work in the #ar-vr channel using the hashtag #cl-arvr-csharpbasics to avail 500 karma points."
+                  },
+                  {
+                    "title": "Advanced C# Programming Task",
+                    "resources": [
+                      "https://www.learncs.org/",
+                      "https://dotnetfiddle.net/"
+                    ],
+                    "description": "Deepen your understanding of C# by mastering loops, methods, and classes. This task introduces advanced concepts to write efficient, reusable, and organized code for AR/VR applications. After completing this task, share the code file or a screenshot of your work in the #ar-vr channel using the hashtag #cl-arvr-csharpadvanced to avail 500 karma points."
+                  }
+                ]
+              },
+              "resources": 5,
+              "proofOfWork": 3,
+              "rating": 0,
+              "hasGift": false
+            }
+          ]
+        },
+        {
+          "level": "Level 6",
+          "cards": [
+            {
+              "title": "Building AR/VR Application",
+              "data": {
+                "description": "This task introduces learners to the process of creating an Augmented Reality (AR) application, from setting up the development environment to testing and building the app. By engaging with this task, students will learn how to combine AR technologies with Unity, enabling them to develop immersive experiences. Understanding AR development provides essential skills for those interested in the future of interactive technology, especially in areas like gaming, marketing, and education.",
+                "whatYouWillLearn": [
+                  "Learn how to set up a development environment for AR application creation.",
+                  "Understand the process of building and testing an AR application using Unity.",
+                  "Develop skills to create immersive AR experiences for various use cases."
+                ],
+                "challenges": [
+                  {
+                    "title": "AR App Creation Task",
+                    "resources": [
+                      "https://youtu.be/GfS72wqKQ_g?si=e2a-c-syJgLr1wzv"
+                    ],
+                    "description": "This task helps you learn how to create an augmented reality (AR) app using Unity. It introduces you to the basics of AR development and allows you to gain hands-on experience building and testing an AR application. After completing this task, share the Unity project file or a screenshot/video of the app in the #ar-vr channel using the hashtag #cl-arvr-appcreation to avail 800 karma points."
+                  }
+                ]
+              },
+              "resources": 1,
+              "proofOfWork": 1,
+              "rating": 0,
+              "hasGift": false
+            }
+          ]
+        }
+      ],
+      thinkTank: [
+        {
+          id: "tt-013",
+          name: "Arjun Verma",
+          role: "VR Developer, Meta",
+          image:
+            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&q=80",
+          expertise: ["VR Development", "3D Modeling"],
+        },
+      ],
+      mentors: [
+        {
+          id: "m-014",
+          name: "Karthik Narayanan",
+          role: "Design Lead @ RigLabs Collective",
+          linkedin: "", // Not provided in markdown; left blank
+          image: "/assets/IG/ARVR/Mentors/KarthikNarayanan.webp", // Updated image path assumption
+          expertise: ["AR/VR Design", "Immersive Experiences"],
+        },
+      ],
+    },
+    communityPartners: [
+      {
+        id: "cp-013-1",
+        title: "XTrudar",
+        image: "/assets/IG/ARVR/Community Partners/Xtrudar.webp", // Placeholder image path
+        link: "#", // No link provided; placeholder
+      },
+      {
+        id: "cp-013-2",
+        title: "Riglabs",
+        image: "/assets/IG/ARVR/Community Partners/Riglabs-logo.svg", // Placeholder image path
+        link: "#", // No link provided; placeholder
+      },
+    ],
+    partnerCompanies: [
+      {
+        id: "pc-013",
+        title: "Immersive Labs",
+        image: "https://www.svgrepo.com/show/452154/unity.svg",
+        link: "https://immersivelabs.com",
+      },
+    ],
   }
 
 ];
@@ -4470,6 +4792,7 @@ export const digitalMarketingInterestGroupData = interestGroups[6]; //correct
 export const dataScienceInterestGroupData = interestGroups[7]; //not in db
 export const cloudDevOpsInterestGroupData = interestGroups[8]; //id correct
 export const productManagementInterestGroupData = interestGroups[9]; //correct
+export const arvrMrInterestGroupData = interestGroups[10]; //correct
 //to add
 /*
 no or low code coming soon
@@ -4489,189 +4812,6 @@ QA
 
 //below are mockdata entirely except id
 // // AR/VR/MR Interest Group from data from notion
-// export const arVrMrInterestGroupData: InterestGroupData = {
-//   id: "2de0ee0c-ddc3-4f02-bf93-b6bd2d0625c3", // Assigned from JSON for "Ar Vr Mr"
-//   title: "AR/VR/MR",
-//   description:
-//     '"AR/VR is reshaping the way we interact with the digital world.” Are you interested in learning how to create immersive experiences that blend the virtual and physical worlds? Join our “AR/VR Development” Interest Group to explore and collaborate with peers on creating augmented and virtual reality applications.',
-//   bannerImage:
-//     "https://images.unsplash.com/photo-1593504049359-74330189a345?q=80&w=3540&auto=format&fit=crop",
-//   memberSince: "June 2023",
-//   isPublic: true,
-//   officeHours: "TBA", // Updated from markdown (not specified)
-//   thinkTankMeeting: "TBA", // Updated from markdown (not specified)
-//   interestGroupLeads: {
-//     description:
-//       "Interest group leads manage the activities and events within interest groups and serve as a point of contact for students interested in getting involved. Students can connect with these leads to learn about opportunities in AR/VR development.",
-//     leads: [
-//       {
-//         name: "Dev Nandan S",
-//         institution: "St. Thomas Institute for Science & Technology",
-//         linkedin: "http://www.linkedin.com/in/dev-nandan-426861253",
-//         image: "/assets/IG/ARVRMR/IG Leads/DevNandanS.webp", // Updated image path assumption
-//       },
-//     ],
-//   },
-//   prerequisites: [
-//     "Basic understanding of 3D modeling concepts and tools (e.g., Unity, Unreal Engine).",
-//     "Interest in immersive technologies and their applications.",
-//     "Familiarity with programming basics (e.g., C# for Unity) is a plus but not required.",
-//   ],
-//   peopleToFollow: [
-//     { name: "Tony Parisi", link: "https://x.com/auradeluxe" },
-//     { name: "Charlie Fink", link: "https://www.linkedin.com/in/charliefinkvr/" },
-//     { name: "Valem", link: "https://www.youtube.com/c/ValemVR" },
-//     { name: "Kent Bye", link: "https://www.linkedin.com/in/kentbye/" },
-//   ],
-//   blogsToFollow: [
-//     { name: "Upload VR", link: "https://uploadvr.com/" },
-//     { name: "Road to VR", link: "https://www.roadtovr.com/" },
-//     { name: "ARPost", link: "https://arpost.co/" },
-//   ],
-//   topKeywords: [
-//     "AR Development",
-//     "VR Development",
-//     "Unity",
-//     "Unreal Engine",
-//     "3D Modeling",
-//     "Augmented Reality",
-//     "Virtual Reality",
-//     "Mixed Reality",
-//     "Interaction Design",
-//     "XR Development",
-//     "Spatial Computing",
-//     "Immersive Media",
-//     "Reality Capture",
-//     "Immersive Learning",
-//   ],
-//   tabs: {
-//     about: {
-//       foundationDeck: "https://www.notion.so/ARVRMR", // Placeholder; update with actual link if provided
-//       description:
-//         "The AR/VR Development Interest Group is your gateway to mastering the art of creating immersive experiences. Whether you're interested in gaming, education, or enterprise applications, we provide resources and a community to help you innovate with AR, VR, and MR technologies.",
-//       opportunities: [
-//         {
-//           title: "AR/VR Developer",
-//           description: "Design and implement AR/VR applications and experiences.",
-//         },
-//         {
-//           title: "3D Artist",
-//           description: "Create 3D models and assets for immersive environments.",
-//         },
-//         {
-//           title: "Technical Artist",
-//           description:
-//             "Bridge the gap between 3D design and technical development for AR/VR.",
-//         },
-//         {
-//           title: "Interaction Designer",
-//           description:
-//             "Develop intuitive and engaging user interactions for AR/VR applications.",
-//         },
-//         {
-//           title: "AR/VR Product Manager",
-//           description:
-//             "Oversee the lifecycle of AR/VR products and align them with user needs and business goals.",
-//         },
-//         {
-//           title: "XR Researcher",
-//           description:
-//             "Focus on innovating and optimizing AR/VR technologies and experiences.",
-//         },
-//       ],
-//     },
-//     forum: { placeholder: "Discuss AR/VR/MR projects and ideas here." },
-//     members: [
-//       {
-//         id: 25,
-//         name: "Maya Rao",
-//         muid: "maya789",
-//         profile_pic:
-//           "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=40&h=40&q=80",
-//         karma: "700",
-//         interest_groups: [
-//           {
-//             id: "2de0ee0c-ddc3-4f02-bf93-b6bd2d0625c3",
-//             name: "AR/VR/MR",
-//           },
-//         ],
-//         organizations: [
-//           {
-//             id: "org-26",
-//             title: "VR Academy",
-//             code: "VRA01",
-//             org_type: "College",
-//           },
-//         ],
-//       },
-//     ],
-//     events: [
-//       {
-//         id: "evt-018",
-//         title: "AR/VR Innovation Summit 2025",
-//         link: "https://arvrcommunity.com/events/summit",
-//         venue: "Online via Zoom",
-//         eventType: "Online",
-//         date: "January 15, 2026",
-//         time: "13:00 - 16:00 GMT",
-//         image:
-//           "https://images.unsplash.com/photo-1593504049359-74330189a345?q=80&w=800",
-//       },
-//     ],
-//     learningPaths: [
-//       {
-//         id: "lp-013",
-//         title: "AR/VR Development Roadmap",
-//         description: "Explore AR/VR development with this comprehensive roadmap.",
-//         link: "https://roadmap.sh/r/arvr-q0hum",
-//       },
-//     ],
-//     thinkTank: [
-//       {
-//         id: "tt-013",
-//         name: "Arjun Verma",
-//         role: "VR Developer, Meta",
-//         image:
-//           "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&q=80",
-//         expertise: ["VR Development", "3D Modeling"],
-//       },
-//     ],
-//     mentors: [
-//       {
-//         id: "m-014",
-//         name: "Karthik Narayanan",
-//         role: "Design Lead @ RigLabs Collective",
-//         linkedin: "", // Not provided in markdown; left blank
-//         image: "/assets/IG/ARVRMR/Mentors/KarthikNarayanan.webp", // Updated image path assumption
-//         expertise: ["AR/VR Design", "Immersive Experiences"],
-//       },
-//     ],
-//   },
-//   communityPartners: [
-//     {
-//       id: "cp-013-1",
-//       title: "XTrudar",
-//       image: "/assets/IG/ARVRMR/CP/XTrudar.webp", // Placeholder image path
-//       link: "#", // No link provided; placeholder
-//     },
-//     {
-//       id: "cp-013-2",
-//       title: "Riglabs",
-//       image: "/assets/IG/ARVRMR/CP/Riglabs.webp", // Placeholder image path
-//       link: "#", // No link provided; placeholder
-//     },
-//   ],
-//   partnerCompanies: [
-//     {
-//       id: "pc-013",
-//       title: "Immersive Labs",
-//       image: "https://www.svgrepo.com/show/452154/unity.svg",
-//       link: "https://immersivelabs.com",
-//     },
-//   ],
-// };
-
-
 // //ai
 // // Updated AI Interest Group
 // export const aiInterestGroupData: InterestGroupData = {

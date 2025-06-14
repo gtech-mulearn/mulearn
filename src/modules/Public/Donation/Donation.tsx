@@ -1,16 +1,18 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
-import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
+import Footer from "@/modules/Common/Footer/Footer";
+import Navbar from "@/modules/Common/HomeNav/HomeNav";
 import { submitForm } from "./services/api";
 import styles from "./Donation.module.css";
 import Marquee from "react-fast-marquee";
+import { Helmet } from "react-helmet";
 
 import icfoss from "./assets/icfoss.png";
 import kdu from "./assets/kdu.png";
 import kdisc from "./assets/kdisc.png";
 import heroImg from "./assets/heroImg.jpg";
+import { Button } from "@/components/ui/button";
 
 const Donation = () => {
     const [amount, setAmount] = useState<number>();
@@ -70,9 +72,9 @@ const Donation = () => {
             rect.top >= 0 &&
             rect.left >= 0 &&
             rect.bottom <=
-                (window.innerHeight || document.documentElement.clientHeight) &&
+            (window.innerHeight || document.documentElement.clientHeight) &&
             rect.right <=
-                (window.innerWidth || document.documentElement.clientWidth)
+            (window.innerWidth || document.documentElement.clientWidth)
         );
     };
 
@@ -93,255 +95,277 @@ const Donation = () => {
     };
 
     return (
-        <main>
-            <div className={styles.LClandingPage}>
-                <Navbar />
-
-                <div className={styles.DonationHero}>
-                    <div className={styles.HeroLeft}>
-                        <h1>Help us sustain</h1>
-                        <h1>Our Mission</h1>
-                        <p>
-                            Foster innovation culture, introduce new
-                            technologies, and develop skilled entrepreneurs.
-                        </p>
-                        <div className={styles.OrgContainer}>
-                            <img src={icfoss} alt="" />
-                            <img src={kdu} alt="" />
-                            <img src={kdisc} alt="" />
-                        </div>
-                        <div className={styles.Stats}>
-                            <div>
-                                <h3>30k+</h3>
-                                <h4>Students</h4>
+        <>
+            <Helmet>
+                <title>Donation | µLearn</title>
+                <meta
+                    name="description"
+                    content="Support the spirit of mutual learning with µLearn. Your contribution helps us empower communities, spark curiosity and nurture limitless growth."
+                />
+                <meta property="og:title" content="Donation | µLearn"/>
+                <meta property="og:url" content="https://app.mulearn.org/donation"/>
+                <meta
+                    property="og:description"
+                    content="Support the spirit of mutual learning with µLearn. Your contribution helps us empower communities, spark curiosity and nurture limitless growth."
+                />
+            </Helmet>
+            <main>
+                    <Navbar />
+                <div className={styles.LClandingPage}>
+                    
+                    <div className={styles.DonationHero}>
+                        <div className={styles.HeroLeft}>
+                            <h1>Help us sustain</h1>
+                            <h1>Our Mission</h1>
+                            <p>
+                                Foster innovation culture, introduce new
+                                technologies, and develop skilled entrepreneurs.
+                            </p>
+                            <div className={styles.OrgContainer}>
+                                <img src={icfoss} alt="" />
+                                <img src={kdu} alt="" />
+                                <img src={kdisc} alt="" />
                             </div>
-                            <div>
-                                <h3>300+</h3>
-                                <h4>Events</h4>
+                            <div className={styles.Stats}>
+                                <div>
+                                    <h3>30k+</h3>
+                                    <h4>Students</h4>
+                                </div>
+                                <div>
+                                    <h3>300+</h3>
+                                    <h4>Events</h4>
+                                </div>
                             </div>
+                            <Button
+                            className={styles.DonateButton}
+                            onClick={() => {
+                                const element = document.querySelector(
+                                    `.${styles.DonationSection}`
+                                );
+                                if (element) {
+                                    element.scrollIntoView({
+                                        behavior: "smooth",
+                                        block: "start"
+                                    });
+                                }
+                            }}
+                        >
+                            Donate Now
+                        </Button>
                         </div>
-                    </div>
-                    <div className={styles.HeroImgContainer}>
-                        <img src={heroImg} alt="" />
+                        <div className={styles.HeroImgContainer}>
+                            <img src={heroImg} alt="" />
+                        </div>
+                        
                     </div>
                 </div>
-            </div>
 
-            <div className={styles.MarqueeContainer}>
-                <Marquee speed={150}>
-                    Make Learning Accessible &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                    &nbsp; &nbsp; <span>✦</span> &nbsp; &nbsp; &nbsp; &nbsp;
-                    &nbsp; &nbsp; &nbsp; Transform Education Today &nbsp; &nbsp;
-                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span>✦</span>&nbsp;
-                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Build Brighter
-                    Futures &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                    <span>✦</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                    &nbsp; Make Learning Accessible &nbsp; &nbsp; &nbsp; &nbsp;
-                    &nbsp; &nbsp; &nbsp; <span>✦</span> &nbsp; &nbsp; &nbsp;
-                    &nbsp; &nbsp; &nbsp; &nbsp;
-                </Marquee>
-            </div>
+                <div className={styles.MarqueeContainer}>
+                    <Marquee speed={150}>
+                        Make Learning Accessible &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        &nbsp; &nbsp; <span>✦</span> &nbsp; &nbsp; &nbsp; &nbsp;
+                        &nbsp; &nbsp; &nbsp; Transform Education Today &nbsp; &nbsp;
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span>✦</span>&nbsp;
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Build Brighter
+                        Futures &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        <span>✦</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        &nbsp; Make Learning Accessible &nbsp; &nbsp; &nbsp; &nbsp;
+                        &nbsp; &nbsp; &nbsp; <span>✦</span> &nbsp; &nbsp; &nbsp;
+                        &nbsp; &nbsp; &nbsp; &nbsp;
+                    </Marquee>
+                </div>
 
-            <div className={styles.DonationSection}>
-                <form
-                    className={styles.DonationFormElement}
-                    onSubmit={e => {
-                        e.preventDefault();
-                        callRazorpay();
-                    }}
-                >
-                    <div className={styles.DetailsContainer}>
-                    <div className={styles.CheckOrgContainer}>
-                            <input
-                                id="checkc"
-                                type="checkbox"
-                                onClick={() =>
-                                    setIsOrganisation(!isOrganisation)
-                                }
-                                className={styles.Checkbox}
-                            />
-                            <p className={styles.OrgChecklabel}>
-                            I’m paying for an organization.
-                            </p>
-                        </div>
-                        <label htmlFor="name">Name</label>
-                        <input
-                            type="text"
-                            id="name"
-                            placeholder="John Doe"
-                            aria-label="Name"
-                            className={styles.DonationInputStyles}
-                            value={name}
-                            onChange={e => setName(e.target.value)}
-                            required
-                        />
-                        
-                        {isOrganisation && (
-                            <>
-                                <label htmlFor="company">Organization</label>
+                <div className={styles.DonationSection}>
+                    <form
+                        className={styles.DonationFormElement}
+                        onSubmit={e => {
+                            e.preventDefault();
+                            callRazorpay();
+                        }}
+                    >
+                        <div className={styles.DetailsContainer}>
+                            <div className={styles.CheckOrgContainer}>
                                 <input
-                                    type="text"
-                                    id="company"
-                                    placeholder="Company Name"
-                                    className={styles.DonationInputStyles}
-                                    value={company}
-                                    onChange={e => setCompany(e.target.value)}
-                                    required
+                                    id="checkc"
+                                    type="checkbox"
+                                    onClick={() =>
+                                        setIsOrganisation(!isOrganisation)
+                                    }
+                                    className={styles.Checkbox}
                                 />
-                            </>
-                        )}
-                        <label htmlFor="email">Email</label>
-                        <input
-                            type="email"
-                            id="email"
-                            placeholder="johndoe@gmail.com"
-                            aria-label="Email"
-                            className={styles.DonationInputStyles}
-                            value={email}
-                            onChange={e => setEmail(e.target.value)}
-                            required
-                        />
-                        <label htmlFor="mobile">Phone Number</label>
-                        <input
-                            type="number"
-                            id="mobile"
-                            placeholder="+91"
-                            aria-label="Mobile Number"
-                            className={styles.DonationInputStyles}
-                            value={mobile || ""}
-                            onChange={e => setMobile(Number(e.target.value))}
-                            required
-                        />
-                        <label htmlFor="pan">PAN Number</label>
-                        <input
-                            type="text"
-                            id="pan"
-                            placeholder="8394XXXXXXXXXXX"
-                            aria-label="PAN"
-                            className={styles.DonationInputStyles}
-                            value={pan}
-                            onChange={e => setPan(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div className={styles.DonationRightSide}>
-                    <div className={styles.AmountContainer}>
-                        <h1>Select an Amount (INR) </h1>
-                        <div
-                            className={styles.DonateButtonContainer}
-                        >
-                            <button
-                                type="button"
-                                className={
-                                    selectedAmount === 10000
-                                        ? styles.selectedButton
-                                        : ""
-                                }
-                                onClick={() => handleAmountClick(10000)}
-                            >
-                                10,000
-                            </button>
-                            <button
-                                type="button"
-                                className={
-                                    selectedAmount === 15000
-                                        ? styles.selectedButton
-                                        : ""
-                                }
-                                onClick={() => handleAmountClick(15000)}
-                            >
-                                15,000
-                            </button>
-                            <button
-                                type="button"
-                                className={
-                                    selectedAmount === 20000
-                                        ? styles.selectedButton
-                                        : ""
-                                }
-                                onClick={() => handleAmountClick(20000)}
-                            >
-                                20,000
-                            </button>
-                            <button
-                                type="button"
-                                className={
-                                    selectedAmount === 25000
-                                        ? styles.selectedButton
-                                        : ""
-                                }
-                                onClick={() => handleAmountClick(25000)}
-                            >
-                                25,000
-                            </button>
-                        </div>
-                        <h4>OR</h4>
-                        <div className={styles.CurrencyContainer}>
-                            <p>Enter The Donation Amount (INR)</p>
+                                <p className={styles.OrgChecklabel}>
+                                    I’m paying for an organization.
+                                </p>
+                            </div>
+                            <label htmlFor="name">Name</label>
+                            <input
+                                type="text"
+                                id="name"
+                                placeholder="John Doe"
+                                aria-label="Name"
+                                className={styles.DonationInputStyles}
+                                value={name}
+                                onChange={e => setName(e.target.value)}
+                                required
+                            />
+
+                            {isOrganisation && (
+                                <>
+                                    <label htmlFor="company">Organization</label>
+                                    <input
+                                        type="text"
+                                        id="company"
+                                        placeholder="Company Name"
+                                        className={styles.DonationInputStyles}
+                                        value={company}
+                                        onChange={e => setCompany(e.target.value)}
+                                        required
+                                    />
+                                </>
+                            )}
+                            <label htmlFor="email">Email</label>
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="johndoe@gmail.com"
+                                aria-label="Email"
+                                className={styles.DonationInputStyles}
+                                value={email}
+                                onChange={e => setEmail(e.target.value)}
+                                required
+                            />
+                            <label htmlFor="mobile">Phone Number</label>
                             <input
                                 type="number"
-                                id="amount"
-                                placeholder="10,000 INR"
-                                aria-label="Amount"
-                                className={[
-                                    styles.DonationInputStyles,
-                                    styles.AmountField
-                                ].join(" ")}
-                                value={amount || ""}
-                                onChange={e =>
-                                    setAmount(Number(e.target.value))
-                                }
+                                id="mobile"
+                                placeholder="+91"
+                                aria-label="Mobile Number"
+                                className={styles.DonationInputStyles}
+                                value={mobile || ""}
+                                onChange={e => setMobile(Number(e.target.value))}
+                                required
+                            />
+                            <label htmlFor="pan">PAN Number</label>
+                            <input
+                                type="text"
+                                id="pan"
+                                placeholder="8394XXXXXXXXXXX"
+                                aria-label="PAN"
+                                className={styles.DonationInputStyles}
+                                value={pan}
+                                onChange={e => setPan(e.target.value)}
                                 required
                             />
                         </div>
-                               
-                        <div className={styles.TermsContainer}>
-                            <input id="check" type="checkbox" required className={styles.Checkbox}/>
-                            <label >
-                                By clicking 'Donate', you agree to our &nbsp;
-                                <Link
-                                    to="https://mulearn.org/termsandconditions"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                        <div className={styles.DonationRightSide}>
+                            <div className={styles.AmountContainer}>
+                                <h1>Select an Amount (INR) </h1>
+                                <div
+                                    className={styles.DonateButtonContainer}
                                 >
-                                    Terms and Conditions
-                                </Link>
-                                ,
-                                <Link
-                                    to="https://mulearn.org/privacypolicy"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                Privacy Policy
-                                </Link> &nbsp;
-                                and &nbsp;
-                                <Link
-                                    to="./refund"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    Refund Policy
-                                </Link>
-                                .  Please review these documents before donating.
-                            </label>
-                        </div>
-                        <div
-                            className={styles.SubmitButton}
-                        >
-                            <button
-                                type="submit"
-                                className={styles.selectedButton}
-                            >
-                                Donate Now
-                            </button>
-                        </div>
-                    </div>
-                    </div>
-                </form>
-            </div>
+                                    <button
+                                        type="button"
+                                        className={
+                                            selectedAmount === 50000
+                                                ? styles.selectedButton
+                                                : ""
+                                        }
+                                        onClick={() => handleAmountClick(50000)}
+                                    >
+                                        50,000
+                                    </button>
+                                    <button
+                                        type="button"
+                                        className={
+                                            selectedAmount === 100000
+                                                ? styles.selectedButton
+                                                : ""
+                                        }
+                                        onClick={() => handleAmountClick(100000)}
+                                    >
+                                        1,00,000
+                                    </button>
+                                    <button
+                                        type="button"
+                                        className={
+                                            selectedAmount === 300000
+                                                ? styles.selectedButton
+                                                : ""
+                                        }
+                                        onClick={() => handleAmountClick(300000)}
+                                    >
+                                        3,00,000
+                                    </button>
+                                    
+                                </div>
+                                <h4>OR</h4>
+                                <div className={styles.CurrencyContainer}>
+                                    <p>Enter The Donation Amount (INR)</p>
+                                    <input
+                                        type="number"
+                                        id="amount"
+                                        placeholder="10,000 INR"
+                                        aria-label="Amount"
+                                        className={[
+                                            styles.DonationInputStyles,
+                                            styles.AmountField
+                                        ].join(" ")}
+                                        value={amount || ""}
+                                        onChange={e =>
+                                            setAmount(Number(e.target.value))
+                                        }
+                                        required
+                                    />
+                                </div>
 
-            <Footer /> 
-        </main>
+                                <div className={styles.TermsContainer}>
+                                    <input id="check" type="checkbox" required className={styles.Checkbox} />
+                                    <label >
+                                        By clicking 'Donate', you agree to our &nbsp;
+                                        <Link
+                                            to="https://mulearn.org/termsandconditions"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            Terms and Conditions
+                                        </Link>
+                                        ,
+                                        <Link
+                                            to="https://mulearn.org/privacypolicy"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            Privacy Policy
+                                        </Link> &nbsp;
+                                        and &nbsp;
+                                        <Link
+                                            to="./refund"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            Refund Policy
+                                        </Link>
+                                        .  Please review these documents before donating.
+                                    </label>
+                                </div>
+                                <div
+                                    className={styles.SubmitButton}
+                                >
+                                    <button
+                                        type="submit"
+                                        className={styles.selectedButton}
+                                    >
+                                        Donate Now
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <Footer />
+            </main>
+        </>
     );
 };
 

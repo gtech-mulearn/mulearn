@@ -1,0 +1,130 @@
+.container {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  text-wrap: balanced;
+}
+
+.first_view_container {
+  padding: 6rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.first_view {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+}
+
+.fv_texts {
+  text-align: center;
+}
+
+.fv_illustration {
+  display: block;
+}
+
+.fv_image {
+  width: 20rem;
+}
+
+.fv_heading {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #303030;
+}
+
+.fv_heading span {
+  font-weight: 600;
+  color: var(--Primary);
+}
+
+.fv_tagline {
+  margin-top: 1rem;
+  font-family: "Poppins", sans-serif;
+}
+
+.select_wrapper {
+  width: 100%;
+  text-align: center;
+}
+
+.select {
+  /* appearance: none; */
+  border-radius: 0.5rem;
+  width: 100%;
+  max-width: 15rem;
+  border: 2px solid var(--Primary);
+  padding: 0.5rem 1rem;
+  /* background-image: url("../../../public/assets/common/down_arrow.svg") no-repeat right #ffc297; */
+}
+
+@media (max-width: 1400px) {
+  .container {
+    padding: 1rem 0px;
+  }
+}
+
+@media (max-width: 1150px) {
+  .container {
+    padding: 1rem 0rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 1rem 0rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem 0rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem 0rem;
+  }
+}
+
+
+@media only screen and (min-width: 992px) {
+  .fv_texts {
+    width: 32vw;
+    text-align: left;
+  }
+
+  .fv_image {
+    width: 35rem;
+  }
+
+  .first_view {
+    flex-direction: row;
+  }
+
+  .fv_illustration {
+    display: block;
+    margin-left: auto;
+    text-align: right;
+  }
+
+  .fv_heading {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 4.5rem;
+    line-height: 4.55rem;
+    font-weight: 600;
+  }
+
+  .fv_tagline {
+    font-size: 1.1rem;
+    width: 80%;
+  }
+}

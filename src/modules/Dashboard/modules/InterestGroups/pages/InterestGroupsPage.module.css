@@ -192,15 +192,12 @@
 }
 
 .GroupParticipantsBadge {
-  border-radius: 1rem;
   font-size: clamp(0.75rem, 1vw, .75rem);
   display: flex;
   align-items: start;
   width: auto;
   justify-content: start;
   background-color: white;
-  border: 1px solid blue;
-  padding: clamp(4px, 0.5vw, 6px) clamp(8px, 1vw, 12px);
 }
 
 .GroupParticipantsIcon {
