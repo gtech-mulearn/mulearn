@@ -19,14 +19,14 @@ interface NavItem {
 const HomeNav: React.FC = () => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 768);
+  const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 1024);
   const [activeSubmenu, setActiveSubmenu] = useState<number | null>(null);
   const [activeMobileSubmenu, setActiveMobileSubmenu] = useState<number | null>(null);
   const refreshToken = localStorage.getItem("refreshToken");
 
   useEffect(() => {
     const handleResize = () => {
-      const mobile = window.innerWidth <= 768;
+      const mobile = window.innerWidth <= 1024;
       setIsMobileView(mobile);
       
       // Close mobile menu when switching to desktop
@@ -202,7 +202,7 @@ const HomeNav: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <a className={styles.logo}>
+          <a className={styles.logo} onClick={() => navigate("/")}>
             <MulearnBrand />
           </a>
 
@@ -210,7 +210,7 @@ const HomeNav: React.FC = () => {
             {navItems.map((item, index) => (
               <motion.li
                 key={index}
-                className={`cursor-pointer ${styles.navItem}`}
+                className={`${styles.navItem}`}
                 onClick={() => handleNavClick(item.onClick, item.submenu !== null)}
                 onMouseEnter={() => handleMouseEnter(index, item.submenu !== null)}
                 onMouseLeave={handleMouseLeave}
@@ -218,7 +218,6 @@ const HomeNav: React.FC = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 {item.label}
-                
                 {/* Submenu */}
                 <AnimatePresence>
                   {activeSubmenu === index && item.submenu && (
@@ -272,24 +271,25 @@ const HomeNav: React.FC = () => {
       )}
 
       {/* HAMBURGER MENU BUTTON */}
-      {isMobileView && !isMenuOpen && (
-        <>
-          <a className={styles.logo}>
+      {isMobileView && (
+        <div className={styles.mobileHeader}>
+          <a className={styles.logo} onClick={() => navigate("/")}>
             <MulearnBrand />
           </a>
-          <motion.div
+          <motion.button
             className={styles.hamburger}
             onClick={() => setIsMenuOpen(true)}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3 }}
             whileTap={{ scale: 0.9 }}
+            aria-label="Open menu"
           >
             <span />
             <span />
             <span />
-        </motion.div>
-      </>
+          </motion.button>
+        </div>
       )}
 
       {/* MOBILE MENU OVERLAY */}
@@ -298,7 +298,7 @@ const HomeNav: React.FC = () => {
           <>
             {/* Backdrop */}
             <motion.div
-              className="fixed inset-0 bg-black bg-opacity-50 z-1001"
+              className={styles.backdrop}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -330,7 +330,6 @@ const HomeNav: React.FC = () => {
                   navItems.map((item, index) => (
                     <motion.li
                       key={index}
-                      className="cursor-pointer"
                       onClick={() => {
                         if (item.submenu) {
                           setActiveMobileSubmenu(index);
@@ -347,23 +346,24 @@ const HomeNav: React.FC = () => {
                       whileTap={{ scale: 0.98 }}
                     >
                       {item.label}
-                      {item.submenu && <span style={{ float: 'right' }}>{'>'}</span>}
+                      {item.submenu && <span className={styles.arrow}>{'>'}</span>}
                     </motion.li>
                   ))
                 ) : (
                   <>
-                    <li className="cursor-pointer" onClick={() => setActiveMobileSubmenu(null)} style={{ fontWeight: 'bold', marginBottom: 8 }}>
+                    <li 
+                      className={styles.backButton} 
+                      onClick={() => setActiveMobileSubmenu(null)}
+                    >
                       {'< Back'}
                     </li>
                     {Object.entries(navItems[activeMobileSubmenu].submenu!).map(([category, items]) => (
-                      <div key={category} style={{ marginBottom: 12 }}>
-                        <div style={{ fontWeight: 'bold', fontSize: 14, margin: '8px 0' }}>{category}</div>
-                        <ul style={{ paddingLeft: 12 }}>
+                      <div key={category} className={styles.mobileSubmenuSection}>
+                        <div className={styles.mobileSubmenuCategory}>{category}</div>
+                        <ul>
                           {items.map((subItem, subIndex) => (
                             <li
                               key={subIndex}
-                              className="cursor-pointer"
-                              style={{ marginBottom: 6 }}
                               onClick={() => {
                                 subItem.onClick();
                                 setIsMenuOpen(false);
