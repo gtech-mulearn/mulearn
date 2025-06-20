@@ -67,6 +67,7 @@ const AttendeeReport = lazy(() => import("./modules/Dashboard/modules/LearningCi
 const LCReport = lazy(() => import("./modules/Dashboard/modules/LearningCircleV2/pages/LCReport/LCReport"));
 const UserInterest = lazy(() => import("./modules/Common/Authentication/pages/Onboarding/UserInterest/UserInterest"));
 const PathFinder = lazy(() => import("./modules/Common/Authentication/pages/Onboarding/PathFinder/PathFinder"));
+const Guild = lazy(() => import("./modules/Common/Authentication/pages/Onboarding/Guild/Guild"));
 const RegisterPage = lazy(() => import("./modules/Common/Authentication/pages/Onboarding/Register/Register"));
 const LearningPaths = lazy(() => import("./modules/Dashboard/modules/LearningPaths/pages/LearningPaths"));
 const LearningPathOne = lazy(() => import("./modules/Dashboard/modules/LearningPaths/pages/LearningPathOne/LearningPathOne"));
@@ -191,6 +192,7 @@ function App() {
     { path: "/register/interests", element: <UserInterest /> },
     { path: "/register/organization", element: <CollegePage /> },
     { path: "/register/pathfinder", element: <PathFinder /> },
+    { path: "/register/guild", element: <Guild /> },
     // { path: "/signin", element: <SignIn /> },
     { path: "register/about", element: <Rolepage /> },
     { path: "team", element: <TeamsPage /> },
