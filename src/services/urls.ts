@@ -288,17 +288,20 @@ export const KKEMRoutes = {
     userLogin: "/api/v1/integrations/kkem/login/",
     getDWMSDetails: "/api/v1/integrations/kkem/user/${param}/",
     userStatus: "/api/v1/integrations/kkem/user/status/",
-    getLcReport: "/api/v1/public/lc-enrollment/csv/"
+    // getLcReport: "/api/v1/public/lc-enrollment/csv/"
+    getLcReport: "/stud.json"
 };
 
 export const PublicRoutes = {
     getRandomLc: "/api/v1/dashboard/lc/list/",
     getLcDashboard: "/api/v1/public/lc-dashboard/",
-    getLcReport: "/api/v1/public/lc-enrollment/",
+    // getLcReport: "/api/v1/public/lc-enrollment/",
     getOrgWiseReport: "/api/v1/public/college-wise-lc-report/"
 } as const;
 
 export const googleSheetRoutes = {
+    getLcReport:
+        "https://opensheet.elk.sh/1ilKjdGiHlW1eyrHJuGA-9c3n5hrpjhQHtlBWpJ7wD8U/Sheet1",
     getLcData:
         "https://opensheet.elk.sh/1jzmjBxINQrrIf2dNke4EsGwmI9zmAOCrvFwBqG12RIs/Sheet1",
     getHackathonData:
