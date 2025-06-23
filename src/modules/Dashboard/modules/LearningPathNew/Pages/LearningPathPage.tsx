@@ -5,12 +5,19 @@ import IGSelector from "../../InterestGroups/components/IGSelection/IGSelector";
 import { getUserLog, getUserProfile } from "../../Profile/services/api";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { useUserStore } from "/src/ZustandProvider";
-import { FormattedLevel, getFilteredUserTasks, getUserIGFormattedTasks, } from "../services/api";
+import { ApiResponse, Task, Level, getUserTasks, getUserIgTasks } from "../services/api";
 import ConnectDiscord from "../../ConnectDiscord/pages/ConnectDiscord";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { isEqual } from 'lodash';
 import toast from "react-hot-toast";
+import channelmap from "../data/channelmap";
+
+interface InterestGroup {
+  id: string;
+  name: string; 
+  karma: number;
+}
 
 interface OffCanvasProps {
   isOpen: boolean;
@@ -147,15 +154,17 @@ export const OffCanvas: React.FC<OffCanvasProps> = ({ isOpen, onClose, data }) =
 };
 
 interface TaskCardProps {
-  card?: any;
-  onClickCTA: (card: any) => void;
-  custom?: Boolean
+  task?: Task;
+  onClickCTA: (task: Task) => void;
+  custom?: Boolean;
 }
 
-export const TaskCard: React.FC<TaskCardProps> = ({ card, onClickCTA, custom }) => {
+export const TaskCard: React.FC<TaskCardProps> = ({ task, onClickCTA, custom }) => {
+  if (!task) return null;
+
   const skillColors = [
     "#FFB6C1",
-    "#87CEFA",
+    "#87CEFA", 
     "#90EE90",
     "#F5DEB3",
     "#FFDAB9",
@@ -163,58 +172,60 @@ export const TaskCard: React.FC<TaskCardProps> = ({ card, onClickCTA, custom }) 
   ];
 
   return (
-    <div className={`${styles.card} ${card.completed ? styles.completedCard : styles.pendingCard}`} style={custom ? { minHeight: 'auto' } : {}} onClick={() => {
-      onClickCTA(card);
-    }}>
+    <div className={`${styles.card} ${task.completed ? styles.completedCard : styles.pendingCard}`} 
+         style={custom ? { minHeight: 'auto' } : {}} 
+         onClick={() => onClickCTA(task)}>
       <div className={styles.cardContent}>
-        {!custom && <div className={styles.cardIcon}>
-          {card.completed ? (
+        {!custom && (
+          <div className={styles.cardIcon}>
+            {task.completed ? (
               <span
-              className={styles.skillPill}
-              style={{
-                backgroundColor: "#bbf7d0",
-                margin:0,
-                // opacity:"0.5"
-              }}
-            >
-              completed
-            </span>
-          ) : (
-            <span
-              className={styles.skillPill}
-              style={{
-                color:"black",
-                backgroundColor: "#fde68a",
-                margin:0,
-                // opacity:"1"
-              }}
-            >
-              pending
-            </span>
-          )}
-        </div>}
-        <div className={styles.cardTitle} style={custom ? { textAlign: "left" } : {}}>{card.title}</div>
-        <div className={styles.cardDesc} style={custom ? { textAlign: "left" } : {}}>{card.desc}</div>
+                className={styles.skillPill}
+                style={{
+                  backgroundColor: "#bbf7d0",
+                  margin: 0,
+                }}
+              >
+                completed
+              </span>
+            ) : (
+              <span
+                className={styles.skillPill}
+                style={{
+                  color: "black",
+                  backgroundColor: "#fde68a",
+                  margin: 0,
+                }}
+              >
+                pending
+              </span>
+            )}
+          </div>
+        )}
+        <div className={styles.cardTitle} style={custom ? { textAlign: "left" } : {}}>
+          {task.task_name || task.title}
+        </div>
+        <div className={styles.cardDesc} style={custom ? { textAlign: "left" } : {}}>
+          {task.task_description || `Earn ${task.karma} Karma Points`}
+        </div>
         <div className={styles.cardIg} style={custom ? { textAlign: "left" } : {}}>
-          <strong>IG:</strong> {card.ig}
+          <strong>IG:</strong> {task.ig || "General Task"}
         </div>
         <div className={styles.cardSkills}>
           <strong>Skills:</strong>{" "}
-          {card.skills?.map((skill: string, index: number) => (
-            <span
-              key={skill}
-              className={styles.skillPill}
-              style={{
-                backgroundColor: "#EEF2FF",
-              }}
-            >
-              {skill}
-            </span>
-          ))}
+          <span
+            className={styles.skillPill}
+            style={{
+              backgroundColor: "#EEF2FF",
+            }}
+          >
+            Skill Development
+          </span>
         </div>
       </div>
-      <button className={styles.viewButton} onClick={() => {
-        onClickCTA(card);
+      <button className={styles.viewButton} onClick={(e) => {
+        e.stopPropagation();
+        onClickCTA(task);
       }}>
         View
       </button>
@@ -222,39 +233,11 @@ export const TaskCard: React.FC<TaskCardProps> = ({ card, onClickCTA, custom }) 
   );
 };
 
-const HASHTAGSLEVL1TO3 = [
-  "#ge-discord-guide",
-  "#ge-self-intro",
-  "#ge-snakify-6",
-  "#ge-my-blog",
-  "#ge-find-better",
-  "#ge-typing-challenge-126",
-  "#ge-30-days-coding15",
-  "#ge-snakify-6",
-  "#dwms-muconnect",
-  "#ge-game-deconstruction",
-  "#ge-intro-to-github",
-  "#ge-intro-to-markdown",
-  "#ge-intro-to-command-line",
-  "#ge-github-pages",
-  "#ge-intro-to-html",
-  "#ge-intro-to-scratch",
-  "#ge-linux-fundamentals-1",
-  "#ge-change-the-look",
-  "#ge-website-redesign",
-  "#ge-lowcode-cafe",
-  "#ge-what-is-networking",
-  "#ge-autocrat-automation",
-  "#ge-linux-modules",
-  "#ge-problemsolving",
-  "#ge-game-deconstruction",
-];
-
 const LearningPathPage: React.FC = () => {
   const { userProfile, userInfo, setUserProfile } = useUserStore();
   const [activeTab, setActiveTab] = useState<"startLearning" | "becomeExpert">("startLearning");
-  const [basicLevelData, setBasicLevelData] = useState<FormattedLevel[] | null>(null);
-  const [intermediateLevelData, setIntermediateLevelData] = useState<FormattedLevel[] | null>(null);
+  const [basicLevelData, setBasicLevelData] = useState<Level[] | null>(null);
+  const [intermediateLevelData, setIntermediateLevelData] = useState<Record<string, Task[]> | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const tabRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({
@@ -295,15 +278,6 @@ const LearningPathPage: React.FC = () => {
         userIGsData = (userProfile as { interest_groups: any[] }).interest_groups || [];
         return;
       }
-      //  else if (!userIGsData.length) {
-      //   const response = await privateGateway.get(dashboardRoutes.getUserProfile);
-      //   console.log("Fetched user profile response:", response.data);
-      //   setUserProfile(response.data.response);
-      //   userIGsData = response.data.response.interest_groups || [];
-      //   if (!userIGsData.length) {
-      //     console.error("User has no interest groups");
-      //   }
-      // }
     } catch (error) {
       console.error("Failed to refetch user profile:", error);
       userIGsData = [];
@@ -321,130 +295,38 @@ const LearningPathPage: React.FC = () => {
     const currentLevel = unlockedLevel;
 
     if (currentLevel < 4 || !userIGIDs.length) {
-      setIntermediateLevelData([{
-        level: 4,
-        title: "Level 4",
-        subtitle: "You need to reach Level 4 to access these tasks and join Interest Groups",
-        cards: [],
-        progress: {
-          level: 4,
-          completedTasks: 0,
-          totalTasks: 0,
-          requiredKarma: 0,
-          earnedKarma: 0
-        },
-        isUnlocked: false
-      }]);
+      setIntermediateLevelData({});
       setIsLoading(false);
       return;
     }
     if (unlockedLevel >= 4 && userIGIDs.length === 0) {
       toast.error("You need to join an interest group to access these tasks");
-      setIntermediateLevelData([]);
+      setIntermediateLevelData({});
       setIsLoading(false);
       return;
     }
 
     try {
-      const response = await getUserIGFormattedTasks(userIGIDs, unlockedLevel);
-      let processedLevels: FormattedLevel[] = [];
-
-      if (selectedIg.id) { 
-        processedLevels = response[selectedIg.id] || [];
-      } else {
-        const levelMap: Record<number, FormattedLevel> = {
-          4: {
-            level: 4,
-            title: "Level 4",
-            subtitle: "Level 4 Tasks",
-            cards: [],
-            progress: { level: 4, completedTasks: 0, totalTasks: 0, requiredKarma: 0, earnedKarma: 0 },
-            isUnlocked: 4 <= unlockedLevel,
-          },
-          5: {
-            level: 5,
-            title: "Level 5",
-            subtitle: "Level 5 Tasks",
-            cards: [],
-            progress: { level: 5, completedTasks: 0, totalTasks: 0, requiredKarma: 0, earnedKarma: 0 },
-            isUnlocked: 5 <= unlockedLevel,
-          },
-          6: {
-            level: 6,
-            title: "Level 6",
-            subtitle: "Level 6 Tasks",
-            cards: [],
-            progress: { level: 6, completedTasks: 0, totalTasks: 0, requiredKarma: 0, earnedKarma: 0 },
-            isUnlocked: 6 <= unlockedLevel,
-          },
-          7: {
-            level: 7,
-            title: "Level 7",
-            subtitle: "Level 7 Tasks",
-            cards: [],
-            progress: { level: 7, completedTasks: 0, totalTasks: 0, requiredKarma: 0, earnedKarma: 0 },
-            isUnlocked: 7 <= unlockedLevel,
-          },
-        };
-
-        Object.values(response).forEach((igLevels) => {
-          igLevels.forEach((level) => {
-            if (levelMap[level.level]) {
-              levelMap[level.level].cards = [...levelMap[level.level].cards, ...level.cards];
-              levelMap[level.level].progress.totalTasks = levelMap[level.level].cards.length;
-              levelMap[level.level].progress.completedTasks = levelMap[level.level].cards.filter(
-                (card) => card.completed
-              ).length;
-              levelMap[level.level].progress.earnedKarma = levelMap[level.level].cards
-                .filter((card) => card.completed)
-                .reduce((sum, card) => sum + (card.karma || 0), 0);
-            }
-          });
-        });
-
-        processedLevels = Object.values(levelMap)
-          .filter((level) => level.cards.length > 0)
-          .sort((a, b) => a.level - b.level);
-      }
-
-      setIntermediateLevelData(processedLevels);
+      const response = await getUserIgTasks(userIGIDs);
+      setIntermediateLevelData(response);
     } catch (error) {
       console.error("Error fetching intermediate tasks:", error);
-      setIntermediateLevelData([]);
+      setIntermediateLevelData({});
     } finally {
       setIsLoading(false);
     }
-  }, [userIGIDs, selectedIg, unlockedLevel]);
+  }, [userIGIDs, unlockedLevel]);
 
   useEffect(() => {
     fetchIntermediateTasks();
   }, [fetchIntermediateTasks]);
 
-
-
   useEffect(() => {
     setIsLoading(true);
     const fetchBasicLevels = async () => {
       try {
-        const response = await getFilteredUserTasks(HASHTAGSLEVL1TO3);
-        const newData = response.map((level) => ({
-          ...level,
-          isUnlocked: level.level <= unlockedLevel,
-        }));
-
-        setBasicLevelData((prev) => {
-          if (!prev) return newData;
-
-          const prevCompleted = prev.map((level) => ({
-            id: level.level,
-            completed: level.cards?.map((card) => card.completed) || [],
-          }));
-          const newCompleted = newData.map((level) => ({
-            id: level.level,
-            completed: level.cards?.map((card) => card.completed) || [],
-          }));
-          return isEqual(prevCompleted, newCompleted) ? prev : newData;
-        });
+        const response = await getUserTasks(); // Remove hashtag filter to get all tasks
+        setBasicLevelData(response.response);
       } catch (error) {
         console.error("Error fetching basic levels:", error);
         setBasicLevelData([]);
@@ -460,8 +342,6 @@ const LearningPathPage: React.FC = () => {
     const fetchUserData = async () => {
       try {
         await Promise.all([
-          // getUserProfile(setUserProfile, () => { }, () => { }),
-          // getUserLog(setUserLog),
           fetchUserIGs(), // Fetch IG data here
         ]);
       } catch (error) {
@@ -483,14 +363,27 @@ const LearningPathPage: React.FC = () => {
     }
   }, [activeTab]);
 
-  const handleOpenOffCanvas = (data: any, level: any, unlocked: any) => {
-    const isLocked = level > unlocked;
-    if (isLocked) {
-      setSelectedData({ ...data, locked: true, level: level });
-    }
-    else {
-      setSelectedData(data);
-    }
+  const handleOpenOffCanvas = (data: Task, levelNum?: number) => {
+    const isLocked = levelNum ? levelNum > unlockedLevel : false;
+    
+    // Transform task data for OffCanvas component
+    const formattedData = {
+      title: data.task_name || data.title,
+      brief: data.task_description || `Complete the ${data.task_name || data.title} task and share your progress with ${data.hashtag} to earn ${data.karma} Karma Points.`,
+      ig: data.ig || "General Task", 
+      skills: ["Skill Development"],
+      publishedBy: "µLearn Foundation",
+      prerequisites: ["Basic knowledge"],
+      resources: data.discord_link ? [data.discord_link] : [],
+      hashtag: data.hashtag,
+      discord_link: channelmap[data.ig as keyof typeof channelmap] || channelmap["taskdrop-box"] || "https://discord.com/channels/771670169691881483/",
+      completed: data.completed,
+      karma: data.karma,
+      locked: isLocked,
+      level: levelNum
+    };
+    
+    setSelectedData(formattedData);
     setOffCanvasOpen(true);
   };
 
@@ -499,21 +392,48 @@ const LearningPathPage: React.FC = () => {
     setSelectedData(null);
   };
 
-  const levelsToRender = activeTab === "startLearning" ? basicLevelData : intermediateLevelData;
-
-  if (levelsToRender === null) {
+  if (basicLevelData === null && intermediateLevelData === null) {
     return <MuLoader />;
   }
 
-  const filteredLevels = levelsToRender.map((level) => ({
-    ...level,
-    cards: level.cards.filter((card) => {
+  // Helper function to filter tasks based on completion status
+  const filterTasks = (tasks: Task[]) => {
+    return tasks.filter((task) => {
       if (filter === "all") return true;
-      if (filter === "completed") return card.completed;
-      if (filter === "incomplete") return !card.completed;
+      if (filter === "completed") return task.completed;
+      if (filter === "incomplete") return !task.completed;
       return true;
-    }),
-  }));
+    });
+  };
+
+  // Helper function to group tasks by level
+  const groupTasksByLevel = (tasks: Task[]) => {
+    const grouped: Record<string, Task[]> = {};
+    tasks.forEach(task => {
+      const levelMatch = task.level?.match(/\d+/);
+      const levelKey = levelMatch ? `lvl${levelMatch[0]}` : 'lvl1';
+      if (!grouped[levelKey]) {
+        grouped[levelKey] = [];
+      }
+      grouped[levelKey].push(task);
+    });
+    return grouped;
+  };
+
+  // Get level metadata
+  const getLevelMetadata = (levelKey: string) => {
+    const levelNum = parseInt(levelKey.replace("lvl", ""));
+    const metadata: Record<string, { title: string; subtitle: string }> = {
+      "lvl1": { title: "Level 1", subtitle: "Fundamentals and OnBoarding" },
+      "lvl2": { title: "Level 2", subtitle: "Practice GRIT and Keep Going" }, 
+      "lvl3": { title: "Level 3", subtitle: "Advanced Skills" },
+      "lvl4": { title: "Level 4", subtitle: "Master UI Fundamentals with Figma" },
+      "lvl5": { title: "Level 5", subtitle: "Build Complex UI Components" },
+      "lvl6": { title: "Level 6", subtitle: "Create Advanced Prototypes and Interactions" },
+      "lvl7": { title: "Level 7", subtitle: "Advanced Projects" },
+    };
+    return metadata[levelKey] || { title: `Level ${levelNum}`, subtitle: `Level ${levelNum} Tasks` };
+  };
 
   return (
     <div className={styles.container} >
@@ -581,50 +501,125 @@ const LearningPathPage: React.FC = () => {
         <div>
           <MuLoader />
         </div>
-      ) : filteredLevels.length > 0 ? (
-        filteredLevels.map((level) => {
-          // const isLocked = level.level > unlockedLevel;
-          return (
-            <div key={level.level} className={styles.levelSection}>
-              <h2>Level {level.level}</h2>
-              <h4 className={styles.levelSubtitle}>{level.subtitle}</h4>
-              {/* {isLocked && (
-                <div className={styles.unlockTaskSection}>
-                  <p className={styles.lockedText}>Complete Level {level.level - 1} to unlock</p>
-                  {level.leveller && (
-                    <button onClick={() => handleOpenOffCanvas(level.leveller)}>Unlock now</button>
-                  )}
-                </div>
-              )} */}
-              <div className={`${styles.cardsContainer}`}>
-                {level.cards && level.cards.length > 0 && (
+      ) : (
+        <>
+          {activeTab === "startLearning" && basicLevelData && basicLevelData
+            .filter((level) => {
+              // Only show levels 1-3 in Start Learning tab
+              const levelNum = parseInt(level.name.replace("lvl", ""));
+              return levelNum >= 1 && levelNum <= 3;
+            })
+            .map((level) => {
+            const metadata = getLevelMetadata(level.name);
+            const levelNum = parseInt(level.name.replace("lvl", ""));
+            const filteredTasks = filterTasks(level.tasks);
+            
+            if (filteredTasks.length === 0) return null;
+
+            return (
+              <div key={level.name} className={styles.levelSection}>
+                <h2>{metadata.title}</h2>
+                <h4 className={styles.levelSubtitle}>{metadata.subtitle}</h4>
+                <div className={`${styles.cardsContainer}`}>
                   <CardCarousel>
-                    {level.cards.map((card: any) => (
-                      <div key={card.id}>
-                        <TaskCard card={card} onClickCTA={() => handleOpenOffCanvas(card, level.level, unlockedLevel)} />
+                    {filteredTasks.map((task, index) => (
+                      <div key={`${task.hashtag}-${index}`}>
+                        <TaskCard 
+                          task={task} 
+                          onClickCTA={() => handleOpenOffCanvas(task, levelNum)} 
+                        />
                       </div>
                     ))}
-
-                    { /* level.cards.map((card: any) => (
-                      <div key={card.id} className={isLocked ? styles.lockedCard : ""}>
-                        {isLocked && (
-                          <div className={styles.lockedRibbon}>
-                            Complete Level {level.level - 1} to unlock
-                          </div>
-                        )}
-                        <TaskCard card={card} onClickCTA={() => handleOpenOffCanvas(card)} />
-                      </div>
-                    )) */}
                   </CardCarousel>
-                )}
+                </div>
               </div>
-            </div>
-          );
-        })
-      ) : (
-        <div className="text-center">No tasks available</div>
-      )}
+            );
+          })}
 
+          {activeTab === "becomeExpert" && intermediateLevelData && (
+            <>
+              {selectedIg.id ? (
+                // Show tasks for selected IG only
+                (() => {
+                  const igTasks = intermediateLevelData[selectedIg.id] || [];
+                  const groupedTasks = groupTasksByLevel(igTasks);
+                  
+                  return Object.entries(groupedTasks).map(([levelKey, tasks]) => {
+                    const metadata = getLevelMetadata(levelKey);
+                    const levelNum = parseInt(levelKey.replace("lvl", ""));
+                    const filteredTasks = filterTasks(tasks);
+                    
+                    if (filteredTasks.length === 0) return null;
+
+                    return (
+                      <div key={levelKey} className={styles.levelSection}>
+                        <h2>{metadata.title}</h2>
+                        <h4 className={styles.levelSubtitle}>{metadata.subtitle}</h4>
+                        <div className={`${styles.cardsContainer}`}>
+                          <CardCarousel>
+                            {filteredTasks.map((task, index) => (
+                              <div key={`${task.hashtag}-${index}`}>
+                                <TaskCard 
+                                  task={task} 
+                                  onClickCTA={() => handleOpenOffCanvas(task, levelNum)} 
+                                />
+                              </div>
+                            ))}
+                          </CardCarousel>
+                        </div>
+                      </div>
+                    );
+                  });
+                })()
+              ) : (
+                // Show all IG tasks grouped by level
+                (() => {
+                  const allTasks: Task[] = [];
+                  Object.values(intermediateLevelData).forEach(tasks => {
+                    allTasks.push(...tasks);
+                  });
+                  
+                  const groupedTasks = groupTasksByLevel(allTasks);
+                  
+                  return Object.entries(groupedTasks)
+                    .sort(([a], [b]) => parseInt(a.replace("lvl", "")) - parseInt(b.replace("lvl", "")))
+                    .map(([levelKey, tasks]) => {
+                      const metadata = getLevelMetadata(levelKey);
+                      const levelNum = parseInt(levelKey.replace("lvl", ""));
+                      const filteredTasks = filterTasks(tasks);
+                      
+                      if (filteredTasks.length === 0) return null;
+
+                      return (
+                        <div key={levelKey} className={styles.levelSection}>
+                          <h2>{metadata.title}</h2>
+                          <h4 className={styles.levelSubtitle}>{metadata.subtitle}</h4>
+                          <div className={`${styles.cardsContainer}`}>
+                            <CardCarousel>
+                              {filteredTasks.map((task, index) => (
+                                <div key={`${task.hashtag}-${index}`}>
+                                  <TaskCard 
+                                    task={task} 
+                                    onClickCTA={() => handleOpenOffCanvas(task, levelNum)} 
+                                  />
+                                </div>
+                              ))}
+                            </CardCarousel>
+                          </div>
+                        </div>
+                      );
+                    });
+                })()
+              )}
+            </>
+          )}
+
+          {((activeTab === "startLearning" && (!basicLevelData || basicLevelData.length === 0)) ||
+            (activeTab === "becomeExpert" && (!intermediateLevelData || Object.keys(intermediateLevelData).length === 0))) && (
+            <div className="text-center">No tasks available</div>
+          )}
+        </>
+      )}
 
       <OffCanvas isOpen={offCanvasOpen} onClose={handleCloseOffCanvas} data={selectedData} />
     </div>
