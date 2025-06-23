@@ -33,13 +33,17 @@ const ConnectDiscord = () => {
 
     useEffect(() => {
         if (token) {
-            connectDiscord(token).then(res => {
+            connectDiscord(token as string).then(res => {
                 if (res) {
-                    setDiscordStatus("connected");
-                    navigate("/dashboard/profile");
-                    toast.success(
-                        "You will be added to our discord server shortly"
-                    );
+                    getInfo(navigate, setMuid, () => {
+                        const userInfo = JSON.parse(localStorage.getItem("userInfo")!);
+                        if (userInfo && userInfo.exist_in_guild) {
+                            navigate("/dashboard/profile");
+                        } else {
+                            // Optionally show a message or retry after a short delay
+                        }
+                    });
+                    toast.success("You will be added to our discord server shortly");
                     setTimeout(() => {
                         var a = document.createElement("a");
                         a.href =
@@ -52,7 +56,7 @@ const ConnectDiscord = () => {
                 }
             });
         }
-    }, []);
+    }, [token, navigate]);
 
     return (
         <>
