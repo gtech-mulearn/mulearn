@@ -1,10 +1,6 @@
 import { ReactNode } from "react";
 import styles from "./OnboardingTemplate.module.css";
-import mufo from "../../assets/mufo.webp";
-import muship from "../../assets/muship.webp";
-import astroo from "../../assets/astroo.webp";
-import astro from "../../assets/astro.webp";
-import planet from "../../assets/planet.webp";
+import { cdnUrl } from "@/modules/utils/cdn";
 
 type TemplateProps = {
     children: ReactNode;
@@ -13,11 +9,11 @@ type TemplateProps = {
 export default function OnboardingTemplate({ children }: TemplateProps) {
     return (
         <div className={styles.template}>
-            <img className={styles.templatePlanet} src={planet} alt="" />
-            <img className={styles.templateAstro} src={astro} alt="" />
-            <img className={styles.templateAstroo} src={astroo} alt="" />
-            <img className={styles.templateMufo} src={mufo} alt="" />
-            <img className={styles.templateMuship} src={muship} alt="" />
+            <img className={styles.templatePlanet} src={cdnUrl("/src/modules/Common/Authentication/assets/planet.webp")} alt="Planet" />
+            <img className={styles.templateAstro} src={cdnUrl("src/modules/Common/Authentication/assets/astro.webp")} alt="Astro" />
+            <img className={styles.templateAstroo} src={cdnUrl("src/modules/Common/Authentication/assets/astroo.webp")} alt="Astroo" />
+            <img className={styles.templateMufo} src={cdnUrl("src/modules/Common/Authentication/assets/mufo.webp")} alt="Mufo" />
+            <img className={styles.templateMuship} src={cdnUrl("src/modules/Common/Authentication/assets/muship.webp")} alt="Muship" />
 
             <div className={styles.templateContent}>{children}</div>
         </div>

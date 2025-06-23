@@ -9,9 +9,9 @@ import {
 } from "./api";
 import { IoIosClose } from "react-icons/io";
 import { MdRefresh } from "react-icons/md";
-import dpm from "../assets/images/dpm.webp";
 import { filterNotification, getTimeAgo, isRequest } from "./utils";
 import toast from "react-hot-toast";
+import { cdnUrl } from "@/modules/utils/cdn";
 
 interface NotificationComponentProps {
     notificationList: NotificationProps[];
@@ -37,7 +37,7 @@ const NotificationMessage = ({
     };
     return (
         <div className="notiMessageTab">
-            <img src={profile || dpm} alt="" />
+            <img src={profile || cdnUrl("src/modules/Dashboard/assets/images/dpm.webp")} alt="" />
             <div className="notiMessageProfile">
                 <b>{title}</b>
                 <span

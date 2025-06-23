@@ -1,10 +1,5 @@
 import styles from "../pages/leaderboard.module.css";
-import studentFirst from "../assets/first.webp";
-import studentSecond from "../assets/second.webp";
-import studentThird from "../assets/third.webp";
-import campusFirst from "../assets/campusFirst.webp";
-import campusSecond from "../assets/campusSecond.webp";
-import campusThird from "../assets/campusThird.webp";
+import { cdnUrl } from "@/modules/utils/cdn";
 
 interface TopPlayersProps {
   topPlayers: {
@@ -37,21 +32,21 @@ export function TopPlayers({ topPlayers, activeFilter }: TopPlayersProps) {
               <div className={styles.avatarWrapper}>
                 {category === "student" && (
                   <img
-                    src={position === "first" ? studentFirst : position === "second" ? studentSecond : studentThird}
+                    src={cdnUrl("src/modules/Dashboard/modules/LeaderBoard/assets/first.webp")}
                     alt=""
                     className={styles.avatar}
                   />
                 )}
                 {(category === "campus" || (category === "wadhwani" && activeFilter === "campus")) && (
                   <img
-                    src={position === "first" ? campusFirst : position === "second" ? campusSecond : campusThird}
+                    src={cdnUrl("src/modules/Dashboard/modules/LeaderBoard/assets/campusFirst.webp")}
                     alt=""
                     className={styles.avatar}
                   />
                 )}
                 {category === "wadhwani" && activeFilter === "zonal" && (
                   <img
-                    src={position === "first" ? campusFirst : position === "second" ? campusSecond : campusThird}
+                    src={cdnUrl("src/modules/Dashboard/modules/LeaderBoard/assets/campusFirst.webp")}
                     alt=""
                     className={styles.avatar}
                   />

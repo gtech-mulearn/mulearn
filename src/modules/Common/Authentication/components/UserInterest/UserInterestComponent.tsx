@@ -5,12 +5,8 @@ import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { publicGateway } from "@/MuLearnServices/apiGateways";
 import { onboardingRoutes } from "@/MuLearnServices/urls";
 import styles from "./UserInterestComponent.module.css";
-import muBrand from "/src/modules/Common/Authentication/assets/µLearn.webp";
+import { cdnUrl } from "@/modules/utils/cdn";
 import OnboardingTemplate from "../OnboardingTeamplate/OnboardingTemplate";
-import software from "/assets/landing/coder2.webp";
-import maker from "/assets/landing/maker.webp";
-import management from "/assets/landing/manager.webp";
-import creative from "/assets/landing/creative.webp";
 import { IoCheckmarkCircleSharp } from "react-icons/io5";
 // import others from "/src/modules/Common/Authentication/assets/interests/others.svg";
 const CheckMark = () => (
@@ -47,10 +43,10 @@ type Interest = {
 //     // { title: "Others", value: "others", img: others, checked: false }
 // ];
 const INITIAL_INTERESTS = [
-    { title: "Coder", value: "coder", img: software, checked: false },
-    { title: "Maker", value: "maker", img: maker, checked: false },
-    { title: "Manager", value: "manager", img: management, checked: false },
-    { title: "Creative", value: "creative", img: creative, checked: false },
+    { title: "Coder", value: "coder", img: cdnUrl("public/assets/landing/coder2.webp"), checked: false },
+    { title: "Maker", value: "maker", img: cdnUrl("public/assets/landing/maker.webp"), checked: false },
+    { title: "Manager", value: "manager", img: cdnUrl("public/assets/landing/manager.webp"), checked: false },
+    { title: "Creative", value: "creative", img: cdnUrl("public/assets/landing/creative.webp"), checked: false },
 ];
 
 const INTEREST_DESCRIPTIONS = {
@@ -317,7 +313,7 @@ export default function UserInterestSelectionComponent({
         <OnboardingTemplate>
             <div className={styles.popUp}>
                 <div className={styles.box}>
-                    <img src={muBrand} alt="mulearn" />
+                    <img src={cdnUrl("public/assets/µLearn.png")} alt="mulearn" />
                     <h1>{stepTwo ? "What do you expect by MuLearning" : "What describes you the most!"}</h1>
                     <p className={styles.subText}>
                         {stepTwo ? "Pick your goal." : "Please select your interested area"}

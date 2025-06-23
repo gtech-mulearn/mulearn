@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, Variants } from 'framer-motion';
 import styles from './RolesSection.module.css'; // Assume CSS Modules for styling
+import { cdnUrl } from "@/modules/utils/cdn";
 
 // Sample motion variant for fadeInUp animation
 const fadeInUp: Variants = {
@@ -42,32 +43,28 @@ const rolesContent: RolesContent = {
       name: 'Leverage Resources & Expertise',
       description:
         'Share your tools, platforms, and industry expertise at no cost while accessing a highly skilled, pre-trained talent pool. Minimize onboarding time, streamline workflow integration, and scale projects efficiently through seamless collaboration.',
-      image:
-      '/assets/landing/expertise.webp',
+      image: cdnUrl('public/assets/landing/expertise.webp'),
     },
     {
       id: 2,
       name: 'Product Introduction',
       description:
         'Launch your products directly to a community of tech-savvy developers and early adopters. Boost brand awareness, accelerate product adoption, and gather real-time user insights for continuous improvement.',
-      image:
-      '/assets/landing/product introduction.webp',
+      image: cdnUrl('public/assets/landing/product introduction.webp'),
     },
     {
       id: 3,
       name: 'Talent Acquisition',
       description:
         'Hire top-tier, job-ready developers with proven skills, reducing training costs and expediting project execution. Gain access to a dynamic talent pipeline that meets industry demands and ensures faster onboarding.',
-      image:
-      '/assets/landing/talent.webp',
+      image: cdnUrl('public/assets/landing/talent.webp'),
     },
     {
       id: 4,
       name: 'Brand Presence',
       description:
       'Elevate your brand reputation by engaging with a vibrant learning ecosystem. Build lasting relationships with future industry leaders while positioning your company as an innovator in the tech community.',
-      image:
-      '/assets/landing/brand.webp',
+      image: cdnUrl('public/assets/landing/brand.webp'),
     },
   ],
   learner: [
@@ -76,32 +73,28 @@ const rolesContent: RolesContent = {
       name: 'Skill Development',
       description:
         'Gain practical experience through hands-on projects and industry-relevant training. Build a strong technical foundation with real-world applications that enhance your expertise.',
-      image:
-        '/assets/roles_images/skill-development.svg',
+      image: cdnUrl('public/assets/roles_images/skill-development.svg'),
     },
     {
       id: 2,
       name: 'Career Growth & Job Opportunities',
       description:
         'Connect with top companies, land internships, and explore high-impact job opportunities. Get noticed by hiring partners actively seeking fresh, skilled talent.',
-      image:
-        '/assets/roles_images/career-growth.svg',
+      image: cdnUrl('public/assets/roles_images/career-growth.svg'),
     },
     {
       id: 3,
       name: 'Collaborative Learning Experience',
       description:
         'Learn alongside peers and industry experts in an interactive, knowledge-sharing environment. Develop critical problem-solving skills while staying ahead with the latest tech trends.',
-      image:
-        '/assets/roles_images/learning.svg',
+      image: cdnUrl('public/assets/roles_images/learning.svg'),
       },
       {
         id: 4,
         name: 'Recognized Certifications & Skill Validation',
         description:
         'Earn industry-recognized certifications and verifiable credentials that enhance your professional profile. Stand out in a competitive job market with proof of your expertise.',
-        image:
-        '/assets/roles_images/certifications.svg',
+        image: cdnUrl('public/assets/roles_images/certifications.svg'),
       },
     ],
     community: [
@@ -110,32 +103,28 @@ const rolesContent: RolesContent = {
         name: 'Expand Your Network & Build Connections',
         description:
         'Engage with a vibrant community of like-minded individuals and industry professionals. Grow your network, discover collaboration opportunities, and build lasting relationships that drive career success.',
-        image:
-        '/assets/roles_images/networking.svg',
+        image: cdnUrl('public/assets/roles_images/networking.svg'),
       },
       {
         id: 2,
         name: 'Knowledge Sharing & Industry Insights',
         description:
         'Exchange ideas, best practices, and innovative solutions with experts and peers. Stay updated on the latest trends, emerging technologies, and industry advancements.',
-        image:
-        '/assets/roles_images/knowledgesharing.svg',
+        image: cdnUrl('public/assets/roles_images/knowledgesharing.svg'),
       },
       {
         id: 3,
         name: 'Collaborative Projects & Real-World Impact',
         description:
         'Join forces with community members to work on impactful projects that shape the tech ecosystem. Gain hands-on experience, enhance problem-solving skills, and contribute to meaningful innovations.',
-        image:
-        '/assets/roles_images/collaboration.svg',
+        image: cdnUrl('public/assets/roles_images/collaboration.svg'),
       },
       {
         id: 4,
         name: 'Mentorship & Career Guidance',
         description:
         'Access mentorship from industry leaders while also giving back by guiding others. Gain valuable insights, career advice, and professional support to accelerate personal and professional growth.',
-        image:
-        '/assets/roles_images/mentorship.svg',
+        image: cdnUrl('public/assets/roles_images/mentorship.svg'),
     },
   ],
   enabler: [

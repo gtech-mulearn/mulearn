@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./Company.module.css";
-import fvimg from "./assets/Connecting teams.gif";
 import HomeNav from "@/modules/Common/HomeNav/HomeNav";
 import Footer from "@/modules/Common/Footer/Footer";
+import { cdnUrl } from "@/modules/utils/cdn";
 
 //@ts-ignore
 import companiesonboarded from "./data/companiesonboarded";
@@ -26,7 +26,7 @@ const CompanyPartners = () => {
               </p>
             </div>
             <div className={styles.fv_images}>
-              <img src={fvimg} alt="" className={styles.fv_img} />
+              <img src={cdnUrl("src/modules/Public/CompanyPartners/assets/Connecting teams.gif")} alt="Connecting Teams Animation" className={styles.fv_img} />
             </div>
           </div>
         </div>

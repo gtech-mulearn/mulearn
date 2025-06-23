@@ -1,8 +1,5 @@
 import styles from "./UserMarketplce.module.css";
-import coin from "../assets/muCoin.svg";
-import i from "../assets/i.svg";
-import bgCard from "../assets/bgCard.svg";
-import phone from "../assets/phone.svg";
+import { cdnUrl } from "@/modules/utils/cdn";
 import { History, RedNoti, LinkLogo, LockLogo } from "../assets/svg";
 type Props = {};
 
@@ -11,7 +8,7 @@ const Marketplace = (props: Props) => {
         {
             coins: 20,
             noti: 2,
-            bg: bgCard,
+            bg: cdnUrl("src/modules/Dashboard/modules/Marketplace/assets/bgCard.svg"),
             title: "ChatGPT Pro",
             descp: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
             link: "https://dribbble.com/"
@@ -19,7 +16,7 @@ const Marketplace = (props: Props) => {
         {
             coins: 20,
             noti: 2,
-            bg: bgCard,
+            bg: cdnUrl("src/modules/Dashboard/modules/Marketplace/assets/bgCard.svg"),
             title: "ChatGPT Pro",
             descp: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
             link: "https://dribbble.com/"
@@ -27,7 +24,7 @@ const Marketplace = (props: Props) => {
         {
             coins: 20,
             noti: 2,
-            bg: bgCard,
+            bg: cdnUrl("src/modules/Dashboard/modules/Marketplace/assets/bgCard.svg"),
             title: "ChatGPT Pro",
             descp: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
             link: "https://dribbble.com/"
@@ -35,7 +32,7 @@ const Marketplace = (props: Props) => {
         {
             coins: 20,
             noti: 2,
-            bg: bgCard,
+            bg: cdnUrl("src/modules/Dashboard/modules/Marketplace/assets/bgCard.svg"),
             title: "ChatGPT Pro",
             descp: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
             link: "https://dribbble.com/"
@@ -43,7 +40,7 @@ const Marketplace = (props: Props) => {
         {
             coins: 20,
             noti: 2,
-            bg: bgCard,
+            bg: cdnUrl("src/modules/Dashboard/modules/Marketplace/assets/bgCard.svg"),
             title: "ChatGPT Pro",
             descp: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
             link: "https://dribbble.com/"
@@ -51,7 +48,7 @@ const Marketplace = (props: Props) => {
         {
             coins: 20,
             noti: 2,
-            bg: bgCard,
+            bg: cdnUrl("src/modules/Dashboard/modules/Marketplace/assets/bgCard.svg"),
             title: "ChatGPT Pro",
             descp: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
             link: "https://dribbble.com/"
@@ -59,47 +56,47 @@ const Marketplace = (props: Props) => {
     ];
     const rewards = [
         {
-            img: phone,
+            img: cdnUrl("src/modules/Dashboard/modules/Marketplace/assets/phone.svg"),
             detail: "iphone",
             coins: 20
         },
         {
-            img: phone,
+            img: cdnUrl("src/modules/Dashboard/modules/Marketplace/assets/phone.svg"),
             detail: "iphone",
             coins: 20
         },
         {
-            img: phone,
+            img: cdnUrl("src/modules/Dashboard/modules/Marketplace/assets/phone.svg"),
             detail: "iphone",
             coins: 20
         },
         {
-            img: phone,
+            img: cdnUrl("src/modules/Dashboard/modules/Marketplace/assets/phone.svg"),
             detail: "iphone",
             coins: 20
         },
         {
-            img: phone,
+            img: cdnUrl("src/modules/Dashboard/modules/Marketplace/assets/phone.svg"),
             detail: "iphone",
             coins: 20
         },
         {
-            img: phone,
+            img: cdnUrl("src/modules/Dashboard/modules/Marketplace/assets/phone.svg"),
             detail: "iphone",
             coins: 20
         },
         {
-            img: phone,
+            img: cdnUrl("src/modules/Dashboard/modules/Marketplace/assets/phone.svg"),
             detail: "iphone",
             coins: 20
         },
         {
-            img: phone,
+            img: cdnUrl("src/modules/Dashboard/modules/Marketplace/assets/phone.svg"),
             detail: "iphone",
             coins: 20
         },
         {
-            img: phone,
+            img: cdnUrl("src/modules/Dashboard/modules/Marketplace/assets/phone.svg"),
             detail: "iphone",
             coins: 20
         }
@@ -114,7 +111,7 @@ const Marketplace = (props: Props) => {
                     <h1>Welcome to Marketplace</h1>
                     <div>
                         <p>20</p>
-                        <img src={coin} alt="" />
+                        <img src={cdnUrl("src/modules/Dashboard/modules/Marketplace/assets/muCoin.svg")} alt="" />
                     </div>
                 </div>
                 <div className={styles.cont2}>
@@ -122,7 +119,7 @@ const Marketplace = (props: Props) => {
                         <h2>Redeem rewards using your Mucoins</h2>
                         <button>
                             {" "}
-                            <img src={i} alt="" />
+                            <img src={cdnUrl("src/modules/Dashboard/modules/Marketplace/assets/i.svg")} alt="" />
                         </button>
                     </div>{" "}
                     <button onClick={hello}>
@@ -133,11 +130,11 @@ const Marketplace = (props: Props) => {
                     {data.map(({ coins, noti, bg, title, descp, link }, i) => (
                         <div className={styles.cardIndividualWrapper}>
                             <div className={styles.TopSet}>
-                                <img src={bgCard} alt="" />
+                                <img src={bg} alt="" />
                                 <div>
                                     <div>
                                         <p>{coins}</p>
-                                        <img src={coin} alt="" />
+                                        <img src={cdnUrl("src/modules/Dashboard/modules/Marketplace/assets/muCoin.svg")} alt="" />
                                     </div>
                                     <div>
                                         <RedNoti />
@@ -170,7 +167,7 @@ const Marketplace = (props: Props) => {
                                 <p>{detail}</p>
                                 <div>
                                     <p>{coins}</p>
-                                    <img src={coin} alt="" />
+                                    <img src={cdnUrl("src/modules/Dashboard/modules/Marketplace/assets/muCoin.svg")} alt="" />
                                 </div>
                             </div>
                         </div>

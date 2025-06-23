@@ -1,10 +1,5 @@
 import moment from "moment";
 import { useEffect, useRef, useState } from "react";
-import dpm from "../assets/images/dpm.webp";
-import Karma, { KarmaWhite } from "../assets/svg/Karma";
-import MulearnBrand from "../assets/svg/MulearnBrand";
-import Rank from "../assets/svg/Rank";
-import emptyAchievements from "../assets/images/empty achievements.webp"
 import { PieChart } from "../components/Piechart/PieChart";
 import {
 
@@ -42,6 +37,7 @@ import { getAchievements } from "../../ManageAchievements/services/api";
 import { AchievementData } from "../../ManageAchievements/ManageAchievementsInterface";
 import AchievementCardOne from "../components/Achievements/AchievementCardOne";
 import toast from "react-hot-toast";
+import { cdnUrl } from "@/modules/utils/cdn";
 
 
 
@@ -249,7 +245,7 @@ const Profile = () => {
 
     return (
         <>
-            <HelmetMetaTags userProfile={userProfile} dpm={dpm} />
+            <HelmetMetaTags userProfile={userProfile} dpm={cdnUrl("src/modules/Dashboard/modules/Profile/assets/images/dpm.webp")} />
             <div
                 style={
                     id
@@ -325,7 +321,7 @@ const Profile = () => {
                                                                 `?${Math.random() *
                                                                 1000
                                                                 }`
-                                                                : dpm
+                                                                : cdnUrl("src/modules/Dashboard/modules/Profile/assets/images/dpm.webp")
                                                         }
                                                         alt={
                                                             userProfile.full_name
@@ -632,7 +628,7 @@ const Profile = () => {
 
                                             {achievements.length === 0 && (
                                                 <div className="text-center flex flex-col items-center justify-center text-gray-500">
-                                                    <Img src={emptyAchievements} alt="No achievements" w={400} h={400} />
+                                                    <Img src={cdnUrl("src/modules/Dashboard/modules/Profile/assets/images/empty achievements.webp")} alt="No achievements" w={400} h={400} />
                                                     <p>No achievements available for you at the moment. Keep learning.</p>
 
                                                 </div>

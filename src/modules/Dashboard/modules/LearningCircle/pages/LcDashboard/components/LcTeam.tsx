@@ -1,7 +1,6 @@
 import { Dispatch, SetStateAction, useRef, useState } from "react";
 import styles from "../LcDashboard.module.css";
-import pic from "../../../assets/images/dpm.webp";
-import LeadIcon from "../../../assets/images/Lead icon.svg";
+import { cdnUrl } from "@/modules/utils/cdn";
 import { PersonIcon } from "../../../assets/svg";
 import { PendingRequest } from "./LcPendingRequest";
 import { userLevelBadge } from "../../../../../utils/utils";
@@ -130,7 +129,7 @@ const TeamMember = ({
             <span>{index + 1}.</span>
             <img
                 className={styles.MemberProfile}
-                src={member.profile_pic || pic}
+                src={cdnUrl("src/modules/Dashboard/modules/LearningCircle/assets/images/dpm.webp")}
                 alt="DP"
             />{" "}
             <span className={styles.name}>{member.username}</span>
@@ -141,7 +140,7 @@ const TeamMember = ({
                 width={"25px"}
             />
             {member.is_lead ? (
-                <img src={LeadIcon} alt="" className={styles.karma} />
+                <img src={cdnUrl("src/modules/Dashboard/modules/LearningCircle/assets/images/Lead icon.svg")} alt="" className={styles.karma} />
             ) : (
                 ""
             )}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import styles from "./SideNavBar.module.css";
 import { useNavigate, useParams } from "react-router-dom";
-import dpm from "../assets/images/dpm.webp";
+import { cdnUrl } from "@/modules/utils/cdn";
 import { MuButtonLight } from "@/MuLearnComponents/MuButtons/MuButton";
 import MuLogOut from "../assets/svg/MuLogOut";
 import toast from "react-hot-toast";
@@ -136,7 +136,7 @@ const TopNavBar: React.FC<TopNavBarProps> = ({ setUserInfo, userInfo }) => {
                                 <div id="profile" className={styles.profile}>
                                     <img
                                         onClick={() => setUserSettings(!userSettings)}
-                                        src={profilePic || dpm}
+                                        src={profilePic || cdnUrl("src/modules/Dashboard/assets/images/dpm.webp")}
                                         alt=""
                                         style={{ marginBottom: '0' }}
                                     />

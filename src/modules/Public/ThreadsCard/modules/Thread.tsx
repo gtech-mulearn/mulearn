@@ -1,14 +1,6 @@
 import React from "react";
 import styles from "./Thread.module.css";
-import qr from "/src/modules/Public/ThreadsCard/assets/qr.webp";
-import mu from "/src/modules/Public/ThreadsCard/assets/mu.webp";
-import title from "/src/modules/Public/ThreadsCard/assets/title.webp";
-import arrow from "/src/modules/Public/ThreadsCard/assets/arrow.webp";
-import barcode from "/src/modules/Public/ThreadsCard/assets/barcode.webp";
-import blend1 from "/src/modules/Public/ThreadsCard/assets/Blend-1.webp";
-import blend2 from "/src/modules/Public/ThreadsCard/assets/Blend-2.webp";
-import blend3 from "/src/modules/Public/ThreadsCard/assets/Blend-3.webp";
-
+import { cdnUrl } from "@/modules/utils/cdn";
 export default function Thread() {
     return (
         <div className={styles.ThreadCardBg}>
@@ -20,20 +12,20 @@ export default function Thread() {
             </button>
 
             <div className={styles.cardBg}>
-                <img src={blend1} alt="" />
-                <img src={blend3} alt="" />
-                <img src={blend2} alt="" />
+                <img src={cdnUrl("src/modules/Public/ThreadsCard/assets/Blend-1.webp")} alt="Background blend effect" />
+                <img src={cdnUrl("src/modules/Public/ThreadsCard/assets/Blend-3.webp")} alt="Background blend effect" />
+                <img src={cdnUrl("src/modules/Public/ThreadsCard/assets/Blend-2.webp")} alt="Background blend effect" />
             </div>
 
             <div className={styles.ThreadCard}>
                 <div className={styles.ThreadCardContent}>
                     <div className={styles.ThreadCardFront}>
                         <div className={styles.ThreadCardLogo}>
-                            <img src={title} alt="" />
-                            <img src={mu} alt="" />
+                            <img src={cdnUrl("src/modules/Public/ThreadsCard/assets/title.webp")} alt="Event title" />
+                            <img src={cdnUrl("src/modules/Public/ThreadsCard/assets/mu.webp")} alt="µLearn logo" />
                         </div>
                         <div className={styles.ThreadCardLogoQr}>
-                            <img src={qr} alt="" />
+                            <img src={cdnUrl("src/modules/Public/ThreadsCard/assets/qr.webp")} alt="QR code" />
                         </div>
                     </div>
                     <div className={styles.ThreadCardBack}>
@@ -53,11 +45,11 @@ export default function Thread() {
                             </span>
                         </div>
                         <span className={styles.ThreadCardBackArrow}>
-                            <img src={arrow} alt="" />
+                            <img src={cdnUrl("src/modules/Public/ThreadsCard/assets/arrow.webp")} alt="Arrow indicator" />
                         </span>
                         <div className={styles.ThreadCardBarcode}>
                             <b>TICKET NUMBER :</b>
-                            <img src={barcode} alt="" />
+                            <img src={cdnUrl("src/modules/Public/ThreadsCard/assets/barcode.webp")} alt="Ticket barcode" />
                         </div>
                     </div>
                 </div>

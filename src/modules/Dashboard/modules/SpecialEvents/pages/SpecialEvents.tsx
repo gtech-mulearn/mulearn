@@ -1,10 +1,8 @@
 import React from "react";
 import styles from "./SpecialEvents.module.css";
-import top100coders from ".././assets/top-100.webp";
-import launchpad from "../assets/launchpad.webp";
-import trivialideas from "../assets/trivialideas.webp";
 import SpecialEventCardLanding from "../../../../Public/Home/components/SpecialEventCardLanding/SpecialEventCardLanding";
 import { Helmet } from "react-helmet";
+import { cdnUrl } from "@/modules/utils/cdn";
 
 const SpecialEventsList: SpecialEvent[] = [
     {
@@ -15,7 +13,7 @@ const SpecialEventsList: SpecialEvent[] = [
         // date: "2025-04-09",
         // participants: 100,
         link: "https://top100coders.com/",
-        image: top100coders,
+        image: cdnUrl("src/modules/Dashboard/modules/SpecialEvents/assets/top-100.webp"),
         isLive: true
     },
     {
@@ -26,7 +24,7 @@ const SpecialEventsList: SpecialEvent[] = [
         // date: "2024-06-02",
         participants: 200,
         link: "https://launchpadkerala.org/",
-        image: launchpad,
+        image: cdnUrl("src/modules/Dashboard/modules/SpecialEvents/assets/launchpad.webp"),
         isLive: false
     },
     {
@@ -38,7 +36,7 @@ const SpecialEventsList: SpecialEvent[] = [
         // date: "2025-02-02",
         // participants: 500,
         link: "https://www.instagram.com/mulearn.official/p/C6eHEzJyMMn/",
-        image: trivialideas,
+        image: cdnUrl("src/modules/Dashboard/modules/SpecialEvents/assets/trivialideas.webp"),
         isLive: false
     }
 ];
