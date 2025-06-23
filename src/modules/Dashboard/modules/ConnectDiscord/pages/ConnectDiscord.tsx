@@ -35,11 +35,17 @@ const ConnectDiscord = () => {
         if (token) {
             connectDiscord(token).then(res => {
                 if (res) {
-                    setDiscordStatus("connected");
-                    navigate("/dashboard/profile");
-                    toast.success(
-                        "You will be added to our discord server shortly"
-                    );
+                    // Fetch latest user info
+                    getInfo(navigate, setMuid, () => {
+                        const userInfoString = localStorage.getItem("userInfo");
+                        const userInfo = userInfoString ? JSON.parse(userInfoString) : null;
+                        if (userInfo && userInfo.exist_in_guild) {
+                            navigate("/dashboard/profile");
+                        } else {
+                            // Optionally show a message or retry after a short delay
+                        }
+                    });
+                    toast.success("You will be added to our discord server shortly");
                     setTimeout(() => {
                         var a = document.createElement("a");
                         a.href =
