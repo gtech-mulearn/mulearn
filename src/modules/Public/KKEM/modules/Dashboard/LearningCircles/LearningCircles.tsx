@@ -94,7 +94,6 @@ const LearningCircles = () => {
       getHackDashboard(setHackathonDashboard);
     }
   }, [authorized]);
-  console.log(HackathonDashboard[0]);
 
   const columnOrder: ColOrder[] = [
     { column: "full_name", Label: "Full Name", isSortable: true },

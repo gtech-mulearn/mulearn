@@ -39,6 +39,12 @@ const DashboardRootLayout = (props: { component?: any }) => {
           const hasEndgoals = Array.isArray(userInfo.user_endgoals) && userInfo.user_endgoals.length > 0;
           if (!hasDomains || !hasEndgoals) {
             navigate("/register/pathfinder?ruri=/dashboard/home");
+            return;
+          }
+          const existInGuild = userInfo.exist_in_guild;
+          if (!existInGuild) {
+            navigate("/register/guild?ruri=/dashboard/home");
+            return;
           }
           setIsLoading(false);
         } else {
