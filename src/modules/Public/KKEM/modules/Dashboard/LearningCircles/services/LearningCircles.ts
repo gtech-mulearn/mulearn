@@ -23,7 +23,6 @@ export const getLCDashboard = (setLcCounts: ResponseType, date?: string) => {
     publicGateway
         .get(googleSheetRoutes.getLcData, {})
         .then(response => {
-            console.log("response", response);
             setLcCounts({
                 lc_count: 2226,
                 total_enrollment: 5276,
@@ -48,21 +47,41 @@ export const getLCReport = (
 ) => {
     setLoading && setLoading(true);
     publicGateway
-        .get(PublicRoutes.getLcReport, {
-            params: {
-                perPage: selectedValue,
-                pageIndex: page,
-                search: search,
-                sortBy: sortID,
-                date: date
-            }
+        .get(googleSheetRoutes.getLcReport, {
+            // params: {
+            //     perPage: selectedValue,
+            //     pageIndex: page,
+            //     search: search,
+            //     sortBy: sortID,
+            //     date: date
+            // }
         })
         .then(response => {
-            setLcReport(response.data.response.data);
+            let filteredData = response.data;
+            if (search != null && search != "") {
+                filteredData = filteredData.filter((item: any) => {
+                    return (
+                        (item.full_name?.toLowerCase() || "").includes(search.toLowerCase()) ||
+                        (item.muid?.toLowerCase() || "").includes(search.toLowerCase()) ||
+                        (item.email?.toLowerCase() || "").includes(search.toLowerCase()) ||
+                        (item.circle_name?.toLowerCase() || "").includes(search.toLowerCase())
+                    );
+                });
+            }
+
+            const startIndex = (page - 1) * selectedValue;
+            const endIndex = page * selectedValue;
+            const paginatedData = filteredData.slice(startIndex, endIndex);
+            setLcReport(paginatedData);
             if (setTotalPages) {
-                const totalPages = response.data.response.pagination.totalPages;
+                const totalPages = Math.ceil(filteredData.length / selectedValue);
                 setTotalPages(totalPages);
             }
+            // setLcReport(response.data.slice(0, 20));
+            // if (setTotalPages) {
+            //     const totalPages = response.data.response.pagination.totalPages;
+            //     setTotalPages(totalPages);
+            // }
         })
         .catch(error => {
             console.error(error);
