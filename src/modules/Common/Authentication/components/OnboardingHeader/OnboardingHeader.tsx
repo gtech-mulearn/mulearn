@@ -1,26 +1,24 @@
-import mu from "/src/modules/Common/Authentication/assets/µLearn.png";
 import styles from "./OnboardingHeader.module.css";
 import { cdnUrl } from "@/modules/utils/cdn";
-
 
 type OnboardingHeaderProps = {
     title: string;
     desc: string;
 };
 
-export default function OnboardingHeader({
-    title,
-    desc
-}: OnboardingHeaderProps) {
+const OnboardingHeader = ({ title, desc }: OnboardingHeaderProps) => {
     return (
         <div className={styles.onboardingHeader}>
-            <img src={cdnUrl('/src/modules/Common/Authentication/assets/µLearn.png')} alt="" />
-            <h1>{title}</h1>
-            <p
+            <img src={cdnUrl("public/assets/µLearn.png")} alt="µLearn Logo" className={styles.logo} />
+                <h1>{title}</h1>
+                <p 
                 className={styles.tagline}
                 dangerouslySetInnerHTML={{ __html: desc }}
-            />
-            <br />
-        </div>
+                > </p>
+        
+            <br />        
+            </div>
     );
-}
+};
+
+export default OnboardingHeader;

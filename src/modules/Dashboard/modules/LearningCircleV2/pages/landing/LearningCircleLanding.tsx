@@ -11,7 +11,7 @@ import {
     getMeetups,
     scheduleMeetup,
 } from "../../services/LearningCircleAPIs";
-import imageBottom from "../../assets/images/LC3.webp";
+import { cdnUrl } from "@/modules/utils/cdn";
 import MuModal from "@/MuLearnComponents/MuModal/MuModal";
 import { EventCard } from "../../../LearningPaths/pages/LearningPathOne/LearningCircleCard";
 import LearningCircleCreateForm from "../../../LearningPaths/pages/LearningPathOne/LearningCircleCreateForm";
@@ -169,7 +169,7 @@ const LearningCircleLanding = () => {
                             className={styles.learningCircleLandingPageMiddle}
                         >
                             <img
-                                src={imageBottom}
+                                src={cdnUrl("src/modules/Dashboard/modules/LearningCircleV2/assets/images/LC3.webp")}
                                 alt="No meetups"
                                 loading="eager"
                                 className={styles.desaturate}

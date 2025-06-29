@@ -2,9 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Trophy, Users, Info, Medal, X } from "lucide-react";
 import { useParams } from "react-router-dom";
-import styles from "./campusdetails.module.css";
-import CLIcon from "../../assets/images/CampusLeadIcon.svg";
-import CEIcon from "../../assets/images/CampusEnablerIcon.png";
+import styles from "./CampusPage-demo.module.css";
+import { cdnUrl } from "@/modules/utils/cdn";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import toast from "react-hot-toast";
 import axios from "axios";
@@ -308,12 +307,12 @@ const CampusDetails: React.FC = () => {
                         <p className={styles.statsLabel}>Among all campuses</p>
                     </div>
                 </div>
-                {/* <div className={styles.leadershipSection}>
+                <div className={styles.leadershipSection}>
                     <h3 className={styles.leadershipTitle}>Campus Leadership</h3>
                     <div className={styles.leadershipGrid}>
                         <div className={styles.leaderCard}>
                             <div className="flex items-center flex-col">
-                                <img src={CLIcon} alt="Campus Lead" className={styles.leaderIcon} />
+                                <img src={cdnUrl("src/modules/Dashboard/modules/Campus/components/CampusForum/assets/images/CampusLeadIcon.svg")} alt="Campus Lead" className={styles.leaderIcon} />
                                 <div className={styles.leaderName}>{campusData.lead.campus_lead}</div>
                                 <span className={styles.leaderRole}>Campus Lead</span>
                             </div>
@@ -321,14 +320,14 @@ const CampusDetails: React.FC = () => {
                         {campusData.lead.enabler && (
                             <div className={styles.leaderCard}>
                                 <div className="flex flex-col items-center">
-                                    <img src={CEIcon} alt="Campus Enabler" className={styles.leaderIcon} />
+                                    <img src={cdnUrl("src/modules/Dashboard/modules/Campus/components/CampusForum/assets/images/CampusEnablerIcon.png")} alt="Campus Enabler" className={styles.leaderIcon} />
                                     <div className={styles.leaderName}>{campusData.lead.enabler}</div>
                                     <span className={styles.leaderRole}>Campus Lead Enabler</span>
                                 </div>
                             </div>
                         )}
                     </div>
-                </div> */}
+                </div>
                 <div className={styles.graphs}>
                     <div className={styles.graphContainer}>
                         <h2>Weekly Karma Insights</h2>

@@ -3,9 +3,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import styles from "./LandingPage.module.css";
-import LearningPathList from "../../../Dashboard/modules/LearningPaths/services/LearningPathList";
-import LearningPathCard from "../../../Dashboard/modules/LearningPaths/components/LearningPathCard";
-import MulearnBrand from "../../../Dashboard/assets/MulearnBrand";
 import RolesSection from "../components/RolesSection/RolesSection";
 import CountUp from "react-countup";
 import { Helmet } from "react-helmet";
@@ -554,7 +551,7 @@ const MuLearnLanding = () => {
                   name: "Entrepreneurship",
                   icon: (
                     <img
-                      src={"/assets/landing/College Project Concept Illustration.png"}
+                      src={cdnUrl("public/assets/landing/College Project Concept Illustration.png")}
                       width={"400px"}
                       alt="Entrepreneurship"
                     />
@@ -565,7 +562,7 @@ const MuLearnLanding = () => {
                   name: "Social Cause",
                   icon: (
                     <img
-                      src={"/assets/landing/social-growth.webp"}
+                      src={cdnUrl("public/assets/landing/social-growth.webp")}
                       width={"400px"}
                       alt="Social Cause"
                     />

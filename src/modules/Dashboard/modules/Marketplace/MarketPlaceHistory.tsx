@@ -1,7 +1,5 @@
 import styles from "./MarketPlaceHistory.module.css";
-import coin from "./assets/muCoin.svg";
-import i from "./assets/i.svg";
-import bg from "./assets/bgCard.svg";
+import { cdnUrl } from "@/modules/utils/cdn";
 import { HintLogo } from "./assets/svg";
 import { style } from "d3";
 import { useState } from "react";
@@ -16,7 +14,7 @@ const MarketPlaceHistory = (props: Props) => {
 
     const [data, setData] = useState([
         {
-            img: bg,
+            img: cdnUrl("src/modules/Dashboard/modules/Marketplace/assets/bgCard.svg"),
             title: "ChatGPT Pro",
             desp: "Lorem Ipsum bla bla description I guess",
             coins: 20,
@@ -26,7 +24,7 @@ const MarketPlaceHistory = (props: Props) => {
             hints: "https://www.google.com"
         },
         {
-            img: bg,
+            img: cdnUrl("src/modules/Dashboard/modules/Marketplace/assets/bgCard.svg"),
             title: "ChatGPT Pro",
             desp: "Lorem Ipsum bla bla description I guess",
             coins: 20,
@@ -36,7 +34,7 @@ const MarketPlaceHistory = (props: Props) => {
             hints: "https://www.google.com"
         },
         {
-            img: bg,
+            img: cdnUrl("src/modules/Dashboard/modules/Marketplace/assets/bgCard.svg"),
             title: "ChatGPT Pro",
             desp: "Lorem Ipsum bla bla description I guess",
             coins: 20,
@@ -46,7 +44,7 @@ const MarketPlaceHistory = (props: Props) => {
             hints: "https://www.google.com"
         },
         {
-            img: bg,
+            img: cdnUrl("src/modules/Dashboard/modules/Marketplace/assets/bgCard.svg"),
             title: "ChatGPT Pro",
             desp: "Lorem Ipsum bla bla description I guess",
             coins: 20,
@@ -56,7 +54,7 @@ const MarketPlaceHistory = (props: Props) => {
             hints: "https://www.google.com"
         },
         {
-            img: bg,
+            img: cdnUrl("src/modules/Dashboard/modules/Marketplace/assets/bgCard.svg"),
             title: "ChatGPT Pro",
             desp: "Lorem Ipsum bla bla description I guess",
             coins: 20,
@@ -73,7 +71,7 @@ const MarketPlaceHistory = (props: Props) => {
                     <h1>Your past orders</h1>
                     <div>
                         <p>20</p>
-                        <img src={coin} alt="" />
+                        <img src={cdnUrl("src/modules/Dashboard/modules/Marketplace/assets/muCoin.svg")} alt="Coin" />
                     </div>
                 </div>
                 <div className={styles.cont2}>
@@ -81,7 +79,7 @@ const MarketPlaceHistory = (props: Props) => {
                         <h2>View your order details and history.</h2>
                         <button>
                             {" "}
-                            <img src={i} alt="" />
+                            <img src={cdnUrl("src/modules/Dashboard/modules/Marketplace/assets/i.svg")} alt="Info" />
                         </button>
                     </div>{" "}
                 </div>
@@ -105,7 +103,7 @@ const MarketPlaceHistory = (props: Props) => {
 
                                         <div className={styles.coinss}>
                                             <p>20</p>
-                                            <img src={coin} alt="" />
+                                            <img src={cdnUrl("src/modules/Dashboard/modules/Marketplace/assets/muCoin.svg")} alt="Coin" />
                                         </div>
                                     </div>
                                     <div

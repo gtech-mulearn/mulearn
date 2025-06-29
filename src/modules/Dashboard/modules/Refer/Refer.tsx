@@ -1,5 +1,5 @@
 import styles from "./Refer.module.css";
-import imageTop from "./assets/LC2.webp";
+import { cdnUrl } from "@/modules/utils/cdn";
 import {
     MuButton,
     PowerfulButton
@@ -70,7 +70,7 @@ const Refer = () => {
             )}
             <div className={styles.learningCircleLandingPage}>
                 <div className={styles.headContent}>
-                    <img src={imageTop} alt="image" loading="eager" />
+                    <img src={cdnUrl("src/modules/Dashboard/modules/Refer/assets/LC2.webp")} alt="Learning Circle" />
                     <div className={styles.learningCircleLandingPageDesc}>
                         <h1>Discover, collaborate and grow</h1>
                         <b style={{ fontWeight: "600", width: "80%" }}>

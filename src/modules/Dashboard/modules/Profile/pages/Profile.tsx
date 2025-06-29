@@ -22,6 +22,10 @@ import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
 import { useNavigate, useParams } from "react-router-dom";
 import KarmaHistory from "../components/KarmaHistory/KarmaHistory";
+import MulearnBrand from "../assets/svg/MulearnBrand";
+import Karma from "../assets/svg/Karma";
+import Rank from "../assets/svg/Rank";
+import { KarmaWhite } from "../assets/svg/Karma";
 import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
 import AvgKarma from "../assets/svg/AvgKarma";
 import EditProfilePopUp from "../components/EditProfilePopUp/pages/EditProfilePopUp";

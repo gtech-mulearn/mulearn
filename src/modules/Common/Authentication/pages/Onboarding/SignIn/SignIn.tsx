@@ -1,5 +1,4 @@
 import styles from "./SignIn.module.css";
-import google from "../../../assets/google.png";
 import OnboardingTemplate from "../../../components/OnboardingTeamplate/OnboardingTemplate";
 import OnboardingHeader from "../../../components/OnboardingHeader/OnboardingHeader";
 import { HiEye } from "react-icons/hi";

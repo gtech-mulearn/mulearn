@@ -26,14 +26,8 @@ import {
     Box,
 } from "@chakra-ui/react";
 import { FiBookOpen, FiRefreshCw, FiType } from "react-icons/fi";
+import { cdnUrl } from "@/modules/utils/cdn";
 import { AchievementData } from "../../../ManageAchievements/ManageAchievementsInterface";
-import level7 from "../../../Profile/components/MuVoyage/assets/images/Level7.webp";
-import level6 from "../../../Profile/components/MuVoyage/assets/images/Level6.webp";
-import level5 from "../../../Profile/components/MuVoyage/assets/images/Level5.webp";
-import level4 from "../../../Profile/components/MuVoyage/assets/images/Level4.webp";
-import level3 from "../../../Profile/components/MuVoyage/assets/images/Level3.webp";
-import level2 from "../../../Profile/components/MuVoyage/assets/images/Level2.webp";
-import level1 from "../../../Profile/components/MuVoyage/assets/images/Level1.webp";
 import { getConnectedUsers, issueVerifiableCredential, updateVCURL } from "../../services/api";
 import toast from "react-hot-toast";
 import { useUserStore } from "../../../../../../ZustandProvider";
@@ -96,13 +90,13 @@ const AchievementCardOne: React.FC<AchievementCardOneProps> = ({
     const userEmail = useUserStore((state) => state.userInfo?.email || "");
 
     const levelIcons: Record<string, string> = {
-        "Level 1": level1,
-        "Level 2": level2,
-        "Level 3": level3,
-        "Level 4": level4,
-        "Level 5": level5,
-        "Level 6": level6,
-        "Level 7": level7,
+        "Level 1": cdnUrl("src/modules/Dashboard/modules/Profile/components/MuVoyage/assets/images/Level1.webp"),
+        "Level 2": cdnUrl("src/modules/Dashboard/modules/Profile/components/MuVoyage/assets/images/Level2.webp"),
+        "Level 3": cdnUrl("src/modules/Dashboard/modules/Profile/components/MuVoyage/assets/images/Level3.webp"),
+        "Level 4": cdnUrl("src/modules/Dashboard/modules/Profile/components/MuVoyage/assets/images/Level4.webp"),
+        "Level 5": cdnUrl("src/modules/Dashboard/modules/Profile/components/MuVoyage/assets/images/Level5.webp"),
+        "Level 6": cdnUrl("src/modules/Dashboard/modules/Profile/components/MuVoyage/assets/images/Level6.webp"),
+        "Level 7": cdnUrl("src/modules/Dashboard/modules/Profile/components/MuVoyage/assets/images/Level7.webp"),
     };
 
     useEffect(() => {

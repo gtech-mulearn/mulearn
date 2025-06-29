@@ -1,5 +1,5 @@
-import image from "../../../assets/images/profileIcon.svg";
-import styles from "../LcDashboard.module.css";
+import styles from "./LcAttendees.module.css";
+import { cdnUrl } from "@/modules/utils/cdn";
 
 type Props = {
     name: string;
@@ -16,7 +16,7 @@ export const LcAttendees = (props: Props) => {
                     : styles.AttendeesWrapperIndividual
             }
         >
-            <img src={props.image || image} alt="" />
+            <img src={props.image || cdnUrl("src/modules/Dashboard/modules/LearningCircle/assets/images/profileIcon.svg")} alt="Profile Icon" />
             <p>{props.name}</p>
         </div>
     );

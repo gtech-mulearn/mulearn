@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./KarmaEarners.module.css";
 import { FaFire } from "react-icons/fa";
-import profileImage from "../../../assets/images/dpm.webp";
+import { cdnUrl } from "@/modules/utils/cdn";
 import { useNavigate } from "react-router-dom";
 
 type KarmaEarnersProps = {

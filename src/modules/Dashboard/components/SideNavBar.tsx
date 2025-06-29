@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 
 import styles from "./SideNavBar.module.css";
 
-import MulearnBrand from "../assets/MulearnBrand";
+import { cdnUrl } from "@/modules/utils/cdn";
 import SideNavBarBody from "./SideNavBarBody";
 import { useNavigate } from "react-router-dom";
 
@@ -92,7 +92,7 @@ const SideNavBar = ({ sidebarButtons }: Props) => {
             >
                 <div className={styles.side_nav_bar}>
                     <div className={styles.mulearn_brand} onClick={()=> navigate("/")}>
-                        <MulearnBrand />
+                        <img src={cdnUrl("images/µLearn.png")} alt="Mulearn Brand" />
                     </div>
                     <SideNavBarBody
                         sidebarButtons={sidebarButtons}

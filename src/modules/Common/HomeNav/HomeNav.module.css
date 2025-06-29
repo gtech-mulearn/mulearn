@@ -12,7 +12,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 5rem;
+  height: 6rem;
   width: 100%;
   padding-left: 3rem;
   padding-right: 3rem;
@@ -23,6 +23,10 @@
   display: flex;
   align-items: center;
   flex-shrink: 0;
+}
+
+.logo img{
+  height: 3rem;
 }
 
 /* Navigation Links */
@@ -432,7 +436,7 @@
   }
 
   .logo {
-    margin: 1rem 0 0 1rem;
+    margin: 0.5rem 0 0 1rem;
   }
 }
 

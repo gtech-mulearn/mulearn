@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./HomeNav.module.css";
-import MulearnBrand from "../../../modules/Dashboard/assets/MulearnBrand";
+import { cdnUrl } from "@/modules/utils/cdn";
+
 import { interestGroups } from "../../Dashboard/modules/InterestGroups/data/interestGroups";
 
 interface NavItem {
@@ -203,7 +204,7 @@ const HomeNav: React.FC = () => {
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <a className={styles.logo} onClick={() => navigate("/")}>
-            <MulearnBrand />
+            <img src={cdnUrl("public/assets/µLearn.png")} alt="Mulearn Brand" />
           </a>
 
           <ul className={styles.navLinks}>
@@ -274,7 +275,7 @@ const HomeNav: React.FC = () => {
       {isMobileView && (
         <div className={styles.mobileHeader}>
           <a className={styles.logo} onClick={() => navigate("/")}>
-            <MulearnBrand />
+          <img src={cdnUrl("public/assets/µLearn.png")} alt="Mulearn Brand" />
           </a>
           <motion.button
             className={styles.hamburger}

@@ -1,8 +1,5 @@
 import styles from "./NotFound.module.css";
-import stone from "./assests/NotFound/Stone.webp";
-import fourNotFour from "./assests/NotFound/FourNotFour.webp";
-import NoBgFourNotFour from "./assests/NotFound/NoBgFourNotFour.webp";
-import smallRocks from "./assests/NotFound/SmallRocks.webp";
+import { cdnUrl } from "@/modules/utils/cdn";
 
 const NotFound = () => {
     return (
@@ -20,7 +17,7 @@ const NotFound = () => {
                 </div>
                 <div className={styles.Notsecond}>
                     <div className={styles.l}>l</div>
-                    <img className={styles.o} src={stone} alt="stone" />
+                    <img className={styles.o} src={cdnUrl("src/components/assests/NotFound/Stone.webp")} alt="Stone" />
                     <div className={styles.s}>s</div>
                     <div className={styles.t}>t</div>
                 </div>
@@ -36,11 +33,11 @@ const NotFound = () => {
                 alt=""
             />
 
-            <img className={styles.NotFound404} src={fourNotFour} alt="" />
+            <img className={styles.NotFound404} src={cdnUrl("src/components/assests/NotFound/FourNotFour.webp")} alt="404" />
 
-            <img className={styles.NotFoundRocks} src={smallRocks} alt="" />
+            <img className={styles.NotFoundRocks} src={cdnUrl("src/components/assests/NotFound/SmallRocks.webp")} alt="Small Rocks" />
 
-            <img className={styles.NotFoundMars} src={NoBgFourNotFour} alt="" />
+            <img className={styles.NotFoundMars} src={cdnUrl("src/components/assests/NotFound/NoBgFourNotFour.webp")} alt="404 No Background" />
         </div>
     );
 };
