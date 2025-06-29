@@ -33,12 +33,10 @@ const ConnectDiscord = () => {
 
     useEffect(() => {
         if (token) {
-            connectDiscord(token).then(res => {
+            connectDiscord(token as string).then(res => {
                 if (res) {
-                    // Fetch latest user info
                     getInfo(navigate, setMuid, () => {
-                        const userInfoString = localStorage.getItem("userInfo");
-                        const userInfo = userInfoString ? JSON.parse(userInfoString) : null;
+                        const userInfo = JSON.parse(localStorage.getItem("userInfo")!);
                         if (userInfo && userInfo.exist_in_guild) {
                             navigate("/dashboard/profile");
                         } else {
@@ -58,7 +56,7 @@ const ConnectDiscord = () => {
                 }
             });
         }
-    }, []);
+    }, [token, navigate]);
 
     return (
         <>
