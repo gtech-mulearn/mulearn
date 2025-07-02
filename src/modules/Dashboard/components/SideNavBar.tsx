@@ -92,7 +92,7 @@ const SideNavBar = ({ sidebarButtons }: Props) => {
             >
                 <div className={styles.side_nav_bar}>
                     <div className={styles.mulearn_brand} onClick={()=> navigate("/")}>
-                        <img src={cdnUrl("images/µLearn.png")} alt="Mulearn Brand" />
+                        <img src={cdnUrl("public/assets/µLearn.png")} alt="Mulearn Brand" />
                     </div>
                     <SideNavBarBody
                         sidebarButtons={sidebarButtons}
