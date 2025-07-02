@@ -1,8 +1,9 @@
 import { FaLinkedin, FaInstagram, FaYoutube, FaFacebook, FaGithub, FaTwitter } from "react-icons/fa";
 import styles from "./TeamCard.module.css";
 import { FaX } from "react-icons/fa6";
+import { cdnUrl } from "@/modules/utils/cdn";
 
-const img = "assets/team/default.webp";
+const img = cdnUrl("public/assets/team/default.webp");
 
 const TeamCard = ({ name, designation, image, linkedIn, github, twitter, muid, leadDesignation }: any) => {
   return (

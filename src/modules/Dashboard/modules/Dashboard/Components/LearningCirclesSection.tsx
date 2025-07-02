@@ -4,7 +4,6 @@ import styles from "./LearningCirclesSection.module.css";
 import { deleteScheduleMeetup, getMeetups } from "../../LearningCircleV2/services/LearningCircleAPIs";
 import { CircleMeetupInfo } from "../../LearningCircleV2/services/LearningCircleInterface";
 import EventDetailsModal from "../../LearningCircleV2/components/EventDetailsModal/EventDetailsModal";
-import EmptyImage from "../assets/empty.webp";
 import { Dialog, DialogContent, DialogOverlay } from "@/components/ui/dialog";
 import { LearningCircleListItem } from "../../LearningCircleV2/pages/landing/components/learning-circle-list-item";
 import { LearningCircleCard } from "../../LearningCircleV2/pages/landing/components/learning-circle-card";
@@ -13,6 +12,7 @@ import { Plus } from "lucide-react";
 import { CreateLearningCircleForm } from "../../LearningCircleV2/pages/landing/components/create-learning-circle-form";
 import MuLoader from "@/components/MuComponents/MuLoader/MuLoader";
 import { currentIgsData } from "./InterestGroups";
+import { cdnUrl } from "@/modules/utils/cdn";
 
 interface LearningCircleProps {
   domain: string;
@@ -118,7 +118,7 @@ const LearningCirclesSection: React.FC<LearningCircleProps> = ({ domain }) => {
           return domainIds.includes(circle.ig_id);
         }).length === 0 ? (
           <div className={styles.noLc}>
-            <img src={EmptyImage} alt="No Learning Circle Found!" className={styles.emptyImage} />
+            <img src={cdnUrl("src/modules/Dashboard/modules/Dashboard/Components/assets/empty.webp")} alt="No Learning Circle Found!" className={styles.emptyImage} />
             <div className={styles.content}>
               <h2 className={styles.title}>No Learning Circle Found!</h2>
               <button

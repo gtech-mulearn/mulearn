@@ -10,6 +10,8 @@ import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
 import { ArrowUpRight } from "lucide-react";
 
+import { cdnUrl } from "@/modules/utils/cdn";
+
 const shuffleQuestions = (questions: Question[]): Question[] => {
     const shuffled = [...questions];
     for (let i = shuffled.length - 1; i > 0; i--) {
@@ -145,7 +147,7 @@ export default function PathFinderComponent({
                                 }
                             >
                                 <img
-                                    src={"/assets/dashboard/illustrations/learner.webp"}
+                                    src={cdnUrl("public/assets/dashboard/illustrations/learner.webp")}
                                     alt="Explore"
                                 // className={styles.boxImage}
                                 />
@@ -160,7 +162,7 @@ export default function PathFinderComponent({
                                 onClick={() => setCurrentQuestionIndex(0)}
                             >
                                 <img
-                                    src={"/assets/dashboard/illustrations/expert.webp"}
+                                    src={cdnUrl("public/assets/dashboard/illustrations/expert.webp")}
                                     alt="Quiz"
                                 // className={styles.boxImage}
                                 />
@@ -180,7 +182,7 @@ export default function PathFinderComponent({
                         <div>
                             {questions[currentQuestionIndex] && (
                                 <div className={styles.questionBoxContainer}>
-                                    <img src="/assets/dashboard/illustrations/expert.webp" alt="" />
+                                    <img src={cdnUrl("public/assets/dashboard/illustrations/expert.webp")} alt="" />
                                     <div className={styles.questionBoxContent}>
                                         <span className={styles.status}>
                                             Question {currentQuestionIndex + 1} of{" "}

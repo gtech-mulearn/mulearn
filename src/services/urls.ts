@@ -317,14 +317,14 @@ export const donationRoutes = {
 
 
 export const qseverseRoutes = {
-    issueVerifiableCredentials: "api/issue_vc_app",
-    getAllConnectedUsers: "api/app/connected-users",
-    getConnectedUsers: "api/app/connected-users/search",
-    getCredentials: "api/user/credentials",
     getAchievements: "api/v1/dashboard/achievement/list/",
     createAchievements: "api/v1/dashboard/achievement/create/",
     updateAchievements: "api/v1/dashboard/achievement/update/",
     deleteAchievements: "api/v1/dashboard/achievement/delete/",
     getUserAchievements: "api/v1/dashboard/achievement/list/user/",
-    updateVCURL: "api/v1/dashboard/achievement/issue-vc/"
+    updateVCURL: "api/v1/dashboard/achievement/issue-vc/",
+    issueVerifiableCredentials: "api/v1/integrations/qseverse/issue-vc/",
+    getAllConnectedUsers: "api/v1/integrations/qseverse/connected-users/",
+    getConnectedUsers: "api/v1/integrations/qseverse/connected-users/search",
+    getCredentials: "api/v1/integrations/qseverse/qs-credentials/"
 }

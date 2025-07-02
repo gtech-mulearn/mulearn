@@ -1,5 +1,5 @@
-import styles from "../../LearningCircle.module.css";
-import imageBottom from "../../../assets/images/LC3.webp";
+import styles from "./YourMeetups.module.css";
+import { cdnUrl } from "@/modules/utils/cdn";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -90,7 +90,7 @@ const YourMeetups = ({ user_id }: { user_id: string | null }) => {
                     ) : (
                         <div className={styles.learningCircleLandingPageMiddle}>
                             <img
-                                src={imageBottom}
+                                src={cdnUrl("src/modules/Dashboard/modules/LearningCircle/assets/images/LC3.webp")}
                                 alt="No meetups"
                                 loading="eager"
                                 className={styles.desaturate}

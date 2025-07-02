@@ -1,7 +1,7 @@
 [
   {
     "name": "Sharon Aliyas Johnson",
-    "image": "assets/team/2024/Interns/Backend Developer/Sharon Aliyas Johnson.jpeg",
+    "image": "public/assets/team/2024/Interns/Backend Developer/Sharon Aliyas Johnson.jpeg",
     "muid": "sharonaliyasjohnson@mulearn",
     "linkedin": "https://www.linkedin.com/in/sharonaliyas/",
     "twitter": "",
@@ -11,7 +11,7 @@
   },
   {
     "name": "Rinto Joseph T R",
-    "image": "assets/team/2024/Interns/Bot Developer/Rinto Joseph T R.jpeg",
+    "image": "public/assets/team/2024/Interns/Bot Developer/Rinto Joseph T R.jpeg",
     "muid": "rintojosephtr@mulearn",
     "linkedin": "https://www.linkedin.com/in/rintojosephtr?utm_source=share&utm_campaign=share_via&utm_content=profile",
     "twitter": "https://x.com/rinto_joseph_tr?s=09",
@@ -21,7 +21,7 @@
   },
   {
     "name": "Parthip P.R",
-    "image": "assets/team/2024/Interns/Backend Developer/Parthip P.R.jpeg",
+    "image": "public/assets/team/2024/Interns/Backend Developer/Parthip P.R.jpeg",
     "muid": "parthip.p.r@mulearn",
     "linkedin": "https://www.linkedin.com/in/parthip-p-r-25987b229/",
     "twitter": "",
@@ -31,7 +31,7 @@
   },
   {
     "name": "Kethan Krishna P K",
-    "image": "assets/team/2024/Interns/Backend Developer/Kethan Krishna P K.jpeg",
+    "image": "public/assets/team/2024/Interns/Backend Developer/Kethan Krishna P K.jpeg",
     "muid": "kethankrishnapk@mulearn",
     "linkedin": "https://www.linkedin.com/in/kethan-krishna-6a4226262/",
     "twitter": "",
@@ -41,7 +41,7 @@
   },
   {
     "name": "Dilshad Mohammed",
-    "image": "assets/team/2024/Interns/Backend Developer/Dilshad Mohammed.jpeg",
+    "image": "public/assets/team/2024/Interns/Backend Developer/Dilshad Mohammed.jpeg",
     "muid": "dilshadmohammed@mulearn",
     "linkedin": "https://www.linkedin.com/in/dilshad-mohammed",
     "twitter": "",
@@ -51,7 +51,7 @@
   },
   {
     "name": "ALFRIN POULOSE",
-    "image": "assets/team/2024/Interns/Backend Developer/ALFRIN POULOSE.jpeg",
+    "image": "public/assets/team/2024/Interns/Backend Developer/ALFRIN POULOSE.jpeg",
     "muid": "alfrinpoulose@mulearn",
     "linkedin": "https://www.linkedin.com/in/alfrinpoulose/",
     "twitter": "",
@@ -61,7 +61,7 @@
   },
   {
     "name": "Namitha Manoj",
-    "image": "assets/team/2024/Interns/Operation Manager/Namitha Manoj.jpeg",
+    "image": "public/assets/team/2024/Interns/Operation Manager/Namitha Manoj.jpeg",
     "muid": "namithamanoj-1@mulearn",
     "linkedin": "https://www.linkedin.com/in/namithamanoj/",
     "twitter": "",
@@ -71,7 +71,7 @@
   },
   {
     "name": "Noyal Joseph",
-    "image": "assets/team/2024/Interns/Bot Developer/Noyal Joseph.jpeg",
+    "image": "public/assets/team/2024/Interns/Bot Developer/Noyal Joseph.jpeg",
     "muid": "noyaljoseph@mulearn",
     "linkedin": "www.linkedin.com/in/stdestiny",
     "twitter": "",
@@ -81,7 +81,7 @@
   },
   {
     "name": "Maryam Mohamed Yahya",
-    "image": "assets/team/2024/Interns/Content Writer/Maryam Mohamed Yahya.jpeg",
+    "image": "public/assets/team/2024/Interns/Content Writer/Maryam Mohamed Yahya.jpeg",
     "muid": "maryammohamedyahya@mulearn",
     "linkedin": "https://www.linkedin.com/in/maryam-mohamed-yahya-568810294/",
     "twitter": "",
@@ -91,7 +91,7 @@
   },
   {
     "name": "Manupriya Dhanush Vayalambron",
-    "image": "assets/team/2024/Interns/Content Writer/Manupriya Dhanush Vayalambron.jpeg",
+    "image": "public/assets/team/2024/Interns/Content Writer/Manupriya Dhanush Vayalambron.jpeg",
     "muid": "manupriyadhanushvayalambron-1@mulearn",
     "linkedin": "https://www.linkedin.com/in/manupriya-dhanush-vayalambron?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     "twitter": "",
@@ -101,7 +101,7 @@
   },
   {
     "name": "Tanmaya Remeyn",
-    "image": "assets/team/2024/Interns/Content Writer/Tanmaya Remeyn.jpeg",
+    "image": "public/assets/team/2024/Interns/Content Writer/Tanmaya Remeyn.jpeg",
     "muid": "tanmayaremeyn@mulearn",
     "linkedin": "https://www.linkedin.com/in/tanmaya-remeyn-627370291/",
     "twitter": "",
@@ -111,7 +111,7 @@
   },
   {
     "name": "Lekha R",
-    "image": "assets/team/2024/Interns/Content Writer/Lekha R.jpeg",
+    "image": "public/assets/team/2024/Interns/Content Writer/Lekha R.jpeg",
     "muid": "lekhar.@mulearn",
     "linkedin": "https://www.linkedin.com/in/lekha-r-0a0b88230",
     "twitter": "",
@@ -121,7 +121,7 @@
   },
   {
     "name": "Shinana Uzhunnan",
-    "image": "assets/team/2024/Interns/Content Writer/Shinana Uzhunnan.jpeg",
+    "image": "public/assets/team/2024/Interns/Content Writer/Shinana Uzhunnan.jpeg",
     "muid": "shinanauzhunnan@mulearn",
     "linkedin": "https://www.linkedin.com/in/shinana-uzhunnan-86837a250/",
     "twitter": "",
@@ -131,7 +131,7 @@
   },
   {
     "name": "Smrithi T S",
-    "image": "assets/team/2024/Interns/Content Writer/Smrithi T S.jpeg",
+    "image": "public/assets/team/2024/Interns/Content Writer/Smrithi T S.jpeg",
     "muid": "smrithits@mulearn",
     "linkedin": "www.linkedin.com/in/smrithi-t-s-300141292",
     "twitter": "https://twitter.com/Smrithi_TS",
@@ -141,7 +141,7 @@
   },
   {
     "name": "ANGANA S",
-    "image": "assets/team/2024/Interns/Operation Manager/ANGANA S.jpeg",
+    "image": "public/assets/team/2024/Interns/Operation Manager/ANGANA S.jpeg",
     "muid": "anganas@mulearn",
     "linkedin": "www.linkedin.com/in/angana-s",
     "twitter": "",
@@ -151,7 +151,7 @@
   },
   {
     "name": "ANAS N",
-    "image": "assets/team/2024/Interns/Partner Engagement/ANAS N.jpeg",
+    "image": "public/assets/team/2024/Interns/Partner Engagement/ANAS N.jpeg",
     "muid": "anasn@mulearn",
     "linkedin": "www.linkedin.com/in/anas-n-5a845820a/",
     "twitter": "",
@@ -161,7 +161,7 @@
   },
   {
     "name": "Durga Satheesh",
-    "image": "assets/team/2024/Interns/Interest Group Management/Durga Satheesh.jpeg",
+    "image": "public/assets/team/2024/Interns/Interest Group Management/Durga Satheesh.jpeg",
     "muid": "durgasatheesh@mulearn",
     "linkedin": "https://www.linkedin.com/in/durga-satheesh-723264270",
     "twitter": "",
@@ -171,7 +171,7 @@
   },
   {
     "name": "NAYANIKA B GITANJALI ",
-    "image": "assets/team/2024/Interns/Content Writer/NAYANIKA B GITANJALI.jpeg",
+    "image": "public/assets/team/2024/Interns/Content Writer/NAYANIKA B GITANJALI.jpeg",
     "muid": "nayanikab.gitanjali@mulearn",
     "linkedin": "https://www.linkedin.com/in/nayanika-b-gitanjali-041b992b3",
     "twitter": "",
@@ -181,7 +181,7 @@
   },
   {
     "name": "M. R. Lekshmi Priya",
-    "image": "assets/team/2024/Interns/Social Media Marketer/M. R. Lekshmi Priya.jpeg",
+    "image": "public/assets/team/2024/Interns/Social Media Marketer/M. R. Lekshmi Priya.jpeg",
     "muid": "m.r.lekshmipriya@mulearn",
     "linkedin": "https://www.linkedin.com/in/lekshmi-priya-m-r-70b517290",
     "twitter": "",
@@ -191,7 +191,7 @@
   },
   {
     "name": "Karthika Pazhampilly ",
-    "image": "assets/team/2024/Interns/Social Media Marketer/Karthika Pazhampilly.jpeg",
+    "image": "public/assets/team/2024/Interns/Social Media Marketer/Karthika Pazhampilly.jpeg",
     "muid": "karthikapazhampilly@mulearn",
     "linkedin": "https://www.linkedin.com/in/karthika-pazhampilly-509887286?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     "twitter": "",
@@ -201,7 +201,7 @@
   },
   {
     "name": "NIRANJ R",
-    "image": "assets/team/2024/Interns/Graphic Designer/NIRANJ R.jpeg",
+    "image": "public/assets/team/2024/Interns/Graphic Designer/NIRANJ R.jpeg",
     "muid": "niranjr@mulearn",
     "linkedin": "https://www.linkedin.com/in/niranj-r-8308b2275?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     "twitter": "",
@@ -211,7 +211,7 @@
   },
   {
     "name": "Jose Thomas",
-    "image": "assets/team/2024/Interns/Social Media Marketer/Jose Thomas.jpeg",
+    "image": "public/assets/team/2024/Interns/Social Media Marketer/Jose Thomas.jpeg",
     "muid": "josethomas@mulearn",
     "linkedin": "https://www.linkedin.com/in/jose-thomas-62696527b/",
     "twitter": "",
@@ -221,7 +221,7 @@
   },
   {
     "name": "Arjun C Vinod",
-    "image": "assets/team/2024/Interns/UI Developer/Arjun C Vinod.jpeg",
+    "image": "public/assets/team/2024/Interns/UI Developer/Arjun C Vinod.jpeg",
     "muid": "arjuncvinod@mulearn",
     "linkedin": "https://www.linkedin.com/in/arjun-c-vinod/",
     "twitter": "https://twitter.com/ArjunCVinod7",
@@ -231,7 +231,7 @@
   },
   {
     "name": "Alan Francis Santhosh",
-    "image": "assets/team/2024/Interns/Frontend Developer/Alan Francis Santhosh.jpeg",
+    "image": "public/assets/team/2024/Interns/Frontend Developer/Alan Francis Santhosh.jpeg",
     "muid": "alanfrancissanthosh-1@mulearn",
     "linkedin": "https://www.linkedin.com/in/alan-francis-santhosh-92811b298/",
     "twitter": "",
@@ -241,7 +241,7 @@
   },
   {
     "name": "NANDHANA KP",
-    "image": "assets/team/2024/Interns/Content Writer/NANDHANA KP.jpeg",
+    "image": "public/assets/team/2024/Interns/Content Writer/NANDHANA KP.jpeg",
     "muid": "nandhanakp@mulearn",
     "linkedin": "www.linkedin.com/in/nandhana-kp-662312251",
     "twitter": "",
@@ -251,7 +251,7 @@
   },
   {
     "name": "SANDRA ALEX",
-    "image": "assets/team/2024/Interns/Interest Group Management/SANDRA ALEX.jpeg",
+    "image": "public/assets/team/2024/Interns/Interest Group Management/SANDRA ALEX.jpeg",
     "muid": "sandraalex-1@mulearn",
     "linkedin": "www.linkedin.com/in/sandra07alex",
     "twitter": "",
@@ -261,7 +261,7 @@
   },
   {
     "name": "Maanas M S",
-    "image": "assets/team/2024/Interns/Public Relation/Maanas M S.jpeg",
+    "image": "public/assets/team/2024/Interns/Public Relation/Maanas M S.jpeg",
     "muid": "maanastvm@gmail.com@mulearn",
     "linkedin": "https://www.linkedin.com/in/maanasms",
     "twitter": "https://twitter.com/maanasms",
@@ -271,7 +271,7 @@
   },
   {
     "name": "Ayush Krishnan U",
-    "image": "assets/team/2024/Interns/Social Media Marketer/Ayush Krishnan U.jpeg",
+    "image": "public/assets/team/2024/Interns/Social Media Marketer/Ayush Krishnan U.jpeg",
     "muid": "ayushkrishnanu@mulearn",
     "linkedin": "https://www.linkedin.com/in/ayush-krishnan-u-910520259/",
     "twitter": "",
@@ -281,7 +281,7 @@
   },
   {
     "name": "Ardra p",
-    "image": "assets/team/2024/Interns/Operation Manager/Ardra p.jpeg",
+    "image": "public/assets/team/2024/Interns/Operation Manager/Ardra p.jpeg",
     "muid": "ardrap-1mulearn",
     "linkedin": "https://www.linkedin.com/in/ardra-ganesan-b20518290?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     "twitter": "",
@@ -291,7 +291,7 @@
   },
   {
     "name": "Rafan Hatim",
-    "image": "assets/team/2024/Interns/UI Developer/Rafan Hatim.jpeg",
+    "image": "public/assets/team/2024/Interns/UI Developer/Rafan Hatim.jpeg",
     "muid": "rafanhatim@mulearn",
     "linkedin": "https://www.linkedin.com/in/rafanhatim/",
     "twitter": "",
@@ -301,7 +301,7 @@
   },
   {
     "name": "ABIKRISHNA S",
-    "image": "assets/team/2024/Interns/Graphic Designer/ABIKRISHNA S.jpeg",
+    "image": "public/assets/team/2024/Interns/Graphic Designer/ABIKRISHNA S.jpeg",
     "muid": "abikrishnas-1@mulearn",
     "linkedin": "https://www.linkedin.com/in/abi-krishna-s-70303323b/",
     "twitter": "",
@@ -311,7 +311,7 @@
   },
   {
     "name": "Muhammed Sinan N",
-    "image": "assets/team/2024/Interns/Graphic Designer/Muhammed Sinan N.jpeg",
+    "image": "public/assets/team/2024/Interns/Graphic Designer/Muhammed Sinan N.jpeg",
     "muid": "muhammedsinan-5@mulearn",
     "linkedin": "https://www.linkedin.com/in/muhammed-sinan-n-0112a12a3?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     "twitter": "",
@@ -321,7 +321,7 @@
   },
   {
     "name": "Agnivesh P S",
-    "image": "assets/team/2024/Interns/Graphic Designer/Agnivesh P S.jpeg",
+    "image": "public/assets/team/2024/Interns/Graphic Designer/Agnivesh P S.jpeg",
     "muid": "agniveshp.s.@mulearn",
     "linkedin": "https://www.linkedin.com/in/agniveshps/",
     "twitter": "https://twitter.com/AgniveshPS23",
@@ -331,7 +331,7 @@
   },
   {
     "name": "Sreedev Vp",
-    "image": "assets/team/2024/Interns/UI Designer/Sreedev Vp.jpeg",
+    "image": "public/assets/team/2024/Interns/UI Designer/Sreedev Vp.jpeg",
     "muid": "sreedevvp@mulearn",
     "linkedin": "https://www.linkedin.com/in/sreedev-vp-65517a267?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
     "twitter": "",
@@ -341,7 +341,7 @@
   },
   {
     "name": "Sajir A",
-    "image": "assets/team/2024/Interns/UX Designer/Sajir A.jpeg",
+    "image": "public/assets/team/2024/Interns/UX Designer/Sajir A.jpeg",
     "muid": "sajira@mulearn",
     "linkedin": "https://www.linkedin.com/in/sajir-abdul-a96a9b286/",
     "twitter": "",
@@ -351,7 +351,7 @@
   },
   {
     "name": "Chris Thomas Abraham ",
-    "image": "assets/team/2024/Interns/Graphic Designer/Chris Thomas Abraham.jpeg",
+    "image": "public/assets/team/2024/Interns/Graphic Designer/Chris Thomas Abraham.jpeg",
     "muid": "christhomasabraham@mulearn",
     "linkedin": "https://www.linkedin.com/in/chris-thomas-abraham-411458298?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     "twitter": "",
@@ -361,7 +361,7 @@
   },
   {
     "name": "Aysha K H",
-    "image": "assets/team/2024/Interns/Public Relation/Aysha K H.jpeg",
+    "image": "public/assets/team/2024/Interns/Public Relation/Aysha K H.jpeg",
     "muid": "ayshakh@mulearn",
     "linkedin": "linkedin.com/in/aysha-kh-9261382aa",
     "twitter": "",
@@ -371,7 +371,7 @@
   },
   {
     "name": "Maria Sara Raju ",
-    "image": "assets/team/2024/Interns/Operation Manager/Maria Sara Raju.jpeg",
+    "image": "public/assets/team/2024/Interns/Operation Manager/Maria Sara Raju.jpeg",
     "muid": "mariasararaju@mulearn",
     "linkedin": "https://www.linkedin.com/in/maria-sara-raju-53856a2a9/",
     "twitter": "",
@@ -381,7 +381,7 @@
   },
   {
     "name": "Alen Koshy Pramod",
-    "image": "assets/team/2024/Interns/Operation Manager/Alen Koshy Pramod.jpeg",
+    "image": "public/assets/team/2024/Interns/Operation Manager/Alen Koshy Pramod.jpeg",
     "muid": "alenpramod@mulearn",
     "linkedin": "https://www.linkedin.com/in/alen-koshy-pramod-2241b7228/",
     "twitter": "",
@@ -391,7 +391,7 @@
   },
   {
     "name": "Chaithra C B ",
-    "image": "assets/team/2024/Interns/HR Executive/Chaithra C B.jpeg",
+    "image": "public/assets/team/2024/Interns/HR Executive/Chaithra C B.jpeg",
     "muid": "chaithracb@mulearn",
     "linkedin": "https://www.linkedin.com/in/chaithra-c-b-32a8492a6?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     "twitter": "",
@@ -401,7 +401,7 @@
   },
   {
     "name": "Aaron Shaji",
-    "image": "assets/team/2024/Interns/Interest Group Management/Aaron Shaji.jpeg",
+    "image": "public/assets/team/2024/Interns/Interest Group Management/Aaron Shaji.jpeg",
     "muid": "aaronanniyan@mulearn",
     "linkedin": "https://www.linkedin.com/in/a6rron/",
     "twitter": "https://twitter.com/home",
@@ -411,7 +411,7 @@
   },
   {
     "name": "Arjun TK",
-    "image": "assets/team/2024/Interns/Content Writer/Arjun TK.jpeg",
+    "image": "public/assets/team/2024/Interns/Content Writer/Arjun TK.jpeg",
     "muid": "arjuntk-1@mulearn",
     "linkedin": "https://www.linkedin.com/in/arjuntk005?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     "twitter": "",
@@ -421,7 +421,7 @@
   },
   {
     "name": "Niranjan Biju",
-    "image": "assets/team/2024/Interns/Operation Manager/Niranjan Biju.jpeg",
+    "image": "public/assets/team/2024/Interns/Operation Manager/Niranjan Biju.jpeg",
     "muid": "niranjanbiju@mulearn",
     "linkedin": "https://www.linkedin.com/in/niranjan-biju-573957284",
     "twitter": "",
@@ -431,7 +431,7 @@
   },
   {
     "name": "Muhammed Nabeel N A",
-    "image": "assets/team/2024/Interns/UX Designer/Muhammed Nabeel N A.jpeg",
+    "image": "public/assets/team/2024/Interns/UX Designer/Muhammed Nabeel N A.jpeg",
     "muid": "muhammednabeel@mulearn",
     "linkedin": "https://www.linkedin.com/in/nabeel-mn1/",
     "twitter": "",
@@ -441,7 +441,7 @@
   },
   {
     "name": "Muhammed Ziyan Ummalil",
-    "image": "assets/team/2024/Interns/Operation Manager/Muhammed Ziyan Ummalil.jpeg",
+    "image": "public/assets/team/2024/Interns/Operation Manager/Muhammed Ziyan Ummalil.jpeg",
     "muid": "muhammedziyanummalil@mulearn",
     "linkedin": "https://www.linkedin.com/in/mziyan/",
     "twitter": "",
@@ -451,7 +451,7 @@
   },
   {
     "name": "Jyothsna P Nair",
-    "image": "assets/team/2024/Interns/Operation Manager/Jyothsna P Nair.jpeg",
+    "image": "public/assets/team/2024/Interns/Operation Manager/Jyothsna P Nair.jpeg",
     "muid": "jyothsnapnair-1@mulearn",
     "linkedin": "www.linkedin.com/in/jyothsna-p-nair-11b734273",
     "twitter": "",
@@ -461,7 +461,7 @@
   },
   {
     "name": "Akash A",
-    "image": "assets/team/2024/Interns/Operation Manager/Akash A.jpeg",
+    "image": "public/assets/team/2024/Interns/Operation Manager/Akash A.jpeg",
     "muid": "akasha@mulearn",
     "linkedin": "https://linkedin.com/in/ecoholic",
     "twitter": "https://twitter.com/ecoholic84",
@@ -471,7 +471,7 @@
   },
   {
     "name": "Jose Thomas",
-    "image": "assets/team/2024/Interns/Social Media Marketer/Jose Thomas.jpeg",
+    "image": "public/assets/team/2024/Interns/Social Media Marketer/Jose Thomas.jpeg",
     "muid": "josethomas@mulearn",
     "linkedin": "https://www.linkedin.com/in/jose-thomas-62696527b/",
     "twitter": "",
@@ -481,7 +481,7 @@
   },
   {
     "name": "Marvin Varghese Mathew",
-    "image": "assets/team/2024/Interns/Digital Marketing/Marvin Varghese Mathew.jpeg",
+    "image": "public/assets/team/2024/Interns/Digital Marketing/Marvin Varghese Mathew.jpeg",
     "muid": "marvinmathew@mulearn",
     "linkedin": "https://www.linkedin.com/in/marvin-v-mathew-881446255?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
     "twitter": "",
@@ -491,7 +491,7 @@
   },
   {
     "name": "Abhishek R S",
-    "image": "assets/team/2024/Interns/Digital Marketing/Abhishek R S.jpeg",
+    "image": "public/assets/team/2024/Interns/Digital Marketing/Abhishek R S.jpeg",
     "muid": "abhishekrs@mulearn",
     "linkedin": "https://www.linkedin.com/in/abhishek-rs-a0a360231?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     "twitter": "",
@@ -501,7 +501,7 @@
   },
   {
     "name": "Betcy Rajan",
-    "image": "assets/team/2024/Interns/Operation Manager/Betcy Rajan.jpeg",
+    "image": "public/assets/team/2024/Interns/Operation Manager/Betcy Rajan.jpeg",
     "muid": "betcyrajan@mulearn",
     "linkedin": "www.linkedin.com/in/betcy-rajan",
     "twitter": "",
@@ -511,7 +511,7 @@
   },
   {
     "name": "Geevarghese Regi",
-    "image": "assets/team/2024/Interns/Frontend Developer/Geevarghese Regi.jpeg",
+    "image": "public/assets/team/2024/Interns/Frontend Developer/Geevarghese Regi.jpeg",
     "muid": "geevarghese@mulearn",
     "linkedin": "https://in.linkedin.com/in/geevarghese-regi-658531214",
     "twitter": "",
@@ -521,7 +521,7 @@
   },
   {
     "name": "YASAR ARAFATH M",
-    "image": "assets/team/2024/Interns/Partner Engagement/YASAR ARAFATH M.jpeg",
+    "image": "public/assets/team/2024/Interns/Partner Engagement/YASAR ARAFATH M.jpeg",
     "muid": "yasararafathm@mulearn",
     "linkedin": "https://www.linkedin.com/in/yasar-arafath-203126218?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     "twitter": "",
@@ -531,7 +531,7 @@
   },
   {
     "name": "Mehbin A C",
-    "image": "assets/team/2024/Interns/Operation Manager/Mehbin A C.jpeg",
+    "image": "public/assets/team/2024/Interns/Operation Manager/Mehbin A C.jpeg",
     "muid": "mehbinac@mulearn",
     "linkedin": "https://www.linkedin.com/in/mehbinac/",
     "twitter": "",
@@ -541,7 +541,7 @@
   },
   {
     "name": "G Hithesh ",
-    "image": "assets/team/2024/Interns/Partner Engagement/G Hithesh.jpeg",
+    "image": "public/assets/team/2024/Interns/Partner Engagement/G Hithesh.jpeg",
     "muid": "ghithesh@mulearn",
     "linkedin": "https://www.linkedin.com/in/hithesh-g-9a09612a8?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     "twitter": "",
@@ -551,7 +551,7 @@
   },
   {
     "name": "Aryan C",
-    "image": "assets/team/2024/Interns/Interest Group Management/Aryan C.jpeg",
+    "image": "public/assets/team/2024/Interns/Interest Group Management/Aryan C.jpeg",
     "muid": "aryanc@mulearn",
     "linkedin": "https://www.linkedin.com/in/aryan-cholakkal-3a7616225/",
     "twitter": "",
@@ -561,7 +561,7 @@
   },
   {
     "name": "DILSHAD AHAMMED",
-    "image": "assets/team/2024/Interns/Campus Management/DILSHAD AHAMMED.jpeg",
+    "image": "public/assets/team/2024/Interns/Campus Management/DILSHAD AHAMMED.jpeg",
     "muid": "dilshadahammedn@mulearn",
     "linkedin": "https://www.linkedin.com/in/dilshad-ahemmed/",
     "twitter": "",
@@ -571,7 +571,7 @@
   },
   {
     "name": "Anna Jaison",
-    "image": "assets/team/2024/Interns/Public Relation/Anna Jaison.jpeg",
+    "image": "public/assets/team/2024/Interns/Public Relation/Anna Jaison.jpeg",
     "muid": "annajaison@mulearn",
     "linkedin": "https://www.linkedin.com/in/anna-jaison-/",
     "twitter": "https://twitter.com/anna_jaiso19448",
@@ -581,7 +581,7 @@
   },
   {
     "name": "Aimee Jobi",
-    "image": "assets/team/2024/Interns/HR Executive/Aimee Jobi.jpeg",
+    "image": "public/assets/team/2024/Interns/HR Executive/Aimee Jobi.jpeg",
     "muid": "aimeejobi@mulearn",
     "linkedin": "https://www.linkedin.com/in/aimee-jobi/",
     "twitter": "",
@@ -591,7 +591,7 @@
   },
   {
     "name": "Shreerag Namboothiri K H",
-    "image": "assets/team/2024/Interns/QA Tester/Shreerag Namboothiri K H.jpeg",
+    "image": "public/assets/team/2024/Interns/QA Tester/Shreerag Namboothiri K H.jpeg",
     "muid": "shreeragnamboothirikh@mulearn",
     "linkedin": "www.linkedin.com/in/shreerag-namboothiri-k-h-2014b6243",
     "twitter": "",
@@ -601,7 +601,7 @@
   },
   {
     "name": "Pavithra S S",
-    "image": "assets/team/2024/Interns/UI Designer/Pavithra S S.jpeg",
+    "image": "public/assets/team/2024/Interns/UI Designer/Pavithra S S.jpeg",
     "muid": "pavithrass@mulearn",
     "linkedin": "https://www.linkedin.com/in/pavithra-s-s-91246b257",
     "twitter": "",
@@ -611,7 +611,7 @@
   },
   {
     "name": "Aiswarya Muralidharan",
-    "image": "assets/team/2024/Interns/QA Tester/Aiswarya Muralidharan.jpeg",
+    "image": "public/assets/team/2024/Interns/QA Tester/Aiswarya Muralidharan.jpeg",
     "muid": "aiswarya-5@mulearn",
     "linkedin": "linkedin.com/in/aiswary a-m-5b4b91296/",
     "twitter": "",
@@ -621,7 +621,7 @@
   },
   {
     "name": "Vidhya Vijayakumar",
-    "image": "assets/team/2024/Interns/QA Tester/Vidhya Vijayakumar.jpeg",
+    "image": "public/assets/team/2024/Interns/QA Tester/Vidhya Vijayakumar.jpeg",
     "muid": "vidhyavijayakumar@mulearn",
     "linkedin": "www.linkedin.com/in/vidhya-vijayakumar-15a502226",
     "twitter": "",
@@ -631,7 +631,7 @@
   },
   {
     "name": "Janukrishna A S",
-    "image": "assets/team/2024/Interns/Interest Group Management/Janukrishna A S.jpeg",
+    "image": "public/assets/team/2024/Interns/Interest Group Management/Janukrishna A S.jpeg",
     "muid": "janukrishnaa.s@mulearn",
     "linkedin": "https://www.linkedin.com/in/janukrishna-a-s-4ba8301b2/",
     "twitter": "",
@@ -641,7 +641,7 @@
   },
   {
     "name": "Arjun Subhash Kumar ",
-    "image": "assets/team/2024/Interns/Partner Engagement/Arjun Subhash Kumar.jpeg",
+    "image": "public/assets/team/2024/Interns/Partner Engagement/Arjun Subhash Kumar.jpeg",
     "muid": "arjunsubhashkumar@mulearn",
     "linkedin": "https://www.linkedin.com/in/arjun-subhash-kumar-b44198299/",
     "twitter": "",
@@ -651,7 +651,7 @@
   },
   {
     "name": "EDWIN SHAJU MALAKARAN",
-    "image": "assets/team/2024/Interns/UI Designer/EDWIN SHAJU MALAKARAN.jpeg",
+    "image": "public/assets/team/2024/Interns/UI Designer/EDWIN SHAJU MALAKARAN.jpeg",
     "muid": "edwinshaju@mulearn",
     "linkedin": "www.linkedin.com/in/edwinlegend",
     "twitter": "",
@@ -661,7 +661,7 @@
   },
   {
     "name": "Bhagyasree ",
-    "image": "assets/team/2024/Interns/UI Designer/Bhagyasree.jpeg",
+    "image": "public/assets/team/2024/Interns/UI Designer/Bhagyasree.jpeg",
     "muid": "bhagyasree@mulearn",
     "linkedin": "https://www.linkedin.com/in/bhagya-sree-a2a870291?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     "twitter": "",
@@ -671,7 +671,7 @@
   },
   {
     "name": "George Emmanuel Thomas",
-    "image": "assets/team/2024/Interns/Frontend Developer/George Emmanuel Thomas.jpeg",
+    "image": "public/assets/team/2024/Interns/Frontend Developer/George Emmanuel Thomas.jpeg",
     "muid": "georgeemmanuelthomas@mulearn",
     "linkedin": "https://www.linkedin.com/in/george-emmanuel-thomas-518060202/",
     "twitter": "",
@@ -681,7 +681,7 @@
   },
   {
     "name": "Fathima B",
-    "image": "assets/team/2024/Interns/Social Media Marketer/Fathima B.jpeg",
+    "image": "public/assets/team/2024/Interns/Social Media Marketer/Fathima B.jpeg",
     "muid": "fathimab-1@mulearn",
     "linkedin": "www.linkedin.com/in/fathimabee2003",
     "twitter": "",
@@ -691,7 +691,7 @@
   },
   {
     "name": "Nobin Sijo",
-    "image": "assets/team/2024/Interns/UI Designer/Nobin Sijo.jpeg",
+    "image": "public/assets/team/2024/Interns/UI Designer/Nobin Sijo.jpeg",
     "muid": "nobinsijo@mulearn",
     "linkedin": "https://www.linkedin.com/in/nobin-sijo-a22711291/?originalSubdomain=in",
     "twitter": "",
@@ -701,7 +701,7 @@
   },
   {
     "name": "Sneha Mariam Mani",
-    "image": "assets/team/2024/Interns/UX Designer/Sneha Mariam Mani.jpeg",
+    "image": "public/assets/team/2024/Interns/UX Designer/Sneha Mariam Mani.jpeg",
     "muid": "snehamariammani@mulearn",
     "linkedin": "https://www.linkedin.com/in/sneha-mariam-mani-9367a0204/",
     "twitter": "",
@@ -711,7 +711,7 @@
   },
   {
     "name": "Niveditha Deepak",
-    "image": "assets/team/2024/Interns/UX Designer/Niveditha Deepak.jpeg",
+    "image": "public/assets/team/2024/Interns/UX Designer/Niveditha Deepak.jpeg",
     "muid": "nivedithadeepak@mulearn",
     "linkedin": "https://www.linkedin.com/in/niveditha-deepak-68550121b/",
     "twitter": "",
@@ -721,7 +721,7 @@
   },
   {
     "name": "Devadathan DR",
-    "image": "assets/team/2024/Interns/Digital Marketing/Devadathan DR.jpeg",
+    "image": "public/assets/team/2024/Interns/Digital Marketing/Devadathan DR.jpeg",
     "muid": "devadathandr@mulearn",
     "linkedin": "www.linkedin.com/in/devadathandr",
     "twitter": "",
@@ -731,7 +731,7 @@
   },
   {
     "name": "Abhishek R S",
-    "image": "assets/team/2024/Interns/Digital Marketing/Abhishek R S.jpeg",
+    "image": "public/assets/team/2024/Interns/Digital Marketing/Abhishek R S.jpeg",
     "muid": "abhishekrs@mulearn",
     "linkedin": "https://www.linkedin.com/in/abhishek-r-s-a0a360231?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     "twitter": "",
@@ -741,7 +741,7 @@
   },
   {
     "name": "Muhammed Saif CA",
-    "image": "assets/team/2024/Interns/Partner Engagement/Muhammed Saif CA.jpeg",
+    "image": "public/assets/team/2024/Interns/Partner Engagement/Muhammed Saif CA.jpeg",
     "muid": "muhmmedsaifca@mulearn",
     "linkedin": "www.linkedin.com/in/muhammed-saif-ca-72a612204",
     "twitter": "",
@@ -751,7 +751,7 @@
   },
   {
     "name": "Sona M B",
-    "image": "assets/team/2024/Interns/Partner Engagement/Sona M B.jpeg",
+    "image": "public/assets/team/2024/Interns/Partner Engagement/Sona M B.jpeg",
     "muid": "sonamb@mulearn",
     "linkedin": "https://www.linkedin.com/in/sona-m-b-b08b9a219",
     "twitter": "",
@@ -761,7 +761,7 @@
   },
   {
     "name": "Sabal Krishna S",
-    "image": "assets/team/2024/Interns/Partner Engagement/Sabal Krishna S.jpeg",
+    "image": "public/assets/team/2024/Interns/Partner Engagement/Sabal Krishna S.jpeg",
     "muid": "sabalkrishnas@mulearn",
     "linkedin": "https://in.linkedin.com/in/sabal-krishna-s-29b758298",
     "twitter": "",
@@ -771,7 +771,7 @@
   },
   {
     "name": "BISWAS SEKHAR",
-    "image": "assets/team/2024/Interns/Graphic Designer/BISWAS SEKHAR.jpeg",
+    "image": "public/assets/team/2024/Interns/Graphic Designer/BISWAS SEKHAR.jpeg",
     "muid": "biswassekhar@mulearn",
     "linkedin": "https://in.linkedin.com/in/biswas-sekhar",
     "twitter": "",
@@ -781,7 +781,7 @@
   },
   {
     "name": "Tomson J Finosh ",
-    "image": "assets/team/2024/Interns/Digital Marketing/Tomson J Finosh.jpeg",
+    "image": "public/assets/team/2024/Interns/Digital Marketing/Tomson J Finosh.jpeg",
     "muid": "tomsonjfinosh@mulearn",
     "linkedin": "https://www.linkedin.com/in/tomson-j-785063279?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     "twitter": "",
@@ -791,7 +791,7 @@
   },
   {
     "name": "TINO S N",
-    "image": "assets/team/2024/Interns/Interest Group Management/TINO S N.jpeg",
+    "image": "public/assets/team/2024/Interns/Interest Group Management/TINO S N.jpeg",
     "muid": "tino.s.n@mulearn",
     "linkedin": "https://www.linkedin.com/in/tinosn",
     "twitter": "",
@@ -801,7 +801,7 @@
   },
   {
     "name": "Aswin Krishna",
-    "image": "assets/team/2024/Interns/Interest Group Management/Aswin Krishna.jpeg",
+    "image": "public/assets/team/2024/Interns/Interest Group Management/Aswin Krishna.jpeg",
     "muid": "aswinkrishna-3@mulearn",
     "linkedin": "www.linkedin.com/in/aswinkrishna07",
     "twitter": "https://twitter.com/733n_wolf",
@@ -811,7 +811,7 @@
   },
   {
     "name": "Abhinav S B",
-    "image": "assets/team/2024/Interns/Social Media Marketer/Abhinav S B.jpeg",
+    "image": "public/assets/team/2024/Interns/Social Media Marketer/Abhinav S B.jpeg",
     "muid": "abhinavsb-2@mulearn",
     "linkedin": "https://www.linkedin.com/in/abhinav-s-b-33058b222",
     "twitter": "",
@@ -821,7 +821,7 @@
   },
   {
     "name": "Alfina Haneef P",
-    "image": "assets/team/2024/Interns/Content Writer/Alfina Haneef P.jpeg",
+    "image": "public/assets/team/2024/Interns/Content Writer/Alfina Haneef P.jpeg",
     "muid": "alfinahaneefp@mulearn",
     "linkedin": "https://www.linkedin.com/in/alfina-haneef-p-150544261/",
     "twitter": "",
@@ -831,7 +831,7 @@
   },
   {
     "name": "Alina Pinheiro",
-    "image": "assets/team/2024/Interns/Content Writer/Alina Pinheiro.jpeg",
+    "image": "public/assets/team/2024/Interns/Content Writer/Alina Pinheiro.jpeg",
     "muid": "alinapinheiro@mulearn",
     "linkedin": "https://www.linkedin.com/in/alina-pinheiro-458665255",
     "twitter": "",
@@ -841,7 +841,7 @@
   },
   {
     "name": "Allen R Mathew",
-    "image": "assets/team/2024/Interns/Video Editor/Allen R Mathew.jpeg",
+    "image": "public/assets/team/2024/Interns/Video Editor/Allen R Mathew.jpeg",
     "muid": "allenrmathew@mulearn",
     "linkedin": "https://www.linkedin.com/in/allen-r-mathew-497051293/",
     "twitter": "",
@@ -851,7 +851,7 @@
   },
   {
     "name": "Althaf Hussain M U",
-    "image": "assets/team/2024/Interns/UX Designer/Althaf Hussain M U.jpeg",
+    "image": "public/assets/team/2024/Interns/UX Designer/Althaf Hussain M U.jpeg",
     "muid": "althafhussainmu@mulearn",
     "linkedin": "https://www.linkedin.com/in/althaf-hussain-a9926b257/",
     "twitter": "",
@@ -861,7 +861,7 @@
   },
   {
     "name": "Amaze Al Harris ",
-    "image": "assets/team/2024/Interns/Video Editor/Amaze Al Harris.jpeg",
+    "image": "public/assets/team/2024/Interns/Video Editor/Amaze Al Harris.jpeg",
     "muid": "amazealharris@mulearn",
     "linkedin": "https://www.linkedin.com/in/amaze-al-harris-186919224",
     "twitter": "",
@@ -871,7 +871,7 @@
   },
   {
     "name": "Arfaz Khan Hijas Khan",
-    "image": "assets/team/2024/Interns/UI Designer/Arfaz Khan Hijas Khan.jpeg",
+    "image": "public/assets/team/2024/Interns/UI Designer/Arfaz Khan Hijas Khan.jpeg",
     "muid": "arfazkhan@mulearn",
     "linkedin": "https://www.linkedin.com/in/arfazkhan/",
     "twitter": "https://twitter.com/arfuzkhan__",
@@ -881,7 +881,7 @@
   },
   {
     "name": "Aswanth V C",
-    "image": "assets/team/2024/Interns/Bot Developer/Aswanth V C.jpeg",
+    "image": "public/assets/team/2024/Interns/Bot Developer/Aswanth V C.jpeg",
     "muid": "aswanthvc@mulearn",
     "linkedin": "https://www.linkedin.com/in/aswanth-vc-2612b91b9",
     "twitter": "",
@@ -891,7 +891,7 @@
   },
   {
     "name": "GOKUL J DEV ",
-    "image": "assets/team/2024/Interns/Blender Designer/GOKUL J DEV.jpeg",
+    "image": "public/assets/team/2024/Interns/Blender Designer/GOKUL J DEV.jpeg",
     "muid": "gokuljdev@mulearn",
     "linkedin": "https://www.linkedin.com/in/gokul-j-dev",
     "twitter": "https://x.com/GokulJDev1?t=iMVwmLFL2D3wQCJYVMBfxQ&s=08",
@@ -901,7 +901,7 @@
   },
   {
     "name": "Jelan Mathew James",
-    "image": "assets/team/2024/Interns/Backend Developer/Jelan Mathew James.jpeg",
+    "image": "public/assets/team/2024/Interns/Backend Developer/Jelan Mathew James.jpeg",
     "muid": "jelanmathewjames@mulearn",
     "linkedin": "https://www.linkedin.com/in/jelan-mathew-james-571490220",
     "twitter": "",
@@ -911,7 +911,7 @@
   },
   {
     "name": "K H Arjun",
-    "image": "assets/team/2024/Interns/Social Media Marketer/K H Arjun.jpeg",
+    "image": "public/assets/team/2024/Interns/Social Media Marketer/K H Arjun.jpeg",
     "muid": "arjunkh@mulearn",
     "linkedin": "https://www.linkedin.com/in/k-h-arjun-310913206/",
     "twitter": "I currently don't have a twitter(X) account",
@@ -921,7 +921,7 @@
   },
   {
     "name": "Krishna Prasanth S",
-    "image": "assets/team/2024/Interns/Blender Designer/Krishna Prasanth S.jpeg",
+    "image": "public/assets/team/2024/Interns/Blender Designer/Krishna Prasanth S.jpeg",
     "muid": "krishnaprasanths@mulearn",
     "linkedin": "https://www.linkedin.com/in/krishna-prasanth-s",
     "twitter": "https://drive.google.com/drive/folders/1LDowW3GM8isQRH72iy_IOUJxKsBa56XW?usp=sharing",
@@ -931,7 +931,7 @@
   },
   {
     "name": "M Viraj Prabhu",
-    "image": "assets/team/2024/Interns/Frontend Developer/M Viraj Prabhu.jpeg",
+    "image": "public/assets/team/2024/Interns/Frontend Developer/M Viraj Prabhu.jpeg",
     "muid": "mvirajprabhu@mulearn",
     "linkedin": "https://linkedin.com/in/mvirajprabhu",
     "twitter": "https://twitter.com/virajprabhup",
@@ -941,7 +941,7 @@
   },
   {
     "name": "Mahesh S ",
-    "image": "assets/team/2024/Interns/Social Media Marketer/Mahesh S.jpeg",
+    "image": "public/assets/team/2024/Interns/Social Media Marketer/Mahesh S.jpeg",
     "muid": "maheshs-1@mulearn",
     "linkedin": " https://in.linkedin.com/in/mahesh-s-4a9a44214",
     "twitter": "",
@@ -951,7 +951,7 @@
   },
   {
     "name": "Sanit A Ambookkan ",
-    "image": "assets/team/2024/Interns/Video Editor/Sanit A Ambookkan.jpeg",
+    "image": "public/assets/team/2024/Interns/Video Editor/Sanit A Ambookkan.jpeg",
     "muid": "sanitaambookkan@mulearn",
     "linkedin": "https://www.linkedin.com/in/sanit-a-ambookkan-77abb825b",
     "twitter": "",
@@ -961,7 +961,7 @@
   },
   {
     "name": "Saran S P",
-    "image": "assets/team/2024/Interns/Video Editor/Saran S P.jpeg",
+    "image": "public/assets/team/2024/Interns/Video Editor/Saran S P.jpeg",
     "muid": "saransp@mulearn",
     "linkedin": "https://www.linkedin.com/in/saran-sp-75750225b/",
     "twitter": "",
@@ -971,7 +971,7 @@
   },
   {
     "name": "Shivani Nair Lekshmi",
-    "image": "assets/team/2024/Interns/UX Designer/Shivani Nair Lekshmi.jpeg",
+    "image": "public/assets/team/2024/Interns/UX Designer/Shivani Nair Lekshmi.jpeg",
     "muid": "shivaninairlekshmi-1@mulearn",
     "linkedin": "https://www.linkedin.com/in/shivani-nair-lekshmi-2635a4232",
     "twitter": "https://x.com/LekshmiShi85169?t=5pKevtP0oQBgkVV12-fdmw&s=09",
@@ -981,7 +981,7 @@
   },
   {
     "name": "ABHIJITH K R",
-    "image": "assets/team/2024/Interns/Backend Developer/ABHIJITH K R.jpeg",
+    "image": "public/assets/team/2024/Interns/Backend Developer/ABHIJITH K R.jpeg",
     "muid": "abhijithkr-1@mulearn",
     "linkedin": "https://www.linkedin.com/in/abhijith-k-r-0a181a236/",
     "twitter": "",

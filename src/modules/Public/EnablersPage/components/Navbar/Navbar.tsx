@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Navbar.module.css';
-import EnablerLogo from '../../assests/EnablerLogo.webp';
+import { cdnUrl } from '@/modules/utils/cdn';
 
 export default function Navbar() {
     const navbar = React.useRef<HTMLDivElement>(null); 
@@ -39,7 +39,7 @@ export default function Navbar() {
     return (
         <div ref={navbar} className={styles.menuBar}>
             <div className={styles.logo}>
-                <a href="/"><img src={EnablerLogo} alt="Logo" /></a>
+                <a href="/"><img src={cdnUrl("src/modules/Public/EnablersPage/assests/EnablerLogo.webp")} alt="Logo" /></a>
             </div>
             <div className={styles.menu}>
                 <a href="/">Home</a>

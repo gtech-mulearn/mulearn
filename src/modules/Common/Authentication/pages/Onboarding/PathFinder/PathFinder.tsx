@@ -2,16 +2,12 @@ import { useState, useCallback } from "react";
 import PathFinderComponent from "../../../components/PathFinder/PathFinderComponent";
 import toast from "react-hot-toast";
 import styles from "./PathFinder.module.css";
-import software from "/assets/landing/coder2.webp";
-import maker from "/assets/landing/maker.webp";
-import management from "/assets/landing/manager.webp";
-import creative from "/assets/landing/creative.webp";
+import { cdnUrl } from "@/modules/utils/cdn";
 import OnboardingTemplate from "../../../components/OnboardingTeamplate/OnboardingTemplate";
 import { IoCheckmarkSharp } from "react-icons/io5";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
 import { useNavigate } from "react-router-dom";
-import mu from "/src/modules/Common/Authentication/assets/µLearn.png";
 import { useUserStore } from "/src/ZustandProvider";
 
 // Define types for interests and endgoals
@@ -28,10 +24,10 @@ type Endgoal = {
 };
 
 const ALL_PATHWAYS: Pathway[] = [
-  { title: "Coder", value: "coder", img: software },
-  { title: "Maker", value: "maker", img: maker },
-  { title: "Manager", value: "manager", img: management },
-  { title: "Creative", value: "creative", img: creative },
+  { title: "Coder", value: "coder", img: cdnUrl("public/assets/landing/coder2.webp") },
+  { title: "Maker", value: "maker", img: cdnUrl("public/assets/landing/maker.webp") },
+  { title: "Manager", value: "manager", img: cdnUrl("public/assets/landing/manager.webp") },
+  { title: "Creative", value: "creative", img: cdnUrl("public/assets/landing/creative.webp") },
 ];
 
 const INITIAL_ENDGOALS: Endgoal[] = [
@@ -249,7 +245,7 @@ export default function PathFinder() {
     <OnboardingTemplate>
       <div className={styles.popUp}>
         <div className={styles.box}>
-          <img src={mu} alt="mulearn logo" className={styles.mu} />
+          <img src={cdnUrl("assets/µLearn.png")} alt="mulearn logo" className={styles.mu} />
           <h1>{stepTwo ? "What do you expect by MuLearning" : "Based on Your Questionnaire Responses"}</h1>
           <p className={styles.subText}>
             {stepTwo

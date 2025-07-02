@@ -1,20 +1,10 @@
 import { useState, useEffect } from "react";
 import styles from "./trivial.module.css";
-import logo from "../assets/µLearn.svg";
-import white_logo from "../assets/logo_whight.svg";
+import { cdnUrl } from "@/modules/utils/cdn";
 import Button from "../components/botton/button";
 import Price from "./price";
 import ProcessDiagram from "./process/process";
 import Faqs from "./faq";
-import pattern1 from "../assets/pattern1.png";
-import pattern2 from "../assets/pattern2.png";
-import pattern3 from "../assets/pattern3.png";
-import pattern4 from "../assets/pattern4.png";
-import steve from "../assets/steve.png"
-import elone from "../assets/elone.png"
-import mark from "../assets/mark.png"
-import peoples from "../assets/peoples.png"
-import arrow from "../assets/arrow.png"
 import { IoMenu } from "react-icons/io5";
 import { IoMdClose } from "react-icons/io";
 import { motion } from "framer-motion";
@@ -22,23 +12,21 @@ import { Helmet } from "react-helmet";
 import navbar from "@/modules/Common/HomeNav/HomeNav";
 import Footer from "@/modules/Common/Footer/Footer";
 
-
-
 const patterns = [
     {
-        img: pattern1,
+        img: cdnUrl("src/modules/Public/TrivialIdeas/assets/pattern1.png"),
         text: "A chance to build and deploy your ideas"
     },
     {
-        img: pattern2,
+        img: cdnUrl("src/modules/Public/TrivialIdeas/assets/pattern2.png"),
         text: "Forge connections that elevate you"
     },
     {
-        img: pattern3,
+        img: cdnUrl("src/modules/Public/TrivialIdeas/assets/pattern3.png"),
         text: "Get a chance to win ₹ 1 lakh prize pool"
     },
     {
-        img: pattern4,
+        img: cdnUrl("src/modules/Public/TrivialIdeas/assets/pattern4.png"),
         text: "Get feedbacks from certified mentors"
     }
 ];
@@ -71,13 +59,13 @@ function Trivial() {
                 <title>Trivial Ideas | µLearn</title>
                 <meta
                     name="description"
-                    content="Share your spark at µLearn’s Trivial Ideas hub. Submit ideas, collaborate with peers and transform simple thoughts into real-world innovations."
+                    content="Share your spark at µLearn's Trivial Ideas hub. Submit ideas, collaborate with peers and transform simple thoughts into real-world innovations."
                 />
                 <meta property="og:title" content="Trivial Ideas | µLearn" />
                 <meta property="og:url" content="https://app.mulearn.org/trivial-ideas" />
                 <meta
                     property="og:description"
-                    content="Share your spark at µLearn’s Trivial Ideas hub. Submit ideas, collaborate with peers and transform simple thoughts into real-world innovations."
+                    content="Share your spark at µLearn's Trivial Ideas hub. Submit ideas, collaborate with peers and transform simple thoughts into real-world innovations."
                 />
             </Helmet>
             <div className={`${styles.container}`}>
@@ -89,7 +77,7 @@ function Trivial() {
                         justifyContent: "space-between",
                         width: "100%",
                     }}>
-                        <img src={white_logo} alt="" />
+                        <img src={cdnUrl("src/modules/Public/TrivialIdeas/assets/logo_whight.svg")} alt="µLearn white logo" />
                         <div style={{ cursor: "pointer", backgroundColor: "white", color: "black", padding: '0.5rem', borderRadius: "2.5rem" }} onClick={handelSideNav}>
                             <IoMdClose size={35} />
                         </div>
@@ -118,13 +106,13 @@ function Trivial() {
                     <h1>Trivial Ideas</h1>
                     <div>
                         <p>
-                            Turn <img src={steve} alt="" /> Your
+                            Turn <img src={cdnUrl("src/modules/Public/TrivialIdeas/assets/steve.png")} alt="Steve Jobs illustration" /> Your
                         </p>
                         <p>
-                            Crazy, Wild <img src={elone} alt="" /> Ideas
+                            Crazy, Wild <img src={cdnUrl("src/modules/Public/TrivialIdeas/assets/elone.png")} alt="Elon Musk illustration" /> Ideas
                         </p>
                         <p>
-                            Into <img src={mark} alt="" /> Real Products!
+                            Into <img src={cdnUrl("src/modules/Public/TrivialIdeas/assets/mark.png")} alt="Mark Zuckerberg illustration" /> Real Products!
                         </p>
                     </div>
                     <div className={`${styles.subText}`}>
@@ -149,7 +137,7 @@ function Trivial() {
                         >
                             <p>This monthly event is your chance to transform your </p>
                             <p>'What If' ideas into something real. And guess what?</p>
-                            <p>We’ll reward you for your creativity!</p>
+                            <p>We'll reward you for your creativity!</p>
                         </div>
                     </div>
                     <div className={`${styles.patter_container}`}>
@@ -157,7 +145,7 @@ function Trivial() {
                             patterns.map((pattern, index) => {
                                 return (
                                     <div className={`${styles.card}`} key={index}>
-                                        <img src={pattern.img} style={{ height: "200px", width: "200px" }} alt="q" />
+                                        <img src={pattern.img} style={{ height: "200px", width: "200px" }} alt="Feature illustration" />
                                         <p>{pattern.text}</p>
                                     </div>
                                 );
@@ -173,8 +161,8 @@ function Trivial() {
                         color: "#2E85FE"
                     }}>Crazy</span> People</h1>
                     <div className={styles.image_container}>
-                        <img src={peoples} alt="" />
-                        <img className={styles.arrow} src={arrow} alt="" />
+                        <img src={cdnUrl("src/modules/Public/TrivialIdeas/assets/peoples.png")} alt="Community members" />
+                        <img className={styles.arrow} src={cdnUrl("src/modules/Public/TrivialIdeas/assets/arrow.png")} alt="Arrow indicator" />
                     </div>
                     <div style={{
                         display: "flex",

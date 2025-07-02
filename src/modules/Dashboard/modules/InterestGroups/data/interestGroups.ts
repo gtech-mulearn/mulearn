@@ -1,4 +1,6 @@
 // ./data/interestGroups.ts
+import { cdnUrl } from "@/modules/utils/cdn";
+
 export interface Opportunity {
   title: string;
   description: string;
@@ -119,9 +121,9 @@ export const interestGroups: InterestGroupData[] = [
     id: "46fe1fb7-7b04-4ebe-837d-120bc16d0e0a",
     title: "UI/UX Interest Group",
     description:
-      "Welcome to the UI/UX Interest Group! We’re a vibrant community of designers, researchers, and enthusiasts passionate about crafting intuitive and beautiful digital experiences.",
+      "Welcome to the UI/UX Interest Group! We're a vibrant community of designers, researchers, and enthusiasts passionate about crafting intuitive and beautiful digital experiences.",
     bannerImage:
-      "/assets/IG/Cover/1.webp",
+      cdnUrl("public/assets/IG/Cover/1.webp"),
     memberSince: "July 2022",
     isPublic: true,
     officeHours: "Tuesday 7:30PM",
@@ -134,7 +136,7 @@ export const interestGroups: InterestGroupData[] = [
           name: "Abikrishna S",
           institution: "St. Thomas Institute for Science and Technology",
           linkedin: "https://www.linkedin.com/in/abikrishna-s-70303323b/",
-          image: "/assets/IG/UI-UX/IG Leads/Abikrishna S.webp",
+          image: cdnUrl("public/assets/IG/UI-UX/IG Leads/Abikrishna S.webp"),
           expertise: ["UI Design", "User Research"],
         },
       ],
@@ -288,7 +290,7 @@ export const interestGroups: InterestGroupData[] = [
           eventType: "Offline",
           date: "April 10, 2025",
           time: "09:00 - 12:00 WIB",
-          image: "/assets/interestgroup_assets/Top100Desigers3.webp",
+          image: cdnUrl("public/assets/interestgroup_assets/Top100Desigers3.webp"),
         },
         {
           id: "evt-003",
@@ -298,7 +300,7 @@ export const interestGroups: InterestGroupData[] = [
           eventType: "Online",
           date: "May 5, 2025",
           time: "10:00 - 11:30 GMT",
-          image: "/assets/interestgroup_assets/Top100Desigers2.webp",
+          image: cdnUrl("public/assets/interestgroup_assets/Top100Desigers2.webp"),
         },
         {
           id: "evt-004",
@@ -308,7 +310,7 @@ export const interestGroups: InterestGroupData[] = [
           eventType: "Offline",
           date: "June 20, 2025",
           time: "13:00 - 17:00 WIB",
-          image: "/assets/interestgroup_assets/Top100Desigers3.webp",
+          image: cdnUrl("public/assets/interestgroup_assets/Top100Desigers3.webp"),
         },
         {
           id: "evt-005",
@@ -318,7 +320,7 @@ export const interestGroups: InterestGroupData[] = [
           eventType: "Online",
           date: "July 12, 2025",
           time: "15:00 - 16:30 GMT",
-          image: "/assets/interestgroup_assets/Top100Desigers2.webp",
+          image: cdnUrl("public/assets/interestgroup_assets/Top100Desigers2.webp"),
         },
       ],
       learningPaths:
@@ -367,7 +369,7 @@ export const interestGroups: InterestGroupData[] = [
                         "https://www.coursera.org/lecture/start-ux-design-process/understand-personas-ZpYoj",
                       ],
                       description:
-                        "In this task, you are required to create personas of 3 target users and design a solution to the needs, based on research and data that provides a clear understanding of the users’ needs, goals, pain points, and motivations. Mention demographics, and users' quotes as well. After completing this task, share the PDF or Word File in the ⁠ui-ux channel using the hashtag #cl-ux-persona to avail 400 karma points.",
+                        "In this task, you are required to create personas of 3 target users and design a solution to the needs, based on research and data that provides a clear understanding of the users' needs, goals, pain points, and motivations. Mention demographics, and users' quotes as well. After completing this task, share the PDF or Word File in the ⁠ui-ux channel using the hashtag #cl-ux-persona to avail 400 karma points.",
                     },
                     {
                       title: "Create a User journey Map",
@@ -444,7 +446,7 @@ export const interestGroups: InterestGroupData[] = [
                         "https://www.figma.com/file/BhVVDrtphX5VSCqTz1wPaR/Competitor-Analysis-(Copy)?type=whiteboard&node-id=0%3A1&t=k2lljhoo7M05lcxm-1",
                       ],
                       description:
-                        "In this task, you are required to assess and write a report on a company’s rival, pointing out its strengths, weaknesses, and opportunities. Examine competitor products, marketing strategies, and customer feedback. Specify recommendations to enhance the company’s position as well. Follow this template: https://www.figma.com/file/BhVVDrtphX5VSCqTz1wPaR/Competitor-Analysis-(Copy)?type=whiteboard&node-id=0%3A1&t=k2lljhoo7M05lcxm-1 NOTE: There should be a minimum of 3 competitors. After completing this task, share the PDF of your report in the ⁠ui-ux channel using the hashtag #cl-ux-competitivereport to avail 800 karma points.",
+                        "In this task, you are required to assess and write a report on a company's rival, pointing out its strengths, weaknesses, and opportunities. Examine competitor products, marketing strategies, and customer feedback. Specify recommendations to enhance the company's position as well. Follow this template: https://www.figma.com/file/BhVVDrtphX5VSCqTz1wPaR/Competitor-Analysis-(Copy)?type=whiteboard&node-id=0%3A1&t=k2lljhoo7M05lcxm-1 NOTE: There should be a minimum of 3 competitors. After completing this task, share the PDF of your report in the ⁠ui-ux channel using the hashtag #cl-ux-competitivereport to avail 800 karma points.",
                     },
                     {
                       title: "Card Sorting Design Method",
@@ -483,7 +485,7 @@ export const interestGroups: InterestGroupData[] = [
                       title: "Design a splash screen",
                       resources: ["https://youtu.be/CZ440x65k-g?si=So63AmMoVHh3mjYI"],
                       description:
-                        "To create an effective splash screen, begin by understanding its purpose: it serves as an introduction to the app or website, showcasing the brand’s logo, colors, or key visual elements while the application loads. Design a visually appealing concept using brand-aligned elements such as the logo, color palette, and typography. Ensure the design reflects the brand identity and creates a positive first impression. Consider responsiveness by designing the splash screen to look great on different devices, including mobile phones, tablets, and desktops. Use tools like Figma to create an interactive prototype of the splash screen, simulating how it will appear and function. Once the task is completed, document your design process, and share both your Figma file URL and prototype URL in the ⁠ui-ux channel using the hashtag #cl-ux-splashscreen to earn 600 karma points.",
+                        "To create an effective splash screen, begin by understanding its purpose: it serves as an introduction to the app or website, showcasing the brand's logo, colors, or key visual elements while the application loads. Design a visually appealing concept using brand-aligned elements such as the logo, color palette, and typography. Ensure the design reflects the brand identity and creates a positive first impression. Consider responsiveness by designing the splash screen to look great on different devices, including mobile phones, tablets, and desktops. Use tools like Figma to create an interactive prototype of the splash screen, simulating how it will appear and function. Once the task is completed, document your design process, and share both your Figma file URL and prototype URL in the ⁠ui-ux channel using the hashtag #cl-ux-splashscreen to earn 600 karma points.",
                     },
                   ],
                 },
@@ -536,7 +538,7 @@ export const interestGroups: InterestGroupData[] = [
                       title: "Create a Responsive and Interactive Accordion in Figma",
                       resources: ["https://youtu.be/SQWMFFhBSaE?si=mUDOGxJ6vS-0qtjw"],
                       description:
-                        "To design an effective accordion layout, start by creating the basic structure using tools like Figma. Utilize frames and rectangles to design collapsible panels with clearly defined section titles and expandable content areas. Next, add interactivity by linking sections in Figma’s prototype tab. Set up interactions that allow users to expand or collapse sections by clicking, ensuring smooth transitions between states. Focus on responsiveness by adapting the accordion layout for various screen sizes, including mobile, tablet, and desktop. Adjust spacing, font sizes, and interaction zones to maintain usability across devices. Test the accordion to ensure smooth functionality and refine the design based on feedback or observed usability issues. Once finalized, document the design process and share both the Figma file URL and prototype URL in the ⁠ui-ux channel using the hashtag #cl-ux-accordion to earn 500 karma points.",
+                        "To design an effective accordion layout, start by creating the basic structure using tools like Figma. Utilize frames and rectangles to design collapsible panels with clearly defined section titles and expandable content areas. Next, add interactivity by linking sections in Figma's prototype tab. Set up interactions that allow users to expand or collapse sections by clicking, ensuring smooth transitions between states. Focus on responsiveness by adapting the accordion layout for various screen sizes, including mobile, tablet, and desktop. Adjust spacing, font sizes, and interaction zones to maintain usability across devices. Test the accordion to ensure smooth functionality and refine the design based on feedback or observed usability issues. Once finalized, document the design process and share both the Figma file URL and prototype URL in the ⁠ui-ux channel using the hashtag #cl-ux-accordion to earn 500 karma points.",
                     },
                     {
                       title: "Hi-Fidelity UI Designs",
@@ -560,7 +562,7 @@ export const interestGroups: InterestGroupData[] = [
           name: "Enric S Neelamkaavil",
           role: "Product Designer @UST Global, µLearn Alumni",
           linkedin: "https://www.linkedin.com/in/enricsneelamkavil/",
-          image: "/assets/IG/UI-UX/Mentors/Enric S.webp",
+          image: cdnUrl("public/assets/IG/UI-UX/Mentors/Enric S.webp"),
           expertise: ["UI Design", "User Research"],
         },
       ],
@@ -589,7 +591,7 @@ export const interestGroups: InterestGroupData[] = [
     description:
       "Ever wondered how web applications are built? Everything seems complex until you learn the basics. μLearn Foundation's Web Development Interest Group is designed to help you develop and refine your skills, bringing together people eager to explore emerging web technologies.",
     bannerImage:
-      "/assets/IG/Cover/2.webp",
+      cdnUrl("public/assets/IG/Cover/2.webp"),
 
 
     memberSince: "March 2021",
@@ -604,14 +606,14 @@ export const interestGroups: InterestGroupData[] = [
           name: "JanuKrishna A S",
           institution: "Marian Engineering College",
           linkedin: "https://www.linkedin.com/in/janukrishna-a-s-4ba8301b2",
-          image: "/assets/IG/Web Development/IG Leads/Janukrishna AS.webp",
+          image: cdnUrl("public/assets/IG/Web Development/IG Leads/Janukrishna AS.webp"),
           expertise: ["Frontend Development", "Backend Development"],
         },
         {
           name: "Maanas M S",
           institution: "Marian Engineering College",
           linkedin: "https://www.linkedin.com/in/maanasms/",
-          image: "/assets/IG/Web Development/IG Leads/Maanas MS.webp",
+          image: cdnUrl("public/assets/IG/Web Development/IG Leads/Maanas MS.webp"),
           expertise: ["Web Design", "Database Management"],
         },
       ],
@@ -752,7 +754,7 @@ export const interestGroups: InterestGroupData[] = [
           eventType: "Offline",
           date: "April 25, 2025",
           time: "10:00 - 14:00 WIB",
-          image: "/assets/interestgroup_assets/Top100Desigers2.webp",
+          image: cdnUrl("public/assets/interestgroup_assets/Top100Desigers2.webp"),
         },
       ],
       learningPaths: [
@@ -1007,7 +1009,7 @@ export const interestGroups: InterestGroupData[] = [
           name: "Amal CP",
           role: "Associate Software Developer @ SOTI",
           linkedin: "https://www.linkedin.com/in/amal-c-p/",
-          image: "/assets/IG/Web Development/Mentors/Amal C P.webp",
+          image: cdnUrl("public/assets/IG/Web Development/Mentors/Amal C P.webp"),
           expertise: [], // Assuming no expertise listed; add if available
         },
         {
@@ -1015,7 +1017,7 @@ export const interestGroups: InterestGroupData[] = [
           name: "Bijo Mathew",
           role: "React Native Developer @ Superapps",
           linkedin: "https://www.linkedin.com/in/bijomathewjose/",
-          image: "/assets/IG/Web Development/Mentors/Bijo.webp",
+          image: cdnUrl("public/assets/IG/Web Development/Mentors/Bijo.webp"),
           expertise: [],
         },
         {
@@ -1023,7 +1025,7 @@ export const interestGroups: InterestGroupData[] = [
           name: "Arjun MS",
           role: "Backend Developer @ Gtech µLearn",
           linkedin: "https://www.linkedin.com/in/the-arjun-ms/",
-          image: "/assets/IG/Web Development/Mentors/Arjun M S.webp",
+          image: cdnUrl("public/assets/IG/Web Development/Mentors/Arjun M S.webp"),
           expertise: [],
         },
         {
@@ -1031,23 +1033,23 @@ export const interestGroups: InterestGroupData[] = [
           name: "Aswin Asok",
           role: "Co-Founder, MakeMyPass",
           linkedin: "https://www.linkedin.com/in/-aswinasok/",
-          image: "/assets/IG/Web Development/Mentors/Aswin Asok.webp",
+          image: cdnUrl("public/assets/IG/Web Development/Mentors/Aswin Asok.webp"),
           expertise: [],
         },
       ],
     },
     communityPartners: [
-      { id: "cp-002-1", title: "Pygrammers", image: "/assets/IG/Web Development/Community Partners/Pygrammers.webp", link: "#" },
-      { id: "cp-002-2", title: "Engagesport", image: "/assets/IG/Web Development/Community Partners/Engagespot.webp", link: "#" },
-      { id: "cp-002-3", title: "Reflections", image: "/assets/IG/Web Development/Community Partners/Reflections.webp", link: "#" },
-      { id: "cp-002-4", title: "Faya", image: "/assets/IG/Web Development/Community Partners/Faya.webp", link: "#" },
-      { id: "cp-002-5", title: "OpenFintech", image: "/assets/IG/Web Development/Community Partners/Open Fin Tech.webp", link: "#" },
-      { id: "cp-002-6", title: "GitHub", image: "/assets/IG/Web Development/Community Partners/Github.webp", link: "https://github.com" },
-      { id: "cp-002-7", title: "Elixir Labs", image: "/assets/IG/Web Development/Community Partners/Elixir Labs.webp", link: "#" },
-      { id: "cp-002-8", title: "Open Grad", image: "/assets/IG/Web Development/Community Partners/Open Grad.webp", link: "#" },
-      { id: "cp-002-9", title: "Softnotions", image: "/assets/IG/Web Development/Community Partners/Softnotions.webp", link: "#" },
-      { id: "cp-002-10", title: "Hamon Solutions", image: "/assets/IG/Web Development/Community Partners/Hamon.webp", link: "#" },
-      { id: "cp-002-11", title: "Alokin", image: "/assets/IG/Web Development/Community Partners/Alokin.webp", link: "#" },
+      { id: "cp-002-1", title: "Pygrammers", image: cdnUrl("public/assets/IG/Web Development/Community Partners/Pygrammers.webp"), link: "#" },
+      { id: "cp-002-2", title: "Engagesport", image: cdnUrl("public/assets/IG/Web Development/Community Partners/Engagespot.webp"), link: "#" },
+      { id: "cp-002-3", title: "Reflections", image: cdnUrl("public/assets/IG/Web Development/Community Partners/Reflections.webp"), link: "#" },
+      { id: "cp-002-4", title: "Faya", image: cdnUrl("public/assets/IG/Web Development/Community Partners/Faya.webp"), link: "#" },
+      { id: "cp-002-5", title: "OpenFintech", image: cdnUrl("public/assets/IG/Web Development/Community Partners/Open Fin Tech.webp"), link: "#" },
+      { id: "cp-002-6", title: "GitHub", image: cdnUrl("public/assets/IG/Web Development/Community Partners/Github.webp"), link: "https://github.com" },
+      { id: "cp-002-7", title: "Elixir Labs", image: cdnUrl("public/assets/IG/Web Development/Community Partners/Elixir Labs.webp"), link: "#" },
+      { id: "cp-002-8", title: "Open Grad", image: cdnUrl("public/assets/IG/Web Development/Community Partners/Open Grad.webp"), link: "#" },
+      { id: "cp-002-9", title: "Softnotions", image: cdnUrl("public/assets/IG/Web Development/Community Partners/Softnotions.webp"), link: "#" },
+      { id: "cp-002-10", title: "Hamon Solutions", image: cdnUrl("public/assets/IG/Web Development/Community Partners/Hamon.webp"), link: "#" },
+      { id: "cp-002-11", title: "Alokin", image: cdnUrl("public/assets/IG/Web Development/Community Partners/Alokin.webp"), link: "#" },
     ],
     partnerCompanies: [
       {
@@ -1066,7 +1068,7 @@ export const interestGroups: InterestGroupData[] = [
     description:
       "Curious about protecting the digital world? The Cybersecurity Interest Group by GTech μLearn delves into securing data and networks from potential threats. This group provides essential knowledge on staying safe online, ideal for those passionate about keeping cyberspace secure.",
     bannerImage:
-      "/assets/IG/Cover/3.webp",
+      cdnUrl("public/assets/IG/Cover/3.webp"),
 
 
     memberSince: "September 2020",
@@ -1081,28 +1083,28 @@ export const interestGroups: InterestGroupData[] = [
           name: "Krishna Rajeev",
           institution: "Muthoot institute of technology and sciences",
           linkedin: "https://www.linkedin.com/in/krishnarajeev4",
-          image: "/assets/IG/Cyber Security/IG Lead/Krishna Rajeev.webp",
+          image: cdnUrl("public/assets/IG/Cyber Security/IG Lead/Krishna Rajeev.webp"),
           expertise: ["Ethical Hacking", "Network Security"],
         },
         {
           name: "Dany Koshy P",
           institution: "College of Engineering Pathanapuram",
           linkedin: "https://www.linkedin.com/in/dany-koshy-p-a79328232/",
-          image: "/assets/IG/Cyber Security/IG Lead/Dany Koshy.webp",
+          image: cdnUrl("public/assets/IG/Cyber Security/IG Lead/Dany Koshy.webp"),
           expertise: ["Ethical Hacking", "Network Security"],
         },
         {
           name: "Aswin Krishna",
           institution: "Security Engineer @ KMart",
           linkedin: "https://www.linkedin.com/in/aswinkrishna07",
-          image: "/assets/IG/Cyber Security/IG Lead/Aswin Krishna.webp",
+          image: cdnUrl("public/assets/IG/Cyber Security/IG Lead/Aswin Krishna.webp"),
           expertise: ["Security Research", "Incident Response"],
         },
         {
           name: "Geo Mathew Joseph",
           institution: "Marian Engineering College",
           linkedin: "https://www.linkedin.com/in/geomathewjoseph",
-          image: "/assets/IG/Cyber Security/IG Lead/Geo Mathew.webp",
+          image: cdnUrl("public/assets/IG/Cyber Security/IG Lead/Geo Mathew.webp"),
           expertise: ["Penetration Testing", "Security Analysis"],
         },
       ],
@@ -1520,7 +1522,7 @@ export const interestGroups: InterestGroupData[] = [
           name: "Rejah Rehim",
           role: "CEO and Co-founder, Beagle Security",
           linkedin: "https://www.linkedin.com/in/rejah",
-          image: "/assets/IG/Cyber Security/Mentors/Rejah Rehim.webp",
+          image: cdnUrl("public/assets/IG/Cyber Security/Mentors/Rejah Rehim.webp"),
           expertise: [], // Add if available
         },
         {
@@ -1528,7 +1530,7 @@ export const interestGroups: InterestGroupData[] = [
           name: "Maninder Mohan",
           role: "Cyber Security Specialist",
           linkedin: "https://www.linkedin.com/in/manindar-m",
-          image: "/assets/IG/Cyber Security/Mentors/Maninder Mohan.webp",
+          image: cdnUrl("public/assets/IG/Cyber Security/Mentors/Maninder Mohan.webp"),
           expertise: [],
         },
         {
@@ -1536,7 +1538,7 @@ export const interestGroups: InterestGroupData[] = [
           name: "Vishnu Vijayan V S",
           role: "Chief Information Security Officer",
           linkedin: "https://www.linkedin.com/in/vishnu-vijayan-vs",
-          image: "/assets/IG/Cyber Security/Mentors/Vishnu Vijayan V S.webp",
+          image: cdnUrl("public/assets/IG/Cyber Security/Mentors/Vishnu Vijayan V S.webp"),
           expertise: [],
         },
       ],
@@ -1545,13 +1547,13 @@ export const interestGroups: InterestGroupData[] = [
       {
         id: "cp-003-1",
         title: "Beagle Security",
-        image: "/assets/IG/Cyber Security/Community partners/Beagle Security.webp",
+        image: cdnUrl("public/assets/IG/Cyber Security/Community partners/Beagle Security.webp"),
         link: "#",
       },
       {
         id: "cp-003-2",
         title: "Zilicon Technologies",
-        image: "/assets/IG/Cyber Security/Community partners/Zilicon technologies.webp",
+        image: cdnUrl("public/assets/IG/Cyber Security/Community partners/Zilicon technologies.webp"),
         link: "#",
       },
     ],
@@ -1571,7 +1573,7 @@ export const interestGroups: InterestGroupData[] = [
     description:
       "Passionate about creating immersive experiences in gaming? The Game Development Interest Group is your gateway to learning about designing, programming, and storytelling in the world of games. Whether you're into creating captivating visuals, coding mechanics, or crafting narratives, join us to level up your game development skills.",
     bannerImage:
-      "/assets/IG/Cover/5.webp",
+      cdnUrl("public/assets/IG/Cover/5.webp"),
 
 
     memberSince: "January 2022",
@@ -1586,7 +1588,7 @@ export const interestGroups: InterestGroupData[] = [
           name: "Sabal Krishna S",
           institution: "St.Thomas Institute for Science and Technology, Trivandrum",
           linkedin: "https://www.linkedin.com/in/sabal-krishna-s-29b758298/",
-          image: "/assets/IG/Game Development/IG Lead/image.webp",
+          image: cdnUrl("public/assets/IG/Game Development/IG Lead/image.webp"),
         },
       ],
     },
@@ -1749,12 +1751,12 @@ export const interestGroups: InterestGroupData[] = [
               title: "Core Engine Skills",
               data: {
                 description:
-                  "Once you’ve mastered the basics, it’s time to delve into Unreal Engine’s advanced features and bring your ideas to life. This stage focuses on key skills like manipulating 3D assets, designing functional and visually stunning environments, and using Blueprints for interactivity without complex coding. You’ll explore Unreal's physics engine for realistic dynamics, master lighting and rendering to set the perfect atmosphere, and gain expertise in scene and asset management. By honing these core skills, you’ll transition from beginner to expert, ready to build anything from simple prototypes to immersive game worlds, unlocking your full creative potential.",
+                  "Once you've mastered the basics, it's time to delve into Unreal Engine's advanced features and bring your ideas to life. This stage focuses on key skills like manipulating 3D assets, designing functional and visually stunning environments, and using Blueprints for interactivity without complex coding. You'll explore Unreal's physics engine for realistic dynamics, master lighting and rendering to set the perfect atmosphere, and gain expertise in scene and asset management. By honing these core skills, you'll transition from beginner to expert, ready to build anything from simple prototypes to immersive game worlds, unlocking your full creative potential.",
                 whatYouWillLearn: [
                   "Project Setup & Navigation: Learn to create and manage projects effectively, navigate the Unreal Engine interface, and organize assets for streamlined workflows.",
                   "Game Level Layout: Develop skills in designing game levels by arranging 3D assets to create compelling environments that guide and engage players.",
                   "Lighting and Rendering/Post-Processing: Master lighting techniques, rendering settings, and post-processing effects to create dynamic, atmospheric visuals that enhance the gaming experience.",
-                  "Blueprints for Interactivity: Explore Unreal Engine’s visual scripting system to implement interactivity, gameplay mechanics, and dynamic features without extensive coding.",
+                  "Blueprints for Interactivity: Explore Unreal Engine's visual scripting system to implement interactivity, gameplay mechanics, and dynamic features without extensive coding.",
                 ],
 
                 challenges: [
@@ -1783,7 +1785,7 @@ export const interestGroups: InterestGroupData[] = [
                       "https://www.youtube.com/watch?v=oHoXwMjhOC8&t=30s",
                     ],
                     description:
-                      "Use Unreal Engine’s Blueprints to design and implement basic interactions in your game. Examples include opening doors, turning lights on or off, or activating objects when the player interacts with them. Focus on functionality and ensure the interactions respond correctly to player input. This task will introduce you to Unreal’s visual scripting system and the basics of interactive gameplay. Create basic game interactions using Unreal Engine’s Blueprints. Focus on implementing simple interactions such as opening doors, triggering events, or activating objects when the player interacts with them. Once completed, upload your project to GitHub, ensuring you include a README file that explains the interactions you implemented and how they work. Submit the GitHub repository link in the #Game-Dev channel using the hashtag #cl-game-dev-blueprints to earn 250 Karma Points.",
+                      "Use Unreal Engine's Blueprints to design and implement basic interactions in your game. Examples include opening doors, turning lights on or off, or activating objects when the player interacts with them. Focus on functionality and ensure the interactions respond correctly to player input. This task will introduce you to Unreal's visual scripting system and the basics of interactive gameplay. Create basic game interactions using Unreal Engine's Blueprints. Focus on implementing simple interactions such as opening doors, triggering events, or activating objects when the player interacts with them. Once completed, upload your project to GitHub, ensuring you include a README file that explains the interactions you implemented and how they work. Submit the GitHub repository link in the #Game-Dev channel using the hashtag #cl-game-dev-blueprints to earn 250 Karma Points.",
                   },
                 ],
               },

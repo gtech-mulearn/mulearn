@@ -1,6 +1,6 @@
 import { BsFillTriangleFill } from "react-icons/bs";
 import styles from "../pages/leaderboard.module.css";
-import defaultImage from "../assets/third.webp";
+import { cdnUrl } from "@/modules/utils/cdn";
 
 interface TableProps {
   leaderboardData: {
@@ -42,7 +42,7 @@ export function LeaderboardTable({ leaderboardData, filter }: TableProps) {
               <td>
                 <div className={styles.nameCell}>
                   <img
-                    src={defaultImage}
+                    src={cdnUrl("src/modules/Dashboard/modules/LeaderBoard/assets/third.webp")}
                     alt=""
                     className={styles.tableAvatar}
                   />

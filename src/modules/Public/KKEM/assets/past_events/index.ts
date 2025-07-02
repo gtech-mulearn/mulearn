@@ -1,14 +1,11 @@
-import gtas from "./gtas.webp";
-import gtac from "./gtac.webp";
-import kf from "./kf.webp";
-import lf from "./lf.webp";
-import buh from "./buh.webp";
+import { cdnUrl } from "@/modules/utils/cdn";
+
 const assets = {
-    gtas,
-    gtac,
-    kf,
-    lf,
-    buh
+    gtas: cdnUrl("src/modules/Public/KKEM/assets/past_events/gtas.webp"),
+    gtac: cdnUrl("src/modules/Public/KKEM/assets/past_events/gtac.webp"),
+    kf: cdnUrl("src/modules/Public/KKEM/assets/past_events/kf.webp"),
+    lf: cdnUrl("src/modules/Public/KKEM/assets/past_events/lf.webp"),
+    buh: cdnUrl("src/modules/Public/KKEM/assets/past_events/buh.webp")
 };
 
 export default assets;

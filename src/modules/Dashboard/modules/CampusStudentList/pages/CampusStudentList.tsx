@@ -17,8 +17,7 @@ import {
 } from "../services/apis";
 import { BarChart } from "../Components/Graphs";
 import styles from "./CampusStudentList.module.css";
-import CLIcon from "../assets/images/CampusLeadIcon.svg";
-import CEIcon from "../../LearningCircle/assets/images/Lead icon.svg";
+import { cdnUrl } from "@/modules/utils/cdn";
 import { convertDateToDayAndMonth } from "../../../utils/common";
 import Modal from "@/MuLearnComponents/Modal/Modal";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
@@ -257,13 +256,11 @@ const CampusStudentList = (props: Props) => {
     const getGradeIcon = (grade: "A" | "B" | "C" | "N/A"): JSX.Element | null => {
         switch (grade) {
             case "A":
-                return <Trophy className="h-8 w-8" style={{ color: "#0066FF" }} />;
+                return <img src={cdnUrl("src/modules/Dashboard/modules/CampusStudentList/assets/images/CampusLeadIcon.svg")} alt="Grade A" />;
             case "B":
-                return <Trophy className="h-8 w-8" style={{ color: "#94A3B8" }} />;
+                return <img src={cdnUrl("src/modules/Dashboard/modules/LearningCircle/assets/images/Lead icon.svg")} alt="Grade B" />;
             case "C":
-                return <Trophy className="h-8 w-8" style={{ color: "#B45309" }} />;
-            case "N/A":
-                return <Trophy className="h-8 w-8" style={{ color: "#64748B" }} />; // Gray for placeholder
+                return <img src={cdnUrl("src/modules/Dashboard/modules/CampusStudentList/assets/images/CampusLeadIcon.svg")} alt="Grade C" />;
             default:
                 return null;
         }
@@ -402,7 +399,7 @@ const CampusStudentList = (props: Props) => {
                                     <div className={styles.leadershipGrid}>
                                         <div className={styles.leaderCard}>
                                             <div className="flex items-center flex-col">
-                                                <img src={CLIcon} alt="Campus Lead" className={styles.leaderIcon} />
+                                                <img src={cdnUrl("src/modules/Dashboard/modules/CampusStudentList/assets/images/CampusLeadIcon.svg")} alt="Campus Lead" className={styles.leaderIcon} />
                                                 <div className={styles.leaderName}>{campusData.lead.campus_lead}</div>
                                                 <span className={styles.leaderRole}>Campus Lead</span>
                                             </div>
@@ -410,7 +407,7 @@ const CampusStudentList = (props: Props) => {
                                         {campusData.lead.enabler && (
                                             <div className={styles.leaderCard}>
                                                 <div className="flex flex-col items-center">
-                                                    <img src={CEIcon} alt="Campus Enabler" className={styles.leaderIcon} />
+                                                    <img src={cdnUrl("src/modules/Dashboard/modules/LearningCircle/assets/images/Lead icon.svg")} alt="Campus Enabler" className={styles.leaderIcon} />
                                                     <div className={styles.leaderName}>{campusData.lead.enabler}</div>
                                                     <span className={styles.leaderRole}>Campus Lead Enabler</span>
                                                 </div>

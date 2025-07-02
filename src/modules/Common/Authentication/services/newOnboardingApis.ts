@@ -148,7 +148,6 @@ export const submitUserData = async ({
     setIsLoading: Dispatch<SetStateAction<boolean>>;
     userData: Object;
 }) => {
-    console.log("UserData", userData);
     try {
         setIsLoading(true);
         const res = await privateGateway.post(
@@ -183,9 +182,9 @@ export const submitUserData = async ({
         return true;
     } catch (err: any) {
         setIsLoading(false);
-        const messages = err.message;
+         const messages = err.response;
         showToasts({
-            messages: messages
+            messages: messages.data.message.user
         });
         return false;
     }

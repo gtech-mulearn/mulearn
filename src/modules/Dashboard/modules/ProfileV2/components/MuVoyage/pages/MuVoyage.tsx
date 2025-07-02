@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./MuVoyage.module.css";
-import discordicon from "../assets/images/discordicon.webp";
+import { cdnUrl } from "@/modules/utils/cdn";
 import {
     Progress,
     CircularProgress,
@@ -291,7 +291,7 @@ const MuVoyage = (props: Props) => {
                                                                                     >
                                                                                         <img
                                                                                             src={
-                                                                                                discordicon
+                                                                                                cdnUrl("src/modules/Dashboard/modules/ProfileV2/components/MuVoyage/assets/images/discordicon.webp")
                                                                                             }
                                                                                             className={
                                                                                                 styles.discord

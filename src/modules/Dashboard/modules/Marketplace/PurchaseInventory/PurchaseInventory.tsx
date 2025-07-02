@@ -1,7 +1,7 @@
 import { ReactElement, useState } from "react";
 
 import styles from "./PurchaseInventory.module.css";
-import coin from "../assets/muCoin.svg";
+import { cdnUrl } from "@/modules/utils/cdn";
 
 import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import THead from "@/MuLearnComponents/Table/THead";
@@ -55,7 +55,7 @@ const PurchaseInventory = (props: Props) => {
             wrap: data => (
                 <div style={{ display: "flex" }}>
                     {data}
-                    <img src={coin} alt="" />
+                    <img src={cdnUrl("src/modules/Dashboard/modules/Marketplace/assets/muCoin.svg")} alt="Coin" />
                 </div>
             )
         },

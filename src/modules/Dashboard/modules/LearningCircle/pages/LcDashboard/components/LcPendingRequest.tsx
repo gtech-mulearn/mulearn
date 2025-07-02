@@ -1,8 +1,7 @@
 import { useParams } from "react-router-dom";
 import { approveLcUser } from "../../../services/LearningCircleAPIs";
-import styles from "../LcDashboard.module.css";
-import pic from "../../../assets/images/profileIcon.svg";
-import level7 from "../../../assets/images/Level 7.svg";
+import styles from "./LcPendingRequest.module.css";
+import { cdnUrl } from "@/modules/utils/cdn";
 import { SetStateAction, useState } from "react";
 import toast from "react-hot-toast";
 
@@ -53,12 +52,12 @@ export const PendingRequest = (props: Props) => {
                 <span>{props.index}.</span>{" "}
                 <img
                     className={styles.MemberProfile}
-                    src={props.member.profile_pic || pic}
+                    src={props.member.profile_pic || cdnUrl("src/modules/Dashboard/modules/LearningCircle/assets/images/profileIcon.svg")}
                     alt="DP"
                 />{" "}
                 <span className={styles.name}>{props.member.username}</span>
                 <p>Level{props.member.level || " 0"}</p>
-                <img src={level7} alt="level" />
+                <img src={cdnUrl("src/modules/Dashboard/modules/LearningCircle/assets/images/Level 7.svg")} alt="level" />
             </div>
             <div className={styles.ButtonWrapper}>
                 <button

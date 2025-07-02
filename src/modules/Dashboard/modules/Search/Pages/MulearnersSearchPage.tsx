@@ -6,7 +6,7 @@ import { getUsers } from "../services/api";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import UserCard from "../../../components/UserCard";
 import { HStack, useBreakpointValue, VStack } from "@chakra-ui/react";
-import defaultProfile from "../../../assets/images/defaultProfile.png";
+import { cdnUrl } from "@/modules/utils/cdn";
 
 interface User {
   full_name: string;
@@ -123,7 +123,7 @@ const UserList: React.FC<{
                 muid: user.muid,
                 interest_groups: user.interest_groups,
                 organizations: user.organizations,
-                profile_pic: user.profile_pic ? user.profile_pic : defaultProfile,
+                profile_pic: user.profile_pic ? user.profile_pic : cdnUrl("src/modules/Dashboard/assets/images/defaultProfile.png"),
                 karma: user.karma,
               }}
               onSelect={() => onSelect(user)}

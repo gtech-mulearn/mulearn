@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./UserCard.module.css";
 import { FiLinkedin } from "react-icons/fi";
+import { cdnUrl } from "@/modules/utils/cdn";
 
 interface CardData {
   id?: number | string;
@@ -52,7 +53,7 @@ const UserCard: React.FC<UserCardProps> = ({ data, onSelect }) => {
   return (
     <div className={styles.userCard} onClick={() => onSelect(data)}>
       <img
-        src={data.profile_pic || data.image || "/assets/dpm.webp"}
+        src={data.profile_pic || data.image || cdnUrl("src/modules/Dashboard/assets/images/dpm.webp")}
         alt={data.name}
         className={styles.userImage}
         onError={(e) => {

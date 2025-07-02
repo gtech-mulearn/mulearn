@@ -2,7 +2,7 @@
   {
     "name": "Jomon Chacko",
     "team": "Video Editors Team",
-    "image": "assets/team/2023/pillars/Jomon Chacko.webp",
+    "image": "public/assets/team/2023/pillars/Jomon Chacko.webp",
     "drive": "https://drive.google.com/file/d/186kFTbPCpO9IHlLDuFtmoDbCZL6EU-AG/view?usp=share_link",
     "linkedin": "",
     "github": "https://github.com/jomon477",
@@ -11,7 +11,7 @@
   {
     "name": "Enric S Neelamkavil",
     "team": "UI UX Team",
-    "image": "assets/team/2023/pillars/Enric S Neelamkavil.webp",
+    "image": "public/assets/team/2023/pillars/Enric S Neelamkavil.webp",
     "drive": "https://drive.google.com/file/d/1U_yALhVf0JTlk6CfEVdduZmnIOHKcBHA/view?usp=share_link",
     "linkedin": "https://www.linkedin.com/in/enricsneelamkavil/",
     "github": "https://github.com/enric-s-neelamkavil",
@@ -20,7 +20,7 @@
   {
     "name": "Muhammed Faris TC",
     "team": "UI UX Team",
-    "image": "assets/team/2023/pillars/Muhammed Faris TC.webp",
+    "image": "public/assets/team/2023/pillars/Muhammed Faris TC.webp",
     "drive": "https://drive.google.com/file/d/1s7Qnj6Xi1RTjEo20pDRb4aYG_YJQkTNL/view?usp=share_link",
     "linkedin": "",
     "github": "",
@@ -29,7 +29,7 @@
   {
     "name": "Abhiram Krishna",
     "team": "Social Media Team",
-    "image": "assets/team/2023/pillars/Abhiram Krishna.webp",
+    "image": "public/assets/team/2023/pillars/Abhiram Krishna.webp",
     "drive": "https://drive.google.com/file/d/17Ml3IpPJGvlwhokMlWMvFDVl2qAh7E7v/view?usp=share_link",
     "linkedin": "https://www.linkedin.com/in/abhiramkrishna/",
     "github": "",
@@ -38,7 +38,7 @@
   {
     "name": "Anagha B Santhosh",
     "team": "Social Media Team",
-    "image": "assets/team/2023/pillars/Anagha B Santhosh.webp",
+    "image": "public/assets/team/2023/pillars/Anagha B Santhosh.webp",
     "drive": "https://drive.google.com/file/d/13ZGAhLKc7xOa0zobr0Ncz-up2S5f2I0Z/view?usp=share_link",
     "linkedin": "https://www.linkedin.com/in/anagha-b-santhosh-87387b21b/",
     "github": "",
@@ -47,7 +47,7 @@
   {
     "name": "Ashna T",
     "team": "Social Media Team",
-    "image": "assets/team/2023/pillars/Ashna T.webp",
+    "image": "public/assets/team/2023/pillars/Ashna T.webp",
     "drive": "https://drive.google.com/file/d/1wUir1IQJciiarMWPVuXcuQfW0yh-Xc95/view?usp=share_link",
     "linkedin": "https://www.linkedin.com/in/ashnat/",
     "github": "",
@@ -56,7 +56,7 @@
   {
     "name": "Muhammed Zafar MM",
     "team": "Backend Team",
-    "image": "assets/team/2023/pillars/Muhammed Zafar MM.webp",
+    "image": "public/assets/team/2023/pillars/Muhammed Zafar MM.webp",
     "drive": "https://drive.google.com/file/d/1hUm53xw7EwwlBGUYxQyRRnoc17fibji8/view?usp=share_link",
     "linkedin": "https://www.linkedin.com/in/muhammed-zafar-b4462a22a/",
     "github": "",
@@ -65,7 +65,7 @@
   {
     "name": "Jovit Mathew",
     "team": "Frontend Team",
-    "image": "assets/team/2023/pillars/Jovit Mathew.webp",
+    "image": "public/assets/team/2023/pillars/Jovit Mathew.webp",
     "drive": "https://drive.google.com/file/d/17mvnxv9KMRpRCuy-D7PBJ2W67KGiSmMx/view?usp=share_link",
     "linkedin": "https://www.linkedin.com/in/jovit-mathew-844590205/",
     "github": "",
@@ -74,7 +74,7 @@
   {
     "name": "Aaron K",
     "team": "Frontend Team",
-    "image": "assets/team/2023/pillars/Aaron K.webp",
+    "image": "public/assets/team/2023/pillars/Aaron K.webp",
     "drive": "https://drive.google.com/file/d/1OhsvkPyUH5vq4gLPt9xpXk2AJ6lJBtSO/view?usp=share_link",
     "linkedin": "https://www.linkedin.com/in/aaron-k-9779b6211/",
     "github": "https://github.com/03aar",
@@ -83,7 +83,7 @@
   {
     "name": "Ansan Johny",
     "team": "Frontend Team",
-    "image": "assets/team/2023/pillars/Ansan Johny.webp",
+    "image": "public/assets/team/2023/pillars/Ansan Johny.webp",
     "drive": "https://drive.google.com/file/d/1ohY4gR_w64xKPM3Sc-3NBch7V-XHyZgP/view?usp=share_link",
     "linkedin": "https://www.linkedin.com/in/ansan-johny-6092aa190/",
     "github": "https://github.com/Ansanjohny",
@@ -92,7 +92,7 @@
   {
     "name": "Basith P",
     "team": "Frontend Team",
-    "image": "assets/team/2023/pillars/Basith P.webp",
+    "image": "public/assets/team/2023/pillars/Basith P.webp",
     "drive": "https://drive.google.com/file/d/1UpHDw7gg50USjodhmsJq2ySfbBGqIuz1/view?usp=share_link",
     "linkedin": "https://www.linkedin.com/in/basithp9/",
     "github": "https://github.com/Basith-P",
@@ -101,7 +101,7 @@
   {
     "name": "Kevin Paul Babu",
     "team": "Frontend Team",
-    "image": "assets/team/2023/pillars/Kevin Paul Babu.webp",
+    "image": "public/assets/team/2023/pillars/Kevin Paul Babu.webp",
     "drive": "https://drive.google.com/file/d/107ZzTKkZ8GKENT-hQvJ8BzhdcVdpqofh/view?usp=share_link",
     "linkedin": "https://www.linkedin.com/in/kevin-paul-babu-737b28187/",
     "github": "",
@@ -110,7 +110,7 @@
   {
     "name": "Sivaprasad C",
     "team": "Frontend Team",
-    "image": "assets/team/2023/pillars/Sivaprasad C.webp",
+    "image": "public/assets/team/2023/pillars/Sivaprasad C.webp",
     "drive": "https://drive.google.com/file/d/1zbvBwUnrPV5gicaIyAnmaO3TBfrJr6ru/view?usp=share_link",
     "linkedin": "",
     "github": "",
@@ -119,7 +119,7 @@
   {
     "name": "Sooraj P",
     "team": "Frontend Team",
-    "image": "assets/team/2023/pillars/Sooraj P.webp",
+    "image": "public/assets/team/2023/pillars/Sooraj P.webp",
     "drive": "https://drive.google.com/file/d/1n7L-tmBrUMoQyo5lnfAxSA4Nr2wPAUKd/view?usp=share_link",
     "linkedin": "https://www.linkedin.com/in/soorajksd/",
     "github": "www.github.com/the3plet",
@@ -128,7 +128,7 @@
   {
     "name": "Arjun M S",
     "team": "Backend Team",
-    "image": "assets/team/2023/pillars/Arjun MS.webp",
+    "image": "public/assets/team/2023/pillars/Arjun MS.webp",
     "drive": "https://drive.google.com/file/d/19DJJ099SU3W8bb4cxHJriTSg0yuDiUxn/view?usp=share_link",
     "linkedin": "",
     "github": "",
@@ -137,7 +137,7 @@
   {
     "name": "Ben George Netto",
     "team": "Discord Team",
-    "image": "assets/team/2023/pillars/Ben George Netto.webp",
+    "image": "public/assets/team/2023/pillars/Ben George Netto.webp",
     "drive": "https://drive.google.com/file/d/1gIC-w9LHR47VcwMxaJic4pbIhKLi1DOR/view?usp=share_link",
     "linkedin": "https://www.linkedin.com/in/bengeorgenetto/",
     "github": "https://github.com/BenGeorgeNetto",
@@ -146,7 +146,7 @@
   {
     "name": "Edwin liby",
     "team": "Discord Team",
-    "image": "assets/team/2023/pillars/Edwin liby.webp",
+    "image": "public/assets/team/2023/pillars/Edwin liby.webp",
     "drive": "https://drive.google.com/file/d/1tUnFxzrTXT_vDhUGhvcfGk3sGMO88BmH/view?usp=share_link",
     "linkedin": "https://www.linkedin.com/in/edwin-liby-12b7a5220/",
     "github": "https://github.com/Edwinliby",
@@ -155,7 +155,7 @@
   {
     "name": "Kevin Joseph Hendry",
     "team": "Discord Team",
-    "image": "assets/team/2023/pillars/Kevin Joseph Hendry.webp",
+    "image": "public/assets/team/2023/pillars/Kevin Joseph Hendry.webp",
     "drive": "https://drive.google.com/file/d/1eugyztHNe64ro7gUP5ktJ6iIhrA5PfDB/view?usp=share_link",
     "linkedin": "https://www.linkedin.com/in/kevin-joseph-hendry-504732227/",
     "github": "",
@@ -164,7 +164,7 @@
   {
     "name": "Kochouseph John",
     "team": "Discord Team",
-    "image": "assets/team/2023/pillars/Kochouseph John.webp",
+    "image": "public/assets/team/2023/pillars/Kochouseph John.webp",
     "drive": "https://drive.google.com/file/d/1tcwwVKwfVCYOkOObyEzAXyw4ymT5r-IU/view?usp=share_link",
     "linkedin": "https://www.linkedin.com/in/kochouseph-john-b86149212/",
     "github": "https://github.com/Kochouseph26John",
@@ -173,7 +173,7 @@
   {
     "name": "Sreenandan K M",
     "team": "Discord Team",
-    "image": "assets/team/2023/pillars/Sreenandan K M.webp",
+    "image": "public/assets/team/2023/pillars/Sreenandan K M.webp",
     "drive": "https://drive.google.com/file/d/1uuIC4DAFuLMHbQqtav9wgQwFC9GoKbTN/view?usp=share_link",
     "linkedin": "https://www.linkedin.com/in/sreenandan-k-m-82562b251/",
     "github": "",
@@ -182,7 +182,7 @@
   {
     "name": "Ajay Johny",
     "team": "Designers Team",
-    "image": "assets/team/2023/pillars/Ajay Johny.webp",
+    "image": "public/assets/team/2023/pillars/Ajay Johny.webp",
     "drive": "https://drive.google.com/file/d/19LSkvLQ3Gs1NdfQ0FRtmYYr--gDnzhfD/view?usp=share_link",
     "linkedin": "https://www.linkedin.com/in/ajay-johny-73503a201/",
     "github": "https://github.com/AjayJohny-2002/",
@@ -191,7 +191,7 @@
   {
     "name": "Akshay S Rajan",
     "team": "Designers Team",
-    "image": "assets/team/2023/pillars/Akshay S Rajan.webp",
+    "image": "public/assets/team/2023/pillars/Akshay S Rajan.webp",
     "drive": "https://drive.google.com/file/d/1jMZAyOzN0ddGCAPg_AmsJMCx2_3ch1UK/view?usp=share_link",
     "linkedin": "https://www.linkedin.com/in/akshaysrajan/",
     "github": "github.com/akshaysrajan",
@@ -200,7 +200,7 @@
   {
     "name": "Edwin Alex Shaji",
     "team": "Designers Team",
-    "image": "assets/team/2023/pillars/Edwin Alex Shaji.webp",
+    "image": "public/assets/team/2023/pillars/Edwin Alex Shaji.webp",
     "drive": "https://drive.google.com/file/d/1r-bxqsfvwgEUKVmVr96QhxCnGB-ZQiCs/view?usp=share_link",
     "linkedin": "https://www.linkedin.com/in/edwinalexshaji/",
     "github": "https://github.com/edwineas",
@@ -209,7 +209,7 @@
   {
     "name": "Faeza Nasrin M B",
     "team": "Designers Team",
-    "image": "assets/team/2023/pillars/Faeza Nasrin M B.webp",
+    "image": "public/assets/team/2023/pillars/Faeza Nasrin M B.webp",
     "drive": "https://drive.google.com/file/d/1w6RnBoDppnIJvauw5Q9wN1fxSgBLbIM2/view?usp=share_link",
     "linkedin": "https://www.linkedin.com/in/faeza-nasrin-4b38ab22a/",
     "github": "https://github.com/faezanasrin",
@@ -218,7 +218,7 @@
   {
     "name": "Ferwin Lopez",
     "team": "Designers Team",
-    "image": "assets/team/2023/pillars/Ferwin Lopez.webp",
+    "image": "public/assets/team/2023/pillars/Ferwin Lopez.webp",
     "drive": "https://drive.google.com/file/d/1ihTBV_OG9mlCeYMIk7kADyz7zyFK6TSP/view?usp=share_link",
     "linkedin": "https://www.linkedin.com/in/ferwin-lopez/",
     "github": "https://github.com/Fer-Win",
@@ -227,7 +227,7 @@
   {
     "name": "Muhammed Farseen T P",
     "team": "Designers Team",
-    "image": "assets/team/2023/pillars/Muhammed Farseen T P.webp",
+    "image": "public/assets/team/2023/pillars/Muhammed Farseen T P.webp",
     "drive": "https://drive.google.com/file/d/11BNjIMlnVP8S2KwzI8caCObZACeEPfUk/view?usp=share_link",
     "linkedin": "",
     "github": "",
@@ -236,7 +236,7 @@
   {
     "name": "John Philip George",
     "team": "Content Team",
-    "image": "assets/team/2023/pillars/John Philip George.webp",
+    "image": "public/assets/team/2023/pillars/John Philip George.webp",
     "drive": "https://drive.google.com/file/d/1wJNlBALwXFJfFy7EfxDpJS2tKCV8Ufjf/view?usp=share_link",
     "linkedin": "https://www.linkedin.com/in/johnphilipg-66401723a/",
     "github": "https://github.com/johnforgit",
@@ -245,7 +245,7 @@
   {
     "name": "Malavika Sreehari",
     "team": "Content Team",
-    "image": "assets/team/2023/pillars/Malavika Sreehari.webp",
+    "image": "public/assets/team/2023/pillars/Malavika Sreehari.webp",
     "drive": "https://drive.google.com/file/d/16_0xqDDyeT_0-sSN0cqU7rFRjtRL-dDp/view?usp=share_link",
     "linkedin": "https://www.linkedin.com/in/malavikasreehari/",
     "github": "https://github.com/MalavikaSreehari",
@@ -254,7 +254,7 @@
   {
     "name": "Parvathy S Nath",
     "team": "Content Team",
-    "image": "assets/team/2023/pillars/Parvathy S Nath.webp",
+    "image": "public/assets/team/2023/pillars/Parvathy S Nath.webp",
     "drive": "https://drive.google.com/file/d/1EfSdRw4HWRC4ykaN7yaESXy74gCcpbuI/view?usp=share_link",
     "linkedin": "https://www.linkedin.com/in/parvathy-s-nath/",
     "github": "https://github.com/Parvathy-S-Nath",
@@ -263,7 +263,7 @@
   {
     "name": "Sanjay Biju",
     "team": "Content Team",
-    "image": "assets/team/2023/pillars/Sanjay Biju.webp",
+    "image": "public/assets/team/2023/pillars/Sanjay Biju.webp",
     "drive": "https://drive.google.com/file/d/16WstqoABEpKRUnAUPsCwBXt16JjFK6dv/view?usp=share_link",
     "linkedin": "https://www.linkedin.com/in/sanjay-biju-786656227/",
     "github": "",
@@ -272,7 +272,7 @@
   {
     "name": "Aashish Vinu",
     "team": "Backend Team",
-    "image": "assets/team/2023/pillars/Aashish Vinu.webp",
+    "image": "public/assets/team/2023/pillars/Aashish Vinu.webp",
     "drive": "https://drive.google.com/file/d/1Ak1Ii4tkjziFaRCwAtVN0kDpWZhvACXJ/view?usp=share_link",
     "linkedin": "https://www.linkedin.com/in/d34d-5h07/",
     "github": "https://github.com/d34d-5h07",
@@ -281,7 +281,7 @@
   {
     "name": "Ajnas N B",
     "team": "Backend Team",
-    "image": "assets/team/2023/pillars/Ajnas N B.webp",
+    "image": "public/assets/team/2023/pillars/Ajnas N B.webp",
     "drive": "https://drive.google.com/file/d/1Qq7qXaOUFiIOnerUkRn3YN4cHFNcCVbf/view?usp=share_link",
     "linkedin": "https://www.linkedin.com/in/ajnasnb/",
     "github": "https://github.com/AjnasNB",
@@ -290,7 +290,7 @@
   {
     "name": "Anirudh MK",
     "team": "Backend Team",
-    "image": "assets/team/2023/pillars/Anirudh MK.webp",
+    "image": "public/assets/team/2023/pillars/Anirudh MK.webp",
     "drive": "https://drive.google.com/file/d/1Hy7cXxaPMWXprRzlsnwEVb5f_2zBckQz/view?usp=share_link",
     "linkedin": "https://www.linkedin.com/in/anirudh-mk-064207245/",
     "github": "",
@@ -299,7 +299,7 @@
   {
     "name": "Arnold Denzil",
     "team": "Backend Team",
-    "image": "assets/team/2023/pillars/Arnold Denzil.webp",
+    "image": "public/assets/team/2023/pillars/Arnold Denzil.webp",
     "drive": "https://drive.google.com/file/d/1EFkYFpXiKAH1qDJkfxJBaCrXpgjvu2eq/view?usp=share_link",
     "linkedin": "https://www.linkedin.com/in/arnold-denzil-b91013191/",
     "github": "https://github.com/arnolddenzil",
@@ -308,7 +308,7 @@
   {
     "name": "Nithin Daniel",
     "team": "Backend Team",
-    "image": "assets/team/2023/pillars/Nithin Daniel.webp",
+    "image": "public/assets/team/2023/pillars/Nithin Daniel.webp",
     "drive": "https://drive.google.com/file/d/16HkuynvMYbZ9sVv1U59wsH3zpg5iE0qm/view?usp=share_link",
     "linkedin": "https://www.linkedin.com/in/nithindaniel/",
     "github": "https://github.com/nithindaniel1",
@@ -317,7 +317,7 @@
   {
     "name": "Sanu Muhammed C",
     "team": "Backend Team",
-    "image": "assets/team/2023/pillars/Sanu Muhammed C.webp",
+    "image": "public/assets/team/2023/pillars/Sanu Muhammed C.webp",
     "drive": "https://drive.google.com/file/d/1MR6yGSg1h205HXhbyChGBMqAkffkdOZA/view?usp=share_link",
     "linkedin": "https://www.linkedin.com/in/sanumuhammedc/",
     "github": "https://github.com/sanumuhammedc",

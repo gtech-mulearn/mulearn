@@ -3,21 +3,14 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import styles from "./LandingPage.module.css";
-import LearningPathList from "../../../Dashboard/modules/LearningPaths/services/LearningPathList";
-import LearningPathCard from "../../../Dashboard/modules/LearningPaths/components/LearningPathCard";
-import MulearnBrand from "../../../Dashboard/assets/MulearnBrand";
 import RolesSection from "../components/RolesSection/RolesSection";
 import CountUp from "react-countup";
 import { Helmet } from "react-helmet";
 import Footer from "@/modules/Common/Footer/Footer";
 import HomeNav from "@/modules/Common/HomeNav/HomeNav";
+import { cdnUrl } from "@/modules/utils/cdn";
 
-// Images for the special events cards
-import top100coders from "../assets/top-100.webp";
-import launchpad from "../assets/launchpad.webp";
-import trivialideas from "../assets/trivialideas.webp";
 import SpecialEventCardLanding from "../components/SpecialEventCardLanding/SpecialEventCardLanding";
-import illustration from "../assets/illustration.webp"
 import FeatureGrid from "../components/FeatureGrid/FeatureGrid";
 
 // Define the SpecialEvent type
@@ -70,7 +63,7 @@ const SpecialEventsList: SpecialEvent[] = [
     // date: "2025-04-09",
     // participants: 100,
     link: "https://top100coders.com/",
-    image: top100coders,
+    image: cdnUrl("src/modules/Public/Home/assets/top-100.webp"),
     isLive: true,
   },
   {
@@ -81,7 +74,7 @@ const SpecialEventsList: SpecialEvent[] = [
     // date: "2024-06-02",
     // participants: 200,
     link: "https://launchpadkerala.org/",
-    image: launchpad,
+    image: cdnUrl("src/modules/Public/Home/assets/launchpad.webp"),
     isLive: false,
   },
   {
@@ -93,7 +86,7 @@ const SpecialEventsList: SpecialEvent[] = [
     // date: "2025-02-02",
     // participants: 500,
     link: "https://www.instagram.com/mulearn.official/p/C6eHEzJyMMn/",
-    image: trivialideas,
+    image: cdnUrl("src/modules/Public/Home/assets/trivialideas.webp"),
     isLive: false,
   },
 ];
@@ -362,7 +355,7 @@ const MuLearnLanding = () => {
                 viewport={{ once: true }}
                 variants={textVariant}
               >
-                <img src={illustration} alt="Illustration" />
+                <img src={cdnUrl("src/modules/Public/Home/assets/illustration.webp")} alt="Illustration" />
               </motion.div>
             </div>
           </div>
@@ -558,7 +551,7 @@ const MuLearnLanding = () => {
                   name: "Entrepreneurship",
                   icon: (
                     <img
-                      src={"/assets/landing/College Project Concept Illustration.png"}
+                      src={cdnUrl("public/assets/landing/College Project Concept Illustration.png")}
                       width={"400px"}
                       alt="Entrepreneurship"
                     />
@@ -569,7 +562,7 @@ const MuLearnLanding = () => {
                   name: "Social Cause",
                   icon: (
                     <img
-                      src={"/assets/landing/social-growth.webp"}
+                      src={cdnUrl("public/assets/landing/social-growth.webp")}
                       width={"400px"}
                       alt="Social Cause"
                     />

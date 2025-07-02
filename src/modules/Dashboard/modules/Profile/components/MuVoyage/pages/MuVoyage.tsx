@@ -1,13 +1,6 @@
 import { useState } from "react";
 import styles from "./MuVoyage.module.css";
-import level1 from "../assets/images/Level1.webp";
-import level2 from "../assets/images/Level2.webp";
-import level3 from "../assets/images/Level3.webp";
-import level4 from "../assets/images/Level4.webp";
-import level5 from "../assets/images/Level5.webp";
-import level6 from "../assets/images/Level6.webp";
-import level7 from "../assets/images/Level7.webp";
-import discordicon from "../assets/images/discordicon.webp";
+import { cdnUrl } from "@/modules/utils/cdn";
 import {
     Progress,
     CircularProgress,
@@ -28,8 +21,6 @@ type Props = {
     }[];
     userLevel: number;
 };
-
-const levelImages = [level1, level2, level3, level4, level5, level6, level7];
 
 const MuVoyage = (props: Props) => {
     const [userLevelData, setUserLevelData] = useState(props.userLevelData);
@@ -54,7 +45,8 @@ const MuVoyage = (props: Props) => {
 
     console.log(props.userLevelData);
     return (
-        <>
+        <div className={styles.container}>
+            <img src={cdnUrl("src/modules/Dashboard/modules/Profile/components/MuVoyage/assets/images/discordicon.webp")} alt="Discord" />
             {userLevelTrack && (
                 <div className={styles.main_task}>
                     <div className={styles.tasks}>
@@ -62,7 +54,7 @@ const MuVoyage = (props: Props) => {
                             <div className={styles.title}>
                                 <span>
                                     <img
-                                        src={levelImages[props.userLevel - 1]}
+                                        src={cdnUrl(`src/modules/Dashboard/modules/Profile/components/MuVoyage/assets/images/Level${props.userLevel}.webp`)}
                                         alt={`Level ${props.userLevel}`}
                                     />
                                     {/* <img src={level1} alt="" /> */}
@@ -296,7 +288,7 @@ const MuVoyage = (props: Props) => {
                                                                                     >
                                                                                         <img
                                                                                             src={
-                                                                                                discordicon
+                                                                                                cdnUrl("src/modules/Dashboard/modules/Profile/components/MuVoyage/assets/images/discordicon.webp")
                                                                                             }
                                                                                             className={
                                                                                                 styles.discord
@@ -325,7 +317,7 @@ const MuVoyage = (props: Props) => {
                     </div>
                 </div>
             )}
-        </>
+        </div>
     );
 };
 

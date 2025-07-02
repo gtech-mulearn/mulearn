@@ -1,7 +1,7 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import axios, { AxiosResponse } from "axios";
 import styles from "./LearningCircle.module.css";
-import pic from "../../Profile/assets/images/dpm.webp";
+import { cdnUrl } from "@/modules/utils/cdn";
 import {
     approveLcUser,
     getLcDetails,
@@ -189,7 +189,7 @@ const LearningCircle = (props: Props) => {
 
     function avatarValidate(member: LcMembers) {
         const isInvalid = validAvatar.find(id => member.id === id);
-        return isInvalid ? pic : member?.profile_pic || pic;
+        return isInvalid ? cdnUrl("src/modules/Dashboard/modules/Profile/assets/images/dpm.webp") : member?.profile_pic || cdnUrl("src/modules/Dashboard/modules/Profile/assets/images/dpm.webp");
     }
 
     const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {

@@ -1,11 +1,13 @@
 import React from "react";
 import styles from "./Projects.module.css";
-import defaultimage from "../../assets/images/defaultProject.png";
+import { cdnUrl } from "@/modules/utils/cdn";
 
 type Project = {
     image: string;
     title: string;
 };
+
+const defaultimage = cdnUrl + "src/modules/Dashboard/modules/ProfileV2/assets/defaultProject.png";
 
 const projects: Project[] = [
     { image: defaultimage, title: "Loan Planner - Fintech Mobile App" },

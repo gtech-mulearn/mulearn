@@ -1,8 +1,10 @@
-import creative from "/src/modules/Common/Authentication/assets/interests/creative.svg";
-import maker from "/src/modules/Common/Authentication/assets/interests/makers.svg";
-import software from "/src/modules/Common/Authentication/assets/interests/software.svg";
-import management from "/src/modules/Common/Authentication/assets/interests/management.svg";
-import others from "/src/modules/Common/Authentication/assets/interests/others.svg";
+import { cdnUrl } from "@/modules/utils/cdn";
+
+const creative = cdnUrl("src/modules/Common/Authentication/assets/interests/creative.svg");
+const maker = cdnUrl("src/modules/Common/Authentication/assets/interests/makers.svg");
+const software = cdnUrl("src/modules/Common/Authentication/assets/interests/software.svg");
+const management = cdnUrl("src/modules/Common/Authentication/assets/interests/management.svg");
+const others = cdnUrl("src/modules/Common/Authentication/assets/interests/others.svg");
 
 export const INITIAL_INTERESTS = [
     { title: "Coder", value: "coder", img: software, checked: false },

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./LandingPage.module.css";
-import imageBottom from "../Assets/LC3.webp";
+import { cdnUrl } from "@/modules/utils/cdn";
 import LCCard from "../components/LCCard";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -372,7 +372,7 @@ const LandingPage = () => {
                         ) : (
                             <div className={styles.LClandingPagenone}>
                                 <img
-                                    src={imageBottom}
+                                    src={cdnUrl("src/modules/Public/LearningCircles/Assets/LC3.webp")}
                                     alt="You haven't joined any circles yet"
                                     loading="eager"
                                 />

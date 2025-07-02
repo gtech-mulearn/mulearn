@@ -1,5 +1,6 @@
 import { Form, Formik } from "formik";
 import styles from "./CreateLC.module.css";
+import { cdnUrl } from "@/modules/utils/cdn";
 import Select from "react-select";
 import { useEffect, useState } from "react";
 import { HStack, Radio, RadioGroup, Switch, Tooltip } from "@chakra-ui/react";
@@ -11,7 +12,6 @@ import WeekdayPicker from "../../components/WeekdayPicker/WeekdayPicker";
 import MonthdayPicker from "../../components/MonthdayPicker/MonthdayPicker";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { BiInfoCircle } from "react-icons/bi";
-import imageTop from "../../assets/images/LC2.webp";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { LearningCircleCreate } from "../../services/LearningCircleInterface";
@@ -202,7 +202,7 @@ export default function CreateLC() {
                     </Formik>
                 </div>
                 <div className={styles.headContent}>
-                    <img src={imageTop} alt="image" loading="eager" />
+                    <img src={cdnUrl("src/modules/Dashboard/modules/LearningCircleV2/assets/images/LC2.webp")} alt="Learning Circle" />
                     <div className={styles.learningCircleLandingPageDesc}>
                         <h1>Learn, share, together</h1>
                         <b>

@@ -62,9 +62,18 @@
 }
 
 .linkedinimg {
-  height: 1.75rem;
-  width: 1.75rem;
-  margin-top: 0.5rem;
+  height: 2rem;
+  width: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transform: scale(1.5);
+  transition: transform 0.2s ease;
+}
+
+.linkedinimg:hover {
+  transform: scale(2);
 }
 
 .textdiv {

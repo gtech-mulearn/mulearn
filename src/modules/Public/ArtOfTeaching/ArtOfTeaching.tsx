@@ -5,8 +5,8 @@ import styles from "./ArtOfTeaching.module.css";
 import "./ArtOfTeaching.scss";
 // @ts-ignore
 
-import fvimg from "./assets/Teaching.gif";
 import Guidlines from "./assets/Guidlines1.pdf";
+import { cdnUrl } from "@/modules/utils/cdn";
 
 import MentorCard from "./components/MentorCard/MentorCard";
 
@@ -202,7 +202,7 @@ const ArtOfTeaching = () => {
              
             
             <div className={styles.fv_images}>
-              <img src={fvimg} alt="" className={styles.fv_img} />
+              <img src={cdnUrl("src/modules/Public/ArtOfTeaching/assets/Teaching.gif")} alt="Teaching Animation" className={styles.fv_img} />
             </div>
           </div>
         </div>
@@ -403,7 +403,7 @@ const ArtOfTeaching = () => {
                   <MentorCard
                     name={"Dr T M George"}
                     designation={"Former Principal at Mar Baselios College of Engineering and Technology"}
-                    image={"assets/artofteaching/j1.webp"}
+                    image={cdnUrl("src/modules/Public/ArtOfTeaching/assets/j1.webp")}
                     linkedIn={"https://www.linkedin.com/in/dr-t-m-george-87b86028/?originalSubdomain=in"} interest={undefined} source={undefined} clink={undefined}                  />
                 </div>
 
@@ -411,14 +411,14 @@ const ArtOfTeaching = () => {
                   <MentorCard
                     name={"Ann Andrews"}
                     designation={"Product | Technology & Data Strategy | NYU & Columbia Fellow"}
-                    image={"./assets/artofteaching/j2.webp"}
+                    image={cdnUrl("src/modules/Public/ArtOfTeaching/assets/j2.webp")}
                     linkedIn={"https://www.linkedin.com/in/annandrews/"} interest={undefined} source={undefined} clink={undefined}                  />
                 </div>
                 <div className={styles.judges_card}>
                   <MentorCard
                     name={"Rajeev J Sebastian"}
                     designation={"CEO Alokin Software Private Limited"}
-                    image={"./assets/artofteaching/j3.webp"}
+                    image={cdnUrl("src/modules/Public/ArtOfTeaching/assets/j3.webp")}
                     linkedIn={"https://www.linkedin.com/in/rajeevjs"} interest={undefined} source={undefined} clink={undefined}                  />
                 </div>
               </div>

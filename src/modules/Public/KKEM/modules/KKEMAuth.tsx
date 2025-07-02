@@ -1,7 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { userAuthConfirm } from "../services/auth";
 import { useEffect, useState } from "react";
-import Astronaut from "../assets/astronaut.webp";
 import styles from "./KKEMAuth.module.css";
 import Footer from "../components/Footer";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
@@ -9,6 +8,8 @@ import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { refreshRoles } from "@/MuLearnServices/authCheck";
 import toast from "react-hot-toast";
+import { cdnUrl } from "@/modules/utils/cdn";
+
 type authGetUserInfo = APIResponse<UserInfo>;
 export default function KKEMAuth() {
     const { token } = useParams<{ token: string }>();
@@ -85,7 +86,7 @@ function Success() {
                     close this tab.
                 </p>
             </div>
-            <img className={styles.image} src={Astronaut} alt="Astronaut" />
+            <img className={styles.image} src={cdnUrl("src/modules/Public/KKEM/assets/astronaut.webp")} alt="Astronaut" />
         </section>
     );
 }

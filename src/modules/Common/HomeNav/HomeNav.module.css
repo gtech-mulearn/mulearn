@@ -12,7 +12,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 5rem;
+  height: 6rem;
   width: 100%;
   padding-left: 3rem;
   padding-right: 3rem;
@@ -23,6 +23,10 @@
   display: flex;
   align-items: center;
   flex-shrink: 0;
+}
+
+.logo img{
+  height: 3rem;
 }
 
 /* Navigation Links */
@@ -207,6 +211,7 @@
   margin: 4rem 0 2rem 0;
   padding: 0;
   flex: 1;
+  text-align: left;
 }
 
 .mobileNavLinks li {
@@ -219,6 +224,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
+  text-align: left;
 }
 
 .mobileNavLinks li:hover {
@@ -432,7 +438,7 @@
   }
 
   .logo {
-    margin: 1rem 0 0 1rem;
+    margin: 0.5rem 0 0 1rem;
   }
 }
 
@@ -582,6 +588,7 @@
 /* Mobile Submenu Styles */
 .mobileSubmenuSection {
   margin-bottom: 1rem;
+  text-align: left;
 }
 
 .mobileSubmenuCategory {
@@ -589,11 +596,13 @@
   font-size: 0.875rem;
   margin: 0.5rem 0;
   color: #4a5568;
+  text-align: left;
 }
 
 .mobileSubmenuSection ul {
   padding-left: 1rem;
   list-style: none;
+  text-align: left;
 }
 
 .mobileSubmenuSection li {
@@ -602,6 +611,7 @@
   color: #4a5568;
   cursor: pointer;
   transition: all 0.2s ease;
+  text-align: left;
 }
 
 .mobileSubmenuSection li:hover {

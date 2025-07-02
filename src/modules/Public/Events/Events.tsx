@@ -4,6 +4,7 @@ import styles from "./Events.module.css";
 import Footer from "@/modules/Common/Footer/Footer";
 import HomeNav from "@/modules/Common/HomeNav/HomeNav";
 import { Link } from "react-router-dom";
+import { cdnUrl } from "@/modules/utils/cdn";
 
 const EventsHome = () => {
   return (
@@ -25,8 +26,8 @@ const EventsHome = () => {
             </div>
             <div className={styles.fv_images}>
               <img
-                src="/assets/events/fvimg.gif"
-                alt=""
+                src={cdnUrl("public/assets/events/fvimg.gif")}
+                alt="Events First View"
                 className={styles.fv_img}
               />
             </div>

@@ -1,9 +1,14 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import styles from "../LcDashboard.module.css";
-import UploadImage from "../../../assets/images/uploadIcon.svg";
+import styles from "./LcReport.module.css";
+import { cdnUrl } from "@/modules/utils/cdn";
 import {
-    getMeetupAttendees,
-    reportMeeting
+    approveLcUser,
+    getLcDetails,
+    leaveLc,
+    removeMember,
+    setLCMeetTime,
+    transferLead,
+    updateLcNote
 } from "../../../services/LearningCircleAPIs";
 import toast from "react-hot-toast";
 import StarRatings from "react-star-ratings";
@@ -246,7 +251,7 @@ const LcReport = (props: Props) => {
                     ) : (
                         <label htmlFor="fileInput">
                             <div>
-                                <img src={UploadImage} alt="" />
+                                <img src={cdnUrl("src/modules/Dashboard/modules/LearningCircle/assets/images/uploadIcon.svg")} alt="Upload Icon" />
                                 Drag and drop or <br />
                                 click to choose a file
                             </div>

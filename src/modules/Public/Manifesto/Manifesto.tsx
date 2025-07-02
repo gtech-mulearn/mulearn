@@ -1,8 +1,6 @@
 import React from "react";
 import styles from "./Manifesto.module.css";
-import muLogoBg from "./assets/µ.png";
-import muLogo from "./assets/µLearn-logo.svg";
-import handImg from "./assets/hand.png";
+import { cdnUrl } from "@/modules/utils/cdn";
 
 import HomeNav from "@/modules/Common/HomeNav/HomeNav";
 import Footer from "@/modules/Common/Footer/Footer";  
@@ -13,16 +11,16 @@ export default function Manifesto() {
       <HomeNav />
       <div className={styles.main}>
         <div className={styles.head}>
-          <img src={muLogoBg} alt="" className={styles.muLogoBg} />
+          <img src={cdnUrl("src/modules/Public/Manifesto/assets/µ.png")} alt="µLearn background logo" className={styles.muLogoBg} />
           <div className={styles.textContainer}>
             <div className={styles.logoContainer}>
-              <img src={muLogo} alt="" />
+              <img src={cdnUrl("src/modules/Public/Manifesto/assets/µLearn-logo.svg")} alt="µLearn logo" />
               <div className={styles.ourManifestoText}>Our Manifesto</div>
             </div>
             <h1>We,The Unbound, The Unbowed</h1>
           </div>
           <div className={styles.imgContainer}>
-            <img src={handImg} alt="" />
+            <img src={cdnUrl("src/modules/Public/Manifesto/assets/hand.png")} alt="Hand illustration" />
           </div>
         </div>
         <div className={styles.firstPara}>

@@ -2,7 +2,7 @@ import OnboardingTemplate from "../../../components/OnboardingTeamplate/Onboardi
 import styles from "./Guild.module.css";
 import { BsDiscord } from "react-icons/bs";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
-import cdimage from "./assets/connectdiscordpng1.webp";
+import { cdnUrl } from "@/modules/utils/cdn";
 
 export default function ConnectToDiscord() {
     return (
@@ -26,7 +26,8 @@ export default function ConnectToDiscord() {
                     </div>
                     <img
                         className={styles.fb_image}
-                        src={cdimage}
+                        src={cdnUrl("src/modules/Common/Authentication/assets/connectdiscordpng1.webp")}
+                        alt="Connect Discord"
                     />
                 </div>
             </div>

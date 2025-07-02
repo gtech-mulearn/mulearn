@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./ConnectDiscord.module.css";
-import cdimage from "../assets/images/connectdiscordpng1.webp";
+import { cdnUrl } from "@/modules/utils/cdn";
 import { connectDiscord, getInfo } from "../services/apis";
 import { MdContentCopy } from "react-icons/md";
 import { BsDiscord } from "react-icons/bs";
@@ -115,7 +115,7 @@ const ConnectDiscord = () => {
                                 </div>
                                 <img
                                     className={styles.fb_image}
-                                    src={cdimage}
+                                    src={cdnUrl("src/modules/Dashboard/modules/ConnectDiscord/assets/images/connectdiscordpng1.webp")}
                                     alt=""
                                 />
                             </div>

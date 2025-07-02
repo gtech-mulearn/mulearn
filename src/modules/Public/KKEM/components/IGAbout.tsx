@@ -1,13 +1,10 @@
 import styles from "./IGAbout.module.css";
-import Astronaut from "../assets/astronaut.webp";
 import KKEMAuth from "./Auth";
-import im7 from "../assets/im7.webp";
-import im9 from "../assets/im9.webp";
-import im10 from "../assets/im10.webp";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { publicGateway } from "@/MuLearnServices/apiGateways";
 import { KKEMRoutes } from "@/MuLearnServices/urls";
+import { cdnUrl } from "@/modules/utils/cdn";
 
 export default function MulearnAbout() {
     const [searchParams] = useSearchParams();
@@ -68,12 +65,12 @@ export default function MulearnAbout() {
                 )}
             </div>
             <div className={styles.imgc}>
-                <img className={styles.image} src={Astronaut} alt="Astronaut" />
+                <img className={styles.image} src={cdnUrl("src/modules/Public/KKEM/assets/astronaut.webp")} alt="Astronaut" />
                 <p className={styles.dc2}>Curated by</p>
                 <div className={styles.curated}>
-                    <img src={im7} alt="im7" />
-                    <img src={im9} alt="im9" />
-                    <img src={im10} alt="im10" />
+                    <img src={cdnUrl("src/modules/Public/KKEM/assets/im7.webp")} alt="Curator 1" />
+                    <img src={cdnUrl("src/modules/Public/KKEM/assets/im9.webp")} alt="Curator 2" />
+                    <img src={cdnUrl("src/modules/Public/KKEM/assets/im10.webp")} alt="Curator 3" />
                     <p>and more...</p>
                 </div>
             </div>

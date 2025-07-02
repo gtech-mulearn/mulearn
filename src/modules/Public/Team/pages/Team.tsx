@@ -3,7 +3,7 @@ import { motion, useInView } from "framer-motion";
 import Navbar from "../../Home/components/Navbar/Navbar";
 import Footer from "../../Home/components/Footer/Footer";
 import styles from "./Team.module.css";
-
+import { cdnUrl } from "@/modules/utils/cdn"; 
 import Execom from "../components/Teams/Execom";
 import Year2024 from "../components/Teams/Year2024";
 import Year2023 from "../components/Teams/Year2023";
@@ -81,7 +81,7 @@ const Teams = () => {
             >
               <img
                 className={styles.fv_image}
-                src="assets/team/illustration.webp"
+                src={cdnUrl("public/assets/team/illustration.webp")}
                 alt=""
               />
             </motion.div>

@@ -1,14 +1,8 @@
 import React from "react";
 import styles from "./YIP2023.module.css";
-import boxoneimg from "./assets/boxoneimg.png";
-import lines from "./assets/lines.png";
-import bllines from "./assets/bllines.png";
-import bthimg from "./assets/Starting a business project-amico.png";
-import qrcode from "./assets/qrcode.png";
-import cat from "./assets/cat.png";
+import { cdnUrl } from "@/modules/utils/cdn";
 import "./steps.css";
 import "./yip.css";
-import box_fourimg from "./assets/box_fourimg.png";
 import HomeNav from "@/modules/Common/HomeNav/HomeNav";   
 import Footer from "@/modules/Common/Footer/Footer";
 
@@ -47,14 +41,14 @@ const YIP2023 = () => {
                   <p className={styles.ub_heading}>
                     Kerala's Biggest <b>Innovation Celebration is here!</b>
                   </p>
-                  <img src={lines} alt="" className={styles.lines} />
+                  <img src={cdnUrl("src/modules/Public/yip/assets/lines.png")} alt="Decorative lines" className={styles.lines} />
                   <p className={styles.ub_text}>
                     Young Innovators Programme 5.0
                   </p>
                 </div>
 
                 <div className={styles.ub_img}>
-                  <img src={boxoneimg} alt="" className={styles.boxoneimg} />
+                  <img src={cdnUrl("src/modules/Public/yip/assets/boxoneimg.png")} alt="YIP 5.0 illustration" className={styles.boxoneimg} />
                 </div>
               </div>
               <button className={styles.apply_now} onClick={applyButton}>
@@ -80,16 +74,16 @@ const YIP2023 = () => {
                   Download the <br /> YIP App Now!
                 </p>
                 <div className={styles.box_two_bottom_section}>
-                  <img src={qrcode} alt="" className={styles.bt_qrcode} />
-                  <img src={cat} alt="" className={styles.bt_img} />
+                  <img src={cdnUrl("src/modules/Public/yip/assets/qrcode.png")} alt="QR code for YIP app" className={styles.bt_qrcode} />
+                  <img src={cdnUrl("src/modules/Public/yip/assets/cat.png")} alt="YIP mascot" className={styles.bt_img} />
                 </div>
               </div>
               <div className={styles.box_three}>
                 <p className={styles.bth_header}>
                   Brainstorm, Collaborate, And Create
                 </p>
-                <img src={bllines} alt="" className={styles.bllines} />
-                <img src={bthimg} alt="" className={styles.bth_img} />
+                <img src={cdnUrl("src/modules/Public/yip/assets/bllines.png")} alt="Decorative lines" className={styles.bllines} />
+                <img src={cdnUrl("src/modules/Public/yip/assets/Starting a business project-amico.png")} alt="Business collaboration illustration" className={styles.bth_img} />
               </div>
             </div>
             <div className={styles.box_four}>
@@ -107,7 +101,7 @@ const YIP2023 = () => {
                   meaningful impact.
                 </b>
               </div>
-              <img src={box_fourimg} alt="" className={styles.box_fourimg} />
+              <img src={cdnUrl("src/modules/Public/yip/assets/box_fourimg.png")} alt="Innovation illustration" className={styles.box_fourimg} />
             </div>
           </div>
         </div>
@@ -121,9 +115,8 @@ const YIP2023 = () => {
                   <div className="timeline__event animated fadeInUp delay-3s timeline__event--type1">
                     <div className="timeline__event__icon">
                       <img
-                        // src={require("./assets/procedure/prereg.webp")}
-                        src={"./assets/procedure/prereg.webp"}
-                        alt=""
+                        src={cdnUrl("src/modules/Public/yip/assets/procedure/prereg.webp")}
+                        alt="Pre-registration icon"
                         className="lni-cake"
                       />
                     </div>
@@ -157,9 +150,8 @@ const YIP2023 = () => {
                   <div className="timeline__event animated fadeInUp delay-2s timeline__event--type2">
                     <div className="timeline__event__icon">
                       <img
-                        // src={require("./assets/procedure/studentreg.webp")}
-                        src={"./assets/procedure/studentreg.webp"}
-                        alt=""
+                        src={cdnUrl("src/modules/Public/yip/assets/procedure/studentreg.webp")}
+                        alt="Student registration icon"
                         className="lni-cake"
                       />
                     </div>
@@ -189,9 +181,8 @@ const YIP2023 = () => {
                   <div className="timeline__event animated fadeInUp delay-1s timeline__event--type3">
                     <div className="timeline__event__icon">
                       <img
-                        // src={require("./assets/procedure/yip-voc.webp")}
-                        src={"./assets/procedure/yip-voc.webp"}
-                        alt=""
+                        src={cdnUrl("src/modules/Public/yip/assets/procedure/yip-voc.webp")}
+                        alt="Voice of stakeholder icon"
                         className="lni-cake"
                       />
                     </div>
@@ -216,9 +207,8 @@ const YIP2023 = () => {
                   <div className="timeline__event animated fadeInUp timeline__event--type1">
                     <div className="timeline__event__icon">
                       <img
-                        // src={require("./assets/procedure/team.webp")}
-                        src={"./assets/procedure/team.webp"}
-                        alt=""
+                        src={cdnUrl("src/modules/Public/yip/assets/procedure/team.webp")}
+                        alt="Team formation icon"
                         className="lni-cake"
                       />
                     </div>
@@ -248,9 +238,8 @@ const YIP2023 = () => {
                   <div className="timeline__event animated fadeInUp delay-3s timeline__event--type1">
                     <div className="timeline__event__icon">
                       <img
-                        // src={require("./assets/procedure/ideafind.webp")}
-                        src={"./assets/procedure/ideafind.webp"}
-                        alt=""
+                        src={cdnUrl("src/modules/Public/yip/assets/procedure/ideafind.webp")}
+                        alt="Idea submission icon"
                         className="lni-cake"
                       />
                     </div>
@@ -278,9 +267,8 @@ const YIP2023 = () => {
                   <div className="timeline__event animated fadeInUp delay-2s timeline__event--type2">
                     <div className="timeline__event__icon">
                       <img
-                        // src={require("./assets/procedure/approved.webp")}
-                        src={"./assets/procedure/approved.webp"}
-                        alt=""
+                        src={cdnUrl("src/modules/Public/yip/assets/procedure/approved.webp")}
+                        alt="Institutional approval icon"
                         className="lni-cake"
                       />
                     </div>
@@ -303,9 +291,8 @@ const YIP2023 = () => {
                   <div className="timeline__event animated fadeInUp delay-1s timeline__event--type3">
                     <div className="timeline__event__icon">
                       <img
-                        // src={require("./assets/procedure/evaluation.webp")}
-                        src={"./assets/procedure/evaluation.webp"}
-                        alt=""
+                        src={cdnUrl("src/modules/Public/yip/assets/procedure/evaluation.webp")}
+                        alt="Preliminary evaluation icon"
                         className="lni-cake"
                       />
                     </div>
@@ -328,9 +315,8 @@ const YIP2023 = () => {
                   <div className="timeline__event animated fadeInUp timeline__event--type1">
                     <div className="timeline__event__icon">
                       <img
-                        // src={require("./assets/procedure/winner annoucement.webp")}
-                        src={"./assets/procedure/winner annoucement.webp"}
-                        alt=""
+                        src={cdnUrl("src/modules/Public/yip/assets/procedure/winner annoucement.webp")}
+                        alt="Winner announcement icon"
                         className="lni-cake"
                       />
                     </div>

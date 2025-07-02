@@ -6,7 +6,7 @@ import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { getUsers } from "../../Search/services/api";
 import UserCard from "../../../components/UserCard";
 import { HStack, useBreakpointValue, VStack } from "@chakra-ui/react";
-import defaultProfile from "../../../assets/images/defaultProfile.png"
+import { cdnUrl } from "@/modules/utils/cdn";
 
 interface User {
   full_name: string;
@@ -128,7 +128,7 @@ const MentorList: React.FC<{
                   .join(", ") || "Unknown Role",
                 expertise: user.interest_groups.map((ig) => ig.name),
                 karma: user.karma,
-                image: user.profile_pic ? user.profile_pic : defaultProfile,
+                image: user.profile_pic ? user.profile_pic : cdnUrl("src/modules/Dashboard/assets/images/defaultProfile.png"),
               }}
               onSelect={() => onSelect(user)}
             />

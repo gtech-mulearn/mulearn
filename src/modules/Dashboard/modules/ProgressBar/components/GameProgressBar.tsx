@@ -3,23 +3,17 @@ import { motion } from "framer-motion";
 import { Img } from "@chakra-ui/react";
 import { useEffect, useState, useMemo } from "react";
 import style from "./GameProgressBar.module.css";
-import Level1 from "../../Profile/components/MuVoyage/assets/images/Level1.webp";
-import Level2 from "../../Profile/components/MuVoyage/assets/images/Level2.webp";
-import Level3 from "../../Profile/components/MuVoyage/assets/images/Level3.webp";
-import Level4 from "../../Profile/components/MuVoyage/assets/images/Level4.webp";
-import Level5 from "../../Profile/components/MuVoyage/assets/images/Level5.webp";
-import Level6 from "../../Profile/components/MuVoyage/assets/images/Level6.webp";
-import Level7 from "../../Profile/components/MuVoyage/assets/images/Level7.webp";
+import { cdnUrl } from "@/modules/utils/cdn";
 import { getUserLevelFeed, LevelFeedResponse } from "../services/api";
 
 const ImageMap = [
-  { level: 1, image: Level1 },
-  { level: 2, image: Level2 },
-  { level: 3, image: Level3 },
-  { level: 4, image: Level4 },
-  { level: 5, image: Level5 },
-  { level: 6, image: Level6 },
-  { level: 7, image: Level7 },
+  { level: 1, image: cdnUrl("src/modules/Dashboard/modules/Profile/components/MuVoyage/assets/images/Level1.webp") },
+  { level: 2, image: cdnUrl("src/modules/Dashboard/modules/Profile/components/MuVoyage/assets/images/Level2.webp") },
+  { level: 3, image: cdnUrl("src/modules/Dashboard/modules/Profile/components/MuVoyage/assets/images/Level3.webp") },
+  { level: 4, image: cdnUrl("src/modules/Dashboard/modules/Profile/components/MuVoyage/assets/images/Level4.webp") },
+  { level: 5, image: cdnUrl("src/modules/Dashboard/modules/Profile/components/MuVoyage/assets/images/Level5.webp") },
+  { level: 6, image: cdnUrl("src/modules/Dashboard/modules/Profile/components/MuVoyage/assets/images/Level6.webp") },
+  { level: 7, image: cdnUrl("src/modules/Dashboard/modules/Profile/components/MuVoyage/assets/images/Level7.webp") },
 ];
 
 const LEVEL_REQUIREMENTS = {

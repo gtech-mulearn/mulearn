@@ -42,6 +42,7 @@ type SubjectInfo = {
     type: "Badge" | "Certificate" | "Recognition";
     full_name: string;
     email: string;
+    name: string; 
     did: string;
 };
 
@@ -116,6 +117,7 @@ const AchievementCard: React.FC<AchievementCardProps> = ({
                     full_name: userInfo?.full_name || "Unknown",
                     email: shareEmail && userInfo?.email ? userInfo.email : "",
                     did: didValue,
+                    name: userInfo?.full_name || "",
                 };
 
                 const response = await issueVerifiableCredential(

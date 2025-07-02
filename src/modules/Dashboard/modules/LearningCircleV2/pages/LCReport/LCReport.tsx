@@ -5,7 +5,7 @@ import {
     submitLcReport
 } from "../../services/LearningCircleAPIs";
 import { useNavigate, useParams } from "react-router-dom";
-import placeholder from "../../../../assets/images/dpm.webp";
+import { cdnUrl } from "@/modules/utils/cdn";
 import { BiCheck, BiLink, BiRefresh, BiX } from "react-icons/bi";
 import { BsEye } from "react-icons/bs";
 import { FiChevronLeft } from "react-icons/fi";
@@ -194,7 +194,7 @@ export default function LCReport() {
                                             <img
                                                 className={styles.profile}
                                                 alt=""
-                                                src={placeholder}
+                                                src={cdnUrl("src/modules/Dashboard/assets/images/dpm.webp")}
                                             />
                                             <span className={styles.name}>
                                                 {attendee.full_name}

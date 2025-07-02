@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import styles from "./LearningCircle.module.css";
-import imageTop from "../assets/images/LC1.svg";
+import styles from "./LearningCircleFind.module.css";
+import { cdnUrl } from "@/modules/utils/cdn";
 import { useNavigate } from "react-router-dom";
 import {
     getCampusLearningCircles,
@@ -56,7 +56,7 @@ const FindCircle = () => {
                             />
                         </div>
                     </div>
-                    <img src={imageTop} alt="image" />
+                    <img src={cdnUrl("src/modules/Dashboard/modules/LearningCircle/assets/images/LC1.svg")} alt="Learning Circle" />
                 </div>
                 <LearningCircleForm
                     ChangeLoadingState={ChangeLoadingState}

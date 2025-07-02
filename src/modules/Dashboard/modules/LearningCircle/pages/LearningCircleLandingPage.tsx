@@ -1,5 +1,5 @@
-import styles from "./LearningCircle.module.css";
-import imageTop from "../assets/images/LC2.webp";
+import styles from "./LearningCircleLandingPage.module.css";
+import { cdnUrl } from "@/modules/utils/cdn";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -81,7 +81,7 @@ const LearningCircleLandingPage = () => {
             ) : (
                 <div className={styles.learningCircleLandingPage}>
                     <div className={styles.headContent}>
-                        <img src={imageTop} alt="image" loading="eager" />
+                        <img src={cdnUrl("src/modules/Dashboard/modules/LearningCircle/assets/images/LC2.webp")} alt="Learning Circle" />
                         <div className={styles.learningCircleLandingPageDesc}>
                             <h1>Learn, share, together</h1>
                             <b>
