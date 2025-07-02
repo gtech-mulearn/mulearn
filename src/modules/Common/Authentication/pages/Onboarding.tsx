@@ -27,6 +27,7 @@ import {
 } from "@/MuLearnComponents/MuButtons/MuButton";
 import { BiSupport } from "react-icons/bi";
 
+
 const animatedComponents = makeAnimated();
 type Props = {};
 interface BackendErrors {
@@ -58,6 +59,9 @@ const Onboarding = (props: Props) => {
     const [firstQuestion, setFirstQuestion] = useState(false);
     const [secondQuestion, setSecondQuestion] = useState(false);
     const [showLoader, setShowLoader] = useState(false);
+    const [showVerificationSent, setShowVerificationSent] = useState(false);
+    const [verificationEmail, setVerificationEmail] = useState("");
+    const [verificationToken, setVerificationToken] = useState("");
     const [showSubmitLoader, setShowSubmitLoader] = useState(false);
     //Getting the token from the URL
     const token = queryParameters.get("id");
@@ -196,6 +200,13 @@ const Onboarding = (props: Props) => {
                     muid: ""
                 });
             });
+        }
+    }, []);
+    useEffect(() => {
+        const queryParameters = new URLSearchParams(window.location.search);
+        const token = queryParameters.get("token");
+        if (token) {
+            mockVerifyEmailToken(token);
         }
     }, []);
 
@@ -456,6 +467,40 @@ const Onboarding = (props: Props) => {
             }
         }
     }, [roleAPI]);
+
+  
+    const mockEmailVerification = async (email: string) => {
+        setShowLoader(true);
+        setTimeout(() => {
+            setShowLoader(false);
+            const mockResponse = { status: "success", message: "Verification sent" };
+            if (mockResponse.status === "success") {
+                setVerificationEmail(email);
+                setShowVerificationSent(true);
+                setDisplay0("none");
+                setOpacity0(0);
+            }
+        }, 2000);
+    };
+
+   
+    const mockVerifyEmailToken = async (token: string) => {
+        setShowLoader(true);
+        setTimeout(() => {
+            setShowLoader(false);
+            const mockResponse = {
+                status: "success",
+                message: "Email verified successfully! Please complete your registration."
+            };
+            if (mockResponse.status === "success") {
+                alert(mockResponse.message);
+                navigate("/register/organization");
+            } else {
+                alert("Token verification failed. Please try again.");
+            }
+        }, 2000);
+    };
+
     return (
         <>
             <div className={styles.onboarding_page}>
@@ -558,17 +603,7 @@ const Onboarding = (props: Props) => {
                                                                         .email !=
                                                                         ""
                                                                 ) {
-                                                                    emailVerification(
-                                                                        formik
-                                                                            .values
-                                                                            .email,
-                                                                        setFirstQuestion,
-                                                                        formik,
-                                                                        setEmailVerificationResultBtn,
-                                                                        setOpacity0,
-                                                                        setDisplay0,
-                                                                        setShowLoader
-                                                                    );
+                                                                    mockEmailVerification(formik.values.email);
                                                                 }
                                                             } else {
                                                                 navigate(
@@ -596,6 +631,28 @@ const Onboarding = (props: Props) => {
                                                     Do you have an account ?
                                                     Login
                                                 </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+
+                            {showVerificationSent && (
+                                <div className={styles.question_container} style={{ display: "flex", opacity: 1 }}>
+                                    <div className={styles.question_box}>
+                                        <div className={styles.question}>
+                                            <h3 style={{ backgroundColor: "#28a745" }}>Verification Link Sent</h3>
+                                            <div className={styles.answers}>
+                                                <div style={{ textAlign: "center", padding: "20px 0" }}>
+                                                    <div style={{ fontSize: "48px", color: "#28a745", marginBottom: "20px" }}>✉️</div>
+                                                    <h4 style={{ color: "#333", marginBottom: "15px", fontSize: "18px" }}>Check Your Email</h4>
+                                                    <p style={{ color: "#666", marginBottom: "20px", lineHeight: "1.5" }}>We've sent a verification link to:</p>
+                                                    <p style={{ color: "#5570f1", fontWeight: "bold", marginBottom: "25px" }}>{verificationEmail}</p>
+                                                    <p style={{ color: "#666", fontSize: "14px", marginBottom: "30px" }}>Click the link in your email to verify your account and continue.</p>
+                                                </div>
+                                                <PowerfulButton type="button" className={styles.verify_button} onClick={() => { setShowVerificationSent(false); setDisplay0("flex"); setOpacity0(1); }} style={{ backgroundColor: "#5570f1" }}>
+                                                    Didn't receive it? Try again.
+                                                </PowerfulButton>
                                             </div>
                                         </div>
                                     </div>

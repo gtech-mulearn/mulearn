@@ -43,6 +43,7 @@ import { AchievementData } from "../../ManageAchievements/ManageAchievementsInte
 import AchievementCardOne from "../components/Achievements/AchievementCardOne";
 import toast from "react-hot-toast";
 import { userInfo } from "os";
+import ProfileEnhancements from '../../../components/ProfileEnhancements';
 
 
 
@@ -885,6 +886,7 @@ const Profile = () => {
                                     </div>
                                 </div>
                             </div>
+                            <ProfileEnhancements />
                         </>
                     )
                 )}
