@@ -67,6 +67,9 @@
     cursor: pointer;
     align-items: center;
 }
+.mulearn_brand img{
+    height: 3rem;
+}
 
 .side_nav_bar_container .side_nav_bar .side_nav_bar_items {
     width: 100%;
