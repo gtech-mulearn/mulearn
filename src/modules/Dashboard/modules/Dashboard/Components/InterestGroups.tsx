@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { useUserStore } from "/src/ZustandProvider";
 import { getInterestGroupsList } from "../../InterestGroup/apis";
+import { cdnUrl } from "@/modules/utils/cdn";
 
 interface InterestGroup {
   title: string;
@@ -28,15 +29,16 @@ export const currentIgsData: Record<string, string[]> =
 }
 
 const imageUrls = [
-  { title: "UI UX", image: "/assets/IG/Cover/1.webp" },
-  { title: "Web Development", image: "/assets/IG/Cover/2.webp" },
-  { title: "Cyber Security", image: "/assets/IG/Cover/3.webp" },
-  { title: "Digital Marketing", image: "/assets/IG/Cover/4.webp" },
-  { title: "Game Dev", image: "/assets/IG/Cover/5.webp" },
-  { title: "Cloud And Devops", image: "/assets/IG/Cover/6.webp" },
-  { title: "Product Management", image: "/assets/IG/Cover/7.webp" },
-  { title: "Internet Of Things (IOT) And Robotics", image: "/assets/IG/Cover/8.webp" },
-  {title: "AR VR MR", image: "/assets/IG/Cover/10.webp" },
+  { title: "UI UX", image: cdnUrl("public/assets/IG/Cover/1.webp") },
+  { title: "Web Development", image: cdnUrl("public/assets/IG/Cover/2.webp") },
+  { title: "Cyber Security", image: cdnUrl("public/assets/IG/Cover/3.webp") },
+  { title: "Digital Marketing", image: cdnUrl("public/assets/IG/Cover/4.webp") },
+  { title: "Game Dev", image: cdnUrl("public/assets/IG/Cover/5.webp") },
+  { title: "Cloud And Devops", image: cdnUrl("public/assets/IG/Cover/6.webp") },
+  { title: "Product Management", image: cdnUrl("public/assets/IG/Cover/7.webp") },
+  { title: "Internet Of Things (IOT) And Robotics", image: cdnUrl("public/assets/IG/Cover/8.webp") },
+  { title: "Entrepreneurship", image: cdnUrl("public/assets/IG/Cover/9.webp") },
+  { title: "AR/VR", image: cdnUrl("public/assets/IG/Cover/10.webp") },
 ];
 
 

@@ -7,6 +7,7 @@ import { getInterestGroups, getInterestGroupsList } from '../../InterestGroup/ap
 import MuLoader from '@/MuLearnComponents/MuLoader/MuLoader';
 import { InterestGroupData, interestGroups } from "../data/interestGroups";
 import { Helmet } from 'react-helmet';
+import { cdnUrl } from '@/modules/utils/cdn';
 
 
 function InterestGroupsPage() {
@@ -32,16 +33,16 @@ function InterestGroupsPage() {
   ];
 
   const imageUrls = [
-    { title: "UI/UX Interest Group", image: "/assets/IG/Cover/1.webp" },
-    { title: "Web Development", image: "/assets/IG/Cover/2.webp" },
-    { title: "Cybersecurity", image: "/assets/IG/Cover/3.webp" },
-    { title: "Digital Marketing", image: "/assets/IG/Cover/4.webp" },
-    { title: "Game Development", image: "/assets/IG/Cover/5.webp" },
-    { title: "Cloud and DevOps", image: "/assets/IG/Cover/6.webp" },
-    { title: "Product Management", image: "/assets/IG/Cover/7.webp" },
-    { title: "Internet Of Things (IOT) And Robotics", image: "/assets/IG/Cover/8.webp" },
-    { title: "Entrepreneurship", image: "/assets/IG/Cover/9.webp" },
-    { title: "AR/VR", image: "/assets/IG/Cover/10.webp" },
+    { title: "UI/UX Interest Group", image: cdnUrl("public/assets/IG/Cover/1.webp") },
+    { title: "Web Development", image: cdnUrl("public/assets/IG/Cover/2.webp") },
+    { title: "Cybersecurity", image: cdnUrl("public/assets/IG/Cover/3.webp") },
+    { title: "Digital Marketing", image: cdnUrl("public/assets/IG/Cover/4.webp") },
+    { title: "Game Development", image: cdnUrl("public/assets/IG/Cover/5.webp") },
+    { title: "Cloud and DevOps", image: cdnUrl("public/assets/IG/Cover/6.webp") },
+    { title: "Product Management", image: cdnUrl("public/assets/IG/Cover/7.webp") },
+    { title: "Internet Of Things (IOT) And Robotics", image: cdnUrl("public/assets/IG/Cover/8.webp") },
+    { title: "Entrepreneurship", image: cdnUrl("public/assets/IG/Cover/9.webp") },
+    { title: "AR/VR", image: cdnUrl("public/assets/IG/Cover/10.webp") },
 
   ];
 
