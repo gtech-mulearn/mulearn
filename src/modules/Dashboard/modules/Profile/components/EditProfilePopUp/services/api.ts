@@ -5,6 +5,7 @@ import { dashboardRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
 import toast from "react-hot-toast";
 
 type profileDetails = {
+    college: string;
     first_name: string;
     last_name: string;
     email: string;

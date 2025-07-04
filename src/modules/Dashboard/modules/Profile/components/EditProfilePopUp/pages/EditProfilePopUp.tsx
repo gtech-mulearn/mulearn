@@ -30,6 +30,13 @@ type Props = {
 const EditProfilePopUp = (props: Props) => {
     const [communityAPI, setCommunityAPI] = useState([{ id: "", title: "" }]);
     const [loadStatus, setLoadStatus] = useState(false);
+    const [countries, setCountries] = useState([]);
+    const [states, setStates] = useState([]);
+    const [districts, setDistricts] = useState([]);
+    const [colleges, setColleges] = useState([]);
+    const [selectedCountry, setSelectedCountry] = useState("");
+    const [selectedState, setSelectedState] = useState("");
+    const [selectedDistrict, setSelectedDistrict] = useState("");
     const imageRef = useRef<HTMLInputElement>(null);
     const [discordState, setDiscordState] = useState<
         "initial" | "loading" | "finished"
@@ -49,7 +56,8 @@ const EditProfilePopUp = (props: Props) => {
             gender: "",
             dob: "",
             communities: [],
-            image: ""
+            image: "",
+            college: ""
         },
         onSubmit: values => {
             const { image, ...data } = values;
@@ -92,7 +100,7 @@ const EditProfilePopUp = (props: Props) => {
     useEffect(() => {
         if (props.editPopUp)
             getEditUserProfile(data =>
-                formik.setValues({ ...data, image: "" })
+                formik.setValues({ ...data, image: "", college: data.college ?? "" })
             );
     }, [props.editPopUp]);
     const buttonStyle = {
@@ -231,6 +239,58 @@ const EditProfilePopUp = (props: Props) => {
                             </div>
                         </div>
                         <div className={styles.input_field}>
+                       <label className={styles.label}>Country</label>
+                        <div className={styles.inputBox}>
+                            <select value={selectedCountry} onChange={e => setSelectedCountry(e.target.value)}>
+                                <option value="">Select Country</option>
+                                {countries.map((country: any) => (
+                                    <option key={country.id} value={country.id}>{country.name}</option>
+                                ))}
+                            </select>
+                        </div>
+                    </div>
+
+                        <div className={styles.input_field}>
+                            <label className={styles.label}>State</label>
+                            <div className={styles.inputBox}>
+                                <select value={selectedState} onChange={e => setSelectedState(e.target.value)} disabled={!selectedCountry}>
+                                    <option value="">Select State</option>
+                                    {states.map((state: any) => (
+                                        <option key={state.id} value={state.id}>{state.name}</option>
+                                    ))}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div className={styles.input_field}>
+                            <label className={styles.label}>District</label>
+                            <div className={styles.inputBox}>
+                                <select value={selectedDistrict} onChange={e => setSelectedDistrict(e.target.value)} disabled={!selectedState}>
+                                    <option value="">Select District</option>
+                                    {districts.map((district: any) => (
+                                        <option key={district.id} value={district.id}>{district.name}</option>
+                                    ))}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div className={styles.input_field}>
+                            <label className={styles.label}>College</label>
+                            <div className={styles.inputBox}>
+                                <select
+                                    name="college"
+                                    value={formik.values.college}
+                                    onChange={formik.handleChange}
+                                    disabled={!selectedDistrict}
+                                >
+                                    <option value="">Select College</option>
+                                    {colleges.map((college: any) => (
+                                        <option key={college.id} value={college.id}>{college.name}</option>
+                                    ))}
+                                </select>
+                            </div>
+                        </div>
+                         <div className={styles.input_field}>
                             <label className={styles.label} htmlFor="">
                                 DOB
                             </label>
