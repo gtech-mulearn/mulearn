@@ -20,6 +20,13 @@ import { BsDiscord, BsCheck } from "react-icons/bs";
 import { BeatLoader } from "react-spinners";
 import toast from "react-hot-toast";
 
+import {
+    getCountries,
+    getState,
+    getDistrict,
+    getColleges
+} from "@/modules/Common/Authentication/services/onboardingApis";
+
 type Props = {
     editPopUp: boolean;
     setEditPopUP: (value: boolean) => void;
@@ -30,24 +37,40 @@ type Props = {
 const EditProfilePopUp = (props: Props) => {
     const [communityAPI, setCommunityAPI] = useState([{ id: "", title: "" }]);
     const [loadStatus, setLoadStatus] = useState(false);
-    const [countries, setCountries] = useState([]);
-    const [states, setStates] = useState([]);
-    const [districts, setDistricts] = useState([]);
-    const [colleges, setColleges] = useState([]);
-    const [selectedCountry, setSelectedCountry] = useState("");
-    const [selectedState, setSelectedState] = useState("");
-    const [selectedDistrict, setSelectedDistrict] = useState("");
+
+    const [countries, setCountries] = useState<{ value: string; label: string }[]>([]);
+    const [states, setStates] = useState<{ value: string; label: string }[]>([]);
+    const [districts, setDistricts] = useState<{ value: string; label: string }[]>([]);
+    const [colleges, setColleges] = useState<{ value: string; label: string }[]>([]);
+    const [collegeAPI, setCollegeAPI] = useState<any[]>([]);
+    const [departments, setDepartments] = useState<any[]>([]);
+
     const imageRef = useRef<HTMLInputElement>(null);
+
     const [discordState, setDiscordState] = useState<
         "initial" | "loading" | "finished"
     >("initial");
-    useEffect(() => {
-        window.history.pushState(null, "", window.location.href);
-        window.addEventListener("popstate", () => {
-            props.setEditPopUP(false);
-        });
-    }, [props.editPopUp]);
-    const formik = useFormik({
+
+    const errorHandler = (status: number, dataStatus: number) => {
+        console.error(`Error [${status}] - ${dataStatus}`);
+    };
+
+    type FormValues = {
+        first_name: string;
+        last_name: string;
+        email: string;
+        mobile: string;
+        gender: string;
+        dob: string;
+        communities: string[];
+        image: string;
+        college: string;
+        country: string;
+        state: string;
+        district: string;
+    };
+
+    const formik = useFormik<FormValues>({
         initialValues: {
             first_name: "",
             last_name: "",
@@ -57,7 +80,10 @@ const EditProfilePopUp = (props: Props) => {
             dob: "",
             communities: [],
             image: "",
-            college: ""
+            college: "",
+            country: "",
+            state: "",
+            district: ""
         },
         onSubmit: values => {
             const { image, ...data } = values;
@@ -74,10 +100,10 @@ const EditProfilePopUp = (props: Props) => {
             );
             props.triggerUpdateProfile();
         },
-        validate: (values: any) => {
-            let errors: any = {};
+        validate: values => {
+            let errors: Partial<Record<keyof FormValues, string>> = {};
             const emailRegex = /\S+@\S+\.\S+/;
-            ["first_name", "mobile"].forEach(key => {
+            (["first_name", "mobile"] as (keyof FormValues)[]).forEach(key => {
                 if (!values[key]) errors[key] = "Required";
             });
             if (!values.email) errors.email = "Email is required";
@@ -95,14 +121,48 @@ const EditProfilePopUp = (props: Props) => {
     };
 
     useEffect(() => {
-        return getCommunities(setCommunityAPI, setLoadStatus);
+        getCommunities(setCommunityAPI, setLoadStatus);
+        getCountries(errorHandler, setCountries);
     }, []);
+
     useEffect(() => {
         if (props.editPopUp)
             getEditUserProfile(data =>
-                formik.setValues({ ...data, image: "", college: data.college ?? "" })
+                formik.setValues({
+                    ...data,
+                    image: "",
+                    college: data.college ?? "",
+                    country: data.country ?? "",
+                    state: data.state ?? "",
+                    district: data.district ?? ""
+                })
             );
     }, [props.editPopUp]);
+
+    // cascading dropdown triggers
+    useEffect(() => {
+        if (formik.values.country)
+            getState(errorHandler, setStates, { country: formik.values.country });
+        else setStates([]);
+        setDistricts([]);
+        setColleges([]);
+    }, [formik.values.country]);
+
+    useEffect(() => {
+        if (formik.values.state)
+            getDistrict(errorHandler, setDistricts, { state: formik.values.state });
+        else setDistricts([]);
+        setColleges([]);
+    }, [formik.values.state]);
+
+    useEffect(() => {
+        if (formik.values.district)
+            getColleges(setCollegeAPI, setColleges, setDepartments, errorHandler, {
+                district: formik.values.district
+            });
+        else setColleges([]);
+    }, [formik.values.district]);
+
     const buttonStyle = {
         background: "#456FF6",
         color: "#fff",
@@ -112,49 +172,33 @@ const EditProfilePopUp = (props: Props) => {
         padding: "16px",
         height: "50px"
     };
-    const communityIds: string[] = formik.values.communities || []; // Provide a default empty array
-    const filteredCommunityOptions = toReactOptions(
-        communityAPI.filter(value => communityIds?.includes(value.id))
-    );
-    const propsList2 = {
-        onChange: formik.handleChange,
-        onBlur: formik.handleBlur
-    };
+
     const communityProps = {
         name: "communities.id",
         onChange: (OnChangeValue: any) => {
             formik.setFieldValue(
                 "communities",
-                OnChangeValue.map(
-                    (
-                        value: any = {
-                            value: "",
-                            label: ""
-                        }
-                    ) => value.value
-                )
+                OnChangeValue.map((value: any) => value.value)
             );
         },
         closeMenuOnSelect: false,
         isMulti: true,
-        value: filteredCommunityOptions,
+        value: toReactOptions(
+            communityAPI.filter(c => formik.values.communities.includes(c.id))
+        ),
         options: toReactOptions(communityAPI)
     };
 
-    const propsList = (formik: any) => {
-        const props = ["first_name", "last_name", "email"];
-        return props.map((item: string) => {
-            return {
-                placeholder: capitalizeFirstLetter(item.replace("_", " ")),
-                type: item === "email" ? "email" : "text",
-                name: item,
-                id: item,
-                value: formik.values[item],
-                touched: formik.touched[item],
-                error: formik.errors[item]
-            };
-        });
-    };
+    const propsList = (["first_name", "last_name", "email"] as (keyof FormValues)[]).map(item => ({
+        placeholder: capitalizeFirstLetter(item.replace("_", " ")),
+        type: item === "email" ? "email" : "text",
+        name: item,
+        id: item,
+        value: formik.values[item],
+        touched: formik.touched[item],
+        error: formik.errors[item]
+    }));
+
     return (
         <div
             className={styles.edit_profile_container}
@@ -171,20 +215,20 @@ const EditProfilePopUp = (props: Props) => {
                     tabIndex={1}
                     onFocus={() => props.setEditPopUP(true)}
                     onClick={e => e.stopPropagation()}
-                    // onBlur={() => props.setEditPopUP(false)}
                 >
                     <h2>Edit Profile</h2>
                     <form onSubmit={formik.handleSubmit}>
-                        {propsList(formik).map((item, index) => (
+                        {propsList.map((item, index) => (
                             <div key={index} className={styles.input_field}>
-                                <label
-                                    className={styles.label}
-                                    htmlFor={item.id}
-                                >
+                                <label className={styles.label} htmlFor={item.id}>
                                     {item.placeholder}
                                 </label>
                                 <div className={styles.inputBox}>
-                                    <input {...propsList2} {...item} />
+                                    <input
+                                        {...item}
+                                        onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
+                                    />
                                     {item.touched && item.error && (
                                         <div className={styles.error_message}>
                                             {item.error}
@@ -200,35 +244,29 @@ const EditProfilePopUp = (props: Props) => {
                                     type="number"
                                     name="mobile"
                                     value={formik.values.mobile}
-                                    placeholder="Mobile"
                                     onBlur={formik.handleBlur}
                                     onChange={formik.handleChange}
                                 />
-                                {formik.touched.mobile &&
-                                formik.errors.mobile ? (
+                                {formik.touched.mobile && formik.errors.mobile && (
                                     <p className={styles.error_message}>
                                         {formik.errors.mobile}
                                     </p>
-                                ) : null}
+                                )}
                             </div>
                         </div>
                         <div className={styles.input_field}>
-                            <label className={styles.label} htmlFor="">
-                                Community
-                            </label>
+                            <label className={styles.label}>Community</label>
                             <div className={styles.inputBox}>
                                 {loadStatus && <Select {...communityProps} />}
                             </div>
                         </div>
                         <div className={styles.input_field}>
-                            <label className={styles.label} htmlFor="">
-                                Gender
-                            </label>
+                            <label className={styles.label}>Gender</label>
                             <div className={styles.inputBox}>
                                 <select
                                     name="gender"
                                     value={formik.values.gender}
-                                    {...propsList2}
+                                    onChange={formik.handleChange}
                                 >
                                     <option>Select gender</option>
                                     <option value="Male">♂ Male</option>
@@ -238,42 +276,61 @@ const EditProfilePopUp = (props: Props) => {
                                 </select>
                             </div>
                         </div>
-                        <div className={styles.input_field}>
-                       <label className={styles.label}>Country</label>
-                        <div className={styles.inputBox}>
-                            <select value={selectedCountry} onChange={e => setSelectedCountry(e.target.value)}>
-                                <option value="">Select Country</option>
-                                {countries.map((country: any) => (
-                                    <option key={country.id} value={country.id}>{country.name}</option>
-                                ))}
-                            </select>
-                        </div>
-                    </div>
 
+                        {/* Cascading Dropdowns */}
+                        <div className={styles.input_field}>
+                            <label className={styles.label}>Country</label>
+                            <div className={styles.inputBox}>
+                                <select
+                                    name="country"
+                                    value={formik.values.country}
+                                    onChange={formik.handleChange}
+                                >
+                                    <option value="">Select Country</option>
+                                    {countries.map((c: any) => (
+                                        <option key={c.value} value={c.value}>
+                                            {c.label}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                        </div>
                         <div className={styles.input_field}>
                             <label className={styles.label}>State</label>
                             <div className={styles.inputBox}>
-                                <select value={selectedState} onChange={e => setSelectedState(e.target.value)} disabled={!selectedCountry}>
+                                <select
+                                    name="state"
+                                    value={formik.values.state}
+                                    onChange={formik.handleChange}
+                                    disabled={!formik.values.country}
+                                >
                                     <option value="">Select State</option>
-                                    {states.map((state: any) => (
-                                        <option key={state.id} value={state.id}>{state.name}</option>
+                                    {states.map((s: any) => (
+                                        <option key={s.value} value={s.value}>
+                                            {s.label}
+                                        </option>
                                     ))}
                                 </select>
                             </div>
                         </div>
-
                         <div className={styles.input_field}>
                             <label className={styles.label}>District</label>
                             <div className={styles.inputBox}>
-                                <select value={selectedDistrict} onChange={e => setSelectedDistrict(e.target.value)} disabled={!selectedState}>
+                                <select
+                                    name="district"
+                                    value={formik.values.district}
+                                    onChange={formik.handleChange}
+                                    disabled={!formik.values.state}
+                                >
                                     <option value="">Select District</option>
-                                    {districts.map((district: any) => (
-                                        <option key={district.id} value={district.id}>{district.name}</option>
+                                    {districts.map((d: any) => (
+                                        <option key={d.value} value={d.value}>
+                                            {d.label}
+                                        </option>
                                     ))}
                                 </select>
                             </div>
                         </div>
-
                         <div className={styles.input_field}>
                             <label className={styles.label}>College</label>
                             <div className={styles.inputBox}>
@@ -281,101 +338,64 @@ const EditProfilePopUp = (props: Props) => {
                                     name="college"
                                     value={formik.values.college}
                                     onChange={formik.handleChange}
-                                    disabled={!selectedDistrict}
+                                    disabled={!formik.values.district}
                                 >
                                     <option value="">Select College</option>
-                                    {colleges.map((college: any) => (
-                                        <option key={college.id} value={college.id}>{college.name}</option>
+                                    {colleges.map((c: any) => (
+                                        <option key={c.value} value={c.value}>
+                                            {c.label}
+                                        </option>
                                     ))}
                                 </select>
                             </div>
                         </div>
-                         <div className={styles.input_field}>
-                            <label className={styles.label} htmlFor="">
-                                DOB
-                            </label>
+
+                        <div className={styles.input_field}>
+                            <label className={styles.label}>DOB</label>
                             <div className={styles.inputBox}>
                                 <input
                                     type="date"
                                     name="dob"
                                     value={formik.values.dob}
-                                    placeholder="DOB"
-                                    max={
-                                        (
-                                            new Date().getFullYear() - 17
-                                        ).toString() + "-12-31"
-                                    }
-                                    {...propsList2}
+                                    onChange={formik.handleChange}
+                                    max={`${new Date().getFullYear() - 17}-12-31`}
                                 />
                             </div>
                         </div>
+
                         <div className={styles.input_field}>
-                            <label className={styles.label} htmlFor="">
-                                Image
-                            </label>
-                            <div
-                                className={`${styles.inputBox} ${styles.imageBox}`}
-                            >
+                            <label className={styles.label}>Image</label>
+                            <div className={`${styles.inputBox} ${styles.imageBox}`}>
                                 <input
                                     ref={imageRef}
                                     type="file"
                                     name="image"
-                                    value={formik.values.image}
-                                    placeholder="DOB"
-                                    {...propsList2}
-                                />{" "}
+                                    onChange={formik.handleChange}
+                                />
                             </div>
                         </div>
+
                         <div className={styles.btn_container}>
                             <PowerfulButton
                                 type="button"
                                 variant="outline"
-                                // disabled={discordState === "finished"}
                                 onClick={discordSync}
                                 className={styles.powerfulButton}
                             >
                                 Sync Discord Image
-                                {
-                                    {
-                                        initial: <BsDiscord size={32} />,
-                                        loading: (
-                                            <BeatLoader
-                                                size={8}
-                                                color="#456ff6"
-                                            />
-                                        ),
-                                        finished: <BsCheck size={32} />
-                                    }[discordState]
-                                }
+                                {{
+                                    initial: <BsDiscord size={32} />,
+                                    loading: <BeatLoader size={8} color="#456ff6" />,
+                                    finished: <BsCheck size={32} />
+                                }[discordState]}
                             </PowerfulButton>
-                            {/* <div
-                                    title={
-                                        discordState === "initial"
-                                            ? "Click to sync discord image"
-                                            : ""
-                                    }
-                                    onClick={discordSync}
-                                >
-                                    {
-                                        {
-                                            initial: <BsDiscord size={32} />,
-                                            loading: (
-                                                <BeatLoader
-                                                    size={8}
-                                                    color="#456ff6"
-                                                />
-                                            ),
-                                            finished: <BsCheck size={32} />
-                                        }[discordState]
-                                    }
-                                </div> */}
-
                             <MuButton
                                 type="submit"
                                 style={buttonStyle}
                                 text={"Update Profile"}
                             />
                         </div>
+
                         <button
                             type="button"
                             className={styles.edit_profile_close}
