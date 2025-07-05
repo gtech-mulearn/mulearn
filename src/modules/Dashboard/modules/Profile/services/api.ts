@@ -11,7 +11,6 @@ type userLog = UseStateFunc<any>;
 type APILoadStatus = UseStateFunc<any>;
 type userLevelData = UseStateFunc<any>;
 interface IssueVCRequest {
-    api_key: string;
     subject_info: SubjectInfo;
     credential_info: CredentialInfo;
     template_id: string;
@@ -135,14 +134,13 @@ export const issueVerifiableCredential = async (
 ): Promise<any> => {
     try {
         const requestData: IssueVCRequest = {
-            api_key: import.meta.env.VITE_QSEVERSE_API_KEY as string,
             subject_info: subject_info,
             credential_info: credential_info,
             template_id: template_id,
             send_email: true,
         };
 
-        const response = await qSeversePrivateGateway.post(qseverseRoutes.issueVerifiableCredentials, requestData,);
+        const response = await privateGateway.post(qseverseRoutes.issueVerifiableCredentials, requestData,);
 
         return response.data;
     } catch (error: any) {
@@ -155,7 +153,7 @@ export const issueVerifiableCredential = async (
 
 export const getAllConnectedUsers = async (): Promise<any> => {
     try {
-        const response = await qSeversePrivateGateway.get(qseverseRoutes.getAllConnectedUsers, {
+        const response = await privateGateway.get(qseverseRoutes.getAllConnectedUsers, {
         });
         return response;
     } catch (error: any) {
@@ -165,19 +163,18 @@ export const getAllConnectedUsers = async (): Promise<any> => {
     }
 }
 
-
 export const getConnectedUsers = async (
     key?: string,
     value?: string
 ): Promise<any> => {
     try {
-        const response = await qSeversePrivateGateway.get(qseverseRoutes.getConnectedUsers, {
+        const response = await publicGateway.get(qseverseRoutes.getConnectedUsers, {
             params: { key, value }
         });
-       if (response.data.matching_users.length === 0) {
+       if (!response.data.response.did) {
             return null;
         }
-        return response.data.matching_users[0].did;
+        return response.data.response.did;
     } catch (error: any) {
         console.error("Error fetching connected users:", error.response?.data || error.message);
         // toast.error("Failed to fetch connected users");
@@ -188,7 +185,7 @@ export const getConnectedUsers = async (
 
 export const getQSCredentials = async (): Promise<any> => {
     try {
-        const response = await qSeversePrivateGateway.get(qseverseRoutes.getCredentials);
+        const response = await privateGateway.get(qseverseRoutes.getCredentials);
         return response.data;
     } catch (error: any) {
         console.error("Error fetching QS credentials:", error.response?.data || error.message);

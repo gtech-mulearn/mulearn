@@ -42,6 +42,7 @@ import { getAchievements } from "../../ManageAchievements/services/api";
 import { AchievementData } from "../../ManageAchievements/ManageAchievementsInterface";
 import AchievementCardOne from "../components/Achievements/AchievementCardOne";
 import toast from "react-hot-toast";
+import { userInfo } from "os";
 
 
 
@@ -87,6 +88,10 @@ const Profile = () => {
             created_date: ""
         }
     ]);
+
+    const handleDIDUpdate = (newDID: string) => {
+        setUserDID(newDID);
+    };
     const [userLevelData, setUserLevelData] = useState([
         {
             karma: 0,
@@ -155,52 +160,67 @@ const Profile = () => {
 
 
 
-    useEffect(() => {
-        const initializeProfileData = async () => {
-            setAchievements([])
+    // useEffect(() => {
+    //     const initializeProfileData = async () => {
+    //         setAchievements([])
 
-            let newValue = "";
-            if (id) {
-                newValue = id;
-                setFromUserSearch(true);
-            } else {
-                newValue = useUserStore.getState().userInfo.muid;
-            }
-            setValue(newValue);
+    //         let newValue = "";
+    //         if (id) {
+    //             newValue = id;
+    //             setFromUserSearch(true);
+    //         } else {
+    //             newValue = useUserStore.getState().userInfo.muid;
+    //         }
+    //         setValue(newValue);
 
-            if (newValue) {
-                try {
-                    const connectedUsersResponse = await getConnectedUsers(key, newValue);
-                    if (connectedUsersResponse) {
-                        setUserDID(connectedUsersResponse);
-                    }
-                } catch (error) {
-                    console.error("Error fetching connected users:", error);
-                    // toast.error("Failed to fetch connected users.");
-                }
-            } else {
-                console.warn("Value is not available for fetchConnectedUsers");
-            }
+    //         if (newValue) {
+    //             try {
+    //                 const connectedUsersResponse = await getConnectedUsers(key, newValue);
+    //                 if (connectedUsersResponse) {
+    //                     setUserDID(connectedUsersResponse);
+    //                 }
+    //             } catch (error) {
+    //                 console.error("Error fetching connected users:", error);
+    //                 toast.error("Failed to fetch connected users.");
+    //             }
+    //         } else {
+    //             console.warn("Value is not available for fetchConnectedUsers");
+    //         }
 
-            // Step 3: Fetch achievements (only if value is available)
-            if (newValue) {
-                setIsLoading(true);
-                try {
-                    const achievements = await getUserAchievements(newValue);
-                    setAchievements(achievements);
-                } catch (error) {
-                    console.error("Error fetching achievements:", error);
-                    // toast.error("Failed to fetch achievements.");
-                } finally {
-                    setIsLoading(false);
-                }
-            } else {
-                toast.error("Error fetching muid for achievements.");
-            }
-        };
+    //         // Step 3: Fetch achievements (only if value is available)
+    //         if (newValue) {
+    //             setIsLoading(true);
+    //             try {
+    //                 const achievements = await getUserAchievements(newValue);
+    //                 setAchievements(achievements);
+    //             } catch (error) {
+    //                 console.error("Error fetching achievements:", error);
+    //                 // toast.error("Failed to fetch achievements.");
+    //             } finally {
+    //                 setIsLoading(false);
+    //             }
+    //         } else {
+    //             toast.error("Error fetching muid for achievements.");
+    //         }
+    //     };
 
-        initializeProfileData();
-    }, [id, key]); // Dependencies: id (for value) and key (for fetchConnectedUsers)
+    //     initializeProfileData();
+    // }, [id, key]);
+
+    // const refreshAchievements = async () => {
+    //     if (value) {
+    //         setIsLoading(true);
+    //         try {
+    //             const updatedAchievements = await getUserAchievements(value);
+    //             setAchievements(updatedAchievements);
+    //         } catch (error) {
+    //             console.error("Error refreshing achievements:", error);
+    //             toast.error("Failed to refresh achievements.");
+    //         } finally {
+    //             setIsLoading(false);
+    //         }
+    //     }
+    // };
 
     useEffect(() => {
         if (firstFetch.current) {
@@ -227,25 +247,6 @@ const Profile = () => {
         setAchievementModalOpen(!achievementModalOpen);
     }
 
-    // useEffect(() => {
-    //     const fetchConnectedUsers = async () => {
-    //         if (!value) {
-    //             console.warn("Value is not available yet for fetchConnectedUsers");
-    //             return;
-    //         }
-    //         try {
-    //             const response = await getConnectedUsers(key, value);
-    //             if (response) {
-    //                 setUserDID(response);
-    //             }
-    //         } catch (error) {
-    //             console.error("Error fetching connected users:", error);
-    //             toast.error("Failed to fetch connected users.");
-    //         }
-    //     };
-
-    //     fetchConnectedUsers();
-    // }, [value, key]);
 
     return (
         <>
@@ -634,15 +635,14 @@ const Profile = () => {
                                                 <div className="text-center flex flex-col items-center justify-center text-gray-500">
                                                     <Img src={emptyAchievements} alt="No achievements" w={400} h={400} />
                                                     <p>No achievements available for you at the moment. Keep learning.</p>
-
                                                 </div>
                                             )}
 
-                                            <SimpleGrid
+                                            {/* <SimpleGrid
                                                 columns={[1, 2, 3]}
                                                 spacing={6}
-                                                justifyContent="center"  // Centers items horizontally
-                                                alignItems="center"      // Centers items vertically
+                                                justifyContent="center"
+                                                alignItems="center"
                                             >
                                                 {achievements.map((achievement) => (
                                                     <AchievementCardOne
@@ -652,9 +652,11 @@ const Profile = () => {
                                                         muid={value}
                                                         usersName={userProfile.full_name}
                                                         fromUserSearch={fromUserSearch}
+                                                        onAchievementUpdate={refreshAchievements}
+                                                        onDIDUpdate={handleDIDUpdate} // Add this new prop
                                                     />
                                                 ))}
-                                            </SimpleGrid>
+                                            </SimpleGrid> */}
                                         </div>
                                     ) : null}
 
@@ -739,7 +741,7 @@ const Profile = () => {
                                                 </div>
                                             </div>
                                         )}
-                                        
+
                                         <div className={styles.head}>
                                             <Socials />
                                         </div>
