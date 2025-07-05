@@ -223,7 +223,7 @@ const MuLiveCounter = () => {
             </div>
           </>
         )}
-        
+
         <div className={styles.count}>
           <p className={styles.cvc_heading}>
             <CountUp end={2000} duration={5} />+
@@ -294,7 +294,7 @@ const MuLearnLanding = () => {
       >
         {/* Navbar */}
         <HomeNav />
-        
+
         {/* Hero Section */}
         <motion.header
           className={styles.heroSection}
@@ -322,9 +322,9 @@ const MuLearnLanding = () => {
                 whileInView="visible"
                 viewport={{ once: true }}
               >
-                {""} 
+                {""}
               </motion.span>
-              
+
               <motion.h6
                 custom={3}
                 variants={textVariant}
@@ -417,7 +417,7 @@ const MuLearnLanding = () => {
             </div>
           </motion.section>
         </div>
-        
+
         {/* Special Events Section */}
         <div className={styles.landingPaddingContainer}>
           <motion.section
@@ -444,7 +444,7 @@ const MuLearnLanding = () => {
             </motion.div>
           </motion.section>
         </div>
-        
+
         {/* Comparison Table Section */}
         <div className={styles.landingPaddingContainer}>
           <motion.section
@@ -499,7 +499,7 @@ const MuLearnLanding = () => {
             </motion.div>
           </motion.section>
         </div>
-        
+
         {/* Opportunities Section */}
         <div className={styles.landingPaddingContainer}>
           <motion.section
@@ -587,7 +587,7 @@ const MuLearnLanding = () => {
         <div className={styles.landingPaddingContainer}>
           <RolesSection />
         </div>
-        
+
         {/* Impact Section */}
         <div className={styles.landingPaddingContainer}>
           <motion.section
@@ -610,7 +610,7 @@ const MuLearnLanding = () => {
             </motion.div>
           </motion.section>
         </div>
-        
+
         <div className={styles.landingPaddingContainer}>
           <motion.section
             className={`${styles.leftRightGrid} ${styles.leftRightGridCustom}`}
@@ -638,7 +638,54 @@ const MuLearnLanding = () => {
             </motion.div>
           </motion.section>
         </div>
-        
+        <div className={styles.landingPaddingContainer}>
+          <motion.section
+            className={styles.newsletterSection}
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <motion.h2 variants={fadeInUp} className={styles.newsletterTitle}>Subscribe to our Newsletter</motion.h2>
+            <form
+              method="post"
+              action="https://newsletter.mulearn.org/subscription/form"
+              className={styles.newsletterForm}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <motion.div variants={fadeInUp} className={styles.newsletterFields}>
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  placeholder="E-mail"
+                  className={styles.newsletterInput}
+                />
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Name (optional)"
+                  className={styles.newsletterInput}
+                />
+              </motion.div>
+              <motion.div variants={fadeInUp} className={styles.newsletterCheckbox}>
+                <input
+                  id="a1ef1"
+                  type="checkbox"
+                  name="l"
+                  defaultChecked
+                  value="a1ef1095-7430-4b91-973f-8826ac7c79d7"
+                />
+                <label htmlFor="a1ef1">I agree to subscribe to the μPulse Newsletter</label>
+              </motion.div>
+              <motion.button variants={fadeInUp} type="submit" className={styles.newsletterButton}>
+                Subscribe
+              </motion.button>
+            </form>
+          </motion.section>
+        </div>
+
         {/* Footer */}
         <Footer />
       </motion.div>
