@@ -35,7 +35,6 @@
 }
 
 .side_nav_bar_container {
-    min-width: fit-content;
     max-width: 25%;
     height: 100%;
     display: flex;
@@ -60,13 +59,20 @@
 .side_nav_bar_container .side_nav_bar .mulearn_brand {
     width: 100%;
     min-height: 80px;
-    max-height: 100px;
+    max-height: 50px;
     margin-top: -1.5rem;
     display: flex;
     flex-direction: column;
     cursor: pointer;
     align-items: center;
+    margin-left: auto;
 }
+
+.side_nav_bar_container .side_nav_bar .mulearn_brand  img{
+    width: 100%;
+   
+}
+
 
 .side_nav_bar_container .side_nav_bar .side_nav_bar_items {
     width: 100%;
