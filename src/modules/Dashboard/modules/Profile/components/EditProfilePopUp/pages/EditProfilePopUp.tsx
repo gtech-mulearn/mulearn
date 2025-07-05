@@ -10,6 +10,7 @@ import {
     syncDiscordImage,
     updateProfileImage
 } from "../services/api";
+import { updateCollege } from "@/MuLearnServices/collegeApi";
 import { useFormik } from "formik";
 import Select from "react-select";
 import {
@@ -47,9 +48,7 @@ const EditProfilePopUp = (props: Props) => {
 
     const imageRef = useRef<HTMLInputElement>(null);
 
-    const [discordState, setDiscordState] = useState<
-        "initial" | "loading" | "finished"
-    >("initial");
+    const [discordState, setDiscordState] = useState<"initial" | "loading" | "finished">("initial");
 
     const errorHandler = (status: number, dataStatus: number) => {
         console.error(`Error [${status}] - ${dataStatus}`);
@@ -85,19 +84,24 @@ const EditProfilePopUp = (props: Props) => {
             state: "",
             district: ""
         },
-        onSubmit: values => {
+        onSubmit: async values => {
             const { image, ...data } = values;
 
-            if (imageRef.current && imageRef.current.files) {
-                updateProfileImage(imageRef.current.files[0], props.id);
-            }
-            patchEditUserProfile(
+            
+
+            await patchEditUserProfile(
                 data,
                 props.id,
                 props.setEditPopUP,
                 formik.setFieldError,
                 imageRef?.current?.files?.item(0) ?? undefined
             );
+
+            
+            if (values.college) {
+                await updateCollege(values.college);
+            }
+
             props.triggerUpdateProfile();
         },
         validate: values => {
@@ -139,7 +143,6 @@ const EditProfilePopUp = (props: Props) => {
             );
     }, [props.editPopUp]);
 
-    // cascading dropdown triggers
     useEffect(() => {
         if (formik.values.country)
             getState(errorHandler, setStates, { country: formik.values.country });
