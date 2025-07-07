@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import styles from "./LandingPage.module.css";
@@ -269,6 +269,12 @@ const MuLiveCounter = () => {
 const MuLearnLanding = () => {
   const navigate = useNavigate();
   const refreshToken = localStorage.getItem("refreshToken");
+  const newsletterRef = useRef<HTMLDivElement>(null);
+
+  const handleScroll = () => {
+    newsletterRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
 
   return (
     <>
@@ -348,11 +354,8 @@ const MuLearnLanding = () => {
                 >
                   Join µLearn
                 </button>
-                <button
-                  className={styles.downloadBtn}
-                  onClick={() => navigate("/dashboard/mujourney")}
-                >
-                  Explore Learning Paths
+                <button className={styles.downloadBtn} onClick={handleScroll}>
+                  Subscribe to Newsletter
                 </button>
               </motion.div>
               <motion.div
@@ -640,6 +643,8 @@ const MuLearnLanding = () => {
         </div>
         <div className={styles.landingPaddingContainer}>
           <motion.section
+            ref={newsletterRef}
+            id="newsletter"
             className={styles.newsletterSection}
             variants={fadeInUp}
             initial="hidden"
