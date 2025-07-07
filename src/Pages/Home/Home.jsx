@@ -177,13 +177,13 @@ const Home = () => {
               >
                 <button className={styles.primary}>Join µLearn</button>
               </a>
-              <a
+              {/* <a
                 rel="noopener noreferrer"
                 target="_blank"
                 href="https://permute.mulearn.org"
               >
                 <button className={styles.secondaryPermute}>Join Permute </button>
-              </a>
+              </a> */}
             </div>
             {/* <div className={styles.buttons}>
               <a
