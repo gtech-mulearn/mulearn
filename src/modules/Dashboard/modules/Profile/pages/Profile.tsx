@@ -160,67 +160,67 @@ const Profile = () => {
 
 
 
-    useEffect(() => {
-        const initializeProfileData = async () => {
-            setAchievements([])
+    // useEffect(() => {
+    //     const initializeProfileData = async () => {
+    //         setAchievements([])
 
-            let newValue = "";
-            if (id) {
-                newValue = id;
-                setFromUserSearch(true);
-            } else {
-                newValue = useUserStore.getState().userInfo.muid;
-            }
-            setValue(newValue);
+    //         let newValue = "";
+    //         if (id) {
+    //             newValue = id;
+    //             setFromUserSearch(true);
+    //         } else {
+    //             newValue = useUserStore.getState().userInfo.muid;
+    //         }
+    //         setValue(newValue);
 
-            if (newValue) {
-                try {
-                    const connectedUsersResponse = await getConnectedUsers(key, newValue);
-                    if (connectedUsersResponse) {
-                        setUserDID(connectedUsersResponse);
-                    }
-                } catch (error) {
-                    console.error("Error fetching connected users:", error);
-                    toast.error("Failed to fetch connected users.");
-                }
-            } else {
-                console.warn("Value is not available for fetchConnectedUsers");
-            }
+    //         if (newValue) {
+    //             try {
+    //                 const connectedUsersResponse = await getConnectedUsers(key, newValue);
+    //                 if (connectedUsersResponse) {
+    //                     setUserDID(connectedUsersResponse);
+    //                 }
+    //             } catch (error) {
+    //                 console.error("Error fetching connected users:", error);
+    //                 toast.error("Failed to fetch connected users.");
+    //             }
+    //         } else {
+    //             console.warn("Value is not available for fetchConnectedUsers");
+    //         }
 
-            // Step 3: Fetch achievements (only if value is available)
-            if (newValue) {
-                setIsLoading(true);
-                try {
-                    const achievements = await getUserAchievements(newValue);
-                    setAchievements(achievements);
-                } catch (error) {
-                    console.error("Error fetching achievements:", error);
-                    // toast.error("Failed to fetch achievements.");
-                } finally {
-                    setIsLoading(false);
-                }
-            } else {
-                toast.error("Error fetching muid for achievements.");
-            }
-        };
+    //         // Step 3: Fetch achievements (only if value is available)
+    //         if (newValue) {
+    //             setIsLoading(true);
+    //             try {
+    //                 const achievements = await getUserAchievements(newValue);
+    //                 setAchievements(achievements);
+    //             } catch (error) {
+    //                 console.error("Error fetching achievements:", error);
+    //                 // toast.error("Failed to fetch achievements.");
+    //             } finally {
+    //                 setIsLoading(false);
+    //             }
+    //         } else {
+    //             toast.error("Error fetching muid for achievements.");
+    //         }
+    //     };
 
-        initializeProfileData();
-    }, [id, key]);
+    //     initializeProfileData();
+    // }, [id, key]);
 
-    const refreshAchievements = async () => {
-        if (value) {
-            setIsLoading(true);
-            try {
-                const updatedAchievements = await getUserAchievements(value);
-                setAchievements(updatedAchievements);
-            } catch (error) {
-                console.error("Error refreshing achievements:", error);
-                toast.error("Failed to refresh achievements.");
-            } finally {
-                setIsLoading(false);
-            }
-        }
-    };
+    // const refreshAchievements = async () => {
+    //     if (value) {
+    //         setIsLoading(true);
+    //         try {
+    //             const updatedAchievements = await getUserAchievements(value);
+    //             setAchievements(updatedAchievements);
+    //         } catch (error) {
+    //             console.error("Error refreshing achievements:", error);
+    //             toast.error("Failed to refresh achievements.");
+    //         } finally {
+    //             setIsLoading(false);
+    //         }
+    //     }
+    // };
 
     useEffect(() => {
         if (firstFetch.current) {
@@ -638,7 +638,7 @@ const Profile = () => {
                                                 </div>
                                             )}
 
-                                            <SimpleGrid
+                                            {/* <SimpleGrid
                                                 columns={[1, 2, 3]}
                                                 spacing={6}
                                                 justifyContent="center"
@@ -656,7 +656,7 @@ const Profile = () => {
                                                         onDIDUpdate={handleDIDUpdate} // Add this new prop
                                                     />
                                                 ))}
-                                            </SimpleGrid>
+                                            </SimpleGrid> */}
                                         </div>
                                     ) : null}
 
