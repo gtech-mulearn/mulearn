@@ -29,7 +29,7 @@ interface LearningCircleListItemProps {
 export function LearningCircleListItem({
   id,
   title,
-  description = '',
+  description,
   ig_name,
   mode,
   attendees_count,
@@ -80,64 +80,15 @@ export function LearningCircleListItem({
       <CardContent className={styles.cardContent}>
         <h3 className={styles.cardTitle}>
           {title}
-          <span className={styles.memberCount}>
-            <Users className={styles.memberIcon} />
-            <span>{attendees_count}</span>
-          </span>
         </h3>
         <p className={styles.cardDescription}>
-          {description.length > 150 ? description.substring(0, 150) + "..." : description}
+          {(description || '').length > 150 ? (description || '').substring(0, 150) + "..." : (description || '')}
         </p>
-
         <div className={styles.badgeContainer}>
           <Badge variant="secondary" className={styles.categoryBadge}>{ig_name}</Badge>
-
-          <Badge variant="outline" className={styles.statusBadge}>
-            {mode === 'online' ? (
-              <><Wifi className={styles.onlineIcon} /><span>Online</span></>
-            ) : (
-              <><WifiOff className={styles.offlineIcon} /><span>Offline</span></>
-            )}
-          </Badge>
-
-          {hasJoined && (
-            <Badge className={styles.joinedBadge}>Joined</Badge>
-          )}
-
-          {hasRSVPed && (
-            <Badge className={styles.rsvpBadge}>
-              <CheckCircle className={styles.icon} />
-              RSVP Confirmed
-            </Badge>
-          )}
-
-          {hasCompleted && (
-            <Badge className={styles.completedBadge}>
-              <CheckCircle className={styles.icon} />
-              Completed
-            </Badge>
-          )}
         </div>
       </CardContent>
-
       <CardFooter className={styles.cardFooter}>
-        <div className="flex gap-[4px]">
-          {!is_started && !hasRSVPed && (
-            <Button
-              className={styles.secondaryButton}
-              variant="outline"
-              onClick={handleRSVP}
-              disabled={isRSVPing || hasRSVPed}
-            >
-              {isRSVPing ? "Submitting..." : "RSVP"}
-            </Button>
-          )}
-          {mode === 'offline' && coord_x !== 0.0 && coord_y !== 0.0 && (
-            <Button className={styles.secondaryButton} variant="outline" onClick={getDirections}>
-              Get directions
-            </Button>
-          )}
-        </div>
         <Button className={styles.secondaryButton} onClick={onClick}>
           View Details
         </Button>

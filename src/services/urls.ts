@@ -57,8 +57,7 @@ export const learningCircleRoutes = {
     getLearningCircleInfo: "/api/v1/dashboard/learningcircle/info/",
     getCreatedLearningCircles: "/api/v1/dashboard/learningcircle/list/",
     getMeetupInfo: "/api/v1/dashboard/learningcircle/meeting/info/",
-    submitAttendeeReport:
-        "/api/v1/dashboard/learningcircle/meeting/attendee-report/",
+    submitAttendeeReport: "/api/v1/dashboard/learningcircle/meeting/attendee-report/",
     getMeetups: "/api/v1/dashboard/learningcircle/meeting/list/",
     joinMeetup: "/api/v1/dashboard/learningcircle/meeting/join/",
     getLcReportInfo: "/api/v1/dashboard/learningcircle/meeting/report/",
