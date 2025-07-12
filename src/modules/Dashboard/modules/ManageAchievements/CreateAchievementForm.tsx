@@ -139,7 +139,6 @@ const CreateAchievementForm = forwardRef((props: Props, ref: any) => {
         };
         getQSCredentialsList();
     }, []);
-console.log("QSeverse templates:", qsTemplates);
     const handleTemplateChange = (selectedOption: any) => {
         if (!selectedOption) {
             setSelectedPreset(null);
