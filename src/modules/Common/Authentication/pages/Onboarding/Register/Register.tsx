@@ -12,6 +12,13 @@ export default function RegisterPage() {
     const ruri = searchParams.get("ruri");
     const [isLoading, setIsLoading] = useState(false);
 
+    useEffect(() => {
+        const refreshToken = localStorage.getItem("refreshToken");
+        if (refreshToken) {
+            navigate('/dashboard/home');
+        }
+    }, []);
+    
     const handleAccountCreation = (userData: RegisterRequestDataType) => {
         submitUserData({
             setIsLoading: setIsLoading,

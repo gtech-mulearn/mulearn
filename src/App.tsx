@@ -1,9 +1,10 @@
 import "./App.css";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useRef } from "react";
 import {
   RouterProvider,
   createBrowserRouter,
-  Navigate
+  Navigate,
+  redirect
 } from "react-router-dom";
 import AuthRoutes from "./components/AuthRoutes";
 import PrivateRoutes from "./components/PrivateRoutes";
@@ -13,28 +14,17 @@ import { roles, managementTypes } from "./services/types";
 import SecureAuthRoutes from "./services/authCheck";
 import { Toaster } from "react-hot-toast";
 import MuLoader from "./components/MuComponents/MuLoader/MuLoader";
-import In50Hours from "./modules/Public/In50Hours/In50Hours";
-import LaunchPad from "./modules/Public/Launchpad/Launchpad";
-import Calendar from "./modules/Public/Calendar/Calendar";
-import EventsHome from "./modules/Public/Events/Events";
-import EnablersPage from "./modules/Public/EnablersPage/EnablersPage";
-import TermsAndCondition from "./modules/Public/Home/components/TermsandConditions/TermsandConditions";
-import PrivacyPolicy from "./modules/Public/Home/components/PrivacyPolicy/PrivacyPolicy";
+import { sendRefreshToken } from "./modules/utils/cdr";
+import RedirectComponent from "./modules/utils/homeRedirect";
 
 // Lazy-loaded components
-const ArtofTeaching = lazy(() => import("./modules/Public/ArtOfTeaching/ArtOfTeaching"));
 const CampusStudentList = lazy(() => import("./modules/Dashboard/modules").then(module => ({ default: module.CampusStudentList })));
 const ConnectDiscord = lazy(() => import("./modules/Dashboard/modules").then(module => ({ default: module.ConnectDiscord })));
-const LandingPage = lazy(() => import("./modules/Public/LearningCircles/pages/LandingPage"));
-const ProfileV2 = lazy(() => import("./modules/Dashboard/modules/ProfileV2/pages/Profile"));
 const Rolepage = lazy(() => import("./modules/Common/Authentication/pages/Onboarding/RolePage/RolePage"));
 const CollegePage = lazy(() => import("./modules/Common/Authentication/pages/Onboarding/CollegePage/CollegePage"));
 const SignIn = lazy(() => import("./modules/Common/Authentication/pages/Onboarding/SignIn/SignIn"));
 const ErrorLog = lazy(() => import("./modules/Dashboard/modules/ErrorLog/ErrorLog"));
-const KKEMEventBeyondUs = lazy(() => import("./modules/Public/KKEM/modules/KKEMEventTemplate/KKEMEventBeyondUs"));
-const LearningCircles = lazy(() => import("./modules/Public/KKEM/modules/Dashboard/LearningCircles/LearningCircles"));
 const ForgetPassword = lazy(() => import("./modules/Common/Authentication/pages/Onboarding/ForgetPassword/ForgetPassword"));
-const ResetPassword = lazy(() => import("./modules/Common/Authentication/pages/Onboarding/ResetPassword/ResetPassword"));
 const LcDashboard = lazy(() => import("./modules/Dashboard/modules/LearningCircle/pages/LcDashboard/LcDashboard"));
 const CommunityPage = lazy(() => import("./modules/Common/Authentication/pages/Onboarding/CommunityPage/CommunityPage"));
 // const Foundation = lazy(() => import("./modules/Public/Foundation/Foundation"));
@@ -44,9 +34,6 @@ const Account = lazy(() => import("./modules/Dashboard/modules/Settings/pages/Ac
 const DiscordModeration = lazy(() => import("./modules/Dashboard/modules/DiscordModeration/DiscordModeration"));
 const Test = lazy(() => import("./modules/Dashboard/modules/Test/Test"));
 const Analytics = lazy(() => import("./modules/Dashboard/modules/UrlShortener/Pages/Analytics"));
-const Donation = lazy(() => import("./modules/Public/Donation/Donation"));
-const Refund = lazy(() => import("./modules/Public/Donation/pages/Refund"));
-const DonationSuccess = lazy(() => import("./modules/Public/Donation/pages/DonationSuccess"));
 const OpenGrad = lazy(() => import("./modules/Dashboard/modules/OpenGrad"));
 const LcMeetupIfo = lazy(() => import("./modules/Dashboard/modules/LearningCircle/pages/Meetup/LcMeetup"));
 const OrganizationSetting = lazy(() => import("./modules/Dashboard/modules/Settings/pages/Organization/Organization"));
@@ -58,8 +45,6 @@ const CreateLC = lazy(() => import("./modules/Dashboard/modules/LearningCircleV2
 const LearningCircleLanding = lazy(() => import("./modules/Dashboard/modules/LearningCircleV2/pages/landing/LearningCircleLanding"));
 const LearningCircleLanding2 = lazy(() => import("./modules/Dashboard/modules/LearningCircleV2/pages/landing/LearningCircleLanding2"));
 const CreateLCMeetup = lazy(() => import("./modules/Dashboard/modules/LearningCircleV2/pages/CreateLCMeetup/CreateLCMeetup"));
-const CommunityPartners = lazy(() => import("./modules/Public/CommPartners/CommPartners"));
-const CompanyPartners = lazy(() => import("./modules/Public/CompanyPartners/CompanyParnters"));
 const DashboardLC = lazy(() => import("./modules/Dashboard/modules/LearningCircleV2/pages/dashboard/DashboardLC"));
 const YourLC = lazy(() => import("./modules/Dashboard/modules/LearningCircleV2/pages/YourLC/YourLC"));
 const MoreInfoLC = lazy(() => import("./modules/Dashboard/modules/LearningCircleV2/pages/moreInfoLC/MoreInfoLC"));
@@ -71,9 +56,6 @@ const RegisterPage = lazy(() => import("./modules/Common/Authentication/pages/On
 const LearningPaths = lazy(() => import("./modules/Dashboard/modules/LearningPaths/pages/LearningPaths"));
 const LearningPathOne = lazy(() => import("./modules/Dashboard/modules/LearningPaths/pages/LearningPathOne/LearningPathOne"));
 const ComingSoonPage = lazy(() => import("./modules/Common/Authentication/pages/ComingSoon"));
-const MuLearnLanding = lazy(() => import("./modules/Public/Home/pages/LandingPage"));
-const Manifesto = lazy(() => import("./modules/Public/Manifesto/Manifesto"));
-const TeamsPage = lazy(() => import("./modules/Public/Team/pages/Team"));
 const CoursesMainPage = lazy(() => import("./modules/Dashboard/modules/Courses/Pages/CoursesMainPage"));
 const ManagementPage = lazy(() => import("./modules/Dashboard/modules/Management/Pages/ManagementPage"));
 const ManageUsersPage = lazy(() => import("./modules/Dashboard/modules/ManageUsers/ManageUsers"));
@@ -96,7 +78,7 @@ const DiscordModerationPage = lazy(() => import("./modules/Dashboard/modules/Dis
 const MentorSearchPage = lazy(() => import("./modules/Dashboard/modules/Mentors/Pages/MentorPage"));
 const InterestGroupsPage = lazy(() => import("./modules/Dashboard/modules/InterestGroups/pages/InterestGroupsPage"));
 const InterestGroupOne = lazy(() => import("./modules/Dashboard/modules/InterestGroups/pages/One/InterestGroupOne"));
-const InterestGroupManage = lazy(()=> import("./modules/Dashboard/modules/InterestGroup/InterestGroup"));
+const InterestGroupManage = lazy(() => import("./modules/Dashboard/modules/InterestGroup/InterestGroup"));
 const SpecialEvents = lazy(() => import("./modules/Dashboard/modules/SpecialEvents/pages/SpecialEvents"));
 const Leaderboard = lazy(() => import("./modules/Dashboard/modules/LeaderBoard/components/Leaderboard"));
 const CampusPage = lazy(() => import("./modules/Dashboard/modules/Campus/components/CampusForum/CampusPage-demo"));
@@ -129,8 +111,6 @@ const TaskBulkImport = lazy(() => import("./modules/Dashboard/modules/Tasks/Task
 const RolesBulkImport = lazy(() => import("./modules/Dashboard/modules/ManageRoles/RolesBulkImport"));
 const Hackathon = lazy(() => import("./modules/Dashboard/modules/Hackathon/pages/Hackathon"));
 const HackathonCreate = lazy(() => import("./modules/Dashboard/modules/Hackathon/pages/HackathonCreate"));
-const KKEMLanding = lazy(() => import("./modules/Public/KKEM/modules/KKEMLanding"));
-const KKEMAuth = lazy(() => import("./modules/Public/KKEM/modules/KKEMAuth"));
 const ManageLocation = lazy(() => import("./modules/Dashboard/modules/ManageLocation/ManageLocation"));
 const AddLocation = lazy(() => import("./modules/Dashboard/modules/ManageLocation/AddLocation"));
 const EditLocation = lazy(() => import("./modules/Dashboard/modules/ManageLocation/EditLocation"));
@@ -158,31 +138,30 @@ const AdminMarketPlace = lazy(() => import("./modules/Dashboard/modules/Marketpl
 const PurchaseInventory = lazy(() => import("./modules/Dashboard/modules/Marketplace/PurchaseInventory/PurchaseInventory"));
 const ConnectedDevices = lazy(() => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices"));
 const Wadhwani = lazy(() => import("./modules/Dashboard/modules/Wadhwani"));
-const Trivial = lazy(() => import("./modules/Public/TrivialIdeas/modules/trivial"));
-const YIP = lazy(() => import("./modules/Public/yip/YIP2023"));
 
 function App() {
   const AuthChecker = SecureAuthRoutes();
   const router = createBrowserRouter([
-    { path: "/", element: <MuLearnLanding /> },
-    { path: "/manifesto", element: <Manifesto /> },
-    {path: "/enablers", element: <EnablersPage/>},
-    { path: "/community-partners", element: <CommunityPartners /> },
-    { path: "/company-partners", element: <CompanyPartners /> },
-    { path: "/yip", element: <YIP /> },
-    { path: "/artofteaching", element: <ArtofTeaching /> },
-    { path: "/in50hours", element: <In50Hours /> },
-    { path: "/launchpad", element: <LaunchPad /> },
-    {path: "/events/calendar", element: <Calendar/>},
-    {path: "/events/weekly", element: <EventsHome/>},
+    // { path: "/", element: <MuLearnLanding /> },
+    // { path: "/manifesto", element: <Manifesto /> },
+    // { path: "/enablers", element: <EnablersPage /> },
+    // { path: "/community-partners", element: <CommunityPartners /> },
+    // { path: "/company-partners", element: <CompanyPartners /> },
+    // { path: "/yip", element: <YIP /> },
+    // { path: "/artofteaching", element: <ArtofTeaching /> },
+    // { path: "/in50hours", element: <In50Hours /> },
+    // { path: "/launchpad", element: <LaunchPad /> },
+    // { path: "/events/calendar", element: <Calendar /> },
+    // { path: "/events/weekly", element: <EventsHome /> },
+    { path: "/", element: <Navigate to={'/login'} /> },
     { path: "*", element: <NotFound /> },
-    { path: "404", element: <NotFound /> },
-    { path: "kkem", element: <KKEMLanding /> },
-    { path: "kkem/authorization/:token", element: <KKEMAuth /> },
-    { path: "donation", element: <Donation /> },
-    { path: "donation/success", element: <DonationSuccess /> },
-    { path: "donation/refund", element: <Refund /> },
-    { path: "trivial-ideas", element: <Trivial /> },
+    // { path: "404", element: <NotFound /> },
+    // { path: "kkem", element: <KKEMLanding /> },
+    // { path: "kkem/authorization/:token", element: <KKEMAuth /> },
+    // { path: "donation", element: <Donation /> },
+    // { path: "donation/success", element: <DonationSuccess /> },
+    // { path: "donation/refund", element: <Refund /> },
+    // { path: "trivial-ideas", element: <Trivial /> },
     { path: "register/:role", element: <RegisterPage /> },
     { path: "register/", children: [{ path: "", element: <RegisterPage /> }] },
     { path: "login", element: <SignIn /> },
@@ -193,9 +172,9 @@ function App() {
     { path: "/register/pathfinder", element: <PathFinder /> },
     // { path: "/signin", element: <SignIn /> },
     { path: "register/about", element: <Rolepage /> },
-    { path: "team", element: <TeamsPage /> },
-    {path: "termsandconditions", element: <TermsAndCondition/>},
-    {path: "privacypolicy", element: <PrivacyPolicy/>},
+    // { path: "team", element: <TeamsPage /> },
+    // { path: "termsandconditions", element: <TermsAndCondition /> },
+    // { path: "privacypolicy", element: <PrivacyPolicy /> },
     {
       path: "/dashboard",
       element: <DashboardRootLayout />,
@@ -324,11 +303,13 @@ function App() {
       ]
     },
     { path: "/profile/:id", element: <DashboardRootLayout />, children: [{ index: true, element: <Profile /> }] },
-    { path: "/learning-circle", element: <LandingPage /> },
-    { path: "/kkem/events/beyondus", element: <KKEMEventBeyondUs /> },
-    { path: "/kkem/learningcircles/dashboard", element: <LearningCircles /> },
+    // { path: "/learning-circle", element: <LandingPage /> },
+    // { path: "/kkem/events/beyondus", element: <KKEMEventBeyondUs /> },
+    // { path: "/kkem/learningcircles/dashboard", element: <LearningCircles /> },
     // { path: "/foundation", element: <Foundation /> }
   ]);
+
+  const cdrIframe = useRef<HTMLIFrameElement>(null);
 
   return (
     <>
@@ -336,6 +317,7 @@ function App() {
         <RouterProvider router={router} />
       </Suspense>
       <Toaster position="bottom-center" reverseOrder={true} />
+      <iframe src={`${import.meta.env.VITE_HOME_MULEARN_URL}/cdr`} id="__cdr" ref={cdrIframe} onLoad={() => sendRefreshToken()} style={{ display: "none" }}></iframe>
     </>
   );
 }
