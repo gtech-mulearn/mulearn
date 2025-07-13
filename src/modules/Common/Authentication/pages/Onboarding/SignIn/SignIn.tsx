@@ -8,7 +8,7 @@ import { Form, Formik } from "formik";
 import * as z from "yup";
 import { FormikTextInputWithoutLabel as SimpleInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
     login,
     otpVerification,
@@ -17,6 +17,7 @@ import {
 
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { useRedirectToHome } from "@/modules/utils/redirectToHome";
 
 const inputObject = {
     emailOrMuId: "Email or MuId",
@@ -26,8 +27,16 @@ const inputObject = {
 
 export default function SignIn() {
     const navigate = useNavigate();
+    const redirect = useRedirectToHome();
 
     let ruri = window.location.href.split("=")[1];
+
+    useEffect(() => {
+        const refreshToken = localStorage.getItem("refreshToken");
+        if (refreshToken) {
+            navigate('/dashboard/home');
+        }
+    }, []);
 
     const [isLoading, setIsLoading] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
@@ -198,7 +207,7 @@ export default function SignIn() {
                                             Don't have an account? Sign up
                                         </a>
                                     </div>
-                                    <div className={styles.noAccount} onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
+                                    <div className={styles.noAccount} onClick={() => redirect('/')} style={{ cursor: 'pointer' }}>
                                         Homepage
                                     </div>
                                 </Form>

@@ -5,6 +5,7 @@ import styles from "./SideNavBar.module.css";
 import MulearnBrand from "../assets/MulearnBrand";
 import SideNavBarBody from "./SideNavBarBody";
 import { useNavigate } from "react-router-dom";
+import { useRedirectToHome } from "@/modules/utils/redirectToHome";
 
 type Props = {
     sidebarButtons: {
@@ -30,6 +31,7 @@ const SideNavBar = ({ sidebarButtons }: Props) => {
     );
 
     const navigate = useNavigate();
+    const redirect = useRedirectToHome();
 
     useEffect(() => {
         const handleResize = () =>
@@ -91,7 +93,7 @@ const SideNavBar = ({ sidebarButtons }: Props) => {
                 style={{ display: `${sideNavDisplay}` , marginLeft: "0px"}}
             >
                 <div className={styles.side_nav_bar}>
-                    <div className={styles.mulearn_brand} onClick={()=> navigate("/")}>
+                    <div className={styles.mulearn_brand} onClick={()=> redirect("/")}>
                         <MulearnBrand />
                     </div>
                     <SideNavBarBody
