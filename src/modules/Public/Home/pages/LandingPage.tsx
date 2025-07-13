@@ -9,6 +9,7 @@ import { Helmet } from "react-helmet";
 import Footer from "@/modules/Common/Footer/Footer";
 import HomeNav from "@/modules/Common/HomeNav/HomeNav";
 import { cdnUrl } from "@/modules/utils/cdn";
+import { useRedirectToApp } from "@/modules/utils/redirectToApp";
 
 import SpecialEventCardLanding from "../components/SpecialEventCardLanding/SpecialEventCardLanding";
 import FeatureGrid from "../components/FeatureGrid/FeatureGrid";
@@ -261,6 +262,7 @@ const MuLiveCounter = () => {
 
 const MuLearnLanding = () => {
   const navigate = useNavigate();
+  const redirect = useRedirectToApp();
   const refreshToken = localStorage.getItem("refreshToken");
 
   return (
@@ -337,13 +339,13 @@ const MuLearnLanding = () => {
               >
                 <button
                   className={styles.joinBtn}
-                  onClick={() => (refreshToken ? navigate("/dashboard/home") : navigate("/register"))}
+                  onClick={() => (refreshToken ? redirect("/dashboard/home") : redirect("/register"))}
                 >
                   Join µLearn
                 </button>
                 <button
                   className={styles.downloadBtn}
-                  onClick={() => navigate("/dashboard/mujourney")}
+                  onClick={() => redirect("/dashboard/mujourney")}
                 >
                   Explore Learning Paths
                 </button>

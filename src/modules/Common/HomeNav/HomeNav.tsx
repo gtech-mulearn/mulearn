@@ -3,8 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./HomeNav.module.css";
 import { cdnUrl } from "@/modules/utils/cdn";
+import { useRedirectToApp } from "@/modules/utils/redirectToApp";
 
-import { interestGroups } from "../../Dashboard/modules/InterestGroups/data/interestGroups";
+import { interestGroups } from "./data/interestGroups";
 
 interface NavItem {
   label: string;
@@ -19,6 +20,7 @@ interface NavItem {
 
 const HomeNav: React.FC = () => {
   const navigate = useNavigate();
+  const redirect = useRedirectToApp();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 1024);
   const [activeSubmenu, setActiveSubmenu] = useState<number | null>(null);
@@ -130,7 +132,7 @@ const HomeNav: React.FC = () => {
     // },
     { 
       label: "Mentorship", 
-      onClick: () => navigate("dashboard/search?activetab=mentors"),
+      onClick: () => redirect("/dashboard/search?activetab=mentors"),
       submenu: null
     },
     // { 
@@ -140,22 +142,22 @@ const HomeNav: React.FC = () => {
     // },
     { 
       label: "Interest Group", 
-      onClick: () => navigate("/interest"),
+      onClick: () => {},
       submenu: {
         Subjects: interestGroups.map((group: { id: string; title: string }) => ({
           label: group.title,
-          onClick: () => navigate(`/dashboard/interestgroups/${group.id}`)
+          onClick: () => redirect(`/dashboard/interestgroups/${group.id}`)
         }))
       }
     },
     { 
       label: "Learning Circles", 
-      onClick: () => navigate("/dashboard/learningcircle"),
+      onClick: () => redirect("/dashboard/learningcircle"),
       submenu: null
     },
     { 
       label: "Learning Paths", 
-      onClick: () => window.open("/dashboard/mujourney"),
+      onClick: () => redirect("/dashboard/mujourney", { open: true }),
       submenu: null
     },
     { 
@@ -178,7 +180,7 @@ const HomeNav: React.FC = () => {
     if (isMobileView) {
       setIsMenuOpen(false);
     }
-    navigate(refreshToken ? "/dashboard/home" : "/login");
+    redirect(refreshToken ? "/dashboard/home" : "/login");
   };
 
   const handleMouseEnter = (index: number, hasSubmenu: boolean) => {
