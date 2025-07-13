@@ -1,10 +1,10 @@
 import styles from "./MuLoader.module.css";
-import muLoader from "../../../assets/gifs/MuLoader.gif";
+import { cdnUrl } from "@/modules/utils/cdn";
 
 const MuLoader = () => {
     return (
         <div className={styles.muLoaderContainer}>
-            <img src={muLoader} alt="" className={styles.muLoader} />
+            <img src={cdnUrl("src/assets/gifs/MuLoader.gif")} alt="Loading..." />
         </div>
     );
 };

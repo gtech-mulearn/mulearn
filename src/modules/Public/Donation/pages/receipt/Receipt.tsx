@@ -1,9 +1,6 @@
 import { useState,useEffect } from 'react'
-import logo from '../../assets/receipt/logo.svg'
-import mulearn from '../../assets/receipt/logo.png'
-import vector from '../../assets/receipt/vector.svg'
-import bigLogo from '../../assets/receipt/group-75.svg'
 import styles from './Receipt.module.css';
+import { cdnUrl } from "@/modules/utils/cdn";
 
 interface donation_data {
     amount: number,
@@ -76,7 +73,7 @@ function Receipt() {
     return (
         <div className={styles.receiptContainer}>
             <div className={styles.recipt}>
-                <img className={styles['vector-icon']} alt="" src={vector} />
+                <img className={styles['vector-icon']} alt="" src={cdnUrl("src/modules/Public/Donation/assets/receipt/vector.svg")} />
 
                 <section className={styles['frame-parent']}>
                     <div className={styles['frame-group']}>
@@ -87,8 +84,8 @@ function Receipt() {
                                         <img
                                             className={styles['learn-icon']}
                                             loading="lazy"
-                                            alt=""
-                                            src={mulearn}
+                                            alt="µLearn Logo"
+                                            src={cdnUrl("src/modules/Public/Donation/assets/receipt/logo.png")}
                                         />
                                     </div>
                                     <div className={styles['contribution-sum']}>Contribution Receipt</div>
@@ -128,7 +125,7 @@ function Receipt() {
                                 </div>
                             </div>
                             <div className={styles['wrapper']}>
-                                <img className={styles['icon']} loading="lazy" alt="" src={logo} />
+                                <img className={styles['icon']} loading="lazy" alt="µLearn Icon" src={cdnUrl("src/modules/Public/Donation/assets/receipt/logo.svg")} />
                             </div>
                         </div>
                     </div>
@@ -143,8 +140,8 @@ function Receipt() {
                             <img
                                 className={styles['frame-child']}
                                 loading="lazy"
-                                alt=""
-                                src={bigLogo}
+                                alt="µLearn Big Logo"
+                                src={cdnUrl("src/modules/Public/Donation/assets/receipt/group-75.svg")}
                             />
 
                             <div className={styles['background-container']}>

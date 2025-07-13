@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "./MentorCard.module.css";
+import { cdnUrl } from "@/modules/utils/cdn";
+import LinkedIn from "@/modules/Dashboard/modules/ProfileV2/assets/svg/LinkedIn";
 
 interface MentorCardProps {
   name: string;
@@ -28,8 +30,11 @@ const MentorCard = ({
             <img
               src={image}
               loading="lazy"
-              alt=""
+              alt={name}
               className={styles.mentorimg}
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = cdnUrl("public/assets/dpm.webp");
+              }}
             />
           )}
           <div className={styles.textdiv}>
@@ -37,11 +42,9 @@ const MentorCard = ({
 
             {linkedIn && linkedIn !== "" && (
               <a href={linkedIn} target="_blank" rel="noopener noreferrer">
-                <img
-                  src="/assets/placeholder/linkedin.webp"
-                  alt=""
-                  className={styles.linkedinimg}
-                />
+                <div className={styles.linkedinimg}>
+                  <LinkedIn />
+                </div>
               </a>
             )}
           </div>

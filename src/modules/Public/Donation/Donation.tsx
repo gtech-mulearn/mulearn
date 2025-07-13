@@ -7,11 +7,8 @@ import { submitForm } from "./services/api";
 import styles from "./Donation.module.css";
 import Marquee from "react-fast-marquee";
 import { Helmet } from "react-helmet";
+import { cdnUrl } from "@/modules/utils/cdn";
 
-import icfoss from "./assets/icfoss.png";
-import kdu from "./assets/kdu.png";
-import kdisc from "./assets/kdisc.png";
-import heroImg from "./assets/heroImg.jpg";
 import { Button } from "@/components/ui/button";
 
 const Donation = () => {
@@ -122,9 +119,9 @@ const Donation = () => {
                                 technologies, and develop skilled entrepreneurs.
                             </p>
                             <div className={styles.OrgContainer}>
-                                <img src={icfoss} alt="" />
-                                <img src={kdu} alt="" />
-                                <img src={kdisc} alt="" />
+                                <img src={cdnUrl("src/modules/Public/Donation/assets/icfoss.png")} alt="" />
+                                <img src={cdnUrl("src/modules/Public/Donation/assets/kdu.png")} alt="" />
+                                <img src={cdnUrl("src/modules/Public/Donation/assets/kdisc.png")} alt="" />
                             </div>
                             <div className={styles.Stats}>
                                 <div>
@@ -154,7 +151,7 @@ const Donation = () => {
                         </Button>
                         </div>
                         <div className={styles.HeroImgContainer}>
-                            <img src={heroImg} alt="" />
+                            <img src={cdnUrl("src/modules/Public/Donation/assets/heroImg.jpg")} alt="" />
                         </div>
                         
                     </div>
@@ -194,7 +191,7 @@ const Donation = () => {
                                     className={styles.Checkbox}
                                 />
                                 <p className={styles.OrgChecklabel}>
-                                    I’m paying for an organization.
+                                    I'm paying for an organization.
                                 </p>
                             </div>
                             <label htmlFor="name">Name</label>

@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import TeamCard from "../TeamCard";
 import styles from "./TeamSection.module.css";
+import { cdnUrl } from "@/modules/utils/cdn";
 
 type TeamSectionProps = {
   title: string;
@@ -66,7 +67,7 @@ const TeamSection = ({ title, description, members, membersWithSubTitles }: Team
                       <TeamCard
                         name={member.name ?? ""}
                         designation={member.position ?? ""}
-                        image={member.image ?? ""}
+                        image={cdnUrl(member.image ?? "")}
                         linkedIn={member.linkedin ?? ""}
                         github={member.github ?? ""}
                         twitter={member.twitter ?? ""}
@@ -91,7 +92,7 @@ const TeamSection = ({ title, description, members, membersWithSubTitles }: Team
                 <TeamCard
                   name={member.name ?? ""}
                   designation={member.position ?? ""}
-                  image={member.image ?? ""}
+                  image={cdnUrl(member.image ?? "")}
                   linkedIn={member.linkedin ?? ""}
                   github={member.github ?? ""}
                   twitter={member.twitter ?? ""}

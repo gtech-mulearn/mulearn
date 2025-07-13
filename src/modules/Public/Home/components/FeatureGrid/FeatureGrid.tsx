@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import styles from './FeatureGrid.module.css';
+import { cdnUrl } from "@/modules/utils/cdn";
 
 const FeatureGrid = () => {
   const [expandedIndex, setExpandedIndex] = useState(0); // Start with the first card expanded
@@ -24,31 +25,31 @@ const FeatureGrid = () => {
     {
       title: "Community",
       description: "Join 40,000+ learners & innovators.",
-      image: "/assets/landing/College Project Concept Illustration.png",
+      image: cdnUrl("public/assets/landing/College Project Concept Illustration.png"),
       bgColor: "#9bc8ff",
     },
     {
       title: "Mentors",
       description: "Learn from those ahead of you, mentor those behind you.",
-      image: "/assets/landing/searching.png",
+      image: cdnUrl("public/assets/landing/searching.png"),
       bgColor: "#ffb0a1",
     },
     {
       title: "Interest Groups",
       description: "Connect with like-minded people who share your interests",
-      image: "/assets/landing/Content Team Concept Illustration.png",
+      image: cdnUrl("public/assets/landing/Content Team Concept Illustration.png"),
       bgColor: "#5ce5c9",
     },
     {
       title: "Roadmaps",
       description: "Structured learning paths for skill mastery.",
-      image: "/assets/landing/Roadmap.png",
+      image: cdnUrl("public/assets/landing/Roadmap.png"),
       bgColor: "#ffe399",
     },
     {
       title: "Challenges",
       description: "Engage in real-world problem-solving.",
-      image: "/assets/landing/collab.png",
+      image: cdnUrl("public/assets/landing/collab.png"),
       bgColor: "#b594ff",
     },
     {

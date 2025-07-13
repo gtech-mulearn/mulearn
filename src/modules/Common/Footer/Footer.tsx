@@ -3,9 +3,11 @@ import { motion } from "framer-motion";
 import { FaLinkedin, FaInstagram, FaYoutube, FaFacebook } from "react-icons/fa";
 import styles from "./Footer.module.css";
 import { useNavigate } from "react-router-dom";
+import { useRedirectToApp } from "@/modules/utils/redirectToApp";
 
 const Footer = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const redirect = useRedirectToApp();
   return (
     <motion.footer
       className={styles.footer}
@@ -23,7 +25,7 @@ const Footer = () => {
           <ul>
             <li><a href="https://mulearn.org/careers">Career Labs</a></li>
             <li><a href="https://gtechmulearn.medium.com/">Blog</a></li>
-            <li><a className="cursor-pointer" onClick={() => navigate("dashboard/interestgroups")}>Interest Groups</a></li>
+            <li><a className="cursor-pointer" onClick={() => redirect("dashboard/interestgroups")}>Interest Groups</a></li>
           </ul>
         </div>
         <div className={styles.footerSection}>

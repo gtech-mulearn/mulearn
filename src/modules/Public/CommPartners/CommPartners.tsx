@@ -1,10 +1,9 @@
 // @ts-ignore
 import partners from "./data/partners.js";
-
-import fvimg from "./assets/Coding workshop.gif";
 import CommunityCard from "./CommunityCard/CommunityCard";
 import HomeNav from "@/modules/Common/HomeNav/HomeNav.js";
 import Footer from "@/modules/Common/Footer/Footer.js";
+import { cdnUrl } from "@/modules/utils/cdn";
 
 type Partner = {
   name: string;
@@ -31,7 +30,7 @@ const CommunityPartner = () => {
           </div>
 
           <div>
-            <img src={fvimg} alt="" className="block mt-0 w-[24rem] md:w-[38rem]" />
+            <img src={cdnUrl("src/modules/Public/CommPartners/assets/Coding workshop.gif")} alt="Coding Workshop Animation" className="block mt-0 w-[24rem] md:w-[38rem]" />
           </div>  
         </div>
 

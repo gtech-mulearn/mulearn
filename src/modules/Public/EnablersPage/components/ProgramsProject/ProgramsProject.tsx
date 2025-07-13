@@ -1,8 +1,6 @@
 import React from "react";
 import styles from "./ProgramsProject.module.css";
-import Project1 from "../../assests/Project1.webp";
-import Project2 from "../../assests/Project2.webp";
-import Blink from "../../assests/Blink.webp";
+import { cdnUrl } from "@/modules/utils/cdn";
 
 export default function ProgramProject() {
   return (
@@ -15,16 +13,16 @@ export default function ProgramProject() {
         <div className={styles.programProjectGridCard}>
           <img
             className={styles.programProjectGridCardImg}
-            src={Project1}
-            alt=""
+            src={cdnUrl("src/modules/Public/EnablersPage/assests/Project1.webp")}
+            alt="Project 1"
           />
 
           <div className={styles.programProjectEnablers}>
             <div>
-              <img src={Blink} alt="" />
-              <img src={Blink} alt="" />
-              <img src={Blink} alt="" />
-              <img src={Blink} alt="" />
+              <img src={cdnUrl("src/modules/Public/EnablersPage/assests/Blink.webp")} alt="Blink" />
+              <img src={cdnUrl("src/modules/Public/EnablersPage/assests/Blink.webp")} alt="Blink" />
+              <img src={cdnUrl("src/modules/Public/EnablersPage/assests/Blink.webp")} alt="Blink" />
+              <img src={cdnUrl("src/modules/Public/EnablersPage/assests/Blink.webp")} alt="Blink" />
             </div>
             <p>+ 40 enablers</p>
           </div>
@@ -52,16 +50,16 @@ export default function ProgramProject() {
         <div className={styles.programProjectGridCard}>
           <img
             className={styles.programProjectGridCardImg}
-            src={Project2}
-            alt=""
+            src={cdnUrl("src/modules/Public/EnablersPage/assests/Project2.webp")}
+            alt="Project 2"
           />
 
           <div className={styles.programProjectEnablers}>
             <div>
-              <img src={Blink} alt="" />
-              <img src={Blink} alt="" />
-              <img src={Blink} alt="" />
-              <img src={Blink} alt="" />
+              <img src={cdnUrl("src/modules/Public/EnablersPage/assests/Blink.webp")} alt="Blink" />
+              <img src={cdnUrl("src/modules/Public/EnablersPage/assests/Blink.webp")} alt="Blink" />
+              <img src={cdnUrl("src/modules/Public/EnablersPage/assests/Blink.webp")} alt="Blink" />
+              <img src={cdnUrl("src/modules/Public/EnablersPage/assests/Blink.webp")} alt="Blink" />
             </div>
             <p>+ 11 enablers</p>
           </div>

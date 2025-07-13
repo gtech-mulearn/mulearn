@@ -1,18 +1,16 @@
 import React from "react";
 import styles from "./In50Hours.module.css";
-import heroImage from "./heroimg.png";
-import supporters from "./supporters.png";
-import makemyPass from "./makemypass.png";
-import tsimg from "./tsimg.png";
 import HomeNav from "@/modules/Common/HomeNav/HomeNav";
-import Footer from "@/modules/Common/Footer/Footer";    
+import Footer from "@/modules/Common/Footer/Footer";
+import { cdnUrl } from "@/modules/utils/cdn";
+
 const In50Hours = () => {
   return (
     <>
       <HomeNav />
       <div className={styles.mainContainer}>
         <div className={styles.firstSectionContainer}>
-          <img src={heroImage} alt="" className={styles.fsImage} />
+          <img src={cdnUrl("src/modules/Public/In50Hours/heroimg.png")} alt="In50Hours Hero" className={styles.fsImage} />
           <div className={styles.fsTexts}>
             <p className={styles.fsHeading}>
               IN<span>50</span>HOURS
@@ -23,7 +21,7 @@ const In50Hours = () => {
               caffeine-fueled brilliance!
             </p>
             <p className={styles.supportedBy}>Organized By</p>
-            <img src={supporters} alt="" className={styles.supporters} />
+            <img src={cdnUrl("src/modules/Public/In50Hours/supporters.png")} alt="Supporters" className={styles.supporters} />
             <a
               target="_blank"
               rel="noreferrer"
@@ -73,9 +71,9 @@ const In50Hours = () => {
               participate by paying a nominal fee of INR 1000.
             </p>
             <p className={styles.supportedBy}>Ticketing Partner</p>
-            <img src={makemyPass} alt="" className={styles.tsImage} />{" "}
+            <img src={cdnUrl("src/modules/Public/In50Hours/makemypass.png")} alt="MakeMyPass" className={styles.tsImage} />{" "}
           </div>
-          <img src={tsimg} alt="" className={styles.tsSideImage} />
+          <img src={cdnUrl("src/modules/Public/In50Hours/tsimg.png")} alt="How to Join Illustration" className={styles.tsSideImage} />
         </div>
         <div className={styles.steps}>
           <div className={styles.step}>

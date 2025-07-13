@@ -1,81 +1,79 @@
 import Navbar from "@/modules/Common/HomeNav/HomeNav";
-import titleFrame from "../assets/titleFrame.svg";
-import mU from "../assets/mU_pl.svg";
+import { cdnUrl } from "@/modules/utils/cdn";
 import styles from "./KKEMLanding.module.css";
 import IGAbout from "../components/IGAbout";
 import IGSection from "../components/IGSection";
 import Footer from "@/modules/Common/Footer/Footer";
-import igAssets from "../assets/IGS";
 import pastEventsAssets from "../assets/past_events";
 import { Helmet } from "react-helmet";
 
 export default function Landing() {
     const igCardData = [
         {
-            image: igAssets.Android,
+            image: cdnUrl("src/modules/Public/KKEM/assets/IGS/android.webp"),
             name: "Android",
             link: "https://learn.mulearn.org/webmobile/android",
             description:
                 "Android is a mobile operating system based on a modified version of the Linux kernel and other open-source software."
         },
         {
-            image: igAssets.Frontend,
+            image: cdnUrl("src/modules/Public/KKEM/assets/IGS/frontend.webp"),
             name: "Front-End",
             link: "https://learn.mulearn.org/webmobile/web",
             description: `
                     The term Front-End mainly referes to the User Interface which an user view and interacts with and its `
         },
         {
-            image: igAssets.Blockchain,
+            image: cdnUrl("src/modules/Public/KKEM/assets/IGS/blockchain.webp"),
             name: "Blockchain",
             link: "https://learn.mulearn.org/blockchain",
             description: `
                     A blockchain is a digital ledger or database where encrypted blocks of digital asset data are stored and chained together`
         },
         {
-            image: igAssets.AI,
+            image: cdnUrl("src/modules/Public/KKEM/assets/IGS/ai.webp"),
             name: "Artifcial Intelligence",
             link: "https://learn.mulearn.org/aimlanalytics/ai",
             description:
                 "AI which stands for artificial intelligence refers to systems or machines that mimic human intelligence to perform tasks."
         },
         {
-            image: igAssets.ARVR,
+            image: cdnUrl("src/modules/Public/KKEM/assets/IGS/arvr.webp"),
             name: "AR/VR",
             link: "https://learn.mulearn.org/arvrxr",
             description: `
                     Augmented and virtual reality (AR/VR) are immersive technologies that enable users to experience digitally rendered content`
         },
         {
-            image: igAssets.QA,
+            image: cdnUrl("src/modules/Public/KKEM/assets/IGS/qa.webp"),
             name: "QA",
             link: "https://learn.mulearn.org/webmobile/qa",
             description:
                 "Quality assurance (QA) is any systematic process of determining whether a product or service meets specified requirements."
         },
         {
-            image: igAssets.PM,
+            image: cdnUrl("src/modules/Public/KKEM/assets/IGS/pm.webp"),
             name: "Product Management",
             link: "https://learn.mulearn.org/innovationentre/pm",
             description:
                 "Are you interested in learning to build the right product and the product right?."
         },
         {
-            image: igAssets.IOT,
+            image: cdnUrl("src/modules/Public/KKEM/assets/IGS/iot.webp"),
             name: "IoT",
             link: "https://learn.mulearn.org/iotrf/iot",
             description:
                 "IoT is the network of physical objects that are embedded with sensors, software etc.. for the purpose of connecting and exchanging data over the internet."
         },
         {
-            image: igAssets.UIUX,
+            image: cdnUrl("src/modules/Public/KKEM/assets/IGS/uiux.webp"),
             name: "UI/UX",
             link: "https://learn.mulearn.org/uiuxcreative/ux",
             description:
                 "UI Design and UX Design are some of the most in-demand skills today. While UI deals with the graphical layout of an app, UX deals with the human experience."
         },
         {
-            image: igAssets.Cybersec,
+            image: cdnUrl("src/modules/Public/KKEM/assets/IGS/cybersec.webp"),
             name: "Cyber Security",
             link: "https://learn.mulearn.org/cybersec",
             description:
@@ -149,11 +147,11 @@ export default function Landing() {
                 <Navbar />
                 <div style={{ position: "relative", height: "100%" }}>
                     <img
-                        src={titleFrame}
-                        alt="title frame"
+                        src={cdnUrl("src/modules/Public/KKEM/assets/titleFrame.svg")}
+                        alt="KKEM title frame"
                         className={styles.title}
                     />
-                    <img src={mU} alt="mU" className={styles.mU} />
+                    <img src={cdnUrl("src/modules/Public/KKEM/assets/mU_pl.svg")} alt="mU" className={styles.mU} />
                 </div>
                 <IGAbout />
                 <IGSection cards={igCardData} />

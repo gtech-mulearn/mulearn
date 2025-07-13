@@ -1,12 +1,12 @@
 import Card from "./Card";
 import styles from "./IGSection.module.css";
-import assets from "../assets/IGS";
 import { useEffect, useState } from "react";
 import MuIDModal from "./MuIDModal";
 import { Props as cardProps } from "../components/Card";
 import { useSearchParams } from "react-router-dom";
 import { publicGateway } from "@/MuLearnServices/apiGateways";
 import { KKEMRoutes } from "@/MuLearnServices/urls";
+import { cdnUrl } from "@/modules/utils/cdn";
 
 type Props = {
     cards: cardProps[];
@@ -52,8 +52,8 @@ const IGSection = (props: Props) => {
                         <div className={styles.first_view}>
                             <div className={styles.image_container}>
                                 <img
-                                    src={assets.fvimg}
-                                    alt="myrmidon"
+                                    src={cdnUrl("src/modules/Public/KKEM/assets/IGS/fvimg.webp")}
+                                    alt="Learning Circles"
                                     className={styles.fvimage}
                                 />
                             </div>

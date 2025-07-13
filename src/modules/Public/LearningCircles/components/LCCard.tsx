@@ -1,6 +1,5 @@
 import React, { Dispatch } from 'react'
 import styles from "../pages/LandingPage.module.css";
-import imageBottom from "../Assets/LC3.webp";
 interface Props {
     lc: LcRandom;
     setIsOpen: Dispatch<React.SetStateAction<boolean>>;
