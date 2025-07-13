@@ -3,7 +3,7 @@ import styles from "./SpecialEvents.module.css";
 import top100coders from ".././assets/top-100.webp";
 import launchpad from "../assets/launchpad.webp";
 import trivialideas from "../assets/trivialideas.webp";
-import SpecialEventCardLanding from "../../../../Public/Home/components/SpecialEventCardLanding/SpecialEventCardLanding";
+import SpecialEventCard from "../Components/SpecialEventCard";
 import { Helmet } from "react-helmet";
 
 const SpecialEventsList: SpecialEvent[] = [
@@ -73,7 +73,7 @@ const SpecialEvents = () => {
                 </div>
                 <div className={styles.eventsGrid}>
                     {SpecialEventsList.map(specialevent => (
-                        <SpecialEventCardLanding
+                        <SpecialEventCard
                             key={specialevent.id}
                             specialevent={specialevent}
                         />
