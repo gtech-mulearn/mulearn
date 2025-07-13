@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import styles from "./LandingPage.module.css";
@@ -217,7 +217,7 @@ const MuLiveCounter = () => {
             </div>
           </>
         )}
-        
+
         <div className={styles.count}>
           <p className={styles.cvc_heading}>
             <CountUp end={2000} duration={5} />+
@@ -264,6 +264,12 @@ const MuLearnLanding = () => {
   const navigate = useNavigate();
   const redirect = useRedirectToApp();
   const refreshToken = localStorage.getItem("refreshToken");
+  const newsletterRef = useRef<HTMLDivElement>(null);
+
+  const handleScroll = () => {
+    newsletterRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
 
   return (
     <>
@@ -289,7 +295,7 @@ const MuLearnLanding = () => {
       >
         {/* Navbar */}
         <HomeNav />
-        
+
         {/* Hero Section */}
         <motion.header
           className={styles.heroSection}
@@ -317,9 +323,9 @@ const MuLearnLanding = () => {
                 whileInView="visible"
                 viewport={{ once: true }}
               >
-                {""} 
+                {""}
               </motion.span>
-              
+
               <motion.h6
                 custom={3}
                 variants={textVariant}
@@ -343,11 +349,8 @@ const MuLearnLanding = () => {
                 >
                   Join µLearn
                 </button>
-                <button
-                  className={styles.downloadBtn}
-                  onClick={() => redirect("/dashboard/mujourney")}
-                >
-                  Explore Learning Paths
+                <button className={styles.downloadBtn} onClick={handleScroll}>
+                  Subscribe to Newsletter
                 </button>
               </motion.div>
               <motion.div
@@ -412,7 +415,7 @@ const MuLearnLanding = () => {
             </div>
           </motion.section>
         </div>
-        
+
         {/* Special Events Section */}
         <div className={styles.landingPaddingContainer}>
           <motion.section
@@ -439,7 +442,7 @@ const MuLearnLanding = () => {
             </motion.div>
           </motion.section>
         </div>
-        
+
         {/* Comparison Table Section */}
         <div className={styles.landingPaddingContainer}>
           <motion.section
@@ -494,7 +497,7 @@ const MuLearnLanding = () => {
             </motion.div>
           </motion.section>
         </div>
-        
+
         {/* Opportunities Section */}
         <div className={styles.landingPaddingContainer}>
           <motion.section
@@ -582,7 +585,7 @@ const MuLearnLanding = () => {
         <div className={styles.landingPaddingContainer}>
           <RolesSection />
         </div>
-        
+
         {/* Impact Section */}
         <div className={styles.landingPaddingContainer}>
           <motion.section
@@ -605,7 +608,7 @@ const MuLearnLanding = () => {
             </motion.div>
           </motion.section>
         </div>
-        
+
         <div className={styles.landingPaddingContainer}>
           <motion.section
             className={`${styles.leftRightGrid} ${styles.leftRightGridCustom}`}
@@ -633,10 +636,10 @@ const MuLearnLanding = () => {
             </motion.div>
           </motion.section>
         </div>
-        
-        {/* Newsletter Subscription Section */}
         <div className={styles.landingPaddingContainer}>
           <motion.section
+            ref={newsletterRef}
+            id="newsletter"
             className={styles.newsletterSection}
             variants={fadeInUp}
             initial="hidden"
