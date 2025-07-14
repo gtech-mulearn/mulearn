@@ -50,7 +50,7 @@ The central repository holds three main branches with two branches having infini
 
 dev branch is open for collaboration and serves as the development environment where contributors can work on new features and bug fixes before they are merged into other branches.
 
-dev-server is the main branch where the source code of HEAD always reflects a state with the latest delivered development changes for the next release
+dev-server is the main branch where the source code of HEAD always reflects a state with the latest delivered development changes for the next release.
 
 origin/production is the main branch where the source code of HEAD always reflects a production-ready state.
 
