@@ -1,17 +1,3 @@
-import { get } from "http";
-import {
-    getMeetupInfo,
-    joinMeetup,
-    submitAttendeeReport
-} from "src/modules/Dashboard/modules/LearningCircle/services/LearningCircleAPIs";
-import {
-    createLearningCircle,
-    getCreatedLearningCircles,
-    getLcReportInfo,
-    getLearningCircleInfo,
-    scheduleMeetup
-} from "src/modules/Dashboard/modules/LearningCircleV2/services/LearningCircleAPIs";
-import { getConnectedUsers } from "../modules/Dashboard/modules/Profile/services/api";
 
 export const onboardingRoutes = {
     countryList: "/api/v1/register/country/list/",

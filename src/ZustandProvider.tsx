@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { getKarmaFeed, KarmaFeedItem } from "@/modules/Dashboard/modules/Dashboard/services/api";
+import { getKarmaFeed, KarmaFeedItem } from './services/api';
 
 export interface InterestGroup {
   id: string;

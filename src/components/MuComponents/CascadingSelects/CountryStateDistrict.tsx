@@ -1,7 +1,7 @@
 import styles from "../../../modules/Dashboard/utils/modalForm.module.css";
 import React from "react";
 import Select from "react-select";
-import { customReactSelectStyles } from "../../../modules/Dashboard/utils/common";
+import { customReactSelectStyles } from "@/modules/utils/common";
 
 interface Props {
     countries: Array<{ label: string; value: string }>;

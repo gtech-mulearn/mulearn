@@ -14,8 +14,7 @@ import {
 } from "../services/LandingPageApi";
 import Select from "react-select";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
-import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
-import { joinCircle } from "../../../Dashboard/modules/LearningCircle/services/LearningCircleAPIs";
+import { joinCircle } from "../services/LearningCircleApis";
 import toast from "react-hot-toast";
 import Modal from "@/MuLearnComponents/Modal/Modal";
 import HomeNav from "@/modules/Common/HomeNav/HomeNav";

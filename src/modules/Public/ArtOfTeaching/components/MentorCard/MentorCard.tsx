@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./MentorCard.module.css";
 import { cdnUrl } from "@/modules/utils/cdn";
-import LinkedIn from "@/modules/Dashboard/modules/ProfileV2/assets/svg/LinkedIn";
+import LinkedIn from "../../assets/svg/Linkedin";
 
 interface MentorCardProps {
   name: string;
