@@ -314,7 +314,8 @@ function App() {
   return (
     <>
       <Suspense fallback={<div className="flex items-center justify-center w-screen h-screen"><MuLoader /></div>}>
-        <RouterProvider router={router} />
+        <RouterProvider 
+                router={router}/>
       </Suspense>
       <Toaster position="bottom-center" reverseOrder={true} />
       <iframe src={`${import.meta.env.VITE_HOME_MULEARN_URL}/cdr`} id="__cdr" ref={cdrIframe} onLoad={() => sendRefreshToken()} style={{ display: "none" }}></iframe>

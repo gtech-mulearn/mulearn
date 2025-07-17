@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import styles from "./EditProfilePopUp.module.css";
 import { MuButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { FormikImageComponent } from "@/MuLearnComponents/FormikComponents/FormikComponents";
@@ -27,6 +27,19 @@ type Props = {
     id: string;
 };
 
+const sanitizeFormData = (data: any) => {
+    return {
+        first_name: data?.first_name ?? "",
+        last_name: data?.last_name ?? "",
+        email: data?.email ?? "",
+        mobile: data?.mobile ?? "",
+        gender: data?.gender ?? "",
+        dob: data?.dob ?? "",
+        communities: Array.isArray(data?.communities) ? data.communities : [],
+        image: ""
+    };
+};
+
 const EditProfilePopUp = (props: Props) => {
     const [communityAPI, setCommunityAPI] = useState([{ id: "", title: "" }]);
     const [loadStatus, setLoadStatus] = useState(false);
@@ -34,31 +47,57 @@ const EditProfilePopUp = (props: Props) => {
     const [discordState, setDiscordState] = useState<
         "initial" | "loading" | "finished"
     >("initial");
-    useEffect(() => {
-        window.history.pushState(null, "", window.location.href);
-        window.addEventListener("popstate", () => {
-            props.setEditPopUP(false);
-        });
-    }, [props.editPopUp]);
-    const formik = useFormik({
-        initialValues: {
-            first_name: "",
-            last_name: "",
-            email: "",
-            mobile: "",
-            gender: "",
-            dob: "",
-            communities: [],
-            image: ""
-        },
-        onSubmit: values => {
-            const { image, ...data } = values;
+    const [originalData, setOriginalData] = useState<any>(null);
 
-            if (imageRef.current && imageRef.current.files) {
+    const handlePopState = useCallback(() => {
+        props.setEditPopUP(false);
+    }, [props.setEditPopUP]);
+
+    useEffect(() => {
+        if (props.editPopUp) {
+            window.history.pushState(null, "", window.location.href);
+            window.addEventListener("popstate", handlePopState);
+        }
+
+        return () => {
+            window.removeEventListener("popstate", handlePopState);
+        };
+    }, [props.editPopUp, handlePopState]);
+
+    const formik = useFormik({
+        initialValues: sanitizeFormData({}),
+        enableReinitialize: true,
+        onSubmit: values => {
+            const dataToSubmit = {
+                ...originalData,
+                ...values,
+            };
+
+            const finalData = Object.keys(dataToSubmit).reduce((acc: any, key) => {
+                if (key === 'image') return acc;
+                
+                const formValue = values[key as keyof typeof values];
+                const originalValue = originalData?.[key];
+                
+                if (key === 'mobile') {
+                    acc[key] = formValue;
+                } else {
+                    if (formValue !== "" && formValue !== null && formValue !== undefined) {
+                        acc[key] = formValue;
+                    } else if (originalValue !== undefined && originalValue !== null) {
+                        acc[key] = originalValue;
+                    }
+                }
+                
+                return acc;
+            }, {});
+
+            if (imageRef.current && imageRef.current.files && imageRef.current.files[0]) {
                 updateProfileImage(imageRef.current.files[0], props.id);
             }
+
             patchEditUserProfile(
-                data,
+                finalData,
                 props.id,
                 props.setEditPopUP,
                 formik.setFieldError,
@@ -69,32 +108,53 @@ const EditProfilePopUp = (props: Props) => {
         validate: (values: any) => {
             let errors: any = {};
             const emailRegex = /\S+@\S+\.\S+/;
-            ["first_name", "mobile"].forEach(key => {
-                if (!values[key]) errors[key] = "Required";
+            
+            ["first_name", "last_name"].forEach(key => {
+                const value = values[key] || originalData?.[key];
+                if (!value) errors[key] = "Required";
             });
-            if (!values.email) errors.email = "Email is required";
-            else if (!emailRegex.test(values.email))
+            
+            const email = values.email || originalData?.email;
+            if (!email) errors.email = "Email is required";
+            else if (!emailRegex.test(email))
                 errors.email = "Invalid email address";
+            if (values.mobile && values.mobile.toString().trim()) {
+                const mobileStr = values.mobile.toString().trim();
+                if (!/^\d{10}$/.test(mobileStr)) {
+                    errors.mobile = "Mobile number must be exactly 10 digits";
+                }
+            }
+
             return errors;
         }
     });
 
     const discordSync = async () => {
         setDiscordState("loading");
-        await syncDiscordImage();
-        setDiscordState("finished");
-        toast.success("Profile picture synced with discord");
+        try {
+            await syncDiscordImage();
+            setDiscordState("finished");
+            toast.success("Profile picture synced with discord");
+        } catch (error) {
+            setDiscordState("initial");
+            toast.error("Failed to sync discord image");
+        }
     };
 
     useEffect(() => {
-        return getCommunities(setCommunityAPI, setLoadStatus);
+        getCommunities(setCommunityAPI, setLoadStatus);
     }, []);
+
     useEffect(() => {
-        if (props.editPopUp)
-            getEditUserProfile(data =>
-                formik.setValues({ ...data, image: "" })
-            );
+        if (props.editPopUp) {
+            getEditUserProfile(data => {
+                const sanitizedData = sanitizeFormData(data);
+                setOriginalData(data); // Store original data
+                formik.setValues(sanitizedData);
+            });
+        }
     }, [props.editPopUp]);
+
     const buttonStyle = {
         background: "#456FF6",
         color: "#fff",
@@ -104,27 +164,25 @@ const EditProfilePopUp = (props: Props) => {
         padding: "16px",
         height: "50px"
     };
+
     const communityIds: string[] = formik.values.communities || []; // Provide a default empty array
     const filteredCommunityOptions = toReactOptions(
         communityAPI.filter(value => communityIds?.includes(value.id))
     );
+
     const propsList2 = {
         onChange: formik.handleChange,
         onBlur: formik.handleBlur
     };
+
     const communityProps = {
         name: "communities.id",
         onChange: (OnChangeValue: any) => {
             formik.setFieldValue(
                 "communities",
-                OnChangeValue.map(
-                    (
-                        value: any = {
-                            value: "",
-                            label: ""
-                        }
-                    ) => value.value
-                )
+                OnChangeValue?.map(
+                    (value: any = { value: "", label: "" }) => value.value
+                ) || []
             );
         },
         closeMenuOnSelect: false,
@@ -141,12 +199,25 @@ const EditProfilePopUp = (props: Props) => {
                 type: item === "email" ? "email" : "text",
                 name: item,
                 id: item,
-                value: formik.values[item],
+                value: String(formik.values[item] ?? ""),
                 touched: formik.touched[item],
                 error: formik.errors[item]
             };
         });
     };
+
+    const handleMobileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        if (value === "" || /^\d{0,10}$/.test(value)) {
+            formik.setFieldValue("mobile", value);
+        }
+    };
+
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        // Don't set value to formik to avoid controlled/uncontrolled issues
+        // File is handled via ref only
+    };
+
     return (
         <div
             className={styles.edit_profile_container}
@@ -168,7 +239,7 @@ const EditProfilePopUp = (props: Props) => {
                     <h2>Edit Profile</h2>
                     <form onSubmit={formik.handleSubmit}>
                         {propsList(formik).map((item, index) => (
-                            <div key={index} className={styles.input_field}>
+                            <div key={`field-${item.name}-${index}`} className={styles.input_field}>
                                 <label
                                     className={styles.label}
                                     htmlFor={item.id}
@@ -176,7 +247,14 @@ const EditProfilePopUp = (props: Props) => {
                                     {item.placeholder}
                                 </label>
                                 <div className={styles.inputBox}>
-                                    <input {...propsList2} {...item} />
+                                    <input 
+                                        {...propsList2} 
+                                        type={item.type}
+                                        name={item.name}
+                                        id={item.id}
+                                        placeholder={item.placeholder}
+                                        value={String(item.value ?? "")}
+                                    />
                                     {item.touched && item.error && (
                                         <div className={styles.error_message}>
                                             {item.error}
@@ -185,92 +263,100 @@ const EditProfilePopUp = (props: Props) => {
                                 </div>
                             </div>
                         ))}
+                        
                         <div className={styles.input_field}>
                             <label className={styles.label}>Mobile</label>
                             <div className={styles.inputBox}>
                                 <input
-                                    type="number"
+                                    type="tel"
                                     name="mobile"
-                                    value={formik.values.mobile}
+                                    value={String(formik.values.mobile ?? "")}
                                     placeholder="Mobile"
                                     onBlur={formik.handleBlur}
-                                    onChange={formik.handleChange}
+                                    onChange={handleMobileChange}
+                                    maxLength={10}
                                 />
-                                {formik.touched.mobile &&
-                                formik.errors.mobile ? (
-                                    <p className={styles.error_message}>
-                                        {formik.errors.mobile}
-                                    </p>
-                                ) : null}
+                                {formik.touched.mobile && formik.errors.mobile && (
+                                    <div className={styles.error_message}>
+                                        {typeof formik.errors.mobile === "string"
+                                            ? formik.errors.mobile
+                                            : Array.isArray(formik.errors.mobile)
+                                                ? formik.errors.mobile.join(", ")
+                                                : ""}
+                                    </div>
+                                )}
                             </div>
                         </div>
+                        
                         <div className={styles.input_field}>
-                            <label className={styles.label} htmlFor="">
+                            <label className={styles.label} htmlFor="community">
                                 Community
                             </label>
                             <div className={styles.inputBox}>
                                 {loadStatus && <Select {...communityProps} />}
                             </div>
                         </div>
+                        
                         <div className={styles.input_field}>
-                            <label className={styles.label} htmlFor="">
+                            <label className={styles.label} htmlFor="gender">
                                 Gender
                             </label>
                             <div className={styles.inputBox}>
                                 <select
+                                    id="gender"
                                     name="gender"
-                                    value={formik.values.gender}
-                                    {...propsList2}
+                                    value={String(formik.values.gender ?? "")}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
                                 >
-                                    <option>Select gender</option>
+                                    <option value="">Select gender</option>
                                     <option value="Male">♂ Male</option>
                                     <option value="Female">♀ Female</option>
                                     <option value="Other">Other</option>
-                                    <option value="">Prefer not to say</option>
+                                    <option value="prefer-not-to-say">Prefer not to say</option>
                                 </select>
                             </div>
                         </div>
+                        
                         <div className={styles.input_field}>
-                            <label className={styles.label} htmlFor="">
-                                DOB
+                            <label className={styles.label} htmlFor="dob">
+                                Date of Birth
                             </label>
                             <div className={styles.inputBox}>
                                 <input
+                                    id="dob"
                                     type="date"
                                     name="dob"
-                                    value={formik.values.dob}
-                                    placeholder="DOB"
-                                    max={
-                                        (
-                                            new Date().getFullYear() - 17
-                                        ).toString() + "-12-31"
-                                    }
-                                    {...propsList2}
+                                    value={String(formik.values.dob ?? "")}
+                                    placeholder="Date of Birth"
+                                    max={`${new Date().getFullYear() - 17}-12-31`}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
                                 />
                             </div>
                         </div>
+                        
                         <div className={styles.input_field}>
-                            <label className={styles.label} htmlFor="">
-                                Image
+                            <label className={styles.label} htmlFor="image">
+                                Profile Image
                             </label>
-                            <div
-                                className={`${styles.inputBox} ${styles.imageBox}`}
-                            >
+                            <div className={`${styles.inputBox} ${styles.imageBox}`}>
                                 <input
+                                    id="image"
                                     ref={imageRef}
                                     type="file"
                                     name="image"
-                                    value={formik.values.image}
-                                    placeholder="DOB"
-                                    {...propsList2}
-                                />{" "}
+                                    accept="image/*"
+                                    onChange={handleFileChange}
+                                />
                             </div>
                         </div>
+                        
                         <div className={styles.btn_container}>
                             <PowerfulButton
                                 type="button"
                                 variant="outline"
-                                // disabled={discordState === "finished"}
+                                disabled={discordState === "loading"}
                                 onClick={discordSync}
                                 className={styles.powerfulButton}
                             >
@@ -288,34 +374,14 @@ const EditProfilePopUp = (props: Props) => {
                                     }[discordState]
                                 }
                             </PowerfulButton>
-                            {/* <div
-                                    title={
-                                        discordState === "initial"
-                                            ? "Click to sync discord image"
-                                            : ""
-                                    }
-                                    onClick={discordSync}
-                                >
-                                    {
-                                        {
-                                            initial: <BsDiscord size={32} />,
-                                            loading: (
-                                                <BeatLoader
-                                                    size={8}
-                                                    color="#456ff6"
-                                                />
-                                            ),
-                                            finished: <BsCheck size={32} />
-                                        }[discordState]
-                                    }
-                                </div> */}
 
                             <MuButton
                                 type="submit"
                                 style={buttonStyle}
-                                text={"Update Profile"}
+                                text="Update Profile"
                             />
                         </div>
+                        
                         <button
                             type="button"
                             className={styles.edit_profile_close}

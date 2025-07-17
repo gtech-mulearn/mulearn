@@ -142,14 +142,20 @@ const UserForm = forwardRef(
         const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
             const { name, value } = e.target;
 
-            if (name === "mobile" && value && !/^\+?\d{0,12}$/.test(value.trim())) {
-                setErrors(prevErrors => ({
-                    ...prevErrors,
-                    mobile: "Invalid format"
-                }));
-            } else {
-                setErrors(prevErrors => ({ ...prevErrors, mobile: undefined }));
-                setData(prevData => ({ ...prevData, [name]: value.trim() || " " }));
+            if (name === "mobile") {
+                if (value && !/^\d{0,10}$/.test(value.trim())) {
+                    setErrors(prevErrors => ({
+                        ...prevErrors,
+                        mobile: "Mobile number must be 10 digits"
+                    }));
+                } else {
+                    setErrors(prevErrors => ({
+                        ...prevErrors,
+                        mobile: undefined
+                    }));
+                }
+                setData(prevData => ({ ...prevData, [name]: value.trim() }));
+                return;
             }
         };
 
@@ -389,9 +395,9 @@ const UserForm = forwardRef(
                                 type="tel"
                                 name="mobile"
                                 placeholder="Mobile"
-                                value={data.mobile}
+                                value={data.mobile || ""}
                                 onChange={handleChange}
-
+                                maxLength={10}
                             />
                             {errors.mobile && (
                                 <div style={{ color: "red" }}>
