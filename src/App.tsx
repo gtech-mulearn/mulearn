@@ -16,6 +16,10 @@ import { Toaster } from "react-hot-toast";
 import MuLoader from "./components/MuComponents/MuLoader/MuLoader";
 import { sendRefreshToken } from "./modules/utils/cdr";
 import RedirectComponent from "./modules/utils/homeRedirect";
+import ManageLaunchpad from "./modules/Dashboard/modules/ManageLaunchpad/pages";
+import ManageJobs from "./modules/Dashboard/modules/ManageLaunchpad/pages/ManageJobs";
+import ManageCompanies from "./modules/Dashboard/modules/ManageLaunchpad/pages/ManageCompanies";
+import Launchpad from "./modules/Dashboard/modules/Launchpad";
 
 // Lazy-loaded components
 const CampusStudentList = lazy(() => import("./modules/Dashboard/modules").then(module => ({ default: module.CampusStudentList })));
@@ -206,6 +210,7 @@ function App() {
             { path: "muverse", element: <ComingSoonPage /> },
             { path: "interestgroups", element: <ComingSoonPage /> },
             { path: "learningcircle", element: <LearningCircleLanding2 /> },
+            { path: "Launchpad", element: <Launchpad /> },
             { path: "search", element: <SearchMain /> },
             { path: "mulearners", element: <MuLearnersSearchPage /> },
             { path: "mentors", element: <MentorSearchPage /> },
@@ -227,6 +232,9 @@ function App() {
             { path: "management/error-log", element: <AuthChecker roles={[roles.ADMIN]} children={<ErrorLogPage />} /> },
             { path: "management/dynamic-type", element: <AuthChecker roles={[roles.ADMIN]} children={<DynamicTypePage />} /> },
             { path: "management/manage-roles", element: <AuthChecker roles={[roles.ADMIN]} children={<ManageRolesPage />} /> },
+            { path: "management/manage-launchpad", element: <AuthChecker roles={[roles.ADMIN]} children={<ManageLaunchpad />} /> },
+            { path: "management/manage-launchpad/jobs", element: <AuthChecker roles={[roles.ADMIN]} children={<ManageJobs />} /> },
+            { path: "management/manage-launchpad/companies", element: <AuthChecker roles={[roles.ADMIN]} children={<ManageCompanies />} /> },
             { path: "management/manage-locations", element: <AuthChecker roles={[roles.ADMIN]} children={<ManageLocationsPage />} /> },
             { path: "management/channels", element: <AuthChecker roles={[roles.ADMIN]} children={<ChannelsPage />} /> },
             { path: "/dashboard/url-shortener", element: <AuthChecker roles={[roles.ADMIN, roles.ASSOCIATE]} children={<URLShortenerPage />} /> },

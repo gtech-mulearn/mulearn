@@ -1,0 +1,32 @@
+ .container {
+       padding: 20px;
+     }
+     .header {
+       margin-bottom: 20px;
+     }
+     .title {
+       font-size: 24px;
+       font-weight: bold;
+     }
+     .subtitle {
+       color: gray;
+     }
+     .modal {
+       border-radius: 8px;
+     }
+     .modalHeader {
+       font-size: 18px;
+     }
+     .modalBody {
+       padding: 20px;
+     }
+     .modalFooter {
+       padding: 10px 20px;
+     }
+     .readOnlyField {
+       padding: 8px;
+       background-color: #f7fafc;
+       border: 1px solid #e2e8f0;
+       border-radius: 4px;
+     }
+    

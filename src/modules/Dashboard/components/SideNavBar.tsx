@@ -93,7 +93,7 @@ const SideNavBar = ({ sidebarButtons }: Props) => {
                 style={{ display: `${sideNavDisplay}` , marginLeft: "0px"}}
             >
                 <div className={styles.side_nav_bar}>
-                    <div className={styles.mulearn_brand} onClick={()=> redirect("/")}>
+                    <div className={styles.mulearn_brand} onClick={()=> window.location.href = "/dashboard/home"}>
                         <MulearnBrand />
                     </div>
                     <SideNavBarBody
