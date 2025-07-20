@@ -51,7 +51,7 @@ const MuLiveCounter = () => {
           </div>
           <div className={styles.count}>
             <p className={styles.cvc_heading}>
-              <CountUp end={counts.learning_circle_count} duration={5} />+
+              <CountUp end={counts.learning_circle_count} duration={5} />
             </p>
             <p className={styles.cvc_text}>Learning Circles</p>
           </div>
@@ -71,7 +71,7 @@ const MuLiveCounter = () => {
                       }
                       duration={5}
                     />
-                    +
+                    
                   </p>
                   <p className={styles.cvc_text}>
                     {orgTypeCount.org_type.endsWith("y")
@@ -83,13 +83,13 @@ const MuLiveCounter = () => {
 
           <div className={styles.count}>
             <p className={styles.cvc_heading}>
-              <CountUp end={200} duration={5} />+
+              <CountUp end={200} duration={5} />
             </p>
             <p className={styles.cvc_text}>Events</p>
           </div>
           <div className={styles.count}>
             <p className={styles.cvc_heading}>
-              <CountUp end={counts.ig_count} duration={5} />+
+              <CountUp end={counts.ig_count} duration={5} />
             </p>
             <p className={styles.cvc_text}>Interest Groups</p>
           </div>
@@ -102,32 +102,32 @@ const MuLiveCounter = () => {
           </div>
           <div className={styles.count}>
             <p className={styles.cvc_heading}>
-              <CountUp end={counts.karma_pow_count.pow_count} duration={5} />+
+              <CountUp end={counts.karma_pow_count.pow_count} duration={5} />
             </p>
             <p className={styles.cvc_text}>Number of Proof of Works </p>
           </div>
           <div className={styles.count}>
             <p className={styles.cvc_heading}>
-              <CountUp end={2000} duration={5} />+
+              <CountUp end={2000} duration={5} />
             </p>
             <p className={styles.cvc_text}>Number of Internships</p>
           </div>
           <div className={styles.count}>
             <p className={styles.cvc_heading}>
-              <CountUp end={1000} duration={5} />+
+              <CountUp end={1000} duration={5} />
             </p>
             <p className={styles.cvc_text}>Jobs</p>
           </div>
           <div className={styles.count}>
             <p className={styles.cvc_heading}>
-              <CountUp end={100} duration={5} />+
+              <CountUp end={100} duration={5} />
             </p>
             <p className={styles.cvc_text}>Products</p>
           </div>
           <div className={styles.count}>
             <p className={styles.cvc_heading}>
               <CountUp end={1} duration={5} />
-              Cr+
+              Cr
             </p>
             <p className={styles.cvc_text}>worth of Gig Works</p>
           </div>
@@ -137,7 +137,7 @@ const MuLiveCounter = () => {
             .map((roleCount) => (
               <div className={styles.count}>
                 <p className={styles.cvc_heading}>
-                  <CountUp end={roleCount.role_count} duration={5} />+
+                  <CountUp end={roleCount.role_count} duration={5} />
                 </p>
                 <p className={styles.cvc_text}>{roleCount.role__title}s</p>
               </div>
