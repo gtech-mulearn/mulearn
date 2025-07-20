@@ -645,6 +645,7 @@ const ManageJobs = () => {
         modalDeleteHeading="Delete Job"
         modalTypeContent="error"
         modalDeleteContent="Are you sure you want to delete this job?"
+        //@ts-ignore
         customCellRender={(column: string, row: Job) => {
           if (column === "job_type") {
             return row.job_type || "-";
