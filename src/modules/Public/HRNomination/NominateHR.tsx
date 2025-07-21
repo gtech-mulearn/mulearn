@@ -12,6 +12,7 @@ const initialState = {
   mobile: "",
   email: "",
   nominator: "",
+  preferredTimeSlot: "",
 };
 
 const NominateHR: React.FC = () => {
@@ -29,10 +30,11 @@ const NominateHR: React.FC = () => {
     if (!form.email) errs.email = "Required";
     else if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email)) errs.email = "Invalid email";
     if (!form.nominator) errs.nominator = "Required";
+    if (!form.preferredTimeSlot) errs.preferredTimeSlot = "Required";
     return errs;
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
@@ -42,14 +44,15 @@ const NominateHR: React.FC = () => {
     setErrors(errs);
     if (Object.keys(errs).length === 0) {
       setSubmitting(true);
-      const { companyName, hrName, mobile, email, nominator } = form;
+      const { companyName, hrName, mobile, email, nominator, preferredTimeSlot } = form;
       try {
         await axios.post(BACKEND_API_URL, {
           companyName,
           hrName,
           mobile,
           email,
-          nominator
+          nominator,
+          preferredTimeSlot
         });
         setSubmitted(true);
         setForm(initialState);
@@ -130,6 +133,22 @@ const NominateHR: React.FC = () => {
                 disabled={submitting}
               />
               {errors.nominator && <div className={styles.error}>{errors.nominator}</div>}
+            </div>
+            <div className={styles.formGroup}>
+              <label className={styles.label}>Preferred Time Slot for Meeting</label>
+              <select
+                name="preferredTimeSlot"
+                value={form.preferredTimeSlot}
+                onChange={handleChange}
+                className={styles.input}
+                disabled={submitting}
+                required
+              >
+                <option value="">Select a time slot</option>
+                <option value="25th July 3:00pm">25th July 3:00pm</option>
+                <option value="28th July 5:00pm">28th July 5:00pm</option>
+              </select>
+              {errors.preferredTimeSlot && <div className={styles.error}>{errors.preferredTimeSlot}</div>}
             </div>
             <button type="submit" className={styles.submitBtn} disabled={submitting}>
               {submitting ? "Submitting..." : "Submit"}
