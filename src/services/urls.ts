@@ -328,3 +328,12 @@ export const qseverseRoutes = {
     getConnectedUsers: "api/v1/integrations/qseverse/connected-users/search",
     getCredentials: "api/v1/integrations/qseverse/qs-credentials/"
 }
+
+export const manageLaunchpadRoutes = {
+    listCompanies: "api/v1/launchpad/company-list/",
+    verifyCompany: "api/v1/launchpad/company-verify/",
+    listJobListings: "api/v1/launchpad/list-jobs/",
+    verifyLaunchpadTask: "api/v1/launchpad/verify-task/",
+    getJobInvites: "api/v1/launchpad/student/job-invitations/",
+    applyToJob: "api/v1/launchpad/student/apply-to-job/"
+}

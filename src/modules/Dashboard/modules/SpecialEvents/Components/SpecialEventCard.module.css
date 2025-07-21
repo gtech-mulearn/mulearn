@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
 
+/* Card Styles */
 .card {
     position: relative;
     width: 100%;
@@ -20,7 +21,7 @@
 .image {
     width: 100%;
     height: 100%;
-    object-fit: fill;
+    object-fit: cover;
     transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
@@ -33,23 +34,12 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgba(255, 255, 255, 0.95);
     padding: 2rem;
-    transform: translateY(100px);
-    transition: transform 0.3s ease;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
-}
-
-.card:hover .content {
     transform: translateY(0);
+    transition: transform 0.3s ease;
 }
 
 .title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     font-size: 1.8rem;
     font-weight: 600;
     margin: 0 0 0.5rem;
@@ -57,22 +47,13 @@
     line-height: 1.2;
 }
 
-.date {
-    font-size: 1rem;
-    color: #666;
-    font-weight: 300;
-}
-
-.eventStats {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.description {
+    font-size: 0.9rem;
+    color: #444;
     margin-bottom: 1rem;
-
-    align-items: center;
 }
 
-.cta {
+.readMoreButton {
     background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
     color: white;
     border: none;
@@ -81,50 +62,15 @@
     font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
-    margin-top: 0.5rem;
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
-    position: relative;
     width: 100%;
 }
 
-.cta span {
-    z-index: 1;
-    transition: all 0.3s ease;
-}
-
-.cta .arrow {
-    width: 18px;
-    height: 18px;
-    stroke: white;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    fill: none;
-    margin-left: 0.5rem;
-    transition: all 0.3s ease;
-    transform: translateX(-5px);
-    opacity: 0;
-}
-
-.cta:hover {
+.readMoreButton:hover {
     box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
-}
-
-.cta:hover span {
-    transform: translateX(-5px);
-}
-
-.cta:hover .arrow {
-    transform: translateX(0);
-    opacity: 1;
-}
-
-.cta:active {
-    transform: scale(0.98);
 }
 
 @media (max-width: 480px) {
@@ -138,11 +84,6 @@
         background: rgba(255, 255, 255, 0.95);
     }
 
-    .cta .arrow {
-        transform: translateX(0);
-        opacity: 1;
-    }
-
     .title {
         font-size: 1.5rem;
     }
@@ -152,94 +93,97 @@
         -webkit-line-clamp: 2;
     }
 
-    .cta {
+    .readMoreButton {
         padding: 0.6rem 1.5rem;
         font-size: 0.9rem;
     }
 }
 
-.participantsContainer {
+/* ModalContent */
+.modal-content-custom {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    max-width: 400px;
+    width: 90%;
+    max-height: 600px;
+}
+.modal-image-wrapper {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+}
+.modal-image-bg {
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+}
+.modal-close-icon {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 20px;
+    height: 20px;
+    color: white;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 9999px;
+    transition: background 0.2s;
+}
+.modal-close-icon:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+.modal-body-custom {
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+.icon-circle {
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
-    gap: 8px;
-    margin-top: 8px;
+    justify-content: center;
+    border-radius: 9999px;
 }
-
-.participantAvatars {
-    display: flex;
+.icon-calendar {
+    background-color: #d4f8d4;
+    color: #228B22;
 }
-
-.participantAvatars img {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    border: 2px solid white;
-    margin-left: -8px;
-    margin: 0;
-    padding: 0;
+.icon-clock {
+    background-color: #dbeafe;
+    color: #1e40af;
 }
-
-.participants {
-    font-size: 0.8rem;
+.icon-location {
+    background-color: #ffe4e6;
+    color: #b91c1c;
+}
+.modal-footer-custom {
+    background-color: white;
+    padding-top: 0.5rem;
+    padding-bottom: 1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+.register-button {
+    background-color: #4285f4;
+    color: white;
     font-weight: 600;
-    color: #1a202c;
-}
-
-.expiredTag {
-    background-color: rgba(255, 0, 0, 0.1);
-    color: #d32f2f;
-    font-size: 0.6rem;
-    font-weight: bold;
-    padding: 4px 8px;
-    border-radius: 4px;
-    margin-left: 8px;
-    display: inline-block;
-    text-transform: uppercase;
-}
-
-.comingSoonTag {
-    background-color: rgba(0, 150, 255, 0.1); /* Light blue */
-    color: #0077cc; /* Dark blue text */
-    font-size: 0.6rem;
-    font-weight: bold;
-    padding: 4px 8px;
-    border-radius: 4px;
-    margin-left: 8px;
-    display: inline-block;
-    text-transform: uppercase;
-}
-
-.recurringTag {
-    background-color: rgba(0, 150, 255, 0.1); /* Light blue */
-    color: #00cc69; /* Dark blue text */
-    font-size: 0.6rem;
-    font-weight: bold;
-    padding: 4px 8px;
-    border-radius: 4px;
-    margin-left: 8px;
-    display: inline-block;
-    text-transform: uppercase;
-}
-
-.description {
-    font-size: 0.9rem;
-    color: #444;
-    transition: max-height 0.3s ease-in-out;
-    overflow: hidden;
-    white-space: nowrap;
-    /* margin: .7rem 0rem .2rem 0rem; */
-    text-overflow: ellipsis;
-    max-width: 100%;
-}
-
-.fullText {
-    white-space: normal;
-    text-overflow: clip;
-}
-
-.readMore {
-    color: blue;
-    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 0.375rem;
+    padding: 0.75rem 1.5rem;
+    height: 50px;
+    width: 100%;
+    transition: background 0.2s ease;
+    border: none;
     cursor: pointer;
-    margin-left: 5px;
+}
+.register-button:hover {
+    background-color: #3367d6;
 }

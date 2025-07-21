@@ -64,6 +64,7 @@ type TableProps = {
     modalDeleteContent?: string;
     modalTypeContent?: string;
     // Add the customCellRender prop
+    //@ts-ignore
     customCellRender?: (column: string, row: Data) => ReactElement | null;
 };
 

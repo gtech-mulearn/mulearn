@@ -4,7 +4,6 @@ type Props = {};
 
 const MulearnBrand = (props: Props) => {
     return (
-        <a href="/">
         <svg
             width="140"
             height="32"
@@ -37,7 +36,6 @@ const MulearnBrand = (props: Props) => {
                 fill="#456FF6"
             />
         </svg>
-        </a>
     );
 };
 

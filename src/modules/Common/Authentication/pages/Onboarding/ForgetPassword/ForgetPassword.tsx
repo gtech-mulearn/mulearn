@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as z from "yup";
 import OnboardingHeader from "../../../components/OnboardingHeader/OnboardingHeader";
@@ -15,6 +15,13 @@ const ForgetPassword = () => {
     const [showLoader, setShowLoader] = useState(false);
     const navigate = useNavigate();
 
+    useEffect(() => {
+        const refreshToken = localStorage.getItem("refreshToken");
+        if (refreshToken) {
+            navigate('/dashboard/home');
+        }
+    }, []);
+    
     const scheme = z.object({
         emailOrMuId: z
             .string()
