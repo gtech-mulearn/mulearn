@@ -1,5 +1,4 @@
 name: Prod React CI/CD
-
 on:
   push:
     branches: [ "home-prod" ]
@@ -9,9 +8,7 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [18]
