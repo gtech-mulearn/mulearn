@@ -39,6 +39,7 @@ const KKEMLanding = lazy(() => import("./modules/Public/KKEM/modules/KKEMLanding
 const KKEMAuth = lazy(() => import("./modules/Public/KKEM/modules/KKEMAuth"));
 const Trivial = lazy(() => import("./modules/Public/TrivialIdeas/modules/trivial"));
 const YIP = lazy(() => import("./modules/Public/yip/YIP2023"));
+const NominateHR = lazy(() => import("./modules/Public/HRNomination/NominateHR"));
 
 function App() {
   const router = createBrowserRouter([
@@ -69,6 +70,7 @@ function App() {
     { path: "/kkem/events/beyondus", element: <KKEMEventBeyondUs /> },
     { path: "/kkem/learningcircles/dashboard", element: <LearningCircles /> },
     { path: "/cdr", element: <>{updateRefreshToken()}</> },
+    { path: "/hr", element: <NominateHR /> },
     // { path: "/foundation", element: <Foundation /> }
   ]);
 
