@@ -9,8 +9,8 @@ const BACKEND_API_URL = import.meta.env.VITE_HR_FORM_API_URL;
 const initialState = {
   companyName: "",
   hrName: "",
-  mobile: "",
-  email: "",
+  hrPhone: "",
+  hrEmail: "",
   nominator: "",
   preferredTimeSlot: "",
 };
@@ -25,10 +25,10 @@ const NominateHR: React.FC = () => {
     const errs: any = {};
     if (!form.companyName) errs.companyName = "Required";
     if (!form.hrName) errs.hrName = "Required";
-    if (!form.mobile) errs.mobile = "Required";
-    else if (!/^\d{10}$/.test(form.mobile)) errs.mobile = "Enter 10 digit number";
-    if (!form.email) errs.email = "Required";
-    else if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email)) errs.email = "Invalid email";
+    if (!form.hrPhone) errs.hrPhone = "Required";
+    else if (!/^\d{10}$/.test(form.hrPhone)) errs.hrPhone = "Enter 10 digit number";
+    if (!form.hrEmail) errs.hrEmail = "Required";
+    else if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.hrEmail)) errs.hrEmail = "Invalid email";
     if (!form.nominator) errs.nominator = "Required";
     if (!form.preferredTimeSlot) errs.preferredTimeSlot = "Required";
     return errs;
@@ -44,13 +44,13 @@ const NominateHR: React.FC = () => {
     setErrors(errs);
     if (Object.keys(errs).length === 0) {
       setSubmitting(true);
-      const { companyName, hrName, mobile, email, nominator, preferredTimeSlot } = form;
+      const { companyName, hrName, hrPhone, hrEmail, nominator, preferredTimeSlot } = form;
       try {
         await axios.post(BACKEND_API_URL, {
           companyName,
           hrName,
-          mobile,
-          email,
+          hrPhone,
+          hrEmail,
           nominator,
           preferredTimeSlot
         });
@@ -98,29 +98,29 @@ const NominateHR: React.FC = () => {
               {errors.hrName && <div className={styles.error}>{errors.hrName}</div>}
             </div>
             <div className={styles.formGroup}>
-              <label className={styles.label}>Mobile Number</label>
+              <label className={styles.label}>Company HR Phone Number</label>
               <input
                 type="tel"
-                name="mobile"
-                value={form.mobile}
+                name="hrPhone"
+                value={form.hrPhone}
                 onChange={handleChange}
                 className={styles.input}
                 maxLength={10}
                 disabled={submitting}
               />
-              {errors.mobile && <div className={styles.error}>{errors.mobile}</div>}
+              {errors.hrPhone && <div className={styles.error}>{errors.hrPhone}</div>}
             </div>
             <div className={styles.formGroup}>
-              <label className={styles.label}>Email</label>
+              <label className={styles.label}>Company HR Email</label>
               <input
                 type="email"
-                name="email"
-                value={form.email}
+                name="hrEmail"
+                value={form.hrEmail}
                 onChange={handleChange}
                 className={styles.input}
                 disabled={submitting}
               />
-              {errors.email && <div className={styles.error}>{errors.email}</div>}
+              {errors.hrEmail && <div className={styles.error}>{errors.hrEmail}</div>}
             </div>
             <div className={styles.formGroup}>
               <label className={styles.label}>Name of the Person Nominating</label>
@@ -145,8 +145,8 @@ const NominateHR: React.FC = () => {
                 required
               >
                 <option value="">Select a time slot</option>
-                <option value="25th July 3:00pm">25th July 3:00pm</option>
-                <option value="28th July 5:00pm">28th July 5:00pm</option>
+                <option value="22-07-2025 5:00pm">22-07-2025 5:00pm</option>
+                <option value="25-07-2025 5:00pm">25-07-2025 5:00pm</option>
               </select>
               {errors.preferredTimeSlot && <div className={styles.error}>{errors.preferredTimeSlot}</div>}
             </div>
