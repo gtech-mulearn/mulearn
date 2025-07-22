@@ -142,6 +142,7 @@ const AdminMarketPlace = lazy(() => import("./modules/Dashboard/modules/Marketpl
 const PurchaseInventory = lazy(() => import("./modules/Dashboard/modules/Marketplace/PurchaseInventory/PurchaseInventory"));
 const ConnectedDevices = lazy(() => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices"));
 const Wadhwani = lazy(() => import("./modules/Dashboard/modules/Wadhwani"));
+const ResetPassword = lazy(() => import("./modules/Common/Authentication/pages/Onboarding/ResetPassword/ResetPassword"));
 
 function App() {
   const AuthChecker = SecureAuthRoutes();
@@ -170,7 +171,7 @@ function App() {
     { path: "register/", children: [{ path: "", element: <RegisterPage /> }] },
     { path: "login", element: <SignIn /> },
     { path: "forgot-password", element: <ForgetPassword /> },
-    // { path: "reset-password", element: <ResetPassword /> },
+    { path: "reset-password", element: <ResetPassword /> },
     { path: "/register/interests", element: <UserInterest /> },
     { path: "/register/organization", element: <CollegePage /> },
     { path: "/register/pathfinder", element: <PathFinder /> },
