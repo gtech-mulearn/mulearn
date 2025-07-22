@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Box, VStack, HStack, Text, Badge, Button, FormControl, FormLabel, Input, Textarea, useDisclosure, Select, Flex, Divider, useToast, IconButton, Link } from '@chakra-ui/react';
+import { Box, VStack, HStack, Text, Badge, Button, FormControl, FormLabel, Input, Textarea, useDisclosure, Select, Flex, Divider, useToast, IconButton, Link, Image } from '@chakra-ui/react';
 import { Eye, CheckCircle, XCircle, Calendar, ExternalLink, User, MapPin, DollarSign, Briefcase, Clock, Users } from 'lucide-react';
 import styles from './JobInvites.module.css';
 import MuModal from '@/components/MuComponents/MuModal/MuModal';
 import { getJobInvites, applyToJob } from './services/api';
+
 
 interface Task {
   task_id: string;
@@ -310,7 +311,11 @@ const Launchpad = () => {
       {isLoading ? (
         <Text className={styles.loadingText}>Loading invites...</Text>
       ) : !filteredInvites || filteredInvites.length === 0 ? (
-        <Text className={styles.noDataText}>No job invites or interviews available.</Text>
+        <>
+          <Text className={styles.noDataText}>No job invites or interviews available. <br/>If you haven't enabled open to work in your profile settings, please do so to receive job invites.</Text>
+       
+        </>
+      
       ) : (
         <VStack spacing={4} align="stretch">
           {filteredInvites.map(invite => (

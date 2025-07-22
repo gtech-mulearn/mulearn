@@ -133,6 +133,15 @@ const ManageJobs = () => {
     }
   }, [filteredData, perPage, totalPages]);
 
+  useEffect(() => {
+    if (selectedJob && data.length > 0) {
+      const updatedJob = data.find(job => job.id === selectedJob.id);
+      if (updatedJob && JSON.stringify(updatedJob) !== JSON.stringify(selectedJob)) {
+        setSelectedJob(updatedJob);
+      }
+    }
+  }, [data, selectedJob]);
+
   const handleNextClick = () => {
     if (currentPage < totalPages) {
       setCurrentPage(prev => prev + 1);
@@ -279,26 +288,30 @@ const ManageJobs = () => {
 
   const handleTaskApproval = (job: Job) => {
     if (job.task_description) {
+      // Get the most up-to-date job data from the current data state
+      const currentJob = data.find(j => j.id === job.id) || job;
       setSelectedTask({
-        task_id: job.task_id || job.id,
-        title: job.title,
-        description: job.task_description,
-        hashtag: job.task_hashtag || '',
-        is_verified: job.task_verified || false,
+        task_id: currentJob.task_id || currentJob.id,
+        title: currentJob.title,
+        description: currentJob.task_description || "",
+        hashtag: currentJob.task_hashtag || '',
+        is_verified: currentJob.task_verified || false,
       });
-      setTaskHashtag(job.task_hashtag || '');
+      setTaskHashtag(currentJob.task_hashtag || '');
       onTaskOpen();
     }
   };
 
   const handleTaskView = (job: Job) => {
     if (job.task_description) {
+      // Get the most up-to-date job data from the current data state
+      const currentJob = data.find(j => j.id === job.id) || job;
       setSelectedTask({
-        task_id: job.task_id || job.id,
-        title: job.title,
-        description: job.task_description,
-        hashtag: job.task_hashtag || '',
-        is_verified: job.task_verified || false,
+        task_id: currentJob.task_id || currentJob.id,
+        title: currentJob.title,
+        description: currentJob.task_description || "",
+        hashtag: currentJob.task_hashtag || '',
+        is_verified: currentJob.task_verified || false,
       });
       onTaskViewOpen();
     }
@@ -337,6 +350,14 @@ const ManageJobs = () => {
           );
           setData(updatedData);
           setFilteredData(updatedData);
+          
+          // Update the selectedTask to reflect the new hashtag and verification status
+          setSelectedTask(prev => prev ? {
+            ...prev,
+            hashtag: taskHashtag,
+            is_verified: true,
+          } : null);
+          
           // Optional: Refetch to ensure consistency with backend
           // await fetchJobs();
           toast({
@@ -347,7 +368,6 @@ const ManageJobs = () => {
             isClosable: true,
           });
           setTaskHashtag('');
-          setSelectedTask(null);
           onTaskClose();
         } else {
           toast({
@@ -542,7 +562,11 @@ const ManageJobs = () => {
                       <Button
                         size="sm"
                         leftIcon={<Eye size={16} />}
-                        onClick={() => handleTaskView(selectedJob)}
+                        onClick={() => {
+                          // Get the most up-to-date job data
+                          const currentJob = data.find(j => j.id === selectedJob.id) || selectedJob;
+                          handleTaskView(currentJob);
+                        }}
                       >
                         View Task
                       </Button>
@@ -551,7 +575,11 @@ const ManageJobs = () => {
                           size="sm"
                           colorScheme="blue"
                           leftIcon={<Hash size={16} />}
-                          onClick={() => handleTaskApproval(selectedJob)}
+                          onClick={() => {
+                            // Get the most up-to-date job data
+                            const currentJob = data.find(j => j.id === selectedJob.id) || selectedJob;
+                            handleTaskApproval(currentJob);
+                          }}
                         >
                           Approve Task
                         </Button>

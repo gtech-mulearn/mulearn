@@ -27,7 +27,7 @@ export async function getJobListings() {
     try {
         const response = await privateGateway.get(manageLaunchpadRoutes.listJobListings);
         console.log("Job listings fetched successfully:", response.data.response);
-        return response.data.response;
+        return response.data.response.jobs;
     } catch (error) {
         console.error('Failed to fetch job listings:', error);
         throw error;
