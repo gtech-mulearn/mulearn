@@ -145,8 +145,8 @@ const NominateHR: React.FC = () => {
                 required
               >
                 <option value="">Select a time slot</option>
-                <option value="22-07-2025 5:00pm">22-07-2025 5:00pm</option>
-                <option value="25-07-2025 5:00pm">25-07-2025 5:00pm</option>
+                <option value="25/07/2025 3:00pm">25/07/2025 3:00pm</option>
+                <option value="28/07/2025 5:00pm">28/07/2025 5:00pm</option>
               </select>
               {errors.preferredTimeSlot && <div className={styles.error}>{errors.preferredTimeSlot}</div>}
             </div>
