@@ -326,7 +326,7 @@ function App() {
         <RouterProvider router={router} />
       </Suspense>
       <Toaster position="bottom-center" reverseOrder={true} />
-      <iframe src={`${import.meta.env.VITE_HOME_MULEARN_URL}/cdr`} id="__cdr" ref={cdrIframe} onLoad={() => sendRefreshToken()} style={{ display: "none" }}></iframe>
+      <iframe src={`${import.meta.env.VITE_HOME_MULEARN_URL}cdr`} id="__cdr" ref={cdrIframe} onLoad={() => sendRefreshToken()} style={{ display: "none" }}></iframe>
     </>
   );
 }
