@@ -40,6 +40,7 @@ const KKEMAuth = lazy(() => import("./modules/Public/KKEM/modules/KKEMAuth"));
 const Trivial = lazy(() => import("./modules/Public/TrivialIdeas/modules/trivial"));
 const YIP = lazy(() => import("./modules/Public/yip/YIP2023"));
 const NominateHR = lazy(() => import("./modules/Public/HRNomination/NominateHR"));
+const Careers = lazy(() => import("./modules/Public_/Career/Career"));
 
 function App() {
   const router = createBrowserRouter([
@@ -65,6 +66,7 @@ function App() {
     { path: "team", element: <TeamsPage /> },
     {path: "termsandconditions", element: <TermsAndCondition/>},
     {path: "privacypolicy", element: <PrivacyPolicy/>},
+    { path: "/careers", element: <Careers /> },
     { path: "/profile/:id", element: <Profile />},
     { path: "/learning-circle", element: <LandingPage /> },
     { path: "/kkem/events/beyondus", element: <KKEMEventBeyondUs /> },
