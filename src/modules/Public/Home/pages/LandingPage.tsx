@@ -57,7 +57,7 @@ const SpecialEventsList: SpecialEvent[] = [
       "Launchpad Kerala 2024 is a premier job fair that brings together talented individuals and innovative companies in the technical and engineering fields.",
     // date: "2024-06-02",
     // participants: 200,
-    link: "https://launchpadkerala.org/",
+    link: "https://launchpad.mulearn.org/",
     image: cdnUrl("src/modules/Public/Home/assets/launchpad.webp"),
     isLive: false,
   },
