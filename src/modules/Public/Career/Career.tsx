@@ -6,11 +6,49 @@ import styles from "./Career.module.css";
 import CareersCard from "./components/CareersCard/CareersCard";
 import ClosedCareersCard from "./components/ClosedCareers/ClosedCareers";
 import axios from "axios";
-import companies from "./data/companies.json";
+import companiesData from "./data/companies.json";
+
+// Define types for hiring roles and companies
+interface NewHiringRole {
+  logo?: string;
+  role?: string;
+  remuneration?: string;
+  vacancies?: string;
+  location?: string;
+  lastdate?: string;
+  applylink?: string;
+  jdlink?: string;
+  duration?: string;
+  extrafieldname?: string;
+  extrafieldvalue?: string;
+  extrafieldlink?: string;
+  organization?: string;
+}
+
+interface PreviousHiringRole {
+  logo?: string;
+  title?: string;
+  company?: string;
+  qualifications?: string;
+  remumeration?: string;
+  date?: string;
+  role?: string;
+  remuneration?: string;
+  location?: string;
+  lastdate?: string;
+  poster?: string;
+  duration?: string;
+}
+
+interface Company {
+  name: string;
+  logo: string;
+}
 
 const Career = () => {
-  const [newHiring, setNewHiring] = React.useState([]);
-  const [previousHiring, setPreviousHiring] = React.useState([]);
+  const [newHiring, setNewHiring] = React.useState<NewHiringRole[]>([]);
+  const [previousHiring, setPreviousHiring] = React.useState<PreviousHiringRole[]>([]);
+  const companies: Company[] = companiesData;
 
   useEffect(() => {
     axios
@@ -90,8 +128,9 @@ const Career = () => {
             </div>
             <div className={styles.cards_container}>
               {newHiring &&
-                newHiring.map((role) => (
+                newHiring.map((role, idx) => (
                   <CareersCard
+                    key={idx}
                     logo={role.logo}
                     role={role.role}
                     remuneration={role.remuneration}
@@ -120,8 +159,9 @@ const Career = () => {
           </div>
           <div className={styles.cards_container}>
             {previousHiring &&
-              previousHiring.map((role) => (
+              previousHiring.map((role, idx) => (
                 <ClosedCareersCard
+                  key={idx}
                   logo={role.logo}
                   title={role.title}
                   company={role.company}

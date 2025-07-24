@@ -40,7 +40,7 @@ const KKEMAuth = lazy(() => import("./modules/Public/KKEM/modules/KKEMAuth"));
 const Trivial = lazy(() => import("./modules/Public/TrivialIdeas/modules/trivial"));
 const YIP = lazy(() => import("./modules/Public/yip/YIP2023"));
 const NominateHR = lazy(() => import("./modules/Public/HRNomination/NominateHR"));
-const Careers = lazy(() => import("./modules/Public_/Career/Career"));
+const Careers = lazy(() => import("./modules/Public/Career/Career"));
 
 function App() {
   const router = createBrowserRouter([

@@ -1,6 +1,22 @@
 import React from "react";
 import styles from "./CareersCard.module.css";
 
+interface CareersCardProps {
+  role?: string;
+  remuneration?: string;
+  vacancies?: string;
+  location?: string;
+  lastdate?: string;
+  duration?: string;
+  logo?: string;
+  applylink?: string;
+  jdlink?: string;
+  extraField?: string;
+  extraContent?: string;
+  extraButton?: string;
+  organization?: string;
+}
+
 const Card = ({
   role,
   remuneration,
@@ -15,7 +31,7 @@ const Card = ({
   extraContent,
   extraButton,
   organization,
-}) => {
+}: CareersCardProps) => {
   return (
     <div className={styles.card}>
       {logo && (

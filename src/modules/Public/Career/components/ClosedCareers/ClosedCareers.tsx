@@ -1,6 +1,21 @@
 import React from "react";
 import styles from "./ClosedCareers.module.css";
 
+interface ClosedCareersCardProps {
+  date?: string;
+  title?: string;
+  location?: string;
+  qualifications?: string;
+  role?: string;
+  duration?: string;
+  remuneration?: string;
+  poster?: string;
+  logo?: string;
+  company?: string;
+  remumeration?: string;
+  lastdate?: string;
+}
+
 const ClosedCareersCard = ({
   date,
   title,
@@ -10,7 +25,11 @@ const ClosedCareersCard = ({
   duration,
   remuneration,
   poster,
-}) => {
+  logo,
+  company,
+  remumeration,
+  lastdate,
+}: ClosedCareersCardProps) => {
   return (
     <div className={styles.card}>
       <div className={styles.details}>
