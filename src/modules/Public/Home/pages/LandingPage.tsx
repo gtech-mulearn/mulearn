@@ -332,9 +332,12 @@ const MuLearnLanding = () => {
                 >
                   Join µLearn
                 </button>
-                <button className={styles.downloadBtn} onClick={handleScroll}>
-                  Subscribe to Newsletter
-                </button>
+               <button
+                className={styles.downloadBtn}
+                onClick={() => window.location.href = "https://launchpadkerala.org"}
+              >
+                Register for Launchpad 2025
+              </button>
               </motion.div>
               <motion.div
                 className={styles.heroImage}
