@@ -1,12 +1,182 @@
 [
   {
     "name": "Salahudheen Thajudheen",
-    "image": "",
+    "image": "public/assets/team/2024/Associates/Salahudheen Thajudheen.jpeg",
     "muid": "salahudheenthajudheen@mulearn",
-    "linkedin": "www.linkedin.com/in/salahudheen-thajudheen-7803251ba",
+    "linkedin": "https://www.linkedin.com/in/salahudheen--thajudheen-",
     "twitter": "https://twitter.com/takudu_sal",
-    "github": "github.com/salahudheenthajudheen",
-    "team": "",
+    "github": "",
+    "team": "Junior Associate - Entreprenurship",
+    "lead": ""
+  },
+  {
+    "name": "Sachin Raj M",
+    "image": "public/assets/team/2024/Associates/Sachin Raj M.jpeg",
+    "muid": "sachinrajm@mulearn",
+    "linkedin": "https://www.linkedin.com/in/sachinrajm",
+    "twitter": "",
+    "github": "",
+    "team": "Associate - Intern Management and Documentation",
+    "lead": ""
+  },
+  {
+    "name": "Ahamed Jishfaan",
+    "image": "public/assets/team/2024/Associates/Ahamed Jishfaan.jpeg",
+    "muid": "ahamedjishfaanms@mulearn",
+    "linkedin": "https://www.linkedin.com/in/ahamedjishfaan",
+    "twitter": "",
+    "github": "",
+    "team": "Associate - Operations and Strategic Initiatives",
+    "lead": ""
+  },
+  {
+    "name": "Kochouseph John",
+    "image": "public/assets/team/2024/Associates/Kochouseph John.jpeg",
+    "muid": "kochousephjohn@mulearn",
+    "linkedin": "https://www.linkedin.com/in/kochouseph-john",
+    "twitter": "",
+    "github": "",
+    "team": "Associate - Key Administrator",
+    "lead": ""
+  },
+  {
+    "name": "Jenin Joseph",
+    "image": "public/assets/team/2024/Associates/Jenin Joseph.jpeg",
+    "muid": "jeninjoseph@mulearn",
+    "linkedin": "https://www.linkedin.com/in/jenin-joseph",
+    "twitter": "",
+    "github": "",
+    "team": "Associate - Tech",
+    "lead": ""
+  },
+  {
+    "name": "Adithya A R",
+    "image": "public/assets/team/2024/Associates/Adithya A R.jpeg",
+    "muid": "adithyaar@mulearn",
+    "linkedin": "",
+    "twitter": "",
+    "github": "",
+    "team": "Associate - Campus",
+    "lead": ""
+  },
+  {
+    "name": "Jaidon Gill Shajan",
+    "image": "public/assets/team/2024/Associates/Jaidon Gill Shajan.jpeg",
+    "muid": "",
+    "linkedin": "https://www.linkedin.com/in/jaidon-gill-shajan",
+    "twitter": "",
+    "github": "",
+    "team": "Jr Associate - Partner - Software",
+    "lead": ""
+  },
+  {
+    "name": "Muhammed R",
+    "image": "public/assets/team/2024/Associates/Muhammed R.jpeg",
+    "muid": "muhammedr@mulearn",
+    "linkedin": "https://www.linkedin.com/in/muhammed-r",
+    "twitter": "",
+    "github": "",
+    "team": "Associate - FAB, Hardware and Warehouse",
+    "lead": ""
+  },
+  {
+    "name": "Vishak Abhayan",
+    "image": "public/assets/team/2024/Associates/Vishak Abhayan.jpeg",
+    "muid": "vishakhabhayan@mulearn",
+    "linkedin": "",
+    "twitter": "",
+    "github": "",
+    "team": "Junior Associate - Open Innovation",
+    "lead": ""
+  },
+  {
+    "name": "Abhiram Krishna R S",
+    "image": "public/assets/team/2024/Associates/Abhiram Krishna R S.jpeg",
+    "muid": "abhiramkrishnars@mulearn",
+    "linkedin": "https://www.linkedin.com/in/abhiramkrishna",
+    "twitter": "",
+    "github": "",
+    "team": "Junior Associate - Research",
+    "lead": ""
+  },
+  {
+    "name": "Edwin Alex Shaji",
+    "image": "public/assets/team/2024/Associates/Edwin Alex Shaji.jpeg",
+    "muid": "edwinalexshaji@mulearn",
+    "linkedin": "https://www.linkedin.com/in/edwinalexshaji",
+    "twitter": "",
+    "github": "",
+    "team": "Junior Associate - Marketing",
+    "lead": ""
+  },
+  {
+    "name": "Anshu Kumar",
+    "image": "public/assets/team/2024/Associates/Anshu Kumar.jpeg",
+    "muid": "anshukumar@mulearn",
+    "linkedin": "https://www.linkedin.com/in/anshu-kumar-a40327256",
+    "twitter": "",
+    "github": "",
+    "team": "Junior Associate - Company",
+    "lead": ""
+  },
+  {
+    "name": "Arjun A I",
+    "image": "public/assets/team/2024/Associates/Arjun A I.jpeg",
+    "muid": "arjunai@mulearn",
+    "linkedin": "https://www.linkedin.com/in/arjun-a-i-3426ab228",
+    "twitter": "",
+    "github": "",
+    "team": "Junior Associate - Interest Group",
+    "lead": ""
+  },
+  {
+    "name": "Devaprabha Rajesh",
+    "image": "public/assets/team/2024/Associates/Devaprabha Rajesh.jpeg",
+    "muid": "devaprabharajesh@mulearn",
+    "linkedin": "",
+    "twitter": "",
+    "github": "",
+    "team": "Junior Associate - Content Writing",
+    "lead": ""
+  },
+  {
+    "name": "Mohammed Farhan TM",
+    "image": "public/assets/team/2024/Associates/Mohammed Farhan TM.jpeg",
+    "muid": "mohammedfarhant.m@mulearn",
+    "linkedin": "https://www.linkedin.com/in/mo-farhan-tm",
+    "twitter": "",
+    "github": "",
+    "team": "Junior Associate - Social Media",
+    "lead": ""
+  },
+  {
+    "name": "Ekalavyan S",
+    "image": "public/assets/team/2024/Associates/Ekalavyan S.jpeg",
+    "muid": "ekalavyans@mulearn",
+    "linkedin": "https://www.linkedin.com/in/ekalavyan-s-71a5782a5",
+    "twitter": "",
+    "github": "",
+    "team": "Junior Associate - Schools",
+    "lead": ""
+  },
+  {
+    "name": "Mish Al Abdullah T",
+    "image": "public/assets/team/2024/Associates/Mish Al Abdullah T.jpeg",
+    "muid": "mishal@mulearn",
+    "linkedin": "",
+    "twitter": "",
+    "github": "",
+    "team": "Junior Associate - Beckn",
+    "lead": ""
+  },
+  {
+    "name": "Dev Nandan S",
+    "image": "public/assets/team/2024/Associates/Dev Nandan S.jpeg",
+    "muid": "devnandan@mulearn",
+    "linkedin": "https://www.linkedin.com/in/dev-nandan-design",
+    "twitter": "",
+    "github": "",
+    "team": "Junior Associate - Creative",
     "lead": ""
   }
 ]
