@@ -9,6 +9,9 @@ import logoBlue from "./images/campuslogo/logo-blue.svg";
 import logoGradient from "./images/campuslogo/logo-gradient.svg";
 import stripes from "./images/campuslogo/stripes.svg";
 
+import HomeNav from "../../Common/HomeNav/HomeNav";
+import Footer from "../../Common/Footer/Footer";
+
 import yipLogoRed from "./images/yip_logo/yip-logo-red.svg";
 import yipLogoBlack from "./images/yip_logo/yip-logo-black.svg";
 import yipLogoDark from "./images/yip_logo/yip-logo-dark.svg";
@@ -102,8 +105,10 @@ const CampusLogoGenerator = () => {
   };
 
   return (
-    <div className="flex flex-col sm:flex-row min-h-screen">
-      <div className="flex justify-center items-center gap-8 sm:gap-16 w-full py-8 sm:py-6 px-4 sm:px-6 sm:h-screen border-b-2 sm:border-b-0 sm:border-r-2 bg-gradient-to-br from-gray-700 to-gray-900">
+    <>
+      <HomeNav />
+      <div className="flex flex-col sm:flex-row min-h-screen">
+        <div className="flex justify-center items-center gap-8 sm:gap-16 w-full py-8 sm:py-6 px-4 sm:px-6 sm:h-screen border-b-2 sm:border-b-0 sm:border-r-2 bg-gradient-to-br from-gray-700 to-gray-900">
         {/* Square Display */}
         <div
           ref={domEl}
@@ -417,6 +422,8 @@ const CampusLogoGenerator = () => {
         </button>
       </form>
     </div>
+    <Footer />
+    </>
   );
 };
 
