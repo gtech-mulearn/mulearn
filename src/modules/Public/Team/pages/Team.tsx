@@ -3,6 +3,7 @@ import { motion, useInView } from "framer-motion";
 import styles from "./Team.module.css";
 import { cdnUrl } from "@/modules/utils/cdn"; 
 import Execom from "../components/Teams/Execom";
+import Year2025 from "../components/Teams/Year2025";
 import Year2024 from "../components/Teams/Year2024";
 import Year2023 from "../components/Teams/Year2023";
 import Year2022 from "../components/Teams/Year2022";
@@ -102,6 +103,7 @@ const Teams = () => {
             <option value="all" selected>
               All
             </option>
+            <option value="2025">2025 Year</option>
             <option value="2024">2024 Year</option>
             <option value="2023">2023 Year</option>
             <option value="2022">2022 Year</option>
@@ -110,6 +112,7 @@ const Teams = () => {
 
         <Execom />
 
+        {(selection === "all" || selection === "2025") && <Year2025 />}
         {(selection === "all" || selection === "2024") && <Year2024 />}
         {(selection === "all" || selection === "2023") && <Year2023 />}
         {(selection === "all" || selection === "2022") && <Year2022 />}
