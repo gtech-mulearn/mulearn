@@ -56,7 +56,7 @@ function App() {
     { path: "/launchpad", element: <LaunchPad /> },
     {path: "/events/calendar", element: <Calendar/>},
     {path: "/events/weekly", element: <EventsHome/>},
-    { path: "/campuschapters/#logo-generator", element: <CampusLogoGen /> },
+    { path: "/campus-logo-generator", element: <CampusLogoGen /> },
     { path: "*", element: <NotFound /> },
     { path: "404", element: <NotFound /> },
     { path: "kkem", element: <KKEMLanding /> },
@@ -90,3 +90,4 @@ function App() {
 
 
 export default App;
+
