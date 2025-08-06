@@ -102,20 +102,21 @@ const HomeNav: React.FC = () => {
         "Programs": [
           { label: "LAUNCHPAD", onClick: () => navigate("/launchpad") },
           // { label: "MUTATE", onClick: () => navigate("/mutate") },
-          { label: "PERMUTE", onClick: () => open("https://permute.mulearn.org/") },
-          { label: "TOP100SERIES", onClick: () => open("https://top100coders.com/") },
+          { label: "PERMUTE", onClick: () => window.open("https://permute.mulearn.org/") },
+          { label: "TOP100SERIES", onClick: () => window.open("https://top100coders.com/") },
           { label: "Art of Teaching", onClick: () => navigate("/artofteaching") },
           { label: "IN50HOURS", onClick: () => navigate("/in50hours") },
         ],
         "OTHERS": [
-          // { label: "MAGAZINE", onClick: () => open("https://online.fliphtml5.com/slydm/hrgi/") },
-          { label: "NEWSLETTER", onClick: () => open("https://online.fliphtml5.com/slydm/yljq/") }
+          // { label: "MAGAZINE", onClick: () => window.open("https://online.fliphtml5.com/slydm/hrgi/") },
+          { label: "NEWSLETTER", onClick: () => window.open("https://online.fliphtml5.com/slydm/yljq/") },
+          { label: "Campus Logo Generator", onClick: () => navigate("/campus-logo-generator") }
         ]
       }
     },
     { 
       label: "Why μLearn?", 
-      onClick: () => open("https://youtu.be/ehdSEL_s050"),
+      onClick: () => window.open("https://youtu.be/ehdSEL_s050"),
       submenu: null
     },
     // { 
