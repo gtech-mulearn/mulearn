@@ -45,6 +45,7 @@ const CampusLogoGenerator = () => {
   const [logoFgVarient, setLogoFgVarient] = useState(logoWhite);
   const [fileType, setFileType] = useState<"PNG" | "SVG">("PNG");
   const [bottomOffset, setBottomOffset] = useState(window.innerWidth < 640 ? "4rem" : "5.5rem");
+  const [isDownloading, setIsDownloading] = useState(false);
 
   const MAX_CHARS = 15;
 
@@ -86,22 +87,31 @@ const CampusLogoGenerator = () => {
     if (!campusCode) return alert("Campus Code is required");
     if (!domEl.current) return alert("Logo element not found");
 
-    switch (fileType) {
-      case "PNG":
-        dataUrl = await htmlToImage.toPng(domEl.current);
-        break;
-      case "SVG":
-        dataUrl = await htmlToImage.toSvg(domEl.current);
-        break;
-      default:
-        dataUrl = await htmlToImage.toPng(domEl.current);
-    }
+    setIsDownloading(true);
 
-    const link = document.createElement("a");
-    const prefix = logoType === "MuLearn" ? "mulearn" : "yip";
-    link.download = `${prefix}-campus-logo.${fileType.toLowerCase()}`;
-    link.href = dataUrl;
-    link.click();
+    try {
+      switch (fileType) {
+        case "PNG":
+          dataUrl = await htmlToImage.toPng(domEl.current);
+          break;
+        case "SVG":
+          dataUrl = await htmlToImage.toSvg(domEl.current);
+          break;
+        default:
+          dataUrl = await htmlToImage.toPng(domEl.current);
+      }
+
+      const link = document.createElement("a");
+      const prefix = logoType === "MuLearn" ? "mulearn" : "yip";
+      link.download = `${prefix}-campus-logo.${fileType.toLowerCase()}`;
+      link.href = dataUrl;
+      link.click();
+    } catch (error) {
+      console.error("Error downloading image:", error);
+      alert("Error downloading image. Please try again.");
+    } finally {
+      setIsDownloading(false);
+    }
   };
 
   return (
@@ -428,11 +438,38 @@ const CampusLogoGenerator = () => {
         <br />
         <button
           type="button"
-          className="text-white font-medium rounded-lg text-base px-6 py-3.5 h-14 shadow-lg transition-all duration-200 w-full sm:w-full mt-4 mb-4 sm:mb-8 z-10"
-          style={{ backgroundColor: '#456ff6' }}
+          className="text-white font-medium rounded-lg text-base px-6 py-3.5 h-14 shadow-lg transition-all duration-200 w-full sm:w-full mt-4 mb-4 sm:mb-8 z-10 relative overflow-hidden"
+          style={{ backgroundColor: isDownloading ? '#6B7280' : '#456ff6' }}
           onClick={downloadImg}
+          disabled={isDownloading}
         >
-          Download Logo
+          {isDownloading ? (
+            <div className="flex items-center justify-center">
+              <svg
+                className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
+              </svg>
+              Downloading...
+            </div>
+          ) : (
+            "Download Logo"
+          )}
         </button>
       </form>
     </div>
