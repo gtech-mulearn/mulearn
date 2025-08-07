@@ -107,7 +107,7 @@ const CampusLogoGenerator = () => {
   return (
     <>
       <HomeNav />
-      <div className="flex flex-col sm:flex-row min-h-screen">
+      <div className="flex flex-col sm:flex-row min-h-screen bg-gray-100 " style={{ border: "2px solid #ccc", marginBottom: "-5rem" }}>
         <div className="flex justify-center items-center gap-8 sm:gap-16 w-full py-8 sm:py-6 px-4 sm:px-6 sm:h-screen border-b-2 sm:border-b-0 sm:border-r-2 bg-gradient-to-br from-gray-700 to-gray-900">
         {/* Square Display */}
         <div
@@ -253,14 +253,15 @@ const CampusLogoGenerator = () => {
       </div>
 
       {/* Controls */}
-      <form className="w-full sm:w-1/2 md:w-1/3 sm:max-w-lg sm:h-screen p-4 sm:p-6 sm:pl-10 lg:p-8 lg:pl-14 flex flex-col overflow-y-auto">
+      <form className="w-full sm:w-1/2 md:w-1/3 sm:max-w-lg sm:h-screen p-4 sm:p-6 sm:pl-10 lg:p-8 lg:pl-14 flex flex-col overflow-y-auto ">
         <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-5 text-gray-800 border-b pb-3">Logo Generator</h2>
         <label className="block mb-1.5 text-sm font-semibold text-gray-700 h-5">Campus Code</label>
         <input
           type="text"
           id="campusCode"
           className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-muorange focus:border-muorange block w-full h-11 px-3 shadow-sm"
-          placeholder="  Enter Campus Code"
+          style={{ paddingLeft: '1rem' }}
+          placeholder="Enter Campus Code"
           value={campusCode}
           onChange={handleTextChange}
         />
@@ -275,9 +276,12 @@ const CampusLogoGenerator = () => {
               key={type}
               className={`${
                 logoType === type
-                  ? "bg-purple-600 text-white shadow-md"
+                  ? "text-white shadow-md"
                   : "border border-gray-300 text-gray-700 hover:bg-gray-100"
               } px-4 h-10 rounded-lg cursor-pointer flex-1 font-medium transition-all duration-200 flex items-center justify-center text-center`}
+              style={{
+                backgroundColor: logoType === type ? "#456ff6" : "transparent"
+              }}
               onClick={() => setLogoType(type as "MuLearn" | "YIP")}
             >
               {type}
@@ -293,9 +297,12 @@ const CampusLogoGenerator = () => {
                 key={variant}
                 className={`${
                   muLogoVariant === variant
-                    ? "bg-purple-600 text-white shadow-md"
+                    ? "text-white shadow-md"
                     : "border border-gray-300 text-gray-700 hover:bg-gray-100"
                 } px-3 h-10 rounded-lg cursor-pointer flex-1 font-medium transition-all duration-200 text-sm flex items-center justify-center`}
+                style={{
+                  backgroundColor: muLogoVariant === variant ? "#456ff6" : "transparent"
+                }}
                 onClick={() => setMuLogoVariant(variant as "Profile Pic" | "Transparent Bg")}
               >
                 {variant}
@@ -307,9 +314,12 @@ const CampusLogoGenerator = () => {
                 key={variant}
                 className={`${
                   yipLogoVariant === variant
-                    ? "bg-purple-600 text-white shadow-md"
+                    ? "text-white shadow-md"
                     : "border border-gray-300 text-gray-700 hover:bg-gray-100"
                 } px-3 h-10 rounded-lg cursor-pointer flex-1 font-medium transition-all duration-200 flex items-center justify-center`}
+                style={{
+                  backgroundColor: yipLogoVariant === variant ? "#456ff6" : "transparent"
+                }}
                 onClick={() => setYipLogoVariant(variant as "Black" | "Red" | "Dark")}
               >
                 {variant}
@@ -403,9 +413,12 @@ const CampusLogoGenerator = () => {
               key={type}
               className={`${
                 fileType === type
-                  ? "bg-purple-600 text-white shadow-md"
-                  : "border border-gray-300 text-gray-700 hover:bg-gray-100"
+                  ? "text-white shadow-md"
+                  : "border border-gray-300 text-gray-700 hover:bg_gray-100"
               } px-4 h-10 rounded-lg cursor-pointer flex-1 font-medium transition-all duration-200 flex items-center justify-center`}
+              style={{
+                backgroundColor: fileType === type ? "#456ff6" : "transparent"
+              }}
               onClick={() => setFileType(type as "PNG" | "SVG")}
             >
               {type}
@@ -415,7 +428,8 @@ const CampusLogoGenerator = () => {
         <br />
         <button
           type="button"
-          className="text-white bg-red-900 font-medium rounded-lg text-base px-6 py-3.5 h-14 shadow-lg transition-all duration-200 w-full sm:w-full mt-4 mb-4 sm:mb-8  z-10"
+          className="text-white font-medium rounded-lg text-base px-6 py-3.5 h-14 shadow-lg transition-all duration-200 w-full sm:w-full mt-4 mb-4 sm:mb-8 z-10"
+          style={{ backgroundColor: '#456ff6' }}
           onClick={downloadImg}
         >
           Download Logo
