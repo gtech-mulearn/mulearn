@@ -100,7 +100,7 @@ const HomeNav: React.FC = () => {
           { label: "WEEKLY EVENTS", onClick: () => navigate("/events/weekly") }
         ],
         "Programs": [
-          { label: "LAUNCHPAD", onClick: () => navigate("/launchpad") },
+          { label: "LAUNCHPAD", onClick: () => window.open("https://launchpadkerala.org/") },
           // { label: "MUTATE", onClick: () => navigate("/mutate") },
           { label: "PERMUTE", onClick: () => window.open("https://permute.mulearn.org/") },
           { label: "TOP100SERIES", onClick: () => window.open("https://top100coders.com/") },
