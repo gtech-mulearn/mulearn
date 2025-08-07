@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400&display=swap");
+
+.campusCodeMulearn {
+  position: absolute;
+  font-weight: 300;
+  bottom: 5rem;
+  right: -4rem;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 1.7rem;
+  letter-spacing: 0.25px;
+  text-align: center;
+  width: 100%;
+}
+
+.campusCodeYip {
+  position: absolute;
+  bottom: 2rem;
+  font-size: 1.7rem;
+  text-align: center;
+  width: 100%;
+}
+
+form{
+  margin-left: 1rem;
+  margin-right: 2rem;
+}
+
+form div{
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+  padding-left: 0;
+}
+
+.filetypes {
+  margin-top: 2rem;
+}
+
+/* @media (min-width: 640px) {
+  form div {
+    padding-left: 2em; 
+  }
+} */
+
+@media (max-width: 640px) {
+  body{
+    overflow-x: hidden;
+  }
+  form {
+    padding: 1rem 2rem 0rem 0.5rem; /*top, right, bottom, left*/
+  }
+}
+
+/* Button styles */
+form div[class*="flex gap-3"], 
+form div[class*="flex gap-2"] {
+  padding-left: 0;
+}
+
+form div[class*="flex gap-3"] > div, 
+form div[class*="flex gap-2"] > div {
+  border-width: 2px !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+form div[class*="flex gap-3"] > div:hover, 
+form div[class*="flex gap-2"] > div:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+/* Mobile specific styles */
+@media (max-width: 639px) {
+  .campusCodeMulearn, .campusCodeYip {
+    font-size: 1.5rem !important;
+  }
+  
+  .campusCodeMulearn {
+    bottom: 4rem !important;
+    left: 3rem;
+
+  }
+  
+  form {
+    padding-bottom: 5rem;
+  }
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

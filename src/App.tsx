@@ -41,6 +41,7 @@ const Trivial = lazy(() => import("./modules/Public/TrivialIdeas/modules/trivial
 const YIP = lazy(() => import("./modules/Public/yip/YIP2023"));
 const NominateHR = lazy(() => import("./modules/Public/HRNomination/NominateHR"));
 const Careers = lazy(() => import("./modules/Public/Career/Career"));
+const CampusLogoGen = lazy(() => import("./modules/Public/CampusLogoGen/CampusLogoGen"));
 
 function App() {
   const router = createBrowserRouter([
@@ -55,6 +56,7 @@ function App() {
     { path: "/launchpad", element: <LaunchPad /> },
     {path: "/events/calendar", element: <Calendar/>},
     {path: "/events/weekly", element: <EventsHome/>},
+    { path: "/campus-logo-generator", element: <CampusLogoGen /> },
     { path: "*", element: <NotFound /> },
     { path: "404", element: <NotFound /> },
     { path: "kkem", element: <KKEMLanding /> },
@@ -86,4 +88,6 @@ function App() {
   );
 }
 
+
 export default App;
+
