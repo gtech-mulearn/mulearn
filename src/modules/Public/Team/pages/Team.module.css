@@ -2,6 +2,7 @@
   font-family: Arial, sans-serif;
   text-align: center;
   text-wrap: balanced;
+  padding: 1rem 0;
 }
 
 .first_view_container {
@@ -15,9 +16,8 @@
 .first_view {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   max-width: 1200px;
 }
 
@@ -45,86 +45,119 @@
   color: var(--Primary);
 }
 
-.fv_tagline {
-  margin-top: 1rem;
-  font-family: "Poppins", sans-serif;
+/* --- Timeline Styles --- */
+
+.timeline_item {
+  position: relative;
+  padding-bottom: 2rem;
+  transition: transform 0.2s cubic-bezier(.4,2,.3,1);
+  margin-bottom: 2.5rem; /* Add space between years */
 }
 
-.select_wrapper {
-  width: 100%;
-  text-align: center;
+.timeline_marker {
+  position: absolute;
+  left: 3rem;
+  top: 20px;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border: 3px solid #3b82f6;
+  border-radius: 50%;
+  z-index: 2;
 }
 
-.select {
-  /* appearance: none; */
-  border-radius: 0.5rem;
-  width: 100%;
-  max-width: 15rem;
-  border: 2px solid var(--Primary);
-  padding: 0.5rem 1rem;
-  /* background-image: url("../../../public/assets/common/down_arrow.svg") no-repeat right #ffc297; */
-}
-
-@media (max-width: 1400px) {
-  .container {
-    padding: 1rem 0px;
-  }
-}
-
-@media (max-width: 1150px) {
-  .container {
-    padding: 1rem 0rem;
-  }
-}
-
-@media (max-width: 1024px) {
-  .container {
-    padding: 1rem 0rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .container {
-    padding: 1rem 0rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 1rem 0rem;
-  }
-}
-
-
-@media only screen and (min-width: 992px) {
-  .fv_texts {
-    width: 32vw;
-    text-align: left;
-  }
-
-  .fv_image {
-    width: 35rem;
-  }
-
-  .first_view {
+@media (max-width: 600px) {
+  .timeline_item {
+    display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: static;
+    margin-bottom: 2.5rem;
+    padding-bottom: 0;
+    gap: 0;
   }
-
-  .fv_illustration {
-    display: block;
-    margin-left: auto;
-    text-align: right;
+  .timeline_year {
+    position: static;
+    transform: none;
+    margin: 0;
+    width: auto;
+    min-width: unset;
+    max-width: unset;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 1.2rem 2.5rem;
+    gap: 1rem;
   }
-
-  .fv_heading {
-    font-family: "Noto Sans", sans-serif;
-    font-size: 4.5rem;
-    line-height: 4.55rem;
-    font-weight: 600;
-  }
-
-  .fv_tagline {
-    font-size: 1.1rem;
-    width: 80%;
+  .timeline_marker {
+    position: static;
+    margin-right: 1rem;
+    margin-left: 0;
+    display: inline-block;
+    flex-shrink: 0;
+    align-self: center;
+    top: auto;
+    left: auto;
+    z-index: 1;
   }
 }
+
+.timeline_year {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0 0 2rem 0; /* Reduce excessive bottom margin */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+
+  cursor: pointer;
+  padding: 0.8rem 2.5rem;
+  border-radius: 2rem;
+  background: linear-gradient(90deg, #e0edff 60%, #f8fbff 100%);
+  box-shadow: 0 2px 8px rgba(60, 130, 246, 0.04);
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  max-width: 500px;
+  min-width: 220px;
+  width: 60%;
+  text-align: center;
+  letter-spacing: 1px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.timeline_year:hover {
+  background: linear-gradient(90deg, #e0edff 60%, #f8fbff 100%);
+  color: #2563eb;
+  transform: scale(1.05);
+}
+
+.active_year {
+  background: linear-gradient(90deg, #3b82f6 60%, #60a5fa 100%);
+  color: #fff !important;
+  box-shadow: 0 4px 16px rgba(60, 130, 246, 0.18);
+  transform: scale(1.04);
+  transition: box-shadow 0.3s;
+}
+
+.timeline_cards {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.timeline_card {
+  border-radius: 18px;
+  padding: 2.5rem 2rem 2rem 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 8px 32px rgba(60, 120, 200, 0.10);
+  transition: box-shadow 0.3s, transform 0.2s, background 0.3s;
+  border: 1px solid #dbeafe;
+  max-width: 1200px;
+}
+
