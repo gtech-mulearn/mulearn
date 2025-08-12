@@ -1,12 +1,13 @@
 .container {
   font-family: Arial, sans-serif;
   text-align: center;
-  text-wrap: balanced;
+  text-wrap: balance;
   padding: 1rem 0;
 }
 
+/* First View Section */
 .first_view_container {
-  padding: 6rem;
+  padding: 6rem 1rem;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -15,22 +16,27 @@
 
 .first_view {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   max-width: 1200px;
+  width: 100%;
 }
 
 .fv_texts {
-  text-align: center;
+  text-align: left;
+  flex: 1;
 }
 
 .fv_illustration {
   display: block;
+  flex: 1;
+  text-align: center;
 }
 
 .fv_image {
   width: 20rem;
+  max-width: 100%;
 }
 
 .fv_heading {
@@ -45,13 +51,12 @@
   color: var(--Primary);
 }
 
-/* --- Timeline Styles --- */
-
+/* Timeline Section */
 .timeline_item {
   position: relative;
-  padding-bottom: 2rem;
-  transition: transform 0.2s cubic-bezier(.4,2,.3,1);
-  margin-bottom: 2.5rem; /* Add space between years */
+  padding-bottom: 0.7rem;
+  margin-bottom: 0.9rem;
+  transition: transform 0.2s cubic-bezier(0.4, 2, 0.3, 1);
 }
 
 .timeline_marker {
@@ -66,55 +71,16 @@
   z-index: 2;
 }
 
-@media (max-width: 600px) {
-  .timeline_item {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    position: static;
-    margin-bottom: 2.5rem;
-    padding-bottom: 0;
-    gap: 0;
-  }
-  .timeline_year {
-    position: static;
-    transform: none;
-    margin: 0;
-    width: auto;
-    min-width: unset;
-    max-width: unset;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 1.2rem 2.5rem;
-    gap: 1rem;
-  }
-  .timeline_marker {
-    position: static;
-    margin-right: 1rem;
-    margin-left: 0;
-    display: inline-block;
-    flex-shrink: 0;
-    align-self: center;
-    top: auto;
-    left: auto;
-    z-index: 1;
-  }
-}
-
 .timeline_year {
   font-size: 1.2rem;
   font-weight: bold;
-  margin: 0 0 2rem 0; /* Reduce excessive bottom margin */
+  margin: 0 0 0.7rem 0;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.1rem;
   align-items: center;
-
   cursor: pointer;
-  padding: 0.8rem 2.5rem;
+  padding: 0.6rem 1.7rem;
   border-radius: 2rem;
   background: linear-gradient(90deg, #e0edff 60%, #f8fbff 100%);
   box-shadow: 0 2px 8px rgba(60, 130, 246, 0.04);
@@ -124,9 +90,9 @@
   width: 60%;
   text-align: center;
   letter-spacing: 1px;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
 }
 
 .timeline_year:hover {
@@ -156,8 +122,36 @@
   padding: 2.5rem 2rem 2rem 2rem;
   margin-bottom: 1.5rem;
   box-shadow: 0 8px 32px rgba(60, 120, 200, 0.10);
-  transition: box-shadow 0.3s, transform 0.2s, background 0.3s;
   border: 1px solid #dbeafe;
   max-width: 1200px;
+  width: 100%;
+  transition: box-shadow 0.3s, transform 0.2s, background 0.3s;
 }
 
+/* Responsive Fixes */
+@media (max-width: 600px) {
+  .timeline_year {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    min-width: unset;
+    max-width: unset;
+    padding: 1.2rem 2.5rem;
+    gap: 1rem;
+    flex-direction: row;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+
+  .timeline_marker {
+    position: static;
+    margin: 0 1rem 0 0;
+    flex-shrink: 0;
+    display: inline-block;
+    align-self: center;
+    z-index: 1;
+  }
+}
