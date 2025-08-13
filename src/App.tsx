@@ -39,6 +39,9 @@ const KKEMLanding = lazy(() => import("./modules/Public/KKEM/modules/KKEMLanding
 const KKEMAuth = lazy(() => import("./modules/Public/KKEM/modules/KKEMAuth"));
 const Trivial = lazy(() => import("./modules/Public/TrivialIdeas/modules/trivial"));
 const YIP = lazy(() => import("./modules/Public/yip/YIP2023"));
+const NominateHR = lazy(() => import("./modules/Public/HRNomination/NominateHR"));
+const Careers = lazy(() => import("./modules/Public/Career/Career"));
+const CampusLogoGen = lazy(() => import("./modules/Public/CampusLogoGen/CampusLogoGen"));
 
 function App() {
   const router = createBrowserRouter([
@@ -53,6 +56,7 @@ function App() {
     { path: "/launchpad", element: <LaunchPad /> },
     {path: "/events/calendar", element: <Calendar/>},
     {path: "/events/weekly", element: <EventsHome/>},
+    { path: "/campus-logo-generator", element: <CampusLogoGen /> },
     { path: "*", element: <NotFound /> },
     { path: "404", element: <NotFound /> },
     { path: "kkem", element: <KKEMLanding /> },
@@ -64,11 +68,13 @@ function App() {
     { path: "team", element: <TeamsPage /> },
     {path: "termsandconditions", element: <TermsAndCondition/>},
     {path: "privacypolicy", element: <PrivacyPolicy/>},
+    { path: "/careers", element: <Careers /> },
     { path: "/profile/:id", element: <Profile />},
     { path: "/learning-circle", element: <LandingPage /> },
     { path: "/kkem/events/beyondus", element: <KKEMEventBeyondUs /> },
     { path: "/kkem/learningcircles/dashboard", element: <LearningCircles /> },
     { path: "/cdr", element: <>{updateRefreshToken()}</> },
+    { path: "/hr", element: <NominateHR /> },
     // { path: "/foundation", element: <Foundation /> }
   ]);
 
@@ -82,4 +88,6 @@ function App() {
   );
 }
 
+
 export default App;
+

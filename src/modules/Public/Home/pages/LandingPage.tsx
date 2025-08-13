@@ -36,24 +36,7 @@ interface SpecialEvent {
  * @property {number} learning_circle_count
  */
 
-// Data remains the same
-const data = [
-  { label: "Members", value: "43,994+" },
-  { label: "Learning Circles", value: "2,133+" },
-  { label: "Colleges", value: "1,929+" },
-  { label: "Companies", value: "213+" },
-  { label: "Communities", value: "30+" },
-  { label: "Events", value: "200+" },
-  { label: "Interest Groups", value: "22+" },
-  { label: "Total Karma Mined", value: "17,906,847" },
-  { label: "Number of Proof of Works", value: "203,480+" },
-  { label: "Number of Internships", value: "2,000+" },
-  { label: "Jobs", value: "1,000+" },
-  { label: "Products", value: "100+" },
-  { label: "Worth of Gig Works", value: "1Cr+" },
-  { label: "Enablers", value: "511+" },
-  { label: "Mentors", value: "383+" },
-];
+
 
 const SpecialEventsList: SpecialEvent[] = [
   {
@@ -74,7 +57,7 @@ const SpecialEventsList: SpecialEvent[] = [
       "Launchpad Kerala 2024 is a premier job fair that brings together talented individuals and innovative companies in the technical and engineering fields.",
     // date: "2024-06-02",
     // participants: 200,
-    link: "https://launchpadkerala.org/",
+    link: "https://launchpad.mulearn.org/",
     image: cdnUrl("src/modules/Public/Home/assets/launchpad.webp"),
     isLive: false,
   },
@@ -151,13 +134,13 @@ const MuLiveCounter = () => {
       <div className={styles.countcontainer}>
         <div className={styles.count}>
           <p className={styles.cvc_heading}>
-            <CountUp end={counts.members} duration={5} />+
+            <CountUp end={counts.members} duration={5} />
           </p>
           <p className={styles.cvc_text}>Members</p>
         </div>
         <div className={styles.count}>
           <p className={styles.cvc_heading}>
-            <CountUp end={counts.learning_circle_count} duration={5} />+
+            <CountUp end={counts.learning_circle_count} duration={5} />
           </p>
           <p className={styles.cvc_text}>Learning Circles</p>
         </div>
@@ -178,7 +161,7 @@ const MuLiveCounter = () => {
                     }
                     duration={5}
                   />
-                  +
+                  
                 </p>
                 <p className={styles.cvc_text}>
                   {orgTypeCount.org_type.endsWith("y")
@@ -190,13 +173,13 @@ const MuLiveCounter = () => {
 
         <div className={styles.count}>
           <p className={styles.cvc_heading}>
-            <CountUp end={200} duration={5} />+
+            <CountUp end={200} duration={5} />
           </p>
           <p className={styles.cvc_text}>Events</p>
         </div>
         <div className={styles.count}>
           <p className={styles.cvc_heading}>
-            <CountUp end={counts.ig_count} duration={5} />+
+            <CountUp end={counts.ig_count} duration={5} />
           </p>
           <p className={styles.cvc_text}>Interest Groups</p>
         </div>
@@ -211,7 +194,7 @@ const MuLiveCounter = () => {
             </div>
             <div className={styles.count}>
               <p className={styles.cvc_heading}>
-                <CountUp end={counts.karma_pow_count.pow_count} duration={5} />+
+                <CountUp end={counts.karma_pow_count.pow_count} duration={5} />
               </p>
               <p className={styles.cvc_text}>Number of Proof of Works </p>
             </div>
@@ -220,26 +203,26 @@ const MuLiveCounter = () => {
 
         <div className={styles.count}>
           <p className={styles.cvc_heading}>
-            <CountUp end={2000} duration={5} />+
+            <CountUp end={2000} duration={5} />
           </p>
           <p className={styles.cvc_text}>Number of Internships</p>
         </div>
         <div className={styles.count}>
           <p className={styles.cvc_heading}>
-            <CountUp end={1000} duration={5} />+
+            <CountUp end={1000} duration={5} />
           </p>
           <p className={styles.cvc_text}>Jobs</p>
         </div>
         <div className={styles.count}>
           <p className={styles.cvc_heading}>
-            <CountUp end={100} duration={5} />+
+            <CountUp end={100} duration={5} />
           </p>
           <p className={styles.cvc_text}>Products</p>
         </div>
         <div className={styles.count}>
           <p className={styles.cvc_heading}>
             <CountUp end={1} duration={5} />
-            Cr+
+            Cr
           </p>
           <p className={styles.cvc_text}>worth of Gig Works</p>
         </div>
@@ -250,7 +233,7 @@ const MuLiveCounter = () => {
             .map((roleCount: any) => (
               <div key={roleCount.role__title} className={styles.count}>
                 <p className={styles.cvc_heading}>
-                  <CountUp end={roleCount.role_count} duration={5} />+
+                  <CountUp end={roleCount.role_count} duration={5} />
                 </p>
                 <p className={styles.cvc_text}>{roleCount.role__title}s</p>
               </div>
@@ -349,9 +332,12 @@ const MuLearnLanding = () => {
                 >
                   Join µLearn
                 </button>
-                <button className={styles.downloadBtn} onClick={handleScroll}>
-                  Subscribe to Newsletter
-                </button>
+               <button
+                className={styles.downloadBtn}
+                onClick={() => window.location.href = "https://launchpadkerala.org"}
+              >
+                Register for Launchpad 2025
+              </button>
               </motion.div>
               <motion.div
                 className={styles.heroImage}
