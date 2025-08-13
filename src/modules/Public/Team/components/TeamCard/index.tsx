@@ -46,6 +46,7 @@ const TeamCard = ({
   let finalImage: string;
   if (image) {
     finalImage = cdnUrl(image);
+
   } else {
     finalImage = fallbackImage;
   }

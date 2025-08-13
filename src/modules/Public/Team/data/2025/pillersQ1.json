@@ -1,7 +1,7 @@
 [
     {
         "name": "Niranj R",
-        "image": "DSC08121.png",
+        "image": "public/assets/team/Niranj R.png",
         "muid": "niranjr@mulearn",
         "linkedin": "www.linkedin.com/in/niranj-r",
         "twitter": "",
@@ -11,7 +11,7 @@
     },
     {
         "name": "ANZA S",
-        "image": "DELULU.jpg",
+        "image": "public/assets/team/ANZA S.jpg",
         "muid": "anzas@mulearn",
         "linkedin": "https://www.linkedin.com/in/anza-s-2006yam?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
         "twitter": "https://x.com/AnzaS2006?t=mZTUtHHlVsvYfQdmZr9JGQ&s=03",
@@ -21,7 +21,7 @@
     },
     {
         "name": "Dheeraj.kp",
-        "image": "SAVE_20231126_105935.jpg",
+        "image": "public/assets/team/Dheeraj J P.jpg",
         "muid": "dheerajkp-3@mulearn",
         "linkedin": "https://www.linkedin.com/in/dheeraj-kurungadath-268bb3294",
         "twitter": "",
@@ -31,7 +31,7 @@
     },
     {
         "name": "Nandakiran R",
-        "image": "IMG_1439.jpeg",
+        "image": "public/assets/team/Nandakiran R.jpeg",
         "muid": "nandakiranr@mulearn",
         "linkedin": "https://www.linkedin.com/in/nandakiran-r",
         "twitter": "https://x.com/nandakiran_r",
@@ -41,7 +41,7 @@
     },
     {
         "name": "Manupriya Dhanush",
-        "image": "",
+        "image": "public/assets/team/",
         "muid": "manupriyadhanush@mulearn",
         "linkedin": "",
         "twitter": "",
@@ -51,7 +51,7 @@
     },
     {
         "name": "Maryam Mohammed Yahya",
-        "image": "",
+        "image": "public/assets/team/",
         "muid": "maryammohamedyahya@mulearn",
         "linkedin": "",
         "twitter": "",
@@ -61,7 +61,7 @@
     },
     {
         "name": "Anna Jaison",
-        "image": "",
+        "image": "public/assets/team/",
         "muid": "annajaison@mulearn",
         "linkedin": "",
         "twitter": "",
@@ -71,7 +71,7 @@
     },
     {
         "name": "Vasif Abdulla p",
-        "image": "DSC_9975.JPG",
+        "image": "public/assets/team/Vasif Abdulla P.jpg",
         "muid": "vasifabdullap@mulearn",
         "linkedin": "https://www.linkedin.com/in/vasifabdulla",
         "twitter": "https://x.com/vasif_abdulla?t=V0b4CmdTZvy6enzk3ptymg&s=09",
@@ -81,7 +81,7 @@
     },
     {
         "name": "Akshay S Kumar",
-        "image": "A_6336.jpg",
+        "image": "public/assets/team/Akshay S Kumar.jpg",
         "muid": "akshayskumar-1@mulearn",
         "linkedin": "https://www.linkedin.com/in/akshaycse",
         "twitter": "",
@@ -91,7 +91,7 @@
     },
     {
         "name": "Sreenandan K M",
-        "image": "Sreenandan_P.png",
+        "image": "public/assets/team/Sreenandan K M.png",
         "muid": "sreenandankm@mulearn",
         "linkedin": "https://www.linkedin.com/in/sreenandankm/",
         "twitter": "",
@@ -101,7 +101,7 @@
     },
     {
         "name": "Anand SG",
-        "image": "PHOTO.jpg",
+        "image": "public/assets/team/Anand SG.jpg",
         "muid": "anandsg@mulearn",
         "linkedin": "https://www.linkedin.com/in/anand-sg-298b5226a",
         "twitter": "",
@@ -111,7 +111,7 @@
     },
     {
         "name": "Shezma Bijumon",
-        "image": "DSC01523-1.jpg",
+        "image": "public/assets/team/Shezma Bijumon.jpg",
         "muid": "shezmabijumon@mulearn",
         "linkedin": "https://www.linkedin.com/in/shezma-bijumon-b55755308/",
         "twitter": "",
@@ -121,7 +121,7 @@
     },
     {
         "name": "Devika S H",
-        "image": "dev.jpeg",
+        "image": "public/assets/team/Devika S H.jpg",
         "muid": "devikash@mulearn",
         "linkedin": "https://www.linkedin.com/in/devika-s-h?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
         "twitter": "",
@@ -131,7 +131,7 @@
     },
     {
         "name": "Sharanya Sanjeev",
-        "image": "sharanya_picture.jpg",
+        "image": "public/assets/team/Sharanya Sanjeev.jpg",
         "muid": "sharanyasanjeev@mulearn",
         "linkedin": "https://www.linkedin.com/in/sharanya-sanjeev05/",
         "twitter": "",
@@ -141,7 +141,7 @@
     },
     {
         "name": "Sabareesh P R",
-        "image": "pic.jpg",
+        "image": "public/assets/team/Sabareesh P R.jpg",
         "muid": "sabareeshpr@mulearn",
         "linkedin": "https://www.linkedin.com/in/sabareeshpr",
         "twitter": "",
@@ -151,7 +151,7 @@
     },
     {
         "name": "Yadhukrishna n p",
-        "image": "P240015.jpg",
+        "image": "public/assets/team/Yadhukrishna n p.jpg",
         "muid": "yadhukrishnanp@mulearn",
         "linkedin": "https://www.linkedin.com/in/yadhukrishnx/",
         "twitter": "https://x.com/yadhukrishnx",
