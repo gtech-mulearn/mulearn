@@ -37,6 +37,7 @@
 .fv_image {
   width: 32rem;
   max-width: 100%;
+  height: auto;
 }
 
 .fv_heading {
@@ -74,7 +75,7 @@
 .timeline_year {
   font-size: 1.2rem;
   font-weight: bold;
-  margin: 0 0 0.7rem 0;
+  margin: 2rem 0 0 0;
   display: flex;
   flex-direction: column;
   gap: 1.1rem;
@@ -107,6 +108,7 @@
   box-shadow: 0 4px 16px rgba(60, 130, 246, 0.18);
   transform: scale(1.04);
   transition: box-shadow 0.3s;
+  margin-top: 8rem;
 }
 
 .timeline_cards {
