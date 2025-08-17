@@ -8,7 +8,6 @@ import MuLoader from '@/MuLearnComponents/MuLoader/MuLoader';
 import { InterestGroupData, interestGroups } from "../data/interestGroups";
 import { Helmet } from 'react-helmet';
 import { cdnUrl } from '@/modules/utils/cdn';
-import { cdnUrl } from '@/modules/utils/cdn';
 
 function InterestGroupsPage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -44,9 +43,7 @@ function InterestGroupsPage() {
     { title: "Internet Of Things (IOT) And Robotics", image: cdnUrl("public/assets/IG/Cover/8.webp") },
     { title: "Entrepreneurship", image: cdnUrl("public/assets/IG/Cover/9.webp") },
     { title: "AR/VR", image: cdnUrl("public/assets/IG/Cover/10.webp") },
-
   ];
-  
 
   useEffect(() => {
     if (firstFetch.current) {
