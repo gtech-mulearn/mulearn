@@ -8,7 +8,7 @@ import MuLoader from '@/MuLearnComponents/MuLoader/MuLoader';
 import { InterestGroupData, interestGroups } from "../data/interestGroups";
 import { Helmet } from 'react-helmet';
 import { cdnUrl } from '@/modules/utils/cdn';
-
+import { cdnUrl } from '@/modules/utils/cdn';
 
 function InterestGroupsPage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -17,7 +17,6 @@ function InterestGroupsPage() {
   const itemsPerPage = 12;
   const navigate = useNavigate();
   const [interestgroups, setInterestGroups] = useState<any[]>([]);
-
   const [data, setData] = useState<any[]>([]);
   const [totalPages, setTotalPages] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
@@ -32,7 +31,9 @@ function InterestGroupsPage() {
     { id: 'management', name: 'Management' },
   ];
 
+  // Fixed imageUrls - removed 'public/' prefix since CDN will handle the base path
   const imageUrls = [
+
     { title: "UI/UX Interest Group", image: cdnUrl("public/assets/IG/Cover/1.webp") },
     { title: "Web Development", image: cdnUrl("public/assets/IG/Cover/2.webp") },
     { title: "Cybersecurity", image: cdnUrl("public/assets/IG/Cover/3.webp") },
@@ -45,7 +46,7 @@ function InterestGroupsPage() {
     { title: "AR/VR", image: cdnUrl("public/assets/IG/Cover/10.webp") },
 
   ];
-
+  
 
   useEffect(() => {
     if (firstFetch.current) {
@@ -67,23 +68,33 @@ function InterestGroupsPage() {
       members: data.find(d => d.id === e.id)?.members
     }));
 
-
-
   const filteredGroups = mappedData.filter(group => {
     const matchesSearch = group.title?.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = selectedCategory === 'all' || group.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
 
-
-  // Pagination
-  // const totalPages = Math.ceil(filteredGroups.length / itemsPerPage);
+  // Calculate total pages based on filtered groups
+  const calculatedTotalPages = Math.ceil(filteredGroups.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const paginatedGroups = filteredGroups.slice(startIndex, startIndex + itemsPerPage);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Function to get image URL for a group
+  const getGroupImageUrl = (group: any) => {
+    if (group.image) {
+      return cdnUrl(group.image);
+    }
+    
+    // Find matching image by title, fallback to default
+    const matchingImage = imageUrls.find(img => img.title === group.title);
+    const fallbackImage = imageUrls[6]; // Product Management as default
+    
+    return cdnUrl(matchingImage?.image || fallbackImage.image);
   };
 
   return (
@@ -108,7 +119,6 @@ function InterestGroupsPage() {
             <p className={styles.BannerSubtitle}>Join communities that share your passion</p>
           </div>
         </div>
-
         <div className={styles.Container}>
           {/* Search and Filter Section */}
           <div className={styles.SearchFilterWrapper}>
@@ -124,7 +134,6 @@ function InterestGroupsPage() {
                   className={styles.SearchInput}
                 />
               </div>
-
               {/* Category Filter */}
               {/* <div className={styles.CategoryFilter}>
               {categories.map((category) => (
@@ -148,7 +157,6 @@ function InterestGroupsPage() {
               <MuLoader />
             </div>
           )}
-
           {/* Interest Groups Grid */}
           <div className={styles.Grid}>
             {paginatedGroups.map((group) => (
@@ -158,35 +166,16 @@ function InterestGroupsPage() {
                 onClick={() => navigate(`/dashboard/interestgroups/${group.id}`)}
               >
                 <div className={styles.GroupImageWrapper}>
-
-                  {group.image ? (
-                    <img
-                      src={group.image}
-                      alt={group.title}
-                      className={styles.GroupImage}
-                    />
-                  ) : (
-                    (() => {
-                      const randomIndex = Math.floor(Math.random() * imageUrls.length);
-                      const randomImageUrl = imageUrls[randomIndex];
-                      return (
-                        <img
-                          src={
-                            imageUrls.find(img => img.title === group.title)?.image ||
-                            imageUrls[6].image
-                          }
-                          alt={group.title}
-                        />
-                      );
-                    })()
-                  )}
-
+                  <img
+                    src={getGroupImageUrl(group)}
+                    alt={group.title}
+                    className={styles.GroupImage}
+                  />
                 </div>
                 <div className={styles.GroupDetails}>
                   {group.category && <span className={styles.GroupCategory}>
                     {categories.find(c => c.id === group.category)?.name}
                   </span>}
-
                   <h3 className={styles.GroupTitle}>{group.title}</h3>
                   <div className={styles.GroupOverlay}>
                     <span className={styles.GroupParticipantsBadge}>
@@ -198,9 +187,8 @@ function InterestGroupsPage() {
               </div>
             ))}
           </div>
-
           {/* Pagination */}
-          {totalPages > 1 && (
+          {calculatedTotalPages > 1 && (
             <div className={styles.Pagination}>
               <button
                 onClick={() => handlePageChange(currentPage - 1)}
@@ -209,8 +197,7 @@ function InterestGroupsPage() {
               >
                 <ChevronLeft className={styles.PaginationIcon} />
               </button>
-
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+              {Array.from({ length: calculatedTotalPages }, (_, i) => i + 1).map((page) => (
                 <button
                   key={page}
                   onClick={() => handlePageChange(page)}
@@ -223,10 +210,9 @@ function InterestGroupsPage() {
                   {page}
                 </button>
               ))}
-
               <button
                 onClick={() => handlePageChange(currentPage + 1)}
-                disabled={currentPage === totalPages}
+                disabled={currentPage === calculatedTotalPages}
                 className={styles.PaginationButton}
               >
                 <ChevronRight className={styles.PaginationIcon} />
