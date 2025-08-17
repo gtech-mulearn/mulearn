@@ -6,6 +6,9 @@ interface MapResult {
 }
 
 interface LearningCircleCreate {
+    title?: string;
+    description?: string;
+    org?: string;
     ig: string;
     is_recurring: boolean;
     recurrence_type: string;
@@ -48,12 +51,17 @@ interface LCMeetup {
 interface LearningCircleInfo {
     id: string;
     ig: string;
+    title: string;
+    description: string;
     org: string;
-    is_recurring: boolean;
-    recurrence_type: string;
-    recurrence: number;
-    next_meetup: LCMeetup;
-    past_meetups: LCMeetup[];
+    created_by: {
+        full_name: string;
+        profile_pic: string;
+        muid: string;
+    };
+    rank: number;
+    total_karma: number;
+    total_members: number;
 }
 interface LearningCircleInfoBasic {
     id: string;

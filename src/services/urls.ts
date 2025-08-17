@@ -51,6 +51,7 @@ export const NotificationRoutes = {
 };
 export const learningCircleRoutes = {
     createLearningCircle: "/api/v1/dashboard/learningcircle/create/",
+    editLearningCircle: "/api/v1/dashboard/learningcircle/edit/",
     scheduleMeetup: "/api/v1/dashboard/learningcircle/meeting/create/",
     editScheduledMeetup: "/api/v1/dashboard/learningcircle/meeting/edit/",
     deleteScheduledMeetup: "/api/v1/dashboard/learningcircle/meeting/delete/",
@@ -61,7 +62,8 @@ export const learningCircleRoutes = {
     getMeetups: "/api/v1/dashboard/learningcircle/meeting/list/",
     joinMeetup: "/api/v1/dashboard/learningcircle/meeting/join/",
     getLcReportInfo: "/api/v1/dashboard/learningcircle/meeting/report/",
-    confirmRSVP: "/api/v1/dashboard/learningcircle/meeting/rsvp/"
+    confirmRSVP: "/api/v1/dashboard/learningcircle/meeting/rsvp/",
+    deleteLearningCircle: "/api/v1/dashboard/learningcircle/delete/${id}/"
 };
 export const dashboardRoutes = {
     forgetPassword: "/api/v1/dashboard/user/forgot-password/",

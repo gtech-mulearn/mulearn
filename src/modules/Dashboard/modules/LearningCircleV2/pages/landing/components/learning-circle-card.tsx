@@ -206,7 +206,7 @@ export function LearningCircleCard({
               <p className={styles.cardDescription}>{description}</p>
 
               <div className={styles.badgeContainer}>
-                <Badge variant="secondary" className={styles.categoryBadge}>{ig}</Badge>
+                <Badge variant="secondary" className={styles.categoryBadge}>{ig_name || ig || 'Unknown'}</Badge>
                 <Badge variant="outline" className={styles.onlineBadge}>
                   {mode === 'online' ? <><Wifi className={styles.onlineIcon} /><span>Online</span></>
                     : <><WifiOff className={styles.offlineIcon} /><span>Offline</span></>}

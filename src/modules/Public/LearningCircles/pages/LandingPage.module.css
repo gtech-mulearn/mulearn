@@ -244,6 +244,23 @@
     color: #b1b1b1;
 }
 
+.LClandingPageExplore .exploreCards .igBadge {
+    display: inline-block;
+    background: #e0e7ff;
+    color: #3730a3;
+    font-weight: 600;
+    font-size: 0.75rem;
+    border-radius: 0.375rem;
+    padding: 0.25rem 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.LClandingPageExplore .exploreCards .badgeText {
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
 .LClandingPageExplore .container .LClandingPagenone {
     display: flex;
     justify-content: center;

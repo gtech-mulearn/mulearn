@@ -15,7 +15,7 @@ interface LearningCircleListItemProps {
   description?: string
   ig_name: string
   mode: string
-  attendees_count: number
+  attendees: any[] // <-- add this line
   hasJoined?: boolean
   hasCompleted?: boolean
   is_rsvp?: boolean
@@ -32,7 +32,7 @@ export function LearningCircleListItem({
   description,
   ig_name,
   mode,
-  attendees_count,
+  attendees = [], // <-- default value here
   hasJoined,
   hasCompleted,
   is_rsvp,
@@ -86,6 +86,7 @@ export function LearningCircleListItem({
         </p>
         <div className={styles.badgeContainer}>
           <Badge variant="secondary" className={styles.categoryBadge}>{ig_name}</Badge>
+          <Badge className={styles.memberCount}><Users className={styles.memberIcon} />{attendees.length} Members</Badge>
         </div>
       </CardContent>
       <CardFooter className={styles.cardFooter}>

@@ -31,6 +31,12 @@
         text-decoration: none;
         cursor: pointer;
         border-radius: 10px;
+        transition: all 0.2s ease;
+        
+        &:hover {
+            background-color: #f8fafc;
+            transform: translateX(-2px);
+        }
     }
 
     .card {
@@ -44,9 +50,9 @@
         width: 100%;
 
         .cardHeaderContent {
-            padding: 1.5rem;
+            padding: 8px 24px;
             display: grid;
-
+            
             .headerSection {
                 display: flex;
                 justify-content: space-between;
@@ -138,6 +144,311 @@
             }
         }
     }
+}
+
+/* Loading and Error States */
+.loadingContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    gap: 20px;
+    
+    .loadingSpinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid #e5e7eb;
+        border-top: 4px solid #3b82f6;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+    
+    p {
+        color: #64748b;
+        font-size: 1.1rem;
+        margin: 0;
+    }
+}
+
+.errorContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    gap: 20px;
+    text-align: center;
+    
+    h2 {
+        color: #ef4444;
+        font-size: 1.5rem;
+        margin: 0;
+    }
+    
+    p {
+        color: #64748b;
+        font-size: 1.1rem;
+        margin: 0;
+        max-width: 500px;
+    }
+}
+
+.backButton {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    
+    &:hover {
+        background: #2563eb;
+    }
+}
+
+/* Action Buttons */
+.actionButtons {
+    position: absolute;
+    top: 10px;
+    right: 24px;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    z-index: 2;
+}
+
+.actionButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 22px;
+    transition: all 0.2s ease;
+    
+    &.edit {
+        color: #fbbf24;
+        
+        &:hover {
+            color: #f59e0b;
+            transform: scale(1.1);
+        }
+    }
+    
+    &.delete {
+        color: #ef4444;
+        
+        &:hover {
+            color: #dc2626;
+            transform: scale(1.1);
+        }
+    }
+}
+
+.primaryButton {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 18px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    
+    &:hover {
+        background: #2563eb;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    }
+}
+
+/* Meeting Cards */
+.meetingCard {
+    background: #fff;
+    border: 1.5px solid #e0e7ff;
+    border-left: 5px solid #3b82f6;
+    border-radius: 14px;
+    padding: 24px 24px 18px 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    margin-bottom: 18px;
+    min-width: 320px;
+    max-width: 500px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: all 0.2s ease;
+    
+    &:hover {
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        transform: translateY(-2px);
+    }
+}
+
+.meetingTitle {
+    font-weight: 700;
+    color: #2563eb;
+    font-size: 1.3rem;
+    margin-bottom: 6px;
+}
+
+.meetingDescription {
+    color: #64748b;
+    font-size: 1.01rem;
+    margin-bottom: 10px;
+}
+
+.meetingInfo {
+    color: #64748b;
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.meetingActions {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.joinButton {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    background: #2563eb;
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1.05rem;
+    box-shadow: 0 1px 4px rgba(37,99,235,0.08);
+    gap: 8px;
+    transition: all 0.2s ease;
+    
+    &:hover {
+        background: #1d4ed8;
+        transform: translateY(-1px);
+    }
+}
+
+.rsvpButton {
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 18px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    transition: all 0.2s ease;
+    
+    &:hover {
+        background: #1d4ed8;
+        transform: translateY(-1px);
+    }
+}
+
+/* Modal Styles */
+.modalContent {
+    min-width: 320px;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.formLabel {
+    font-weight: 600;
+    color: #3b82f6;
+    text-align: left;
+}
+
+.formInput {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #e5e7eb;
+    font-size: 1rem;
+    color: #000;
+    transition: border-color 0.2s ease;
+    
+    &:focus {
+        outline: none;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+}
+
+.formTextarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #e5e7eb;
+    font-size: 1rem;
+    min-height: 60px;
+    color: #000;
+    resize: vertical;
+    transition: border-color 0.2s ease;
+    
+    &:focus {
+        outline: none;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+}
+
+.submitButton {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 0;
+    font-weight: 700;
+    font-size: 1.08rem;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.2s;
+    
+    &:hover:not(:disabled) {
+        background: #2563eb;
+    }
+    
+    &:disabled {
+        background: #a5b4fc;
+        cursor: not-allowed;
+    }
+}
+
+.errorMessage {
+    color: #ef4444;
+    font-size: 0.98rem;
+    margin-top: 4px;
+}
+
+/* Animations */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 @media screen and (max-width: 768px) {

@@ -7,7 +7,7 @@ import { LearningCircleListItem } from "./components/learning-circle-list-item"
 import { Dialog, DialogContent, DialogOverlay, DialogTrigger } from "@/components/ui/dialog"
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import styles from "./LearningCircleLanding2.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   deleteScheduleMeetup,
@@ -45,9 +45,6 @@ const imageUrls = [
 
 export default function LearningCircleLanding() {
   const [isLoading, setisLoading] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState<Option | null>(
-    INITIAL_INTERESTS[0]
-  );
   const [learningCircles, setLearningCircles] = useState<any[]>([]);
   const [meetup, setMeetup] = useState<any>();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -60,24 +57,47 @@ export default function LearningCircleLanding() {
   const [showCreateForm, setShowCreateForm] = useState(false)
   const [open, setOpen] = useState(false)
 
-  // Filter states (removed showOld since we're removing expiry logic)
+  // Filter states
   const [interestOptions, setInterestOptions] = useState<Option[]>(INITIAL_INTERESTS);
   const [selectedInterest, setSelectedInterest] = useState<Option | null>(INITIAL_INTERESTS[0]);
 
+  // Refs to prevent duplicate API calls in Strict Mode
+  const interestsLoadedRef = useRef(false);
+  const circlesLoadedRef = useRef(false);
+
   useEffect(() => {
-    getInterests().then((interests) => {
-      // Assuming interests is an array of { label, value }
-      setInterestOptions([{ label: "All Categories", value: "all" }, ...interests]);
-    });
+    // Load interest options only once - prevent duplicate calls in Strict Mode
+    if (!interestsLoadedRef.current) {
+      interestsLoadedRef.current = true;
+      getInterests().then((interests) => {
+        // Assuming interests is an array of { label, value }
+        setInterestOptions([{ label: "All Categories", value: "all" }, ...interests]);
+      });
+    }
+
+    // Cleanup function to reset ref when component unmounts
+    return () => {
+      interestsLoadedRef.current = false;
+    };
   }, []);
 
   useEffect(() => {
-    setisLoading(true);
-    getCreatedLearningCircles().then(res => {
-      setLearningCircles(res);
-      setisLoading(false);
-    });
-  }, [selectedCategory]);
+    // Load learning circles only once - prevent duplicate calls in Strict Mode
+    if (!circlesLoadedRef.current) {
+      circlesLoadedRef.current = true;
+      setisLoading(true);
+      // Use getCreatedLearningCircles for learning circles, then filter client-side
+      getCreatedLearningCircles().then(res => {
+        setLearningCircles(res);
+        setisLoading(false);
+      });
+    }
+
+    // Cleanup function to reset ref when component unmounts
+    return () => {
+      circlesLoadedRef.current = false;
+    };
+  }, []); // Removed selectedInterest dependency
 
 
   useEffect(() => {
@@ -117,6 +137,7 @@ export default function LearningCircleLanding() {
       const searchLower = searchQuery.toLowerCase();
       return (
         (circle.title?.toLowerCase() || "").includes(searchLower) ||
+        (circle.ig_name?.toLowerCase() || "").includes(searchLower) ||
         (circle.ig?.toLowerCase() || "").includes(searchLower) ||
         (circle.org?.toLowerCase() || "").includes(searchLower)
       );
@@ -124,11 +145,21 @@ export default function LearningCircleLanding() {
     .filter((circle) => {
       // Filter by interest group if a specific interest is selected
       if (selectedInterest && selectedInterest.value !== "all") {
-        return circle.ig_id === selectedInterest.value;
+        // Check multiple possible field names and formats
+        const matches = (
+          circle.ig_id === selectedInterest.value ||
+          circle.ig === selectedInterest.value ||
+          circle.ig_name === selectedInterest.label ||
+          circle.ig_name === selectedInterest.value ||
+          circle.ig === selectedInterest.label ||
+          // Also check if the interest group name contains the selected label
+          (circle.ig_name && circle.ig_name.toLowerCase().includes(selectedInterest.label.toLowerCase())) ||
+          (circle.ig && circle.ig.toLowerCase().includes(selectedInterest.label.toLowerCase()))
+        );
+        return matches;
       }
       return true;
     })
-    // Removed the time-based filtering logic here
 
   const handleCreateFormClose = () => {
     setMeetup(undefined)
@@ -166,10 +197,14 @@ export default function LearningCircleLanding() {
               </DialogTrigger>
               <DialogOverlay />
               <DialogContent className={styles.dialogContent}>
-                <CreateLearningCircleForm onClose={handleCreateFormClose} meetUp={meetup} onRefresh={() => {
-                  setisLoading(true);
-                  onRefresh();
-                }
+                <CreateLearningCircleForm 
+                  onClose={handleCreateFormClose} 
+                  meetUp={meetup} 
+                  interestOptions={interestOptions}
+                  onRefresh={() => {
+                    setisLoading(true);
+                    onRefresh();
+                  }
                 } />
               </DialogContent>
             </Dialog>
@@ -207,10 +242,10 @@ export default function LearningCircleLanding() {
               key={circle.id}
               id={circle.id}
               title={circle.title}
-              ig_name={circle.ig}
-              description={circle.org}
+              ig_name={circle.ig_name || circle.ig || 'Unknown'}
+              description={circle.description || circle.org || ''}
               mode={circle.mode || ''}
-              attendees_count={circle.attendees_count || 0}
+              attendees={circle.attendees || []}
               coord_x={circle.coord_x || 0}
               coord_y={circle.coord_y || 0}
               is_started={circle.is_started || false}

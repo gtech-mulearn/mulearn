@@ -131,7 +131,7 @@ const CreateAchievementForm = forwardRef((props: Props, ref: any) => {
         const getQSCredentialsList = async () => {
             try {
                 const response = await getQSCredentials();
-                setQstemplates(response.credentials);
+                setQstemplates(response.response.credentials);
             } catch (error) {
                 toast.error("Failed to fetch QSeverse credentials");
                 console.error("Error fetching QSeverse credentials:", error);
@@ -139,7 +139,6 @@ const CreateAchievementForm = forwardRef((props: Props, ref: any) => {
         };
         getQSCredentialsList();
     }, []);
-
     const handleTemplateChange = (selectedOption: any) => {
         if (!selectedOption) {
             setSelectedPreset(null);

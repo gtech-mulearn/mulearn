@@ -211,7 +211,7 @@ export const getLearningCircleInfo = async (
 ): Promise<LearningCircleInfo | null> => {
     try {
         const response = await privateGateway.get(
-            `/api/v1/dashboard/learningcircle/details/${circleId}/`
+            `/api/v1/dashboard/learningcircle/info/${circleId}/`
         );
         return response.data.response;
     } catch (err) {
@@ -250,6 +250,47 @@ export const createLearningCircle = async (
     } catch (err) {
         const error = err as AxiosError;
         console.log(error);
+        toast.error(
+            ((error.response as any)?.data?.message?.general ?? [
+                "Unable to create learning circle."
+            ])[0]
+        );
+        return false;
+    }
+};
+
+export const editLearningCircle = async (
+    circleId: string,
+    params: LearningCircleCreate
+): Promise<boolean> => {
+    try {
+        const response = await privateGateway.put(
+            learningCircleRoutes.editLearningCircle + circleId + "/",
+            params
+        );
+        if (response.status === 200) {
+            toast.success(
+                [
+                    response.data?.message?.general ??
+                    "Learning circle updated successfully"
+                ][0]
+            );
+            return true;
+        }
+        toast.error(
+            (response.data?.message?.general ?? [
+                "Unable to update learning circle."
+            ])[0]
+        );
+        return false;
+    } catch (err) {
+        const error = err as AxiosError;
+        console.log(error);
+        toast.error(
+            ((error.response as any)?.data?.message?.general ?? [
+                "Unable to update learning circle."
+            ])[0]
+        );
         return false;
     }
 };
