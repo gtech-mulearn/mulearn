@@ -13,10 +13,14 @@ import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { isEqual } from 'lodash';
 import toast from "react-hot-toast";
 import channelmap from "../data/channelmap";
+import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
+import Modal from "@/MuLearnComponents/Modal/Modal";
+import { Toaster } from "react-hot-toast";
+import { decodeUnicodeFromStorage } from "../../../utils/unicodeUtils";
 
 // Utility function to strip markdown formatting for card preview
-const stripMarkdown = (markdown: string): string => {
-  return markdown
+const stripMarkdown = (markdownText: string): string => {
+  return markdownText
     .replace(/[#*_`~]/g, '') // Remove markdown characters
     .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // Convert links to text
     .replace(/\n+/g, ' ') // Replace newlines with spaces
@@ -230,7 +234,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onClickCTA, custom }) 
           {task.task_name || task.title}
         </div>
         <div className={styles.cardDesc} style={custom ? { textAlign: "left" } : {}}>
-          {task.task_description ? stripMarkdown(task.task_description).slice(0, 40) + "..." : `Earn ${task.karma} Karma Points`}
+          {task.task_description ? stripMarkdown(decodeUnicodeFromStorage(task.task_description)).slice(0, 40) + "..." : `Earn ${task.karma} Karma Points`}
         </div>
         <div className={styles.cardIg} style={custom ? { textAlign: "left" } : {}}>
           <strong>IG:</strong> {task.ig || getIgDisplayName(task.hashtag)}
@@ -407,7 +411,7 @@ const LearningPathPage: React.FC = () => {
     // Transform task data for OffCanvas component
     const formattedData = {
       title: data.task_name || data.title,
-      brief: data.task_description || `Complete the ${data.task_name || data.title} task and share your progress with ${data.hashtag} to earn ${data.karma} Karma Points.`,
+      brief: data.task_description ? decodeUnicodeFromStorage(data.task_description) : `Complete the ${data.task_name || data.title} task and share your progress with ${data.hashtag} to earn ${data.karma} Karma Points.`,
       ig: data.ig || getIgDisplayName(data.hashtag), 
       skills: ["Skill Development"],
       publishedBy: "µLearn Foundation",
