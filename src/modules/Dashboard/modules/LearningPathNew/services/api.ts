@@ -145,7 +145,6 @@ export async function getUserTasks(hashtags?: string[]): Promise<ApiResponse> {
     try {
         const apiCache = ApiCache.getInstance();
         const response = await apiCache.getUserLevels();
-        console.log(response, "User Levels Response");
 
         // Filter by hashtags if provided
         if (hashtags && hashtags.length > 0) {
@@ -184,7 +183,6 @@ export async function getStartLearningTasks(): Promise<Level[]> {
     try {
         const response = await getUserTasks();
         
-        console.log('getStartLearningTasks: Raw API response:', response.response);
 
         // Filter tasks that don't have #cl- hashtags (general tasks)
         const startLearningLevels = response.response.map(level => ({
@@ -194,15 +192,12 @@ export async function getStartLearningTasks(): Promise<Level[]> {
                 const hasClHashtag = task.hashtag && task.hashtag.startsWith('#cl-');
                 const shouldInclude = !hasClHashtag;
                 
-                if (shouldInclude) {
-                    console.log(`Start Learning task in ${level.name}:`, task.hashtag);
-                }
+              
                 
                 return shouldInclude;
             })
         })).filter(level => level.tasks.length > 0); // Only include levels that have tasks
 
-        console.log('getStartLearningTasks: Filtered start learning levels (non #cl- tasks):', startLearningLevels);
 
         return startLearningLevels;
     } catch (error) {
@@ -263,7 +258,7 @@ export function getIgDisplayName(hashtag: string): string {
         'ux': 'UI/UX',
         'vr': 'AR/VR',
         'muvi': 'MuVi Club',
-        'pmp': 'Project Management',
+        'pmp': 'Project Management',  // This is the key fix
         'hr': 'Human Resources',
         'entrp': 'Entrepreneurship',
         'sl': 'Strategic Leadership',
@@ -292,7 +287,7 @@ export function getUserIgIdentifiers(userIGs: any[], availableIdentifiers: strin
         'ux': ['UIUX', 'ui/ux', 'ui ux', 'uiux'],
         'vr': ['AR/VR', 'ar/vr', 'ar vr', 'arvr', 'vr'],
         'muvi': ['MuVi Club', 'muvi club', 'muvi'],
-        'pmp': ['Others', 'others', 'pmp'],
+        'pmp': ['Project Management', 'Others', 'others', 'pmp'],
         'hr': ['Human Resources', 'human resources', 'hr'],
         'entrp': ['Entrepreneurship', 'entrepreneurship', 'entrp'],
         'sl': ['Strategic Leadership', 'strategic leadership', 'sl'],
@@ -335,7 +330,6 @@ export async function getBecomeExpertTasks(userIGs: any[], selectedIgId?: string
     try {
         const response = await getUserTasks();
         
-        console.log('getBecomeExpertTasks: Raw API response:', response.response);
         
         // Filter tasks that have #cl- hashtags (IG-specific tasks)
         const allIgLevels = response.response.map(level => ({
@@ -343,10 +337,7 @@ export async function getBecomeExpertTasks(userIGs: any[], selectedIgId?: string
             tasks: level.tasks.filter(task => {
                 // Include only tasks that have #cl- hashtags (IG-specific tasks)
                 const hasClHashtag = task.hashtag && task.hashtag.startsWith('#cl-');
-                
-                if (hasClHashtag) {
-                    console.log(`IG task found in ${level.name}:`, task.hashtag);
-                }
+               
                 
                 return hasClHashtag;
             })
@@ -354,18 +345,15 @@ export async function getBecomeExpertTasks(userIGs: any[], selectedIgId?: string
         
         // Extract all available IG identifiers from hashtags
         const availableIdentifiers = extractIgIdentifiersFromTasks(allIgLevels);
-        console.log("Available IG identifiers from hashtags:", availableIdentifiers);
         
         // Get user's IG identifiers that match available ones
         const userIdentifiers = getUserIgIdentifiers(userIGs, availableIdentifiers);
-        console.log("User's matching IG identifiers:", userIdentifiers);
         
         // If specific IG is selected, find its identifier
         if (selectedIgId) {
             const selectedIg = userIGs.find(ig => ig.id === selectedIgId);
             if (selectedIg) {
                 const selectedIdentifiers = getUserIgIdentifiers([selectedIg], availableIdentifiers);
-                console.log("Selected IG identifiers:", selectedIdentifiers);
                 
                 if (selectedIdentifiers.length > 0) {
                     return allIgLevels.map(level => ({
@@ -374,9 +362,7 @@ export async function getBecomeExpertTasks(userIGs: any[], selectedIgId?: string
                             const matches = selectedIdentifiers.some(identifier => 
                                 task.hashtag.startsWith(`#cl-${identifier}-`)
                             );
-                            if (matches) {
-                                console.log(`Task matched for selected IG in ${level.name}:`, task.hashtag);
-                            }
+                            
                             return matches;
                         })
                     })).filter(level => level.tasks.length > 0);
@@ -393,9 +379,7 @@ export async function getBecomeExpertTasks(userIGs: any[], selectedIgId?: string
                     task.hashtag.startsWith(`#cl-${identifier}-`)
                 );
                 
-                if (matchesUserIGs) {
-                    console.log(`Task included in ${level.name}:`, task.hashtag, "(IG match)");
-                }
+                
                 
                 return matchesUserIGs;
             })

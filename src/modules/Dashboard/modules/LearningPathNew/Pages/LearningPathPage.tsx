@@ -29,7 +29,7 @@ const stripMarkdown = (markdownText: string): string => {
 
 interface InterestGroup {
   id: string;
-  name: string; 
+  name: string;
   karma: number;
 }
 
@@ -47,7 +47,6 @@ export const OffCanvas: React.FC<OffCanvasProps> = ({ isOpen, onClose, data }) =
   if (!data) return null;
 
   const isSpecialLevel = data.interestGroups;
-  console.log(data, "data");
 
   return (
     <div className={styles.overlay} onClick={onClose}>
@@ -153,25 +152,25 @@ export const OffCanvas: React.FC<OffCanvasProps> = ({ isOpen, onClose, data }) =
             </div>
 
             {/* Resources */}
-            {data.resources && data.resources.length > 0 && ( 
-            <div className={styles.offCanvasSection}>
-              <h3 className={styles.offCanvasSectionTitle}>Resources</h3>
-              <div className={styles.offCanvasSectionContent}>
-                <ul>
-                  {data.resources?.map((link: string, i: number) => (
-                    <li key={i}>
-                      <a href={link} target="_blank" rel="noopener noreferrer">
-                        {link}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+            {data.resources && data.resources.length > 0 && (
+              <div className={styles.offCanvasSection}>
+                <h3 className={styles.offCanvasSectionTitle}>Resources</h3>
+                <div className={styles.offCanvasSectionContent}>
+                  <ul>
+                    {data.resources?.map((link: string, i: number) => (
+                      <li key={i}>
+                        <a href={link} target="_blank" rel="noopener noreferrer">
+                          {link}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            </div>
             )}
 
             <div className={styles.offCanvasSection}>
-              
+
               {!data.completed && (
                 data.hashtag === "#ge-self-intro" ? (
                   <button className={styles.proofOfWorkButton}>
@@ -202,7 +201,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onClickCTA, custom }) 
 
   const skillColors = [
     "#FFB6C1",
-    "#87CEFA", 
+    "#87CEFA",
     "#90EE90",
     "#F5DEB3",
     "#FFDAB9",
@@ -210,9 +209,9 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onClickCTA, custom }) 
   ];
 
   return (
-    <div className={`${styles.card} ${task.completed ? styles.completedCard : styles.pendingCard}`} 
-         style={custom ? { minHeight: 'auto' } : {}} 
-         onClick={() => onClickCTA(task)}>
+    <div className={`${styles.card} ${task.completed ? styles.completedCard : styles.pendingCard}`}
+      style={custom ? { minHeight: 'auto' } : {}}
+      onClick={() => onClickCTA(task)}>
       <div className={styles.cardContent}>
         {!custom && (
           <div className={styles.cardIcon}>
@@ -326,7 +325,7 @@ const LearningPathPage: React.FC = () => {
         setIsLoading(false);
         return userIGsData;
 
-      }else if(userProfile as { interest_groups: any[] }){
+      } else if (userProfile as { interest_groups: any[] }) {
         userIGsData = (userProfile as { interest_groups: any[] }).interest_groups || [];
         return;
       }
@@ -417,12 +416,12 @@ const LearningPathPage: React.FC = () => {
 
   const handleOpenOffCanvas = (data: Task, levelNum?: number) => {
     const isLocked = levelNum ? levelNum > unlockedLevel : false;
-    
+
     // Transform task data for OffCanvas component
     const formattedData = {
       title: data.task_name || data.title,
       brief: data.task_description ? decodeUnicodeFromStorage(data.task_description) : `Complete the ${data.task_name || data.title} task and share your progress with ${data.hashtag} to earn ${data.karma} Karma Points.`,
-      ig: data.ig || getIgDisplayName(data.hashtag), 
+      ig: data.ig || getIgDisplayName(data.hashtag),
       skills: ["Skill Development"],
       publishedBy: "µLearn Foundation",
       prerequisites: ["Basic knowledge"],
@@ -434,7 +433,7 @@ const LearningPathPage: React.FC = () => {
       locked: isLocked,
       level: levelNum
     };
-    
+
     setSelectedData(formattedData);
     setOffCanvasOpen(true);
   };
@@ -462,13 +461,14 @@ const LearningPathPage: React.FC = () => {
   const getLevelMetadata = (levelKey: string) => {
     const levelNum = parseInt(levelKey.replace("lvl", ""));
     const metadata: Record<string, { title: string; subtitle: string }> = {
-      "lvl1": { title: "Level 1", subtitle: "Fundamentals and OnBoarding" },
-      "lvl2": { title: "Level 2", subtitle: "Practice GRIT and Keep Going" }, 
-      "lvl3": { title: "Level 3", subtitle: "Advanced Skills" },
-      "lvl4": { title: "Level 4", subtitle: "Master UI Fundamentals with Figma" },
-      "lvl5": { title: "Level 5", subtitle: "Build Complex UI Components" },
-      "lvl6": { title: "Level 6", subtitle: "Create Advanced Prototypes and Interactions" },
-      "lvl7": { title: "Level 7", subtitle: "Advanced Projects" },
+      "lvl1": { "title": "Level 1", "subtitle": "Fundamentals and OnBoarding" },
+      "lvl2": { "title": "Level 2", "subtitle": "Practice GRIT and Keep Going" },
+      "lvl3": { "title": "Level 3", "subtitle": "Advanced Skills" },
+      "lvl4": { "title": "Level 4", "subtitle": "Sharpen Your Skills" },
+      "lvl5": { "title": "Level 5", "subtitle": "Keep Building and Improving" },
+      "lvl6": { "title": "Level 6", "subtitle": "Push Beyond Your Limits" },
+      "lvl7": { "title": "Level 7", "subtitle": "Achieve Mastery" }
+
     };
     return metadata[levelKey] || { title: `Level ${levelNum}`, subtitle: `Level ${levelNum} Tasks` };
   };
@@ -479,17 +479,15 @@ const LearningPathPage: React.FC = () => {
         {unlockedLevel >= 4 ? (
           <div className={styles.topBarPart}>
             <button
-              className={`${styles.topBarButton} ${
-                activeTab === "startLearning" ? styles.activeTab : ""
-              }`}
+              className={`${styles.topBarButton} ${activeTab === "startLearning" ? styles.activeTab : ""
+                }`}
               onClick={() => setActiveTab("startLearning")}
             >
               Start Journey
             </button>
             <button
-              className={`${styles.topBarButton} ${
-                activeTab === "becomeExpert" ? styles.activeTab : ""
-              }`}
+              className={`${styles.topBarButton} ${activeTab === "becomeExpert" ? styles.activeTab : ""
+                }`}
               onClick={() => setActiveTab("becomeExpert")}
             >
               Become Expert
@@ -499,7 +497,7 @@ const LearningPathPage: React.FC = () => {
           <div></div>
         )}
         <div className={styles.filterContainer}>
-          <label htmlFor="filter">Filter by:</label>  
+          <label htmlFor="filter">Filter by:</label>
           <select
             id="filter"
             value={filter}
@@ -545,7 +543,7 @@ const LearningPathPage: React.FC = () => {
             const metadata = getLevelMetadata(level.name);
             const levelNum = parseInt(level.name.replace("lvl", ""));
             const filteredTasks = filterTasks(level.tasks);
-            
+
             if (filteredTasks.length === 0) return null;
 
             return (
@@ -556,9 +554,9 @@ const LearningPathPage: React.FC = () => {
                   <CardCarousel>
                     {filteredTasks.map((task, index) => (
                       <div key={`${task.hashtag}-${index}`}>
-                        <TaskCard 
-                          task={task} 
-                          onClickCTA={() => handleOpenOffCanvas(task, levelNum)} 
+                        <TaskCard
+                          task={task}
+                          onClickCTA={() => handleOpenOffCanvas(task, levelNum)}
                         />
                       </div>
                     ))}
@@ -574,7 +572,7 @@ const LearningPathPage: React.FC = () => {
                 const metadata = getLevelMetadata(level.name);
                 const levelNum = parseInt(level.name.replace("lvl", ""));
                 const filteredTasks = filterTasks(level.tasks);
-                
+
                 if (filteredTasks.length === 0) return null;
 
                 return (
@@ -585,9 +583,9 @@ const LearningPathPage: React.FC = () => {
                       <CardCarousel>
                         {filteredTasks.map((task, index) => (
                           <div key={`${task.hashtag}-${index}`}>
-                            <TaskCard 
-                              task={task} 
-                              onClickCTA={() => handleOpenOffCanvas(task, levelNum)} 
+                            <TaskCard
+                              task={task}
+                              onClickCTA={() => handleOpenOffCanvas(task, levelNum)}
                             />
                           </div>
                         ))}
@@ -601,8 +599,8 @@ const LearningPathPage: React.FC = () => {
 
           {((activeTab === "startLearning" && (!basicLevelData || basicLevelData.length === 0)) ||
             (activeTab === "becomeExpert" && (!intermediateLevelData || intermediateLevelData.length === 0))) && (
-            <div className="text-center">No tasks available</div>
-          )}
+              <div className="text-center">No tasks available</div>
+            )}
         </>
       )}
 
