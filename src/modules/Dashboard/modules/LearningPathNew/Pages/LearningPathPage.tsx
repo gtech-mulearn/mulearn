@@ -5,7 +5,7 @@ import IGSelector from "../../InterestGroups/components/IGSelection/IGSelector";
 import { getUserLog, getUserProfile } from "../../Profile/services/api";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { useUserStore } from "/src/ZustandProvider";
-import { ApiResponse, Task, Level, getUserTasks, getUserIgTasks } from "../services/api";
+import { ApiResponse, Task, Level, getUserTasks, getUserIgTasks, getStartLearningTasks, getBecomeExpertTasks, getIgDisplayName } from "../services/api";
 import ConnectDiscord from "../../ConnectDiscord/pages/ConnectDiscord";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
@@ -90,6 +90,20 @@ export const OffCanvas: React.FC<OffCanvasProps> = ({ isOpen, onClose, data }) =
               <h3 className={styles.offCanvasSectionTitle}>Interest Group</h3>
               <div className={styles.offCanvasSectionContent}>
                 <p>{data.ig}</p>
+                {data.hashtag && (
+                  <div style={{ marginBottom: "10px" }}>
+                    <strong>Hashtag:</strong>{" "}
+                    <span
+                      className={styles.skillPill}
+                      style={{
+                        backgroundColor: "#F3F4F6",
+                        color: "#374151",
+                      }}
+                    >
+                      {data.hashtag}
+                    </span>
+                  </div>
+                )}
                 <strong>Skills:</strong>{" "}
                 {data.skills?.map((skill: string) => (
                   <span key={skill} className={styles.skillPill}>
@@ -206,11 +220,25 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onClickCTA, custom }) 
           {task.task_name || task.title}
         </div>
         <div className={styles.cardDesc} style={custom ? { textAlign: "left" } : {}}>
-          {task.task_description || `Earn ${task.karma} Karma Points`}
+          {task.task_description ? task.task_description.slice(0, 40) + "..." : `Earn ${task.karma} Karma Points`}
         </div>
         <div className={styles.cardIg} style={custom ? { textAlign: "left" } : {}}>
-          <strong>IG:</strong> {task.ig || "General Task"}
+          <strong>IG:</strong> {task.ig || getIgDisplayName(task.hashtag)}
         </div>
+        {task.hashtag && (
+          <div className={styles.cardHashtag} style={custom ? { textAlign: "left" } : {}}>
+            <strong>Hashtag:</strong>{" "}
+            <span
+              className={styles.skillPill}
+              style={{
+                backgroundColor: "#F3F4F6",
+                color: "#374151",
+              }}
+            >
+              {task.hashtag}
+            </span>
+          </div>
+        )}
         <div className={styles.cardSkills}>
           <strong>Skills:</strong>{" "}
           <span
@@ -237,7 +265,7 @@ const LearningPathPage: React.FC = () => {
   const { userProfile, userInfo, setUserProfile } = useUserStore();
   const [activeTab, setActiveTab] = useState<"startLearning" | "becomeExpert">("startLearning");
   const [basicLevelData, setBasicLevelData] = useState<Level[] | null>(null);
-  const [intermediateLevelData, setIntermediateLevelData] = useState<Record<string, Task[]> | null>(null);
+  const [intermediateLevelData, setIntermediateLevelData] = useState<Level[] | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const tabRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({
@@ -294,28 +322,28 @@ const LearningPathPage: React.FC = () => {
     setIsLoading(true);
     const currentLevel = unlockedLevel;
 
-    if (currentLevel < 4 || !userIGIDs.length) {
-      setIntermediateLevelData({});
+    if (currentLevel < 4 || !userIGs.length) {
+      setIntermediateLevelData([]);
       setIsLoading(false);
       return;
     }
-    if (unlockedLevel >= 4 && userIGIDs.length === 0) {
+    if (unlockedLevel >= 4 && userIGs.length === 0) {
       toast.error("You need to join an interest group to access these tasks");
-      setIntermediateLevelData({});
+      setIntermediateLevelData([]);
       setIsLoading(false);
       return;
     }
 
     try {
-      const response = await getUserIgTasks(userIGIDs);
+      const response = await getBecomeExpertTasks(userIGs, selectedIg.id || undefined);
       setIntermediateLevelData(response);
     } catch (error) {
       console.error("Error fetching intermediate tasks:", error);
-      setIntermediateLevelData({});
+      setIntermediateLevelData([]);
     } finally {
       setIsLoading(false);
     }
-  }, [userIGIDs, unlockedLevel]);
+  }, [userIGs, selectedIg, unlockedLevel]);
 
   useEffect(() => {
     fetchIntermediateTasks();
@@ -325,8 +353,8 @@ const LearningPathPage: React.FC = () => {
     setIsLoading(true);
     const fetchBasicLevels = async () => {
       try {
-        const response = await getUserTasks(); // Remove hashtag filter to get all tasks
-        setBasicLevelData(response.response);
+        const response = await getStartLearningTasks(); // Get tasks without #cl- hashtags
+        setBasicLevelData(response);
       } catch (error) {
         console.error("Error fetching basic levels:", error);
         setBasicLevelData([]);
@@ -370,7 +398,7 @@ const LearningPathPage: React.FC = () => {
     const formattedData = {
       title: data.task_name || data.title,
       brief: data.task_description || `Complete the ${data.task_name || data.title} task and share your progress with ${data.hashtag} to earn ${data.karma} Karma Points.`,
-      ig: data.ig || "General Task", 
+      ig: data.ig || getIgDisplayName(data.hashtag), 
       skills: ["Skill Development"],
       publishedBy: "µLearn Foundation",
       prerequisites: ["Basic knowledge"],
@@ -404,20 +432,6 @@ const LearningPathPage: React.FC = () => {
       if (filter === "incomplete") return !task.completed;
       return true;
     });
-  };
-
-  // Helper function to group tasks by level
-  const groupTasksByLevel = (tasks: Task[]) => {
-    const grouped: Record<string, Task[]> = {};
-    tasks.forEach(task => {
-      const levelMatch = task.level?.match(/\d+/);
-      const levelKey = levelMatch ? `lvl${levelMatch[0]}` : 'lvl1';
-      if (!grouped[levelKey]) {
-        grouped[levelKey] = [];
-      }
-      grouped[levelKey].push(task);
-    });
-    return grouped;
   };
 
   // Get level metadata
@@ -503,13 +517,7 @@ const LearningPathPage: React.FC = () => {
         </div>
       ) : (
         <>
-          {activeTab === "startLearning" && basicLevelData && basicLevelData
-            .filter((level) => {
-              // Only show levels 1-3 in Start Learning tab
-              const levelNum = parseInt(level.name.replace("lvl", ""));
-              return levelNum >= 1 && levelNum <= 3;
-            })
-            .map((level) => {
+          {activeTab === "startLearning" && basicLevelData && basicLevelData.map((level) => {
             const metadata = getLevelMetadata(level.name);
             const levelNum = parseInt(level.name.replace("lvl", ""));
             const filteredTasks = filterTasks(level.tasks);
@@ -538,84 +546,37 @@ const LearningPathPage: React.FC = () => {
 
           {activeTab === "becomeExpert" && intermediateLevelData && (
             <>
-              {selectedIg.id ? (
-                // Show tasks for selected IG only
-                (() => {
-                  const igTasks = intermediateLevelData[selectedIg.id] || [];
-                  const groupedTasks = groupTasksByLevel(igTasks);
-                  
-                  return Object.entries(groupedTasks).map(([levelKey, tasks]) => {
-                    const metadata = getLevelMetadata(levelKey);
-                    const levelNum = parseInt(levelKey.replace("lvl", ""));
-                    const filteredTasks = filterTasks(tasks);
-                    
-                    if (filteredTasks.length === 0) return null;
+              {intermediateLevelData.map((level) => {
+                const metadata = getLevelMetadata(level.name);
+                const levelNum = parseInt(level.name.replace("lvl", ""));
+                const filteredTasks = filterTasks(level.tasks);
+                
+                if (filteredTasks.length === 0) return null;
 
-                    return (
-                      <div key={levelKey} className={styles.levelSection}>
-                        <h2>{metadata.title}</h2>
-                        <h4 className={styles.levelSubtitle}>{metadata.subtitle}</h4>
-                        <div className={`${styles.cardsContainer}`}>
-                          <CardCarousel>
-                            {filteredTasks.map((task, index) => (
-                              <div key={`${task.hashtag}-${index}`}>
-                                <TaskCard 
-                                  task={task} 
-                                  onClickCTA={() => handleOpenOffCanvas(task, levelNum)} 
-                                />
-                              </div>
-                            ))}
-                          </CardCarousel>
-                        </div>
-                      </div>
-                    );
-                  });
-                })()
-              ) : (
-                // Show all IG tasks grouped by level
-                (() => {
-                  const allTasks: Task[] = [];
-                  Object.values(intermediateLevelData).forEach(tasks => {
-                    allTasks.push(...tasks);
-                  });
-                  
-                  const groupedTasks = groupTasksByLevel(allTasks);
-                  
-                  return Object.entries(groupedTasks)
-                    .sort(([a], [b]) => parseInt(a.replace("lvl", "")) - parseInt(b.replace("lvl", "")))
-                    .map(([levelKey, tasks]) => {
-                      const metadata = getLevelMetadata(levelKey);
-                      const levelNum = parseInt(levelKey.replace("lvl", ""));
-                      const filteredTasks = filterTasks(tasks);
-                      
-                      if (filteredTasks.length === 0) return null;
-
-                      return (
-                        <div key={levelKey} className={styles.levelSection}>
-                          <h2>{metadata.title}</h2>
-                          <h4 className={styles.levelSubtitle}>{metadata.subtitle}</h4>
-                          <div className={`${styles.cardsContainer}`}>
-                            <CardCarousel>
-                              {filteredTasks.map((task, index) => (
-                                <div key={`${task.hashtag}-${index}`}>
-                                  <TaskCard 
-                                    task={task} 
-                                    onClickCTA={() => handleOpenOffCanvas(task, levelNum)} 
-                                  />
-                                </div>
-                              ))}
-                            </CardCarousel>
+                return (
+                  <div key={level.name} className={styles.levelSection}>
+                    <h2>{metadata.title}</h2>
+                    <h4 className={styles.levelSubtitle}>{metadata.subtitle}</h4>
+                    <div className={`${styles.cardsContainer}`}>
+                      <CardCarousel>
+                        {filteredTasks.map((task, index) => (
+                          <div key={`${task.hashtag}-${index}`}>
+                            <TaskCard 
+                              task={task} 
+                              onClickCTA={() => handleOpenOffCanvas(task, levelNum)} 
+                            />
                           </div>
-                        </div>
-                      );
-                    });
-                })()
-              )}
+                        ))}
+                      </CardCarousel>
+                    </div>
+                  </div>
+                );
+              })}
             </>
           )}
 
           {((activeTab === "startLearning" && (!basicLevelData || basicLevelData.length === 0)) ||
-            (activeTab === "becomeExpert" && (!intermediateLevelData || Object.keys(intermediateLevelData).length === 0))) && (
+            (activeTab === "becomeExpert" && (!intermediateLevelData || intermediateLevelData.length === 0))) && (
             <div className="text-center">No tasks available</div>
           )}
         </>
