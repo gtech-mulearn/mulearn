@@ -6,7 +6,7 @@ import { fetchLocalStorage } from "./common_functions";
 export const publicGateway = axios.create({
     baseURL: import.meta.env.VITE_BACKEND_URL as string,
     headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json; charset=utf-8"
     }
 });
 
@@ -22,7 +22,7 @@ export const publicGateway = axios.create({
 export const privateGateway = axios.create({
     baseURL: import.meta.env.VITE_BACKEND_URL as string,
     headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json; charset=utf-8"
     }
 });
 

@@ -4,6 +4,15 @@
     align-items: center;
 }
 
+/* Global UTF-8 and emoji support */
+* {
+    -webkit-font-feature-settings: "liga" 1, "kern" 1, "calt" 1;
+    font-feature-settings: "liga" 1, "kern" 1, "calt" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 .formContainer {
     display: flex;
     justify-content: center;
@@ -277,6 +286,16 @@
 .inputContainer .w-md-editor .w-md-editor-bar .w-md-editor-toolbar-item.active {
     background-color: #456ff6;
     color: white;
+}
+
+/* Ensure proper emoji rendering and UTF-8 support */
+.inputContainer .w-md-editor .w-md-editor-text-container .w-md-editor-text,
+.inputContainer .w-md-editor .w-md-editor-preview {
+    font-family: 'Inter', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-feature-settings: "liga" 1, "calt" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .inputContainer .w-md-editor-text-pre, 
