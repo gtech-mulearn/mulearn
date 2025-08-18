@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 import styles from './OffCanvasLearningPath.module.css';
 
 interface OffCanvasProps {
@@ -25,8 +26,14 @@ export const OffCanvasLearningPath: React.FC<OffCanvasProps> = ({ isOpen, onClos
         <div className={styles.offCanvasSection} style={{marginTop: 40}}>
           <h2 className={styles.offCanvasSectionTitle}>{data.title}</h2>
           <div className={styles.offCanvasSectionContent}>
-            <p>{data.brief}</p>
-            <p>{data.desc}</p>
+            <div className={styles.markdownContent}>
+              <ReactMarkdown>{data.brief}</ReactMarkdown>
+            </div>
+            {data.desc && (
+              <div className={styles.markdownContent}>
+                <ReactMarkdown>{data.desc}</ReactMarkdown>
+              </div>
+            )}
           </div>
         </div>
 

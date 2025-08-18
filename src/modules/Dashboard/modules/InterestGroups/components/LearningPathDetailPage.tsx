@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import styles from "./LearningPathDetailPage.module.css";
 import { TaskCard } from "../../LearningPathNew/Pages/LearningPathPage";
-import { FormattedLevel } from "../../LearningPathNew/services/api";
+import { Level, Task } from "../../LearningPathNew/services/api";
 import CardCarousel from "./CardCarousel/CardCarousal";
 import { OffCanvasLearningPath } from "./OffCanvasLearningPath/OffCanvasLearningPath";
 import { FiArrowLeft } from "react-icons/fi";
@@ -11,7 +11,7 @@ interface LearningPathDetailPageProps {
   level: string;
   card: any;
   onBack: () => void;
-  formattedTasks: FormattedLevel[];
+  formattedTasks: Level[];
 }
 
 const LearningPathDetailPage: React.FC<LearningPathDetailPageProps> = ({
@@ -24,11 +24,11 @@ const LearningPathDetailPage: React.FC<LearningPathDetailPageProps> = ({
   const [selectedData, setSelectedData] = useState<any | null>(null);
 
   const selectedLevelData = formattedTasks.find(
-    task => task.level === Number(level.replace("Level ", ""))
+    levelData => levelData.name === level
   );
   console.log(card);
 
-  const tasks = selectedLevelData?.cards || [];
+  const tasks = selectedLevelData?.tasks || [];
 
   const handleCloseOffCanvas = () => {
     setOffCanvasOpen(false);
@@ -57,13 +57,13 @@ const LearningPathDetailPage: React.FC<LearningPathDetailPageProps> = ({
         <CardCarousel
           children={
             tasks.length > 0 ? (
-              tasks.map((taskCard, index) => (
+              tasks.map((taskCard: Task, index: number) => (
                 <div className={styles.cardInner}>
                   <TaskCard
                     key={index}
-                    card={taskCard}
-                    onClickCTA={(card) => {
-                      handleOpenOffCanvas(card)
+                    task={taskCard}
+                    onClickCTA={(task: Task) => {
+                      handleOpenOffCanvas(task)
                     }}
                     custom={true}
                   />

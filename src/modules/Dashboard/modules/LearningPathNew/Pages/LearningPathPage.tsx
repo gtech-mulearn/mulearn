@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import ReactMarkdown from 'react-markdown';
 import styles from "./LearningPathPage.module.css";
 import CardCarousel from "../modules/CardCarousal";
 import IGSelector from "../../InterestGroups/components/IGSelection/IGSelector";
@@ -12,6 +13,15 @@ import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { isEqual } from 'lodash';
 import toast from "react-hot-toast";
 import channelmap from "../data/channelmap";
+
+// Utility function to strip markdown formatting for card preview
+const stripMarkdown = (markdown: string): string => {
+  return markdown
+    .replace(/[#*_`~]/g, '') // Remove markdown characters
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // Convert links to text
+    .replace(/\n+/g, ' ') // Replace newlines with spaces
+    .trim();
+};
 
 interface InterestGroup {
   id: string;
@@ -51,8 +61,6 @@ export const OffCanvas: React.FC<OffCanvasProps> = ({ isOpen, onClose, data }) =
             <p>Please unlock level {Number(data.level) - 1} to unlock </p>
 
           </div>
-
-
         }
 
         {isSpecialLevel ? (
@@ -81,7 +89,9 @@ export const OffCanvas: React.FC<OffCanvasProps> = ({ isOpen, onClose, data }) =
             <div className={styles.offCanvasSection}>
               <h2 className={styles.offCanvasSectionTitle}>{data.title}</h2>
               <div className={styles.offCanvasSectionContent}>
-                <p>{data.brief}</p>
+                <div className={styles.markdownContent}>
+                  <ReactMarkdown>{data.brief}</ReactMarkdown>
+                </div>
               </div>
             </div>
 
@@ -220,7 +230,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onClickCTA, custom }) 
           {task.task_name || task.title}
         </div>
         <div className={styles.cardDesc} style={custom ? { textAlign: "left" } : {}}>
-          {task.task_description ? task.task_description.slice(0, 40) + "..." : `Earn ${task.karma} Karma Points`}
+          {task.task_description ? stripMarkdown(task.task_description).slice(0, 40) + "..." : `Earn ${task.karma} Karma Points`}
         </div>
         <div className={styles.cardIg} style={custom ? { textAlign: "left" } : {}}>
           <strong>IG:</strong> {task.ig || getIgDisplayName(task.hashtag)}

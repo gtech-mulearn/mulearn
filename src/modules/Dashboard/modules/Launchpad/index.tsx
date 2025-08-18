@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import ReactMarkdown from 'react-markdown';
 import { Box, VStack, HStack, Text, Badge, Button, FormControl, FormLabel, Input, Textarea, useDisclosure, Select, Flex, Divider, useToast, IconButton, Link, Image } from '@chakra-ui/react';
 import { Eye, CheckCircle, XCircle, Calendar, ExternalLink, User, MapPin, DollarSign, Briefcase, Clock, Users } from 'lucide-react';
 import styles from './JobInvites.module.css';
@@ -621,7 +622,9 @@ const Launchpad = () => {
                       <Box>
                         <Text fontWeight="semibold" color="gray.700" fontSize="sm" mb={2}>Task Description:</Text>
                         <Box bg="gray.50" border="1px solid" borderColor="gray.200" p={4} borderRadius="md">
-                          <Text color="gray.900" fontSize="md" lineHeight="1.6">{selectedInvite.task_description}</Text>
+                          <Box color="gray.900" fontSize="md" lineHeight="1.6" className="markdown-content">
+                            <ReactMarkdown>{selectedInvite.task_description}</ReactMarkdown>
+                          </Box>
                         </Box>
                       </Box>
                       
@@ -851,7 +854,9 @@ const Launchpad = () => {
             <Box>
               <Text fontWeight="semibold" color="gray.700" fontSize="sm" mb={2}>Description:</Text>
               <Box bg="white" border="1px solid" borderColor="gray.200" p={4} borderRadius="md" borderLeft="4px solid" borderLeftColor="teal.400">
-                <Text color="gray.900" fontSize="md" lineHeight="1.6">{selectedTask?.task_description || 'No description available'}</Text>
+                <Box color="gray.900" fontSize="md" lineHeight="1.6" className="markdown-content">
+                  <ReactMarkdown>{selectedTask?.task_description || 'No description available'}</ReactMarkdown>
+                </Box>
               </Box>
             </Box>
 
