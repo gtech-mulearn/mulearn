@@ -97,7 +97,13 @@
   padding: 10px;
   font-size: 0.85rem;
   color: white;
-  width: 100%;
+  width: 30%;
+}
+
+@media screen and (max-width: 768px) {
+  .proofOfWorkButton {
+    width: 100%;
+  }
 }
 
 .loader {
