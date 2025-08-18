@@ -263,7 +263,7 @@ export function getIgDisplayName(hashtag: string): string {
         'ux': 'UI/UX',
         'vr': 'AR/VR',
         'muvi': 'MuVi Club',
-        'pmp': 'Others',
+        'pmp': 'Project Management',
         'hr': 'Human Resources',
         'entrp': 'Entrepreneurship',
         'sl': 'Strategic Leadership',
