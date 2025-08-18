@@ -17,6 +17,7 @@ interface RawTask {
     level: string;
     ig: string;
     event: null | string;
+    active: boolean;
 }
 
 // Formatted interfaces for the output
@@ -63,7 +64,9 @@ export const getIGTasks = async (id: string): Promise<Record<string, RawTask[]>>
             dashboardRoutes.getUserIgTasks,
             { params: { ig_id: id, perPage: 1000 } }
         );
-        taskObject[id] = response.data.response.data || [];
+        // Filter to only include active tasks
+        const allTasks = response.data.response.data || [];
+        taskObject[id] = allTasks.filter((task: RawTask) => task.active === true);
     } catch (error) {
         console.error(`Error fetching tasks for IG ID ${id}:`, error);
         taskObject[id] = [];
@@ -175,6 +178,7 @@ export interface SimpleTask {
     completed: boolean;
     karma: number;
     ig?: string;
+    active: boolean;
 }
 
 // Function to get IG tasks using simplified Level interface
@@ -188,10 +192,10 @@ export const getSimpleIGTasks = async (igId: string): Promise<SimpleLevel[]> => 
         const tasks = response.data.response.data || [];
         const levels: SimpleLevel[] = [];
         
-        // Group tasks by level
+        // Group tasks by level - filter only active tasks
         const tasksByLevel: { [key: string]: SimpleTask[] } = {};
         
-        tasks.forEach((rawTask: RawTask) => {
+        tasks.filter((rawTask: RawTask) => rawTask.active === true).forEach((rawTask: RawTask) => {
             const task: SimpleTask = {
                 level: rawTask.level,
                 title: rawTask.title,
@@ -201,7 +205,8 @@ export const getSimpleIGTasks = async (igId: string): Promise<SimpleLevel[]> => 
                 hashtag: rawTask.hashtag,
                 completed: false, // You might need to get this from another endpoint
                 karma: rawTask.karma,
-                ig: rawTask.ig
+                ig: rawTask.ig,
+                active: rawTask.active
             };
             
             const levelName = `Level ${rawTask.level}`;

@@ -21,6 +21,7 @@ export interface Task {
     completed: boolean;
     karma: number;
     ig?: string;
+    active: boolean;
 }
 
 // Level interface for getUserLevels response
@@ -109,7 +110,10 @@ class ApiCache {
                 { params: { ig_id: usersIgid, perPage: 1000 } }
             );
             
-            const tasks = response.data.response.data || [];
+            // Filter to only include active tasks
+            const allTasks = response.data.response.data || [];
+            const tasks = allTasks.filter((task) => task.active === true);
+            
             this.igTasksCache[usersIgid] = tasks;
             this.lastFetchTime[`igTasks_${usersIgid}`] = now;
             
@@ -150,14 +154,25 @@ export async function getUserTasks(hashtags?: string[]): Promise<ApiResponse> {
                 response: response.response
                     .map((level) => ({
                         ...level,
-                        tasks: level.tasks.filter((task) => hashtags.includes(task.hashtag)),
+                        tasks: level.tasks.filter((task) => hashtags.includes(task.hashtag) && task.active === true),
                     }))
                     .filter((level) => level.tasks.length > 0),
             };
             return filteredResponse;
         }
         
-        return response;
+        // Filter all tasks to show only active ones
+        const filteredResponse = {
+            ...response,
+            response: response.response
+                .map((level) => ({
+                    ...level,
+                    tasks: level.tasks.filter((task) => task.active === true),
+                }))
+                .filter((level) => level.tasks.length > 0),
+        };
+        
+        return filteredResponse;
     } catch (error) {
         console.log(error);
         throw error as ApiError;
