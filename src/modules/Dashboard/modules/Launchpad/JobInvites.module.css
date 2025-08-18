@@ -234,3 +234,102 @@
   padding-bottom: 8px;
   margin-bottom: 16px;
 }
+
+/* Markdown Content Styles for Chakra UI compatibility */
+:global(.chakra-box .markdown-content) {
+  line-height: 1.6;
+}
+
+:global(.chakra-box .markdown-content h1),
+:global(.chakra-box .markdown-content h2),
+:global(.chakra-box .markdown-content h3),
+:global(.chakra-box .markdown-content h4),
+:global(.chakra-box .markdown-content h5),
+:global(.chakra-box .markdown-content h6) {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+:global(.chakra-box .markdown-content h1) {
+  font-size: 1.8rem;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 0.5rem;
+}
+
+:global(.chakra-box .markdown-content h2) {
+  font-size: 1.5rem;
+}
+
+:global(.chakra-box .markdown-content h3) {
+  font-size: 1.25rem;
+}
+
+:global(.chakra-box .markdown-content p) {
+  margin-bottom: 1rem;
+  color: #4a5568;
+}
+
+:global(.chakra-box .markdown-content ul),
+:global(.chakra-box .markdown-content ol) {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+:global(.chakra-box .markdown-content li) {
+  margin-bottom: 0.5rem;
+  color: #4a5568;
+}
+
+:global(.chakra-box .markdown-content code) {
+  background-color: #edf2f7;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: #e53e3e;
+}
+
+:global(.chakra-box .markdown-content pre) {
+  background-color: #f7fafc;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+  border: 1px solid #e2e8f0;
+}
+
+:global(.chakra-box .markdown-content pre code) {
+  background-color: transparent;
+  padding: 0;
+  color: #2d3748;
+}
+
+:global(.chakra-box .markdown-content blockquote) {
+  border-left: 4px solid #3182ce;
+  padding-left: 1rem;
+  margin: 1rem 0;
+  background-color: #f7fafc;
+  padding: 1rem;
+  font-style: italic;
+  color: #4a5568;
+}
+
+:global(.chakra-box .markdown-content a) {
+  color: #3182ce;
+  text-decoration: none;
+}
+
+:global(.chakra-box .markdown-content a:hover) {
+  text-decoration: underline;
+}
+
+:global(.chakra-box .markdown-content strong) {
+  font-weight: 600;
+  color: #2d3748;
+}
+
+:global(.chakra-box .markdown-content em) {
+  font-style: italic;
+}

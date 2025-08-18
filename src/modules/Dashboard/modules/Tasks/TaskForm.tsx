@@ -7,6 +7,8 @@ import {
     MuButton,
     PowerfulButton
 } from "@/MuLearnComponents/MuButtons/MuButton";
+import MDEditor from "@uiw/react-md-editor";
+import "@uiw/react-md-editor/markdown-editor.css";
 
 import { AxiosError } from "axios";
 import Select from "react-select";
@@ -398,13 +400,31 @@ const TaskForm = forwardRef(
                             />
                         </div>
                         <div className={styles.inputContainer}>
-                            <input
-                                type="text"
-                                name="description"
-                                placeholder="Description"
+                            <label htmlFor="description" className={styles.label}>
+                                Task Description (Markdown supported)
+                            </label>
+                            <MDEditor
                                 value={data.description}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
+                                onChange={(val) => setData(prev => ({ ...prev, description: val || "" }))}
+                                preview="live"
+                                height={400}
+                                data-color-mode="light"
+                                visibleDragbar={false}
+                                textareaProps={{
+                                    placeholder: "Enter task description using markdown syntax...\n\n# Heading\n## Subheading\n- List item\n- Another item\n\n**Bold text** and *italic text*\n\n```code\nCode block\n```\n\n[Link](https://example.com)",
+                                    style: {
+                                        fontSize: '14px',
+                                        lineHeight: 1.6,
+                                        fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif',
+                                    }
+                                }}
+                                previewOptions={{
+                                    style: {
+                                        fontSize: '14px',
+                                        lineHeight: 1.6,
+                                        fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif',
+                                    }
+                                }}
                             />
                         </div>
                         <div className={styles.inputContainer}>
