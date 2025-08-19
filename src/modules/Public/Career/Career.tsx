@@ -8,6 +8,9 @@ import ClosedCareersCard from "./components/ClosedCareers/ClosedCareers";
 import axios from "axios";
 import companiesData from "./data/companies.json";
 
+// Import cdnUrl utility
+import { cdnUrl } from "@/modules/utils/cdn";
+
 // Define types for hiring roles and companies
 interface NewHiringRole {
   logo?: string;
@@ -79,7 +82,7 @@ const Career = () => {
       <div className={styles.main_container}>
         <div className={styles.first_view_container}>
           <img
-            src="/assets/careers/fvimg.png"
+            src={cdnUrl("/assets/careers/fvimg.png")}
             alt=""
             className={styles.fv_image}
           />
@@ -112,7 +115,7 @@ const Career = () => {
         {companies.map((company) => (
           <img
             key={company.name}
-            src={company.logo}
+            src={company.logo?.startsWith("http") ? company.logo : cdnUrl(company.logo)}
             alt={company.name}
             className={styles.company_image}
           />
