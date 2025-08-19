@@ -539,36 +539,24 @@ const LearningPathPage: React.FC = () => {
         </div>
       ) : (
         <>
-          {activeTab === "startLearning" && basicLevelData && basicLevelData.map((level) => {
-            const metadata = getLevelMetadata(level.name);
-            const levelNum = parseInt(level.name.replace("lvl", ""));
-            const filteredTasks = filterTasks(level.tasks);
+          {activeTab === "startLearning" && (
+            basicLevelData === null || basicLevelData.length === 0 ? (
+              <div className="text-center">No tasks available</div>
+            ) : (() => {
+              // Check if any levels have tasks after filtering
+              const hasAnyTasks = basicLevelData.some(level => 
+                filterTasks(level.tasks).length > 0
+              );
 
-            if (filteredTasks.length === 0) return null;
+              if (!hasAnyTasks) {
+                return (
+                  <div className="text-center">
+                    {`No ${filter === "all" ? "" : filter + " "}tasks available`}
+                  </div>
+                );
+              }
 
-            return (
-              <div key={level.name} className={styles.levelSection}>
-                <h2>{metadata.title}</h2>
-                <h4 className={styles.levelSubtitle}>{metadata.subtitle}</h4>
-                <div className={`${styles.cardsContainer}`}>
-                  <CardCarousel>
-                    {filteredTasks.map((task, index) => (
-                      <div key={`${task.hashtag}-${index}`}>
-                        <TaskCard
-                          task={task}
-                          onClickCTA={() => handleOpenOffCanvas(task, levelNum)}
-                        />
-                      </div>
-                    ))}
-                  </CardCarousel>
-                </div>
-              </div>
-            );
-          })}
-
-          {activeTab === "becomeExpert" && intermediateLevelData && (
-            <>
-              {intermediateLevelData.map((level) => {
+              return basicLevelData.map((level) => {
                 const metadata = getLevelMetadata(level.name);
                 const levelNum = parseInt(level.name.replace("lvl", ""));
                 const filteredTasks = filterTasks(level.tasks);
@@ -593,14 +581,62 @@ const LearningPathPage: React.FC = () => {
                     </div>
                   </div>
                 );
-              })}
-            </>
+              });
+            })()
           )}
 
-          {((activeTab === "startLearning" && (!basicLevelData || basicLevelData.length === 0)) ||
-            (activeTab === "becomeExpert" && (!intermediateLevelData || intermediateLevelData.length === 0))) && (
-              <div className="text-center">No tasks available</div>
-            )}
+          {activeTab === "becomeExpert" && (
+            intermediateLevelData === null || intermediateLevelData.length === 0 ? (
+              <div className="text-center">
+                {selectedIg.id && selectedIg.name 
+                  ? `No tasks available for ${selectedIg.name}` 
+                  : "No tasks available"}
+              </div>
+            ) : (() => {
+              // Check if any levels have tasks after filtering
+              const hasAnyTasks = intermediateLevelData.some(level => 
+                filterTasks(level.tasks).length > 0
+              );
+
+              if (!hasAnyTasks) {
+                return (
+                  <div className="text-center">
+                    {selectedIg.id && selectedIg.name 
+                      ? `No ${filter === "all" ? "" : filter + " "}tasks available for ${selectedIg.name}` 
+                      : `No ${filter === "all" ? "" : filter + " "}tasks available`}
+                  </div>
+                );
+              }
+
+              return intermediateLevelData.map((level) => {
+                const metadata = getLevelMetadata(level.name);
+                const levelNum = parseInt(level.name.replace("lvl", ""));
+                const filteredTasks = filterTasks(level.tasks);
+
+                if (filteredTasks.length === 0) return null;
+
+                return (
+                  <div key={level.name} className={styles.levelSection}>
+                    <h2>{metadata.title}</h2>
+                    <h4 className={styles.levelSubtitle}>{metadata.subtitle}</h4>
+                    <div className={`${styles.cardsContainer}`}>
+                      <CardCarousel>
+                        {filteredTasks.map((task, index) => (
+                          <div key={`${task.hashtag}-${index}`}>
+                            <TaskCard
+                              task={task}
+                              onClickCTA={() => handleOpenOffCanvas(task, levelNum)}
+                            />
+                          </div>
+                        ))}
+                      </CardCarousel>
+                    </div>
+                  </div>
+                );
+              });
+            })()
+          )}
+
         </>
       )}
 
