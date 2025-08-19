@@ -43,6 +43,7 @@ import { AchievementData } from "../../ManageAchievements/ManageAchievementsInte
 import AchievementCardOne from "../components/Achievements/AchievementCardOne";
 import toast from "react-hot-toast";
 import { userInfo } from "os";
+import EditCollegePopUp from "../components/EditProfilePopUp/pages/EditCollegePopUp";
 
 
 
@@ -62,6 +63,7 @@ const Profile = () => {
     const [editPopUp, setEditPopUp] = useState(false);
     const [fromUserSearch, setFromUserSearch] = useState(false);
     const [achievementModalOpen, setAchievementModalOpen] = useState(false);
+    const [openCollegeEdit, setOpenCollegeEdit] = useState(false);
     const [userProfile, setUserProfile] = useState({
         full_name: "",
         college_code: "",
@@ -280,8 +282,14 @@ const Profile = () => {
                                 setEditPopUP={setEditPopUp}
                                 id={userProfile.id}
                                 triggerUpdateProfile={triggerUpdateProfile}
+                                setOpenCollegeEdit={setOpenCollegeEdit}
                             />
-
+                            <EditCollegePopUp
+                                openCollegeEdit={openCollegeEdit}
+                                setOpenCollegeEdit={setOpenCollegeEdit}
+                                id={userProfile.id}
+                                triggerUpdateProfile={triggerUpdateProfile}
+                            />
                             <ShareProfilePopUp
                                 popUP={popUP}
                                 setPopUP={setPopUP}

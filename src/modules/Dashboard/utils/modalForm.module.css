@@ -85,6 +85,10 @@
     justify-content: start;
 }
 
+.inputContainer{
+    margin-bottom: 8px;
+}
+
 .inputContainer input {
     border-radius: 8px;
     background-color: #f3f3f4;

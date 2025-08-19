@@ -10,7 +10,6 @@ interface AxiosResponse<T> {
     config: any;
 }
 
-// Simplified Task interface matching API response
 export interface Task {
     level: any;
     title: string;
@@ -24,14 +23,12 @@ export interface Task {
     active: boolean;
 }
 
-// Level interface for getUserLevels response
 export interface Level {
     name: string;
     tasks: Task[];
     karma: number;
 }
 
-// ApiResponse for getUserLevels
 export interface ApiResponse {
     hasError: boolean;
     statusCode: number;
@@ -41,7 +38,6 @@ export interface ApiResponse {
     response: Level[];
 }
 
-// New interface for getUserIgTasks response
 export interface IgTaskApiResponse {
     hasError: boolean;
     statusCode: number;
@@ -57,7 +53,6 @@ interface ApiError {
     message: string;
 }
 
-// Simple cache for API responses
 class ApiCache {
     private static instance: ApiCache;
     private userLevelsCache: ApiResponse | null = null;
@@ -124,7 +119,6 @@ class ApiCache {
         }
     }
 
-    // Method to clear specific or all caches
     public clearCache(type?: 'userLevels' | 'igTasks', key?: string) {
         if (type === 'userLevels') {
             this.userLevelsCache = null;
@@ -140,7 +134,6 @@ class ApiCache {
     }
 }
 
-// Get all tasks with hashtag-based filtering for Start Learning vs Become Expert
 export async function getUserTasks(hashtags?: string[]): Promise<ApiResponse> {
     try {
         const apiCache = ApiCache.getInstance();
@@ -178,13 +171,11 @@ export async function getUserTasks(hashtags?: string[]): Promise<ApiResponse> {
     }
 }
 
-// Get tasks for Start Learning (non #cl- hashtag tasks)
 export async function getStartLearningTasks(): Promise<Level[]> {
     try {
         const response = await getUserTasks();
         
 
-        // Filter tasks that don't have #cl- hashtags (general tasks)
         const startLearningLevels = response.response.map(level => ({
             ...level,
             tasks: level.tasks.filter(task => {
@@ -210,7 +201,6 @@ export async function getUserIgTasks(usersIgids: string[]): Promise<Record<strin
     const apiCache = ApiCache.getInstance();
     const taskObject: Record<string, Task[]> = {};
 
-    // Fetch tasks for all IG IDs concurrently using cache
     await Promise.all(
         usersIgids.map(async (usersIgid) => {
             taskObject[usersIgid] = await apiCache.getIgTasks(usersIgid);
@@ -220,7 +210,6 @@ export async function getUserIgTasks(usersIgids: string[]): Promise<Record<strin
     return taskObject;
 }
 
-// Helper function to extract IG identifiers from hashtags in the API response
 export function extractIgIdentifiersFromTasks(levels: Level[]): string[] {
     const igIdentifiers = new Set<string>();
     
@@ -237,20 +226,17 @@ export function extractIgIdentifiersFromTasks(levels: Level[]): string[] {
     return Array.from(igIdentifiers);
 }
 
-// Helper function to get display name for an IG identifier from hashtag
 export function getIgDisplayName(hashtag: string): string {
     // Check if it's a general task (doesn't start with #cl-)
     if (!hashtag.startsWith('#cl-')) {
         return "General Tasks";
     }
     
-    // Extract identifier from hashtag
     const match = hashtag.match(/^#cl-([^-]+)-/);
     if (!match) return "General Tasks";
     
     const identifier = match[1].toLowerCase();
     
-    // Map identifiers to display names
     const identifierDisplayMap: Record<string, string> = {
         'cybersec': 'Cyber Security',
         'arvr': 'AR/VR',
@@ -278,11 +264,9 @@ export function getIgDisplayName(hashtag: string): string {
     return identifierDisplayMap[identifier] || `${identifier.toUpperCase()} Tasks`;
 }
 
-// Helper function to get IG identifiers that match user's IGs
 export function getUserIgIdentifiers(userIGs: any[], availableIdentifiers: string[]): string[] {
     const userIdentifiers: string[] = [];
     
-    // Create a mapping of hashtag identifiers to IG names based on actual patterns
     const identifierToNameMap: Record<string, string[]> = {
         'cybersec': ['Cyber Security', 'cyber security', 'cybersecurity'],
         'arvr': ['AR/VR', 'ar/vr', 'ar vr', 'arvr'],
@@ -309,11 +293,9 @@ export function getUserIgIdentifiers(userIGs: any[], availableIdentifiers: strin
     
 
 
-    // Match user IGs to available identifiers
     userIGs.forEach(ig => {
         const normalizedIgName = ig.name.toLowerCase().trim();
         
-        // Check each available identifier to see if it matches this IG
         availableIdentifiers.forEach(identifier => {
             const possibleNames = identifierToNameMap[identifier.toLowerCase()];
             if (possibleNames && possibleNames.some(name => 
@@ -331,17 +313,14 @@ export function getUserIgIdentifiers(userIGs: any[], availableIdentifiers: strin
     return userIdentifiers;
 }
 
-// Function to get Become Expert tasks (IG tasks with #cl- hashtags) filtered by user's Interest Groups
 export async function getBecomeExpertTasks(userIGs: any[], selectedIgId?: string): Promise<Level[]> {
     try {
         const response = await getUserTasks();
         
         
-        // Filter tasks that have #cl- hashtags (IG-specific tasks)
         const allIgLevels = response.response.map(level => ({
             ...level,
             tasks: level.tasks.filter(task => {
-                // Include only tasks that have #cl- hashtags (IG-specific tasks)
                 const hasClHashtag = task.hashtag && task.hashtag.startsWith('#cl-');
                
                 
@@ -349,34 +328,33 @@ export async function getBecomeExpertTasks(userIGs: any[], selectedIgId?: string
             })
         })).filter(level => level.tasks.length > 0);
         
-        // Extract all available IG identifiers from hashtags
         const availableIdentifiers = extractIgIdentifiersFromTasks(allIgLevels);
         
-        // Get user's IG identifiers that match available ones
         const userIdentifiers = getUserIgIdentifiers(userIGs, availableIdentifiers);
         
-        // If specific IG is selected, find its identifier
         if (selectedIgId) {
             const selectedIg = userIGs.find(ig => ig.id === selectedIgId);
             if (selectedIg) {
                 const selectedIdentifiers = getUserIgIdentifiers([selectedIg], availableIdentifiers);
                 
-                if (selectedIdentifiers.length > 0) {
-                    return allIgLevels.map(level => ({
-                        ...level,
-                        tasks: level.tasks.filter(task => {
-                            const matches = selectedIdentifiers.some(identifier => 
-                                task.hashtag.startsWith(`#cl-${identifier}-`)
-                            );
-                            
-                            return matches;
-                        })
-                    })).filter(level => level.tasks.length > 0);
-                }
+                return allIgLevels.map(level => ({
+                    ...level,
+                    tasks: level.tasks.filter(task => {
+                        if (selectedIdentifiers.length === 0) {
+                            return false; 
+                        }
+                        const matches = selectedIdentifiers.some(identifier => 
+                            task.hashtag.startsWith(`#cl-${identifier}-`)
+                        );
+                        
+                        return matches;
+                    })
+                })).filter(level => level.tasks.length > 0);
             }
+            
+            return [];
         }
 
-        // Filter tasks for user's IGs (show only tasks that match user's interest groups)
         return allIgLevels.map(level => ({
             ...level,
             tasks: level.tasks.filter(task => {
