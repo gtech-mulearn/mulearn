@@ -7,6 +7,8 @@ import {
     MuButton,
     PowerfulButton
 } from "@/MuLearnComponents/MuButtons/MuButton";
+import MDEditor from "@uiw/react-md-editor";
+import "@uiw/react-md-editor/markdown-editor.css";
 
 import { AxiosError } from "axios";
 import Select from "react-select";
@@ -14,6 +16,7 @@ import { customReactSelectStyles } from "../../utils/common";
 import { getTaskDetails } from "./TaskApis";
 import { FormikCheckBox } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { convertDateToYYYYMMDD } from "../../utils/common";
+import { encodeUnicodeForStorage, decodeUnicodeFromStorage } from "../../utils/unicodeUtils";
 
 type Props = { id: string; isEditMode: boolean };
 
@@ -160,7 +163,7 @@ const TaskForm = forwardRef(
                     usage_count: taskData.usage_count,
                     active: taskData.active,
                     variable_karma: taskData.variable_karma,
-                    description: taskData.description,
+                    description: decodeUnicodeFromStorage(taskData.description || ""),
                     channel_id: taskData.channel,
                     type_id: taskData.type,
                     level_id: taskData.level,
@@ -267,7 +270,7 @@ const TaskForm = forwardRef(
                         data.usage_count,
                         data.active,
                         data.variable_karma,
-                        data.description,
+                        encodeUnicodeForStorage(data.description),
                         selectedChannel?.value || "",
                         selectedType?.value || "",
                         selectedLevel?.value || "",
@@ -298,7 +301,7 @@ const TaskForm = forwardRef(
                         selectedLevel?.value || "",
                         selectedIg?.value || "",
                         selectedOrg?.value || "",
-                        data.description,
+                        encodeUnicodeForStorage(data.description),
                         data.discord_link,
                         props.id,
                         data.event,
@@ -398,13 +401,36 @@ const TaskForm = forwardRef(
                             />
                         </div>
                         <div className={styles.inputContainer}>
-                            <input
-                                type="text"
-                                name="description"
-                                placeholder="Description"
+                            <label htmlFor="description" className={styles.label}>
+                                Task Description (Markdown supported)
+                            </label>
+                            <MDEditor
                                 value={data.description}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
+                                onChange={(val) => {
+                                    // Simply store the value as-is for editing, encode only on save
+                                    setData(prev => ({ ...prev, description: val || "" }));
+                                }}
+                                preview="live"
+                                height={400}
+                                data-color-mode="light"
+                                visibleDragbar={false}
+                                textareaProps={{
+                                    placeholder: "Enter task description using markdown syntax...\n\n# Heading 📚\n## Subheading ✨\n- List item 📝\n- Another item 🎯\n\n**Bold text** and *italic text*\n\n```code\nCode block\n```\n\n[Link](https://example.com) 🔗",
+                                    style: {
+                                        fontSize: '14px',
+                                        lineHeight: 1.6,
+                                        fontFamily: 'Inter, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif',
+                                    },
+                                    autoComplete: 'off',
+                                    spellCheck: false
+                                }}
+                                previewOptions={{
+                                    style: {
+                                        fontSize: '14px',
+                                        lineHeight: 1.6,
+                                        fontFamily: 'Inter, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif',
+                                    }
+                                }}
                             />
                         </div>
                         <div className={styles.inputContainer}>
