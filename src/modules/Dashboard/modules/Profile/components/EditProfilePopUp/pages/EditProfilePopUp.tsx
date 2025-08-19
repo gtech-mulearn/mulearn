@@ -25,6 +25,7 @@ type Props = {
     setEditPopUP: (value: boolean) => void;
     triggerUpdateProfile: () => void;
     id: string;
+    setOpenCollegeEdit: (value: boolean) => void;
 };
 
 const EditProfilePopUp = (props: Props) => {
@@ -147,6 +148,17 @@ const EditProfilePopUp = (props: Props) => {
             };
         });
     };
+    const handleCollegeChangeModal = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.stopPropagation();
+        props.setEditPopUP(false);
+        props.setOpenCollegeEdit(true);
+
+    };
+
+    const handleCloseCollegeEdit = () => {
+        props.setOpenCollegeEdit(false);
+    };
+
     return (
         <div
             className={styles.edit_profile_container}
@@ -163,7 +175,7 @@ const EditProfilePopUp = (props: Props) => {
                     tabIndex={1}
                     onFocus={() => props.setEditPopUP(true)}
                     onClick={e => e.stopPropagation()}
-                    // onBlur={() => props.setEditPopUP(false)}
+                // onBlur={() => props.setEditPopUP(false)}
                 >
                     <h2>Edit Profile</h2>
                     <form onSubmit={formik.handleSubmit}>
@@ -197,7 +209,7 @@ const EditProfilePopUp = (props: Props) => {
                                     onChange={formik.handleChange}
                                 />
                                 {formik.touched.mobile &&
-                                formik.errors.mobile ? (
+                                    formik.errors.mobile ? (
                                     <p className={styles.error_message}>
                                         {formik.errors.mobile}
                                     </p>
@@ -267,27 +279,39 @@ const EditProfilePopUp = (props: Props) => {
                             </div>
                         </div>
                         <div className={styles.btn_container}>
-                            <PowerfulButton
-                                type="button"
-                                variant="outline"
-                                // disabled={discordState === "finished"}
-                                onClick={discordSync}
-                                className={styles.powerfulButton}
-                            >
-                                Sync Discord Image
-                                {
+
+                            <div className={styles.powerfulButtonContainer}>
+                                <PowerfulButton
+                                    type="button"
+                                    variant="outline"
+                                    onClick={handleCollegeChangeModal}
+                                    className={styles.powerfulButton}
+                                >
+                                    Change College
+                                </PowerfulButton>
+
+                                <PowerfulButton
+                                    type="button"
+                                    variant="outline"
+                                    // disabled={discordState === "finished"}
+                                    onClick={discordSync}
+                                    className={styles.powerfulButton}
+                                >
+                                    Sync Discord Image
                                     {
-                                        initial: <BsDiscord size={32} />,
-                                        loading: (
-                                            <BeatLoader
-                                                size={8}
-                                                color="#456ff6"
-                                            />
-                                        ),
-                                        finished: <BsCheck size={32} />
-                                    }[discordState]
-                                }
-                            </PowerfulButton>
+                                        {
+                                            initial: <BsDiscord size={32} />,
+                                            loading: (
+                                                <BeatLoader
+                                                    size={8}
+                                                    color="#456ff6"
+                                                />
+                                            ),
+                                            finished: <BsCheck size={32} />
+                                        }[discordState]
+                                    }
+                                </PowerfulButton>
+                            </div>
                             {/* <div
                                     title={
                                         discordState === "initial"

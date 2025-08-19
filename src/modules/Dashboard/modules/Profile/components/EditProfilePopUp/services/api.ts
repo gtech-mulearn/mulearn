@@ -1,8 +1,9 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import axios, { AxiosError } from "axios";
 import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes, onboardingRoutes } from "@/MuLearnServices/urls";
 import toast from "react-hot-toast";
+import { collegeOptions, TT } from "@/modules/Common/Authentication/services/onboardingApis";
 
 type profileDetails = {
     first_name: string;
@@ -22,6 +23,83 @@ type getAPI = React.Dispatch<
     >
 >;
 // type errorHandler = (status: number, dataStatus: number) => void;
+
+
+
+export const getLocations = async (
+    param: string,
+    setLocationData: Dispatch<SetStateAction<any[]>>,
+    setIsApiCalled: UseStateFunc<boolean>
+) => {
+    setIsApiCalled(true);
+    await publicGateway
+        .get(
+            onboardingRoutes.location.replace(
+                "${param}",
+                param === "" ? "india" : param
+            )
+        )
+        .then(response => {
+            if (response.data.response.length === 0) {
+                setIsApiCalled(false);
+                setLocationData([{ id: "", location: "" }]);
+                console.log("success");
+            } else {
+                setIsApiCalled(false);
+                console.log(response.data.response);
+                setLocationData(response.data.response);
+            }
+        })
+        .catch((error: APIError) => {
+            setIsApiCalled(false);
+            console.log(error);
+        });
+};
+
+export const getCollegeOptions = async (
+    setCollegeOptions: collegeOptions,
+    setDepartmentAPI: collegeOptions,
+    district: string
+) => {
+    try {
+        const response: APIResponse<{ colleges: TT[]; departments: TT[] }> =
+            await publicGateway.post(onboardingRoutes.collegeList, {
+                district: district
+            });
+
+        const response2: APIResponse<{ schools: TT[] }> =
+            await publicGateway.post(onboardingRoutes.schoolList, {
+                district: district
+            });
+
+        const colleges = response.data.response.colleges;
+        const schools = response2.data.response.schools;
+        setCollegeOptions([
+            ...colleges
+                .sort((a, b) => a.title.localeCompare(b.title))
+                .map(college => ({
+                    value: college.id,
+                    label: college.title
+                })),
+            ...schools
+                .sort((a, b) => a.title.localeCompare(b.title))
+                .map(school => ({
+                    value: school.id,
+                    label: school.title
+                }))
+        ]);
+        setDepartmentAPI(
+            response.data.response.departments.map(dept => ({
+                value: dept.id,
+                label: dept.title
+            }))
+        );
+    } catch (error: any) {
+        console.log(error);
+        //errorHandler(error.response.status, error.response.data.status);
+    }
+};
+
 
 export const getEditUserProfile = (
     setProfileDetails: (data: profileDetails) => void
