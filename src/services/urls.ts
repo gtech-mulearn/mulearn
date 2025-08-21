@@ -50,20 +50,24 @@ export const NotificationRoutes = {
     deleteAllNotification: "api/v1/notification/delete/all/"
 };
 export const learningCircleRoutes = {
+    getCreatedLearningCircles: "/api/v1/dashboard/learningcircle/list/",
     createLearningCircle: "/api/v1/dashboard/learningcircle/create/",
+    editLearningCircle: "/api/v1/dashboard/learningcircle/edit/",
+    getLearningCircleInfo: "/api/v1/dashboard/learningcircle/info/",
+    deleteLearningCircle: "/api/v1/dashboard/learningcircle/delete/${id}/",
+
     scheduleMeetup: "/api/v1/dashboard/learningcircle/meeting/create/",
     editScheduledMeetup: "/api/v1/dashboard/learningcircle/meeting/edit/",
     deleteScheduledMeetup: "/api/v1/dashboard/learningcircle/meeting/delete/",
-    getLearningCircleInfo: "/api/v1/dashboard/learningcircle/info/",
-    getCreatedLearningCircles: "/api/v1/dashboard/learningcircle/list/",
-    getMeetupInfo: "/api/v1/dashboard/learningcircle/meeting/info/",
-    submitAttendeeReport:
-        "/api/v1/dashboard/learningcircle/meeting/attendee-report/",
+
     getMeetups: "/api/v1/dashboard/learningcircle/meeting/list/",
+    getMeetupInfo: "/api/v1/dashboard/learningcircle/meeting/info/",
+    confirmRSVP: "/api/v1/dashboard/learningcircle/meeting/rsvp/",
     joinMeetup: "/api/v1/dashboard/learningcircle/meeting/join/",
+    submitAttendeeReport: "/api/v1/dashboard/learningcircle/meeting/attendee-report/",
     getLcReportInfo: "/api/v1/dashboard/learningcircle/meeting/report/",
-    confirmRSVP: "/api/v1/dashboard/learningcircle/meeting/rsvp/"
 };
+
 export const dashboardRoutes = {
     forgetPassword: "/api/v1/dashboard/user/forgot-password/",
     resetPassword: "/api/v1/dashboard/user/reset-password/${token}/",

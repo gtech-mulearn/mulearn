@@ -57,6 +57,11 @@ export const EventCard = ({
               <Calendar className={styles.icon} />
               <span>{getDateDifference(date)}</span>
             </div>
+            {ig_name && (
+              <div className={styles.igBadge}>
+                <span className={styles.badgeText}>{ig_name}</span>
+              </div>
+            )}
           </div>
           {imageUrl ? (
             <img src={imageUrl} alt={title} className={styles.image} />
