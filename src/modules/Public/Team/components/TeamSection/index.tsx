@@ -67,13 +67,15 @@ const TeamSection = ({ title, description, members, membersWithSubTitles }: Team
                       <TeamCard
                         name={member.name ?? ""}
                         designation={member.position ?? ""}
-                        image={cdnUrl(member.image ?? "")}
-                        linkedIn={member.linkedin ?? ""}
+                        image={member.image ?? ""}
+                        linkedin={member.linkedin ?? ""}
                         github={member.github ?? ""}
                         twitter={member.twitter ?? ""}
                         muid={member.muid ?? ""}
-                        leadDesignation={member.lead ?? ""}
+                        lead={member.lead ?? ""}
+                        team={member.team ?? ""} 
                       />
+
                     </motion.div>
                   );
                 })}
@@ -92,12 +94,13 @@ const TeamSection = ({ title, description, members, membersWithSubTitles }: Team
                 <TeamCard
                   name={member.name ?? ""}
                   designation={member.position ?? ""}
-                  image={cdnUrl(member.image ?? "")}
-                  linkedIn={member.linkedin ?? ""}
+                  image={member.image ?? ""}
+                  linkedin={member.linkedin ?? ""}
                   github={member.github ?? ""}
                   twitter={member.twitter ?? ""}
                   muid={member.muid ?? ""}
-                  leadDesignation={member.lead ?? ""}
+                  lead={member.lead ?? ""}
+                  team={member.team ?? ""}
                 />
               </motion.div>
             );

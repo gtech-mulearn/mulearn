@@ -618,7 +618,12 @@ const MuLearnLanding = () => {
               </button>
             </motion.div>
             <motion.div variants={fadeInUp} className={styles.joinCommunity}>
-              <img src="https://mulearn.org/assets/home/join.webp" alt="Join community" width="350px" />
+              <img
+                src={cdnUrl("/public/assets/home/join.webp")}
+                alt="Join community"
+                className={styles.community_image}
+                style={{ height: "40rem" }}
+              />
             </motion.div>
           </motion.section>
         </div>

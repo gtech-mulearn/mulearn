@@ -78,3 +78,59 @@ img {
     font-size: 10px;
     font-weight: 400;
 }
+
+.team_card__roles {
+  list-style: none;
+  padding: 0;
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.team_card__roles li {
+  background-color: #e9ecef;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  color: #333;
+}
+.team_card__roles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end; /* ✅ right-aligned */
+  gap: 6px;
+  margin-top: 8px;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+  max-height: 58px;
+  transition: max-height 0.3s ease;
+}
+
+.team_card__roles.expanded {
+  max-height: none;
+}
+
+
+.team_card__roles li {
+  background: #f1f1f1;
+  color: #333;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  cursor: default;
+}
+
+.more_button {
+  cursor: pointer;
+  background-color: #e0e0e0;
+  font-weight: 500;
+  color: #222;
+  transition: background 0.2s;
+}
+
+.more_button:hover {
+  background-color: #ccc;
+}
