@@ -244,7 +244,8 @@ export function getIgDisplayName(hashtag: string): string {
         'ux': 'UI/UX',
         'vr': 'AR/VR',
         'muvi': 'MuVi Club',
-        'pmp': 'Project Management',  // This is the key fix
+        'pmp': 'Project Management',
+        'iot': 'Internet of Things',
         'hr': 'Human Resources',
         'entrp': 'Entrepreneurship',
         'sl': 'Strategic Leadership',
@@ -275,6 +276,7 @@ export function getUserIgIdentifiers(userIGs: any[], availableIdentifiers: strin
         'vr': ['AR/VR', 'ar/vr', 'ar vr', 'arvr', 'vr'],
         'muvi': ['MuVi Club', 'muvi club', 'muvi'],
         'pmp': ['Project Management', 'Others', 'others', 'pmp'],
+        'iot': ['Internet of Things', 'iot'],
         'hr': ['Human Resources', 'human resources', 'hr'],
         'entrp': ['Entrepreneurship', 'entrepreneurship', 'entrp'],
         'sl': ['Strategic Leadership', 'strategic leadership', 'sl'],
