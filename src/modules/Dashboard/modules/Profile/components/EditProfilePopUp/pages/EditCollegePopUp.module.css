@@ -15,8 +15,6 @@
 
     .edit_profile {
         margin: 7dvh auto auto;
-        /* height: auto; */
-        max-width: 640px;
         background: white;
         border-radius: 10px;
         box-shadow: 1px 1px 20px 1px #8c8c8c47;
@@ -33,12 +31,15 @@
 
             & form {
                 display: flex;
-                flex-wrap: wrap;
+                flex-direction: column;
                 gap: 20px;
-                justify-content: space-between;
 
+                /* === Location Row (Country, State, District) === */
+               
+
+                /* === Full width inputs (College, Department, Graduation) === */
                 .input_field {
-                    width: 48%;
+                    width: 100%;
                 }
 
                 & input:focus {
@@ -52,7 +53,8 @@
                     gap: 10px;
                     margin-bottom: -8px;
                 }
-                .powerfulButtonContainer{
+
+                .powerfulButtonContainer {
                     display: flex;
                     justify-content: center;
                     margin-top: 20px;
@@ -85,34 +87,9 @@
     border-radius: 6px;
     padding: 10px;
     outline: none;
+    margin-bottom: 10px;
     width: 100%;
     margin-top: 10px;
-}
-
-.imageBox {
-    position: relative;
-
-    div {
-        color: #456ff6;
-        position: absolute;
-        top: 0;
-        display: flex;
-        align-items: center;
-        right: 5%;
-        height: 110%;
-
-        &:active {
-            transform: scale(0.9);
-        }
-    }
-}
-
-.imageBox input::file-selector-button {
-    background-color: rgb(69, 111, 246);
-    color: white;
-    border: none;
-    border-radius: 0.25rem;
-    padding: 0.25rem;
 }
 
 .label {
@@ -122,20 +99,15 @@
     text-align: left;
 }
 
-.powerfulButton:hover {
-    color: hsl(var(--primary-btn-color));
-}
-
 .powerfulButton {
     height: 50px;
 }
 
-/* @media (max-width: 1500px) {
-    .edit_profile_container {
-        left: unset;
-    }
-} */
+.powerfulButton:hover {
+    color: hsl(var(--primary-btn-color));
+}
 
+/* === Mobile adjustments === */
 @media (max-width: 768px) {
     .edit_profile_container {
         z-index: 49;
@@ -146,6 +118,9 @@
 
             .edit_profile_contents {
                 & form {
+                    .location-row {
+                        grid-template-columns: 1fr; /* stack on mobile */
+                    }
                     .input_field {
                         width: 100%;
                     }

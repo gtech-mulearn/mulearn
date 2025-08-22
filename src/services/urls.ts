@@ -140,6 +140,7 @@ export const dashboardRoutes = {
     getUserPreferences: "/api/v1/dashboard/user/preferences",
     updateUserPreferences: "/api/v1/dashboard/user/preferences",
     getUserLevelFeed: "/api/v1/dashboard/profile/user-level-feed/",
+    changeUserCollege: "/api/v1/dashboard/college/change-college",
 
     zonalStudentDetails: "/api/v1/dashboard/zonal/student-details/",
     zonalStudentData: "/api/v1/dashboard/zonal/student-details/csv/",
