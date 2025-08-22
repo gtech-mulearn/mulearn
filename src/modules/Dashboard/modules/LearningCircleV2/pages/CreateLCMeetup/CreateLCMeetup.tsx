@@ -45,6 +45,8 @@ export default function CreateLCMeetup() {
         is_proof_required: true,
         proof_description: "",
         location: "",
+        meet_link: "",
+        mode: "online", // 'online' or 'offline'
         date: date(),
         duration: 3
     };
@@ -94,6 +96,64 @@ export default function CreateLCMeetup() {
                 {formik => (
                     <Form className={styles.form}>
                         <div className={styles.formGroup}>
+                            <label style={{ fontWeight: 500, marginBottom: 8, display: 'block' }}>Meeting Type</label>
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    background: '#f5f7fa',
+                                    borderRadius: 10,
+                                    border: '1.5px solid #e5e7eb',
+                                    padding: 4,
+                                    width: 'fit-content',
+                                    gap: 0,
+                                    marginBottom: 8
+                                }}
+                            >
+                                <button
+                                    type="button"
+                                    onClick={() => formik.setFieldValue('mode', 'offline')}
+                                    style={{
+                                        background: formik.values.mode === 'offline' ? '#3887fe' : 'transparent',
+                                        color: formik.values.mode === 'offline' ? '#fff' : '#222',
+                                        border: 'none',
+                                        borderRadius: 8,
+                                        padding: '10px 48px',
+                                        fontWeight: 500,
+                                        fontSize: 16,
+                                        cursor: 'pointer',
+                                        transition: 'background 0.2s',
+                                        boxShadow: formik.values.mode === 'offline' ? '0 2px 8px rgba(56,135,254,0.08)' : 'none',
+                                        outline: formik.values.mode === 'offline' ? '2px solid #2563eb' : 'none',
+                                    }}
+                                    tabIndex={0}
+                                    aria-pressed={formik.values.mode === 'offline'}
+                                >
+                                    Offline
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => formik.setFieldValue('mode', 'online')}
+                                    style={{
+                                        background: formik.values.mode === 'online' ? '#3887fe' : 'transparent',
+                                        color: formik.values.mode === 'online' ? '#fff' : '#222',
+                                        border: 'none',
+                                        borderRadius: 8,
+                                        padding: '10px 48px',
+                                        fontWeight: 500,
+                                        fontSize: 16,
+                                        cursor: 'pointer',
+                                        transition: 'background 0.2s',
+                                        boxShadow: formik.values.mode === 'online' ? '0 2px 8px rgba(56,135,254,0.08)' : 'none',
+                                        outline: formik.values.mode === 'online' ? '2px solid #2563eb' : 'none',
+                                    }}
+                                    tabIndex={0}
+                                    aria-pressed={formik.values.mode === 'online'}
+                                >
+                                    Online
+                                </button>
+                            </div>
+                        </div>
+                        <div className={styles.formGroup}>
                             <SimpleInput
                                 name="title"
                                 required
@@ -138,57 +198,53 @@ export default function CreateLCMeetup() {
                                 ></textarea>
                             </div>
                         ) : null}
-                        <div className={styles.formGroup}>
-                            <label htmlFor="location">
-                                Location of the meetup{" "}
-                            </label>
-                            <div className={styles.search}>
-                                <InputGroup
-                                    style={{
-                                        position: "relative"
-                                    }}
-                                    flex="1"
-                                >
-                                    <BiSearch
-                                        style={{
-                                            position: "absolute",
-                                            left: "10px",
-                                            top: "50%",
-                                            transform: "translateY(-50%)",
-                                            zIndex: 10
+                        {formik.values.mode === 'offline' && (
+                            <div className={styles.formGroup}>
+                                <label htmlFor="location">
+                                    Location of the meetup
+                                </label>
+                                <div className={styles.search}>
+                                    <InputGroup
+                                        style={{ position: "relative" }}
+                                        flex="1"
+                                    >
+                                        <BiSearch
+                                            style={{
+                                                position: "absolute",
+                                                left: "10px",
+                                                top: "50%",
+                                                transform: "translateY(-50%)",
+                                                zIndex: 10
+                                            }}
+                                        />
+                                        <Input
+                                            placeholder="Meetup Location"
+                                            name="location"
+                                            id="location"
+                                            value={formik.values.location}
+                                            onChange={e => {
+                                                formik.handleChange(e);
+                                                setSelectedLocation(null);
+                                            }}
+                                            style={{ paddingLeft: "30px" }}
+                                        />
+                                    </InputGroup>
+                                    <PowerfulButton
+                                        isLoading={locationLoading}
+                                        style={{ padding: 10 }}
+                                        onClick={e => {
+                                            e.preventDefault();
+                                            handleLocationSearch(
+                                                formik.values.location
+                                            );
                                         }}
-                                    />
-                                    <Input
-                                        placeholder="Meetup Location"
-                                        name="location"
-                                        id="location"
-                                        value={formik.values.location}
-                                        onChange={e => {
-                                            formik.handleChange(e);
-                                            setSelectedLocation(null);
-                                        }}
-                                        style={{
-                                            paddingLeft: "30px"
-                                        }}
-                                    />
-                                </InputGroup>
-                                <PowerfulButton
-                                    isLoading={locationLoading}
-                                    style={{
-                                        padding: 10
-                                    }}
-                                    onClick={e => {
-                                        e.preventDefault();
-                                        handleLocationSearch(
-                                            formik.values.location
-                                        );
-                                    }}
-                                >
-                                    <BiSearch />
-                                </PowerfulButton>
+                                    >
+                                        <BiSearch />
+                                    </PowerfulButton>
+                                </div>
                             </div>
-                        </div>
-                        {locationSearchResults.length > 0 && (
+                        )}
+                        {formik.values.mode === 'offline' && locationSearchResults.length > 0 && (
                             <div className={styles.searchResults}>
                                 {locationSearchResults.map((result, index) => (
                                     <div
@@ -217,6 +273,18 @@ export default function CreateLCMeetup() {
                                         </span>
                                     </div>
                                 ))}
+                            </div>
+                        )}
+                        {formik.values.mode === 'online' && (
+                            <div className={styles.formGroup}>
+                                <label htmlFor="meet_link">Meet Link</label>
+                                <Input
+                                    placeholder="Online Meeting Link"
+                                    name="meet_link"
+                                    id="meet_link"
+                                    value={formik.values.meet_link}
+                                    onChange={formik.handleChange}
+                                />
                             </div>
                         )}
                         <div className={styles.formGroup}>

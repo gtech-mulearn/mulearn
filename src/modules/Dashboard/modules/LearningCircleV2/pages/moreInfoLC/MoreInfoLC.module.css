@@ -20,130 +20,109 @@
     flex-direction: column;
     gap: 10px;
     width: 100%;
-
-    .backLink {
-        display: flex;
-        align-items: center;
-        background-color: white;
-        padding: 0.5rem 1rem;
-        width: fit-content;
-        color: #5d5d5d;
-        text-decoration: none;
-        cursor: pointer;
-        border-radius: 10px;
-        transition: all 0.2s ease;
-        
-        &:hover {
-            background-color: #f8fafc;
-            transform: translateX(-2px);
-        }
-    }
-
-    .card {
-        background: white;
-        border-radius: 0.5rem;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-        margin-bottom: 1rem;
-        max-width: 1400px;
-        margin-left: auto;
-        margin-right: auto;
-        width: 100%;
-
-        .cardHeaderContent {
-            padding: 8px 24px;
-            display: grid;
-            
-            .headerSection {
-                display: flex;
-                justify-content: space-between;
-                align-items: flex-start;
-                flex: 1;
-
-                .title {
-                    text-align: left;
-                    font-size: 1.5rem;
-                    font-weight: 600;
-                    color: #3b82f6;
-                    margin: 0;
-                }
-
-                .locationWrapper {
-                    display: flex;
-                    align-items: center;
-                    text-align: left;
-                    color: #4b5563;
-                    margin-top: 0.5rem;
-
-                    .iconWrapper {
-                        display: flex;
-                        align-items: center;
-                        gap: 0.5rem;
-                    }
-                }
-                .moreButton {
-                    background: none;
-                    border: none;
-                    padding: 0.5rem;
-                    cursor: pointer;
-                    color: #6b7280;
-                }
-            }
-        }
-        .cardContent {
-            display: grid;
-            padding: 30px;
-            grid-template-columns: 1fr 1fr;
-
-            .descriptionSection {
-                .sectionTitle {
-                    font-size: 1.125rem;
-                    font-weight: 600;
-                    margin-bottom: 0.5rem;
-                    text-align: left;
-                    color: #000;
-                }
-
-                .description {
-                    color: #4b5563;
-                    line-height: 1.5;
-                    margin-bottom: 1.5rem;
-                    width: 100%;
-                    text-align: left;
-                }
-            }
-
-            .buttonWrapper {
-                display: flex;
-                justify-content: start;
-
-                &:nth-child(4) {
-                    justify-content: end;
-                }
-            }
-
-            .dateTime {
-                margin-bottom: 1.5rem;
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                align-items: start;
-                gap: 10px;
-
-                .date {
-                    font-size: 1.5rem;
-                    font-weight: 600;
-                    margin-bottom: 0.25rem;
-                }
-
-                .time {
-                    color: #4b5563;
-                    display: flex;
-                    align-items: center;
-                    gap: 0.5rem;
-                }
-            }
-        }
-    }
+}
+.container .backLink {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: 0.5rem 1rem;
+    width: fit-content;
+    color: #5d5d5d;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+.container .backLink:hover {
+    background-color: #f8fafc;
+    transform: translateX(-2px);
+}
+.container .card {
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1rem;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+.container .card .cardHeaderContent {
+    padding: 8px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.container .card .cardHeaderContent .title {
+    text-align: left;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #3b82f6;
+    margin: 0;
+}
+.container .card .cardHeaderContent .locationWrapper {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    color: #4b5563;
+    margin-top: 0.5rem;
+}
+.container .card .cardHeaderContent .locationWrapper .iconWrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.container .card .cardHeaderContent .moreButton {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: #6b7280;
+}
+.container .card .cardContent {
+    display: grid;
+    padding: 30px;
+    grid-template-columns: 1fr 1fr;
+}
+.container .card .cardContent .descriptionSection .sectionTitle {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    text-align: left;
+    color: #000;
+}
+.container .card .cardContent .descriptionSection .description {
+    color: #4b5563;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    text-align: left;
+}
+.container .card .cardContent .buttonWrapper {
+    display: flex;
+    justify-content: start;
+}
+.container .card .cardContent .buttonWrapper:nth-child(4) {
+    justify-content: end;
+}
+.container .card .cardContent .dateTime {
+    margin-bottom: 1.5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+}
+.container .card .cardContent .dateTime .date {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+.container .card .cardContent .dateTime .time {
+    color: #4b5563;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 /* Loading and Error States */
@@ -154,21 +133,19 @@
     justify-content: center;
     min-height: 400px;
     gap: 20px;
-    
-    .loadingSpinner {
-        width: 40px;
-        height: 40px;
-        border: 4px solid #e5e7eb;
-        border-top: 4px solid #3b82f6;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-    }
-    
-    p {
-        color: #64748b;
-        font-size: 1.1rem;
-        margin: 0;
-    }
+}
+.loadingContainer .loadingSpinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #e5e7eb;
+    border-top: 4px solid #3b82f6;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+.loadingContainer p {
+    color: #64748b;
+    font-size: 1.1rem;
+    margin: 0;
 }
 
 .errorContainer {
@@ -179,19 +156,17 @@
     min-height: 400px;
     gap: 20px;
     text-align: center;
-    
-    h2 {
-        color: #ef4444;
-        font-size: 1.5rem;
-        margin: 0;
-    }
-    
-    p {
-        color: #64748b;
-        font-size: 1.1rem;
-        margin: 0;
-        max-width: 500px;
-    }
+}
+.errorContainer h2 {
+    color: #ef4444;
+    font-size: 1.5rem;
+    margin: 0;
+}
+.errorContainer p {
+    color: #64748b;
+    font-size: 1.1rem;
+    margin: 0;
+    max-width: 500px;
 }
 
 .backButton {
@@ -204,10 +179,9 @@
     font-size: 1rem;
     cursor: pointer;
     transition: background 0.2s;
-    
-    &:hover {
-        background: #2563eb;
-    }
+}
+.backButton:hover {
+    background: #2563eb;
 }
 
 /* Action Buttons */
@@ -227,24 +201,20 @@
     cursor: pointer;
     font-size: 22px;
     transition: all 0.2s ease;
-    
-    &.edit {
-        color: #fbbf24;
-        
-        &:hover {
-            color: #f59e0b;
-            transform: scale(1.1);
-        }
-    }
-    
-    &.delete {
-        color: #ef4444;
-        
-        &:hover {
-            color: #dc2626;
-            transform: scale(1.1);
-        }
-    }
+}
+.actionButton.edit {
+    color: #fbbf24;
+}
+.actionButton.edit:hover {
+    color: #f59e0b;
+    transform: scale(1.1);
+}
+.actionButton.delete {
+    color: #ef4444;
+}
+.actionButton.delete:hover {
+    color: #dc2626;
+    transform: scale(1.1);
 }
 
 .primaryButton {
@@ -262,12 +232,11 @@
     align-items: center;
     justify-content: center;
     white-space: nowrap;
-    
-    &:hover {
-        background: #2563eb;
-        transform: translateY(-1px);
-        box-shadow: 0 2px 4px rgba(0,0,0,0.08);
-    }
+}
+.primaryButton:hover {
+    background: #2563eb;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
 }
 
 /* Meeting Cards */
@@ -286,11 +255,10 @@
     flex-direction: column;
     gap: 10px;
     transition: all 0.2s ease;
-    
-    &:hover {
-        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        transform: translateY(-2px);
-    }
+}
+.meetingCard:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
 }
 
 .meetingTitle {
@@ -333,11 +301,10 @@
     box-shadow: 0 1px 4px rgba(37,99,235,0.08);
     gap: 8px;
     transition: all 0.2s ease;
-    
-    &:hover {
-        background: #1d4ed8;
-        transform: translateY(-1px);
-    }
+}
+.joinButton:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
 }
 
 .rsvpButton {
@@ -351,11 +318,10 @@
     cursor: pointer;
     box-shadow: 0 1px 2px rgba(0,0,0,0.04);
     transition: all 0.2s ease;
-    
-    &:hover {
-        background: #1d4ed8;
-        transform: translateY(-1px);
-    }
+}
+.rsvpButton:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
 }
 
 /* Modal Styles */
@@ -391,12 +357,11 @@
     font-size: 1rem;
     color: #000;
     transition: border-color 0.2s ease;
-    
-    &:focus {
-        outline: none;
-        border-color: #3b82f6;
-        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-    }
+}
+.formInput:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 .formTextarea {
@@ -409,12 +374,11 @@
     color: #000;
     resize: vertical;
     transition: border-color 0.2s ease;
-    
-    &:focus {
-        outline: none;
-        border-color: #3b82f6;
-        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-    }
+}
+.formTextarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 .submitButton {
@@ -428,15 +392,13 @@
     cursor: pointer;
     margin-top: 8px;
     transition: background 0.2s;
-    
-    &:hover:not(:disabled) {
-        background: #2563eb;
-    }
-    
-    &:disabled {
-        background: #a5b4fc;
-        cursor: not-allowed;
-    }
+}
+.submitButton:hover:not(:disabled) {
+    background: #2563eb;
+}
+.submitButton:disabled {
+    background: #a5b4fc;
+    cursor: not-allowed;
 }
 
 .errorMessage {
@@ -454,38 +416,28 @@
 @media screen and (max-width: 768px) {
     .container {
         width: 100%;
-        .card {
-            .cardContent {
-                grid-template-columns: 1fr;
-                padding: 20px;
-            }
-            .cardHeaderContent {
-                padding: 1rem;
-                .headerSection {
-                    .title {
-                        font-size: 1.25rem;
-                    }
-                }
-            }
-        }
+    }
+    .container .card .cardContent {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+    .container .card .cardHeaderContent {
+        padding: 1rem;
+    }
+    .container .card .cardHeaderContent .headerSection .title {
+        font-size: 1.25rem;
     }
 }
 
 @media screen and (max-width: 480px) {
-    .container {
-        .card {
-            .cardContent {
-                padding: 15px;
-            }
-            .cardHeaderContent {
-                padding: 0.75rem;
-                .headerSection {
-                    .title {
-                        font-size: 1.1rem;
-                    }
-                }
-            }
-        }
+    .container .card .cardContent {
+        padding: 15px;
+    }
+    .container .card .cardHeaderContent {
+        padding: 0.75rem;
+    }
+    .container .card .cardHeaderContent .headerSection .title {
+        font-size: 1.1rem;
     }
 }
 
@@ -500,8 +452,8 @@
 
 /* Mobile breakpoint - 1 card per row (multiple rows) */
 @media (max-width: 768px) {
-  .responsiveDetailsGrid {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
+    .responsiveDetailsGrid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
 }

@@ -79,6 +79,9 @@ interface MeetingForm {
     meet_time: string;
     duration: number;
     meet_link: string;
+    meeting_type: 'Online' | 'Offline';
+    platform: string;
+    location: string;
 }
 
 interface EditForm {
@@ -133,7 +136,10 @@ export default function MoreInfoLC() {
         description: '',
         meet_time: '',
         duration: 1,
-        meet_link: ''
+        meet_link: '',
+        meeting_type: 'Offline',
+        platform: '',
+        location: ''
     });
     
     const [editForm, setEditForm] = useState<EditForm>({
@@ -274,7 +280,16 @@ export default function MoreInfoLC() {
                 };
                 setMeetings(prev => [...prev, newMeeting]);
                 // Reset form
-                setMeetingForm({ title: '', description: '', meet_time: '', duration: 1, meet_link: '' });
+                setMeetingForm({
+                    title: '',
+                    description: '',
+                    meet_time: '',
+                    duration: 1,
+                    meet_link: '',
+                    meeting_type: 'Offline',
+                    platform: '',
+                    location: ''
+                });
                 toast.success("Meeting created successfully!");
             }
         } catch (error) {
@@ -484,8 +499,7 @@ export default function MoreInfoLC() {
                                     marginTop: 0,
                                     boxShadow: '0 2px 8px rgba(102, 126, 234, 0.3)'
                                 }}>
-                                    {/* Show IG name (label) instead of ID */}
-                                    {igOptions.find(opt => opt.value === circle.ig)?.label || circle.ig}
+                                    {circle.ig}
                                 </span>
                             )}
                             <h1 className={styles.title} style={{
@@ -787,52 +801,45 @@ export default function MoreInfoLC() {
             </div>
             
             {/* Meetings Section */}
-            {meetings.length > 0 && (
-                <div className={styles.card} style={{ marginTop: 0 }}>
-                    <div className={styles.cardHeaderContent} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', alignSelf: 'center' }}>
-                        <h2 className={styles.sectionTitle} style={{marginBottom: 0, textAlign: 'center'}}>Meetings</h2>
-                        <button
-                            className={styles.primaryButton}
-                            onClick={() => setShowCreateMeetingModal(true)}
-                            style={{ padding: '10px 32px', minWidth: '180px', marginLeft: '20px', marginTop: '80px' }}
-                        >
-                            <FaPlus style={{ marginRight: 8 }} />
-                            Create Meeting
-                        </button>
-                    </div>
-                    
+            <div className={styles.card} style={{ marginTop: 0 }}>
+                <div className={styles.cardHeaderContent} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', alignSelf: 'center' }}>
+                    <h2 className={styles.sectionTitle} style={{marginBottom: 0, textAlign: 'center'}}>Meetings</h2>
+                    <button
+                        className={styles.primaryButton}
+                        onClick={() => setShowCreateMeetingModal(true)}
+                        style={{ padding: '10px 32px', minWidth: '180px', marginLeft: '20px', marginTop: '80px' }}
+                    >
+                        <FaPlus style={{ marginRight: 8 }} />
+                        Create Meeting
+                    </button>
+                </div>
+                {meetings.length > 0 ? (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 24, width: '100%', alignItems: 'flex-start', marginLeft: 32 }}>
                         {meetings.map((meet, idx) => (
                             <div key={meet.id || idx} className={styles.meetingCard}>
                                 <div className={styles.meetingTitle}>
                                     {meet.title || 'Meeting'}
                                 </div>
-                                
                                 {meet.description && (
                                     <div className={styles.meetingDescription}>
                                         {meet.description}
                                     </div>
                                 )}
-                                
                                 <div className={styles.meetingInfo}>
                                     <FaCalendarAlt /> 
                                     {meet.meet_time ? new Date(meet.meet_time).toLocaleString() : ''}
                                 </div>
-                                
                                 <div className={styles.meetingInfo}>
                                     <FaMapMarkerAlt /> 
                                     {meet.meet_place || '—'}
                                 </div>
-                                
                                 <div style={{ color: '#334155', fontSize: '1.05rem', marginTop: 6 }}>
                                     <b>Mode:</b> {meet.mode ? (meet.mode.charAt(0).toUpperCase() + meet.mode.slice(1)) : '—'}
                                     <span style={{ marginLeft: 18 }}><b>RSVP:</b> {meet.is_rsvp ? 'Yes' : 'No'}</span>
                                 </div>
-                                
                                 <div className={styles.meetingInfo} style={{ marginTop: 2 }}>
                                     <FaUsers /> <b>Attendees:</b> {meet.attendees_count ?? 0}
                                 </div>
-                                
                                 <div className={styles.meetingActions}>
                                     {meet.meet_link && (
                                         <a
@@ -845,7 +852,6 @@ export default function MoreInfoLC() {
                                             <span>Join Meeting</span>
                                         </a>
                                     )}
-                                    
                                     {!isMember && !meet.is_rsvp && (
                                         <button
                                             className={styles.rsvpButton}
@@ -858,8 +864,8 @@ export default function MoreInfoLC() {
                             </div>
                         ))}
                     </div>
-                </div>
-            )}
+                ) : null}
+            </div>
             
             {meetings.length === 0 && (
                 <div style={{ 
@@ -1018,6 +1024,68 @@ export default function MoreInfoLC() {
                 
                 <form onSubmit={handleCreateMeeting} className={styles.modalContent}>
                     <div className={styles.formGroup}>
+                        <label className={styles.formLabel} style={{ fontWeight: 600, color: '#3887fe', marginBottom: 10 }}>Meeting Type</label>
+                        <div
+                            style={{
+                                display: 'flex',
+                                background: '#f5f7fa',
+                                borderRadius: 14,
+                                border: '1.5px solid #e5e7eb',
+                                padding: 6,
+                                width: '100%',
+                                gap: 0,
+                                marginBottom: 18,
+                                minWidth: 0
+                            }}
+                        >
+                            <button
+                                type="button"
+                                onClick={() => setMeetingForm(f => ({ ...f, meeting_type: 'Offline', meet_link: '', platform: '', location: '' }))}
+                                style={{
+                                    background: meetingForm.meeting_type === 'Offline' ? '#3887fe' : 'transparent',
+                                    color: meetingForm.meeting_type === 'Offline' ? '#fff' : '#222',
+                                    border: 'none',
+                                    borderRadius: 10,
+                                    padding: '10px 0',
+                                    fontWeight: 600,
+                                    fontSize: 16,
+                                    cursor: 'pointer',
+                                    transition: 'background 0.2s',
+                                    boxShadow: meetingForm.meeting_type === 'Offline' ? '0 2px 8px rgba(56,135,254,0.08)' : 'none',
+                                    outline: 'none',
+                                    flex: 1,
+                                }}
+                                tabIndex={0}
+                                aria-pressed={meetingForm.meeting_type === 'Offline'}
+                            >
+                                Offline
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => setMeetingForm(f => ({ ...f, meeting_type: 'Online', meet_link: '', platform: '', location: '' }))}
+                                style={{
+                                    background: meetingForm.meeting_type === 'Online' ? '#3887fe' : 'transparent',
+                                    color: meetingForm.meeting_type === 'Online' ? '#fff' : '#222',
+                                    border: 'none',
+                                    borderRadius: 10,
+                                    padding: '10px 0',
+                                    fontWeight: 600,
+                                    fontSize: 16,
+                                    cursor: 'pointer',
+                                    transition: 'background 0.2s',
+                                    boxShadow: meetingForm.meeting_type === 'Online' ? '0 2px 8px rgba(56,135,254,0.08)' : 'none',
+                                    outline: 'none',
+                                    flex: 1,
+                                }}
+                                tabIndex={0}
+                                aria-pressed={meetingForm.meeting_type === 'Online'}
+                            >
+                                Online
+                            </button>
+                        </div>
+                    </div>
+
+                    <div className={styles.formGroup}>
                         <label className={styles.formLabel} htmlFor="meeting-title">
                             Title <span style={{ color: 'red' }}>*</span>
                         </label>
@@ -1031,11 +1099,11 @@ export default function MoreInfoLC() {
                             className={styles.formInput}
                         />
                     </div>
-                    
+
                     <div className={styles.formGroup}>
                         <label className={styles.formLabel} htmlFor="meeting-description">
                             Description <span style={{ color: 'red' }}>*</span>
-                    </label>
+                        </label>
                         <textarea
                             id="meeting-description"
                             required
@@ -1045,67 +1113,55 @@ export default function MoreInfoLC() {
                             className={styles.formTextarea}
                         />
                     </div>
-                    
-                    <div style={{ display: 'flex', gap: 16 }}>
-                        <div style={{ flex: 1 }}>
+
+                    {meetingForm.meeting_type === 'Online' && (
+                        <>
                             <div className={styles.formGroup}>
-                                <label className={styles.formLabel} htmlFor="meeting-datetime">
-                                Date & Time <span style={{ color: 'red' }}>*</span>
-                    </label>
-                        <input
-                                id="meeting-datetime"
-                            type="datetime-local"
-                            required
-                            value={meetingForm.meet_time}
-                            onChange={e => setMeetingForm(f => ({ ...f, meet_time: e.target.value }))}
+                                <label className={styles.formLabel} htmlFor="meeting-platform">Meeting Platform</label>
+                                <input
+                                    id="meeting-platform"
+                                    type="text"
+                                    placeholder="Enter meeting platform"
+                                    value={meetingForm.platform || ''}
+                                    onChange={e => setMeetingForm(f => ({ ...f, platform: e.target.value }))}
                                     className={styles.formInput}
-                            />
-                        </div>
-                        </div>
-                        
-                        <div style={{ width: 120 }}>
+                                />
+                            </div>
                             <div className={styles.formGroup}>
-                                <label className={styles.formLabel} htmlFor="meeting-duration">
-                                Duration (hrs) <span style={{ color: 'red' }}>*</span>
-                    </label>
-                        <input
-                                id="meeting-duration"
-                            type="number"
-                            min={1}
-                            required
-                            value={meetingForm.duration}
-                            onChange={e => setMeetingForm(f => ({ ...f, duration: Number(e.target.value) }))}
+                                <label className={styles.formLabel} htmlFor="meeting-link">Meeting Link <span style={{ color: 'red' }}>*</span></label>
+                                <input
+                                    id="meeting-link"
+                                    type="url"
+                                    required={meetingForm.meeting_type === 'Online'}
+                                    placeholder="Enter meeting link"
+                                    value={meetingForm.meet_link}
+                                    onChange={e => setMeetingForm(f => ({ ...f, meet_link: e.target.value }))}
                                     className={styles.formInput}
+                                />
+                            </div>
+                        </>
+                    )}
+                    {meetingForm.meeting_type === 'Offline' && (
+                        <div className={styles.formGroup}>
+                            <label className={styles.formLabel} htmlFor="meeting-location">Location <span style={{ color: 'red' }}>*</span></label>
+                            <input
+                                id="meeting-location"
+                                type="text"
+                                required={meetingForm.meeting_type === 'Offline'}
+                                placeholder="Enter location"
+                                value={meetingForm.location}
+                                onChange={e => setMeetingForm(f => ({ ...f, location: e.target.value }))}
+                                className={styles.formInput}
                             />
-                        </div>
-                    </div>
-                    </div>
-                    
-                    <div className={styles.formGroup}>
-                        <label className={styles.formLabel} htmlFor="meeting-link">
-                            Meeting Link <span style={{ color: 'red' }}>*</span>
-                    </label>
-                        <input
-                            id="meeting-link"
-                            type="url"
-                            required
-                            placeholder="https://meet.example.com/..."
-                            value={meetingForm.meet_link}
-                            onChange={e => setMeetingForm(f => ({ ...f, meet_link: e.target.value }))}
-                            className={styles.formInput}
-                        />
-                    </div>
-                    
-                    {createError && (
-                        <div className={styles.errorMessage}>
-                            {createError}
                         </div>
                     )}
-                    
+
+
                     <button
                         type="submit"
+                        className={styles.primaryButton}
+                        style={{ width: '100%', marginTop: 16 }}
                         disabled={creatingMeeting}
-                        className={styles.submitButton}
                     >
                         {creatingMeeting ? 'Creating...' : 'Create Meeting'}
                     </button>

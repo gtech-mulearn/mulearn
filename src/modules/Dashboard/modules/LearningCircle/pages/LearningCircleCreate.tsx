@@ -63,9 +63,9 @@ const LearningCircleCreate = (props: Props) => {
                             onSubmit={(values, { resetForm }) => {
                                 createCircle(
                                     setId,
-                                    values.circle_name,
                                     values.interest_group,
-                                    navigate
+                                    navigate,
+                                    values.circle_name
                                 );
                                 resetForm();
                             }}
