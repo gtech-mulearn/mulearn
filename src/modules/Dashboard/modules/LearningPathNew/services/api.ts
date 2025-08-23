@@ -11,6 +11,7 @@ interface AxiosResponse<T> {
 }
 
 export interface Task {
+    id: string; // Added 'id' property to Task interface
     level: any;
     title: string;
     task_name: string;
@@ -374,5 +375,32 @@ export async function getBecomeExpertTasks(userIGs: any[], selectedIgId?: string
     } catch (error) {
         console.error("Error fetching become expert tasks:", error);
         throw error as ApiError;
+    }
+}
+
+export async function getEventTasks(): Promise<Level[]> {
+    try {
+        const response = await getUserTasks();
+
+        const eventLevels = response.response.map(level => ({
+            ...level,
+            tasks: level.tasks.filter(task => {
+                const hashtags = [
+                    "#cl-sp-webdev",
+                    "#cl-sp-comicstrip",
+                    "#cl-sp-hardware",
+                    "#cl-sp-earthsc",
+                    "#cl-sp-gamedev",
+                    "#cl-sp-missiondesign",
+                    "#cl-sp-education"
+                ];
+                return hashtags.includes(task.hashtag);
+            })
+        })).filter(level => level.tasks.length > 0);
+
+        return eventLevels;
+    } catch (error) {
+        console.error('getEventTasks: Error fetching event tasks:', error);
+        throw error;
     }
 }
