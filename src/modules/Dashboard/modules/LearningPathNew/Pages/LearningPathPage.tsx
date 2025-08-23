@@ -6,7 +6,7 @@ import IGSelector from "../../InterestGroups/components/IGSelection/IGSelector";
 import { getUserLog, getUserProfile } from "../../Profile/services/api";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { useUserStore } from "/src/ZustandProvider";
-import { ApiResponse, Task, Level, getUserTasks, getUserIgTasks, getStartLearningTasks, getBecomeExpertTasks, getIgDisplayName } from "../services/api";
+import { ApiResponse, Task, Level, getUserTasks, getUserIgTasks, getStartLearningTasks, getBecomeExpertTasks, getIgDisplayName, getEventTasks } from "../services/api";
 import ConnectDiscord from "../../ConnectDiscord/pages/ConnectDiscord";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
@@ -152,6 +152,7 @@ export const OffCanvas: React.FC<OffCanvasProps> = ({ isOpen, onClose, data }) =
             </div>
 
             {/* Resources */}
+          
             {data.resources && data.resources.length > 0 && (
               <div className={styles.offCanvasSection}>
                 <h3 className={styles.offCanvasSectionTitle}>Resources</h3>
@@ -245,11 +246,16 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onClickCTA, custom }) 
         <div className={styles.cardDesc} style={custom ? { textAlign: "left" } : {}}>
           {task.task_description ? stripMarkdown(decodeUnicodeFromStorage(task.task_description)).slice(0, 40) + "..." : `Earn ${task.karma} Karma Points`}
         </div>
-        <div className={styles.cardIg} style={custom ? { textAlign: "left" } : {}}>
-          <strong>IG:</strong> {task.ig || getIgDisplayName(task.hashtag)}
+        <div className={styles.cardIg} style={{ fontSize: "14px" }}>
+          <strong>Interest Group:</strong> {task.ig || getIgDisplayName(task.hashtag)}
         </div>
+        {task.karma && (
+          <div className={styles.cardKarma} style={{ fontSize: "14px" }}>
+            <strong>Karma:</strong> {task.karma}
+          </div>
+        )}
         {task.hashtag && (
-          <div className={styles.cardHashtag} style={custom ? { textAlign: "left" } : {}}>
+          <div className={styles.cardHashtag} style={{ fontSize: "14px" }}>
             <strong>Hashtag:</strong>{" "}
             <span
               className={styles.skillPill}
@@ -262,17 +268,6 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onClickCTA, custom }) 
             </span>
           </div>
         )}
-        <div className={styles.cardSkills}>
-          <strong>Skills:</strong>{" "}
-          <span
-            className={styles.skillPill}
-            style={{
-              backgroundColor: "#EEF2FF",
-            }}
-          >
-            Skill Development
-          </span>
-        </div>
       </div>
       <button className={styles.viewButton} onClick={(e) => {
         e.stopPropagation();
@@ -286,9 +281,10 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onClickCTA, custom }) 
 
 const LearningPathPage: React.FC = () => {
   const { userProfile, userInfo, setUserProfile } = useUserStore();
-  const [activeTab, setActiveTab] = useState<"startLearning" | "becomeExpert">("startLearning");
+  const [activeTab, setActiveTab] = useState<"startLearning" | "becomeExpert" | "event">("startLearning");
   const [basicLevelData, setBasicLevelData] = useState<Level[] | null>(null);
   const [intermediateLevelData, setIntermediateLevelData] = useState<Level[] | null>(null);
+  const [eventData, setEventData] = useState<Level[] | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const tabRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({
@@ -414,24 +410,25 @@ const LearningPathPage: React.FC = () => {
     }
   }, [activeTab]);
 
-  const handleOpenOffCanvas = (data: Task, levelNum?: number) => {
+  const handleOpenOffCanvas = (task: Task, levelNum?: number) => {
     const isLocked = levelNum ? levelNum > unlockedLevel : false;
 
     // Transform task data for OffCanvas component
     const formattedData = {
-      title: data.task_name || data.title,
-      brief: data.task_description ? decodeUnicodeFromStorage(data.task_description) : `Complete the ${data.task_name || data.title} task and share your progress with ${data.hashtag} to earn ${data.karma} Karma Points.`,
-      ig: data.ig || getIgDisplayName(data.hashtag),
+      title: task.task_name || task.title,
+      brief: task.task_description ? decodeUnicodeFromStorage(task.task_description) : `Complete the ${task.task_name || task.title} task and share your progress with ${task.hashtag} to earn ${task.karma} Karma Points.`,
+      ig: task.ig || getIgDisplayName(task.hashtag),
       skills: ["Skill Development"],
       publishedBy: "µLearn Foundation",
       prerequisites: ["Basic knowledge"],
-      resources: data.discord_link ? [data.discord_link] : [],
-      hashtag: data.hashtag,
-      discord_link: channelmap[data.ig as keyof typeof channelmap] || channelmap["taskdrop-box"] || "https://discord.com/channels/771670169691881483/",
-      completed: data.completed,
-      karma: data.karma,
+      resources: task.discord_link ? [task.discord_link] : [],
+      hashtag: task.hashtag,
+      discord_link: channelmap[task.ig as keyof typeof channelmap] || channelmap["taskdrop-box"] || "https://discord.com/channels/771670169691881483/" || activeTab === "event" ? "https://discord.com/channels/771670169691881483/1288528799079596082" : "",
+      completed: task.completed,
+      karma: task.karma,
       locked: isLocked,
-      level: levelNum
+      level: levelNum,
+      // submissionLink: activeTab === "event" ? "https://discord.com/channels/771670169691881483/1288528799079596082" : task.discord_link, 
     };
 
     setSelectedData(formattedData);
@@ -442,6 +439,20 @@ const LearningPathPage: React.FC = () => {
     setOffCanvasOpen(false);
     setSelectedData(null);
   };
+
+  useEffect(() => {
+    if (activeTab === "event") {
+      const fetchEventTasks = async () => {
+        try {
+          const eventTasks = await getEventTasks();
+          setEventData(eventTasks);
+        } catch (error) {
+          console.error("Error fetching event tasks:", error);
+        }
+      };
+      fetchEventTasks();
+    }
+  }, [activeTab]);
 
   if (basicLevelData === null && intermediateLevelData === null) {
     return <MuLoader />;
@@ -491,6 +502,13 @@ const LearningPathPage: React.FC = () => {
               onClick={() => setActiveTab("becomeExpert")}
             >
               Become Expert
+            </button>
+            <button
+              className={`${styles.topBarButton} ${activeTab === "event" ? styles.activeTab : ""
+                }`}
+              onClick={() => setActiveTab("event")}
+            >
+              Event
             </button>
           </div>
         ) : (
@@ -635,6 +653,21 @@ const LearningPathPage: React.FC = () => {
                 );
               });
             })()
+          )}
+
+          {activeTab === "event" && (
+            <div className={styles.eventContainer}>
+              <h2><strong>NASA Space Challenge</strong></h2>
+              <div className={styles.taskRow} style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", gap: "16px" }}>
+                {eventData ? eventData.flatMap(level => level.tasks).map(task => (
+                  <TaskCard
+                    key={task.id}
+                    task={task}
+                    onClickCTA={(task) => handleOpenOffCanvas(task)}
+                  />
+                )) : <p>No data available</p>}
+              </div>
+            </div>
           )}
 
         </>
