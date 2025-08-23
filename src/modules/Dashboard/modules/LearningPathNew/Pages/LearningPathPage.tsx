@@ -152,6 +152,7 @@ export const OffCanvas: React.FC<OffCanvasProps> = ({ isOpen, onClose, data }) =
             </div>
 
             {/* Resources */}
+          
             {data.resources && data.resources.length > 0 && (
               <div className={styles.offCanvasSection}>
                 <h3 className={styles.offCanvasSectionTitle}>Resources</h3>
@@ -422,12 +423,12 @@ const LearningPathPage: React.FC = () => {
       prerequisites: ["Basic knowledge"],
       resources: task.discord_link ? [task.discord_link] : [],
       hashtag: task.hashtag,
-      discord_link: channelmap[task.ig as keyof typeof channelmap] || channelmap["taskdrop-box"] || "https://discord.com/channels/771670169691881483/",
+      discord_link: channelmap[task.ig as keyof typeof channelmap] || channelmap["taskdrop-box"] || "https://discord.com/channels/771670169691881483/" || activeTab === "event" ? "https://discord.com/channels/771670169691881483/1288528799079596082" : "",
       completed: task.completed,
       karma: task.karma,
       locked: isLocked,
       level: levelNum,
-      submissionLink: activeTab === "event" ? "https://discord.com/channels/771670169691881483/1288528799079596082" : task.discord_link, // Set submission link based on active tab
+      // submissionLink: activeTab === "event" ? "https://discord.com/channels/771670169691881483/1288528799079596082" : task.discord_link, 
     };
 
     setSelectedData(formattedData);
