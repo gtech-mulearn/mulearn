@@ -29,9 +29,11 @@
 }
 
 .fv_illustration {
-  display: block;
+  display: flex;
+  justify-content: center;
   flex: 1;
   text-align: center;
+  
 }
 
 .fv_image {
@@ -73,6 +75,18 @@
 }
 
 .timeline_year {
+  cursor: pointer;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #3b82f6 60%, #60a5fa 100%);
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(60, 130, 246, 0.18);
+}
+
+.timeline_year {
   font-size: 1.2rem;
   font-weight: bold;
   margin: 2rem 0 0 0;
@@ -97,9 +111,10 @@
 }
 
 .timeline_year:hover {
-  background: linear-gradient(90deg, #e0edff 60%, #f8fbff 100%);
-  color: #2563eb;
+  background: linear-gradient(90deg, #2563eb 60%, #3b82f6 100%);
+  color: #fff;
   transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(60, 130, 246, 0.18);
 }
 
 .active_year {
@@ -130,35 +145,60 @@
   transition: box-shadow 0.3s, transform 0.2s, background 0.3s;
 }
 
-
-@media (max-width: 768px) {
-  .container {
-    padding: 0.5rem;
-    max-width: 100%;
-  }
-
-  .timeline_cards {
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .timeline_card {
-    max-width: 100%;
-    padding: 1.5rem;
-  }
-
-  .fv_heading {
-    font-size: 3rem;
-  }
-
-  .fv_tagline {
-    font-size: 1.2rem;
-  }
-
-  .fv_image {
-    width: 24rem;
-  }
+.timeline_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-top: 2rem;
 }
+
+.dropdown {
+  background: #fff;
+  border: 1px solid #3b82f6;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(60, 130, 246, 0.18);
+  z-index: 10;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  text-align: center;
+  width: 200px;
+  font-size: 1rem;
+  font-weight: normal;
+  color: #2563eb;
+}
+
+.dropdown option {
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: normal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropdown:hover {
+  background: #f0f4ff;
+  border-color: #2563eb;
+}
+
+.dropdown_item {
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.2s;
+  font-size: 1rem;
+  
+}
+
+.dropdown_item:hover {
+  background: #e0edff;
+}
+
+
 
 @media (max-width: 425px) {
   .timeline_cards {
@@ -242,5 +282,35 @@
     max-width: 90vw;
   }
 }
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0.5rem;
+    max-width: 100%;
+  }
+
+  .timeline_cards {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .timeline_card {
+    max-width: 100%;
+    padding: 1.5rem;
+  }
+
+  .fv_heading {
+    font-size: 3rem;
+  }
+
+  .fv_tagline {
+    font-size: 1.2rem;
+  }
+
+  .fv_image {
+    width: 24rem;
+  }
+}
+
 
 

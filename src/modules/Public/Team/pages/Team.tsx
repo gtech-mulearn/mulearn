@@ -43,11 +43,10 @@ const yearComponents: Record<YearType, JSX.Element> = {
 const yearData: YearType[] = ["2025", "2024", "2023", "2022"];
 
 const Teams = () => {
-  // First year open by default
   const [activeYear, setActiveYear] = useState<YearType>("2025");
 
-  const toggleYear = (year: YearType) => {
-    setActiveYear((prev) => (prev === year ? (null as any) : year));
+  const selectYear = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setActiveYear(event.target.value as YearType);
   };
 
   return (
@@ -103,41 +102,24 @@ const Teams = () => {
       <Execom />
 
       {/* Collapsible Timeline */}
-<div className={styles.timeline_wrapper}>
-  <div className={styles.timeline}>
-    {yearData.map((year) => (
-      <div key={year} className={styles.timeline_item}>
-        
-        {/* Marker & Year */}
-        <div className={styles.timeline_marker} />
-        <div
-          className={`${styles.timeline_year} ${
-            activeYear === year ? styles.active_year : ""
-          }`}
-          onClick={() => toggleYear(year)}
+      <div className={styles.timeline_wrapper}>
+        <select
+          className={styles.dropdown}
+          onChange={selectYear}
+          value={activeYear}
         >
-          {year}
-        </div>
+          {yearData.map((year) => (
+            <option key={year} value={year}>
+              {year}
+            </option>
+          ))}
+        </select>
 
         {/* Cards Content */}
-        {activeYear === year && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            transition={{ duration: 0.4 }}
-            className={styles.timeline_cards}
-          >
-            <div className={styles.timeline_card}>
-              {yearComponents[year]}
-            </div>
-          </motion.div>
-        )}
+        <div className={styles.timeline_cards}>
+          {yearComponents[activeYear]}
+        </div>
       </div>
-    ))}
-  </div>
-</div>
-
 
       <Footer />
     </motion.div>
