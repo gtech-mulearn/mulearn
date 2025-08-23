@@ -1,8 +1,9 @@
-import { useState, useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { useState } from "react";
+import { motion } from "framer-motion";
 import styles from "./Team.module.css";
-import { cdnUrl } from "@/modules/utils/cdn"; 
+import { cdnUrl } from "@/modules/utils/cdn";
 import Execom from "../components/Teams/Execom";
+import Year2025 from "../components/Teams/Year2025";
 import Year2024 from "../components/Teams/Year2024";
 import Year2023 from "../components/Teams/Year2023";
 import Year2022 from "../components/Teams/Year2022";
@@ -31,93 +32,97 @@ const fadeInUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
-const Teams = () => {
-  const [selection, setSelection] = useState("all");
-  const handleFilterChange = (e: any) => {
-    setSelection(e.target.value);
-  };
-  return (
-    <>
-      <motion.div
-        className={styles.container}
-        initial="hidden"
-        animate="visible"
-        variants={containerVariants}
-      >
-       <HomeNav/>
+type YearType = "2025" | "2024" | "2023" | "2022";
+const yearComponents: Record<YearType, JSX.Element> = {
+  "2025": <Year2025 />,
+  "2024": <Year2024 />,
+  "2023": <Year2023 />,
+  "2022": <Year2022 />,
+};
 
-        <div className={styles.first_view_container}>
-          <div className={styles.first_view}>
-            <div className={styles.fv_texts}>
-              <motion.p
-                variants={textVariant}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className={styles.fv_heading}
-              >
-                The <span>Gears</span> Behind The Machine.
-              </motion.p>
-              <motion.p
-                variants={textVariant}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className={styles.fv_tagline}
-              >
-                The 'µLearn' community's growth to this moment would not have
-                been possible without the team's soul and heart. Our team has a
-                big impact on how well we do our work. Here is the team to which
-                we are addressing.
-              </motion.p>
-            </div>
-            <motion.div
-              variants={fadeInUp}
+const yearData: YearType[] = ["2025", "2024", "2023", "2022"];
+
+const Teams = () => {
+  const [activeYear, setActiveYear] = useState<YearType>("2025");
+
+  const selectYear = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setActiveYear(event.target.value as YearType);
+  };
+
+  return (
+    <motion.div
+      className={styles.container}
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+    >
+      <HomeNav />
+
+      {/* Hero Section */}
+      <div className={styles.first_view_container}>
+        <div className={styles.first_view}>
+          <div className={styles.fv_texts}>
+            <motion.p
+              variants={textVariant}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className={styles.fv_illustration}
+              className={styles.fv_heading}
             >
-              <img
-                className={styles.fv_image}
-                src={cdnUrl("public/assets/team/illustration.webp")}
-                alt=""
-              />
-            </motion.div>
+              The <span>Gears</span> Behind The Machine.
+            </motion.p>
+            <motion.p
+              variants={textVariant}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className={styles.fv_tagline}
+            >
+              The 'µLearn' community's growth to this moment would not have
+              been possible without the team's soul and heart...
+            </motion.p>
           </div>
-        </div>
-
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className={styles.select_wrapper}
-        >
-          <select
-            className={styles.select}
-            value={selection}
-            onChange={handleFilterChange}
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className={styles.fv_illustration}
           >
-            <option value="all" selected>
-              All
+            <img
+              className={styles.fv_image}
+              src={cdnUrl("public/assets/team/illustration.webp")}
+              alt=""
+            />
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Executive Committee */}
+      <Execom />
+
+      {/* Collapsible Timeline */}
+      <div className={styles.timeline_wrapper}>
+        <select
+          className={styles.dropdown}
+          onChange={selectYear}
+          value={activeYear}
+        >
+          {yearData.map((year) => (
+            <option key={year} value={year}>
+              {year}
             </option>
-            <option value="2024">2024 Year</option>
-            <option value="2023">2023 Year</option>
-            <option value="2022">2022 Year</option>
-          </select>
-        </motion.div>
+          ))}
+        </select>
 
-        <Execom />
+        {/* Cards Content */}
+        <div className={styles.timeline_cards}>
+          {yearComponents[activeYear]}
+        </div>
+      </div>
 
-        {(selection === "all" || selection === "2024") && <Year2024 />}
-        {(selection === "all" || selection === "2023") && <Year2023 />}
-        {(selection === "all" || selection === "2022") && <Year2022 />}
-
-        <Footer />
-
-      </motion.div>
-    </>
+      <Footer />
+    </motion.div>
   );
 };
 

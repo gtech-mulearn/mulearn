@@ -1,0 +1,162 @@
+[
+    {
+        "name": "Niranj R",
+        "image": "public/assets/team/Niranj R.png",
+        "muid": "niranjr@mulearn",
+        "linkedin": "www.linkedin.com/in/niranj-r",
+        "twitter": "",
+        "github": "",
+        "team": "UI/UX Designer",
+        "lead": ""
+    },
+    {
+        "name": "ANZA S",
+        "image": "public/assets/team/Anza S.jpg",
+        "muid": "anzas@mulearn",
+        "linkedin": "https://www.linkedin.com/in/anza-s-2006yam?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        "twitter": "https://x.com/AnzaS2006?t=mZTUtHHlVsvYfQdmZr9JGQ&s=03",
+        "github": "https://github.com/ANZA-logos",
+        "team": "Public Relations",
+        "lead": ""
+    },
+    {
+        "name": "Dheeraj.kp",
+        "image": "public/assets/team/Dheeraj J P.jpg",
+        "muid": "dheerajkp-3@mulearn",
+        "linkedin": "https://www.linkedin.com/in/dheeraj-kurungadath-268bb3294",
+        "twitter": "",
+        "github": "",
+        "team": "Graphic Designer",
+        "lead": ""
+    },
+    {
+        "name": "Nandakiran R",
+        "image": "public/assets/team/Nandakiran R.jpeg",
+        "muid": "nandakiranr@mulearn",
+        "linkedin": "https://www.linkedin.com/in/nandakiran-r",
+        "twitter": "https://x.com/nandakiran_r",
+        "github": "https://github.com/nandakiran-r",
+        "team": "Frontend Developer",
+        "lead": ""
+    },
+    {
+        "name": "Manupriya Dhanush",
+        "image": "public/assets/team/Manupriya Dhanush Vayalambron.jpg",
+        "muid": "manupriyadhanush@mulearn",
+        "linkedin": "https://www.linkedin.com/in/manupriya-dhanush-vayalambron",
+        "twitter": " https://x.com/manupriya_d_v",
+        "github": "https://github.com/Manupriya-Vayalambron/",
+        "team": "Content Writers",
+        "lead": ""
+    },
+    {
+        "name": "Maryam Mohammed Yahya",
+        "image": "public/assets/team/Maryam Mohamed Yahya.jpg",
+        "muid": "maryammohamedyahya@mulearn",
+        "linkedin": "",
+        "twitter": "",
+        "github": " https://github.com/maryammohamedyahya",
+        "team": "Content Writers",
+        "lead": ""
+    },
+    {
+        "name": "Anna Jaison",
+        "image": "public/assets/team/Anna Jaison.jpg",
+        "muid": "annajaison@mulearn",
+        "linkedin": "https://www.linkedin.com/in/anna-jaison-/",
+        "twitter": "",
+        "github": "https://github.com/Anna-Jaison",
+        "team": "Backend Developer",
+        "lead": ""
+    },
+    {
+        "name": "Vasif Abdulla p",
+        "image": "public/assets/team/Vasif Abdulla P.JPG",
+        "muid": "vasifabdullap@mulearn",
+        "linkedin": "https://www.linkedin.com/in/vasifabdulla",
+        "twitter": "https://x.com/vasif_abdulla?t=V0b4CmdTZvy6enzk3ptymg&s=09",
+        "github": "https://github.com/Vasif-abdulla",
+        "team": "Frontend Developer",
+        "lead": ""
+    },
+    {
+        "name": "Akshay S Kumar",
+        "image": "public/assets/team/Akshay S Kumar.jpg",
+        "muid": "akshayskumar-1@mulearn",
+        "linkedin": "https://www.linkedin.com/in/akshaycse",
+        "twitter": "",
+        "github": "",
+        "team": "Public Relations",
+        "lead": ""
+    },
+    {
+        "name": "Sreenandan K M",
+        "image": "public/assets/team/Sreenand K M.png",
+        "muid": "sreenandankm@mulearn",
+        "linkedin": "https://www.linkedin.com/in/sreenandankm/",
+        "twitter": "",
+        "github": "https://github.com/Sree077",
+        "team": "Backend Developer",
+        "lead": ""
+    },
+    {
+        "name": "Anand SG",
+        "image": "public/assets/team/Anand S G.jpg",
+        "muid": "anandsg@mulearn",
+        "linkedin": "https://www.linkedin.com/in/anand-sg-298b5226a",
+        "twitter": "",
+        "github": "https://github.com/Anand-S-G",
+        "team": "Public Relations",
+        "lead": ""
+    },
+    {
+        "name": "Shezma Bijumon",
+        "image": "public/assets/team/Shezma Bijumon.jpg",
+        "muid": "shezmabijumon@mulearn",
+        "linkedin": "https://www.linkedin.com/in/shezma-bijumon-b55755308/",
+        "twitter": "",
+        "github": "",
+        "team": "Social Media Manager",
+        "lead": ""
+    },
+    {
+        "name": "Devika S H",
+        "image": "public/assets/team/Devika S H.jpeg",
+        "muid": "devikash@mulearn",
+        "linkedin": "https://www.linkedin.com/in/devika-s-h?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+        "twitter": "",
+        "github": "",
+        "team": "Graphic Designer",
+        "lead": ""
+    },
+    {
+        "name": "Sharanya Sanjeev",
+        "image": "public/assets/team/Sharanya Sanjeev.jpg",
+        "muid": "sharanyasanjeev@mulearn",
+        "linkedin": "https://www.linkedin.com/in/sharanya-sanjeev05/",
+        "twitter": "",
+        "github": "",
+        "team": "Social Media Manager",
+        "lead": ""
+    },
+    {
+        "name": "Sabareesh P R",
+        "image": "public/assets/team/Sabareesh P R.jpg",
+        "muid": "sabareeshpr@mulearn",
+        "linkedin": "https://www.linkedin.com/in/sabareeshpr",
+        "twitter": "",
+        "github": "",
+        "team": "Graphic Designer",
+        "lead": ""
+    },
+    {
+        "name": "Yadhukrishna n p",
+        "image": "public/assets/team/Yadukrishna N P.jpg",
+        "muid": "yadhukrishnanp@mulearn",
+        "linkedin": "https://www.linkedin.com/in/yadhukrishnx/",
+        "twitter": "https://x.com/yadhukrishnx",
+        "github": "https://github.com/yadhukrishnx",
+        "team": "Backend Developer",
+        "lead": ""
+    }
+]

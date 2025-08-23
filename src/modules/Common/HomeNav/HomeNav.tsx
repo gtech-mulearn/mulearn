@@ -6,6 +6,7 @@ import { cdnUrl } from "@/modules/utils/cdn";
 import { useRedirectToApp } from "@/modules/utils/redirectToApp";
 
 import { interestGroups } from "./data/interestGroups";
+import Mulearnlogo from "/assets/logo.png";
 
 interface NavItem {
   label: string;
@@ -207,7 +208,7 @@ const HomeNav: React.FC = () => {
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <a className={styles.logo} onClick={() => navigate("/")}>
-            <img src={cdnUrl("public/assets/µLearn.png")} alt="Mulearn Brand" />
+            <img src={Mulearnlogo} alt="Mulearn Brand" />
           </a>
 
           <ul className={styles.navLinks}>
@@ -278,7 +279,7 @@ const HomeNav: React.FC = () => {
       {isMobileView && (
         <div className={styles.mobileHeader}>
           <a className={styles.logo} onClick={() => navigate("/")}>
-          <img src={cdnUrl("public/assets/µLearn.png")} alt="Mulearn Brand" />
+          <img src={Mulearnlogo} alt="Mulearn Brand" />
           </a>
           <motion.button
             className={styles.hamburger}
