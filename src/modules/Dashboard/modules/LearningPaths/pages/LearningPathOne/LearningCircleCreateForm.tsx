@@ -3,15 +3,12 @@ import styles from "./LearningCircleLanding.module.css";
 import { createLearningCircle, editScheduleMeetup, scheduleMeetup } from "../../../LearningCircleV2/services/LearningCircleAPIs";
 import { useNavigate } from "react-router-dom";
 import ReactSelect from "react-select";
-import { getInterests } from "../../../ManageUsers/apis";
 import { useUserStore } from "/src/ZustandProvider";
 import { CircleMeetupInfo } from "../../../LearningCircleV2/services/LearningCircleInterface";
 
-
-const LearningCircleCreateForm = ({ setIsCreateModalOpen, onSuccess, meetUp }: { setIsCreateModalOpen: (type: boolean) => void, onSuccess: () => void, meetUp?: CircleMeetupInfo }) => {
+const LearningCircleCreateForm = ({ setIsCreateModalOpen, onSuccess, meetUp, interestOptions = [] }: { setIsCreateModalOpen: (type: boolean) => void, onSuccess: () => void, meetUp?: CircleMeetupInfo, interestOptions?: InterestOption[] }) => {
     const [title, setTitle] = useState(meetUp?.title || '');
     const [ig, setIg] = useState(meetUp?.ig_id || '');
-    const [interestOptions, setInterestOptions] = useState<InterestOption[]>([]);
     const [description, setDescription] = useState(meetUp?.description || '');
     const [meetingType, setMeetingType] = useState(meetUp?.meet_link ? 'online' : 'offline');
     const [meetLink, setMeetLink] = useState(meetUp?.meet_link);
@@ -71,11 +68,6 @@ const LearningCircleCreateForm = ({ setIsCreateModalOpen, onSuccess, meetUp }: {
     type InterestOption = {
         label: string;
         value: string;
-    };
-
-
-    const getOptions = async () => {
-        return await getInterests();
     };
 
 

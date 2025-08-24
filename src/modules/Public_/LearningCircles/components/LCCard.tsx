@@ -17,6 +17,9 @@ const LCCard = ({ lc, setIsOpen, msg, setLcId }: Props) => {
                     alt="png"
                 />
                 <h1>{lc.name}</h1>
+                <div className={styles.igBadge}>
+                    <span className={styles.badgeText}>{lc.ig_name}</span>
+                </div>
                 <span>
                     <b>{lc.ig_name}</b> &nbsp;{" "}
                     <b>Members count: {lc.member_count}</b>{" "}

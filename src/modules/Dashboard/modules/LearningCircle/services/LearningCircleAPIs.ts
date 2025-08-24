@@ -80,6 +80,39 @@ export const interestedMeetup = async (
     }
 };
 
+export const getMeetups = async (
+    setMeetup:
+        | UseStateFunc<LcMeetupInfo[] | undefined>
+        | UseStateFunc<LcMeetupInfo | undefined>,
+    meetId: string | undefined = undefined,
+    userId: string | undefined = undefined,
+    category: string | undefined = undefined
+) => {
+    try {
+        const response = await privateGateway.get(
+            dashboardRoutes.getMeetups + (userId ? userId : ""),
+            {
+                params: meetId
+                    ? {
+                          meet_id: meetId
+                      }
+                    : category
+                    ? {
+                          category: category
+                      }
+                    : {}
+            }
+        );
+        const message: any = response?.data;
+        setMeetup(message.response);
+    } catch (err: unknown) {
+        const error = err as AxiosError;
+        if (error?.response) {
+            throw error;
+        }
+    }
+};
+
 export const getMeetupInfo = async (
     setMeetup:
         | UseStateFunc<LcMeetupInfo[] | undefined>
@@ -150,38 +183,6 @@ export const submitAttendeeReport = async (
         }
     }
 };
-export const getMeetups = async (
-    setMeetup:
-        | UseStateFunc<LcMeetupInfo[] | undefined>
-        | UseStateFunc<LcMeetupInfo | undefined>,
-    meetId: string | undefined = undefined,
-    userId: string | undefined = undefined,
-    category: string | undefined = undefined
-) => {
-    try {
-        const response = await privateGateway.get(
-            dashboardRoutes.getMeetups + (userId ? userId : ""),
-            {
-                params: meetId
-                    ? {
-                          meet_id: meetId
-                      }
-                    : category
-                    ? {
-                          category: category
-                      }
-                    : {}
-            }
-        );
-        const message: any = response?.data;
-        setMeetup(message.response);
-    } catch (err: unknown) {
-        const error = err as AxiosError;
-        if (error?.response) {
-            throw error;
-        }
-    }
-};
 
 export const getUserOrg = (setOrg: {
     (value: SetStateAction<string | null>): void;
@@ -226,17 +227,24 @@ export const getCampusLearningCircles = async (
 
 export const createCircle = async (
     setId: React.Dispatch<SetStateAction<string>>,
-    circleName: string,
     ig: string,
-    navigate: NavigateFunction
+    navigate: NavigateFunction,
+    title?: string,
+    description?: string,
+    org?: string
 ) => {
+    if (!ig) {
+        toast.error("Interest group (ig) is required");
+        return;
+    }
     try {
+        const payload: any = { ig };
+        if (title) payload.title = title;
+        if (description) payload.description = description;
+        if (org) payload.org = org;
         const response = await privateGateway.post(
             dashboardRoutes.createLearningCircle,
-            {
-                name: circleName,
-                ig: ig
-            }
+            payload
         );
         const message: any = response?.data;
         setId(message.response.circle_id);
@@ -439,6 +447,7 @@ export const createMeetup = async (data: LcMeetup, id: string) => {
         }
     }
 };
+
 export const setLCMeetTime = async (
     data: LcMeetSchedule,
     id: string | undefined

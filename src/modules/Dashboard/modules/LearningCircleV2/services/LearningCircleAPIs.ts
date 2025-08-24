@@ -217,7 +217,48 @@ export const getLearningCircleInfo = async (
     } catch (err) {
         const error = err as AxiosError;
         console.log(error);
+        toast.error(
+            ((error.response as any)?.data?.message?.general ?? [
+                "Unable to create learning circle."
+            ])[0]
+        );
         return null;
+    }
+};
+
+export const editLearningCircle = async (
+    circleId: string,
+    params: LearningCircleCreate
+): Promise<boolean> => {
+    try {
+        const response = await privateGateway.put(
+            learningCircleRoutes.editLearningCircle + circleId + "/",
+            params
+        );
+        if (response.status === 200) {
+            toast.success(
+                [
+                    response.data?.message?.general ??
+                    "Learning circle updated successfully"
+                ][0]
+            );
+            return true;
+        }
+        toast.error(
+            (response.data?.message?.general ?? [
+                "Unable to update learning circle."
+            ])[0]
+        );
+        return false;
+    } catch (err) {
+        const error = err as AxiosError;
+        console.log(error);
+        toast.error(
+            ((error.response as any)?.data?.message?.general ?? [
+                "Unable to update learning circle."
+            ])[0]
+        );
+        return false;
     }
 };
 
@@ -359,6 +400,7 @@ export const getInterestGroups = async () => {
     }
 };
 
+
 export const submitRSVP = async (
     learningCircleId: string
 ): Promise<boolean> => {
@@ -404,5 +446,52 @@ export const deleteMeeting = async (
         const error = err as AxiosError;
         console.log(error);
         return false;
+    }
+};
+
+export const createMeetingByCircleId = async (
+    circleId: string,
+    meetingData: any
+): Promise<any> => {
+    try {
+        const response = await privateGateway.post(
+            learningCircleRoutes.scheduleMeetup + circleId,
+            meetingData
+        );
+        return response.data;
+    } catch (err) {
+        const error = err as AxiosError;
+        console.log(error);
+        return { hasError: true, message: error.message };
+    }
+};
+
+export const getManageRequests = async (
+    circleId: string
+): Promise<any> => {
+    try {
+        const response = await privateGateway.get(
+            `/api/v1/dashboard/learningcircle/${circleId}/manage_requests/`
+        );
+        return response.data.response;
+    } catch (err) {
+        const error = err as AxiosError;
+        console.log(error);
+        return null;
+    }
+};
+
+export const getMeetingsByCircleId = async (
+    circleId: string
+): Promise<CircleMeetupInfo[]> => {
+    try {
+        const response = await privateGateway.get(
+            learningCircleRoutes.getMeetups + circleId
+        );
+        return response.data.response || [];
+    } catch (err) {
+        const error = err as AxiosError;
+        console.log(error);
+        return [];
     }
 };
