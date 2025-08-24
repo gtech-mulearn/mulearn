@@ -334,9 +334,9 @@ const MuLearnLanding = () => {
                 </button>
                <button
                 className={styles.downloadBtn}
-                onClick={() => window.location.href = "https://launchpadkerala.org"}
+                onClick={() => window.location.href = "https://mulearnfoundation.notion.site/Nasa-Space-Apps-Challenge-25938f23e2dc80eea270e68c415750fb"}
               >
-                Register for Launchpad 2025
+                NASA Space Apps Challenge
               </button>
               </motion.div>
               <motion.div
