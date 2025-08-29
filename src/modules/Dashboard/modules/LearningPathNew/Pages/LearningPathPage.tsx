@@ -3,19 +3,12 @@ import ReactMarkdown from 'react-markdown';
 import styles from "./LearningPathPage.module.css";
 import CardCarousel from "../modules/CardCarousal";
 import IGSelector from "../../InterestGroups/components/IGSelection/IGSelector";
-import { getUserLog, getUserProfile } from "../../Profile/services/api";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { useUserStore } from "/src/ZustandProvider";
-import { ApiResponse, Task, Level, getUserTasks, getUserIgTasks, getStartLearningTasks, getBecomeExpertTasks, getIgDisplayName, getEventTasks } from "../services/api";
+import { Task, Level, getStartLearningTasks, getBecomeExpertTasks, getIgDisplayName, getEventTasks } from "../services/api";
 import ConnectDiscord from "../../ConnectDiscord/pages/ConnectDiscord";
-import { privateGateway } from "@/MuLearnServices/apiGateways";
-import { dashboardRoutes } from "@/MuLearnServices/urls";
-import { isEqual } from 'lodash';
 import toast from "react-hot-toast";
 import channelmap from "../data/channelmap";
-import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
-import Modal from "@/MuLearnComponents/Modal/Modal";
-import { Toaster } from "react-hot-toast";
 import { decodeUnicodeFromStorage } from "../../../utils/unicodeUtils";
 
 // Utility function to strip markdown formatting for card preview
