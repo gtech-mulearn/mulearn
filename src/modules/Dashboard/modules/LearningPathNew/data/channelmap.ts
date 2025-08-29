@@ -17,7 +17,8 @@ const channelMap = {
     "Cloud And Devops": "https://discord.com/channels/771670169691881483/853231021097222154",
     "Entrepreneurship": "https://discord.com/channels/771670169691881483/917130669551910932",
     "Blockchain": "https://discord.com/channels/771670169691881483/789531912552448020",
-    "Civil": "https://discord.com/channels/771670169691881483/1089594879153279108"
+    "Civil": "https://discord.com/channels/771670169691881483/1089594879153279108",
+    "Space": "https://discord.com/channels/771670169691881483/1288528799079596082"
 };
 
 export default channelMap;

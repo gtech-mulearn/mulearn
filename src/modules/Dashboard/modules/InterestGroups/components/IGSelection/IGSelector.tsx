@@ -121,7 +121,7 @@ const IGSelector = (props: Props) => {
                       : data.karma
                         ? data.karma
                         : "0"
-                    : "0"}
+                    : "0"}   
                 </p>
               </div>
             ))

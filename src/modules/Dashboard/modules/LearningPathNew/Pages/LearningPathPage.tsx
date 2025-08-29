@@ -408,16 +408,13 @@ const LearningPathPage: React.FC = () => {
     const isLocked = levelNum ? levelNum > unlockedLevel : false;
     
     let discordLink = "";
-    if (activeTab === "event") {
-      // For event tasks, use the specific event channel
-      discordLink = "https://discord.com/channels/771670169691881483/1288528799079596082";
+    
+    if (task.hashtag.startsWith("#cl-sp-")) {
+      discordLink = channelmap["Space"] || "https://discord.com/channels/771670169691881483/1288528799079596082";
     } else {
       // Map IG display names to channelmap keys
       const igName = task.ig || getIgDisplayName(task.hashtag);
-      
-      // Debug: log the IG name to help identify missing mappings
-      console.log("Task IG Name:", igName, "Hashtag:", task.hashtag);
-      
+ 
       // Create mapping for IG names to channelmap keys
       const igToChannelMap: Record<string, string> = {
         "Cyber Security": "Cyber Security",
@@ -432,13 +429,13 @@ const LearningPathPage: React.FC = () => {
         "AR/VR": "Ar Vr Mr",
         "Entrepreneurship": "Entrepreneurship",
         "Internet of Things": "Internet Of Things (IOT) And Robotics",
-        "Data Analytics": "Data Science", // Map to Data Science channel
+        "Data Analytics": "Data Science", 
         "Data Structures": "Competitive Coding", // Map to Competitive Coding
         "Strategic Leadership": "Product Management", // Map to Product Management
         "Comics": "Civil", // Fallback mapping
         "MuVi Club": "Digital Marketing", // Fallback mapping
         "General Tasks": "taskdrop-box",
-        // Add some fallback mappings for common variations
+        "space": "Space",
         "UIUX": "Ui Ux",
         "UI": "Ui Ux", 
         "UX": "Ui Ux",
@@ -450,7 +447,6 @@ const LearningPathPage: React.FC = () => {
       };
       
       const channelKey = igToChannelMap[igName] || "taskdrop-box";
-      console.log("Mapped channel key:", channelKey, "Final Discord Link:", channelmap[channelKey as keyof typeof channelmap]);
       
       discordLink = channelmap[channelKey as keyof typeof channelmap] || 
                    channelmap["taskdrop-box"] ||
@@ -688,16 +684,38 @@ const LearningPathPage: React.FC = () => {
 
           {activeTab === "event" && (
             <div className={styles.eventContainer}>
-              <h2><strong>NASA Space Challenge</strong></h2>
-              <div className={styles.taskRow} style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", gap: "16px" }}>
-                {eventData ? eventData.flatMap(level => level.tasks).map(task => (
-                  <TaskCard
-                    key={task.id}
-                    task={task}
-                    onClickCTA={(task) => handleOpenOffCanvas(task)}
-                  />
-                )) : <p>No data available</p>}
-              </div>
+              {(() => {
+                const nasaHashtags = [
+                  "#cl-sp-webdev",
+                  "#cl-sp-comicstrip",
+                  "#cl-sp-hardware",
+                  "#cl-sp-earthsc",
+                  "#cl-sp-gamedev",
+                  "#cl-sp-missiondesign",
+                  "#cl-sp-education",
+                  "#cl-sp-nasa"
+                ];
+                
+                // Check if any NASA tasks exist
+                const hasNasaTasks = eventData?.some(level => 
+                  level.tasks.some(task => nasaHashtags.includes(task.hashtag))
+                );
+                
+                return (
+                  <>
+                    {hasNasaTasks && <h2><strong>NASA Space Challenge</strong></h2>}
+                    <div className={styles.taskRow} style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", gap: "16px" }}>
+                      {eventData ? eventData.flatMap(level => level.tasks).map(task => (
+                        <TaskCard
+                          key={task.id}
+                          task={task}
+                          onClickCTA={(task) => handleOpenOffCanvas(task)}
+                        />
+                      )) : <p>No data available</p>}
+                    </div>
+                  </>
+                );
+              })()}
             </div>
           )}
         </>
