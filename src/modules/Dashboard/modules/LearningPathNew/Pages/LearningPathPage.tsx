@@ -3,19 +3,12 @@ import ReactMarkdown from 'react-markdown';
 import styles from "./LearningPathPage.module.css";
 import CardCarousel from "../modules/CardCarousal";
 import IGSelector from "../../InterestGroups/components/IGSelection/IGSelector";
-import { getUserLog, getUserProfile } from "../../Profile/services/api";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { useUserStore } from "/src/ZustandProvider";
-import { ApiResponse, Task, Level, getUserTasks, getUserIgTasks, getStartLearningTasks, getBecomeExpertTasks, getIgDisplayName, getEventTasks } from "../services/api";
+import { Task, Level, getStartLearningTasks, getBecomeExpertTasks, getIgDisplayName, getEventTasks } from "../services/api";
 import ConnectDiscord from "../../ConnectDiscord/pages/ConnectDiscord";
-import { privateGateway } from "@/MuLearnServices/apiGateways";
-import { dashboardRoutes } from "@/MuLearnServices/urls";
-import { isEqual } from 'lodash';
 import toast from "react-hot-toast";
 import channelmap from "../data/channelmap";
-import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
-import Modal from "@/MuLearnComponents/Modal/Modal";
-import { Toaster } from "react-hot-toast";
 import { decodeUnicodeFromStorage } from "../../../utils/unicodeUtils";
 
 // Utility function to strip markdown formatting for card preview
@@ -40,6 +33,7 @@ interface OffCanvasProps {
 }
 
 export const OffCanvas: React.FC<OffCanvasProps> = ({ isOpen, onClose, data }) => {
+  const { userInfo } = useUserStore();
   const offCanvasClass = isOpen
     ? `${styles.offCanvas} ${styles.offCanvasOpen}`
     : styles.offCanvas;
@@ -152,7 +146,7 @@ export const OffCanvas: React.FC<OffCanvasProps> = ({ isOpen, onClose, data }) =
             </div>
 
             {/* Resources */}
-          
+
             {data.resources && data.resources.length > 0 && (
               <div className={styles.offCanvasSection}>
                 <h3 className={styles.offCanvasSectionTitle}>Resources</h3>
@@ -171,16 +165,24 @@ export const OffCanvas: React.FC<OffCanvasProps> = ({ isOpen, onClose, data }) =
             )}
 
             <div className={styles.offCanvasSection}>
-
               {!data.completed && (
-                data.hashtag === "#ge-self-intro" ? (
-                  <button className={styles.proofOfWorkButton}>
-                    <a href="https://discord.com/channels/832894680290809354/771680366590689330" target="_blank"> Submit self introduction</a>
-                  </button>
+                !userInfo.exist_in_guild ? (
+                  <div>
+                    <p style={{ marginBottom: "1rem", textAlign: "center" }}>
+                      Connect to our Discord server to submit your work!
+                    </p>
+                    <ConnectDiscord />
+                  </div>
                 ) : (
-                  <button className={styles.proofOfWorkButton}>
-                    <a href={data.discord_link} target="_blank"> Submit proof of Work </a>
-                  </button>
+                  data.hashtag === "#ge-self-intro" ? (
+                    <button className={styles.proofOfWorkButton}>
+                      <a href="https://discord.com/channels/832894680290809354/771680366590689330" target="_blank"> Submit self introduction</a>
+                    </button>
+                  ) : (
+                    <button className={styles.proofOfWorkButton}>
+                      <a href={data.discord_link} target="_blank"> Submit proof of Work </a>
+                    </button>
+                  )
                 )
               )}
             </div>
@@ -316,12 +318,8 @@ const LearningPathPage: React.FC = () => {
     const currentLevel = Number(useUserStore.getState().userProfile.level?.replace("lvl", "")) || 0;
 
     try {
-      if (currentLevel < 4) {
-        userIGsData = [];
-        setIsLoading(false);
-        return userIGsData;
-
-      } else if (userProfile as { interest_groups: any[] }) {
+      // Always fetch user IGs regardless of level
+      if (userProfile as { interest_groups: any[] }) {
         userIGsData = (userProfile as { interest_groups: any[] }).interest_groups || [];
         return;
       }
@@ -341,12 +339,8 @@ const LearningPathPage: React.FC = () => {
     setIsLoading(true);
     const currentLevel = unlockedLevel;
 
-    if (currentLevel < 4 || !userIGs.length) {
-      setIntermediateLevelData([]);
-      setIsLoading(false);
-      return;
-    }
-    if (unlockedLevel >= 4 && userIGs.length === 0) {
+    // Allow all users to access intermediate tasks, but show message if no IGs
+    if (!userIGs.length) {
       toast.error("You need to join an interest group to access these tasks");
       setIntermediateLevelData([]);
       setIsLoading(false);
@@ -412,6 +406,56 @@ const LearningPathPage: React.FC = () => {
 
   const handleOpenOffCanvas = (task: Task, levelNum?: number) => {
     const isLocked = levelNum ? levelNum > unlockedLevel : false;
+    
+    let discordLink = "";
+    if (activeTab === "event") {
+      // For event tasks, use the specific event channel
+      discordLink = "https://discord.com/channels/771670169691881483/1288528799079596082";
+    } else {
+      // Map IG display names to channelmap keys
+      const igName = task.ig || getIgDisplayName(task.hashtag);
+      
+      // Debug: log the IG name to help identify missing mappings
+      console.log("Task IG Name:", igName, "Hashtag:", task.hashtag);
+      
+      // Create mapping for IG names to channelmap keys
+      const igToChannelMap: Record<string, string> = {
+        "Cyber Security": "Cyber Security",
+        "Web Development": "Web Development", 
+        "UI/UX": "Ui Ux",
+        "Game Development": "Game Dev",
+        "Data Science": "Data Science",
+        "Human Resources": "Human Resources",
+        "Artificial Intelligence": "Ai",
+        "No/Low Code": "No Or Low Code",
+        "Project Management": "Product Management",
+        "AR/VR": "Ar Vr Mr",
+        "Entrepreneurship": "Entrepreneurship",
+        "Internet of Things": "Internet Of Things (IOT) And Robotics",
+        "Data Analytics": "Data Science", // Map to Data Science channel
+        "Data Structures": "Competitive Coding", // Map to Competitive Coding
+        "Strategic Leadership": "Product Management", // Map to Product Management
+        "Comics": "Civil", // Fallback mapping
+        "MuVi Club": "Digital Marketing", // Fallback mapping
+        "General Tasks": "taskdrop-box",
+        // Add some fallback mappings for common variations
+        "UIUX": "Ui Ux",
+        "UI": "Ui Ux", 
+        "UX": "Ui Ux",
+        "AI": "Ai",
+        "Blockchain": "Blockchain",
+        "Mobile Development": "Mobile Development",
+        "Cloud And Devops": "Cloud And Devops",
+        "Digital Marketing": "Digital Marketing"
+      };
+      
+      const channelKey = igToChannelMap[igName] || "taskdrop-box";
+      console.log("Mapped channel key:", channelKey, "Final Discord Link:", channelmap[channelKey as keyof typeof channelmap]);
+      
+      discordLink = channelmap[channelKey as keyof typeof channelmap] || 
+                   channelmap["taskdrop-box"] ||
+                   "https://discord.com/channels/771670169691881483/";
+    }
 
     // Transform task data for OffCanvas component
     const formattedData = {
@@ -423,12 +467,11 @@ const LearningPathPage: React.FC = () => {
       prerequisites: ["Basic knowledge"],
       resources: task.discord_link ? [task.discord_link] : [],
       hashtag: task.hashtag,
-      discord_link: channelmap[task.ig as keyof typeof channelmap] || channelmap["taskdrop-box"] || "https://discord.com/channels/771670169691881483/" || activeTab === "event" ? "https://discord.com/channels/771670169691881483/1288528799079596082" : "",
+      discord_link: discordLink,
       completed: task.completed,
       karma: task.karma,
       locked: isLocked,
       level: levelNum,
-      // submissionLink: activeTab === "event" ? "https://discord.com/channels/771670169691881483/1288528799079596082" : task.discord_link, 
     };
 
     setSelectedData(formattedData);
@@ -487,33 +530,29 @@ const LearningPathPage: React.FC = () => {
   return (
     <div className={styles.container} >
       <div className={styles.topBar}>
-        {unlockedLevel >= 4 ? (
-          <div className={styles.topBarPart}>
-            <button
-              className={`${styles.topBarButton} ${activeTab === "startLearning" ? styles.activeTab : ""
-                }`}
-              onClick={() => setActiveTab("startLearning")}
-            >
-              Start Journey
-            </button>
-            <button
-              className={`${styles.topBarButton} ${activeTab === "becomeExpert" ? styles.activeTab : ""
-                }`}
-              onClick={() => setActiveTab("becomeExpert")}
-            >
-              Become Expert
-            </button>
-            <button
-              className={`${styles.topBarButton} ${activeTab === "event" ? styles.activeTab : ""
-                }`}
-              onClick={() => setActiveTab("event")}
-            >
-              Event
-            </button>
-          </div>
-        ) : (
-          <div></div>
-        )}
+        <div className={styles.topBarPart}>
+          <button
+            className={`${styles.topBarButton} ${activeTab === "startLearning" ? styles.activeTab : ""
+              }`}
+            onClick={() => setActiveTab("startLearning")}
+          >
+            Start Journey
+          </button>
+          <button
+            className={`${styles.topBarButton} ${activeTab === "becomeExpert" ? styles.activeTab : ""
+              }`}
+            onClick={() => setActiveTab("becomeExpert")}
+          >
+            Become Expert
+          </button>
+          <button
+            className={`${styles.topBarButton} ${activeTab === "event" ? styles.activeTab : ""
+              }`}
+            onClick={() => setActiveTab("event")}
+          >
+            Event
+          </button>
+        </div>
         <div className={styles.filterContainer}>
           <label htmlFor="filter">Filter by:</label>
           <select
@@ -543,14 +582,6 @@ const LearningPathPage: React.FC = () => {
         </div>
       )}
 
-      {activeTab === "startLearning" && !userInfo.exist_in_guild && (
-        <div className={styles.levelSection}>
-          <h2>Level 0</h2>
-          <h4 className={styles.levelSubtitle}>Connect to our Discord server to start your journey!</h4>
-          <ConnectDiscord />
-        </div>
-      )}
-
       {isLoading ? (
         <div>
           <MuLoader />
@@ -562,7 +593,7 @@ const LearningPathPage: React.FC = () => {
               <div className="text-center">No tasks available</div>
             ) : (() => {
               // Check if any levels have tasks after filtering
-              const hasAnyTasks = basicLevelData.some(level => 
+              const hasAnyTasks = basicLevelData.some(level =>
                 filterTasks(level.tasks).length > 0
               );
 
@@ -606,21 +637,21 @@ const LearningPathPage: React.FC = () => {
           {activeTab === "becomeExpert" && (
             intermediateLevelData === null || intermediateLevelData.length === 0 ? (
               <div className="text-center">
-                {selectedIg.id && selectedIg.name 
-                  ? `No tasks available for ${selectedIg.name}` 
+                {selectedIg.id && selectedIg.name
+                  ? `No tasks available for ${selectedIg.name}`
                   : "No tasks available"}
               </div>
             ) : (() => {
               // Check if any levels have tasks after filtering
-              const hasAnyTasks = intermediateLevelData.some(level => 
+              const hasAnyTasks = intermediateLevelData.some(level =>
                 filterTasks(level.tasks).length > 0
               );
 
               if (!hasAnyTasks) {
                 return (
                   <div className="text-center">
-                    {selectedIg.id && selectedIg.name 
-                      ? `No ${filter === "all" ? "" : filter + " "}tasks available for ${selectedIg.name}` 
+                    {selectedIg.id && selectedIg.name
+                      ? `No ${filter === "all" ? "" : filter + " "}tasks available for ${selectedIg.name}`
                       : `No ${filter === "all" ? "" : filter + " "}tasks available`}
                   </div>
                 );
@@ -669,7 +700,6 @@ const LearningPathPage: React.FC = () => {
               </div>
             </div>
           )}
-
         </>
       )}
 
