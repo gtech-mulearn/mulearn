@@ -392,7 +392,8 @@ export async function getEventTasks(): Promise<Level[]> {
                     "#cl-sp-earthsc",
                     "#cl-sp-gamedev",
                     "#cl-sp-missiondesign",
-                    "#cl-sp-education"
+                    "#cl-sp-education",
+                    "#cl-sp-nasa"
                 ];
                 return hashtags.includes(task.hashtag);
             })
