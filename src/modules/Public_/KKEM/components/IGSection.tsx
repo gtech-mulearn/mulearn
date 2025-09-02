@@ -2,6 +2,7 @@ import Card from "./Card";
 import styles from "./IGSection.module.css";
 import assets from "../assets/IGS";
 import { useEffect, useState } from "react";
+import MuIDModal from "./MuIDModal";
 import { Props as cardProps } from "../components/Card";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { publicGateway } from "@/MuLearnServices/apiGateways";
@@ -45,33 +46,26 @@ const IGSection = (props: Props) => {
                                     things with a group of people with same
                                     interests!
                                 </p>
-
                                 <span
                                     onClick={() => navigate("/dashboard/learningcircle")}
                                     className={styles.get_started}
-                                >
-                                    Get Started
-                                </span>
+                                >Get Started</span>
                             </div>
                         </div>
                     </div>
                 )}
-
                 <div className={styles.explore_view_container}>
                     <div className={styles.explore_view}>
                         <p className={styles.ev_heading}>
-                            {props.heading
-                                ? props.heading
-                                : "Existing Interest Groups"}
+                            {props.heading ? props.heading : "Existing Interest Groups"}
                         </p>
 
                         {/* <button className={styles.search_button}>Search Now</button> */}
                     </div>
                 </div>
-
                 <div className={styles.cards_view_container}>
                     <div id="cards" className={styles.cards_view}>
-                        {props.cards.map(card => (
+                        {props.cards.map((card: cardProps) => (
                             <Card
                                 {...card}
                                 key={card.name}
@@ -82,6 +76,8 @@ const IGSection = (props: Props) => {
                     </div>
                 </div>
             </div>
+            
+
         </>
     );
 };
