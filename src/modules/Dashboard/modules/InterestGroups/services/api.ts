@@ -17,6 +17,7 @@ interface RawTask {
     level: string;
     ig: string;
     event: null | string;
+    active: boolean;
 }
 
 // Formatted interfaces for the output
@@ -63,7 +64,9 @@ export const getIGTasks = async (id: string): Promise<Record<string, RawTask[]>>
             dashboardRoutes.getUserIgTasks,
             { params: { ig_id: id, perPage: 1000 } }
         );
-        taskObject[id] = response.data.response.data || [];
+        // Filter to only include active tasks
+        const allTasks = response.data.response.data || [];
+        taskObject[id] = allTasks.filter((task: RawTask) => task.active === true);
     } catch (error) {
         console.error(`Error fetching tasks for IG ID ${id}:`, error);
         taskObject[id] = [];
@@ -106,7 +109,7 @@ export const formatIGTasks = (
                 hashtag: task.hashtag || "#unknown",
                 ig: task.ig || "General Task",
                 icon: "",
-                discord_link: channelMap[task.ig as keyof typeof channelMap] || "https://discord.com/channels/771670169691881483/",
+                discord_link: (channelMap as any)[task.channel] || null,
                 skills: ["Skill Development"],
                 publishedBy: "µLearn Foundation",
                 publishedWhen: "",
@@ -156,4 +159,79 @@ export const fetchAndFormatIGTasks = async (id: string): Promise<FormattedLevel[
     const rawTasks = await getIGTasks(id);
     const tasksArray = rawTasks[id] || []; // Extract the tasks array for the given ID
     return formatIGTasks({ data: tasksArray });
+};
+
+// New simplified interface matching LearningPathNew structure  
+export interface SimpleLevel {
+    name: string;
+    tasks: SimpleTask[];
+    karma: number;
+}
+
+export interface SimpleTask {
+    level: any;
+    title: string;
+    task_name: string;
+    task_description: string;
+    discord_link: string | null;
+    hashtag: string;
+    completed: boolean;
+    karma: number;
+    ig?: string;
+    active: boolean;
+}
+
+// Function to get IG tasks using simplified Level interface
+export const getSimpleIGTasks = async (igId: string): Promise<SimpleLevel[]> => {
+    try {
+        const response: AxiosResponse = await privateGateway.get(
+            dashboardRoutes.getUserIgTasks,
+            { params: { ig_id: igId, perPage: 1000 } }
+        );
+        
+        const tasks = response.data.response.data || [];
+        const levels: SimpleLevel[] = [];
+        
+        // Group tasks by level - filter only active tasks
+        const tasksByLevel: { [key: string]: SimpleTask[] } = {};
+        
+        tasks.filter((rawTask: RawTask) => rawTask.active === true).forEach((rawTask: RawTask) => {
+            const task: SimpleTask = {
+                level: rawTask.level,
+                title: rawTask.title,
+                task_name: rawTask.title,
+                task_description: rawTask.description,
+                discord_link: channelMap[rawTask.channel as keyof typeof channelMap] || null,
+                hashtag: rawTask.hashtag,
+                completed: false, // You might need to get this from another endpoint
+                karma: rawTask.karma,
+                ig: rawTask.ig,
+                active: rawTask.active
+            };
+            
+            const levelName = `Level ${rawTask.level}`;
+            if (!tasksByLevel[levelName]) {
+                tasksByLevel[levelName] = [];
+            }
+            tasksByLevel[levelName].push(task);
+        });
+        
+        // Convert to Level array
+        Object.keys(tasksByLevel).forEach(levelName => {
+            levels.push({
+                name: levelName,
+                tasks: tasksByLevel[levelName],
+                karma: tasksByLevel[levelName].reduce((sum, task) => sum + task.karma, 0)
+            });
+        });
+        
+        return levels.sort((a, b) => {
+            const aLevel = parseInt(a.name.replace('Level ', ''));
+            const bLevel = parseInt(b.name.replace('Level ', ''));
+            return aLevel - bLevel;
+        });
+    } catch (error) {
+        console.error(`Error fetching simple tasks for IG ID ${igId}:`, error);
+        return [];
+    }
 };

@@ -16,8 +16,14 @@ import { Toaster } from "react-hot-toast";
 import MuLoader from "./components/MuComponents/MuLoader/MuLoader";
 import { sendRefreshToken } from "./modules/utils/cdr";
 import RedirectComponent from "./modules/utils/homeRedirect";
+import ManageLaunchpad from "./modules/Dashboard/modules/ManageLaunchpad/pages";
+import ManageJobs from "./modules/Dashboard/modules/ManageLaunchpad/pages/ManageJobs";
+import ManageCompanies from "./modules/Dashboard/modules/ManageLaunchpad/pages/ManageCompanies";
+import Launchpad from "./modules/Dashboard/modules/Launchpad";
 
 // Lazy-loaded components
+const KKEMLanding = lazy(() => import("./modules/Public_/KKEM/modules/KKEMLanding"));
+const KKEMAuth = lazy(() => import("./modules/Public_/KKEM/modules/KKEMAuth"));
 const CampusStudentList = lazy(() => import("./modules/Dashboard/modules").then(module => ({ default: module.CampusStudentList })));
 const ConnectDiscord = lazy(() => import("./modules/Dashboard/modules").then(module => ({ default: module.ConnectDiscord })));
 const Rolepage = lazy(() => import("./modules/Common/Authentication/pages/Onboarding/RolePage/RolePage"));
@@ -138,6 +144,7 @@ const AdminMarketPlace = lazy(() => import("./modules/Dashboard/modules/Marketpl
 const PurchaseInventory = lazy(() => import("./modules/Dashboard/modules/Marketplace/PurchaseInventory/PurchaseInventory"));
 const ConnectedDevices = lazy(() => import("./modules/Dashboard/modules/Settings/pages/ConnectedDevices"));
 const Wadhwani = lazy(() => import("./modules/Dashboard/modules/Wadhwani"));
+const ResetPassword = lazy(() => import("./modules/Common/Authentication/pages/Onboarding/ResetPassword/ResetPassword"));
 
 function App() {
   const AuthChecker = SecureAuthRoutes();
@@ -156,8 +163,8 @@ function App() {
     { path: "/", element: <Navigate to={'/login'} /> },
     { path: "*", element: <NotFound /> },
     // { path: "404", element: <NotFound /> },
-    // { path: "kkem", element: <KKEMLanding /> },
-    // { path: "kkem/authorization/:token", element: <KKEMAuth /> },
+    { path: "kkem", element: <KKEMLanding /> },
+    { path: "kkem/authorization/:token", element: <KKEMAuth /> },
     // { path: "donation", element: <Donation /> },
     // { path: "donation/success", element: <DonationSuccess /> },
     // { path: "donation/refund", element: <Refund /> },
@@ -166,7 +173,7 @@ function App() {
     { path: "register/", children: [{ path: "", element: <RegisterPage /> }] },
     { path: "login", element: <SignIn /> },
     { path: "forgot-password", element: <ForgetPassword /> },
-    // { path: "reset-password", element: <ResetPassword /> },
+    { path: "reset-password", element: <ResetPassword /> },
     { path: "/register/interests", element: <UserInterest /> },
     { path: "/register/organization", element: <CollegePage /> },
     { path: "/register/pathfinder", element: <PathFinder /> },
@@ -206,6 +213,7 @@ function App() {
             { path: "muverse", element: <ComingSoonPage /> },
             { path: "interestgroups", element: <ComingSoonPage /> },
             { path: "learningcircle", element: <LearningCircleLanding2 /> },
+            { path: "Launchpad", element: <Launchpad /> },
             { path: "search", element: <SearchMain /> },
             { path: "mulearners", element: <MuLearnersSearchPage /> },
             { path: "mentors", element: <MentorSearchPage /> },
@@ -227,6 +235,9 @@ function App() {
             { path: "management/error-log", element: <AuthChecker roles={[roles.ADMIN]} children={<ErrorLogPage />} /> },
             { path: "management/dynamic-type", element: <AuthChecker roles={[roles.ADMIN]} children={<DynamicTypePage />} /> },
             { path: "management/manage-roles", element: <AuthChecker roles={[roles.ADMIN]} children={<ManageRolesPage />} /> },
+            { path: "management/manage-launchpad", element: <AuthChecker roles={[roles.ADMIN]} children={<ManageLaunchpad />} /> },
+            { path: "management/manage-launchpad/jobs", element: <AuthChecker roles={[roles.ADMIN]} children={<ManageJobs />} /> },
+            { path: "management/manage-launchpad/companies", element: <AuthChecker roles={[roles.ADMIN]} children={<ManageCompanies />} /> },
             { path: "management/manage-locations", element: <AuthChecker roles={[roles.ADMIN]} children={<ManageLocationsPage />} /> },
             { path: "management/channels", element: <AuthChecker roles={[roles.ADMIN]} children={<ChannelsPage />} /> },
             { path: "/dashboard/url-shortener", element: <AuthChecker roles={[roles.ADMIN, roles.ASSOCIATE]} children={<URLShortenerPage />} /> },

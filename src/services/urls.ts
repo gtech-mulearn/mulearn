@@ -136,6 +136,7 @@ export const dashboardRoutes = {
     getUserPreferences: "/api/v1/dashboard/user/preferences",
     updateUserPreferences: "/api/v1/dashboard/user/preferences",
     getUserLevelFeed: "/api/v1/dashboard/profile/user-level-feed/",
+    changeUserCollege: "/api/v1/dashboard/college/change-college",
 
     zonalStudentDetails: "/api/v1/dashboard/zonal/student-details/",
     zonalStudentData: "/api/v1/dashboard/zonal/student-details/csv/",
@@ -327,4 +328,13 @@ export const qseverseRoutes = {
     getAllConnectedUsers: "api/v1/integrations/qseverse/connected-users/",
     getConnectedUsers: "api/v1/integrations/qseverse/connected-users/search",
     getCredentials: "api/v1/integrations/qseverse/qs-credentials/"
+}
+
+export const manageLaunchpadRoutes = {
+    listCompanies: "api/v1/launchpad/company-list/",
+    verifyCompany: "api/v1/launchpad/company-verify/",
+    listJobListings: "api/v1/launchpad/list-jobs/",
+    verifyLaunchpadTask: "api/v1/launchpad/verify-task/",
+    getJobInvites: "api/v1/launchpad/student/job-invitations/",
+    applyToJob: "api/v1/launchpad/student/apply-to-job/"
 }

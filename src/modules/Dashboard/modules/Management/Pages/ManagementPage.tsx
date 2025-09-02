@@ -29,6 +29,12 @@ const subcategories = [
     path: "management/manage-achievements"
   },
   {
+    icon: '🚀',
+    title: 'Manage Launchpad',
+    description: 'Create, edit, and configure user launchpad.',
+    path: "management/manage-launchpad"
+  },
+  {
 
     icon: '👤',
     title: 'Tasks',

@@ -4,6 +4,15 @@
     align-items: center;
 }
 
+/* Global UTF-8 and emoji support */
+* {
+    -webkit-font-feature-settings: "liga" 1, "kern" 1, "calt" 1;
+    font-feature-settings: "liga" 1, "kern" 1, "calt" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 .formContainer {
     display: flex;
     justify-content: center;
@@ -74,6 +83,10 @@
     margin-top: 10px;
     margin-bottom: 5px;
     justify-content: start;
+}
+
+.inputContainer{
+    margin-bottom: 8px;
 }
 
 .inputContainer input {
@@ -232,4 +245,236 @@
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
+}
+
+/* Markdown Editor Styles */
+.inputContainer .w-md-editor {
+    background-color: #ffffff;
+    border-radius: 8px;
+    width: 100%;
+    border: 1px solid #d1d5db;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.inputContainer .w-md-editor:focus-within {
+    border-color: #456ff6;
+    box-shadow: 0 0 0 3px rgba(69, 111, 246, 0.1);
+}
+
+.inputContainer .w-md-editor .w-md-editor-bar {
+    border-bottom: 1px solid #e5e7eb;
+    background-color: #f9fafb;
+    border-radius: 8px 8px 0 0;
+    padding: 8px 12px;
+}
+
+.inputContainer .w-md-editor .w-md-editor-bar svg {
+    width: 16px;
+    height: 16px;
+}
+
+.inputContainer .w-md-editor .w-md-editor-bar .w-md-editor-toolbar {
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.inputContainer .w-md-editor .w-md-editor-bar .w-md-editor-toolbar-item {
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.inputContainer .w-md-editor .w-md-editor-bar .w-md-editor-toolbar-item:hover {
+    background-color: #e5e7eb;
+}
+
+.inputContainer .w-md-editor .w-md-editor-bar .w-md-editor-toolbar-item.active {
+    background-color: #456ff6;
+    color: white;
+}
+
+/* Ensure proper emoji rendering and UTF-8 support */
+.inputContainer .w-md-editor .w-md-editor-text-container .w-md-editor-text,
+.inputContainer .w-md-editor .w-md-editor-preview {
+    font-family: 'Inter', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-feature-settings: "liga" 1, "calt" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.inputContainer .w-md-editor-text-pre, 
+.inputContainer .w-md-editor-text-input, 
+.inputContainer .w-md-editor-text-textarea {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #374151;
+    padding: 16px;
+}
+
+.inputContainer .w-md-editor-text-textarea {
+    resize: vertical;
+    min-height: 300px;
+}
+
+.inputContainer .w-md-editor-text-textarea::placeholder {
+    color: #9ca3af;
+    font-style: italic;
+}
+
+.inputContainer .w-md-editor-preview {
+    padding: 16px;
+    background-color: #ffffff;
+}
+
+.inputContainer .w-md-editor-preview h1,
+.inputContainer .w-md-editor-preview h2,
+.inputContainer .w-md-editor-preview h3,
+.inputContainer .w-md-editor-preview h4,
+.inputContainer .w-md-editor-preview h5,
+.inputContainer .w-md-editor-preview h6 {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: #111827;
+}
+
+.inputContainer .w-md-editor-preview h1 {
+    font-size: 1.875rem;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 0.5rem;
+}
+
+.inputContainer .w-md-editor-preview h2 {
+    font-size: 1.5rem;
+}
+
+.inputContainer .w-md-editor-preview h3 {
+    font-size: 1.25rem;
+}
+
+.inputContainer .w-md-editor-preview p {
+    margin-bottom: 1rem;
+    color: #374151;
+}
+
+.inputContainer .w-md-editor-preview ul,
+.inputContainer .w-md-editor-preview ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+}
+
+.inputContainer .w-md-editor-preview li {
+    margin-bottom: 0.5rem;
+    color: #374151;
+}
+
+.inputContainer .w-md-editor-preview code {
+    background-color: #f3f4f6;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-family: 'Fira Code', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
+    font-size: 0.875rem;
+    color: #dc2626;
+}
+
+.inputContainer .w-md-editor-preview pre {
+    background-color: #f8fafc;
+    padding: 1rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+    border: 1px solid #e5e7eb;
+}
+
+.inputContainer .w-md-editor-preview pre code {
+    background-color: transparent;
+    padding: 0;
+    color: #374151;
+}
+
+.inputContainer .w-md-editor-preview blockquote {
+    border-left: 4px solid #456ff6;
+    padding-left: 1rem;
+    margin: 1rem 0;
+    background-color: #f8fafc;
+    padding: 1rem;
+    border-radius: 0 6px 6px 0;
+    font-style: italic;
+    color: #4b5563;
+}
+
+.inputContainer .w-md-editor-preview a {
+    color: #456ff6;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.inputContainer .w-md-editor-preview a:hover {
+    text-decoration: underline;
+}
+
+.inputContainer .w-md-editor-preview table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.inputContainer .w-md-editor-preview th,
+.inputContainer .w-md-editor-preview td {
+    border: 1px solid #e5e7eb;
+    padding: 0.75rem;
+    text-align: left;
+}
+
+.inputContainer .w-md-editor-preview th {
+    background-color: #f9fafb;
+    font-weight: 600;
+    color: #111827;
+}
+
+.inputContainer .w-md-editor-preview strong {
+    font-weight: 600;
+    color: #111827;
+}
+
+.inputContainer .w-md-editor-preview em {
+    font-style: italic;
+}
+
+.inputContainer .w-md-editor-preview img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin: 1rem 0;
+}
+
+/* Custom scrollbar for editor */
+.inputContainer .w-md-editor-text-textarea::-webkit-scrollbar {
+    width: 8px;
+}
+
+.inputContainer .w-md-editor-text-textarea::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 4px;
+}
+
+.inputContainer .w-md-editor-text-textarea::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+.inputContainer .w-md-editor-text-textarea::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+.label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 8px;
+    display: block;
 }

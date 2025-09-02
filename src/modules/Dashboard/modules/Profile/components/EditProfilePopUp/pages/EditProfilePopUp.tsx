@@ -25,6 +25,7 @@ type Props = {
     setEditPopUP: (value: boolean) => void;
     triggerUpdateProfile: () => void;
     id: string;
+    setOpenCollegeEdit: (value: boolean) => void;
 };
 
 const sanitizeFormData = (data: any) => {
@@ -234,7 +235,7 @@ const EditProfilePopUp = (props: Props) => {
                     tabIndex={1}
                     onFocus={() => props.setEditPopUP(true)}
                     onClick={e => e.stopPropagation()}
-                    // onBlur={() => props.setEditPopUP(false)}
+                // onBlur={() => props.setEditPopUP(false)}
                 >
                     <h2>Edit Profile</h2>
                     <form onSubmit={formik.handleSubmit}>

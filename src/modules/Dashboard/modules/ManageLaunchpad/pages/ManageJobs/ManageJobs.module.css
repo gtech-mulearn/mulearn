@@ -1,0 +1,143 @@
+.container {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+text-align: left;
+  margin-bottom: 32px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a202c;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #718096;
+  margin-bottom: 0;
+}
+
+.modal {
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.modalHeader {
+  background-color: #f7fafc;
+  border-bottom: 1px solid #e2e8f0;
+  border-radius: 12px 12px 0 0;
+  padding: 20px 24px;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.modalBody {
+  padding: 24px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.modalFooter {
+  background-color: #f7fafc;
+  border-top: 1px solid #e2e8f0;
+  border-radius: 0 0 12px 12px;
+  padding: 16px 24px;
+  justify-content: flex-end;
+}
+
+.readOnlyField {
+  padding: 8px 12px;
+  background-color: #f7fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #2d3748;
+}
+
+.tasksList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px 0;
+}
+
+.taskBadge {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+  
+  .title {
+    font-size: 24px;
+  }
+  
+  .modalBody {
+    padding: 16px;
+  }
+  
+  .modalHeader,
+  .modalFooter {
+    padding: 16px;
+  }
+}
+
+/* Custom scrollbar for modal body */
+.modalBody::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modalBody::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.modalBody::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.modalBody::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Hover effects */
+.modal:hover {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Form styling improvements */
+.modalBody .chakra-form__label {
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 8px;
+}
+
+.modalBody .chakra-input,
+.modalBody .chakra-textarea,
+.modalBody .chakra-select {
+  border-color: #e2e8f0;
+  transition: border-color 0.2s ease;
+}
+
+.modalBody .chakra-input:focus,
+.modalBody .chakra-textarea:focus,
+.modalBody .chakra-select:focus {
+  border-color: #3182ce;
+  box-shadow: 0 0 0 1px #3182ce;
+}

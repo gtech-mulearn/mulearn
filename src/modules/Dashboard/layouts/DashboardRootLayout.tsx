@@ -3,7 +3,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import SideNavBar from "../components/SideNavBar";
 import TopNavBar from "../components/TopNavBar";
 import { Suspense, useEffect, useState } from "react";
-import { FaUser, FaUserFriends } from "react-icons/fa";
+import { FaRocket, FaUser, FaUserFriends } from "react-icons/fa";
 import { FaMagnifyingGlass, FaMapLocationDot, FaHouse, FaRankingStar } from "react-icons/fa6";
 import { IoGlobeOutline } from "react-icons/io5";
 import { roles, managementTypes } from "@/MuLearnServices/types";
@@ -138,6 +138,12 @@ const DashboardRootLayout = (props: { component?: any }) => {
       title: "Leaderboard",
       hasView: true,
       icon: <FaRankingStar />
+    },
+    {
+      url: "/dashboard/launchpad",
+      title: "Launchpad",
+      hasView: true,
+      icon: <FaRocket/>
     },
     {
       url: "/dashboard/special-events",
