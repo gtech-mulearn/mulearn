@@ -19,6 +19,23 @@ const IGSection = (props: Props) => {
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
     const encrypted_key = searchParams.get("param");
+    const [modalOpen, setModalOpen] = useState(false);
+    const [muId, setMuId] = useState("");
+     const navigate = useNavigate();
+    useEffect(() => {
+        if (!encrypted_key) return;
+        if (muId == "") {
+            publicGateway
+                .get(KKEMRoutes.userStatus + `${encrypted_key}/`)
+                .then(res => {
+                    // console.log(res.data.response.muId);
+                    setMuId(res.data.response.mu_id);
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        }
+    }, []);
 
     return (
         <>
@@ -47,6 +64,7 @@ const IGSection = (props: Props) => {
                                     interests!
                                 </p>
                                 <span
+                                    onClick={() => navigate("/dashboard/learningcircle")}
                                     onClick={() => navigate("/dashboard/learningcircle")}
                                     className={styles.get_started}
                                 >Get Started</span>

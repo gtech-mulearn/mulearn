@@ -45,7 +45,14 @@ export const KKEMLogin = (
                         );
                         if (response.data.response.exist_in_guild) {
                             navigate("/dashboard/learningcircle");
+                            navigate("/dashboard/learningcircle");
                         } else {
+                            if (redirectPath) {
+                                // navigate(`/${redirectPath}`);
+                                navigate("/dashboard/learningcircle");
+                            } else {
+                                navigate("/dashboard/learningcircle");
+                            }
                             navigate("/dashboard/learningcircle");
                         }
                     })
