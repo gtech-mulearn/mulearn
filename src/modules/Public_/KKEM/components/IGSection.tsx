@@ -2,9 +2,8 @@ import Card from "./Card";
 import styles from "./IGSection.module.css";
 import assets from "../assets/IGS";
 import { useEffect, useState } from "react";
-import MuIDModal from "./MuIDModal";
 import { Props as cardProps } from "../components/Card";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import { publicGateway } from "@/MuLearnServices/apiGateways";
 import { KKEMRoutes } from "@/MuLearnServices/urls";
 
@@ -17,35 +16,11 @@ type Props = {
 
 const IGSection = (props: Props) => {
     const [searchParams] = useSearchParams();
+    const navigate = useNavigate();
     const encrypted_key = searchParams.get("param");
-    const [modalOpen, setModalOpen] = useState(false);
-    const [muId, setMuId] = useState("");
-    useEffect(() => {
-        if (!encrypted_key) return;
-        if (muId == "") {
-            publicGateway
-                .get(KKEMRoutes.userStatus + `${encrypted_key}/`)
-                .then(res => {
-                    // console.log(res.data.response.muId);
-                    setMuId(res.data.response.mu_id);
-                })
-                .catch(err => {
-                    console.log(err);
-                });
-        }
-    }, []);
 
     return (
         <>
-            {!props.headerFlag && (
-                <MuIDModal
-                    open={modalOpen}
-                    setOpen={setModalOpen}
-                    setMuId={setMuId}
-                    muId={muId}
-                    param={encrypted_key ?? ""}
-                />
-            )}
             <div className={styles.main_container}>
                 {!props.headerFlag && (
                     <div className={styles.first_view_container}>
@@ -72,10 +47,10 @@ const IGSection = (props: Props) => {
                                 </p>
 
                                 <span
-                                    onClick={() => setModalOpen(true)}
+                                    onClick={() => navigate("/dashboard/learningcircle")}
                                     className={styles.get_started}
                                 >
-                                    Get Started{" "}
+                                    Get Started
                                 </span>
                             </div>
                         </div>
