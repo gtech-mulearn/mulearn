@@ -17,11 +17,10 @@ type Props = {
 
 const IGSection = (props: Props) => {
     const [searchParams] = useSearchParams();
-    const navigate = useNavigate();
     const encrypted_key = searchParams.get("param");
     const [modalOpen, setModalOpen] = useState(false);
     const [muId, setMuId] = useState("");
-     const navigate = useNavigate();
+    const navigate = useNavigate();
     useEffect(() => {
         if (!encrypted_key) return;
         if (muId == "") {
@@ -64,7 +63,6 @@ const IGSection = (props: Props) => {
                                     interests!
                                 </p>
                                 <span
-                                    onClick={() => navigate("/dashboard/learningcircle")}
                                     onClick={() => navigate("/dashboard/learningcircle")}
                                     className={styles.get_started}
                                 >Get Started</span>

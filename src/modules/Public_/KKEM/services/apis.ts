@@ -45,7 +45,6 @@ export const KKEMLogin = (
                         );
                         if (response.data.response.exist_in_guild) {
                             navigate("/dashboard/learningcircle");
-                            navigate("/dashboard/learningcircle");
                         } else {
                             if (redirectPath) {
                                 // navigate(`/${redirectPath}`);
@@ -53,7 +52,6 @@ export const KKEMLogin = (
                             } else {
                                 navigate("/dashboard/learningcircle");
                             }
-                            navigate("/dashboard/learningcircle");
                         }
                     })
                     .catch(error => {
