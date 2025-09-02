@@ -20,20 +20,20 @@ export default function Thread() {
             </button>
 
             <div className={styles.cardBg}>
-                <img src={blend1} alt="" loading="lazy" />
-                <img src={blend3} alt="" loading="lazy" />
-                <img src={blend2} alt="" loading="lazy" />
+                <img src={blend1} alt="" />
+                <img src={blend3} alt="" />
+                <img src={blend2} alt="" />
             </div>
 
             <div className={styles.ThreadCard}>
                 <div className={styles.ThreadCardContent}>
                     <div className={styles.ThreadCardFront}>
                         <div className={styles.ThreadCardLogo}>
-                            <img src={title} alt="" loading="lazy" />
-                            <img src={mu} alt="" loading="lazy" />
+                            <img src={title} alt="" />
+                            <img src={mu} alt="" />
                         </div>
                         <div className={styles.ThreadCardLogoQr}>
-                            <img src={qr} alt="" loading="lazy" />
+                            <img src={qr} alt="" />
                         </div>
                     </div>
                     <div className={styles.ThreadCardBack}>
@@ -53,11 +53,11 @@ export default function Thread() {
                             </span>
                         </div>
                         <span className={styles.ThreadCardBackArrow}>
-                            <img src={arrow} alt="" loading="lazy" />
+                            <img src={arrow} alt="" />
                         </span>
                         <div className={styles.ThreadCardBarcode}>
                             <b>TICKET NUMBER :</b>
-                            <img src={barcode} alt="" loading="lazy" />
+                            <img src={barcode} alt="" />
                         </div>
                     </div>
                 </div>
