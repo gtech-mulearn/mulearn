@@ -89,7 +89,7 @@ function Trivial() {
                         justifyContent: "space-between",
                         width: "100%",
                     }}>
-                        <img src={white_logo} alt="" />
+                        <img src={white_logo} alt="" loading="lazy" />
                         <div style={{ cursor: "pointer", backgroundColor: "white", color: "black", padding: '0.5rem', borderRadius: "2.5rem" }} onClick={handelSideNav}>
                             <IoMdClose size={35} />
                         </div>
@@ -118,13 +118,13 @@ function Trivial() {
                     <h1>Trivial Ideas</h1>
                     <div>
                         <p>
-                            Turn <img src={steve} alt="" /> Your
+                            Turn <img src={steve} alt="" loading="lazy" /> Your
                         </p>
                         <p>
-                            Crazy, Wild <img src={elone} alt="" /> Ideas
+                            Crazy, Wild <img src={elone} alt="" loading="lazy" /> Ideas
                         </p>
                         <p>
-                            Into <img src={mark} alt="" /> Real Products!
+                            Into <img src={mark} alt="" loading="lazy" /> Real Products!
                         </p>
                     </div>
                     <div className={`${styles.subText}`}>
@@ -157,7 +157,7 @@ function Trivial() {
                             patterns.map((pattern, index) => {
                                 return (
                                     <div className={`${styles.card}`} key={index}>
-                                        <img src={pattern.img} style={{ height: "200px", width: "200px" }} alt="q" />
+                                        <img src={pattern.img} style={{ height: "200px", width: "200px" }} alt="q" loading="lazy" />
                                         <p>{pattern.text}</p>
                                     </div>
                                 );
@@ -173,8 +173,8 @@ function Trivial() {
                         color: "#2E85FE"
                     }}>Crazy</span> People</h1>
                     <div className={styles.image_container}>
-                        <img src={peoples} alt="" />
-                        <img className={styles.arrow} src={arrow} alt="" />
+                        <img src={peoples} alt="" loading="lazy" />
+                        <img className={styles.arrow} src={arrow} alt="" loading="lazy" />
                     </div>
                     <div style={{
                         display: "flex",

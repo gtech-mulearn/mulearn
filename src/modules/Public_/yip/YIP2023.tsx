@@ -47,14 +47,14 @@ const YIP2023 = () => {
                   <p className={styles.ub_heading}>
                     Kerala's Biggest <b>Innovation Celebration is here!</b>
                   </p>
-                  <img src={lines} alt="" className={styles.lines} />
+                  <img src={lines} alt="" className={styles.lines} loading="lazy" />
                   <p className={styles.ub_text}>
                     Young Innovators Programme 5.0
                   </p>
                 </div>
 
                 <div className={styles.ub_img}>
-                  <img src={boxoneimg} alt="" className={styles.boxoneimg} />
+                  <img src={boxoneimg} alt="" className={styles.boxoneimg} loading="lazy" />
                 </div>
               </div>
               <button className={styles.apply_now} onClick={applyButton}>
@@ -80,16 +80,16 @@ const YIP2023 = () => {
                   Download the <br /> YIP App Now!
                 </p>
                 <div className={styles.box_two_bottom_section}>
-                  <img src={qrcode} alt="" className={styles.bt_qrcode} />
-                  <img src={cat} alt="" className={styles.bt_img} />
+                  <img src={qrcode} alt="" className={styles.bt_qrcode} loading="lazy" />
+                  <img src={cat} alt="" className={styles.bt_img} loading="lazy" />
                 </div>
               </div>
               <div className={styles.box_three}>
                 <p className={styles.bth_header}>
                   Brainstorm, Collaborate, And Create
                 </p>
-                <img src={bllines} alt="" className={styles.bllines} />
-                <img src={bthimg} alt="" className={styles.bth_img} />
+                <img src={bllines} alt="" className={styles.bllines} loading="lazy" />
+                <img src={bthimg} alt="" className={styles.bth_img} loading="lazy" />
               </div>
             </div>
             <div className={styles.box_four}>
@@ -107,7 +107,7 @@ const YIP2023 = () => {
                   meaningful impact.
                 </b>
               </div>
-              <img src={box_fourimg} alt="" className={styles.box_fourimg} />
+              <img src={box_fourimg} alt="" className={styles.box_fourimg} loading="lazy" />
             </div>
           </div>
         </div>
