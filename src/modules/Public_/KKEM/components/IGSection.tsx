@@ -4,7 +4,7 @@ import assets from "../assets/IGS";
 import { useEffect, useState } from "react";
 import MuIDModal from "./MuIDModal";
 import { Props as cardProps } from "../components/Card";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams,  useNavigate  } from "react-router-dom";
 import { publicGateway } from "@/MuLearnServices/apiGateways";
 import { KKEMRoutes } from "@/MuLearnServices/urls";
 
@@ -20,6 +20,7 @@ const IGSection = (props: Props) => {
     const encrypted_key = searchParams.get("param");
     const [modalOpen, setModalOpen] = useState(false);
     const [muId, setMuId] = useState("");
+     const navigate = useNavigate();
     useEffect(() => {
         if (!encrypted_key) return;
         if (muId == "") {
@@ -72,10 +73,10 @@ const IGSection = (props: Props) => {
                                 </p>
 
                                 <span
-                                    onClick={() => setModalOpen(true)}
+                                    onClick={() => navigate("/dashboard/learningcircle")}
                                     className={styles.get_started}
                                 >
-                                    Get Started{" "}
+                                    Get Started
                                 </span>
                             </div>
                         </div>

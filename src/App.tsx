@@ -22,6 +22,9 @@ import ManageCompanies from "./modules/Dashboard/modules/ManageLaunchpad/pages/M
 import Launchpad from "./modules/Dashboard/modules/Launchpad";
 
 // Lazy-loaded components
+
+const KKEMLanding = lazy(() => import("./modules/Public_/KKEM/modules/KKEMLanding"));
+const KKEMAuth = lazy(() => import("./modules/Public_/KKEM/modules/KKEMAuth"));
 const CampusStudentList = lazy(() => import("./modules/Dashboard/modules").then(module => ({ default: module.CampusStudentList })));
 const ConnectDiscord = lazy(() => import("./modules/Dashboard/modules").then(module => ({ default: module.ConnectDiscord })));
 const Rolepage = lazy(() => import("./modules/Common/Authentication/pages/Onboarding/RolePage/RolePage"));
@@ -161,8 +164,8 @@ function App() {
     { path: "/", element: <Navigate to={'/login'} /> },
     { path: "*", element: <NotFound /> },
     // { path: "404", element: <NotFound /> },
-    // { path: "kkem", element: <KKEMLanding /> },
-    // { path: "kkem/authorization/:token", element: <KKEMAuth /> },
+    { path: "kkem", element: <KKEMLanding /> },
+    { path: "kkem/authorization/:token", element: <KKEMAuth /> },
     // { path: "donation", element: <Donation /> },
     // { path: "donation/success", element: <DonationSuccess /> },
     // { path: "donation/refund", element: <Refund /> },
