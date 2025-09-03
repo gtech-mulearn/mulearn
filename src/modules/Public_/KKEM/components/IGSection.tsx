@@ -4,7 +4,7 @@ import assets from "../assets/IGS";
 import { useEffect, useState } from "react";
 import MuIDModal from "./MuIDModal";
 import { Props as cardProps } from "../components/Card";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import { publicGateway } from "@/MuLearnServices/apiGateways";
 import { KKEMRoutes } from "@/MuLearnServices/urls";
 
@@ -20,6 +20,7 @@ const IGSection = (props: Props) => {
     const encrypted_key = searchParams.get("param");
     const [modalOpen, setModalOpen] = useState(false);
     const [muId, setMuId] = useState("");
+    const navigate = useNavigate();
     useEffect(() => {
         if (!encrypted_key) return;
         if (muId == "") {
@@ -37,15 +38,6 @@ const IGSection = (props: Props) => {
 
     return (
         <>
-            {!props.headerFlag && (
-                <MuIDModal
-                    open={modalOpen}
-                    setOpen={setModalOpen}
-                    setMuId={setMuId}
-                    muId={muId}
-                    param={encrypted_key ?? ""}
-                />
-            )}
             <div className={styles.main_container}>
                 {!props.headerFlag && (
                     <div className={styles.first_view_container}>
@@ -70,33 +62,26 @@ const IGSection = (props: Props) => {
                                     things with a group of people with same
                                     interests!
                                 </p>
-
                                 <span
-                                    onClick={() => setModalOpen(true)}
+                                    onClick={() => navigate("/dashboard/learningcircle")}
                                     className={styles.get_started}
-                                >
-                                    Get Started{" "}
-                                </span>
+                                >Get Started</span>
                             </div>
                         </div>
                     </div>
                 )}
-
                 <div className={styles.explore_view_container}>
                     <div className={styles.explore_view}>
                         <p className={styles.ev_heading}>
-                            {props.heading
-                                ? props.heading
-                                : "Existing Interest Groups"}
+                            {props.heading ? props.heading : "Existing Interest Groups"}
                         </p>
 
                         {/* <button className={styles.search_button}>Search Now</button> */}
                     </div>
                 </div>
-
                 <div className={styles.cards_view_container}>
                     <div id="cards" className={styles.cards_view}>
-                        {props.cards.map(card => (
+                        {props.cards.map((card: cardProps) => (
                             <Card
                                 {...card}
                                 key={card.name}
@@ -107,6 +92,8 @@ const IGSection = (props: Props) => {
                     </div>
                 </div>
             </div>
+            
+
         </>
     );
 };

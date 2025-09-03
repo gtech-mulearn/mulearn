@@ -429,7 +429,7 @@ const LearningPathPage: React.FC = () => {
         "AR/VR": "Ar Vr Mr",
         "Entrepreneurship": "Entrepreneurship",
         "Internet of Things": "Internet Of Things (IOT) And Robotics",
-        "Data Analytics": "Data Science", 
+        "Data Analytics": "Data Analytics", 
         "Data Structures": "Competitive Coding", // Map to Competitive Coding
         "Strategic Leadership": "Product Management", // Map to Product Management
         "Comics": "Civil", // Fallback mapping

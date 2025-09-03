@@ -44,13 +44,13 @@ export const KKEMLogin = (
                             JSON.stringify(response.data.response)
                         );
                         if (response.data.response.exist_in_guild) {
-                            navigate("/dashboard/learning-circle");
+                            navigate("/dashboard/learningcircle");
                         } else {
                             if (redirectPath) {
                                 // navigate(`/${redirectPath}`);
-                                navigate("/dashboard/learning-circle");
+                                navigate("/dashboard/learningcircle");
                             } else {
-                                navigate("/dashboard/learning-circle");
+                                navigate("/dashboard/learningcircle");
                             }
                         }
                     })
