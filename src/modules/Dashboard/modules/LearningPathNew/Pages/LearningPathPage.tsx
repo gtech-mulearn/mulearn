@@ -430,6 +430,7 @@ const LearningPathPage: React.FC = () => {
         "Entrepreneurship": "Entrepreneurship",
         "Internet of Things": "Internet Of Things (IOT) And Robotics",
         "Data Analytics": "Data Analytics", 
+        "Devops": "Devops",
         "Data Structures": "Competitive Coding", // Map to Competitive Coding
         "Strategic Leadership": "Product Management", // Map to Product Management
         "Comics": "Civil", // Fallback mapping
