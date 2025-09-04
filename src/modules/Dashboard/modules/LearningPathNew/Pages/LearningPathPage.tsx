@@ -419,7 +419,7 @@ const LearningPathPage: React.FC = () => {
       const igToChannelMap: Record<string, string> = {
         "Cyber Security": "Cyber Security",
         "Web Development": "Web Development", 
-        "UI/UX": "Ui Ux",
+        "UIUX": "Ui Ux",
         "Game Development": "Game Dev",
         "Data Science": "Data Science",
         "Human Resources": "Human Resources",
@@ -437,9 +437,11 @@ const LearningPathPage: React.FC = () => {
         "MuVi Club": "Digital Marketing", // Fallback mapping
         "General Tasks": "taskdrop-box",
         "space": "Space",
-        "UIUX": "Ui Ux",
         "UI": "Ui Ux", 
         "UX": "Ui Ux",
+        "Ui Ux": "Ui Ux",
+        "ui ux": "Ui Ux",
+        "UiUx": "Ui Ux",
         "AI": "Ai",
         "Blockchain": "Blockchain",
         "Mobile Development": "Mobile Development",
