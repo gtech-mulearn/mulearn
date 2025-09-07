@@ -22,6 +22,15 @@ export interface Task {
     karma: number;
     ig?: string;
     active: boolean;
+    interest_group: {
+        id: string | null;
+        name: string | null;
+    };
+    submission_channel: {
+        id: string;
+        name: string;
+        discord_id: string | null;
+    };
 }
 
 export interface Level {
@@ -211,182 +220,66 @@ export async function getUserIgTasks(usersIgids: string[]): Promise<Record<strin
     return taskObject;
 }
 
-export function extractIgIdentifiersFromTasks(levels: Level[]): string[] {
-    const igIdentifiers = new Set<string>();
+export function getIgDisplayName(task: Task): string {
+    // Use interest_group.name from API if available
+    if (task.interest_group && task.interest_group.name) {
+        return task.interest_group.name;
+    }
     
-    levels.forEach(level => {
-        level.tasks.forEach(task => {
-            // Extract IG identifier from hashtag pattern #cl-{ig-identifier}-...
-            const match = task.hashtag.match(/^#cl-([^-]+)-/);
-            if (match) {
-                igIdentifiers.add(match[1]);
-            }
-        });
-    });
-    
-    return Array.from(igIdentifiers);
-}
-
-export function getIgDisplayName(hashtag: string): string {
     // Check if it's a general task (doesn't start with #cl-)
-    if (!hashtag.startsWith('#cl-')) {
+    if (!task.hashtag || !task.hashtag.startsWith('#cl-')) {
         return "General Tasks";
     }
     
-    const match = hashtag.match(/^#cl-([^-]+)-/);
+    // For legacy tasks without interest_group data, extract from hashtag
+    const match = task.hashtag.match(/^#cl-([^-]+)-/);
     if (!match) return "General Tasks";
     
-    const identifier = match[1].toLowerCase();
-    
-    const identifierDisplayMap: Record<string, string> = {
-        'pm': 'Product Management',
-        'dop': 'Devops',
-        'gdev': 'Game Dev',
-        'nlc': 'No Or Low Code',
-        'ent': 'Entrepreneurship',
-        'arvr': 'Ar Vr Mr',
-        'cybersec': 'Cyber Security',
-        'uiux': 'Ui Ux',
-        'ui': 'Ui Ux',
-        'ux': 'Ui Ux',
-        'react': 'Web Development',
-        'mob': 'Mobile Development',
-        'da': 'Data Analytics',
-        'sp': 'Space',
-        'ai': 'Ai',
-        'cm': 'Comics',
-        'dm': 'Digital Marketing',
-        'muv': 'MuV',
-        'genai': 'Generative AI',
-        'dsa': 'Data Structures and Algorithm',
-        'hr': 'Human Resources',
-        'bloc': 'Blockchain',
-        'ds': 'Data Science',
-        'web': 'Web Development',
-        'pmp': 'Project Management',
-        'sl': 'Strategic Leadership',
-        'civ': 'Civil',
-        'iot': 'Internet Of Things (IOT) And Robotics',
-        'crd': 'Creative Design',
-        'bec': 'Beckn',
-        'qa': 'Quality Assurance'
-    };
-    
-    return identifierDisplayMap[identifier] || `${identifier.toUpperCase()} Tasks`;
-}
-
-export function getUserIgIdentifiers(userIGs: any[], availableIdentifiers: string[]): string[] {
-    const userIdentifiers: string[] = [];
-    
-    const identifierToNameMap: Record<string, string[]> = {
-        'pm': ['Product Management', 'product management'],
-        'dop': ['Devops', 'devops', 'dev ops', 'dev-ops'],
-        'gdev': ['Game Dev', 'game dev', 'game development', 'gamedev'],
-        'nlc': ['No Or Low Code', 'no or low code', 'no/low code', 'lowcode', 'no code', 'low code'],
-        'ent': ['Entrepreneurship', 'entrepreneurship'],
-        'arvr': ['Ar Vr Mr', 'ar vr mr', 'ar/vr', 'ar vr', 'arvr', 'ar', 'vr', 'mr'],
-        'cybersec': ['Cyber Security', 'cyber security', 'cybersecurity'],
-        'uiux': ['Ui Ux', 'ui ux', 'ui/ux', 'uiux', 'ui', 'ux'],
-        'ui': ['Ui Ux', 'ui ux', 'ui/ux', 'uiux', 'ui', 'ux'],
-        'ux': ['Ui Ux', 'ui ux', 'ui/ux', 'uiux', 'ui', 'ux'],
-        'react': ['Web Development', 'web development', 'web dev', 'webdev', 'react', 'reactjs', 'react js'],
-        'mob': ['Mobile Development', 'mobile development', 'mobile dev'],
-        'da': ['Data Analytics', 'data analytics'],
-        'sp': ['Space', 'space'],
-        'ai': ['Ai', 'ai', 'artificial intelligence'],
-        'cm': ['Comics', 'comics'],
-        'dm': ['Digital Marketing', 'digital marketing'],
-        'muv': ['MuV', 'muv', 'muvi', 'muvi club'],
-        'genai': ['Generative AI', 'generative ai', 'gen ai'],
-        'dsa': ['Data Structures and Algorithm', 'data structures and algorithm', 'data structures', 'algorithm'],
-        'hr': ['Human Resources', 'human resources'],
-        'bloc': ['Blockchain', 'blockchain'],
-        'ds': ['Data Science', 'data science'],
-        'web': ['Web Development', 'web development', 'web dev', 'webdev'],
-        'pmp': ['Project Management', 'project management'],
-        'sl': ['Strategic Leadership', 'strategic leadership'],
-        'civ': ['Civil', 'civil'],
-        'iot': ['Internet Of Things (IOT) And Robotics', 'internet of things', 'iot', 'robotics'],
-        'crd': ['Creative Design', 'creative design'],
-        'bec': ['Beckn', 'beckn'],
-        'qa': ['Quality Assurance', 'quality assurance']
-    };
-    
-
-
-    userIGs.forEach(ig => {
-        const normalizedIgName = ig.name.toLowerCase().trim();
-        
-        availableIdentifiers.forEach(identifier => {
-            const possibleNames = identifierToNameMap[identifier.toLowerCase()];
-            if (possibleNames && possibleNames.some(name => 
-                name.toLowerCase() === normalizedIgName ||
-                normalizedIgName.includes(name.toLowerCase()) ||
-                name.toLowerCase().includes(normalizedIgName)
-            )) {
-                if (!userIdentifiers.includes(identifier)) {
-                    userIdentifiers.push(identifier);
-                }
-            }
-        });
-    });
-    
-    return userIdentifiers;
+    const identifier = match[1].toUpperCase();
+    return `${identifier} Tasks`;
 }
 
 export async function getBecomeExpertTasks(userIGs: any[], selectedIgId?: string): Promise<Level[]> {
     try {
         const response = await getUserTasks();
         
-        
+        // Filter tasks that have #cl- hashtag (intermediate tasks)
         const allIgLevels = response.response.map(level => ({
             ...level,
             tasks: level.tasks.filter(task => {
                 const hasClHashtag = task.hashtag && task.hashtag.startsWith('#cl-');
-               
-                
                 return hasClHashtag;
             })
         })).filter(level => level.tasks.length > 0);
         
-        const availableIdentifiers = extractIgIdentifiersFromTasks(allIgLevels);
-        
-        const userIdentifiers = getUserIgIdentifiers(userIGs, availableIdentifiers);
+        // Get user IG IDs for filtering
+        const userIgIds = userIGs.map(ig => ig.id);
         
         if (selectedIgId) {
-            const selectedIg = userIGs.find(ig => ig.id === selectedIgId);
-            if (selectedIg) {
-                const selectedIdentifiers = getUserIgIdentifiers([selectedIg], availableIdentifiers);
-                
-                return allIgLevels.map(level => ({
-                    ...level,
-                    tasks: level.tasks.filter(task => {
-                        if (selectedIdentifiers.length === 0) {
-                            return false; 
-                        }
-                        const matches = selectedIdentifiers.some(identifier => 
-                            task.hashtag.startsWith(`#cl-${identifier}-`)
-                        );
-                        
-                        return matches;
-                    })
-                })).filter(level => level.tasks.length > 0);
-            }
-            
-            return [];
+            // Filter tasks for selected IG only
+            return allIgLevels.map(level => ({
+                ...level,
+                tasks: level.tasks.filter(task => {
+                    // Use the interest_group.id from the task
+                    if (task.interest_group && task.interest_group.id) {
+                        return task.interest_group.id === selectedIgId;
+                    }
+                    // If no interest_group data, don't show the task
+                    return false;
+                })
+            })).filter(level => level.tasks.length > 0);
         }
 
+        // Filter tasks for all user IGs
         return allIgLevels.map(level => ({
             ...level,
             tasks: level.tasks.filter(task => {
-                // Check if task matches user's IGs
-                const matchesUserIGs = userIdentifiers.length > 0 && userIdentifiers.some(identifier => 
-                    task.hashtag.startsWith(`#cl-${identifier}-`)
-                );
-                
-                
-                
-                return matchesUserIGs;
+                // Use the interest_group.id from the task
+                if (task.interest_group && task.interest_group.id) {
+                    return userIgIds.includes(task.interest_group.id);
+                }
+                // If no interest_group data, don't show the task
+                return false;
             })
         })).filter(level => level.tasks.length > 0);
 
