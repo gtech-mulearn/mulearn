@@ -249,7 +249,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onClickCTA, custom }) 
           {task.task_description ? stripMarkdown(decodeUnicodeFromStorage(task.task_description)).slice(0, 40) + "..." : `Earn ${task.karma} Karma Points`}
         </div>
         <div className={styles.cardIg} style={{ fontSize: "14px" }}>
-          <strong>Interest Group:</strong> {task.ig || getIgDisplayName(task.hashtag)}
+          <strong>Interest Group:</strong> {task.ig || getIgDisplayName(task)}
         </div>
         {task.karma && (
           <div className={styles.cardKarma} style={{ fontSize: "14px" }}>
@@ -409,58 +409,19 @@ const LearningPathPage: React.FC = () => {
     
     let discordLink = "";
     
-    if (task.hashtag.startsWith("#cl-sp-")) {
-      discordLink = channelmap["Space"] || "https://discord.com/channels/771670169691881483/1288528799079596082";
+    // Use the submission channel discord_id from API response
+    if (task.submission_channel?.discord_id) {
+      discordLink = `https://discord.com/channels/771670169691881483/${task.submission_channel.discord_id}`;
     } else {
-      // Map IG display names to channelmap keys
-      const igName = task.ig || getIgDisplayName(task.hashtag);
- 
-      // Create mapping for IG names to channelmap keys
-      const igToChannelMap: Record<string, string> = {
-        "Cyber Security": "Cyber Security",
-        "Web Development": "Web Development", 
-        "UIUX": "Ui Ux",
-        "Game Development": "Game Dev",
-        "Data Science": "Data Science",
-        "Human Resources": "Human Resources",
-        "Artificial Intelligence": "Ai",
-        "No/Low Code": "No Or Low Code",
-        "Project Management": "Product Management",
-        "AR/VR": "Ar Vr Mr",
-        "Entrepreneurship": "Entrepreneurship",
-        "Internet of Things": "Internet Of Things (IOT) And Robotics",
-        "Data Analytics": "Data Analytics", 
-        "Devops": "Devops",
-        "Data Structures": "Competitive Coding", // Map to Competitive Coding
-        "Strategic Leadership": "Product Management", // Map to Product Management
-        "Comics": "Civil", // Fallback mapping
-        "MuVi Club": "Digital Marketing", // Fallback mapping
-        "General Tasks": "taskdrop-box",
-        "space": "Space",
-        "UI": "Ui Ux", 
-        "UX": "Ui Ux",
-        "Ui Ux": "Ui Ux",
-        "ui ux": "Ui Ux",
-        "UiUx": "Ui Ux",
-        "AI": "Ai",
-        "Blockchain": "Blockchain",
-        "Mobile Development": "Mobile Development",
-        "Cloud And Devops": "Cloud And Devops",
-        "Digital Marketing": "Digital Marketing"
-      };
-      
-      const channelKey = igToChannelMap[igName] || "taskdrop-box";
-      
-      discordLink = channelmap[channelKey as keyof typeof channelmap] || 
-                   channelmap["taskdrop-box"] ||
-                   "https://discord.com/channels/771670169691881483/";
+      // Fallback to task-dropbox if no discord_id
+      discordLink = channelmap["taskdrop-box"] || "https://discord.com/channels/771670169691881483/1409243188195102850";
     }
 
     // Transform task data for OffCanvas component
     const formattedData = {
       title: task.task_name || task.title,
       brief: task.task_description ? decodeUnicodeFromStorage(task.task_description) : `Complete the ${task.task_name || task.title} task and share your progress with ${task.hashtag} to earn ${task.karma} Karma Points.`,
-      ig: task.ig || getIgDisplayName(task.hashtag),
+      ig: task.interest_group?.name || "General Tasks",
       skills: ["Skill Development"],
       publishedBy: "µLearn Foundation",
       prerequisites: ["Basic knowledge"],
