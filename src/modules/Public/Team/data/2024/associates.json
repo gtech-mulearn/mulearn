@@ -1,5 +1,74 @@
 [
   {
+    "name": "Arjun A I",
+    "image": "public/assets/team/Arjun A I.jpeg",
+    "muid": "iamarjunai@mulearn",
+    "linkedin": "https://www.linkedin.com/in/arjun-a-i",
+    "twitter": "",
+    "github": "",
+    "team": "Interest Group",
+    "lead": ""
+  },
+  {
+    "name": "Edwin Alex Shaji",
+    "image": "public/assets/team/Edwin Alex Shaji.jpeg",
+    "muid": "edwinalexshaji@mulearn",
+    "linkedin": "https://www.linkedin.com/in/edwinalexshaji/",
+    "twitter": "",
+    "github": "",
+    "team": "Marketing Associate",
+    "lead": ""
+  },
+  {
+    "name": "Muhammed R",
+    "image": "public/assets/team/Muhammed R.jpeg",
+    "muid": "muhammedr@mulearn",
+    "linkedin": "https://in.linkedin.com/in/muhammed-r",
+    "twitter": "",
+    "github": "",
+    "team": "Hardware",
+    "lead": ""
+  },
+  {
+    "name": "Mohammed Farhan TM",
+    "image": "public/assets/team/Mohammed Farhan TM.jpeg",
+    "muid": "mohammedfarhant.m@mulearn",
+    "linkedin": "https://in.linkedin.com/in/mo-farhan-tm?",
+    "twitter": "",
+    "github": "",
+    "team": "Marketing",
+    "lead": ""
+  },
+  {
+    "name": "Dev Nandan S",
+    "image": "public/assets/team/Dev Nandan.jpeg",
+    "muid": "devnandan@mulearn",
+    "linkedin": "https://in.linkedin.com/in/dev-nandan-design",
+    "twitter": "",
+    "github": "",
+    "team": "UX Strategist",
+    "lead": ""
+  },
+  {
+    "name": "Devaprabha Rajesh",
+    "image": "public/assets/team/Devaprabha Rajesh.jpeg",
+    "muid": "devaprabharajesh@mulearn",
+    "linkedin": "https://www.linkedin.com/in/devaprabha-rajesh",
+    "twitter": "",
+    "github": "",
+    "team": "",
+    "lead": ""
+  },
+  {
+    "name": "G Hithesh",
+    "image": "public/assets/team/G Hithesh.jpg",
+    "muid": "ghithesh@mulearn",
+    "linkedin": "https://www.linkedin.com/in/hithesh-g-9a09612a8?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    "twitter": "",
+    "github": "",
+    "team": "Partner Engagement",
+    "lead": ""
+  },{
     "name": "Salahudheen Thajudheen",
     "image": "public/assets/team/2024/Associates and Junior Associates/Salahudheen Thajudheen.jpeg",
     "muid": "salahudheenthajudheen@mulearn",

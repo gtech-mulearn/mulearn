@@ -1,39 +1,32 @@
 .container {
   font-family: Arial, sans-serif;
   text-align: center;
-  text-wrap: balance;
   padding: 1rem 0;
 }
 
-/* First View Section */
 .first_view_container {
   padding: 6rem 1rem;
-  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .first_view {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
   max-width: 1200px;
   width: 100%;
 }
 
 .fv_texts {
-  text-align: left;
   flex: 1;
+  text-align: left;
 }
 
 .fv_illustration {
+  flex: 1;
   display: flex;
   justify-content: center;
-  flex: 1;
-  text-align: center;
-  
 }
 
 .fv_image {
@@ -54,76 +47,36 @@
   color: var(--Primary);
 }
 
-/* Tagline for Hero Section */
 .fv_tagline {
   font-size: 1.5rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin: 2rem 0;
   color: #303030;
 }
 
 /* Timeline Section */
-.timeline_item {
-  position: relative;
-  padding-bottom: 0.7rem;
-  margin-bottom: 0.9rem;
-  transition: transform 0.2s cubic-bezier(0.4, 2, 0.3, 1);
-}
-
-.timeline_marker {
-  display: none;
-}
-
-.timeline_year {
-  cursor: pointer;
-  padding: 0.8rem 1.5rem;
-  border-radius: 8px;
-  background: linear-gradient(90deg, #3b82f6 60%, #60a5fa 100%);
-  color: #fff;
-  font-size: 1.2rem;
-  font-weight: bold;
-  text-align: center;
-  box-shadow: 0 4px 16px rgba(60, 130, 246, 0.18);
-}
-
-.timeline_year {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin: 2rem 0 0 0;
+.timeline_wrapper {
   display: flex;
   flex-direction: column;
-  gap: 1.1rem;
   align-items: center;
+  margin-top: 2rem;
+}
+
+.dropdown {
+  background: #fff;
+  border: 1px solid #3b82f6;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(60, 130, 246, 0.18);
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  color: #2563eb;
   cursor: pointer;
-  padding: 0.6rem 1.7rem;
-  border-radius: 2rem;
-  background: linear-gradient(90deg, #e0edff 60%, #f8fbff 100%);
-  box-shadow: 0 2px 8px rgba(60, 130, 246, 0.04);
-  transition: background 0.2s, color 0.2s, transform 0.2s;
-  max-width: 500px;
-  min-width: 220px;
-  width: 60%;
+  width: 200px;
   text-align: center;
-  letter-spacing: 1px;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
 }
 
-.timeline_year:hover {
-  background: linear-gradient(90deg, #2563eb 60%, #3b82f6 100%);
-  color: #fff;
-  transform: scale(1.05);
-  box-shadow: 0 4px 16px rgba(60, 130, 246, 0.18);
-}
-
-.active_year {
-  background: linear-gradient(90deg, #3b82f6 60%, #60a5fa 100%);
-  color: #fff !important;
-  box-shadow: 0 4px 16px rgba(60, 130, 246, 0.18);
-  transform: scale(1.04);
-  transition: box-shadow 0.3s;
-  margin-top: 8rem;
+.dropdown:hover {
+  background: #f0f4ff;
+  border-color: #2563eb;
 }
 
 .timeline_cards {
@@ -134,169 +87,15 @@
   gap: 2rem;
 }
 
-.timeline_card {
-  border-radius: 18px;
-  padding: 2.5rem 2rem 2rem 4rem;/*top  left  bottom  right */
-  margin-bottom: 1.5rem;
-  box-shadow: 0 8px 32px rgba(60, 120, 200, 0.10);
-  border: 1px solid #dbeafe;
-  max-width: 1400px;
-  width: 100%;
-  transition: box-shadow 0.3s, transform 0.2s, background 0.3s;
-}
-
-.timeline_wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  margin-top: 2rem;
-}
-
-.dropdown {
-  background: #fff;
-  border: 1px solid #3b82f6;
-  border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(60, 130, 246, 0.18);
-  z-index: 10;
-  padding: 0.6rem 1.2rem;
-  cursor: pointer;
-  text-align: center;
-  width: 200px;
-  font-size: 1rem;
-  font-weight: normal;
-  color: #2563eb;
-}
-
-.dropdown option {
-  padding: 0.6rem 1.2rem;
-  cursor: pointer;
-  text-align: center;
-  font-size: 1rem;
-  font-weight: normal;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.dropdown:hover {
-  background: #f0f4ff;
-  border-color: #2563eb;
-}
-
-.dropdown_item {
-  padding: 0.8rem 1.5rem;
-  cursor: pointer;
-  text-align: center;
-  transition: background 0.2s;
-  font-size: 1rem;
-  
-}
-
-.dropdown_item:hover {
-  background: #e0edff;
-}
-
-
-
-@media (max-width: 425px) {
-  .timeline_cards {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .timeline_card {
-    padding: 1rem;
-    max-width: 100%;
-  }
-
-  .fv_heading {
-    font-size: 2rem;
-  }
-
-  .fv_tagline {
-    font-size: 1rem;
-  }
-
-  .fv_image {
-    width: 16rem;
-  }
-}
-
-/* Responsive Fixes */
-@media (max-width: 600px) {
-  .timeline_year {
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    width: auto;
-    min-width: unset;
-    max-width: unset;
-    padding: 1.2rem 2.5rem;
-    gap: 1rem;
-    flex-direction: row;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    text-align: center;
-  }
-
-  .timeline_marker {
-    position: static;
-    margin: 0 1rem 0 0;
-    flex-shrink: 0;
-    display: inline-block;
-    align-self: center;
-    z-index: 1;
-  }
-
-  /* Hero Section Mobile Styles */
+/* Responsive Styles */
+@media (max-width: 768px) {
   .first_view {
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
   }
+
   .fv_texts {
-    text-align: center;
-    width: 100%;
     margin-bottom: 1.5rem;
-  }
-  .fv_heading {
-    font-size: 2.2rem;
-    font-weight: 700;
-    line-height: 1.15;
-  }
-  .fv_tagline {
-    font-size: 1.1rem;
-    margin-top: 1.2rem;
-    margin-bottom: 1.2rem;
-  }
-  .fv_illustration {
-    width: 100%;
-    text-align: center;
-    margin-top: 1.2rem;
-  }
-  .fv_image {
-    width: 16rem;
-    max-width: 90vw;
-  }
-}
-
-@media (max-width: 768px) {
-  .container {
-    padding: 0.5rem;
-    max-width: 100%;
-  }
-
-  .timeline_cards {
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .timeline_card {
-    max-width: 100%;
-    padding: 1.5rem;
   }
 
   .fv_heading {
@@ -310,7 +109,34 @@
   .fv_image {
     width: 24rem;
   }
+
+  .timeline_cards {
+    gap: 1rem;
+  }
 }
 
+@media (max-width: 425px) {
+  .fv_heading {
+    font-size: 2rem;
+  }
 
+  .fv_tagline {
+    font-size: 1rem;
+  }
 
+  .fv_image {
+    width: 16rem;
+  }
+
+  .dropdown {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+.custom_dropdown_wrapper {
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+}

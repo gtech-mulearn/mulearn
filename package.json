@@ -47,7 +47,7 @@
         "react-icons": "^4.12.0",
         "react-qr-code": "^2.0.11",
         "react-router-dom": "^6.9.0",
-        "react-select": "^5.7.7",
+        "react-select": "^5.10.2",
         "react-spinners": "^0.13.8",
         "react-star-ratings": "^2.3.0",
         "react-tabs": "^6.0.1",
