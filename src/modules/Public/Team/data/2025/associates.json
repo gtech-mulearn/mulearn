@@ -1,15 +1,5 @@
 [
   {
-    "name": "Muhammed Ziyan Ummalil",
-    "image": "public/assets/team/Muhammed Ziyan Ummalil.jpg",
-    "muid": "muhammedziyanummalil@mulearn",
-    "linkedin": "https://www.linkedin.com/in/mziyan/",
-    "twitter": "",
-    "github": "https://github.com/venommz7",
-    "team": "Interest Group Management",
-    "lead": ""
-  },
-  {
     "name": "Mehbin A C",
     "image": "public/assets/team/Mehbin A C.jpg",
     "muid": "mehbinac@mulearn",
@@ -17,16 +7,6 @@
     "twitter": "",
     "github": "https://github.com/Mehbin0/",
     "team": "Interest Group Management",
-    "lead": ""
-  },
-  {
-    "name": "Abikrishna S",
-    "image": "public/assets/team/Abikrishna S.jpeg",
-    "muid": "abikrishnas-1@mulearn",
-    "linkedin": "https://www.linkedin.com/in/abikrishna-s/",
-    "twitter": "",
-    "github": "",
-    "team": "Graphic Design",
     "lead": ""
   },
   {
@@ -47,16 +27,6 @@
     "twitter": "",
     "github": "",
     "team": "Project Management",
-    "lead": ""
-  },
-  {
-    "name": "Dev Nandan S",
-    "image": "public/assets/team/Dev Nandan.jpeg",
-    "muid": "devnandan@mulearn",
-    "linkedin": "https://in.linkedin.com/in/dev-nandan-design",
-    "twitter": "",
-    "github": "",
-    "team": "UX Strategist",
     "lead": ""
   },
   {
@@ -108,5 +78,45 @@
     "github": "",
     "team": "Partner Engagement",
     "lead": ""
-  }
+  },
+  {
+        "name": "Agnivesh P S",
+        "image": "public/assets/team/Agnivesh PS.png",
+        "muid": "agniveshp.s.@mulearn",
+        "linkedin": "https://www.linkedin.com/in/agniveshps/",
+        "twitter": "https://twitter.com/AgniveshPS23",
+        "github": "https://github.com/lyfofagni",
+        "team": "Graphic Designer",
+        "lead": ""
+    },
+    {
+        "name": "Joel Basil Kurian",
+        "image": "public/assets/team/2024/Interns/Campus Management/Joel Basil Kurian.jpeg",
+        "muid": "joelbasilkurian@mulearn",
+        "linkedin": "",
+        "twitter": "",
+        "github": "",
+        "team": "Campus Management",
+        "lead": ""
+    },
+    {
+        "name": "Jyothsna P Nair",
+        "image": "public/assets/team/2024/Interns/Operation Manager/Jyothsna P Nair.jpeg",
+        "muid": "jyothsnapnair-1@mulearn",
+        "linkedin": "www.linkedin.com/in/jyothsna-p-nair-11b734273",
+        "twitter": "",
+        "github": "",
+        "team": "Operation Manager",
+        "lead": ""
+    },
+    {
+        "name": "Gifton Shibu",
+        "image": "public/assets/team/2024/Interns/Operation Manager/Gifton Shibu.jpg",
+        "muid": "giftonshibu@mulearn",
+        "linkedin": "https://www.linkedin.com/in/gifton07",
+        "twitter": "",
+        "github": "https://github.com/Gifton07",
+        "team": "Campus Management",
+        "lead": ""
+    }
 ]

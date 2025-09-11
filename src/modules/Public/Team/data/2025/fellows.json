@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Muhammed Ziyan Ummalil",
+        "image": "public/assets/team/Muhammed Ziyan Ummalil.jpg",
+        "muid": "muhammedziyanummalil@mulearn",
+        "linkedin": "https://www.linkedin.com/in/mziyan/",
+        "twitter": "",
+        "github": "https://github.com/venommz7",
+        "team": "IG Strategist",
+        "lead": ""
+    },
+    {
+    "name": "Dev Nandan S",
+    "image": "public/assets/team/Dev Nandan.jpeg",
+    "muid": "devnandan@mulearn",
+    "linkedin": "https://in.linkedin.com/in/dev-nandan-design",
+    "twitter": "",
+    "github": "",
+    "team": "UX Strategist",
+    "lead": ""
+  },
+  {
+    "name": "Abikrishna S",
+    "image": "public/assets/team/Abikrishna S.jpeg",
+    "muid": "abikrishnas-1@mulearn",
+    "linkedin": "https://www.linkedin.com/in/abikrishna-s/",
+    "twitter": "",
+    "github": "",
+    "team": "Graphic Design",
+    "lead": ""
+  }
+]

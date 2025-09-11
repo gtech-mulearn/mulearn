@@ -1,81 +1,92 @@
 [
   {
-    "name": "Arjun A I",
-    "image": "public/assets/team/Arjun A I.jpeg",
-    "muid": "iamarjunai@mulearn",
-    "linkedin": "https://www.linkedin.com/in/arjun-a-i",
+    "name": "Govind K",
+    "image": "public/assets/team/Govind K.jpg",
+    "muid": "govindk@mulearn",
+    "linkedin": "https://www.linkedin.com/in/govind-k-0285a0254/",
     "twitter": "",
     "github": "",
-    "team": "Interest Group",
+    "team": "Program Manager",
     "lead": ""
   },
   {
-    "name": "Edwin Alex Shaji",
-    "image": "public/assets/team/Edwin Alex Shaji.jpeg",
-    "muid": "edwinalexshaji@mulearn",
-    "linkedin": "https://www.linkedin.com/in/edwinalexshaji/",
-    "twitter": "",
+    "name": "Rahul Nath R",
+    "image": "public/assets/team/2023/yip/Rahul Nath R.webp",
+    "muid": "",
+    "linkedin": "https://www.linkedin.com/in/rahul-nath-r-6b133429/",
     "github": "",
-    "team": "Marketing Associate",
+    "twitter": "",
+    "team": "Finance",
+    "lead": ""
+  },
+  {
+    "name": "Prijun S Padman",
+    "image": "public/assets/team/Prijun S Padman.jpg",
+    "muid": "prijunspadman@mulearn",
+    "linkedin": "https://www.linkedin.com/in/prijunspadman/",
+    "github": "",
+    "twitter": "",
+    "team": "Media",
+    "lead": ""
+  },
+  {
+    "name": "Ahamed Jishfaan M S",
+    "image": "public/assets/team/2023/pillars/Ahamed Jishfaan M S.webp",
+    "muid": "ahamedjishfaanms@mulearn",
+    "linkedin": "https://www.linkedin.com/in/ahamed-jishfaanms-4b362a230",
+    "twitter": "https://twitter.com/jishfaan",
+    "github": "",
+    "team": "Operations and Strategic Initiatives",
+    "lead": ""
+  },
+  {
+    "name": "Kochouseph John",
+    "image": "public/assets/team/2023/pillars/Kochouseph John.webp",
+    "muid": "kochousephjohn26@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/kochouseph-john-b86149212",
+    "twitter": "",
+    "github": "https://github.com/Kochouseph26John",
+    "team": "Key Administrator",
+    "lead": ""
+  },
+  {
+    "name": "Sachin Raj M",
+    "image": "public/assets/team/2023/pillars/Sachin Raj M.webp",
+    "muid": "sachinrajm@mulearn",
+    "linkedin": "https://www.linkedin.com/in/sachinrajm/",
+    "twitter": "https://twitter.com/SachinRaj2018",
+    "github": "https://github.com/sachin-raj-m",
+    "team": "Interns and Documentation",
+    "lead": ""
+  },
+  {
+    "name": "Jenin Joseph",
+    "image": "public/assets/team/2023/pillars/Jenin Joseph.webp",
+    "muid": "jeninjoseph@mulearn",
+    "linkedin": "https://www.linkedin.com/in/jenin-joseph/",
+    "twitter": "https://twitter.com/__Jenin__",
+    "github": "https://github.com/Jenin82",
+    "team": "Techmical",
     "lead": ""
   },
   {
     "name": "Muhammed R",
     "image": "public/assets/team/Muhammed R.jpeg",
     "muid": "muhammedr@mulearn",
-    "linkedin": "https://in.linkedin.com/in/muhammed-r",
-    "twitter": "",
-    "github": "",
+    "linkedin": "https://www.linkedin.com/in/muhammed-r/",
+    "twitter": "https://twitter.com/muhammedr7025",
+    "github": "https://github.com/muhammedr7025",
     "team": "Hardware",
     "lead": ""
   },
   {
-    "name": "Mohammed Farhan TM",
-    "image": "public/assets/team/Mohammed Farhan TM.jpeg",
-    "muid": "mohammedfarhant.m@mulearn",
-    "linkedin": "https://in.linkedin.com/in/mo-farhan-tm?",
-    "twitter": "",
-    "github": "",
-    "team": "Marketing",
-    "lead": ""
-  },
-  {
-    "name": "Dev Nandan S",
-    "image": "public/assets/team/Dev Nandan.jpeg",
-    "muid": "devnandan@mulearn",
-    "linkedin": "https://in.linkedin.com/in/dev-nandan-design",
-    "twitter": "",
-    "github": "",
-    "team": "UX Strategist",
-    "lead": ""
-  },
-  {
-    "name": "Devaprabha Rajesh",
-    "image": "public/assets/team/Devaprabha Rajesh.jpeg",
-    "muid": "devaprabharajesh@mulearn",
-    "linkedin": "https://www.linkedin.com/in/devaprabha-rajesh",
-    "twitter": "",
-    "github": "",
-    "team": "",
-    "lead": ""
-  },
-  {
-    "name": "G Hithesh",
-    "image": "public/assets/team/G Hithesh.jpg",
-    "muid": "ghithesh@mulearn",
-    "linkedin": "https://www.linkedin.com/in/hithesh-g-9a09612a8?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    "twitter": "",
-    "github": "",
-    "team": "Partner Engagement",
-    "lead": ""
-  },{
-    "name": "Salahudheen Thajudheen",
-    "image": "public/assets/team/2024/Associates and Junior Associates/Salahudheen Thajudheen.jpeg",
-    "muid": "salahudheenthajudheen@mulearn",
-    "linkedin": "www.linkedin.com/in/salahudheen-thajudheen-7803251ba",
-    "twitter": "https://twitter.com/takudu_sal",
-    "github": "github.com/salahudheenthajudheen",
-    "team": "",
+    "name": "Adithya A R",
+    "image": "public/assets/team/2023/pillars/Adithya A R.webp",
+    "muid": "adithyaar@mulearn",
+    "linkedin": "https://www.linkedin.com/in/adithya-rajesh-a07092247",
+    "twitter": "https://twitter.com/AdithyaRajesh01",
+    "github": "https://github.com/AdithyaRajesh10",
+    "team": "FAB, Hardware and Warehouse",
     "lead": ""
   }
 ]
