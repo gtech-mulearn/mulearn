@@ -15,7 +15,7 @@ const Donation = () => {
     const [amount, setAmount] = useState<number>();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const [mobile, setMobile] = useState<number>();
+    const [mobile, setMobile] = useState("");
     const [pan, setPan] = useState("");
     const [selectedAmount, setSelectedAmount] = useState<number>(0);
     const [isOrganisation, setIsOrganisation] = useState(false);
@@ -233,13 +233,14 @@ const Donation = () => {
                             />
                             <label htmlFor="mobile">Phone Number</label>
                             <input
-                                type="number"
+                                type="tel"
                                 id="mobile"
                                 placeholder="+91"
                                 aria-label="Mobile Number"
                                 className={styles.DonationInputStyles}
-                                value={mobile || ""}
-                                onChange={e => setMobile(Number(e.target.value))}
+                                value={mobile}
+                                onChange={e => setMobile(e.target.value)}
+                                autoComplete="tel"
                                 required
                             />
                             <label htmlFor="pan">PAN Number</label>
