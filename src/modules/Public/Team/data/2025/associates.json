@@ -1,15 +1,5 @@
 [
   {
-    "name": "Muhammed Ziyan Ummalil",
-    "image": "public/assets/team/Muhammed Ziyan Ummalil.jpg",
-    "muid": "muhammedziyanummalil@mulearn",
-    "linkedin": "https://www.linkedin.com/in/mziyan/",
-    "twitter": "",
-    "github": "https://github.com/venommz7",
-    "team": "Interest Group Management",
-    "lead": ""
-  },
-  {
     "name": "Mehbin A C",
     "image": "public/assets/team/Mehbin A C.jpg",
     "muid": "mehbinac@mulearn",
@@ -20,23 +10,13 @@
     "lead": ""
   },
   {
-    "name": "Joel Basil Kurian",
-    "image": "public/assets/team/2024/Interns/Campus Management/Joel Basil Kurian.jpeg",
-    "muid": "joelbasilkurian@mulearn",
-    "linkedin": "",
+    "name": "Alina Pinheiro",
+    "image": "public/assets/team/Alina Pinheiro.jpeg",
+    "muid": "alinapinheiro@mulearn",
+    "linkedin": "https://www.linkedin.com/in/alina-pinheiro",
     "twitter": "",
     "github": "",
-    "team": "Campus Management",
-    "lead": ""
-  },
-  {
-    "name": "Agnivesh P S",
-    "image": "public/assets/team/Agnivesh PS.png",
-    "muid": "agniveshp.s.@mulearn",
-    "linkedin": "https://www.linkedin.com/in/agniveshps/",
-    "twitter": "https://twitter.com/AgniveshPS23",
-    "github": "https://github.com/lyfofagni",
-    "team": "Graphic Design",
+    "team": "Content Writing",
     "lead": ""
   },
   {
@@ -50,20 +30,10 @@
     "lead": ""
   },
   {
-    "name": "Dev Nandan S",
-    "image": "",
-    "muid": "",
-    "linkedin": "",
-    "twitter": "",
-    "github": "",
-    "team": "Graphic Design",
-    "lead": ""
-  },
-  {
     "name": "Awindas R",
-    "image": "",
-    "muid": "",
-    "linkedin": "",
+    "image": "public/assets/team/Awin Das R.jpeg",
+    "muid": "awindasr@mulearn",
+    "linkedin": "https://in.linkedin.com/in/awindsr",
     "twitter": "",
     "github": "",
     "team": "Development",
@@ -71,29 +41,19 @@
   },
   {
     "name": "K H Arjun",
-    "image": "",
-    "muid": "",
-    "linkedin": "",
+    "image": "public/assets/team/K H Arjun.jpeg",
+    "muid": "kharjun@mulearn",
+    "linkedin": "https://www.linkedin.com/in/kharjun/",
     "twitter": "",
     "github": "",
     "team": "Social Media Management",
     "lead": ""
   },
   {
-    "name": "Jyothsna P Nair",
-    "image": "public/assets/team/2024/Interns/Operation Manager/Jyothsna P Nair.jpeg",
-    "muid": "jyothsnapnair-1@mulearn",
-    "linkedin": "www.linkedin.com/in/jyothsna-p-nair-11b734273",
-    "twitter": "",
-    "github": "",
-    "team": "Partner Engagement",
-    "lead": ""
-  },
-  {
     "name": "Salahudheen Thajudheen",
     "image": "public/assets/team/2024/Associates and Junior Associates/Salahudheen Thajudheen.jpeg",
     "muid": "salahudheenthajudheen@mulearn",
-    "linkedin": "",
+    "linkedin": "https://in.linkedin.com/in/salahudheen--thajudheen-",
     "twitter": "",
     "github": "",
     "team": "Quality Assurance",
@@ -101,9 +61,9 @@
   },
   {
     "name": "Dia Promod",
-    "image": "",
-    "muid": "",
-    "linkedin": "",
+    "image": "public/assets/team/Dia Promod.jpeg",
+    "muid": "diapramod@mulearn",
+    "linkedin": "https://in.linkedin.com/in/dia-promod",
     "twitter": "",
     "github": "",
     "team": "Interest Group Management",
@@ -118,5 +78,45 @@
     "github": "",
     "team": "Partner Engagement",
     "lead": ""
-  }
+  },
+  {
+        "name": "Agnivesh P S",
+        "image": "public/assets/team/Agnivesh PS.png",
+        "muid": "agniveshp.s.@mulearn",
+        "linkedin": "https://www.linkedin.com/in/agniveshps/",
+        "twitter": "https://twitter.com/AgniveshPS23",
+        "github": "https://github.com/lyfofagni",
+        "team": "Graphic Designer",
+        "lead": ""
+    },
+    {
+        "name": "Joel Basil Kurian",
+        "image": "public/assets/team/2024/Interns/Campus Management/Joel Basil Kurian.jpeg",
+        "muid": "joelbasilkurian@mulearn",
+        "linkedin": "",
+        "twitter": "",
+        "github": "",
+        "team": "Campus Management",
+        "lead": ""
+    },
+    {
+        "name": "Jyothsna P Nair",
+        "image": "public/assets/team/2024/Interns/Operation Manager/Jyothsna P Nair.jpeg",
+        "muid": "jyothsnapnair-1@mulearn",
+        "linkedin": "www.linkedin.com/in/jyothsna-p-nair-11b734273",
+        "twitter": "",
+        "github": "",
+        "team": "Operation Manager",
+        "lead": ""
+    },
+    {
+        "name": "Gifton Shibu",
+        "image": "public/assets/team/Gifton Shibu.jpg",
+        "muid": "giftonshibu@mulearn",
+        "linkedin": "https://www.linkedin.com/in/gifton07",
+        "twitter": "",
+        "github": "https://github.com/Gifton07",
+        "team": "Campus Management",
+        "lead": ""
+    }
 ]

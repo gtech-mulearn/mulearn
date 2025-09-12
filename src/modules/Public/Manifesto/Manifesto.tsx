@@ -14,7 +14,6 @@ export default function Manifesto() {
           <img src={cdnUrl("src/modules/Public/Manifesto/assets/µ.png")} alt="µLearn background logo" className={styles.muLogoBg} />
           <div className={styles.textContainer}>
             <div className={styles.logoContainer}>
-              <img src={cdnUrl("src/modules/Public/Manifesto/assets/µLearn-logo.svg")} alt="µLearn logo" />
               <div className={styles.ourManifestoText}>Our Manifesto</div>
             </div>
             <h1>We,The Unbound, The Unbowed</h1>
@@ -46,10 +45,15 @@ export default function Manifesto() {
           </p>
         </div>
         <div className={styles.joinRevolution}>
-          <h2 className="flex justify-center items-center">
-            Welcome to the <span>µLearn.</span>Welcome to the{" "}
-            <span>Revolution.</span>
-          </h2>{" "}
+          <h2>
+            <span style={{ fontWeight: 400 }}>
+              Welcome to the <span className={styles.highlight}>µLearn.</span>
+            </span>
+            <br />
+            <span style={{ fontWeight: 400 }}>
+              Welcome to the <span className={styles.highlight}>Revolution.</span>
+            </span>
+          </h2>
           <a href="https://app.mulearn.org" target="_blank" rel="noreferrer">
             <button>Join µLearn</button>
           </a>
