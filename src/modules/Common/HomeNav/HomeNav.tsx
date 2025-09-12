@@ -111,7 +111,6 @@ const HomeNav: React.FC = () => {
         "OTHERS": [
           // { label: "MAGAZINE", onClick: () => window.open("https://online.fliphtml5.com/slydm/hrgi/") },
           { label: "NEWSLETTER", onClick: () => window.open("https://online.fliphtml5.com/slydm/yljq/") },
-          { label: "Campus Logo Generator", onClick: () => navigate("/campus-logo-generator") }
         ]
       }
     },
@@ -119,6 +118,17 @@ const HomeNav: React.FC = () => {
       label: "Why μLearn?", 
       onClick: () => window.open("https://youtu.be/ehdSEL_s050"),
       submenu: null
+    },
+    {
+      label: "Be A Part of Us",
+      onClick: () => {},
+      submenu: {
+        "Join Us": [
+          { label: "Company", onClick: () => navigate("/be-a-part/company") },
+          { label: "Campus", onClick: () => navigate("/be-a-part/campus") },
+          { label: "Campus Logo Generator", onClick: () => navigate("/campus-logo-generator") }
+        ]
+      }
     },
     // { 
     //   label: "Programs", 
@@ -137,11 +147,6 @@ const HomeNav: React.FC = () => {
       onClick: () => redirect("/dashboard/search?activetab=mentors"),
       submenu: null
     },
-    // { 
-    //   label: "Leader Board", 
-    //   onClick: () => navigate("dashboard/leaderboard"),
-    //   submenu: null
-    // },
     { 
       label: "Interest Group", 
       onClick: () => {},
@@ -227,7 +232,11 @@ const HomeNav: React.FC = () => {
                 <AnimatePresence>
                   {activeSubmenu === index && item.submenu && (
                     <motion.div
-                      className={styles.submenu}
+                      className={
+                        item.label === "Be A Part of Us"
+                          ? `${styles.submenu} ${styles.bePartSubmenu}`
+                          : styles.submenu
+                      }
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
@@ -242,7 +251,7 @@ const HomeNav: React.FC = () => {
                                 <li
                                   key={subIndex}
                                   className={styles.submenuItem}
-                                  onClick={(e) => {
+                                  onClick={e => {
                                     e.stopPropagation();
                                     subItem.onClick();
                                     setActiveSubmenu(null);

@@ -44,11 +44,13 @@
 
 }
 
-.socialIcons {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
+ .socialIcons {
+   display: flex;
+   flex-direction: row;
+   align-items: flex-start;
+   gap: 10px;
+   margin-top: 8px;
+ }
 
 .socialIcons a {
   font-size: 1.5rem;

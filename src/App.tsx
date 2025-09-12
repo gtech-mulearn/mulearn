@@ -42,11 +42,15 @@ const YIP = lazy(() => import("./modules/Public/yip/YIP2023"));
 const NominateHR = lazy(() => import("./modules/Public/HRNomination/NominateHR"));
 const Careers = lazy(() => import("./modules/Public/Career/Career"));
 const CampusLogoGen = lazy(() => import("./modules/Public/CampusLogoGen/CampusLogoGen"));
+const BeACompany = lazy(() => import("./modules/Public/BeAPart/BeACompany"));
+const BeACampus = lazy(() => import("./modules/Public/BeAPart/BeACampus"));
 
 function App() {
   const router = createBrowserRouter([
     { path: "/", element: <MuLearnLanding /> },
-    { path: "/manifesto", element: <Manifesto /> },
+  { path: "/manifesto", element: <Manifesto /> },
+  { path: "/be-a-part/company", element: <BeACompany /> },
+  { path: "/be-a-part/campus", element: <BeACampus /> },
     {path: "/enablers", element: <EnablersPage/>},
     { path: "/community-partners", element: <CommunityPartners /> },
     { path: "/company-partners", element: <CompanyPartners /> },
