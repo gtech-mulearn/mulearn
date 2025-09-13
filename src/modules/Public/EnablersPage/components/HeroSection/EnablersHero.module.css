@@ -1,9 +1,11 @@
+  
 .enablersHero {
   padding-top: 2rem;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: #faf8ff;
 }
 .enablersHero div {
   margin-left: 4rem;
@@ -26,6 +28,13 @@
   background: #ff7d40;
   padding: 20px 30px;
   color: #fff;
+}
+.enablersHero img {
+  max-width: 420px;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 @media (width<1250px) {

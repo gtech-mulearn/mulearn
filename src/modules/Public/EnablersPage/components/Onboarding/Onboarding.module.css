@@ -62,16 +62,19 @@
         font-size: 25px;
     }
     .onboarding .onboardingList h1 span{
-        font-size: 90px;
+        display: none;
     }
     .onboarding .onboardingList p{
         font-size: 15px;
     }
-    .onboarding .onboardingList h1  img{
-        height: 50px;
+    .onboarding .onboardingList h1 img{
+        width: 64px;
+        height: 64px;
+        max-width: 90px;
+        max-height: 90px;
+        object-fit: contain;
     }
 }
-
 @media (width<500px){
     .onboarding h1{
         font-size: 25px;
