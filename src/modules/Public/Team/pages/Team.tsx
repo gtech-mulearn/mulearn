@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Select from "react-select"; // ✅ NEW IMPORT
 import styles from "./Team.module.css";
 import { cdnUrl } from "@/modules/utils/cdn";
 import Execom from "../components/Teams/Execom";
@@ -33,6 +34,7 @@ const fadeInUp = {
 };
 
 type YearType = "2025" | "2024" | "2023" | "2022";
+
 const yearComponents: Record<YearType, JSX.Element> = {
   "2025": <Year2025 />,
   "2024": <Year2024 />,
@@ -40,14 +42,15 @@ const yearComponents: Record<YearType, JSX.Element> = {
   "2022": <Year2022 />,
 };
 
-const yearData: YearType[] = ["2025", "2024", "2023", "2022"];
+const yearOptions = [
+  { value: "2025", label: "2025" },
+  { value: "2024", label: "2024" },
+  { value: "2023", label: "2023" },
+  { value: "2022", label: "2022" },
+];
 
 const Teams = () => {
   const [activeYear, setActiveYear] = useState<YearType>("2025");
-
-  const selectYear = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setActiveYear(event.target.value as YearType);
-  };
 
   return (
     <motion.div
@@ -92,30 +95,61 @@ const Teams = () => {
             <img
               className={styles.fv_image}
               src={cdnUrl("public/assets/team/illustration.webp")}
-              alt=""
+              alt="Team Illustration"
             />
           </motion.div>
         </div>
       </div>
 
-      {/* Executive Committee */}
       <Execom />
 
-      {/* Collapsible Timeline */}
+      {/* Timeline Section */}
       <div className={styles.timeline_wrapper}>
-        <select
-          className={styles.dropdown}
-          onChange={selectYear}
-          value={activeYear}
-        >
-          {yearData.map((year) => (
-            <option key={year} value={year}>
-              {year}
-            </option>
-          ))}
-        </select>
+        <div className={styles.custom_dropdown_wrapper}>
+          <Select
+            options={yearOptions}
+            value={yearOptions.find((y) => y.value === activeYear)}
+            onChange={(selected) =>
+              setActiveYear(selected?.value as YearType)
+            }
+            isSearchable={false}
+            classNamePrefix="year-select"
+            styles={{
+              control: (base) => ({
+                ...base,
+                width: 200,
+                borderRadius: 8,
+                borderColor: "#3b82f6",
+                boxShadow: "0 4px 16px rgba(60, 130, 246, 0.18)",
+                cursor: "pointer",
+                textAlign: "center",
+              }),
+              singleValue: (base) => ({
+                ...base,
+                textAlign: "center",
+                width: "100%",
+                justifyContent: "center",
+                display: "flex",
+              }),
+              menu: (base) => ({
+                ...base,
+                textAlign: "center",
+              }),
+              option: (base, { isFocused, isSelected }) => ({
+                ...base,
+                textAlign: "center",
+                backgroundColor: isSelected
+                  ? "#3b82f6"
+                  : isFocused
+                  ? "#e0edff"
+                  : "#fff",
+                color: isSelected ? "#fff" : "#2563eb",
+                cursor: "pointer",
+              }),
+            }}
+          />
+        </div>
 
-        {/* Cards Content */}
         <div className={styles.timeline_cards}>
           {yearComponents[activeYear]}
         </div>

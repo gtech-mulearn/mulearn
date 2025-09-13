@@ -981,11 +981,10 @@
     },
     {
         "name": "Dev Nandan S",
-        "image": "",
+        "image": "public/assets/team/Dev Nandan.jpg",
         "muid": "devnandan@mulearn",
-        "linkedin": "",
+        "linkedin": "https://in.linkedin.com/in/dev-nandan-design",
         "twitter": "",
-        "github": "",
         "team": "Graphic Designer",
         "lead": ""
     },

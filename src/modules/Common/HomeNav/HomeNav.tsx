@@ -75,7 +75,6 @@ const HomeNav: React.FC = () => {
   }, [isMenuOpen, isMobileView]);
 
   const navItems: NavItem[] = [
-    
     { 
       label: "About", 
       onClick: () => navigate("/about"),
@@ -84,17 +83,11 @@ const HomeNav: React.FC = () => {
           { label: "MANIFESTO", onClick: () => navigate("/manifesto") },
           { label: "Team", onClick: () => navigate("/team") },
           { label: "Enablers", onClick: () => navigate("/enablers") },
-
         ],
         "Partners": [
           { label: "COMMUNITY PARTNERS", onClick: () => navigate("/community-partners") },
           { label: "COMPANY PARTNERS", onClick: () => navigate("/company-partners") }
         ],
-        // "MEDIA": [
-        //   { label: "GALLERY", onClick: () => navigate("/gallery") },
-        //   { label: "NEWS", onClick: () => navigate("/news") },
-        //   { label: "BLOGS", onClick: () => navigate("/blogs") }
-        // ],
         "EVENTS": [
           { label: "GLOBAL CALENDAR", onClick: () => navigate("/events/calendar") },
           { label: "ANNOUNCEMENTS", onClick: () => navigate("/events/announcements") },
@@ -102,16 +95,13 @@ const HomeNav: React.FC = () => {
         ],
         "Programs": [
           { label: "LAUNCHPAD", onClick: () => window.open("https://launchpadkerala.org/") },
-          // { label: "MUTATE", onClick: () => navigate("/mutate") },
           { label: "PERMUTE", onClick: () => window.open("https://permute.mulearn.org/") },
           { label: "TOP100SERIES", onClick: () => window.open("https://top100coders.com/") },
           { label: "Art of Teaching", onClick: () => navigate("/artofteaching") },
           { label: "IN50HOURS", onClick: () => navigate("/in50hours") },
         ],
         "OTHERS": [
-          // { label: "MAGAZINE", onClick: () => window.open("https://online.fliphtml5.com/slydm/hrgi/") },
           { label: "NEWSLETTER", onClick: () => window.open("https://online.fliphtml5.com/slydm/yljq/") },
-          { label: "Campus Logo Generator", onClick: () => navigate("/campus-logo-generator") }
         ]
       }
     },
@@ -120,47 +110,32 @@ const HomeNav: React.FC = () => {
       onClick: () => window.open("https://youtu.be/ehdSEL_s050"),
       submenu: null
     },
-    // { 
-    //   label: "Programs", 
-    //   onClick: () => navigate("dashboard/search?activetab=mentors"),
-    //   submenu: {
-    //      "FLAGSHIP": [
-    //       
-    //     ],
-    //     "OTHERS": [
-    //       { label: "WIKISYLLABUS", onClick: () => navigate("/wikisyllabus") },
-    //     ]
-    //   },
-    // },
+    {
+      label: "Be A Part of Us",
+      onClick: () => {},
+      submenu: {
+        "Join Us": [
+          { label: "Company", onClick: () => navigate("/be-a-part/company") },
+          { label: "Campus", onClick: () => navigate("/be-a-part/campus") },
+          { label: "Campus Logo Generator", onClick: () => navigate("/campus-logo-generator") }
+        ]
+      }
+    },
     { 
       label: "Mentorship", 
       onClick: () => redirect("/dashboard/search?activetab=mentors"),
       submenu: null
     },
-    // { 
-    //   label: "Leader Board", 
-    //   onClick: () => navigate("dashboard/leaderboard"),
-    //   submenu: null
-    // },
-    { 
-      label: "Interest Group", 
+    {
+      label: "Learning",
       onClick: () => {},
       submenu: {
-        Subjects: interestGroups.map((group: { id: string; title: string }) => ({
-          label: group.title,
-          onClick: () => redirect(`/dashboard/interestgroups/${group.id}`)
-        }))
+        "Explore": [
+          { label: "Interest Groups", onClick: () => {} },
+          { label: "Learning Circles", onClick: () => {} },
+          { label: "Learning Paths", onClick: () => {} },
+        ]
       }
-    },
-    { 
-      label: "Learning Circles", 
-      onClick: () => redirect("/dashboard/learningcircle"),
-      submenu: null
-    },
-    { 
-      label: "Learning Paths", 
-      onClick: () => redirect("/dashboard/mujourney", { open: true }),
-      submenu: null
     },
     { 
       label: "Donate", 
@@ -197,6 +172,20 @@ const HomeNav: React.FC = () => {
     }
   };
 
+  // Custom handlers for Learning submenu
+  const handleLearningSubmenuClick = (label: string) => {
+    if (label === "Interest Groups") {
+      setActiveSubmenu(null);
+      redirect("/dashboard/interestgroups");
+    } else if (label === "Learning Circles") {
+      setActiveSubmenu(null);
+      redirect("/dashboard/learningcircle");
+    } else if (label === "Learning Paths") {
+      setActiveSubmenu(null);
+      redirect("/dashboard/mujourney", { open: true });
+    }
+  };
+
   return (
     <div className={styles.navWrapper}>
       {/* DESKTOP NAVIGATION */}
@@ -227,25 +216,28 @@ const HomeNav: React.FC = () => {
                 <AnimatePresence>
                   {activeSubmenu === index && item.submenu && (
                     <motion.div
-                      className={styles.submenu}
+                      className={
+                        item.label === "Be A Part of Us"
+                          ? `${styles.submenu} ${styles.bePartSubmenu}`
+                          : styles.submenu
+                      }
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.2 }}
                     >
                       <div className={styles.submenuContent}>
-                        {Object.entries(item.submenu).map(([category, items]) => (
-                          <div key={category} className={styles.submenuSection}>
-                            <h4 className={styles.submenuCategory}>{category}</h4>
+                        {item.label === "Learning" ? (
+                          <div className={styles.submenuSection}>
+                            <h4 className={styles.submenuCategory}>Explore</h4>
                             <ul className={styles.submenuList}>
-                              {items.map((subItem, subIndex) => (
+                              {item.submenu && item.submenu["Explore"].map((subItem, subIndex) => (
                                 <li
                                   key={subIndex}
                                   className={styles.submenuItem}
-                                  onClick={(e) => {
+                                  onClick={e => {
                                     e.stopPropagation();
-                                    subItem.onClick();
-                                    setActiveSubmenu(null);
+                                    handleLearningSubmenuClick(subItem.label);
                                   }}
                                 >
                                   {subItem.label}
@@ -253,7 +245,28 @@ const HomeNav: React.FC = () => {
                               ))}
                             </ul>
                           </div>
-                        ))}
+                        ) : (
+                          Object.entries(item.submenu).map(([category, items]) => (
+                            <div key={category} className={styles.submenuSection}>
+                              <h4 className={styles.submenuCategory}>{category}</h4>
+                              <ul className={styles.submenuList}>
+                                {items.map((subItem, subIndex) => (
+                                  <li
+                                    key={subIndex}
+                                    className={styles.submenuItem}
+                                    onClick={e => {
+                                      e.stopPropagation();
+                                      subItem.onClick();
+                                      setActiveSubmenu(null);
+                                    }}
+                                  >
+                                    {subItem.label}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ))
+                        )}
                       </div>
                     </motion.div>
                   )}
@@ -310,7 +323,6 @@ const HomeNav: React.FC = () => {
               transition={{ duration: 0.3 }}
               onClick={() => setIsMenuOpen(false)}
             />
-            
             {/* Mobile Menu */}
             <motion.div
               className={styles.mobileMenu}
@@ -362,25 +374,37 @@ const HomeNav: React.FC = () => {
                     >
                       {'< Back'}
                     </li>
-                    {Object.entries(navItems[activeMobileSubmenu].submenu!).map(([category, items]) => (
-                      <div key={category} className={styles.mobileSubmenuSection}>
-                        <div className={styles.mobileSubmenuCategory}>{category}</div>
+                    {/* Custom mobile submenu for Learning */}
+                    {navItems[activeMobileSubmenu].label === "Learning" ? (
+                      <div className={styles.mobileSubmenuSection}>
+                        <div className={styles.mobileSubmenuCategory}>Explore</div>
                         <ul>
-                          {items.map((subItem, subIndex) => (
-                            <li
-                              key={subIndex}
-                              onClick={() => {
-                                subItem.onClick();
-                                setIsMenuOpen(false);
-                                setActiveMobileSubmenu(null);
-                              }}
-                            >
-                              {subItem.label}
-                            </li>
-                          ))}
+                          <li onClick={() => { setIsMenuOpen(false); setActiveMobileSubmenu(null); redirect("/dashboard/interestgroups"); }}>Interest Groups</li>
+                          <li onClick={() => { setIsMenuOpen(false); setActiveMobileSubmenu(null); redirect("/dashboard/learningcircle"); }}>Learning Circles</li>
+                          <li onClick={() => { setIsMenuOpen(false); setActiveMobileSubmenu(null); redirect("/dashboard/mujourney", { open: true }); }}>Learning Paths</li>
                         </ul>
                       </div>
-                    ))}
+                    ) : (
+                      Object.entries(navItems[activeMobileSubmenu].submenu!).map(([category, items]) => (
+                        <div key={category} className={styles.mobileSubmenuSection}>
+                          <div className={styles.mobileSubmenuCategory}>{category}</div>
+                          <ul>
+                            {items.map((subItem, subIndex) => (
+                              <li
+                                key={subIndex}
+                                onClick={() => {
+                                  subItem.onClick();
+                                  setIsMenuOpen(false);
+                                  setActiveMobileSubmenu(null);
+                                }}
+                              >
+                                {subItem.label}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))
+                    )}
                   </>
                 )}
               </ul>

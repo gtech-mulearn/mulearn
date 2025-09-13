@@ -21,7 +21,7 @@ export const submitForm = async ({
     name: string;
     company?: string;
     email: string;
-    mobile: number;
+    mobile: string;
     pan: string;
 }) => {
     const script = document.createElement("script");

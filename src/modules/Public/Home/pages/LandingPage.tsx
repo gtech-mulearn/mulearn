@@ -332,12 +332,6 @@ const MuLearnLanding = () => {
                 >
                   Join µLearn
                 </button>
-               <button
-                className={styles.downloadBtn}
-                onClick={() => window.location.href = "https://mulearnfoundation.notion.site/Nasa-Space-Apps-Challenge-25938f23e2dc80eea270e68c415750fb"}
-              >
-                Join NASA Space Apps Challenge
-              </button>
               </motion.div>
               <motion.div
                 className={styles.heroImage}

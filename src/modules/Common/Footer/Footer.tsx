@@ -23,8 +23,9 @@ const Footer = () => {
         <div className={styles.footerSection}>
           <h3>Quick Links</h3>
           <ul>
-            <li><a href="https://mulearn.org/careers">Career Labs</a></li>
             <li><a href="https://gtechmulearn.medium.com/">Blog</a></li>
+            <li><a href="/team">Team</a></li>
+            <li><a href="https://mulearn.org/careers">Career Labs</a></li>
             <li><a className="cursor-pointer" onClick={() => redirect("dashboard/interestgroups")}>Interest Groups</a></li>
           </ul>
         </div>
@@ -44,10 +45,22 @@ const Footer = () => {
             <a href="http://www.facebook.com/gtechmulearn"><FaFacebook /></a>
           </div>
         </div>
-        <div className={styles.footerSection}>
-          <h3>Contact</h3>
-          <p>Technopark Trivandrum, Kazhakkoottam,</p>
-          <p>Trivandrum - 695581, Kerala, India</p>
+      </div>
+      <div className={styles.footerBottom}>
+        <div style={{ textAlign: 'center', marginTop: 16 }}>
+          <div style={{ fontWeight: 600, fontSize: '1.1rem' }}>
+            μLearn Foundation | Copyright © 2025 All rights reserved.
+          </div>
+          <div style={{ margin: '8px 0' }}>
+            Technopark Phase 1, Thiruvananthapuram, Kerala - 695581
+          </div>
+          <div>
+            <a href="mailto:info@mulearn.org" style={{ color: '#1976d2', textDecoration: 'none' }}>info@mulearn.org</a>
+            {' | '}
+            <a href="tel:+918943647000" style={{ color: '#1976d2', textDecoration: 'none' }}>+91 89436 47000</a>
+            {' | '}
+            <a href="https://www.mulearn.org" style={{ color: '#1976d2', textDecoration: 'none' }}>www.mulearn.org</a>
+          </div>
         </div>
       </div>
     </motion.footer>

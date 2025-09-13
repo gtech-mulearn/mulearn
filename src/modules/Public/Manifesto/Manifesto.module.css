@@ -1,3 +1,4 @@
+
 @font-face {
   font-family: retro-team;
   src: url("./assets/Fonts/Retro_Team.otf") format('opentype');
@@ -59,8 +60,9 @@
 .head .imgContainer img {
   position: absolute;
   bottom: 0;
-  right: 5vw;
+  right: 4vw;
   width: 20vw;
+  height: auto;
 }
 
 .firstPara {
@@ -113,7 +115,7 @@
   font-size: 2rem;
   font-weight: 400;
   font-family: "Plus Jakarta Sans", sans-serif;
-  width: 100%;
+    width: 100%;
 }
 
 .joinRevolution h2 span {
@@ -130,15 +132,22 @@
   font-family: "Plus Jakarta Sans", sans-serif;
 }
 
-@media (width<750px) {
+@media (max-width: 750px) {
   .head {
     height: 40vw;
+    flex-direction: column;
+    min-height: 120px;
+    padding-left: 0;
+    border-radius: 1.2rem 1.2rem 0 0;
   }
   .head .muLogoBg {
     width: 55vw;
   }
+
   .head .textContainer {
-    padding-left: 3rem;
+    padding-left: 1.2rem;
+    padding-top: 1.2rem;
+    width: 100%;
   }
   .textContainer .logoContainer img {
     width: 15vw;
@@ -152,18 +161,20 @@
     font-size: 10vw;
   }
   .head .imgContainer img {
-    left: -8vw;
-    width: 38vw;
+    right: -5vw;
+    width: 30vw;
+    margin: 0 auto;
+    display: block;
   }
 
   .firstPara {
-    padding: 3rem 2rem;
+    padding: 2rem 1rem;
   }
   .firstPara p {
     font-size: 1.8rem;
   }
   .secondPara {
-    padding: 0 2.5rem;
+    padding: 0 1rem;
   }
   .secondPara p {
     font-size: 1.8rem;
@@ -171,35 +182,40 @@
   .joinRevolution {
     gap: 1rem;
     flex-wrap: wrap;
+    padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+    border-radius: 0 0 1rem 1rem;
   }
 }
 
-@media (width<500px) {
+@media (max-width: 500px) {
   .firstPara {
-    padding: 2.5rem 1.5rem;
+    padding: 1.2rem 0.5rem;
   }
   .firstPara p {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
   }
   .secondPara {
-    padding: 0 2rem;
+    padding: 0 0.5rem;
   }
   .secondPara p {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
   }
   .joinRevolution {
-    margin: 4rem 0;
-    margin-bottom: 2.5rem;
+    margin: 2rem 0;
+    margin-bottom: 1.2rem;
+    padding: 0.8rem 0.2rem 1rem 0.2rem;
   }
   .joinRevolution h2 {
-    font-size: 1.4rem;
+    font-size: 1rem;
+    text-align: center;
   }
   .joinRevolution button {
-    font-size: 1.2rem;
+    font-size: 0.95rem;
+    padding: 5px 0.8rem;
   }
 }
 
-@media (width<300px) {
+@media (max-width: 300px) {
   .firstPara {
     padding: 2rem 1rem;
   }
