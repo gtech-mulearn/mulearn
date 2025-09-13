@@ -22,12 +22,12 @@
   font-family: "Noto Sans", sans-serif;
   font-size: 2.5rem;
   font-weight: 600;
-  color: #3182ce;
+  color: #456ff6;
 }
 
 .fv_heading span {
   font-weight: 600;
-  color: #9765ff;
+  color: #456ff6;
 }
 
 .fv_tagline {
@@ -59,10 +59,7 @@
   /* Override embedded calendar orange with site blue */
 }
 
-/* Force blue filter on embedded calendar (iframe) */
-.iframe_container iframe {
-  filter: hue-rotate(170deg) saturate(2.5);
-}
+/* Embedded calendar uses its default (orange) color scheme */
 
 @media only screen and (min-width: 1000px) {
   .calendar_view_container {
@@ -75,12 +72,13 @@
     margin: 2rem;
   }
 
-    .cv_heading {
-      font-family: "Noto Sans", sans-serif;
-      font-size: 3.75rem;
-      font-weight: 700;
-      color: #3182ce;
-    }
+.cv_heading {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 3.75rem;
+  font-weight: 700;
+  color: #456ff6;
+}
+
   .iframe_container {
     margin-top: 2rem;
   }

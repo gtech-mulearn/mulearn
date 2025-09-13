@@ -1,7 +1,18 @@
+
+/* ========== GLOBAL RESET ========== */
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
+
+/* ========== BASE STYLES ========== */
+
+:root {
+  --Primary: #456ff6;
+}
+
+/* ========== FIRST VIEW SECTION ========== */
 
 .first_view_container {
   padding: 2rem;
@@ -10,14 +21,19 @@
 
 .first_view {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
 }
 
 .fv_img {
-  width: 18rem;
-  display: block;
-  margin: auto;
-  margin-top: 2rem;
+  width: auto;
+  height: 100%;
+  max-height: 20rem;
+  object-fit:cover;
+  /* display: block; */
+  /* margin: 2rem auto 0 auto; */
+  /* border-radius: 1.5rem; */
 }
 
 .fv_texts {
@@ -28,12 +44,6 @@
   font-family: "Noto Sans", sans-serif;
   font-size: 2.5rem;
   font-weight: 600;
-  color: #303030;
-}
-
-.readhide {
-  color: var(--Primary);
-  cursor: pointer;
 }
 
 .fv_heading span {
@@ -46,90 +56,68 @@
   font-family: "Poppins", sans-serif;
 }
 
-@media only screen and (min-width: 1000px) {
-  .first_view_container {
-    padding: 0 3rem;
-  }
-
-  .first_view {
-    max-width: 1300px;
-    margin: auto;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 2.5rem;
-    margin-bottom: 2.5rem;
-  }
-
-  .fv_img {
-    display: block;
-    margin: auto;
-    width: 35rem;
-  }
-
-  .fv_texts {
-    text-align: left;
-    width: 50%;
-  }
-
-  .fv_heading {
-    font-family: "Noto Sans", sans-serif;
-    font-size: 4.55rem;
-    line-height: 5rem;
-    font-weight: 600;
-  }
-
-  .fv_tagline {
-    margin-top: 1rem;
-    font-size: 1.1rem;
-    width: 90%;
-  }
+.readhide {
+  color: var(--Primary);
+  cursor: pointer;
 }
 
-/* Second View Styles */
+/* ========== SECOND VIEW SECTION ========== */
+
+.second_view_container {
+  margin: 2rem;
+}
+
+.sv_texts {
+  margin-bottom: 2rem;
+}
 
 .sv_heading {
   font-size: 1.75rem;
   font-family: "Noto Sans", sans-serif;
   font-weight: 600;
   color: #404040;
+  text-align: center;
 }
 
 .sv_heading span {
-  color: var(--Primary);
-}
-
-.second_view_container {
-  margin: 2rem;
+  /* Optional highlight span styling */
 }
 
 .sv_tagline {
-  font-family: "Poppins";
+  font-family: "Poppins", sans-serif;
+  text-align: center;
 }
 
 .sv_steps {
-  /* margin: 0 1rem; */
   font-weight: 400;
 }
 
+.bootcamps {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+  align-items: center;
+}
+
+
+
 .bootcamp {
   max-width: 25rem;
-  box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
-  -webkit-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
-  -moz-box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
   padding: 30px 25px;
   border-radius: 10px;
+  box-shadow: 1px 1px 45px -5px rgba(0, 0, 0, 0.08);
 }
 
 .b_heading {
   font-size: 1.25rem;
-  font-family: "Noto Sans";
+  font-family: "Noto Sans", sans-serif;
   color: var(--Primary);
 }
 
 .b_tagline {
-  font-family: "Poppins";
+  font-family: "Poppins", sans-serif;
   color: #404040;
   font-size: 0.9rem;
 }
@@ -139,42 +127,68 @@
   color: #fff;
   margin-top: 1rem;
   font-size: 0.9rem;
-  font-family: "Noto Sans";
+  font-family: "Noto Sans", sans-serif;
   border-radius: 5px;
   padding: 0.35rem 1.5rem;
+  border: none;
+  cursor: pointer;
 }
 
-.bootcamps {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 2rem;
-}
+/* ========== MEDIA QUERIES (≥1000px) ========== */
 
 @media only screen and (min-width: 1000px) {
+  .first_view_container {
+    padding: 0 3rem;
+  }
+
+  .first_view {
+    max-width: 1300px;
+    margin: 2.5rem auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12rem;
+  }
+
+  .fv_img {
+    max-width: 32rem;
+    border-radius: 2rem;
+    margin: 0;
+  }
+
+  .fv_texts {
+    text-align: left;
+    width: 50%;
+  }
+
+  .fv_heading {
+    font-size: 4.55rem;
+    line-height: 5rem;
+  }
+
+  .fv_tagline {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    width: 90%;
+  }
+
   .second_view_container {
     max-width: 1300px;
-    margin: auto;
-    margin-bottom: 5rem;
+    margin: 0 auto 5rem auto;
   }
 
   .sv_texts {
-    margin-bottom: 2rem;
     width: 60%;
   }
 
   .sv_heading {
     font-size: 2.25rem;
-    font-family: "Noto Sans", sans-serif;
-    font-weight: 600;
     text-align: left;
   }
 
   .sv_tagline {
     font-size: 1rem;
     width: 90%;
-    font-family: "Poppins", sans-serif;
     text-align: left;
   }
 }
