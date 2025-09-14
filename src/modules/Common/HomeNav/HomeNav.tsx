@@ -90,7 +90,7 @@ const HomeNav: React.FC = () => {
         ],
         "EVENTS": [
           { label: "GLOBAL CALENDAR", onClick: () => navigate("/events/calendar") },
-          { label: "ANNOUNCEMENTS", onClick: () => navigate("/events/announcements") },
+          // { label: "ANNOUNCEMENTS", onClick: () => navigate("/events/announcements") },
           { label: "WEEKLY EVENTS", onClick: () => navigate("/events/weekly") }
         ],
         "Programs": [
