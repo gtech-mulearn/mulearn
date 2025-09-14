@@ -55,7 +55,7 @@ const IGSelector = (props: Props) => {
         <div className={styles.top_sec}>
           <b>Your Interest Groups</b>
           <div className={styles.close_and_submit_btn_div}>
-            {(Number(props.userProfile.level.slice(3, 4)) >= 4) && !editIg && (
+            {(Number(props.userProfile.level?.replace("lvl", "")) >= 4) && !editIg && (
               <p onClick={() => setEditIg(true)} className={styles.edit_profile_btn} tabIndex={0}>
                 <i className="fi fi-rr-pencil"></i>
               </p>
@@ -126,7 +126,12 @@ const IGSelector = (props: Props) => {
               </div>
             ))
           ) : (
-            <p>No Interest Groups Selected. You need to reach Level 4 to Select</p>
+            <p>
+              {Number(props.userProfile.level?.replace("lvl", "")) >= 4 
+                ? "No Interest Groups Selected. Click the edit button to select your interest groups."
+                : "No Interest Groups Selected. You need to reach Level 4 to Select"
+              }
+            </p>
           )}
           {editIg && <hr />}
         </div>

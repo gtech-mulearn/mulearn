@@ -66,17 +66,8 @@ export default function GameProgressBar() {
     const fetchLevelData = async () => {
       setIsLoading(true);
 
-      const { data: cachedData, isValid } = getLevelDataFromCache();
-
-      if (cachedData && isValid) {
-        console.log("Using cached level data");
-        setLevelData(cachedData);
-        setIsLoading(false);
-        return;
-      }
-
       try {
-        console.log("Fetching fresh level data");
+        // Always fetch fresh data on initial load to ensure we have the latest level information
         const data = await getUserLevelFeed();
         if (data) {
           setLevelData(data);
@@ -84,6 +75,14 @@ export default function GameProgressBar() {
         }
       } catch (error) {
         console.error("Error fetching level data:", error);
+        
+        // Fallback to cached data only if fresh fetch fails
+        const { data: cachedData, isValid } = getLevelDataFromCache();
+        if (cachedData && isValid) {
+          setLevelData(cachedData);
+        } else {
+          setLevelData(null);
+        }
       } finally {
         setIsLoading(false);
       }
@@ -96,7 +95,6 @@ export default function GameProgressBar() {
   const currentLevel = levelData?.level_order ?? 1;
   const levelRequirement = LEVEL_REQUIREMENTS[currentLevel as keyof typeof LEVEL_REQUIREMENTS] || 0;
 
-  // Memoize progress unconditionally
   const progress = useMemo(() => {
     if (!levelData || levelRequirement === 0) return 0;
     return Math.min((levelData.user_karma / levelRequirement) * 100, 100);
@@ -129,6 +127,11 @@ export default function GameProgressBar() {
     );
   }
 
+  // Don't display anything if no level data is available
+  if (!levelData) {
+    return null;
+  }
+
   if (currentLevel === 7) {
     return (
       <div className={style.container}>
@@ -155,7 +158,7 @@ export default function GameProgressBar() {
         </motion.div>
         <div className={style.progressContainer}>
           <div className={style.progressTitle}>
-            Level {currentLevel} → {nextLevel}
+            Level {currentLevel}
           </div>
           <div className={`${style.progressBar} ${style.progressBarLarge}`}>
             <motion.div
