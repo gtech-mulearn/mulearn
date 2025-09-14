@@ -1,5 +1,6 @@
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
+import { useUserStore } from "/src/ZustandProvider";
 import channelmap from "../data/channelmap"
 
 interface AxiosResponse<T> {
@@ -68,6 +69,7 @@ class ApiCache {
     private userLevelsCache: ApiResponse | null = null;
     private igTasksCache: Record<string, Task[]> = {};
     private lastFetchTime: Record<string, number> = {};
+    private cachedUserLevel: string | null = null; // Track the user level when cache was created
     private CACHE_DURATION = 5 * 60 * 1000; // 5 minutes cache duration
 
     private constructor() {}
@@ -81,9 +83,15 @@ class ApiCache {
 
     public async getUserLevels(): Promise<ApiResponse> {
         const now = Date.now();
+        const currentUserLevel = useUserStore.getState().userProfile.level;
         
-        // Check if cache exists and is fresh
-        if (this.userLevelsCache && now - (this.lastFetchTime['userLevels'] || 0) < this.CACHE_DURATION) {
+        // Check if user level has changed since last cache - if so, invalidate cache
+        const hasUserLevelChanged = this.cachedUserLevel !== null && this.cachedUserLevel !== currentUserLevel;
+        
+        // Check if cache exists, is fresh, and user level hasn't changed
+        if (this.userLevelsCache && 
+            now - (this.lastFetchTime['userLevels'] || 0) < this.CACHE_DURATION &&
+            !hasUserLevelChanged) {
             return this.userLevelsCache;
         }
 
@@ -91,6 +99,7 @@ class ApiCache {
             const response: AxiosResponse<ApiResponse> = await privateGateway.get(dashboardRoutes.getUserLevels);
             this.userLevelsCache = response.data;
             this.lastFetchTime['userLevels'] = now;
+            this.cachedUserLevel = currentUserLevel; // Store the current user level
             return response.data;
         } catch (error) {
             throw error as ApiError;
@@ -130,15 +139,29 @@ class ApiCache {
     public clearCache(type?: 'userLevels' | 'igTasks', key?: string) {
         if (type === 'userLevels') {
             this.userLevelsCache = null;
+            this.cachedUserLevel = null;
             delete this.lastFetchTime['userLevels'];
         } else if (type === 'igTasks' && key) {
             delete this.igTasksCache[key];
             delete this.lastFetchTime[`igTasks_${key}`];
         } else {
             this.userLevelsCache = null;
+            this.cachedUserLevel = null;
             this.igTasksCache = {};
             this.lastFetchTime = {};
         }
+    }
+
+    // Public method to check if user level has changed and clear cache if needed
+    public checkAndClearStaleCache(): boolean {
+        const currentUserLevel = useUserStore.getState().userProfile.level;
+        const hasUserLevelChanged = this.cachedUserLevel !== null && this.cachedUserLevel !== currentUserLevel;
+        
+        if (hasUserLevelChanged) {
+            this.clearCache('userLevels');
+            return true; // Cache was cleared
+        }
+        return false; // Cache is still valid
     }
 }
 
@@ -309,4 +332,10 @@ export async function getEventTasks(): Promise<Level[]> {
     } catch (error) {
         throw error;
     }
+}
+
+// Export function to check and clear stale cache based on user level changes
+export function checkAndClearStaleCache(): boolean {
+    const apiCache = ApiCache.getInstance();
+    return apiCache.checkAndClearStaleCache();
 }
