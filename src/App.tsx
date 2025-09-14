@@ -18,6 +18,7 @@ import EnablersPage from "./modules/Public/EnablersPage/EnablersPage";
 import TermsAndCondition from "./modules/Public/Home/components/TermsandConditions/TermsandConditions";
 import PrivacyPolicy from "./modules/Public/Home/components/PrivacyPolicy/PrivacyPolicy";
 import { updateRefreshToken } from "./modules/utils/cdr";
+import Teams from "./modules/Public/Team/pages/Team";
 
 // Lazy-loaded components
 const ArtofTeaching = lazy(() => import("./modules/Public/ArtOfTeaching/ArtOfTeaching"));
@@ -34,7 +35,6 @@ const CompanyPartners = lazy(() => import("./modules/Public/CompanyPartners/Comp
 const MuLearnLanding = lazy(() => import("./modules/Public/Home/pages/LandingPage"));
 const Profile = lazy(() => import("./modules/Public/Profile/Profile"));
 const Manifesto = lazy(() => import("./modules/Public/Manifesto/Manifesto"));
-const TeamsPage = lazy(() => import("./modules/Public/Team/pages/Team"));
 const KKEMLanding = lazy(() => import("./modules/Public/KKEM/modules/KKEMLanding"));
 const KKEMAuth = lazy(() => import("./modules/Public/KKEM/modules/KKEMAuth"));
 const Trivial = lazy(() => import("./modules/Public/TrivialIdeas/modules/trivial"));
@@ -69,7 +69,7 @@ function App() {
     { path: "donation/success", element: <DonationSuccess /> },
     { path: "donation/refund", element: <Refund /> },
     { path: "trivial-ideas", element: <Trivial /> },
-    { path: "team", element: <TeamsPage /> },
+    { path: "team", element: <Teams /> },
     {path: "termsandconditions", element: <TermsAndCondition/>},
     {path: "privacypolicy", element: <PrivacyPolicy/>},
     { path: "/careers", element: <Careers /> },
