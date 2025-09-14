@@ -80,6 +80,8 @@ export default function GameProgressBar() {
         const { data: cachedData, isValid } = getLevelDataFromCache();
         if (cachedData && isValid) {
           setLevelData(cachedData);
+        } else {
+          setLevelData(null);
         }
       } finally {
         setIsLoading(false);
@@ -123,6 +125,11 @@ export default function GameProgressBar() {
         </div>
       </div>
     );
+  }
+
+  // Don't display anything if no level data is available
+  if (!levelData) {
+    return null;
   }
 
   if (currentLevel === 7) {
