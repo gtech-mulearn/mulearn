@@ -324,7 +324,6 @@ const LearningPathPage: React.FC = () => {
         return;
       }
     } catch (error) {
-      console.error("Failed to refetch user profile:", error);
       userIGsData = [];
     } finally {
       setIsLoading(false);
@@ -351,7 +350,6 @@ const LearningPathPage: React.FC = () => {
       const response = await getBecomeExpertTasks(userIGs, selectedIg.id || undefined);
       setIntermediateLevelData(response);
     } catch (error) {
-      console.error("Error fetching intermediate tasks:", error);
       setIntermediateLevelData([]);
     } finally {
       setIsLoading(false);
@@ -369,7 +367,6 @@ const LearningPathPage: React.FC = () => {
         const response = await getStartLearningTasks(); // Get tasks without #cl- hashtags
         setBasicLevelData(response);
       } catch (error) {
-        console.error("Error fetching basic levels:", error);
         setBasicLevelData([]);
       } finally {
         setIsLoading(false);
@@ -386,7 +383,6 @@ const LearningPathPage: React.FC = () => {
           fetchUserIGs(), // Fetch IG data here
         ]);
       } catch (error) {
-        console.error("Error fetching user data:", error);
       } finally {
         setIsLoading(false);
       }
@@ -450,7 +446,6 @@ const LearningPathPage: React.FC = () => {
           const eventTasks = await getEventTasks();
           setEventData(eventTasks);
         } catch (error) {
-          console.error("Error fetching event tasks:", error);
         }
       };
       fetchEventTasks();

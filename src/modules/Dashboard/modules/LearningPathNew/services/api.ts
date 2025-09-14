@@ -93,7 +93,6 @@ class ApiCache {
             this.lastFetchTime['userLevels'] = now;
             return response.data;
         } catch (error) {
-            console.error("Error fetching user levels:", error);
             throw error as ApiError;
         }
     }
@@ -124,7 +123,6 @@ class ApiCache {
             
             return tasks;
         } catch (error) {
-            console.error(`Error fetching tasks for IG ID ${usersIgid}:`, error);
             return [];
         }
     }
@@ -176,7 +174,6 @@ export async function getUserTasks(hashtags?: string[]): Promise<ApiResponse> {
         
         return filteredResponse;
     } catch (error) {
-        console.log(error);
         throw error as ApiError;
     }
 }
@@ -202,7 +199,6 @@ export async function getStartLearningTasks(): Promise<Level[]> {
 
         return startLearningLevels;
     } catch (error) {
-        console.error('getStartLearningTasks: Error fetching user tasks:', error);
         throw error;
     }
 }
@@ -284,7 +280,6 @@ export async function getBecomeExpertTasks(userIGs: any[], selectedIgId?: string
         })).filter(level => level.tasks.length > 0);
 
     } catch (error) {
-        console.error("Error fetching become expert tasks:", error);
         throw error as ApiError;
     }
 }
@@ -312,7 +307,6 @@ export async function getEventTasks(): Promise<Level[]> {
 
         return eventLevels;
     } catch (error) {
-        console.error('getEventTasks: Error fetching event tasks:', error);
         throw error;
     }
 }
