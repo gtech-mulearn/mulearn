@@ -41,7 +41,7 @@ export const Tasks = () => {
             Label: "Variable Karma",
             isSortable: true
         },
-        { column: "description", Label: "Description", isSortable: true },
+        // { column: "description", Label: "Description", isSortable: true },
         { column: "ig", Label: "Interest Group", isSortable: true },
         { column: "level", Label: "Level", isSortable: true },
         { column: "channel", Label: "Channel", isSortable: true },

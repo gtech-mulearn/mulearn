@@ -3,7 +3,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import SideNavBar from "../components/SideNavBar";
 import TopNavBar from "../components/TopNavBar";
 import { Suspense, useEffect, useState } from "react";
-import { FaUser, FaUserFriends } from "react-icons/fa";
+import { FaRocket, FaUser, FaUserFriends } from "react-icons/fa";
 import { FaMagnifyingGlass, FaMapLocationDot, FaHouse, FaRankingStar } from "react-icons/fa6";
 import { IoGlobeOutline } from "react-icons/io5";
 import { roles, managementTypes } from "@/MuLearnServices/types";
@@ -11,6 +11,7 @@ import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { privateGateway } from "@/MuLearnServices/apiGateways";
 import { UserProfile, useUserStore } from "/src/ZustandProvider";
+import { sendRefreshToken } from "@/modules/utils/cdr";
 
 interface CrateType {
   navigate: (channelId: string) => void;
@@ -78,6 +79,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
         // }
       } finally {
         setIsLoading(false);
+        sendRefreshToken();
       }
     };
 
@@ -136,6 +138,12 @@ const DashboardRootLayout = (props: { component?: any }) => {
       title: "Leaderboard",
       hasView: true,
       icon: <FaRankingStar />
+    },
+    {
+      url: "/dashboard/launchpad",
+      title: "Launchpad",
+      hasView: true,
+      icon: <FaRocket/>
     },
     {
       url: "/dashboard/special-events",

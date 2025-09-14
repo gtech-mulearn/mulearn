@@ -1,0 +1,131 @@
+.edit_profile_container {
+    position: fixed;
+    backdrop-filter: blur(5px) contrast(100%);
+    -webkit-backdrop-filter: blur(5px) contrast(100%);
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 50;
+    display: flex;
+    transition: 0.3s ease;
+    transform: scale(0);
+    flex-direction: column;
+    align-items: center;
+
+    .edit_profile {
+        margin: 7dvh auto auto;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 1px 1px 20px 1px #8c8c8c47;
+        position: relative;
+        overflow-y: scroll;
+
+        .edit_profile_contents {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            color: #000;
+
+            & form {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                /* === Location Row (Country, State, District) === */
+               
+
+                /* === Full width inputs (College, Department, Graduation) === */
+                .input_field {
+                    width: 100%;
+                }
+
+                & input:focus {
+                    outline: 1px solid #2684ff;
+                }
+
+                .btn_container {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    margin-bottom: -8px;
+                }
+
+                .powerfulButtonContainer {
+                    display: flex;
+                    justify-content: center;
+                    margin-top: 20px;
+                    gap: 10px;
+                }
+            }
+
+            & button {
+                width: 100%;
+                padding: 16px;
+                background: #f3f3f4;
+                border-radius: 10px;
+            }
+
+            .error_message {
+                color: red;
+                font-size: 0.8rem;
+                font-weight: 500;
+                margin-top: 5px;
+                text-align: left;
+            }
+        }
+    }
+}
+
+.inputBox input,
+.inputBox select {
+    border: none;
+    background: rgba(239, 241, 249, 0.6);
+    border-radius: 6px;
+    padding: 10px;
+    outline: none;
+    margin-bottom: 10px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.label {
+    font-weight: 600;
+    margin-top: 5px;
+    color: var(--black);
+    text-align: left;
+}
+
+.powerfulButton {
+    height: 50px;
+}
+
+.powerfulButton:hover {
+    color: hsl(var(--primary-btn-color));
+}
+
+/* === Mobile adjustments === */
+@media (max-width: 768px) {
+    .edit_profile_container {
+        z-index: 49;
+
+        .edit_profile {
+            margin: 65px auto auto;
+            height: 100dvh;
+
+            .edit_profile_contents {
+                & form {
+                    .location-row {
+                        grid-template-columns: 1fr; /* stack on mobile */
+                    }
+                    .input_field {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}

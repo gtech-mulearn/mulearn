@@ -8,7 +8,7 @@ import { Form, Formik } from "formik";
 import * as z from "yup";
 import { FormikTextInputWithoutLabel as SimpleInput } from "@/MuLearnComponents/FormikComponents/FormikComponents";
 import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
     login,
     otpVerification,
@@ -16,6 +16,8 @@ import {
 } from "../../../services/apis";
 
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import { useRedirectToHome } from "@/modules/utils/redirectToHome";
 
 const inputObject = {
     emailOrMuId: "Email or MuId",
@@ -25,8 +27,16 @@ const inputObject = {
 
 export default function SignIn() {
     const navigate = useNavigate();
+    const redirect = useRedirectToHome();
 
     let ruri = window.location.href.split("=")[1];
+
+    useEffect(() => {
+        const refreshToken = localStorage.getItem("refreshToken");
+        if (refreshToken) {
+            navigate('/dashboard/home');
+        }
+    }, []);
 
     const [isLoading, setIsLoading] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
@@ -75,122 +85,137 @@ export default function SignIn() {
     };
 
     return (
-        <OnboardingTemplate>
-            <OnboardingHeader
-                title={didOtpSent ? "Enter OTP" : "Hello ! Welcome back"}
-                desc={
-                    didOtpSent
-                        ? "Enter the OTP received in your mail to sign in to your account"
-                        : "Enter your muid or email address to request for OTP"
-                }
-            />
-            <Formik
-                initialValues={Object.fromEntries(
-                    Object.keys(inputObject).map(key => [key, ""])
-                )}
-                validationSchema={scheme}
-                onSubmit={onSubmit}
-            >
-                {formik => (
-                    <div>
-                        <div className={styles.wrapper}>
-                            <Form>
-                                <div className={styles.inputBox}>
-                                    <SimpleInput
-                                        value={formik.values.emailOrMuId}
-                                        name="emailOrMuId"
-                                        placeholder="Email or MuId"
-                                        type="text"
-                                        disabled={isLoading}
-                                    />
-                                </div>
-                                {!otpForm ? (
-                                    <div className={styles.passwordInput}>
-                                        <div className={styles.inputBox}>
-                                            <SimpleInput
-                                                value={formik.values.password}
-                                                name="password"
-                                                placeholder="Password"
-                                                type={
-                                                    isVisible
-                                                        ? "text"
-                                                        : "password"
-                                                }
-                                                disabled={isLoading}
-                                            />
-                                        </div>
-                                        <button
-                                            type="button"
-                                            onClick={() => setIsVisible(e => !e)}
-                                        >
-                                            {isVisible ? (
-                                                <HiEye size={26} />
-                                            ) : (
-                                                <HiEyeSlash size={26} />
-                                            )}
-                                        </button>
+        <>
+            <Helmet>
+                <title>Login | µLearn</title>
+                <meta
+                    name="description"
+                    content="Log in to connect with your peers, explore new ideas, and continue your path of mutual learning and discovery."
+                />
+                <meta property="og:title" content="Login | µLearn" />
+                <meta property="og:url" content="https://app.mulearn.org/login" />
+                <meta
+                    property="og:description"
+                    content="Log in to connect with your peers, explore new ideas, and continue your path of mutual learning and discovery."
+                />
+            </Helmet>
+            <OnboardingTemplate>
+                <OnboardingHeader
+                    title={didOtpSent ? "Enter OTP" : "Hello ! Welcome back"}
+                    desc={
+                        didOtpSent
+                            ? "Enter the OTP received in your mail to sign in to your account"
+                            : "Enter your muid or email address to request for OTP"
+                    }
+                />
+                <Formik
+                    initialValues={Object.fromEntries(
+                        Object.keys(inputObject).map(key => [key, ""])
+                    )}
+                    validationSchema={scheme}
+                    onSubmit={onSubmit}
+                >
+                    {formik => (
+                        <div>
+                            <div className={styles.wrapper}>
+                                <Form>
+                                    <div className={styles.inputBox}>
+                                        <SimpleInput
+                                            value={formik.values.emailOrMuId}
+                                            name="emailOrMuId"
+                                            placeholder="Email or MuId"
+                                            type="text"
+                                            disabled={isLoading}
+                                        />
                                     </div>
-                                ) : (
-                                    didOtpSent && (
-                                        <div className={styles.inputBox}>
-                                            <SimpleInput
-                                                value={formik.values.otp}
-                                                name="otp"
-                                                placeholder="OTP"
-                                                type="text"
-                                                disabled={isLoading}
-                                            />
+                                    {!otpForm ? (
+                                        <div className={styles.passwordInput}>
+                                            <div className={styles.inputBox}>
+                                                <SimpleInput
+                                                    value={formik.values.password}
+                                                    name="password"
+                                                    placeholder="Password"
+                                                    type={
+                                                        isVisible
+                                                            ? "text"
+                                                            : "password"
+                                                    }
+                                                    disabled={isLoading}
+                                                />
+                                            </div>
+                                            <button
+                                                type="button"
+                                                onClick={() => setIsVisible(e => !e)}
+                                            >
+                                                {isVisible ? (
+                                                    <HiEye size={26} />
+                                                ) : (
+                                                    <HiEyeSlash size={26} />
+                                                )}
+                                            </button>
                                         </div>
-                                    )
-                                )}
-                                <div className={styles.forgot}>
-                                    <a href="forgot-password">
-                                        <p>
-                                            Forgot your <span>Password</span>
+                                    ) : (
+                                        didOtpSent && (
+                                            <div className={styles.inputBox}>
+                                                <SimpleInput
+                                                    value={formik.values.otp}
+                                                    name="otp"
+                                                    placeholder="OTP"
+                                                    type="text"
+                                                    disabled={isLoading}
+                                                />
+                                            </div>
+                                        )
+                                    )}
+                                    <div className={styles.forgot}>
+                                        <a href="forgot-password">
+                                            <p>
+                                                Forgot your <span>Password</span>
+                                            </p>
+                                        </a>
+                                        <p onClick={() => setOtpForm(!otpForm)}>
+                                            Login with{" "}
+                                            <span>
+                                                {otpForm ? "Password" : "OTP"}
+                                            </span>
                                         </p>
-                                    </a>
-                                    <p onClick={() => setOtpForm(!otpForm)}>
-                                        Login with{" "}
-                                        <span>
-                                            {otpForm ? "Password" : "OTP"}
-                                        </span>
-                                    </p>
-                                </div>
-                                <div className={styles.submit}>
-                                    <PowerfulButton
-                                        type="submit"
-                                        isLoading={isLoading}
-                                    >
-                                        {otpForm
-                                            ? didOtpSent
-                                                ? "Sign in with OTP"
-                                                : "Request OTP"
-                                            : "Sign in"}
-                                    </PowerfulButton>
-                                </div>
-                                <div className={styles.noAccount}>
-                                    <a
-                                        // href={
-                                        //     ruri
-                                        //         ? `/register/?ruri=${ruri}`
-                                        //         : "/register"
-                                        // }
-                                        href={
+                                    </div>
+                                    <div className={styles.submit}>
+                                        <PowerfulButton
+                                            type="submit"
+                                            isLoading={isLoading}
+                                        >
+                                            {otpForm
+                                                ? didOtpSent
+                                                    ? "Sign in with OTP"
+                                                    : "Request OTP"
+                                                : "Sign in"}
+                                        </PowerfulButton>
+                                    </div>
+                                    <div className={styles.noAccount}>
+                                        <a
+                                            // href={
+                                            //     ruri
+                                            //         ? `/register/?ruri=${ruri}`
+                                            //         : "/register"
+                                            // }
+                                            href={
 
-                                            "/register"
-                                        }
-                                    >
-                                        Don't have an account? Sign up
-                                    </a>
-                                </div>
-                                <div className={styles.noAccount} onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
-                                    Homepage
-                                </div>
-                            </Form>
+                                                "/register"
+                                            }
+                                        >
+                                            Don't have an account? Sign up
+                                        </a>
+                                    </div>
+                                    <div className={styles.noAccount} onClick={() => redirect('/')} style={{ cursor: 'pointer' }}>
+                                        Homepage
+                                    </div>
+                                </Form>
+                            </div>
                         </div>
-                    </div>
-                )}
-            </Formik>
-        </OnboardingTemplate>
+                    )}
+                </Formik>
+            </OnboardingTemplate>
+        </>
     );
 }

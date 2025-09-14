@@ -3,7 +3,8 @@ import styles from "./SpecialEvents.module.css";
 import top100coders from ".././assets/top-100.webp";
 import launchpad from "../assets/launchpad.webp";
 import trivialideas from "../assets/trivialideas.webp";
-import SpecialEventCardLanding from "../../landing/components/SpecialEventCardLanding/SpecialEventCardLanding";
+import SpecialEventCard from "../Components/SpecialEventCard";
+import { Helmet } from "react-helmet";
 
 const SpecialEventsList: SpecialEvent[] = [
     {
@@ -11,8 +12,8 @@ const SpecialEventsList: SpecialEvent[] = [
         title: "Top 100 Coders",
         description:
             "Welcome to the Top 100 Coders initiative Recognised by Kerala Govt. We're on a mission to recognize and empower the best coders in India. If you're passionate about coding and want to make a significant impact in the tech community, you're in the right place.",
-        date: "2025-04-09",
-        participants: 100,
+        // date: "2025-04-09",
+        // participants: 100,
         link: "https://top100coders.com/",
         image: top100coders,
         isLive: true
@@ -22,9 +23,9 @@ const SpecialEventsList: SpecialEvent[] = [
         title: "Launchpad",
         description:
             "Launchpad Kerala 2024 is a premier job fair that brings together talented individuals and innovative companies in the technical and engineering fields.",
-        date: "2024-06-02",
+        // date: "2024-06-02",
         participants: 200,
-        link: "https://launchpadkerala.org/",
+        link: "https://launchpad.mulearn.org/",
         image: launchpad,
         isLive: false
     },
@@ -34,8 +35,8 @@ const SpecialEventsList: SpecialEvent[] = [
         description:
             "Have an idea that's out-of-the-box crazy? This is your chance to turn it into a real product! ",
         recurrence: "Monthly",
-        date: "2025-02-02",
-        participants: 500,
+        // date: "2025-02-02",
+        // participants: 500,
         link: "https://www.instagram.com/mulearn.official/p/C6eHEzJyMMn/",
         image: trivialideas,
         isLive: false
@@ -44,27 +45,42 @@ const SpecialEventsList: SpecialEvent[] = [
 
 const SpecialEvents = () => {
     return (
-        <div className={styles.pageContainer}>
-            <div className={styles.Banner}>
-                <div className={styles.BannerContent}>
-                    <h1 className={styles.BannerTitle}>Special Events</h1>
-                    <p className={styles.BannerSubtitle}>
-                        Discover exclusive events designed to inspire
-                        innovation, enhance skills, and foster meaningful
-                        connections across technology, management, and
-                        creativity.
-                    </p>
+        <>
+            <Helmet>
+                <title>Special Events | µLearn</title>
+                <meta
+                    name="description"
+                    content="Discover exclusive events designed to inspire innovation, enhance skills, and foster meaningful connections across technology, management and creativity."
+                />
+                <meta property="og:title" content="Special Events | µLearn" />
+                <meta property="og:url" content="https://app.mulearn.org/dashboard/special-events" />
+                <meta
+                    property="og:description"
+                    content="Discover exclusive events designed to inspire innovation, enhance skills, and foster meaningful connections across technology, management and creativity."
+                />
+            </Helmet>
+            <div className={styles.pageContainer}>
+                <div className={styles.Banner}>
+                    <div className={styles.BannerContent}>
+                        <h1 className={styles.BannerTitle}>Special Events</h1>
+                        <p className={styles.BannerSubtitle}>
+                            Discover exclusive events designed to inspire
+                            innovation, enhance skills, and foster meaningful
+                            connections across technology, management, and
+                            creativity.
+                        </p>
+                    </div>
+                </div>
+                <div className={styles.eventsGrid}>
+                    {SpecialEventsList.map(specialevent => (
+                        <SpecialEventCard
+                            key={specialevent.id}
+                            specialevent={specialevent}
+                        />
+                    ))}
                 </div>
             </div>
-            <div className={styles.eventsGrid}>
-                {SpecialEventsList.map(specialevent => (
-                    <SpecialEventCardLanding
-                        key={specialevent.id}
-                        specialevent={specialevent}
-                    />
-                ))}
-            </div>
-        </div>
+        </>
     );
 };
 

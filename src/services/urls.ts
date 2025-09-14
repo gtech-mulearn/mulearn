@@ -136,6 +136,7 @@ export const dashboardRoutes = {
     getUserPreferences: "/api/v1/dashboard/user/preferences",
     updateUserPreferences: "/api/v1/dashboard/user/preferences",
     getUserLevelFeed: "/api/v1/dashboard/profile/user-level-feed/",
+    changeUserCollege: "/api/v1/dashboard/college/change-college",
 
     zonalStudentDetails: "/api/v1/dashboard/zonal/student-details/",
     zonalStudentData: "/api/v1/dashboard/zonal/student-details/csv/",
@@ -205,6 +206,10 @@ export const dashboardRoutes = {
 
     collegeLevels: "api/v1/dashboard/college/",
     collegeLevlesDelete: "api/v1/dashboard/college/delete/",
+
+    //wadhwani leaderboard
+    "getWadhwaniCollegeLeaderBoard": "api/v1/leaderboard/wadhwani-college/",
+    "getWadhwaniZonalLeaderBoard": "api/v1/leaderboard/wadhwani-zonal/",
 
     //Dyanmic Type
     dtGetRoles: "api/v1/dashboard/dynamic-management/roles/",
@@ -284,17 +289,22 @@ export const KKEMRoutes = {
     userLogin: "/api/v1/integrations/kkem/login/",
     getDWMSDetails: "/api/v1/integrations/kkem/user/${param}/",
     userStatus: "/api/v1/integrations/kkem/user/status/",
-    getLcReport: "/api/v1/public/lc-enrollment/csv/"
+    // getLcReport: "/api/v1/public/lc-enrollment/csv/"
+    getLcReport: "/stud.json"
 };
 
 export const PublicRoutes = {
     getRandomLc: "/api/v1/dashboard/lc/list/",
     getLcDashboard: "/api/v1/public/lc-dashboard/",
-    getLcReport: "/api/v1/public/lc-enrollment/",
+    // getLcReport: "/api/v1/public/lc-enrollment/",
     getOrgWiseReport: "/api/v1/public/college-wise-lc-report/"
 } as const;
 
 export const googleSheetRoutes = {
+    getLcReport:
+        "https://opensheet.elk.sh/1ilKjdGiHlW1eyrHJuGA-9c3n5hrpjhQHtlBWpJ7wD8U/Sheet1",
+    getLcData:
+        "https://opensheet.elk.sh/1jzmjBxINQrrIf2dNke4EsGwmI9zmAOCrvFwBqG12RIs/Sheet1",
     getHackathonData:
         "https://opensheet.elk.sh/1w2Ax918fkkumNiCJ42tc5T9fJeidVGL9_9B-2j7klDM/Sheet1/",
     getHackathonDashboardData:
@@ -308,14 +318,23 @@ export const donationRoutes = {
 
 
 export const qseverseRoutes = {
-    issueVerifiableCredentials: "api/issue_vc_app",
-    getAllConnectedUsers: "api/app/connected-users",
-    getConnectedUsers: "api/app/connected-users/search",
-    getCredentials: "api/user/credentials",
     getAchievements: "api/v1/dashboard/achievement/list/",
     createAchievements: "api/v1/dashboard/achievement/create/",
     updateAchievements: "api/v1/dashboard/achievement/update/",
     deleteAchievements: "api/v1/dashboard/achievement/delete/",
     getUserAchievements: "api/v1/dashboard/achievement/list/user/",
-    updateVCURL: "api/v1/dashboard/achievement/issue-vc/"
+    updateVCURL: "api/v1/dashboard/achievement/issue-vc/",
+    issueVerifiableCredentials: "api/v1/integrations/qseverse/issue-vc/",
+    getAllConnectedUsers: "api/v1/integrations/qseverse/connected-users/",
+    getConnectedUsers: "api/v1/integrations/qseverse/connected-users/search",
+    getCredentials: "api/v1/integrations/qseverse/qs-credentials/"
+}
+
+export const manageLaunchpadRoutes = {
+    listCompanies: "api/v1/launchpad/company-list/",
+    verifyCompany: "api/v1/launchpad/company-verify/",
+    listJobListings: "api/v1/launchpad/list-jobs/",
+    verifyLaunchpadTask: "api/v1/launchpad/verify-task/",
+    getJobInvites: "api/v1/launchpad/student/job-invitations/",
+    applyToJob: "api/v1/launchpad/student/apply-to-job/"
 }

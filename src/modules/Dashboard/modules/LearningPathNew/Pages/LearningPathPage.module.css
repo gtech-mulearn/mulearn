@@ -97,7 +97,13 @@
   padding: 10px;
   font-size: 0.85rem;
   color: white;
-  width: 100%;
+  width: 30%;
+}
+
+@media screen and (max-width: 768px) {
+  .proofOfWorkButton {
+    width: 100%;
+  }
 }
 
 .loader {
@@ -175,7 +181,7 @@
 .card {
   width: 300px;
   /* Fixed width for consistency */
-  max-height: 320px;
+  height: 450px;
   /* Minimum height to avoid uneven cards */
   /* height: 100%; */
   background-color: #ffffff;
@@ -348,7 +354,7 @@
   position: fixed;
   top: 0;
   right: 0;
-  width: 350px;
+  width: 80%;
   height: 100%;
   background-color: #f9f9f9;
   box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
@@ -462,4 +468,121 @@
   p {
     font-size: 16px;
   }
+}
+
+/* Markdown Content Styles */
+.markdownContent {
+  line-height: 1.6;
+}
+
+.markdownContent h1,
+.markdownContent h2,
+.markdownContent h3,
+.markdownContent h4,
+.markdownContent h5,
+.markdownContent h6 {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.markdownContent h1 {
+  font-size: 1.8rem;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 0.5rem;
+}
+
+.markdownContent h2 {
+  font-size: 1.5rem;
+}
+
+.markdownContent h3 {
+  font-size: 1.25rem;
+}
+
+.markdownContent p {
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+.markdownContent ul,
+.markdownContent ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.markdownContent li {
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+.markdownContent code {
+  background-color: #f4f4f4;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: #d73a49;
+}
+
+.markdownContent pre {
+  background-color: #f8f8f8;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+  border: 1px solid #e0e0e0;
+}
+
+.markdownContent pre code {
+  background-color: transparent;
+  padding: 0;
+  color: #333;
+}
+
+.markdownContent blockquote {
+  border-left: 4px solid #456ff6;
+  padding-left: 1rem;
+  margin: 1rem 0;
+  background-color: #f9f9f9;
+  padding: 1rem;
+  font-style: italic;
+  color: #666;
+}
+
+.markdownContent a {
+  color: #456ff6;
+  text-decoration: none;
+}
+
+.markdownContent a:hover {
+  text-decoration: underline;
+}
+
+.markdownContent table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+.markdownContent th,
+.markdownContent td {
+  border: 1px solid #e0e0e0;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.markdownContent th {
+  background-color: #f8f8f8;
+  font-weight: 600;
+}
+
+.markdownContent strong {
+  font-weight: 600;
+  color: #333;
+}
+
+.markdownContent em {
+  font-style: italic;
 }

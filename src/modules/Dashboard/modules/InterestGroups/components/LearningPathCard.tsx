@@ -2,7 +2,7 @@
 import React from 'react';
 import styles from './LearningPathCard.module.css';
 import { LearningPath } from '../data/interestGroups';
-import { FormattedLevel } from '../../LearningPathNew/services/api';
+import { Level } from '../../LearningPathNew/services/api';
 import { FiArrowRight } from 'react-icons/fi';
 
 interface LearningPathCardProps {

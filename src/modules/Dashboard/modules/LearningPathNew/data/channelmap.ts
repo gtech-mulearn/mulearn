@@ -17,7 +17,19 @@ const channelMap = {
     "Cloud And Devops": "https://discord.com/channels/771670169691881483/853231021097222154",
     "Entrepreneurship": "https://discord.com/channels/771670169691881483/917130669551910932",
     "Blockchain": "https://discord.com/channels/771670169691881483/789531912552448020",
-    "Civil": "https://discord.com/channels/771670169691881483/1089594879153279108"
+    "Civil": "https://discord.com/channels/771670169691881483/1089594879153279108",
+    "Space": "https://discord.com/channels/771670169691881483/1288528799079596082",
+    "Data Analytics": "https://discord.com/channels/771670169691881483/1399085916076773537",
+    "Devops": "https://discord.com/channels/771670169691881483/853231021097222154",
+    "Comics": "https://discord.com/channels/771670169691881483/1361592003921449057",
+    "MuV": "https://discord.com/channels/771670169691881483/",
+    "Generative AI": "https://discord.com/channels/771670169691881483/1395092210898436167",
+    "Data Structures and Algorithm": "https://discord.com/channels/771670169691881483/884899508713041920",
+    "Project Management": "https://discord.com/channels/771670169691881483/1380230741794754762",
+    "Strategic Leadership": "https://discord.com/channels/771670169691881483/1011944166269386812",
+    "Creative Design": "https://discord.com/channels/771670169691881483/799343769626738689",
+    "Beckn": "https://discord.com/channels/771670169691881483/1194758237195599912",
+    "Quality Assurance": "https://discord.com/channels/771670169691881483/1111409725708443800"
 };
 
 export default channelMap;

@@ -2,7 +2,6 @@ import Pagination from "@/MuLearnComponents/Pagination/Pagination";
 import Table, { Data } from "@/MuLearnComponents/Table/Table";
 import THead from "@/MuLearnComponents/Table/THead";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
-import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 import { ReactElement, useEffect, useState } from "react";
 import { getVerifiableMeetups } from "../../services/LearningCircleAPIs";
 
@@ -30,7 +29,7 @@ const LcAdmin = () => {
             data: string | ReactElement,
             id: string,
             row: Data
-        ) => ReactJSXElement;
+        ) => ReactElement;
     }[] = [
         {
             column: "learning_circle",

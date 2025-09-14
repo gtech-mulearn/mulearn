@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as z from "yup";
 import OnboardingHeader from "../../../components/OnboardingHeader/OnboardingHeader";
@@ -9,11 +9,19 @@ import { PowerfulButton } from "@/MuLearnComponents/MuButtons/MuButton";
 import { forgetPassword } from "../../../services/apis";
 import styles from "./ForgetPassword.module.css";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet";
 
 const ForgetPassword = () => {
     const [showLoader, setShowLoader] = useState(false);
     const navigate = useNavigate();
 
+    useEffect(() => {
+        const refreshToken = localStorage.getItem("refreshToken");
+        if (refreshToken) {
+            navigate('/dashboard/home');
+        }
+    }, []);
+    
     const scheme = z.object({
         emailOrMuId: z
             .string()
@@ -32,6 +40,19 @@ const ForgetPassword = () => {
 
     return (
         <>
+        <Helmet>
+        <title>Forgot Password | µLearn</title>
+                <meta
+                    name="description"
+                    content="Reset your µLearn account password."
+                />
+                <meta property="og:title" content="Forgot Password | µLearn" />
+                <meta property="og:url" content="https://app.mulearn.org/forgot-password" />
+                <meta
+                    property="og:description"
+                    content="Reset your µLearn account password."
+                />
+        </Helmet>
             <OnboardingTemplate>
                 <OnboardingHeader
                     title={"Forgot Password"}

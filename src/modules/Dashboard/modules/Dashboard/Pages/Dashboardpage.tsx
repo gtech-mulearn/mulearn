@@ -87,13 +87,16 @@ const DashboardPage = () => {
         throw new Error(`HTTP error! Status: ${response}`);
       }
       const data = await response.data;
-      const newEvents = data.map((event: any) => ({
+      const newEvents = data
+      .map((event: any) => ({
         name: event.Name || "No Name",
         description: event.Description || "No Description",
         poster: event.Poster || "",
         link: event.Links || "#",
         date: event.Date || "No Date",
-      }));
+        status: event.Status || "",
+      }))
+      .filter((event: any) => event.status !== "Expired");
 
       setEvents(newEvents);
     } catch (error) {

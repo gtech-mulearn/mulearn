@@ -42,6 +42,8 @@ import { getAchievements } from "../../ManageAchievements/services/api";
 import { AchievementData } from "../../ManageAchievements/ManageAchievementsInterface";
 import AchievementCardOne from "../components/Achievements/AchievementCardOne";
 import toast from "react-hot-toast";
+import { userInfo } from "os";
+import EditCollegePopUp from "../components/EditProfilePopUp/pages/EditCollegePopUp";
 
 
 
@@ -61,6 +63,7 @@ const Profile = () => {
     const [editPopUp, setEditPopUp] = useState(false);
     const [fromUserSearch, setFromUserSearch] = useState(false);
     const [achievementModalOpen, setAchievementModalOpen] = useState(false);
+    const [openCollegeEdit, setOpenCollegeEdit] = useState(false);
     const [userProfile, setUserProfile] = useState({
         full_name: "",
         college_code: "",
@@ -87,6 +90,10 @@ const Profile = () => {
             created_date: ""
         }
     ]);
+
+    const handleDIDUpdate = (newDID: string) => {
+        setUserDID(newDID);
+    };
     const [userLevelData, setUserLevelData] = useState([
         {
             karma: 0,
@@ -176,7 +183,7 @@ const Profile = () => {
                     }
                 } catch (error) {
                     console.error("Error fetching connected users:", error);
-                    // toast.error("Failed to fetch connected users.");
+                    toast.error("Failed to fetch connected users.");
                 }
             } else {
                 console.warn("Value is not available for fetchConnectedUsers");
@@ -200,7 +207,22 @@ const Profile = () => {
         };
 
         initializeProfileData();
-    }, [id, key]); // Dependencies: id (for value) and key (for fetchConnectedUsers)
+    }, [id, key]);
+
+    const refreshAchievements = async () => {
+        if (value) {
+            setIsLoading(true);
+            try {
+                const updatedAchievements = await getUserAchievements(value);
+                setAchievements(updatedAchievements);
+            } catch (error) {
+                console.error("Error refreshing achievements:", error);
+                toast.error("Failed to refresh achievements.");
+            } finally {
+                setIsLoading(false);
+            }
+        }
+    };
 
     useEffect(() => {
         if (firstFetch.current) {
@@ -227,25 +249,6 @@ const Profile = () => {
         setAchievementModalOpen(!achievementModalOpen);
     }
 
-    // useEffect(() => {
-    //     const fetchConnectedUsers = async () => {
-    //         if (!value) {
-    //             console.warn("Value is not available yet for fetchConnectedUsers");
-    //             return;
-    //         }
-    //         try {
-    //             const response = await getConnectedUsers(key, value);
-    //             if (response) {
-    //                 setUserDID(response);
-    //             }
-    //         } catch (error) {
-    //             console.error("Error fetching connected users:", error);
-    //             toast.error("Failed to fetch connected users.");
-    //         }
-    //     };
-
-    //     fetchConnectedUsers();
-    // }, [value, key]);
 
     return (
         <>
@@ -279,8 +282,14 @@ const Profile = () => {
                                 setEditPopUP={setEditPopUp}
                                 id={userProfile.id}
                                 triggerUpdateProfile={triggerUpdateProfile}
+                                setOpenCollegeEdit={setOpenCollegeEdit}
                             />
-
+                            <EditCollegePopUp
+                                openCollegeEdit={openCollegeEdit}
+                                setOpenCollegeEdit={setOpenCollegeEdit}
+                                id={userProfile.id}
+                                triggerUpdateProfile={triggerUpdateProfile}
+                            />
                             <ShareProfilePopUp
                                 popUP={popUP}
                                 setPopUP={setPopUP}
@@ -634,15 +643,14 @@ const Profile = () => {
                                                 <div className="text-center flex flex-col items-center justify-center text-gray-500">
                                                     <Img src={emptyAchievements} alt="No achievements" w={400} h={400} />
                                                     <p>No achievements available for you at the moment. Keep learning.</p>
-
                                                 </div>
                                             )}
 
                                             <SimpleGrid
                                                 columns={[1, 2, 3]}
                                                 spacing={6}
-                                                justifyContent="center"  // Centers items horizontally
-                                                alignItems="center"      // Centers items vertically
+                                                justifyContent="center"
+                                                alignItems="center"
                                             >
                                                 {achievements.map((achievement) => (
                                                     <AchievementCardOne
@@ -652,6 +660,8 @@ const Profile = () => {
                                                         muid={value}
                                                         usersName={userProfile.full_name}
                                                         fromUserSearch={fromUserSearch}
+                                                        onAchievementUpdate={refreshAchievements}
+                                                        onDIDUpdate={handleDIDUpdate} // Add this new prop
                                                     />
                                                 ))}
                                             </SimpleGrid>
@@ -739,7 +749,7 @@ const Profile = () => {
                                                 </div>
                                             </div>
                                         )}
-                                        
+
                                         <div className={styles.head}>
                                             <Socials />
                                         </div>

@@ -62,12 +62,11 @@ export default function LearningCircleLanding() {
   const [showCreateForm, setShowCreateForm] = useState(false)
   const [open, setOpen] = useState(false)
 
-  // New filter states
+  // Filter states (removed showOld since we're removing expiry logic)
   const currentLoggedInUser = useUserStore((state) => state.userProfile.id);
   const [createdByMe, setCreatedByMe] = useState(false);
   const [interestOptions, setInterestOptions] = useState<Option[]>(INITIAL_INTERESTS);
   const [selectedInterest, setSelectedInterest] = useState<Option | null>(INITIAL_INTERESTS[0]);
-  const [showOld, setShowOld] = useState(false);
 
   useEffect(() => {
     getInterests().then((interests) => {
@@ -140,21 +139,14 @@ export default function LearningCircleLanding() {
       }
       return true;
     })
-    .filter((circle) => {
-      const meetupTime = new Date(circle.meet_time);
-      if (isNaN(meetupTime.getTime())) return false;
-      const twentyFourHoursAgo = new Date();
-      twentyFourHoursAgo.setHours(twentyFourHoursAgo.getHours() - 72); // Changed from 2 to 24
-      // If showOld is true, show circles that are already in the past; otherwise show upcoming ones
-      return showOld ? meetupTime < twentyFourHoursAgo : meetupTime >= twentyFourHoursAgo;
-    })
+    // Removed the time-based filtering logic here
     .sort((a, b) => {
       // First, sort circles created by the current user to the top
       const aIsMine = a.created_by_id === currentLoggedInUser;
       const bIsMine = b.created_by_id === currentLoggedInUser;
       if (aIsMine && !bIsMine) return -1;
       if (!aIsMine && bIsMine) return 1;
-      // Then, sort by meeting time (upcoming ones first)
+      // Then, sort by meeting time (earliest first)
       const dateA = new Date(a.meet_time).getTime();
       const dateB = new Date(b.meet_time).getTime();
       return dateA - dateB;
@@ -207,71 +199,28 @@ export default function LearningCircleLanding() {
           </div>
         </div>
 
-        {/* New Filters Container */}
-        {/* <div className={styles.filtersMainWrapper}> */}
-          <div className={styles.filtersWrapper}>
-            <div className={styles.searchContainer}>
-              <Search className={styles.searchIcon} />
-              <Input
-                placeholder="Search by title, description or category..."
-                className={styles.searchInput}
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-            </div>
-            <div className={styles.filterItem}>
-              {/* <select
-                value={selectedInterest ? selectedInterest.value : "all"}
-                onChange={(e) => {
-                  const value = e.target.value;
-                  const option =
-                    interestOptions.find((opt) => opt.value === value) || {
-                      label: "All Categories",
-                      value: "all",
-                    };
-                  setSelectedInterest(option);
-                }}
-              >
-                {interestOptions.map((opt) => (
-                  <option key={opt.value} value={opt.value}>
-                    {opt.label}
-                  </option>
-                ))}
-              </select> */}
-              <ReactSelect<Option, false>
-                options={interestOptions}
-                name="interestGroup"
-                placeholder="Select Interest Group"
-                value={selectedInterest}
-                onChange={(selectedOption) => setSelectedInterest(selectedOption)}
-              />
-            </div>
-            {/* <div className={styles.filtersWrapper}>
-              <div className={styles.filterItem}>
-                <Label style={{ marginLeft: '4px' }} htmlFor="isOnline">
-                  Created By Me
-                </Label>
-                <Switch
-                  id="createdByMe"
-                  checked={createdByMe}
-                  onCheckedChange={(checked) => setCreatedByMe(checked)}
-                />
-              </div>
-              <div className={styles.filterItem}>
-                <Label style={{ marginLeft: '4px' }} htmlFor="showOld">
-                  Old Learning Circles
-                </Label>
-                <Switch
-                  id="showOld"
-                  checked={showOld}
-                  onCheckedChange={(checked) => setShowOld(checked)}
-                />
-              </div>
-            </div> */}
+        {/* Filters Container */}
+        <div className={styles.filtersWrapper}>
+          <div className={styles.searchContainer}>
+            <Search className={styles.searchIcon} />
+            <Input
+              placeholder="Search by title, description or category..."
+              className={styles.searchInput}
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
           </div>
-        {/* </div> */}
-
-        {/* End New Filters Container */}
+          <div className={styles.filterItem}>
+            <ReactSelect<Option, false>
+              options={interestOptions}
+              name="interestGroup"
+              placeholder="Select Interest Group"
+              value={selectedInterest}
+              onChange={(selectedOption) => setSelectedInterest(selectedOption)}
+            />
+          </div>
+        </div>
+        {/* End Filters Container */}
 
         {isLoading && <MuLoader />}
 

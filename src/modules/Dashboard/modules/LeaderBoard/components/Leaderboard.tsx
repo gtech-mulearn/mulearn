@@ -9,6 +9,8 @@ interface LeaderboardEntry {
   name: string;
   monthly?: number;
   overall?: number;
+  campus?: number;
+  zonal?: number;
   category?: string;
 }
 
@@ -22,25 +24,26 @@ interface LeaderboardProps {
       overall: LeaderboardEntry[];
       monthly: LeaderboardEntry[];
     };
+    wadhwani: {
+      campus: LeaderboardEntry[];
+      zonal: LeaderboardEntry[];
+    };
   };
-  filterOptions?: ("monthly" | "overall")[];
-  categoryOptions?: { label: string; value: string }[];
-  defaultFilter?: "monthly" | "overall";
-  defaultCategory?: string;
+  filterOptions: ("monthly" | "overall" | "campus" | "zonal")[];
+  categoryOptions: { label: string; value: string }[];
+  defaultFilter: "monthly" | "overall" | "campus" | "zonal";
+  defaultCategory: string;
   topPlayerCount?: number;
-  activeFilter: "monthly" | "overall";
-  setActiveFilter: (filter: "monthly" | "overall") => void;
-  activeCategory: "student" | "campus";
-  setActiveCategory: (category: "student" | "campus") => void;
+  activeFilter: "monthly" | "overall" | "campus" | "zonal";
+  setActiveFilter: (filter: "monthly" | "overall" | "campus" | "zonal") => void;
+  activeCategory: "student" | "campus" | "wadhwani";
+  setActiveCategory: (category: "student" | "campus" | "wadhwani") => void;
 }
 
 export default function Leaderboard({
   leaderboards,
-  filterOptions = ["monthly", "overall"],
-  categoryOptions = [
-    { label: "Student", value: "student" },
-    { label: "Campus", value: "campus" },
-  ],
+  filterOptions,
+  categoryOptions,
   defaultFilter = "monthly",
   defaultCategory = "student",
   topPlayerCount = 3,
@@ -49,8 +52,17 @@ export default function Leaderboard({
   activeCategory,
   setActiveCategory,
 }: LeaderboardProps) {
-  // Select the current leaderboard based on active category and filter
-  const currentLeaderboard = leaderboards[activeCategory]?.[activeFilter] || [];
+  let currentLeaderboard: LeaderboardEntry[] = [];
+
+  if (activeCategory === "student") {
+    currentLeaderboard = leaderboards.student[activeFilter as "monthly" | "overall"] || [];
+  } else if (activeCategory === "campus") {
+    currentLeaderboard = leaderboards.campus[activeFilter as "monthly" | "overall"] || [];
+  } else if (activeCategory === "wadhwani") {
+    if (activeFilter === "campus" || activeFilter === "zonal") {
+      currentLeaderboard = leaderboards.wadhwani[activeFilter];
+    }
+  }
 
   const topPlayers = currentLeaderboard.slice(0, topPlayerCount);
   const remainingPlayers = currentLeaderboard.slice(topPlayerCount);
@@ -67,7 +79,9 @@ export default function Leaderboard({
           categoryOptions={categoryOptions}
         />
         <TopPlayers topPlayers={topPlayers} activeFilter={activeFilter} />
-        <LeaderboardTable leaderboardData={remainingPlayers} filter={activeFilter} />
+        {activeFilter !== "zonal" &&
+          <LeaderboardTable leaderboardData={remainingPlayers} filter={activeFilter} />
+        }
       </div>
     </div>
   );

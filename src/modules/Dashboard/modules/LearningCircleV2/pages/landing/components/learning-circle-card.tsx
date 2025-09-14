@@ -370,7 +370,6 @@ export function LearningCircleCard({
               onError={handleError}
               constraints={{ facingMode: 'environment' }}
               components={{
-                audio: false,
                 finder: true,
               }}
             />

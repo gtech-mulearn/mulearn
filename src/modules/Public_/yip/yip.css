@@ -1,0 +1,57 @@
+/* Timeline Styles */
+.lni-cake {
+  width: 4rem;
+}
+
+.third-section {
+  margin: 7vh 0;
+  /* margin-bottom: 15vh; */
+}
+
+.tsheading {
+  text-align: center;
+  color: #404040;
+  font-size: 2.1rem;
+  font-weight: 600;
+}
+
+@media only screen and (min-width: 1000px) {
+  .tsheading {
+    font-size: 3rem;
+    margin-bottom: 4vh;
+  }
+}
+
+.inputfield {
+  margin-top: 2rem;
+  width: 20rem;
+  padding: 0.4rem 2.25rem;
+}
+
+.submit-btn {
+  background-color: #f6832a;
+  color: white;
+  border: none;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  padding: 0.45rem 2.25rem;
+}
+
+@media only screen and (min-width: 1000px) {
+  .inputfield {
+    margin-top: 2rem;
+    width: 20rem;
+    padding: 0.4rem 2.25rem;
+    border-width: unset;
+  }
+
+  .submit-btn {
+    background-color: #f6832a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.45rem 2.25rem;
+    margin: 0px 10px;
+  }
+}

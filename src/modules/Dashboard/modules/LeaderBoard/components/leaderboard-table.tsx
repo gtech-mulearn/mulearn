@@ -1,18 +1,17 @@
-import { ArrowUp, Triangle } from "lucide-react";
+import { BsFillTriangleFill } from "react-icons/bs";
 import styles from "../pages/leaderboard.module.css";
-import dpm from "/assets/dpm.webp";
-import { BsFillTriangleFill, BsTriangleFill } from "react-icons/bs";
-import defaultImage from "../assets/third.webp"
-
+import defaultImage from "../assets/third.webp";
 
 interface TableProps {
   leaderboardData: {
     name: string;
     monthly?: number;
     overall?: number;
+    campus?: number;
+    zonal?: number;
     category?: string;
   }[];
-  filter: "monthly" | "overall";
+  filter: "monthly" | "overall" | "campus" | "zonal";
 }
 
 export function LeaderboardTable({ leaderboardData, filter }: TableProps) {
@@ -25,7 +24,15 @@ export function LeaderboardTable({ leaderboardData, filter }: TableProps) {
           <tr>
             <th>Rank</th>
             <th>Name</th>
-            <th>{filter === "monthly" ? "Monthly Karma" : "Overall Karma"}</th>
+            <th>
+              {filter === "monthly"
+                ? "Monthly Karma"
+                : filter === "overall"
+                ? "Overall Karma"
+                : filter === "campus"
+                ? "Campus Karma"
+                : "Zonal Karma"}
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -42,10 +49,15 @@ export function LeaderboardTable({ leaderboardData, filter }: TableProps) {
                   <span>{entry.name}</span>
                 </div>
               </td>
-              {filter === "monthly" ? 
-  <td><span className="flex items-center justify-center gap-2">{(entry[filter] ?? 0).toLocaleString()} <BsFillTriangleFill className="text-green-500"/></span></td> 
-  : 
-  <td>{(entry[filter] ?? 0).toLocaleString()}</td>}
+              <td>
+                {filter === "monthly" ? (
+                  <span className="flex items-center justify-center gap-2">
+                    {(entry[filter] ?? 0).toLocaleString()} <BsFillTriangleFill className="text-green-500" />
+                  </span>
+                ) : (
+                  (entry[filter] ?? 0).toLocaleString()
+                )}
+              </td>
             </tr>
           ))}
         </tbody>

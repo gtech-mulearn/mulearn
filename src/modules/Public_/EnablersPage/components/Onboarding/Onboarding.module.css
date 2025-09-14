@@ -1,0 +1,94 @@
+.onboarding{
+    margin: 2rem 0;
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+.onboarding h1{
+    color: #9765FF;
+    font-family: Inter;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.onboarding h1 .onboardingHeading{
+    color: #FF7D40;
+    background-image: url('../../assests/Underline.webp');
+    background-repeat: no-repeat;
+    background-position:0px 48px;
+}
+.onboardingList{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 2rem 0;
+}
+.onboarding .onboardingList h1{
+    display: flex;
+    gap:1rem;
+    font-size: 30px;
+    letter-spacing: normal;
+    align-items: center;
+}
+.onboarding .onboardingList h1 span{
+    color: rgba(0, 0, 0, 0.10);
+    font-family: Raleway;
+    text-align: center;
+    font-size: 120px;
+    font-weight: 800;
+    line-height: normal;
+}
+.onboarding .onboardingList p{
+    width:68%;
+    color: var(--gray, #696984);
+    text-align: center;
+    font-family: Raleway;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    max-width: 50rem;
+}
+
+@media (width<750px) {
+    .onboarding h1{
+        font-size: 32px;
+    }
+    .onboarding h1 .onboardingHeading{
+        background-position: 0 30px;
+    }
+    .onboarding .onboardingList h1{
+        font-size: 25px;
+    }
+    .onboarding .onboardingList h1 span{
+        font-size: 90px;
+    }
+    .onboarding .onboardingList p{
+        font-size: 15px;
+    }
+    .onboarding .onboardingList h1  img{
+        height: 50px;
+    }
+}
+
+@media (width<500px){
+    .onboarding h1{
+        font-size: 25px;
+    }
+    .onboarding h1 .onboardingHeading{
+        background-position: 0 22px;
+    }
+    .onboarding .onboardingList h1{
+        font-size: 18px;
+    }
+    .onboarding .onboardingList h1 span{
+        font-size: 50px;
+    }
+    .onboarding .onboardingList p{
+        font-size: 14px;
+    }
+    .onboarding .onboardingList h1  img{
+        height: 30px;
+    }
+}

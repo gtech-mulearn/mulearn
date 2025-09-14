@@ -5,15 +5,17 @@ import { useNavigate } from 'react-router-dom';
 import { FiArrowLeft, FiUsers } from 'react-icons/fi';
 import { getInterestGroups, getInterestGroupsList } from '../../InterestGroup/apis';
 import MuLoader from '@/MuLearnComponents/MuLoader/MuLoader';
-import {InterestGroupData, interestGroups} from "../data/interestGroups"; 
+import { InterestGroupData, interestGroups } from "../data/interestGroups";
+import { Helmet } from 'react-helmet';
+
 
 function InterestGroupsPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 9;
+  const itemsPerPage = 12;
   const navigate = useNavigate();
-  const [interestgroups, setInterestGroups] = useState<any[]>([]);  
+  const [interestgroups, setInterestGroups] = useState<any[]>([]);
 
   const [data, setData] = useState<any[]>([]);
   const [totalPages, setTotalPages] = useState(0);
@@ -37,9 +39,12 @@ function InterestGroupsPage() {
     { title: "Game Development", image: "/assets/IG/Cover/5.webp" },
     { title: "Cloud and DevOps", image: "/assets/IG/Cover/6.webp" },
     { title: "Product Management", image: "/assets/IG/Cover/7.webp" },
-    {title: "Internet Of Things (IOT) And Robotics", image: "/assets/IG/Cover/8.webp"}
+    { title: "Internet Of Things (IOT) And Robotics", image: "/assets/IG/Cover/8.webp" },
+    { title: "Entrepreneurship", image: "/assets/IG/Cover/9.webp" },
+    { title: "AR/VR", image: "/assets/IG/Cover/10.webp" },
+
   ];
-  
+
 
   useEffect(() => {
     if (firstFetch.current) {
@@ -54,9 +59,13 @@ function InterestGroupsPage() {
     firstFetch.current = false;
   }, []);
 
-  const mappedData:InterestGroupData[] = interestGroups.filter(e => 
-    data.some(d => d.id === e.id)
-  );
+  const mappedData: InterestGroupData[] = interestGroups
+    .filter(e => data.some(d => d.id === e.id))
+    .map(e => ({
+      ...e,
+      members: data.find(d => d.id === e.id)?.members
+    }));
+
 
 
   const filteredGroups = mappedData.filter(group => {
@@ -77,32 +86,46 @@ function InterestGroupsPage() {
   };
 
   return (
-    <div className={styles.MainWrapper}>
-      <div className={styles.Banner}>
-        <div className={styles.BannerContent}>
-          <h1 className={styles.BannerTitle}>Discover Interest Groups</h1>
-          <p className={styles.BannerSubtitle}>Join communities that share your passion</p>
+    <>
+      <Helmet>
+        <title>Interest Groups | µLearn</title>
+        <meta
+          name="description"
+          content="Explore and join vibrant Interest Groups at µLearn. Connect with like-minded peers, dive into your passions and grow through shared learning and collaboration."
+        />
+        <meta property="og:title" content="Interest Groups | µLearn" />
+        <meta property="og:url" content="https://app.mulearn.org/dashboard/interestgroups" />
+        <meta
+          property="og:description"
+          content="Explore and join vibrant Interest Groups at µLearn. Connect with like-minded peers, dive into your passions and grow through shared learning and collaboration."
+        />
+      </Helmet>
+      <div className={styles.MainWrapper}>
+        <div className={styles.Banner}>
+          <div className={styles.BannerContent}>
+            <h1 className={styles.BannerTitle}>Discover Interest Groups</h1>
+            <p className={styles.BannerSubtitle}>Join communities that share your passion</p>
+          </div>
         </div>
-      </div>
 
-      <div className={styles.Container}>
-        {/* Search and Filter Section */}
-        <div className={styles.SearchFilterWrapper}>
-          <div className={styles.SearchFilterInner}>
-            {/* Search Bar */}
-            <div className={styles.SearchBar}>
-              <Search className={styles.SearchIcon} />
-              <input
-                type="text"
-                placeholder="Search interest groups..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className={styles.SearchInput}
-              />
-            </div>
+        <div className={styles.Container}>
+          {/* Search and Filter Section */}
+          <div className={styles.SearchFilterWrapper}>
+            <div className={styles.SearchFilterInner}>
+              {/* Search Bar */}
+              <div className={styles.SearchBar}>
+                <Search className={styles.SearchIcon} />
+                <input
+                  type="text"
+                  placeholder="Search interest groups..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className={styles.SearchInput}
+                />
+              </div>
 
-            {/* Category Filter */}
-            {/* <div className={styles.CategoryFilter}>
+              {/* Category Filter */}
+              {/* <div className={styles.CategoryFilter}>
               {categories.map((category) => (
                 <button
                 key={category.id}
@@ -117,100 +140,101 @@ function InterestGroupsPage() {
                 </button>
               ))}
             </div> */}
-          </div>
-        </div>
-        {isLoading && (
-          <div>
-            <MuLoader />
-          </div>
-        )}
-
-        {/* Interest Groups Grid */}
-        <div className={styles.Grid}>
-          {paginatedGroups.map((group) => (
-            <div
-            key={group.id}
-            className={styles.GroupCard}
-            onClick={() => navigate(`/dashboard/interestgroups/${group.id}`)}
-          >
-            <div className={styles.GroupImageWrapper}>
-              
-              {group.image ? (
-                <img
-                  src={group.image}
-                  alt={group.title}
-                  className={styles.GroupImage}
-                />
-              ) : (
-                (() => {
-                  const randomIndex = Math.floor(Math.random() * imageUrls.length);
-                  const randomImageUrl = imageUrls[randomIndex];
-                  return (
-                    <img
-                    src={
-                      imageUrls.find(img => img.title === group.title)?.image ||
-                      imageUrls[6].image
-                    }
-                    alt={group.title}
-                  />
-                  );
-                })()
-              )}
-              
-            </div>
-            <div className={styles.GroupDetails}>
-              {group.category && <span className={styles.GroupCategory}>
-                {categories.find(c => c.id === group.category)?.name}
-                </span>}
-            
-              <h3 className={styles.GroupTitle}>{group.title}</h3>
-              <div className={styles.GroupOverlay}>
-                <span className={styles.GroupParticipantsBadge}>
-                  <FiUsers className={styles.GroupParticipantsIcon} />
-                  {group.memberCount} members
-                </span>
-              </div>
             </div>
           </div>
-          ))}
-        </div>
+          {isLoading && (
+            <div>
+              <MuLoader />
+            </div>
+          )}
 
-        {/* Pagination */}
-        {totalPages > 1 && (
-          <div className={styles.Pagination}>
-            <button
-              onClick={() => handlePageChange(currentPage - 1)}
-              disabled={currentPage === 1}
-              className={styles.PaginationButton}
-            >
-              <ChevronLeft className={styles.PaginationIcon} />
-            </button>
-
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-              <button
-                key={page}
-                onClick={() => handlePageChange(page)}
-                className={
-                  currentPage === page
-                    ? styles.PaginationButtonActive
-                    : styles.PaginationButton
-                }
+          {/* Interest Groups Grid */}
+          <div className={styles.Grid}>
+            {paginatedGroups.map((group) => (
+              <div
+                key={group.id}
+                className={styles.GroupCard}
+                onClick={() => navigate(`/dashboard/interestgroups/${group.id}`)}
               >
-                {page}
-              </button>
-            ))}
+                <div className={styles.GroupImageWrapper}>
 
-            <button
-              onClick={() => handlePageChange(currentPage + 1)}
-              disabled={currentPage === totalPages}
-              className={styles.PaginationButton}
-            >
-              <ChevronRight className={styles.PaginationIcon} />
-            </button>
+                  {group.image ? (
+                    <img
+                      src={group.image}
+                      alt={group.title}
+                      className={styles.GroupImage}
+                    />
+                  ) : (
+                    (() => {
+                      const randomIndex = Math.floor(Math.random() * imageUrls.length);
+                      const randomImageUrl = imageUrls[randomIndex];
+                      return (
+                        <img
+                          src={
+                            imageUrls.find(img => img.title === group.title)?.image ||
+                            imageUrls[6].image
+                          }
+                          alt={group.title}
+                        />
+                      );
+                    })()
+                  )}
+
+                </div>
+                <div className={styles.GroupDetails}>
+                  {group.category && <span className={styles.GroupCategory}>
+                    {categories.find(c => c.id === group.category)?.name}
+                  </span>}
+
+                  <h3 className={styles.GroupTitle}>{group.title}</h3>
+                  <div className={styles.GroupOverlay}>
+                    <span className={styles.GroupParticipantsBadge}>
+                      <FiUsers className={styles.GroupParticipantsIcon} />
+                      {group.members} members
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-        )}
+
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className={styles.Pagination}>
+              <button
+                onClick={() => handlePageChange(currentPage - 1)}
+                disabled={currentPage === 1}
+                className={styles.PaginationButton}
+              >
+                <ChevronLeft className={styles.PaginationIcon} />
+              </button>
+
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                <button
+                  key={page}
+                  onClick={() => handlePageChange(page)}
+                  className={
+                    currentPage === page
+                      ? styles.PaginationButtonActive
+                      : styles.PaginationButton
+                  }
+                >
+                  {page}
+                </button>
+              ))}
+
+              <button
+                onClick={() => handlePageChange(currentPage + 1)}
+                disabled={currentPage === totalPages}
+                className={styles.PaginationButton}
+              >
+                <ChevronRight className={styles.PaginationIcon} />
+              </button>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

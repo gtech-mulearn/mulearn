@@ -9,17 +9,15 @@ import UserCard from '/src/modules/Dashboard/components/UserCard';
 import { useNavigate, useParams } from 'react-router-dom';
 import LearningPathCard from '../LearningPathCard';
 import LearningPathDetailPage from '../LearningPathDetailPage'; // Import the detail page component
-import AsideDetails from '/src/modules/Dashboard/components/AsideDetails';
 import { publicGateway } from '@/MuLearnServices/apiGateways';
 import { dashboardRoutes } from '@/MuLearnServices/urls';
-
-import { fetchAndFormatIGTasks } from '../../services/api';
-import { FormattedLevel, Card } from '../../../LearningPathNew/services/api';
+import { Level, Task } from '../../../LearningPathNew/services/api';
+import { fetchAndFormatIGTasks, FormattedLevel } from '../../services/api';
 
 const IGActionSection = ({ data }: { data: InterestGroupData }) => {
   const tabNames = [
     "About",
-    "Learning Paths",
+    // "Learning Paths",
     "IG Leads",
     "Mentors",
     "Blogs and People",
@@ -28,7 +26,7 @@ const IGActionSection = ({ data }: { data: InterestGroupData }) => {
   const [selectedPath, setSelectedPath] = useState<{ level: string; card: LearningPath['cards'][0] } | null>(null); // State for selected learning path
   const [selectedUser, setSelectedUser] = useState<CardData | null>(null); // State for selected user (for aside)
   const [isAsideOpen, setIsAsideOpen] = useState(false); // State for aside visibility
-  const [formattedTasks, setFormattedTasks] = useState<FormattedLevel[]>([]); // New state for tasks
+  const [formattedTasks, setFormattedTasks] = useState<Level[]>([]); // New state for tasks
   const [loadingTasks, setLoadingTasks] = useState<boolean>(false); // Loading state for tasks
   const [taskError, setTaskError] = useState<string | null>(null);
   const navigate = useNavigate();
@@ -49,7 +47,13 @@ const IGActionSection = ({ data }: { data: InterestGroupData }) => {
 
       try {
         const tasks = await fetchAndFormatIGTasks(id);
-        setFormattedTasks(tasks);
+        // Convert FormattedLevel[] to Level[] format
+        const convertedTasks: Level[] = tasks.map(formattedLevel => ({
+          name: formattedLevel.title || '',
+          tasks: [],
+          karma: 0
+        }));
+        setFormattedTasks(convertedTasks);
       } catch (err) {
         console.error('Error fetching tasks:', err);
         setTaskError('Failed to load tasks');

@@ -1,0 +1,233 @@
+[
+  {
+    "id": 1,
+    "name": "Vinu Balagopal A P",
+    "team": "µ-Web",
+    "linkedin": "https://www.linkedin.com/in/vinubalagopalap/",
+    "image": "assets/team/2023/tech/Vinu Balagopal A P.webp"
+  },
+  {
+    "id": 2,
+    "name": "Aswin Asok",
+    "team": "µ-Web", 
+    "linkedin": "https://www.linkedin.com/in/-aswinasok/",
+    "image": "assets/team/2023/tech/Aswin Asok.webp"
+  },
+  {
+    "id": 4,
+    "name": "Ansan Johny",
+    "team": "µ-300",
+    "linkedin": "https://www.linkedin.com/in/ansan-johny-6092aa190",
+    "image": "assets/team/2023/tech/Ansan Johny.webp"
+  },
+  {
+    "id": 5,
+    "name": "Angel Rose T J",
+    "team": "µ-JSON",
+    "linkedin": "https://www.linkedin.com/in/angelrosetj",
+    "image": "assets/team/2023/tech/Angel Rose T J.webp"
+  },
+  {
+    "id": 6,
+    "name": "Kevin Paul Babu",
+    "team": "µ-300",
+    "linkedin": "https://www.linkedin.com/in/kevin-paul-babu-737b28187",
+    "image": "assets/team/2023/tech/Kevin Paul Babu.webp"
+  },
+  {
+    "id": 7,
+    "name": "Andria Rose Aureo",
+    "team": "µ-JSON",
+    "linkedin": "https://www.linkedin.com/in/andria-rose-aureo-29a296202",
+    "image": "assets/team/2023/tech/Andria Rose Aureo.webp"
+  },
+  {
+    "id": 8,
+    "name": "Abhijith E S",
+    "team": "µ-300",
+    "linkedin": "https://www.linkedin.com/in/abhijithes",
+    "image": "assets/team/2023/tech/Abhijith E S.webp"
+  },
+  {
+    "id": 9,
+    "name": "Sivaprasad C",
+    "team": "µ-300",
+    "linkedin": "https://www.linkedin.com/in/sivaprasad-c-02662b166/",
+    "image": "assets/team/2023/tech/Sivaprasad C.webp"
+  },
+  {
+    "id": 10,
+    "name": "Basith P",
+    "team": "µ-Web",
+    "linkedin": "https://www.linkedin.com/in/basithp9/",
+    "image": "assets/team/2023/tech/Basith P.webp"
+  },
+  {
+    "id": 11,
+    "name": "Muhammed Zafar M M",
+    "team": "µ-JSON",
+    "linkedin": "https://www.linkedin.com/in/muhammed-zafar-b4462a22a",
+    "image": "assets/team/2023/tech/Muhammed Zafar M M.webp"
+  },
+  {
+    "id": 12,
+    "name": "Sooraj P",
+    "team": "µ-JSON",
+    "linkedin": "https://www.linkedin.com/in/soorajksd/",
+    "image": "assets/team/2023/tech/Sooraj P.webp"
+  },
+  {
+    "id": 13,
+    "name": "K U Anupama",
+    "team": "µ-JSON",
+    "linkedin": "https://www.linkedin.com/in/k-u-anupama-44b853205",
+    "image": "assets/team/2023/tech/K U Anupama.webp"
+  },
+  {
+    "id": 14,
+    "name": "Ann Elizabeth James",
+    "team": "µ-300",
+    "linkedin": "https://www.linkedin.com/in/ann-elizabeth-james-a48b2b221",
+    "image": "assets/team/2023/tech/Ann Elizabeth James.webp"
+  },
+  {
+    "id": 15,
+    "name": "Rajat Mathew",
+    "team": "µ-Web",
+    "linkedin": "http://linkedin.com/in/rajatmathew",
+    "image": "assets/team/2023/tech/Rajat Mathew.webp"
+  },
+  {
+    "id": 16,
+    "name": "Kevin Joseph Hendry",
+    "team": "µ-300",
+    "linkedin": "https://www.linkedin.com/in/kevin-joseph-hendry-504732227/",
+    "image": "assets/team/2023/tech/Kevin Joseph Hendry.webp"
+  },
+  {
+    "id": 17,
+    "name": "Akash Santhosh",
+    "team": "µ-Web",
+    "linkedin": "http://linkedin.com/in/akashsanthosh",
+    "image": "assets/team/2023/tech/Akash Santhosh.webp"
+  },
+  {
+    "id": 18,
+    "name": "Mohamed Faraz M S",
+    "team": "µ-JSON",
+    "linkedin": "https://www.linkedin.com/in/mohamed-faraz-m-s/",
+    "image": "assets/team/2023/tech/Mohamed Faraz M S.webp"
+  },
+  {
+    "id": 19,
+    "name": "Finu Shaheem",
+    "team": "µ-Web",
+    "linkedin": "https://www.linkedin.com/in/finushaheem/",
+    "image": "assets/team/2023/tech/Finu Shaheem.webp"
+  },
+  {
+    "id": 20,
+    "name": "Chaitanya Liz",
+    "team": "µ-JSON",
+    "linkedin": "https://www.linkedin.com/in/lizchaitanya",
+    "image": "assets/team/2023/tech/Chaitanya Liz.webp"
+  },
+  {
+    "id": 21,
+    "name": "Edwin liby",
+    "team": "µ-JSON",
+    "linkedin": "https://www.linkedin.com/in/edwin-liby-12b7a5220/",
+    "image": "assets/team/2023/tech/Edwin liby.webp"
+  },
+  {
+    "id": 22,
+    "name": "Moosa Fayas",
+    "team": "µ-JSON",
+    "linkedin": "https://www.linkedin.com/in/moosafayaz",
+    "image": "assets/team/2023/tech/Moosa Fayas.webp"
+  },
+  {
+    "id": 23,
+    "name": "Irfan Ansari",
+    "team": "µ-JSON",
+    "linkedin": "https://www.linkedin.com/in/irfan-ansari-634174132",
+    "image": "assets/team/2023/tech/Irfan Ansari.webp"
+  },
+  {
+    "id": 24,
+    "name": "Amal Sony",
+    "team": "µ-JSON",
+    "linkedin": "https://www.linkedin.com/in/amal-sony-264993205",
+    "image": "assets/team/2023/tech/Amal Sony.webp"
+  },
+  {
+    "id": 25,
+    "name": "Arjun M S",
+    "team": "µ-Bot",
+    "linkedin": "https://www.linkedin.com/in/the-arjun-ms",
+    "image": "assets/team/2023/tech/Arjun M S.webp"
+  },
+  {
+    "id": 26,
+    "name": "Adheel Ahmed Chelakkot",
+    "team": "µ-Web",
+    "linkedin": "https://www.linkedin.com/in/a-h-m-e-d/",
+    "image": "assets/team/2023/tech/Adheel Ahmed Chelakkot.webp"
+  },
+  {
+    "id": 27,
+    "name": "Kochouseph John",
+    "team": "µ-JSON",
+    "linkedin": "https://www.linkedin.com/in/kochouseph-john-b86149212",
+    "image": "assets/team/2023/tech/Kochouseph John.webp"
+  },
+  {
+    "id": 28,
+    "name": "Jovit Mathew",
+    "team": "µ-300",
+    "linkedin": "https://www.linkedin.com/in/jovit-mathew-844590205",
+    "image": "assets/team/2023/tech/Jovit Mathew.webp"
+  },
+  {
+    "id": 29,
+    "name": "Vishnu C R",
+    "team": "µ-300",
+    "linkedin": "https://www.linkedin.com/in/vishnu-c-r-821a31201",
+    "image": "assets/team/2023/tech/Vishnu C R.webp"
+  },
+  {
+    "id": 30,
+    "name": "Jithesh Raj M",
+    "team": "µ-300",
+    "linkedin": "https://www.linkedin.com/in/vishnu-c-r-821a31201",
+    "image": "assets/team/2023/tech/Jithesh Raj M.webp"
+  },
+  {
+    "id": 31,
+    "name": "Abin T Sunil",
+    "team": "µ-Web",
+    "linkedin": "",
+    "image": "assets/team/2023/tech/Abin T Sunil.webp"
+  },
+  {
+    "id": 32,
+    "name": "Aravind S",
+    "team": "µ-Bot",
+    "linkedin": "https://www.linkedin.com/in/aravinds-arv/",
+    "image": "assets/team/2023/tech/Aravind S.webp"
+  },
+  {
+    "id": 33,
+    "name": "Sandra M A",
+    "team": "µ-Web",
+    "linkedin": "https://www.linkedin.com/in/sandra-rosa-antony-66a964220",
+    "image": "assets/team/2023/tech/Sandra M A.webp"
+  },
+  {
+    "id": 34,
+    "name": "Bijo Mathew Jose",
+    "team": "µ-Web",
+    "linkedin": "https://www.linkedin.com/in/bijomathewjose/",
+    "image": "assets/team/2023/tech/Bijo Mathew Jose.webp"
+  }
+]

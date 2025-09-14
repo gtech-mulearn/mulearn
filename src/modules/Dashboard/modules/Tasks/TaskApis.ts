@@ -142,6 +142,11 @@ export const editTask = async (
                 bonus_time:
                     formattedBonusTime === "" ? null : formattedBonusTime,
                 bonus_karma: parseInt(bonus_karma ?? "0")
+            },
+            {
+                headers: {
+                    "Content-Type": "application/json; charset=utf-8"
+                }
             }
         );
 
@@ -199,6 +204,11 @@ export const createTask = async (
                 bonus_time:
                     formattedBonusTime === "" ? null : formattedBonusTime,
                 bonus_karma: parseInt(bonus_karma ?? "0")
+            },
+            {
+                headers: {
+                    "Content-Type": "application/json; charset=utf-8"
+                }
             }
         );
 

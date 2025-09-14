@@ -1,0 +1,85 @@
+.menuBar{
+    position: fixed;
+    top: 0;
+    display: flex;
+    width: 100%;
+    padding: 2rem;
+    border-radius: 0 0 50px 50px;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+}
+
+.menuBar .menu{
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.menuBar .menu a{
+    color: #252641;
+    font-family: Raleway;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.36px;
+}
+
+.menuBar .menu a:hover{
+    color: #FF7D40;
+}
+
+.menuBar button{
+   padding: 15px 40px;
+   background: #9765FF;
+   border-radius: 10px;
+   color: #FFFFFF;
+}
+
+@media (width<1200px){
+    .menuBar{
+        padding:2rem 10px;
+        gap: 1rem;
+    }
+    .menuBar .menu{
+       gap: 2rem;
+    }
+
+    .menuBar .logo a img{
+        width: 120px;
+    }
+    .menuBar .menu a{
+        font-size: 10px;
+    }
+
+    .menuBar button{
+        padding: 10px 25px;
+        font-size: 10px;
+    }
+}
+
+@media (width<710px){
+    .menuBar{
+        padding:2rem 10px;
+        gap: .5rem;
+    }
+    .menuBar .logo a img{
+        width: 100px;
+    }
+    .menuBar .menu{
+       gap: 1.5rem;
+    }
+    .menuBar .menu a{
+        font-size: 8px;
+    }
+}
+
+@media (width<600px){
+    .menuBar{
+        width: 100%;
+    }
+    .menuBar .menu{
+        display: none;
+    }
+}

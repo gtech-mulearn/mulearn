@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react";
+import React, { JSX, ReactNode, useState } from "react";
 import styles from "./MuButton.module.css";
 import { ClipLoader } from "react-spinners";
 import { Spinner } from "@chakra-ui/react";
