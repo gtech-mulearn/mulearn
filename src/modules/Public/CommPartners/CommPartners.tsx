@@ -16,8 +16,8 @@ const CommunityPartner = () => {
   return (
     <>
       <HomeNav />
-      <div className="flex flex-col items-center justify-center pt-20 md:pt-32">
-        <div className="flex flex-col md:min-h-screen md:flex-row items-center justify-around ">
+      <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col-reverse md:flex-row  items-center justify-around w-full">
           <div className="text-center md:text-left md:w-1/3 mx-4 md:mx-0">
             <p className="font-sans text-5xl font-semibold text-[#303030] md:text-7xl md:leading-tight">
               <span className="font-semibold text-[#5570f1]">µLearn Community</span> Partners
@@ -29,13 +29,18 @@ const CommunityPartner = () => {
             </p>
           </div>
 
-          <div>
-            <img src={cdnUrl("src/modules/Public/CommPartners/assets/Coding workshop.gif")} alt="Coding Workshop Animation" className="block mt-0 w-[24rem] md:w-[38rem]" />
-          </div>  
+          <div className="w-full flex justify-center md:w-auto md:flex md:items-center md:justify-center">
+            <img
+              src={cdnUrl("src/modules/Public/CommPartners/assets/Coding workshop.gif")}
+              alt="Coding Workshop Animation"
+              className="block mt-6 md:mt-0 w-[90vw] max-w-[36rem] md:w-full md:max-w-[38rem] h-auto md:h-[26rem] object-cover rounded-2xl "
+              style={{ objectFit: 'cover', width: '100%', maxWidth: '38rem', height: 'auto', borderRadius: '1.5rem' }}
+            />
+          </div>
         </div>
 
         <div className="bg-white max-w-6xl" style={{ paddingBottom: "5rem" }}>
-          <div className="lg:w-2/3 flex flex-col text-center md:text-left relative lg:left-[-4rem] top-[2.5rem] mx-4 md:mx-0">
+          <div className="lg:w-2/3 flex flex-col text-center md:text-left relative lg:left-[-4rem] top-[8rem] mx-4 md:mx-0">
             <p className="text-3xl md:text-5xl font-semibold font-sans">
               <span className="text-[#5570f1]">Community</span> Partners
             </p>
@@ -45,7 +50,7 @@ const CommunityPartner = () => {
               themselves.
             </p>
           </div>
-          <div className="grid grid-cols-1 place-items-center relative top-[5rem] gap-x-4 gap-y-6 sm:grid-cols-2 md:grid-cols-3 ">
+          <div className="grid grid-cols-1 place-items-center relative top-[10rem] gap-x-4 gap-y-6 sm:grid-cols-2 md:grid-cols-3 ">
             {(partners as Partner[]).map((partner) => (
               <CommunityCard
                 key={partner.name}

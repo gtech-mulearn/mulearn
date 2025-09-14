@@ -17,17 +17,8 @@ export default function ProgramProject() {
             alt="Project 1"
           />
 
-          <div className={styles.programProjectEnablers}>
-            <div>
-              <img src={cdnUrl("src/modules/Public/EnablersPage/assests/Blink.webp")} alt="Blink" />
-              <img src={cdnUrl("src/modules/Public/EnablersPage/assests/Blink.webp")} alt="Blink" />
-              <img src={cdnUrl("src/modules/Public/EnablersPage/assests/Blink.webp")} alt="Blink" />
-              <img src={cdnUrl("src/modules/Public/EnablersPage/assests/Blink.webp")} alt="Blink" />
-            </div>
-            <p>+ 40 enablers</p>
-          </div>
+
           <div className={styles.programProjectGridContent}>
-            <p>October 20th 2023</p>
             <h2>Learning Fest For Enablers</h2>
             <p>
               Are you passionate about helping others reach their full
@@ -54,15 +45,6 @@ export default function ProgramProject() {
             alt="Project 2"
           />
 
-          <div className={styles.programProjectEnablers}>
-            <div>
-              <img src={cdnUrl("src/modules/Public/EnablersPage/assests/Blink.webp")} alt="Blink" />
-              <img src={cdnUrl("src/modules/Public/EnablersPage/assests/Blink.webp")} alt="Blink" />
-              <img src={cdnUrl("src/modules/Public/EnablersPage/assests/Blink.webp")} alt="Blink" />
-              <img src={cdnUrl("src/modules/Public/EnablersPage/assests/Blink.webp")} alt="Blink" />
-            </div>
-            <p>+ 11 enablers</p>
-          </div>
           <div className={styles.programProjectGridContent}>
             {/* <p>1 - 28 July 2022</p> */}
             <h2>Art of Teaching - Teach Contest</h2>

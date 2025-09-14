@@ -26,9 +26,15 @@ const EventsHome = () => {
             </div>
             <div className={styles.fv_images}>
               <img
-                src={cdnUrl("public/assets/events/fvimg.gif")}
+                src={cdnUrl("public/assets/events/Online calendar.gif")}
                 alt="Events First View"
                 className={styles.fv_img}
+                onError={e => {
+                  const target = e.currentTarget;
+                  if (target.src !== '/public/assets/events/Online calendar.gif') {
+                    target.src = '/public/assets/events/Online calendar.gif';
+                  }
+                }}
               />
             </div>
           </div>
