@@ -5,7 +5,7 @@ import CardCarousel from "../modules/CardCarousal";
 import IGSelector from "../../InterestGroups/components/IGSelection/IGSelector";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { useUserStore } from "/src/ZustandProvider";
-import { Task, Level, getStartLearningTasks, getBecomeExpertTasks, getIgDisplayName, getEventTasks } from "../services/api";
+import { Task, Level, getStartLearningTasks, getBecomeExpertTasks, getIgDisplayName, getEventTasks, checkAndClearStaleCache } from "../services/api";
 import ConnectDiscord from "../../ConnectDiscord/pages/ConnectDiscord";
 import toast from "react-hot-toast";
 import channelmap from "../data/channelmap";
@@ -324,7 +324,6 @@ const LearningPathPage: React.FC = () => {
         return;
       }
     } catch (error) {
-      console.error("Failed to refetch user profile:", error);
       userIGsData = [];
     } finally {
       setIsLoading(false);
@@ -339,9 +338,14 @@ const LearningPathPage: React.FC = () => {
     setIsLoading(true);
     const currentLevel = unlockedLevel;
 
-    // Allow all users to access intermediate tasks, but show message if no IGs
-    if (!userIGs.length) {
-      toast.error("You need to join an interest group to access these tasks");
+    // Check if user has reached level 4 and has no interest groups
+    if (currentLevel >= 4 && !userIGs.length) {
+      // Don't show toast error for level 4+ users - they can see the message in UI instead
+      setIntermediateLevelData([]);
+      setIsLoading(false);
+      return;
+    } else if (currentLevel < 4) {
+      // For users below level 4, set empty data but don't show error
       setIntermediateLevelData([]);
       setIsLoading(false);
       return;
@@ -351,7 +355,6 @@ const LearningPathPage: React.FC = () => {
       const response = await getBecomeExpertTasks(userIGs, selectedIg.id || undefined);
       setIntermediateLevelData(response);
     } catch (error) {
-      console.error("Error fetching intermediate tasks:", error);
       setIntermediateLevelData([]);
     } finally {
       setIsLoading(false);
@@ -362,6 +365,35 @@ const LearningPathPage: React.FC = () => {
     fetchIntermediateTasks();
   }, [fetchIntermediateTasks]);
 
+  // Add effect to watch for user level changes and refresh data
+  useEffect(() => {
+    const refreshDataOnLevelChange = async () => {
+      // Check if cache needs to be cleared due to level change
+      const cacheWasCleared = checkAndClearStaleCache();
+      
+      // Only refresh if cache was cleared (level changed) and we have existing data
+      if (cacheWasCleared && (basicLevelData !== null || intermediateLevelData !== null)) {
+        setIsLoading(true);
+        try {
+          // Refresh basic level data
+          const basicResponse = await getStartLearningTasks();
+          setBasicLevelData(basicResponse);
+          
+          // Refresh intermediate data if user has IGs
+          if (userIGs.length > 0) {
+            await fetchIntermediateTasks();
+          }
+        } catch (error) {
+          // Handle error silently
+        } finally {
+          setIsLoading(false);
+        }
+      }
+    };
+
+    refreshDataOnLevelChange();
+  }, [userProfile.level]); // Only watch for changes in user level
+
   useEffect(() => {
     setIsLoading(true);
     const fetchBasicLevels = async () => {
@@ -369,7 +401,6 @@ const LearningPathPage: React.FC = () => {
         const response = await getStartLearningTasks(); // Get tasks without #cl- hashtags
         setBasicLevelData(response);
       } catch (error) {
-        console.error("Error fetching basic levels:", error);
         setBasicLevelData([]);
       } finally {
         setIsLoading(false);
@@ -386,7 +417,6 @@ const LearningPathPage: React.FC = () => {
           fetchUserIGs(), // Fetch IG data here
         ]);
       } catch (error) {
-        console.error("Error fetching user data:", error);
       } finally {
         setIsLoading(false);
       }
@@ -450,7 +480,6 @@ const LearningPathPage: React.FC = () => {
           const eventTasks = await getEventTasks();
           setEventData(eventTasks);
         } catch (error) {
-          console.error("Error fetching event tasks:", error);
         }
       };
       fetchEventTasks();
@@ -597,9 +626,20 @@ const LearningPathPage: React.FC = () => {
           {activeTab === "becomeExpert" && (
             intermediateLevelData === null || intermediateLevelData.length === 0 ? (
               <div className="text-center">
-                {selectedIg.id && selectedIg.name
-                  ? `No tasks available for ${selectedIg.name}`
-                  : "No tasks available"}
+                {unlockedLevel >= 4  ? (
+                  userIGs.length > 0 ? (
+                    selectedIg.id && selectedIg.name 
+                      ? `No tasks available for ${selectedIg.name}`
+                      : "Please select an interest group to view tasks"
+                  ) : (
+                    ""
+                  )
+                ) : (
+                  <div>
+                    <h3>Reach Level 4 to Unlock Expert Tasks</h3>
+                    <p>Complete tasks in the "Start Journey" tab to reach Level 4 and unlock advanced learning paths.</p>
+                  </div>
+                )}
               </div>
             ) : (() => {
               // Check if any levels have tasks after filtering
@@ -665,17 +705,34 @@ const LearningPathPage: React.FC = () => {
                   level.tasks.some(task => nasaHashtags.includes(task.hashtag))
                 );
                 
+                // Check if there are any event tasks at all
+                const hasAnyEventTasks = eventData && eventData.length > 0 && 
+                  eventData.some(level => level.tasks.length > 0);
+                
+                if (!hasAnyEventTasks) {
+                  return (
+                    <div className="text-center" style={{ 
+                      padding: "2rem", 
+                      textAlign: "center",
+                      color: "#6B7280"
+                    }}>
+                      <h3>No Active Events</h3>
+                      <p>There are currently no event-based tasks available. Check back later for upcoming challenges and events!</p>
+                    </div>
+                  );
+                }
+                
                 return (
                   <>
                     {hasNasaTasks && <h2><strong>NASA Space Challenge</strong></h2>}
                     <div className={styles.taskRow} style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", gap: "16px" }}>
-                      {eventData ? eventData.flatMap(level => level.tasks).map(task => (
+                      {eventData.flatMap(level => level.tasks).map(task => (
                         <TaskCard
                           key={task.id}
                           task={task}
                           onClickCTA={(task) => handleOpenOffCanvas(task)}
                         />
-                      )) : <p>No data available</p>}
+                      ))}
                     </div>
                   </>
                 );

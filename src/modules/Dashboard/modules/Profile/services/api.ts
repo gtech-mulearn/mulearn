@@ -3,8 +3,6 @@ import { privateGateway, publicGateway, qSeversePrivateGateway } from "@/MuLearn
 import { dashboardRoutes, qseverseRoutes } from "@/MuLearnServices/urls";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { AiOutlineConsoleSql } from "react-icons/ai";
-import { error, log } from "console";
 
 type userProfile = UseStateFunc<any>;
 type userLog = UseStateFunc<any>;
@@ -45,7 +43,7 @@ export const getUserProfile = (
             localStorage.setItem("userId", response.data.response.id);
         })
         .catch(error => {
-            console.log(error);
+            // Error handled silently
         });
 };
 
@@ -56,7 +54,7 @@ export const getUserLog = (setUserLog: userLog) => {
             setUserLog(response.data.response);
         })
         .catch(error => {
-            console.log(error);
+            // Error handled silently
         });
 };
 export const getPublicUserProfile = (
@@ -72,7 +70,6 @@ export const getPublicUserProfile = (
             setUserProfile(response.data.response);
         })
         .catch(error => {
-            console.log(error);
             setAPILoadStatus(error.response.data.statusCode);
         });
 };
@@ -84,19 +81,17 @@ export const getPublicUserLog = (setUserLog: userLog, muid: string) => {
             setUserLog(response.data.response);
         })
         .catch(error => {
-            console.log(error);
+            // Error handled silently
         });
 };
 export const putIsPublic = (is_public: boolean) => {
     privateGateway
         .put(dashboardRoutes.putIsPublic, { is_public })
         .then((response: APIResponse<{}, string[]>) => {
-            console.log(response.data.message.general[0]);
-
             toast.success("Profile status is updated");
         })
         .catch(error => {
-            console.log(error);
+            // Error handled silently
         });
 };
 
@@ -107,7 +102,7 @@ export const getUserLevels = (setUserLevelData: userLevelData) => {
             setUserLevelData(response.data.response);
         })
         .catch(error => {
-            console.log(error);
+            // Error handled silently
         });
 };
 
@@ -122,7 +117,7 @@ export const getPublicUserLevels = (
             setUserLevelData(response.data.response);
         })
         .catch(error => {
-            console.log(error);
+            // Error handled silently
         });
 };
 
@@ -226,7 +221,6 @@ export const updateVCURL = async (
 export const getUserPreferences = async (): Promise<any> => {
     try {
         const response = await privateGateway.get(dashboardRoutes.getUserPreferences);
-        console.log(response.data.response);
         return response.data.response;
     } catch (error: any) {
         console.error("Error fetching user preferences:", error.response?.data || error.message);
