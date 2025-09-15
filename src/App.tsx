@@ -196,6 +196,8 @@ function App() {
         { path: "bootcamps", element: <ComingSoonPage /> },
         // { path: "learningCircles", element: <ComingSoonPage /> },
         { path: "courses", element: <CoursesMainPage /> },
+        { path: "mujourney", element: <LearningPathPage /> },
+        { path: "learning-path/:id", element: <LearningPathPage /> },
       ]
     },
     {
@@ -207,8 +209,6 @@ function App() {
           element: <DashboardRootLayout />,
           children: [
             { path: "home", element: <Dashboardpage /> },
-            { path: "mujourney", element: <LearningPathPage /> },
-            { path: "learning-path/:id", element: <LearningPathPage /> },
             { path: "profile", element: <Profile /> },
             { path: "muverse", element: <ComingSoonPage /> },
             { path: "interestgroups", element: <ComingSoonPage /> },

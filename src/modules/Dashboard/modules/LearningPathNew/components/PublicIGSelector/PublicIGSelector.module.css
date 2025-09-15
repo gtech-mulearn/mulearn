@@ -1,0 +1,65 @@
+.interestGrp {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background-color: #F8FAFC;
+    border-radius: 10px;
+    padding: 10px 15px;
+}
+
+.top_sec {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.igs_container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 10px 0px;
+    list-style: none;
+    gap: 20px;
+    justify-content: flex-start;
+    max-width: 90vw;
+}
+
+.igs {
+    padding: 0px 15px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    min-height: 50px;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    border: 2px solid #456ff6;
+    color: black;
+    font-weight: 500;
+    cursor: pointer;
+    background-color: white;
+}
+
+.igs:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(69, 111, 246, 0.2);
+}
+
+/* Selected state handled by inline styles */
+.igs[data-selected="true"] {
+    background-color: #456ff6;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .igs_container {
+        max-width: 100%;
+        gap: 10px;
+    }
+    
+    .igs {
+        font-size: 0.8rem;
+        min-height: 45px;
+        padding: 0px 12px;
+    }
+}
