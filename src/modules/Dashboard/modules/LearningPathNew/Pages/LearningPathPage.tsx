@@ -671,7 +671,14 @@ const LearningPathPage: React.FC = () => {
         <>
           {activeTab === "startLearning" && (
             basicLevelData === null || basicLevelData.length === 0 ? (
-              <div className="text-center">No tasks available</div>
+              <div className="text-center" style={{ 
+                padding: "2rem", 
+                textAlign: "center",
+                color: "#6B7280"
+              }}>
+                <h3>No Tasks Available</h3>
+                <p>There are currently no learning tasks available. Check back later for new learning opportunities!</p>
+              </div>
             ) : (() => {
               // Check if any levels have tasks after filtering
               const hasAnyTasks = basicLevelData.some(level =>
@@ -680,8 +687,13 @@ const LearningPathPage: React.FC = () => {
 
               if (!hasAnyTasks) {
                 return (
-                  <div className="text-center">
-                    {`No ${filter === "all" ? "" : filter + " "}tasks available`}
+                  <div className="text-center" style={{ 
+                    padding: "2rem", 
+                    textAlign: "center",
+                    color: "#6B7280"
+                  }}>
+                    <h3>No Tasks Available</h3>
+                    <p>There are currently no {filter === "all" ? "" : filter + " "}tasks available. Check back later for new learning opportunities!</p>
                   </div>
                 );
               }
@@ -718,30 +730,55 @@ const LearningPathPage: React.FC = () => {
 
           {activeTab === "becomeExpert" && (
             intermediateLevelData === null || intermediateLevelData.length === 0 ? (
-              <div className="text-center">
+              <div className="text-center" style={{ 
+                padding: "2rem", 
+                textAlign: "center",
+                color: "#6B7280"
+              }}>
                 {isLoggedIn ? (
                   // Logged-in user logic
                   unlockedLevel >= 4  ? (
                     userIGs.length > 0 ? (
                       selectedIg.id && selectedIg.name 
-                        ? `No tasks available for ${selectedIg.name}`
-                        : "Please select an interest group to view tasks"
+                        ? (
+                          <>
+                            <h3>No Tasks Available</h3>
+                            <p>There are currently no expert tasks available for {selectedIg.name}. Check back later for new learning opportunities!</p>
+                          </>
+                        ) : (
+                          <>
+                            <h3>Select Interest Group</h3>
+                            <p>Please select an interest group to view expert tasks.</p>
+                          </>
+                        )
                     ) : (
-                      ""
+                      <>
+                        <h3>No Interest Groups</h3>
+                        <p>You don't have any interest groups assigned yet.</p>
+                      </>
                     )
                   ) : (
-                    <div>
+                    <>
                       <h3>Reach Level 4 to Unlock Expert Tasks</h3>
                       <p>Complete tasks in the "Start Journey" tab to reach Level 4 and unlock advanced learning paths.</p>
-                    </div>
+                    </>
                   )
                 ) : (
                   // Public user logic
-                  <div className="text-center">
+                  <>
                     {publicSelectedIg?.id && publicSelectedIg?.name 
-                      ? `No expert tasks available for ${publicSelectedIg.name}`
-                      : "Please select an interest group to view expert tasks"}
-                  </div>
+                      ? (
+                        <>
+                          <h3>No Expert Tasks Available</h3>
+                          <p>There are currently no expert tasks available for {publicSelectedIg.name}. Check back later for new learning opportunities!</p>
+                        </>
+                      ) : (
+                        <>
+                          <h3>Select Interest Group</h3>
+                          <p>Please select an interest group to view expert tasks.</p>
+                        </>
+                      )}
+                  </>
                 )}
               </div>
             ) : (() => {
@@ -752,15 +789,37 @@ const LearningPathPage: React.FC = () => {
 
               if (!hasAnyTasks) {
                 return (
-                  <div className="text-center">
+                  <div className="text-center" style={{ 
+                    padding: "2rem", 
+                    textAlign: "center",
+                    color: "#6B7280"
+                  }}>
                     {isLoggedIn ? (
                       selectedIg.id && selectedIg.name
-                        ? `No ${filter === "all" ? "" : filter + " "}tasks available for ${selectedIg.name}`
-                        : `No ${filter === "all" ? "" : filter + " "}tasks available`
+                        ? (
+                          <>
+                            <h3>No Tasks Available</h3>
+                            <p>There are currently no {filter === "all" ? "" : filter + " "}tasks available for {selectedIg.name}. Check back later for new learning opportunities!</p>
+                          </>
+                        ) : (
+                          <>
+                            <h3>No Tasks Available</h3>
+                            <p>There are currently no {filter === "all" ? "" : filter + " "}tasks available. Check back later for new learning opportunities!</p>
+                          </>
+                        )
                     ) : (
                       publicSelectedIg?.id && publicSelectedIg?.name
-                        ? `No ${filter === "all" ? "" : filter + " "}expert tasks available for ${publicSelectedIg.name}`
-                        : `No ${filter === "all" ? "" : filter + " "}expert tasks available`
+                        ? (
+                          <>
+                            <h3>No Expert Tasks Available</h3>
+                            <p>There are currently no {filter === "all" ? "" : filter + " "}expert tasks available for {publicSelectedIg.name}. Check back later for new learning opportunities!</p>
+                          </>
+                        ) : (
+                          <>
+                            <h3>No Expert Tasks Available</h3>
+                            <p>There are currently no {filter === "all" ? "" : filter + " "}expert tasks available. Check back later for new learning opportunities!</p>
+                          </>
+                        )
                     )}
                   </div>
                 );

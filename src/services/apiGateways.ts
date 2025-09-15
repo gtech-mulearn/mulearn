@@ -99,7 +99,7 @@ privateGateway.interceptors.response.use(
                         });
                 });
             } catch (error_2) {
-                toast.error("Your session has expired. Please login again.");
+                // toast.error("Your session has expired. Please login again.");
 
                 // Wait for 3 seconds
                 setTimeout(() => {
