@@ -11,6 +11,7 @@ type Props = {
 const PublicIGSelector = (props: Props) => {
   const [allIg, setAllIg] = useState<InterestGroup[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
     const getAllPublicIg = async () => {
@@ -47,6 +48,14 @@ const PublicIGSelector = (props: Props) => {
     props.setSelectedIg(data);
   }, [props]);
 
+  const handleToggleView = useCallback(() => {
+    setShowAll(prev => !prev);
+  }, []);
+
+  const displayedIgs = useMemo(() => {
+    return showAll ? ig_sorted : ig_sorted.slice(0, 4);
+  }, [ig_sorted, showAll]);
+
   if (isLoading) {
     return (
       <div className={styles.interestGrp}>
@@ -67,20 +76,30 @@ const PublicIGSelector = (props: Props) => {
       </div>
       <div className={styles.igs_container}>
         {ig_sorted.length > 0 ? (
-          ig_sorted.map((data: any, i: number) => (
-            <div
-              style={
-                props.selectedIg?.id === data.id 
-                  ? { backgroundColor: "#456ff6", color: "white" } 
-                  : {}
-              }
-              className={styles.igs}
-              key={data.id || i}
-              onClick={() => handleIgClick(data)}
-            >
-              {data.name}
-            </div>
-          ))
+          <>
+            {displayedIgs.map((data: any, i: number) => (
+              <div
+                style={
+                  props.selectedIg?.id === data.id 
+                    ? { backgroundColor: "#456ff6", color: "white" } 
+                    : {}
+                }
+                className={styles.igs}
+                key={data.id || i}
+                onClick={() => handleIgClick(data)}
+              >
+                {data.name}
+              </div>
+            ))}
+            {ig_sorted.length > 4 && (
+              <div
+                className={styles.viewMoreButton}
+                onClick={handleToggleView}
+              >
+                {showAll ? "Show Less" : "View More"}
+              </div>
+            )}
+          </>
         ) : (
           <p>No interest groups available</p>
         )}

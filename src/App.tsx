@@ -198,6 +198,8 @@ function App() {
         { path: "courses", element: <CoursesMainPage /> },
         { path: "mujourney", element: <LearningPathPage /> },
         { path: "learning-path/:id", element: <LearningPathPage /> },
+            { path: "home", element: <Dashboardpage /> },
+
       ]
     },
     {
@@ -208,7 +210,6 @@ function App() {
           path: "/dashboard",
           element: <DashboardRootLayout />,
           children: [
-            { path: "home", element: <Dashboardpage /> },
             { path: "profile", element: <Profile /> },
             { path: "muverse", element: <ComingSoonPage /> },
             { path: "interestgroups", element: <ComingSoonPage /> },
