@@ -21,7 +21,7 @@ interface InterestGroup {
 const imageMap: { [key: string]: { src: string; alt: string } } = {
   coder: { src: "/assets/landing/coder2.webp", alt: "Coding illustration" },
   maker: { src: "/assets/landing/maker.webp", alt: "Maker illustration" },
-  creative: { src: "/assets/landing/creative.webp", alt: "Designer illustration" },
+  creative: { src: "/assets/landing/creative.webp", alt: "Creative illustration" },
   manager: { src: "/assets/landing/manager.webp", alt: "Manager illustration" },
 };
 
@@ -30,15 +30,24 @@ const DashboardPage = () => {
   const [interestGroups, setInterestGroups] = useState<InterestGroup[]>([]);
   const [events, setEvents] = useState<Event[]>([]);
 
+  // Check if user is logged in
+  const refreshToken = localStorage.getItem("refreshToken");
+  const isLoggedIn = !!refreshToken;
+
   // Access karmaFeed and fetchKarmaFeed from Zustand
   const { karmaFeed, isKarmaFeedLoading, fetchKarmaFeed } = useStatStore();
   const { userProfile } = useUserStore();
-  let userName = useUserStore((state) => state.userProfile.full_name.split(" ")[0]);
+  let userName = useUserStore((state) => state.userProfile.full_name?.split(" ")[0]);
   const storedUserInfo = JSON.parse(localStorage.getItem("userInfo") ?? "{}");
-  const userDomains: string[] = fetchLocalStorage<UserInfo>("userInfo")?.user_domains || [];
+  const userDomains: string[] = isLoggedIn ? (fetchLocalStorage<UserInfo>("userInfo")?.user_domains || []) : [];
 
-  if (!userName && storedUserInfo) {
+  if (!userName && storedUserInfo && isLoggedIn) {
     userName = storedUserInfo ? storedUserInfo?.full_name?.split(" ")?.[0] : null;
+  }
+
+  // Set default name for non-logged-in users
+  if (!isLoggedIn) {
+    userName = "Guest";
   }
 
   useEffect(() => {
@@ -65,11 +74,11 @@ const DashboardPage = () => {
   }, []);
 
   useEffect(() => {
-    // Fetch karma feed only if it doesn't exist in the store
-    if (!karmaFeed) {
+    // Fetch karma feed only if user is logged in and karma feed doesn't exist in the store
+    if (isLoggedIn && !karmaFeed) {
       fetchKarmaFeed();
     }
-  }, [karmaFeed, fetchKarmaFeed]);
+  }, [karmaFeed, fetchKarmaFeed, isLoggedIn]);
 
   const handleStartLearning = useCallback(() => {
     navigate("/dashboard/mujourney");
@@ -108,8 +117,10 @@ const DashboardPage = () => {
     fetchEvents();
   }, []);
 
-  const defaultImage = { src: "/assets/landing/others.png", alt: "General illustration" };
-  const { src, alt } = imageMap[userDomains[0]] || defaultImage;
+  const defaultImage = { src: "/assets/landing/creative.webp", alt: "General illustration" };
+  const { src, alt } = isLoggedIn && userDomains.length > 0 
+    ? (imageMap[userDomains[0]] || defaultImage)
+    : defaultImage;
 
   return (
     <motion.div
@@ -119,7 +130,7 @@ const DashboardPage = () => {
       transition={{ duration: 0.5 }}
     >
       <motion.div
-        className={styles.wrapper}
+        className={isLoggedIn? styles.wrapper: styles.noAuthWrapper}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.7 }}
@@ -133,10 +144,16 @@ const DashboardPage = () => {
           >
             <div className={styles.welcomeText}>
               <h1 className={styles.welcomeTitle}>
-                {storedUserInfo.exist_in_guild ? "Welcome" : "Welcome"} <span>{userName}</span> 👋
+                {isLoggedIn ? (
+                  storedUserInfo.exist_in_guild ? "Welcome" : "Welcome"
+                ) : "Welcome"} <span>{userName}</span> 👋
               </h1>
               <p className={styles.welcomeMessage}>
-                This dashboard is being updated. Expect improvements and possible bugs. Thanks for your patience!
+                {isLoggedIn ? (
+                  "This dashboard is being updated. Expect improvements and possible bugs. Thanks for your patience!"
+                ) : (
+                  "Explore our learning platform! Sign in to access personalized features and track your progress."
+                )}
               </p>
               <div className={styles.buttons}>
                 <motion.button
@@ -167,7 +184,7 @@ const DashboardPage = () => {
               transition={{ duration: 0.6 }}
             />
           </motion.section>
-          <LearningCirclesSection domain={userDomains[0]} />
+          <LearningCirclesSection domain={isLoggedIn && userDomains.length > 0 ? userDomains[0] : "general"} />
         </motion.div>
 
         <motion.aside
@@ -194,14 +211,19 @@ const DashboardPage = () => {
               </motion.div>
             </motion.section>
           )}
-          {isKarmaFeedLoading ? (
-            <div>Loading Karma Feed...</div>
-          ) : (
-            karmaFeed && karmaFeed.length > 1 && (
-              <KarmaEarners highestStudent={karmaFeed[0]} highestCollege={karmaFeed[1]} />
+          {isLoggedIn && (
+            isKarmaFeedLoading ? (
+              <div>Loading Karma Feed...</div>
+            ) : (
+              karmaFeed && karmaFeed.length > 1 && (
+                <KarmaEarners highestStudent={karmaFeed[0]} highestCollege={karmaFeed[1]} />
+              )
             )
           )}
-          <InterestGroups title={userDomains[0]} groups={interestGroups} />
+          {isLoggedIn && (
+          <InterestGroups title={isLoggedIn && userDomains.length > 0 ? userDomains[0] : "general"} groups={interestGroups} />
+          )}
+        
         </motion.aside>
       </motion.div>
     </motion.div>

@@ -1,5 +1,6 @@
-import { privateGateway } from "@/MuLearnServices/apiGateways";
+import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
+import { useUserStore } from "/src/ZustandProvider";
 import channelmap from "../data/channelmap"
 
 interface AxiosResponse<T> {
@@ -22,6 +23,15 @@ export interface Task {
     karma: number;
     ig?: string;
     active: boolean;
+    interest_group: {
+        id: string | null;
+        name: string | null;
+    };
+    submission_channel: {
+        id: string;
+        name: string;
+        discord_id: string | null;
+    };
 }
 
 export interface Level {
@@ -59,6 +69,7 @@ class ApiCache {
     private userLevelsCache: ApiResponse | null = null;
     private igTasksCache: Record<string, Task[]> = {};
     private lastFetchTime: Record<string, number> = {};
+    private cachedUserLevel: string | null = null; // Track the user level when cache was created
     private CACHE_DURATION = 5 * 60 * 1000; // 5 minutes cache duration
 
     private constructor() {}
@@ -72,9 +83,15 @@ class ApiCache {
 
     public async getUserLevels(): Promise<ApiResponse> {
         const now = Date.now();
+        const currentUserLevel = useUserStore.getState().userProfile.level;
         
-        // Check if cache exists and is fresh
-        if (this.userLevelsCache && now - (this.lastFetchTime['userLevels'] || 0) < this.CACHE_DURATION) {
+        // Check if user level has changed since last cache - if so, invalidate cache
+        const hasUserLevelChanged = this.cachedUserLevel !== null && this.cachedUserLevel !== currentUserLevel;
+        
+        // Check if cache exists, is fresh, and user level hasn't changed
+        if (this.userLevelsCache && 
+            now - (this.lastFetchTime['userLevels'] || 0) < this.CACHE_DURATION &&
+            !hasUserLevelChanged) {
             return this.userLevelsCache;
         }
 
@@ -82,9 +99,9 @@ class ApiCache {
             const response: AxiosResponse<ApiResponse> = await privateGateway.get(dashboardRoutes.getUserLevels);
             this.userLevelsCache = response.data;
             this.lastFetchTime['userLevels'] = now;
+            this.cachedUserLevel = currentUserLevel; // Store the current user level
             return response.data;
         } catch (error) {
-            console.error("Error fetching user levels:", error);
             throw error as ApiError;
         }
     }
@@ -115,7 +132,6 @@ class ApiCache {
             
             return tasks;
         } catch (error) {
-            console.error(`Error fetching tasks for IG ID ${usersIgid}:`, error);
             return [];
         }
     }
@@ -123,15 +139,29 @@ class ApiCache {
     public clearCache(type?: 'userLevels' | 'igTasks', key?: string) {
         if (type === 'userLevels') {
             this.userLevelsCache = null;
+            this.cachedUserLevel = null;
             delete this.lastFetchTime['userLevels'];
         } else if (type === 'igTasks' && key) {
             delete this.igTasksCache[key];
             delete this.lastFetchTime[`igTasks_${key}`];
         } else {
             this.userLevelsCache = null;
+            this.cachedUserLevel = null;
             this.igTasksCache = {};
             this.lastFetchTime = {};
         }
+    }
+
+    // Public method to check if user level has changed and clear cache if needed
+    public checkAndClearStaleCache(): boolean {
+        const currentUserLevel = useUserStore.getState().userProfile.level;
+        const hasUserLevelChanged = this.cachedUserLevel !== null && this.cachedUserLevel !== currentUserLevel;
+        
+        if (hasUserLevelChanged) {
+            this.clearCache('userLevels');
+            return true; // Cache was cleared
+        }
+        return false; // Cache is still valid
     }
 }
 
@@ -167,7 +197,6 @@ export async function getUserTasks(hashtags?: string[]): Promise<ApiResponse> {
         
         return filteredResponse;
     } catch (error) {
-        console.log(error);
         throw error as ApiError;
     }
 }
@@ -193,7 +222,28 @@ export async function getStartLearningTasks(): Promise<Level[]> {
 
         return startLearningLevels;
     } catch (error) {
-        console.error('getStartLearningTasks: Error fetching user tasks:', error);
+        throw error;
+    }
+}
+
+export async function getPublicTasks(): Promise<Level[]> {
+    try {
+        const response: AxiosResponse<ApiResponse> = await publicGateway.get(dashboardRoutes.getPublicTasks);
+        
+
+        const startLearningLevels = response.data.response.map(level => ({
+            ...level,
+            tasks: level.tasks.filter(task => {
+                // Include tasks that don't have #cl- hashtags (general tasks)
+                const hasClHashtag = task.hashtag && task.hashtag.startsWith('#cl-');
+                const shouldInclude = !hasClHashtag;
+                
+                return shouldInclude;
+            })
+        })).filter(level => level.tasks.length > 0); // Only include levels that have tasks
+
+        return startLearningLevels;
+    } catch (error) {
         throw error;
     }
 }
@@ -211,169 +261,106 @@ export async function getUserIgTasks(usersIgids: string[]): Promise<Record<strin
     return taskObject;
 }
 
-export function extractIgIdentifiersFromTasks(levels: Level[]): string[] {
-    const igIdentifiers = new Set<string>();
+export function getIgDisplayName(task: Task): string {
+    // Use interest_group.name from API if available
+    if (task.interest_group && task.interest_group.name) {
+        return task.interest_group.name;
+    }
     
-    levels.forEach(level => {
-        level.tasks.forEach(task => {
-            // Extract IG identifier from hashtag pattern #cl-{ig-identifier}-...
-            const match = task.hashtag.match(/^#cl-([^-]+)-/);
-            if (match) {
-                igIdentifiers.add(match[1]);
-            }
-        });
-    });
-    
-    return Array.from(igIdentifiers);
-}
-
-export function getIgDisplayName(hashtag: string): string {
     // Check if it's a general task (doesn't start with #cl-)
-    if (!hashtag.startsWith('#cl-')) {
+    if (!task.hashtag || !task.hashtag.startsWith('#cl-')) {
         return "General Tasks";
     }
     
-    const match = hashtag.match(/^#cl-([^-]+)-/);
+    // For legacy tasks without interest_group data, extract from hashtag
+    const match = task.hashtag.match(/^#cl-([^-]+)-/);
     if (!match) return "General Tasks";
     
-    const identifier = match[1].toLowerCase();
-    
-    const identifierDisplayMap: Record<string, string> = {
-        'cybersec': 'Cyber Security',
-        'arvr': 'AR/VR',
-        'ui': 'UI/UX',
-        'ux': 'UI/UX',
-        'vr': 'AR/VR',
-        'muvi': 'MuVi Club',
-        'pmp': 'Project Management',
-        'iot': 'Internet of Things',
-        'hr': 'Human Resources',
-        'entrp': 'Entrepreneurship',
-        'sl': 'Strategic Leadership',
-        'ds': 'Data Science',
-        'web': 'Web Development',
-        'react': 'Web Development',
-        'cm': 'Comics',
-        'sp': 'space',
-        'ai': 'Artificial Intelligence',
-        'da': 'Data Analytics',
-        'dsa': 'Data Structures',
-        'lowcode': 'No/Low Code',
-        'unity-game-dev': 'Game Development',
-        'game-dev': 'Game Development'
-    };
-    
-    return identifierDisplayMap[identifier] || `${identifier.toUpperCase()} Tasks`;
-}
-
-export function getUserIgIdentifiers(userIGs: any[], availableIdentifiers: string[]): string[] {
-    const userIdentifiers: string[] = [];
-    
-    const identifierToNameMap: Record<string, string[]> = {
-        'cybersec': ['Cyber Security', 'cyber security', 'cybersecurity'],
-        'arvr': ['AR/VR', 'ar/vr', 'ar vr', 'arvr'],
-        'ui': ['UIUX', 'ui/ux', 'ui ux', 'uiux'],
-        'ux': ['UIUX', 'ui/ux', 'ui ux', 'uiux'],
-        'vr': ['AR/VR', 'ar/vr', 'ar vr', 'arvr', 'vr'],
-        'muvi': ['MuVi Club', 'muvi club', 'muvi'],
-        'pmp': ['Project Management', 'Others', 'others', 'pmp'],
-        'iot': ['Internet of Things', 'iot'],
-        'hr': ['Human Resources', 'human resources', 'hr'],
-        'entrp': ['Entrepreneurship', 'entrepreneurship', 'entrp'],
-        'sl': ['Strategic Leadership', 'strategic leadership', 'sl'],
-        'ds': ['Data Science', 'data science', 'ds'],
-        'web': ['Web Development', 'web development', 'web dev', 'webdev'],
-        'react': ['Web Development', 'web development', 'web dev', 'webdev', 'react'],
-        'cm': ['Comics', 'comics'],
-        'sp': ['space', 'space'],
-        'ai': ['Artificial Intelligence', 'artificial intelligence', 'ai'],
-        'da': ['Data Analytics', 'data analytics', 'da'],
-        'dsa': ['Data Structures', 'data structures', 'dsa'],
-        'lowcode': ['No/Low Code', 'no/low code', 'lowcode', 'no code', 'low code'],
-        'unity-game-dev': ['Game Development', 'game development', 'game dev', 'gamedev', 'unity'],
-        'game-dev': ['Game Development', 'game development', 'game dev', 'gamedev']
-    };
-    
-
-
-    userIGs.forEach(ig => {
-        const normalizedIgName = ig.name.toLowerCase().trim();
-        
-        availableIdentifiers.forEach(identifier => {
-            const possibleNames = identifierToNameMap[identifier.toLowerCase()];
-            if (possibleNames && possibleNames.some(name => 
-                name.toLowerCase() === normalizedIgName ||
-                normalizedIgName.includes(name.toLowerCase()) ||
-                name.toLowerCase().includes(normalizedIgName)
-            )) {
-                if (!userIdentifiers.includes(identifier)) {
-                    userIdentifiers.push(identifier);
-                }
-            }
-        });
-    });
-    
-    return userIdentifiers;
+    const identifier = match[1].toUpperCase();
+    return `${identifier} Tasks`;
 }
 
 export async function getBecomeExpertTasks(userIGs: any[], selectedIgId?: string): Promise<Level[]> {
     try {
         const response = await getUserTasks();
         
-        
+        // Filter tasks that have #cl- hashtag (intermediate tasks)
         const allIgLevels = response.response.map(level => ({
             ...level,
             tasks: level.tasks.filter(task => {
                 const hasClHashtag = task.hashtag && task.hashtag.startsWith('#cl-');
-               
-                
                 return hasClHashtag;
             })
         })).filter(level => level.tasks.length > 0);
         
-        const availableIdentifiers = extractIgIdentifiersFromTasks(allIgLevels);
-        
-        const userIdentifiers = getUserIgIdentifiers(userIGs, availableIdentifiers);
+        // Get user IG IDs for filtering
+        const userIgIds = userIGs.map(ig => ig.id);
         
         if (selectedIgId) {
-            const selectedIg = userIGs.find(ig => ig.id === selectedIgId);
-            if (selectedIg) {
-                const selectedIdentifiers = getUserIgIdentifiers([selectedIg], availableIdentifiers);
-                
-                return allIgLevels.map(level => ({
-                    ...level,
-                    tasks: level.tasks.filter(task => {
-                        if (selectedIdentifiers.length === 0) {
-                            return false; 
-                        }
-                        const matches = selectedIdentifiers.some(identifier => 
-                            task.hashtag.startsWith(`#cl-${identifier}-`)
-                        );
-                        
-                        return matches;
-                    })
-                })).filter(level => level.tasks.length > 0);
-            }
-            
-            return [];
+            // Filter tasks for selected IG only
+            return allIgLevels.map(level => ({
+                ...level,
+                tasks: level.tasks.filter(task => {
+                    // Use the interest_group.id from the task
+                    if (task.interest_group && task.interest_group.id) {
+                        return task.interest_group.id === selectedIgId;
+                    }
+                    // If no interest_group data, don't show the task
+                    return false;
+                })
+            })).filter(level => level.tasks.length > 0);
         }
 
+        // Filter tasks for all user IGs
         return allIgLevels.map(level => ({
             ...level,
             tasks: level.tasks.filter(task => {
-                // Check if task matches user's IGs
-                const matchesUserIGs = userIdentifiers.length > 0 && userIdentifiers.some(identifier => 
-                    task.hashtag.startsWith(`#cl-${identifier}-`)
-                );
-                
-                
-                
-                return matchesUserIGs;
+                // Use the interest_group.id from the task
+                if (task.interest_group && task.interest_group.id) {
+                    return userIgIds.includes(task.interest_group.id);
+                }
+                // If no interest_group data, don't show the task
+                return false;
             })
         })).filter(level => level.tasks.length > 0);
 
     } catch (error) {
-        console.error("Error fetching become expert tasks:", error);
+        throw error as ApiError;
+    }
+}
+
+export async function getPublicBecomeExpertTasks(selectedIgId?: string): Promise<Level[]> {
+    try {
+        const response: AxiosResponse<ApiResponse> = await publicGateway.get(dashboardRoutes.getPublicTasks);
+        
+        // Filter tasks that have #cl- hashtag (intermediate tasks)
+        const allIgLevels = response.data.response.map(level => ({
+            ...level,
+            tasks: level.tasks.filter(task => {
+                const hasClHashtag = task.hashtag && task.hashtag.startsWith('#cl-');
+                return hasClHashtag;
+            })
+        })).filter(level => level.tasks.length > 0);
+        
+        if (selectedIgId) {
+            // Filter tasks for selected IG only
+            return allIgLevels.map(level => ({
+                ...level,
+                tasks: level.tasks.filter(task => {
+                    // Use the interest_group.id from the task
+                    if (task.interest_group && task.interest_group.id) {
+                        return task.interest_group.id === selectedIgId;
+                    }
+                    // If no interest_group data, don't show the task
+                    return false;
+                })
+            })).filter(level => level.tasks.length > 0);
+        }
+
+        // Return all intermediate tasks if no specific IG selected
+        return allIgLevels;
+
+    } catch (error) {
         throw error as ApiError;
     }
 }
@@ -401,7 +388,12 @@ export async function getEventTasks(): Promise<Level[]> {
 
         return eventLevels;
     } catch (error) {
-        console.error('getEventTasks: Error fetching event tasks:', error);
         throw error;
     }
+}
+
+// Export function to check and clear stale cache based on user level changes
+export function checkAndClearStaleCache(): boolean {
+    const apiCache = ApiCache.getInstance();
+    return apiCache.checkAndClearStaleCache();
 }

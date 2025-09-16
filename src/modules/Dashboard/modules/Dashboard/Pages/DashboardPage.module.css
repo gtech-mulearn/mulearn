@@ -27,7 +27,11 @@
   .wrapper {
     grid-template-columns: 2fr 1fr;
   }
+  .noAuthWrapper{
+    grid-template-columns: 1fr;
+  }
 }
+
 
 .welcomeSection {
   background-color: #456ff6;

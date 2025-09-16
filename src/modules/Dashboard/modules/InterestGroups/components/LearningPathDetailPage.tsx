@@ -66,6 +66,7 @@ const LearningPathDetailPage: React.FC<LearningPathDetailPageProps> = ({
                       handleOpenOffCanvas(task)
                     }}
                     custom={true}
+                    isLoggedIn={true}
                   />
                 </div>
               ))
