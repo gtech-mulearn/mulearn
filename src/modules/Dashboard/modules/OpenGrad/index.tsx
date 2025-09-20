@@ -15,7 +15,7 @@ const OpenGrad: React.FC = () => {
     const isLoading = false; // Set to true if you want to show the loader
 
     const hardcodedCourses = [
-        {
+        /*  {
             courseId: "1",
             url: "home/test",
             courseName: "MBA Bundle",
@@ -38,7 +38,7 @@ const OpenGrad: React.FC = () => {
             lessons: "17 lessons"
         },
         {
-            courseId: "3",
+            courseId: "2",
             url: "CUET-UG-Malayalam",
             courseName: "CUET UG (Malayalam)",
             // description:
@@ -47,9 +47,31 @@ const OpenGrad: React.FC = () => {
             imageUrl:
                 "https://imgproxy.learnyst.com/learnyst-user-assets/school-assets/schools/157986/courses/189121/1712066546664ddd958be_3b42_4082_84de_893bf0061a32_lyst1786.jpg",
             lessons: "60 lessons"
+        },*/
+        {
+            courseId: "1",
+            url: "CAT-Package",
+            courseName: "CAT 2025 English",
+            // description:
+            //     "This is a description of course 1. It provides an overview of the course content.",
+            // CourseDuration: "10",
+            imageUrl:
+                "/src/modules/Dashboard/assets/course_image/CAT_2025_English.png",
+            lessons: "140 lessons"
         },
         {
-            courseId: "4",
+            courseId: "2",
+            url: "CAT-Mock",
+            courseName: "CAT Mocks & Questions",
+            // description:
+            //     "This is a description of course 1. It provides an overview of the course content.",
+            // CourseDuration: "10",
+            imageUrl:
+                "/src/modules/Dashboard/assets/course_image/CAT_Mock.jpg",
+            lessons: ""
+        },
+        {
+            courseId: "3",
             url: "CUET-UG-Mock-Tests-test",
             courseName: "CUET UG Questions & Mocks",
             // description:

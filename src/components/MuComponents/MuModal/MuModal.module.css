@@ -13,7 +13,7 @@
         0,
         0.7
     ); /* Dark background with some transparency */
-    backdrop-filter: blur(5px); /* Blur the background behind the overlay */
+    backdrop-filter: blur(10px); /* Blur the background behind the overlay */
     z-index: 9999; /* Make sure it's on top of everything else */
 }
 
