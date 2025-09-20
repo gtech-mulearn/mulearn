@@ -56,7 +56,7 @@ const OpenGrad: React.FC = () => {
             //     "This is a description of course 1. It provides an overview of the course content.",
             // CourseDuration: "10",
             imageUrl:
-                "/src/modules/Dashboard/assets/course_image/CAT_2025_English.png",
+                "/assets/course_images/CAT_2025_English.png",
             lessons: "140 lessons"
         },
         {
@@ -67,7 +67,7 @@ const OpenGrad: React.FC = () => {
             //     "This is a description of course 1. It provides an overview of the course content.",
             // CourseDuration: "10",
             imageUrl:
-                "/src/modules/Dashboard/assets/course_image/CAT_Mock.jpg",
+                "/assets/course_images/CAT_Mock.jpg",
             lessons: ""
         },
         {
