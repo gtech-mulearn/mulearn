@@ -3,16 +3,23 @@
   margin: 0;
 }
 
+
 .first_view_container {
-  padding: 0 2rem;
+  padding: 1.5rem 2rem 4rem 2rem; /* Reduced top padding */
   background-color: #ffffff;
 }
 
 .fv_img {
-  width: 20rem;
+  width: 100%;
+  max-width: 90vw;
+  height: auto;
+  aspect-ratio: 16/9;
   display: block;
   margin: auto;
   margin-top: 0rem;
+  border-radius: 1.5rem;
+  object-fit: cover; /* Fill container, may crop */
+  transition: max-width 0.2s;
 }
 
 .fv_texts {
@@ -38,7 +45,7 @@
 
 @media only screen and (min-width: 1000px) {
   .first_view_container {
-    padding: 0 2rem;
+    padding: 2.5rem 2rem 6rem 2rem; /* Reduced top padding on desktop */
   }
 
   .first_view {
@@ -48,17 +55,26 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    min-height: 60vh; /* Ensures enough height for hero section */
   }
 
   .fv_img {
     display: block;
     margin: auto;
-    width: 35rem;
+    width: 100%;
+    max-width: 35rem;
+    height: auto;
+    aspect-ratio: 16/9;
+    margin-left: 2rem;
+    border-radius: 2rem;
+    object-fit: cover; /* Fill container, may crop */
+    transition: max-width 0.2s;
   }
 
   .fv_texts {
     text-align: left;
     width: 50%;
+    padding-right: 2rem;
   }
 
   .fv_heading {
@@ -78,8 +94,9 @@
 /* Second Section Styles */
 
 .second_view_container {
-  padding: 2rem;
+  padding: 4rem 2rem 4rem 2rem; /* More padding for separation */
   background-color: #fdfdfd;
+  margin-top: 0;
 }
 
 .sv_heading {

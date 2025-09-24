@@ -90,7 +90,7 @@ const HomeNav: React.FC = () => {
         ],
         "EVENTS": [
           { label: "GLOBAL CALENDAR", onClick: () => navigate("/events/calendar") },
-          { label: "ANNOUNCEMENTS", onClick: () => navigate("/events/announcements") },
+          // { label: "ANNOUNCEMENTS", onClick: () => navigate("/events/announcements") },
           { label: "WEEKLY EVENTS", onClick: () => navigate("/events/weekly") }
         ],
         "Programs": [
@@ -101,6 +101,7 @@ const HomeNav: React.FC = () => {
           { label: "IN50HOURS", onClick: () => navigate("/in50hours") },
         ],
         "OTHERS": [
+          { label: "MuBook", onClick: () => window.open("https://mulearn.org/r/mubook") },
           { label: "NEWSLETTER", onClick: () => window.open("https://online.fliphtml5.com/slydm/yljq/") },
         ]
       }

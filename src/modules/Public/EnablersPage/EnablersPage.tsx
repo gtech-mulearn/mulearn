@@ -5,15 +5,15 @@ import WhoIsEnabler from './components/WhoISEnabler/WhoIsEnabler'
 import BenefitsEnabler from './components/BenefitsEnabler/BenefitsEnabler'
 import ProgramsProject from './components/ProgramsProject/ProgramsProject'
 import Onboarding from './components/Onboarding/Onboarding'
-import Footer from './components/Footer/Footer'
-import Navbar from './components/Navbar/Navbar'
+import HomeNav from "@/modules/Common/HomeNav/HomeNav";
+import Footer from "@/modules/Common/Footer/Footer";
 
 export default function EnablersPage() {
   return (
     <>
     
     <div className={styles.EnablersPage}>
-      <Navbar/>
+      <HomeNav />
       <EnablersHero/>
     </div>
 
@@ -21,7 +21,7 @@ export default function EnablersPage() {
     <BenefitsEnabler/>
     <ProgramsProject/>
     <Onboarding/>
-    <Footer/>
+    <Footer />
     </>
   )
 }
