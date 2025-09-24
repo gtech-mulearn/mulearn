@@ -96,7 +96,7 @@ const HomeNav: React.FC = () => {
         "Programs": [
           { label: "LAUNCHPAD", onClick: () => window.open("https://launchpadkerala.org/") },
           { label: "PERMUTE", onClick: () => window.open("https://permute.mulearn.org/") },
-          { label: "TOP100SERIES", onClick: () => window.open("https://top100coders.com/") },
+          { label: "TOP100SERIES", onClick: () => window.open("https://www.top100series.com/") },
           { label: "Art of Teaching", onClick: () => navigate("/artofteaching") },
           { label: "IN50HOURS", onClick: () => navigate("/in50hours") },
         ],

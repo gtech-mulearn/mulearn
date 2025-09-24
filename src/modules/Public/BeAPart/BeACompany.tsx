@@ -4,112 +4,496 @@ import Footer from "@/modules/Common/Footer/Footer";
 import { motion } from "framer-motion";
 
 const BeACompany = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5 }
+    }
+  };
+
   return (
-    <div style={{ background: "linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%)", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+    <div style={{ background: "linear-gradient(135deg, #456ff6 0%, #3b5bdb 100%)", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <HomeNav />
-      <main style={{ flex: 1, width: "100%", maxWidth: 900, margin: "0 auto", padding: "2rem 1rem", display: "flex", flexDirection: "column", alignItems: "center" }}>
-        <motion.h1
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.7 }}
-          style={{ fontSize: "2.2rem", fontWeight: 800, textAlign: "center", color: "#2d2d4d", marginBottom: 16, lineHeight: 1.2 }}
+      
+      {/* Hero Section */}
+      <motion.section 
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        style={{ 
+          background: "rgba(255,255,255,0.1)", 
+          backdropFilter: "blur(10px)",
+          padding: "4rem 2rem 2rem", 
+          textAlign: "center",
+          borderBottom: "1px solid rgba(255,255,255,0.1)"
+        }}
+      >
+        <div style={{ maxWidth: 1000, margin: "0 auto" }}>
+          <h1 style={{ 
+            fontSize: "3rem", 
+            fontWeight: 900, 
+            color: "#fff", 
+            marginBottom: 20, 
+            lineHeight: 1.1,
+            textShadow: "0 2px 20px rgba(0,0,0,0.2)"
+          }}>
+            μLearn x Companies
+          </h1>
+          <p style={{ 
+            fontSize: "1.3rem", 
+            color: "rgba(255,255,255,0.9)", 
+            marginBottom: 30,
+            fontWeight: 500,
+            maxWidth: 800,
+            margin: "0 auto 30px"
+          }}>
+            Partnership & Collaboration Playbook
+          </p>
+          <a href="https://airtable.com/app0v220Yc0G3CPMr/shrpiEQrpuIFTMNh1">
+          <motion.button
+            whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(0,0,0,0.3)" }}
+            whileTap={{ scale: 0.95 }}
+            style={{
+              background: "linear-gradient(135deg, #456ff6, #3b5bdb)",
+              color: "#fff",
+              border: "2px solid #fff",
+              padding: "1rem 2.5rem",
+              fontSize: "1.1rem",
+              fontWeight: 700,
+              borderRadius: 50,
+              cursor: "pointer",
+              boxShadow: "0 8px 25px rgba(69,111,246,0.4)"
+            }}
+          >
+            🚀 Start Partnership Journey
+          </motion.button>
+          </a>
+        </div>
+      </motion.section>
+
+      <main style={{ flex: 1, background: "linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%)" }}>
+        
+        {/* Why Partner Section */}
+        <motion.section 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          style={{ 
+            padding: "4rem 2rem", 
+            maxWidth: 1200, 
+            margin: "0 auto" 
+          }}
         >
-          μLearn x Companies – Partnership & Collaboration Playbook
-        </motion.h1>
-        <motion.section
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.7 }}
-          style={{ background: "#fff", borderRadius: 18, boxShadow: "0 2px 16px rgba(80,80,180,0.07)", padding: "2rem 1.5rem", margin: "1rem 0", width: "100%", maxWidth: 800 }}
-        >
-          <h2 style={{ fontSize: "1.3rem", fontWeight: 700, color: "#4f46e5", marginBottom: 12 }}>Why Partner with μLearn?</h2>
-          <ul style={{ marginBottom: 18 }}>
-            <li>Access 50,000+ <b>proof-of-work validated learners</b> across 1,900+ campuses</li>
-            <li><b>CSR impact</b> at scale with real reports for compliance</li>
-            <li><b>Hiring pipeline</b> through Launchpad & Top 100</li>
-            <li><b>Innovation-as-a-Service</b> → product testing, feedback, prototyping, market validation</li>
-            <li><b>GovTech & Civic Tech pilots</b> with government and academia</li>
-            <li><b>Brand positioning</b> as a youth ally & future-of-work enabler</li>
-          </ul>
-          <h2 style={{ fontSize: "1.3rem", fontWeight: 700, color: "#4f46e5", marginBottom: 12 }}>Collaboration Tracks</h2>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', marginBottom: 18 }}>
-            {/* CSR & Skilling */}
-            <div style={{ background: '#f1f5f9', borderRadius: 16, boxShadow: '0 2px 12px rgba(80,80,180,0.07)', padding: '1.5rem 2rem', borderLeft: '6px solid #6366f1' }}>
-              <div style={{ fontWeight: 700, fontSize: '1.1rem', color: '#4f46e5', marginBottom: 6 }}>1. CSR & Skilling</div>
-              <ul style={{ marginLeft: 18 }}>
-                <li>Fund <b>Learning Circles</b> in tech, creative, or management domains</li>
-                <li><b>Rural skilling initiatives</b> → take digital literacy & AI/ML to villages</li>
-                <li><b>Women in Tech programs</b> with mentorship + bootcamps</li>
-                <li><b>Campus infra build-outs</b> (labs, makerspaces, IoT labs)</li>
-                <li>Sponsor <b>scholarships/fellowships</b> for top performers</li>
+          <motion.div variants={itemVariants} style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <h2 style={{ 
+              fontSize: "2.5rem", 
+              fontWeight: 800, 
+              background: "linear-gradient(135deg, #456ff6, #3b5bdb)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              marginBottom: 16 
+            }}>
+              Why Partner with μLearn?
+            </h2>
+            <div style={{ width: 100, height: 4, background: "linear-gradient(135deg, #456ff6, #3b5bdb)", margin: "0 auto", borderRadius: 2 }}></div>
+          </motion.div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2rem", marginBottom: "3rem" }}>
+            <motion.div 
+              variants={itemVariants}
+              style={{ 
+                background: "#fff", 
+                borderRadius: 20, 
+                padding: "2rem", 
+                boxShadow: "0 10px 40px rgba(69,111,246,0.15)",
+                border: "1px solid rgba(69,111,246,0.1)",
+                position: "relative",
+                overflow: "hidden"
+              }}
+            >
+              <div style={{ 
+                position: "absolute", 
+                top: 0, 
+                left: 0, 
+                width: "100%", 
+                height: 4, 
+                background: "#456ff6" 
+              }}></div>
+              <h3 style={{ fontSize: "1.5rem", fontWeight: 700, color: "#2d3748", marginBottom: 16 }}>
+                🌟 59,000+ Strong Ecosystem
+              </h3>
+              <p style={{ color: "#4a5568", lineHeight: 1.6, marginBottom: 16 }}>
+                We're not just a student community—we're a <strong style={{ color: "#456ff6" }}>59,000+ strong ecosystem</strong> across 1,900+ institutions, building the future workforce, innovation pipelines, and social impact solutions.
+              </p>
+            </motion.div>
+
+            <motion.div 
+              variants={itemVariants}
+              style={{ 
+                background: "#fff", 
+                borderRadius: 20, 
+                padding: "2rem", 
+                boxShadow: "0 10px 40px rgba(69,111,246,0.15)",
+                border: "1px solid rgba(69,111,246,0.1)",
+                position: "relative",
+                overflow: "hidden"
+              }}
+            >
+              <div style={{ 
+                position: "absolute", 
+                top: 0, 
+                left: 0, 
+                width: "100%", 
+                height: 4, 
+                background: "#456ff6" 
+              }}></div>
+              <h3 style={{ fontSize: "1.5rem", fontWeight: 700, color: "#2d3748", marginBottom: 16 }}>
+                🎯 What You Gain
+              </h3>
+              <ul style={{ color: "#4a5568", lineHeight: 1.7, paddingLeft: 0, listStyle: "none" }}>
+                <li style={{ marginBottom: 12 }}>✅ <strong style={{ color: "#456ff6" }}>Impact at Scale</strong> – execute CSR programs with transparent outcomes</li>
+                <li style={{ marginBottom: 12 }}>✅ <strong style={{ color: "#456ff6" }}>Hire Smarter</strong> – access pre-validated, project-ready talent</li>
+                <li style={{ marginBottom: 12 }}>✅ <strong style={{ color: "#456ff6" }}>Innovate Faster</strong> – test products and crowdsource solutions</li>
+                <li style={{ marginBottom: 12 }}>✅ <strong style={{ color: "#456ff6" }}>Shape the Future</strong> – co-create GovTech and Education 4.0</li>
               </ul>
-            </div>
-            {/* Talent & Workforce Development */}
-            <div style={{ background: '#f1f5f9', borderRadius: 16, boxShadow: '0 2px 12px rgba(80,80,180,0.07)', padding: '1.5rem 2rem', borderLeft: '6px solid #6366f1' }}>
-              <div style={{ fontWeight: 700, fontSize: '1.1rem', color: '#4f46e5', marginBottom: 6 }}>2. Talent & Workforce Development</div>
-              <ul style={{ marginLeft: 18 }}>
-                <li><b>Launchpad</b> → year-round hiring of pre-validated project-ready talent</li>
-                <li><b>Top 100 Series</b> → access elite student pool for future leadership roles</li>
-                <li><b>In50Hours</b> → rapid prototyping hack-sprints with student teams</li>
-                <li><b>Learning Circles-as-a-Service</b> for corporates (upskilling bench strength, DEI onboarding)</li>
-                <li><b>Peer Coaching Marketplace</b> → flexible gig economy & skill-sharing</li>
-              </ul>
-            </div>
-            {/* Innovation & Community-as-a-Service */}
-            <div style={{ background: '#f1f5f9', borderRadius: 16, boxShadow: '0 2px 12px rgba(80,80,180,0.07)', padding: '1.5rem 2rem', borderLeft: '6px solid #6366f1' }}>
-              <div style={{ fontWeight: 700, fontSize: '1.1rem', color: '#4f46e5', marginBottom: 6 }}>3. Innovation & Community-as-a-Service (CaaS)</div>
-              <ul style={{ marginLeft: 18 }}>
-                <li><b>Product Testing/UX Feedback Labs</b> – student-led product validation</li>
-                <li><b>Community-driven Research-as-a-Service</b> – surveys, pilots, reports</li>
-                <li><b>Student Media & Content Studio</b> – campaigns, storytelling, youth brand amplification</li>
-                <li><b>Global Challenge Hosting</b> – crowdsource bold solutions in climate, AI, health</li>
-                <li><b>Open Source Fellowship Sponsorships</b> – co-sponsor contributors to global OSS projects</li>
-              </ul>
-            </div>
-            {/* Research & Ecosystem Co-Creation */}
-            <div style={{ background: '#f1f5f9', borderRadius: 16, boxShadow: '0 2px 12px rgba(80,80,180,0.07)', padding: '1.5rem 2rem', borderLeft: '6px solid #6366f1' }}>
-              <div style={{ fontWeight: 700, fontSize: '1.1rem', color: '#4f46e5', marginBottom: 6 }}>4. Research & Ecosystem Co-Creation</div>
-              <ul style={{ marginLeft: 18 }}>
-                <li><b>Research-as-a-Service</b> → domain research, policy papers, field data</li>
-                <li><b>Proof-of-Work IP Licensing</b> → tap into student-built code, designs, problem-solutions</li>
-                <li><b>Academic Collaboration</b> – via 1,900+ colleges, driven by industry problems</li>
-                <li><b>GovTech Sandbox-as-a-Service</b> – test civic innovation tools at scale</li>
-              </ul>
-            </div>
+            </motion.div>
           </div>
-          <h2 style={{ fontSize: "1.3rem", fontWeight: 700, color: "#4f46e5", margin: '2rem 0 12px 0' }}>How To Partner</h2>
-          <ol style={{ marginBottom: 18, marginLeft: 18 }}>
-            <li>Email us at <a href="mailto:partners@mulearn.org" style={{ color: '#6366f1', fontWeight: 600 }}>partners@mulearn.org</a> for the partnership.</li>
-            <li>Schedule a <b>Discovery Call</b> (30 minutes)</li>
-            <li>Get a <b>Co-designed Proposal</b> in 7–10 days</li>
-            <li><b>Agreement & Kickoff</b></li>
-            <li><b>Launch</b> within 2 weeks</li>
-          </ol>
-          <h3 style={{ fontSize: "1.1rem", fontWeight: 700, color: "#4f46e5", marginBottom: 8 }}>What You’ll Need to Apply</h3>
-          <ul style={{ marginBottom: 18 }}>
-            <li>Company profile & key contacts</li>
-            <li>Engagement preference → CSR | Hiring | Innovation | Research</li>
-            <li>Objectives & success metrics expected</li>
-            <li>Timeline & budget range</li>
-          </ul>
-          <h2 style={{ fontSize: "1.3rem", fontWeight: 700, color: "#4f46e5", margin: '2rem 0 12px 0' }}>Quick Wins for Companies</h2>
-          <ul style={{ marginBottom: 18 }}>
-            <li>Execute annual CSR obligations with <b>0% overhead</b></li>
-            <li>Run <b>talent branding campaigns</b> across 500+ Kerala campuses</li>
-            <li>Get <b>products tested by 10,000+ students</b> before launch</li>
-            <li><b>Upskill bench employees rapidly</b> through Learning Circle formats</li>
-            <li>Build <b>GovTech/social impact pilots</b> with Kerala’s government ecosystem</li>
-            <li><b>Hire pre-validated talent</b> without traditional recruitment lag</li>
-          </ul>
-          <h2 style={{ fontSize: "1.3rem", fontWeight: 700, color: "#4f46e5", margin: '2rem 0 12px 0' }}>Contact Us</h2>
-          <div style={{ background: '#f1f5f9', borderRadius: 16, boxShadow: '0 2px 12px rgba(80,80,180,0.07)', padding: '1.5rem 2rem', borderLeft: '6px solid #6366f1', marginBottom: 18 }}>
-            <div style={{ fontWeight: 700, fontSize: '1.1rem', color: '#2d2d4d', marginBottom: 8 }}>Contact</div>
-            <div style={{ marginBottom: 6 }}><b>Email:</b> <a href="mailto:partners@mulearn.org" style={{ color: '#4f46e5', textDecoration: 'underline' }}>partners@mulearn.org</a></div>
-            <div style={{ marginBottom: 6 }}><b>Phone:</b> <a href="tel:+918943647000" style={{ color: '#4f46e5', textDecoration: 'underline' }}>+91 8943647000</a></div>
-            <div><b>Website:</b> <a href="https://www.mulearn.org/" target="_blank" rel="noopener noreferrer" style={{ color: '#4f46e5', textDecoration: 'underline' }}>www.mulearn.org</a></div>
+        </motion.section>
+
+        {/* Collaboration Tracks */}
+        <motion.section 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          style={{ 
+            background: "linear-gradient(135deg, #456ff6 0%, #3b5bdb 100%)", 
+            padding: "4rem 2rem",
+            color: "#fff"
+          }}
+        >
+          <motion.div variants={itemVariants} style={{ textAlign: "center", marginBottom: "3rem", maxWidth: 1200, margin: "0 auto 3rem" }}>
+            <h2 style={{ fontSize: "2.5rem", fontWeight: 800, marginBottom: 16, color: "#fff" }}>
+              Collaboration Tracks
+            </h2>
+            <div style={{ width: 100, height: 4, background: "#fff", margin: "0 auto", borderRadius: 2 }}></div>
+          </motion.div>
+
+          <div style={{ 
+            display: "grid", 
+            gridTemplateColumns: "repeat(3, minmax(350px, 1fr))", 
+            gap: "2rem", 
+            maxWidth: 1200, 
+            margin: "0 auto" 
+          }}>
+            
+            {/* Track 1 */}
+            <motion.div 
+              variants={itemVariants}
+              whileHover={{ scale: 1.02, y: -5 }}
+              style={{ 
+                background: "rgba(255,255,255,0.95)", 
+                borderRadius: 20, 
+                padding: "2rem", 
+                color: "#2d3748",
+                boxShadow: "0 15px 35px rgba(0,0,0,0.1)",
+                backdropFilter: "blur(10px)"
+              }}
+            >
+              <div style={{ 
+                background: "#456ff6", 
+                color: "#fff", 
+                padding: "0.5rem 1rem", 
+                borderRadius: 25, 
+                display: "inline-block", 
+                marginBottom: 16,
+                fontSize: "0.9rem",
+                fontWeight: 700
+              }}>
+                1️⃣ CSR & Skilling
+              </div>
+              <h3 style={{ fontSize: "1.3rem", fontWeight: 700, marginBottom: 12, color: "#456ff6" }}>
+                Transformational Skilling Programs
+              </h3>
+              <ul style={{ lineHeight: 1.6, paddingLeft: 20 }}>
+                <li>Fund <strong style={{ color: "#456ff6" }}>Learning Circles</strong> in tech, creative arts, or leadership</li>
+                <li>Drive <strong style={{ color: "#456ff6" }}>Rural Skilling</strong> → AI, ML & digital literacy to villages</li>
+                <li>Champion <strong style={{ color: "#456ff6" }}>Women in Tech</strong> with mentorship + bootcamps</li>
+                <li>Build <strong style={{ color: "#456ff6" }}>Makerspaces, IoT labs, digital classrooms</strong></li>
+              </ul>
+            </motion.div>
+
+            {/* Track 2 */}
+            <motion.div 
+              variants={itemVariants}
+              whileHover={{ scale: 1.02, y: -5 }}
+              style={{ 
+                background: "rgba(255,255,255,0.95)", 
+                borderRadius: 20, 
+                padding: "2rem", 
+                color: "#2d3748",
+                boxShadow: "0 15px 35px rgba(0,0,0,0.1)",
+                backdropFilter: "blur(10px)"
+              }}
+            >
+              <div style={{ 
+                background: "linear-gradient(135deg, #456ff6, #3b5bdb)", 
+                color: "#fff", 
+                padding: "0.5rem 1rem", 
+                borderRadius: 25, 
+                display: "inline-block", 
+                marginBottom: 16,
+                fontSize: "0.9rem",
+                fontWeight: 700
+              }}>
+                2️⃣ Talent & Workforce
+              </div>
+              <h3 style={{ fontSize: "1.3rem", fontWeight: 700, marginBottom: 12, color: "#456ff6" }}>
+                Pre-Validated Talent Pipeline
+              </h3>
+              <ul style={{ lineHeight: 1.6, paddingLeft: 20 }}>
+                <li><strong style={{ color: "#456ff6" }}>Launchpad</strong> → year-round hiring from validated pool</li>
+                <li><strong style={{ color: "#456ff6" }}>Top 100 Series</strong> → access best-of-the-best</li>
+                <li><strong style={{ color: "#456ff6" }}>In50Hours</strong> → rapid prototyping sprints</li>
+                <li><strong style={{ color: "#456ff6" }}>Learning Circles-as-a-Service</strong> → corporate upskilling</li>
+              </ul>
+            </motion.div>
+
+            {/* Track 3 */}
+            <motion.div 
+              variants={itemVariants}
+              whileHover={{ scale: 1.02, y: -5 }}
+              style={{ 
+                background: "rgba(255,255,255,0.95)", 
+                borderRadius: 20, 
+                padding: "2rem", 
+                color: "#2d3748",
+                boxShadow: "0 15px 35px rgba(0,0,0,0.1)",
+                backdropFilter: "blur(10px)"
+              }}
+            >
+              <div style={{ 
+                background: "rgba(69,111,246,0.1)", 
+                color: "#456ff6", 
+                padding: "0.5rem 1rem", 
+                borderRadius: 25, 
+                display: "inline-block", 
+                marginBottom: 16,
+                fontSize: "0.9rem",
+                fontWeight: 700,
+                border: "1px solid #456ff6"
+              }}>
+                3️⃣ Innovation CaaS
+              </div>
+              <h3 style={{ fontSize: "1.3rem", fontWeight: 700, marginBottom: 12, color: "#456ff6" }}>
+                Living Lab of Innovation
+              </h3>
+              <ul style={{ lineHeight: 1.6, paddingLeft: 20 }}>
+                <li><strong style={{ color: "#456ff6" }}>Product Testing & UX Labs</strong> → insights from thousands</li>
+                <li><strong style={{ color: "#456ff6" }}>Community-driven Research</strong> → surveys, pilots, reports</li>
+                <li><strong style={{ color: "#456ff6" }}>Student Media Studio</strong> → authentic youth storytelling</li>
+                <li><strong style={{ color: "#456ff6" }}>Global Challenge Hosting</strong> → crowdsource solutions</li>
+              </ul>
+            </motion.div>
+
+            {/* Track 4 - Centered */}
+            <motion.div 
+              variants={itemVariants}
+              whileHover={{ scale: 1.02, y: -5 }}
+              style={{ 
+                background: "rgba(255,255,255,0.95)", 
+                borderRadius: 20, 
+                padding: "2rem", 
+                color: "#2d3748",
+                boxShadow: "0 15px 35px rgba(0,0,0,0.1)",
+                backdropFilter: "blur(10px)",
+                gridColumn: "2",
+                margin: "0 auto",
+                width: "100%",
+                maxWidth: "400px"
+              }}
+            >
+              <div style={{ 
+                background: "linear-gradient(135deg, #456ff6, #7c3aed)", 
+                color: "#fff", 
+                padding: "0.5rem 1rem", 
+                borderRadius: 25, 
+                display: "inline-block", 
+                marginBottom: 16,
+                fontSize: "0.9rem",
+                fontWeight: 700
+              }}>
+                4️⃣ Research & GovTech
+              </div>
+              <h3 style={{ fontSize: "1.3rem", fontWeight: 700, marginBottom: 12, color: "#456ff6" }}>
+                Decentralized Research Network
+              </h3>
+              <ul style={{ lineHeight: 1.6, paddingLeft: 20 }}>
+                <li><strong style={{ color: "#456ff6" }}>Research-as-a-Service</strong> → policy papers, market studies</li>
+                <li><strong style={{ color: "#456ff6" }}>Proof-of-Work IP Licensing</strong> → student-built solutions</li>
+                <li><strong style={{ color: "#456ff6" }}>Academic Collaboration</strong> across 1,900+ institutions</li>
+                <li><strong style={{ color: "#456ff6" }}>GovTech Sandbox</strong> → civic innovation pilots</li>
+              </ul>
+            </motion.div>
+          </div>
+        </motion.section>
+
+        {/* Quick Wins & CTA */}
+        <motion.section 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          style={{ 
+            padding: "4rem 2rem", 
+            maxWidth: 1200, 
+            margin: "0 auto",
+            textAlign: "center"
+          }}
+        >
+          <motion.div variants={itemVariants}>
+            <h2 style={{ 
+              fontSize: "2.5rem", 
+              fontWeight: 800, 
+              background: "linear-gradient(135deg, #456ff6, #3b5bdb)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              marginBottom: 16 
+            }}>
+              🌟 Quick Wins for Companies
+            </h2>
+            <div style={{ width: 100, height: 4, background: "linear-gradient(135deg, #456ff6, #3b5bdb)", margin: "0 auto 3rem", borderRadius: 2 }}></div>
+          </motion.div>
+
+          <motion.div 
+            variants={itemVariants}
+            style={{ 
+              background: "#fff", 
+              borderRadius: 20, 
+              padding: "3rem 2rem", 
+              boxShadow: "0 15px 40px rgba(69,111,246,0.1)",
+              marginBottom: "3rem",
+              border: "1px solid rgba(69,111,246,0.1)"
+            }}
+          >
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "2rem", textAlign: "left" }}>
+              <div>
+                <div style={{ fontSize: "2rem", marginBottom: 12, color: "#456ff6" }}>💼</div>
+                <h4 style={{ fontWeight: 700, color: "#456ff6", marginBottom: 8 }}>Execute CSR compliance with 0% overhead</h4>
+                <p style={{ color: "#4a5568", fontSize: "0.95rem" }}>Transparent, auditable outcomes across thousands of learners</p>
+              </div>
+              <div>
+                <div style={{ fontSize: "2rem", marginBottom: 12, color: "#456ff6" }}>🎯</div>
+                <h4 style={{ fontWeight: 700, color: "#456ff6", marginBottom: 8 }}>Run talent branding campaigns in 500+ campuses</h4>
+                <p style={{ color: "#4a5568", fontSize: "0.95rem" }}>Direct access to Kerala's brightest minds</p>
+              </div>
+              <div>
+                <div style={{ fontSize: "2rem", marginBottom: 12, color: "#456ff6" }}>🧪</div>
+                <h4 style={{ fontWeight: 700, color: "#456ff6", marginBottom: 8 }}>Test products with 10,000+ students pre-launch</h4>
+                <p style={{ color: "#4a5568", fontSize: "0.95rem" }}>Real user feedback before market entry</p>
+              </div>
+              <div style={{ gridColumn: "2", justifySelf: "center" }}>
+                <div style={{ fontSize: "2rem", marginBottom: 12, color: "#456ff6" }}>🚀</div>
+                <h4 style={{ fontWeight: 700, color: "#456ff6", marginBottom: 8 }}>Build GovTech pilots with Kerala ecosystem</h4>
+                <p style={{ color: "#4a5568", fontSize: "0.95rem" }}>Government-backed innovation opportunities</p>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div 
+            variants={itemVariants}
+            style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}
+          >
+            <a href="https://airtable.com/app0v220Yc0G3CPMr/shrpiEQrpuIFTMNh1">
+              <motion.button
+              whileHover={{ scale: 1.05, boxShadow: "0 15px 40px rgba(69,111,246,0.4)" }}
+              whileTap={{ scale: 0.95 }}
+              style={{
+                background: "linear-gradient(135deg, #456ff6, #3b5bdb)",
+                color: "#fff",
+                border: "none",
+                padding: "1.2rem 2.5rem",
+                fontSize: "1.1rem",
+                fontWeight: 700,
+                borderRadius: 50,
+                cursor: "pointer",
+                boxShadow: "0 10px 30px rgba(69,111,246,0.3)"
+              }}
+            >
+              📋 Partnership Form
+            </motion.button>
+            </a>
+            
+          </motion.div>
+        </motion.section>
+
+        {/* Contact Section */}
+        <motion.section 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          style={{ 
+            background: "linear-gradient(135deg, #456ff6 0%, #3b5bdb 100%)", 
+            padding: "4rem 2rem",
+            color: "#fff"
+          }}
+        >
+          <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center" }}>
+            <motion.h2 
+              variants={itemVariants}
+              style={{ fontSize: "2.5rem", fontWeight: 800, marginBottom: "2rem" }}
+            >
+              Ready to Partner?
+            </motion.h2>
+            <motion.div 
+              variants={itemVariants}
+              style={{ 
+                background: "rgba(255,255,255,0.1)", 
+                borderRadius: 20, 
+                padding: "2rem", 
+                backdropFilter: "blur(10px)",
+                border: "1px solid rgba(69,111,246,0.3)"
+              }}
+            >
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "2rem", textAlign: "left" }}>
+                <div>
+                  <h4 style={{ fontWeight: 700, marginBottom: 8, color: "#e2e8f0" }}>📧 Email</h4>
+                  <a href="mailto:partners@mulearn.org" style={{  textDecoration: "none", fontWeight: 600 }}>
+                    partners@mulearn.org
+                  </a>
+                </div>
+                <div>
+                  <h4 style={{ fontWeight: 700, marginBottom: 8, color: "#e2e8f0" }}>📱 Phone</h4>
+                  <a href="tel:+918943647000" style={{  textDecoration: "none", fontWeight: 600 }}>
+                    +91 8943647000
+                  </a>
+                </div>
+                <div>
+                  <h4 style={{ fontWeight: 700, marginBottom: 8, color: "#e2e8f0" }}>🌐 Website</h4>
+                  <a href="https://www.mulearn.org/" target="_blank" rel="noopener noreferrer" style={{  textDecoration: "none", fontWeight: 600 }}>
+                    www.mulearn.org
+                  </a>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </motion.section>
       </main>
+      
       <Footer />
     </div>
   );
