@@ -15,17 +15,7 @@ const OpenGrad: React.FC = () => {
     const isLoading = false; // Set to true if you want to show the loader
 
     const hardcodedCourses = [
-        /*  {
-            courseId: "1",
-            url: "home/test",
-            courseName: "MBA Bundle",
-            // description:
-            //     "This is a description of course 1. It provides an overview of the course content.",
-            // CourseDuration: "10",
-            imageUrl:
-                "https://imgproxy.learnyst.com/learnyst-user-assets/school-assets/schools/157986/courses/189940/17128570399041564c161_efc4_475b_9151_8549c1ac8969_lyst1712857039920.jpg",
-            lessons: " "
-        },
+        
         {
             courseId: "1",
             url: "CAT-Malayalam",
@@ -47,9 +37,9 @@ const OpenGrad: React.FC = () => {
             imageUrl:
                 "https://imgproxy.learnyst.com/learnyst-user-assets/school-assets/schools/157986/courses/189121/1712066546664ddd958be_3b42_4082_84de_893bf0061a32_lyst1786.jpg",
             lessons: "60 lessons"
-        },*/
+        },
         {
-            courseId: "1",
+            courseId: "3",
             url: "CAT-Package",
             courseName: "CAT 2025 English",
             // description:
@@ -60,18 +50,7 @@ const OpenGrad: React.FC = () => {
             lessons: "140 lessons"
         },
         {
-            courseId: "2",
-            url: "CAT-Mock",
-            courseName: "CAT Mocks & Questions",
-            // description:
-            //     "This is a description of course 1. It provides an overview of the course content.",
-            // CourseDuration: "10",
-            imageUrl:
-                "/assets/course_images/CAT_Mock.jpg",
-            lessons: ""
-        },
-        {
-            courseId: "3",
+            courseId: "5",
             url: "CUET-UG-Mock-Tests-test",
             courseName: "CUET UG Questions & Mocks",
             // description:
@@ -80,7 +59,29 @@ const OpenGrad: React.FC = () => {
             imageUrl:
                 "https://imgproxy.learnyst.com/learnyst-user-assets/school-assets/schools/157986/courses/186487/1711619074132fc94d707_d408_4c2d_aeaa_446cd850b7f4_lyst9700.jpg",
             lessons: " "
-        }
+        },
+        // {
+        //     courseId: "4",
+        //     url: "CAT-Mock",
+        //     courseName: "CAT Mocks & Questions",
+        //     // description:
+        //     //     "This is a description of course 1. It provides an overview of the course content.",
+        //     // CourseDuration: "10",
+        //     imageUrl:
+        //         "/assets/course_images/CAT_Mock.jpg",
+        //     lessons: ""
+        // },
+        /*  {
+            courseId: "1",
+            url: "home/test",
+            courseName: "MBA Bundle",
+            // description:
+            //     "This is a description of course 1. It provides an overview of the course content.",
+            // CourseDuration: "10",
+            imageUrl:
+                "https://imgproxy.learnyst.com/learnyst-user-assets/school-assets/schools/157986/courses/189940/17128570399041564c161_efc4_475b_9151_8549c1ac8969_lyst1712857039920.jpg",
+            lessons: " "
+        },*/
         // {
         //     courseId: "",
         //     url: "root",
