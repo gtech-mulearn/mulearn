@@ -50,7 +50,7 @@
    align-items: flex-start;
    gap: 10px;
    margin-top: 8px;
-   justify-content: left;
+   justify-content: center;
  }
 
 .socialIcons a {
