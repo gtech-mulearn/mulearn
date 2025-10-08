@@ -24,7 +24,7 @@ const FeatureGrid = () => {
   const features = [
     {
       title: "Community",
-      description: "Join 40,000+ learners & innovators.",
+      description: "Join 60,000+ learners & innovators.",
       image: cdnUrl("public/assets/landing/College Project Concept Illustration.png"),
       bgColor: "#9bc8ff",
     },
