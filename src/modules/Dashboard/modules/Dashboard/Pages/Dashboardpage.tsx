@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import SidebarBannerSlider, { Event } from "../../InterestGroups/components/SideBannerSlider/SideBannerSlider";
@@ -10,6 +10,10 @@ import { fetchLocalStorage } from "@/MuLearnServices/common_functions";
 import { getDomainBasedInterestGroups, getInterestGroups, KarmaFeedItem } from "../services/api";
 import { useUserStore, useStatStore } from "/src/ZustandProvider";
 import axios from "axios";
+import { useMuShepherdTour } from "@/components/MuComponents/MuTour/MuShepherdTour";
+import MuShepherdTourButton from "@/components/MuComponents/MuTour/MuShepherdTourButton";
+import { getDashboardShepherdTourSteps } from "@/components/MuComponents/MuTour/dashboardShepherdTourSteps";
+import "@/components/MuComponents/MuTour/MuShepherdTour.css";
 
 interface InterestGroup {
   title: string;
@@ -27,6 +31,7 @@ const imageMap: { [key: string]: { src: string; alt: string } } = {
 
 const DashboardPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [interestGroups, setInterestGroups] = useState<InterestGroup[]>([]);
   const [events, setEvents] = useState<Event[]>([]);
 
@@ -88,6 +93,102 @@ const DashboardPage = () => {
     navigate("/dashboard/learningcircle");
   }, [navigate]);
 
+  // Shepherd.js tour for improved scroll handling and positioning
+  const shepherdTour = useMuShepherdTour({
+    steps: getDashboardShepherdTourSteps('dashboard'),
+    onComplete: () => {
+      console.log('Dashboard Shepherd tour completed!');
+    },
+    onSkip: () => {
+      console.log('Dashboard Shepherd tour skipped');
+    }
+  });
+
+  // First-time Shepherd tour with welcome steps
+  const firstTimeShepherdTour = useMuShepherdTour({
+    steps: getDashboardShepherdTourSteps('first-time'),
+    onComplete: () => {
+      console.log('Dashboard first-time tour completed!');
+    },
+    onSkip: () => {
+      console.log('Dashboard first-time tour skipped');
+    }
+  });
+
+  const handleStartTour = () => {
+    shepherdTour.startTour();
+  };
+
+  const handleStartFirstTimeShepherdTour = () => {
+    firstTimeShepherdTour.startTour();
+  };
+
+  // Start Shepherd.js tour only on dashboard page for first-time users
+  useEffect(() => {
+    // Debug logging to understand the current path
+    console.log('Dashboard tour effect - Debug info:', {
+      currentPath: location.pathname,
+      isLoggedIn,
+      userName,
+      hasSeenTour: localStorage.getItem('hasSeenDashboardTour')
+    });
+    
+    // Check if we're on the dashboard home page
+    const isDashboardPage = location.pathname === '/dashboard/home';
+    
+    // Check if user has already seen the dashboard tour (temporarily disabled for testing)
+    const hasSeenDashboardTour = false; // localStorage.getItem('hasSeenDashboardTour');
+    
+    console.log('Tour start conditions:', {
+      isDashboardPage,
+      isLoggedIn,
+      userNotGuest: userName !== "Guest",
+      hasNotSeenTour: !hasSeenDashboardTour,
+      willStartTour: isLoggedIn && userName !== "Guest" && isDashboardPage && !hasSeenDashboardTour
+    });
+    
+    if (isLoggedIn && userName !== "Guest" && isDashboardPage && !hasSeenDashboardTour) {
+      console.log('✅ All conditions met, starting dashboard tour in 1.5s...');
+      const timer = setTimeout(() => {
+        console.log('🚀 Starting Shepherd.js first-time dashboard tour...');
+        
+        // Check if all dashboard tour elements are present (6 required elements)
+        const requiredElements = [
+          '.mu-tour-welcome', 
+          '.mu-tour-start-learning', 
+          '.mu-tour-join-learning',
+          '.mu-tour-learning-circles',
+          '.mu-tour-karma-earners',
+          '.mu-tour-interest-groups'
+        ];
+        const elementsReady = requiredElements.every(selector => {
+          const element = document.querySelector(selector);
+          const exists = !!element;
+          console.log(`Dashboard element check ${selector}:`, exists);
+          return exists;
+        });
+        
+        if (elementsReady) {
+          console.log('✅ All dashboard elements ready, starting tour...');
+          // Mark that the user has seen the dashboard tour (temporarily disabled for testing)
+          // localStorage.setItem('hasSeenDashboardTour', 'true');
+          
+          handleStartFirstTimeShepherdTour();
+        } else {
+          console.warn('❌ Some dashboard tour elements not ready, will retry...');
+          // Retry after elements are loaded
+          setTimeout(() => {
+            console.log('🔄 Retrying dashboard tour...');
+            handleStartFirstTimeShepherdTour();
+          }, 1000);
+        }
+      }, 1500);
+      return () => clearTimeout(timer);
+    } else {
+      console.log('❌ Dashboard tour conditions not met');
+    }
+  }, [isLoggedIn, userName, location.pathname]);
+
   const fetchEvents = async () => {
     try {
       const response = await axios.get("https://opensheet.elk.sh/19Os47FI_fAgpMk7lnhFWz9aRwyd72cB-4PKz7W8rF9g/1");
@@ -137,7 +238,7 @@ const DashboardPage = () => {
       >
         <motion.div className={styles.leftColumn} initial={{ x: -50 }} animate={{ x: 0 }} transition={{ duration: 0.6 }}>
           <motion.section
-            className={styles.welcomeSection}
+            className={`${styles.welcomeSection} mu-tour-welcome`}
             initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.6 }}
@@ -157,7 +258,7 @@ const DashboardPage = () => {
               </p>
               <div className={styles.buttons}>
                 <motion.button
-                  className={styles.button}
+                  className={`${styles.button} mu-tour-start-learning`}
                   onClick={handleStartLearning}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
@@ -165,7 +266,7 @@ const DashboardPage = () => {
                   Start Learning
                 </motion.button>
                 <motion.button
-                  className={styles.button2}
+                  className={`${styles.button2} mu-tour-join-learning`}
                   onClick={handleJoinLearning}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
@@ -173,6 +274,21 @@ const DashboardPage = () => {
                   Join Learning
                 </motion.button>
               </div>
+              {/* Tour Button - always show for manual tour triggering */}
+              <motion.div 
+                className={styles.tourButtonContainer}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1, duration: 0.5 }}
+              >
+                <MuShepherdTourButton onClick={handleStartTour} size="sm">
+                  Take a Quick Tour 🎯
+                </MuShepherdTourButton>
+                {' '}
+                <MuShepherdTourButton onClick={handleStartFirstTimeShepherdTour} size="sm">
+                  First-Time Tour 🚀
+                </MuShepherdTourButton>
+                </motion.div>
             </div>
             <motion.img
               src={src}
@@ -184,7 +300,9 @@ const DashboardPage = () => {
               transition={{ duration: 0.6 }}
             />
           </motion.section>
-          <LearningCirclesSection domain={isLoggedIn && userDomains.length > 0 ? userDomains[0] : "general"} />
+          <div className="mu-tour-learning-circles">
+            <LearningCirclesSection domain={isLoggedIn && userDomains.length > 0 ? userDomains[0] : "general"} />
+          </div>
         </motion.div>
 
         <motion.aside
@@ -195,7 +313,7 @@ const DashboardPage = () => {
         >
           {events.length !== 0 && (
             <motion.section
-              className={styles.slider}
+              className={`${styles.slider} mu-tour-events`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
@@ -216,12 +334,16 @@ const DashboardPage = () => {
               <div>Loading Karma Feed...</div>
             ) : (
               karmaFeed && karmaFeed.length > 1 && (
-                <KarmaEarners highestStudent={karmaFeed[0]} highestCollege={karmaFeed[1]} />
+                <div className="mu-tour-karma-earners">
+                  <KarmaEarners highestStudent={karmaFeed[0]} highestCollege={karmaFeed[1]} />
+                </div>
               )
             )
           )}
           {isLoggedIn && (
-          <InterestGroups title={isLoggedIn && userDomains.length > 0 ? userDomains[0] : "general"} groups={interestGroups} />
+            <div className="mu-tour-interest-groups">
+              <InterestGroups title={isLoggedIn && userDomains.length > 0 ? userDomains[0] : "general"} groups={interestGroups} />
+            </div>
           )}
         
         </motion.aside>
