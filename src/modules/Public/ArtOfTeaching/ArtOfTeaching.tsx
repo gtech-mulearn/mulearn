@@ -5,7 +5,8 @@ import styles from "./ArtOfTeaching.module.css";
 import "./ArtOfTeaching.scss";
 // @ts-ignore
 
-import Guidlines from "./assets/Guidlines1.pdf";
+import Guidlines from "../../../../public/assets/artofteaching/Guidelines_Art Of Teaching 4.0.pdf";
+// import Guidlines from "@public/assets/artofteaching/Guidelines_Art Of Teaching 4.0.pdf";
 import { cdnUrl } from "@/modules/utils/cdn";
 
 import MentorCard from "./components/MentorCard/MentorCard";
@@ -119,7 +120,7 @@ const ArtOfTeaching = () => {
           <div className={styles.first_view}>
             <div className={styles.fv_texts}>
               <p className={styles.fv_heading}>
-                <span>µLearn Art</span> of Teaching 3.0
+                <span>µLearn Art</span> of Teaching 4.0
               </p>
 
               <p className={styles.fv_tagline}>
