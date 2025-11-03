@@ -246,15 +246,11 @@ const ArtOfTeaching = () => {
                   <div>
                   <h3 className={"styles.sv_tagline mt-2 mb-2"} style={{fontSize:'18px'}}>Level1</h3>
       </div>
-      <div className=" pl-4" style={timelineItemStyle}>
-        <div className=" pl-4" style={circleStyle}></div>
-        <div className=" ml-4" style={lineStyle}></div>
-        <div style={contentStyle} ><p style={{fontSize:'17px'}}>Task 1 - Self introduction.</p></div>
-      </div>
+      
       <div className=" pl-4" style={timelineItemStyle}>
         <div className=" pl-4" style={circleStyle}></div>
         <div className=" ml-4"style={lineStyle}></div>
-        <div style={contentStyle}><p style={{fontSize:'17px'}}>Task 2 - Video submission explaining a selected topic.</p></div>
+        <div style={contentStyle}><p style={{fontSize:'17px'}}>Task 1 - Video submission explaining a selected topic.</p></div>
       </div>
       <div>
         <h3 className={"styles.sv_tagline mt-2 pt-3 pb-1"} style={{fontSize:'18px', marginTop: '1rem'}}>Level2</h3>
