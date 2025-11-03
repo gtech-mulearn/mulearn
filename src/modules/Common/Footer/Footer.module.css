@@ -24,6 +24,11 @@
   font-weight: 600;
 }
 
+/* Center section headings on small/narrow screens (homepage) */
+.footerSection h3 {
+  text-align: center;
+}
+
 .footerSection ul {
   list-style: none;
   padding: 0;
@@ -44,14 +49,21 @@
 
 }
 
- .socialIcons {
-   display: flex;
-   flex-direction: row;
-   align-items: flex-start;
-   gap: 10px;
-   margin-top: 8px;
-   justify-content: center;
- }
+.socialIcons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+  justify-content: center;
+}
+
+/* On wide screens where footer shows multiple columns, left-align icons under heading */
+@media (min-width: 1000px) {
+  .socialIcons {
+    justify-content: flex-start;
+  }
+}
 
 .socialIcons a {
   font-size: 1.5rem;
@@ -76,5 +88,16 @@
 
   .socialIcons a {
     font-size: 1.2rem;
+  }
+}
+
+/* On wide screens (multi-column footer) align headings left and icons left */
+@media (min-width: 1000px) {
+  .footerSection h3 {
+    text-align: left;
+  }
+
+  .footerSection ul {
+    text-align: left;
   }
 }

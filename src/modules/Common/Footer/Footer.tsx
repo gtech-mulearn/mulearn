@@ -39,10 +39,10 @@ const Footer = () => {
         <div className={styles.footerSection}>
           <h3>Follow Us</h3>
           <div className={styles.socialIcons}>
-            <a href="http://www.linkedin.com/company/gtechmulearn/"><FaLinkedin /></a>
-            <a href="https://www.instagram.com/mulearn.official/"><FaInstagram /></a>
-            <a href="https://www.youtube.com/c/mulearn"><FaYoutube /></a>
-            <a href="http://www.facebook.com/gtechmulearn"><FaFacebook /></a>
+            <a href="https://www.linkedin.com/company/gtechmulearn/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedin /></a>
+            <a href="https://www.instagram.com/mulearn.official/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram /></a>
+            <a href="https://www.youtube.com/c/mulearn" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><FaYoutube /></a>
+            <a href="https://www.facebook.com/gtechmulearn" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><FaFacebook /></a>
           </div>
         </div>
       </div>

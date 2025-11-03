@@ -158,7 +158,7 @@ const ArtOfTeaching = () => {
                    backgroundColor: '#5570F1',
                    color: 'white',
                    borderRadius: '0.375rem',
-                   width: '300px',
+                   width: '304px',
                    textAlign: 'center',
                    fontWeight: 'bold',
                    marginTop: '1rem',
@@ -317,24 +317,14 @@ const ArtOfTeaching = () => {
         </div>
     </div>
                   </div>
-                  <div className={`w-full max-w-md lg:max-w-2xl`}>
-                <iframe
-                  className={styles.yt_video}
-                  src="https://www.youtube.com/embed/r5izRx-4j68?si=L9gHSznyZTeCI3b3" 
-                  title="YouTube video player"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  loading="lazy"
-                ></iframe>
-              </div>
+              
            
             </div>
           </div>
         </div>
 
 
-        <div className="hidden lg:flex  items-center justify-center lg:h-[500px] lg:mb-4">
+        {/* <div className="hidden lg:flex  items-center justify-center lg:h-[500px] lg:mb-4">
   <div className="w-full max-w-md lg:max-w-3xl xl:max-w-4xl 2xl:max-w-5xl">
     <iframe
 
@@ -348,7 +338,7 @@ const ArtOfTeaching = () => {
       loading="lazy"
     ></iframe>
   </div>
-</div>
+</div> */}
 
        
        
@@ -393,7 +383,7 @@ const ArtOfTeaching = () => {
               <p className={styles.jv_text}>
                 We needed some really creative people with amazing mentoring
                 skills to judge all your submissions. Listed below were our
-                judges for the first edition of Art of Teaching.
+                judges for the Third edition of Art of Teaching.
               </p>
               <div className={styles.judges_card_container}>
                 <div className={styles.judges_card}>
