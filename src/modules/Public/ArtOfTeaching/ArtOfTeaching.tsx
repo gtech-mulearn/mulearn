@@ -158,7 +158,7 @@ const ArtOfTeaching = () => {
                    backgroundColor: '#5570F1',
                    color: 'white',
                    borderRadius: '0.375rem',
-                   width: '300px',
+                   width: '304px',
                    textAlign: 'center',
                    fontWeight: 'bold',
                    marginTop: '1rem',
@@ -246,15 +246,11 @@ const ArtOfTeaching = () => {
                   <div>
                   <h3 className={"styles.sv_tagline mt-2 mb-2"} style={{fontSize:'18px'}}>Level1</h3>
       </div>
-      <div className=" pl-4" style={timelineItemStyle}>
-        <div className=" pl-4" style={circleStyle}></div>
-        <div className=" ml-4" style={lineStyle}></div>
-        <div style={contentStyle} ><p style={{fontSize:'17px'}}>Task 1 - Self introduction.</p></div>
-      </div>
+      
       <div className=" pl-4" style={timelineItemStyle}>
         <div className=" pl-4" style={circleStyle}></div>
         <div className=" ml-4"style={lineStyle}></div>
-        <div style={contentStyle}><p style={{fontSize:'17px'}}>Task 2 - Video submission explaining a selected topic.</p></div>
+        <div style={contentStyle}><p style={{fontSize:'17px'}}>Task 1 - Video submission explaining a selected topic.</p></div>
       </div>
       <div>
         <h3 className={"styles.sv_tagline mt-2 pt-3 pb-1"} style={{fontSize:'18px', marginTop: '1rem'}}>Level2</h3>
@@ -266,12 +262,10 @@ const ArtOfTeaching = () => {
         
       </div>
       <div className="mt-2">
-          <a href={Guidlines}
-         
-           download="Art of Teaching Guidelines.pdf"
-          >
-          <button style={{font:'bold', fontSize:'16px',width:'180px'}} className={styles.create }>Download Pdf</button></a> 
-        </div>
+          <a href="https://mulearnfoundation.notion.site/artofteaching-guidelines" className="download-button">
+      <button style={{font:'bold', fontSize:'16px',width:'180px'}} className={styles.create }>View Guidelines
+        </button>
+        </a> </div>
     </div>
                   </div>
                 </SwiperSlide>
@@ -284,21 +278,17 @@ const ArtOfTeaching = () => {
             <div className={styles.cards_container_mobile} style={{marginTop:'45px',marginBottom:'30px'}}>
             <div className={styles.topic_card_android} style={{marginTop:'45px',marginBottom:'30px'}}>
                   <p className={styles.card_heading}>
-                     <span className="pt-5"> Guidlines</span>
+                     <span className="pt-5"> Guidelines</span>
                     </p>
                   <div style={timelineStyle}>
                   <div>
                   <h3 className={styles.sv_tagline} style={{fontSize:'18px'}}>Level1</h3>
       </div>
-      <div className=" pl-4" style={timelineItemStyle}>
-        <div className=" pl-4" style={circleStyle}></div>
-        <div className=" ml-4" style={mobilelineStyle}></div>
-        <div style={contentStyle}  className={styles.sv_tagline}>Task 1 - Self introduction with welcome ticket.</div>
-      </div>
+     
       <div className=" pl-4" style={timelineItemStyle}>
         <div className=" pl-4" style={circleStyle}></div>
         <div className=" ml-4"style={mobilelineStyle}></div>
-        <div style={contentStyle}  className={styles.sv_tagline}>Task 2 - Video submission explaining a selected topic.</div>
+        <div style={contentStyle}  className={styles.sv_tagline}>Task 1 - Video submission explaining a selected topic.</div>
       </div>
       <div className="mt-3 pt-2">
         <h3 className={styles.sv_tagline} style={{fontSize:'18px'}}>Level2</h3>
@@ -310,35 +300,21 @@ const ArtOfTeaching = () => {
       </div>
       
       <div className="mt-5">
-      <a
-          href={Guidlines}
-           download="Art of Teaching Guidelines.pdf"
-          className="download-button"
-        >
-         
-       
-      <button style={{font:'bold', fontSize:'16px',width:'180px'}} className={styles.create }>Download Pdf</button></a> 
+      <a href="https://mulearnfoundation.notion.site/artofteaching-guidelines" className="download-button">
+      <button style={{font:'bold', fontSize:'16px',width:'180px'}} className={styles.create }>View Guidelines
+        </button>
+        </a> 
         </div>
     </div>
                   </div>
-                  <div className={`w-full max-w-md lg:max-w-2xl`}>
-                <iframe
-                  className={styles.yt_video}
-                  src="https://www.youtube.com/embed/r5izRx-4j68?si=L9gHSznyZTeCI3b3" 
-                  title="YouTube video player"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  loading="lazy"
-                ></iframe>
-              </div>
+              
            
             </div>
           </div>
         </div>
 
 
-        <div className="hidden lg:flex  items-center justify-center lg:h-[500px] lg:mb-4">
+        {/* <div className="hidden lg:flex  items-center justify-center lg:h-[500px] lg:mb-4">
   <div className="w-full max-w-md lg:max-w-3xl xl:max-w-4xl 2xl:max-w-5xl">
     <iframe
 
@@ -352,7 +328,7 @@ const ArtOfTeaching = () => {
       loading="lazy"
     ></iframe>
   </div>
-</div>
+</div> */}
 
        
        
@@ -397,7 +373,7 @@ const ArtOfTeaching = () => {
               <p className={styles.jv_text}>
                 We needed some really creative people with amazing mentoring
                 skills to judge all your submissions. Listed below were our
-                judges for the first edition of Art of Teaching.
+                judges for the Third edition of Art of Teaching.
               </p>
               <div className={styles.judges_card_container}>
                 <div className={styles.judges_card}>

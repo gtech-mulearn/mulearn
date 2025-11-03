@@ -14,10 +14,13 @@
 }
 
 .fv_img {
-  width: 18rem;
   display: block;
   margin: auto;
   margin-top: 2rem;
+  /* responsive hero image sizing */
+  width: 100%;
+  max-width: 18rem;
+  height: auto;
 }
 
 .fv_texts {
@@ -89,7 +92,9 @@
   .fv_img {
     display: block;
     margin: auto;
-    width: 28rem;
+    /* larger, but constrained and responsive */
+    width: 100%;
+    max-width: 28rem;
   }
 
   .fv_texts {

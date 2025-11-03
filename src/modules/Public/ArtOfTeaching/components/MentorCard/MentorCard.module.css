@@ -7,7 +7,12 @@
   padding: 30px 25px;
   border-radius: 10px;
   width: 100%;
-  /* height: 15rem; */
+  /* Fixed card size to keep all judge cards consistent */
+  box-sizing: border-box;
+  height: 220px;
+  padding: 24px;
+  display: flex;
+  align-items: stretch;
 }
 
 .mentorimg {
@@ -15,6 +20,20 @@
   width: 5rem;
   height: 5rem;
   border-radius: 5px;
+}
+
+.mentorimg {
+  /* don't let avatar shrink; keep consistent size */
+  flex-shrink: 0;
+  margin-right: 1rem;
+}
+
+.mentor_card {
+  /* inner wrapper to stretch content to full card height */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
 }
 
 .comingsoon {
@@ -37,6 +56,7 @@
 .box {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .mentor_interest {
