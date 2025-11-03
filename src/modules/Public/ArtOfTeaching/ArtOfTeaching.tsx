@@ -262,12 +262,10 @@ const ArtOfTeaching = () => {
         
       </div>
       <div className="mt-2">
-          <a href={Guidlines}
-         
-           download="Art of Teaching Guidelines.pdf"
-          >
-          <button style={{font:'bold', fontSize:'16px',width:'180px'}} className={styles.create }>Download Pdf</button></a> 
-        </div>
+          <a href="https://mulearnfoundation.notion.site/artofteaching-guidelines" className="download-button">
+      <button style={{font:'bold', fontSize:'16px',width:'180px'}} className={styles.create }>View Guidelines
+        </button>
+        </a> </div>
     </div>
                   </div>
                 </SwiperSlide>
@@ -280,21 +278,17 @@ const ArtOfTeaching = () => {
             <div className={styles.cards_container_mobile} style={{marginTop:'45px',marginBottom:'30px'}}>
             <div className={styles.topic_card_android} style={{marginTop:'45px',marginBottom:'30px'}}>
                   <p className={styles.card_heading}>
-                     <span className="pt-5"> Guidlines</span>
+                     <span className="pt-5"> Guidelines</span>
                     </p>
                   <div style={timelineStyle}>
                   <div>
                   <h3 className={styles.sv_tagline} style={{fontSize:'18px'}}>Level1</h3>
       </div>
-      <div className=" pl-4" style={timelineItemStyle}>
-        <div className=" pl-4" style={circleStyle}></div>
-        <div className=" ml-4" style={mobilelineStyle}></div>
-        <div style={contentStyle}  className={styles.sv_tagline}>Task 1 - Self introduction with welcome ticket.</div>
-      </div>
+     
       <div className=" pl-4" style={timelineItemStyle}>
         <div className=" pl-4" style={circleStyle}></div>
         <div className=" ml-4"style={mobilelineStyle}></div>
-        <div style={contentStyle}  className={styles.sv_tagline}>Task 2 - Video submission explaining a selected topic.</div>
+        <div style={contentStyle}  className={styles.sv_tagline}>Task 1 - Video submission explaining a selected topic.</div>
       </div>
       <div className="mt-3 pt-2">
         <h3 className={styles.sv_tagline} style={{fontSize:'18px'}}>Level2</h3>
@@ -306,14 +300,10 @@ const ArtOfTeaching = () => {
       </div>
       
       <div className="mt-5">
-      <a
-          href={Guidlines}
-           download="Art of Teaching Guidelines.pdf"
-          className="download-button"
-        >
-         
-       
-      <button style={{font:'bold', fontSize:'16px',width:'180px'}} className={styles.create }>Download Pdf</button></a> 
+      <a href="https://mulearnfoundation.notion.site/artofteaching-guidelines" className="download-button">
+      <button style={{font:'bold', fontSize:'16px',width:'180px'}} className={styles.create }>View Guidelines
+        </button>
+        </a> 
         </div>
     </div>
                   </div>

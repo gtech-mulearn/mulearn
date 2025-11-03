@@ -26,6 +26,7 @@
 
 /* Center section headings on small/narrow screens (homepage) */
 .footerSection h3 {
+  /* default alignment left; specific mobile adjustment below will target the first two sections */
   text-align: center;
 }
 
@@ -98,6 +99,17 @@
   }
 
   .footerSection ul {
+    text-align: left;
+  }
+}
+
+/* Left-align Quick Links and Legal on small/narrow screens (mobile)
+   We target only the first two footer sections so "Follow Us" can remain centered. */
+@media (max-width: 999px) {
+  .footerContainer > .footerSection:nth-child(1) h3,
+  .footerContainer > .footerSection:nth-child(1) ul,
+  .footerContainer > .footerSection:nth-child(2) h3,
+  .footerContainer > .footerSection:nth-child(2) ul {
     text-align: left;
   }
 }
