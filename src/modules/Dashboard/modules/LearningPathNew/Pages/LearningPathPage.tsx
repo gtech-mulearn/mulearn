@@ -21,6 +21,13 @@ const stripMarkdown = (markdownText: string): string => {
     .trim();
 };
 
+// Hashtags to exclude from the "Start Journey" (basic) view.
+// Edit this list to hide additional tasks coming from the API that match these hashtags.
+const EXCLUDED_START_HASHTAGS = [
+  "#skip-lvl4",
+  "#skip-lvl2",
+  "#skip-lvl3",
+];
 interface InterestGroup {
   id: string;
   name: string;
@@ -680,9 +687,9 @@ const LearningPathPage: React.FC = () => {
                 <p>There are currently no learning tasks available. Check back later for new learning opportunities!</p>
               </div>
             ) : (() => {
-              // Check if any levels have tasks after filtering
+              // Check if any levels have tasks after filtering and after excluding configured hashtags
               const hasAnyTasks = basicLevelData.some(level =>
-                filterTasks(level.tasks).length > 0
+                filterTasks(level.tasks).filter(t => !EXCLUDED_START_HASHTAGS.includes((t.hashtag || "").toLowerCase())).length > 0
               );
 
               if (!hasAnyTasks) {
@@ -701,7 +708,8 @@ const LearningPathPage: React.FC = () => {
               return basicLevelData.map((level) => {
                 const metadata = getLevelMetadata(level.name);
                 const levelNum = parseInt(level.name.replace("lvl", ""));
-                const filteredTasks = filterTasks(level.tasks);
+                // Apply standard completion filter, then exclude tasks with configured hashtags
+                const filteredTasks = filterTasks(level.tasks).filter(t => !EXCLUDED_START_HASHTAGS.includes((t.hashtag || "").toLowerCase()));
 
                 if (filteredTasks.length === 0) return null;
 
