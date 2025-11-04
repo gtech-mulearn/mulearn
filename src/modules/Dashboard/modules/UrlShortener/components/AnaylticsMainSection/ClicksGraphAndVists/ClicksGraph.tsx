@@ -210,8 +210,7 @@ const ClicksGraph = ({ response, timePeriod }: Props) => {
                                         }}
                                     >
                                         <p className={styles.tool_tip}>
-                                            {timePeriod ===
-                                            ("today" || "yesterday")
+                                            {timePeriod === "today" || timePeriod === "yesterday"
                                                 ? "time"
                                                 : "date"}
                                             : {entry[0]}
