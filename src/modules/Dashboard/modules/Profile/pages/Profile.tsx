@@ -25,7 +25,7 @@ import {
 import styles from "./Profile.module.css";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import KarmaHistory from "../components/KarmaHistory/KarmaHistory";
 import MuVoyage from "../components/MuVoyage/pages/MuVoyage";
 import AvgKarma from "../assets/svg/AvgKarma";
@@ -44,6 +44,9 @@ import AchievementCardOne from "../components/Achievements/AchievementCardOne";
 import toast from "react-hot-toast";
 import { userInfo } from "os";
 import EditCollegePopUp from "../components/EditProfilePopUp/pages/EditCollegePopUp";
+import { useMuShepherdTour } from "../../../../../components/MuComponents/MuTour/MuShepherdTour";
+import MuShepherdTourButton from "../../../../../components/MuComponents/MuTour/MuShepherdTourButton";
+import { profileShepherdTourSteps } from "../../../../../components/MuComponents/MuTour/profileShepherdTourSteps";
 
 
 
@@ -52,6 +55,7 @@ import EditCollegePopUp from "../components/EditProfilePopUp/pages/EditCollegePo
 const Profile = () => {
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
+    const location = useLocation();
     const key = 'muid';
     const [value, setValue] = useState<string>();
     const [userDID, setUserDID] = useState<string>();
@@ -139,6 +143,83 @@ const Profile = () => {
 
     const [userPreferences, setUserPreferences] = useState<any>(null);
     const [preferencesLoading, setPreferencesLoading] = useState(false);
+
+    console.log('Profile tour steps imported:', profileShepherdTourSteps);
+
+    // Initialize Profile Tour - using Shepherd.js for better scroll handling
+    const tour = useMuShepherdTour({
+        steps: profileShepherdTourSteps,
+        onComplete: () => {
+            console.log('Profile tour completed!');
+        },
+        onSkip: () => {
+            console.log('Profile tour skipped!');
+        },
+        onNextClick: (element: Element | undefined, step: any, options: { config: any; state: any }) => {
+            const stepIndex = options.state.activeIndex;
+            console.log('Next - Step index:', stepIndex);
+            
+            // Step 8: Switch to karma history tab
+            if (stepIndex === 8) {
+                console.log('Switching to karma history tab for step 9...');
+                setProfileList("karma-history");
+            }
+            // Step 10: Switch to mu voyage tab  
+            else if (stepIndex === 10) {
+                console.log('Switching to mu voyage tab for step 11...');
+                setProfileList("mu-voyage");
+            }
+            // Step 12: Switch to achievements tab
+            else if (stepIndex === 12) {
+                console.log('Switching to achievements tab for step 13...');
+                setProfileList("achievements");
+            }
+        },
+        onPrevClick: (element: Element | undefined, step: any, options: { config: any; state: any }) => {
+            const stepIndex = options.state.activeIndex;
+            console.log('Previous - Step index:', stepIndex);
+            
+            // Going back from step 9 (karma history content) to step 8 (karma history tab)
+            // Need to ensure we're still on karma history tab
+            if (stepIndex === 9) {
+                console.log('Going back to karma history tab...');
+                setProfileList("karma-history");
+            }
+            // Going back from step 11 (mu voyage content) to step 10 (mu voyage tab)
+            // Need to switch back to mu voyage tab
+            else if (stepIndex === 11) {
+                console.log('Going back to mu voyage tab...');
+                setProfileList("mu-voyage");
+            }
+            // Going back from step 13 (achievements content) to step 12 (achievements tab) 
+            // Need to switch back to achievements tab
+            else if (stepIndex === 13) {
+                console.log('Going back to achievements tab...');
+                setProfileList("achievements");
+            }
+            // Going back from step 10 (mu voyage tab) to step 9 (karma history content)
+            // Need to switch back to karma history tab
+            else if (stepIndex === 10) {
+                console.log('Going back from mu voyage tab to karma history...');
+                setProfileList("karma-history");
+            }
+            // Going back from step 12 (achievements tab) to step 11 (mu voyage content)
+            // Need to switch back to mu voyage tab
+            else if (stepIndex === 12) {
+                console.log('Going back from achievements tab to mu voyage...');
+                setProfileList("mu-voyage");
+            }
+            // Going back from step 8 (karma history tab) to basic profile
+            // Switch back to basic details tab
+            else if (stepIndex === 8) {
+                console.log('Going back to basic details...');
+                setProfileList("basic-details");
+            }
+        },
+        className: 'profile-tour'
+    });
+
+    console.log('Profile tour initialized:', tour);
 
     // Add a new useEffect to fetch user preferences
     useEffect(() => {
@@ -245,6 +326,66 @@ const Profile = () => {
         setProfileStatus(userProfile.is_public);
     }, [id, userProfile.is_public]);
 
+    // Start tour when profile data is loaded - only on profile page for first-time users
+    const tourStartedRef = useRef(false);
+    
+    useEffect(() => {
+        console.log('Profile tour effect triggered:', {
+            firstName: userProfile.full_name,
+            APILoadStatus,
+            tourStarted: tourStartedRef.current,
+            pathname: location.pathname
+        });
+
+        // Only run on the profile page
+        const isProfilePage = location.pathname.includes('/profile');
+        
+        // Check if user has already seen the profile tour (temporarily disabled for testing)
+        const hasSeenProfileTour = false; // localStorage.getItem('hasSeenProfileTour');
+
+        if (userProfile.full_name && APILoadStatus === 200 && !tourStartedRef.current && isProfilePage && !hasSeenProfileTour) {
+            console.log('Profile data loaded, starting profile tour...');
+            tourStartedRef.current = true;
+            
+            // Mark that the user has seen the profile tour (temporarily disabled for testing)
+            // localStorage.setItem('hasSeenProfileTour', 'true');
+            
+            // Wait for DOM to be fully ready and elements to be positioned
+            setTimeout(() => {
+                // Double-check that all required elements exist before starting
+                const elementsToCheck = [
+                    '.mu-tour-muid',
+                    '.mu-tour-avatar', 
+                    '.mu-tour-level',
+                    '.mu-tour-basic-details'
+                ];
+                
+                const allElementsReady = elementsToCheck.every(selector => {
+                    const element = document.querySelector(selector);
+                    const exists = !!element;
+                    console.log(`Element check ${selector}:`, exists);
+                    return exists;
+                });
+                
+                if (allElementsReady && tour.startTour) {
+                    console.log('All elements ready, starting tour now...');
+                    tour.startTour();
+                } else {
+                    console.warn('Some tour elements not ready, retrying...', {
+                        allElementsReady,
+                        tourStartFunction: !!tour.startTour
+                    });
+                    tourStartedRef.current = false; // Reset to allow retry
+                }
+            }, 1200);
+        }
+    }, [userProfile.full_name, APILoadStatus, location.pathname]); // Added location.pathname dependency
+
+    // Reset tour started flag when navigating to different profiles
+    useEffect(() => {
+        tourStartedRef.current = false;
+    }, [id]);
+
     const handleAchievementModal = () => {
         setAchievementModalOpen(!achievementModalOpen);
     }
@@ -328,6 +469,7 @@ const Profile = () => {
                                                     }
                                                 >
                                                     <img
+                                                        className="mu-tour-avatar"
                                                         src={
                                                             userProfile.profile_pic
                                                                 ? userProfile.profile_pic +
@@ -383,6 +525,7 @@ const Profile = () => {
                                                             : null}
                                                     </h1>
                                                     <p
+                                                        className="mu-tour-muid"
                                                         style={{
                                                             marginTop: "-5px"
                                                         }}
@@ -390,6 +533,7 @@ const Profile = () => {
                                                         {userProfile.muid}
                                                     </p>
                                                     <p
+                                                        className="mu-tour-level"
                                                         style={{
                                                             color: "#456FF6"
                                                         }}
@@ -428,9 +572,7 @@ const Profile = () => {
                                                     onClick={() =>
                                                         setEditPopUp(true)
                                                     }
-                                                    className={
-                                                        styles.edit_profile_btn
-                                                    }
+                                                    className={styles.edit_profile_btn}
                                                     onKeyDown={e => {
                                                         if (
                                                             e.key === "Escape"
@@ -440,184 +582,209 @@ const Profile = () => {
                                                     }}
                                                     tabIndex={0}
                                                 >
-                                                    <i className="fi fi-rr-pencil"></i>
+                                                    <i className="fi fi-rr-pencil mu-tour-edit-icon"></i>
                                                 </p>
                                             )}
                                         </div>
-
-                                        <div className={styles.profileList}>
-                                            <p
-                                                style={
-                                                    profileList ===
-                                                        "basic-details"
-                                                        ? {
-                                                            marginLeft: "0px",
-                                                            width: "6.1rem"
-                                                        }
-                                                        : profileList ===
-                                                            "karma-history"
-                                                            ? {
-                                                                marginLeft:
-                                                                    "125px",
-                                                                width: "6.7rem"
-                                                            }
-                                                            : profileList ===
-                                                                "mu-voyage"
-                                                                ? {
-                                                                    marginLeft:
-                                                                        "250px",
-                                                                    width: "5.3rem"
-                                                                }
-                                                                : profileList == 'achievements' ? {
-                                                                    marginLeft: "375px",
-                                                                    width: "6.8rem"
-                                                                } : {}
-                                                }
-                                                className={styles.underline}
-                                            ></p>
-                                            <li
-                                                onClick={() =>
-                                                    setProfileList(
-                                                        "basic-details"
-                                                    )
-                                                }
-                                                style={
-                                                    profileList ===
-                                                        "basic-details"
-                                                        ? {
-                                                            fontSize: "600",
-                                                            color: "#000"
-                                                        }
-                                                        : {}
-                                                }
-                                            >
-                                                Basic Details
-                                            </li>
-                                            <li
-                                                onClick={() =>
-                                                    setProfileList(
-                                                        "karma-history"
-                                                    )
-                                                }
-                                                style={
-                                                    profileList ===
-                                                        "karma-history"
-                                                        ? {
-                                                            fontSize: "600",
-                                                            color: "#000"
-                                                        }
-                                                        : {}
-                                                }
-                                            >
-                                                Karma History
-                                            </li>
-                                            <li
-                                                onClick={() =>
-                                                    setProfileList("mu-voyage")
-                                                }
-                                                style={
-                                                    profileList === "mu-voyage"
-                                                        ? {
-                                                            fontSize: "600",
-                                                            color: "#000"
-                                                        }
-                                                        : {}
-                                                }
-                                            >
-                                                Mu Voyage
-                                            </li>
-                                            <li
-                                                onClick={() =>
-                                                    setProfileList("achievements")
-                                                }
-                                                style={
-                                                    profileList === "achievements"
-                                                        ? {
-                                                            fontSize: "600",
-                                                            color: "#000"
-                                                        }
-                                                        : {}
-                                                }
-                                            >
-                                                Achievements
-                                            </li>
+                                        <div>
+                                            {/* Manual Tour Button for testing */}
+                                            <div style={{
+                                                position: 'fixed',
+                                                top: '20px',
+                                                right: '20px',
+                                                zIndex: 1000
+                                            }}>
+                                                <MuShepherdTourButton 
+                                                    onClick={() => {
+                                                        console.log('Manual profile tour started');
+                                                        tourStartedRef.current = false; // Reset to allow manual start
+                                                        tour.startTour();
+                                                    }}
+                                                    variant="primary"
+                                                >
+                                                    🎯 Start Profile Tour
+                                                </MuShepherdTourButton>
+                                            </div>
                                         </div>
 
-                                        <div className={styles.pointsList}>
-                                            <div className={styles.points}>
-                                                <Karma />
-                                                <div>
-                                                    <span>Karma</span>
-                                                    <h1>
-                                                        {parseInt(
-                                                            userProfile.karma
-                                                        ) > 1000
-                                                            ? (
-                                                                parseInt(
-                                                                    userProfile.karma
-                                                                ) / 1000
-                                                            ).toPrecision(3) +
-                                                            "K"
-                                                            : userProfile.karma}
-                                                    </h1>
-                                                </div>
+                                        <div className="mu-tour-basic-details">
+                                            <div className={styles.profileList}>
+                                                <p
+                                                    style={
+                                                        profileList ===
+                                                            "basic-details"
+                                                            ? {
+                                                                marginLeft: "0px",
+                                                                width: "6.1rem"
+                                                            }
+                                                            : profileList ===
+                                                                "karma-history"
+                                                                ? {
+                                                                    marginLeft:
+                                                                        "125px",
+                                                                    width: "6.7rem"
+                                                                }
+                                                                : profileList ===
+                                                                    "mu-voyage"
+                                                                    ? {
+                                                                        marginLeft:
+                                                                            "250px",
+                                                                        width: "5.3rem"
+                                                                    }
+                                                                    : profileList == 'achievements' ? {
+                                                                        marginLeft: "375px",
+                                                                        width: "6.8rem"
+                                                                    } : {}
+                                                    }
+                                                    className={styles.underline}
+                                                ></p>
+                                                <li
+                                                    onClick={() =>
+                                                        setProfileList(
+                                                            "basic-details"
+                                                        )
+                                                    }
+                                                    style={
+                                                        profileList ===
+                                                            "basic-details"
+                                                            ? {
+                                                                fontSize: "600",
+                                                                color: "#000"
+                                                            }
+                                                            : {}
+                                                    }
+                                                >
+                                                    Basic Details
+                                                </li>
+                                                <li
+                                                    onClick={() =>
+                                                        setProfileList(
+                                                            "karma-history"
+                                                        )
+                                                    }
+                                                    className="mu-tour-karma-history-tab"
+                                                    style={
+                                                        profileList ===
+                                                            "karma-history"
+                                                            ? {
+                                                                fontSize: "600",
+                                                                color: "#000"
+                                                            }
+                                                            : {}
+                                                    }
+                                                >
+                                                    Karma History
+                                                </li>
+                                                <li
+                                                    onClick={() =>
+                                                        setProfileList("mu-voyage")
+                                                    }
+                                                    className="mu-tour-mu-voyage-tab"
+                                                    style={
+                                                        profileList === "mu-voyage"
+                                                            ? {
+                                                                fontSize: "600",
+                                                                color: "#000"
+                                                            }
+                                                            : {}
+                                                    }
+                                                >
+                                                    Mu Voyage
+                                                </li>
+                                                <li
+                                                    onClick={() =>
+                                                        setProfileList("achievements")
+                                                    }
+                                                    className="mu-tour-achievements-tab"
+                                                    style={
+                                                        profileList === "achievements"
+                                                            ? {
+                                                                fontSize: "600",
+                                                                color: "#000"
+                                                            }
+                                                            : {}
+                                                    }
+                                                >
+                                                    Achievements
+                                                </li>
                                             </div>
-                                            <div className={styles.points}>
-                                                <AvgKarma />
-                                                <div>
-                                                    <span>Avg.Karma/Month</span>
-                                                    <h1>
-                                                        {parseInt(
-                                                            userProfile.karma
-                                                        ) /
-                                                            monthDifference >
-                                                            1000 &&
-                                                            monthDifference !== 0
-                                                            ? (
-                                                                parseInt(
-                                                                    userProfile.karma
-                                                                ) /
-                                                                monthDifference /
-                                                                1000
-                                                            ).toPrecision(4) +
-                                                            "K"
-                                                            : isNaN(
-                                                                parseInt(
-                                                                    userProfile.karma
-                                                                ) /
-                                                                monthDifference
-                                                            )
-                                                                ? "0"
-                                                                : monthDifference ===
-                                                                    0
+
+                                            <div className={styles.pointsList}>
+                                                <div className={styles.points}>
+                                                    <Karma />
+                                                    <div>
+                                                        <span>Karma</span>
+                                                        <h1>
+                                                            {parseInt(
+                                                                userProfile.karma
+                                                            ) > 1000
+                                                                ? (
+                                                                    parseInt(
+                                                                        userProfile.karma
+                                                                    ) / 1000
+                                                                ).toPrecision(3) +
+                                                                "K"
+                                                                : userProfile.karma}
+                                                        </h1>
+                                                    </div>
+                                                </div>
+                                                <div className={styles.points}>
+                                                    <AvgKarma />
+                                                    <div>
+                                                        <span>Avg.Karma/Month</span>
+                                                        <h1>
+                                                            {parseInt(
+                                                                userProfile.karma
+                                                            ) /
+                                                                monthDifference >
+                                                                1000 &&
+                                                                monthDifference !== 0
+                                                                ? (
+                                                                    parseInt(
+                                                                        userProfile.karma
+                                                                    ) /
+                                                                    monthDifference /
+                                                                    1000
+                                                                ).toPrecision(4) +
+                                                                "K"
+                                                                : isNaN(
+                                                                    parseInt(
+                                                                        userProfile.karma
+                                                                    ) /
+                                                                    monthDifference
+                                                                )
                                                                     ? "0"
-                                                                    : (
-                                                                        parseInt(
-                                                                            userProfile.karma
-                                                                        ) /
-                                                                        monthDifference
-                                                                    ).toPrecision(
-                                                                        3
-                                                                    )}
-                                                    </h1>
+                                                                    : monthDifference ===
+                                                                        0
+                                                                        ? "0"
+                                                                        : (
+                                                                            parseInt(
+                                                                                userProfile.karma
+                                                                            ) /
+                                                                            monthDifference
+                                                                        ).toPrecision(
+                                                                            3
+                                                                        )}
+                                                        </h1>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div className={styles.points}>
-                                                <Rank />
-                                                <div>
-                                                    <span>Rank</span>
-                                                    <h1>{userProfile.rank}</h1>
+                                                <div className={styles.points}>
+                                                    <Rank />
+                                                    <div>
+                                                        <span>Rank</span>
+                                                        <h1>{userProfile.rank}</h1>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div className={styles.points}>
-                                                <Rank />
-                                                <div>
-                                                    <span>Percentile</span>
-                                                    <h1>
-                                                        {parseFloat(
-                                                            userProfile.percentile
-                                                        ).toFixed(2)}
-                                                    </h1>
+                                                <div className={styles.points}>
+                                                    <Rank />
+                                                    <div>
+                                                        <span>Percentile</span>
+                                                        <h1>
+                                                            {parseFloat(
+                                                                userProfile.percentile
+                                                            ).toFixed(2)}
+                                                        </h1>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -625,18 +792,22 @@ const Profile = () => {
                                     {profileList === "basic-details" ? (
                                         <BasicDetails userProfile={userProfile} userLog={userLog} />
                                     ) : profileList === "karma-history" ? (
-                                        <KarmaHistory userProfile={userProfile} userLog={userLog} />
+                                        <div className="mu-tour-karma-history-content">
+                                            <KarmaHistory userProfile={userProfile} userLog={userLog} />
+                                        </div>
                                     ) : profileList === "mu-voyage" ? (
-                                        <MuVoyage
-                                            userLevelData={userLevelData}
-                                            userLevel={
-                                                userProfile.level !== null
-                                                    ? parseInt(userProfile.level?.slice(3, 4))
-                                                    : 1
-                                            }
-                                        />
+                                        <div className="mu-tour-mu-voyage-content">
+                                            <MuVoyage
+                                                userLevelData={userLevelData}
+                                                userLevel={
+                                                    userProfile.level !== null
+                                                        ? parseInt(userProfile.level?.slice(3, 4))
+                                                        : 1
+                                                }
+                                            />
+                                        </div>
                                     ) : profileList === "achievements" ? (
-                                        <div className="bg-white rounded-xl w-full !p-4 ">
+                                        <div className="mu-tour-achievements-content bg-white rounded-xl w-full !p-4 ">
                                             <h2 className="!mb-8">Eligible Achievements</h2>
 
                                             {achievements.length === 0 && (
@@ -673,7 +844,7 @@ const Profile = () => {
                                 <div className={styles.notification}>
                                     <div className={styles.existing_roles}>
                                         {!id && (
-                                            <div className={styles.head + " " + styles.profileSettingsContainer}>
+                                            <div className={`${styles.head} ${styles.profileSettingsContainer} mu-tour-profile-settings`}>
                                                 <h2>Profile Settings</h2>
                                                 <div className={styles.head + " " + styles.profileStatus}>
                                                     <h4>Switch to public profile</h4>
@@ -753,7 +924,7 @@ const Profile = () => {
                                         <div className={styles.head}>
                                             <Socials />
                                         </div>
-                                        <div className={styles.head}>
+                                        <div className={`${styles.head} mu-tour-existing-roles`}>
                                             <h2>Existing Roles</h2>
                                             <p>
                                                 {userProfile.roles.join(", ")}
