@@ -28,6 +28,7 @@ import KKEMAuthentication from "./Authentication/KKEMAuthentication";
 import toast from "react-hot-toast";
 
 import lcdata from "./data/lc.json";
+import hackathonData from "./data/hackathons.json";
 
 const LearningCircles = () => {
   const [authorized, setAuthorized] = useState(true);
@@ -118,15 +119,14 @@ const LearningCircles = () => {
   ];
 
   const HackathonColumnOrder: ColOrder[] = [
-    { column: "CandidateName", Label: "Candidate Name", isSortable: false },
-    {
-      column: "ContactDetails",
-      Label: "Contact Details",
-      isSortable: false
-    },
-    { column: "DWMSID", Label: "DWMSID", isSortable: false },
-    { column: "Email", Label: "Email", isSortable: false },
-    { column: "HackathonName", Label: "Hackathon Name", isSortable: false }
+    { column: "Hackathon Name", Label: "Hackathon Name", isSortable: false },
+    { column: "Domains", Label: "Domains", isSortable: false },
+    { column: "Total Applicants", Label: "Total Applicants", isSortable: false },
+    { column: "Shortlisted Candidates", Label: "Shortlisted Candidates", isSortable: false },
+    { column: "Shortlisted Team Count", Label: "Shortlisted Team Count", isSortable: false },
+    { column: "Attended People", Label: "Attended People", isSortable: false },
+    { column: "Offerings Count", Label: "Offerings Count", isSortable: false },
+    { column: "Placement Count", Label: "Placement Count", isSortable: false }
   ];
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -352,7 +352,6 @@ const LearningCircles = () => {
                 ? styles.table_toggle_active
                 : styles.table_toggle_inactive
             }
-            variant="plain"
             onClick={() => {
               tabClick(item);
             }}
@@ -421,7 +420,7 @@ const LearningCircles = () => {
         passwordAuth ? (
           <div className={styles.dashboardContainer}>
             <div className={styles.dashboardContent}>
-              <div className={styles.dateContainer}>
+              {/* <div className={styles.dateContainer}>
                 <p className={styles.heading}>Filter By Date</p>
                 <p className={styles.tagline}>
                   If a date is selected, only the values that
@@ -471,7 +470,7 @@ const LearningCircles = () => {
                     Clear
                   </button>
                 </div>
-              </div>
+              </div> */}
               <TableToggle
                 active={active}
                 tabClick={handleToggle}
@@ -487,96 +486,41 @@ const LearningCircles = () => {
                   </p>
                   <div className={styles.countsContainer}>
                     <div className={styles.studentsInvoled}>
-                      <p className={styles.label}>
-                        Total Enrollment
+                      <p className={styles.label}>Total Enrollment</p>
+                      <p className={styles.count}>
+                        {lcdata.reduce((sum, item) => sum + parseInt(item.total_users), 0)}
                       </p>
-                      {LcCounts.total_enrollment && (
-                        <p className={styles.count}>
-                          {LcCounts.total_enrollment}
-                        </p>
-                      )}
                     </div>
                     <div className={styles.studentsInvoled}>
-                      <p className={styles.label}>
-                        Unique Users
+                      <p className={styles.label}>Unique Users</p>
+                      <p className={styles.count}>
+                        {lcdata.reduce((sum, item) => sum + parseInt(item.total_users), 0)}
                       </p>
-                      {LcCounts.total_enrollment && (
-                        <p className={styles.count}>
-                          {LcCounts.unique_users}
-                        </p>
-                      )}
                     </div>
                     <div className={styles.lcCount}>
-                      <p className={styles.label}>
-                        Learning Circles
+                      <p className={styles.label}>Learning Circles</p>
+                      <p className={styles.count}>
+                        {lcdata.reduce((sum, item) => sum + parseInt(item.learning_circles), 0)}
                       </p>
-                      {LcCounts.lc_count && (
-                        <p className={styles.count}>
-                          {LcCounts.lc_count}
-                        </p>
-                      )}
                     </div>
 
-                    {LcCounts.circle_count_by_ig
-                      .sort(
-                        (a, b) =>
-                          ((b.total_users ??
-                            0) as number) -
-                          ((a.total_users ??
-                            0) as number)
-                      ) // sort by total_users in descending order
-                      .map((item, index) => {
-                        return (
-                          <div
-                            className={
-                              styles.studentsInvoled
-                            }
-                            key={index}
-                          >
-                            <p
-                              className={
-                                styles.label
-                              }
-                            >
-                              {item.name}
-                            </p>
-                            <div
-                              className={
-                                styles.counts
-                              }
-                            >
-                              <div>
-                                <p
-                                  className={
-                                    styles.count
-                                  }
-                                >
-                                  {
-                                    item.total_circles
-                                  }
-                                </p>
-                                <span>
-                                  Circles
-                                </span>
-                              </div>
-                              <div>
-                                <p
-                                  className={
-                                    styles.count
-                                  }
-                                >
-                                  {
-                                    item.total_users
-                                  }
-                                </p>
-                                <span>
-                                  Users
-                                </span>
-                              </div>
+                    {lcdata
+                      .sort((a, b) => parseInt(b.total_users) - parseInt(a.total_users))
+                      .map((item, index) => (
+                        <div className={styles.studentsInvoled} key={index}>
+                          <p className={styles.label}>{item.ig_name}</p>
+                          <div className={styles.counts}>
+                            <div>
+                              <p className={styles.count}>{item.learning_circles}</p>
+                              <span>Circles</span>
+                            </div>
+                            <div>
+                              <p className={styles.count}>{item.total_users}</p>
+                              <span>Users</span>
                             </div>
                           </div>
-                        );
-                      })}
+                        </div>
+                      ))}
                   </div>
                   <br />
                   <div className={styles.chartContainer}>
@@ -585,7 +529,7 @@ const LearningCircles = () => {
                       height={"400px"}
                       chartType="Bar"
                       loader={<div>Loading Chart</div>}
-                      data={data}
+                      data={[["Interest Group", "Total Circles"], ...lcdata.map(item => [item.ig_name, parseInt(item.learning_circles)])]}
                       options={{
                         chart: {
                           title: "Interest Group Counts"
@@ -682,204 +626,98 @@ const LearningCircles = () => {
                   <br />
                 </div>
               ) : (
-                <div>
-                  <p className={styles.heading}>Hackathon</p>
-                  {HackathonDashboard.map(item => {
-                    return (
-                      <>
-                        <p
-                          className={
-                            styles.subheading
-                          }
-                        >{`${item["Hackathon Name"]}:${item.Domains}`}</p>
-                        <div
-                          className={
-                            styles.countsContainer
-                          }
-                        >
-                          {item[
-                            "Total Applicants"
-                          ] && (
-                              <div
-                                className={
-                                  styles.studentsInvoled
-                                }
-                              >
-                                <p
-                                  className={
-                                    styles.label
-                                  }
-                                >
-                                  Total Applicants
-                                </p>
-                                {handleHackDashInputs(
-                                  item[
-                                  "Total Applicants"
-                                  ]
-                                )}
-                              </div>
-                            )}
-                          {item[
-                            "Shortlisted Candidates"
-                          ] && (
-                              <div
-                                className={
-                                  styles.studentsInvoled
-                                }
-                              >
-                                <p
-                                  className={
-                                    styles.label
-                                  }
-                                >
-                                  Shortlisted
-                                  Candidates
-                                </p>
-                                {handleHackDashInputs(
-                                  item[
-                                  "Shortlisted Candidates"
-                                  ]
-                                )}
-                              </div>
-                            )}
-                          {item[
-                            "Shortlisted Team Count"
-                          ] && (
-                              <div
-                                className={
-                                  styles.studentsInvoled
-                                }
-                              >
-                                <p
-                                  className={
-                                    styles.label
-                                  }
-                                >
-                                  Shortlisted Team
-                                  Count
-                                </p>
-                                {handleHackDashInputs(
-                                  item[
-                                  "Shortlisted Team Count"
-                                  ]
-                                )}
-                              </div>
-                            )}
-                          {item[
-                            "Attended People"
-                          ] && (
-                              <div
-                                className={
-                                  styles.studentsInvoled
-                                }
-                              >
-                                <p
-                                  className={
-                                    styles.label
-                                  }
-                                >
-                                  Attended People
-                                </p>
-                                {handleHackDashInputs(
-                                  item[
-                                  "Attended People"
-                                  ]
-                                )}
-                              </div>
-                            )}
-                          {item[
-                            "Offerings Count"
-                          ] && (
-                              <div
-                                className={
-                                  styles.studentsInvoled
-                                }
-                              >
-                                <p
-                                  className={
-                                    styles.label
-                                  }
-                                >
-                                  Offerings Count
-                                </p>
-                                {handleHackDashInputs(
-                                  item[
-                                  "Offerings Count"
-                                  ]
-                                )}
-                              </div>
-                            )}
-                          {item[
-                            "Placement Count"
-                          ] && (
-                              <div
-                                className={
-                                  styles.studentsInvoled
-                                }
-                              >
-                                <p
-                                  className={
-                                    styles.label
-                                  }
-                                >
-                                  Placement Count
-                                </p>
-                                {handleHackDashInputs(
-                                  item[
-                                  "Placement Count"
-                                  ]
-                                )}
-                              </div>
-                            )}
-                        </div>
-                      </>
-                    );
-                  })}
-                  <p className={styles.heading}>
-                    Participant Data
-                  </p>
-                  <div className={styles.tableContainer}>
-                    <TableTop
-                      onSearchText={handleHackSearch}
-                      onPerPageNumber={
-                        handleHackPerPageNumber
-                      }
-                      CSV="https://docs.google.com/spreadsheets/d/1w2Ax918fkkumNiCJ42tc5T9fJeidVGL9_9B-2j7klDM/edit#gid=0"
-                    />
-                    <br />
-                    <Table
-                      rows={HackathonReport}
-                      page={currentHackPage}
-                      perPage={perHackPage}
-                      columnOrder={HackathonColumnOrder}
-                      isloading={hackLoading}
-                    >
-                      <THead
-                        columnOrder={
-                          HackathonColumnOrder
-                        }
-                        onIconClick={
-                          handlehackIconClick
-                        }
-                      />
-                      <Pagination
-                        currentPage={currentHackPage}
-                        totalPages={totalHackPages}
-                        margin="10px 0"
-                        handleNextClick={
-                          handleHackNextClick
-                        }
-                        handlePreviousClick={
-                          handleHackPreviousClick
-                        }
-                        onPerPageNumber={
-                          handleHackPerPageNumber
-                        }
-                        perPage={perHackPage}
-                        setPerPage={setPerHackPage}
-                      />
-                    </Table>
-                  </div>
+                <div style={{
+                  background: 'linear-gradient(135deg, #f5f7fa 0%, #e3e9f7 100%)',
+                  borderRadius: '18px',
+                  padding: '2.5rem 1.5rem',
+                  margin: '2rem 0',
+                  boxShadow: '0 8px 32px 0 rgba(60, 80, 180, 0.10)',
+                  minHeight: '400px',
+                  maxWidth: '1200px',
+                  marginLeft: 'auto',
+                  marginRight: 'auto',
+                  border: '1px solid #e0e7ef'
+                }}>
+                  <p className={styles.heading} style={{
+                    textAlign: 'center',
+                    letterSpacing: '0.02em',
+                    fontWeight: 700,
+                    fontSize: '2.2rem',
+                    marginBottom: '2.5rem',
+                    color: '#2a2a2a',
+                    textShadow: '0 2px 8px #e3e9f7'
+                  }}>Hackathon</p>
+                  {hackathonData.map((item, idx) => (
+                    <div key={item["Hackathon Name"]+idx} style={{
+                      background: '#fff',
+                      borderRadius: '14px',
+                      boxShadow: '0 4px 16px 0 rgba(60, 80, 180, 0.08)',
+                      marginBottom: '2.5rem',
+                      padding: '2rem 1.5rem',
+                      maxWidth: '1000px',
+                      marginLeft: 'auto',
+                      marginRight: 'auto',
+                      border: '1px solid #e0e7ef',
+                      transition: 'box-shadow 0.2s',
+                    }}>
+                      <p className={styles.subheading} style={{
+                        textAlign: 'center',
+                        fontSize: '1.35rem',
+                        fontWeight: 600,
+                        color: '#3a3a3a',
+                        marginBottom: '1.5rem',
+                        letterSpacing: '0.01em',
+                        textShadow: '0 1px 4px #f5f7fa'
+                      }}>
+                        {item["Hackathon Name"]}
+                        {item.Domains ? <span style={{color:'#456ff6', fontWeight:500}}>{`: ${item.Domains}`}</span> : ""}
+                      </p>
+                      <div style={{
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        justifyContent: 'center',
+                        gap: '1.5rem',
+                        marginBottom: '0.5rem',
+                      }}>
+                        {item["Total Applicants"] && (
+                          <div style={{minWidth:'220px',background:'#f5f7fa',borderRadius:'10px',padding:'1.2rem',boxShadow:'0 2px 8px #e3e9f7',textAlign:'center',margin:'0.5rem'}}>
+                            <p className={styles.label} style={{marginBottom:'0.5rem'}}>Total Applicants</p>
+                            {handleHackDashInputs(item["Total Applicants"])}
+                          </div>
+                        )}
+                        {item["Shortlisted Candidates"] && (
+                          <div style={{minWidth:'220px',background:'#f5f7fa',borderRadius:'10px',padding:'1.2rem',boxShadow:'0 2px 8px #e3e9f7',textAlign:'center',margin:'0.5rem'}}>
+                            <p className={styles.label} style={{marginBottom:'0.5rem'}}>Shortlisted Candidates</p>
+                            {handleHackDashInputs(item["Shortlisted Candidates"])}
+                          </div>
+                        )}
+                        {item["Shortlisted Team Count"] && (
+                          <div style={{minWidth:'220px',background:'#f5f7fa',borderRadius:'10px',padding:'1.2rem',boxShadow:'0 2px 8px #e3e9f7',textAlign:'center',margin:'0.5rem'}}>
+                            <p className={styles.label} style={{marginBottom:'0.5rem'}}>Shortlisted Team Count</p>
+                            {handleHackDashInputs(item["Shortlisted Team Count"])}
+                          </div>
+                        )}
+                        {item["Attended People"] && (
+                          <div style={{minWidth:'220px',background:'#f5f7fa',borderRadius:'10px',padding:'1.2rem',boxShadow:'0 2px 8px #e3e9f7',textAlign:'center',margin:'0.5rem'}}>
+                            <p className={styles.label} style={{marginBottom:'0.5rem'}}>Attended People</p>
+                            {handleHackDashInputs(item["Attended People"])}
+                          </div>
+                        )}
+                        {item["Offerings Count"] && (
+                          <div style={{minWidth:'220px',background:'#f5f7fa',borderRadius:'10px',padding:'1.2rem',boxShadow:'0 2px 8px #e3e9f7',textAlign:'center',margin:'0.5rem'}}>
+                            <p className={styles.label} style={{marginBottom:'0.5rem'}}>Offerings Count</p>
+                            {handleHackDashInputs(item["Offerings Count"])}
+                          </div>
+                        )}
+                        {item["Placement Count"] && (
+                          <div style={{minWidth:'220px',background:'#f5f7fa',borderRadius:'10px',padding:'1.2rem',boxShadow:'0 2px 8px #e3e9f7',textAlign:'center',margin:'0.5rem'}}>
+                            <p className={styles.label} style={{marginBottom:'0.5rem'}}>Placement Count</p>
+                            {handleHackDashInputs(item["Placement Count"])}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               )}
             </div>
