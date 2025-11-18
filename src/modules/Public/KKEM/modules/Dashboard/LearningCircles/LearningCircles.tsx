@@ -565,11 +565,27 @@ const LearningCircles = () => {
                       data={[["Interest Group", "Total Circles"], ...lcdata.map(item => [item.ig_name, parseInt(item.learning_circles)])]}
                       options={{
                         chart: {
-                          title: "Interest Group Counts"
+                          title: "Learning Circles by Interest Group"
                         }
                       }}
                     />
                   </div>
+                  <br />
+                  <div className={styles.chartContainer}>
+                    <Chart
+                      width={"100%"}
+                      height={"400px"}
+                      chartType="Bar"
+                      loader={<div>Loading Chart</div>}
+                      data={[["Interest Group", "Total Users"], ...lcdata.map(item => [item.ig_name, parseInt(item.total_users)])]}
+                      options={{
+                        chart: {
+                          title: "Users by Interest Group"
+                        }
+                      }}
+                    />
+                  </div>
+                  {/* Organization Wise Counts section commented out
                   <p className={styles.heading}>
                     Organization Wise Counts
                   </p>
@@ -590,7 +606,6 @@ const LearningCircles = () => {
                     >
                       <THead
                         columnOrder={orgColumnOrder}
-                        // editableColumnNames={editableColumnNames}
                         onIconClick={handleOrgIconClick}
                       />
                       <Pagination
@@ -609,10 +624,10 @@ const LearningCircles = () => {
                         perPage={orgPerPage}
                         setPerPage={setOrgPerPage}
                       />
-                      {/*use <Blank/> when u don't need <THead /> or <Pagination inside <Table/> cause <Table /> needs atleast 2 children*/}
                     </Table>
                   </div>
                   <br />
+                  */}
                   <p className={styles.heading}>
                     User Wise Counts
                   </p>
