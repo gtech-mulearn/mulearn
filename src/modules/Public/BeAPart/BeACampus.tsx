@@ -101,7 +101,7 @@ const BeACampus = () => {
           </div>
           <h2 style={{ fontSize: "1.3rem", fontWeight: 700, color: "#4f46e5", marginBottom: 12 }}>5. How to Apply?</h2>
           <div style={{ marginBottom: 18, display: 'flex', justifyContent: 'center' }}>
-            <a href="https://airtable.com/appFdefxOwIVlTv1b/shrmtngt3zopg8eVh" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", background: "#6366f1", color: "#fff", fontWeight: 600, padding: "0.7em 1.5em", borderRadius: 8, fontSize: "1.1rem", textDecoration: "none", boxShadow: "0 2px 8px rgba(80,80,180,0.10)", transition: "background 0.2s" }}>Apply here to start a μLearn Campus Chapter</a>
+            <a href="https://mulearn.org/r/campuscall" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", background: "#6366f1", color: "#fff", fontWeight: 600, padding: "0.7em 1.5em", borderRadius: 8, fontSize: "1.1rem", textDecoration: "none", boxShadow: "0 2px 8px rgba(80,80,180,0.10)", transition: "background 0.2s" }}>Apply here to start a μLearn Campus Chapter</a>
           </div>
           <h2 style={{ fontSize: "1.3rem", fontWeight: 700, color: "#4f46e5", marginBottom: 12 }}>6. Best Practices for a Thriving Chapter</h2>
           <ul style={{ marginBottom: 18 }}>
