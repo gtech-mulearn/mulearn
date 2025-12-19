@@ -14,6 +14,8 @@ interface CourseCardProps {
     desc: string;
     duration: string;
     rootId: string;
+    karma: string;
+    hashtags: string;
 }
 
 interface WadhwaniCourseResponse {
@@ -31,6 +33,8 @@ interface WadhwaniSheetResponse {
     thumbnail: string;
     description: string;
     CourseDuration: string;
+    Karma: string;
+    Hashtags: string;
 }
 
 const Wadhwani: React.FC = () => {
@@ -100,7 +104,7 @@ function stringSlice(inputString: string): string {
     return inputString.substring(0, 200);
 }
 
-    const CourseCard: React.FC<CourseCardProps> = ({ title, desc, duration, rootId }) => {
+    const CourseCard: React.FC<CourseCardProps> = ({ title, desc, duration, rootId, karma, hashtags }) => {
         const [isExpanded, setIsExpanded] = useState(false);
         const truncatedDesc = desc.length > 100 ? desc.slice(0, 100) + "..." : desc;
 
@@ -121,6 +125,8 @@ function stringSlice(inputString: string): string {
                         )}
                     </p>
                     <p className={styles.duration}>Duration: {duration}hrs</p>
+                    {karma && <p className={styles.karma}>Karma: {karma}</p>}
+                    {hashtags && <p className={styles.hashtags}>Hashtags: {hashtags}</p>}
                 </div>
                 <div onClick={() => handleCourseSelection(rootId)} className={styles.cta}>
                     Enroll
@@ -145,6 +151,8 @@ function stringSlice(inputString: string): string {
                                     desc={stringSlice(sheet.description)}
                                     duration={sheet.CourseDuration}
                                     rootId={getRootIdByTitle(sheet.courseName)}
+                                    karma={sheet.Karma}
+                                    hashtags={sheet.Hashtags}
                                 />
                             ))}
                         </div>
