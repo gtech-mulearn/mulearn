@@ -156,7 +156,7 @@ const MuLiveCounter = () => {
                       orgTypeCount.org_type === "Company"
                         ? 213
                         : orgTypeCount.org_type === "Community"
-                          ? 30
+                          ? 43
                           : orgTypeCount.org_count
                     }
                     duration={5}
@@ -173,7 +173,7 @@ const MuLiveCounter = () => {
 
         <div className={styles.count}>
           <p className={styles.cvc_heading}>
-            <CountUp end={200} duration={5} />
+            <CountUp end={378} duration={5} />
           </p>
           <p className={styles.cvc_text}>Events</p>
         </div>
@@ -203,19 +203,19 @@ const MuLiveCounter = () => {
 
         <div className={styles.count}>
           <p className={styles.cvc_heading}>
-            <CountUp end={2000} duration={5} />
+            <CountUp end={2270} duration={5} />
           </p>
           <p className={styles.cvc_text}>Number of Internships</p>
         </div>
         <div className={styles.count}>
           <p className={styles.cvc_heading}>
-            <CountUp end={1000} duration={5} />
+            <CountUp end={1320} duration={5} />
           </p>
           <p className={styles.cvc_text}>Jobs</p>
         </div>
         <div className={styles.count}>
           <p className={styles.cvc_heading}>
-            <CountUp end={100} duration={5} />
+            <CountUp end={120} duration={5} />
           </p>
           <p className={styles.cvc_text}>Products</p>
         </div>
