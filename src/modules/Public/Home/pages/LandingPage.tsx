@@ -46,7 +46,7 @@ const SpecialEventsList: SpecialEvent[] = [
       "Welcome to the Top 100 Coders initiative Recognised by Kerala Govt. We're on a mission to recognize and empower the best coders in India. If you're passionate about coding and want to make a significant impact in the tech community, you're in the right place.",
     // date: "2025-04-09",
     // participants: 100,
-    link: "https://top100coders.com/",
+    link: "https://www.top100series.com/",
     image: cdnUrl("src/modules/Public/Home/assets/top-100.webp"),
     isLive: true,
   },
@@ -161,7 +161,7 @@ const MuLiveCounter = () => {
                     }
                     duration={5}
                   />
-                  
+
                 </p>
                 <p className={styles.cvc_text}>
                   {orgTypeCount.org_type.endsWith("y")
