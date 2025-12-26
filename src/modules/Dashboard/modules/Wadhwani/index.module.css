@@ -77,6 +77,7 @@
   width: 100%;
   max-width: 100%;
   overflow: hidden;
+  min-height: 250px;
 }
 
 .details {
@@ -122,6 +123,7 @@
   border-radius: 5px;
   cursor: pointer;
   align-self: flex-start;
+  margin-top: auto;
 }
 
 /* Mobile responsive styles */
