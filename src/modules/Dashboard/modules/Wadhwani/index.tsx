@@ -10,6 +10,8 @@ import {
     getWadhwaniCourses
 } from './services/api'
 
+const DISCORD_SUBMIT_LINK = "https://discord.com/channels/771670169691881483/1455593272633458818";
+
 interface CourseCardProps {
     title: string;
     desc: string;
@@ -143,8 +145,13 @@ function stringSlice(inputString: string): string {
                         )}
                     </div>
                 </div>
-                <div onClick={() => handleCourseSelection(rootId)} className={styles.cta}>
-                    Enroll
+                <div className={styles.ctaContainer}>
+                    <div onClick={() => handleCourseSelection(rootId)} className={styles.cta}>
+                        Enroll
+                    </div>
+                    <div onClick={() => window.open(DISCORD_SUBMIT_LINK, "_blank")} className={styles.cta}>
+                        Submit Now
+                    </div>
                 </div>
             </div>
         );
