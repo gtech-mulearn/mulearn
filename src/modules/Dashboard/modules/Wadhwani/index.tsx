@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import styles from "./index.module.css";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
+import { Badge } from "@/components/ui/badge";
 import axios from "axios";
 import {
     getWadhwaniClientToken,
@@ -124,9 +125,23 @@ function stringSlice(inputString: string): string {
                             </span>
                         )}
                     </p>
-                    <p className={styles.duration}>Duration: {duration}hrs</p>
-                    {karma && <p className={styles.karma}>Karma: {karma}</p>}
-                    {hashtags && <p className={styles.hashtags}>Hashtags: {hashtags}</p>}
+                    <div className={styles.badgesContainer}>
+                        {duration && (
+                            <Badge variant="primary" className={styles.badge}>
+                                 {duration}hours
+                            </Badge>
+                        )}
+                        {karma && (
+                            <Badge variant="secondary" className={styles.badge}>
+                                 {karma} Karma
+                            </Badge>
+                        )}
+                        {hashtags && (
+                            <Badge variant="default" className={styles.badge}>
+                                {hashtags}
+                            </Badge>
+                        )}
+                    </div>
                 </div>
                 <div onClick={() => handleCourseSelection(rootId)} className={styles.cta}>
                     Enroll
