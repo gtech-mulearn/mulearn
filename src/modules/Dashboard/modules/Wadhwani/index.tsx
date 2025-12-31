@@ -15,6 +15,7 @@ const DISCORD_SUBMIT_LINK = "https://discord.com/channels/771670169691881483/145
 interface CourseCardProps {
     title: string;
     desc: string;
+    fullDesc: string;
     duration: string;
     rootId: string;
     karma: string;
@@ -107,16 +108,27 @@ function stringSlice(inputString: string): string {
     return inputString.substring(0, 200);
 }
 
-    const CourseCard: React.FC<CourseCardProps> = ({ title, desc, duration, rootId, karma, hashtags }) => {
+function parseBoldText(text: string): (string | JSX.Element)[] {
+    return text.split(/(\*\*.*?\*\*)/g).map((part, index) => {
+        if (part.startsWith('**') && part.endsWith('**')) {
+            return <strong key={index}>{part.slice(2, -2)}</strong>;
+        }
+        return part;
+    });
+}
+
+    const CourseCard: React.FC<CourseCardProps> = ({ title, desc, fullDesc, duration, rootId, karma, hashtags }) => {
         const [isExpanded, setIsExpanded] = useState(false);
         const truncatedDesc = desc.length > 100 ? desc.slice(0, 100) + "..." : desc;
 
         return (
-            <div className={styles.containercard}>
+            <>
+                {isExpanded && <div className={styles.backdrop} onClick={() => setIsExpanded(false)} />}
+                <div className={`${styles.containercard} ${isExpanded ? styles.expanded : ""}`} style={{ minHeight: isExpanded ? "auto" : "320px" }}>
                 <div className={styles.details}>
                     <p className={styles.title}>{title}</p>
                     <p className={styles.desc}>
-                        {isExpanded ? desc : truncatedDesc}
+                        {isExpanded ? parseBoldText(fullDesc) : parseBoldText(truncatedDesc)}
                         {desc.length > 100 && (
                             <span
                                 className={styles.readMore}
@@ -145,6 +157,15 @@ function stringSlice(inputString: string): string {
                         )}
                     </div>
                 </div>
+                {isExpanded && (
+                    <button 
+                        className={styles.closeBtn}
+                        onClick={() => setIsExpanded(false)}
+                        aria-label="Close"
+                    >
+                        ×
+                    </button>
+                )}
                 <div className={styles.ctaContainer}>
                     <div onClick={() => handleCourseSelection(rootId)} className={styles.cta}>
                         Enroll
@@ -154,6 +175,7 @@ function stringSlice(inputString: string): string {
                     </div>
                 </div>
             </div>
+            </>
         );
     };
     if (isLoading) {
@@ -171,6 +193,7 @@ function stringSlice(inputString: string): string {
                                     key={sheet.courseId}
                                     title={sheet.courseName}
                                     desc={stringSlice(sheet.description)}
+                                    fullDesc={sheet.description}
                                     duration={sheet.CourseDuration}
                                     rootId={getRootIdByTitle(sheet.courseName)}
                                     karma={sheet.Karma}
