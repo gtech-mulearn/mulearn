@@ -1,0 +1,482 @@
+/* Shepherd.js Tour Styles - µLearn Theme */
+
+/* Import µLearn CSS Variables */
+:root {
+  --mu-primary: #456ff6;
+  --mu-primary-dark: #3b5fcf;
+  --mu-secondary: #f56565;
+  --mu-white: #ffffff;
+  --mu-gray-dark: #2d3748;
+  --mu-gray-medium: #718096;
+  --mu-gray-light: #e2e8f0;
+  --mu-border-radius: 8px;
+  --mu-box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Override Shepherd default styles */
+.shepherd-modal-overlay-container {
+  background: rgba(0, 0, 0, 0.75) !important;
+}
+
+/* Main popover styles */
+.shepherd-element.mu-shepherd-popover,
+.shepherd-element.mu-shepherd-step {
+  background: var(--mu-white) !important;
+  border: none !important;
+  border-radius: 12px !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.05) !important;
+  max-width: 340px !important;
+  min-width: 300px !important;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  z-index: 99999 !important;
+  backdrop-filter: blur(10px) !important;
+  position: fixed !important;
+}
+
+/* Popover content */
+.shepherd-content {
+  padding: 20px !important;
+}
+
+/* Title styling */
+.shepherd-title {
+  color: var(--mu-primary) !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 10px !important;
+  line-height: 1.3 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  word-wrap: break-word !important;
+}
+
+/* Text/Description styling */
+.shepherd-text {
+  color: var(--mu-gray-dark) !important;
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+  margin-bottom: 18px !important;
+  white-space: pre-line !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+/* Button container */
+.shepherd-footer {
+  display: flex !important;
+  gap: 10px !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding-top: 16px !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
+  margin-top: 16px !important;
+  flex-wrap: nowrap !important;
+}
+
+/* Button styles */
+.shepherd-button {
+  border: none !important;
+  border-radius: 7px !important;
+  padding: 8px 14px !important;
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  font-family: inherit !important;
+  position: relative !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  min-width: fit-content !important;
+  flex-shrink: 0 !important;
+}
+
+.shepherd-button-primary {
+  background: linear-gradient(135deg, var(--mu-primary) 0%, var(--mu-primary-dark) 100%) !important;
+  color: var(--mu-white) !important;
+  box-shadow: 0 4px 14px 0 rgba(69, 111, 246, 0.3) !important;
+}
+
+.shepherd-button-primary:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px 0 rgba(69, 111, 246, 0.4) !important;
+}
+
+.shepherd-button-secondary {
+  background: rgba(113, 128, 150, 0.08) !important;
+  color: var(--mu-gray-medium) !important;
+  border: 1px solid rgba(113, 128, 150, 0.2) !important;
+}
+
+.shepherd-button-secondary:hover {
+  background: rgba(113, 128, 150, 0.15) !important;
+  color: var(--mu-gray-dark) !important;
+  border-color: rgba(113, 128, 150, 0.3) !important;
+}
+
+.shepherd-button-skip {
+  background: transparent !important;
+  color: #94a3b8 !important;
+  border: none !important;
+  font-weight: 500 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
+  padding: 6px 8px !important;
+  font-size: 0.75rem !important;
+  flex-shrink: 1 !important;
+  min-width: auto !important;
+}
+
+.shepherd-button-skip:hover {
+  color: #64748b !important;
+  text-decoration: none !important;
+}
+
+.shepherd-button:disabled {
+  background: var(--mu-gray-medium) !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+}
+
+/* Arrow/pointer styles */
+.shepherd-arrow {
+  border-color: var(--mu-white) !important;
+}
+
+.shepherd-arrow:before {
+  border-color: var(--mu-white) !important;
+}
+
+/* Cancel button (X) styling */
+.shepherd-cancel-icon {
+  color: var(--mu-gray-medium) !important;
+  font-size: 1.2rem !important;
+  cursor: pointer !important;
+  padding: 4px !important;
+  border-radius: 4px !important;
+  transition: all 0.2s ease !important;
+}
+
+.shepherd-cancel-icon:hover {
+  color: var(--mu-gray-dark) !important;
+  background: var(--mu-gray-light) !important;
+}
+
+/* Highlighted element styling */
+.shepherd-enabled.shepherd-element-attached-top .shepherd-content,
+.shepherd-enabled.shepherd-element-attached-bottom .shepherd-content,
+.shepherd-enabled.shepherd-element-attached-left .shepherd-content,
+.shepherd-enabled.shepherd-element-attached-right .shepherd-content {
+  border-radius: var(--mu-border-radius) !important;
+}
+
+/* Modal overlay opening (highlighted area) */
+.shepherd-modal-overlay-container .shepherd-modal {
+  border-radius: 8px !important;
+  box-shadow: 0 0 0 3px var(--mu-primary), 0 0 0 6px rgba(69, 111, 246, 0.2), 0 0 20px rgba(69, 111, 246, 0.3) !important;
+  outline: none !important;
+}
+
+/* Ensure popover doesn't overlap highlighted element */
+.shepherd-element {
+  z-index: 10002 !important;
+  pointer-events: auto !important;
+}
+
+/* Better spacing around highlighted elements */
+.shepherd-modal {
+  margin: 12px !important;
+  padding: 4px !important;
+}
+
+/* Ensure edit icon has enough space around it */
+.mu-tour-edit-icon.shepherd-target-highlighted {
+  margin: 8px !important;
+}
+
+/* Animation for popover */
+.shepherd-element {
+  animation: shepherdFadeIn 0.3s ease-out !important;
+}
+
+@keyframes shepherdFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Welcome tour specific styles */
+.mu-shepherd-popover.welcome-tour {
+  max-width: 350px !important;
+}
+
+.mu-shepherd-popover.welcome-tour .shepherd-title {
+  color: var(--mu-primary) !important;
+  font-size: 1.25rem !important;
+  margin-bottom: 12px !important;
+}
+
+.mu-shepherd-popover.welcome-tour .shepherd-text {
+  font-size: 0.9rem !important;
+  line-height: 1.6 !important;
+}
+
+/* Profile tour specific styles */
+.mu-shepherd-popover.profile-tour .shepherd-title {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .shepherd-element.mu-shepherd-popover,
+  .shepherd-element.mu-shepherd-step {
+    max-width: 290px !important;
+    min-width: 260px !important;
+    margin: 8px !important;
+  }
+  
+  .shepherd-content {
+    padding: 16px !important;
+  }
+  
+  .shepherd-title {
+    font-size: 1rem !important;
+  }
+  
+  .shepherd-text {
+    font-size: 0.8rem !important;
+    margin-bottom: 14px !important;
+  }
+  
+  .shepherd-button {
+    padding: 6px 10px !important;
+    font-size: 0.75rem !important;
+  }
+  
+  .shepherd-footer {
+    gap: 8px !important;
+    padding-top: 12px !important;
+    margin-top: 12px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .shepherd-element.mu-shepherd-popover,
+  .shepherd-element.mu-shepherd-step {
+    max-width: 260px !important;
+    min-width: 240px !important;
+  }
+  
+  .shepherd-button {
+    padding: 5px 8px !important;
+    font-size: 0.7rem !important;
+  }
+}
+
+/* Tour start button */
+.mu-shepherd-start-btn {
+  background: var(--mu-primary);
+  color: var(--mu-white);
+  border: none;
+  border-radius: var(--mu-border-radius);
+  padding: 10px 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: var(--mu-box-shadow);
+}
+
+.mu-shepherd-start-btn:hover {
+  background: var(--mu-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 20px rgba(69, 111, 246, 0.3);
+}
+
+.mu-shepherd-start-btn:disabled {
+  background: var(--mu-gray-medium);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.mu-shepherd-start-btn::before {
+  content: "🚀";
+  font-size: 1.1em;
+}
+
+/* Button variants */
+.mu-shepherd-btn-primary {
+  background: var(--mu-primary);
+  color: var(--mu-white);
+}
+
+.mu-shepherd-btn-primary:hover:not(:disabled) {
+  background: var(--mu-primary-dark);
+}
+
+.mu-shepherd-btn-secondary {
+  background: var(--mu-secondary);
+  color: var(--mu-white);
+}
+
+.mu-shepherd-btn-secondary:hover:not(:disabled) {
+  background: #d40219;
+}
+
+.mu-shepherd-btn-outline {
+  background: transparent;
+  color: var(--mu-primary);
+  border: 2px solid var(--mu-primary);
+}
+
+.mu-shepherd-btn-outline:hover:not(:disabled) {
+  background: var(--mu-primary);
+  color: var(--mu-white);
+}
+
+/* Button sizes */
+.mu-shepherd-btn-sm {
+  padding: 6px 12px;
+  font-size: 0.75rem;
+}
+
+.mu-shepherd-btn-md {
+  padding: 10px 20px;
+  font-size: 0.875rem;
+}
+
+.mu-shepherd-btn-lg {
+  padding: 12px 24px;
+  font-size: 1rem;
+}
+
+/* Ensure proper z-index for tour elements */
+.shepherd-modal-overlay-container {
+  z-index: 99998 !important;
+}
+
+.shepherd-element {
+  z-index: 99999 !important;
+  position: fixed !important;
+}
+
+/* Force popover to be on top of everything */
+.shepherd-element[data-shepherd-step-id] {
+  z-index: 100000 !important;
+}
+
+/* Fix for scroll positioning issues */
+.shepherd-target-attached {
+  position: relative !important;
+}
+
+/* Ensure smooth scrolling behavior */
+html.shepherd-active {
+  scroll-behavior: smooth !important;
+}
+
+/* Better visibility for highlighted elements */
+.shepherd-modal {
+  border-radius: 8px !important;
+  position: relative !important;
+}
+
+/* Add animation for smooth transitions */
+.shepherd-element.shepherd-has-title .shepherd-content .shepherd-text {
+  animation: fadeInUp 0.4s ease-out !important;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Prevent text selection in tour elements */
+.shepherd-element * {
+  user-select: none !important;
+}
+
+/* Progress bar styling */
+.mu-tour-progress {
+  width: 100% !important;
+  height: 4px !important;
+  background: rgba(69, 111, 246, 0.1) !important;
+  border-radius: 2px !important;
+  margin: 0 0 8px 0 !important;
+  overflow: hidden !important;
+}
+
+.mu-tour-progress-bar {
+  height: 100% !important;
+  background: linear-gradient(90deg, var(--mu-primary) 0%, var(--mu-primary-dark) 100%) !important;
+  border-radius: 2px !important;
+  transition: width 0.3s ease !important;
+}
+
+.mu-tour-progress-text {
+  font-size: 0.75rem !important;
+  color: var(--mu-gray-medium) !important;
+  margin-bottom: 10px !important;
+  font-weight: 500 !important;
+  padding-bottom: 2px !important;
+}
+
+/* Improve popover arrow styling */
+.shepherd-element .shepherd-arrow {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.shepherd-element .shepherd-arrow:before {
+  background: var(--mu-white) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Add subtle pulse animation to highlighted elements */
+.shepherd-modal {
+  animation: subtlePulse 2s infinite !important;
+}
+
+@keyframes subtlePulse {
+  0%, 100% {
+    box-shadow: 0 0 0 3px var(--mu-primary), 0 0 0 6px rgba(69, 111, 246, 0.2), 0 0 20px rgba(69, 111, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 0 3px var(--mu-primary), 0 0 0 8px rgba(69, 111, 246, 0.3), 0 0 25px rgba(69, 111, 246, 0.4);
+  }
+}
+
+/* Specific positioning adjustments for certain elements */
+.shepherd-element[data-popper-placement*="bottom"] {
+  margin-top: 20px !important;
+}
+
+.shepherd-element[data-popper-placement*="right"] {
+  margin-left: 25px !important;
+}
+
+.shepherd-element[data-popper-placement*="left"] {
+  margin-right: 25px !important;
+}
+
+.shepherd-element[data-popper-placement*="top"] {
+  margin-bottom: 20px !important;
+}

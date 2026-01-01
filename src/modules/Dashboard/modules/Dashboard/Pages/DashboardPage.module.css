@@ -27,7 +27,11 @@
   .wrapper {
     grid-template-columns: 2fr 1fr;
   }
+  .noAuthWrapper{
+    grid-template-columns: 1fr;
+  }
 }
+
 
 .welcomeSection {
   background-color: #456ff6;
@@ -44,6 +48,12 @@
   gap: clamp(0px, 0vw, 24px);
   overflow-x: hidden;
 
+}
+
+.tourButtonContainer {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-start;
 }
 
 @media (max-width: 767px) {

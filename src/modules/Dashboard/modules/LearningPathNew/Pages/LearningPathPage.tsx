@@ -5,11 +5,12 @@ import CardCarousel from "../modules/CardCarousal";
 import IGSelector from "../../InterestGroups/components/IGSelection/IGSelector";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { useUserStore } from "/src/ZustandProvider";
-import { Task, Level, getStartLearningTasks, getBecomeExpertTasks, getIgDisplayName, getEventTasks, checkAndClearStaleCache } from "../services/api";
+import { Task, Level, getStartLearningTasks, getBecomeExpertTasks, getIgDisplayName, getEventTasks, checkAndClearStaleCache, getPublicTasks, getPublicBecomeExpertTasks } from "../services/api";
 import ConnectDiscord from "../../ConnectDiscord/pages/ConnectDiscord";
 import toast from "react-hot-toast";
 import channelmap from "../data/channelmap";
 import { decodeUnicodeFromStorage } from "../../../utils/unicodeUtils";
+import PublicIGSelector from "../components/PublicIGSelector/PublicIGSelector";
 
 // Utility function to strip markdown formatting for card preview
 const stripMarkdown = (markdownText: string): string => {
@@ -20,6 +21,13 @@ const stripMarkdown = (markdownText: string): string => {
     .trim();
 };
 
+// Hashtags to exclude from the "Start Journey" (basic) view.
+// Edit this list to hide additional tasks coming from the API that match these hashtags.
+const EXCLUDED_START_HASHTAGS = [
+  "#skip-lvl4",
+  "#skip-lvl2",
+  "#skip-lvl3",
+];
 interface InterestGroup {
   id: string;
   name: string;
@@ -30,9 +38,10 @@ interface OffCanvasProps {
   isOpen: boolean;
   onClose: () => void;
   data: any;
+  isLoggedIn?: boolean;
 }
 
-export const OffCanvas: React.FC<OffCanvasProps> = ({ isOpen, onClose, data }) => {
+export const OffCanvas: React.FC<OffCanvasProps> = ({ isOpen, onClose, data, isLoggedIn = true }) => {
   const { userInfo } = useUserStore();
   const offCanvasClass = isOpen
     ? `${styles.offCanvas} ${styles.offCanvasOpen}`
@@ -49,14 +58,10 @@ export const OffCanvas: React.FC<OffCanvasProps> = ({ isOpen, onClose, data }) =
           Close
         </button>
 
-        {data.locked &&
-
+        {data.locked && isLoggedIn &&
           <div className={styles.locked}>
-
             <div>Locked</div>
-
             <p>Please unlock level {Number(data.level) - 1} to unlock </p>
-
           </div>
         }
 
@@ -166,14 +171,27 @@ export const OffCanvas: React.FC<OffCanvasProps> = ({ isOpen, onClose, data }) =
 
             <div className={styles.offCanvasSection}>
               {!data.completed && (
-                !userInfo.exist_in_guild ? (
-                  <div>
-                    <p style={{ marginBottom: "1rem", textAlign: "center" }}>
-                      Connect to our Discord server to submit your work!
-                    </p>
-                    <ConnectDiscord />
-                  </div>
+                isLoggedIn ? (
+                  !userInfo.exist_in_guild ? (
+                    <div>
+                      <p style={{ marginBottom: "1rem", textAlign: "center" }}>
+                        Connect to our Discord server to submit your work!
+                      </p>
+                      <ConnectDiscord />
+                    </div>
+                  ) : (
+                    data.hashtag === "#ge-self-intro" ? (
+                      <button className={styles.proofOfWorkButton}>
+                        <a href="https://discord.com/channels/832894680290809354/771680366590689330" target="_blank"> Submit self introduction</a>
+                      </button>
+                    ) : (
+                      <button className={styles.proofOfWorkButton}>
+                        <a href={data.discord_link} target="_blank"> Submit proof of Work </a>
+                      </button>
+                    )
+                  )
                 ) : (
+                  // For logged-out users, show proof of work button
                   data.hashtag === "#ge-self-intro" ? (
                     <button className={styles.proofOfWorkButton}>
                       <a href="https://discord.com/channels/832894680290809354/771680366590689330" target="_blank"> Submit self introduction</a>
@@ -197,9 +215,10 @@ interface TaskCardProps {
   task?: Task;
   onClickCTA: (task: Task) => void;
   custom?: Boolean;
+  isLoggedIn?: boolean;
 }
 
-export const TaskCard: React.FC<TaskCardProps> = ({ task, onClickCTA, custom }) => {
+export const TaskCard: React.FC<TaskCardProps> = ({ task, onClickCTA, custom, isLoggedIn = true }) => {
   if (!task) return null;
 
   const skillColors = [
@@ -237,7 +256,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onClickCTA, custom }) 
                   margin: 0,
                 }}
               >
-                pending
+                {isLoggedIn ? "pending" : "Login to track progress"}
               </span>
             )}
           </div>
@@ -283,11 +302,16 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, onClickCTA, custom }) 
 
 const LearningPathPage: React.FC = () => {
   const { userProfile, userInfo, setUserProfile } = useUserStore();
+  const isLoggedIn = !!userProfile?.id || !!userInfo?.muid; // Detect if user is authenticated
   const [activeTab, setActiveTab] = useState<"startLearning" | "becomeExpert" | "event">("startLearning");
   const [basicLevelData, setBasicLevelData] = useState<Level[] | null>(null);
   const [intermediateLevelData, setIntermediateLevelData] = useState<Level[] | null>(null);
   const [eventData, setEventData] = useState<Level[] | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  
+  // State for public IG selector (non-logged-in users)
+  const [publicSelectedIg, setPublicSelectedIg] = useState<InterestGroup | null>(null);
+  const [allPublicIntermediateTasks, setAllPublicIntermediateTasks] = useState<Level[] | null>(null);
 
   const tabRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({
     startLearning: null,
@@ -336,30 +360,59 @@ const LearningPathPage: React.FC = () => {
 
   const fetchIntermediateTasks = useCallback(async () => {
     setIsLoading(true);
-    const currentLevel = unlockedLevel;
-
-    // Check if user has reached level 4 and has no interest groups
-    if (currentLevel >= 4 && !userIGs.length) {
-      // Don't show toast error for level 4+ users - they can see the message in UI instead
-      setIntermediateLevelData([]);
-      setIsLoading(false);
-      return;
-    } else if (currentLevel < 4) {
-      // For users below level 4, set empty data but don't show error
-      setIntermediateLevelData([]);
-      setIsLoading(false);
-      return;
-    }
 
     try {
-      const response = await getBecomeExpertTasks(userIGs, selectedIg.id || undefined);
-      setIntermediateLevelData(response);
+      let response;
+      
+      if (isLoggedIn) {
+        // Logged-in user logic
+        const currentLevel = unlockedLevel;
+
+        // Check if user has reached level 4 and has no interest groups
+        if (currentLevel >= 4 && !userIGs.length) {
+          // Don't show toast error for level 4+ users - they can see the message in UI instead
+          setIntermediateLevelData([]);
+          setIsLoading(false);
+          return;
+        } else if (currentLevel < 4) {
+          // For users below level 4, set empty data but don't show error
+          setIntermediateLevelData([]);
+          setIsLoading(false);
+          return;
+        }
+
+        response = await getBecomeExpertTasks(userIGs, selectedIg.id || undefined);
+        setIntermediateLevelData(response);
+      } else {
+        // Public user logic - show all tasks regardless of level
+        if (!allPublicIntermediateTasks) {
+          // Only fetch all tasks once and cache them
+          response = await getPublicBecomeExpertTasks(); // Get all intermediate tasks
+          setAllPublicIntermediateTasks(response);
+        } else {
+          response = allPublicIntermediateTasks;
+        }
+
+        // Filter tasks based on selected IG
+        if (publicSelectedIg?.id && response) {
+          const filteredTasks = response.map(level => ({
+            ...level,
+            tasks: level.tasks.filter(task => 
+              task.interest_group && task.interest_group.id === publicSelectedIg.id
+            )
+          })).filter(level => level.tasks.length > 0);
+          
+          setIntermediateLevelData(filteredTasks);
+        } else {
+          setIntermediateLevelData(response || []);
+        }
+      }
     } catch (error) {
       setIntermediateLevelData([]);
     } finally {
       setIsLoading(false);
     }
-  }, [userIGs, selectedIg, unlockedLevel]);
+  }, [isLoggedIn, userIGs, selectedIg, unlockedLevel, publicSelectedIg, allPublicIntermediateTasks]);
 
   useEffect(() => {
     fetchIntermediateTasks();
@@ -398,7 +451,12 @@ const LearningPathPage: React.FC = () => {
     setIsLoading(true);
     const fetchBasicLevels = async () => {
       try {
-        const response = await getStartLearningTasks(); // Get tasks without #cl- hashtags
+        let response;
+        if (isLoggedIn) {
+          response = await getStartLearningTasks(); // Get tasks without #cl- hashtags for logged-in users
+        } else {
+          response = await getPublicTasks(); // Get public tasks for logged-out users
+        }
         setBasicLevelData(response);
       } catch (error) {
         setBasicLevelData([]);
@@ -407,7 +465,41 @@ const LearningPathPage: React.FC = () => {
       }
     };
     fetchBasicLevels();
-  }, []);
+  }, [isLoggedIn]);
+
+  // Effect to refetch intermediate tasks when public IG selection changes
+  useEffect(() => {
+    if (!isLoggedIn && activeTab === "becomeExpert" && publicSelectedIg && allPublicIntermediateTasks) {
+      // Don't make API call, just filter existing cached data
+      const filteredTasks = allPublicIntermediateTasks.map(level => ({
+        ...level,
+        tasks: level.tasks.filter(task => 
+          task.interest_group && task.interest_group.id === publicSelectedIg.id
+        )
+      })).filter(level => level.tasks.length > 0);
+      
+      setIntermediateLevelData(filteredTasks);
+    }
+  }, [publicSelectedIg, isLoggedIn, activeTab, allPublicIntermediateTasks]);
+
+  // Clear cached data when login status changes
+  useEffect(() => {
+    setAllPublicIntermediateTasks(null);
+    setIntermediateLevelData(null);
+  }, [isLoggedIn]);
+
+  // Effect to fetch intermediate tasks when switching to becomeExpert tab
+  useEffect(() => {
+    if (activeTab === "becomeExpert") {
+      // For public users, only fetch if we don't have cached data
+      if (!isLoggedIn && !allPublicIntermediateTasks) {
+        fetchIntermediateTasks();
+      } else if (isLoggedIn) {
+        // For logged-in users, always fetch to get latest data
+        fetchIntermediateTasks();
+      }
+    }
+  }, [activeTab, fetchIntermediateTasks, isLoggedIn, allPublicIntermediateTasks]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -559,15 +651,22 @@ const LearningPathPage: React.FC = () => {
 
       {activeTab === "becomeExpert" && (
         <div style={{ marginBottom: "2rem", marginTop: "2rem" }}>
-          <IGSelector
-            userProfile={userProfile}
-            selectedIg={selectedIg}
-            setSelectedIg={setSelectedIg}
-            userLog={userLog}
-            igs={userIGs}
-            isProfilePage={false}
-            setUserProfile={setUserProfile}
-          />
+          {isLoggedIn ? (
+            <IGSelector
+              userProfile={userProfile}
+              selectedIg={selectedIg}
+              setSelectedIg={setSelectedIg}
+              userLog={userLog}
+              igs={userIGs}
+              isProfilePage={false}
+              setUserProfile={setUserProfile}
+            />
+          ) : (
+            <PublicIGSelector
+              selectedIg={publicSelectedIg}
+              setSelectedIg={setPublicSelectedIg}
+            />
+          )}
         </div>
       )}
 
@@ -579,17 +678,29 @@ const LearningPathPage: React.FC = () => {
         <>
           {activeTab === "startLearning" && (
             basicLevelData === null || basicLevelData.length === 0 ? (
-              <div className="text-center">No tasks available</div>
+              <div className="text-center" style={{ 
+                padding: "2rem", 
+                textAlign: "center",
+                color: "#6B7280"
+              }}>
+                <h3>No Tasks Available</h3>
+                <p>There are currently no learning tasks available. Check back later for new learning opportunities!</p>
+              </div>
             ) : (() => {
-              // Check if any levels have tasks after filtering
+              // Check if any levels have tasks after filtering and after excluding configured hashtags
               const hasAnyTasks = basicLevelData.some(level =>
-                filterTasks(level.tasks).length > 0
+                filterTasks(level.tasks).filter(t => !EXCLUDED_START_HASHTAGS.includes((t.hashtag || "").toLowerCase())).length > 0
               );
 
               if (!hasAnyTasks) {
                 return (
-                  <div className="text-center">
-                    {`No ${filter === "all" ? "" : filter + " "}tasks available`}
+                  <div className="text-center" style={{ 
+                    padding: "2rem", 
+                    textAlign: "center",
+                    color: "#6B7280"
+                  }}>
+                    <h3>No Tasks Available</h3>
+                    <p>There are currently no {filter === "all" ? "" : filter + " "}tasks available. Check back later for new learning opportunities!</p>
                   </div>
                 );
               }
@@ -597,7 +708,8 @@ const LearningPathPage: React.FC = () => {
               return basicLevelData.map((level) => {
                 const metadata = getLevelMetadata(level.name);
                 const levelNum = parseInt(level.name.replace("lvl", ""));
-                const filteredTasks = filterTasks(level.tasks);
+                // Apply standard completion filter, then exclude tasks with configured hashtags
+                const filteredTasks = filterTasks(level.tasks).filter(t => !EXCLUDED_START_HASHTAGS.includes((t.hashtag || "").toLowerCase()));
 
                 if (filteredTasks.length === 0) return null;
 
@@ -612,6 +724,7 @@ const LearningPathPage: React.FC = () => {
                             <TaskCard
                               task={task}
                               onClickCTA={() => handleOpenOffCanvas(task, levelNum)}
+                              isLoggedIn={isLoggedIn}
                             />
                           </div>
                         ))}
@@ -625,20 +738,55 @@ const LearningPathPage: React.FC = () => {
 
           {activeTab === "becomeExpert" && (
             intermediateLevelData === null || intermediateLevelData.length === 0 ? (
-              <div className="text-center">
-                {unlockedLevel >= 4  ? (
-                  userIGs.length > 0 ? (
-                    selectedIg.id && selectedIg.name 
-                      ? `No tasks available for ${selectedIg.name}`
-                      : "Please select an interest group to view tasks"
+              <div className="text-center" style={{ 
+                padding: "2rem", 
+                textAlign: "center",
+                color: "#6B7280"
+              }}>
+                {isLoggedIn ? (
+                  // Logged-in user logic
+                  unlockedLevel >= 4  ? (
+                    userIGs.length > 0 ? (
+                      selectedIg.id && selectedIg.name 
+                        ? (
+                          <>
+                            <h3>No Tasks Available</h3>
+                            <p>There are currently no expert tasks available for {selectedIg.name}. Check back later for new learning opportunities!</p>
+                          </>
+                        ) : (
+                          <>
+                            <h3>Select Interest Group</h3>
+                            <p>Please select an interest group to view expert tasks.</p>
+                          </>
+                        )
+                    ) : (
+                      <>
+                        <h3>No Interest Groups</h3>
+                        <p>You don't have any interest groups assigned yet.</p>
+                      </>
+                    )
                   ) : (
-                    ""
+                    <>
+                      <h3>Reach Level 4 to Unlock Expert Tasks</h3>
+                      <p>Complete tasks in the "Start Journey" tab to reach Level 4 and unlock advanced learning paths.</p>
+                    </>
                   )
                 ) : (
-                  <div>
-                    <h3>Reach Level 4 to Unlock Expert Tasks</h3>
-                    <p>Complete tasks in the "Start Journey" tab to reach Level 4 and unlock advanced learning paths.</p>
-                  </div>
+                  // Public user logic
+                  <>
+                    {publicSelectedIg?.id && publicSelectedIg?.name 
+                      ? (
+                        <>
+                          <h3>No Expert Tasks Available</h3>
+                          <p>There are currently no expert tasks available for {publicSelectedIg.name}. Check back later for new learning opportunities!</p>
+                        </>
+                      ) : (
+                        <>
+                          <h3>Select Interest Group</h3>
+                          <p>Please select an interest group to view expert tasks.</p>
+                        </>
+                      )}
+                  </>
                 )}
               </div>
             ) : (() => {
@@ -649,10 +797,38 @@ const LearningPathPage: React.FC = () => {
 
               if (!hasAnyTasks) {
                 return (
-                  <div className="text-center">
-                    {selectedIg.id && selectedIg.name
-                      ? `No ${filter === "all" ? "" : filter + " "}tasks available for ${selectedIg.name}`
-                      : `No ${filter === "all" ? "" : filter + " "}tasks available`}
+                  <div className="text-center" style={{ 
+                    padding: "2rem", 
+                    textAlign: "center",
+                    color: "#6B7280"
+                  }}>
+                    {isLoggedIn ? (
+                      selectedIg.id && selectedIg.name
+                        ? (
+                          <>
+                            <h3>No Tasks Available</h3>
+                            <p>There are currently no {filter === "all" ? "" : filter + " "}tasks available for {selectedIg.name}. Check back later for new learning opportunities!</p>
+                          </>
+                        ) : (
+                          <>
+                            <h3>No Tasks Available</h3>
+                            <p>There are currently no {filter === "all" ? "" : filter + " "}tasks available. Check back later for new learning opportunities!</p>
+                          </>
+                        )
+                    ) : (
+                      publicSelectedIg?.id && publicSelectedIg?.name
+                        ? (
+                          <>
+                            <h3>No Expert Tasks Available</h3>
+                            <p>There are currently no {filter === "all" ? "" : filter + " "}expert tasks available for {publicSelectedIg.name}. Check back later for new learning opportunities!</p>
+                          </>
+                        ) : (
+                          <>
+                            <h3>No Expert Tasks Available</h3>
+                            <p>There are currently no {filter === "all" ? "" : filter + " "}expert tasks available. Check back later for new learning opportunities!</p>
+                          </>
+                        )
+                    )}
                   </div>
                 );
               }
@@ -675,6 +851,7 @@ const LearningPathPage: React.FC = () => {
                             <TaskCard
                               task={task}
                               onClickCTA={() => handleOpenOffCanvas(task, levelNum)}
+                              isLoggedIn={isLoggedIn}
                             />
                           </div>
                         ))}
@@ -731,6 +908,7 @@ const LearningPathPage: React.FC = () => {
                           key={task.id}
                           task={task}
                           onClickCTA={(task) => handleOpenOffCanvas(task)}
+                          isLoggedIn={isLoggedIn}
                         />
                       ))}
                     </div>
@@ -742,7 +920,7 @@ const LearningPathPage: React.FC = () => {
         </>
       )}
 
-      <OffCanvas isOpen={offCanvasOpen} onClose={handleCloseOffCanvas} data={selectedData} />
+      <OffCanvas isOpen={offCanvasOpen} onClose={handleCloseOffCanvas} data={selectedData} isLoggedIn={isLoggedIn} />
     </div>
   );
 };
