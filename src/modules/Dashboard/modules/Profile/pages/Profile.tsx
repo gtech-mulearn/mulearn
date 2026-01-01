@@ -178,8 +178,8 @@ const Profile = () => {
             if (newValue) {
                 try {
                     const connectedUsersResponse = await getConnectedUsers(key, newValue);
-                    if (connectedUsersResponse) {
-                        setUserDID(connectedUsersResponse);
+                    if (connectedUsersResponse && connectedUsersResponse.length > 0) {
+                        setUserDID(connectedUsersResponse[0]); // Use first DID from the array
                     }
                 } catch (error) {
                     console.error("Error fetching connected users:", error);

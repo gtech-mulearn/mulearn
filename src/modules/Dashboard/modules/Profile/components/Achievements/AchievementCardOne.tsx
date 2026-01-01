@@ -24,6 +24,9 @@ import {
     FormLabel,
     Switch,
     Box,
+    RadioGroup,
+    Radio,
+    Spinner,
 } from "@chakra-ui/react";
 import { FiBookOpen, FiRefreshCw, FiType } from "react-icons/fi";
 import { AchievementData } from "../../../ManageAchievements/ManageAchievementsInterface";
@@ -90,7 +93,8 @@ const AchievementCardOne: React.FC<AchievementCardOneProps> = ({
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [cardIcon, setCardIcon] = useState("");
     const [issuedCredential, setIssuedCredential] = useState<IssuedCredentialResponse | null>(null);
-    const [userDID, setUserDID] = useState(initialUserDID); // Local state for DID
+    const [availableDIDs, setAvailableDIDs] = useState<string[]>([]); // Changed to array
+    const [selectedDID, setSelectedDID] = useState<string>(""); // New state for selected DID
     const [isRefreshing, setIsRefreshing] = useState(false);
     const [didLinkStatus, setDidLinkStatus] = useState<'checking' | 'linked' | 'not-linked'>('not-linked');
     const userEmail = useUserStore((state) => state.userInfo?.email || "");
@@ -110,14 +114,34 @@ const AchievementCardOne: React.FC<AchievementCardOneProps> = ({
         setCardIcon(levelIcons[achievement.achievement.achievement_name] || levelIcons["Level 1"]);
     }, [achievement]);
 
-    useEffect(() => {
-        setUserDID(initialUserDID);
-        setDidLinkStatus(initialUserDID ? 'linked' : 'not-linked');
-    }, [initialUserDID]);
-
-    const handleButtonClick = () => {
+    const handleButtonClick = async () => {
         if (fromUserSearch && !achievement.is_issued) return;
-        onOpen();
+        
+        // Fetch DIDs when modal opens
+        if (!achievement.is_issued && muid) {
+            setDidLinkStatus('checking');
+            onOpen();
+            
+            try {
+                const dids = await getConnectedUsers('muid', muid);
+                if (dids && dids.length > 0) {
+                    setAvailableDIDs(dids);
+                    setSelectedDID(dids[0]); // Default to first DID
+                    setDidLinkStatus('linked');
+                } else {
+                    setAvailableDIDs([]);
+                    setSelectedDID("");
+                    setDidLinkStatus('not-linked');
+                }
+            } catch (error) {
+                console.error("Error fetching DIDs:", error);
+                setAvailableDIDs([]);
+                setSelectedDID("");
+                setDidLinkStatus('not-linked');
+            }
+        } else {
+            onOpen();
+        }
     };
 
     const handleRefreshDID = async () => {
@@ -132,22 +156,27 @@ const AchievementCardOne: React.FC<AchievementCardOneProps> = ({
         try {
             const connectedUsersResponse = await getConnectedUsers('muid', muid);
             
-            if (connectedUsersResponse) {
-                setUserDID(connectedUsersResponse);
+            if (connectedUsersResponse && connectedUsersResponse.length > 0) {
+                setAvailableDIDs(connectedUsersResponse);
+                setSelectedDID(connectedUsersResponse[0]); // Default to first DID
                 setDidLinkStatus('linked');
-                toast.success("DID linked successfully! You can now issue your credential.");
+                toast.success("DID(s) linked successfully! You can now issue your credential.");
                 
-                // Update parent component with new DID
+                // Update parent component with first DID
                 if (onDIDUpdate) {
-                    onDIDUpdate(connectedUsersResponse);
+                    onDIDUpdate(connectedUsersResponse[0]);
                 }
             } else {
                 setDidLinkStatus('not-linked');
+                setAvailableDIDs([]);
+                setSelectedDID("");
                 toast.error("DID not found. Please make sure you've linked your account in the QSeverse app.");
             }
         } catch (error) {
             console.error("Error refreshing DID:", error);
             setDidLinkStatus('not-linked');
+            setAvailableDIDs([]);
+            setSelectedDID("");
             toast.error("Failed to refresh DID status. Please try again.");
         } finally {
             setIsRefreshing(false);
@@ -155,15 +184,15 @@ const AchievementCardOne: React.FC<AchievementCardOneProps> = ({
     };
 
     const handleIssueVC = async () => {
-        if (!userDID) {
-            toast.error("Please link your DID to issue a Verifiable Credential.");
+        if (!selectedDID) {
+            toast.error("Please select a DID to issue the Verifiable Credential.");
             return;
         }
 
         try {
             const subject_info: SubjectInfo = {
                 type: "Badge",
-                did: userDID,
+                did: selectedDID,
                 name: usersName || "",
                 email: userEmail || "",
             };
@@ -198,7 +227,16 @@ const AchievementCardOne: React.FC<AchievementCardOneProps> = ({
     };
 
     const renderModalContent = () => {
-        if (!userDID) {
+        if (didLinkStatus === 'checking') {
+            return (
+                <VStack spacing={4} align="stretch" py={8}>
+                    <Spinner size="xl" mx="auto" />
+                    <Text textAlign="center">Loading your DIDs...</Text>
+                </VStack>
+            );
+        }
+        
+        if (availableDIDs.length === 0 && !issuedCredential) {
             return (
                 <VStack spacing={{ base: 3, md: 4 }} align="stretch">
                     <Text fontSize={{ base: "sm", md: "md" }}>
@@ -212,14 +250,6 @@ const AchievementCardOne: React.FC<AchievementCardOneProps> = ({
                         <li>Log in to your existing MuLearn account.</li>
                         <li>That's it! Your DID is linked to your account.</li>
                     </ul>
-                    
-                    {didLinkStatus === 'checking' && (
-                        <Alert status="info" variant="subtle">
-                            <AlertDescription>
-                                Checking DID link status...
-                            </AlertDescription>
-                        </Alert>
-                    )}
                 </VStack>
             );
         }
@@ -339,16 +369,55 @@ const AchievementCardOne: React.FC<AchievementCardOneProps> = ({
         }
 
         return (
-            <Text fontSize={{ base: "sm", md: "md" }}>
-                {achievement.achievement.description}
-                <br />
-                Ready to issue your Verifiable Credential?
-            </Text>
+            <VStack spacing={{ base: 3, md: 4 }} align="stretch">
+                <Text fontSize={{ base: "sm", md: "md" }}>
+                    {achievement.achievement.description}
+                </Text>
+                
+                {availableDIDs.length > 1 && (
+                    <FormControl>
+                        <FormLabel fontSize={{ base: "sm", md: "md" }}>
+                            Select DID to issue credential to:
+                        </FormLabel>
+                        <RadioGroup value={selectedDID} onChange={setSelectedDID}>
+                            <VStack align="stretch" spacing={2}>
+                                {availableDIDs.map((did, index) => (
+                                    <Radio 
+                                        key={did} 
+                                        value={did}
+                                        size="sm"
+                                        colorScheme="blue"
+                                    >
+                                        <Text fontSize="sm" wordBreak="break-all">
+                                            DID {index + 1}: {did}
+                                        </Text>
+                                    </Radio>
+                                ))}
+                            </VStack>
+                        </RadioGroup>
+                    </FormControl>
+                )}
+                
+                {availableDIDs.length === 1 && (
+                    <Box bg="gray.50" p={3} borderRadius="md">
+                        <Text fontSize="xs" color="gray.600" fontWeight="semibold" mb={1}>
+                            Your DID:
+                        </Text>
+                        <Text fontSize="xs" wordBreak="break-all">
+                            {availableDIDs[0]}
+                        </Text>
+                    </Box>
+                )}
+                
+                <Text fontSize={{ base: "xs", md: "sm" }} color="gray.600">
+                    Ready to issue your Verifiable Credential?
+                </Text>
+            </VStack>
         );
     };
 
     const renderModalFooter = () => {
-        if (!userDID) {
+        if (availableDIDs.length === 0) {
             return (
                 <>
                     <Button
@@ -527,7 +596,9 @@ const AchievementCardOne: React.FC<AchievementCardOneProps> = ({
                 <ModalOverlay />
                 <ModalContent>
                     <ModalHeader fontSize={{ base: "lg", md: "xl" }}>
-                        {!userDID
+                        {didLinkStatus === 'checking'
+                            ? "Loading..."
+                            : availableDIDs.length === 0
                             ? "Link Your DID"
                             : issuedCredential
                             ? "Credential Issued"
