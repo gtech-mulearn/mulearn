@@ -5,7 +5,7 @@ export const dashboardShepherdTourSteps: ShepherdStep[] = [
   {
     element: '.mu-tour-welcome',
     popover: {
-      title: 'Welcome to µLearn! 👋',
+      title: 'Welcome to µLearn!',
       description: 'This is your personalized dashboard where you can track your learning journey, connect with peers, and explore exciting opportunities.',
       side: 'bottom',
       align: 'center',
@@ -102,7 +102,7 @@ export const navigationShepherdTourSteps: ShepherdStep[] = [
 export const firstTimeShepherdTourSteps: ShepherdStep[] = [
   {
     popover: {
-      title: 'Welcome to µLearn! 🎉',
+      title: 'Welcome to µLearn!',
       description: 'Let\'s take a quick tour to help you get started on your learning journey. This will only take a minute!',
       side: 'bottom',
       align: 'center',
@@ -111,8 +111,8 @@ export const firstTimeShepherdTourSteps: ShepherdStep[] = [
   ...dashboardShepherdTourSteps,
   {
     popover: {
-      title: 'Tour Complete! ✨',
-      description: 'You\'re all set! Start exploring, join learning circles, and begin your amazing learning journey with µLearn. Happy learning! 🚀',
+      title: 'Tour Complete!',
+      description: 'You\'re all set! Start exploring, join learning circles, and begin your amazing learning journey with µLearn. Happy learning!',
       side: 'bottom',
       align: 'center',
     },

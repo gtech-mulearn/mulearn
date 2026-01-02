@@ -144,82 +144,67 @@ const Profile = () => {
     const [userPreferences, setUserPreferences] = useState<any>(null);
     const [preferencesLoading, setPreferencesLoading] = useState(false);
 
-    console.log('Profile tour steps imported:', profileShepherdTourSteps);
-
     // Initialize Profile Tour - using Shepherd.js for better scroll handling
     const tour = useMuShepherdTour({
         steps: profileShepherdTourSteps,
         onComplete: () => {
-            console.log('Profile tour completed!');
+            localStorage.setItem('hasSeenProfileTour', 'true');
         },
         onSkip: () => {
-            console.log('Profile tour skipped!');
+            localStorage.setItem('hasSeenProfileTour', 'true');
         },
         onNextClick: (element: Element | undefined, step: any, options: { config: any; state: any }) => {
             const stepIndex = options.state.activeIndex;
-            console.log('Next - Step index:', stepIndex);
             
             // Step 8: Switch to karma history tab
             if (stepIndex === 8) {
-                console.log('Switching to karma history tab for step 9...');
                 setProfileList("karma-history");
             }
             // Step 10: Switch to mu voyage tab  
             else if (stepIndex === 10) {
-                console.log('Switching to mu voyage tab for step 11...');
                 setProfileList("mu-voyage");
             }
             // Step 12: Switch to achievements tab
             else if (stepIndex === 12) {
-                console.log('Switching to achievements tab for step 13...');
                 setProfileList("achievements");
             }
         },
         onPrevClick: (element: Element | undefined, step: any, options: { config: any; state: any }) => {
             const stepIndex = options.state.activeIndex;
-            console.log('Previous - Step index:', stepIndex);
             
             // Going back from step 9 (karma history content) to step 8 (karma history tab)
             // Need to ensure we're still on karma history tab
             if (stepIndex === 9) {
-                console.log('Going back to karma history tab...');
                 setProfileList("karma-history");
             }
             // Going back from step 11 (mu voyage content) to step 10 (mu voyage tab)
             // Need to switch back to mu voyage tab
             else if (stepIndex === 11) {
-                console.log('Going back to mu voyage tab...');
                 setProfileList("mu-voyage");
             }
             // Going back from step 13 (achievements content) to step 12 (achievements tab) 
             // Need to switch back to achievements tab
             else if (stepIndex === 13) {
-                console.log('Going back to achievements tab...');
                 setProfileList("achievements");
             }
             // Going back from step 10 (mu voyage tab) to step 9 (karma history content)
             // Need to switch back to karma history tab
             else if (stepIndex === 10) {
-                console.log('Going back from mu voyage tab to karma history...');
                 setProfileList("karma-history");
             }
             // Going back from step 12 (achievements tab) to step 11 (mu voyage content)
             // Need to switch back to mu voyage tab
             else if (stepIndex === 12) {
-                console.log('Going back from achievements tab to mu voyage...');
                 setProfileList("mu-voyage");
             }
             // Going back from step 8 (karma history tab) to basic profile
             // Switch back to basic details tab
             else if (stepIndex === 8) {
-                console.log('Going back to basic details...');
                 setProfileList("basic-details");
             }
         },
         className: 'profile-tour'
     });
-
-    console.log('Profile tour initialized:', tour);
 
     // Add a new useEffect to fetch user preferences
     useEffect(() => {
@@ -330,26 +315,17 @@ const Profile = () => {
     const tourStartedRef = useRef(false);
     
     useEffect(() => {
-        console.log('Profile tour effect triggered:', {
-            firstName: userProfile.full_name,
-            APILoadStatus,
-            tourStarted: tourStartedRef.current,
-            pathname: location.pathname
-        });
-
         // Only run on the profile page
         const isProfilePage = location.pathname.includes('/profile');
         
-        // Check if user has already seen the profile tour (temporarily disabled for testing)
-        const hasSeenProfileTour = false; // localStorage.getItem('hasSeenProfileTour');
+        // Check if user has already seen the profile tour
+        const hasSeenProfileTour = localStorage.getItem('hasSeenProfileTour');
 
         if (userProfile.full_name && APILoadStatus === 200 && !tourStartedRef.current && isProfilePage && !hasSeenProfileTour) {
-            console.log('Profile data loaded, starting profile tour...');
             tourStartedRef.current = true;
             
-            // Mark that the user has seen the profile tour (temporarily disabled for testing)
-            // localStorage.setItem('hasSeenProfileTour', 'true');
-            
+            // Mark that the user has seen the profile tour
+            localStorage.setItem('hasSeenProfileTour', 'true');
             // Wait for DOM to be fully ready and elements to be positioned
             setTimeout(() => {
                 // Double-check that all required elements exist before starting
@@ -362,24 +338,17 @@ const Profile = () => {
                 
                 const allElementsReady = elementsToCheck.every(selector => {
                     const element = document.querySelector(selector);
-                    const exists = !!element;
-                    console.log(`Element check ${selector}:`, exists);
-                    return exists;
+                    return !!element;
                 });
                 
                 if (allElementsReady && tour.startTour) {
-                    console.log('All elements ready, starting tour now...');
                     tour.startTour();
                 } else {
-                    console.warn('Some tour elements not ready, retrying...', {
-                        allElementsReady,
-                        tourStartFunction: !!tour.startTour
-                    });
                     tourStartedRef.current = false; // Reset to allow retry
                 }
             }, 1200);
         }
-    }, [userProfile.full_name, APILoadStatus, location.pathname]); // Added location.pathname dependency
+    }, [userProfile.full_name, APILoadStatus, location.pathname]);
 
     // Reset tour started flag when navigating to different profiles
     useEffect(() => {
@@ -585,26 +554,6 @@ const Profile = () => {
                                                     <i className="fi fi-rr-pencil mu-tour-edit-icon"></i>
                                                 </p>
                                             )}
-                                        </div>
-                                        <div>
-                                            {/* Manual Tour Button for testing */}
-                                            <div style={{
-                                                position: 'fixed',
-                                                top: '20px',
-                                                right: '20px',
-                                                zIndex: 1000
-                                            }}>
-                                                <MuShepherdTourButton 
-                                                    onClick={() => {
-                                                        console.log('Manual profile tour started');
-                                                        tourStartedRef.current = false; // Reset to allow manual start
-                                                        tour.startTour();
-                                                    }}
-                                                    variant="primary"
-                                                >
-                                                    🎯 Start Profile Tour
-                                                </MuShepherdTourButton>
-                                            </div>
                                         </div>
 
                                         <div className="mu-tour-basic-details">
