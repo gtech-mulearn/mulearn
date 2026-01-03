@@ -106,3 +106,20 @@ export const getUUID = async () => {
     }
     return response;
 };
+
+
+export const deleteKarmaVoucher = async (id: string) => {
+    try{
+        const response = await privateGateway.delete(
+            dashboardRoutes.getKarmaVoucher + `delete/${id}/`
+        );
+        return response.data;
+    }
+    catch(err: unknown){
+        const error = err as AxiosError;
+        if (error?.response) {
+            console.warn(error.response);
+            return error.response;
+        }
+    }
+};
