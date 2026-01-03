@@ -35,16 +35,16 @@ const DashboardRootLayout = (props: { component?: any }) => {
     const initializeUserData = async () => {
       try {
         setIsLoading(true);
-        
+
         // Check if user has refresh token (is logged in)
         const refreshToken = localStorage.getItem("refreshToken");
-        
+
         if (!refreshToken) {
           // For non-logged-in users, skip API calls and set loading to false
           setIsLoading(false);
           return;
         }
-        
+
         // Always fetch fresh user data on dashboard load to ensure we have the latest information
         // This is important for detecting level changes, karma updates, etc.
         const profileResponse = await privateGateway.get(dashboardRoutes.getUserProfile);
@@ -149,7 +149,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
       url: "/dashboard/launchpad",
       title: "Launchpad",
       hasView: true,
-      icon: <FaRocket/>
+      icon: <FaRocket />
     },
     {
       url: "/dashboard/special-events",

@@ -99,6 +99,11 @@ const SearchMain = lazy(() => import("./modules/Dashboard/modules/Search/Pages/S
 const CampusDetails = lazy(() => import("./modules/Dashboard/modules/Campus/components/CampusForum/CampusPage-demo"));
 const LearningPathDetailPage = lazy(() => import("./modules/Dashboard/modules/InterestGroups/components/LearningPathDetailPage"));
 const ManageAchievements = lazy(() => import("./modules/Dashboard/modules/ManageAchievements/ManageAchievements"));
+const ManageRulesAchievement = lazy(() => import("./modules/Dashboard/modules/ManageAchievements/ManageRules"));
+const SimulateDebugAchievement = lazy(() => import("./modules/Dashboard/modules/ManageAchievements/SimulateDebug"));
+const AuditLogsAchievement = lazy(() => import("./modules/Dashboard/modules/ManageAchievements/AuditLogs"));
+const ManualOperationsAchievement = lazy(() => import("./modules/Dashboard/modules/ManageAchievements/ManualOperations"));
+const AchievementDefinitions = lazy(() => import("./modules/Dashboard/modules/ManageAchievements/AchievementDefinitions"));
 const Profile = lazy(() => import("./modules/Dashboard/modules/Profile/pages/Profile"));
 const KarmaVoucher = lazy(() => import("./modules/Dashboard/modules/KarmaVoucher/KarmaVoucher"));
 const KarmaVoucherBulkImport = lazy(() => import("./modules/Dashboard/modules/KarmaVoucher/components/KarmaVoucherBulkImport"));
@@ -219,6 +224,11 @@ function App() {
 
             { path: "management", element: <AuthChecker roles={[roles.ADMIN]} children={<ManagementPage />} /> },
             { path: "management/manage-achievements", element: <AuthChecker roles={[roles.ADMIN]} children={<ManageAchievements />} /> },
+            { path: "management/manage-achievements/rules", element: <AuthChecker roles={[roles.ADMIN]} children={<ManageRulesAchievement />} /> },
+            { path: "management/manage-achievements/simulate", element: <AuthChecker roles={[roles.ADMIN]} children={<SimulateDebugAchievement />} /> },
+            { path: "management/manage-achievements/audit", element: <AuthChecker roles={[roles.ADMIN]} children={<AuditLogsAchievement />} /> },
+            { path: "management/manage-achievements/manual", element: <AuthChecker roles={[roles.ADMIN]} children={<ManualOperationsAchievement />} /> },
+            { path: "management/manage-achievements/definitions", element: <AuthChecker roles={[roles.ADMIN]} children={<AchievementDefinitions />} /> },
             { path: "management/user-management/manage-users", element: <AuthChecker roles={[roles.ADMIN]} children={<ManageUsersPage />} /> },
             { path: "management/user-management/user-role-verification", element: <AuthChecker roles={[roles.ADMIN]} children={<UserRoleVerificationPage />} /> },
             { path: "management/organization/affiliation", element: <AuthChecker roles={[roles.ADMIN]} children={<AffiliationPage />} /> },
@@ -324,8 +334,8 @@ function App() {
   return (
     <>
       <Suspense fallback={<div className="flex items-center justify-center w-screen h-screen"><MuLoader /></div>}>
-        <RouterProvider 
-                router={router}/>
+        <RouterProvider
+          router={router} />
       </Suspense>
       <Toaster position="bottom-center" reverseOrder={true} />
       <iframe src={`${import.meta.env.VITE_HOME_MULEARN_URL}/cdr`} id="__cdr" ref={cdrIframe} onLoad={() => sendRefreshToken()} style={{ display: "none" }}></iframe>

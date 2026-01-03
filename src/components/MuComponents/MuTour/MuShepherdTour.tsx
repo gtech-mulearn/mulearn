@@ -98,9 +98,9 @@ export const useMuShepherdTour = ({
     const shepherdSteps = steps.map((step, index) => {
       const isFirst = index === 0;
       const isLast = index === steps.length - 1;
-      
+
       const buttons = [];
-      
+
       if (allowClose && showButtons.includes('close')) {
         buttons.push({
           text: 'Skip Tour',
@@ -122,7 +122,7 @@ export const useMuShepherdTour = ({
             if (onPrevClick) {
               const element = step.element ? document.querySelector(step.element) || undefined : undefined;
               onPrevClick(element, step, { config: {}, state: { activeIndex: index } });
-              
+
               // For tab switching steps, wait for DOM to update before proceeding
               const needsDelay = index === 8 || index === 9 || index === 10 || index === 11 || index === 12 || index === 13; // Steps that involve tab content
               if (needsDelay) {
@@ -167,7 +167,7 @@ export const useMuShepherdTour = ({
             if (onNextClick) {
               const element = step.element ? document.querySelector(step.element) || undefined : undefined;
               onNextClick(element, step, { config: {}, state: { activeIndex: index } });
-              
+
               // For tab switching steps, wait for DOM to update before proceeding
               const needsDelay = index === 8 || index === 10 || index === 12; // Steps that trigger tab switches
               if (needsDelay) {
@@ -231,13 +231,13 @@ export const useMuShepherdTour = ({
         const viewportHeight = window.innerHeight;
         const popoverWidth = 350; // Approximate popover width
         const popoverHeight = 200; // Approximate popover height
-        
+
         // Check available space around the element
         const spaceAbove = rect.top;
         const spaceBelow = viewportHeight - rect.bottom;
         const spaceLeft = rect.left;
         const spaceRight = viewportWidth - rect.right;
-        
+
         // Determine best position based on available space
         if (step.popover?.side) {
           // Use specified side if there's enough space
@@ -248,13 +248,13 @@ export const useMuShepherdTour = ({
             case 'right': return spaceRight > popoverWidth + 20 ? 'right' : 'left';
           }
         }
-        
+
         // Auto-determine best position
         if (spaceBelow > popoverHeight + 20) return 'bottom';
         if (spaceAbove > popoverHeight + 20) return 'top';
         if (spaceRight > popoverWidth + 20) return 'right';
         if (spaceLeft > popoverWidth + 20) return 'left';
-        
+
         // Fallback to bottom if no optimal position found
         return 'bottom';
       };
@@ -293,12 +293,12 @@ export const useMuShepherdTour = ({
                 const element = document.querySelector(step.element!);
                 if (element) {
                   // Element found, ensure it's visible and properly positioned
-                  element.scrollIntoView({ 
-                    behavior: 'smooth', 
+                  element.scrollIntoView({
+                    behavior: 'smooth',
                     block: 'center',
                     inline: 'center'
                   });
-                  
+
                   // Wait for scroll to complete
                   setTimeout(() => {
                     resolve();
@@ -345,15 +345,15 @@ export const useMuShepherdTour = ({
         const allSteps = tourRef.current.steps || [];
         const currentIndex = allSteps.findIndex(step => step === currentStep);
         const stepNumber = currentIndex >= 0 ? currentIndex + 1 : 1;
-        
+
         console.log('Updating step counter:', { currentIndex, stepNumber, totalSteps: steps.length });
-        
+
         // Update the progress text dynamically
         const progressTextElement = document.querySelector('.mu-tour-progress-text');
         if (progressTextElement) {
           progressTextElement.textContent = `Step ${stepNumber} of ${steps.length}`;
         }
-        
+
         // Update progress bar
         const progressBarElement = document.querySelector('.mu-tour-progress-bar') as HTMLElement;
         if (progressBarElement) {
@@ -377,7 +377,7 @@ export const useMuShepherdTour = ({
       if (startTimeoutRef.current) {
         clearTimeout(startTimeoutRef.current);
       }
-      
+
       startTimeoutRef.current = setTimeout(() => {
         if (tourRef.current && !tourRef.current.isActive()) {
           console.log('Auto-starting tour after delay...');
@@ -392,7 +392,7 @@ export const useMuShepherdTour = ({
         clearTimeout(startTimeoutRef.current);
         startTimeoutRef.current = null;
       }
-      
+
       // Only destroy if component is actually unmounting
       if (tourRef.current) {
         try {

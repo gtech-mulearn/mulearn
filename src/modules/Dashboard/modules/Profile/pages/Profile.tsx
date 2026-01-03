@@ -38,7 +38,6 @@ import { isDev } from "@/MuLearnServices/common_functions";
 import { Img, SimpleGrid, Switch } from "@chakra-ui/react";
 import AchievementCard from "../components/Achievements/AchievementCard";
 import { useUserStore } from "/src/ZustandProvider";
-import { getAchievements } from "../../ManageAchievements/services/api";
 import { AchievementData } from "../../ManageAchievements/ManageAchievementsInterface";
 import AchievementCardOne from "../components/Achievements/AchievementCardOne";
 import toast from "react-hot-toast";
@@ -158,7 +157,7 @@ const Profile = () => {
         onNextClick: (element: Element | undefined, step: any, options: { config: any; state: any }) => {
             const stepIndex = options.state.activeIndex;
             console.log('Next - Step index:', stepIndex);
-            
+
             // Step 8: Switch to karma history tab
             if (stepIndex === 8) {
                 console.log('Switching to karma history tab for step 9...');
@@ -178,7 +177,7 @@ const Profile = () => {
         onPrevClick: (element: Element | undefined, step: any, options: { config: any; state: any }) => {
             const stepIndex = options.state.activeIndex;
             console.log('Previous - Step index:', stepIndex);
-            
+
             // Going back from step 9 (karma history content) to step 8 (karma history tab)
             // Need to ensure we're still on karma history tab
             if (stepIndex === 9) {
@@ -278,7 +277,6 @@ const Profile = () => {
                     setAchievements(achievements);
                 } catch (error) {
                     console.error("Error fetching achievements:", error);
-                    // toast.error("Failed to fetch achievements.");
                 } finally {
                     setIsLoading(false);
                 }
@@ -328,7 +326,7 @@ const Profile = () => {
 
     // Start tour when profile data is loaded - only on profile page for first-time users
     const tourStartedRef = useRef(false);
-    
+
     useEffect(() => {
         console.log('Profile tour effect triggered:', {
             firstName: userProfile.full_name,
@@ -339,34 +337,34 @@ const Profile = () => {
 
         // Only run on the profile page
         const isProfilePage = location.pathname.includes('/profile');
-        
+
         // Check if user has already seen the profile tour (temporarily disabled for testing)
         const hasSeenProfileTour = false; // localStorage.getItem('hasSeenProfileTour');
 
         if (userProfile.full_name && APILoadStatus === 200 && !tourStartedRef.current && isProfilePage && !hasSeenProfileTour) {
             console.log('Profile data loaded, starting profile tour...');
             tourStartedRef.current = true;
-            
+
             // Mark that the user has seen the profile tour (temporarily disabled for testing)
             // localStorage.setItem('hasSeenProfileTour', 'true');
-            
+
             // Wait for DOM to be fully ready and elements to be positioned
             setTimeout(() => {
                 // Double-check that all required elements exist before starting
                 const elementsToCheck = [
                     '.mu-tour-muid',
-                    '.mu-tour-avatar', 
+                    '.mu-tour-avatar',
                     '.mu-tour-level',
                     '.mu-tour-basic-details'
                 ];
-                
+
                 const allElementsReady = elementsToCheck.every(selector => {
                     const element = document.querySelector(selector);
                     const exists = !!element;
                     console.log(`Element check ${selector}:`, exists);
                     return exists;
                 });
-                
+
                 if (allElementsReady && tour.startTour) {
                     console.log('All elements ready, starting tour now...');
                     tour.startTour();
@@ -594,7 +592,7 @@ const Profile = () => {
                                                 right: '20px',
                                                 zIndex: 1000
                                             }}>
-                                                <MuShepherdTourButton 
+                                                <MuShepherdTourButton
                                                     onClick={() => {
                                                         console.log('Manual profile tour started');
                                                         tourStartedRef.current = false; // Reset to allow manual start
