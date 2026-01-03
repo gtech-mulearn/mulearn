@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import styles from "../InterestGroup/InterestGroup.module.css";
-import { getKarmaVoucher } from "./service/api";
+import { getKarmaVoucher, deleteKarmaVoucher } from "./service/api";
 import { Blank } from "@/MuLearnComponents/Table/Blank";
 import toast from "react-hot-toast";
 
@@ -144,6 +144,37 @@ const KarmaVoucher = (props: Props) => {
             );
         }
     };
+
+    const handleDelete = async (id: string | undefined) => {
+        if (!id) {
+            toast.error("Invalid voucher ID");
+            return;
+        }
+
+        try {
+            const response = await deleteKarmaVoucher(id);
+            if (response?.statusCode === 200) {
+                toast.success("Karma voucher deleted successfully");
+                // Refresh the table data
+                getKarmaVoucher(
+                    setData,
+                    currentPage,
+                    perPage,
+                    setIsLoading,
+                    setTotalPages,
+                    handleError,
+                    "",
+                    sort
+                );
+            } else {
+                toast.error(response?.message?.general?.[0] || "Failed to delete karma voucher");
+            }
+        } catch (error) {
+            toast.error("An error occurred while deleting the karma voucher");
+            console.error(error);
+        }
+    };
+
     return (
         <>
             <div
@@ -177,8 +208,9 @@ const KarmaVoucher = (props: Props) => {
                         perPage={perPage}
                         columnOrder={columnOrder}
                         id={["id"]}
+                        onDeleteClick={handleDelete}
                         modalTypeContent="error"
-                        modalDeleteContent="Are you sure you want to delete ?"
+                        modalDeleteContent="Are you sure you want to delete this karma voucher?"
                     >
                         <THead
                             columnOrder={columnOrder}
