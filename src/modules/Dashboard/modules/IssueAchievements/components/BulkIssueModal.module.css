@@ -107,5 +107,6 @@
 .submitBtn {
     width: 100%;
     background-color: #007bff;
-    color: white;
+    color: white !important;
+    padding: .5rem;
 }
