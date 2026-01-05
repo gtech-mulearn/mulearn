@@ -146,6 +146,8 @@ const ConnectedDevices = lazy(() => import("./modules/Dashboard/modules/Settings
 const Wadhwani = lazy(() => import("./modules/Dashboard/modules/Wadhwani"));
 const ResetPassword = lazy(() => import("./modules/Common/Authentication/pages/Onboarding/ResetPassword/ResetPassword"));
 
+const IssueAchievements = lazy(() => import("./modules/Dashboard/modules/IssueAchievements/IssueAchievements"));
+
 function App() {
   const AuthChecker = SecureAuthRoutes();
   const router = createBrowserRouter([
@@ -219,6 +221,7 @@ function App() {
 
             { path: "management", element: <AuthChecker roles={[roles.ADMIN]} children={<ManagementPage />} /> },
             { path: "management/manage-achievements", element: <AuthChecker roles={[roles.ADMIN]} children={<ManageAchievements />} /> },
+            { path: "management/issue-achievements", element: <AuthChecker roles={[roles.ADMIN]} children={<IssueAchievements />} /> },
             { path: "management/user-management/manage-users", element: <AuthChecker roles={[roles.ADMIN]} children={<ManageUsersPage />} /> },
             { path: "management/user-management/user-role-verification", element: <AuthChecker roles={[roles.ADMIN]} children={<UserRoleVerificationPage />} /> },
             { path: "management/organization/affiliation", element: <AuthChecker roles={[roles.ADMIN]} children={<AffiliationPage />} /> },
@@ -324,8 +327,8 @@ function App() {
   return (
     <>
       <Suspense fallback={<div className="flex items-center justify-center w-screen h-screen"><MuLoader /></div>}>
-        <RouterProvider 
-                router={router}/>
+        <RouterProvider
+          router={router} />
       </Suspense>
       <Toaster position="bottom-center" reverseOrder={true} />
       <iframe src={`${import.meta.env.VITE_HOME_MULEARN_URL}/cdr`} id="__cdr" ref={cdrIframe} onLoad={() => sendRefreshToken()} style={{ display: "none" }}></iframe>
