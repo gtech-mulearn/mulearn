@@ -1,5 +1,5 @@
-import { privateGateway } from "@/services/apiGateways";
-import { qseverseRoutes } from "@/services/urls";
+import { privateGateway } from "../../../../../services/apiGateways";
+import { qseverseRoutes } from "../../../../../services/urls";
 import * as React from "react";
 
 export const getAchievements = async (

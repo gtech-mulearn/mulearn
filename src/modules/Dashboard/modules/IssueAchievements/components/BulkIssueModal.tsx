@@ -95,7 +95,7 @@ const BulkIssueModal: React.FC<Props> = ({ isOpen, onClose, achievements, onSubm
                             <div className={styles.buttonGroup}>
                                 <MuButton
                                     text={isSubmitting ? "Issuing..." : "Issue Achievements"}
-                                    submit={true}
+                                    type="submit"
                                     className={styles.submitBtn}
                                 />
                             </div>
