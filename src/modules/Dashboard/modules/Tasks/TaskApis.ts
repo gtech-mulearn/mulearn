@@ -109,7 +109,8 @@ export const editTask = async (
     id: string | undefined,
     event: string,
     bonus_time?: string,
-    bonus_karma?: string
+    bonus_karma?: string,
+    skill_ids?: string[]
 ) => {
     try {
         let formattedBonusTime: string | null;
@@ -141,7 +142,8 @@ export const editTask = async (
                 event: event === "" ? null : event,
                 bonus_time:
                     formattedBonusTime === "" ? null : formattedBonusTime,
-                bonus_karma: parseInt(bonus_karma ?? "0")
+                bonus_karma: parseInt(bonus_karma ?? "0"),
+                skill_ids: skill_ids ?? []
             },
             {
                 headers: {
@@ -177,7 +179,8 @@ export const createTask = async (
     discord_link: string,
     event: string,
     bonus_time?: string,
-    bonus_karma?: string
+    bonus_karma?: string,
+    skill_ids?: string[]
 ) => {
     try {
         const formattedBonusTime = bonus_time
@@ -203,7 +206,8 @@ export const createTask = async (
                 event: event === "" ? null : event,
                 bonus_time:
                     formattedBonusTime === "" ? null : formattedBonusTime,
-                bonus_karma: parseInt(bonus_karma ?? "0")
+                bonus_karma: parseInt(bonus_karma ?? "0"),
+                skill_ids: skill_ids ?? []
             },
             {
                 headers: {
@@ -243,20 +247,30 @@ export const getUUID = async () => {
         ig: dashboardRoutes.getTaskIGs,
         organization: dashboardRoutes.getTaskOrganizations,
         channel: dashboardRoutes.getTaskChannels,
-        type: dashboardRoutes.getTaskTypes
+        type: dashboardRoutes.getTaskTypes,
+        skill: dashboardRoutes.getTaskSkills
     };
 
     const response: Partial<uuidType> = {};
     for (let key in uuids) {
-        response[key as keyof uuidType] = (
-            (await privateGateway.get(uuids[key])).data.response as Array<any>
-        ).sort((a, b) =>
-            //check for name/title key and then compare
-            (a.name !== undefined && a.name < b.name) ||
-            (a.title !== undefined && a.title < b.title)
-                ? -1
-                : 1
-        );
+        try {
+            response[key as keyof uuidType] = (
+                (await privateGateway.get(uuids[key])).data.response as Array<any>
+            ).sort((a, b) =>
+                //check for name/title key and then compare
+                (a.name !== undefined && a.name < b.name) ||
+                (a.title !== undefined && a.title < b.title)
+                    ? -1
+                    : 1
+            );
+        } catch (err) {
+            // If skill endpoint fails (not available yet), continue with empty array
+            if (key === 'skill') {
+                response[key as keyof uuidType] = [];
+            } else {
+                throw err;
+            }
+        }
     }
     return response;
 };

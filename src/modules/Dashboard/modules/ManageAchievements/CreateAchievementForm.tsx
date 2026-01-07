@@ -12,7 +12,9 @@ import { AxiosError } from "axios";
 
 interface ExtendedAchievementData extends AchievementData {
     template_id?: string;
-    level_id?: string; // Added level_id to the interface
+    level_id?: string;
+    is_active?: boolean;
+    skill_id?: string;
 }
 
 type Props = {
@@ -46,7 +48,9 @@ const CreateAchievementForm = forwardRef((props: Props, ref: any) => {
         vcToken: false,
         icon: "",
         template_id: "",
-        level_id: "" // Added level_id to initial state
+        level_id: "",
+        is_active: true,
+        skill_id: ""
     });
     const [qsTemplates, setQstemplates] = useState<any>([]);
     const [selectedPreset, setSelectedPreset] = useState<any>(null);
@@ -117,7 +121,7 @@ const CreateAchievementForm = forwardRef((props: Props, ref: any) => {
                 template_id: "",
                 description: "",
                 level_id: "", // Reset level_id
-              
+
             });
         }
         setUseQSeverse(prev => !prev);
@@ -213,7 +217,9 @@ const CreateAchievementForm = forwardRef((props: Props, ref: any) => {
                 tags: data.tags,
                 icon: data.icon || "",
                 template_id: data.template_id || "",
-                level_id: data.level_id || "" // Include level_id in submission
+                level_id: data.level_id || "",
+                is_active: data.is_active ?? true,
+                skill_id: data.skill_id || ""
             };
 
             const response = await createAchievements(achievementData);
@@ -224,14 +230,16 @@ const CreateAchievementForm = forwardRef((props: Props, ref: any) => {
                 vcToken: response?.has_vc ?? false,
                 id: response?.id,
                 created_at: response?.created_at || new Date().toISOString(),
-                title: response?.title ?? data.title, // Ensure title is always a string
+                title: response?.title ?? data.title,
                 name: response?.title ?? data.title,
                 description: response?.description ?? data.description,
                 type: response?.type ?? data.type,
                 tags: response?.tags ?? data.tags,
                 icon: response?.icon ?? data.icon,
                 template_id: response?.template_id ?? data.template_id,
-                level_id: response?.level_id ?? data.level_id // Include level_id in response
+                level_id: response?.level_id ?? data.level_id,
+                is_active: response?.is_active ?? data.is_active,
+                skill_id: response?.skill_id ?? data.skill_id
             };
 
             toast.success("Achievement created successfully");
@@ -249,7 +257,9 @@ const CreateAchievementForm = forwardRef((props: Props, ref: any) => {
                 template_id: "",
                 levelBased: false,
                 vcToken: false,
-                level_id: "" // Reset level_id
+                level_id: "",
+                is_active: true,
+                skill_id: ""
             });
             setUseQSeverse(false);
             setTagInput("");
@@ -310,7 +320,7 @@ const CreateAchievementForm = forwardRef((props: Props, ref: any) => {
                         placeholder="Description"
                         value={data.description}
                         onChange={handleChange}
-                        // disabled={isSubmitting || isFieldDisabled("description")}
+                    // disabled={isSubmitting || isFieldDisabled("description")}
                     />
                     {errors.description && <div style={{ color: "red" }}>{errors.description}</div>}
                 </div>
@@ -358,6 +368,36 @@ const CreateAchievementForm = forwardRef((props: Props, ref: any) => {
                         />
                     </label>
                 </div>
+
+                <div className={styles.inputContainer}>
+                    <label>
+                        Active
+                        <Switch
+                            isChecked={data.is_active ?? true}
+                            onChange={() => handleSwitchChange("is_active")}
+                            isDisabled={isSubmitting}
+                        />
+                    </label>
+                </div>
+
+                {uuidData?.skill && uuidData.skill.length > 0 && (
+                    <div className={styles.inputContainer}>
+                        <Select
+                            styles={customReactSelectStyles}
+                            options={uuidData.skill.map((val: any) => ({
+                                value: val.id,
+                                label: val.name
+                            }))}
+                            value={uuidData.skill
+                                .filter((val: any) => val.id === data.skill_id)
+                                .map((val: any) => ({ value: val.id, label: val.name }))[0] || null}
+                            onChange={(option: any) => setData(prev => ({ ...prev, skill_id: option?.value || "" }))}
+                            placeholder="Link to Skill (for skill-based achievements)"
+                            isClearable
+                            isDisabled={isSubmitting}
+                        />
+                    </div>
+                )}
 
                 <div className={styles.inputContainer}>
                     {useQSeverse ? (

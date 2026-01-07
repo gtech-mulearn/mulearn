@@ -91,6 +91,7 @@ export const dashboardRoutes = {
     getTaskTypes: "/api/v1/dashboard/task/task-types/",
     setAlumniStatus: "/api/v1/dashboard/campus/change-student-type/",
     getTaskTemplate: "/api/v1/dashboard/task/base-template/",
+    getTaskSkills: "/api/v1/dashboard/skill/dropdown/",
     getUserList: "/api/v1/dashboard/user/search/",
     getCollegeList: "/api/v1/dashboard/organisation/institutes/college/",
     getSchoolList: "/api/v1/dashboard/organisation/institutes/school/",
@@ -319,16 +320,46 @@ export const donationRoutes = {
 
 
 export const qseverseRoutes = {
+    // Achievement CRUD
     getAchievements: "api/v1/dashboard/achievement/list/",
     createAchievements: "api/v1/dashboard/achievement/create/",
     updateAchievements: "api/v1/dashboard/achievement/update/",
     deleteAchievements: "api/v1/dashboard/achievement/delete/",
     getUserAchievements: "api/v1/dashboard/achievement/list/user/",
+    
+    // Rules Management
+    getRules: "api/v1/dashboard/achievement/rules/",
+    createRule: "api/v1/dashboard/achievement/rules/create/",
+    getRuleDetail: "api/v1/dashboard/achievement/rules/",
+    deactivateRule: "api/v1/dashboard/achievement/rules/",
+    
+    // Simulation & Debug
+    simulate: "api/v1/dashboard/achievement/simulate/",
+    debug: "api/v1/dashboard/achievement/debug/",
+    
+    // Manual Operations
+    manualIssue: "api/v1/dashboard/achievement/manual-issue/",
+    revoke: "api/v1/dashboard/achievement/revoke/",
+    
+    // Audit Logs
+    getAuditLogs: "api/v1/dashboard/achievement/audit/",
+    
+    // VC Issuance
     updateVCURL: "api/v1/dashboard/achievement/issue-vc/",
     issueVerifiableCredentials: "api/v1/integrations/qseverse/issue-vc/",
     getAllConnectedUsers: "api/v1/integrations/qseverse/connected-users/",
     getConnectedUsers: "api/v1/integrations/qseverse/connected-users/search",
     getCredentials: "api/v1/integrations/qseverse/qs-credentials/"
+}
+
+export const skillRoutes = {
+    getSkills: "api/v1/dashboard/skill/",
+    createSkill: "api/v1/dashboard/skill/create/",
+    getSkillDropdown: "api/v1/dashboard/skill/dropdown/",
+    getSkillDetail: "api/v1/dashboard/skill/",
+    updateSkill: "api/v1/dashboard/skill/",
+    deleteSkill: "api/v1/dashboard/skill/",
+    getSkillTasks: "api/v1/dashboard/skill/",
 }
 
 export const manageLaunchpadRoutes = {
