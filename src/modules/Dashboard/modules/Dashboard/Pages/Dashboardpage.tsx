@@ -97,10 +97,10 @@ const DashboardPage = () => {
   const shepherdTour = useMuShepherdTour({
     steps: getDashboardShepherdTourSteps('dashboard'),
     onComplete: () => {
-      console.log('Dashboard Shepherd tour completed!');
+      localStorage.setItem('hasSeenDashboardTour', 'true');
     },
     onSkip: () => {
-      console.log('Dashboard Shepherd tour skipped');
+      localStorage.setItem('hasSeenDashboardTour', 'true');
     }
   });
 
@@ -108,10 +108,10 @@ const DashboardPage = () => {
   const firstTimeShepherdTour = useMuShepherdTour({
     steps: getDashboardShepherdTourSteps('first-time'),
     onComplete: () => {
-      console.log('Dashboard first-time tour completed!');
+      localStorage.setItem('hasSeenDashboardTour', 'true');
     },
     onSkip: () => {
-      console.log('Dashboard first-time tour skipped');
+      localStorage.setItem('hasSeenDashboardTour', 'true');
     }
   });
 
@@ -125,34 +125,15 @@ const DashboardPage = () => {
 
   // Start Shepherd.js tour only on dashboard page for first-time users
   useEffect(() => {
-    // Debug logging to understand the current path
-    console.log('Dashboard tour effect - Debug info:', {
-      currentPath: location.pathname,
-      isLoggedIn,
-      userName,
-      hasSeenTour: localStorage.getItem('hasSeenDashboardTour')
-    });
-    
     // Check if we're on the dashboard home page
     const isDashboardPage = location.pathname === '/dashboard/home';
     
-    // Check if user has already seen the dashboard tour (temporarily disabled for testing)
-    const hasSeenDashboardTour = false; // localStorage.getItem('hasSeenDashboardTour');
-    
-    console.log('Tour start conditions:', {
-      isDashboardPage,
-      isLoggedIn,
-      userNotGuest: userName !== "Guest",
-      hasNotSeenTour: !hasSeenDashboardTour,
-      willStartTour: isLoggedIn && userName !== "Guest" && isDashboardPage && !hasSeenDashboardTour
-    });
+    // Check if user has already seen the dashboard tour
+    const hasSeenDashboardTour = localStorage.getItem('hasSeenDashboardTour');
     
     if (isLoggedIn && userName !== "Guest" && isDashboardPage && !hasSeenDashboardTour) {
-      console.log('✅ All conditions met, starting dashboard tour in 1.5s...');
       const timer = setTimeout(() => {
-        console.log('🚀 Starting Shepherd.js first-time dashboard tour...');
-        
-        // Check if all dashboard tour elements are present (6 required elements)
+        // Check if all dashboard tour elements are present
         const requiredElements = [
           '.mu-tour-welcome', 
           '.mu-tour-start-learning', 
@@ -163,29 +144,21 @@ const DashboardPage = () => {
         ];
         const elementsReady = requiredElements.every(selector => {
           const element = document.querySelector(selector);
-          const exists = !!element;
-          console.log(`Dashboard element check ${selector}:`, exists);
-          return exists;
+          return !!element;
         });
         
         if (elementsReady) {
-          console.log('✅ All dashboard elements ready, starting tour...');
-          // Mark that the user has seen the dashboard tour (temporarily disabled for testing)
-          // localStorage.setItem('hasSeenDashboardTour', 'true');
-          
+          // Mark that the user has seen the dashboard tour
+          localStorage.setItem('hasSeenDashboardTour', 'true');
           handleStartFirstTimeShepherdTour();
         } else {
-          console.warn('❌ Some dashboard tour elements not ready, will retry...');
           // Retry after elements are loaded
           setTimeout(() => {
-            console.log('🔄 Retrying dashboard tour...');
             handleStartFirstTimeShepherdTour();
           }, 1000);
         }
       }, 1500);
       return () => clearTimeout(timer);
-    } else {
-      console.log('❌ Dashboard tour conditions not met');
     }
   }, [isLoggedIn, userName, location.pathname]);
 
@@ -282,11 +255,11 @@ const DashboardPage = () => {
                 transition={{ delay: 1, duration: 0.5 }}
               >
                 <MuShepherdTourButton onClick={handleStartTour} size="sm">
-                  Take a Quick Tour 🎯
+                  Take a Quick Tour
                 </MuShepherdTourButton>
                 {' '}
                 <MuShepherdTourButton onClick={handleStartFirstTimeShepherdTour} size="sm">
-                  First-Time Tour 🚀
+                  First-Time Tour
                 </MuShepherdTourButton>
                 </motion.div>
             </div>

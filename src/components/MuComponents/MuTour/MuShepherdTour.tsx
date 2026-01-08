@@ -74,11 +74,9 @@ export const useMuShepherdTour = ({
       try {
         tourRef.current.complete();
       } catch (error) {
-        console.warn('Error destroying previous tour:', error);
+        // Error destroying previous tour
       }
     }
-
-    console.log('Initializing Shepherd.js tour...');
 
     // Create new tour
     tourRef.current = new Shepherd.Tour({
@@ -136,11 +134,9 @@ export const useMuShepherdTour = ({
                       const waitForElement = () => {
                         const targetElement = document.querySelector(prevStepElement);
                         if (targetElement) {
-                          console.log('Previous target element found, proceeding to previous step');
                           tourRef.current?.back();
                         } else {
-                          console.log('Previous target element not found, waiting...');
-                          setTimeout(waitForElement, 100); // Check again in 100ms
+                          setTimeout(waitForElement, 100);
                         }
                       };
                       waitForElement();
@@ -181,11 +177,9 @@ export const useMuShepherdTour = ({
                       const waitForElement = () => {
                         const targetElement = document.querySelector(nextStepElement);
                         if (targetElement) {
-                          console.log('Target element found, proceeding to next step');
                           tourRef.current?.next();
                         } else {
-                          console.log('Target element not found, waiting...');
-                          setTimeout(waitForElement, 100); // Check again in 100ms
+                          setTimeout(waitForElement, 100);
                         }
                       };
                       waitForElement();
@@ -202,7 +196,7 @@ export const useMuShepherdTour = ({
         });
       } else {
         buttons.push({
-          text: '🎉 Finish Tour',
+          text: 'Finish Tour',
           classes: 'shepherd-button-primary',
           action() {
             if (onComplete) {
@@ -324,14 +318,12 @@ export const useMuShepherdTour = ({
 
     // Event listeners
     tourRef.current?.on('complete', () => {
-      console.log('Tour completed');
       if (onComplete) {
         onComplete();
       }
     });
 
     tourRef.current?.on('cancel', () => {
-      console.log('Tour cancelled/skipped');
       if (onSkip) {
         onSkip();
       }
@@ -345,8 +337,6 @@ export const useMuShepherdTour = ({
         const allSteps = tourRef.current.steps || [];
         const currentIndex = allSteps.findIndex(step => step === currentStep);
         const stepNumber = currentIndex >= 0 ? currentIndex + 1 : 1;
-        
-        console.log('Updating step counter:', { currentIndex, stepNumber, totalSteps: steps.length });
         
         // Update the progress text dynamically
         const progressTextElement = document.querySelector('.mu-tour-progress-text');
@@ -363,7 +353,6 @@ export const useMuShepherdTour = ({
     });
 
     isInitialized.current = true;
-    console.log('Shepherd.js tour initialized successfully');
   }, [steps, showProgress, allowClose, overlayOpacity, smoothScroll, stagePadding, stageRadius, popoverOffset, showButtons, disableActiveInteraction, className, onComplete, onNextClick, onPrevClick, onSkip]);
 
   useEffect(() => {
@@ -380,10 +369,9 @@ export const useMuShepherdTour = ({
       
       startTimeoutRef.current = setTimeout(() => {
         if (tourRef.current && !tourRef.current.isActive()) {
-          console.log('Auto-starting tour after delay...');
           startTour();
         }
-      }, 800); // Slightly longer delay for better stability
+      }, 800);
     }
 
     return () => {
@@ -398,7 +386,7 @@ export const useMuShepherdTour = ({
         try {
           tourRef.current.complete();
         } catch (error) {
-          console.warn('Error destroying tour on cleanup:', error);
+          // Error destroying tour on cleanup
         }
       }
       isInitialized.current = false;
@@ -407,11 +395,9 @@ export const useMuShepherdTour = ({
 
   const startTour = useCallback(() => {
     if (tourRef.current && !tourRef.current.isActive()) {
-      console.log('Starting tour...');
       try {
         tourRef.current.start();
       } catch (error) {
-        console.error('Error starting tour:', error);
         // Reinitialize if there's an error
         isInitialized.current = false;
         initializeTour();
@@ -419,10 +405,6 @@ export const useMuShepherdTour = ({
           tourRef.current.start();
         }
       }
-    } else if (tourRef.current?.isActive()) {
-      console.log('Tour is already active, not starting again');
-    } else {
-      console.warn('Tour not initialized, cannot start tour');
     }
   }, [initializeTour]);
 
@@ -456,7 +438,7 @@ export const useMuShepherdTour = ({
       try {
         tourRef.current.complete();
       } catch (error) {
-        console.warn('Error destroying tour:', error);
+        // Error destroying tour
       }
     }
     isInitialized.current = false;
