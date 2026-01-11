@@ -36,7 +36,7 @@ const tagsOptions = [
 
 const AchievementForm = forwardRef((props: Props, ref: any) => {
     const { achievement } = props;
-    
+
     const [data, setData] = useState<ExtendedAchievementData>({
         id: achievement?.id,
         title: achievement?.title || achievement?.name || "",
@@ -51,11 +51,13 @@ const AchievementForm = forwardRef((props: Props, ref: any) => {
         levelBased: achievement?.level_based ?? achievement?.levelBased ?? false,
         vcToken: achievement?.has_vc ?? achievement?.vcToken ?? false
     });
-    
+
     const [errors, setErrors] = useState<Partial<Record<keyof ExtendedAchievementData, string>>>({});
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [tagInput, setTagInput] = useState("");
     const [uuidData, setUuidData] = useState<{ [index: string]: any[] } | null>(null);
+    const [iconFile, setIconFile] = useState<File | null>(null);
+    const [iconPreview, setIconPreview] = useState<string | null>(achievement?.icon_url || null);
 
     useEffect(() => {
         (async () => {
@@ -103,6 +105,15 @@ const AchievementForm = forwardRef((props: Props, ref: any) => {
         setData(prev => ({ ...prev, type: selectedOption?.value || "" }));
     };
 
+    const handleIconFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            setIconFile(file);
+            setIconPreview(URL.createObjectURL(file));
+            setData(prev => ({ ...prev, icon: "" }));
+        }
+    };
+
     useImperativeHandle(ref, () => ({
         handleSubmitExternally: handleSubmit
     }));
@@ -131,23 +142,38 @@ const AchievementForm = forwardRef((props: Props, ref: any) => {
 
         setIsSubmitting(true);
         try {
-            const achievementData: AchievementData = {
-                id: data.id,
-                title: data.title || "",
-                name: data.title || "",
-                level_based: data.level_based ?? false,
-                levelBased: data.level_based ?? false,
-                description: data.description,
-                has_vc: data.has_vc ?? false,
-                vcToken: data.has_vc ?? false,
-                type: data.type,
-                tags: data.tags,
-                icon: data.icon || "",
-                template_id: data.template_id || "",
-                level_id: data.level_id || ""
-            };
+            let response;
 
-            const response = await updateAchievements(achievementData);
+            // Use FormData if icon file is uploaded
+            if (iconFile) {
+                const formData = new FormData();
+                formData.append("name", data.title || "");
+                formData.append("description", data.description);
+                formData.append("has_vc", String(data.has_vc ?? false));
+                formData.append("type", data.type);
+                formData.append("tags", JSON.stringify(data.tags));
+                formData.append("template_id", data.template_id || "");
+                formData.append("level_id", data.level_id || "");
+                formData.append("icon", iconFile);
+                response = await updateAchievements(formData, data.id);
+            } else {
+                const achievementData: AchievementData = {
+                    id: data.id,
+                    title: data.title || "",
+                    name: data.title || "",
+                    level_based: data.level_based ?? false,
+                    levelBased: data.level_based ?? false,
+                    description: data.description,
+                    has_vc: data.has_vc ?? false,
+                    vcToken: data.has_vc ?? false,
+                    type: data.type,
+                    tags: data.tags,
+                    icon: data.icon || "",
+                    template_id: data.template_id || "",
+                    level_id: data.level_id || ""
+                };
+                response = await updateAchievements(achievementData);
+            }
 
             const transformedResponse: ExtendedAchievementData = {
                 ...response,
@@ -288,13 +314,31 @@ const AchievementForm = forwardRef((props: Props, ref: any) => {
                 </div>
 
                 <div className={styles.inputContainer}>
+                    <label>Upload Icon Image</label>
+                    <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleIconFileChange}
+                        disabled={isSubmitting}
+                    />
+                    {iconPreview && (
+                        <div style={{ marginTop: "10px" }}>
+                            <img
+                                src={iconPreview.startsWith("http") || iconPreview.startsWith("blob") ? iconPreview : `${import.meta.env.VITE_BACKEND_URL}${iconPreview}`}
+                                alt="Icon Preview"
+                                style={{ maxWidth: "100px", maxHeight: "100px", objectFit: "contain" }}
+                            />
+                        </div>
+                    )}
+                </div>
+                <div className={styles.inputContainer}>
                     <input
                         type="text"
                         name="icon"
-                        placeholder="Icon URL"
+                        placeholder="Or enter Icon URL"
                         value={data.icon}
                         onChange={handleChange}
-                        disabled={isSubmitting}
+                        disabled={isSubmitting || !!iconFile}
                     />
                 </div>
 

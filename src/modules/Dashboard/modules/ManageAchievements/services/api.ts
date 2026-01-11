@@ -20,10 +20,15 @@ export const getAchievements = async (): Promise<AchievementData[] | undefined> 
     }
 };
 
-export const createAchievements = async (data: AchievementData): Promise<AchievementData | undefined> => {
-
+export const createAchievements = async (data: AchievementData | FormData): Promise<AchievementData | undefined> => {
     try {
-        const response = await privateGateway.post<{ data: AchievementData }>(qseverseRoutes.createAchievements, data);
+        // Check if data is FormData (file upload) or regular object
+        const isFormData = data instanceof FormData;
+        const response = await privateGateway.post<{ data: AchievementData }>(
+            qseverseRoutes.createAchievements, 
+            data,
+            isFormData ? { headers: { "Content-Type": undefined } } : undefined
+        );
         if (response.status === 200) {
             //@ts-ignore
             return response.data.response;
@@ -33,9 +38,16 @@ export const createAchievements = async (data: AchievementData): Promise<Achieve
     }
 };
 
-export const updateAchievements = async (data: AchievementData): Promise<AchievementData | undefined> => {
+export const updateAchievements = async (data: AchievementData | FormData, id?: string): Promise<AchievementData | undefined> => {
     try {
-        const response = await privateGateway.put<{ data: AchievementData }>(qseverseRoutes.updateAchievements+`${data.id}`, data);
+        // Check if data is FormData (file upload) or regular object
+        const isFormData = data instanceof FormData;
+        const achievementId = isFormData ? id : (data as AchievementData).id;
+        const response = await privateGateway.put<{ data: AchievementData }>(
+            qseverseRoutes.updateAchievements + `${achievementId}`, 
+            data,
+            isFormData ? { headers: { "Content-Type": undefined } } : undefined
+        );
         if (response.status === 200) {
             //@ts-ignore
             return response.data.response;

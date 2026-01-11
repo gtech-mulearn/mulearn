@@ -111,7 +111,19 @@ const AchievementCardOne: React.FC<AchievementCardOneProps> = ({
 
     useEffect(() => {
         if (!achievement?.achievement?.achievement_name) return;
-        setCardIcon(levelIcons[achievement.achievement.achievement_name] || levelIcons["Level 1"]);
+
+        // Priority: 1. icon_url from server (dynamic), 2. hardcoded levelIcons (legacy)
+        const serverIconUrl = achievement.achievement.icon_url;
+        if (serverIconUrl) {
+            // Use dynamic icon from server
+            const fullUrl = serverIconUrl.startsWith("http")
+                ? serverIconUrl
+                : `${import.meta.env.VITE_BACKEND_URL}${serverIconUrl}`;
+            setCardIcon(fullUrl);
+        } else {
+            // Fallback to level icons for backward compatibility
+            setCardIcon(levelIcons[achievement.achievement.achievement_name] || levelIcons["Level 1"]);
+        }
     }, [achievement]);
 
     const handleButtonClick = async () => {
