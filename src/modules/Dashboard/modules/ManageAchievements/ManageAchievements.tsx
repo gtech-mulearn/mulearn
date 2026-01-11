@@ -36,7 +36,7 @@ function ManageAchievements() {
         tags: [],
         type: "",
         icon: "",
-        template_id: "" 
+        template_id: ""
     });
 
     const columnOrder = [
@@ -52,7 +52,7 @@ function ManageAchievements() {
         { column: "updated_by", Label: "Updated By", isSortable: false },
         { column: "created_by", Label: "Created By", isSortable: false },
         { column: "level_id", Label: "Level ID", isSortable: true },
-        { column: "template_id", Label: "Template ID", isSortable: true } 
+        { column: "template_id", Label: "Template ID", isSortable: true }
     ];
 
     const fetchAchievements = async () => {
@@ -70,7 +70,8 @@ function ManageAchievements() {
                     vcToken: achievement.has_vc ?? false,
                     has_vc: achievement.has_vc ?? false,  // Keep both for consistency
                     template_id: achievement.template_id || "",
-                    level_id: achievement.level_id || ""  // Ensure level_id is included
+                    level_id: achievement.level_id || "",  // Ensure level_id is included
+                    icon_url: achievement.icon_url || ""  // Include icon_url from backend
                 }));
                 setData(transformedData);
                 setTotalPages(Math.ceil(transformedData.length / perPage));
@@ -139,7 +140,7 @@ function ManageAchievements() {
 
 
     const handleEdit = (id: string | Number | Boolean) => {
-        const achievement = data.find((item) => item.id === id); 
+        const achievement = data.find((item) => item.id === id);
         if (achievement) {
             // Make sure all necessary fields are properly prepared
             const preparedAchievement = {
@@ -150,17 +151,17 @@ function ManageAchievements() {
                 level_id: achievement.level_id || ""  // Ensure level_id is included
             };
             setSelectedAchievement(preparedAchievement);
-            setIsEditModalOpen(true); 
+            setIsEditModalOpen(true);
         }
     };
 
 
     const handleAchievementUpdated = async (updatedAchievement: AchievementData) => {
-        setIsLoading(true); 
-        await fetchAchievements(); 
-        setIsEditModalOpen(false); 
+        setIsLoading(true);
+        await fetchAchievements();
+        setIsEditModalOpen(false);
     };
-    
+
     const handleDelete = async (id: string | undefined) => {
         if (id) {
             try {
@@ -276,20 +277,21 @@ function ManageAchievements() {
                 modalDeleteContent="Are you sure you want to delete this achievement?"
                 customCellRender={(column: any, row: any) => {
                     if (column === "icon") {
-                        if (!row || !row.icon) {
+                        // Get the icon URL - prefer icon_url from backend, fallback to icon
+                        const iconSrc = row.icon_url || row.icon;
+                        if (!row || !iconSrc) {
                             return <div style={{ width: "50px", height: "50px" }}>-</div>;
                         }
                         return (
                             <div style={{ width: "50px", height: "50px" }}>
-                                {row.icon.startsWith("http") ? (
-                                    <img
-                                        src={row.icon}
-                                        alt="Achievement Icon"
-                                        style={{ width: "100%", height: "100%", objectFit: "contain" }}
-                                    />
-                                ) : (
-                                    <span style={{ fontSize: "24px" }}>{row.icon}</span>
-                                )}
+                                <img
+                                    src={iconSrc.startsWith("http") ? iconSrc : `${import.meta.env.VITE_BACKEND_URL}${iconSrc}`}
+                                    alt="Achievement Icon"
+                                    style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                                    onError={(e) => {
+                                        (e.target as HTMLImageElement).style.display = 'none';
+                                    }}
+                                />
                             </div>
                         );
                     }

@@ -48,6 +48,8 @@ const CreateAchievementForm = forwardRef((props: Props, ref: any) => {
         template_id: "",
         level_id: "" // Added level_id to initial state
     });
+    const [iconFile, setIconFile] = useState<File | null>(null);
+    const [iconPreview, setIconPreview] = useState<string | null>(null);
     const [qsTemplates, setQstemplates] = useState<any>([]);
     const [selectedPreset, setSelectedPreset] = useState<any>(null);
     const [errors, setErrors] = useState<Partial<Record<keyof ExtendedAchievementData, string>>>({});
@@ -117,7 +119,7 @@ const CreateAchievementForm = forwardRef((props: Props, ref: any) => {
                 template_id: "",
                 description: "",
                 level_id: "", // Reset level_id
-              
+
             });
         }
         setUseQSeverse(prev => !prev);
@@ -201,22 +203,37 @@ const CreateAchievementForm = forwardRef((props: Props, ref: any) => {
 
         setIsSubmitting(true);
         try {
-            const achievementData: AchievementData = {
-                title: data.title || "",
-                name: data.title || "",
-                level_based: data.level_based ?? false,
-                levelBased: data.level_based ?? false,
-                description: data.description,
-                has_vc: data.has_vc ?? false,
-                vcToken: data.has_vc ?? false,
-                type: data.type,
-                tags: data.tags,
-                icon: data.icon || "",
-                template_id: data.template_id || "",
-                level_id: data.level_id || "" // Include level_id in submission
-            };
+            let response;
 
-            const response = await createAchievements(achievementData);
+            // Use FormData if icon file is uploaded
+            if (iconFile) {
+                const formData = new FormData();
+                formData.append("name", data.title || "");
+                formData.append("description", data.description);
+                formData.append("has_vc", String(data.has_vc ?? false));
+                formData.append("type", data.type);
+                formData.append("tags", JSON.stringify(data.tags));
+                formData.append("template_id", data.template_id || "");
+                formData.append("level_id", data.level_id || "");
+                formData.append("icon", iconFile);
+                response = await createAchievements(formData);
+            } else {
+                const achievementData: AchievementData = {
+                    title: data.title || "",
+                    name: data.title || "",
+                    level_based: data.level_based ?? false,
+                    levelBased: data.level_based ?? false,
+                    description: data.description,
+                    has_vc: data.has_vc ?? false,
+                    vcToken: data.has_vc ?? false,
+                    type: data.type,
+                    tags: data.tags,
+                    icon: data.icon || "",
+                    template_id: data.template_id || "",
+                    level_id: data.level_id || ""
+                };
+                response = await createAchievements(achievementData);
+            }
 
             const transformedResponse: ExtendedAchievementData = {
                 ...response,
@@ -252,6 +269,8 @@ const CreateAchievementForm = forwardRef((props: Props, ref: any) => {
                 level_id: "" // Reset level_id
             });
             setUseQSeverse(false);
+            setIconFile(null);
+            setIconPreview(null);
             setTagInput("");
         } catch (error) {
             toast.error("Failed to create achievement");
@@ -310,7 +329,7 @@ const CreateAchievementForm = forwardRef((props: Props, ref: any) => {
                         placeholder="Description"
                         value={data.description}
                         onChange={handleChange}
-                        // disabled={isSubmitting || isFieldDisabled("description")}
+                    // disabled={isSubmitting || isFieldDisabled("description")}
                     />
                     {errors.description && <div style={{ color: "red" }}>{errors.description}</div>}
                 </div>
@@ -415,13 +434,44 @@ const CreateAchievementForm = forwardRef((props: Props, ref: any) => {
                 </div>
 
                 <div className={styles.inputContainer}>
+                    <label style={{ display: "block", marginBottom: "8px", fontWeight: 500 }}>Achievement Icon</label>
+                    <input
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (file) {
+                                setIconFile(file);
+                                setIconPreview(URL.createObjectURL(file));
+                                setData(prev => ({ ...prev, icon: "" }));
+                            }
+                        }}
+                        disabled={isSubmitting}
+                        style={{ marginBottom: "8px" }}
+                    />
+                    {iconPreview && (
+                        <div style={{ marginTop: "8px" }}>
+                            <img
+                                src={iconPreview}
+                                alt="Icon preview"
+                                style={{ maxWidth: "80px", maxHeight: "80px", objectFit: "contain", borderRadius: "8px", border: "1px solid #ddd" }}
+                            />
+                        </div>
+                    )}
+                    <div style={{ marginTop: "8px", fontSize: "12px", color: "#666" }}>Or enter URL:</div>
                     <input
                         type="text"
                         name="icon"
-                        placeholder="Icon URL"
+                        placeholder="Icon URL (optional if file uploaded)"
                         value={data.icon}
-                        onChange={handleChange}
-                        disabled={isSubmitting || isFieldDisabled("icon")}
+                        onChange={(e) => {
+                            handleChange(e);
+                            if (e.target.value) {
+                                setIconFile(null);
+                                setIconPreview(null);
+                            }
+                        }}
+                        disabled={isSubmitting || isFieldDisabled("icon") || !!iconFile}
                     />
                 </div>
 

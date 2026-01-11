@@ -11,6 +11,7 @@ export interface AchievementData {
     templateID?: string;
     vc_url?: string;
     icon: string;
+    icon_url?: string;  // Full URL for icon from server
     id?: string;           // Optional, added by API or fallback
     created_at?: string;   // Optional, added by API or fallback
     updated_at?: string;   // Added from API response
