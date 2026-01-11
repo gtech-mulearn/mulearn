@@ -99,7 +99,7 @@ type General =
 type SubjectInfo= {
     type: "Badge" | "Certificate" | "Recognition";
     did: string;
-    name: string; 
+    full_name: string; 
     email: string; 
     image?: string;
 }
