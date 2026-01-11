@@ -63,12 +63,14 @@ export const bulkIssueAchievements = async (
     onSuccess: () => void
 ) => {
     try {
+        // Set Content-Type to undefined to remove the default JSON header
+        // This allows axios to auto-set the correct multipart/form-data header with boundary
         const response = await privateGateway.post(
             qseverseRoutes.bulkIssue,
             data,
             {
                 headers: {
-                    "Content-Type": "multipart/form-data",
+                    "Content-Type": undefined,
                 },
             }
         );
