@@ -47,7 +47,7 @@ type SubjectInfo = {
     type: "Badge" | "Certificate" | "Recognition";
     full_name: string;
     email: string;
-    name: string; 
+    name: string;
     did: string;
 };
 
@@ -115,7 +115,7 @@ const AchievementCard: React.FC<AchievementCardProps> = ({
     const handleButtonClick = async () => {
         setIsLoadingDIDs(true);
         onOpen();
-        
+
         try {
             // Fetch DIDs from the API
             const dids = await getConnectedUsers('muid', userInfo?.muid || '');
@@ -140,7 +140,7 @@ const AchievementCard: React.FC<AchievementCardProps> = ({
             toast.error("Please select a DID to issue the credential");
             return;
         }
-        
+
         try {
             const subjectData: SubjectInfo = {
                 type: subject_info.type,
@@ -168,9 +168,27 @@ const AchievementCard: React.FC<AchievementCardProps> = ({
                 <CardBody className="flex flex-col items-center">
                     <div
                         style={{ backgroundColor: bgColor }}
-                        className="rounded-full p-3 w-48 h-48 flex items-center justify-center"
+                        className="rounded-full p-3 w-48 h-48 flex items-center justify-center overflow-hidden"
                     >
-                        <p className="text-3xl">{icon}</p>
+                        {icon && (icon.startsWith('http://') || icon.startsWith('https://') || icon.includes('/')) ? (
+                            <img
+                                src={
+                                    icon.startsWith('http://') || icon.startsWith('https://')
+                                        ? icon
+                                        : `${(import.meta.env.VITE_BACKEND_URL as string).replace(/\/$/, "")}/media/${icon}`
+                                }
+                                alt="Achievement Icon"
+                                className="w-full h-full object-contain rounded-full"
+                                onError={(e) => {
+                                    (e.target as HTMLImageElement).style.display = 'none';
+                                    if ((e.target as HTMLImageElement).parentElement) {
+                                        (e.target as HTMLImageElement).parentElement!.innerHTML = '<span class="text-3xl">🏆</span>';
+                                    }
+                                }}
+                            />
+                        ) : (
+                            <p className="text-3xl">{icon || "🏆"}</p>
+                        )}
                     </div>
                     <Stack mt="6" spacing="3">
                         <div className="flex flex-col w-full items-center">
@@ -266,9 +284,9 @@ const AchievementCard: React.FC<AchievementCardProps> = ({
                                 </Alert>
                                 <Img src={issuedCredential[0].message} alt="Credential Badge" />
                                 <Stack direction="row" spacing={4} wrap="wrap" className="items-start justify-start gap-4">
-                                <Text className="bg-green-300 text-white !px-2 !py-1 rounded-full text-xs flex justify-center items-center gap-2"><FiBookOpen/> {issuedCredential[0].subject_info.course_name}</Text>
-                                <Text className="bg-orange-300 text-white !px-2 !py-1 rounded-full text-xs flex justify-center items-center gap-2"><FiType/> {issuedCredential[0].subject_info.type}</Text>
-                                <Text className="bg-red-300 text-white !px-2 !py-1 rounded-full text-xs flex justify-center items-center gap-2"><FiCalendar/> {issuedCredential[0].subject_info.completed_date}</Text>
+                                    <Text className="bg-green-300 text-white !px-2 !py-1 rounded-full text-xs flex justify-center items-center gap-2"><FiBookOpen /> {issuedCredential[0].subject_info.course_name}</Text>
+                                    <Text className="bg-orange-300 text-white !px-2 !py-1 rounded-full text-xs flex justify-center items-center gap-2"><FiType /> {issuedCredential[0].subject_info.type}</Text>
+                                    <Text className="bg-red-300 text-white !px-2 !py-1 rounded-full text-xs flex justify-center items-center gap-2"><FiCalendar /> {issuedCredential[0].subject_info.completed_date}</Text>
                                 </Stack>
 
                             </VStack>
@@ -277,14 +295,14 @@ const AchievementCard: React.FC<AchievementCardProps> = ({
                                 <Text>
                                     {credential_info.description}
                                 </Text>
-                                
+
                                 <FormControl>
                                     <FormLabel>Select DID to issue credential to:</FormLabel>
                                     <RadioGroup value={selectedDID} onChange={setSelectedDID}>
                                         <VStack align="stretch" spacing={2}>
                                             {availableDIDs.map((did, index) => (
-                                                <Radio 
-                                                    key={did} 
+                                                <Radio
+                                                    key={did}
                                                     value={did}
                                                     size="sm"
                                                     colorScheme="blue"
@@ -297,11 +315,11 @@ const AchievementCard: React.FC<AchievementCardProps> = ({
                                         </VStack>
                                     </RadioGroup>
                                 </FormControl>
-                                
+
                                 <Text fontSize="sm" color="gray.600">
                                     Note: Your name ({userInfo?.full_name || "Unknown"}) and DID will be shared by default.
                                 </Text>
-                                
+
                                 <div className="bg-gray-100 !p-4 rounded-md">
                                     <FormControl className="flex justify-between items-center">
                                         <FormLabel htmlFor="email-switch" mb="0">
@@ -342,7 +360,7 @@ const AchievementCard: React.FC<AchievementCardProps> = ({
                             >
                                 Close
                             </Button>
-                        
+
                         ) : (
                             <Button
                                 bg="#007bff"

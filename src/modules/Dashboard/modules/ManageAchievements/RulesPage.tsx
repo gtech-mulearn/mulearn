@@ -198,7 +198,7 @@ const RulesPage = () => {
         setData(sortedData);
     };
 
-    const handleEdit = (id: string | Number | Boolean) => {
+    const handleToggleStatus = (id: string | Number | Boolean) => {
         const rule = data.find(item => item.id === id);
         if (rule) {
             setSelectedRule(rule);
@@ -282,7 +282,7 @@ const RulesPage = () => {
                 perPage={perPage}
                 columnOrder={columnOrder}
                 id={["id"]}
-                onEditClick={handleEdit}
+                onEditClick={handleToggleStatus}
                 customCellRender={(column: any, row: any) => {
                     if (column === "rule_type") {
                         const colors: Record<string, string> = {

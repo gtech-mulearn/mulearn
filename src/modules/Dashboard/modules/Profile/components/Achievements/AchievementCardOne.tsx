@@ -110,18 +110,42 @@ const AchievementCardOne: React.FC<AchievementCardOneProps> = ({
     };
 
     useEffect(() => {
-        if (!achievement?.achievement?.achievement_name) return;
-        setCardIcon(levelIcons[achievement.achievement.achievement_name] || levelIcons["Level 1"]);
+        if (!achievement?.achievement) return;
+
+        // Check for icon from API first (icon_url or icon field)
+        const apiIcon = achievement.achievement.icon_url || achievement.achievement.icon;
+
+        if (apiIcon) {
+            // If it's already a full URL, use it directly
+            if (apiIcon.startsWith('http://') || apiIcon.startsWith('https://')) {
+                setCardIcon(apiIcon);
+                return;
+            }
+            // If it's a relative path, prepend the backend URL
+            const backendUrl = (import.meta.env.VITE_BACKEND_URL as string).replace(/\/$/, "");
+            if (apiIcon.startsWith("media/")) {
+                setCardIcon(`${backendUrl}/${apiIcon}`);
+            } else if (apiIcon.includes("/") && !apiIcon.startsWith("/")) {
+                setCardIcon(`${backendUrl}/media/${apiIcon}`);
+            } else {
+                setCardIcon(`${backendUrl}${apiIcon.startsWith("/") ? "" : "/"}${apiIcon}`);
+            }
+            return;
+        }
+
+        // Fallback to level-based icons
+        const achievementName = achievement.achievement.achievement_name || "";
+        setCardIcon(levelIcons[achievementName] || levelIcons["Level 1"]);
     }, [achievement]);
 
     const handleButtonClick = async () => {
         if (fromUserSearch && !achievement.is_issued) return;
-        
+
         // Fetch DIDs when modal opens
         if (!achievement.is_issued && muid) {
             setDidLinkStatus('checking');
             onOpen();
-            
+
             try {
                 const dids = await getConnectedUsers('muid', muid);
                 if (dids && dids.length > 0) {
@@ -155,13 +179,13 @@ const AchievementCardOne: React.FC<AchievementCardOneProps> = ({
 
         try {
             const connectedUsersResponse = await getConnectedUsers('muid', muid);
-            
+
             if (connectedUsersResponse && connectedUsersResponse.length > 0) {
                 setAvailableDIDs(connectedUsersResponse);
                 setSelectedDID(connectedUsersResponse[0]); // Default to first DID
                 setDidLinkStatus('linked');
                 toast.success("DID(s) linked successfully! You can now issue your credential.");
-                
+
                 // Update parent component with first DID
                 if (onDIDUpdate) {
                     onDIDUpdate(connectedUsersResponse[0]);
@@ -207,16 +231,16 @@ const AchievementCardOne: React.FC<AchievementCardOneProps> = ({
 
             const response = await issueVerifiableCredential(subject_info, credential_info, template_id);
             const vc_url = response.response[0].subject_info.s3_url;
-            
+
             if (!vc_url) {
                 toast.error("Failed to issue VC. Please try again.");
                 return;
             }
-            
+
             await updateVCURL(achievement.achievement?.id || "", vc_url);
             setIssuedCredential(response.response);
             toast.success("Verifiable Credential has been issued successfully!");
-            
+
             if (onAchievementUpdate) {
                 onAchievementUpdate();
             }
@@ -235,7 +259,7 @@ const AchievementCardOne: React.FC<AchievementCardOneProps> = ({
                 </VStack>
             );
         }
-        
+
         if (availableDIDs.length === 0 && !issuedCredential) {
             return (
                 <VStack spacing={{ base: 3, md: 4 }} align="stretch">
@@ -373,7 +397,7 @@ const AchievementCardOne: React.FC<AchievementCardOneProps> = ({
                 <Text fontSize={{ base: "sm", md: "md" }}>
                     {achievement.achievement.description}
                 </Text>
-                
+
                 {availableDIDs.length > 1 && (
                     <FormControl>
                         <FormLabel fontSize={{ base: "sm", md: "md" }}>
@@ -382,8 +406,8 @@ const AchievementCardOne: React.FC<AchievementCardOneProps> = ({
                         <RadioGroup value={selectedDID} onChange={setSelectedDID}>
                             <VStack align="stretch" spacing={2}>
                                 {availableDIDs.map((did, index) => (
-                                    <Radio 
-                                        key={did} 
+                                    <Radio
+                                        key={did}
                                         value={did}
                                         size="sm"
                                         colorScheme="blue"
@@ -397,7 +421,7 @@ const AchievementCardOne: React.FC<AchievementCardOneProps> = ({
                         </RadioGroup>
                     </FormControl>
                 )}
-                
+
                 {availableDIDs.length === 1 && (
                     <Box bg="gray.50" p={3} borderRadius="md">
                         <Text fontSize="xs" color="gray.600" fontWeight="semibold" mb={1}>
@@ -408,7 +432,7 @@ const AchievementCardOne: React.FC<AchievementCardOneProps> = ({
                         </Text>
                     </Box>
                 )}
-                
+
                 <Text fontSize={{ base: "xs", md: "sm" }} color="gray.600">
                     Ready to issue your Verifiable Credential?
                 </Text>
@@ -599,12 +623,12 @@ const AchievementCardOne: React.FC<AchievementCardOneProps> = ({
                         {didLinkStatus === 'checking'
                             ? "Loading..."
                             : availableDIDs.length === 0
-                            ? "Link Your DID"
-                            : issuedCredential
-                            ? "Credential Issued"
-                            : achievement.is_issued
-                            ? "Achievement Details"
-                            : "Issue Credential"}
+                                ? "Link Your DID"
+                                : issuedCredential
+                                    ? "Credential Issued"
+                                    : achievement.is_issued
+                                        ? "Achievement Details"
+                                        : "Issue Credential"}
                     </ModalHeader>
                     <ModalCloseButton />
                     <ModalBody px={{ base: 4, md: 6 }} py={4}>

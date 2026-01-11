@@ -109,7 +109,7 @@ export const debugAchievement = async (muid: string, achievementId: string): Pro
 
 // Manual Issue/Revoke API
 export const manualIssue = async (data: {
-    user_id: string;
+    muid: string;  
     achievement_id: string;
 }): Promise<boolean> => {
     try {
@@ -126,7 +126,7 @@ export const manualIssue = async (data: {
 };
 
 export const revokeAchievement = async (data: {
-    user_id: string;
+    muid: string;  
     achievement_id: string;
     reason?: string;
 }): Promise<boolean> => {

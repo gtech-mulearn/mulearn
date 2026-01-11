@@ -36,7 +36,7 @@ const tagsOptions = [
 
 const AchievementForm = forwardRef((props: Props, ref: any) => {
     const { achievement } = props;
-    
+
     const [data, setData] = useState<ExtendedAchievementData>({
         id: achievement?.id,
         title: achievement?.title || achievement?.name || "",
@@ -51,7 +51,7 @@ const AchievementForm = forwardRef((props: Props, ref: any) => {
         levelBased: achievement?.level_based ?? achievement?.levelBased ?? false,
         vcToken: achievement?.has_vc ?? achievement?.vcToken ?? false
     });
-    
+
     const [errors, setErrors] = useState<Partial<Record<keyof ExtendedAchievementData, string>>>({});
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [tagInput, setTagInput] = useState("");
@@ -143,6 +143,7 @@ const AchievementForm = forwardRef((props: Props, ref: any) => {
                 type: data.type,
                 tags: data.tags,
                 icon: data.icon || "",
+                iconFile: data.iconFile,  // Pass the uploaded file to API
                 template_id: data.template_id || "",
                 level_id: data.level_id || ""
             };
@@ -288,12 +289,73 @@ const AchievementForm = forwardRef((props: Props, ref: any) => {
                 </div>
 
                 <div className={styles.inputContainer}>
+                    <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '12px',
+                        borderRadius: '8px',
+                        backgroundColor: '#f3f3f4',
+                        padding: '10px',
+                        width: '300px'
+                    }}>
+                        {/* Icon Preview */}
+                        <div style={{
+                            width: '60px',
+                            height: '60px',
+                            minWidth: '60px',
+                            border: '2px dashed #ccc',
+                            borderRadius: '8px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            overflow: 'hidden',
+                            backgroundColor: '#fff'
+                        }}>
+                            {(data.iconFile || data.icon || data.icon_url) ? (
+                                <img
+                                    src={data.iconFile
+                                        ? URL.createObjectURL(data.iconFile)
+                                        : (data.icon_url || (data.icon?.startsWith('http')
+                                            ? data.icon
+                                            : `${(import.meta.env.VITE_BACKEND_URL as string).replace(/\/$/, "")}/media/${data.icon}`))
+                                    }
+                                    alt="Preview"
+                                    style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                                />
+                            ) : (
+                                <span style={{ color: '#999', fontSize: '10px' }}>No icon</span>
+                            )}
+                        </div>
+                        <div style={{ flex: 1 }}>
+                            <input
+                                type="file"
+                                accept="image/*"
+                                onChange={(e) => {
+                                    const file = e.target.files?.[0];
+                                    if (file) {
+                                        if (file.size > 5 * 1024 * 1024) {
+                                            toast.error("Max 5MB");
+                                            return;
+                                        }
+                                        setData(prev => ({ ...prev, iconFile: file, icon: "" }));
+                                    }
+                                }}
+                                disabled={isSubmitting}
+                                style={{ width: '100%', fontSize: '12px', background: 'transparent', padding: 0 }}
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div className={styles.inputContainer}>
                     <input
                         type="text"
                         name="icon"
-                        placeholder="Icon URL"
+                        placeholder="Icon URL (optional)"
                         value={data.icon}
-                        onChange={handleChange}
+                        onChange={(e) => {
+                            setData(prev => ({ ...prev, icon: e.target.value, iconFile: undefined }));
+                        }}
                         disabled={isSubmitting}
                     />
                 </div>

@@ -36,7 +36,7 @@ function ManageAchievements() {
         tags: [],
         type: "",
         icon: "",
-        template_id: "" 
+        template_id: ""
     });
 
     const columnOrder = [
@@ -52,7 +52,7 @@ function ManageAchievements() {
         { column: "updated_by", Label: "Updated By", isSortable: false },
         { column: "created_by", Label: "Created By", isSortable: false },
         { column: "level_id", Label: "Level ID", isSortable: true },
-        { column: "template_id", Label: "Template ID", isSortable: true } 
+        { column: "template_id", Label: "Template ID", isSortable: true }
     ];
 
     const fetchAchievements = async () => {
@@ -139,7 +139,7 @@ function ManageAchievements() {
 
 
     const handleEdit = (id: string | Number | Boolean) => {
-        const achievement = data.find((item) => item.id === id); 
+        const achievement = data.find((item) => item.id === id);
         if (achievement) {
             // Make sure all necessary fields are properly prepared
             const preparedAchievement = {
@@ -150,17 +150,17 @@ function ManageAchievements() {
                 level_id: achievement.level_id || ""  // Ensure level_id is included
             };
             setSelectedAchievement(preparedAchievement);
-            setIsEditModalOpen(true); 
+            setIsEditModalOpen(true);
         }
     };
 
 
     const handleAchievementUpdated = async (updatedAchievement: AchievementData) => {
-        setIsLoading(true); 
-        await fetchAchievements(); 
-        setIsEditModalOpen(false); 
+        setIsLoading(true);
+        await fetchAchievements();
+        setIsEditModalOpen(false);
     };
-    
+
     const handleDelete = async (id: string | undefined) => {
         if (id) {
             try {
@@ -276,20 +276,61 @@ function ManageAchievements() {
                 modalDeleteContent="Are you sure you want to delete this achievement?"
                 customCellRender={(column: any, row: any) => {
                     if (column === "icon") {
-                        if (!row || !row.icon) {
-                            return <div style={{ width: "50px", height: "50px" }}>-</div>;
+                        if (!row || (!row.icon && !row.icon_url)) {
+                            return (
+                                <div style={{
+                                    width: "50px",
+                                    height: "50px",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    backgroundColor: "#f3f4f6",
+                                    borderRadius: "8px"
+                                }}>
+                                    <span style={{ color: "#9ca3af", fontSize: "12px" }}>-</span>
+                                </div>
+                            );
                         }
+
+                        // Determine the icon URL
+                        let iconUrl = row.icon_url || row.icon;
+
+                        // If it's not already a full URL, prepend the backend URL
+                        if (iconUrl && !iconUrl.startsWith("http://") && !iconUrl.startsWith("https://")) {
+                            const backendUrl = (import.meta.env.VITE_BACKEND_URL as string).replace(/\/$/, "");
+                            if (iconUrl.startsWith("media/")) {
+                                iconUrl = `${backendUrl}/${iconUrl}`;
+                            } else if (iconUrl.includes("/") && !iconUrl.startsWith("/")) {
+                                iconUrl = `${backendUrl}/media/${iconUrl}`;
+                            } else {
+                                iconUrl = `${backendUrl}${iconUrl.startsWith("/") ? "" : "/"}${iconUrl}`;
+                            }
+                        }
+
                         return (
-                            <div style={{ width: "50px", height: "50px" }}>
-                                {row.icon.startsWith("http") ? (
-                                    <img
-                                        src={row.icon}
-                                        alt="Achievement Icon"
-                                        style={{ width: "100%", height: "100%", objectFit: "contain" }}
-                                    />
-                                ) : (
-                                    <span style={{ fontSize: "24px" }}>{row.icon}</span>
-                                )}
+                            <div style={{
+                                width: "50px",
+                                height: "50px",
+                                overflow: "hidden",
+                                borderRadius: "8px",
+                                backgroundColor: "#f9fafb"
+                            }}>
+                                <img
+                                    src={iconUrl}
+                                    alt="Achievement Icon"
+                                    style={{
+                                        width: "100%",
+                                        height: "100%",
+                                        objectFit: "contain"
+                                    }}
+                                    onError={(e) => {
+                                        const target = e.target as HTMLImageElement;
+                                        target.style.display = "none";
+                                        if (target.parentElement) {
+                                            target.parentElement.innerHTML = '<span style="color: #9ca3af; font-size: 24px;">📋</span>';
+                                        }
+                                    }}
+                                />
                             </div>
                         );
                     }

@@ -69,7 +69,7 @@ const BulkIssuePage = () => {
         for (const muid of muidList) {
             try {
                 const success = await manualIssue({
-                    user_id: muid,
+                    muid: muid,
                     achievement_id: selectedAchievement.value
                 });
                 issueResults.push({
