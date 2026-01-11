@@ -95,6 +95,9 @@ const TaskForm = forwardRef(
         );
         const [selectedOrg, setSelectedOrg] =
             useState<AffiliationOption | null>(null);
+        const [selectedSkills, setSelectedSkills] = useState<AffiliationOption[]>(
+            []
+        );
 
         const [blurStatus, setBlurStatus] = useState({ affiliation: false });
         const [showBonus, setShowBonus] = useState<boolean>(false);
@@ -125,9 +128,8 @@ const TaskForm = forwardRef(
             if (!value.trim()) {
                 setErrors(prevErrors => ({
                     ...prevErrors,
-                    [name]: `${
-                        name.charAt(0).toUpperCase() + name.slice(1)
-                    } is required`
+                    [name]: `${name.charAt(0).toUpperCase() + name.slice(1)
+                        } is required`
                 }));
             } else {
                 setErrors(prevErrors => ({ ...prevErrors, [name]: undefined }));
@@ -200,9 +202,9 @@ const TaskForm = forwardRef(
 
                 channel
                     ? setSelectedChannel({
-                          value: channel.id,
-                          label: channel.name
-                      })
+                        value: channel.id,
+                        label: channel.name
+                    })
                     : setSelectedChannel(null);
                 type
                     ? setSelectedType({ value: type.id, label: type.title })
@@ -244,9 +246,8 @@ const TaskForm = forwardRef(
                     isValid = false;
                     setErrors(prevErrors => ({
                         ...prevErrors,
-                        [key]: `${
-                            key.charAt(0).toUpperCase() + key.slice(1)
-                        } is required`
+                        [key]: `${key.charAt(0).toUpperCase() + key.slice(1)
+                            } is required`
                     }));
                 }
             }
@@ -262,6 +263,7 @@ const TaskForm = forwardRef(
 
             if (isValid) {
                 console.log(updatedData);
+                const skillIds = selectedSkills.map(s => s.value);
                 if (!props.isEditMode) {
                     createTask(
                         data.hashtag,
@@ -279,7 +281,8 @@ const TaskForm = forwardRef(
                         data.discord_link,
                         data.event,
                         data.bonus_time,
-                        data.bonus_karma
+                        data.bonus_karma,
+                        skillIds
                     )
                         .then(() => {
                             props.closeModal();
@@ -306,7 +309,8 @@ const TaskForm = forwardRef(
                         props.id,
                         data.event,
                         data.bonus_time,
-                        data.bonus_karma
+                        data.bonus_karma,
+                        skillIds
                     )
                         .then(() => {
                             props.closeModal();
@@ -537,6 +541,27 @@ const TaskForm = forwardRef(
                                     }));
                                 }}
                                 name="organization_id"
+                            />
+                        </div>
+                        <div className={styles.inputContainer}>
+                            <Select
+                                styles={customReactSelectStyles}
+                                options={uuidData?.skill?.map(val => {
+                                    return { value: val.id, label: val.name };
+                                }) || []}
+                                isMulti
+                                isClearable
+                                placeholder="Skills (for skill-based achievements)"
+                                isLoading={!uuidData?.skill}
+                                value={selectedSkills}
+                                onChange={value => setSelectedSkills(value as AffiliationOption[])}
+                                onBlur={() => {
+                                    setBlurStatus(prev => ({
+                                        ...prev,
+                                        skills: true
+                                    }));
+                                }}
+                                name="skill_ids"
                             />
                         </div>
                         <div className={styles.inputContainer}>

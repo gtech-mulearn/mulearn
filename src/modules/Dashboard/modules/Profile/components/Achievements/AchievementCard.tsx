@@ -47,6 +47,7 @@ type SubjectInfo = {
     type: "Badge" | "Certificate" | "Recognition";
     full_name: string;
     email: string;
+    name: string;
     did: string;
 };
 
@@ -166,9 +167,27 @@ const AchievementCard: React.FC<AchievementCardProps> = ({
                 <CardBody className="flex flex-col items-center">
                     <div
                         style={{ backgroundColor: bgColor }}
-                        className="rounded-full p-3 w-48 h-48 flex items-center justify-center"
+                        className="rounded-full p-3 w-48 h-48 flex items-center justify-center overflow-hidden"
                     >
-                        <p className="text-3xl">{icon}</p>
+                        {icon && (icon.startsWith('http://') || icon.startsWith('https://') || icon.includes('/')) ? (
+                            <img
+                                src={
+                                    icon.startsWith('http://') || icon.startsWith('https://')
+                                        ? icon
+                                        : `${(import.meta.env.VITE_BACKEND_URL as string).replace(/\/$/, "")}/media/${icon}`
+                                }
+                                alt="Achievement Icon"
+                                className="w-full h-full object-contain rounded-full"
+                                onError={(e) => {
+                                    (e.target as HTMLImageElement).style.display = 'none';
+                                    if ((e.target as HTMLImageElement).parentElement) {
+                                        (e.target as HTMLImageElement).parentElement!.innerHTML = '<span class="text-3xl">🏆</span>';
+                                    }
+                                }}
+                            />
+                        ) : (
+                            <p className="text-3xl">{icon || "🏆"}</p>
+                        )}
                     </div>
                     <Stack mt="6" spacing="3">
                         <div className="flex flex-col w-full items-center">

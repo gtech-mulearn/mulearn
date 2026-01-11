@@ -12,7 +12,9 @@ import { AxiosError } from "axios";
 
 interface ExtendedAchievementData extends AchievementData {
     template_id?: string;
-    level_id?: string; // Added level_id to the interface
+    level_id?: string;
+    is_active?: boolean;
+    skill_id?: string;
 }
 
 type Props = {
@@ -45,8 +47,11 @@ const CreateAchievementForm = forwardRef((props: Props, ref: any) => {
         levelBased: false,
         vcToken: false,
         icon: "",
+        iconFile: undefined,
         template_id: "",
-        level_id: "" // Added level_id to initial state
+        level_id: "",
+        is_active: true,
+        skill_id: ""
     });
     const [iconFile, setIconFile] = useState<File | null>(null);
     const [iconPreview, setIconPreview] = useState<string | null>(null);
@@ -203,37 +208,25 @@ const CreateAchievementForm = forwardRef((props: Props, ref: any) => {
 
         setIsSubmitting(true);
         try {
-            let response;
+            const achievementData: AchievementData = {
+                title: data.title || "",
+                name: data.title || "",
+                level_based: data.level_based ?? false,
+                levelBased: data.level_based ?? false,
+                description: data.description,
+                has_vc: data.has_vc ?? false,
+                vcToken: data.has_vc ?? false,
+                type: data.type,
+                tags: data.tags,
+                icon: data.icon || "",
+                iconFile: data.iconFile,  // Pass the uploaded file to API
+                template_id: data.template_id || "",
+                level_id: data.level_id || "",
+                is_active: data.is_active ?? true,
+                skill_id: data.skill_id || ""
+            };
 
-            // Use FormData if icon file is uploaded
-            if (iconFile) {
-                const formData = new FormData();
-                formData.append("name", data.title || "");
-                formData.append("description", data.description);
-                formData.append("has_vc", String(data.has_vc ?? false));
-                formData.append("type", data.type);
-                formData.append("tags", JSON.stringify(data.tags));
-                formData.append("template_id", data.template_id || "");
-                formData.append("level_id", data.level_id || "");
-                formData.append("icon", iconFile);
-                response = await createAchievements(formData);
-            } else {
-                const achievementData: AchievementData = {
-                    title: data.title || "",
-                    name: data.title || "",
-                    level_based: data.level_based ?? false,
-                    levelBased: data.level_based ?? false,
-                    description: data.description,
-                    has_vc: data.has_vc ?? false,
-                    vcToken: data.has_vc ?? false,
-                    type: data.type,
-                    tags: data.tags,
-                    icon: data.icon || "",
-                    template_id: data.template_id || "",
-                    level_id: data.level_id || ""
-                };
-                response = await createAchievements(achievementData);
-            }
+            const response = await createAchievements(achievementData);
 
             const transformedResponse: ExtendedAchievementData = {
                 ...response,
@@ -241,14 +234,16 @@ const CreateAchievementForm = forwardRef((props: Props, ref: any) => {
                 vcToken: response?.has_vc ?? false,
                 id: response?.id,
                 created_at: response?.created_at || new Date().toISOString(),
-                title: response?.title ?? data.title, // Ensure title is always a string
+                title: response?.title ?? data.title,
                 name: response?.title ?? data.title,
                 description: response?.description ?? data.description,
                 type: response?.type ?? data.type,
                 tags: response?.tags ?? data.tags,
                 icon: response?.icon ?? data.icon,
                 template_id: response?.template_id ?? data.template_id,
-                level_id: response?.level_id ?? data.level_id // Include level_id in response
+                level_id: response?.level_id ?? data.level_id,
+                is_active: response?.is_active ?? data.is_active,
+                skill_id: response?.skill_id ?? data.skill_id
             };
 
             toast.success("Achievement created successfully");
@@ -266,7 +261,9 @@ const CreateAchievementForm = forwardRef((props: Props, ref: any) => {
                 template_id: "",
                 levelBased: false,
                 vcToken: false,
-                level_id: "" // Reset level_id
+                level_id: "",
+                is_active: true,
+                skill_id: ""
             });
             setUseQSeverse(false);
             setIconFile(null);
@@ -379,6 +376,36 @@ const CreateAchievementForm = forwardRef((props: Props, ref: any) => {
                 </div>
 
                 <div className={styles.inputContainer}>
+                    <label>
+                        Active
+                        <Switch
+                            isChecked={data.is_active ?? true}
+                            onChange={() => handleSwitchChange("is_active")}
+                            isDisabled={isSubmitting}
+                        />
+                    </label>
+                </div>
+
+                {uuidData?.skill && uuidData.skill.length > 0 && (
+                    <div className={styles.inputContainer}>
+                        <Select
+                            styles={customReactSelectStyles}
+                            options={uuidData.skill.map((val: any) => ({
+                                value: val.id,
+                                label: val.name
+                            }))}
+                            value={uuidData.skill
+                                .filter((val: any) => val.id === data.skill_id)
+                                .map((val: any) => ({ value: val.id, label: val.name }))[0] || null}
+                            onChange={(option: any) => setData(prev => ({ ...prev, skill_id: option?.value || "" }))}
+                            placeholder="Link to Skill (for skill-based achievements)"
+                            isClearable
+                            isDisabled={isSubmitting}
+                        />
+                    </div>
+                )}
+
+                <div className={styles.inputContainer}>
                     {useQSeverse ? (
                         <Select
                             styles={customReactSelectStyles}
@@ -434,44 +461,69 @@ const CreateAchievementForm = forwardRef((props: Props, ref: any) => {
                 </div>
 
                 <div className={styles.inputContainer}>
-                    <label style={{ display: "block", marginBottom: "8px", fontWeight: 500 }}>Achievement Icon</label>
-                    <input
-                        type="file"
-                        accept="image/*"
-                        onChange={(e) => {
-                            const file = e.target.files?.[0];
-                            if (file) {
-                                setIconFile(file);
-                                setIconPreview(URL.createObjectURL(file));
-                                setData(prev => ({ ...prev, icon: "" }));
-                            }
-                        }}
-                        disabled={isSubmitting}
-                        style={{ marginBottom: "8px" }}
-                    />
-                    {iconPreview && (
-                        <div style={{ marginTop: "8px" }}>
-                            <img
-                                src={iconPreview}
-                                alt="Icon preview"
-                                style={{ maxWidth: "80px", maxHeight: "80px", objectFit: "contain", borderRadius: "8px", border: "1px solid #ddd" }}
+                    <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '12px',
+                        borderRadius: '8px',
+                        backgroundColor: '#f3f3f4',
+                        padding: '10px',
+                        width: '300px'
+                    }}>
+                        {/* Icon Preview */}
+                        <div style={{
+                            width: '60px',
+                            height: '60px',
+                            minWidth: '60px',
+                            border: '2px dashed #ccc',
+                            borderRadius: '8px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            overflow: 'hidden',
+                            backgroundColor: '#fff'
+                        }}>
+                            {(data.iconFile || data.icon) ? (
+                                <img
+                                    src={data.iconFile ? URL.createObjectURL(data.iconFile) : data.icon}
+                                    alt="Preview"
+                                    style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                                />
+                            ) : (
+                                <span style={{ color: '#999', fontSize: '10px' }}>No icon</span>
+                            )}
+                        </div>
+                        <div style={{ flex: 1 }}>
+                            <input
+                                type="file"
+                                accept="image/*"
+                                onChange={(e) => {
+                                    const file = e.target.files?.[0];
+                                    if (file) {
+                                        if (file.size > 5 * 1024 * 1024) {
+                                            toast.error("Max 5MB");
+                                            return;
+                                        }
+                                        setData(prev => ({ ...prev, iconFile: file, icon: "" }));
+                                    }
+                                }}
+                                disabled={isSubmitting || isFieldDisabled("icon")}
+                                style={{ width: '100%', fontSize: '12px', background: 'transparent', padding: 0 }}
                             />
                         </div>
-                    )}
-                    <div style={{ marginTop: "8px", fontSize: "12px", color: "#666" }}>Or enter URL:</div>
+                    </div>
+                </div>
+                <div className={styles.inputContainer}>
                     <input
                         type="text"
                         name="icon"
-                        placeholder="Icon URL (optional if file uploaded)"
+                        placeholder="Icon URL (optional)"
                         value={data.icon}
                         onChange={(e) => {
-                            handleChange(e);
-                            if (e.target.value) {
-                                setIconFile(null);
-                                setIconPreview(null);
-                            }
+                            setData(prev => ({ ...prev, icon: e.target.value, iconFile: undefined }));
                         }}
-                        disabled={isSubmitting || isFieldDisabled("icon") || !!iconFile}
+                        disabled={isSubmitting || isFieldDisabled("icon")}
                     />
                 </div>
 

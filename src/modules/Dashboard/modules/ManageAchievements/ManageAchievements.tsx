@@ -277,19 +277,60 @@ function ManageAchievements() {
                 modalDeleteContent="Are you sure you want to delete this achievement?"
                 customCellRender={(column: any, row: any) => {
                     if (column === "icon") {
-                        // Get the icon URL - prefer icon_url from backend, fallback to icon
-                        const iconSrc = row.icon_url || row.icon;
-                        if (!row || !iconSrc) {
-                            return <div style={{ width: "50px", height: "50px" }}>-</div>;
+                        if (!row || (!row.icon && !row.icon_url)) {
+                            return (
+                                <div style={{
+                                    width: "50px",
+                                    height: "50px",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    backgroundColor: "#f3f4f6",
+                                    borderRadius: "8px"
+                                }}>
+                                    <span style={{ color: "#9ca3af", fontSize: "12px" }}>-</span>
+                                </div>
+                            );
                         }
+
+                        // Determine the icon URL
+                        let iconUrl = row.icon_url || row.icon;
+
+                        // If it's not already a full URL, prepend the backend URL
+                        if (iconUrl && !iconUrl.startsWith("http://") && !iconUrl.startsWith("https://")) {
+                            const backendUrl = (import.meta.env.VITE_BACKEND_URL as string).replace(/\/$/, "");
+                            if (iconUrl.startsWith("media/")) {
+                                iconUrl = `${backendUrl}/${iconUrl}`;
+                            } else if (iconUrl.includes("/") && !iconUrl.startsWith("/")) {
+                                iconUrl = `${backendUrl}/media/${iconUrl}`;
+                            } else {
+                                iconUrl = `${backendUrl}${iconUrl.startsWith("/") ? "" : "/"}${iconUrl}`;
+                            }
+
+                        }
+
                         return (
-                            <div style={{ width: "50px", height: "50px" }}>
+                            <div style={{
+                                width: "50px",
+                                height: "50px",
+                                overflow: "hidden",
+                                borderRadius: "8px",
+                                backgroundColor: "#f9fafb"
+                            }}>
                                 <img
-                                    src={iconSrc.startsWith("http") ? iconSrc : `${import.meta.env.VITE_BACKEND_URL}${iconSrc}`}
+                                    src={iconUrl}
                                     alt="Achievement Icon"
-                                    style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                                    style={{
+                                        width: "100%",
+                                        height: "100%",
+                                        objectFit: "contain"
+                                    }}
                                     onError={(e) => {
-                                        (e.target as HTMLImageElement).style.display = 'none';
+                                        const target = e.target as HTMLImageElement;
+                                        target.style.display = "none";
+                                        if (target.parentElement) {
+                                            target.parentElement.innerHTML = '<span style="color: #9ca3af; font-size: 24px;">📋</span>';
+                                        }
                                     }}
                                 />
                             </div>
