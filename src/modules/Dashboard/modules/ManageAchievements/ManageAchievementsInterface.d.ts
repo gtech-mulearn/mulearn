@@ -15,6 +15,7 @@ export interface AchievementData {
     icon: string;
     icon_url?: string;    // Full icon URL from backend serializer
     iconFile?: File;      // For file upload in forms
+
     id?: string;           // Optional, added by API or fallback
     created_at?: string;   // Optional, added by API or fallback
     updated_at?: string;   // Added from API response

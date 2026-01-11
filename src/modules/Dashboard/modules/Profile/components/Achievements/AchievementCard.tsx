@@ -147,7 +147,6 @@ const AchievementCard: React.FC<AchievementCardProps> = ({
                 full_name: userInfo?.full_name || "Unknown",
                 email: shareEmail && userInfo?.email ? userInfo.email : "",
                 did: selectedDID,
-                name: userInfo?.full_name || "",
             };
 
             const response = await issueVerifiableCredential(

@@ -56,6 +56,8 @@ const AchievementForm = forwardRef((props: Props, ref: any) => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [tagInput, setTagInput] = useState("");
     const [uuidData, setUuidData] = useState<{ [index: string]: any[] } | null>(null);
+    const [iconFile, setIconFile] = useState<File | null>(null);
+    const [iconPreview, setIconPreview] = useState<string | null>(achievement?.icon_url || null);
 
     useEffect(() => {
         (async () => {
@@ -101,6 +103,15 @@ const AchievementForm = forwardRef((props: Props, ref: any) => {
 
     const handleTypeChange = (selectedOption: { value: string; label: string } | null) => {
         setData(prev => ({ ...prev, type: selectedOption?.value || "" }));
+    };
+
+    const handleIconFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            setIconFile(file);
+            setIconPreview(URL.createObjectURL(file));
+            setData(prev => ({ ...prev, icon: "" }));
+        }
     };
 
     useImperativeHandle(ref, () => ({

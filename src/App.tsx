@@ -153,6 +153,8 @@ const ConnectedDevices = lazy(() => import("./modules/Dashboard/modules/Settings
 const Wadhwani = lazy(() => import("./modules/Dashboard/modules/Wadhwani"));
 const ResetPassword = lazy(() => import("./modules/Common/Authentication/pages/Onboarding/ResetPassword/ResetPassword"));
 
+const IssueAchievements = lazy(() => import("./modules/Dashboard/modules/IssueAchievements/IssueAchievements"));
+
 function App() {
   const AuthChecker = SecureAuthRoutes();
   const router = createBrowserRouter([

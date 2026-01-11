@@ -72,7 +72,7 @@ export const createAchievements = async (data: AchievementData): Promise<Achieve
     }
 };
 
-export const updateAchievements = async (data: AchievementData): Promise<AchievementData | undefined> => {
+export const updateAchievements = async (data: AchievementData | FormData, id?: string): Promise<AchievementData | undefined> => {
     try {
         const formData = buildAchievementFormData(data);
         

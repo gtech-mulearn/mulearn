@@ -53,6 +53,8 @@ const CreateAchievementForm = forwardRef((props: Props, ref: any) => {
         is_active: true,
         skill_id: ""
     });
+    const [iconFile, setIconFile] = useState<File | null>(null);
+    const [iconPreview, setIconPreview] = useState<string | null>(null);
     const [qsTemplates, setQstemplates] = useState<any>([]);
     const [selectedPreset, setSelectedPreset] = useState<any>(null);
     const [errors, setErrors] = useState<Partial<Record<keyof ExtendedAchievementData, string>>>({});
@@ -264,6 +266,8 @@ const CreateAchievementForm = forwardRef((props: Props, ref: any) => {
                 skill_id: ""
             });
             setUseQSeverse(false);
+            setIconFile(null);
+            setIconPreview(null);
             setTagInput("");
         } catch (error) {
             toast.error("Failed to create achievement");

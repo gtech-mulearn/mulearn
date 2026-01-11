@@ -70,7 +70,8 @@ function ManageAchievements() {
                     vcToken: achievement.has_vc ?? false,
                     has_vc: achievement.has_vc ?? false,  // Keep both for consistency
                     template_id: achievement.template_id || "",
-                    level_id: achievement.level_id || ""  // Ensure level_id is included
+                    level_id: achievement.level_id || "",  // Ensure level_id is included
+                    icon_url: achievement.icon_url || ""  // Include icon_url from backend
                 }));
                 setData(transformedData);
                 setTotalPages(Math.ceil(transformedData.length / perPage));
@@ -305,6 +306,7 @@ function ManageAchievements() {
                             } else {
                                 iconUrl = `${backendUrl}${iconUrl.startsWith("/") ? "" : "/"}${iconUrl}`;
                             }
+
                         }
 
                         return (

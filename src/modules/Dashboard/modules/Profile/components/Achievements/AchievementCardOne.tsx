@@ -217,7 +217,7 @@ const AchievementCardOne: React.FC<AchievementCardOneProps> = ({
             const subject_info: SubjectInfo = {
                 type: "Badge",
                 did: selectedDID,
-                name: usersName || "",
+                full_name: usersName || "",
                 email: userEmail || "",
             };
 

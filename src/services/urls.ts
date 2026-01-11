@@ -349,7 +349,10 @@ export const qseverseRoutes = {
     issueVerifiableCredentials: "api/v1/integrations/qseverse/issue-vc/",
     getAllConnectedUsers: "api/v1/integrations/qseverse/connected-users/",
     getConnectedUsers: "api/v1/integrations/qseverse/connected-users/search",
-    getCredentials: "api/v1/integrations/qseverse/qs-credentials/"
+    getCredentials: "api/v1/integrations/qseverse/qs-credentials/",
+    bulkIssue: "api/v1/dashboard/achievement/bulk-issue/",
+    bulkIssueTemplate: "api/v1/dashboard/achievement/bulk-issue/template/",
+    issuedLog: "api/v1/dashboard/achievement/issued-log/"
 }
 
 export const skillRoutes = {
