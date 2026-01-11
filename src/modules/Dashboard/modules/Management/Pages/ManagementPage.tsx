@@ -29,6 +29,12 @@ const subcategories = [
     path: "management/manage-achievements"
   },
   {
+    icon: '🎖️',
+    title: 'Issue Achievements',
+    description: 'Issue achievements to users individually or in bulk.',
+    path: "management/issue-achievements"
+  },
+  {
     icon: '🚀',
     title: 'Manage Launchpad',
     description: 'Create, edit, and configure user launchpad.',
@@ -174,7 +180,7 @@ const ManagementPage: React.FC = () => {
       {/* Card Layout */}
       <div className={styles.cardContainer}>
         {subcategories.map((category, index) => (
-          <div key={index} className={styles.card} onClick={()=> {
+          <div key={index} className={styles.card} onClick={() => {
             navigate(`/dashboard/${category.path}`);
           }}>
             <span className={styles.cardIcon}>{category.icon}</span>
