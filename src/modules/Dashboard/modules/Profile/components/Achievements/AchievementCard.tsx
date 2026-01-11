@@ -47,7 +47,6 @@ type SubjectInfo = {
     type: "Badge" | "Certificate" | "Recognition";
     full_name: string;
     email: string;
-    name: string;
     did: string;
 };
 

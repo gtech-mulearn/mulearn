@@ -42,7 +42,7 @@ const buildAchievementFormData = (data: AchievementData): FormData => {
     // Icon handling: file upload takes priority over URL
     if (data.iconFile) {
         formData.append("icon", data.iconFile);
-    } else if (data.icon) {
+    } else if (data.icon && data.icon.trim() !== "") {
         formData.append("icon", data.icon);
     }
     
@@ -72,12 +72,12 @@ export const createAchievements = async (data: AchievementData): Promise<Achieve
     }
 };
 
-export const updateAchievements = async (data: AchievementData | FormData, id?: string): Promise<AchievementData | undefined> => {
+export const updateAchievements = async (data: AchievementData): Promise<AchievementData | undefined> => {
     try {
         const formData = buildAchievementFormData(data);
         
         const response = await privateGateway.put<{ data: AchievementData }>(
-            qseverseRoutes.updateAchievements + `${data.id}`, 
+            qseverseRoutes.updateAchievements + `${data.id}/`, 
             formData,
             {
                 headers: {
