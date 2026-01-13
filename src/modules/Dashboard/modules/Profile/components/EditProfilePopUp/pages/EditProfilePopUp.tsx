@@ -354,27 +354,34 @@ const EditProfilePopUp = (props: Props) => {
                         </div>
                         
                         <div className={styles.btn_container}>
-                            <PowerfulButton
-                                type="button"
-                                variant="outline"
-                                disabled={discordState === "loading"}
-                                onClick={discordSync}
-                                className={styles.powerfulButton}
-                            >
-                                Sync Discord Image
-                                {
-                                    {
-                                        initial: <BsDiscord size={32} />,
-                                        loading: (
-                                            <BeatLoader
-                                                size={8}
-                                                color="#456ff6"
-                                            />
-                                        ),
-                                        finished: <BsCheck size={32} />
-                                    }[discordState]
-                                }
-                            </PowerfulButton>
+                            <div className={styles.powerfulButtonRow}>
+                                <PowerfulButton
+                                    type="button"
+                                    variant="outline"
+                                    disabled={discordState === "loading"}
+                                    onClick={discordSync}
+                                    className={styles.powerfulButton}
+                                >
+                                    Sync Discord Image
+                                    {{
+                                        initial: <BsDiscord size={20} />,
+                                        loading: <BeatLoader size={6} color="#456ff6" />,
+                                        finished: <BsCheck size={20} />
+                                    }[discordState]}
+                                </PowerfulButton>
+
+                                <PowerfulButton
+                                    variant="outline"
+                                    className={styles.powerfulButton}
+                                    type="button"
+                                    onClick={() => {
+                                        props.setEditPopUP(false);
+                                        props.setOpenCollegeEdit(true);
+                                    }}
+                                >
+                                    Edit College
+                                </PowerfulButton>
+                            </div>
 
                             <MuButton
                                 type="submit"
@@ -382,6 +389,7 @@ const EditProfilePopUp = (props: Props) => {
                                 text="Update Profile"
                             />
                         </div>
+
                         
                         <button
                             type="button"
