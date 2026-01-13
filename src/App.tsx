@@ -99,6 +99,13 @@ const SearchMain = lazy(() => import("./modules/Dashboard/modules/Search/Pages/S
 const CampusDetails = lazy(() => import("./modules/Dashboard/modules/Campus/components/CampusForum/CampusPage-demo"));
 const LearningPathDetailPage = lazy(() => import("./modules/Dashboard/modules/InterestGroups/components/LearningPathDetailPage"));
 const ManageAchievements = lazy(() => import("./modules/Dashboard/modules/ManageAchievements/ManageAchievements"));
+const AchievementsHub = lazy(() => import("./modules/Dashboard/modules/ManageAchievements/AchievementsHub"));
+const SimulatePage = lazy(() => import("./modules/Dashboard/modules/ManageAchievements/SimulatePage"));
+const RulesPage = lazy(() => import("./modules/Dashboard/modules/ManageAchievements/RulesPage"));
+const BulkIssuePage = lazy(() => import("./modules/Dashboard/modules/ManageAchievements/BulkIssuePage"));
+const IssueLogsPage = lazy(() => import("./modules/Dashboard/modules/ManageAchievements/IssueLogsPage"));
+const AnalyticsPage = lazy(() => import("./modules/Dashboard/modules/ManageAchievements/AnalyticsPage"));
+const ManageSkills = lazy(() => import("./modules/Dashboard/modules/ManageSkills/ManageSkills"));
 const Profile = lazy(() => import("./modules/Dashboard/modules/Profile/pages/Profile"));
 const KarmaVoucher = lazy(() => import("./modules/Dashboard/modules/KarmaVoucher/KarmaVoucher"));
 const KarmaVoucherBulkImport = lazy(() => import("./modules/Dashboard/modules/KarmaVoucher/components/KarmaVoucherBulkImport"));
@@ -220,8 +227,14 @@ function App() {
             { path: "Launchpad", element: <Launchpad /> },
 
             { path: "management", element: <AuthChecker roles={[roles.ADMIN]} children={<ManagementPage />} /> },
-            { path: "management/manage-achievements", element: <AuthChecker roles={[roles.ADMIN]} children={<ManageAchievements />} /> },
-            { path: "management/issue-achievements", element: <AuthChecker roles={[roles.ADMIN]} children={<IssueAchievements />} /> },
+            { path: "management/manage-achievements", element: <AuthChecker roles={[roles.ADMIN]} children={<AchievementsHub />} /> },
+            { path: "management/achievements/list", element: <AuthChecker roles={[roles.ADMIN]} children={<ManageAchievements />} /> },
+            { path: "management/achievements/rules", element: <AuthChecker roles={[roles.ADMIN]} children={<RulesPage />} /> },
+            { path: "management/achievements/simulate", element: <AuthChecker roles={[roles.ADMIN]} children={<SimulatePage />} /> },
+            { path: "management/achievements/bulk-issue", element: <AuthChecker roles={[roles.ADMIN]} children={<BulkIssuePage />} /> },
+            { path: "management/achievements/logs", element: <AuthChecker roles={[roles.ADMIN]} children={<IssueLogsPage />} /> },
+            { path: "management/achievements/analytics", element: <AuthChecker roles={[roles.ADMIN]} children={<AnalyticsPage />} /> },
+            { path: "management/manage-skills", element: <AuthChecker roles={[roles.ADMIN]} children={<ManageSkills />} /> },
             { path: "management/user-management/manage-users", element: <AuthChecker roles={[roles.ADMIN]} children={<ManageUsersPage />} /> },
             { path: "management/user-management/user-role-verification", element: <AuthChecker roles={[roles.ADMIN]} children={<UserRoleVerificationPage />} /> },
             { path: "management/organization/affiliation", element: <AuthChecker roles={[roles.ADMIN]} children={<AffiliationPage />} /> },
