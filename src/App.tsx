@@ -99,6 +99,13 @@ const SearchMain = lazy(() => import("./modules/Dashboard/modules/Search/Pages/S
 const CampusDetails = lazy(() => import("./modules/Dashboard/modules/Campus/components/CampusForum/CampusPage-demo"));
 const LearningPathDetailPage = lazy(() => import("./modules/Dashboard/modules/InterestGroups/components/LearningPathDetailPage"));
 const ManageAchievements = lazy(() => import("./modules/Dashboard/modules/ManageAchievements/ManageAchievements"));
+const AchievementsHub = lazy(() => import("./modules/Dashboard/modules/ManageAchievements/AchievementsHub"));
+const SimulatePage = lazy(() => import("./modules/Dashboard/modules/ManageAchievements/SimulatePage"));
+const RulesPage = lazy(() => import("./modules/Dashboard/modules/ManageAchievements/RulesPage"));
+const BulkIssuePage = lazy(() => import("./modules/Dashboard/modules/ManageAchievements/BulkIssuePage"));
+const IssueLogsPage = lazy(() => import("./modules/Dashboard/modules/ManageAchievements/IssueLogsPage"));
+const AnalyticsPage = lazy(() => import("./modules/Dashboard/modules/ManageAchievements/AnalyticsPage"));
+const ManageSkills = lazy(() => import("./modules/Dashboard/modules/ManageSkills/ManageSkills"));
 const Profile = lazy(() => import("./modules/Dashboard/modules/Profile/pages/Profile"));
 const KarmaVoucher = lazy(() => import("./modules/Dashboard/modules/KarmaVoucher/KarmaVoucher"));
 const KarmaVoucherBulkImport = lazy(() => import("./modules/Dashboard/modules/KarmaVoucher/components/KarmaVoucherBulkImport"));
@@ -146,6 +153,8 @@ const ConnectedDevices = lazy(() => import("./modules/Dashboard/modules/Settings
 const Wadhwani = lazy(() => import("./modules/Dashboard/modules/Wadhwani"));
 const ResetPassword = lazy(() => import("./modules/Common/Authentication/pages/Onboarding/ResetPassword/ResetPassword"));
 
+const IssueAchievements = lazy(() => import("./modules/Dashboard/modules/IssueAchievements/IssueAchievements"));
+
 function App() {
   const AuthChecker = SecureAuthRoutes();
   const router = createBrowserRouter([
@@ -186,16 +195,21 @@ function App() {
       path: "/dashboard",
       element: <DashboardRootLayout />,
       children: [
-        // { path: "learning-paths", element: <LearningPaths /> },
-        // { path: "learning-paths/:id", element: <LearningPathOne /> },
         { path: "campus/:org_id", element: <CampusDetails /> },
         { path: "interestgroups", element: <InterestGroupsPage /> },
         { path: "interestgroups/:id", element: <InterestGroupOne /> },
         { path: "special-events", element: <SpecialEvents /> },
         { path: "leaderboard", element: <MuLeaderboardPage /> },
         { path: "bootcamps", element: <ComingSoonPage /> },
-        // { path: "learningCircles", element: <ComingSoonPage /> },
         { path: "courses", element: <CoursesMainPage /> },
+        { path: "mujourney", element: <LearningPathPage /> },
+        { path: "learning-path/:id", element: <LearningPathPage /> },
+        { path: "home", element: <Dashboardpage /> },
+        { path: "search", element: <SearchMain /> },
+        { path: "mulearners", element: <MuLearnersSearchPage /> },
+        { path: "mentors", element: <MentorSearchPage /> },
+        { path: "campus", element: <CampusSearchPage /> },
+
       ]
     },
     {
@@ -206,20 +220,21 @@ function App() {
           path: "/dashboard",
           element: <DashboardRootLayout />,
           children: [
-            { path: "home", element: <Dashboardpage /> },
-            { path: "mujourney", element: <LearningPathPage /> },
-            { path: "learning-path/:id", element: <LearningPathPage /> },
             { path: "profile", element: <Profile /> },
             { path: "muverse", element: <ComingSoonPage /> },
             { path: "interestgroups", element: <ComingSoonPage /> },
             { path: "learningcircle", element: <LearningCircleLanding2 /> },
             { path: "Launchpad", element: <Launchpad /> },
-            { path: "search", element: <SearchMain /> },
-            { path: "mulearners", element: <MuLearnersSearchPage /> },
-            { path: "mentors", element: <MentorSearchPage /> },
-            { path: "campus", element: <CampusSearchPage /> },
+
             { path: "management", element: <AuthChecker roles={[roles.ADMIN]} children={<ManagementPage />} /> },
-            { path: "management/manage-achievements", element: <AuthChecker roles={[roles.ADMIN]} children={<ManageAchievements />} /> },
+            { path: "management/manage-achievements", element: <AuthChecker roles={[roles.ADMIN]} children={<AchievementsHub />} /> },
+            { path: "management/achievements/list", element: <AuthChecker roles={[roles.ADMIN]} children={<ManageAchievements />} /> },
+            { path: "management/achievements/rules", element: <AuthChecker roles={[roles.ADMIN]} children={<RulesPage />} /> },
+            { path: "management/achievements/simulate", element: <AuthChecker roles={[roles.ADMIN]} children={<SimulatePage />} /> },
+            { path: "management/achievements/bulk-issue", element: <AuthChecker roles={[roles.ADMIN]} children={<BulkIssuePage />} /> },
+            { path: "management/achievements/logs", element: <AuthChecker roles={[roles.ADMIN]} children={<IssueLogsPage />} /> },
+            { path: "management/achievements/analytics", element: <AuthChecker roles={[roles.ADMIN]} children={<AnalyticsPage />} /> },
+            { path: "management/manage-skills", element: <AuthChecker roles={[roles.ADMIN]} children={<ManageSkills />} /> },
             { path: "management/user-management/manage-users", element: <AuthChecker roles={[roles.ADMIN]} children={<ManageUsersPage />} /> },
             { path: "management/user-management/user-role-verification", element: <AuthChecker roles={[roles.ADMIN]} children={<UserRoleVerificationPage />} /> },
             { path: "management/organization/affiliation", element: <AuthChecker roles={[roles.ADMIN]} children={<AffiliationPage />} /> },
@@ -325,7 +340,8 @@ function App() {
   return (
     <>
       <Suspense fallback={<div className="flex items-center justify-center w-screen h-screen"><MuLoader /></div>}>
-        <RouterProvider router={router} />
+        <RouterProvider
+          router={router} />
       </Suspense>
       <Toaster position="bottom-center" reverseOrder={true} />
       <iframe src={`${import.meta.env.VITE_HOME_MULEARN_URL}/cdr`} id="__cdr" ref={cdrIframe} onLoad={() => sendRefreshToken()} style={{ display: "none" }}></iframe>

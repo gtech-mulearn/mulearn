@@ -1,4 +1,4 @@
-import { privateGateway } from "@/MuLearnServices/apiGateways";
+import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
 import { dashboardRoutes } from "@/MuLearnServices/urls";
 import { useUserStore } from "/src/ZustandProvider";
 import channelmap from "../data/channelmap"
@@ -226,6 +226,28 @@ export async function getStartLearningTasks(): Promise<Level[]> {
     }
 }
 
+export async function getPublicTasks(): Promise<Level[]> {
+    try {
+        const response: AxiosResponse<ApiResponse> = await publicGateway.get(dashboardRoutes.getPublicTasks);
+        
+
+        const startLearningLevels = response.data.response.map(level => ({
+            ...level,
+            tasks: level.tasks.filter(task => {
+                // Include tasks that don't have #cl- hashtags (general tasks)
+                const hasClHashtag = task.hashtag && task.hashtag.startsWith('#cl-');
+                const shouldInclude = !hasClHashtag;
+                
+                return shouldInclude;
+            })
+        })).filter(level => level.tasks.length > 0); // Only include levels that have tasks
+
+        return startLearningLevels;
+    } catch (error) {
+        throw error;
+    }
+}
+
 export async function getUserIgTasks(usersIgids: string[]): Promise<Record<string, Task[]>> {
     const apiCache = ApiCache.getInstance();
     const taskObject: Record<string, Task[]> = {};
@@ -301,6 +323,42 @@ export async function getBecomeExpertTasks(userIGs: any[], selectedIgId?: string
                 return false;
             })
         })).filter(level => level.tasks.length > 0);
+
+    } catch (error) {
+        throw error as ApiError;
+    }
+}
+
+export async function getPublicBecomeExpertTasks(selectedIgId?: string): Promise<Level[]> {
+    try {
+        const response: AxiosResponse<ApiResponse> = await publicGateway.get(dashboardRoutes.getPublicTasks);
+        
+        // Filter tasks that have #cl- hashtag (intermediate tasks)
+        const allIgLevels = response.data.response.map(level => ({
+            ...level,
+            tasks: level.tasks.filter(task => {
+                const hasClHashtag = task.hashtag && task.hashtag.startsWith('#cl-');
+                return hasClHashtag;
+            })
+        })).filter(level => level.tasks.length > 0);
+        
+        if (selectedIgId) {
+            // Filter tasks for selected IG only
+            return allIgLevels.map(level => ({
+                ...level,
+                tasks: level.tasks.filter(task => {
+                    // Use the interest_group.id from the task
+                    if (task.interest_group && task.interest_group.id) {
+                        return task.interest_group.id === selectedIgId;
+                    }
+                    // If no interest_group data, don't show the task
+                    return false;
+                })
+            })).filter(level => level.tasks.length > 0);
+        }
+
+        // Return all intermediate tasks if no specific IG selected
+        return allIgLevels;
 
     } catch (error) {
         throw error as ApiError;

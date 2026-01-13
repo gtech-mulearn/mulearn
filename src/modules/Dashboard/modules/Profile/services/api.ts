@@ -161,15 +161,15 @@ export const getAllConnectedUsers = async (): Promise<any> => {
 export const getConnectedUsers = async (
     key?: string,
     value?: string
-): Promise<any> => {
+): Promise<string[] | null> => {
     try {
         const response = await publicGateway.get(qseverseRoutes.getConnectedUsers, {
             params: { key, value }
         });
-       if (!response.data.response.did) {
+       if (!response.data.response.dids || !Array.isArray(response.data.response.dids)) {
             return null;
         }
-        return response.data.response.did;
+        return response.data.response.dids;
     } catch (error: any) {
         console.error("Error fetching connected users:", error.response?.data || error.message);
         // toast.error("Failed to fetch connected users");

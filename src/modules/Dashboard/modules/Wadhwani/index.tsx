@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import styles from "./index.module.css";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
+import { Badge } from "@/components/ui/badge";
 import axios from "axios";
 import {
     getWadhwaniClientToken,
@@ -9,11 +10,16 @@ import {
     getWadhwaniCourses
 } from './services/api'
 
+const DISCORD_SUBMIT_LINK = "https://discord.com/channels/771670169691881483/1455593272633458818";
+
 interface CourseCardProps {
     title: string;
     desc: string;
+    fullDesc: string;
     duration: string;
     rootId: string;
+    karma: string;
+    hashtags: string;
 }
 
 interface WadhwaniCourseResponse {
@@ -31,6 +37,8 @@ interface WadhwaniSheetResponse {
     thumbnail: string;
     description: string;
     CourseDuration: string;
+    Karma: string;
+    Hashtags: string;
 }
 
 const Wadhwani: React.FC = () => {
@@ -100,16 +108,27 @@ function stringSlice(inputString: string): string {
     return inputString.substring(0, 200);
 }
 
-    const CourseCard: React.FC<CourseCardProps> = ({ title, desc, duration, rootId }) => {
+function parseBoldText(text: string): (string | JSX.Element)[] {
+    return text.split(/(\*\*.*?\*\*)/g).map((part, index) => {
+        if (part.startsWith('**') && part.endsWith('**')) {
+            return <strong key={index}>{part.slice(2, -2)}</strong>;
+        }
+        return part;
+    });
+}
+
+    const CourseCard: React.FC<CourseCardProps> = ({ title, desc, fullDesc, duration, rootId, karma, hashtags }) => {
         const [isExpanded, setIsExpanded] = useState(false);
         const truncatedDesc = desc.length > 100 ? desc.slice(0, 100) + "..." : desc;
 
         return (
-            <div className={styles.containercard}>
+            <>
+                {isExpanded && <div className={styles.backdrop} onClick={() => setIsExpanded(false)} />}
+                <div className={`${styles.containercard} ${isExpanded ? styles.expanded : ""}`} style={{ minHeight: isExpanded ? "auto" : "320px" }}>
                 <div className={styles.details}>
                     <p className={styles.title}>{title}</p>
                     <p className={styles.desc}>
-                        {isExpanded ? desc : truncatedDesc}
+                        {isExpanded ? parseBoldText(fullDesc) : parseBoldText(truncatedDesc)}
                         {desc.length > 100 && (
                             <span
                                 className={styles.readMore}
@@ -120,12 +139,43 @@ function stringSlice(inputString: string): string {
                             </span>
                         )}
                     </p>
-                    <p className={styles.duration}>Duration: {duration}hrs</p>
+                    <div className={styles.badgesContainer}>
+                        {duration && (
+                            <Badge variant="primary" className={styles.badge}>
+                                 {duration}hours
+                            </Badge>
+                        )}
+                        {karma && (
+                            <Badge variant="secondary" className={styles.badge}>
+                                 {karma} Karma
+                            </Badge>
+                        )}
+                        {hashtags && (
+                            <Badge variant="default" className={styles.badge}>
+                                {hashtags}
+                            </Badge>
+                        )}
+                    </div>
                 </div>
-                <div onClick={() => handleCourseSelection(rootId)} className={styles.cta}>
-                    Enroll
+                {isExpanded && (
+                    <button 
+                        className={styles.closeBtn}
+                        onClick={() => setIsExpanded(false)}
+                        aria-label="Close"
+                    >
+                        ×
+                    </button>
+                )}
+                <div className={styles.ctaContainer}>
+                    <div onClick={() => handleCourseSelection(rootId)} className={styles.cta}>
+                        Enroll
+                    </div>
+                    <div onClick={() => window.open(DISCORD_SUBMIT_LINK, "_blank")} className={styles.cta}>
+                        Submit Now
+                    </div>
                 </div>
             </div>
+            </>
         );
     };
     if (isLoading) {
@@ -143,8 +193,11 @@ function stringSlice(inputString: string): string {
                                     key={sheet.courseId}
                                     title={sheet.courseName}
                                     desc={stringSlice(sheet.description)}
+                                    fullDesc={sheet.description}
                                     duration={sheet.CourseDuration}
                                     rootId={getRootIdByTitle(sheet.courseName)}
+                                    karma={sheet.Karma}
+                                    hashtags={sheet.Hashtags}
                                 />
                             ))}
                         </div>

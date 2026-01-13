@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
     Card,
     CardBody,
@@ -25,10 +25,15 @@ import {
     AlertTitle,
     AlertDescription,
     Img,
+    Select,
+    Spinner,
+    RadioGroup,
+    Radio,
 } from "@chakra-ui/react";
-import { issueVerifiableCredential } from "../../services/api";
+import { issueVerifiableCredential, getConnectedUsers } from "../../services/api";
 import { useUserStore } from "/src/ZustandProvider";
 import { FiBookOpen, FiCalendar, FiType } from "react-icons/fi";
+import toast from "react-hot-toast";
 
 const Colors: Record<string, string> = {
     lavender: "#CDC1FF",
@@ -42,7 +47,6 @@ type SubjectInfo = {
     type: "Badge" | "Certificate" | "Recognition";
     full_name: string;
     email: string;
-    name: string; 
     did: string;
 };
 
@@ -98,38 +102,61 @@ const AchievementCard: React.FC<AchievementCardProps> = ({
     const bgColor = getRandomColor();
     const { isOpen, onOpen, onClose } = useDisclosure();
     const userInfo = useUserStore((state) => state.userInfo);
-    const didValue = "did:key:z6MkegpqqSYKFAKE1dX6bqCbusLQyzCv9XsZJL9dSDwHmZpB"
 
     // State for switches and API response
     const [shareEmail, setShareEmail] = useState(false);
     const [sharePhone, setSharePhone] = useState(false);
     const [issuedCredential, setIssuedCredential] = useState<IssuedCredentialResponse | null>(null);
+    const [availableDIDs, setAvailableDIDs] = useState<string[]>([]);
+    const [selectedDID, setSelectedDID] = useState<string>("");
+    const [isLoadingDIDs, setIsLoadingDIDs] = useState(false);
 
     const handleButtonClick = async () => {
-        onOpen(); // Always open modal for user interaction
+        setIsLoadingDIDs(true);
+        onOpen();
+
+        try {
+            // Fetch DIDs from the API
+            const dids = await getConnectedUsers('muid', userInfo?.muid || '');
+            if (dids && dids.length > 0) {
+                setAvailableDIDs(dids);
+                setSelectedDID(dids[0]); // Default to first DID
+            } else {
+                setAvailableDIDs([]);
+                setSelectedDID("");
+            }
+        } catch (error) {
+            console.error("Error fetching DIDs:", error);
+            setAvailableDIDs([]);
+            setSelectedDID("");
+        } finally {
+            setIsLoadingDIDs(false);
+        }
     };
 
     const handleIssueVC = async () => {
-        if (didValue !== null) {
-            try {
-                const subjectData: SubjectInfo = {
-                    type: subject_info.type,
-                    full_name: userInfo?.full_name || "Unknown",
-                    email: shareEmail && userInfo?.email ? userInfo.email : "",
-                    did: didValue,
-                    name: userInfo?.full_name || "",
-                };
+        if (!selectedDID) {
+            toast.error("Please select a DID to issue the credential");
+            return;
+        }
 
-                const response = await issueVerifiableCredential(
-                    subjectData,
-                    credential_info,
-                    template_id
-                );
-                setIssuedCredential(response); // Store the response to show success
-                console.log("VC Issued:", response);
-            } catch (error) {
-                console.error("Error issuing VC:", error);
-            }
+        try {
+            const subjectData: SubjectInfo = {
+                type: subject_info.type,
+                full_name: userInfo?.full_name || "Unknown",
+                email: shareEmail && userInfo?.email ? userInfo.email : "",
+                did: selectedDID,
+            };
+
+            const response = await issueVerifiableCredential(
+                subjectData,
+                credential_info,
+                template_id
+            );
+            setIssuedCredential(response); // Store the response to show success
+            console.log("VC Issued:", response);
+        } catch (error) {
+            console.error("Error issuing VC:", error);
         }
     };
 
@@ -139,9 +166,27 @@ const AchievementCard: React.FC<AchievementCardProps> = ({
                 <CardBody className="flex flex-col items-center">
                     <div
                         style={{ backgroundColor: bgColor }}
-                        className="rounded-full p-3 w-48 h-48 flex items-center justify-center"
+                        className="rounded-full p-3 w-48 h-48 flex items-center justify-center overflow-hidden"
                     >
-                        <p className="text-3xl">{icon}</p>
+                        {icon && (icon.startsWith('http://') || icon.startsWith('https://') || icon.includes('/')) ? (
+                            <img
+                                src={
+                                    icon.startsWith('http://') || icon.startsWith('https://')
+                                        ? icon
+                                        : `${(import.meta.env.VITE_BACKEND_URL as string).replace(/\/$/, "")}/media/${icon}`
+                                }
+                                alt="Achievement Icon"
+                                className="w-full h-full object-contain rounded-full"
+                                onError={(e) => {
+                                    (e.target as HTMLImageElement).style.display = 'none';
+                                    if ((e.target as HTMLImageElement).parentElement) {
+                                        (e.target as HTMLImageElement).parentElement!.innerHTML = '<span class="text-3xl">🏆</span>';
+                                    }
+                                }}
+                            />
+                        ) : (
+                            <p className="text-3xl">{icon || "🏆"}</p>
+                        )}
                     </div>
                     <Stack mt="6" spacing="3">
                         <div className="flex flex-col w-full items-center">
@@ -168,15 +213,20 @@ const AchievementCard: React.FC<AchievementCardProps> = ({
             </Card>
 
             {/* Modal Logic */}
-            <Modal isOpen={isOpen} onClose={() => { onClose(); setIssuedCredential(null); }} isCentered size="lg">
+            <Modal isOpen={isOpen} onClose={() => { onClose(); setIssuedCredential(null); setSelectedDID(""); setAvailableDIDs([]); }} isCentered size="lg">
                 <ModalOverlay />
                 <ModalContent>
                     <ModalHeader>
-                        {didValue === null ? "Link Your DID" : issuedCredential ? "Credential Issued" : "Achievement Details"}
+                        {availableDIDs.length === 0 && !isLoadingDIDs ? "Link Your DID" : issuedCredential ? "Credential Issued" : "Issue Verifiable Credential"}
                     </ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
-                        {didValue === null ? (
+                        {isLoadingDIDs ? (
+                            <VStack spacing={4} align="stretch" py={8}>
+                                <Spinner size="xl" mx="auto" />
+                                <Text textAlign="center">Loading your DIDs...</Text>
+                            </VStack>
+                        ) : availableDIDs.length === 0 && !issuedCredential ? (
                             <VStack spacing={4} align="stretch">
                                 <Text>
                                     It seems you haven't linked your DID yet. Please link it to proceed.
@@ -232,22 +282,59 @@ const AchievementCard: React.FC<AchievementCardProps> = ({
                                 </Alert>
                                 <Img src={issuedCredential[0].message} alt="Credential Badge" />
                                 <Stack direction="row" spacing={4} wrap="wrap" className="items-start justify-start gap-4">
-                                <Text className="bg-green-300 text-white !px-2 !py-1 rounded-full text-xs flex justify-center items-center gap-2"><FiBookOpen/> {issuedCredential[0].subject_info.course_name}</Text>
-                                <Text className="bg-orange-300 text-white !px-2 !py-1 rounded-full text-xs flex justify-center items-center gap-2"><FiType/> {issuedCredential[0].subject_info.type}</Text>
-                                <Text className="bg-red-300 text-white !px-2 !py-1 rounded-full text-xs flex justify-center items-center gap-2"><FiCalendar/> {issuedCredential[0].subject_info.completed_date}</Text>
+                                    <Text className="bg-green-300 text-white !px-2 !py-1 rounded-full text-xs flex justify-center items-center gap-2"><FiBookOpen /> {issuedCredential[0].subject_info.course_name}</Text>
+                                    <Text className="bg-orange-300 text-white !px-2 !py-1 rounded-full text-xs flex justify-center items-center gap-2"><FiType /> {issuedCredential[0].subject_info.type}</Text>
+                                    <Text className="bg-red-300 text-white !px-2 !py-1 rounded-full text-xs flex justify-center items-center gap-2"><FiCalendar /> {issuedCredential[0].subject_info.completed_date}</Text>
                                 </Stack>
 
                             </VStack>
                         ) : (
-                            <Text>
-                                {credential_info.description}
-                                <br />
-                                Ready to issue your Verifiable Credential?
-                            </Text>
+                            <VStack spacing={4} align="stretch">
+                                <Text>
+                                    {credential_info.description}
+                                </Text>
+
+                                <FormControl>
+                                    <FormLabel>Select DID to issue credential to:</FormLabel>
+                                    <RadioGroup value={selectedDID} onChange={setSelectedDID}>
+                                        <VStack align="stretch" spacing={2}>
+                                            {availableDIDs.map((did, index) => (
+                                                <Radio
+                                                    key={did}
+                                                    value={did}
+                                                    size="sm"
+                                                    colorScheme="blue"
+                                                >
+                                                    <Text fontSize="sm" wordBreak="break-all">
+                                                        DID {index + 1}: {did}
+                                                    </Text>
+                                                </Radio>
+                                            ))}
+                                        </VStack>
+                                    </RadioGroup>
+                                </FormControl>
+
+                                <Text fontSize="sm" color="gray.600">
+                                    Note: Your name ({userInfo?.full_name || "Unknown"}) and DID will be shared by default.
+                                </Text>
+
+                                <div className="bg-gray-100 !p-4 rounded-md">
+                                    <FormControl className="flex justify-between items-center">
+                                        <FormLabel htmlFor="email-switch" mb="0">
+                                            Share Email
+                                        </FormLabel>
+                                        <Switch
+                                            id="email-switch"
+                                            isChecked={shareEmail}
+                                            onChange={(e) => setShareEmail(e.target.checked)}
+                                        />
+                                    </FormControl>
+                                </div>
+                            </VStack>
                         )}
                     </ModalBody>
                     <ModalFooter>
-                        {didValue === null ? (
+                        {availableDIDs.length === 0 && !isLoadingDIDs && !issuedCredential ? (
                             <>
                                 <Button
                                     bg="#007bff"
@@ -271,7 +358,7 @@ const AchievementCard: React.FC<AchievementCardProps> = ({
                             >
                                 Close
                             </Button>
-                        
+
                         ) : (
                             <Button
                                 bg="#007bff"

@@ -32,6 +32,7 @@ const Socials = (props: Props) => {
         medium: "https://medium.com/@",
         hackerrank: "https://www.hackerrank.com/profile/"
     };
+    
     const socialMediaSvgComponents: { [key: string]: JSX.Element | null } = {
         github: <Github />,
         linkedin: <LinkedIn />,
@@ -44,6 +45,7 @@ const Socials = (props: Props) => {
         medium: <Medium />,
         hackerrank: <HackerRank />
     };
+    
     const formik = useFormik({
         initialValues: {
             github: "",
@@ -78,130 +80,96 @@ const Socials = (props: Props) => {
         } else {
             getSocials(setSocials, formikRef);
         }
-
-        // console.log(formik.values);
-    }, []);
+    }, [id]);
 
     return (
-        <>
+        <div className={styles.socials_container}>
             <div className={styles.edit_social_btn}>
                 <h2>Connect with me</h2>
                 {!editSocials && !id && (
-                    <p
+                    <button
                         onClick={() => setEditSocials(true)}
                         className={styles.edit_profile_btn}
-                        tabIndex={0}
+                        type="button"
                     >
                         <i className="fi fi-rr-pencil"></i>
-                    </p>
+                    </button>
                 )}
                 {editSocials && !id && (
-                    <p
+                    <button
                         onClick={() => {
-                            Object.keys(formik.errors).length === 0 && (
-                                <>
-                                    {setEditSocials(false)}
-                                    {formik.handleSubmit()}
-                                </>
-                            );
+                            if (Object.keys(formik.errors).length === 0) {
+                                setEditSocials(false);
+                                formik.handleSubmit();
+                            }
                         }}
                         className={styles.edit_profile_btn}
-                        tabIndex={0}
+                        type="button"
                     >
                         <i className="fi fi-br-check"></i>
-                    </p>
+                    </button>
                 )}
             </div>
+            
             {Object.values(formik.values).filter(
                 value => value === "" || value === null
-            ).length >= 9 &&
-                !editSocials && (
-                    <p className={styles.display_message}>
-                        You have not connected any socials medias to your
-                        profile yet.
-                    </p>
-                )}
-            <p className={styles.socials_icons}>
+            ).length >= 9 && !editSocials && (
+                <div className={styles.display_message}>
+                    You have not connected any social media to your profile yet.
+                </div>
+            )}
+            
+            <div className={styles.socials_icons}>
                 {Object.values(formik.values).filter(
                     value => value === "" || value === null
-                ).length <= 9
-                    ? Object.entries(formik.values).map(
-                          ([name, username], i) => {
-                              if (editSocials ? true : username) {
-                                  const urlPattern =
-                                      socialMediaUrlMappings[name];
-                                  const url = urlPattern + username;
-                                  return (
-                                      <>
-                                          <div
-                                              style={
-                                                  editSocials
-                                                      ? { width: "100%" }
-                                                      : {}
-                                              }
-                                              className={styles.icon_and_input}
-                                              key={i}
-                                          >
-                                              {" "}
-                                              <a
-                                                  key={name}
-                                                  href={url}
-                                                  target="_blank"
-                                                  rel="noreferrer"
-                                              >
-                                                  {
-                                                      socialMediaSvgComponents[
-                                                          name
-                                                      ]
-                                                  }
-                                              </a>
-                                              {editSocials && !id && (
-                                                  <input
-                                                      type="text"
-                                                      name={name}
-                                                      placeholder={
-                                                          name + " username"
-                                                      }
-                                                      value={
-                                                          formik.values[
-                                                              name as keyof typeof formik.values
-                                                          ]
-                                                      }
-                                                      onChange={
-                                                          formik.handleChange
-                                                      }
-                                                      onBlur={formik.handleBlur}
-                                                  />
-                                              )}
-                                          </div>
-                                          {formik.values[
-                                              name as keyof typeof formik.values
-                                          ] &&
-                                              formik.errors[
-                                                  name as keyof typeof formik.errors
-                                              ] && (
-                                                  <p
-                                                      className={
-                                                          styles.error_message
-                                                      }
-                                                      key={i}
-                                                  >
-                                                      {
-                                                          formik.errors[
-                                                              name as keyof typeof formik.errors
-                                                          ]
-                                                      }
-                                                  </p>
-                                              )}
-                                      </>
-                                  );
-                              }
-                              return ""; // if username is empty
-                          }
-                      )
-                    : "No socials connected yet"}
-            </p>
-        </>
+                ).length <= 9 ? (
+                    Object.entries(formik.values).map(([name, username], index) => {
+                        if (editSocials || username) {
+                            const urlPattern = socialMediaUrlMappings[name];
+                            const url = urlPattern + username;
+                            
+                            return (
+                                <div key={`social-${name}-${index}`} className={styles.social_item_wrapper}>
+                                    <div
+                                        style={editSocials ? { width: "100%" } : {}}
+                                        className={styles.icon_and_input}
+                                    >
+                                        <a
+                                            href={url}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className={styles.social_link}
+                                        >
+                                            {socialMediaSvgComponents[name]}
+                                        </a>
+                                        {editSocials && !id && (
+                                            <input
+                                                type="text"
+                                                name={name}
+                                                placeholder={name + " username"}
+                                                value={formik.values[name as keyof typeof formik.values]}
+                                                onChange={formik.handleChange}
+                                                onBlur={formik.handleBlur}
+                                                className={styles.social_input}
+                                            />
+                                        )}
+                                    </div>
+                                    {formik.values[name as keyof typeof formik.values] &&
+                                        formik.errors[name as keyof typeof formik.errors] && (
+                                        <div className={styles.error_message}>
+                                            {formik.errors[name as keyof typeof formik.errors]}
+                                        </div>
+                                    )}
+                                </div>
+                            );
+                        }
+                        return null;
+                    })
+                ) : (
+                    <div className={styles.no_socials}>No socials connected yet</div>
+                )}
+            </div>
+        </div>
     );
 };
 

@@ -50,12 +50,20 @@ const EditProfilePopUp = (props: Props) => {
         validate: (values: any) => {
             let errors: any = {};
             const emailRegex = /\S+@\S+\.\S+/;
-            ["first_name", "last_name", "mobile"].forEach(key => {
+            ["first_name", "last_name"].forEach(key => {
                 if (!values[key]) errors[key] = "Required";
             });
             if (!values.email) errors.email = "Email is required";
             else if (!emailRegex.test(values.email))
                 errors.email = "Invalid email address";
+
+            if (values.mobile && values.mobile.toString().trim()) {
+                const mobileStr = values.mobile.toString().trim();
+                if (!/^\d{10}$/.test(mobileStr)) {
+                    errors.mobile = "Mobile number must be exactly 10 digits";
+                }
+            }
+
             return errors;
         }
     });
@@ -150,12 +158,18 @@ const EditProfilePopUp = (props: Props) => {
                         <div className={styles.input_field}>
                             <label>Mobile</label>
                             <input
-                                type="number"
+                                type="tel"
                                 name="mobile"
-                                value={formik.values.mobile}
+                                value={formik.values.mobile || ""}
                                 placeholder="Mobile"
                                 onBlur={formik.handleBlur}
-                                onChange={formik.handleChange}
+                                onChange={(e) => {
+                                    const value = e.target.value;
+                                    if (value === "" || /^\d{0,10}$/.test(value)) {
+                                        formik.setFieldValue("mobile", value);
+                                    }
+                                }}
+                                maxLength={10}
                             />
                             {formik.touched.mobile && formik.errors.mobile ? (
                                 <p className={styles.error_message}>
