@@ -42,6 +42,7 @@ function InterestGroupsPage() {
     { title: "Internet Of Things (IOT) And Robotics", image: "/assets/IG/Cover/8.webp" },
     { title: "Entrepreneurship", image: "/assets/IG/Cover/9.webp" },
     { title: "AR/VR", image: "/assets/IG/Cover/10.webp" },
+    { title: "Human Resources Interest Group", image: "/assets/IG/Cover/10.webp" },
 
   ];
 

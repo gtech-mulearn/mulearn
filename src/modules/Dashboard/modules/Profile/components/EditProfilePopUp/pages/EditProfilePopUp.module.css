@@ -58,6 +58,14 @@
                     margin-top: 20px;
                     gap: 10px;
                 }
+                .powerfulButtonRow {
+                    display: flex;
+                    gap: 12px;
+                }
+
+                .powerfulButtonRow button {
+                    flex: 1;
+                }
             }
 
             & button {
@@ -152,5 +160,8 @@
                 }
             }
         }
+        .powerfulButtonRow {
+        flex-direction: column;
+    }
     }
 }
