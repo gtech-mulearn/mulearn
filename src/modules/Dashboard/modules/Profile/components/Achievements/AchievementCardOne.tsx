@@ -39,7 +39,7 @@ import level2 from "../../../Profile/components/MuVoyage/assets/images/Level2.we
 import level1 from "../../../Profile/components/MuVoyage/assets/images/Level1.webp";
 import { getConnectedUsers, issueVerifiableCredential, updateVCURL } from "../../services/api";
 import toast from "react-hot-toast";
-import { useUserStore } from "../../../../../../ZustandProvider";
+import { useUserStore, useQseverseStore } from "../../../../../../ZustandProvider";
 
 const Colors: Record<string, string> = {
     lavender: "#CDC1FF",
@@ -93,10 +93,15 @@ const AchievementCardOne: React.FC<AchievementCardOneProps> = ({
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [cardIcon, setCardIcon] = useState("");
     const [issuedCredential, setIssuedCredential] = useState<IssuedCredentialResponse | null>(null);
-    const [availableDIDs, setAvailableDIDs] = useState<string[]>([]); // Changed to array
-    const [selectedDID, setSelectedDID] = useState<string>(""); // New state for selected DID
+    const [availableDIDs, setAvailableDIDs] = useState<string[]>([]);
+    const [selectedDID, setSelectedDID] = useState<string>("");
     const [isRefreshing, setIsRefreshing] = useState(false);
-    const [didLinkStatus, setDidLinkStatus] = useState<'checking' | 'linked' | 'not-linked'>('not-linked');
+
+    // Get connection status from store - if connected, user has DIDs
+    const storeConnectionStatus = useQseverseStore((state) => state.connectionStatus);
+    const [didLinkStatus, setDidLinkStatus] = useState<'checking' | 'linked' | 'not-linked'>(
+        storeConnectionStatus === 'connected' ? 'checking' : 'not-linked'
+    );
     const userEmail = useUserStore((state) => state.userInfo?.email || "");
 
     const levelIcons: Record<string, string> = {
@@ -108,6 +113,31 @@ const AchievementCardOne: React.FC<AchievementCardOneProps> = ({
         "Level 6": level6,
         "Level 7": level7,
     };
+
+    // Auto-fetch DIDs when component mounts if store says user is connected
+    useEffect(() => {
+        const fetchDIDsIfConnected = async () => {
+            // Only auto-fetch if store says connected and we have muid
+            if (storeConnectionStatus === 'connected' && muid && availableDIDs.length === 0) {
+                setDidLinkStatus('checking');
+                try {
+                    const dids = await getConnectedUsers('muid', muid);
+                    if (dids && dids.length > 0) {
+                        setAvailableDIDs(dids);
+                        setSelectedDID(dids[0]);
+                        setDidLinkStatus('linked');
+                    } else {
+                        setDidLinkStatus('not-linked');
+                    }
+                } catch (error) {
+                    console.error("Error auto-fetching DIDs:", error);
+                    setDidLinkStatus('not-linked');
+                }
+            }
+        };
+
+        fetchDIDsIfConnected();
+    }, [storeConnectionStatus, muid]);
 
     useEffect(() => {
         if (!achievement?.achievement) return;
@@ -141,8 +171,15 @@ const AchievementCardOne: React.FC<AchievementCardOneProps> = ({
     const handleButtonClick = async () => {
         if (fromUserSearch && !achievement.is_issued) return;
 
-        // Fetch DIDs when modal opens
+        // If achievement is not issued and we need to check/fetch DIDs
         if (!achievement.is_issued && muid) {
+            // If DIDs already loaded from auto-fetch, just open modal
+            if (availableDIDs.length > 0) {
+                onOpen();
+                return;
+            }
+
+            // Otherwise fetch DIDs when modal opens
             setDidLinkStatus('checking');
             onOpen();
 
@@ -150,7 +187,7 @@ const AchievementCardOne: React.FC<AchievementCardOneProps> = ({
                 const dids = await getConnectedUsers('muid', muid);
                 if (dids && dids.length > 0) {
                     setAvailableDIDs(dids);
-                    setSelectedDID(dids[0]); // Default to first DID
+                    setSelectedDID(dids[0]);
                     setDidLinkStatus('linked');
                 } else {
                     setAvailableDIDs([]);

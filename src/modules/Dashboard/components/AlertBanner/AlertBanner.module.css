@@ -1,0 +1,249 @@
+.alertBanner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    border-radius: 50px;
+    margin: 0;
+    animation: slideIn 0.3s ease-out;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.alertBanner.animatingOut {
+    animation: slideOut 0.3s ease-in forwards;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+/* Variant Styles */
+.info {
+    background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+    border: 1px solid #7dd3fc;
+    color: #0c4a6e;
+}
+
+.info .iconContainer i {
+    color: #0284c7;
+}
+
+.warning {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border: 1px solid #fbbf24;
+    color: #78350f;
+}
+
+.warning .iconContainer i {
+    color: #d97706;
+}
+
+.success {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    border: 1px solid #6ee7b7;
+    color: #064e3b;
+}
+
+.success .iconContainer i {
+    color: #059669;
+}
+
+.error {
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+    border: 1px solid #f87171;
+    color: #7f1d1d;
+}
+
+.error .iconContainer i {
+    color: #dc2626;
+}
+
+/* Icon Container */
+.iconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.iconContainer i {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+
+/* Content */
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.description {
+    font-size: 13px;
+    font-weight: 400;
+    opacity: 0.85;
+    line-height: 1.4;
+}
+
+/* Actions */
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.actionButton {
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    white-space: nowrap;
+}
+
+.info .actionButton {
+    background: #0284c7;
+    color: white;
+}
+
+.info .actionButton:hover {
+    background: #0369a1;
+}
+
+.warning .actionButton {
+    background: #d97706;
+    color: white;
+}
+
+.warning .actionButton:hover {
+    background: #b45309;
+}
+
+.success .actionButton {
+    background: #059669;
+    color: white;
+}
+
+.success .actionButton:hover {
+    background: #047857;
+}
+
+.error .actionButton {
+    background: #dc2626;
+    color: white;
+}
+
+.error .actionButton:hover {
+    background: #b91c1c;
+}
+
+.dismissButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    border: none;
+    background: rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.dismissButton:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.dismissButton i {
+    font-size: 16px;
+    display: flex;
+    opacity: 0.7;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .alertBanner {
+        flex-wrap: wrap;
+        padding: 10px 14px;
+        gap: 8px;
+    }
+
+    .content {
+        flex: 1 1 calc(100% - 80px);
+        order: 1;
+    }
+
+    .iconContainer {
+        order: 0;
+    }
+
+    .actions {
+        order: 2;
+        margin-left: auto;
+    }
+
+    .title {
+        font-size: 13px;
+    }
+
+    .description {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .alertBanner {
+        margin: 0 0.5rem;
+        padding: 10px 12px;
+    }
+
+    .content {
+        flex: 1 1 100%;
+    }
+
+    .actions {
+        width: 100%;
+        justify-content: flex-end;
+        margin-top: 4px;
+    }
+
+    .actionButton {
+        flex: 1;
+        text-align: center;
+    }
+}
