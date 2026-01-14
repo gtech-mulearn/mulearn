@@ -155,7 +155,7 @@ const Profile = () => {
         },
         onNextClick: (element: Element | undefined, step: any, options: { config: any; state: any }) => {
             const stepIndex = options.state.activeIndex;
-            
+
             // Step 8: Switch to karma history tab
             if (stepIndex === 8) {
                 setProfileList("karma-history");
@@ -171,7 +171,7 @@ const Profile = () => {
         },
         onPrevClick: (element: Element | undefined, step: any, options: { config: any; state: any }) => {
             const stepIndex = options.state.activeIndex;
-            
+
             // Going back from step 9 (karma history content) to step 8 (karma history tab)
             // Need to ensure we're still on karma history tab
             if (stepIndex === 9) {
@@ -228,6 +228,8 @@ const Profile = () => {
 
 
 
+
+
     useEffect(() => {
         const initializeProfileData = async () => {
             setAchievements([])
@@ -241,21 +243,21 @@ const Profile = () => {
             }
             setValue(newValue);
 
+            // Fetch connected users/DIDs - this is needed for achievement cards
+            // DID selection is handled by each achievement card when user clicks "Issue VC"
             if (newValue) {
                 try {
                     const connectedUsersResponse = await getConnectedUsers(key, newValue);
                     if (connectedUsersResponse && connectedUsersResponse.length > 0) {
-                        setUserDID(connectedUsersResponse[0]); // Use first DID from the array
+                        setUserDID(connectedUsersResponse[0]); // Use first DID as default
                     }
                 } catch (error) {
                     console.error("Error fetching connected users:", error);
-                    toast.error("Failed to fetch connected users.");
+                    // Silent fail - user hasn't connected wallet
                 }
-            } else {
-                console.warn("Value is not available for fetchConnectedUsers");
             }
 
-            // Step 3: Fetch achievements (only if value is available)
+            // Fetch achievements
             if (newValue) {
                 setIsLoading(true);
                 try {
@@ -263,7 +265,6 @@ const Profile = () => {
                     setAchievements(achievements);
                 } catch (error) {
                     console.error("Error fetching achievements:", error);
-                    // toast.error("Failed to fetch achievements.");
                 } finally {
                     setIsLoading(false);
                 }
@@ -313,17 +314,17 @@ const Profile = () => {
 
     // Start tour when profile data is loaded - only on profile page for first-time users
     const tourStartedRef = useRef(false);
-    
+
     useEffect(() => {
         // Only run on the profile page
         const isProfilePage = location.pathname.includes('/profile');
-        
+
         // Check if user has already seen the profile tour
         const hasSeenProfileTour = localStorage.getItem('hasSeenProfileTour');
 
         if (userProfile.full_name && APILoadStatus === 200 && !tourStartedRef.current && isProfilePage && !hasSeenProfileTour) {
             tourStartedRef.current = true;
-            
+
             // Mark that the user has seen the profile tour
             localStorage.setItem('hasSeenProfileTour', 'true');
             // Wait for DOM to be fully ready and elements to be positioned
@@ -331,16 +332,16 @@ const Profile = () => {
                 // Double-check that all required elements exist before starting
                 const elementsToCheck = [
                     '.mu-tour-muid',
-                    '.mu-tour-avatar', 
+                    '.mu-tour-avatar',
                     '.mu-tour-level',
                     '.mu-tour-basic-details'
                 ];
-                
+
                 const allElementsReady = elementsToCheck.every(selector => {
                     const element = document.querySelector(selector);
                     return !!element;
                 });
-                
+
                 if (allElementsReady && tour.startTour) {
                     tour.startTour();
                 } else {
