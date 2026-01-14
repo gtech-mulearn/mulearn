@@ -171,8 +171,8 @@ const AchievementCardOne: React.FC<AchievementCardOneProps> = ({
     const handleButtonClick = async () => {
         if (fromUserSearch && !achievement.is_issued) return;
 
-        // If achievement is not issued and we need to check/fetch DIDs
-        if (!achievement.is_issued && muid) {
+        // If achievement is not issued (or issued but no VC) and we need to check/fetch DIDs
+        if ((!achievement.is_issued || !achievement.vc_url) && muid) {
             // If DIDs already loaded from auto-fetch, just open modal
             if (availableDIDs.length > 0) {
                 onOpen();
@@ -353,7 +353,7 @@ const AchievementCardOne: React.FC<AchievementCardOneProps> = ({
             );
         }
 
-        if (fromUserSearch && achievement.is_issued) {
+        if (fromUserSearch && achievement.is_issued && achievement.vc_url) {
             return (
                 <VStack spacing={{ base: 3, md: 4 }} align="stretch">
                     <Alert
@@ -391,7 +391,7 @@ const AchievementCardOne: React.FC<AchievementCardOneProps> = ({
             );
         }
 
-        if (achievement.is_issued) {
+        if (achievement.is_issued && achievement.vc_url) {
             return (
                 <VStack spacing={{ base: 3, md: 4 }} align="stretch">
                     <Alert
@@ -549,7 +549,7 @@ const AchievementCardOne: React.FC<AchievementCardOneProps> = ({
             );
         }
 
-        if (achievement.is_issued) {
+        if (achievement.is_issued && achievement.vc_url) {
             return (
                 <Button
                     bg="#007bff"
@@ -621,10 +621,10 @@ const AchievementCardOne: React.FC<AchievementCardOneProps> = ({
                             onClick={handleButtonClick}
                             px={{ base: 4, md: 6 }}
                         >
-                            {achievement.is_issued ? "View" : "Issue VC"}
+                            {achievement.is_issued && achievement.vc_url ? "View" : "Issue VC"}
                         </Button>
                     )}
-                    {fromUserSearch && achievement.is_issued && (
+                    {fromUserSearch && achievement.is_issued && achievement.vc_url && (
                         <Button
                             bg="#007bff"
                             color="white"
@@ -636,7 +636,7 @@ const AchievementCardOne: React.FC<AchievementCardOneProps> = ({
                             View
                         </Button>
                     )}
-                    {fromUserSearch && !achievement.is_issued && (
+                    {fromUserSearch && (!achievement.is_issued || !achievement.vc_url) && (
                         <Text fontSize={{ base: "xs", md: "sm" }} color="gray.600" textAlign="center" px={4}>
                             The user hasn't claimed this achievement yet.
                         </Text>
@@ -663,7 +663,7 @@ const AchievementCardOne: React.FC<AchievementCardOneProps> = ({
                                 ? "Link Your DID"
                                 : issuedCredential
                                     ? "Credential Issued"
-                                    : achievement.is_issued
+                                    : achievement.is_issued && achievement.vc_url
                                         ? "Achievement Details"
                                         : "Issue Credential"}
                     </ModalHeader>
