@@ -36,7 +36,7 @@ export interface UserProfile {
 
 interface UserStore {
   userProfile: UserProfile;
-  userInfo: UserInfo; 
+  userInfo: UserInfo;
   setUserProfile: (profile: UserProfile) => void;
   setUserInfo: (info: UserInfo) => void;
   updateUserProfile: (updates: Partial<UserProfile>) => void;
@@ -149,3 +149,48 @@ export const useStatStore = create<StatStore>(
     }
   )
 );
+
+// QSeverse Connection Status Types
+// This store ONLY tracks whether the user has connected their wallet (for banner display)
+// It does NOT store which DID they use - that's handled by achievement cards on demand
+export type QseverseConnectionStatus = 'idle' | 'loading' | 'connected' | 'not_connected' | 'error';
+
+interface QseverseStore {
+  connectionStatus: QseverseConnectionStatus;
+  hasCheckedConnection: boolean;
+  setConnectionStatus: (status: QseverseConnectionStatus) => void;
+  setHasCheckedConnection: (checked: boolean) => void;
+  resetQseverseState: () => void;
+}
+
+const initialQseverseState = {
+  connectionStatus: 'idle' as QseverseConnectionStatus,
+  hasCheckedConnection: false,
+};
+
+export const useQseverseStore = create<QseverseStore>(
+  //@ts-ignore
+  persist(
+    (set) => ({
+      ...initialQseverseState,
+      setConnectionStatus: (status: QseverseConnectionStatus) =>
+        set({ connectionStatus: status }),
+      setHasCheckedConnection: (checked: boolean) =>
+        set({ hasCheckedConnection: checked }),
+      resetQseverseState: () =>
+        set(initialQseverseState),
+    }),
+    {
+      name: "qseverseStore",
+      // @ts-ignore
+      getStorage: () => localStorage,
+      // Only persist connectionStatus, NOT hasCheckedConnection
+      // This ensures API is called on each fresh page load
+      partialize: (state: QseverseStore) => ({
+        connectionStatus: state.connectionStatus,
+      }),
+    }
+  )
+);
+
+

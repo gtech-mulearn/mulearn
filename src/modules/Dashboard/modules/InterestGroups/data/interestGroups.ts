@@ -131,10 +131,17 @@ export const interestGroups: InterestGroupData[] = [
         "Interest group leads manage the activities and events within interest groups and serve as a point of contact for students interested in getting involved. Students can connect with these leads to learn about opportunities within their interests.",
       leads: [
         {
-          name: "Abikrishna S",
+          name: "Aaron R Thomas",
           institution: "St. Thomas Institute for Science and Technology",
-          linkedin: "https://www.linkedin.com/in/abikrishna-s-70303323b/",
-          image: "/assets/IG/UI-UX/IG Leads/Abikrishna S.webp",
+          linkedin: "https://www.linkedin.com/in/aaron-r-thomas-ba311931a/",
+          image: "/assets/IG/UI-UX/IG Leads/Aaronrthomas.webp",
+          expertise: ["UI Design", "User Research"],
+        },
+        {
+          name: "Aysha Saliha",
+          institution: "Mohandas College of Engineering and Technology",
+          linkedin: "https://www.linkedin.com/in/aysha-saliha-a5782b360/",
+          image: "/assets/IG/UI-UX/IG Leads/Ayshasaliha.webp",
           expertise: ["UI Design", "User Research"],
         },
       ],
@@ -557,10 +564,34 @@ export const interestGroups: InterestGroupData[] = [
       mentors: [
         {
           id: "m-001",
-          name: "Enric S Neelamkaavil",
-          role: "Product Designer @UST Global, µLearn Alumni",
-          linkedin: "https://www.linkedin.com/in/enricsneelamkavil/",
-          image: "/assets/IG/UI-UX/Mentors/Enric S.webp",
+          name: "Abikrishna S",
+          role: "Product Designer @ UST Global, µLearn Alumni",
+          linkedin: "https://www.linkedin.com/in/abikrishna-s-870278393/",
+          image: "/assets/IG/UI-UX/Mentors/Abikrishna S.webp",
+          expertise: ["UI Design", "User Research"],
+        },
+        {
+          id: "m-002",
+          name: "Dev Nandan",
+          role: "Associate Product Designer @ UST Global, µLearn Alumni",
+          linkedin: "https://www.linkedin.com/in/devinci-design/",
+          image: "/assets/IG/UI-UX/Mentors/Dev Nandan.webp",
+          expertise: ["UI Design", "User Research"],
+        },
+        {
+          id: "m-003",
+          name: "Edwin Emmanuel Roy",
+          role: "Product Designer @ Innovinlabs, µLearn Alumni",
+          linkedin: "https://www.linkedin.com/in/edwin-emmanuel-roy-74a381205/",
+          image: "/assets/IG/UI-UX/Mentors/Edwin.webp",
+          expertise: ["UI Design", "User Research"],
+        },
+        {
+          id: "m-004",
+          name: "Deepika S R",
+          role: "Associate Project manager @ App Maker, µLearn Alumni",
+          linkedin: "https://www.linkedin.com/in/deepika-sr/",
+          image: "/assets/IG/UI-UX/Mentors/Deepika S R.webp",
           expertise: ["UI Design", "User Research"],
         },
       ],
@@ -572,11 +603,23 @@ export const interestGroups: InterestGroupData[] = [
         image: "https://www.svgrepo.com/show/452142/adobe.svg",
         link: "https://uiuxsemarang.org",
       },
+      {
+        id: "cp-002",
+        title: "NextGenix",
+        image: "/assets/IG/UI-UX/Community Partners/Logo.webp",
+        link: "https://www.nxtgenix.design/",
+      },
     ],
     partnerCompanies: [
       {
         id: "pc-001",
         title: "Tokoh Design Studio",
+        image: "https://www.svgrepo.com/show/452202/figma.svg",
+        link: "https://tokohstudio.com",
+      },
+      {
+        id: "pc-001",
+        title: "NextGenix",
         image: "https://www.svgrepo.com/show/452202/figma.svg",
         link: "https://tokohstudio.com",
       },
@@ -601,17 +644,17 @@ export const interestGroups: InterestGroupData[] = [
         "Interest group leads manage the activities and events within interest groups and serve as a point of contact for students interested in getting involved.",
       leads: [
         {
-          name: "JanuKrishna A S",
-          institution: "Marian Engineering College",
-          linkedin: "https://www.linkedin.com/in/janukrishna-a-s-4ba8301b2",
-          image: "/assets/IG/Web Development/IG Leads/Janukrishna AS.webp",
+          name: "Rohit R Nair",
+          institution: "SCT College Of Engineering",
+          linkedin: "https://linkedin.com/in/rohitrn",
+          image: "/assets/IG/Web Development/IG Leads/Rohit R Nair.webp",
           expertise: ["Frontend Development", "Backend Development"],
         },
         {
-          name: "Maanas M S",
-          institution: "Marian Engineering College",
-          linkedin: "https://www.linkedin.com/in/maanasms/",
-          image: "/assets/IG/Web Development/IG Leads/Maanas MS.webp",
+          name: "Devika Dileep",
+          institution: "College of engineering perumon",
+          linkedin: "https://www.linkedin.com/in/devika-dileep-",
+          image: "/assets/IG/Web Development/IG Leads/devika.webp",
           expertise: ["Web Design", "Database Management"],
         },
       ],
@@ -1003,30 +1046,6 @@ export const interestGroups: InterestGroupData[] = [
       ],
       mentors: [
         {
-          id: "m-002",
-          name: "Amal CP",
-          role: "Associate Software Developer @ SOTI",
-          linkedin: "https://www.linkedin.com/in/amal-c-p/",
-          image: "/assets/IG/Web Development/Mentors/Amal C P.webp",
-          expertise: [], // Assuming no expertise listed; add if available
-        },
-        {
-          id: "m-003",
-          name: "Bijo Mathew",
-          role: "React Native Developer @ Superapps",
-          linkedin: "https://www.linkedin.com/in/bijomathewjose/",
-          image: "/assets/IG/Web Development/Mentors/Bijo.webp",
-          expertise: [],
-        },
-        {
-          id: "m-004",
-          name: "Arjun MS",
-          role: "Backend Developer @ Gtech µLearn",
-          linkedin: "https://www.linkedin.com/in/the-arjun-ms/",
-          image: "/assets/IG/Web Development/Mentors/Arjun M S.webp",
-          expertise: [],
-        },
-        {
           id: "m-005",
           name: "Aswin Asok",
           role: "Co-Founder, MakeMyPass",
@@ -1078,13 +1097,6 @@ export const interestGroups: InterestGroupData[] = [
         "Cybersecurity Interest Group Leads oversee the activities and events within the cybersecurity community and act as the main point of contact for students eager to get involved. Students can reach out to these leads to explore opportunities in areas like ethical hacking, network defense, and security research, and stay informed about upcoming cybersecurity initiatives and events.",
       leads: [
         {
-          name: "Krishna Rajeev",
-          institution: "Muthoot institute of technology and sciences",
-          linkedin: "https://www.linkedin.com/in/krishnarajeev4",
-          image: "/assets/IG/Cyber Security/IG Lead/Krishna Rajeev.webp",
-          expertise: ["Ethical Hacking", "Network Security"],
-        },
-        {
           name: "Dany Koshy P",
           institution: "College of Engineering Pathanapuram",
           linkedin: "https://www.linkedin.com/in/dany-koshy-p-a79328232/",
@@ -1092,17 +1104,17 @@ export const interestGroups: InterestGroupData[] = [
           expertise: ["Ethical Hacking", "Network Security"],
         },
         {
-          name: "Aswin Krishna",
-          institution: "Security Engineer @ KMart",
-          linkedin: "https://www.linkedin.com/in/aswinkrishna07",
-          image: "/assets/IG/Cyber Security/IG Lead/Aswin Krishna.webp",
+          name: "Krishna Rajeev",
+          institution: "Muthoot Institute of Technology and Science, Ernakulam",
+          linkedin: "https://www.linkedin.com/in/krishnarajeev4",
+          image: "/assets/IG/Cyber Security/IG Lead/Krishna Rajeev.webp",
           expertise: ["Security Research", "Incident Response"],
         },
         {
           name: "Geo Mathew Joseph",
           institution: "Marian Engineering College",
           linkedin: "https://www.linkedin.com/in/geomathewjoseph",
-          image: "/assets/IG/Cyber Security/IG Lead/Geo Mathew.webp",
+          image: "/assets/IG/Cyber Security/IG Lead/geo Mathew.webp",
           expertise: ["Penetration Testing", "Security Analysis"],
         },
       ],
@@ -1583,10 +1595,16 @@ export const interestGroups: InterestGroupData[] = [
         "Interest group leads manage the activities and events within interest groups and serve as a point of contact for students interested in getting involved. Students can connect with these leads to learn about opportunities within their interests",
       leads: [
         {
-          name: "Sabal Krishna S",
-          institution: "St.Thomas Institute for Science and Technology, Trivandrum",
-          linkedin: "https://www.linkedin.com/in/sabal-krishna-s-29b758298/",
-          image: "/assets/IG/Game Development/IG Lead/image.webp",
+          name: "Ashiq Muhammed",
+          institution: "Mar Baselios College of Engineering and Technology , Trivandrum",
+          linkedin: "https://www.linkedin.com/in/ashiq-muhammed-m-?",
+          image: "/assets/IG/Game Development/IG Lead/Ashiq Muhammed M.webp",
+        },
+        {
+          name: "Neeraj Rajeev",
+          institution: "LBS College Of Engineering, Kasaragod",
+          linkedin: "https://www.linkedin.com/in/idkneeraj",
+          image: "/assets/IG/Game Development/IG Lead/Neeraj Rajeev.webp",
         },
       ],
     },
@@ -2125,6 +2143,14 @@ export const interestGroups: InterestGroupData[] = [
           image: "/assets/IG/Game Development/Mentors/Jobin.webp",
           expertise: [],
         },
+        {
+          id: "m-008",
+          name: "Sabal Krishna",
+          role: "Unreal/UEFN Developer @ Tiltlabs",
+          linkedin: "https://www.linkedin.com/in/sabal-krishna-s-29b758298/",
+          image: "/assets/IG/Game Development/Mentors/image.webp",
+          expertise: [],
+        },
       ],
     },
     communityPartners: [
@@ -2620,22 +2646,42 @@ export const interestGroups: InterestGroupData[] = [
           "linkedin": "https://www.linkedin.com/in/rajeevan-a-b-4a2196181/",
           "image": "/assets/IG/IoT/Mentors/Rajeevan.webp",
           "expertise": ["Embedded Systems", "IoT Hardware"]
-        }
+        },
+        {
+          "id": "m-004",
+          "name": "Vyshnav VG",
+          "role": "",
+          "linkedin": "https://www.linkedin.com/in/vyshnavvg/",
+          "image": "/assets/IG/IoT/Mentors/Vyshnav VG.webp",
+          "expertise": ["Embedded Systems", "IoT Hardware"]
+        },
       ]
     },
     "communityPartners": [
       {
         "id": "cp-002",
         "title": "Veda IIT",
-        "image": "/assets/IG/IoT/Community Partners/Veda IIT.jpg",
+        "image": "/assets/IG/IoT/Community Partners/Veda IIT.webp",
         "link": ""
       },
       {
         "id": "cp-003",
         "title": "Arduino",
-        "image": "/assets/IG/IoT/Community Partners/arduino.jpg",
+        "image": "/assets/IG/IoT/Community Partners/Arduino.webp",
         "link": ""
-      }
+      },
+      {
+        "id": "cp-004",
+        "title": "Unique World Robotics",
+        "image": "/assets/IG/IoT/Community Partners/Unique world Robotics.webp",
+        "link": ""
+      },
+      {
+        "id": "cp-005",
+        "title": "Inker Robotics",
+        "image": "/assets/IG/IoT/Community Partners/inker-robotic-logo.webp",
+        "link": ""
+      },
     ],
     "partnerCompanies": [
       {
@@ -2664,10 +2710,10 @@ export const interestGroups: InterestGroupData[] = [
         "Interest group leads manage the activities and events within interest groups and serve as a point of contact for students interested in getting involved. Students can connect with these leads to learn about opportunities within their interests.",
       leads: [
         {
-          name: "Hithesh G",
-          institution: "University College of Engineering, Kariavattom",
-          linkedin: "https://www.linkedin.com/in/hithesh-g",
-          image: "/assets/IG/HR/IG Lead/Hithesh G.webp",
+          name: "Nandana Vipin",
+          institution: "Marian College of Engineering, Menamkulam",
+          linkedin: "https://www.linkedin.com/in/nandana-vipin/",
+          image: "/assets/IG/HR/IG Lead/Nandana Vipin.webp",
         },
       ],
     },
@@ -3592,17 +3638,17 @@ export const interestGroups: InterestGroupData[] = [
         "Interest group leads manage the activities and events within interest groups and serve as a point of contact for students interested in getting involved. Students can connect with these leads to learn about opportunities within their interests.",
       leads: [
         {
-          name: "Muhammed Ziyan",
-          institution: "St. Thomas Institute for Science and Technology",
-          linkedin: "https://www.linkedin.com/in/mziyan/",
-          image: "/assets/IG/Data Science/IG Lead/Muhammed Ziyan.webp",
+          name: "Aiswarya Jayaprakash",
+          institution: "LBS Institute of technology for Women, Poojappura ",
+          linkedin: "https://www.linkedin.com/in/aiswarya-jayaprakash03",
+          image: "/assets/IG/Data Science/IG Lead/Aiswarya Jayaprakash.webp",
           expertise: ["Machine Learning", "Big Data"],
         },
         {
-          name: "Jeeva Vinod",
-          institution: "Vidya Academy of Science and Technology",
-          linkedin: "https://www.linkedin.com/in/jeeva-vinod-7b536a215",
-          image: "/assets/IG/Data Science/IG Lead/Jeeva Vinod.webp",
+          name: "Tharun Tomy",
+          institution: "Viswajyothi College of Engineering and Technology, Vazhakkulam",
+          linkedin: "https://www.linkedin.com/in/tharuntomy06/",
+          image: "/assets/IG/Data Science/IG Lead/Tharun Tomy.webp",
           expertise: ["Data Visualization", "Predictive Modeling"],
         },
       ],
@@ -3757,10 +3803,10 @@ export const interestGroups: InterestGroupData[] = [
         "Interest group leads manage the activities and events within interest groups and serve as a point of contact for students interested in getting involved. Students can connect with these leads to learn about opportunities within their interests.",
       leads: [
         {
-          name: "Lezin VM",
-          institution: "College of Engineering Aranmula",
-          linkedin: "https://www.linkedin.com/in/lezin-vm/",
-          image: "/assets/IG/Devops/IG Leads/Lezin V M.webp",
+          name: "Saniya Mary Jacob",
+          institution: "St. Joseph's College of Engineering and Technology, Palai",
+          linkedin: "https://www.linkedin.com/in/saniya-mary-jacob-956641291",
+          image: "/assets/IG/Devops/IG Leads/SaniyaMaryJacob.webp",
           expertise: ["Cloud Computing", "DevOps"],
         },
       ],
@@ -3881,19 +3927,19 @@ export const interestGroups: InterestGroupData[] = [
       mentors: [
         {
           id: "m-009",
-          name: "Akash Santhosh",
-          role: "Network and Systems Engineer | Debian Contributor µlearn Alumni",
-          linkedin: "https://www.linkedin.com/in/akashsanthosh/",
-          image: "/assets/IG/Devops/Mentors/Akash Santhosh.webp",
+          name: "Lezin VM",
+          role: "Technical intern at CloudifyOps",
+          linkedin: "https://www.linkedin.com/in/lezin-vm/",
+          image: "/assets/IG/Devops/Mentors/Lezin VM.webp",
           expertise: [], // Add if available
         },
         {
           id: "m-010",
-          name: "Muhammed Iqbal P B",
-          role: "Cloud Architect @Codeace Leading AWS UG, CNCG & Grafana Kochi, µlearn Alumni",
-          linkedin: "https://www.linkedin.com/in/iqbalpb/",
-          image: "/assets/IG/Devops/Mentors/Muhammed Iqbal.webp",
-          expertise: [],
+          name: "Abijith K A",
+          role: "Software engineer at Verbo ",
+          linkedin: "https://www.linkedin.com/in/abijith-k-a-37b6a4213",
+          image: "/assets/IG/Devops/Mentors/Lezin VM.webp",
+          expertise: [], // Add if available
         },
       ],
     },
@@ -3901,7 +3947,7 @@ export const interestGroups: InterestGroupData[] = [
       {
         id: "cp-009-1",
         title: "Devops",
-        image: "/assets/IG/Devops/Community Partners/Devops.webp",
+        image: "/assets/IG/Devops/Community Partners/devops.webp",
         link: "#", // Placeholder link; replace with actual URL if available
       },
     ],
@@ -4219,19 +4265,12 @@ export const interestGroups: InterestGroupData[] = [
       "description": "Interest group leads manage the activities and events within interest groups and serve as a point of contact for students interested in getting involved. Students can connect with these leads to learn about opportunities within their interests.",
       "leads": [
         {
-          "name": "Jyothsna P Nair",
-          "institution": "Mar Baselios College of Engineering, Trivandrum",
-          "linkedin": "https://www.linkedin.com/in/jyothsna-p-nair-11b734273/",
-          "image": "/assets/IG/Entrepreneurship/Leads/Jyothsna P Nair.webp",
+          "name": "Karthik Krishnan",
+          "institution": "Vidya Academy of Science and Engineering, Thrissur",
+          "linkedin": "https://www.linkedin.com/in/karthik-krishnan-/",
+          "image": "/assets/IG/Entrepreneurship/Leads/Karthik Krishnan.webp",
           "expertise": ["Innovation", "Business Strategy"]
         },
-        {
-          "name": "Salahudheen Thajudheen I",
-          "institution": "College of Engineering, Kottarakkara",
-          "linkedin": "https://www.linkedin.com/in/salahudheen--thajudheen-/",
-          "image": "/assets/IG/Entrepreneurship/Leads/Salahudheen Thajudheen.webp",
-          "expertise": ["Startup Development", "Market Research"]
-        }
       ]
     },
 
@@ -4431,7 +4470,7 @@ export const interestGroups: InterestGroupData[] = [
       "mentors": [
         {
           "id": "m-022",
-          "name": "Arun JS",
+          "name": "Salahuddin",
           "role": "Chief Impact Officer Mulearn, Founder Slate N Pencil, Nodal officer Catalyst IEDC and TBI, Assistant Professor Mar Baselios College of Engineering and Technology, Thiruvananthapuram",
           "linkedin": "https://www.linkedin.com/in/mearunjs/",
           "image": "/assets/IG/Entrepreneurship/Mentors/Arun JS.webp",
@@ -4472,10 +4511,16 @@ export const interestGroups: InterestGroupData[] = [
         "Interest group leads manage the activities and events within interest groups and serve as a point of contact for students interested in getting involved. Students can connect with these leads to learn about opportunities in AR/VR development.",
       leads: [
         {
-          name: "Dev Nandan S",
-          institution: "St. Thomas Institute for Science & Technology",
-          linkedin: "http://www.linkedin.com/in/dev-nandan-426861253",
-          image: "/assets/IG/ARVR/IG Leads/Dev Nandan S.webp", // Updated image path assumption
+          name: "Afsheena Musthafa",
+          institution: "",
+          linkedin: "",
+          image: "/assets/IG/ARVR/IG Leads/AfsheenaMusthafa.webp", // Updated image path assumption
+        },
+        {
+          name: "Aparna K",
+          institution: "",
+          linkedin: "",
+          image: "/assets/IG/ARVR/IG Leads/Aparna K.webp", // Updated image path assumption
         },
       ],
     },

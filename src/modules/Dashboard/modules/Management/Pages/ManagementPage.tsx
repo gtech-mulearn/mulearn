@@ -174,7 +174,7 @@ const ManagementPage: React.FC = () => {
       {/* Card Layout */}
       <div className={styles.cardContainer}>
         {subcategories.map((category, index) => (
-          <div key={index} className={styles.card} onClick={()=> {
+          <div key={index} className={styles.card} onClick={() => {
             navigate(`/dashboard/${category.path}`);
           }}>
             <span className={styles.cardIcon}>{category.icon}</span>
