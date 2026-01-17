@@ -105,7 +105,7 @@ const BasicDetails = (props: Props) => {
                                     ></i>
                                 )}
                                 <div className={styles.igText}>
-                                    <span>{data.name}</span>
+                                    <span className={styles.igName}>{data.name}</span>
                                     <span className={styles.igKarma}>
                                         Karma:{" "}
                                         {data.karma > 1000
