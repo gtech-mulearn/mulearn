@@ -122,12 +122,27 @@
 
             & p {
                 padding: 5px;
-                width: 50px;
+                width: 80px;
                 border-radius: 8px;
                 margin-left: 10px;
                 text-align: center;
                 transition: all 0.3s ease-in-out;
             }
+        }
+
+        .igText {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+        
+        .igName {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .igKarma {
+            font-size: 0.9rem;
         }
 
         .igs_add {
