@@ -19,10 +19,6 @@ const BasicDetails = (props: Props) => {
     }, []);
     const ig_sorted = [...ig]
         .filter((ig) => ig.selected)
-        .sort((a, b) => (a.name > b.name ? 1 : -1));
-
-    const selectedIg = [...ig]
-        .filter((item) => item.selected)
         .sort((a, b) => a.name.localeCompare(b.name));
 
     const capitalize = (text = "") =>
@@ -77,8 +73,8 @@ const BasicDetails = (props: Props) => {
                     </div>
                 </div>
                 <div className={styles.igs_container}>
-                    {selectedIg.length > 0 ? (
-                        selectedIg.map((data: any, i: number) => (
+                    {ig_sorted.length > 0 ? (
+                        ig_sorted.map((data: any, i: number) => (
                             <div
                                 key={i}
                                 style={editIg ? { transform: "scale(0.955)" } : {}}
@@ -87,7 +83,7 @@ const BasicDetails = (props: Props) => {
                                 {editIg && (
                                     <i
                                         onClick={() => {
-                                            if (selectedIg.length > 1) {
+                                            if (ig_sorted.length > 1) {
                                                 setIg((prev) =>
                                                     prev.map((item) =>
                                                         item.name === data.name
@@ -108,20 +104,20 @@ const BasicDetails = (props: Props) => {
                                     <span className={styles.igName}>{data.name}</span>
                                     <span className={styles.igKarma}>
                                         Karma:{" "}
-                                        {data.karma > 1000
+                                        {data.karma != null && data.karma > 1000
                                             ? (data.karma / 1000).toPrecision(2) + "K"
-                                            : data.karma || "0"}
+                                            : data.karma ?? "0"}
                                     </span>
                                 </div>
                                 <p>
-                                    {capitalize(data.level?.unit) || "Level"}{" "}
-                                    {data.level?.count ?? 1}
+                                    {capitalize(data.level.unit)}{" "}
+                                    {data.level.count}
                                 </p>
                             </div>
                         ))
                     ) : (
                         <p>
-                            No Interest Groups to Selected, Must be level 4 or above to select
+                            No Interest Groups Selected, Must be level 4 or above to select
                         </p>
                     )}
                     {editIg && <hr />}
@@ -140,12 +136,35 @@ const BasicDetails = (props: Props) => {
                                 <div key={i} className={styles.igs}>
                                     <i
                                         onClick={() => {
-                                            if (selectedIg.length < 3) {
-                                                setIg((prev) => [
-                                                    ...prev,
-                                                    { ...data, selected: true },
-                                                ]
-                                                );
+                                            if (ig_sorted.length < 3) {
+                                                if (ig.some((item) => item.name === data.name)) {
+                                                    setIg((prev) =>
+                                                        prev.map((item) =>
+                                                            item.name === data.name
+                                                                ? { ...item, selected: true }
+                                                                : item
+                                                        )
+                                                    );
+                                                } else {
+                                                    setIg((prev) => {
+                                                        const exists = prev.some(
+                                                            (item: any) => item.name === data.name
+                                                        );
+                                                        if (exists) {
+                                                            return prev.map((item: any) =>
+                                                                item.name === data.name
+                                                                    ? { ...item, selected: true }
+                                                                    : item
+                                                            );
+                                                        }
+                                                        return [
+                                                            ...prev,
+                                                            { ...data, selected: true },
+                                                        ];
+                                                    });
+                                                }
+                                            } else {
+                                                toast.error("You can only select up to 3 interest groups");
                                             }
                                             // editIgDetails(
                                             //     toast,
