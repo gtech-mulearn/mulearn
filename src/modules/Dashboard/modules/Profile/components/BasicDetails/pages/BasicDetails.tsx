@@ -10,16 +10,19 @@ type Props = {
 };
 const BasicDetails = (props: Props) => {
     const [editIg, setEditIg] = useState(false);
-    const [allIg, setAllIg] = useState<any>([]);
+    const [allIg, setAllIg] = useState<any[]>([]);
+    const [ig, setIg] = useState<any[]>(props.userProfile.interest_groups);
 
-    const [ig, setIg] = useState<any>(props.userProfile.interest_groups);
     const { id } = useParams<{ id: string }>();
     useEffect(() => {
         getAllIg(setAllIg);
     }, []);
-    const ig_sorted = ig.sort((a: any, b: any) => {
-        return a.name > b.name ? 1 : -1;
-    });
+    const ig_sorted = [...ig]
+        .filter((ig) => ig.selected)
+        .sort((a, b) => a.name.localeCompare(b.name));
+
+    const capitalize = (text = "") =>
+        text.charAt(0).toUpperCase() + text.slice(1);
 
     return (
         <>
@@ -70,58 +73,51 @@ const BasicDetails = (props: Props) => {
                     </div>
                 </div>
                 <div className={styles.igs_container}>
-                    {props.userProfile.interest_groups.length !== 0 ? (
-                        ig.map((data: any, i: number) => {
-                            return (
-                                <div
-                                    style={
-                                        editIg
-                                            ? {
-                                                  transform: "scale(0.955)"
-                                              }
-                                            : {}
-                                    }
-                                    className={styles.igs}
-                                    key={i}
-                                >
-                                    {editIg && (
-                                        <i
-                                            onClick={() => {
-                                                if (ig.length > 1) {
-                                                    setIg(
-                                                        ig.filter(
-                                                            (ig: any) =>
-                                                                ig.name !==
-                                                                data.name
-                                                        )
-                                                    );
-                                                } else {
-                                                    toast.error(
-                                                        "You must have at least one interest group"
-                                                    );
-                                                }
-                                            }}
-                                            className="fi fi-sr-circle-xmark"
-                                        ></i>
-                                    )}
-                                    {data.name}
-                                    <p>
-                                        {data.karma !== null
-                                            ? data.karma > 1000
-                                                ? (
-                                                      data.karma / 1000
-                                                  ).toPrecision(2) + "K"
-                                                : data.karma
-                                                  ? data.karma
-                                                  : "0"
-                                            : "0"}
-                                    </p>
+                    {ig_sorted.length > 0 ? (
+                        ig_sorted.map((data: any, i: number) => (
+                            <div
+                                key={i}
+                                style={editIg ? { transform: "scale(0.955)" } : {}}
+                                className={styles.igs}
+                            >
+                                {editIg && (
+                                    <i
+                                        onClick={() => {
+                                            if (ig_sorted.length > 1) {
+                                                setIg((prev) =>
+                                                    prev.map((item) =>
+                                                        item.name === data.name
+                                                            ? { ...item, selected: false }
+                                                            : item
+                                                    )
+                                                );
+                                            } else {
+                                                toast.error(
+                                                    "You must have at least one interest group"
+                                                );
+                                            }
+                                        }}
+                                        className="fi fi-sr-circle-xmark"
+                                    ></i>
+                                )}
+                                <div className={styles.igText}>
+                                    <span className={styles.igName}>{data.name}</span>
+                                    <span className={styles.igKarma}>
+                                        Karma:{" "}
+                                        {data.karma != null && data.karma > 1000
+                                            ? (data.karma / 1000).toPrecision(2) + "K"
+                                            : data.karma ?? "0"}
+                                    </span>
                                 </div>
-                            );
-                        })
+                                <p>
+                                    {capitalize(data.level.unit)}{" "}
+                                    {data.level.count}
+                                </p>
+                            </div>
+                        ))
                     ) : (
                         <p>
-                            No Interest Groups to Selected, Must be level 4 or above to select
+                            No Interest Groups Selected, Must be level 4 or above to select
                         </p>
                     )}
                     {editIg && <hr />}
@@ -129,47 +125,66 @@ const BasicDetails = (props: Props) => {
                 {editIg && (
                     <div className={styles.igs_container}>
                         {allIg
-                            .filter((data: any) => {
-                                return !ig.some(
-                                    (ig: any) => ig.name === data.name
-                                );
-                            })
-                            .map((data: any, i: number) => {
-                                return (
-                                    <div key={i} className={styles.igs}>
-                                        <i
-                                            onClick={() => {
-                                                {
-                                                    ig.length < 3 &&
-                                                        setIg(
-                                                            (
-                                                                prevState: any
-                                                            ) => [
-                                                                ...prevState,
-                                                                data
-                                                            ]
+                            .filter(
+                                (data: any) =>
+                                    !ig.some(
+                                        (item: any) =>
+                                            item.name === data.name && item.selected
+                                    )
+                            )
+                            .map((data: any, i: number) => (
+                                <div key={i} className={styles.igs}>
+                                    <i
+                                        onClick={() => {
+                                            if (ig_sorted.length < 3) {
+                                                if (ig.some((item) => item.name === data.name)) {
+                                                    setIg((prev) =>
+                                                        prev.map((item) =>
+                                                            item.name === data.name
+                                                                ? { ...item, selected: true }
+                                                                : item
+                                                        )
+                                                    );
+                                                } else {
+                                                    setIg((prev) => {
+                                                        const exists = prev.some(
+                                                            (item: any) => item.name === data.name
                                                         );
+                                                        if (exists) {
+                                                            return prev.map((item: any) =>
+                                                                item.name === data.name
+                                                                    ? { ...item, selected: true }
+                                                                    : item
+                                                            );
+                                                        }
+                                                        return [
+                                                            ...prev,
+                                                            { ...data, selected: true },
+                                                        ];
+                                                    });
                                                 }
-                                                // editIgDetails(
-                                                //     toast,
-                                                //     [...ig, data].map(
-                                                //         (ig: any) => {
-                                                //             return ig.id;
-                                                //         }
-                                                //     )
-                                                // ).then(() => {
-                                                //     // getIgDetails(
-                                                //     //     toast,
-                                                //     //     setIg
-                                                //     // );
-                                                // });
-                                            }}
-                                            className="fi fi-sr-add"
-                                        ></i>
-                                        {data.name}
-                                    </div>
-                                );
-                            })}
+                                            } else {
+                                                toast.error("You can only select up to 3 interest groups");
+                                            }
+                                            // editIgDetails(
+                                            //     toast,
+                                            //     [...ig, data].map(
+                                            //         (ig: any) => {
+                                            //             return ig.id;
+                                            //         }
+                                            //     )
+                                            // ).then(() => {
+                                            //     // getIgDetails(
+                                            //     //     toast,
+                                            //     //     setIg
+                                            //     // );
+                                            // });
+                                        }}
+                                        className="fi fi-sr-add"
+                                    ></i>
+                                    {data.name}
+                                </div>
+                            ))}
                     </div>
                 )}
             </div>
