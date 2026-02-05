@@ -8,12 +8,30 @@ import LearningCirclesSection from "../Components/LearningCirclesSection";
 import styles from "./DashboardPage.module.css";
 import { fetchLocalStorage } from "@/MuLearnServices/common_functions";
 import { getDomainBasedInterestGroups, getInterestGroups, KarmaFeedItem } from "../services/api";
-import { useUserStore, useStatStore } from "/src/ZustandProvider";
+import { useUserStore, useStatStore, useQseverseStore } from "/src/ZustandProvider";
 import axios from "axios";
 import { useMuShepherdTour } from "@/components/MuComponents/MuTour/MuShepherdTour";
 import MuShepherdTourButton from "@/components/MuComponents/MuTour/MuShepherdTourButton";
 import { getDashboardShepherdTourSteps } from "@/components/MuComponents/MuTour/dashboardShepherdTourSteps";
 import "@/components/MuComponents/MuTour/MuShepherdTour.css";
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  Button,
+  VStack,
+  Text,
+  useDisclosure,
+} from "@chakra-ui/react";
+import toast from "react-hot-toast";
+import { FiRefreshCw } from "react-icons/fi";
+import { AlertBanner } from "../../../components/AlertBanner";
+import { qseverseRoutes } from "@/MuLearnServices/urls";
+import { publicGateway } from "@/MuLearnServices/apiGateways";
 
 interface InterestGroup {
   title: string;
@@ -35,13 +53,21 @@ const DashboardPage = () => {
   const [interestGroups, setInterestGroups] = useState<InterestGroup[]>([]);
   const [events, setEvents] = useState<Event[]>([]);
 
+  // Access karmaFeed and fetchKarmaFeed from Zustand
+  const { karmaFeed, isKarmaFeedLoading, fetchKarmaFeed } = useStatStore();
+  const { userProfile, userInfo } = useUserStore();
+  const {
+    connectionStatus: qseverseStatus,
+    hasCheckedConnection: hasCheckedQseverse,
+    setConnectionStatus: setQseverseStatus,
+    setHasCheckedConnection: setHasCheckedQseverse
+  } = useQseverseStore();
+
   // Check if user is logged in
   const refreshToken = localStorage.getItem("refreshToken");
   const isLoggedIn = !!refreshToken;
 
-  // Access karmaFeed and fetchKarmaFeed from Zustand
-  const { karmaFeed, isKarmaFeedLoading, fetchKarmaFeed } = useStatStore();
-  const { userProfile } = useUserStore();
+
   let userName = useUserStore((state) => state.userProfile.full_name?.split(" ")[0]);
   const storedUserInfo = JSON.parse(localStorage.getItem("userInfo") ?? "{}");
   const userDomains: string[] = isLoggedIn ? (fetchLocalStorage<UserInfo>("userInfo")?.user_domains || []) : [];
@@ -123,6 +149,43 @@ const DashboardPage = () => {
     firstTimeShepherdTour.startTour();
   };
 
+  // Modal for connect wallet
+  const { isOpen: isConnectModalOpen, onOpen: onConnectModalOpen, onClose: onConnectModalClose } = useDisclosure();
+  const [isRefreshingConnection, setIsRefreshingConnection] = useState(false);
+
+  // Handler for QSeverse connect action - opens modal
+  const handleConnectQseverse = useCallback(() => {
+    onConnectModalOpen();
+  }, [onConnectModalOpen]);
+
+  // Handler for refreshing connection status
+  const handleRefreshConnection = useCallback(async () => {
+    if (!userInfo.muid) {
+      toast.error("Unable to check connection - user info not available");
+      return;
+    }
+
+    setIsRefreshingConnection(true);
+    try {
+      const response = await publicGateway.get(qseverseRoutes.getConnectedUsers, {
+        params: { key: 'muid', value: userInfo.muid }
+      });
+      const dids = response?.data?.response?.dids;
+      if (dids && Array.isArray(dids) && dids.length > 0) {
+        setQseverseStatus('connected');
+        toast.success("Wallet connected successfully!");
+        onConnectModalClose();
+      } else {
+        toast.error("No connected wallet found. Please link your wallet in the QSeverse app first.");
+      }
+    } catch (error) {
+      console.error("Error refreshing connection:", error);
+      toast.error("Failed to check connection status.");
+    } finally {
+      setIsRefreshingConnection(false);
+    }
+  }, [userInfo.muid, setQseverseStatus, onConnectModalClose]);
+
   // Start Shepherd.js tour only on dashboard page for first-time users
   useEffect(() => {
     // Check if we're on the dashboard home page
@@ -195,6 +258,8 @@ const DashboardPage = () => {
   const { src, alt } = isLoggedIn && userDomains.length > 0 
     ? (imageMap[userDomains[0]] || defaultImage)
     : defaultImage;
+
+  const showQseverseBanner = refreshToken && qseverseStatus === 'not_connected';
 
   return (
     <motion.div
@@ -321,6 +386,83 @@ const DashboardPage = () => {
         
         </motion.aside>
       </motion.div>
+
+      {showQseverseBanner && (
+        <div style={{
+          position: 'fixed',
+          bottom: '20px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          zIndex: 1000,
+          maxWidth: '90vw',
+        }}>
+          <AlertBanner
+            variant="warning"
+            title="Connect your QSeverse Wallet"
+            description="Link your wallet to claim verifiable credentials."
+            actionLabel="Connect Now"
+            onAction={handleConnectQseverse}
+            dismissible={false}
+            icon={<i className="fi fi-rr-wallet"></i>}
+            className="floating-pill"
+          />
+        </div>
+      )}
+
+      {/* Connect Wallet Modal */}
+      <Modal isOpen={isConnectModalOpen} onClose={onConnectModalClose} isCentered>
+        <ModalOverlay />
+        <ModalContent mx={4}>
+          <ModalHeader>Connect your QSeverse Wallet</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <VStack spacing={4} align="stretch">
+              <Text fontSize="sm" color="gray.600">
+                To claim verifiable credentials for your achievements, you need to link your QSeverse wallet.
+              </Text>
+              <Text fontSize="sm" fontWeight="medium">
+                Steps to connect:
+              </Text>
+              <VStack as="ol" spacing={2} align="stretch" pl={4} fontSize="sm">
+                <Text as="li">Download the QSeverse app from your app store and sign up</Text>
+                <Text as="li">Connect your MuLearn account</Text>
+                <Text as="li">Your wallet will be automatically linked</Text>
+                <Text as="li">Click "Refresh Status" below to verify</Text>
+              </VStack>
+            </VStack>
+          </ModalBody>
+          <ModalFooter flexWrap="wrap" gap={2} justifyContent="center">
+            <Button
+              as="a"
+              href="https://apps.apple.com/us/app/qs-passport/id6477819506"
+              target="_blank"
+              colorScheme="blue"
+              size="sm"
+            >
+              App Store
+            </Button>
+            <Button
+              as="a"
+              href="https://play.google.com/store/apps/details?id=com.qseverse.passport"
+              target="_blank"
+              colorScheme="blue"
+              size="sm"
+            >
+              Play Store
+            </Button>
+            <Button
+              colorScheme="green"
+              size="sm"
+              leftIcon={<FiRefreshCw />}
+              onClick={handleRefreshConnection}
+              isLoading={isRefreshingConnection}
+              loadingText="Checking..."
+            >
+              Refresh Status
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </motion.div>
   );
 };
