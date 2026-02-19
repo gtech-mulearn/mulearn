@@ -2,32 +2,16 @@ import styles from "../components/SideNavBar.module.css";
 import { Outlet, useNavigate } from "react-router-dom";
 import SideNavBar from "../components/SideNavBar";
 import TopNavBar from "../components/TopNavBar";
-import { AlertBanner } from "../components/AlertBanner";
-import React, { Suspense, useEffect, useCallback, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { FaRocket, FaUser, FaUserFriends } from "react-icons/fa";
 import { FaMagnifyingGlass, FaMapLocationDot, FaHouse, FaRankingStar } from "react-icons/fa6";
 import { IoGlobeOutline } from "react-icons/io5";
-import { FiRefreshCw } from "react-icons/fi";
 import { roles, managementTypes } from "@/MuLearnServices/types";
 import MuLoader from "@/MuLearnComponents/MuLoader/MuLoader";
 import { dashboardRoutes, qseverseRoutes } from "@/MuLearnServices/urls";
 import { privateGateway, publicGateway } from "@/MuLearnServices/apiGateways";
 import { UserProfile, useUserStore, useQseverseStore } from "/src/ZustandProvider";
 import { sendRefreshToken } from "@/modules/utils/cdr";
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-  Button,
-  VStack,
-  Text,
-  useDisclosure,
-} from "@chakra-ui/react";
-import toast from "react-hot-toast";
 
 interface CrateType {
   navigate: (channelId: string) => void;
@@ -252,45 +236,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
     // }
   ];
 
-  // Modal for connect wallet
-  const { isOpen: isConnectModalOpen, onOpen: onConnectModalOpen, onClose: onConnectModalClose } = useDisclosure();
-  const [isRefreshingConnection, setIsRefreshingConnection] = useState(false);
 
-  // Handler for QSeverse connect action - opens modal
-  const handleConnectQseverse = useCallback(() => {
-    onConnectModalOpen();
-  }, [onConnectModalOpen]);
-
-  // Handler for refreshing connection status
-  const handleRefreshConnection = useCallback(async () => {
-    if (!userInfo.muid) {
-      toast.error("Unable to check connection - user info not available");
-      return;
-    }
-
-    setIsRefreshingConnection(true);
-    try {
-      const response = await publicGateway.get(qseverseRoutes.getConnectedUsers, {
-        params: { key: 'muid', value: userInfo.muid }
-      });
-      const dids = response?.data?.response?.dids;
-      if (dids && Array.isArray(dids) && dids.length > 0) {
-        setQseverseStatus('connected');
-        toast.success("Wallet connected successfully!");
-        onConnectModalClose();
-      } else {
-        toast.error("No connected wallet found. Please link your wallet in the QSeverse app first.");
-      }
-    } catch (error) {
-      console.error("Error refreshing connection:", error);
-      toast.error("Failed to check connection status.");
-    } finally {
-      setIsRefreshingConnection(false);
-    }
-  }, [userInfo.muid, setQseverseStatus, onConnectModalClose]);
-
-  const refreshToken = localStorage.getItem("refreshToken");
-  const showQseverseBanner = refreshToken && qseverseStatus === 'not_connected';
 
   if (isLoading) {
     return <div className={styles.loader}>
@@ -309,83 +255,7 @@ const DashboardRootLayout = (props: { component?: any }) => {
             <Outlet />
           </Suspense>
         </div>
-        {showQseverseBanner && (
-          <div style={{
-            position: 'fixed',
-            bottom: '20px',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            zIndex: 1000,
-            maxWidth: '90vw',
-          }}>
-            <AlertBanner
-              variant="warning"
-              title="Connect your QSeverse Wallet"
-              description="Link your wallet to claim verifiable credentials."
-              actionLabel="Connect Now"
-              onAction={handleConnectQseverse}
-              dismissible={false}
-              icon={<i className="fi fi-rr-wallet"></i>}
-              className="floating-pill"
-            />
-          </div>
-        )}
       </div>
-
-      {/* Connect Wallet Modal */}
-      <Modal isOpen={isConnectModalOpen} onClose={onConnectModalClose} isCentered>
-        <ModalOverlay />
-        <ModalContent mx={4}>
-          <ModalHeader>Connect your QSeverse Wallet</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <VStack spacing={4} align="stretch">
-              <Text fontSize="sm" color="gray.600">
-                To claim verifiable credentials for your achievements, you need to link your QSeverse wallet.
-              </Text>
-              <Text fontSize="sm" fontWeight="medium">
-                Steps to connect:
-              </Text>
-              <VStack as="ol" spacing={2} align="stretch" pl={4} fontSize="sm">
-                <Text as="li">Download the QSeverse app from your app store and sign up</Text>
-                <Text as="li">Connect your MuLearn account</Text>
-                <Text as="li">Your wallet will be automatically linked</Text>
-                <Text as="li">Click "Refresh Status" below to verify</Text>
-              </VStack>
-            </VStack>
-          </ModalBody>
-          <ModalFooter flexWrap="wrap" gap={2} justifyContent="center">
-            <Button
-              as="a"
-              href="https://apps.apple.com/us/app/qs-passport/id6477819506"
-              target="_blank"
-              colorScheme="blue"
-              size="sm"
-            >
-              App Store
-            </Button>
-            <Button
-              as="a"
-              href="https://play.google.com/store/apps/details?id=com.qseverse.passport"
-              target="_blank"
-              colorScheme="blue"
-              size="sm"
-            >
-              Play Store
-            </Button>
-            <Button
-              colorScheme="green"
-              size="sm"
-              leftIcon={<FiRefreshCw />}
-              onClick={handleRefreshConnection}
-              isLoading={isRefreshingConnection}
-              loadingText="Checking..."
-            >
-              Refresh Status
-            </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
     </div>
   );
 };
