@@ -299,6 +299,8 @@ function App() {
             { path: "manage-locations", element: <AuthChecker roles={[roles.ADMIN]} children={<ManageLocation />} /> },
             { path: "manage-locations/add/:item", element: <AddLocation /> },
             { path: "manage-locations/edit/:item", element: <EditLocation /> },
+            { path: "management/manage-locations/add/:item", element: <AddLocation /> },
+            { path: "management/manage-locations/edit/:item", element: <EditLocation /> },
             { path: "hackathon/organizers/:id", element: <AuthChecker roles={[roles.ADMIN]} children={<HackathonOrganizers />} /> },
             { path: "learningcircle/your-circles", element: <YourLC /> },
             { path: "learningcircle/dashboard/:id", element: <DashboardLC /> },
