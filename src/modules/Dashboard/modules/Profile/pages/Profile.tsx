@@ -1,5 +1,5 @@
 import moment from "moment";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import dpm from "../assets/images/dpm.webp";
 import Karma, { KarmaWhite } from "../assets/svg/Karma";
 import MulearnBrand from "../assets/svg/MulearnBrand";
@@ -35,9 +35,9 @@ import Socials from "../components/Socials/pages/Socials";
 import ShareProfilePopUp from "../components/ShareProfilePopUp/pages/ShareProfilePopUp";
 import HelmetMetaTags from "../components/HelmetMetaTags/HelmetMetaTags";
 import { isDev } from "@/MuLearnServices/common_functions";
-import { Img, SimpleGrid, Switch } from "@chakra-ui/react";
+import { Img, SimpleGrid, Switch, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, Button, VStack, Text, useDisclosure } from "@chakra-ui/react";
 import AchievementCard from "../components/Achievements/AchievementCard";
-import { useUserStore } from "/src/ZustandProvider";
+import { useUserStore, useQseverseStore } from "/src/ZustandProvider";
 import { getAchievements } from "../../ManageAchievements/services/api";
 import { AchievementData } from "../../ManageAchievements/ManageAchievementsInterface";
 import AchievementCardOne from "../components/Achievements/AchievementCardOne";
@@ -47,6 +47,10 @@ import EditCollegePopUp from "../components/EditProfilePopUp/pages/EditCollegePo
 import { useMuShepherdTour } from "../../../../../components/MuComponents/MuTour/MuShepherdTour";
 import MuShepherdTourButton from "../../../../../components/MuComponents/MuTour/MuShepherdTourButton";
 import { profileShepherdTourSteps } from "../../../../../components/MuComponents/MuTour/profileShepherdTourSteps";
+import { FiRefreshCw } from "react-icons/fi";
+import { AlertBanner } from "../../../components/AlertBanner";
+import { qseverseRoutes } from "@/MuLearnServices/urls";
+import { publicGateway } from "@/MuLearnServices/apiGateways";
 
 
 
@@ -143,6 +147,53 @@ const Profile = () => {
 
     const [userPreferences, setUserPreferences] = useState<any>(null);
     const [preferencesLoading, setPreferencesLoading] = useState(false);
+
+    // QWallet Modal state and handlers
+    const {
+        connectionStatus: qseverseStatus,
+        hasCheckedConnection: hasCheckedQseverse,
+        setConnectionStatus: setQseverseStatus,
+        setHasCheckedConnection: setHasCheckedQseverse
+    } = useQseverseStore();
+    const { isOpen: isConnectModalOpen, onOpen: onConnectModalOpen, onClose: onConnectModalClose } = useDisclosure();
+    const [isRefreshingConnection, setIsRefreshingConnection] = useState(false);
+    const { userInfo } = useUserStore();
+
+    // Handler for QSeverse connect action - opens modal
+    const handleConnectQseverse = useCallback(() => {
+        onConnectModalOpen();
+    }, [onConnectModalOpen]);
+
+    // Handler for refreshing connection status
+    const handleRefreshConnection = useCallback(async () => {
+        if (!userInfo.muid) {
+            toast.error("Unable to check connection - user info not available");
+            return;
+        }
+
+        setIsRefreshingConnection(true);
+        try {
+            const response = await publicGateway.get(qseverseRoutes.getConnectedUsers, {
+                params: { key: 'muid', value: userInfo.muid }
+            });
+            const dids = response?.data?.response?.dids;
+            if (dids && Array.isArray(dids) && dids.length > 0) {
+                setQseverseStatus('connected');
+                toast.success("Wallet connected successfully!");
+                onConnectModalClose();
+            } else {
+                toast.error("No connected wallet found. Please link your wallet in the QSeverse app first.");
+            }
+        } catch (error) {
+            console.error("Error refreshing connection:", error);
+            toast.error("Failed to check connection status.");
+        } finally {
+            setIsRefreshingConnection(false);
+        }
+    }, [userInfo.muid, setQseverseStatus, onConnectModalClose]);
+
+    const refreshToken = localStorage.getItem("refreshToken");
+    const showQseverseBanner = refreshToken && qseverseStatus === 'not_connected' && !id;
 
     // Initialize Profile Tour - using Shepherd.js for better scroll handling
     const tour = useMuShepherdTour({
@@ -1018,6 +1069,83 @@ const Profile = () => {
                     )
                 )}
             </div>
+            
+            {showQseverseBanner && (
+                <div style={{
+                    position: 'fixed',
+                    bottom: '20px',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    zIndex: 1000,
+                    maxWidth: '90vw',
+                }}>
+                    <AlertBanner
+                        variant="warning"
+                        title="Connect your QSeverse Wallet"
+                        description="Link your wallet to claim verifiable credentials."
+                        actionLabel="Connect Now"
+                        onAction={handleConnectQseverse}
+                        dismissible={false}
+                        icon={<i className="fi fi-rr-wallet"></i>}
+                        className="floating-pill"
+                    />
+                </div>
+            )}
+
+            {/* Connect Wallet Modal */}
+            <Modal isOpen={isConnectModalOpen} onClose={onConnectModalClose} isCentered>
+                <ModalOverlay />
+                <ModalContent mx={4}>
+                    <ModalHeader>Connect your QSeverse Wallet</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody>
+                        <VStack spacing={4} align="stretch">
+                            <Text fontSize="sm" color="gray.600">
+                                To claim verifiable credentials for your achievements, you need to link your QSeverse wallet.
+                            </Text>
+                            <Text fontSize="sm" fontWeight="medium">
+                                Steps to connect:
+                            </Text>
+                            <VStack as="ol" spacing={2} align="stretch" pl={4} fontSize="sm">
+                                <Text as="li">Download the QSeverse app from your app store and sign up</Text>
+                                <Text as="li">Connect your MuLearn account</Text>
+                                <Text as="li">Your wallet will be automatically linked</Text>
+                                <Text as="li">Click "Refresh Status" below to verify</Text>
+                            </VStack>
+                        </VStack>
+                    </ModalBody>
+                    <ModalFooter flexWrap="wrap" gap={2} justifyContent="center">
+                        <Button
+                            as="a"
+                            href="https://apps.apple.com/us/app/qs-passport/id6477819506"
+                            target="_blank"
+                            colorScheme="blue"
+                            size="sm"
+                        >
+                            App Store
+                        </Button>
+                        <Button
+                            as="a"
+                            href="https://play.google.com/store/apps/details?id=com.qseverse.passport"
+                            target="_blank"
+                            colorScheme="blue"
+                            size="sm"
+                        >
+                            Play Store
+                        </Button>
+                        <Button
+                            colorScheme="green"
+                            size="sm"
+                            leftIcon={<FiRefreshCw />}
+                            onClick={handleRefreshConnection}
+                            isLoading={isRefreshingConnection}
+                            loadingText="Checking..."
+                        >
+                            Refresh Status
+                        </Button>
+                    </ModalFooter>
+                </ModalContent>
+            </Modal>
         </>
     );
 };
