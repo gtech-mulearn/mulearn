@@ -781,9 +781,9 @@ const Profile = () => {
                                                     <div>
                                                         <span>Percentile</span>
                                                         <h1>
-                                                            {parseFloat(
+                                                            {Math.max(0, parseFloat(
                                                                 userProfile.percentile
-                                                            ).toFixed(2)}
+                                                            )).toFixed(2)}
                                                         </h1>
                                                     </div>
                                                 </div>
