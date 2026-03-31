@@ -40,15 +40,7 @@ const BasicDetails = (props: Props) => {
                                 {data.name}{" "}
                                 <p>
                                     {" "}
-                                    {data.karma !== null
-                                        ? data.karma > 1000
-                                            ? (data.karma / 1000).toPrecision(
-                                                  2
-                                              ) + "K"
-                                            : data.karma
-                                              ? data.karma
-                                              : "0"
-                                        : "0"}
+                                    0
                                 </p>
                                 <div className={styles.planet}>
                                     {i === 0 ? (

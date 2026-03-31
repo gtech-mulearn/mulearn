@@ -119,11 +119,11 @@ const Profile = () => {
     ]);
     const convertedData1 = userProfile.interest_groups?.map(item => [
         item.name,
-        item.karma
+        0
     ]);
     const convertedData2 = userProfile.karma_distribution?.map(item => [
         item.task_type,
-        item.karma
+        0
     ]);
     const data = [["Task", "0"], ...convertedData2, ...convertedData1];
 
@@ -716,16 +716,7 @@ const Profile = () => {
                                                     <div>
                                                         <span>Karma</span>
                                                         <h1>
-                                                            {parseInt(
-                                                                userProfile.karma
-                                                            ) > 1000
-                                                                ? (
-                                                                    parseInt(
-                                                                        userProfile.karma
-                                                                    ) / 1000
-                                                                ).toPrecision(3) +
-                                                                "K"
-                                                                : userProfile.karma}
+                                                            0
                                                         </h1>
                                                     </div>
                                                 </div>
@@ -734,38 +725,7 @@ const Profile = () => {
                                                     <div>
                                                         <span>Avg.Karma/Month</span>
                                                         <h1>
-                                                            {parseInt(
-                                                                userProfile.karma
-                                                            ) /
-                                                                monthDifference >
-                                                                1000 &&
-                                                                monthDifference !== 0
-                                                                ? (
-                                                                    parseInt(
-                                                                        userProfile.karma
-                                                                    ) /
-                                                                    monthDifference /
-                                                                    1000
-                                                                ).toPrecision(4) +
-                                                                "K"
-                                                                : isNaN(
-                                                                    parseInt(
-                                                                        userProfile.karma
-                                                                    ) /
-                                                                    monthDifference
-                                                                )
-                                                                    ? "0"
-                                                                    : monthDifference ===
-                                                                        0
-                                                                        ? "0"
-                                                                        : (
-                                                                            parseInt(
-                                                                                userProfile.karma
-                                                                            ) /
-                                                                            monthDifference
-                                                                        ).toPrecision(
-                                                                            3
-                                                                        )}
+                                                            0
                                                         </h1>
                                                     </div>
                                                 </div>
@@ -794,7 +754,9 @@ const Profile = () => {
                                         <BasicDetails userProfile={userProfile} userLog={userLog} />
                                     ) : profileList === "karma-history" ? (
                                         <div className="mu-tour-karma-history-content">
-                                            <KarmaHistory userProfile={userProfile} userLog={userLog} />
+                                            <p style={{ textAlign: "center", padding: "2rem", fontSize: "1.1rem", color: "#666" }}>
+                                                No karma history yet! Start earning karma to see your journey here.
+                                            </p>
                                         </div>
                                     ) : profileList === "mu-voyage" ? (
                                         <div className="mu-tour-mu-voyage-content">
@@ -1016,7 +978,7 @@ const Profile = () => {
                                                                             }}
                                                                         >
                                                                             {
-                                                                                log.karma
+                                                                                0
                                                                             }
                                                                         </span>{" "}
                                                                         awarded
