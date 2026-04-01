@@ -85,11 +85,11 @@ const ProfileV2 = ({ id: propId }: {id:string}) => {
     ]);
     const convertedData1 = userProfile.interest_groups?.map(item => [
         item.name,
-        0
+        item.karma
     ]);
     const convertedData2 = userProfile.karma_distribution?.map(item => [
         item.task_type,
-        0
+        item.karma
     ]);
     const data = [["Task", "0"], ...convertedData2, ...convertedData1];
 
@@ -303,9 +303,7 @@ const ProfileV2 = ({ id: propId }: {id:string}) => {
             {profileList === "basic-details" ? (
                 <BasicDetails userProfile={userProfile} userLog={userLog} />
             ) : profileList === "karma-history" ? (
-                <p style={{ textAlign: "center", padding: "2rem", fontSize: "1.1rem", color: "#666" }}>
-                    No karma history yet! Start earning karma to see your journey here.
-                </p>
+                <KarmaHistory userProfile={userProfile} userLog={userLog} />
             ) : profileList === "projects" ? (
                 <Projects />
             ) : (
