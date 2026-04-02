@@ -40,17 +40,21 @@ function ManageRoles() {
         { column: "created_at", Label: "Created On", isSortable: true }
     ];
 
+    const fetchUsers = () => {
+        getManageUsers({
+            setData: setData,
+            page: currentPage,
+            selectedValue: perPage,
+            setIsLoading: setIsLoading,
+            setTotalPages: setTotalPages,
+            search: "",
+            sortID: sort
+        });
+    };
+
     useEffect(() => {
         if (firstFetch.current) {
-            getManageUsers({
-                setData: setData,
-                page: 1,
-                selectedValue: perPage,
-                setIsLoading: setIsLoading,
-                setTotalPages: setTotalPages,
-                search: "",
-                sortID: ""
-            });
+            fetchUsers();
         }
         firstFetch.current = false;
     }, []);
@@ -180,6 +184,7 @@ function ManageRoles() {
                             ref={UserFormRef}
                             id={id}
                             closeModal={() => setIsModalOpen(false)}
+                            onSuccess={fetchUsers}
                         />
                     </MuModal>
                     <Table
