@@ -35,7 +35,7 @@ type InitialLocationData = {
 } | null;
 const requiredFields = ["full_name", "email"];
 const UserForm = forwardRef(
-    (props: Props & { closeModal: () => void }, ref: any) => {
+    (props: Props & { closeModal: () => void; onSuccess?: () => void }, ref: any) => {
         const [initialData, setInitialData] =
             useState<InitialLocationData>(null);
         const animatedComponents = makeAnimated();
@@ -143,10 +143,10 @@ const UserForm = forwardRef(
             const { name, value } = e.target;
 
             if (name === "mobile") {
-                if (value && !/^\d{0,10}$/.test(value.trim())) {
+                if (value && !/^\d{0,15}$/.test(value.trim())) {
                     setErrors(prevErrors => ({
                         ...prevErrors,
-                        mobile: "Mobile number must be 10 digits"
+                        mobile: "Mobile number must be at most 15 digits"
                     }));
                 } else {
                     setErrors(prevErrors => ({
@@ -157,12 +157,13 @@ const UserForm = forwardRef(
                 setData(prevData => ({ ...prevData, [name]: value.trim() }));
                 return;
             }
+            setData(prevData => ({ ...prevData, [name]: value }));
         };
 
         const handleYearChange = (e: React.ChangeEvent<HTMLInputElement>) => {
             const { name, value } = e.target;
             if (value.length > 4) return;
-            setData(prevData => ({ ...prevData, [name]: value }));
+            setData(prevData => ({ ...prevData, [name]: value ? parseInt(value) : null }));
         };
 
         const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
@@ -212,14 +213,9 @@ const UserForm = forwardRef(
             }
         };
 
-        const [location, setLocation] = useState<AffiliationOption[]>([]);
         const [college, setCollege] = useState<AffiliationOption[]>([]);
         const [department, setDepartment] = useState<AffiliationOption[]>([]);
         const [ig, setIg] = useState<AffiliationOption[]>([]);
-        const [selectedIg, setSelectedIg] = useState<AffiliationOption[]>([]);
-        const [selectedRoles, setSelectedRoles] = useState<AffiliationOption[]>(
-            []
-        );
         const [locationParam, setLocationParam] = useState("india");
         const [locationDatas, setLocationDatas] = useState([
             { id: "", location: "" }
@@ -269,19 +265,6 @@ const UserForm = forwardRef(
             getLocations(locationParam, setLocationDatas, setIsApiCalled);
         };
 
-        const handleLocationChange = (e: ChangeEvent<HTMLInputElement>) => {
-            console.log(e);
-            const data = e;
-            if (data) {
-                // Use a type assertion to specify the correct type
-                const id = (data as any).value;
-                console.log(data);
-
-                // Update the "district" state variable
-                setLocation(id);
-                console.log();
-            }
-        };
 
         //! useImperativeHandle for triggering submit from MuModal button
         useImperativeHandle(ref, () => ({
@@ -289,42 +272,37 @@ const UserForm = forwardRef(
         }));
         const handleSubmit = (e?: React.FormEvent) => {
             e?.preventDefault();
-            const convertedRoles = selectedRoles.map(option => option?.value);
-            const updatedData = {
+            const updatedData: any = {
                 ...data,
-                // affiliation: String(selectedAffiliation??.value),
-                // country: (locationData.selectedCountry?.value),
-                // state: (locationData.selectedState?.value),
                 district: selectData.selectedLocation,
                 roles: selectData.selectedRoles,
                 interest_groups: selectData.selectedInterestGroups,
                 organizations: [
                     selectData.selectedCollege,
                     ...selectData.selectedCommunity
-                ],
+                ].filter(Boolean),
                 department: selectData.selectedDepartment,
                 community: selectData.selectedCommunity
             };
+            
+            // Fix for uniqueness errors: convert empty string to null instead of deleting
+            if (updatedData.discord_id === "") updatedData.discord_id = null;
+            if (updatedData.mobile === "") updatedData.mobile = null;
+            
+            // Clean up potentially confusing singular keys from spreading 'data'
+            delete updatedData.role;
+            delete updatedData.interest_group;
+            
+            console.log("Submitting updatedData:", updatedData);
             console.log(
                 selectData.selectedLocation,
                 selectData.selectedDepartment
             );
-            for (const key in updatedData) {
-                if (
-                    updatedData[key as keyof typeof updatedData] ===
-                    undefined ||
-                    updatedData[key as keyof typeof updatedData] === null ||
-                    updatedData[key as keyof typeof updatedData] === "" ||
-                    updatedData[key as keyof typeof updatedData] === "undefined"
-                ) {
-                    delete updatedData[key as keyof typeof updatedData];
-                }
-            }
 
             // Validate form data
             let isValid = true;
             for (const key of requiredFields) {
-                if (!updatedData[key as keyof UserData]) {
+                if (!(updatedData as any)[key]) {
                     console.log(key);
                     isValid = false;
                     setErrors(prevErrors => ({
@@ -347,6 +325,7 @@ const UserForm = forwardRef(
                 }), {
                     loading: "Saving...",
                     success: () => {
+                        props.onSuccess?.();
                         props.closeModal();
                         return <b>User edited</b>;
                     },
@@ -365,7 +344,7 @@ const UserForm = forwardRef(
                                 type="text"
                                 name="full_name"
                                 placeholder="Full Name"
-                                value={data.full_name}
+                                value={data.full_name || ""}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                             />
@@ -380,7 +359,7 @@ const UserForm = forwardRef(
                                 type="text"
                                 name="email"
                                 placeholder="Email"
-                                value={data.email}
+                                value={data.email || ""}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                             />
@@ -410,7 +389,7 @@ const UserForm = forwardRef(
                                 type="text"
                                 name="discord_id"
                                 placeholder="DiscordId"
-                                value={data.discord_id as string}
+                                value={data.discord_id || ""}
                                 onChange={handleChange}
                             // onBlur={handleBlur}
                             />
@@ -480,9 +459,11 @@ const UserForm = forwardRef(
                                 onChange={(selectedOptions: any) => {
                                     setSelectData(prevState => ({
                                         ...prevState,
-                                        selectedCommunity: selectedOptions.map(
-                                            (opt: any) => opt?.value
-                                        )
+                                        selectedCommunity: selectedOptions
+                                            ? selectedOptions.map(
+                                                (opt: any) => opt?.value
+                                            )
+                                            : []
                                     }));
                                 }}
                                 onBlur={() => {
@@ -519,9 +500,11 @@ const UserForm = forwardRef(
                                 onChange={(selectedOptions: any) => {
                                     setSelectData(selectData => ({
                                         ...selectData,
-                                        selectedRoles: selectedOptions.map(
-                                            (opt: any) => opt?.value
-                                        )
+                                        selectedRoles: selectedOptions
+                                            ? selectedOptions.map(
+                                                (opt: any) => opt?.value
+                                            )
+                                            : []
                                     }));
                                     // setSelectedRoles(selectedOptions);
                                 }}
@@ -559,10 +542,11 @@ const UserForm = forwardRef(
                                 onChange={(selectedOptions: any) => {
                                     setSelectData(prevState => ({
                                         ...prevState,
-                                        selectedInterestGroups:
-                                            selectedOptions.map(
+                                        selectedInterestGroups: selectedOptions
+                                            ? selectedOptions.map(
                                                 (opt: any) => opt?.value
                                             )
+                                            : []
                                     }));
                                 }}
                                 onBlur={() => {
@@ -687,7 +671,7 @@ const UserForm = forwardRef(
                                 type="number"
                                 name="graduation_year"
                                 placeholder="Year"
-                                value={data.graduation_year as number}
+                                value={data.graduation_year || ""}
                                 onChange={handleYearChange}
                                 onBlur={handleBlur}
                             />
