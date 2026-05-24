@@ -48,6 +48,7 @@ import { useMuShepherdTour } from "../../../../../components/MuComponents/MuTour
 import MuShepherdTourButton from "../../../../../components/MuComponents/MuTour/MuShepherdTourButton";
 import { profileShepherdTourSteps } from "../../../../../components/MuComponents/MuTour/profileShepherdTourSteps";
 import { FiRefreshCw } from "react-icons/fi";
+import { BsDiscord } from "react-icons/bs";
 import { AlertBanner } from "../../../components/AlertBanner";
 import { qseverseRoutes } from "@/MuLearnServices/urls";
 import { publicGateway } from "@/MuLearnServices/apiGateways";
@@ -193,7 +194,8 @@ const Profile = () => {
     }, [userInfo.muid, setQseverseStatus, onConnectModalClose]);
 
     const refreshToken = localStorage.getItem("refreshToken");
-    const showQseverseBanner = refreshToken && qseverseStatus === 'not_connected' && !id;
+    const showDiscordBanner = refreshToken && !userInfo.exist_in_guild && !id;
+    const showQseverseBanner = refreshToken && !showDiscordBanner && qseverseStatus === 'not_connected' && !id;
 
     // Initialize Profile Tour - using Shepherd.js for better scroll handling
     const tour = useMuShepherdTour({
@@ -1070,6 +1072,28 @@ const Profile = () => {
                 )}
             </div>
             
+            {showDiscordBanner && (
+                <div style={{
+                    position: 'fixed',
+                    bottom: '20px',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    zIndex: 1000,
+                    maxWidth: '90vw',
+                }}>
+                    <AlertBanner
+                        variant="info"
+                        title="Connect Discord"
+                        description="Join our Discord community to unlock all features."
+                        actionLabel="Connect Now"
+                        onAction={() => { window.location.href = import.meta.env.VITE_DISCORD_AUTH_URL; }}
+                        dismissible={false}
+                        icon={<BsDiscord />}
+                        className="floating-pill"
+                    />
+                </div>
+            )}
+
             {showQseverseBanner && (
                 <div style={{
                     position: 'fixed',
