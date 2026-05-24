@@ -156,14 +156,10 @@ const Profile = () => {
         setConnectionStatus: setQseverseStatus,
         setHasCheckedConnection: setHasCheckedQseverse
     } = useQseverseStore();
-    const { isOpen: isConnectModalOpen, onOpen: onConnectModalOpen, onClose: onConnectModalClose } = useDisclosure();
+    const { isOpen: isConnectModalOpen, onClose: onConnectModalClose } = useDisclosure();
     const [isRefreshingConnection, setIsRefreshingConnection] = useState(false);
     const { userInfo } = useUserStore();
 
-    // Handler for QSeverse connect action - opens modal
-    const handleConnectQseverse = useCallback(() => {
-        onConnectModalOpen();
-    }, [onConnectModalOpen]);
 
     // Handler for refreshing connection status
     const handleRefreshConnection = useCallback(async () => {
@@ -195,7 +191,6 @@ const Profile = () => {
 
     const refreshToken = localStorage.getItem("refreshToken");
     const showDiscordBanner = refreshToken && !userInfo.exist_in_guild && !id;
-    const showQseverseBanner = refreshToken && !showDiscordBanner && qseverseStatus === 'not_connected' && !id;
 
     // Initialize Profile Tour - using Shepherd.js for better scroll handling
     const tour = useMuShepherdTour({
@@ -1094,29 +1089,7 @@ const Profile = () => {
                 </div>
             )}
 
-            {showQseverseBanner && (
-                <div style={{
-                    position: 'fixed',
-                    bottom: '20px',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    zIndex: 1000,
-                    maxWidth: '90vw',
-                }}>
-                    <AlertBanner
-                        variant="warning"
-                        title="Connect your QSeverse Wallet"
-                        description="Link your wallet to claim verifiable credentials."
-                        actionLabel="Connect Now"
-                        onAction={handleConnectQseverse}
-                        dismissible={false}
-                        icon={<i className="fi fi-rr-wallet"></i>}
-                        className="floating-pill"
-                    />
-                </div>
-            )}
-
-            {/* Connect Wallet Modal */}
+{/* Connect Wallet Modal */}
             <Modal isOpen={isConnectModalOpen} onClose={onConnectModalClose} isCentered>
                 <ModalOverlay />
                 <ModalContent mx={4}>
