@@ -64,6 +64,11 @@ interface ApiError {
     message: string;
 }
 
+// Tasks whose hashtag begins with #evn are event tasks. They are surfaced in
+// the "Event" tab and excluded from the "Start Journey" listing.
+export const isEventTask = (hashtag?: string | null): boolean =>
+    !!hashtag && hashtag.trim().toLowerCase().startsWith("#evn");
+
 class ApiCache {
     private static instance: ApiCache;
     private userLevelsCache: ApiResponse | null = null;
@@ -209,12 +214,11 @@ export async function getStartLearningTasks(): Promise<Level[]> {
         const startLearningLevels = response.response.map(level => ({
             ...level,
             tasks: level.tasks.filter(task => {
-                // Include tasks that don't have #cl- hashtags (general tasks)
+                // Include tasks that don't have #cl- hashtags (general tasks),
+                // and exclude event tasks (#evn) which belong to the Event tab.
                 const hasClHashtag = task.hashtag && task.hashtag.startsWith('#cl-');
-                const shouldInclude = !hasClHashtag;
-                
-              
-                
+                const shouldInclude = !hasClHashtag && !isEventTask(task.hashtag);
+
                 return shouldInclude;
             })
         })).filter(level => level.tasks.length > 0); // Only include levels that have tasks
@@ -234,10 +238,11 @@ export async function getPublicTasks(): Promise<Level[]> {
         const startLearningLevels = response.data.response.map(level => ({
             ...level,
             tasks: level.tasks.filter(task => {
-                // Include tasks that don't have #cl- hashtags (general tasks)
+                // Include tasks that don't have #cl- hashtags (general tasks),
+                // and exclude event tasks (#evn) which belong to the Event tab.
                 const hasClHashtag = task.hashtag && task.hashtag.startsWith('#cl-');
-                const shouldInclude = !hasClHashtag;
-                
+                const shouldInclude = !hasClHashtag && !isEventTask(task.hashtag);
+
                 return shouldInclude;
             })
         })).filter(level => level.tasks.length > 0); // Only include levels that have tasks
@@ -382,7 +387,8 @@ export async function getEventTasks(): Promise<Level[]> {
                     "#cl-sp-education",
                     "#cl-sp-nasa"
                 ];
-                return hashtags.includes(task.hashtag);
+                // Include the NASA challenge tasks and any event task (#evn).
+                return hashtags.includes(task.hashtag) || isEventTask(task.hashtag);
             })
         })).filter(level => level.tasks.length > 0);
 
