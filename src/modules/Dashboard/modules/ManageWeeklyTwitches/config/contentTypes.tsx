@@ -8,7 +8,7 @@ export const contentTypeConfigs: Record<ContentTypeKey, ContentTypeConfig> = {
         route: mediaContentRoutes.officeHours,
         contentType: "office_hours",
         hasZoneFilter: false,
-        dateWriteFormat: "DD/MM/YYYY",
+        dateWriteFormat: "YYYY-MM-DD",
         columns: [
             { column: "title", Label: "Title", isSortable: true },
             { column: "performer", Label: "Performer", isSortable: true },
