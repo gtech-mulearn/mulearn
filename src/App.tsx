@@ -19,6 +19,7 @@ import RedirectComponent from "./modules/utils/homeRedirect";
 import ManageLaunchpad from "./modules/Dashboard/modules/ManageLaunchpad/pages";
 import ManageJobs from "./modules/Dashboard/modules/ManageLaunchpad/pages/ManageJobs";
 import ManageCompanies from "./modules/Dashboard/modules/ManageLaunchpad/pages/ManageCompanies";
+import ManageWeeklyTwitches from "./modules/Dashboard/modules/ManageWeeklyTwitches/pages";
 import Launchpad from "./modules/Dashboard/modules/Launchpad";
 
 // Lazy-loaded components
@@ -253,6 +254,7 @@ function App() {
             { path: "management/manage-launchpad", element: <AuthChecker roles={[roles.ADMIN]} children={<ManageLaunchpad />} /> },
             { path: "management/manage-launchpad/jobs", element: <AuthChecker roles={[roles.ADMIN]} children={<ManageJobs />} /> },
             { path: "management/manage-launchpad/companies", element: <AuthChecker roles={[roles.ADMIN]} children={<ManageCompanies />} /> },
+            { path: "management/manage-weekly-twitches", element: <AuthChecker roles={[roles.ADMIN, roles.ASSOCIATE, roles.IG_LEAD]} children={<ManageWeeklyTwitches />} /> },
             { path: "management/manage-locations", element: <AuthChecker roles={[roles.ADMIN]} children={<ManageLocationsPage />} /> },
             { path: "management/channels", element: <AuthChecker roles={[roles.ADMIN]} children={<ChannelsPage />} /> },
             { path: "/dashboard/url-shortener", element: <AuthChecker roles={[roles.ADMIN, roles.ASSOCIATE]} children={<URLShortenerPage />} /> },

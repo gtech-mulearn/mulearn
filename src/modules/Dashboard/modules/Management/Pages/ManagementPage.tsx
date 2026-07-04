@@ -35,6 +35,12 @@ const subcategories = [
     path: "management/manage-launchpad"
   },
   {
+    icon: '📻',
+    title: 'Manage Weekly Twitches',
+    description: 'Manage Office Hours, Salt Mango Tree, and Inspiration Station content.',
+    path: "management/manage-weekly-twitches"
+  },
+  {
 
     icon: '👤',
     title: 'Tasks',
