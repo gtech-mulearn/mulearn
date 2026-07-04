@@ -11,6 +11,7 @@ import {
 } from './services/api'
 
 const DISCORD_SUBMIT_LINK = "https://discord.com/channels/771670169691881483/1455593272633458818";
+const POW_LINK = "https://mulearn.org/r/wadhwani-proofofwork"
 
 interface CourseCardProps {
     title: string;
@@ -167,12 +168,15 @@ function parseBoldText(text: string): (string | JSX.Element)[] {
                     </button>
                 )}
                 <div className={styles.ctaContainer}>
-                    <div onClick={() => handleCourseSelection(rootId)} className={styles.cta}>
+                    <button type="button" onClick={() => handleCourseSelection(rootId)} className={styles.cta}>
                         Enroll
-                    </div>
-                    <div onClick={() => window.open(DISCORD_SUBMIT_LINK, "_blank")} className={styles.cta}>
-                        Submit Now
-                    </div>
+                    </button>
+                    <button type="button" onClick={() => window.open(POW_LINK, "_blank")} className={styles.cta}>
+                        Submit Proof of Work
+                    </button>
+                    <button type="button" onClick={() => window.open(DISCORD_SUBMIT_LINK, "_blank")} className={styles.cta}>
+                        Submit Task
+                    </button>
                 </div>
             </div>
             </>
