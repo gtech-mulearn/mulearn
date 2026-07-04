@@ -373,3 +373,14 @@ export const manageLaunchpadRoutes = {
     getJobInvites: "api/v1/launchpad/student/job-invitations/",
     applyToJob: "api/v1/launchpad/student/apply-to-job/"
 }
+
+export const mediaContentRoutes = {
+    officeHours: "api/v1/dashboard/media-content/office-hours/",
+    saltMangoTree: "api/v1/dashboard/media-content/salt-mango-tree/",
+    inspirationStation: "api/v1/dashboard/media-content/inspiration-station/",
+    // Bulk endpoints share the same include prefix as the CRUD routes above
+    // (single urlpatterns in the backend media-content urls.py), so they carry
+    // the v1 prefix too. (The media-api.md doc drops the v1 — that's a doc typo.)
+    bulkImport: "api/v1/dashboard/media-content/bulk/import/",
+    bulkExport: "api/v1/dashboard/media-content/bulk/export/" // + `${contentType}/`
+} as const;

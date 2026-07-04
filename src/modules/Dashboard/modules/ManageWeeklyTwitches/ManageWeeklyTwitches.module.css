@@ -1,0 +1,65 @@
+.container {
+    padding: 1.5rem;
+}
+
+.header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.pageTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.pageSubtitle {
+    color: #6b7280;
+    margin-bottom: 1.5rem;
+}
+
+/* The shared TableTop and Table components default their root elements to
+   width:95%, which made each tab's table render at a slightly different width
+   and clip the Action column. Normalizing every direct block child here to a
+   full, border-box width guarantees all three tabs share one identical table
+   width regardless of column count or content. */
+.tab {
+    display: flex;
+    flex-direction: column;
+}
+
+.tab > div {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* TableTop's root (.container, width:95%) sits one level deeper inside the
+   toolbar; normalize it (and the filters row) so the search row lines up with
+   the table edges. */
+.toolbar > div {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Stack the toolbar vertically: TableTop (search + Add New) sits on its own
+   full-width row, with the filter dropdowns on a clean row below. Putting
+   TableTop — whose own root is width:95% — in a side-by-side flex row crushed
+   the filters into the leftover sliver and made the apparent table width vary
+   per tab (depending on how many filters that tab has). */
+.toolbar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.filters {
+    display: flex;
+    flex-direction: row;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
