@@ -39,7 +39,7 @@ const ManageWeeklyTwitches = () => {
                 </Button>
             </div>
             <Tabs colorScheme="blue" isLazy>
-                <TabList>
+                <TabList overflowX="auto" overflowY="hidden" whiteSpace="nowrap">
                     {ORDER.map(key => (
                         <Tab key={key}>{contentTypeConfigs[key].label}</Tab>
                     ))}
