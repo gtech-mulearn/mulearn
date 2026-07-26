@@ -38,6 +38,7 @@ export function CreateLearningCircleForm({ onClose, meetUp, onRefresh }: CreateL
   })
 
   const [interestOptions, setInterestOptions] = useState<{ label: string, value: string }[]>([]);
+  const [categoryError, setCategoryError] = useState("");
   const org = useUserStore((state) => state.userProfile.college_id || "028b4fb3-6b24-46ac-b26a-092889c5c44f");
 
   useEffect(() => {
@@ -59,7 +60,14 @@ export function CreateLearningCircleForm({ onClose, meetUp, onRefresh }: CreateL
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
+    const interestGroupId = formData.category || meetUp?.ig_id || "";
+    if (!interestGroupId) {
+      setCategoryError("Interest Group is required");
+      return;
+    }
+    setCategoryError("");
+
     const utcTime = convertToUTC(formData.time);
 
     const data = {
@@ -71,7 +79,7 @@ export function CreateLearningCircleForm({ onClose, meetUp, onRefresh }: CreateL
       location: formData.isOnline ? "Google Meet" : formData.location,
       time: utcTime, // Use UTC time for API submission
       org,
-      ig: formData.category,
+      ig: interestGroupId,
       is_recurring: false,
       recurrence_type: "weekly",
       recurrence: 1,
@@ -135,11 +143,11 @@ export function CreateLearningCircleForm({ onClose, meetUp, onRefresh }: CreateL
               report_description: '',
               meet_link: data.meetLink,
               meet_place: data.location, // platform
-            }).then((data) => {
-              if (data) {
+            }).then((meetupCreated) => {
+              if (meetupCreated) {
                 if (onRefresh) onRefresh();
+                onClose();
               }
-              onClose();
             });
           }
         });
@@ -158,17 +166,16 @@ export function CreateLearningCircleForm({ onClose, meetUp, onRefresh }: CreateL
               coord_y: 0,
               is_report_needed: false,
               report_description: '',
-            }).then((data) => {
-              if (data) {
+            }).then((meetupCreated) => {
+              if (meetupCreated) {
                 if (onRefresh) onRefresh();
+                onClose();
               }
-              onClose();
             });
           }
         });
       }
     }
-    onClose();
   };
 
   return (
@@ -225,16 +232,16 @@ export function CreateLearningCircleForm({ onClose, meetUp, onRefresh }: CreateL
             options={interestOptions}
             name="interestGroup"
             placeholder="Select Interest Group"
-            value={interestOptions.find((option) => option.value === formData.category)}
-            onChange={(selectedOption) => handleChange('category', selectedOption?.value || '')}
+            value={interestOptions.find((option) => option.value === formData.category) ?? null}
+            onChange={(selectedOption) => {
+              handleChange("category", selectedOption?.value || "");
+              if (selectedOption?.value) setCategoryError("");
+            }}
             isDisabled={meetUp?.ig_id ? true : false}
           />
-          {/* {meetUp?.ig_id && (
-                    <div className="helper-text" style={{ color: "red", marginTop: "4px", fontSize: '0.85rem' }}>
-                        {'Interest Group Cannot be modified'}
-                    </div>
-                )} */}
-
+          {categoryError && (
+            <p className={styles.errorText}>{categoryError}</p>
+          )}
           {meetUp?.ig_id && (
             <p className={styles.helperText}>Interest Group Cannot be modified</p>
           )}
