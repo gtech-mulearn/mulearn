@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { Img } from "@chakra-ui/react";
+import { Img, Tooltip } from "@chakra-ui/react";
 import { useEffect, useState, useMemo } from "react";
 import style from "./GameProgressBar.module.css";
 import Level1 from "../../Profile/components/MuVoyage/assets/images/Level1.webp";
@@ -45,7 +45,7 @@ export default function GameProgressBar() {
     localStorage.setItem(CACHE_TIMESTAMP_KEY, Date.now().toString());
   };
 
-  const getLevelDataFromCache = (): { data: LevelFeedResponse | null, isValid: boolean } => {
+  const getLevelDataFromCache = (): { data: LevelFeedResponse | null; isValid: boolean } => {
     try {
       const cachedData = localStorage.getItem(CACHE_KEY);
       const timestamp = localStorage.getItem(CACHE_TIMESTAMP_KEY);
@@ -67,7 +67,6 @@ export default function GameProgressBar() {
       setIsLoading(true);
 
       try {
-        // Always fetch fresh data on initial load to ensure we have the latest level information
         const data = await getUserLevelFeed();
         if (data) {
           setLevelData(data);
@@ -75,8 +74,7 @@ export default function GameProgressBar() {
         }
       } catch (error) {
         console.error("Error fetching level data:", error);
-        
-        // Fallback to cached data only if fresh fetch fails
+
         const { data: cachedData, isValid } = getLevelDataFromCache();
         if (cachedData && isValid) {
           setLevelData(cachedData);
@@ -91,18 +89,22 @@ export default function GameProgressBar() {
     fetchLevelData();
   }, []);
 
-  // Calculate level-related variables before any returns
   const currentLevel = levelData?.level_order ?? 1;
-  const levelRequirement = LEVEL_REQUIREMENTS[currentLevel as keyof typeof LEVEL_REQUIREMENTS] || 0;
+  const levelRequirement =
+    LEVEL_REQUIREMENTS[currentLevel as keyof typeof LEVEL_REQUIREMENTS] || 0;
 
   const progress = useMemo(() => {
     if (!levelData || levelRequirement === 0) return 0;
     return Math.min((levelData.user_karma / levelRequirement) * 100, 100);
   }, [levelData, levelRequirement]);
 
-  // Calculate imageIndex and nextLevel
   const imageIndex = Math.min(Math.max(currentLevel - 1, 0), 6);
   const nextLevel = currentLevel + 1;
+
+  const remainingKarma = Math.max(
+    levelRequirement - (levelData?.user_karma ?? 0),
+    0
+  );
 
   if (isLoading) {
     return (
@@ -127,7 +129,6 @@ export default function GameProgressBar() {
     );
   }
 
-  // Don't display anything if no level data is available
   if (!levelData) {
     return null;
   }
@@ -141,7 +142,10 @@ export default function GameProgressBar() {
           </motion.div>
           <div className={style.progressContainer}>
             <div className={style.progressTitle}>Level 7</div>
-            <div className={`${style.progressBar} ${style.progressBarLarge}`} style={{ background: "#22c55e" }}>
+            <div
+              className={`${style.progressBar} ${style.progressBarLarge}`}
+              style={{ background: "#22c55e" }}
+            >
               <span className={style.progressText}>Max Level Reached!</span>
             </div>
           </div>
@@ -156,24 +160,42 @@ export default function GameProgressBar() {
         <motion.div className={`${style.iconContainer} ${style.iconContainerLarge}`}>
           <Img src={ImageMap[imageIndex].image} className={style.image} />
         </motion.div>
+
         <div className={style.progressContainer}>
-          <div className={style.progressTitle}>
-            Level {currentLevel}
-          </div>
-          <div className={`${style.progressBar} ${style.progressBarLarge}`}>
-            <motion.div
-              key={progress} // Reset animation only when progress changes
-              className={style.progressFill}
-              initial={{ width: "0%" }}
-              animate={{ width: `${progress}%` }}
-              transition={{
-                duration: 0.5,
-                ease: "easeOut",
+          <div className={style.progressTitle}>Level {currentLevel}</div>
+
+          <Tooltip
+            label={`Earn ${remainingKarma} more karma to reach Level ${nextLevel}`}
+            hasArrow
+            placement="bottom"
+          >
+            <div
+              className={`${style.progressBar} ${style.progressBarLarge}`}
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                window.location.href = "/karma-explained";
               }}
-            />
-            <div className={style.progressText}>
-              {levelData?.user_karma ?? 0}/{levelRequirement}
+            >
+              <motion.div
+                key={progress}
+                className={style.progressFill}
+                initial={{ width: "0%" }}
+                animate={{ width: `${progress}%` }}
+                transition={{
+                  duration: 0.5,
+                  ease: "easeOut",
+                }}
+              />
+              <div className={style.progressText}>
+                {levelData?.user_karma ?? 0}/{levelRequirement}
+              </div>
             </div>
+          </Tooltip>
+
+          <div style={{ fontSize: "12px", marginTop: "6px", opacity: 0.8 }}>
+            {remainingKarma > 0
+              ? `${remainingKarma} karma needed for Level ${nextLevel}`
+              : "Ready to level up!"}
           </div>
         </div>
       </div>
