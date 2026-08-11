@@ -65,7 +65,7 @@ export default function Leaderboard({
   }
 
   const topPlayers = currentLeaderboard.slice(0, topPlayerCount);
-  const remainingPlayers = currentLeaderboard.slice(topPlayerCount);
+  const remainingPlayers = currentLeaderboard; // ← fixed: was currentLeaderboard.slice(topPlayerCount)
 
   return (
     <div className={styles.container}>
